@@ -796,7 +796,8 @@ capture without inventing RequirementSpec or missing versions.
 The final public gate passed three tests in 25.64 seconds at `c268859`; integrated
 native intake/evaluation/planner-usage passed 176/1 skipped. Synthetic transcripts prove
 recorded lineage, not authenticity or semantic quality of a real external review.
-No actual external author/reviewer session was run. Operational ownership is now split
+Those implementation gates did not run actual external author/reviewer sessions.
+Operational ownership is now split
 between concise root commands, detailed `backend/evaluation/README.md` parameters and
 current intake lineage rules; the CLI does not dispatch external authors/reviewers.
 
@@ -819,5 +820,97 @@ one required host symlink privileges. Earlier #97 gates were not substituted for
 Evidence identifiers include `artifacts/rtpeval-95/102-native-gate.xml`,
 `102-stable-public.xml`, and the parent artifact inventory's `final-95.xml` /
 `final-root.xml`. Local diagnostics remain local; the public facts and limitations are
-recorded here. This synthetic/offline acceptance established neither a paid live run,
-external-session authenticity, formal benchmark nor version freeze.
+recorded here. Those gates established synthetic/offline acceptance; subsequent
+real-material acceptance has a separate source and evidence scope.
+
+The authorized 2026-10-10 Sydney acceptance used unchanged implementation `3ae30b7`
+with only the pre-existing `.gitignore` edit present. It selected the saved runs
+`sydney-natural-v0-20261007`, `sydney-v1-20261008-r1`, `sydney-v2-20261008-r2` and
+`sydney-v3-source-cli-20261009-r1` against original input SHA-256
+`1b3c50ad9ce9c58a4caf047388f3c4131faa0cddb0ffff2467dd8b2f1593d6ba`.
+Completion receipts and observed stages supported generation for all versions,
+completed V2/V3 retrieval and completed V3 validation; V3 Repair was not applicable.
+Independent Codex `gpt-6.1-sol`/high author and reviewer instances received fresh,
+isolated contexts with the complete request and no Planner/scoring evidence.
+The reviewer retained the draft semantics with no findings. Retained transcripts
+contain the actual dispatch and structured final response with normalized JSON
+whitespace; private reasoning and intermediate tool messages were not exported.
+
+Public `collect`, `attach-requirements`, `finalize` and `validate` accepted the
+source-bound directory without hand-editing its manifest. Offline preparation
+passed before one public `evaluate execute` invocation. Fresh Google acquisition
+and automatic processing completed with 22 Search, 30 Details and 15 Matrix sends,
+one medium V0 model request and zero retries. Model usage was 15,160 input and
+1,804 output tokens. Reference cost was USD 1.381796925 under the USD 3 allowance;
+OpenAI retail model pricing was an explicit Azure proxy, not an account invoice.
+Limits were 86 Google sends, one model send, 24,000/8,000 input/output tokens,
+120 seconds per request and 900 seconds overall. All 1,530 frozen material files
+and 73 bound implementation files remained unchanged. A separate replay process
+denied socket connections and DNS resolution, removed evaluator credentials,
+made zero network attempts and reproduced the report exactly while preserving
+all 216 saved evaluation files and 758 bound original files.
+
+The original report retains 48 UNKNOWN inventory entries: two requirement/schedule,
+13 opening, 17 route and 16 daily-density entries. It omitted activity-role,
+occupancy, route and density reviews and supplemental opening judgments. The local
+evidence identifier is `artifacts/rtpeval-real-e2e-20261010-r1`, including the accepted
+`finalized/manifest.json`, execution report/receipt and `replay-verification.json`.
+This acceptance covers preserved real material through finalization, fresh independent
+evaluation and replay; it does not exercise new Planner generation or establish
+comparative research.
+
+The authorized offline follow-up on 2026-10-10 at `6dfa77b`, with the same pre-existing
+`.gitignore` edit, reviewed the complete original Input and the V0 Haymarket activity.
+The generic food block is non-primary but occupies its submitted interval; walking
+and public transport are soft preferences without a hard mode restriction; relaxed
+pace has no explicit daily count or dated exception. New agent review envelopes bind
+these decisions to exact source hashes and actual review time, without human confirmation.
+A separate derived manifest adds the activity review. Native identity replay preserves
+every identity source and association using the original captured V0 model response;
+derived snapshots reuse exact request keys, response bytes and observation timestamps.
+Their ledgers retain historical attempts and do not describe additional sends.
+
+The original execution replay matched. Two native quality CLI runs over the reviewed
+material completed with identical reports under socket/DNS denial. All 3,666 checked
+original/current and preceding-case evidence files remained unchanged. Of the 48 original
+UNKNOWN entries, 35 became decidable: 17 route PASS, one required-visit count PASS,
+11 daily-density PASS, five daily-density FAIL and one available occupancy denominator.
+The 13 remaining entries are opening checks; both inspected independent snapshots lack
+usable hours for them. The preceding access-model material contains 12 PASS and one
+UNKNOWN but its import correctly rejects stale/foreign packet bindings. Those decisions
+were not transplanted. A fresh 13-case opening packet was prepared without execution.
+
+That offline follow-up used zero provider/model sends and incurred no additional API
+cost. Its local evidence identifier is `artifacts/rtpeval-offline-context-20261010-r1`,
+including source-linked reviews, `quality-report.json`, `verification.json` and
+`resolution-summary.json`.
+
+The subsequently approved 2026-10-10 access assessment at `d8b14a9`, with only the
+same `.gitignore` edit, bound a fresh packet to that reviewed material. A reviewed
+offline recalculation is not a native paid-run parent, so the supported independently
+captured-material import route preserved its source bindings. The task-local adapter
+used native `EvaluationTransport` for one actual Azure Responses request, retained raw
+HTTP/material and usage, and completed native opening import and quality CLIs. The
+execution child used `gpt-6.1-sol`/medium; the requested API model was `gpt-6-luna`/medium.
+Limits were zero Google sends, one model send, zero retries, 24,000/8,000 input/output
+tokens, 120 seconds per request, 900 seconds overall and USD 0.10 incremental reference
+cost. Actual usage was 14,905 input and 2,796 output tokens; incremental reference cost
+was USD 0.00326105, bringing this acceptance's total to USD 1.385057975. Actual account
+billing remains unavailable; model prices are an explicit OpenAI retail proxy for Azure.
+
+The 13 model decisions were 12 PASS under the public-landmark/public-area access policy
+and one UNKNOWN for V0 Powerhouse Museum indoor admission. No dated admission evidence
+was available; undated temporary closure does not prove future closure. The original
+48 UNKNOWN entries are now one in the separately saved completed quality report.
+Access PASS is a model reasonableness assessment, not supplied opening hours. Socket/DNS-
+blocked native opening and quality replay matched exactly with zero network attempts;
+factual hours, intervals and all non-opening dimensions remained unchanged. All 4,527
+frozen source files, 74 implementation/adapter files and 11 captured receipt files passed
+hash checks. Report usage and final saved usage differ only in their closing timestamp;
+both original snapshots and their identical token/provider ledgers are retained.
+Local evidence is `artifacts/rtpeval-opening-access-20261010-r1`, including the actual
+`execution/model-result.json`, full native quality report, receipt,
+`replay-verification.json` and `acceptance-summary.json`. This completes the bounded
+real-material acceptance with one explicit uncertainty; original executions and their
+source material remain unchanged. Another identical Google query has no demonstrated
+coverage benefit; museum admission requires applicable authoritative evidence.

@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-09.
+Current source of truth. Updated 2026-10-10.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -148,8 +148,9 @@ opening and route checks while original grounding FAILs remain visible. Requirem
 targets belong to their own version. Historical reports retain their original policies,
 code and source bindings; a rule change produces a separate recalculation.
 
-The latest Sydney development case uses the original V0-V2 and the source-protected
-V3 without changing submitted outputs. Fresh independent acquisition and the complete
+The supplemented Sydney development case recorded on 2026-10-09 uses the original
+V0-V2 and the source-protected V3 without changing submitted outputs. Fresh
+independent acquisition and the complete
 native evaluator, supplemental opening and manifest-based quality CLI agree; exact
 zero-network replay verifies source hashes and closed receipts. Current V0 identity
 requests require every prepared reference as an object key, with strict complete
@@ -249,21 +250,36 @@ or guaranteed fresh-clone assets.
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
 were delivered as the first slices of
 [unified CLI parent #95](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/95).
-On 2026-10-09 the human approved the remaining #98–#102 implementation, tests, local
-commits, combined Standards/Spec review, corrections, documentation and full Git delivery.
 Collection, finalization, generation registration and task-oriented tools are integrated;
 #102 adds complete public synthetic workflow acceptance and operational guidance.
 [PR #105](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/105) contains the
-completed implementation and offline acceptance. Initial independent combined review
-against `93ab3ba...c1280a1` found zero Standards and zero Spec findings. The
-current validation checkpoint in section 5 records the
-final unchanged-source full backend gate. Final documentation recheck identified one
-P3 stale-checkpoint finding; its documentation-only correction passed focused review
-with zero remaining findings.
+completed implementation and offline acceptance. The current backend validation
+checkpoint is in section 5; implementation and documentation review history belongs
+to the acceptance record.
 See [unified acceptance](docs/records/evaluation/intake-identity-usage.md#unified-rtpeval-material-workflow-acceptance-2026-10-09).
-Paid/live execution, actual external author/reviewer sessions, formal research and
-version freeze remain excluded. Live Issues and the PR own delivery and lifecycle
-state. Retained earlier evidence:
+
+On 2026-10-10, a separately approved real-material acceptance at `3ae30b7` reused
+the saved Sydney V0-V3 outputs. Two isolated Codex author/reviewer executions
+produced source-bound requirements; public collection, attachment, finalization
+and validation yielded a directory accepted directly by one-step evaluation.
+Fresh independent acquisition and processing completed with 67 Google sends,
+one model send, zero retries and USD 1.381796925 in reference cost against a
+USD 3 allowance. Network-blocked replay reproduced the report without modifying
+sources or evidence. Actual billing remains unavailable. The original report retains
+48 UNKNOWN inventory entries. A separately saved offline recalculation reviewed
+activity role/occupancy, original transport constraints and relaxed pace, resolving
+35 entries using the same captured responses. A subsequently approved, newly bound
+access assessment made one model request and no Google requests, resolving 12 of
+the 13 missing-hours verdicts through the public-landmark policy. V0 Powerhouse
+Museum indoor admission remains UNKNOWN. Model PASS does not supply verified hours.
+Native opening and quality replay matched under network denial, with factual hours
+and other quality dimensions unchanged. Cumulative reference cost is USD 1.385057975;
+actual billing remains unavailable. This small real-material acceptance is complete
+with the remaining uncertainty retained; resolving museum admission needs applicable
+authoritative evidence rather than another identical Google query.
+Details: [installed CLI real-material evidence](docs/records/evaluation/intake-identity-usage.md#installed-cli-and-reviewed-material-workflow).
+Fresh Planner generation, formal research and version freeze remain separate work.
+Live Issues and PRs own delivery and lifecycle state. Retained earlier evidence:
 [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09),
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09).
 
