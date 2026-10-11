@@ -477,7 +477,7 @@ The exclusive-addition example deliberately includes an independently reviewed q
 “Exactly one primary visit on this day.” Its planner interpretation misses that restriction.
 V3's internal `ACCEPTED_COMPLETE` therefore coexists with the independent `regressed` verdict.
 Without that restriction, the same independently feasible addition is `lawful_change`.
-The audit verdicts and ranking answers only demonstrate file linkage and report processing;
+The synthetic ranking answers demonstrate file linkage and report processing;
 they are not real human assessments or evidence that any venue fact is true.
 Existing native browser acceptance remains separate from package generation/import checks.
 

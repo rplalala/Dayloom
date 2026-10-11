@@ -85,7 +85,7 @@ not this pre-merge checkpoint.
 
 These synthetic workflows demonstrate linkage, reporting and successful processing,
 including UNKNOWN and deliberate regression. They are not actual model submissions,
-human truth audits, real rater sessions or research observations. No production module,
+real rater sessions or research observations. No production module,
 planner behavior or scoring policy changed in the usage task. Prior user-reported native
 storage/download acceptance was reused; packet generation is not a new browser pass.
 No live provider/model/database execution or formal comparison was performed.
