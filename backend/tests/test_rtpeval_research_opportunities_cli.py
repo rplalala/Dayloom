@@ -386,6 +386,22 @@ def test_complete_schedule_excludes_nearby_and_generic_with_producer_fate_confli
     assert row["scheduled"]["complete_count"] == 2
     assert row["scheduled"]["status"] == "complete"
     assert "producer_scheduled_fate_conflicts_with_independent_associations" in row["diagnostics"]
+    assert value["review_coverage"]["independent_association_slots"] == 1
+    assert value["measurement_coverage"]["stages"]["scheduled"] == {
+        "complete": 1,
+        "partial": 0,
+        "unavailable": 1,
+    }
+    assert value["diagnostics"] == [
+        {
+            **{
+                key: row[key]
+                for key in ("case_id", "case_revision", "version", "repetition_id", "attempt_id")
+            },
+            "reason": reason,
+        }
+        for reason in row["diagnostics"]
+    ]
     assert all(
         "reference_recommendations" not in item["source"]["pointer"]
         for item in row["scheduled"]["associations"]

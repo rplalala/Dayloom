@@ -173,7 +173,9 @@ def test_undispatched_attempt_rejects_actual_generation_usage(
     if observation in ("model_calls", "provider_events"):
         usage[observation] = observed[observation]
     elif observation == "cache_events":
-        usage[observation] = [{"operation": "cache_read", "hit": False}]
+        usage[observation] = [
+            {"event_id": "cache-1", "operation": "cache_read", "outcome": "cache_lookup_miss"}
+        ]
     elif observation == "timing":
         usage["timing"] = {"elapsed_seconds": 0}
     elif observation == "repair":
