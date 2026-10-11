@@ -4,7 +4,18 @@ import json
 
 import pytest
 
+from backend.tests.evaluation import test_v3_pair_report as native_pairs
+from backend.tests.research_native_fixtures import (
+    declare_native,
+    final_case,
+    native_descriptor,
+    prepare_namespaced_usage,
+)
 from backend.tests.test_rtpeval_research_population_cli import add_attempt, save
+
+pair_case = native_pairs.pair_case
+route_case = native_pairs.route_case
+prepared_scenario = native_pairs.prepared_scenario
 
 pytest_plugins = ("backend.tests.test_rtpeval_research_population_cli",)
 
@@ -367,3 +378,242 @@ def test_reproducible_report_has_coverage_profiles_and_readable_comparisons(
         tmp_path / "fresh-one",
     )
     assert repeated.returncode == 2
+
+
+def native_usage(batch):
+    prepare_namespaced_usage(batch)
+    manifest, _, write, saver, root = batch
+    for version, run in manifest["groups"][0]["selected_runs"].items():
+        usage = json.loads((root / run["usage_ref"]["path"]).read_bytes())
+        tokens = 150 if version == "v2" else 100
+        usage.update(
+            namespace="planner",
+            outcome="completed",
+            collection_status="available",
+            coverage={"adapter_coverage": "default_adapters"},
+            timing={
+                "scope": "selected_invocation_through_cleanup",
+                "elapsed_seconds": 10,
+                "started_at": "2026-10-02T00:00:00Z",
+            },
+            model_calls=[
+                {
+                    "event_id": "m",
+                    "provider": "fixture",
+                    "operation": "chat",
+                    "model": "test",
+                    "outcome": "completed",
+                    "input_tokens": tokens - 20,
+                    "output_tokens": 20,
+                    "total_tokens": tokens,
+                    "cached_input_tokens": 0,
+                }
+            ],
+            provider_events=[],
+            cache_events=[],
+        )
+        run["usage_ref"] = saver(run["usage_ref"]["path"], usage, usage["schema_version"])
+    write()
+
+
+def native_declaration(batch, pair_case):
+    root = batch[-1]
+    native_usage(batch)
+    quality = native_descriptor(root, final_case(pair_case()), "quality")
+    declaration = declare_native(root, batch[0], quality=[quality])
+    value = json.loads(declaration.read_bytes())
+    value["track_refs"]["tradeoffs"] = save(
+        root,
+        "tradeoffs-input.json",
+        {
+            "schema_version": "rtpeval_research_tradeoffs_1",
+            "quality_reports": [quality],
+            "cost_ledgers": [],
+        },
+    )
+    save(root, "research.json", value)
+    return declaration, quality
+
+
+def test_real_native_quality_is_linked_with_selected_resource_pair(
+    installed_cli, batch, pair_case, tmp_path
+):
+    declaration, descriptor = native_declaration(batch, pair_case)
+    source = json.loads((batch[-1] / descriptor["report_ref"]["path"]).read_bytes())
+    result = installed_cli(
+        "research",
+        "report",
+        declaration,
+        "--track",
+        "tradeoffs",
+        "--directory",
+        tmp_path / "native",
+        evaluation_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    report = json.loads((tmp_path / "native" / "tradeoffs.json").read_bytes())
+    pair = report["paired_comparisons"][0]
+    assert pair["native_quality_pairs"] == 1
+    row = pair["rows"][0]
+    assert row["resources"]["total_tokens"]["difference"] == 50
+    assert row["quality"]["totals"]["auxiliary_total"]["difference"] == 0.0
+    assert row["quality"]["totals"]["auxiliary_total"]["exact_fraction"] == {
+        "numerator": 0,
+        "denominator": 1,
+    }
+    assert row["quality"]["included_dimensions"] == [
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes",
+    ]
+    assert row["quality"]["baseline_native"] == source["groups"][0]["versions"]["v1"]
+    assert row["quality"]["candidate_native"] == source["groups"][0]["versions"]["v2"]
+    assert (
+        report["paired_comparisons"][1]["rows"][0]["quality"]["totals"]["overall_total"][
+            "difference"
+        ]
+        == 0.0
+    )
+    assert pair["quality_medians"]["auxiliary_total"]["difference"] == 0.0
+
+
+@pytest.mark.parametrize("fault", ["quality", "usage", "provenance"])
+def test_native_quality_join_rejects_freshly_hashed_foreign_material(
+    installed_cli, batch, pair_case, tmp_path, fault
+):
+    from backend.evaluation.quality_report import quality_content_hash
+
+    declaration, descriptor = native_declaration(batch, pair_case)
+    root = batch[-1]
+    declared = json.loads(declaration.read_bytes())
+    if fault == "quality":
+        quality = json.loads((root / descriptor["report_ref"]["path"]).read_bytes())
+        quality["groups"][0]["versions"]["v2"]["auxiliary_total"]["score_0_100"] = 99
+        quality["content_hash"] = quality_content_hash(quality)
+        descriptor["report_ref"] = save(root, "forged-quality.json", quality)
+        declared["track_refs"]["tradeoffs"] = save(
+            root,
+            "tradeoffs-input.json",
+            {
+                "schema_version": "rtpeval_research_tradeoffs_1",
+                "quality_reports": [descriptor],
+                "cost_ledgers": [],
+            },
+        )
+    else:
+        census = json.loads((root / declared["census_ref"]["path"]).read_bytes())
+        attempt = next(a for a in census["attempts"] if a["version"] == "v2")
+        ref = attempt[fault + "_ref"]
+        material = json.loads((root / ref["path"]).read_bytes())
+        if fault == "usage":
+            material["model_calls"][0]["total_tokens"] = 999
+        else:
+            material["unrelated_note"] = "Different producer capture bytes"
+        attempt[fault + "_ref"] = save(root, "foreign-" + fault + ".json", material)
+        declared["census_ref"] = save(root, "census.json", census)
+    save(root, "research.json", declared)
+    result = installed_cli(
+        "research", "validate", declaration, "--track", "tradeoffs", evaluation_offline=True
+    )
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+
+
+def test_unverified_adapter_coverage_prevents_complete_ledger_totals(
+    installed_cli, research_material, tmp_path
+):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    research_material[1]["cases"][0]["planned_versions"] = ["v1"]
+    attempt, usage = usage_attempt(research_material, "v1")
+    usage["coverage"] = {"adapter_coverage": "unknown"}
+    attempt["usage_ref"] = save(research_material[0], attempt["attempt_id"] + "-usage.json", usage)
+    report = report_cli(installed_cli, research_material, tmp_path / "unverified")
+    ledger = report["all_attempts"]
+    assert ledger["ledger_complete"] is False
+    assert ledger["by_version"]["v1"]["ledger_complete"] is False
+    assert ledger["totals"]["model_calls"]["total"] is None
+    assert ledger["totals"]["total_tokens"]["observed_subtotal"] == 100
+
+
+def test_partial_prices_and_currency_mismatch_retain_native_unavailability(
+    installed_cli, research_material, tmp_path
+):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    left, _ = usage_attempt(research_material, "v1")
+    right, _ = usage_attempt(research_material, "v2", tokens=150)
+    left_ledger = cost_track(research_material, [left])["cost_ledgers"][0]
+    right_ledger = cost_track(research_material, [right], currency="EUR")["cost_ledgers"][0]
+    prices = json.loads((research_material[0] / right_ledger["prices_ref"]["path"]).read_bytes())
+    prices["rows"] = []
+    right_ledger["prices_ref"] = save(research_material[0], "partial-prices.json", prices)
+    track = {
+        "schema_version": "rtpeval_research_tradeoffs_1",
+        "quality_reports": [],
+        "cost_ledgers": [left_ledger, right_ledger],
+        "comparisons": [
+            {"baseline": "v0", "candidate": "v2"},
+            {"baseline": "v1", "candidate": "v2"},
+        ],
+    }
+    report = report_cli(installed_cli, research_material, tmp_path / "partial-cost", track)
+    assert len(report["paired_comparisons"]) == 2
+    pair = report["paired_comparisons"][1]["rows"][0]
+    assert pair["costs"]["estimated"]["reason"] == "currency_mismatch"
+    native = report["all_attempts"]["rows"][1]["cost"]["native"]
+    assert native["estimated_total"] is None
+    assert native["unpriced_event_count"] == 1
+    assert native["events"][0]["missing_reason"] == "missing_price_or_billing_context"
+
+
+def test_capture_completed_but_workflow_failed_stays_in_failed_consumption(
+    installed_cli, research_material, tmp_path
+):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    attempt, usage = usage_attempt(research_material, "v2", "required_mechanism_failed")
+    usage["outcome"] = "completed"
+    attempt["usage_ref"] = save(research_material[0], attempt["attempt_id"] + "-usage.json", usage)
+    report = report_cli(installed_cli, research_material, tmp_path / "mechanism-failed")
+    row = report["all_attempts"]["rows"][0]
+    assert row["status"] == "failed"
+    assert row["native_usage"]["outcome"] == "completed"
+    assert row["elapsed_cohort"] == "failed_or_censored"
+    assert report["all_attempts"]["totals"]["total_tokens"]["observed_subtotal"] == 100
+    assert report["paired_comparisons"][0]["completed"] == 0
+
+
+@pytest.mark.parametrize("field", ["coverage", "timing", "repair_summary"])
+def test_malformed_usage_objects_are_material_errors(installed_cli, research_material, field):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    attempt, usage = usage_attempt(research_material, "v1")
+    usage[field] = []
+    attempt["usage_ref"] = save(research_material[0], attempt["attempt_id"] + "-usage.json", usage)
+    result = installed_cli("research", "validate", research_material[-1](), "--track", "tradeoffs")
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+
+
+def test_zero_cost_baseline_retains_difference_without_ratio_and_cost_median(
+    installed_cli, research_material, tmp_path
+):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    left, usage = usage_attempt(research_material, "v1")
+    usage.update(
+        model_calls=[],
+        provider_events=[],
+        repair_summary={"model_event_ids": [], "provider_event_ids": []},
+    )
+    left["usage_ref"] = save(research_material[0], left["attempt_id"] + "-usage.json", usage)
+    right, _ = usage_attempt(research_material, "v2")
+    report = report_cli(
+        installed_cli,
+        research_material,
+        tmp_path / "zero-cost",
+        cost_track(research_material, [left, right]),
+    )
+    pair = report["paired_comparisons"][0]
+    cost = pair["rows"][0]["costs"]["best_available"]
+    assert cost == {"difference": "0.00024", "ratio": None, "reason": "zero_baseline"}
+    assert pair["cost_medians"][0]["mode"] == "best_available"
+    assert pair["cost_medians"][0]["difference"] == "0.00024"
+    assert pair["cost_medians"][0]["currency"] == "USD"

@@ -56,7 +56,7 @@ def cost_deltas(left, right):
                     )
                 )
 
-            if basis(a) != basis(b):
+            if basis(a) and basis(b) and basis(a) != basis(b):
                 mode_compatible, mode_reason = False, "billing_basis_mismatch"
         result[mode] = difference(
             a["native"][mode + "_total"] if a else None,
@@ -221,6 +221,14 @@ def pairs_report(context, population, ledger, native_rows, requested):
                             "reason": "incompatible",
                         }
                     )
+            row["cost_context"] = {}
+            for side, resource in (("baseline", left), ("candidate", right)):
+                cost = resource.get("cost") if resource else None
+                row["cost_context"][side] = (
+                    {k: cost[k] for k in ("currency", "accounting_basis", "prices_sha256")}
+                    if cost
+                    else None
+                )
             rows.append(row)
         medians = {}
         for metric in ("elapsed_seconds", *METRICS):
@@ -230,6 +238,16 @@ def pairs_report(context, population, ledger, native_rows, requested):
                 if r["resources"][metric]["difference"] is not None
             ]
             medians[metric] = {
+                "comparable_pairs": len(values),
+                "difference": median(values) if values else None,
+            }
+        quality_medians = {}
+        for metric in ("auxiliary_total", "overall_total"):
+            values = [
+                r["quality"].get("totals", {}).get(metric, {}).get("difference") for r in rows
+            ]
+            values = [v for v in values if v is not None]
+            quality_medians[metric] = {
                 "comparable_pairs": len(values),
                 "difference": median(values) if values else None,
             }
@@ -267,7 +285,33 @@ def pairs_report(context, population, ledger, native_rows, requested):
                 ),
                 "rows": rows,
                 "descriptive_medians": medians,
+                "quality_medians": quality_medians,
+                "cost_medians": cost_medians(rows),
                 "completion_difference": completion,
             }
         )
     return output
+
+
+def cost_medians(rows):
+    cohorts = {}
+    for row in rows:
+        basis = row["cost_context"]["baseline"]
+        if basis is None:
+            continue
+        for mode in ("actual", "estimated", "best_available"):
+            value = row["costs"][mode]["difference"]
+            if value is not None:
+                key = (mode, basis["currency"], basis["accounting_basis"], basis["prices_sha256"])
+                cohorts.setdefault(key, []).append(Decimal(value))
+    return [
+        {
+            "mode": k[0],
+            "currency": k[1],
+            "accounting_basis": k[2],
+            "prices_sha256": k[3],
+            "comparable_pairs": len(values),
+            "difference": money(median(values)),
+        }
+        for k, values in sorted(cohorts.items())
+    ]

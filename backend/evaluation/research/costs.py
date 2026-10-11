@@ -76,6 +76,10 @@ def attach_costs(context, ledger, descriptors):
             }
         rebuilt.append({"attempt_ids": ids, "native": report, "semantic_sha256": digest(report)})
     ledger["native_cost_ledgers"] = rebuilt
+    ledger["cost_coverage"] = {
+        "known_cost_attempts": len(assigned),
+        "missing_cost_attempts": len(attempts) - len(assigned),
+    }
     cohorts = {}
     for row in ledger["rows"]:
         cost = row["cost"]

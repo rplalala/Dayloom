@@ -39,6 +39,8 @@ def resource_row(context, slot, attempt):
             "run_id",
             "status",
             "execution_metadata",
+            "order",
+            "prior_attempt_id",
         )
     }
     row.update(
@@ -67,6 +69,22 @@ def resource_row(context, slot, attempt):
         or usage.get("outcome") not in ("failed", "cancelled", "incomplete"),
         "Completed attempt usage outcome mismatch",
     )
+    for field in ("coverage", "timing", "repair_summary"):
+        _require(isinstance(usage.get(field, {}), dict), "Malformed native usage object: " + field)
+    for field in ("model_calls", "provider_events", "cache_events"):
+        members = usage.get(field, [])
+        _require(
+            isinstance(members, list) and all(isinstance(r, dict) for r in members),
+            "Malformed native usage event array: " + field,
+        )
+    for field in ("model_event_ids", "provider_event_ids"):
+        ids = usage.get("repair_summary", {}).get(field, [])
+        _require(
+            isinstance(ids, list)
+            and all(isinstance(i, str) and i for i in ids)
+            and len(ids) == len(set(ids)),
+            "Malformed Repair usage subset: " + field,
+        )
     native = summarize(usage)
     covered = native["adapter_coverage"] == "declared_default_adapters"
     models = usage.get("model_calls", [])
@@ -126,7 +144,20 @@ def resource_row(context, slot, attempt):
     return row
 
 
+def covered_ledger(row):
+    return (
+        row["availability"] == "available"
+        and row["native_usage"]["adapter_coverage"] == "declared_default_adapters"
+    )
+
+
 def all_attempts(context):
+    for slot in context.slots:
+        for attempt in slot["attempts"]:
+            _require(
+                attempt["dispatched"] or attempt.get("usage_ref") is None,
+                "Generation usage on undispatched attempt",
+            )
     rows = [
         resource_row(context, slot, attempt)
         for slot in context.slots
@@ -137,7 +168,7 @@ def all_attempts(context):
         not s["attempts"] or any(a["status"] == "unknown_pending" for a in s["attempts"])
         for s in context.slots
     )
-    ledger_complete = not unknown_slots and all(r["availability"] == "available" for r in rows)
+    ledger_complete = not unknown_slots and all(covered_ledger(r) for r in rows)
     output = {
         "planned_slots": len(context.slots),
         "dispatched_attempts": len(rows),
@@ -154,7 +185,7 @@ def all_attempts(context):
         complete = all(
             s["attempts"] and all(a["status"] != "unknown_pending" for a in s["attempts"])
             for s in slots
-        ) and all(r["availability"] == "available" for r in selected)
+        ) and all(covered_ledger(r) for r in selected)
         output["by_version"][version] = {
             "dispatched_attempts": len(selected),
             "ledger_complete": complete,
@@ -164,7 +195,13 @@ def all_attempts(context):
     for row in rows:
         elapsed = row["metrics"]["elapsed_seconds"]
         if elapsed is not None:
-            key = (row["version"], row["status"], row["elapsed_cohort"], row.get("timing_scope"))
+            key = (
+                row["version"],
+                row["status"],
+                row["elapsed_cohort"],
+                row.get("timing_scope"),
+                row["selected_primary"],
+            )
             cohorts.setdefault(key, []).append(elapsed)
     output["elapsed_cohorts"] = [
         {
@@ -172,6 +209,7 @@ def all_attempts(context):
             "workflow_status": k[1],
             "cohort": k[2],
             "timing_scope": k[3],
+            "selected_primary": k[4],
             "observed_attempts": len(values),
             "median": median(values),
         }
