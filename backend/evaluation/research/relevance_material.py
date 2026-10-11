@@ -70,6 +70,7 @@ def _interests(context, refs):
             "Independent reviewed RequirementSpec required",
         )
         text_fields(review, ("reviewer_ref", "reviewed_at"))
+        timestamp(review["reviewed_at"])
         for field in ("subjects", "obligations", "soft_preferences", "unresolved_items"):
             _require(
                 isinstance(spec.get(field), list), "Malformed reviewed RequirementSpec: " + field

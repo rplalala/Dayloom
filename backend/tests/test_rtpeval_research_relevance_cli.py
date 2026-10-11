@@ -850,3 +850,19 @@ def test_report_applicability_and_per_interest_principal_follow_reviewed_invento
     declaration = write_relevance(research_material, entries, inventories=[no_interest_ref])
     report = get_report(installed_cli, declaration, tmp_path / "not-applicable")
     assert report["applicability"] == "not_applicable"
+
+
+@pytest.mark.parametrize("reviewed_at", ["not-a-timestamp", "2026-10-01T00:00:00"])
+def test_malformed_requirement_review_time_is_rejected(
+    installed_cli, research_material, reviewed_at
+):
+    root = research_material[0]
+    inventory_ref, inventory = interest_inventory(research_material, interests=("architecture",))
+    spec = json.loads((root / inventory["requirement_spec_ref"]["path"]).read_text())
+    spec["review"]["reviewed_at"] = reviewed_at
+    inventory["requirement_spec_ref"] = save(root, "reviewed-requirements.json", spec)
+    inventory_ref = save(root, "interests.json", inventory)
+    declaration = write_relevance(research_material, inventories=[inventory_ref])
+    result = installed_cli("research", "validate", declaration, "--track", "relevance")
+    assert result.returncode == 2
+    assert "needs_material_correction" in result.stdout
