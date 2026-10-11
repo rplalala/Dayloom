@@ -27,6 +27,10 @@ def main(argv: Sequence[str] | None = None, *, http_client=None) -> int:
             name, description="Offline saved-source and evidence validation"
         )
         command.add_argument("directory")
+        if name == "report":
+            command.add_argument(
+                "--attachments", help="Offline explicit study report refresh declaration"
+            )
     args = parser.parse_args(argv)
     from backend.evaluation import suite
 
@@ -43,7 +47,7 @@ def main(argv: Sequence[str] | None = None, *, http_client=None) -> int:
         elif args.command == "replay":
             result = suite.replay_suite(args.directory)
         else:
-            result = suite.report_suite(args.directory)
+            result = suite.report_suite(args.directory, attachments=args.attachments)
     except (ValueError, TypeError, KeyError, OSError) as exc:
         result = {
             "processing_status": "needs_material_correction",
