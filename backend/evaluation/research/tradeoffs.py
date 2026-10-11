@@ -5,6 +5,7 @@ from backend.cli.collection import _require
 from .comparisons import pairs_report
 from .costs import attach_costs
 from .population import population_report
+from .rendering import table_row
 from .resources import all_attempts
 from .sources import digest
 
@@ -109,11 +110,14 @@ def markdown(report):
         for row in pair["rows"]:
             quality = row["quality"].get("totals", {}).get("overall_total", {}).get("difference")
             lines.append(
-                f"| {row['case_id']} / {row['repetition_id']} | "
-                f"{row['completed_pair']} | "
-                f"{row['resources']['total_tokens']['difference']} | "
-                f"{row['resources']['elapsed_seconds']['difference']} | "
-                f"{row['costs']['estimated']['difference']} | {quality} |"
+                table_row(
+                    f"{row['case_id']} / {row['repetition_id']}",
+                    row["completed_pair"],
+                    row["resources"]["total_tokens"]["difference"],
+                    row["resources"]["elapsed_seconds"]["difference"],
+                    row["costs"]["estimated"]["difference"],
+                    quality,
+                )
             )
         lines += [
             "",
@@ -123,7 +127,7 @@ def markdown(report):
             "| --- | ---: | ---: |",
         ]
         for metric, summary in pair["descriptive_medians"].items():
-            lines.append(f"| {metric} | {summary['comparable_pairs']} | {summary['difference']} |")
+            lines.append(table_row(metric, summary["comparable_pairs"], summary["difference"]))
         completion = pair["completion_difference"]
         lines += [
             "",
@@ -144,8 +148,13 @@ def markdown(report):
     for version, row in ledger["by_version"].items():
         tokens = row["totals"]["total_tokens"]
         lines.append(
-            f"| {version} | {row['dispatched_attempts']} | {row['ledger_complete']} "
-            f"| {tokens['observed_subtotal']} | {tokens['total']} |"
+            table_row(
+                version,
+                row["dispatched_attempts"],
+                row["ledger_complete"],
+                tokens["observed_subtotal"],
+                tokens["total"],
+            )
         )
     lines += [
         "",
@@ -156,8 +165,13 @@ def markdown(report):
     ]
     for row in ledger["elapsed_cohorts"]:
         lines.append(
-            f"| {row['version']} | {row['workflow_status']} | {row['cohort']} | "
-            f"{row['observed_attempts']} | {row['median']} |"
+            table_row(
+                row["version"],
+                row["workflow_status"],
+                row["cohort"],
+                row["observed_attempts"],
+                row["median"],
+            )
         )
     lines += [
         "",

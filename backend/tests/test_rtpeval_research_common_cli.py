@@ -189,3 +189,43 @@ def test_undispatched_attempt_rejects_actual_generation_usage(
     result = installed_cli("research", "validate", research_material[-1](), "--track", track)
     assert result.returncode == 2, result.stdout + result.stderr
     assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+
+
+@pytest.mark.parametrize("track", TRACKS)
+def test_material_text_keeps_markdown_tables_and_lines_intact(
+    installed_cli, research_material, tmp_path, track
+):
+    root, population, profile, census, write = research_material
+    population["cases"] = population["cases"][:1]
+    text = "case|split\nsecond`line\\tail"
+    population["cases"][0]["case_id"] = text
+    population["population_id"] = text
+    profile["population_id"] = census["population_id"] = text
+    profile["profile_id"] = census["profile_id"] = text
+    declaration = write(include_census=False)
+    directory = tmp_path / track
+    result = installed_cli(
+        "research", "report", declaration, "--track", track, "--directory", directory
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    value = json.loads((directory / (track + ".json")).read_bytes())
+    markdown = (directory / (track + ".md")).read_text(encoding="utf-8")
+    assert "split\nsecond" not in markdown
+    expected_columns = None
+    for line in markdown.splitlines():
+        if line.startswith("|"):
+            columns = len(re.findall(r"(?<!\\)\|", line))
+            if expected_columns is None:
+                expected_columns = columns
+            assert columns == expected_columns, line
+        else:
+            expected_columns = None
+    if track in ("population", "opportunities", "relevance", "tradeoffs"):
+        assert "case\\|split second\\`line\\\\tail" in markdown
+    # Presentation must not rewrite any material identities in JSON.
+    if track == "population":
+        assert value["population"]["population_id"] == text
+    elif track in ("opportunities", "relevance"):
+        assert value["runs"][0]["case_id"] == text
+    elif track == "tradeoffs":
+        assert value["paired_comparisons"][0]["rows"][0]["case_id"] == text

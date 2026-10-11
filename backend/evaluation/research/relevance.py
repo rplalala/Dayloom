@@ -5,6 +5,8 @@ from backend.cli.collection import _require
 from .corpus_coverage import _coverage, _coverage_summary, _rag_coverage
 from .opportunities import STAGES, opportunities_report
 from .relevance_material import _interests, _reviews
+from .rendering import cell as _cell
+from .rendering import table_row as _row
 from .sources import digest
 
 ALL_STAGES = (*STAGES, "scheduled")
@@ -396,25 +398,6 @@ def markdown(value):
         "",
     ]
     return "\n".join(lines)
-
-
-def _cell(value):
-    if value is None:
-        return "unavailable"
-    if isinstance(value, list):
-        value = ", ".join(str(member) for member in value)
-    return (
-        str(value)
-        .replace("\\", "\\\\")
-        .replace("|", "\\|")
-        .replace("\n", " ")
-        .replace("\r", " ")
-        .replace("`", "\\`")
-    )
-
-
-def _row(*values):
-    return "| " + " | ".join(_cell(value) for value in values) + " |"
 
 
 def _stage(stage, interests, labels, places):

@@ -34,3 +34,17 @@ def render_markdown(report, render, *, source_root, output_path):
         lines.append(f"- [{label(source['path'])}]({destination}): `{source['sha256']}`")
     lines.append("")
     return "\n".join(lines)
+
+
+def cell(value):
+    """Keep literal material text within one Markdown cell or prose line."""
+    if value is None:
+        return "unavailable"
+    if isinstance(value, list):
+        value = ", ".join(str(member) for member in value)
+    text = str(value).replace("\n", " ").replace("\r", " ")
+    return re.sub(r"([\\|`<>\[\]*_])", r"\\\1", text)
+
+
+def table_row(*values):
+    return "| " + " | ".join(cell(value) for value in values) + " |"

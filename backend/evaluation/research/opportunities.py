@@ -3,6 +3,7 @@
 from backend.cli.collection import _require
 
 from .context import slot_key, text_fields
+from .rendering import cell, table_row
 from .sources import digest
 
 STAGES = ("discovered", "admitted", "enriched", "supplied")
@@ -194,15 +195,24 @@ def markdown(value):
     for run in value["runs"]:
         for name, stage in {**run["stages"], "scheduled": run["scheduled"]}.items():
             lines.append(
-                f"| {run['case_id']} / {run['case_revision']} / {run['repetition_id']} "
-                f"| {run['version']} | {name} | {stage['observed_count']} "
-                f"| {stage['complete_count']} | {stage['status']} "
-                f"| {', '.join(stage['canonical_ids'])} | {', '.join(stage['reasons'])} |"
+                table_row(
+                    f"{run['case_id']} / {run['case_revision']} / {run['repetition_id']}",
+                    run["version"],
+                    name,
+                    stage["observed_count"],
+                    stage["complete_count"],
+                    stage["status"],
+                    stage["canonical_ids"],
+                    stage["reasons"],
+                )
             )
         if run["diagnostics"]:
             lines += [
                 "",
-                f"{run['case_id']} {run['version']} diagnostics: " + ", ".join(run["diagnostics"]),
+                cell(
+                    f"{run['case_id']} {run['version']} diagnostics: "
+                    + ", ".join(run["diagnostics"])
+                ),
                 "",
             ]
     lines += [
