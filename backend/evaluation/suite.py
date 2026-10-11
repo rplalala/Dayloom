@@ -292,7 +292,9 @@ def _case_row(case, result=None, *, reason=None):
         if result
         else "not_completed",
         "applicability": "applicable",
-        "report": case["directory"] + "/execution/report.json" if result else None,
+        "report": case["directory"] + "/execution/report.json"
+        if result and (Path(case["primary"]["directory"]) / "execution/report.json").is_file()
+        else None,
     }
     if reason:
         primary["reason"] = reason
@@ -365,7 +367,9 @@ def execute_suite(directory, *, approved_sha256, env_file=None, http_client=None
         except (ValueError, TypeError, KeyError, OSError, RuntimeError) as exc:
             result = {
                 "processing_status": "stopped",
-                "acquisition_status": "partial",
+                "acquisition_status": "partial"
+                if (root / case["directory"] / "execution").exists()
+                else "not_started",
                 "evidence_status": "not_completed",
                 "error_type": type(exc).__name__,
                 "reason": str(exc),
@@ -395,6 +399,20 @@ def replay_suite(directory):
             if (root / case["directory"] / "execution").exists():
                 raise ValueError("Unstarted case contains unexpected execution")
             rows.append(_case_row(case, reason="earlier_primary_stop"))
+        elif (
+            prior["processing_status"] == "stopped"
+            and not (root / case["directory"] / "execution").exists()
+        ):
+            result = prior["primary_report"]
+            if (
+                result.get("processing_status") != "stopped"
+                or result.get("acquisition_status") != "not_started"
+                or result.get("evidence_status") != "not_completed"
+                or not result.get("error_type")
+                or not result.get("reason")
+            ):
+                raise ValueError("Stopped case without native execution has invalid status")
+            rows.append(_case_row(case, result))
         else:
             result = replay_run(root / case["directory"])
             rows.append(_case_row(case, result))
