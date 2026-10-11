@@ -903,6 +903,39 @@ qualified four-version intake, quality PASS and actual billing. Storage limits a
 capacity, not a spending guard. Live dispatch still requires the prepared, explicitly
 approved [smoke handoff](../agents/smoke-tests.md), and performs no independent evaluation.
 
+### Selected-generation opportunity capture
+
+Installed `rtpeval generate` and its native usage CLI accept default-off
+`--opportunity-capture PATH` for V1/V2. Preparation records only
+`opportunity_capture_requested=true`; candidate observations require execution.
+V0/V3 reject the option before preparation. The destination must not collide with
+input/configuration sources, generation-owned files or the evidence directory.
+
+The dispatcher forwards `opportunity_capture_path` and explicit
+`opportunity_capture_run_id` to the existing passive exporter. Capture `run_id`
+equals the selected usage/registration run ID; the local trace retains its separate
+UUID. Independent runner callers may omit the override and retain trace-based identity.
+The existing `rtpeval_candidate_capture_1` schema and stage statuses remain unchanged.
+
+After execution, the capture manifest records `opportunity_capture_ref` with a
+path relative to the output on the same volume, exact-byte SHA-256, schema, media
+type and availability. Existing
+destinations, absent/unreadable exports and run/version mismatches remain unavailable
+with a reason; sidecar failure does not change the Planner outcome. Partial or failed
+captures can be available files without complete stages or a final result.
+The same manifest retains original input/configuration hashes and an available final
+result hash. Registration follows this reference and preserves sidecar bytes/layout
+within the selection's reference root, including captures outside the output directory
+but inside that root. Cross-volume exports retain an absolute path and must be kept
+separately; they cannot provide a relative registration dependency.
+
+Registration does not create an attempt census or declare research completeness.
+The caller separately binds the selected attempt, original input, exact configuration,
+available result (or explicit null) and capture reference in the
+[opportunity declaration](0001-evaluation-artifacts.md#canonical-candidate-opportunity-observations).
+Research readers retain source-hash, run/version and final semantic-hash checks.
+Capture adds no provider requests, prompt changes, selection or quality judgments.
+
 ## Producer material handoff
 
 The installed producer flow uses `rtpeval_collection_1` configuration and

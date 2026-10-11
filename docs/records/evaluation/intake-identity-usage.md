@@ -801,6 +801,39 @@ Operational ownership is now split
 between concise root commands, detailed `backend/evaluation/README.md` parameters and
 current intake lineage rules; the CLI does not dispatch external authors/reviewers.
 
+The 2026-10-12 #131 correction connects passive V1/V2 opportunity capture to this
+installed handoff. The offline installed reproduction first rejected the option
+with exit 2. Forwarding only a path would still leave the capture's trace UUID
+different from the selected census run ID. The correction reuses the existing
+exporter with an explicit selected-run override and a source-hashed manifest
+reference, retaining best-effort missingness and existing registration statuses.
+Default-off generation and V0/V3 behavior remain unchanged. Current rules belong
+to the [capture contract](../../contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture).
+
+The fixed review base is `8d9f40247949b87676d402c075aaa95db68dfdf1`;
+implementation/test commit `7ca00c3`, all-provider parity follow-up `75d5a9e`
+and test-guard correction `5f7da4b` remain separate. The relevant offline gate
+passed 107 tests, followed by four strengthened parity scenarios. A backend-wide
+run started at `75d5a9e` exposed two existing suite source-preservation failures:
+the new fixture rewrote its startup guard per invocation, changing cached `.pyc`
+metadata. Passing synthetic bootstrap through the subprocess environment keeps
+the guard stable. The corrected focused gate passed all 24 tests, including both
+failures, capture behavior and installed offline preparation. The earlier full
+run was stopped after its last reported 79% progress because it retained the old
+fixture in memory; it is not a completed or passing full-suite result. The
+focused result is saved locally in `.scratch/issue131-guard-correction.xml` and
+the interrupted run log in `.scratch/issue131-full.log`.
+
+Independent Standards and Spec reviews and correction checks found zero findings.
+A separate synthetic probe confirmed exact-byte registration of a sidecar outside
+output but inside the selection's reference root. The three changed modules retain
+the same 12 Pyright diagnostics as a complete fixed-base backend snapshot; none
+were added or removed. Validation used synthetic Planner dependencies, contacted
+no live providers and produced no external RequirementSpec review or formal
+benchmark evidence.
+Registration preflight (#132), cancellation classification (#133), census export
+and other preparation enhancements remain separate work.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.

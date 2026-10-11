@@ -284,7 +284,9 @@ controlled Repair.
 `rtpeval generate` forwards the native [selected-version usage capture](#planner-usage-capture-cli)
 arguments. Without `--execute` it prepares offline; with `--execute` it invokes exactly
 one selected Planner. It retains the native runtime, date admission, usage/evidence options
-and failure artifacts. Registration is optional and requires both `--register-batch CONFIG`
+and failure artifacts. V1/V2 also accept explicit `--opportunity-capture PATH` through
+the [selected-generation capture contract](../../docs/contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture).
+Registration is optional and requires both `--register-batch CONFIG`
 and `--registration-directory FRESH`, together with `--execute`.
 
 The original complete request, configuration and selected captures must remain under the
@@ -526,10 +528,15 @@ references require their exact saved source descriptors, rather than an isolated
 summary copied from another run. Relevant labels, coverage and controlled guards
 are separately prepared evidence; reporting does not create or execute them.
 
-To save future opportunity stages, the V1 and V2 runner CLIs accept the default-off
+To save future opportunity stages, installed `rtpeval generate` and the V1/V2 runner
+CLIs accept the default-off
 `--opportunity-capture PATH` option. Use a fresh file path and retain the resulting
 `rtpeval_candidate_capture_1` bytes with their exact attempt/input/final references.
-The programmatic equivalent is `opportunity_capture_path`. The
+The programmatic equivalent is `opportunity_capture_path`; installed generation also
+forwards the selected run ID as `opportunity_capture_run_id`. Preparation only records
+intent; execution saves the sidecar and its manifest reference. Registration retains
+available sidecar bytes, while the attempt census and research declaration remain
+separate caller-prepared material. The
 [passive export guide](../../docs/0004-retrieval-persistence%28v2v3%29.md#passive-candidate-opportunity-export)
 explains stage availability and write-failure behavior. Historical final outputs
 cannot reconstruct absent admission or supply traces.
@@ -549,7 +556,7 @@ consuming saved material from producing or independently reviewing it:
 | --- | --- | --- |
 | RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
-| Generation originals, usage, provenance and registration | Selected-version `generate` and native material assembly exist | Shared defects #131-#133 remain open: installed V1/V2 opportunity capture, registration preflight and cancellation status. Native runner capture is not a substitute for the installed handoff. |
+| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture with selected-run binding and native registration | Registration preflight (#132) and cancellation status (#133) still require separate corrections. |
 | Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
 | Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
 | V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
@@ -1543,11 +1550,12 @@ producer flow; this command performs no independent evaluator requests.
 Add `--capture-evidence` to prepare or capture selected-version generation evidence:
 
 ```powershell
-.venv/Scripts/python.exe -m backend.evaluation.tools.planner_usage_cli --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence
+uv run rtpeval generate --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence --opportunity-capture artifacts/generation-v2-preparation/candidate-opportunities.json
 ```
 
-This command remains offline. After exact live approval, use a different, unused output
-directory and the approved run ID, then add `--execute`. The existing selected planner runs
+This command remains offline and saves no candidate observations. After exact live approval,
+use a different, unused output directory, a fresh sidecar path and the approved run ID,
+then add `--execute`. The existing selected planner runs
 once, with mechanism capture, RAW local trace, credential-filtered owned HTTP request/response
 representations and query-vector capture. SDK stream bodies are observed during normal
 consumption, including decoded gzip; raw HTML retains existing read limits. Nothing drains

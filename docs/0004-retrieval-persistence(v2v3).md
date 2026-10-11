@@ -58,8 +58,12 @@ artifacts and configuration, not simply a matching model name.
 
 ### Passive candidate opportunity export
 
-The V1/V2 public runner accepts optional `opportunity_capture_path`; their CLI exposes
-`--opportunity-capture PATH`. With no path, the existing acquisition flow is unchanged.
+The V1/V2 public runner accepts optional `opportunity_capture_path`; both its native
+CLI and installed `rtpeval generate` expose `--opportunity-capture PATH`.
+Installed generation binds the capture to the selected run ID rather than the trace
+UUID; [generation handoff](contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture)
+owns identity forwarding, manifest references, missingness and registration boundaries.
+With no path, the existing acquisition flow is unchanged.
 The caller-owned exporter observes the actual pre-RAG Google pool, merged discovery,
 admission, normally qualified Details and selected supply at their existing seams.
 It preserves Google query origins and complete native RAG provenance/fates. It adds
