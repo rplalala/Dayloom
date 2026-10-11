@@ -4,8 +4,9 @@ Status: Tickets 01-12 have offline implementations within their approved scopes.
 Source-bound suite orchestration is implemented and its synthetic engineering
 acceptance is complete. Original-input research reports #113-#118 include explicit
 optional suite attachments, fresh report revisions and deterministic offline replay.
-Standalone review corrections are verified; combined regression and final integration
-review remain pending.
+Synthetic/offline engineering acceptance, combined backend regression and final
+independent Standards/Spec review are complete; the [research acceptance](records/evaluation/intake-identity-usage.md#original-input-research-engineering-acceptance-2026-10-11)
+retains the tested revision and failure/correction evidence.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 

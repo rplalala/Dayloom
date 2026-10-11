@@ -1020,3 +1020,122 @@ and the retained `backend-initial-failed-attempt.log`; no complete pass count is
 assigned to the stopped initial attempt. Implementation is accepted as synthetic
 engineering evidence. Draft PR #128 retains the delivery boundary; GitHub Issues
 own subsequent remote lifecycle state, and #112 owns separate research supplements.
+
+## Original-input research engineering acceptance (2026-10-11)
+
+The #112 work implements saved-material research over declared original inputs,
+including unsuccessful and unresolved generation slots. Its fixed review base is
+`f1cf0bc6778d519c5251d40c3ab7c4cbfe0ea64f`. Independent child worktrees and a
+separate integration checkout isolate changes from the main working tree. The
+population, opportunity, relevance/coverage, Repair and generation tradeoff tracks
+were integrated before their optional suite adapter. Accepted #111 dependency
+`a0c95fee7f5744da0c038fc6b9247e20a5152b0b` entered the research integration through
+`9ce74d49af41801be66c51ecfac7ab65eeb796a6`; its separate acceptance above retains
+its own test scope and isolation incident.
+
+The original standalone implementation was committed before independent review.
+Standards review identified wrong Markdown source destinations when report and
+material roots differ, unescaped arbitrary identifiers in table cells, and a
+repeated origin partition heuristic. Spec review reproduced malformed native
+annotation mappings escaping as traceback errors instead of controlled material
+correction. Separate fixes made source links output-relative with a cross-volume
+fallback, shared cell/row escaping and origin partitions, and validated native
+annotation/billing mappings before interpretation. Native JSON values remain
+unchanged for rendering-only fixes; valid annotated native cost remained
+USD 0.00024 in the independent recheck.
+
+Additional boundary probes exposed inconsistent common native usage validation
+and incomplete report envelopes. Corrections retain legitimate unavailable
+undispatched placeholders while rejecting invented status and malformed usage,
+and expose source digests, measurement/review coverage and diagnostics across
+tracks. A later Standards recheck found a document encoding regression: default
+Windows decoding followed by UTF-8 writing changed a V0-V3 range into mojibake.
+Explicit UTF-8 correction restored that text; other changed documents were
+checked for the same damage. Independent committed rechecks closed all four
+Standards findings and the Spec finding without new standalone findings.
+
+Focused checks cover exact canonical/interest sets, incompatible sources, missing
+reviews/stages, unchanged V3 pairs, guard uncertainty, failed/retry consumption,
+foreign hashes, cross-volume links and malformed native annotations. These gates
+overlap; their counts are not summed into a research sample or a second complete
+regression. The accepted suite dependency merge separately passed 42 existing and
+suite CLI regressions, changed-file Ruff checks and 326 tracked document links.
+The standalone review diff, commit list and findings remain local evidence
+identifiers under `D:/Workspace/Capstone/.codex-task-context/issue-112/`.
+
+The optional suite adapter passed 25 final public-CLI research acceptance tests in
+261.10s. Existing suite CLI and offline AST checks passed 107 cases; exact saved
+preparation bindings confirmed their implementation bytes still match the final
+source. A mixed earlier gate had one new-test NameError from a missing Path import;
+the raw frozen response bytes were correct, and the corrected case passed in the
+final 25-test gate. Initial and later report revisions preserve closed receipts,
+source bundles and native primary scores. Self-consistent rehashed research
+forgeries are rejected by rebuilding semantics from their exact sources.
+
+Resource-link TDD exposed two coverage mistakes. Missing token observations
+incorrectly hid known elapsed seconds (10), model calls (1) and HTTP sends (0);
+coverage now remains partial with per-metric known/missing counts. Native
+estimated cost totals were present but counted as zero observed attempts; the
+correction retains actual, estimated and best-available total/subtotal coverage,
+including legitimate zero amounts, without promoting observed subtotals into
+complete totals. Frozen native snapshot raw-byte corruption, source escapes,
+missing optional tracks, independent review refresh and failed generation outside
+quality intake are covered under startup network denial.
+
+The first complete combined regression at `c80305a` ended with 10 failed,
+3832 passed and 16 skipped in 1265.82s, with the committed checkout unchanged.
+Nine service failures came from a missing pinned TripWorld query tokenizer cache:
+the Planner tokenizer fixture covers a different vocabulary, and importing a
+helper does not import its module-scoped fixture. The failures also reproduced in
+the child without a real `.env` and in a single-test run. A one-variable synthetic
+query-tokenizer probe restored all nine, isolating the missing local resource.
+The exact 1,681,126-byte cache was then copied read-only from the main checkout;
+its SHA-256 `223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7`
+matches the runtime's fixed checksum. No TripWorld dataset, production behavior or
+global tokenizer fixture was changed. The remaining failure was the documented
+workflow checker reading group help instead of the new research leaf help.
+Real cached-tokenizer rechecks passed all nine affected cases in 3.82s; the
+strengthened workflow file passed three tests in 47.05s after also requiring the
+previously omitted suite chapter. These bounded child gates retain original tool
+stdout only; no separate child JUnit/log files were produced. Their session/chunk
+identifiers and byte-identical cache metadata are preserved in the local task
+context before child worktree archival.
+Five additional skips came from an unset alternate-volume source root; explicitly
+providing C-drive sources and D-drive outputs restored five passing link cases.
+Nine opt-in database and two Windows symlink privilege cases remain environment
+limitations. Original full-run log, XML and metadata are retained separately as
+`backend-initial-failed.*` under the same local validation identifier.
+
+Final independent Standards review of committed integration
+`0a37b9557402f01393245d9b80145f695a425ade` found zero documented breaches and zero
+actionable smell heuristics. Final independent Spec review found zero confirmed
+gaps or incorrect behaviors. Its three public-CLI probes at `c80305a` passed with
+22 deselected in 71.89s, covering all three questions, raw freezing/corruption,
+later review plus inherited refresh, and initial self-consistent semantic forgery
+rejection. Both reviewers independently rechecked the subsequent test-only
+correction at `0a37b95`; production and contract bytes remained identical, and the
+prior standalone corrections remained closed.
+
+The complete final backend gate passed **3847 passed, 11 skipped in 1447.78s** at
+that same clean revision. Skips are nine opt-in isolated PostgreSQL cases and two
+Windows symlink privilege cases. The five alternate-volume provenance cases run
+with an explicit C-drive source root and D-drive test outputs. The checkout and
+commit remained unchanged throughout the gate. Historical local evidence identifiers are
+`.scratch/issue-112-validation/backend-final.log`, `backend-final.xml` and
+`backend-final-metadata.json` in the isolated integration checkout; independent
+reviews remain `final-standards-review.md` and `final-spec-review.md` under the
+local task-context identifier above.
+
+Full backend/scripts Ruff lint passes. All 51 task-changed Python files pass format
+checks; a separate global format audit finds 50 files whose Git bytes are unchanged
+from the fixed base. Current tracked-document links pass. No new frontend gate is
+claimed. Draft PR #129 retains publication as a draft; GitHub Issues own the remote
+closure lifecycle. Acceptance does not authorize remote merge or mark a version
+ready for freeze.
+
+Current commands and wire requirements belong to the installed evaluation guide
+and existing contracts. Validation uses synthetic/saved material under verified
+network denial, without live-provider generation, paid acquisition or formal
+benchmark execution. Planned requests, successful quality groups, same-run V3
+pairs and controlled targets retain distinct populations and denominator units;
+engineering acceptance does not establish research results or a version freeze.

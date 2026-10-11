@@ -192,17 +192,19 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Accepted suite full backend checkpoint: **3561 passed, 10 skipped in 1504.00s**
-on 2026-10-11 at `a6cf0a7`. This checkpoint predates research integration; the
-combined suite/research full backend gate and final integration review are pending. The suite checkpoint covers installed CLI,
-multi-case suites, native scoring/reporting, observability and V0-V3 behavior. Nine
-opt-in isolated PostgreSQL cases and the existing host symlink-creation privilege
-case are skipped. Full backend/scripts Ruff lint and format checking of all 15
-changed Python files pass. Global format checking still rejects 50 unchanged
-baseline files. Documentation link checks pass; no new frontend validation is claimed.
-See [suite acceptance](docs/records/evaluation/intake-identity-usage.md#multi-case-suite-engineering-acceptance-2026-10-11)
-for the failed initial boundary check, separate review corrections, test-isolation
-incident, independent rechecks and complete final regression.
+Combined suite/research full backend checkpoint: **3847 passed, 11 skipped in 1447.78s**
+on 2026-10-11 at `0a37b95`, from a clean committed integration checkout under
+verified external-network denial. It covers installed CLI, multi-case suites,
+original-input research reports, native scoring/reporting, observability and V0-V3
+behavior. Nine opt-in isolated PostgreSQL cases and two host
+symlink-creation privilege cases are skipped. Final independent Standards and Spec
+reviews have no open findings. Full backend/scripts Ruff lint and format checks of
+all 51 changed Python files pass. Global formatting still rejects 50 files whose
+bytes are unchanged from the fixed base. Tracked document link checks pass.
+The [research acceptance](docs/records/evaluation/intake-identity-usage.md#original-input-research-engineering-acceptance-2026-10-11)
+records source-bound integration, TDD failures/corrections, separate review fixes
+and final regression. The earlier [suite acceptance](docs/records/evaluation/intake-identity-usage.md#multi-case-suite-engineering-acceptance-2026-10-11)
+retains its independent checkpoint and isolation incident.
 Earlier #97 checks retain their original scope in
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09)
 and [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09).
@@ -265,7 +267,7 @@ Evaluation extensions are developed independently:
 | Work | Specification | Current state |
 | --- | --- | --- |
 | Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Implemented; synthetic engineering acceptance complete; [Draft PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented, including optional source-bound suite attachment/report/refresh/replay. Standalone review corrections are verified; combined regression and final integration review remain pending in [Draft PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented; synthetic/offline engineering acceptance, combined backend regression and independent Standards/Spec review complete; [Draft PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
 
 Their responsibilities and relationship to native scoring are summarized in the
 [Evaluation extensions](docs/0006-independent-evaluation.md#batch-and-research-extensions).
