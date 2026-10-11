@@ -226,6 +226,15 @@ verify exact bytes, case/source bindings and declared completeness; they do not
 execute reviewers or corpus measurements. This view remains separate from primary
 quality scoring.
 
+The report envelope retains profile identity, population/source digests and a
+semantic hash. `measurement_coverage` preserves the opportunity slot/stage census
+and counts complete, partial and unavailable corpus observations per original
+request. `review_coverage` separately counts source-bound interest inventories,
+cases with saved relevance judgments and independent review records, without
+counting version/repetition rows as additional requests. Source-bound opportunity
+conflicts remain top-level diagnostics. No planned V1/V2 slots is not applicable;
+missing independent interest material for planned slots remains unavailable.
+
 `track_refs.relevance` references `rtpeval_research_relevance_1`, binding
 `population_id`, `population_revision`, `profile_id` and `profile_revision`. Its
 explicit `interest_inventory_refs`, `review_refs` and `coverage_refs` arrays may
