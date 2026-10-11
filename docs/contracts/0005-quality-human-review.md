@@ -397,8 +397,8 @@ Removal is not resolution. Introduced conflicts require confirmed before non-con
 established new participants; uncertainty retains unresolved attribution. Compatible
 FAIL-to-PASS can be resolved, FAIL-to-UNKNOWN is unverified change, and PASS-to-UNKNOWN is
 lost verification. Partial improvement requires comparable exact FAIL magnitudes under the
-same rule; missing or lower-bound magnitudes do not qualify. No overall Repair-success
-classification, causal conclusion, live acquisition or planner instrumentation is supplied.
+same rule; missing or lower-bound magnitudes do not qualify. The native pair report supplies no overall Repair-success classification, causal conclusion,
+live acquisition or planner instrumentation.
 
 The current wire is `rtpeval_v3_pair_report_2`; `_1` remains a historical format
 accepted by independent mechanism preparation. Reports preserve rule/component/source
@@ -407,6 +407,48 @@ availability, mask, exact deltas, correspondence and continuity. Content hashing
 creation time. CLI file-byte hashes remain distinct from canonical preparation digests.
 Exit 0 means complete processing, including unavailable pairs and quality FAIL/UNKNOWN;
 material/replay correction exits 2. Commands are in the [package guide](../../backend/evaluation/README.md).
+
+## Declared research Repair view
+
+The [#116 specification](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/116)
+adds `rtpeval research report --track repair` over the
+[declared research population](../0006-independent-evaluation.md#planned-batch-and-research-extensions). Its
+`rtpeval_research_repair_1` material binds the population/profile identifiers and
+revisions, with optional `quality_reports`, `pair_reports`, `mechanism_reports`
+arrays and a separately declared `controlled` study.
+
+Quality and pair descriptors require `manifest_ref`, `identity_ref` and
+`report_ref`; `snapshot_ref` names the native snapshot's `manifest.json`.
+Final quality requires a snapshot; an unavailable native pair can omit it.
+Optional native inputs use the builder argument name followed by `_ref`, including
+`schedule_context_ref`, `coordinate_evidence_ref`, `density_reviews_ref` and
+pair correspondence/edit provenance. `identity_snapshot_ref` supplies saved
+identity evidence where the native reader requires it. Mechanism descriptors use
+`manifest_ref` and `report_ref`. References follow the common research source
+contract.
+
+The adapter invokes the existing intake, snapshot and report builders, reproduces
+the saved report under its native rules and source bindings, and checks the selected
+first attempts. A matching self-declared content hash alone is insufficient.
+Supplied census usage/provenance references must match the native selected sources
+byte for byte; absent optional census observations retain their availability state.
+Native CLI preparation file hashes remain distinct from canonical content hashes.
+
+Every declared V3 generation slot remains in the same-run and V3-minus-V2 final
+inventories, including missing, no-repair, unchanged, skipped and rejected runs.
+Comparability follows native score availability. Descriptive improved/unchanged/worse
+counts use the sign of the exact native overall delta; missing scores remain
+unavailable. Final-quality and same-run masks, auxiliary totals, density deductions
+and evidence coverage remain separate. The conditional attempted-Repair view uses
+only source-replayed native mechanism observations and retains unknown attempt coverage.
+
+Native continuity preserves resolution, residual failures, regressions, lost
+verification, conflict changes, removal, replacement and unresolved correspondence.
+Deleting or replacing an occurrence does not establish resolution of its original
+condition. Controlled target resolution, guard preservation and case-level joint
+success use their separate [declared study rules](0001-evaluation-artifacts.md#research-controlled),
+without changing these native pair metrics.
+
 
 ## Implementation and historical decisions
 

@@ -443,6 +443,54 @@ Its report assembler verifies file/content hashes and exact case/goal inventory,
 unavailable cases and expected targets, and exposes descriptive counts. It imposes no
 case-count cap and does not generate the formal 24-target/8-control corpus.
 
+<a id="research-controlled"></a>
+
+#### Declared research controlled view
+
+Research Repair material can include a `controlled` object with `study_id`,
+`revision` and an ordered `cases` inventory. Each case declares `case_id`,
+`revision`, `role` (`target` or `control`), unique `expected_goal_ids`,
+unique `expected_guard_ids`, `expectations_sha256` and `descriptor`.
+Target and guard identifiers are disjoint. This population is separate from
+declared original-request generation slots and does not assume a fixed study size.
+
+A present descriptor binds `case_ref`, `execution_ref`, `expectations_ref`,
+`report_ref` and `snapshot_ref`; the last reference names the snapshot's
+`manifest.json`. Native builder inputs use their argument name followed by
+`_ref`, including `requirement_spec_ref`, `identity_report_ref`,
+`schedule_context_ref` and optional correspondence/factual reviews.
+The declaration's expectations hash is the exact file-byte hash. Case identity,
+revision, role and complete target/guard inventory must match the native sources.
+The reader rebuilds the native controlled report from these frozen artifacts and
+requires exact equality; corrupt, foreign or self-rehashed fabricated reports
+are material errors. It does not execute controlled replay.
+
+A missing case uses `descriptor=null` and `expectations_sha256=null`, retaining
+every declared goal and guard as unavailable material. Resolution and preserved
+resolution retain all expected targets; verdict coverage identifies which targets
+have native independent outcomes. Detection is measured over available expected
+targets, authorization over detected targets, model attempts over authorized
+targets, and adoption over model-attempted targets. Each channel also exposes
+the full expected-target count and coverage. Native candidate/identity-free
+opportunities remain observations with their own units, rather than independent
+successes.
+
+Preservation is assessed only after the native target is independently resolved.
+It requires every declared guard's independent final verdict to be PASS, complete
+applicable continuity/correspondence, and no confirmed regression or introduced
+failure. Guard FAIL or a confirmed continuity regression is `violated`;
+guard UNKNOWN, lost verification or unresolved continuity is `unknown`.
+Supplemented `reviewed_checks.continuity` and final checks govern this decision,
+while raw paired scores remain unchanged. No guard is omitted because its material
+is missing. Nonresolved targets remain separately labelled.
+
+Case-level joint success requires all declared targets in that target case to be
+resolved and preserved; its denominator is expected target cases. Controls retain
+native valid-no-change, lawful-change, regressed and unresolved outcomes, with
+missing controls explicitly unavailable. Neither case-level rates nor control
+counts are pooled into generation-slot or target-resolution denominators.
+
+
 The dated [implementation and review record](../records/evaluation/2026-10-04-controlled-repair.md)
 retains development validation, corrections and execution limitations.
 
