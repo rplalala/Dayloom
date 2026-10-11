@@ -582,3 +582,233 @@ def test_installed_synthetic_guard_failure_exits_before_native_execution(
     assert not list(directory.rglob("started.json"))
     assert not list(directory.rglob("execution"))
     assert files_under(directory) == preserved
+
+
+@pytest.mark.parametrize("interruption", [KeyboardInterrupt, asyncio.CancelledError])
+def test_middle_native_interruption_closes_attempt_and_unstarted_suite_cases(
+    suite_material, installed_cli, monkeypatch, capsys, interruption
+):
+    source, directory, _ = suite_material
+    prepared = installed_cli(
+        "suite", "prepare", source, "--directory", directory, evaluation_offline=True
+    )
+    assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
+    originals = files_under(source.parent)
+    calls = []
+
+    def respond(request):
+        calls.append(request)
+        if len(calls) == 9:
+            raise interruption()
+        return mock_provider(request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
+    try:
+        try:
+            status = main(
+                [
+                    "suite",
+                    "execute",
+                    str(directory),
+                    "--approved-sha256",
+                    json.loads(prepared.stdout)["preparation_sha256"],
+                ],
+                http_client=client,
+            )
+        except (KeyboardInterrupt, asyncio.CancelledError):
+            pytest.fail("Interrupted native work must close receipts and suite inventory")
+        assert status == 2
+    finally:
+        asyncio.run(client.aclose())
+    summary = json.loads(capsys.readouterr().out)
+    assert [case["processing_status"] for case in summary["cases"]] == [
+        "complete",
+        "stopped",
+        "unstarted",
+    ]
+    assert len(calls) == 9
+    middle = summary["cases"][1]["primary_report"]
+    assert middle["error_type"] == interruption.__name__
+    assert middle["reason"] in {"execution_interrupted", "execution_cancelled"}
+    assert middle["usage"]["actual_google_sends"] == 2
+    assert middle["usage"]["actual_model_sends"] == 1
+    assert middle["usage"]["retries"] == 0
+    attempt = directory / "cases/0002/primary/execution"
+    assert (attempt / "receipt.json").is_file()
+    usage = json.loads((attempt / "usage.json").read_bytes())
+    assert usage["provider_events"][-1]["outcome"] == "incomplete"
+    assert usage["model_calls"][0]["total_tokens"] is None
+    assert not (directory / "cases/0003/primary/execution").exists()
+    preserved = files_under(directory)
+    for operation in ("replay", "report"):
+        saved = installed_cli("suite", operation, directory, evaluation_offline=True)
+        assert saved.returncode == 2, saved.stdout + saved.stderr
+        assert json.loads(saved.stdout) == summary
+    assert {path: path.read_bytes() for path in preserved} == preserved
+    assert {path: path.read_bytes() for path in originals} == originals
+    assert (
+        main(
+            [
+                "suite",
+                "execute",
+                str(directory),
+                "--approved-sha256",
+                json.loads(prepared.stdout)["preparation_sha256"],
+            ]
+        )
+        == 2
+    )
+    assert json.loads(capsys.readouterr().out)["error_type"] == "FileExistsError"
+
+
+@pytest.mark.parametrize(
+    "artifact,track,index",
+    [
+        ("tracks/0002/resources.json", "resources", 1),
+        ("tracks/0002/cost.json", "resources", 1),
+        ("tracks/0002/mechanism_preparation.json", "mechanism", 1),
+        ("tracks/0002/mechanism.json", "mechanism", 1),
+        ("tracks/0004/pair.json", "pair", 3),
+        ("tracks/human/0001/human-1-report.json", "human", None),
+    ],
+)
+def test_frozen_track_drift_closes_primary_index_and_preserves_valid_tracks(
+    multi_track_suite, installed_cli, monkeypatch, capsys, artifact, track, index
+):
+    source, directory, _, _ = multi_track_suite
+    prepared = installed_cli(
+        "suite", "prepare", source, "--directory", directory, evaluation_offline=True
+    )
+    assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
+    pristine = files_under(directory)
+    changed = directory / artifact
+    calls = []
+
+    def respond(request):
+        calls.append(request)
+        response = mock_provider(request)
+        if len(calls) == 6:
+            changed.write_bytes(b"{}")
+        return response
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
+    try:
+        assert (
+            main(
+                [
+                    "suite",
+                    "execute",
+                    str(directory),
+                    "--approved-sha256",
+                    json.loads(prepared.stdout)["preparation_sha256"],
+                ],
+                http_client=client,
+            )
+            == 2
+        )
+    finally:
+        asyncio.run(client.aclose())
+    summary = json.loads(capsys.readouterr().out)
+    assert [case["processing_status"] for case in summary["cases"]] == [
+        "complete",
+        "stopped",
+        "unstarted",
+        "unstarted",
+    ]
+    assert len(calls) == 6
+    assert (directory / "summary.json").is_file()
+    assert (directory / "receipt.json").is_file()
+    assert (directory / "cases/0001/primary/execution/receipt.json").is_file()
+    assert not (directory / "cases/0002/primary/execution").exists()
+    bad = (
+        summary["tracks"][track]["studies"][0]
+        if index is None
+        else summary["cases"][index]["tracks"][track]
+    )
+    assert bad["processing_status"] == "needs_material_correction"
+    assert bad["reason"] == "prepared_track_artifact_changed"
+    assert artifact in bad["invalid_artifacts"]
+    assert bad["cost_report" if artifact.endswith("cost.json") else "report"] is None
+    for case_index, case in enumerate(summary["cases"]):
+        for descriptive in ("resources", "mechanism"):
+            if (case_index, descriptive) != (index, track):
+                assert case["tracks"][descriptive]["processing_status"] == "complete"
+    assert {path: path.read_bytes() for path in pristine if path != changed} == {
+        path: raw for path, raw in pristine.items() if path != changed
+    }
+    preserved = files_under(directory)
+    for operation in ("replay", "report"):
+        result = installed_cli("suite", operation, directory, evaluation_offline=True)
+        assert result.returncode == 2, result.stdout + result.stderr
+        assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+    assert files_under(directory) == preserved
+
+
+@pytest.mark.parametrize("interruption", [KeyboardInterrupt, asyncio.CancelledError])
+def test_pre_native_interruption_keeps_nonempty_stop_reason_and_no_native_receipt(
+    suite_material, installed_cli, monkeypatch, capsys, interruption
+):
+    source, directory, _ = suite_material
+    prepared = installed_cli(
+        "suite", "prepare", source, "--directory", directory, evaluation_offline=True
+    )
+    assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
+    calls = []
+    read_bytes = Path.read_bytes
+    middle = directory / "cases/0002/primary/preparation.json"
+
+    interrupted = False
+
+    def interrupted_read(path):
+        nonlocal interrupted
+        if not interrupted and path == middle and len(calls) == 6:
+            interrupted = True
+            raise interruption()
+        return read_bytes(path)
+
+    def respond(request):
+        calls.append(request)
+        return mock_provider(request)
+
+    monkeypatch.setattr(Path, "read_bytes", interrupted_read)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
+    try:
+        assert (
+            main(
+                [
+                    "suite",
+                    "execute",
+                    str(directory),
+                    "--approved-sha256",
+                    json.loads(prepared.stdout)["preparation_sha256"],
+                ],
+                http_client=client,
+            )
+            == 2
+        )
+    finally:
+        asyncio.run(client.aclose())
+        monkeypatch.setattr(Path, "read_bytes", read_bytes)
+    summary = json.loads(capsys.readouterr().out)
+    assert [case["processing_status"] for case in summary["cases"]] == [
+        "complete",
+        "stopped",
+        "unstarted",
+    ]
+    assert len(calls) == 6
+    stopped = summary["cases"][1]
+    assert stopped["primary_report"]["error_type"] == interruption.__name__
+    assert stopped["primary_report"]["reason"] in {"execution_interrupted", "execution_cancelled"}
+    assert stopped["tracks"]["primary"]["acquisition_status"] == "not_started"
+    assert stopped["tracks"]["primary"]["report"] is None
+    assert not (directory / "cases/0002/primary/execution").exists()
+    for operation in ("replay", "report"):
+        result = installed_cli("suite", operation, directory, evaluation_offline=True)
+        assert result.returncode == 2, result.stdout + result.stderr
+        assert json.loads(result.stdout) == summary

@@ -9,6 +9,7 @@ from .controlled_batch import build_controlled_batch
 from .human_report import build_human_report
 from .intake import _read
 from .records import canonical_digest
+from .suite_selection import CaseSelection
 
 EXTERNAL_TRACKS = ("human", "controlled_repair")
 
@@ -53,7 +54,7 @@ def _human(attachment, sources, cases, prefix):
     if not isinstance(context, dict) or set(context) != {"case_ids", "rater_ref", "source_hashes"}:
         raise ValueError("Explicit human source context required")
     ids = context.get("case_ids")
-    selected = {case[0]["case_id"]: case[3] for case in cases}
+    selected = {case.declaration["case_id"]: case.intake for case in cases}
     if (
         not isinstance(ids, list)
         or not ids
@@ -291,7 +292,7 @@ def compose_external(configuration):
 
 def _selected_cases(preparation):
     return [
-        (case, {}, {}, prepared["primary"]["intake"])
+        CaseSelection(case, prepared["primary"]["intake"])
         for case, prepared in zip(
             preparation["declaration"]["cases"], preparation["cases"], strict=True
         )
