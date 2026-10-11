@@ -160,6 +160,16 @@ Every planned V1/V2 slot remains a row, including missing, failed and cancelled
 attempts. The identity unit is a canonical Google Place ID. This observational
 track does not decide relevance, verify quality or execute a historical planner.
 
+The report envelope records processing status separately from track applicability:
+no planned V1/V2 slots means `not_applicable`; missing historical captures for
+planned slots remain applicable and unavailable. Profile IDs, population/source
+digests, ordered rows and the semantic hash retain their source bindings.
+`measurement_coverage` counts planned and captured V1/V2 slots and complete,
+partial and unavailable slots for each discovery stage and independent scheduling.
+`review_coverage` counts slots with independent final-place associations and marks
+relevance review as not performed by this track. Top-level diagnostics retain
+case/revision/version/repetition/attempt identity alongside each per-run conflict.
+
 `track_refs.opportunities` references `rtpeval_research_opportunities_1` with an
 explicit `observations` array. Each observation binds `case_id`, `case_revision`,
 `version`, `repetition_id`, the census-selected first dispatched `attempt_id` and
