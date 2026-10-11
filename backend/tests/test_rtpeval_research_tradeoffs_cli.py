@@ -617,3 +617,33 @@ def test_zero_cost_baseline_retains_difference_without_ratio_and_cost_median(
     assert pair["cost_medians"][0]["mode"] == "best_available"
     assert pair["cost_medians"][0]["difference"] == "0.00024"
     assert pair["cost_medians"][0]["currency"] == "USD"
+
+
+@pytest.mark.parametrize(
+    "field", ["bills", "annotations", "price_rows", "price_match", "price_rates"]
+)
+def test_malformed_accounting_objects_are_material_errors(installed_cli, research_material, field):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    attempt, _ = usage_attempt(research_material, "v1")
+    track = cost_track(research_material, [attempt])
+    ledger = track["cost_ledgers"][0]
+    if field in ("bills", "annotations"):
+        ledger[field + "_ref"] = save(
+            research_material[0], field + ".json", {field: {"invalid": "object instead of array"}}
+        )
+    else:
+        prices = json.loads((research_material[0] / ledger["prices_ref"]["path"]).read_bytes())
+        if field == "price_rows":
+            prices["rows"] = {"invalid": "object instead of array"}
+        elif field == "price_match":
+            prices["rows"][0]["match"] = []
+        else:
+            prices["rows"][0]["rates"] = ["input_tokens"]
+        ledger["prices_ref"] = save(research_material[0], "malformed-prices.json", prices)
+    declaration = research_material[-1]()
+    declared = json.loads(declaration.read_bytes())
+    declared["track_refs"]["tradeoffs"] = save(research_material[0], "tradeoffs-input.json", track)
+    save(research_material[0], "research.json", declared)
+    result = installed_cli("research", "validate", declaration, "--track", "tradeoffs")
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"

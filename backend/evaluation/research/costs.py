@@ -31,6 +31,16 @@ def attach_costs(context, ledger, descriptors):
             "Cost requires exact bound native usage",
         )
         prices = context.read_ref(descriptor.get("prices_ref"), "rtpeval_prices_1")
+        _require(
+            isinstance(prices.get("rows"), list)
+            and all(isinstance(r, dict) for r in prices["rows"]),
+            "Malformed native price rows",
+        )
+        for price in prices["rows"]:
+            _require(
+                isinstance(price.get("match"), dict) and isinstance(price.get("rates"), dict),
+                "Malformed native price match/rates",
+            )
         bills = (
             context.read_ref(descriptor["bills_ref"])["bills"]
             if descriptor.get("bills_ref") is not None
@@ -41,6 +51,11 @@ def attach_costs(context, ledger, descriptors):
             if descriptor.get("annotations_ref") is not None
             else None
         )
+        for field, rows in (("bills", bills), ("annotations", annotations)):
+            _require(
+                rows is None or isinstance(rows, list) and all(isinstance(r, dict) for r in rows),
+                "Malformed native accounting array: " + field,
+            )
         report = build_cost_report(
             [{"sha256": r["usage_sha256"], "usage": r["raw_usage"]} for r in selected],
             prices,
