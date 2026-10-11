@@ -878,6 +878,7 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "evaluation_run_cli": {"os", "dotenv"},
         "suite": {"base64", "os", "dotenv"},  # Credential reads stay in explicit execute.
         "suite_external": {"base64", "copy"},  # Exact-byte offline attachment retention.
+        "suite_research": {"base64", "copy"},  # Source-bound offline research retention.
         "suite_tracks": {"base64"},  # Frozen artifact inventory only.
     }
     for path in Path("backend/evaluation").glob("*.py"):

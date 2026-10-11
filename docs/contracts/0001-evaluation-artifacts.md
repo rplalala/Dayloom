@@ -139,12 +139,94 @@ never collect answers, execute controlled cases, invoke Repair or rescore primar
 
 `rtpeval_suite_attachments_1` contains the existing `suite_id` and a `tracks` object.
 Offline `report --attachments` preflights the entire supplied refresh before creating
-a revision. Supplied track lists replace their previous attachment selection; omitted
-tracks inherit the prior summary. A revision freezes original attachment/dependency
+a revision. Supplied human/controlled lists replace their previous attachment selection;
+omitted study tracks inherit the prior summary. Research selection and inheritance follow
+the wire below. A revision freezes original attachment/dependency
 bytes, attachment declaration and independently closed summary lineage under
 `reports/NNNN/`, including its parent summary hash. Earlier execution/summary receipts
 remain unchanged. Replay verifies every revision's closed inventory and deterministic
 native study reconstruction, follows parent lineage and returns the latest summary.
+
+### Optional research attachment wire
+
+Initial `rtpeval_suite_1.tracks.research` and refreshed
+`rtpeval_suite_attachments_1.tracks.research` use the same explicit object:
+
+| Field | Required value |
+| --- | --- |
+| `schema_version` | `rtpeval_suite_research_1` |
+| `declaration_ref` | Available exact-byte artifact reference to `rtpeval_research_declaration_1`, relative to the outer suite/attachment declaration |
+| `selected_tracks` | Nonempty distinct list selected from `population`, `opportunities`, `relevance`, `repair`, `tradeoffs` |
+
+The object has exactly these fields. The referenced declaration and every consumed
+dependency must remain within the outer source root; its own references resolve relative
+to its directory. Each selected track loads a fresh research context and uses its existing
+standalone builder. Selection order does not change per-track semantics or source digests.
+Only selected material is consumed. Valid missing optional material remains unavailable
+or partial; structurally supplied, foreign, stale or escaped material requires correction
+before output creation. The [research declaration](#original-input-research-declarations-and-attempt-census)
+owns population/profile/census validation. Its planned inventory is independent of native
+quality `cases`, including failed, cancelled, unstarted and unknown generation slots.
+
+`summary.json.tracks.research` exposes `rtpeval_suite_research_index_1` and an exact-byte
+`index` reference. The saved index carries population/profile identities and digests,
+census reference, unique-request/planned-slot counts, selected track names, per-track
+measurement/review coverage, diagnostics, applicability, source bindings and their union
+`source_digest`. Its `semantic_sha256` digests the saved index excluding that field; the
+summary preserves this digest while locating its artifact references within the suite.
+Each selected entry in `tracks` retains its native research schema, processing/applicability,
+coverage, population/source/semantic digests, diagnostics, JSON/Markdown exact-byte
+references and `source_dependencies`. Unselected entries are `not_requested` with
+`track_not_selected`. Complete report processing does not assert complete measurements.
+
+Initial output stores `tracks/research/index.json`, `tracks/research/reports/<track>.json`
+and `.md`, and the exact consumed source union under `tracks/research/sources/`. The union
+includes native snapshot raw responses and preserves original relative layouts and bytes.
+Markdown references resolve from each output location to the frozen sources. Initial
+original-source checks remain part of the accepted suite lifecycle. Source drift during
+execution stops new native work and records `primary_report.research_material_correction`
+for the affected frozen dependency paths; only consuming research tracks and their links
+lose availability. Restoring original sources preserves the recorded stopped outcome.
+
+Offline refresh writes fresh index/reports under `reports/NNNN/tracks/research/` and frozen
+dependencies under that revision's `sources/`, alongside the attachment declaration,
+configuration, summary, parent-summary lineage and closed receipt. A supplied research
+object replaces the previous selection. Omitted research rebuilds fresh report artifacts
+from the prior frozen sources and selection; its semantic content remains unchanged.
+Every refresh is preflighted before creating a revision. Report/replay verify initial
+research composition, all closed inventories, exact artifact bytes, parent hashes and
+deterministic source-bound reconstruction of every appended research report. Rehashing
+corrupt report/summary metadata cannot substitute for reconstruction. Primary evidence,
+native scores and earlier closed bytes retain the existing lifecycle.
+
+`benefit_resource_links` retains three rows per planned case revision/repetition:
+`rag_v2_minus_v1`, `repair_v3_minus_v2_finals`, and `repair_same_run_v3`. Each row identifies
+selected primary attempts with version, attempt/run/group identities, input/configuration
+hashes and supplied result/usage/provenance hashes. Report pointers bind population, source
+and semantic digests. Linkage checks selected attempts and exact usage hashes against
+independently rebuilt resource rows, rather than joining by case ID alone. RAG links use
+reviewed relevance when selected, otherwise observed opportunity comparisons. Repair
+links retain separate four-final and same-run native views. The same-run resource view
+binds one selected V3 invocation; its draft never supplies an independent V2 measurement.
+Retries remain in all-attempt consumption and cannot replace selected primary resources.
+
+`status`, `benefit_status`, `resource_status`, `source_compatible` and `reasons` retain
+unmatched or partial rows. Source compatibility is independent of measurement availability.
+`resource_measurement_coverage` states known/missing selected-attempt counts per native
+usage metric and observed-subtotal counts. Monetary coverage retains observed/missing
+attempt counts and, separately for native `actual`, `estimated` and `best_available`,
+known/missing total and observed-subtotal counts. A legitimate observed zero is known;
+an observed subtotal does not establish a complete total. Known
+elapsed time, calls, HTTP sends or cost remain visible when tokens are missing; absent
+metrics are not zero. A `matched` usage link has complete declared usage metrics; optional
+cost coverage remains explicit and does not create a monetary estimate. The resource
+report owns literal values, timing/currency/billing scope and missing-value semantics
+defined in [generation resources](0002-intake-identity-usage.md#generation-research-tradeoffs).
+Controlled target inventory remains a separate population: `controlled_resource_link` is
+`not_applicable` with `controlled_simulation_is_a_separate_population`. These are descriptive
+source-compatible links, without a combined score, ranking or causal interpretation.
+The [installed suite guide](../../backend/evaluation/README.md#installed-multi-case-suite)
+owns operator commands.
 
 ## Original-input research declarations and attempt census
 

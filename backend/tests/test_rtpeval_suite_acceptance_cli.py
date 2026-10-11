@@ -508,7 +508,14 @@ def test_cross_track_drift_is_rejected_by_network_denied_replay(
 
 
 @pytest.mark.parametrize(
-    "adapter", ["suite_tracks.py", "suite_resources.py", "suite_pair.py", "suite_external.py"]
+    "adapter",
+    [
+        "suite_tracks.py",
+        "suite_resources.py",
+        "suite_pair.py",
+        "suite_external.py",
+        "suite_research.py",
+    ],
 )
 def test_registered_adapter_implementation_drift_blocks_before_provider_send_in_copy(
     suite_material, tmp_path, adapter

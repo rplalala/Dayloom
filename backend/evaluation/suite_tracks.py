@@ -7,12 +7,12 @@ from .snapshot import _bytes
 TRACKS = ("resources", "mechanism", "pair", "human", "controlled_repair")
 
 
-def prepare_tracks(declaration, cases, *, source_root):
+def prepare_tracks(declaration, cases, *, source_root, output_root):
     """Adapters return immutable configuration; reject unsupported supplied material."""
     supplied = [declaration, *(selection.declaration for selection in cases)]
     if any("tracks" in value and not isinstance(value["tracks"], dict) for value in supplied):
         raise ValueError("Extension track configuration must be an object")
-    if set(declaration.get("tracks", {})) - {"human", "controlled_repair"} or any(
+    if set(declaration.get("tracks", {})) - {"human", "controlled_repair", "research"} or any(
         set(selection.declaration.get("tracks", {})) - {"resources", "mechanism", "pair"}
         for selection in cases
     ):
@@ -23,8 +23,11 @@ def prepare_tracks(declaration, cases, *, source_root):
 
     configuration = prepare_resources(cases, source_root=source_root)
     pairs = prepare_pairs(cases, source_root=source_root)
-    external = prepare_external(declaration.get("tracks", {}), cases, source_root=source_root)
-    for additional in (pairs, external):
+    external = prepare_external(
+        declaration.get("tracks", {}), cases, source_root=source_root, output_root=output_root
+    )
+    additional_tracks = [pairs, external]
+    for additional in additional_tracks:
         for key, value in additional.items():
             if key in {"artifacts", "source_bindings", "raw_artifacts"}:
                 configuration.setdefault(key, {}).update(value)
@@ -61,6 +64,19 @@ def compose_tracks(preparation, directory, cases, *, allow_material_correction=F
     from .suite_resources import compose_resources
 
     invalid = _invalid_artifacts(preparation, directory) if allow_material_correction else set()
+    dependencies = {
+        path
+        for track in preparation["track_configuration"]
+        .get("research", {})
+        .get("tracks", {})
+        .values()
+        for path in track.get("source_dependencies", [])
+    }
+    for case in cases:
+        correction = (case.get("primary_report") or {}).get("research_material_correction", [])
+        if not isinstance(correction, list) or any(path not in dependencies for path in correction):
+            raise ValueError("Invalid recorded research source correction")
+        invalid.update(correction)
     cases = compose_resources(preparation, directory, cases, invalid_artifacts=invalid)
     compose_pairs(preparation, directory, cases, invalid_artifacts=invalid)
     for case in cases:
@@ -73,6 +89,13 @@ def compose_tracks(preparation, directory, cases, *, allow_material_correction=F
             }
     external = compose_external(preparation["track_configuration"])
     for kind, track in external.items():
+        if kind == "research":
+            from .suite_research import compose_research
+
+            external[kind] = compose_research(
+                preparation["track_configuration"], invalid_artifacts=invalid
+            )
+            continue
         # Keep the prepared configuration immutable while marking only affected studies.
         track["studies"] = [dict(study) for study in track["studies"]]
         changed = []
