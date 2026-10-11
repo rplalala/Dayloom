@@ -350,6 +350,54 @@ def test_post_dispatch_registration_conflict_preserves_successful_planner(tmp_pa
     assert json.loads((tmp_path / "capture/manifest.json").read_bytes())["status"] == "completed"
 
 
+@pytest.mark.parametrize("timing", ["before", "during"])
+def test_registration_refuses_dangling_directory_links(tmp_path, capsys, timing):
+    import os
+
+    from backend.cli.rtpeval import main
+
+    args = arguments(tmp_path, execute=True)
+    selection = registration(tmp_path)
+    target = tmp_path / "link-target"
+    destination = tmp_path / "staging"
+    calls = []
+
+    def create_link():
+        target.mkdir()
+        if os.name == "nt":
+            import _winapi
+
+            _winapi.CreateJunction(str(target), str(destination))
+        else:
+            destination.symlink_to(target, target_is_directory=True)
+        target.rmdir()
+
+    if timing == "before":
+        create_link()
+
+    class LinkRuntime(Runtime):
+        async def run(self, *args, **kwargs):
+            calls.append(True)
+            if timing == "during":
+                create_link()
+            return await super().run(*args, **kwargs)
+
+    assert (
+        main(["generate", *args, *selection], runtime=LinkRuntime(), date_provider=REFERENCE) == 2
+    )
+    report = json.loads(capsys.readouterr().out.splitlines()[-1])
+    assert "destination must be fresh" in report["registration"]["diagnostics"][0]
+    assert not target.exists()
+    if timing == "before":
+        assert calls == []
+        assert report["planner"]["status"] == "not_invoked"
+        assert not (tmp_path / "capture").exists()
+    else:
+        assert calls == [True]
+        assert report["planner"]["status"] == "completed"
+        assert (tmp_path / "capture/result.json").is_file()
+
+
 def test_registered_failure_keeps_attempt_and_never_attests_completion(tmp_path, capsys):
     import asyncio
 

@@ -248,10 +248,11 @@ def _registration_selection(selection_path, selection_raw, args, input_path, des
         raise CollectionError("Selected original input hash differs from Planner input")
     if selection_path.read_bytes() != selection_raw:
         raise CollectionError("Operator selection changed during Planner invocation")
-    if destination.exists() or destination.is_symlink():
+    if os.path.lexists(destination):
         raise CollectionError("Registration destination must be fresh")
     _require(
-        not output.is_relative_to(destination), "Registration destination contains Planner output"
+        not output.is_relative_to(destination.resolve()),
+        "Registration destination contains Planner output",
     )
     return config
 
@@ -329,7 +330,7 @@ def main(argv=None, *, runtime=None, date_provider=None):
             selection_raw,
             selected,
             selected.input_json,
-            args.registration_directory.resolve(),
+            args.registration_directory,
         )
     except (
         CollectionError,
@@ -371,7 +372,7 @@ def main(argv=None, *, runtime=None, date_provider=None):
             selection_raw,
             selected,
             observed[-1] if observed else None,
-            args.registration_directory.resolve(),
+            args.registration_directory,
         )
         report["registration"] = {
             "status": staging["status"],
