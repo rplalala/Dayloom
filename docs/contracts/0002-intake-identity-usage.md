@@ -887,7 +887,7 @@ within it. Required source artifacts use exact byte SHA-256, JSON media type,
 provenance and optional generation evidence retain exact bytes and relative layout.
 Generation evidence remains producer evidence, not independent evaluator ground truth.
 
-A group declares its original `input_ref` and `selected_runs` keyed by V0閳ユ彜3. Each
+A group declares its original `input_ref` and `selected_runs` keyed by V0-V3. Each
 existing run supplies result/usage/provenance refs and completion. Missing result/usage
 may be retained as blocked material; a no-result producer provenance records
 `result_sha256=null`. Missing provenance requires a traceable source-bound
