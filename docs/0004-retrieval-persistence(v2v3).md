@@ -56,6 +56,25 @@ logging does not save raw user text/vectors. API usage and observed HTTP sends a
 measurements; missing historical usage does not become zero. Exact replay requires matching
 artifacts and configuration, not simply a matching model name.
 
+### Passive candidate opportunity export
+
+The V1/V2 public runner accepts optional `opportunity_capture_path`; their CLI exposes
+`--opportunity-capture PATH`. With no path, the existing acquisition flow is unchanged.
+The caller-owned exporter observes the actual pre-RAG Google pool, merged discovery,
+admission, normally qualified Details and selected supply at their existing seams.
+It preserves Google query origins and complete native RAG provenance/fates. It adds
+no search, embedding, model call, gate replay or corpus operation, and changes no
+prompt, planner/model schema, search order, budget or domain output.
+
+Export is exclusive and best effort: an existing destination is not replaced, and
+serialization/storage failure cannot turn success into failure or replace the
+original exception/cancellation. Failure/cancellation exports retain stages reached
+before interruption; missing stages remain missing. Runtime clocks remain real;
+optional local normalization/storage overhead is not measured as a performance result.
+Historical traces and final-only results do not reconstruct missing stage history.
+The source-bound artifact and independent scheduling contract belongs to
+[canonical opportunity observations](contracts/0001-evaluation-artifacts.md#canonical-candidate-opportunity-observations).
+
 ## Operational limits
 
 Coverage and performance vary with geography, source identity quality and database state.
