@@ -36,7 +36,8 @@ def _path(root, name):
 def prepare_pairs(cases, *, source_root):
     """Freeze native pair reports from supplied material without acquiring evidence."""
     artifacts, bindings, records = {}, {}, {}
-    for index, (case, paths, _, intake) in enumerate(cases, 1):
+    for index, selection in enumerate(cases, 1):
+        case, paths, intake = selection.declaration, selection.files, selection.intake
         tracks = case.get("tracks", {})
         if "pair" not in tracks:
             continue
@@ -141,7 +142,7 @@ def prepare_pairs(cases, *, source_root):
     return {"artifacts": artifacts, "source_bindings": bindings, "pair_cases": records}
 
 
-def compose_pairs(preparation, directory, cases):
+def compose_pairs(preparation, directory, cases, *, invalid_artifacts=frozenset()):
     """Expose native comparison diagnostics separately from the four final scores."""
     config = preparation["track_configuration"]
     for case in cases:
@@ -156,6 +157,16 @@ def compose_pairs(preparation, directory, cases):
             continue
         if record["report"] is None:
             case["tracks"]["pair"] = dict(record)
+            continue
+        if record["report"] in invalid_artifacts:
+            case["tracks"]["pair"] = {
+                **record,
+                "processing_status": "needs_material_correction",
+                "evidence_status": "unavailable",
+                "report": None,
+                "reason": "prepared_track_artifact_changed",
+                "invalid_artifacts": [record["report"]],
+            }
             continue
         report = _read(directory / record["report"])[0]
         if pair_content_hash(report) != record["content_hash"]:

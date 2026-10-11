@@ -9,6 +9,7 @@ from .evaluation_run import prepare_run
 from .intake import _read, load_batch
 from .records import canonical_digest
 from .snapshot import _bytes
+from .suite_selection import CaseSelection
 from .suite_tracks import prepare_tracks
 
 PREPARATION_VERSION = "rtpeval_suite_preparation_1"
@@ -106,7 +107,7 @@ def prepare_suite(declaration, directory):
                 raise ValueError("Duplicate selected run identity across cases")
             run_ids.add(run["final"]["context"]["run_id"])
         reserved += _money(values["options"].get("max_cost_usd"))
-        resolved.append((case, files, values, intake))
+        resolved.append(CaseSelection(case, intake, files=files, values=values))
     if reserved > allowance:
         raise ValueError("Sum of per-case reference reservations exceeds whole-suite allowance")
     track_configuration = prepare_tracks(supplied, resolved, source_root=source.parent)
@@ -119,7 +120,8 @@ def prepare_suite(declaration, directory):
             raise ValueError("Extension source binding is invalid")
         bindings[str(path)] = sha
     prepared_cases = []
-    for index, (case, files, values, _) in enumerate(resolved, 1):
+    for index, selection in enumerate(resolved, 1):
+        case, files, values = selection.declaration, selection.files, selection.values
         relative = f"cases/{index:04d}/primary"
         primary = prepare_run(
             files["manifest"],
@@ -307,16 +309,28 @@ def _case_row(case, result=None, *, reason=None):
     }
 
 
-def _summary(preparation, rows):
+def _summary(preparation, rows, *, allow_material_correction=False):
     from .suite_tracks import compose_tracks
 
-    rows, tracks = compose_tracks(preparation, Path(preparation["directory"]), rows)
+    rows, tracks = compose_tracks(
+        preparation,
+        Path(preparation["directory"]),
+        rows,
+        allow_material_correction=allow_material_correction,
+    )
+    invalid_tracks = any(
+        track.get("invalid_artifacts")
+        for track in [
+            *(track for row in rows for track in row["tracks"].values()),
+            *tracks.values(),
+        ]
+    )
     return {
         "schema_version": REPORT_VERSION,
         "suite_id": preparation["suite_id"],
         "preparation_sha256": preparation["content_sha256"],
         "processing_status": "complete"
-        if all(row["processing_status"] == "complete" for row in rows)
+        if not invalid_tracks and all(row["processing_status"] == "complete" for row in rows)
         else "stopped",
         "max_cost_usd": preparation["max_cost_usd"],
         "reserved_cost_usd": preparation["reserved_cost_usd"],
@@ -364,7 +378,15 @@ def execute_suite(directory, *, approved_sha256, env_file=None, http_client=None
                     http_client=http_client,
                 )
             )
-        except (ValueError, TypeError, KeyError, OSError, RuntimeError) as exc:
+        except (
+            ValueError,
+            TypeError,
+            KeyError,
+            OSError,
+            RuntimeError,
+            asyncio.CancelledError,
+            KeyboardInterrupt,
+        ) as exc:
             result = {
                 "processing_status": "stopped",
                 "acquisition_status": "partial"
@@ -372,11 +394,18 @@ def execute_suite(directory, *, approved_sha256, env_file=None, http_client=None
                 else "not_started",
                 "evidence_status": "not_completed",
                 "error_type": type(exc).__name__,
-                "reason": str(exc),
+                "reason": str(exc)
+                or (
+                    "execution_cancelled"
+                    if isinstance(exc, asyncio.CancelledError)
+                    else "execution_interrupted"
+                    if isinstance(exc, KeyboardInterrupt)
+                    else "execution_failed"
+                ),
             }
         rows.append(_case_row(case, result))
         stopped = result["processing_status"] != "complete"
-    report = _summary(preparation, rows)
+    report = _summary(preparation, rows, allow_material_correction=True)
     _save(root, "summary.json", report)
     _close(root, approved_sha256)
     return report

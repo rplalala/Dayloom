@@ -106,7 +106,8 @@ def _reports(case):
 def prepare_resources(cases, *, source_root):
     """Bind selected generation envelopes and render their native saved reports."""
     configuration = {"artifacts": {}, "source_bindings": {}, "resources": []}
-    for index, (declaration, files, values, _intake) in enumerate(cases, 1):
+    for index, selection in enumerate(cases, 1):
+        declaration, files, values = selection.declaration, selection.files, selection.values
         sources = []
         for run in values["manifest"]["groups"][0]["selected_runs"].values():
             usage, sha = _artifact(files["manifest"].parent, run["usage_ref"], "rtpeval_usage_1")
@@ -170,7 +171,7 @@ def _availability(values):
     )
 
 
-def compose_resources(preparation, directory, cases):
+def compose_resources(preparation, directory, cases, *, invalid_artifacts=frozenset()):
     """Verify deterministic native reports and index them independently of primary status."""
     configured = preparation["track_configuration"]["resources"]
     for row, case in zip(cases, configured, strict=True):
@@ -178,7 +179,10 @@ def compose_resources(preparation, directory, cases):
             raise ValueError("Generation/mechanism case inventory mismatch")
         reports = _reports(case)
         for name, report in reports.items():
-            if _read(directory / case["paths"][name])[0] != report:
+            if (
+                case["paths"][name] not in invalid_artifacts
+                and _read(directory / case["paths"][name])[0] != report
+            ):
                 raise ValueError("Saved generation/mechanism report replay differs")
         row["tracks"]["resources"] = {
             "processing_status": "complete",
@@ -212,4 +216,29 @@ def compose_resources(preparation, directory, cases):
             "preparation": case["paths"]["mechanism_preparation"],
             "trace_evidence_status": v3["trace_coverage"],
         }
+        for track, names in (
+            ("resources", ("resources", "cost")),
+            ("mechanism", ("mechanism_preparation", "mechanism")),
+        ):
+            changed = sorted(
+                case["paths"][name] for name in names if case["paths"][name] in invalid_artifacts
+            )
+            if not changed:
+                continue
+            record = row["tracks"][track]
+            record.update(
+                processing_status="needs_material_correction",
+                reason="prepared_track_artifact_changed",
+                invalid_artifacts=changed,
+            )
+            if track == "mechanism" or case["paths"]["resources"] in changed:
+                record.update(evidence_status="unavailable", report=None)
+            if track == "mechanism":
+                record["preparation"] = (
+                    None
+                    if case["paths"]["mechanism_preparation"] in changed
+                    else record["preparation"]
+                )
+            elif case["paths"]["cost"] in changed:
+                record.update(cost_status="unavailable", cost_report=None)
     return cases
