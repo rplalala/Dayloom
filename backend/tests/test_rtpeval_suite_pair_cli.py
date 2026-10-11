@@ -136,7 +136,10 @@ def test_explicit_pair_with_missing_evidence_stays_unavailable(pair_suite, insta
     assert row["evidence_status"] == "unavailable"
     assert row["reason"] == "pair_material_missing"
     assert row["report"] is None
-    assert not preparation["track_configuration"]["artifacts"]
+    assert not any(
+        value["schema_version"] == "rtpeval_v3_pair_report_2"
+        for value in preparation["track_configuration"]["artifacts"].values()
+    )
 
 
 def test_missing_snapshot_keeps_bound_identity_unavailable(pair_suite, installed_cli):

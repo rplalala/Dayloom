@@ -9,25 +9,35 @@ def prepare_tracks(declaration, cases, *, source_root):
     if any("tracks" in value and not isinstance(value["tracks"], dict) for value in supplied):
         raise ValueError("Extension track configuration must be an object")
     if declaration.get("tracks") or any(
-        set(case.get("tracks", {})) - {"pair"} for case, *_ in cases
+        set(case.get("tracks", {})) - {"resources", "mechanism", "pair"} for case, *_ in cases
     ):
         raise ValueError("Supplied extension track material is not supported yet")
     from .suite_pair import prepare_pairs
+    from .suite_resources import prepare_resources
 
-    return prepare_pairs(cases, source_root=source_root)
+    resources = prepare_resources(cases, source_root=source_root)
+    pairs = prepare_pairs(cases, source_root=source_root)
+    return {
+        **resources,
+        **pairs,
+        "artifacts": {**resources["artifacts"], **pairs["artifacts"]},
+        "source_bindings": {**resources["source_bindings"], **pairs["source_bindings"]},
+    }
 
 
 def compose_tracks(preparation, directory, cases):
     """Return case rows and separate suite-wide study tracks without changing scores."""
+    from .suite_pair import compose_pairs
+    from .suite_resources import compose_resources
+
+    cases = compose_resources(preparation, directory, cases)
     for case in cases:
-        for name in TRACKS:
+        for name in ("human", "controlled_repair"):
             case["tracks"][name] = {
                 "processing_status": "pending",
                 "evidence_status": "unavailable",
                 "applicability": "pending",
                 "reason": "extension_pending",
             }
-    from .suite_pair import compose_pairs
-
     compose_pairs(preparation, directory, cases)
     return cases, {}
