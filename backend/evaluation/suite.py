@@ -1,5 +1,6 @@
 """Source-bound sequential composition of native evaluation runs."""
 
+import base64
 import hashlib
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -145,6 +146,7 @@ def prepare_suite(declaration, directory):
         "suite_id": supplied["suite_id"],
         "directory": str(root),
         "declaration": supplied,
+        "source_root": str(source.parent),
         "source_bindings": bindings,
         "max_cost_usd": str(allowance),
         "reserved_cost_usd": str(reserved),
@@ -155,12 +157,14 @@ def prepare_suite(declaration, directory):
             for path in (
                 Path(__file__),
                 Path(__file__).with_name("suite_tracks.py"),
+                Path(__file__).with_name("suite_external.py"),
                 Path(__file__).parents[1] / "cli" / "suite.py",
             )
         },
     }
     value["content_sha256"] = canonical_digest(value)
     write_track_artifacts(root, track_configuration.get("artifacts", {}))
+    write_raw_artifacts(root, track_configuration.get("raw_artifacts", {}))
     _save(root, "preparation.json", value)
     return {
         "status": "prepared",
@@ -199,6 +203,12 @@ def _load(directory, *, implementation=False):
         path = track_artifact_path(root, name)
         if path.read_bytes() != _bytes(artifact):
             raise ValueError("Prepared extension artifact changed")
+    for name, raw in value["track_configuration"].get("raw_artifacts", {}).items():
+        if track_artifact_path(root, name).read_bytes() != base64.b64decode(raw, validate=True):
+            raise ValueError("Imported external artifact changed")
+    from .suite_external import verify_prepared_external
+
+    verify_prepared_external(value)
     return root, value
 
 
@@ -230,6 +240,15 @@ def write_track_artifacts(root, artifacts):
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("xb") as stream:
             stream.write(raw)
+
+
+def write_raw_artifacts(root, artifacts):
+    """Copy exact declared external bytes in the explicit write stage."""
+    for name, encoded in artifacts.items():
+        path = track_artifact_path(root, name)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("xb") as stream:
+            stream.write(base64.b64decode(encoded, validate=True))
 
 
 def _inventory(root, *, refresh=False):
@@ -382,25 +401,17 @@ def replay_suite(directory):
     report = _summary(preparation, rows)
     if report != saved:
         raise ValueError("Suite report replay differs")
-    refreshes = root / "reports"
-    if refreshes.exists():
-        for folder in refreshes.iterdir():
-            if not folder.is_dir() or not folder.name.isdigit() or folder.is_symlink():
-                raise ValueError("Unexpected suite report revision")
-            _check_closed(folder, preparation["content_sha256"], refresh=True)
-    return report
+    from .suite_external import verify_refreshes
+
+    return verify_refreshes(root, preparation, report)
 
 
-def report_suite(directory):
-    """Append an independently receipted summary revision after offline evidence replay."""
-    report = replay_suite(directory)
-    root = Path(directory).resolve() / "reports"
-    root.mkdir(exist_ok=True)
-    index = 1
-    while (root / f"{index:04d}").exists():
-        index += 1
-    revision = root / f"{index:04d}"
-    revision.mkdir(exist_ok=False)
-    _save(revision, "summary.json", report)
-    _close(revision, report["preparation_sha256"], refresh=True)
-    return report
+def report_suite(directory, *, attachments=None):
+    """Append an offline summary without executing studies or rescoring primary output."""
+    from .suite_external import append_refresh, verify_refreshes
+
+    root, preparation = _load(directory)
+    _check_closed(root, preparation["content_sha256"])
+    original = _read(root / "summary.json")[0]
+    report = verify_refreshes(root, preparation, original)
+    return append_refresh(root, preparation, report, attachments=attachments)
