@@ -77,7 +77,9 @@ def interest_inventory(material, *, interests=("architecture", "museums"), use_e
             "original.json",
             {
                 "destination": "Sydney",
-                "additional_preferences": "Architecture and museums",
+                "additional_preferences": "Architecture and museums"
+                if interests
+                else "No POI interests requested",
             },
         )
     source_text = json.loads((root / case["input_ref"]["path"]).read_text())[
@@ -800,6 +802,7 @@ def test_independently_reviewed_no_poi_interest_is_not_applicable(
     inventory_ref, _ = interest_inventory(research_material, interests=())
     declaration = write_relevance(research_material, inventories=[inventory_ref])
     report = get_report(installed_cli, declaration, tmp_path / "no-interest")
+    assert report["applicability"] == "not_applicable"
     assert report["runs"][0]["relevance_status"] == "not_applicable"
     assert report["runs"][0]["stages"]["discovered"]["status"] == "not_applicable"
     assert report["runs"][0]["end_to_end"]["status"] == "not_applicable"
@@ -823,7 +826,7 @@ def test_sample_cannot_exceed_complete_eligible_corpus(installed_cli, research_m
     assert "eligible" in result.stdout
 
 
-def test_report_applicability_and_per_interest_principal_follow_reviewed_inventory(
+def test_per_interest_principal_follows_reviewed_inventory(
     installed_cli, research_material, batch, tmp_path
 ):
     entries, _ = native_pair(research_material, batch)
@@ -846,10 +849,6 @@ def test_report_applicability_and_per_interest_principal_follow_reviewed_invento
         == 2 / 3
     )
     assert report["comparisons"][0]["per_interest"][0]["end_to_end"]["delta"] == 0
-    no_interest_ref, _ = interest_inventory(research_material, interests=(), use_existing=True)
-    declaration = write_relevance(research_material, entries, inventories=[no_interest_ref])
-    report = get_report(installed_cli, declaration, tmp_path / "not-applicable")
-    assert report["applicability"] == "not_applicable"
 
 
 @pytest.mark.parametrize("reviewed_at", ["not-a-timestamp", "2026-10-01T00:00:00"])
