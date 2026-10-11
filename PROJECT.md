@@ -140,6 +140,7 @@ finalization; external agents are separately operated. See
 | Opening | Current/regular API schedules take priority; missing-hours LLM assessment can infer ordinary public-landmark viewing, while explicit restricted activities and museum admission need access evidence; factual coverage stays separate | [Opening/routes](docs/contracts/0004-opening-routes.md#opening) |
 | Routes | Independent coordinates and mode/time-applicable route evidence against original reserved duration; unsupported provider scope remains unresolved | [Opening/routes](docs/contracts/0004-opening-routes.md#route-wire) |
 | Quality and density | Five automatic dimensions with separate evidence availability; source-linked pace deductions adjust the final total without adding hard generation quotas | [Quality/density](docs/contracts/0005-quality-human-review.md) |
+| Multi-case suite | Explicit ordered accepted revisions, sequential native primary limits, default saved generation-resource/mechanism reports, optional independent pairs and source-bound study refresh | [Suite guide](backend/evaluation/README.md#installed-multi-case-suite), [artifact contract](docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle) |
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports; optional suite integration remains pending | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
@@ -191,15 +192,18 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Current full backend checkpoint: **3456 passed, 10 skipped in 762.69s** on
-2026-10-11. The gate covers the complete backend suite, including installed CLI,
-independent scoring, mechanism reporting, observability and V0-V3 behavior. Nine
+Accepted suite full backend checkpoint: **3561 passed, 10 skipped in 1504.00s**
+on 2026-10-11 at `a6cf0a7`. This checkpoint predates research integration; the
+combined suite/research full backend gate is pending #118. The suite checkpoint covers installed CLI,
+multi-case suites, native scoring/reporting, observability and V0-V3 behavior. Nine
 opt-in isolated PostgreSQL cases and the existing host symlink-creation privilege
-case are skipped. Ruff lint/format and documentation link checks passed; no new
-frontend validation is claimed.
-See [unified acceptance](docs/records/evaluation/intake-identity-usage.md#unified-rtpeval-material-workflow-acceptance-2026-10-09)
-for the invalid-working-directory invocation, unchanged-source full rerun and review
-history. Earlier #97 checks retain their original scope in
+case are skipped. Full backend/scripts Ruff lint and format checking of all 15
+changed Python files pass. Global format checking still rejects 50 unchanged
+baseline files. Documentation link checks pass; no new frontend validation is claimed.
+See [suite acceptance](docs/records/evaluation/intake-identity-usage.md#multi-case-suite-engineering-acceptance-2026-10-11)
+for the failed initial boundary check, separate review corrections, test-isolation
+incident, independent rechecks and complete final regression.
+Earlier #97 checks retain their original scope in
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09)
 and [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09).
 Earlier fresh native evaluator/opening and manifest-based quality CLI agreement and
@@ -260,12 +264,14 @@ Evaluation extensions are developed independently:
 
 | Work | Specification | Current state |
 | --- | --- | --- |
-| Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Specified; implementation and acceptance pending |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Standalone #113-#117 implemented; review/acceptance in progress. #118 waits for accepted #111 and available dependency code |
+| Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Implemented; synthetic engineering acceptance complete; [Draft PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Standalone #113-#117 implemented with Standards/Spec review corrections verified. Accepted #111 dependency is integrated; authorized #118 suite attachment remains pending |
 
 Their responsibilities and relationship to native scoring are summarized in the
-[Evaluation extension plan](docs/0006-independent-evaluation.md#planned-batch-and-research-extensions).
+[Evaluation extensions](docs/0006-independent-evaluation.md#batch-and-research-extensions).
 GitHub Issues own detailed specifications, dependencies and acceptance state.
+Suite engineering acceptance uses synthetic saved material and injected transport;
+formal benchmark execution and paid acquisition remain separately authorized.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

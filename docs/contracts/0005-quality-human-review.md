@@ -282,6 +282,16 @@ integration is supplied. Frozen mapping hashes verify integrity, not cryptograph
 authorship. [Acceptance](../records/evaluation/blinded-ranking-record.md#rtpeval-ticket-09-acceptance) records actual
 test/review/browser evidence and remaining limitations.
 
+Suite attachment retains each native human package/rater as a separate report.
+Verification binds presentation, private source mapping and retained answer revisions
+to one selected accepted case, then reproduces the original native report at its saved
+generation time. Public blinded identifiers need not equal suite case aliases; private
+preparation source hashes establish linkage. Effective answer revisions remain native.
+Later answer imports produce another native report before an explicit suite refresh;
+there is no cross-rater aggregation or overall human quality score. The
+[attachment contract](0001-evaluation-artifacts.md#existing-study-attachments-and-refresh)
+owns exact references, separate controlled populations and closed refresh lineage.
+
 ## Follow-up reporting boundary
 
 Ticket 10 supplies a separate [V3 paired diagnostic](#v3-pairs), with source-driven
@@ -304,6 +314,17 @@ diagnostics and null paired deltas. `/itinerary` is never a substitute. Availabl
 stages can retain standalone observations. If all pairs are unavailable, no fictional
 snapshot is required. Otherwise require a verified `paired=True` evidence snapshot
 and current identity replay, with the same original input and RequirementSpec.
+
+Suite pairing is explicit per case through `tracks.pair`. An omitted pair is
+`not_requested`; an explicit empty or incomplete optional declaration retains
+unavailable reasons. Nonempty supplied pair material requires `identity` to validate native lineage.
+Supplied `identity`, `snapshot`, `context` and reviewed material
+are declaration-relative paths, byte-bound and validated before primary sends.
+Final-only evidence never supplies draft coverage. Complete material produces the
+unchanged native `tracks/NNNN/pair.json`, with its own comparison mask, signed deltas,
+correspondence uncertainty and null unavailable values. A genuine complete unchanged
+no-Repair pair may have zero deltas. No paired acquisition, opening supplement or
+Repair is launched, and primary four-final arithmetic remains independent.
 
 The report calls the public requirement/schedule, opening and route scorers, verifies
 all expected final/optional rows and source hashes, then selects the two V3 stages.

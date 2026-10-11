@@ -1,6 +1,6 @@
 # Intake, identity, usage and material workflow history
 
-This record synthesizes evaluator engineering from September 29 through October 9,
+This record synthesizes evaluator engineering from September 29 through October 11,
 2026. Current interfaces and compatibility rules belong to the
 [intake contract](../../contracts/0002-intake-identity-usage.md),
 [artifact contract](../../contracts/0001-evaluation-artifacts.md) and
@@ -914,3 +914,109 @@ Local evidence is `artifacts/rtpeval-opening-access-20261010-r1`, including the 
 real-material acceptance with one explicit uncertainty; original executions and their
 source material remain unchanged. Another identical Google query has no demonstrated
 coverage benefit; museum admission requires applicable authoritative evidence.
+
+
+## Multi-case suite engineering acceptance (2026-10-11)
+
+The #106 implementation composes the existing native evaluation interfaces through
+installed suite prepare, execute, report and replay operations. The fixed review
+base is `f1cf0bc6778d519c5251d40c3ab7c4cbfe0ea64f`; the complete implementation and
+synthetic acceptance merge is `332c84d7c11d83d972887037c94ac15d868a97dc`.
+The separate review correction is `9c0424fe1d558a810c4981d8dcb83379707026de`;
+the corrected integration is `a6cf0a7caae7979ea9b33dcd10e44047711fee3d`.
+Only related documentation was uncommitted at those validation checkpoints.
+Independent development environments and child worktrees isolated implementation
+from the main checkout; local configuration and required assets were copied without
+changing their originals. No fresh Planner output or formal research population was
+created. The [suite guide](../../../backend/evaluation/README.md#installed-multi-case-suite)
+owns current commands, while the source/receipt, accounting and pairing contracts
+own their respective detailed rules.
+
+Public-CLI red-green checks first exposed missing suite discovery. Later tests
+exposed malformed optional price/usage boundaries, ambiguous external source-root
+resolution, and an integrity stop between cases that pointed to a nonexistent
+native report. Corrections retain structured material errors, freeze the declaration
+root explicitly, and represent pre-native stops as acquisition `not_started` with
+no report pointer. Restoring source bytes permits verification of the saved stop,
+not a successful complete evaluation. Original implementation and subsequent
+correction commits remain separate.
+
+The final acceptance exercises four accepted synthetic four-version cases, default
+resource/mechanism reports, independently evidenced unchanged V3 pairing, mixed
+missingness, and human revision refresh with a separately completed synthetic
+controlled report. Refresh preserves primary scores and earlier receipts. Eight
+artifact/source/refresh drift checks and four isolated adapter-drift checks fail
+under network denial. A 23-case declaration passes preparation only; it is not a
+23-case paid execution. Earlier overlapping acceptance and startup-guard gates
+remain in the retained JUnits; the final complete regression below is the current
+checkpoint.
+
+### Test isolation failure and correction
+
+An initial subprocess startup guard contained an incorrectly escaped newline and
+failed with a SyntaxError. Python continued initialization, so this first attempt
+was not network-isolated: two Google requests returned HTTP 400 and a connection
+to `model.example.test` failed. Only explicit dummy provider credentials were
+supplied in the child environment; no real credentials or successful model call
+were observed. No account billing was queried, so this evidence does not establish
+an invoice amount. The attempt was stopped and retained rather than repeated as
+an authorized live run.
+
+The corrected harness precompiles the exact startup bytes, denies independent
+socket access, injects only synthetic HTTP transport, and exits with code 96 if
+initialization fails. Failure injection verifies that no fixture HTTP events or
+native execution output are produced. Subsequent complete installed workflows run
+through this corrected guard. Original evidence remains at the historical local
+identifier `D:/Workspace/Capstone/.t111-multi/test_installed_multi_track_wor0/`.
+A 135-file copy under `artifacts/issue-106-validation/initial-harness-incident/`
+was verified against the original SHA-256 inventory using Windows long paths.
+Raw originals were not edited. Local acceptance JUnits are retained under
+`artifacts/issue-106-validation/issue-111-{acceptance,suite-gate,harness}.xml`.
+
+### Final regression and independent review
+
+Independent Standards review found no documented-rule breach and one P3 Data
+Clumps heuristic: positional case selections crossed adapters and required empty
+refresh placeholders. Independent Spec review found two P1 stop-finalization gaps.
+An injected middle-case KeyboardInterrupt left the attempted native run and suite
+unclosed; corruption of one frozen resource report stopped new primary work but
+then blocked summary composition. Both retained the first native receipt but lost
+the explicit suite stop/unstarted index. Their synthetic HTTP reproductions denied
+external network.
+The correction replaces positional selections with a named record, closes cooperative
+cancellation through the native and suite boundaries, and isolates invalid track
+diagnostics from stop-index publication. The existing offline-intake AST boundary test also
+required narrow module-specific registration of pure standard-library helpers and
+the suite's explicit credential boundary; Planner/network bans remain enforced.
+
+The initial full-backend attempt exposed the existing offline-intake import
+allowlist failure. It was independently reproduced (one failed test in 1.23s),
+then the known-failing full attempt was stopped with its partial output retained;
+it has no complete-suite pass count. The final gate below uses the corrected,
+committed integration source and a separate temporary directory.
+
+The correction gate passed 264 tests with one existing Windows symlink-privilege
+skip in 478.77s; it covers all five suite CLI test files, native execution and intake.
+The existing installed native evaluator CLI passed 42 tests in 78.10s. Related red/green JUnits,
+including `issue-111-review-final-gate.xml` and `issue-111-installed-native-gate.xml`,
+are retained under the same local validation identifier.
+
+Full backend/scripts Ruff lint passes. All 15 changed Python files pass format checks;
+global format checking still rejects 50 files unchanged from the fixed base.
+
+Independent committed rechecks closed the Standards suggestion and both Spec P1
+findings without new findings. The Spec reviewer independently reran eight targeted
+public-CLI regressions (65.90s), covering both cancellation types and six frozen
+artifact classes. Initial sandbox temporary-directory and uv startup-path errors
+occurred before execution assertions; the approved sandbox-external rerun passed,
+without credential or system-permission changes.
+
+The complete final backend gate passed **3561 passed, 10 skipped in 1504.00s** at
+`a6cf0a7caae7979ea9b33dcd10e44047711fee3d` with only the seven related documentation files
+uncommitted. Skips are the nine opt-in isolated PostgreSQL tests and existing host
+symlink-creation privilege case. Local evidence identifiers are
+`artifacts/issue-106-validation/backend-corrected.log`, `backend-corrected.xml`
+and the retained `backend-initial-failed-attempt.log`; no complete pass count is
+assigned to the stopped initial attempt. Implementation is accepted as synthetic
+engineering evidence. Draft PR #128 retains the delivery boundary; GitHub Issues
+own subsequent remote lifecycle state, and #112 owns separate research supplements.

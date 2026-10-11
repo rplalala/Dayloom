@@ -31,6 +31,7 @@ material; exit 2 indicates material correction or argument errors. Acceptance do
 not score quality or certify the producer's benchmark selection.
 
 The installed interface also exposes [automatic evaluation](#installed-automatic-evaluation),
+[multi-case suites](#installed-multi-case-suite),
 [selected generation and material handoff](#installed-generation-and-material-handoff), and
 [task-oriented tools](#installed-task-oriented-tools). Existing module commands below retain
 their behavior. The thin dispatcher lives in `backend/cli/`,
@@ -77,6 +78,128 @@ an operator may explicitly select the legacy route after correcting credentials.
 does not automatically recover it or repeat an attempt. No retry, resume, extra probe or
 implicit opening supplement is added. Repository authorization and live execution rules
 still apply. Existing module commands retain their behavior.
+
+## Installed multi-case suite
+
+A suite composes explicitly selected accepted case revisions. Each case owns one
+request group and exactly four selected V0-V3 runs. Prepare material with the existing
+collection/review/finalization flow first; a suite does not generate or qualify it.
+There is no automatic source scan, best-run selection or fixed 20-case count.
+
+Create a declaration beside its selected source directories. All input paths are
+relative to this declaration's directory and must remain inside it:
+
+```json
+{
+  "schema_version": "rtpeval_suite_1",
+  "suite_id": "selected-development-cases",
+  "max_cost_usd": "4.00",
+  "cases": [
+    {"case_id": "case-a", "revision": "1", "manifest": "a/manifest.json",
+     "options": "a/options.json", "prices": "oracle-prices.json"},
+    {"case_id": "case-b", "revision": "1", "manifest": "b/manifest.json",
+     "options": "b/options.json", "prices": "oracle-prices.json"}
+  ]
+}
+```
+
+Use the actual native manifest revision and globally distinct run IDs. Optional case
+`context`, `occupancy_reviews`, `route_reviews` and `density_reviews` paths forward
+existing reviewed material. Each native options file explicitly bounds acquisition;
+the sum of its `max_cost_usd` reservations must fit the whole-suite allowance.
+The illustrative allowance above is not live authorization or an account invoice.
+Native credential names and request/token/time limits remain those of
+[fresh automatic evaluation](#fresh-automatic-evaluation-cli).
+
+```powershell
+uv run rtpeval suite --help
+uv run rtpeval suite prepare suite.json --directory artifacts/fresh-suite
+# Only with authorization for this exact prepared acquisition:
+uv run rtpeval suite execute artifacts/fresh-suite --approved-sha256 EXACT_PREPARATION_SHA256 --env-file .env
+uv run rtpeval suite report artifacts/fresh-suite
+uv run rtpeval suite replay artifacts/fresh-suite
+```
+
+Preparation is offline and prints the exact `preparation_sha256` required by execution.
+It checks all selected sources and supplied optional material before sends. Execution
+is sequential and consumes the prepared package once; stop/error retains attempted
+work and leaves subsequent cases `unstarted`. To run an explicitly selected subset
+later, declare it again into a fresh directory. The CLI never retries or resumes.
+
+Inspect `preparation.json`, `summary.json`, `receipt.json`, native
+`cases/0001/primary/` packages and frozen `tracks/` reports. The summary retains
+ordered case rows and independent per-track processing, evidence and applicability.
+Complete processing may contain FAIL/UNKNOWN or unavailable optional data. A stopped
+case cannot be inferred complete from descriptive reports. Cooperative cancellation
+saves attempted/stopped/unstarted status; an invalid frozen track has a separate
+material-correction diagnostic and cannot establish successful replay. Exit 0 means successful
+preparation or completed processing; invalid material, stopped work and incomplete
+full replay exit 2. Replay needs no credentials and makes no provider calls.
+
+Default generation resources and saved mechanism reports are available for every
+selected case, including stopped/unstarted primary work. Optional case configuration
+uses explicit local paths:
+
+```json
+{
+  "tracks": {
+    "resources": {"prices": "generation-prices.json", "bills": "saved-bills.json",
+                  "annotations": "usage-annotations.json"},
+    "mechanism": {"observations": "linked-observations.json"}
+  }
+}
+```
+
+These are optional case fields, not a second suite declaration. Omit unavailable
+inputs; supplied ones must be valid. Generation prices are distinct from the required
+primary evaluator `prices`. Without generation prices, cost stays unavailable with a
+reason. The mechanism observations envelope has `records` containing native source-
+linked observations. Inspect `tracks/NNNN/resources.json`, `cost.json`,
+`mechanism_preparation.json` and `mechanism.json`; the [resource contract](../../docs/contracts/0002-intake-identity-usage.md#suite-selection-and-generation-resources)
+and [mechanism contract](../../docs/contracts/0001-evaluation-artifacts.md#mechanism)
+own missingness and native arithmetic.
+
+For optional same-run V3 pairing, add case `tracks.pair` with existing `identity`
+and `snapshot` paths. Independently prepare draft/final evidence through the
+[V3 paired diagnostics](#v3-paired-diagnostics) workflow first. Optional pair fields
+are `context`, `occupancy_reviews`, `route_reviews`, `coordinates`, `expected_plan`,
+`identity_snapshot`, `edit_provenance`, `correspondence_reviews` and `density_reviews`.
+All refer to existing declaration-relative material; nonempty supplied pair material
+requires `identity` for native source-lineage checks. A final-only snapshot cannot
+establish draft coverage; omit pairing when not requested, or declare `{}` to retain
+requested/unavailable status. A valid unchanged no-Repair pair can have zero signed
+deltas. Inspect `tracks/NNNN/pair.json` and its separate summary mask/status; the suite
+adds no paired acquisition, opening assessment or Repair call.
+
+Existing human and controlled studies attach through suite-level `tracks.human`
+and `tracks.controlled_repair` arrays. First generate native saved reports with the
+[human import/report](#local-blinded-ranking) or [controlled batch](#controlled-v3-offline-workflow)
+commands. A human attachment declares `report`, `presentation`, `mapping`, `answers`
+and a `source_context` containing one selected case ID, the package's rater and private
+preparation source hashes. A controlled attachment declares `report`, `manifest` and
+its own population/case/goal/preparation/expectations context. Every reference retains
+its exact original byte hash and native schema. The
+[attachment wire](../../docs/contracts/0001-evaluation-artifacts.md#existing-study-attachments-and-refresh)
+owns the full field requirements; these are saved report dependencies, not study execution
+inputs to the suite.
+
+After importing later answers separately, declare an `rtpeval_suite_attachments_1`
+file with the same `suite_id` and replacement `tracks` lists:
+
+```powershell
+uv run rtpeval suite report artifacts/fresh-suite --attachments attachments.json
+uv run rtpeval suite replay artifacts/fresh-suite
+```
+
+Omitted track keys inherit earlier attachments. Supplied invalid/foreign/stale material
+is rejected before a new revision, while earlier closed output remains intact. Refresh
+checks saved primary integrity without primary rescoring and calls only native offline
+study report builders. Raters, effective answer revisions and controlled denominators
+remain separate; valid missing study results cannot lower or raise primary scores.
+
+`report` appends a separately receipted `reports/0001/summary.json` revision and keeps
+earlier execution evidence intact. The [suite artifact contract](../../docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
+owns wire integrity and replay; native individual commands below remain available.
 
 ## Installed generation and material handoff
 

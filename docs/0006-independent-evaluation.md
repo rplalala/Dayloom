@@ -1,8 +1,10 @@
 # Independent evaluation architecture
 
 Status: Tickets 01-12 have offline implementations within their approved scopes.
-Standalone original-input research reports are implemented; optional suite
-integration remains dependent on accepted batch-suite code.
+Source-bound suite orchestration is implemented and its synthetic engineering
+acceptance is complete. Standalone original-input research reports #113-#117 are
+implemented with Standards/Spec review corrections verified; their authorized
+suite attachment in #118 remains pending.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 
@@ -65,11 +67,14 @@ part of planning and is distinct from independent evaluation.
 
 ## Batch and research extensions
 
-The installed `rtpeval research validate / report` group provides explicit offline
-standalone tracks under [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112).
-The separately specified [batch suite #106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106)
-composes native accepted quality bundles; its accepted implementation is required
-before research suite attachment is integrated.
+The installed `rtpeval suite` layer composes native reports over explicit accepted
+case revisions. The installed `rtpeval research validate / report` group provides
+explicit offline standalone tracks over original-input populations.
+
+| Extension | Responsibility | Specification |
+| --- | --- | --- |
+| Installed suite | Explicit accepted four-version cases; sequential native primary evaluation, default generation-resource/cost and mechanism reports, opt-in independent V3 pairs and offline saved human/controlled attachments | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 |
+| Research supplement | Register original inputs and all generation attempts; report independent RAG opportunity/relevance and corpus coverage, V3 final/pair/controlled outcomes, and generation benefits/resources/completion | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 |
 
 ### Research track relationships
 
@@ -101,10 +106,23 @@ and resources to [intake/usage](contracts/0002-intake-identity-usage.md), and fi
 paired and controlled quality interpretation to
 [quality/continuity](contracts/0005-quality-human-review.md).
 
-Optional suite attachment in #118 waits for accepted #111 and available dependency
-code. It will add explicit offline report/refresh/replay entries while preserving
-native suite/default tracks and separate populations. GitHub Issues own remaining
-work; standalone report completion does not satisfy that integration gate.
+The suite delegates primary acquisition/scoring to `evaluation_run` and saved
+track preparation/composition to the resources, pair and external adapters.
+Its closed summary preserves separate track statuses and study populations; offline
+refresh appends independently verified lineage without primary rescoring. The
+[artifact contract](contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
+owns wire bindings; the [installed guide](../backend/evaluation/README.md#installed-multi-case-suite)
+owns the operator flow.
+
+The dependency roots are #107 for the suite and #113 for research. Accepted suite
+#111 code is available in the integration branch. Authorized #118 remains the
+explicit offline report/refresh/replay integration step, preserving native suite
+tracks and separate research populations. Attaching reports does not initiate
+generation or independent evidence collection.
+
+GitHub Issues own detailed specs and live acceptance state. Current native, suite
+and standalone research contracts retain implemented behavior; dated engineering
+evidence belongs to the [evaluation record](records/evaluation/intake-identity-usage.md).
 
 ## Scoring semantics and uncertainty
 

@@ -15,6 +15,7 @@ def main(
         description="RTPEval: offline validation, preparation/replay and online evaluation.",
         epilog="validate: offline source-bound batch intake; JSON to stdout.\n"
         "evaluate: automatic evaluation; prepare/replay offline, execute online.\n"
+        "suite: source-bound multi-case execution and offline replay/report.\n"
         "research: offline source-bound research reports.\n"
         "batch: offline explicitly selected material collection.\n"
         "generate: selected-version Planner preparation or explicit execution.\n"
@@ -23,7 +24,7 @@ def main(
     )
     parser.add_argument(
         "command",
-        choices=("validate", "evaluate", "batch", "generate", "research", *TASKS),
+        choices=("validate", "evaluate", "batch", "generate", "suite", "research", *TASKS),
         help="Evaluation task group",
     )
     parser.add_argument("arguments", nargs=argparse.REMAINDER, help=argparse.SUPPRESS)
@@ -35,6 +36,8 @@ def main(
         from backend.cli.batch import main as command
     elif args.command == "generate":
         from backend.cli.generate import main as command
+    elif args.command == "suite":
+        from backend.cli.suite import main as command
     elif args.command == "research":
         from backend.cli.research import main as command
     elif args.command == "evaluate":
@@ -48,7 +51,7 @@ def main(
     program = sys.argv[0]
     try:
         sys.argv[0] = f"{parser.prog} {args.command}"
-        if args.command == "evaluate":
+        if args.command in ("evaluate", "suite"):
             return command(args.arguments, http_client=http_client)
         if args.command == "generate":
             return command(args.arguments, runtime=runtime, date_provider=date_provider)
