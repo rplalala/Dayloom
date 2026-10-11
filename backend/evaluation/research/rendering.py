@@ -30,7 +30,7 @@ def render_markdown(report, render, *, source_root, output_path):
             destination = quote(Path(os.path.relpath(target, output.parent)).as_posix(), safe="/.:")
         except ValueError:
             # Windows volumes cannot express a relative filesystem path between drives.
-            destination = target.as_uri()
+            destination = quote(target.as_posix(), safe="/.:")
         lines.append(f"- [{label(source['path'])}]({destination}): `{source['sha256']}`")
     lines.append("")
     return "\n".join(lines)
