@@ -6,6 +6,8 @@ TRACKS = {
     "population": "backend.evaluation.research.population",
     "opportunities": "backend.evaluation.research.opportunities",
     "relevance": "backend.evaluation.research.relevance",
+    "repair": "backend.evaluation.research.repair",
+    "tradeoffs": "backend.evaluation.research.tradeoffs",
 }
 
 
