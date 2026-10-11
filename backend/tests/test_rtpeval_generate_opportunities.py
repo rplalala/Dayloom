@@ -80,7 +80,17 @@ def test_selected_run_binding_and_passive_output_parity(tmp_path, monkeypatch, v
         assert code == 0
         result = json.loads((root / "capture/result.json").read_bytes())
         outputs.append(stable(result))
-        calls.append((deps.llm.calls, deps.places.search_requests, deps.places.details_requests))
+        calls.append(
+            (
+                deps.llm.calls,
+                deps.places.search_requests,
+                deps.places.details_requests,
+                deps.places.reviews_requests,
+                deps.places.nearby,
+                deps.weather.requests,
+                deps.routes.requests,
+            )
+        )
         if enabled:
             captured = json.loads((root / "capture/opportunities.json").read_bytes())
             assert captured["run_id"] == "r" != trace_ids[0]
