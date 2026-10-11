@@ -1,6 +1,8 @@
 # Application interfaces and engineering operation
 
 Status: Implemented application boundary, consolidated 2026-10-03.
+The accepted Product persistence design below is pending implementation; the HTTP map
+describes existing endpoints.
 
 ## Product and Developer surfaces
 
@@ -68,9 +70,72 @@ weather or route facts remain honestly represented. Secrets belong in local envi
 configuration, not committed documents, logs or client bundles. Provider URLs and requests
 are constrained by their adapters; user prose is not arbitrary outbound-fetch authority.
 
-PostgreSQL/pgvector supports retrieval; no broad persistence of user itineraries, account
-system or public multi-user deployment guarantee is implied. Per-process development limits
-are not account-wide billing enforcement or distributed abuse controls.
+PostgreSQL/pgvector currently supports retrieval. Accounts and saved itineraries are pending
+under the [accepted Product persistence design](#accepted-product-persistence-design).
+Per-process development limits are not account-wide billing enforcement or distributed
+abuse controls; this design does not establish a public deployment guarantee.
+
+## Accepted Product persistence design
+
+Status: Accepted; not implemented. The detailed field definitions, relationships,
+constraints and backend acceptance criteria are owned by
+[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119).
+Its implementation slices are accounts/JWT (#120), profiles (#121), final V3 save/detail
+(#122), and history/child lists/rename/delete (#123). GitHub owns dependencies and live state.
+
+Reuse the existing PostgreSQL instance and database. The new `app` schema coexists with
+`tripworld`, preserving retrieval data and migrations. Exactly seven Product domain tables
+are planned:
+
+| Table | Responsibility |
+| --- | --- |
+| `app.users` | Normalized unique email, password hash and JWT `token_version` |
+| `app.user_profiles` | One profile per account, created atomically with registration |
+| `app.trips` | Owner, backend save key, title/destination/dates, confirmed request and public metadata snapshots, timestamps |
+| `app.trip_weather` | One row per actual final Product day, including unavailable weather and empty-activity days |
+| `app.trip_activities` | Ordered scheduled activities, original local datetimes and offsets, public costs and introductions |
+| `app.trip_nearby` | Ordered optional unscheduled recommendations anchored to an activity on the same trip/day |
+| `app.trip_transfers` | Ordered final adopted transport legs with same-trip/day endpoints and public uncertainty |
+
+Email/password authentication uses expiring signed Bearer JWTs, with user existence and
+PostgreSQL `token_version` checked on each authenticated request. Logout increments the
+version and invalidates all previously issued account tokens. Redis, refresh tokens and
+per-device sessions are outside this scope.
+
+Profiles support display name, optional avatar URL, default currency, interests and
+additional preferences. `preferred_pace` is a nullable single choice of `relaxed`,
+`balanced` or `rich`; `preferred_transport` is a deduplicated multiselect subset of
+`walk`, `transit` and `drive`, including the empty set. Future form prefill stays visible
+and editable; the confirmed planning request remains authoritative without a hidden
+profile overlay.
+
+Authenticated Product generation saves only the trusted final V3 Product projection
+after adoption and optional enrichment. Ordinary HTTP and SSE share one transactional
+save boundary. A backend-owned save key makes repeated saves of the same result idempotent;
+any child-write failure rolls back the complete new snapshot. Save failure preserves the
+generated response with explicit unsaved metadata and does not trigger another generation.
+Clarification, blocked outcomes, generation errors and cancellation before saving create
+no trip; a disconnect after commit cannot undo a saved result. Developer, V0-V2 and
+research/evaluator artifacts remain outside Product persistence.
+
+Saved detail preserves actual day/activity/Nearby/transfer order, original datetimes and
+offsets, unknown costs and public policy/transport statuses, including incomplete results
+and `UNKNOWN`/`CONFIRMED` transfers. Weather stores no attribution or source URL and
+does not refresh automatically. Graph state, raw provider payloads and private research
+diagnostics are not saved as Product history.
+
+Owner-scoped APIs will provide account/profile access, paginated history, complete detail,
+separate weather/Nearby/transfer lists, title-only rename and cascade deletion. Missing or
+other-user trip IDs return 404. Saved contents are immutable apart from title; replanning
+starts from the saved confirmed request and creates a new result without changing history.
+
+Acceptance covers backend Product APIs and migrations against a real isolated test
+PostgreSQL database, with external providers/models mocked. It includes authentication,
+ownership, domain constraints, HTTP/SSE save behavior, rollback/idempotency, faithful
+round trips, restart persistence, cascade deletion and preservation of `tripworld`.
+Frontend implementation, refactoring and tests are deferred. Migration/configuration
+commands will be documented when runnable entrypoints exist; no migration or feature
+test execution is implied by this accepted design.
 
 ## Configuration, evidence and verification
 
@@ -129,5 +194,6 @@ Stage completion is not proof of successful repair and overlapping durations are
 API request ownership includes the underlying HTTP transports, not just adapter wrappers.
 Partial setup closes already-created resources; cancellation awaits owned cleanup. Independent
 requests must remain usable after another closes. Local cancellation cannot guarantee termination
-or billing cancellation of work already dispatched to external providers. No reconnect/resume,
-stored itinerary history or public multi-user service guarantee follows from this interface.
+or billing cancellation of work already dispatched to external providers. Streaming provides
+no reconnect/resume or public multi-user service guarantee. Planned saved-trip history uses
+the separate Product persistence boundary described above.

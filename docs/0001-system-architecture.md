@@ -1,6 +1,7 @@
 # System architecture and version boundaries
 
 Status: Implemented architecture, consolidated 2026-10-03 against code and PROJECT.md.
+Product persistence is accepted but not implemented; its planned boundary is described below.
 This document defines the shared shape; [PROJECT.md](../PROJECT.md) owns current work
 status and authorization. Historical checkpoints are not current configuration.
 
@@ -9,7 +10,10 @@ status and authorization. Historical checkpoints are not current configuration.
 The system is a modular monolith: React owns interaction and rendering, FastAPI owns
 HTTP/application boundaries, and backend services own LLM calls, retrieval, external
 evidence, validation and repair. PostgreSQL with pgvector stores the TripWorld retrieval
-corpus. Provider-specific payloads are normalized by integration adapters before domain
+corpus. The accepted Product persistence extension will reuse this PostgreSQL instance
+and database, adding `app` alongside `tripworld`; it introduces no second runtime database
+or Redis. See the [pending Product design](0007-application-operations.md#accepted-product-persistence-design).
+Provider-specific payloads are normalized by integration adapters before domain
 policies consume them. LangGraph expresses version orchestration rather than embedding
 vendor HTTP calls throughout graph nodes.
 
@@ -144,8 +148,13 @@ Graph state is request-local working data: interpreted requirements, candidate s
 normalized evidence, generated itinerary and reference discovery. V3 extends it with the
 validation/repair outcome rather than replacing V0-V2 contracts. `PlanningResult` retains
 research diagnostics; the allowlisted Product DTO is a separate projection, not serialized
-graph state. PostgreSQL stores the retrieval corpus; this design does not persist graph state
-or create a user itinerary-history service.
+graph state. PostgreSQL currently stores the retrieval corpus. The pending Product extension
+will persist user accounts, profiles and only the backend-selected final V3 Product projection
+after enrichment, through a shared ordinary HTTP/SSE completion seam. Graph state remains
+request-local; Developer/research results and V0-V2 outputs do not enter Product storage.
+Research entrypoints remain independently runnable without mandatory Product authentication
+or database settings. Detailed accepted requirements are in
+[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119).
 
 For verification, start with the [runtime port tests](../backend/tests/services/test_planner_runtime.py),
 [dependency-boundary tests](../backend/tests/runtime/test_dependency_boundaries.py),

@@ -25,6 +25,8 @@ Repository content is English; user-facing development discussion is Chinese.
 Use a modular monolith: React frontend; FastAPI API/application/backend services;
 shared LLM, evidence, RAG and orchestration components with version-specific
 entry points; PostgreSQL + pgvector for TripWorld retrieval.
+Accepted Product persistence will add `app` to the same PostgreSQL database; it is pending
+implementation. See the [Product persistence overview](docs/0007-application-operations.md#accepted-product-persistence-design).
 External provider payloads are normalized before entering application policies.
 
 | Version | Implemented mechanism | Independent entry point |
@@ -242,6 +244,16 @@ Ignored logs, artifacts and thesis notes are local evidence, not project authori
 or guaranteed fresh-clone assets.
 
 ## 6. Next work and authorization boundary
+
+Product backend persistence is accepted and pending implementation under
+[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119), with children
+#120-#123. It covers seven `app` tables in the existing PostgreSQL database,
+JWT authentication with PostgreSQL `token_version`, profiles and owner-scoped storage
+of only final V3 Product results. The [Product design overview](docs/0007-application-operations.md#accepted-product-persistence-design)
+summarizes the boundary; the Issue owns detailed fields, constraints and acceptance.
+Current scope covers documentation synchronization and Issue documentation requirements.
+Code implementation, migration execution and frontend implementation/refactoring/testing
+remain deferred. Backend implementation starts with #120 when separately authorized.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
