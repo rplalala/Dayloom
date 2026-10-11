@@ -101,6 +101,7 @@ async def run_tools_planner(
     discovery_factory=None,
     result_factory=PlanningSupplyPlanningResult,
     result_projector=None,
+    opportunity_capture_path=None,
 ) -> PlanningResult:
     """Run V1 with one fixed date, shared budget, cache, tracer, and explicit graph."""
 
@@ -174,6 +175,17 @@ async def run_tools_planner(
             budget=budget,
             tracer=effective_tracer,
         )
+    capture = None
+    if opportunity_capture_path is not None and system_version in (
+        SystemVersion.V1,
+        SystemVersion.V2,
+    ):
+        from backend.app.services.candidate_capture import CandidateCapture
+
+        capture = CandidateCapture(
+            opportunity_capture_path, system_version.value, effective_tracer.run_id
+        )
+        evidence_service.candidate_capture = capture
     extension = discovery_factory(evidence_service) if discovery_factory else None
     graph_kwargs = {"discovery_extension": extension} if extension is not None else {}
     graph = (graph_factory or build_v1_graph)(
@@ -244,7 +256,13 @@ async def run_tools_planner(
             planning_supply=selection.policy_result,
             output_role_summary=output_role_summary(itinerary, selection.policy_result),
         )
+    except asyncio.CancelledError as exc:
+        if capture is not None:
+            capture.finish(rag=extension.report if extension else None, failure=exc)
+        raise
     except Exception as exc:
+        if capture is not None:
+            capture.finish(rag=extension.report if extension else None, failure=exc)
         effective_tracer.event(
             "run_failed",
             {"error": type(exc).__name__},
@@ -258,6 +276,8 @@ async def run_tools_planner(
         )
         raise
 
+    if capture is not None:
+        capture.finish(result=result, rag=extra.get("rag_discovery"))
     effective_tracer.event("run_completed")
     effective_tracer.finish(
         status="completed",
@@ -291,6 +311,11 @@ def build_argument_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--runtime-config", type=Path, help="Explicit immutable runtime YAML policy"
+    )
+    parser.add_argument(
+        "--opportunity-capture",
+        type=Path,
+        help="Optional exclusive best-effort local candidate stage export (V1/V2)",
     )
     parser.add_argument(
         "--development-timeout-seconds",
@@ -482,6 +507,11 @@ def main(
                     runtime_config=runtime_config,
                     runtime_config_path=args.runtime_config,
                     development_timeout_seconds=args.development_timeout_seconds,
+                    **(
+                        {"opportunity_capture_path": args.opportunity_capture}
+                        if args.opportunity_capture is not None
+                        else {}
+                    ),
                 ),
                 owned_clients,
             ),

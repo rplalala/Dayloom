@@ -2,7 +2,10 @@
 
 from importlib import import_module
 
-TRACKS = {"population": "backend.evaluation.research.population"}
+TRACKS = {
+    "population": "backend.evaluation.research.population",
+    "opportunities": "backend.evaluation.research.opportunities",
+}
 
 
 def build_report(context, track):
