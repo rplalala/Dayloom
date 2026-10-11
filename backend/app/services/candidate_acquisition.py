@@ -215,6 +215,9 @@ class CandidateAcquisition:
             contract, destination, intents, failures, executions
         )
         merged = merge_search_observations(observations)
+        capture = getattr(acq, "candidate_capture", None)
+        if capture is not None:
+            capture.pre_google(merged.places)
         resolutions = resolve_named_place_intents(
             names,
             intents,
@@ -254,6 +257,21 @@ class CandidateAcquisition:
         if extension is not None:
             merged = await extension.extend(contract, destination, merged, excluded)
             merged = replace(merged, places=tuple(self.landmarks.annotate(merged.places)))
+        if capture is not None:
+            status = (
+                "partial"
+                if extension is not None
+                and extension.report.get("status") not in ("complete", "empty")
+                else "complete"
+            )
+            reasons = [
+                "search_" + execution.status
+                for execution in executions
+                if execution.status != "provider_success"
+            ]
+            if status == "partial":
+                reasons.append("rag_" + extension.report.get("status", "unavailable"))
+            capture.record("discovered", merged.places, status=status, reasons=reasons)
         eligible = [
             p
             for p in merged.places
@@ -295,6 +313,23 @@ class CandidateAcquisition:
                 "merged_count": len(merged.places),
             },
         )
+        if capture is not None:
+            capture.record("admitted", admitted)
+            capture.omissions(
+                [
+                    {
+                        "canonical_place_id": p.candidate.place_id,
+                        "stage": "admitted",
+                        "reason": "ineligible_or_excluded",
+                    }
+                    for p in merged.places
+                    if p.candidate.place_id not in by_id
+                ]
+                + [
+                    {"canonical_place_id": pid, "stage": "admitted", "reason": "admission_capacity"}
+                    for pid in order[capacities.c_raw :]
+                ]
+            )
         acq._consume_new_candidates(p.candidate.place_id for p in admitted)
         from backend.app.services.candidate_details import acquire_candidate_details
 
@@ -345,6 +380,27 @@ class CandidateAcquisition:
             capacities.r_pool,
             adequate=adequate if semantics else None,
         )
+        if capture is not None:
+            capture.record(
+                "enriched",
+                rich,
+                reasons=[getattr(acq, "details_report", {}).get("stop", "unknown")],
+            )
+            capture.omissions(
+                [
+                    {"canonical_place_id": pid, "stage": "enriched", "reason": reason}
+                    for pid, reason in detail_failures
+                ]
+                + [
+                    {
+                        "canonical_place_id": pid,
+                        "stage": "enriched",
+                        "reason": "unprocessed_"
+                        + getattr(acq, "details_report", {}).get("stop", "unknown"),
+                    }
+                    for pid in getattr(acq, "details_report", {}).get("unprocessed_ids", [])
+                ]
+            )
         if semantics:
             await semantics.prepare([p.structured_evidence for p in rich], contract)
         if not required <= {p.candidate.place_id for p in rich}:
@@ -372,6 +428,20 @@ class CandidateAcquisition:
         final = selection_record(
             policy_result.selected_place_ids, rich, required, r.end_date, details=True
         )
+        if capture is not None:
+            supplied = set(final.selected_place_ids)
+            capture.record("supplied", [p for p in rich if p.candidate.place_id in supplied])
+            capture.omissions(
+                [
+                    {
+                        "canonical_place_id": p.candidate.place_id,
+                        "stage": "supplied",
+                        "reason": "not_selected",
+                    }
+                    for p in rich
+                    if p.candidate.place_id not in supplied
+                ]
+            )
         acq._budget.consume(ToolBudgetKey.FINAL_POIS, len(final.selected_place_ids))
         funnel = CandidatePool(
             capacities=capacities,
