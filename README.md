@@ -92,6 +92,9 @@ A standard manifest alone establishes no formal benchmark.
 
 Detailed schemas and handoff parameters: [material operations](backend/evaluation/README.md#installed-generation-and-material-handoff),
 [current producer contract](docs/contracts/0002-intake-identity-usage.md#producer-material-handoff).
+Accepted benchmark candidate bundles belong in [`benchmark/`](benchmark/README.md),
+with an immutable validated manifest and source material per case revision. Evaluation
+outputs remain in explicit fresh directories under `artifacts/`.
 Legacy module commands and historical switches retain their meaning in the
 [evaluation package guide](backend/evaluation/README.md); smoke/history remain separate
 under the [development guide](docs/guides/development.md).
