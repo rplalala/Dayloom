@@ -63,6 +63,95 @@ submitted inputs. Missing optional V3 draft/final-primary projections disable de
 work only; they are not reconstructed. Usage may explicitly be unavailable, rather than zero.
 Exact parsing/projection wire is owned by [intake](0002-intake-identity-usage.md#rtpeval-intake-projection-contract).
 
+## Original-input research declarations and attempt census
+
+The offline `rtpeval research validate/report` boundary consumes one explicit
+`rtpeval_research_declaration_1`, rooted at its parent directory. It binds
+`population_ref`, `profile_ref`, optional `census_ref`, and optional `track_refs`
+for separately selected research tracks. References use the existing available
+artifact wire: relative `path`, exact-byte `sha256`, `media_type`, and
+`schema_version` for versioned JSON envelopes. Resolved links and junctions must
+remain inside the declaration root. Configuration artifacts may bind JSON or
+exact non-JSON bytes such as YAML. No directory discovery occurs.
+
+`rtpeval_research_population_1` has `population_id`, `revision`, and ordered
+nonempty `cases`. Each case has a unique `case_id`, case `revision`, original
+`input_ref`, explicit `metadata`, ordered unique `planned_versions`, and ordered
+unique `repetition_ids`. Metadata may be empty; it does not infer research strata.
+Slots are the case-local product of repetitions and declared V0-V3 versions;
+case identity remains distinct from repetition identity. Population size is arbitrary.
+An unrepeated twenty-case four-version inventory has eighty planned slots without
+requiring results, reviewed requirements, or qualified quality groups.
+
+`rtpeval_research_profile_1` declares the following fixed selection contract:
+
+| Field | Meaning |
+| --- | --- |
+| `profile_id`, `revision`, `source_revision` | Selection identity, revision, and declared implementation/source context |
+| `population_id`, `population_revision` | Exact inventory revision |
+| `declared_at`, `timing_basis` | Timezone-aware declaration time and `prospective`, `retrospective`, or `unverified` timing |
+| `first_attempt_rule` | Required `first_dispatched`; planner dispatch is distinct from HTTP sends or evaluator execution |
+| `retry_rule` | Explicit `selection=none` or `last_dispatched`, with `scope=slot`; any retry-policy result is separate from the primary attempt |
+| `completion_policy_ref`, `completion_mapping` | Native producer policy and explicit native-status normalization, defined in [completion semantics](0002-intake-identity-usage.md#research-completion-and-selection) |
+| `configurations` | Exact configuration artifact references keyed by every declared version |
+| `previous_profile_ref` | Optional exact reference to the preceding profile revision |
+
+Prospective declaration time cannot follow any recorded dispatch. Retrospective
+and unverified timing remain visible. Changed profiles use new linked revisions;
+when history is supplied, its profile/population identities, distinct revisions,
+ordered declaration times, schema, and bytes are verified. Hashes preserve supplied
+history; they do not independently prove when a declaration was made.
+
+`rtpeval_research_census_1` binds `population_id`, `population_revision`,
+`profile_id`, `profile_revision`, and an explicit `attempts` array. Missing census
+or missing slot records means unknown availability, rather than unstarted or failed.
+Every supplied record binds the following:
+
+- Slot fields `case_id`, `case_revision`, `version`, and `repetition_id`.
+- Globally unique `attempt_id` and `run_id`; positive contiguous per-slot `order`
+  starting at one; explicit `prior_attempt_id=null` for the first record and the
+  immediate predecessor for subsequent records. Per-slot array order and dispatch
+  timestamps must agree.
+- `dispatched` and timezone-aware `dispatched_at`, with null timestamp when false;
+  exact `input_sha256` and `configuration_sha256`; `reason_type`; and explicit
+  `execution_metadata` for observed cache, concurrency, invocation order, and
+  other execution conditions. An empty metadata object means these conditions
+  were not supplied, rather than equal or controlled.
+- Optional `completion_ref`, `result_ref`, `usage_ref`, and `provenance_ref`.
+  Absence remains unavailable. Supplied JSON is strictly parsed and its exact
+  bytes/schema are checked. Native usage/provenance require `group_id` on the
+  record and match group/run/version/result bindings. Provenance additionally
+  matches the original input; generation usage requires explicit planner namespace.
+  Result `system_version` must match the slot. Any supplied extra native input or
+  configuration hash must also match.
+
+Failed, clarified, cancelled, or pending records need no adopted result. Supplied
+producer completion carries `declared_by`, timezone-aware `declared_at`,
+`policy_ref`, `workflow_status`, and a typed `required_mechanisms` object including
+generation. It cannot precede dispatch. Optional `producer_policy_ref` must agree.
+Result existence, quality PASS, and accepted Repair are never completion evidence.
+A non-dispatch record can declare unstarted or unknown/pending; terminal generation
+outcomes require dispatch. The first dispatched record is selected even if an
+unstarted record precedes it. Further dispatches are explicit retries.
+
+The population report wire is `rtpeval_research_population_report_1`. It retains
+ordered slots and all attempts, selection profile, case/version/repetition views,
+all-four request/repetition rows, reasons, and distinct completion denominators.
+Source bindings are declaration-root-relative, include the declaration's own byte
+hash, and produce a deterministic `source_digest`; `population_digest` binds the
+inventory's canonical content. `semantic_sha256` hashes the full report except
+itself using sorted compact UTF-8 JSON with finite numbers. There is no generated
+clock or output-directory value inside the semantic report.
+
+`validate` returns JSON on stdout without writing artifacts. `report` requires
+`--directory` naming a fresh directory and writes `population.json` and
+`population.md`. Both require explicit `--track population`. Processing returns
+zero on valid material and two with `needs_material_correction` on malformed,
+foreign, stale, contradictory, or unsafe material; it never silently reports a
+smaller cohort. Reports preserve sources byte-for-byte. This boundary reads saved
+material only and does not qualify raw attempts for native quality intake, run
+planners, acquire evidence, or select benchmark cases.
+
 ## Activity, transport and occupancy scope
 
 Each primary visit is one concrete place occurrence with its own interval. A confirmed
