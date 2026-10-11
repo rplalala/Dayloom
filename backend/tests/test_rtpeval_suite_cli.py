@@ -125,7 +125,7 @@ def test_multi_case_execution_replays_offline_and_report_refresh_preserves_recei
     assert len(calls) == 18
     assert all(row["primary_report"]["unknowns"] for row in report["cases"])
     assert all('"FAIL"' in json.dumps(row["primary_report"]["quality"]) for row in report["cases"])
-    assert report["cases"][0]["tracks"]["pair"]["processing_status"] == "pending"
+    assert report["cases"][0]["tracks"]["pair"]["processing_status"] == "not_requested"
     receipt = (directory / "receipt.json").read_bytes()
     replay = installed_cli("suite", "replay", directory, evaluation_offline=True)
     assert replay.returncode == 0, replay.stdout + replay.stderr
