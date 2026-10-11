@@ -2,8 +2,9 @@
 
 from statistics import median
 
-from backend.cli.collection import _require
-from backend.evaluation.usage_report import number, summarize
+from backend.evaluation.usage_report import number
+
+from .usage import validate_generation_usage
 
 METRICS = (
     "model_calls",
@@ -58,34 +59,9 @@ def resource_row(context, slot, attempt):
         row["availability"] = "missing_usage"
         return row
     usage = context.read_ref(attempt["usage_ref"], "rtpeval_usage_1")
-    _require(usage.get("namespace") == "planner", "Explicit planner namespace required")
-    _require(attempt["dispatched"], "Generation usage on undispatched attempt")
-    _require(
-        all(usage.get(k) != "frozen_simulation" for k in ("outcome", "usage_scope", "scope")),
-        "Frozen simulation is not generation usage",
+    native = validate_generation_usage(
+        usage, dispatched=attempt["dispatched"], workflow_status=attempt["status"]
     )
-    _require(
-        attempt["status"] != "completed"
-        or usage.get("outcome") not in ("failed", "cancelled", "incomplete"),
-        "Completed attempt usage outcome mismatch",
-    )
-    for field in ("coverage", "timing", "repair_summary"):
-        _require(isinstance(usage.get(field, {}), dict), "Malformed native usage object: " + field)
-    for field in ("model_calls", "provider_events", "cache_events"):
-        members = usage.get(field, [])
-        _require(
-            isinstance(members, list) and all(isinstance(r, dict) for r in members),
-            "Malformed native usage event array: " + field,
-        )
-    for field in ("model_event_ids", "provider_event_ids"):
-        ids = usage.get("repair_summary", {}).get(field, [])
-        _require(
-            isinstance(ids, list)
-            and all(isinstance(i, str) and i for i in ids)
-            and len(ids) == len(set(ids)),
-            "Malformed Repair usage subset: " + field,
-        )
-    native = summarize(usage)
     covered = native["adapter_coverage"] == "declared_default_adapters"
     models = usage.get("model_calls", [])
     embeddings = [m for m in models if m.get("operation") == "embedding"]
@@ -121,10 +97,6 @@ def resource_row(context, slot, attempt):
         p for p in usage.get("provider_events", []) if p.get("source") != "sdk_output_tool_calls"
     ]
     provider_ids = set(usage.get("repair_summary", {}).get("provider_event_ids", []))
-    _require(
-        provider_ids <= {p["event_id"] for p in usage.get("provider_events", [])},
-        "Repair references absent provider events",
-    )
     repaired = [m for m in models if m["event_id"] in repair_ids]
     row["repair"] = {
         "model_calls": len(repaired) if covered else None,
@@ -152,12 +124,6 @@ def covered_ledger(row):
 
 
 def all_attempts(context):
-    for slot in context.slots:
-        for attempt in slot["attempts"]:
-            _require(
-                attempt["dispatched"] or attempt.get("usage_ref") is None,
-                "Generation usage on undispatched attempt",
-            )
     rows = [
         resource_row(context, slot, attempt)
         for slot in context.slots

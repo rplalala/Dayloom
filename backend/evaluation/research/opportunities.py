@@ -3,6 +3,7 @@
 from backend.cli.collection import _require
 
 from .context import slot_key, text_fields
+from .rendering import cell, table_row
 from .sources import digest
 
 STAGES = ("discovered", "admitted", "enriched", "supplied")
@@ -17,6 +18,21 @@ def unavailable(reason):
         "reasons": [reason],
         "origin_partitions": {"google_only": [], "rag_only": [], "mixed": []},
     }
+
+
+def origin_partitions(ids, places):
+    """Partition canonical IDs by their saved discovery origins."""
+    partitions = {"google_only": [], "rag_only": [], "mixed": []}
+    for pid in sorted(ids):
+        place = places.get(pid, {})
+        google, rag = bool(place.get("google_origins")), bool(place.get("rag_origins"))
+        if google and rag:
+            partitions["mixed"].append(pid)
+        elif google:
+            partitions["google_only"].append(pid)
+        elif rag:
+            partitions["rag_only"].append(pid)
+    return partitions
 
 
 def opportunities_report(context):
@@ -122,6 +138,50 @@ def opportunities_report(context):
         runs.append(row)
     value = {
         "schema_version": "rtpeval_research_opportunities_report_1",
+        "processing_status": "completed",
+        "track": "opportunities",
+        "applicability": "applicable" if runs else "not_applicable",
+        "population_digest": digest(context.population),
+        "measurement_coverage": {
+            "unit": "planned_v1_v2_slots",
+            "planned_slots": len(runs),
+            "captured_slots": sum("observation" in row for row in runs),
+            "stages": {
+                name: {
+                    status: sum(
+                        (row["scheduled"] if name == "scheduled" else row["stages"][name])["status"]
+                        == status
+                        for row in runs
+                    )
+                    for status in ("complete", "partial", "unavailable")
+                }
+                for name in (*STAGES, "scheduled")
+            },
+        },
+        "review_coverage": {
+            "unit": "planned_v1_v2_slots",
+            "independent_association_slots": sum(
+                row["scheduled"]["status"] != "unavailable" for row in runs
+            ),
+            "relevance_review": "not_performed",
+        },
+        "diagnostics": [
+            {
+                **{
+                    key: row[key]
+                    for key in (
+                        "case_id",
+                        "case_revision",
+                        "version",
+                        "repetition_id",
+                        "attempt_id",
+                    )
+                },
+                "reason": reason,
+            }
+            for row in runs
+            for reason in row["diagnostics"]
+        ],
         "identity_unit": "canonical_place_id",
         "population_id": context.population["population_id"],
         "population_revision": context.population["revision"],
@@ -150,27 +210,26 @@ def markdown(value):
     for run in value["runs"]:
         for name, stage in {**run["stages"], "scheduled": run["scheduled"]}.items():
             lines.append(
-                f"| {run['case_id']} / {run['case_revision']} / {run['repetition_id']} "
-                f"| {run['version']} | {name} | {stage['observed_count']} "
-                f"| {stage['complete_count']} | {stage['status']} "
-                f"| {', '.join(stage['canonical_ids'])} | {', '.join(stage['reasons'])} |"
+                table_row(
+                    f"{run['case_id']} / {run['case_revision']} / {run['repetition_id']}",
+                    run["version"],
+                    name,
+                    stage["observed_count"],
+                    stage["complete_count"],
+                    stage["status"],
+                    stage["canonical_ids"],
+                    stage["reasons"],
+                )
             )
         if run["diagnostics"]:
             lines += [
                 "",
-                f"{run['case_id']} {run['version']} diagnostics: " + ", ".join(run["diagnostics"]),
+                cell(
+                    f"{run['case_id']} {run['version']} diagnostics: "
+                    + ", ".join(run["diagnostics"])
+                ),
                 "",
             ]
-    lines += [
-        "",
-        "## Sources",
-        "",
-        "Paths resolve under the research declaration's source root; "
-        "exact byte hashes bind these observations.",
-        "",
-    ]
-    for source in value["source_bindings"]:
-        lines.append(f"- [{source['path']}]({source['path']}): `{source['sha256']}`")
     lines += [
         "",
         f"Source digest: `{value['source_digest']}`.",
@@ -296,21 +355,7 @@ def _captured(capture):
         }
     for stage in stages.values():
         ids = stage["canonical_ids"]
-        stage["origin_partitions"] = {
-            "google_only": [
-                pid
-                for pid in ids
-                if places[pid]["google_origins"] and not places[pid]["rag_origins"]
-            ],
-            "rag_only": [
-                pid
-                for pid in ids
-                if places[pid]["rag_origins"] and not places[pid]["google_origins"]
-            ],
-            "mixed": [
-                pid for pid in ids if places[pid]["google_origins"] and places[pid]["rag_origins"]
-            ],
-        }
+        stage["origin_partitions"] = origin_partitions(ids, places)
     for previous, name in zip(STAGES, STAGES[1:], strict=False):
         if stages[previous]["status"] == "complete":
             _require(

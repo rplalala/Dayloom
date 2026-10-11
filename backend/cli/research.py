@@ -25,6 +25,7 @@ def main(argv=None):
     from backend.cli.collection import CollectionError
     from backend.evaluation.research.context import load_context
     from backend.evaluation.research.registry import build_report
+    from backend.evaluation.research.rendering import render_markdown
 
     try:
         context = load_context(args.declaration)
@@ -38,7 +39,13 @@ def main(argv=None):
                 json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
                 encoding="utf-8",
             )
-            (directory / (args.track + ".md")).write_text(render(report), encoding="utf-8")
+            markdown_path = directory / (args.track + ".md")
+            markdown_path.write_text(
+                render_markdown(
+                    report, render, source_root=context.root, output_path=markdown_path
+                ),
+                encoding="utf-8",
+            )
         print(
             json.dumps(
                 {

@@ -56,6 +56,16 @@ def attach_costs(context, ledger, descriptors):
                 rows is None or isinstance(rows, list) and all(isinstance(r, dict) for r in rows),
                 "Malformed native accounting array: " + field,
             )
+        for annotation in annotations or []:
+            _require(
+                isinstance(annotation.get("fields"), dict),
+                "Malformed native accounting annotation fields",
+            )
+            _billing_context(annotation["fields"])
+        for row in selected:
+            for field in ("model_calls", "provider_events"):
+                for event in row["raw_usage"].get(field, []):
+                    _billing_context(event)
         report = build_cost_report(
             [{"sha256": r["usage_sha256"], "usage": r["raw_usage"]} for r in selected],
             prices,
@@ -139,3 +149,10 @@ def attach_costs(context, ledger, descriptors):
             )
         consumption.append(row)
     ledger["cost_consumption"] = consumption
+
+
+def _billing_context(event):
+    _require(
+        "billing_context" not in event or isinstance(event["billing_context"], dict),
+        "Malformed native billing_context",
+    )

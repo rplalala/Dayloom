@@ -7,6 +7,7 @@ from backend.cli.collection import _require
 
 from .controlled import controlled_view
 from .native import quality_rows, read_mechanism, read_pair, selected_groups
+from .rendering import table_row
 from .sources import digest
 
 
@@ -239,8 +240,13 @@ def markdown(report):
         ("Same-run V3 draft to final primary", counts),
     ):
         lines.append(
-            f"| {label} | {values['improved']} | {values['unchanged']} | "
-            f"{values['worse']} | {values['unavailable']} |"
+            table_row(
+                label,
+                values["improved"],
+                values["unchanged"],
+                values["worse"],
+                values["unavailable"],
+            )
         )
     controlled = report["controlled"]
     if controlled["applicability"] != "not_declared":
@@ -257,9 +263,9 @@ def markdown(report):
             "| Preservation | Targets |",
             "| --- | ---: |",
         ]
-        lines += [f"| {name} | {count} |" for name, count in controlled["preservation"].items()]
+        lines += [table_row(name, count) for name, count in controlled["preservation"].items()]
         lines += ["", "| Control outcome | Cases |", "| --- | ---: |"]
-        lines += [f"| {name} | {count} |" for name, count in controlled["control_outcomes"].items()]
+        lines += [table_row(name, count) for name, count in controlled["control_outcomes"].items()]
     lines += [
         "",
         "Four-final masks and same-run pair masks retain their native definitions.",

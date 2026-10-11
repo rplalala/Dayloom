@@ -386,6 +386,22 @@ def test_complete_schedule_excludes_nearby_and_generic_with_producer_fate_confli
     assert row["scheduled"]["complete_count"] == 2
     assert row["scheduled"]["status"] == "complete"
     assert "producer_scheduled_fate_conflicts_with_independent_associations" in row["diagnostics"]
+    assert value["review_coverage"]["independent_association_slots"] == 1
+    assert value["measurement_coverage"]["stages"]["scheduled"] == {
+        "complete": 1,
+        "partial": 0,
+        "unavailable": 1,
+    }
+    assert value["diagnostics"] == [
+        {
+            **{
+                key: row[key]
+                for key in ("case_id", "case_revision", "version", "repetition_id", "attempt_id")
+            },
+            "reason": reason,
+        }
+        for reason in row["diagnostics"]
+    ]
     assert all(
         "reference_recommendations" not in item["source"]["pointer"]
         for item in row["scheduled"]["associations"]
@@ -430,3 +446,64 @@ def test_final_semantic_binding_rejects_capture_for_different_output(
     )
     assert result.returncode == 2
     assert "Capture final semantic" in result.stdout
+
+
+@pytest.mark.parametrize("applicable", [True, False])
+def test_opportunity_report_envelope_describes_coverage_and_applicability(
+    installed_cli, research_material, tmp_path, applicable
+):
+    import hashlib
+
+    if not applicable:
+        for case in research_material[1]["cases"]:
+            case["planned_versions"] = ["v0", "v3"]
+    value = report(installed_cli, research_material, [], tmp_path / "envelope")
+    planned = 40 if applicable else 0
+    assert value["processing_status"] == "completed"
+    assert value["track"] == "opportunities"
+    assert value["applicability"] == ("applicable" if applicable else "not_applicable")
+    assert value["measurement_coverage"] == {
+        "unit": "planned_v1_v2_slots",
+        "planned_slots": planned,
+        "captured_slots": 0,
+        "stages": {
+            stage: {"complete": 0, "partial": 0, "unavailable": planned}
+            for stage in ("discovered", "admitted", "enriched", "supplied", "scheduled")
+        },
+    }
+    assert value["review_coverage"] == {
+        "unit": "planned_v1_v2_slots",
+        "independent_association_slots": 0,
+        "relevance_review": "not_performed",
+    }
+    expected_digest = hashlib.sha256(
+        json.dumps(
+            research_material[1], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode()
+    ).hexdigest()
+    assert value["population_digest"] == expected_digest
+    assert value["diagnostics"] == []
+    assert len(value["runs"]) == planned
+
+
+def test_opportunity_envelope_counts_partial_capture_without_claiming_review(
+    installed_cli, research_material, tmp_path
+):
+    entry, capture = observation(research_material)
+    capture["stages"]["enriched"]["status"] = "partial"
+    capture["stages"]["enriched"]["reasons"] = ["truncated_export"]
+    entry["capture_ref"] = save(research_material[0], "capture.json", capture)
+    value = report(installed_cli, research_material, [entry], tmp_path / "covered")
+    assert value["measurement_coverage"]["planned_slots"] == 2
+    assert value["measurement_coverage"]["captured_slots"] == 1
+    assert value["measurement_coverage"]["stages"]["enriched"] == {
+        "complete": 0,
+        "partial": 1,
+        "unavailable": 1,
+    }
+    assert value["measurement_coverage"]["stages"]["discovered"] == {
+        "complete": 1,
+        "partial": 0,
+        "unavailable": 1,
+    }
+    assert value["review_coverage"]["independent_association_slots"] == 0

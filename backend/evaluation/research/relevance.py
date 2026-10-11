@@ -3,8 +3,10 @@
 from backend.cli.collection import _require
 
 from .corpus_coverage import _coverage, _coverage_summary, _rag_coverage
-from .opportunities import STAGES, opportunities_report
+from .opportunities import STAGES, opportunities_report, origin_partitions
 from .relevance_material import _interests, _reviews
+from .rendering import cell as _cell
+from .rendering import table_row as _row
 from .sources import digest
 
 ALL_STAGES = (*STAGES, "scheduled")
@@ -113,13 +115,33 @@ def relevance_report(context):
         "applicability": "applicable"
         if any(run["relevance_status"] == "applicable" for run in runs)
         else "not_applicable"
-        if runs and all(run["relevance_status"] == "not_applicable" for run in runs)
+        if not runs or all(run["relevance_status"] == "not_applicable" for run in runs)
         else "unavailable",
         "identity_unit": "canonical_place_id",
         "population_id": context.population["population_id"],
         "population_revision": context.population["revision"],
         "profile_id": context.profile["profile_id"],
         "profile_revision": context.profile["revision"],
+        "population_digest": digest(context.population),
+        "measurement_coverage": {
+            "opportunities": opportunities["measurement_coverage"],
+            "corpus": {
+                "unit": "original_requests",
+                "planned_cases": len(context.population["cases"]),
+                **{
+                    status: sum(row["status"] == status for row in coverage)
+                    for status in ("complete", "partial", "unavailable")
+                },
+            },
+        },
+        "review_coverage": {
+            "unit": "original_requests",
+            "planned_cases": len(context.population["cases"]),
+            "interest_inventory_cases": len(inventories),
+            "relevance_review_cases": len(reviews),
+            "relevance_review_records": sum(len(labels) for labels in reviews.values()),
+        },
+        "diagnostics": opportunities["diagnostics"],
         "runs": runs,
         "opportunity_semantic_sha256": opportunities["semantic_sha256"],
         "interest_inventory_bindings": [
@@ -371,40 +393,11 @@ def markdown(value):
         )
     lines += [
         "",
-        "## Sources",
-        "",
-        "Exact byte hashes below bind source-root-relative materials. JSON retains "
-        "nested evidence references and original request/spec pointers.",
-        "",
-    ]
-    for source in value["source_bindings"]:
-        lines.append("- `" + _cell(source["path"]) + "`: `" + source["sha256"] + "`")
-    lines += [
-        "",
         f"Source digest: `{value['source_digest']}`.",
         f"Semantic digest: `{value['semantic_sha256']}`.",
         "",
     ]
     return "\n".join(lines)
-
-
-def _cell(value):
-    if value is None:
-        return "unavailable"
-    if isinstance(value, list):
-        value = ", ".join(str(member) for member in value)
-    return (
-        str(value)
-        .replace("\\", "\\\\")
-        .replace("|", "\\|")
-        .replace("\n", " ")
-        .replace("\r", " ")
-        .replace("`", "\\`")
-    )
-
-
-def _row(*values):
-    return "| " + " | ".join(_cell(value) for value in values) + " |"
 
 
 def _stage(stage, interests, labels, places):
@@ -441,25 +434,7 @@ def _stage(stage, interests, labels, places):
         reasons.append("missing_relevance_reviews")
     if unknown_judgments:
         reasons.append("unknown_relevance_judgments")
-    origins = stage.get("origin_partitions") or {
-        "google_only": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("google_origins")
-            and not places.get(pid, {}).get("rag_origins")
-        ],
-        "rag_only": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("rag_origins")
-            and not places.get(pid, {}).get("google_origins")
-        ],
-        "mixed": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("rag_origins") and places.get(pid, {}).get("google_origins")
-        ],
-    }
+    origins = stage.get("origin_partitions") or origin_partitions(ids, places)
     return {
         "status": "complete"
         if complete

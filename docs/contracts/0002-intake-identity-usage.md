@@ -736,8 +736,11 @@ The calculator does not interpret free text to infer a SKU.
 
 The caller supplies hashes of original usage file bytes to the library; the CLI computes
 them itself. Optional historical annotations bind exact usage SHA-256, event kind/ID,
-source SHA-256, source reference and explanation. They can supplement missing billing
-context or an explicitly stated cache assumption, but cannot overwrite observations or
+source SHA-256, source reference and explanation. The research reader requires an
+object-valued `fields` and object-valued supplied `billing_context` in annotations
+or observed events before native rebuilding; omitted context remains missing.
+Annotations can supplement missing billing context or an explicitly stated cache
+assumption, but cannot overwrite observations or
 replace status, model identity, input/output tokens or artifact lineage. An assumption is
 retained beside the estimate rather than becoming observed provider data. An explicit
 unit-rate scenario may use a price row's `assumption`; it is not confirmed SKU evidence.
@@ -884,7 +887,7 @@ within it. Required source artifacts use exact byte SHA-256, JSON media type,
 provenance and optional generation evidence retain exact bytes and relative layout.
 Generation evidence remains producer evidence, not independent evaluator ground truth.
 
-A group declares its original `input_ref` and `selected_runs` keyed by V0–V3. Each
+A group declares its original `input_ref` and `selected_runs` keyed by V0閳ユ彜3. Each
 existing run supplies result/usage/provenance refs and completion. Missing result/usage
 may be retained as blocked material; a no-result producer provenance records
 `result_sha256=null`. Missing provenance requires a traceable source-bound
@@ -999,6 +1002,22 @@ mechanism. A normally finished workflow may contain quality FAIL/UNKNOWN or skip
 Repair. Missing completion declaration remains unknown, including when result and
 usage files exist. Processing completion is independent of workflow completion.
 
+Every supplied native usage envelope is validated at the common census boundary,
+regardless of the selected research track. Its explicit planner namespace,
+collection status, event arrays, coverage/timing objects and Repair event subsets
+must remain structurally valid and source-matched. Evaluator/oracle namespaces and
+explicit frozen simulation are invalid generation material. A completed producer
+workflow contradicts explicitly failed, cancelled or incomplete capture usage;
+required-mechanism workflow failure can coexist with completed capture usage.
+Absent optional fields in a declared unavailable envelope remain valid.
+
+An undispatched attempt may retain a source-matched unavailable usage placeholder
+without model/provider/cache events, stage spans, measured invocation timing,
+Repair consumption or a capture outcome implying dispatch. Empty Repair subsets
+and zero observed Repair rounds describe no consumption. The placeholder remains
+in the census and source inventory but is excluded from actual consumption.
+Observed generation usage on an undispatched attempt requires material correction.
+
 Primary selection uses the earliest dispatched attempt in the ordered per-slot
 census. A preliminary non-dispatch declaration is not a first invocation; later
 retries cannot replace a failed primary result. The optional `last_dispatched`
@@ -1097,8 +1116,8 @@ Failed/cancelled attempts and retries contribute observed consumption. Workflow
 failure can coexist with completed capture usage when a required mechanism failed;
 that observation remains in the failed/censored elapsed cohort. Successful elapsed
 cohorts distinguish selected primaries from retries, version and timing scope.
-An undispatched attempt cannot carry generation usage. Evaluator/oracle namespaces
-and explicit frozen simulation are invalid generation material.
+Usage validity and unavailable placeholder retention follow the common census
+validation above.
 
 Overall and per-version consumption have complete totals only when census dispatch
 coverage and native adapter observations are complete and all required measures are

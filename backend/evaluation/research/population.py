@@ -3,6 +3,7 @@
 from collections import Counter
 
 from .context import STATUSES, VERSIONS
+from .rendering import cell, table_row
 from .sources import digest
 
 
@@ -189,7 +190,7 @@ def markdown(report):
     lines = [
         "# Original-input population completion",
         "",
-        f"Population: `{population['population_id']}`; "
+        f"Population: {cell(population['population_id'])}; "
         f"original requests: {population['unique_requests']}.",
         "",
         f"Confirmed completion: {summary['numerator']}/{summary['denominator']} "
@@ -201,9 +202,12 @@ def markdown(report):
     for version, row in report["by_version"].items():
         completion = row["planned_completion"]
         lines.append(
-            f"| {version} | {completion['numerator']}/{completion['denominator']} "
-            f"| {completion['unresolved']} "
-            f"| {row['conditional_completion']['denominator']} |"
+            table_row(
+                version,
+                f"{completion['numerator']}/{completion['denominator']}",
+                completion["unresolved"],
+                row["conditional_completion"]["denominator"],
+            )
         )
     conditional = report["summary"]["conditional_completion"]
     four = report["all_four"]["completion"]
@@ -221,10 +225,7 @@ def markdown(report):
         "",
         "| State | Slots |",
         "| --- | ---: |",
-        *(
-            f"| {status} | {count} |"
-            for status, count in report["summary"]["status_counts"].items()
-        ),
+        *(table_row(status, count) for status, count in report["summary"]["status_counts"].items()),
         "",
         f"Selection timing basis: {report['selection_profile']['timing_basis']}; "
         "retries are retained separately from primary selection.",

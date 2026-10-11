@@ -160,6 +160,16 @@ Every planned V1/V2 slot remains a row, including missing, failed and cancelled
 attempts. The identity unit is a canonical Google Place ID. This observational
 track does not decide relevance, verify quality or execute a historical planner.
 
+The report envelope records processing status separately from track applicability:
+no planned V1/V2 slots means `not_applicable`; missing historical captures for
+planned slots remain applicable and unavailable. Profile IDs, population/source
+digests, ordered rows and the semantic hash retain their source bindings.
+`measurement_coverage` counts planned and captured V1/V2 slots and complete,
+partial and unavailable slots for each discovery stage and independent scheduling.
+`review_coverage` counts slots with independent final-place associations and marks
+relevance review as not performed by this track. Top-level diagnostics retain
+case/revision/version/repetition/attempt identity alongside each per-run conflict.
+
 `track_refs.opportunities` references `rtpeval_research_opportunities_1` with an
 explicit `observations` array. Each observation binds `case_id`, `case_revision`,
 `version`, `repetition_id`, the census-selected first dispatched `attempt_id` and
@@ -215,6 +225,15 @@ first-attempt opportunity rows and native independent scheduling. Material reade
 verify exact bytes, case/source bindings and declared completeness; they do not
 execute reviewers or corpus measurements. This view remains separate from primary
 quality scoring.
+
+The report envelope retains profile identity, population/source digests and a
+semantic hash. `measurement_coverage` preserves the opportunity slot/stage census
+and counts complete, partial and unavailable corpus observations per original
+request. `review_coverage` separately counts source-bound interest inventories,
+cases with saved relevance judgments and independent review records, without
+counting version/repetition rows as additional requests. Source-bound opportunity
+conflicts remain top-level diagnostics. No planned V1/V2 slots is not applicable;
+missing independent interest material for planned slots remains unavailable.
 
 `track_refs.relevance` references `rtpeval_research_relevance_1`, binding
 `population_id`, `population_revision`, `profile_id` and `profile_revision`. Its

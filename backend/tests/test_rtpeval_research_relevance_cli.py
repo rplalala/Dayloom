@@ -200,6 +200,14 @@ def test_independent_labels_deduplicate_places_over_interests_and_stage_entities
         research_material, [entry], inventories=[inventory_ref], reviews=[reviews]
     )
     report = get_report(installed_cli, declaration, tmp_path / "labeled")
+    assert report["review_coverage"] == {
+        "unit": "original_requests",
+        "planned_cases": 1,
+        "interest_inventory_cases": 1,
+        "relevance_review_cases": 1,
+        "relevance_review_records": 6,
+    }
+    assert report["measurement_coverage"]["opportunities"]["captured_slots"] == 1
     run = report["runs"][1]
     assert run["stages"]["discovered"]["canonical_ids"] == ["a", "b", "c"]
     assert run["stages"]["discovered"]["complete_count"] == 3
@@ -210,6 +218,11 @@ def test_independent_labels_deduplicate_places_over_interests_and_stage_entities
     assert run["stages"]["supplied"]["complete_count"] == 2
     assert run["end_to_end"]["complete_count"] is None
     assert run["stages"]["discovered"]["origin_partitions"]["mixed"] == ["b"]
+    assert run["stages"]["discovered"]["origin_partitions"] == {
+        "google_only": ["a"],
+        "rag_only": ["c"],
+        "mixed": ["b"],
+    }
 
 
 def native_pair(material, batch):
@@ -327,6 +340,11 @@ def test_complete_pairs_preserve_chain_intersection_and_signed_composition_chang
     report = get_report(installed_cli, declaration, tmp_path / "paired")
     assert report["runs"][0]["end_to_end"]["canonical_ids"] == ["a", "d"]
     assert report["runs"][1]["end_to_end"]["canonical_ids"] == ["a", "b"]
+    assert report["runs"][1]["stages"]["scheduled"]["origin_partitions"] == {
+        "google_only": ["a"],
+        "rag_only": [],
+        "mixed": ["b"],
+    }
     paired = report["comparisons"][0]
     assert paired["end_to_end"] == {
         "status": "complete",
@@ -416,6 +434,13 @@ def test_valid_zero_pinned_corpus_retains_exact_scope_and_retrospective_stratum(
         profile=save(research_material[0], "coverage-profile.json", profile),
     )
     report = get_report(installed_cli, declaration, tmp_path / "coverage")
+    assert report["measurement_coverage"]["corpus"] == {
+        "unit": "original_requests",
+        "planned_cases": 1,
+        "complete": 1,
+        "partial": 0,
+        "unavailable": 0,
+    }
     row = report["coverage"][0]
     assert row["status"] == "complete"
     assert row["eligible_entity_count"] == 0
@@ -865,3 +890,60 @@ def test_malformed_requirement_review_time_is_rejected(
     result = installed_cli("research", "validate", declaration, "--track", "relevance")
     assert result.returncode == 2
     assert "needs_material_correction" in result.stdout
+
+
+@pytest.mark.parametrize("applicable", [True, False])
+def test_relevance_report_envelope_covers_unavailable_material_and_unplanned_slots(
+    installed_cli, research_material, tmp_path, applicable
+):
+    import hashlib
+
+    if not applicable:
+        for case in research_material[1]["cases"]:
+            case["planned_versions"] = ["v0", "v3"]
+    declaration = write_relevance(research_material)
+    value = get_report(installed_cli, declaration, tmp_path / "envelope")
+    planned = 40 if applicable else 0
+    assert value["applicability"] == ("unavailable" if applicable else "not_applicable")
+    assert value["measurement_coverage"]["opportunities"]["planned_slots"] == planned
+    assert value["measurement_coverage"]["opportunities"]["captured_slots"] == 0
+    assert value["measurement_coverage"]["corpus"] == {
+        "unit": "original_requests",
+        "planned_cases": 20,
+        "complete": 0,
+        "partial": 0,
+        "unavailable": 20,
+    }
+    assert value["review_coverage"] == {
+        "unit": "original_requests",
+        "planned_cases": 20,
+        "interest_inventory_cases": 0,
+        "relevance_review_cases": 0,
+        "relevance_review_records": 0,
+    }
+    expected_digest = hashlib.sha256(
+        json.dumps(
+            research_material[1], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode()
+    ).hexdigest()
+    assert value["population_digest"] == expected_digest
+    assert value["diagnostics"] == []
+
+
+def test_relevance_envelope_preserves_source_bound_opportunity_conflicts(
+    installed_cli, research_material, batch, tmp_path
+):
+    from backend.tests.test_rtpeval_research_opportunities_cli import scheduled_material
+
+    entry, _ = scheduled_material(research_material, batch, complete=True, extras=True)
+    declaration = write_relevance(research_material, [entry])
+    value = get_report(installed_cli, declaration, tmp_path / "conflict")
+    conflicts = value["diagnostics"]
+    assert any(
+        row["reason"] == "producer_scheduled_fate_conflicts_with_independent_associations"
+        for row in conflicts
+    )
+    assert all(
+        row["case_id"] == entry["case_id"] and row["attempt_id"] == entry["attempt_id"]
+        for row in conflicts
+    )
