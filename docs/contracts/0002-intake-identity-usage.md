@@ -977,3 +977,58 @@ A changed original request requires fresh requirements authoring/review rather t
 hashes. Accepted standardized input does not establish a formal benchmark or research
 selection policy. Runnable schema templates and parameters belong to the
 [material guide](../../backend/evaluation/README.md#installed-generation-and-material-handoff).
+
+
+## Research completion and selection
+
+The separate [research population/census contract](0001-evaluation-artifacts.md#original-input-research-declarations-and-attempt-census)
+retains original requests and every planned version/repetition slot. Native
+qualified four-version intake still requires its existing producer completion,
+reviewed requirements, result, usage, and provenance material; research census
+registration neither weakens that gate nor introduces failed attempts into scoring.
+
+An explicitly declared native mapping normalizes producer outcomes to `completed`,
+`clarification_required`, `failed`, `cancelled`, `incomplete`, `unstarted`, and
+`unknown_pending`. Known native statuses retain their meanings: `not_started`
+maps to unstarted, `pending` to unknown/pending, and `required_mechanism_failed`
+to failed. Additional producer-specific states need an explicit mapping. Completed
+normalization still requires native `workflow_status=completed` and all required
+mechanisms: generation for every version, retrieval for V2/V3, validation and
+completed/not-applicable Repair for V3, plus completion of any additional required
+mechanism. A normally finished workflow may contain quality FAIL/UNKNOWN or skipped
+Repair. Missing completion declaration remains unknown, including when result and
+usage files exist. Processing completion is independent of workflow completion.
+
+Primary selection uses the earliest dispatched attempt in the ordered per-slot
+census. A preliminary non-dispatch declaration is not a first invocation; later
+retries cannot replace a failed primary result. The optional `last_dispatched`
+retry-policy view reports the last explicitly linked retry separately and never
+selects by score. All-attempt inventory retains failed/cancelled usage references,
+while planner-only resource semantics remain owned by [usage](#usage) and
+[offline cost accounting](#offline-cost-accounting).
+
+Population summaries retain status/reason counts and the following measures:
+
+| Measure | Numerator / denominator and missingness |
+| --- | --- |
+| Planned completion | Confirmed completed selected slots / every declared planned slot. Unknown/pending slots remain unresolved. With `C` completed, `P` planned, and `U` unresolved, bounds are `C/P` and `(C+U)/P`; exact `fraction` is null until `U=0`. |
+| Conditional completion | Confirmed completed first dispatches / known dispatched first attempts. Pending dispatched records remain unresolved. Missing slot records can hide additional dispatches, so `unknown_dispatch_slots` and lower/upper denominator bounds remain explicit. |
+| All-four completion | Completed V0-V3 request/repetition groups / groups explicitly planned for all four. A known non-completion settles group failure; otherwise an unknown member leaves it unresolved. Partial-version plans remain not applicable with an excluded count. |
+| Repetition summaries | Per-version, per-repetition, per-version/repetition, and original-request views. Repetitions are not additional unique requests. |
+| Attempt census | All declared records, actual dispatches, and dispatches after the first in each slot. Unstarted declarations are records, not invocations or resource consumption. |
+
+For conditional completion, let `D` be known first dispatches, `C` their confirmed
+completions, `U` their pending/unknown outcomes, and `M` slots with no census record.
+The possible dispatch denominator spans `D` through `D+M`. When `D>0`, conservative
+completion bounds are `C/(D+M)` through `(C+U+M)/(D+M)`; exact fraction requires
+`U=M=0`. `confirmed_fraction` describes observed completed/known-dispatched values,
+not a settled full-census estimate. When `D=0`, the conditional rate and its bounds
+remain unavailable, even if unknown records might conceal dispatches. Zero
+all-four denominators likewise have no rate. Every fraction retains integer
+numerator/denominator, units, availability, and unresolved counts.
+
+`quality_candidate_material` reports completed selected attempts, available versus
+missing result references, and non-completed/unresolved slots. It is a material
+inventory with `native_qualification=not_performed`, not a qualified quality subset
+or a replacement for unconditional completion. Track-specific qualified/comparable
+benefit/resource subsets keep their own exclusion and source validation rules.

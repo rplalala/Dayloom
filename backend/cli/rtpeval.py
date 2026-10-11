@@ -15,6 +15,7 @@ def main(
         description="RTPEval: offline validation, preparation/replay and online evaluation.",
         epilog="validate: offline source-bound batch intake; JSON to stdout.\n"
         "evaluate: automatic evaluation; prepare/replay offline, execute online.\n"
+        "research: offline source-bound research reports.\n"
         "batch: offline explicitly selected material collection.\n"
         "generate: selected-version Planner preparation or explicit execution.\n"
         + "\n".join(f"{name}: {task.description}" for name, task in TASKS.items()),
@@ -22,7 +23,7 @@ def main(
     )
     parser.add_argument(
         "command",
-        choices=("validate", "evaluate", "batch", "generate", *TASKS),
+        choices=("validate", "evaluate", "batch", "generate", "research", *TASKS),
         help="Evaluation task group",
     )
     parser.add_argument("arguments", nargs=argparse.REMAINDER, help=argparse.SUPPRESS)
@@ -34,6 +35,8 @@ def main(
         from backend.cli.batch import main as command
     elif args.command == "generate":
         from backend.cli.generate import main as command
+    elif args.command == "research":
+        from backend.cli.research import main as command
     elif args.command == "evaluate":
         from backend.cli.evaluate import main as command
     else:
