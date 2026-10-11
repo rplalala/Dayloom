@@ -141,6 +141,7 @@ finalization; external agents are separately operated. See
 | Routes | Independent coordinates and mode/time-applicable route evidence against original reserved duration; unsupported provider scope remains unresolved | [Opening/routes](docs/contracts/0004-opening-routes.md#route-wire) |
 | Quality and density | Five automatic dimensions with separate evidence availability; source-linked pace deductions adjust the final total without adding hard generation quotas | [Quality/density](docs/contracts/0005-quality-human-review.md) |
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
+| Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports; optional suite integration remains pending | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Current identity policies are `versioned_api_identity_4` and
 `v0_identity_correspondence_3`; requirement/schedule rules are version 3. Opening retains
@@ -255,17 +256,16 @@ Current scope covers documentation synchronization and Issue documentation requi
 Code implementation, migration execution and frontend implementation/refactoring/testing
 remain deferred. Backend implementation starts with #120 when separately authorized.
 
-Two Evaluation extensions have published specifications and implementation tickets:
+Evaluation extensions are developed independently:
 
-| Planned work | Specification | Current state |
+| Work | Specification | Current state |
 | --- | --- | --- |
 | Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Specified; implementation and acceptance pending |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Specified; implementation and acceptance pending |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Standalone #113-#117 implemented; review/acceptance in progress. #118 waits for accepted #111 and available dependency code |
 
 Their responsibilities and relationship to native scoring are summarized in the
 [Evaluation extension plan](docs/0006-independent-evaluation.md#planned-batch-and-research-extensions).
-Implementation remains deferred until explicitly resumed. GitHub Issues own the
-detailed specifications, dependencies and acceptance state.
+GitHub Issues own detailed specifications, dependencies and acceptance state.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

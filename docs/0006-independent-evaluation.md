@@ -1,7 +1,8 @@
 # Independent evaluation architecture
 
 Status: Tickets 01-12 have offline implementations within their approved scopes.
-The published batch and research extensions below remain unimplemented.
+Standalone original-input research reports are implemented; optional suite
+integration remains dependent on accepted batch-suite code.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 
@@ -60,40 +61,50 @@ schedule/opening/route scorers and report CLIs stay in `backend/evaluation/`. Pr
 planning does not import this evaluation package. V3's internal validation/repair remains
 part of planning and is distinct from independent evaluation.
 
-## Planned batch and research extensions
+<a id="planned-batch-and-research-extensions"></a>
 
-The following specifications are published; their implementation and acceptance are
-pending. `rtpeval suite` and `rtpeval research` remain proposed command interfaces.
+## Batch and research extensions
 
-| Extension | Planned responsibility | Specification |
+The installed `rtpeval research validate / report` group provides explicit offline
+standalone tracks under [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112).
+The separately specified [batch suite #106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106)
+composes native accepted quality bundles; its accepted implementation is required
+before research suite attachment is integrated.
+
+### Research track relationships
+
+Original request inventories and planned case/version/repetition slots are the
+research population. Generation/material preparation supplies all attempts and
+selected source artifacts; completed four-version quality bundles remain a
+qualified subset. Native quality eligibility is unchanged. First dispatch owns
+primary selection, while explicit retries retain separate outcomes and consumption.
+
+| Track | Population and evidence | Output meaning |
 | --- | --- | --- |
-| Unified batch entry point | Explicitly select accepted four-version case bundles; compose native primary evaluation, default generation-resource/cost and mechanism reports, optional independently evidenced V3 pairs, and existing human/controlled report attachments | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 |
-| Research supplement | Register original inputs and all generation attempts; report independent RAG opportunity/relevance and corpus coverage, V3 final/pair/controlled outcomes, and generation benefits/resources/completion | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 |
+| Population | Original inputs, fixed selection profile and all declared attempts | Planned, dispatched-first and request/repetition all-four completion, with unresolved bounds |
+| Opportunities | Source-bound V1/V2 stage captures and native independent place associations | Unique canonical discovery/admission/enrichment/supply/scheduled memberships and Google/RAG partitions |
+| Relevance/coverage | Independently reviewed original-input interests/venues and pinned corpus scope | Relevant stage/intersection counts, compatible V2-minus-V1 sets/counts and descriptive fixed-stratum summaries |
+| Repair | Native four-final, same-run V3 pair and separate controlled study sources | Final V3-minus-V2 differences, draft-to-final deltas, continuity and inventory-bound target/control preservation |
+| Tradeoffs | Exact selected generation attempts, native quality/usage/cost and all-attempt ledgers | Compatible paired benefits/resources plus failed/retry consumption and full-population completion |
 
-Benchmark design supplies original requests; subsequent generation and material
-preparation supply results, observations, independently reviewed material and usage.
-The research population retains unsuccessful and unstarted generation slots outside
-qualified four-version quality groups. Independent interest labels and corpus coverage
-sidecars enter through separate source-bound material; unavailable observations remain
-explicit rather than being inferred from final itineraries.
+Canonical places, corpus entities, request/repetition groups, controlled cases and
+controlled targets retain distinct units. Missing historical stages, independent
+reviews, guards, coverage or adapter/token observations remain unavailable or
+partial. Producer fates and patch acceptance do not establish independent relevance
+or repair. Native scores, masks and cost semantics remain authoritative; no new
+research score or inferential conclusion is introduced.
 
-The research reports address RAG's independently relevant places across admission,
-supply and actual scheduling; Validation/Repair's independent improvement and constraint
-preservation; and the associated generation latency, calls, tokens, cost and completion.
-Four-final comparisons, same-run V3 pairs and controlled-study populations retain
-separate masks and denominators. Generation resources exclude evaluator work and frozen
-controlled simulation. Primary scoring retains its existing definitions; research
-reports remain descriptive.
+The [installed offline research guide](../backend/evaluation/README.md#installed-offline-research)
+locates commands and material handoff. Detailed population/stage/review contracts
+belong to [artifacts](contracts/0001-evaluation-artifacts.md), compatible completion
+and resources to [intake/usage](contracts/0002-intake-identity-usage.md), and final,
+paired and controlled quality interpretation to
+[quality/continuity](contracts/0005-quality-human-review.md).
 
-The dependency roots are #107 for the suite and #113 for research. Final
-research integration in #118 depends on suite acceptance #111 and research reports
-#115-#117. It is planned as explicit offline report/refresh/replay integration; report
-attachment does not initiate generation or independent evidence collection.
-
-GitHub Issues own the detailed proposed fields, metrics and acceptance criteria.
-As each slice passes implementation acceptance, update its applicable topic contracts
-and the operational guide, and revise implemented capability in this document and
-PROJECT.md. The parent Issues map those documentation responsibilities by child ticket.
+Optional suite attachment in #118 waits for accepted #111 and available dependency
+code. It will add explicit offline report/refresh/replay entries while preserving
+native suite/default tracks and separate populations. GitHub Issues own remaining
+work; standalone report completion does not satisfy that integration gate.
 
 ## Scoring semantics and uncertainty
 
