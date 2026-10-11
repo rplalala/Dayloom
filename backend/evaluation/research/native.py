@@ -59,6 +59,8 @@ def snapshot_directory(context, ref):
 def selected_groups(context, descriptor):
     """Load a native batch and bind every native run to its declared first attempt."""
     manifest, path = path_ref(context, descriptor["manifest_ref"], "rtpeval_batch_1")
+    intake = load_batch(path)
+    _require(intake.status == "accepted", "Native intake requires material correction")
     for group in manifest["groups"]:
         for field in ("input_ref", "requirement_spec_ref"):
             context.read_ref(relative_ref(context, path.parent, group[field]))
@@ -67,11 +69,10 @@ def selected_groups(context, descriptor):
                 context.read_ref(relative_ref(context, path.parent, run[field]))
     if manifest.get("projection_reviews_ref") is not None:
         context.read_ref(relative_ref(context, path.parent, manifest["projection_reviews_ref"]))
-    intake = load_batch(path)
-    _require(intake.status == "accepted", "Native intake requires material correction")
     _require(context.read_ref(descriptor["manifest_ref"]) == manifest, "Native manifest changed")
     selected = {a["run_id"]: a for a in context.selected_attempts.values() if a is not None}
     groups = {}
+    manifest_groups = {group["group_id"]: group for group in manifest["groups"]}
     for group in intake.to_dict()["inventory"]:
         attempts = {}
         keys = set()
@@ -89,6 +90,14 @@ def selected_groups(context, descriptor):
                 and (attempt.get("result_ref") or {}).get("sha256")
                 == projection["artifact_sha256"],
                 "Foreign native selected run/input/result binding",
+            )
+            original = manifest_groups[group["group_id"]]["selected_runs"][version]
+            _require(
+                all(
+                    (attempt.get(field) or {}).get("sha256") == original[field]["sha256"]
+                    for field in ("usage_ref", "provenance_ref")
+                ),
+                "Foreign native selected usage/provenance binding",
             )
             keys.add(tuple(attempt[k] for k in ("case_id", "case_revision", "repetition_id")))
             attempts[version] = attempt
