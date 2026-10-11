@@ -152,6 +152,60 @@ smaller cohort. Reports preserve sources byte-for-byte. This boundary reads save
 material only and does not qualify raw attempts for native quality intake, run
 planners, acquire evidence, or select benchmark cases.
 
+## Canonical candidate opportunity observations
+
+`rtpeval research validate/report --track opportunities` produces
+`rtpeval_research_opportunities_report_1` from the original-input declaration.
+Every planned V1/V2 slot remains a row, including missing, failed and cancelled
+attempts. The identity unit is a canonical Google Place ID. This observational
+track does not decide relevance, verify quality or execute a historical planner.
+
+`track_refs.opportunities` references `rtpeval_research_opportunities_1` with an
+explicit `observations` array. Each observation binds `case_id`, `case_revision`,
+`version`, `repetition_id`, the census-selected first dispatched `attempt_id` and
+`run_id`, exact `input_sha256` and `configuration_sha256`, and explicit nullable
+`result_sha256`. `capture_ref` uses the common root-bounded byte reference contract.
+Foreign, duplicate, retry-selected or stale bindings require material correction.
+
+The saved `rtpeval_candidate_capture_1` binds `version` and `run_id`. Its `stages`
+map contains `discovered`, `admitted`, `enriched` and `supplied`; a missing stage
+stays unavailable. Each captured stage declares `status=complete|partial|unavailable`,
+`places` and `reasons`. Each place retains `canonical_place_id`, native
+`google_origins` (query/intent/raw rank/count) and `rag_origins` (entity, typed query,
+rank, similarity, distance, artifact/text hashes, space, policy, resolution and
+Google evidence reference). The exporter retains native query planning, omitted
+queries, entity outcomes, limits and fates under `rag`. Omission rows bind canonical
+place, stage and reason. Complete predecessor inventories cannot contradict later
+memberships; neither an absent history nor a truncated capture establishes zero.
+
+Reports deduplicate places within stages and union their native origins. They retain
+Google-only, RAG-only and mixed partitions, observed counts and nullable complete
+counts. Google used only to resolve a RAG identity is not Google discovery.
+`pre_rag_google_ids` binds the same run's pre-extension Google inventory;
+`incremental_rag_ids` and its completeness remain distinct from complete paired
+V2-versus-V1 stage additions/losses under `cross_version`. Multiple entities, queries
+and intents can remain evidence without adding venues to denominators.
+
+Optional `identity_sources` binds an exact native `manifest_ref`, `evidence_ref`
+and `mode=program|legacy`. The reader loads the native four-final intake, verifies
+its selected input/run/result against the census, and recomputes identity offline.
+Program mode may bind a saved `model_result_ref`; legacy replay requires its native
+`audit_ref` and may bind `reviews_ref`. Projection reviews and all native source
+files retain exact byte links. A self-declared identity digest or producer place ID
+alone cannot establish scheduling. Only independently resolved native final
+primary-visit associations count; Nearby references and generic activities do not.
+Missing associations or unresolved roles keep scheduling partial. Producer supplied
+or scheduled fate conflicts remain diagnostics. The capture's optional
+`result_semantic_sha256`, when present, must match the saved selected final.
+
+JSON and Markdown retain slot identities, completeness, canonical memberships,
+reasons, exact source paths/hashes and deterministic digests without altering input
+files. Source paths resolve under the research declaration's root. Fresh output
+rules follow the [research declaration boundary](#original-input-research-declarations-and-attempt-census).
+Later interest comparisons need original input/interest definitions, independently
+reviewed canonical relevance labels and their source bindings alongside these stage
+inventories; producer intent associations and RAG origin do not supply those verdicts.
+
 ## Activity, transport and occupancy scope
 
 Each primary visit is one concrete place occurrence with its own interval. A confirmed
