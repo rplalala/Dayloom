@@ -44,7 +44,9 @@ LLM reports retain an explicit replay path.
 
 The [offline research guide](../backend/evaluation/README.md#installed-offline-research)
 locates installed commands, original-input/generation material preparation and
-report outputs; detailed definitions remain in the topic contracts above.
+report outputs. The [suite research attachment flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+locates optional integrated reports, append revisions and offline replay; detailed
+definitions remain in the topic contracts above.
 
 ## Other responsibilities
 

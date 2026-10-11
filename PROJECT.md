@@ -142,7 +142,7 @@ finalization; external agents are separately operated. See
 | Quality and density | Five automatic dimensions with separate evidence availability; source-linked pace deductions adjust the final total without adding hard generation quotas | [Quality/density](docs/contracts/0005-quality-human-review.md) |
 | Multi-case suite | Explicit ordered accepted revisions, sequential native primary limits, default saved generation-resource/mechanism reports, optional independent pairs and source-bound study refresh | [Suite guide](backend/evaluation/README.md#installed-multi-case-suite), [artifact contract](docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle) |
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
-| Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports; optional suite integration remains pending | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
+| Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Current identity policies are `versioned_api_identity_4` and
 `v0_identity_correspondence_3`; requirement/schedule rules are version 3. Opening retains
@@ -194,7 +194,7 @@ budgets are distinct. Dated execution allowances do not become runtime defaults.
 
 Accepted suite full backend checkpoint: **3561 passed, 10 skipped in 1504.00s**
 on 2026-10-11 at `a6cf0a7`. This checkpoint predates research integration; the
-combined suite/research full backend gate is pending #118. The suite checkpoint covers installed CLI,
+combined suite/research full backend gate and final integration review are pending. The suite checkpoint covers installed CLI,
 multi-case suites, native scoring/reporting, observability and V0-V3 behavior. Nine
 opt-in isolated PostgreSQL cases and the existing host symlink-creation privilege
 case are skipped. Full backend/scripts Ruff lint and format checking of all 15
@@ -265,7 +265,7 @@ Evaluation extensions are developed independently:
 | Work | Specification | Current state |
 | --- | --- | --- |
 | Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Implemented; synthetic engineering acceptance complete; [Draft PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Standalone #113-#117 implemented with Standards/Spec review corrections verified. Accepted #111 dependency is integrated; authorized #118 suite attachment remains pending |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented, including optional source-bound suite attachment/report/refresh/replay. Standalone review corrections are verified; combined regression and final integration review remain pending in [Draft PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
 
 Their responsibilities and relationship to native scoring are summarized in the
 [Evaluation extensions](docs/0006-independent-evaluation.md#batch-and-research-extensions).

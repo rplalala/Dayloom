@@ -201,6 +201,84 @@ remain separate; valid missing study results cannot lower or raise primary score
 earlier execution evidence intact. The [suite artifact contract](../../docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
 owns wire integrity and replay; native individual commands below remain available.
 
+### Optional research attachments and offline refresh
+
+A research population starts from original requests, independently of the suite's
+accepted four-final cases. Prepare its population, selection profile, attempt
+census and exact saved track material with the [offline research flow](#installed-offline-research)
+first. Failed, cancelled, unstarted and unknown generation slots remain in that
+population; the suite's qualified case list does not replace it.
+
+Add a suite-level `tracks.research` object to the initial suite declaration or a
+later `rtpeval_suite_attachments_1` declaration. Every path is relative to that
+outer declaration; the research declaration's own references remain relative to
+its directory. Keep both declarations and all dependencies within the outer root.
+The [research attachment wire](../../docs/contracts/0001-evaluation-artifacts.md#optional-research-attachment-wire)
+owns exact field and integrity requirements. Replace the illustrative hash below
+with the SHA-256 of the exact saved bytes:
+
+```json
+{
+  "schema_version": "rtpeval_suite_attachments_1",
+  "suite_id": "selected-development-cases",
+  "tracks": {
+    "research": {
+      "schema_version": "rtpeval_suite_research_1",
+      "declaration_ref": {
+        "path": "research/research.json",
+        "sha256": "EXACT_RESEARCH_DECLARATION_SHA256",
+        "schema_version": "rtpeval_research_declaration_1",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      "selected_tracks": ["population", "opportunities", "relevance", "repair", "tradeoffs"]
+    }
+  }
+}
+```
+
+Select any nonempty list of distinct registered tracks explicitly. Omitted
+research leaves the default suite unchanged; omitted track selections are
+`not_requested`. Missing valid optional reviews, captures, native reports or
+usage retain unavailable/partial measurements. Supplied malformed, foreign or
+stale material is a track-specific material correction, even when native quality
+material is valid.
+
+```powershell
+uv run rtpeval suite report artifacts/fresh-suite --attachments attachments.json
+uv run rtpeval suite replay artifacts/fresh-suite
+```
+
+The report operation appends a new receipted revision. Inspect the research index
+linked by `summary.json` under `tracks.research`; it binds the population/profile,
+attempt census, selected reports and their exact source and semantic hashes.
+Initial attachments write `tracks/research/index.json`,
+`tracks/research/reports/<track>.json` and `.md`, with frozen dependencies under
+`tracks/research/sources/`. Later attachments write corresponding reports under
+`reports/NNNN/`, bind the previous summary hash, and freeze dependencies under
+that revision's `sources/`. Earlier primary reports, receipts and summaries remain
+intact. Omitted refresh keys inherit the previous attachments; a supplied
+research object replaces its previous selection.
+
+Processing completion is separate from measurement completeness. Planned slots,
+qualified four-final groups, same-run V3 pairs and controlled targets retain their
+own units and denominators. Source-compatible RAG and Repair benefit links use
+exact selected-attempt bindings to resource evidence; missing benefits or usage
+remain visible. Retries are separate consumption, a V3 draft is not an independent
+V2 run, and frozen controlled simulation is excluded from live generation
+resources. No combined score, ranking or causal conclusion is produced.
+
+Successful replay preserves unavailable/partial measurements; it does not certify
+complete measurement or successful generation. Replay requires no credentials or
+network. It verifies the immutable inventories,
+lineage and deterministically rebuilt research content. Initial suite sources
+retain the native source-drift check against their original root; later attachment
+revisions rebuild from their frozen dependency copies. Keep original initial
+sources available and unchanged. Changed, escaped, missing or corrupt material
+cannot establish successful complete research evidence. Reporting and replay do
+not generate plans, acquire independent evidence, invoke reviewers or execute
+controlled Repair.
+
 ## Installed generation and material handoff
 
 `rtpeval generate` forwards the native [selected-version usage capture](#planner-usage-capture-cli)
@@ -422,7 +500,6 @@ bounds. Repeated requests do not become additional unique requests. The
 [completion contract](../../docs/contracts/0002-intake-identity-usage.md#research-completion-and-selection)
 explains producer completion and the distinction from quality qualification.
 
-
 Use the same declaration with explicit track selection:
 
 ```powershell
@@ -458,8 +535,9 @@ explains stage availability and write-failure behavior. Historical final outputs
 cannot reconstruct absent admission or supply traces.
 
 Reports are descriptive: no pooled research score, causal claim, version ranking
-or automatic thresholds are produced. Optional suite report/refresh/replay
-integration in #118 remains gated on #111 acceptance and available dependency code.
+or automatic thresholds are produced. To locate selected research reports alongside
+native suite reports, use the explicit [suite research attachment](#optional-research-attachments-and-offline-refresh)
+flow. Original-input populations and qualified suite cases remain separate.
 
 ## Installed task-oriented tools
 

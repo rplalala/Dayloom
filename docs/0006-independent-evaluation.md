@@ -2,9 +2,10 @@
 
 Status: Tickets 01-12 have offline implementations within their approved scopes.
 Source-bound suite orchestration is implemented and its synthetic engineering
-acceptance is complete. Standalone original-input research reports #113-#117 are
-implemented with Standards/Spec review corrections verified; their authorized
-suite attachment in #118 remains pending.
+acceptance is complete. Original-input research reports #113-#118 include explicit
+optional suite attachments, fresh report revisions and deterministic offline replay.
+Standalone review corrections are verified; combined regression and final integration
+review remain pending.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 
@@ -69,7 +70,9 @@ part of planning and is distinct from independent evaluation.
 
 The installed `rtpeval suite` layer composes native reports over explicit accepted
 case revisions. The installed `rtpeval research validate / report` group provides
-explicit offline standalone tracks over original-input populations.
+explicit offline standalone tracks over original-input populations. Optional suite
+research attachments locate these reports alongside native results while retaining
+their own populations and source lineage.
 
 | Extension | Responsibility | Specification |
 | --- | --- | --- |
@@ -114,11 +117,14 @@ refresh appends independently verified lineage without primary rescoring. The
 owns wire bindings; the [installed guide](../backend/evaluation/README.md#installed-multi-case-suite)
 owns the operator flow.
 
-The dependency roots are #107 for the suite and #113 for research. Accepted suite
-#111 code is available in the integration branch. Authorized #118 remains the
-explicit offline report/refresh/replay integration step, preserving native suite
-tracks and separate research populations. Attaching reports does not initiate
-generation or independent evidence collection.
+The dependency roots are #107 for the suite and #113 for research. Accepted #111
+code supports the #118 optional research adapter. Its source-bound index links
+RAG and Repair benefit rows to compatible selected generation-resource attempts;
+missing measurements remain visible. Same-run V3 resources belong to its selected
+V3 invocation; controlled simulation remains a separate population. Fresh append
+revisions preserve primary scores and prior receipts, and network-denied replay
+rebuilds report semantics. The [operator flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+owns declarations, output locations and source-retention requirements.
 
 GitHub Issues own detailed specs and live acceptance state. Current native, suite
 and standalone research contracts retain implemented behavior; dated engineering
