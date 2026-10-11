@@ -163,16 +163,6 @@ def markdown(value):
             ]
     lines += [
         "",
-        "## Sources",
-        "",
-        "Paths resolve under the research declaration's source root; "
-        "exact byte hashes bind these observations.",
-        "",
-    ]
-    for source in value["source_bindings"]:
-        lines.append(f"- [{source['path']}]({source['path']}): `{source['sha256']}`")
-    lines += [
-        "",
         f"Source digest: `{value['source_digest']}`.",
         f"Semantic digest: `{value['semantic_sha256']}`.",
         "",
