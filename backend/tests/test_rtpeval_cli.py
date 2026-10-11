@@ -109,6 +109,9 @@ def finished():
             with events.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps({"kind": "loaded_runtime", "detail": name}) + "\\n")
 atexit.register(finished)
+bootstrap = os.environ.get("RTPEVAL_TEST_BOOTSTRAP")
+if bootstrap:
+    exec(compile(bootstrap, "<offline planner fixture>", "exec"))
 print("OFFLINE_RTPEVAL_GUARD_ACTIVE", file=sys.stderr)
 """
 
@@ -135,7 +138,6 @@ def installed_cli(tmp_path):
         legacy_module="backend.evaluation",
         bootstrap="",
     ):
-        (guard / "sitecustomize.py").write_text(GUARD + bootstrap, encoding="utf-8")
         env = {
             **os.environ,
             "PYTHONPATH": str(guard),
@@ -145,6 +147,7 @@ def installed_cli(tmp_path):
             "RTPEVAL_TEST_EVALUATION_OFFLINE": "1" if evaluation_offline else "0",
             "RTPEVAL_TEST_TOOLS_OFFLINE": "1" if tools_offline else "0",
             "RTPEVAL_TEST_MISSING_TOKENIZER": "1" if missing_tokenizer else "0",
+            "RTPEVAL_TEST_BOOTSTRAP": bootstrap,
         }
         command = [sys.executable, "-m", legacy_module] if legacy else [str(executable)]
         if probe:
