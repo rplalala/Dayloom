@@ -57,10 +57,11 @@ def native_descriptor(root, case, kind):
             kind + "-identity.json",
             identity.to_dict() if hasattr(identity, "to_dict") else identity,
         ),
-        "snapshot_ref": file_ref(root, directory / "manifest.json"),
+        **({"snapshot_ref": file_ref(root, directory / "manifest.json")} if directory else {}),
         **{
             name + "_ref": save(root, kind + "-" + name + ".json", value)
             for name, value in options.items()
+            if value is not None
         },
     }
 
