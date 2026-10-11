@@ -255,6 +255,18 @@ Current scope covers documentation synchronization and Issue documentation requi
 Code implementation, migration execution and frontend implementation/refactoring/testing
 remain deferred. Backend implementation starts with #120 when separately authorized.
 
+Two Evaluation extensions have published specifications and implementation tickets:
+
+| Planned work | Specification | Current state |
+| --- | --- | --- |
+| Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Specified; implementation and acceptance pending |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Specified; implementation and acceptance pending |
+
+Their responsibilities and relationship to native scoring are summarized in the
+[Evaluation extension plan](docs/0006-independent-evaluation.md#planned-batch-and-research-extensions).
+Implementation remains deferred until explicitly resumed. GitHub Issues own the
+detailed specifications, dependencies and acceptance state.
+
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
 were delivered as the first slices of
