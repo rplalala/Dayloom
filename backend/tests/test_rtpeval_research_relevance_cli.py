@@ -218,6 +218,11 @@ def test_independent_labels_deduplicate_places_over_interests_and_stage_entities
     assert run["stages"]["supplied"]["complete_count"] == 2
     assert run["end_to_end"]["complete_count"] is None
     assert run["stages"]["discovered"]["origin_partitions"]["mixed"] == ["b"]
+    assert run["stages"]["discovered"]["origin_partitions"] == {
+        "google_only": ["a"],
+        "rag_only": ["c"],
+        "mixed": ["b"],
+    }
 
 
 def native_pair(material, batch):
@@ -335,6 +340,11 @@ def test_complete_pairs_preserve_chain_intersection_and_signed_composition_chang
     report = get_report(installed_cli, declaration, tmp_path / "paired")
     assert report["runs"][0]["end_to_end"]["canonical_ids"] == ["a", "d"]
     assert report["runs"][1]["end_to_end"]["canonical_ids"] == ["a", "b"]
+    assert report["runs"][1]["stages"]["scheduled"]["origin_partitions"] == {
+        "google_only": ["a"],
+        "rag_only": [],
+        "mixed": ["b"],
+    }
     paired = report["comparisons"][0]
     assert paired["end_to_end"] == {
         "status": "complete",

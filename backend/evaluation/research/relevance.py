@@ -3,7 +3,7 @@
 from backend.cli.collection import _require
 
 from .corpus_coverage import _coverage, _coverage_summary, _rag_coverage
-from .opportunities import STAGES, opportunities_report
+from .opportunities import STAGES, opportunities_report, origin_partitions
 from .relevance_material import _interests, _reviews
 from .rendering import cell as _cell
 from .rendering import table_row as _row
@@ -434,25 +434,7 @@ def _stage(stage, interests, labels, places):
         reasons.append("missing_relevance_reviews")
     if unknown_judgments:
         reasons.append("unknown_relevance_judgments")
-    origins = stage.get("origin_partitions") or {
-        "google_only": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("google_origins")
-            and not places.get(pid, {}).get("rag_origins")
-        ],
-        "rag_only": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("rag_origins")
-            and not places.get(pid, {}).get("google_origins")
-        ],
-        "mixed": [
-            pid
-            for pid in ids
-            if places.get(pid, {}).get("rag_origins") and places.get(pid, {}).get("google_origins")
-        ],
-    }
+    origins = stage.get("origin_partitions") or origin_partitions(ids, places)
     return {
         "status": "complete"
         if complete

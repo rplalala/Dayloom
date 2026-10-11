@@ -20,6 +20,21 @@ def unavailable(reason):
     }
 
 
+def origin_partitions(ids, places):
+    """Partition canonical IDs by their saved discovery origins."""
+    partitions = {"google_only": [], "rag_only": [], "mixed": []}
+    for pid in sorted(ids):
+        place = places.get(pid, {})
+        google, rag = bool(place.get("google_origins")), bool(place.get("rag_origins"))
+        if google and rag:
+            partitions["mixed"].append(pid)
+        elif google:
+            partitions["google_only"].append(pid)
+        elif rag:
+            partitions["rag_only"].append(pid)
+    return partitions
+
+
 def opportunities_report(context):
     ref = context.declaration.get("track_refs", {}).get("opportunities")
     material = (
@@ -340,21 +355,7 @@ def _captured(capture):
         }
     for stage in stages.values():
         ids = stage["canonical_ids"]
-        stage["origin_partitions"] = {
-            "google_only": [
-                pid
-                for pid in ids
-                if places[pid]["google_origins"] and not places[pid]["rag_origins"]
-            ],
-            "rag_only": [
-                pid
-                for pid in ids
-                if places[pid]["rag_origins"] and not places[pid]["google_origins"]
-            ],
-            "mixed": [
-                pid for pid in ids if places[pid]["google_origins"] and places[pid]["rag_origins"]
-            ],
-        }
+        stage["origin_partitions"] = origin_partitions(ids, places)
     for previous, name in zip(STAGES, STAGES[1:], strict=False):
         if stages[previous]["status"] == "complete":
             _require(
