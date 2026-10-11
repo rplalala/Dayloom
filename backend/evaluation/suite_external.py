@@ -435,9 +435,7 @@ def append_refresh(root, preparation, previous, *, attachments=None):
 
 def verify_prepared_external(preparation):
     """Native initial-study verification uses source bytes bound by preparation."""
-    case = preparation["declaration"]["cases"][0]
-    manifest = Path(preparation["cases"][0]["primary"]["manifest"])
-    root = manifest.parents[len(Path(case["manifest"]).parts) - 1]
+    root = Path(preparation["source_root"]).resolve()
     tracks = {
         kind: value
         for kind, value in preparation["declaration"].get("tracks", {}).items()

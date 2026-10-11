@@ -146,6 +146,7 @@ def prepare_suite(declaration, directory):
         "suite_id": supplied["suite_id"],
         "directory": str(root),
         "declaration": supplied,
+        "source_root": str(source.parent),
         "source_bindings": bindings,
         "max_cost_usd": str(allowance),
         "reserved_cost_usd": str(reserved),

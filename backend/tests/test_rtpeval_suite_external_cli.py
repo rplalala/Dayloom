@@ -468,3 +468,18 @@ def test_malformed_attachment_structure_is_actionable_material_correction(
     assert result.returncode == 2, result.stdout + result.stderr
     assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
     assert not directory.exists()
+
+
+def test_external_replay_uses_frozen_declaration_root_for_normalized_case_paths(
+    suite_material, installed_cli, monkeypatch, capsys
+):
+    source, directory, declaration = suite_material
+    declaration["cases"][0]["manifest"] = "first/../first/manifest.json"
+    declaration["tracks"] = {"human": [human(source.parent)]}
+    source.write_text(json.dumps(declaration), encoding="utf-8")
+    original = execute_fixture(source, directory, monkeypatch, capsys)
+    refreshed = installed_cli("suite", "report", directory, evaluation_offline=True)
+    assert refreshed.returncode == 0, refreshed.stdout + refreshed.stderr
+    assert json.loads(refreshed.stdout)["cases"] == original["cases"]
+    replay = installed_cli("suite", "replay", directory, evaluation_offline=True)
+    assert replay.returncode == 0, replay.stdout + replay.stderr
