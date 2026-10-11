@@ -1,6 +1,6 @@
 # Evaluation artifacts, scope and time
 
-Current shared contract, reconciled with the implemented Tickets 01-12 on 2026-10-04.
+Current shared contract for native evaluation and source-bound suite orchestration.
 [PROJECT.md](../../PROJECT.md) owns scope; [evaluation architecture](../0006-independent-evaluation.md)
 owns implemented/deferred boundaries. GitHub owns task state. This reference states current
 rules together; dated proposals, approvals and validation remain in linked history.
@@ -62,6 +62,89 @@ quality issues stay diagnostic. Current live-request date limits do not reject h
 submitted inputs. Missing optional V3 draft/final-primary projections disable dependent paired
 work only; they are not reconstructed. Usage may explicitly be unavailable, rather than zero.
 Exact parsing/projection wire is owned by [intake](0002-intake-identity-usage.md#rtpeval-intake-projection-contract).
+
+## Source-bound suite lifecycle
+
+`rtpeval_suite_1` declares a nonempty ordered `cases` array, `suite_id` and an
+explicit positive decimal `max_cost_usd`. Each case supplies a unique `case_id`, the
+accepted native `revision`, and relative `manifest`, `options` and `prices` paths.
+Optional `context`, `occupancy_reviews`, `route_reviews` and `density_reviews` retain
+native schemas. Paths resolve within the declaration root, including junction/link
+resolution. Each manifest must qualify exactly one four-version request group;
+selected native batch/revision/group identities and all selected run IDs are unique
+across the suite. Selection has no fixed case count and never scans for replacements.
+
+Offline `prepare` validates the complete selection and supplied track material before
+provider work. The sum of native per-case reference-price reservations must fit the
+whole-suite allowance; native request, token and duration ceilings still apply.
+`rtpeval_suite_preparation_1` binds exact source bytes, accepted native preparations,
+ordered case identities, limits, prices, track configuration and implementation hashes.
+A fresh output directory owns `cases/NNNN/primary/` and frozen `tracks/` artifacts.
+Native source/result originals remain immutable. The returned preparation digest is
+an integrity selector; operational live authorization is separate.
+
+Explicit `execute` verifies the exact supplied digest, source and implementation
+bindings again, then consumes cases sequentially through native execution. A started
+suite cannot be retried or resumed. A primary stop or integrity failure stops new
+provider work and retains attempted output; later cases remain `unstarted`. Cooperative
+cancellation closes the attempted native receipt and the stopped suite index. An invalid
+frozen track retains its material-correction diagnostic without preventing the primary
+stop index from being saved; it cannot establish successful complete replay. A stop
+before native execution has `not_started` acquisition and no native report pointer. A new
+attempt requires another fresh directory and explicitly declared selection. Completed
+processing can retain factual FAIL/UNKNOWN and optional unavailable tracks.
+
+`rtpeval_suite_report_1` indexes the ordered cases and separate tracks. Each track
+retains processing, evidence availability, applicability, reasons and native artifact
+pointers; acquisition state remains separate for primary work. Descriptive or study
+coverage cannot replace primary status or alter native scores. `summary.json` and
+`receipt.json` close the execution inventory; later `reports/NNNN/` revisions have
+independent receipts and preserve the earlier closed bytes. Replay verifies original
+sources, closed inventories and native saved evidence without credentials or sends.
+A stopped or incomplete native evaluation cannot become a successful full replay.
+
+Saved mechanism reporting is enabled per selected case by default. Optional
+`tracks.mechanism.observations` names a declaration-relative JSON envelope whose
+`records` array contains native linked observations. Preparation validates supplied
+observation linkage and freezes native `tracks/NNNN/mechanism_preparation.json` and
+`mechanism.json`. Missing observations remain explicit; readers do not reconstruct
+traces from finals or execute planning. Native descriptive material status remains
+independent of accepted primary qualification and quality. Exact artifact bytes and
+all supplied source bytes participate in suite integrity and offline replay.
+
+The [installed suite guide](../../backend/evaluation/README.md#installed-multi-case-suite)
+owns command usage; [selection and resource scope](0002-intake-identity-usage.md#suite-selection-and-generation-resources)
+owns selected generation data. Native scoring, paired diagnostics, human answers and
+controlled cases keep their existing topic contracts.
+
+### Existing study attachments and refresh
+
+Suite-level `tracks.human` and `tracks.controlled_repair` are explicit attachment
+arrays. Each report reference declares a relative `path`, exact-byte `sha256` and
+native `schema_version`; dependencies use the same source-bound reference form.
+Missing studies stay visible independently of primary quality.
+
+| Track | Native dependencies | Declared source context |
+| --- | --- | --- |
+| `human` | `rtpeval_human_report_1` report, public `presentation`, private `mapping`, and `answers` references | One selected `case_ids` entry per native package, its `rater_ref` and the exact private preparation `source_hashes` |
+| `controlled_repair` | `rtpeval_controlled_batch_report_1` report and `rtpeval_controlled_batch_1` manifest with its referenced existing reports | Separate `population_id`, `batch_id`, `revision` and ordered `cases` with native case ID, role, `expected_goal_ids`, preparation/expectations references and their canonical digests |
+
+Human verification rebuilds the native report from presentation, mapping and all
+answer revisions, preserving the effective revisions and source hashes. Controlled
+verification rebuilds the batch from saved reports and verifies each case's declared
+preparation/expectations context. Its population and goal denominators remain separate
+from primary requests. Explicit unavailable native report inventory remains unavailable;
+foreign, stale or corrupt supplied reports require material correction. Attachments
+never collect answers, execute controlled cases, invoke Repair or rescore primary work.
+
+`rtpeval_suite_attachments_1` contains the existing `suite_id` and a `tracks` object.
+Offline `report --attachments` preflights the entire supplied refresh before creating
+a revision. Supplied track lists replace their previous attachment selection; omitted
+tracks inherit the prior summary. A revision freezes original attachment/dependency
+bytes, attachment declaration and independently closed summary lineage under
+`reports/NNNN/`, including its parent summary hash. Earlier execution/summary receipts
+remain unchanged. Replay verifies every revision's closed inventory and deterministic
+native study reconstruction, follows parent lineage and returns the latest summary.
 
 ## Activity, transport and occupancy scope
 

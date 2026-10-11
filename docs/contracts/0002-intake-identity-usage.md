@@ -24,6 +24,34 @@ A source reference is (batch_id, group_id, run_id, artifact_sha256, JSON pointer
 
 Quality view exposes itinerary fields, reviewed requirements and later independent records only. Planner requirements, supply, RAG origins, validation findings, cost projections, route diagnostics and Repair records remain outside it. Preserve Transfer mode, endpoint/time/duration claims as claims; validation_state, unknowns, evidence_refs, mode_source and calculation_basis cannot decide quality. Mechanism readers access their own data channel. Human rendering must strip private source/version/provider identifiers while retaining meaningful itinerary text and uncertainty.
 
+## Suite selection and generation resources
+
+A suite selects already accepted single-group four-version manifests with explicit
+native revisions; it does not establish producer completion, choose better runs or
+invoke a Planner. Native intake binds all original Input, RequirementSpec, result,
+usage and provenance bytes before suite preparation. Cross-case run identity
+uniqueness prevents duplicated selected invocations. Optional unavailable usage or
+missing pair stages retain their original meaning and do not revoke qualification.
+The [suite artifact contract](0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
+owns declarations, budget admission, preparation and closed output inventories.
+
+Default suite resources consume only selected saved generation usage. Oracle
+acquisition and frozen controlled simulation are excluded from Planner comparisons.
+The suite calls the native resource and cost readers without changing their coverage,
+latency scope, observed subtotals, cache partitions, Repair subsets or billing rules.
+Each case retains `tracks/NNNN/resources.json` and `cost.json` independently of whether
+its primary evaluation completed, stopped or remained unstarted.
+
+Case `tracks.resources` can reference explicit generation `prices`, optional `bills`
+and `annotations`; these paths are resolved and byte-bound during preparation.
+Bills or annotations require explicit generation prices.
+Primary case `prices` bounds independent evaluator acquisition and is not silently
+reused for generation. Missing generation prices produce a separate unavailable cost
+wrapper with `reason=generation_prices_not_supplied` and `report=null`; no catalog or
+zero total is invented. With supplied prices, the native cost report preserves actual
+bills, estimates, unpriced events and partial subtotals. Malformed supplied material
+requires correction before sends; valid unavailable usage remains qualified.
+
 <a id="claims"></a>
 
 ## Structural claims and directed occurrence association
