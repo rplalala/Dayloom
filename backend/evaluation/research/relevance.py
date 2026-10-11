@@ -113,13 +113,33 @@ def relevance_report(context):
         "applicability": "applicable"
         if any(run["relevance_status"] == "applicable" for run in runs)
         else "not_applicable"
-        if runs and all(run["relevance_status"] == "not_applicable" for run in runs)
+        if not runs or all(run["relevance_status"] == "not_applicable" for run in runs)
         else "unavailable",
         "identity_unit": "canonical_place_id",
         "population_id": context.population["population_id"],
         "population_revision": context.population["revision"],
         "profile_id": context.profile["profile_id"],
         "profile_revision": context.profile["revision"],
+        "population_digest": digest(context.population),
+        "measurement_coverage": {
+            "opportunities": opportunities["measurement_coverage"],
+            "corpus": {
+                "unit": "original_requests",
+                "planned_cases": len(context.population["cases"]),
+                **{
+                    status: sum(row["status"] == status for row in coverage)
+                    for status in ("complete", "partial", "unavailable")
+                },
+            },
+        },
+        "review_coverage": {
+            "unit": "original_requests",
+            "planned_cases": len(context.population["cases"]),
+            "interest_inventory_cases": len(inventories),
+            "relevance_review_cases": len(reviews),
+            "relevance_review_records": sum(len(labels) for labels in reviews.values()),
+        },
+        "diagnostics": opportunities["diagnostics"],
         "runs": runs,
         "opportunity_semantic_sha256": opportunities["semantic_sha256"],
         "interest_inventory_bindings": [
