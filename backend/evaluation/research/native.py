@@ -96,6 +96,7 @@ def selected_groups(context, descriptor):
                 all(
                     (attempt.get(field) or {}).get("sha256") == original[field]["sha256"]
                     for field in ("usage_ref", "provenance_ref")
+                    if attempt.get(field) is not None
                 ),
                 "Foreign native selected usage/provenance binding",
             )
