@@ -55,6 +55,26 @@ def test_installed_generation_preparation_preserves_native_capture(installed_cli
     assert not (tmp_path / "capture/generation-registration.json").exists()
 
 
+def test_installed_opportunity_preparation_is_offline(installed_cli, tmp_path):
+    sidecar = tmp_path / "capture/opportunities.json"
+    result = installed_cli(
+        "generate",
+        *arguments(tmp_path, version="v1"),
+        "--opportunity-capture",
+        sidecar,
+        tools_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    manifest = json.loads((tmp_path / "capture/manifest.json").read_bytes())
+    assert manifest["opportunity_capture_requested"] is True
+    assert "opportunity_capture_ref" not in manifest
+    assert not sidecar.exists()
+    assert not (tmp_path / "capture/result.json").exists()
+    assert not (tmp_path / "capture/usage.json").exists()
+    help_result = installed_cli("generate", "--help", tools_offline=True)
+    assert "--opportunity-capture" in help_result.stdout
+
+
 def registration(tmp_path, version="v0"):
     import hashlib
 

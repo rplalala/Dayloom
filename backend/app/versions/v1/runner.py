@@ -102,6 +102,7 @@ async def run_tools_planner(
     result_factory=PlanningSupplyPlanningResult,
     result_projector=None,
     opportunity_capture_path=None,
+    opportunity_capture_run_id=None,
 ) -> PlanningResult:
     """Run V1 with one fixed date, shared budget, cache, tracer, and explicit graph."""
 
@@ -183,7 +184,11 @@ async def run_tools_planner(
         from backend.app.services.candidate_capture import CandidateCapture
 
         capture = CandidateCapture(
-            opportunity_capture_path, system_version.value, effective_tracer.run_id
+            opportunity_capture_path,
+            system_version.value,
+            opportunity_capture_run_id
+            if opportunity_capture_run_id is not None
+            else effective_tracer.run_id,
         )
         evidence_service.candidate_capture = capture
     extension = discovery_factory(evidence_service) if discovery_factory else None

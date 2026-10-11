@@ -133,7 +133,9 @@ def installed_cli(tmp_path):
         missing_tokenizer=False,
         tools_offline=False,
         legacy_module="backend.evaluation",
+        bootstrap="",
     ):
+        (guard / "sitecustomize.py").write_text(GUARD + bootstrap, encoding="utf-8")
         env = {
             **os.environ,
             "PYTHONPATH": str(guard),
