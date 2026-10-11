@@ -647,3 +647,85 @@ def test_malformed_accounting_objects_are_material_errors(installed_cli, researc
     result = installed_cli("research", "validate", declaration, "--track", "tradeoffs")
     assert result.returncode == 2, result.stdout + result.stderr
     assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+
+
+@pytest.mark.parametrize(
+    "fault",
+    ["fields_list", "billing_context_list", "billing_context_none", "observed_context_list"],
+)
+def test_annotation_nested_objects_are_material_errors(installed_cli, research_material, fault):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    attempt, usage = usage_attempt(research_material, "v1")
+    if fault == "observed_context_list":
+        usage["model_calls"][0]["billing_context"] = []
+        attempt["usage_ref"] = save(research_material[0], "bad-context-usage.json", usage)
+    fields = {"billing_context": {"region": "fixture"}}
+    if fault == "fields_list":
+        fields = ["cached_input_tokens"]
+    elif fault == "billing_context_list":
+        fields["billing_context"] = ["region"]
+    elif fault == "billing_context_none":
+        fields["billing_context"] = None
+    track = cost_track(research_material, [attempt])
+    track["cost_ledgers"][0]["annotations_ref"] = save(
+        research_material[0],
+        "annotations.json",
+        {
+            "annotations": [
+                {
+                    "usage_sha256": attempt["usage_ref"]["sha256"],
+                    "kind": "model",
+                    "event_id": "m",
+                    "source": "independent-ledger",
+                    "note": "Reviewed billing detail",
+                    "source_sha256": "a" * 64,
+                    "fields": fields,
+                }
+            ],
+        },
+    )
+    declaration = research_material[-1]()
+    value = json.loads(declaration.read_bytes())
+    value["track_refs"]["tradeoffs"] = save(research_material[0], "tradeoffs-input.json", track)
+    save(research_material[0], declaration.name, value)
+    result = installed_cli("research", "validate", declaration, "--track", "tradeoffs")
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+    assert "Malformed native" in result.stdout
+
+
+@pytest.mark.parametrize("context", [False, True])
+def test_valid_annotation_objects_retain_native_cost_and_original_usage(
+    installed_cli, research_material, tmp_path, context
+):
+    research_material[1]["cases"] = research_material[1]["cases"][:1]
+    attempt, usage = usage_attempt(research_material, "v1")
+    usage["model_calls"][0].pop("cached_input_tokens")
+    attempt["usage_ref"] = save(research_material[0], "annotated-original-usage.json", usage)
+    original = (research_material[0] / attempt["usage_ref"]["path"]).read_bytes()
+    fields = {"cached_input_tokens": 0}
+    if context:
+        fields["billing_context"] = {"region": "fixture"}
+    track = cost_track(research_material, [attempt])
+    track["cost_ledgers"][0]["annotations_ref"] = save(
+        research_material[0],
+        "annotations.json",
+        {
+            "annotations": [
+                {
+                    "usage_sha256": attempt["usage_ref"]["sha256"],
+                    "kind": "model",
+                    "event_id": "m",
+                    "source": "independent-ledger",
+                    "note": "Reviewed billing detail",
+                    "source_sha256": "a" * 64,
+                    "fields": fields,
+                }
+            ],
+        },
+    )
+    value = report_cli(installed_cli, research_material, tmp_path / "valid", track)
+    native = value["all_attempts"]["rows"][0]["cost"]["native"]
+    assert native["estimated_total"] == "0.00024"
+    assert native["actual_total"] is None
+    assert (research_material[0] / attempt["usage_ref"]["path"]).read_bytes() == original
