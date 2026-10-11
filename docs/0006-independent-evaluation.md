@@ -177,6 +177,27 @@ external author/reviewer agents, which must not be described as human review. Se
 
 **Evaluation snapshot**: Preserved independent external evidence used consistently to assess the submitted itineraries. It is an evidence basis, not absolute real-world truth.
 
+### Material admission and scenario acceptance
+
+| Milestone | Meaning |
+| --- | --- |
+| Native material admission | The complete source-linked request, reviewed requirements, selected V0-V3 results and required envelopes pass intake; this establishes eligibility for evaluation. |
+| Evaluation completion | The evaluator completes processing and produces reports/scores for the submitted material under its recorded evidence, configuration and policies. Completion may include FAIL, UNKNOWN or unavailable values. |
+| Scenario joint acceptance | The user accepts the specified original-input revision together with its matched requirements, itineraries and actual evaluation report after reviewing meaning, material integrity, judgments, scores and limitations. |
+
+Joint acceptance belongs to the benchmark workflow, not evaluator automation.
+Genuine low quality or unresolved external facts can remain valid observations;
+known input, material or processing defects that invalidate report interpretation
+must be resolved before acceptance. Reports and earlier source revisions remain
+traceable when the input or evaluation basis changes.
+
+The current working drafts and storage convention are in the
+[benchmark index](../benchmark/README.md).
+[#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns final
+benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+defines sequential case execution and the child-Issue revision/acceptance rules.
+Each scenario child records its live plan, attempts and decision.
+
 ## Requirement and schedule units
 
 **Submitted place claim**: The scheduled place identified by the output's structured

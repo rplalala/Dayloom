@@ -20,6 +20,22 @@ combines each request with independently reviewed requirements, selected version
 results, usage and provenance under the existing
 [artifact contract](../docs/contracts/0001-evaluation-artifacts.md).
 
+## Per-case execution and joint review
+
+Prepare and complete cases one at a time in case-ID order, from case-01 to case-20.
+Create a scenario child Issue when preparing that case; it tracks request revisions,
+attempts, findings and the matched evaluation report. The user confirms joint
+acceptance of the input and report before proceeding to the next case. Native
+material admission alone does not complete this review; the
+[evaluation architecture](../docs/0006-independent-evaluation.md#material-admission-and-scenario-acceptance)
+defines the distinct milestones.
+
+[#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns overall
+coverage and final acceptance after all 20 cases complete their joint review.
+[#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns detailed
+execution, budgets, child-Issue lifecycle, revisions and retries. This README owns
+the scenario index, date rules and storage convention; Issues hold live progress.
+
 ## Layout
 
 ```text

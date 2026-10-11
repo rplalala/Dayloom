@@ -44,6 +44,10 @@ LLM reports retain an explicit replay path.
 
 ## Other responsibilities
 
+- [Benchmark inputs and material storage](../benchmark/README.md): scenario index,
+  date updates and storage conventions. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
+  owns the 20-scenario design and final acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+  owns sequential execution, revisions and input/report joint acceptance.
 - [Development commands](guides/development.md) and [runtime configuration](../config/README.md).
 - [Historical records](records/README.md): milestone freezes, development evidence,
   topic-specific validation and benchmark-design history. They do not override core design.
