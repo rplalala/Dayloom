@@ -8,6 +8,7 @@ from pathlib import Path
 from backend.cli.collection import _completion, _json, _require, _text
 
 from .sources import Sources
+from .usage import validate_generation_usage
 
 VERSIONS = ("v0", "v1", "v2", "v3")
 STATUSES = (
@@ -247,7 +248,7 @@ def _load_attempts(sources, records, slots, profile):
                 timestamp(profile["declared_at"]) <= dispatched,
                 "Prospective profile declared after dispatch",
             )
-        _read_native_refs(sources, record)
+        usage = _read_native_refs(sources, record)
         completion = None
         status = "unknown_pending"
         if record.get("completion_ref") is not None:
@@ -292,6 +293,10 @@ def _load_attempts(sources, records, slots, profile):
             record["dispatched"] or status in ("unstarted", "unknown_pending"),
             "Terminal generation outcome without dispatch",
         )
+        if usage is not None:
+            validate_generation_usage(
+                usage, dispatched=record["dispatched"], workflow_status=status
+            )
         slot["attempts"].append({**record, "status": status, "producer_completion": completion})
     for slot in slots:
         attempts = slot["attempts"]
@@ -318,6 +323,7 @@ def _load_attempts(sources, records, slots, profile):
 
 
 def _read_native_refs(sources, attempt):
+    usage = None
     result_hash = None
     if attempt.get("result_ref") is not None:
         result = sources.read_ref(attempt["result_ref"])
@@ -343,15 +349,14 @@ def _read_native_refs(sources, attempt):
                 "Provenance input hash mismatch",
             )
         else:
-            _require(
-                native.get("namespace") == "planner",
-                "Research generation usage must have explicit planner namespace",
-            )
+            usage = native
         for field in ("input_sha256", "configuration_sha256"):
             if field in native:
                 _require(
                     native[field] == attempt[field], key + " source binding mismatch: " + field
                 )
+
+    return usage
 
 
 def _read_profile_history(sources, profile):
