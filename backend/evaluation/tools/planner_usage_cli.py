@@ -196,6 +196,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         opportunity_existed = False
     captured = []
     failure = None
+    cancelled = False
     tracer = None
 
     def sink(usage):
@@ -276,8 +277,12 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         )
         (output / "result.json").write_bytes(serialize_planning_result(value).encode("utf-8"))
     except (Exception, asyncio.CancelledError, KeyboardInterrupt) as exc:
+        cancelled = isinstance(exc, asyncio.CancelledError)
         failure = type(exc).__name__
-        _save(output, "failure.json", {"error_type": failure})
+        failure_record: dict[str, object] = {"error_type": failure}
+        if cancelled and captured and not (output / "usage.json").is_file():
+            failure_record["observed_usage"] = captured[-1]
+        _save(output, "failure.json", failure_record)
     if opportunity_path is not None:
         manifest["opportunity_capture_ref"] = _opportunity_ref(
             opportunity_path,
@@ -287,7 +292,9 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
             run_id=args.run_id,
         )
     if not captured or not (output / "usage.json").is_file():
-        manifest.update(status="capture_failed", failure_type=failure)
+        manifest.update(status="cancelled" if cancelled else "capture_failed", failure_type=failure)
+        if cancelled:
+            manifest["capture_status"] = "capture_failed"
         if args.capture_evidence:
             _save(
                 output,
@@ -308,7 +315,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
     _save(output, "usage-summary.json", summarize(source["usage"]))
     _save(output, "cost-report.json", build_cost_report([source], prices))
     manifest.update(
-        status="failed" if failure else "completed",
+        status="cancelled" if cancelled else "failed" if failure else "completed",
         failure_type=failure,
         usage_sha256=_sha(output / "usage.json"),
     )

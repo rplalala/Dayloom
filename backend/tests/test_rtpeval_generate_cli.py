@@ -416,6 +416,8 @@ def test_registered_failure_keeps_attempt_and_never_attests_completion(tmp_path,
     )
     staging = json.loads((tmp_path / "staging/staging.json").read_bytes())
     run = staging["groups"][0]["selected_runs"]["v0"]
+    assert json.loads((tmp_path / "capture/manifest.json").read_bytes())["status"] == "cancelled"
+    assert run["completion"]["workflow_status"] == "cancelled"
     assert not run["completion_qualified"]
     assert "workflow_not_completed" in run["blocking_reasons"]
     assert (tmp_path / "capture/failure.json").is_file()
