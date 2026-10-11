@@ -122,6 +122,50 @@ def opportunities_report(context):
         runs.append(row)
     value = {
         "schema_version": "rtpeval_research_opportunities_report_1",
+        "processing_status": "completed",
+        "track": "opportunities",
+        "applicability": "applicable" if runs else "not_applicable",
+        "population_digest": digest(context.population),
+        "measurement_coverage": {
+            "unit": "planned_v1_v2_slots",
+            "planned_slots": len(runs),
+            "captured_slots": sum("observation" in row for row in runs),
+            "stages": {
+                name: {
+                    status: sum(
+                        (row["scheduled"] if name == "scheduled" else row["stages"][name])["status"]
+                        == status
+                        for row in runs
+                    )
+                    for status in ("complete", "partial", "unavailable")
+                }
+                for name in (*STAGES, "scheduled")
+            },
+        },
+        "review_coverage": {
+            "unit": "planned_v1_v2_slots",
+            "independent_association_slots": sum(
+                row["scheduled"]["status"] != "unavailable" for row in runs
+            ),
+            "relevance_review": "not_performed",
+        },
+        "diagnostics": [
+            {
+                **{
+                    key: row[key]
+                    for key in (
+                        "case_id",
+                        "case_revision",
+                        "version",
+                        "repetition_id",
+                        "attempt_id",
+                    )
+                },
+                "reason": reason,
+            }
+            for row in runs
+            for reason in row["diagnostics"]
+        ],
         "identity_unit": "canonical_place_id",
         "population_id": context.population["population_id"],
         "population_revision": context.population["revision"],
