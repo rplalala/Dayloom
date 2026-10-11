@@ -5,8 +5,9 @@ Source-bound suite orchestration is implemented and its synthetic engineering
 acceptance is complete. Original-input research reports #113-#118 include explicit
 optional suite attachments, fresh report revisions and deterministic offline replay.
 Synthetic/offline engineering acceptance, combined backend regression and final
-independent Standards/Spec review are complete; the [research acceptance](records/evaluation/intake-identity-usage.md#original-input-research-engineering-acceptance-2026-10-11)
-retains the tested revision and failure/correction evidence.
+independent Standards/Spec review are complete. The [post-integration acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
+binds the combined main-worktree revision, fresh all-track refresh/replay checks
+and valid reuse of the earlier research regression and review evidence.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 

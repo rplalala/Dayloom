@@ -47,6 +47,8 @@ locates installed commands, original-input/generation material preparation and
 report outputs. The [suite research attachment flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
 locates optional integrated reports, append revisions and offline replay; detailed
 definitions remain in the topic contracts above.
+The [combined offline acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
+records main-worktree verification and the boundaries of reused regression evidence.
 
 ## Other responsibilities
 

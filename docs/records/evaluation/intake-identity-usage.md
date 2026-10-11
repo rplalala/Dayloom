@@ -1018,8 +1018,8 @@ symlink-creation privilege case. Local evidence identifiers are
 `artifacts/issue-106-validation/backend-corrected.log`, `backend-corrected.xml`
 and the retained `backend-initial-failed-attempt.log`; no complete pass count is
 assigned to the stopped initial attempt. Implementation is accepted as synthetic
-engineering evidence. Draft PR #128 retains the delivery boundary; GitHub Issues
-own subsequent remote lifecycle state, and #112 owns separate research supplements.
+engineering evidence. PR #128 delivered it through merge commit `c7fbc54`;
+GitHub Issues own subsequent lifecycle state, and #112 owns separate research supplements.
 
 ## Original-input research engineering acceptance (2026-10-11)
 
@@ -1140,3 +1140,80 @@ network denial, without live-provider generation, paid acquisition or formal
 benchmark execution. Planned requests, successful quality groups, same-run V3
 pairs and controlled targets retain distinct populations and denominator units;
 engineering acceptance does not establish research results or a version freeze.
+
+## Post-integration offline acceptance (2026-10-12)
+
+The #130 gate binds both accepted workstreams to main-worktree revision
+`8f3067b18fbbd211b7695e291cbd1290c4c0171e`, following explicit local fast-forward
+authorization from `f1cf0bc`. PR #128 merged as `c7fbc54`; PR #129 merged as
+`8f3067b`. Their reviewed delivery trees match the merge trees, with no uncovered
+conflict-resolution code. The unrelated unstaged `.gitignore` and empty staging
+state were preserved; its byte SHA-256 remained
+`fdc63780f304bde2f8ac48b7e520330bc45254e8799cb4323cfe645c82a3ae02`.
+
+The main tree differs from fully tested `0a37b95` only in three Markdown owners.
+All 440 preserved #112 evidence files match their recorded SHA-256 values, and
+the full-regression metadata, log and JUnit agree. The complete **3847 passed,
+11 skipped in 1447.78s** backend gate and independent implementation/delivery
+reviews are therefore reused at their original scope, rather than presented as
+new execution. Review fixed base remains `f1cf0bc`; the originating code and
+delivery checkpoints are recorded in the two preceding acceptance sections.
+Nine opt-in PostgreSQL and two Windows symlink-privilege cases remain skipped.
+
+Fresh main-worktree checks passed **288 tests, no skips, in 857.80s**. They cover
+installed root/leaf dispatch, existing individual operations, all six suite CLI
+test modules, standalone research dispatch and the offline intake import boundary.
+Native readers, scoring and report composition operate behind injected synthetic
+HTTP transport. Compiled preserved startup-guard bytes deny external DNS and
+socket connections before pytest imports; installed replay additionally denies
+online runtime initialization. Stop/cancellation, unstarted cases, source drift,
+foreign/stale declarations, corrupt/missing/escaped artifacts and self-consistent
+rehashed report forgeries retain their existing rejection behavior. Fresh output
+directories preserve original source bundles, closed receipts and prior reports.
+
+Separate fixtures had covered external-study and research attachments individually.
+A supplemental coexistence probe passed **one test in 34.92s** using the existing
+`multi_track_suite` and `research_material` fixtures. Its four suite cases are
+`first`, `second`, `third` and `paired`; research retains two original requests,
+eight planned version slots and an explicit failed V1 attempt. All five research
+tracks coexist with resource/mechanism, pair, human and controlled inventories.
+Human revision 2 and a saved complete control report refresh while omitted research
+inherits through the existing source-union branch. A second inherited refresh and
+network-denied replay reproduce semantic content, with unchanged primary cases,
+all five research semantic hashes and closed bytes. A foreign-rater refresh is
+rejected before mutation. The declaration SHA-256 is
+`6621bcac74db9e62f8b3e0a156ddc91fa7c15241778e65df3d5bc6e25c8ca1d5`;
+146 original source hashes are preserved separately. Its 23 HTTP requests use
+synthetic transport, not external provider sends. Missing research measurements
+remain unavailable, and the eight research slots are not pooled with four quality
+cases, same-run pairs or controlled targets.
+
+The initial sandboxed focused attempt was interrupted after widespread installed
+CLI startup failures; it has no complete pass count or JUnit. A single-test probe
+reproduced `uv trampoline failed to canonicalize script path` before Python or
+the guard. The identical outside-sandbox help probe passed two tests in 0.84s.
+The complete rerun above used the verified guard outside the sandbox, without
+credential, configuration, dependency or system-permission changes. No tracked
+implementation correction was needed. Initial log/metadata and both probe outputs
+remain preserved separately from the final passing evidence.
+
+Full backend/scripts Ruff lint and all 51 changed Python format checks pass.
+The current global audit rejects 58 files unchanged from `f1cf0bc`: the historical
+50 plus eight additional mixed-LF/CRLF diagnostics whose proposed edits only
+normalize line endings. The working-tree origin of those line endings is not
+established; no baseline files were reformatted. Related tracked-document
+destinations/anchors pass. Independent Standards and Spec review confirms the
+integrated tree, evidence reuse and supplemental probe without open findings.
+Current operational commands and contracts required no behavioral changes.
+
+Local evidence identifiers are `artifacts/i130/`: `focused-final.log`,
+`focused-final.xml`, `focused-final-metadata.json`, `joint.*`, `joint-evidence.json`,
+`evidence-reuse.json`, `doc-links.json`, `format-inventory-review.json` and separate
+Standards/Spec reports. The interrupted attempt retains `focused.log` and
+`focused-metadata.json`; `probe.log` and `probe-outside.log` establish the sandbox
+contrast. Executable wrappers and exact arguments remain in the local metadata;
+the Issue records commands and live completion. Prior originals remain under
+`artifacts/issue-106-validation/` and `artifacts/issue-112-validation/`.
+This acceptance adds offline engineering evidence without fresh Planner generation,
+paid acquisition, participant or controlled-study execution, frontend validation,
+formal benchmark results or version freeze.

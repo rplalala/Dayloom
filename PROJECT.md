@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-11.
+Current source of truth. Updated 2026-10-12.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -192,19 +192,21 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Combined suite/research full backend checkpoint: **3847 passed, 11 skipped in 1447.78s**
-on 2026-10-11 at `0a37b95`, from a clean committed integration checkout under
-verified external-network denial. It covers installed CLI, multi-case suites,
-original-input research reports, native scoring/reporting, observability and V0-V3
-behavior. Nine opt-in isolated PostgreSQL cases and two host
-symlink-creation privilege cases are skipped. Final independent Standards and Spec
-reviews have no open findings. Full backend/scripts Ruff lint and format checks of
-all 51 changed Python files pass. Global formatting still rejects 50 files whose
-bytes are unchanged from the fixed base. Tracked document link checks pass.
-The [research acceptance](docs/records/evaluation/intake-identity-usage.md#original-input-research-engineering-acceptance-2026-10-11)
-records source-bound integration, TDD failures/corrections, separate review fixes
-and final regression. The earlier [suite acceptance](docs/records/evaluation/intake-identity-usage.md#multi-case-suite-engineering-acceptance-2026-10-11)
-retains its independent checkpoint and isolation incident.
+Post-integration offline checkpoint: **288 focused tests passed, no skips**, plus
+one supplemental all-track coexistence test, on 2026-10-12 in the main worktree at
+`8f3067b`. Network-denied checks cover installed CLI, native multi-case suite and
+research composition, stopped/incomplete work, integrity rejection, refresh and
+replay. The complete backend regression is reused from source-identical tracked
+code at `0a37b95`: **3847 passed, 11 skipped in 1447.78s** on 2026-10-11. Its nine
+opt-in isolated PostgreSQL and two Windows symlink-privilege skips remain untested
+by this acceptance. Independent Standards/Spec reviews have no open findings.
+Full backend/scripts Ruff lint and all 51 changed Python format checks pass.
+The current global format audit rejects 58 unchanged baseline files, including
+eight additional working-tree line-ending diagnostics; it is not a global pass.
+Tracked document link checks pass. The [combined acceptance](docs/records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
+records exact revision/evidence reuse, sandbox failure and successful rerun,
+coexistence coverage and remaining limits; earlier suite/research results retain
+their original scopes and evidence.
 Earlier #97 checks retain their original scope in
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09)
 and [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09).
@@ -267,11 +269,13 @@ Evaluation extensions are developed independently:
 | Work | Specification | Current state |
 | --- | --- | --- |
 | Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Merged; synthetic engineering acceptance complete; [PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented; synthetic/offline engineering acceptance, combined backend regression and independent Standards/Spec review complete; [PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | Merged; synthetic/offline engineering acceptance, combined backend regression and independent Standards/Spec review complete; [PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
 
 Their responsibilities and relationship to native scoring are summarized in the
 [Evaluation extensions](docs/0006-independent-evaluation.md#batch-and-research-extensions).
 GitHub Issues own detailed specifications, dependencies and acceptance state.
+The combined main-worktree offline gate [#130](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/130)
+is accepted at the checkpoint in section 5.
 Suite engineering acceptance uses synthetic saved material and injected transport;
 formal benchmark execution and paid acquisition remain separately authorized.
 
