@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "traveler_count": 1,
+  "budget": {"amount": 900, "currency": "AUD"},
+  "additional_preferences": ""
+}

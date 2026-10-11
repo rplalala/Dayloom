@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "traveler_count": 2,
+  "budget": {"amount": 1000, "currency": "EUR"},
+  "additional_preferences": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+}

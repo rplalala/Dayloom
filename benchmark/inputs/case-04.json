@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Paris, France",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-16",
+  "traveler_count": 2,
+  "budget": {"amount": 1400, "currency": "EUR"},
+  "additional_preferences": "We are two adults visiting Paris for the first time. We enjoy art, historic architecture and walks along the river. We would like a mix of indoor visits and outdoor sightseeing, at a moderate pace."
+}

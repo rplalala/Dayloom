@@ -1,3 +1,6 @@
 /*
 !/.gitignore
 !/README.md
+!/inputs/
+/inputs/*
+!/inputs/case-*.json

@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-17",
+  "traveler_count": 2,
+  "budget": {"amount": 1800, "currency": "GBP"},
+  "additional_preferences": "We are two adults interested in history, science and museums. We would like enough time for substantial museum visits, balanced with some walks in parks. We prefer a relaxed pace and have little interest in shopping."
+}

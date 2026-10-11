@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-16",
+  "traveler_count": 2,
+  "budget": {"amount": 160000, "currency": "JPY"},
+  "additional_preferences": "We are two adults visiting Tokyo for the first time. We would like a balanced introduction to the city, including well-known sights, traditional culture and modern urban neighbourhoods. We prefer a moderate pace with enough time to enjoy each place."
+}

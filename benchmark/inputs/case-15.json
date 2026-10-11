@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-19",
+  "traveler_count": 1,
+  "budget": {"amount": 2200, "currency": "GBP"},
+  "additional_preferences": "I would like to explore British Museum over two separate visits. Include exactly two visits to British Museum during the trip, on two different dates. For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art."
+}

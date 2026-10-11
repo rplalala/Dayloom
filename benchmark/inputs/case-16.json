@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Paris, France",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-16",
+  "traveler_count": 2,
+  "budget": {"amount": 1500, "currency": "EUR"},
+  "additional_preferences": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-14, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+}

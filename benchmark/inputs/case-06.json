@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-17",
+  "traveler_count": 1,
+  "budget": {"amount": 1300, "currency": "EUR"},
+  "additional_preferences": "I am travelling alone and enjoy architecture, historic neighbourhoods and art. I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+}

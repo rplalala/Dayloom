@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Singapore",
+  "start_date": "2026-10-17",
+  "end_date": "2026-10-18",
+  "traveler_count": 2,
+  "budget": {"amount": 800, "currency": "SGD"},
+  "additional_preferences": "We are two adults taking a weekend trip to Singapore. We would like a fairly full itinerary that combines gardens with major city sights and views. We are happy to use public transport and prefer to make active use of both days."
+}

@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-19",
+  "traveler_count": 2,
+  "budget": {"amount": 300000, "currency": "JPY"},
+  "additional_preferences": "We are two adults whose main focus for this trip is modern art and design. We would also enjoy gardens and distinctive neighbourhoods to complement those interests. We prefer a fairly full itinerary and are happy to use public transport."
+}

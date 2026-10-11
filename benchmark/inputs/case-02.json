@@ -1,0 +1,9 @@
+{
+  "input_version": "planning_request_2",
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "traveler_count": 2,
+  "budget": {"amount": 1200, "currency": "GBP"},
+  "additional_preferences": ""
+}
