@@ -819,8 +819,28 @@ not serialized. This interface adds no spend reservation guard.
 Completed execution saves exact serialized result bytes, `rtpeval_usage_1`,
 `rtpeval_provenance_1`, usage summary, `rtpeval_prices_1` and cost report. Result version
 and original structured trip facts must match before a result hash can be adopted.
-Failed/cancelled execution keeps observed usage and a cost report, with error type only
-and no adopted result. Output reuse is rejected. Injected clients retain unverified
+Failed/cancelled execution keeps saved usage and its cost report, with exception type
+rather than exception text and no adopted result. A propagated `asyncio.CancelledError`
+sets usage outcome, capture manifest status and native producer workflow status to
+`cancelled`; the CLI still exits 1 and the attempt remains unqualified. Cancellation
+in runtime cleanup before return/adoption has the same status. Ordinary exceptions,
+`KeyboardInterrupt` and `TimeoutError` remain `failed` with their original error types.
+Timeout/deadline failure and nested exception causes do not imply cancellation.
+
+If usage output fails during known cancellation, manifest `status=cancelled` retains
+the workflow outcome and `capture_status=capture_failed` records the capture defect.
+When the usage observer already emitted a ledger, `failure.json.observed_usage` retains
+that normalized observation. It is failure evidence, not a canonical `usage_ref` or an
+automatic replacement cost report; missing usage remains missing rather than zero.
+Canonical usage requires a completed write. A partially written `usage.json` remains
+raw failure evidence; registration omits its `usage_ref`, and the evidence index
+marks usage unavailable even when the residual file exists.
+Other usage-capture failures retain the existing `capture_failed` status.
+Native completion and the source-bound census preserve the cancellation category,
+first-dispatched selection and available resource receipts. Historical artifacts are
+unchanged; recalculation requires a separate source-bound report revision.
+
+Output reuse is rejected. Injected clients retain unverified
 coverage; the checked default adapters are explicitly declared in the envelope.
 
 `reference_prices` binds dated official unit rates to saved event identity and observed
@@ -892,8 +912,9 @@ policy, source revision and run identity to saved file digests, HTTP events, dia
 collection status. The index excludes itself, provenance and mutable manifest to avoid
 hash cycles; provenance binds the index and mechanism file hashes. Invocation failures and
 cancellation retain observed evidence without an adopted result. Optional evidence failures
-do not replace planner outcomes; a missing usage file exits as capture failure while retaining
-an available original result and index. Injected coverage stays unverified.
+do not replace planner outcomes; a missing usage file retains an available original result
+and index while exiting unsuccessfully. The [usage capture policy](#selected-version-usage-preparation-and-capture)
+separates known cancellation from the capture defect. Injected coverage stays unverified.
 Trace payloads may be objects, lists or other valid JSON values. Malformed/unreadable
 JSON and unreadable files remain unavailable inventory units rather than interrupting
 successful planner completion; readable malformed files retain their exact hashes.

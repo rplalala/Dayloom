@@ -869,6 +869,50 @@ the 10 baseline type diagnostics remained unchanged. Correction evidence is
 correction and was not repeated.
 Final Standards and Spec correction reviews found zero remaining findings.
 
+The 2026-10-12 #133 correction preserves cancellation through selected generation
+and native research lineage. The public registration reproduction initially retained
+`usage.outcome=cancelled` but failed the expected manifest/native completion status.
+Commit `a84fe4d`, against fixed base `8f633238b1fdfcf55af3f622c2897d37374379f5`,
+classifies a propagated `CancelledError` as `cancelled` while retaining exit 1,
+unqualified intake and no adopted result. Interrupts and timeout exceptions keep
+their existing failed classification and original error type. The separate usage-sink
+reproduction initially lost cancellation to `capture_failed`; the correction retains
+known cancellation, records the capture defect separately and preserves an already
+observed ledger in failure evidence without declaring a canonical usage receipt.
+
+The installed synthetic generation test references the exact native producer
+completion and usage in a caller-prepared census. Population validation/reporting
+counts one cancelled attempt and zero failed attempts; tradeoff reporting retains
+its first-dispatched selection and 1,000 observed tokens. An initially omitted schema
+reference in the test handoff was corrected; the two handoff/sink checks then passed.
+The completed related gate passed 150 tests in 97.05s, covering V0-V3 cancellation
+before adoption and during cleanup, usage/evidence, ordinary exceptions, registration,
+opportunity sidecars and existing first-dispatch/retry consumption behavior. Lint,
+format and document links passed. Pyright compared the changed CLI against a complete
+fixed-base backend snapshot and retained the same one existing result-serialization
+diagnostic. Local evidence identifiers are `.scratch/issue133-gate-01.xml` and
+`.scratch/issue133-types-base.json` / `.scratch/issue133-types-current.json`.
+The gate covered the then-uncommitted implementation; the pre-existing unrelated
+`.gitignore` change was preserved and excluded. Validation was offline and targeted,
+with no full-suite result or formal benchmark claim; original generation and research
+artifacts remain unchanged.
+
+Initial Standards review had zero findings; Spec found one partial-write defect.
+The usage sink could create a truncated regular file before failing; checking file
+existence then lost the observed ledger and raised a JSON error before native
+completion or registration. The public generation/registration reproduction failed
+at that JSON read. Correction `8f44567` records successful usage writes and
+excludes failed receipts from registration and evidence availability while preserving
+their residual bytes and observed ledger. Both sink cases passed, followed by 115
+affected cancellation, registration and native-capture tests in 53.77s. Ruff and
+166 document links passed; the same single CLI type diagnostic remained. Correction
+evidence is `.scratch/issue133-correction-01.xml` and
+`.scratch/issue133-types-correction.json`; the earlier 150-test gate precedes this
+correction and was not repeated.
+
+Final independent Standards and Spec rechecks of both implementation commits and
+the three documentation owners found zero remaining findings.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.

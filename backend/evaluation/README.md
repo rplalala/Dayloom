@@ -564,7 +564,7 @@ consuming saved material from producing or independently reviewing it:
 | --- | --- | --- |
 | RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
-| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding and registration preflight | Cancellation status (#133) still requires a separate correction. |
+| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
 | Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
 | Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
 | V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
@@ -1525,8 +1525,13 @@ policy authorization and account invoice limits remain separate.
 
 Successful execution saves `result.json`, `usage.json`, `provenance.json`,
 `usage-summary.json`, `prices.json` and `cost-report.json`. Failures/cancellations retain
-observed usage, partial costs and `failure.json` with error type only. Exit 0 means
-preparation or this selected invocation completed; exit 1 means capture/execution failed.
+saved usage, partial costs and `failure.json` with exception type rather than message.
+Known cancellation remains `cancelled` through capture and native completion; missing
+usage capture is separately identified without inventing a canonical receipt.
+The [usage capture policy](../../docs/contracts/0002-intake-identity-usage.md#selected-version-usage-preparation-and-capture)
+defines cancellation, interrupt/deadline handling and saved observation fallback.
+Exit 0 means preparation or this selected invocation completed; exit 1 means
+capture/execution was unsuccessful.
 Invalid input, configuration or output conflicts raise an error before provider dispatch.
 Windows result writes use exact UTF-8 bytes to keep hashes consistent with capture.
 
