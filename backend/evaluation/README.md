@@ -339,6 +339,14 @@ and binds actual observations under `selected_workflow_1`. Keep all original fil
 selection snapshots available until finalization. `--capture-evidence` remains explicit;
 Planner evidence is not independent evaluator evidence.
 
+Before dispatch, registration checks the explicit selection, selected input hash,
+capture directory, replacement restrictions and fresh registration destination.
+Invalid initial setup exits 2 with `planner.status=not_invoked` and registration
+diagnostics, without creating a capture or loading credentials/constructing a runtime.
+Execution-time source drift and destination conflicts remain checked after dispatch.
+The [registration contract](../../docs/contracts/0002-intake-identity-usage.md#producer-material-handoff)
+owns these boundaries.
+
 The final stdout object and registration artifact separate `planner.status/exit_code`
 from `registration.status/directory/blocking_reasons`. Planner failure retains exit 1;
 successful Planner with registration failure exits 2 and preserves its result. Successful
@@ -556,7 +564,7 @@ consuming saved material from producing or independently reviewing it:
 | --- | --- | --- |
 | RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
-| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture with selected-run binding and native registration | Registration preflight (#132) and cancellation status (#133) still require separate corrections. |
+| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding and registration preflight | Cancellation status (#133) still requires a separate correction. |
 | Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
 | Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
 | V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |

@@ -970,8 +970,21 @@ Planner or independently select/requalify the cohort.
 
 Selected generation may declare pending slots with only `run_id` and `capture_directory`.
 The chosen version/group/run/output must exactly match one slot; explicit registration
-requires execution and a fresh destination. Observed required workflows use fixed
-`selected_workflow_1`, binding exact native provenance/manifest, completion and original
+requires execution and a fresh destination. Before credential loading, runtime
+construction or dispatch, registration validates the selection envelope and unique
+group/run identities, version names, original input references/hashes, the exact
+selected slot, capture-directory agreement and refusal to replace selected material.
+An existing registration destination, including a dangling directory link, or one
+containing the Planner output is rejected at the same boundary. Invalid initial
+setup returns exit 2 with structured registration
+diagnostics and `planner.status=not_invoked`; it creates no generation artifacts.
+These checks repeat after execution against the captured input and original selection
+bytes. Sources and destinations can change during execution; a later registration
+failure preserves actual Planner result/usage and separate statuses without retry.
+Preparation and generation without registration retain the native path.
+
+Observed required workflows use fixed `selected_workflow_1`, binding exact native
+provenance/manifest, completion and original
 operator selection snapshots. An unrelated operator policy remains unchanged and blocks
 with `completion_policy_mismatch`. Normally completed bounded partial entity resolution
 can qualify; unavailable/deadline-limited retrieval cannot. Other declared slots remain

@@ -834,6 +834,41 @@ benchmark evidence.
 Registration preflight (#132), cancellation classification (#133), census export
 and other preparation enhancements remain separate work.
 
+The 2026-10-12 #132 correction moves locally decidable registration checks ahead
+of credential loading and Planner construction/dispatch. Its initial public-CLI
+test failed at credential loading for a wrong selected run. The shared preflight
+now checks selection structure, unique identities, source hashes, capture agreement,
+replacement restrictions and registration-destination freshness; rejection reports
+`planner.status=not_invoked` without creating a capture. Repeating the checks after
+dispatch preserves actual generated material when selection/input bytes drift or
+a destination conflict appears during execution. Native preparation and generation
+without registration retain their existing behavior.
+
+The fixed review base is `7d583c14f87ba4f7bc89d169232854da89df6091` and local
+implementation/test commit is `71bd77f`. The first corrected case passed, followed
+by 56 generation CLI tests. The completed related gate passed 156 tests in 134.33s,
+covering generation, opportunity sidecars, native usage and collection. Invalid
+setups were checked with injected and unconstructed runtimes, zero credential and
+provider operations, and unchanged source files; installed rejection checks span
+V0-V3. Changed-file lint/format checks passed. Pyright analyzed both the fixed-base
+and current generation module with the same environment/imports: each retains the
+same 10 existing V3 completion diagnostics, with none added or removed. Local
+evidence identifiers are `.scratch/issue132-gate-01.xml` and
+`.scratch/issue132-types-comparison.json`. The gate covered the then-uncommitted
+implementation; the unrelated pre-existing `.gitignore` change was excluded from
+the commit. Validation was offline and targeted; no full-suite result is claimed.
+
+The initial Standards review had zero findings; Spec identified one destination
+link defect. Resolving the supplied path before checking freshness hid an existing
+link whose target was absent, both initially and during dispatch. Two Windows
+directory-junction cases reproduced the defect. Correction `1cd2600` checks the
+original destination with `lexists` before resolution at both boundaries. All 56
+affected preflight, post-dispatch and valid-registration tests passed in 4.39s;
+the 10 baseline type diagnostics remained unchanged. Correction evidence is
+`.scratch/issue132-correction-01.xml`; the earlier 156-test gate precedes this
+correction and was not repeated.
+Final Standards and Spec correction reviews found zero remaining findings.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.
