@@ -220,7 +220,8 @@ external author/reviewer agents, which must not be described as human review. Se
 | --- | --- |
 | Native material admission | The complete source-linked request, reviewed requirements, selected V0-V3 results and required envelopes pass intake; this establishes eligibility for evaluation. |
 | Evaluation completion | The evaluator completes processing and produces reports/scores for the submitted material under its recorded evidence, configuration and policies. Completion may include FAIL, UNKNOWN or unavailable values. |
-| Scenario joint acceptance | The user accepts the specified original-input revision together with its matched requirements, itineraries and actual evaluation report after reviewing meaning, material integrity, judgments, scores and limitations. |
+| Scenario automatic joint acceptance | The user accepts the specified input revision, reviewed requirements, selected V0-V3 outputs, actual primary report and declared applicable research/resource reports after reviewing meaning, integrity, judgments, scores and limitations. Human review may remain deferred. |
+| Deferred human assessment completion | Separately authorized raters assess anonymous packages bound to those same accepted outputs; native human reports retain actual answers and missing/unjudgeable coverage independently of automatic acceptance. |
 
 Joint acceptance belongs to the benchmark workflow, not evaluator automation.
 Genuine low quality or unresolved external facts can remain valid observations;
@@ -228,12 +229,47 @@ known input, material or processing defects that invalidate report interpretatio
 must be resolved before acceptance. Reports and earlier source revisions remain
 traceable when the input or evaluation basis changes.
 
+The current workflow completes automatic joint acceptance case by case, then
+conducts consolidated blinded review over explicitly selected accepted cases.
+Preserve source-bound material for the handoff; adding later human reports does
+not require new Planner runs or change primary scores. The
+[staged acceptance contract](contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
+owns stage boundaries, retained evidence and later report attachment. This workflow
+does not authorize formal execution or establish that either stage is complete.
+
 The current working drafts and storage convention are in the
 [benchmark index](../benchmark/README.md).
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns final
 benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 defines sequential case execution and the child-Issue revision/acceptance rules.
-Each scenario child records its live plan, attempts and decision.
+Each scenario child records its live plan, attempts and decision, applying the
+shared rules by reference rather than maintaining another general specification.
+
+### Preparation and decision responsibilities
+
+The [common workflow Issue #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+owns shared operational rules for all scenario children. Responsibilities are:
+
+| Work | Executor | User involvement |
+| --- | --- | --- |
+| Input scope, selection policy, corpus geography, strata and execution limits | Agent prepares a concrete proposal under current contracts | Approve or revise undecided choices; existing explicit rules and authorization remain valid. |
+| RequirementSpec authoring and review | Separate independent Codex `gpt-6.1-sol` / `high` author and reviewer executions | Authorize the bounded operations; both must actually execute and retain source-bound records. |
+| Interest inventories, relevance labels, sample coding, pace and transport semantics | Independent agent, or an explicitly selected human reviewer | Approve scope or provide an alternative; judgments require original-request or independent evidence. |
+| Census export, corpus counts/sidecars and paired acquisition/reporting | Tools execute; Codex orchestrates | Approve concrete live scope/limits where required; missing exporter/orchestration implementation remains a tool gap. |
+| Undetermined personal intent | User clarification, or explicit unresolved meaning | Give a substantive answer when needed; approval cannot supply a missing fact. |
+| Human preference, pace and usefulness ranking | Real raters | Read the anonymous material and provide actual answers during the deferred human stage. |
+
+Approval is not required again for every step already covered by the current
+authorization. Independent agent review must preserve actual reviewer origin and
+source isolation; it is not human assessment. The
+[requirements contract](contracts/0002-intake-identity-usage.md#external-requirements-handoff)
+owns author/reviewer provenance, and the
+[relevance contract](contracts/0001-evaluation-artifacts.md#independent-interest-relevance-and-corpus-coverage)
+owns interest/relevance evidence. The
+[material preparation support table](../backend/evaluation/README.md#material-preparation-support)
+distinguishes installed consumers/execution tools, externally operated reviews,
+shared defects #131-#133 and pending exporters/acquisition orchestration #134-#136.
+This division of work does not claim those enhancements are implemented.
 
 ## Requirement and schedule units
 

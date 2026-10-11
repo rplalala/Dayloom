@@ -24,17 +24,29 @@ results, usage and provenance under the existing
 
 Prepare and complete cases one at a time in case-ID order, from case-01 to case-20.
 Create a scenario child Issue when preparing that case; it tracks request revisions,
-attempts, findings and the matched evaluation report. The user confirms joint
-acceptance of the input and report before proceeding to the next case. Native
-material admission alone does not complete this review; the
+attempts, findings and the matched evaluation report. The user confirms automatic
+joint acceptance of the input and its declared reports before proceeding to the
+next case. Consolidated blinded review follows separately and does not block this
+sequence. Native material admission alone does not complete this review; the
 [evaluation architecture](../docs/0006-independent-evaluation.md#material-admission-and-scenario-acceptance)
 defines the distinct milestones.
 
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns overall
-coverage and final acceptance after all 20 cases complete their joint review.
+coverage and acceptance status, distinguishing completed automatic case reviews
+from the deferred human stage and any later final research acceptance.
 [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns detailed
-execution, budgets, child-Issue lifecycle, revisions and retries. This README owns
+shared responsibilities, staged acceptance, execution budgets, child-Issue lifecycle,
+revisions and retries. Case children apply these rules to their own material and
+decisions rather than redefine them. This README owns
 the scenario index, date rules and storage convention; Issues hold live progress.
+
+The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
+defines both stages. Preserve each automatically accepted revision and its matched
+generation/evaluation evidence for later anonymous packaging. Human answers and
+reports bind those exact outputs; they add a separate assessment without replacing
+the accepted input, automatic judgments or scores. The current decision defines
+the workflow only; formal benchmark execution and real blinded assessment still
+require their own explicit authorization.
 
 ## Layout
 

@@ -292,6 +292,49 @@ there is no cross-rater aggregation or overall human quality score. The
 [attachment contract](0001-evaluation-artifacts.md#existing-study-attachments-and-refresh)
 owns exact references, separate controlled populations and closed refresh lineage.
 
+### Staged automatic acceptance and deferred blinded review
+
+Benchmark cases undergo automatic acceptance first, followed by a separately
+authorized consolidated blinded-review stage. These are workflow milestones, not
+new artifact statuses or a combined score.
+
+1. **Automatic acceptance:** the user jointly accepts the exact input revision,
+   independently reviewed requirements, selected V0-V3 outputs, admitted manifest,
+   actual primary evaluation and the case's declared applicable research/resource
+   reports. Check source integrity, judgments, arithmetic, processing completion and
+   limitations. Genuine FAIL, UNKNOWN and justified non-applicability remain valid
+   observations; interpretation-invalidating defects must be resolved. Record
+   automatic acceptance and human review deferred/not conducted separately.
+2. **Handoff preservation:** retain original input/result/requirements bytes,
+   selection and attempt identities, completion/usage/provenance, configurations,
+   independent snapshots, rules, reports, receipts and the explicit acceptance
+   decision. Later human packages must bind these same accepted outputs. Do not
+   regenerate itineraries, shift their dates or replace runs merely because review
+   happens later. Changed sources form a new revision and require affected review.
+3. **Consolidated blinded review:** separately approve the selected accepted cases,
+   raters and presentation/review plan. Prepare and review anonymous material under
+   the human contract above. Keep version mappings and automatic scores private;
+   record known prior exposure rather than claiming complete blinding. Real raters
+   supply preference, pace and usefulness answers, including ties or inability to
+   judge. Execution approval alone is not an answer, and agent judgments cannot be
+   recorded as human responses.
+4. **Offline report attachment:** import source-bound answer revisions and build
+   native human reports. Retain standalone reports beside the accepted case evidence;
+   when a suite is explicitly selected, attach each compatible case/package/rater
+   through `tracks.human` and offline `report --attachments`, then replay the new
+   closed revision. Preserve earlier reports/receipts and primary scores. This step
+   acquires no provider evidence and does not rerun planning or primary evaluation.
+
+Deferred human review does not block sequential automatic case acceptance or reopen
+an accepted case solely to add answers. Complete the human stage only when its
+separately approved inventory has actual reports and explicit missing/unjudgeable
+coverage; automatic acceptance alone cannot establish completed human assessment
+or final research conclusions. Human results add descriptive pair outcomes and,
+where configured, duplicate consistency. They do not alter automatic density
+deductions, factual verdicts or totals, merge raters, or establish an overall human
+score or statistical conclusion. Research design/analysis and version freezes retain
+their separate authorization boundaries.
+
 ## Follow-up reporting boundary
 
 Ticket 10 supplies a separate [V3 paired diagnostic](#v3-pairs), with source-driven

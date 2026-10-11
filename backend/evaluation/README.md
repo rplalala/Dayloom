@@ -539,6 +539,34 @@ or automatic thresholds are produced. To locate selected research reports alongs
 native suite reports, use the explicit [suite research attachment](#optional-research-attachments-and-offline-refresh)
 flow. Original-input populations and qualified suite cases remain separate.
 
+### Material preparation support
+
+The [responsibility map](../../docs/0006-independent-evaluation.md#preparation-and-decision-responsibilities)
+defines operator, independent-agent and user duties. Current support separates
+consuming saved material from producing or independently reviewing it:
+
+| Work | Supported tools | External work or pending implementation |
+| --- | --- | --- |
+| RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
+| Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
+| Generation originals, usage, provenance and registration | Selected-version `generate` and native material assembly exist | Shared defects #131-#133 remain open: installed V1/V2 opportunity capture, registration preflight and cancellation status. Native runner capture is not a substitute for the installed handoff. |
+| Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
+| Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
+| V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
+| Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
+| Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |
+
+The defects/enhancements above are tracked in
+[#131](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/131),
+[#132](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/132),
+[#133](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/133),
+[#134](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/134),
+[#135](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/135) and
+[#136](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/136).
+Material readers establish recorded integrity, not that a review or measurement
+really occurred. Tool availability alone does not satisfy case readiness or approve
+execution; missing evidence remains explicit and cannot be supplied by guessing.
+
 ## Installed task-oriented tools
 
 Use `uv run rtpeval GROUP --help` and leaf help for exact native parameters. `quality`
@@ -1232,6 +1260,14 @@ input error rather than partial comparisons. It adds no billing claim or quality
 
 ### Local blinded ranking
 
+For the [staged acceptance workflow](../../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review),
+complete automatic case acceptance first and retain the exact accepted manifest,
+originals and matched evaluation evidence. Later prepare these same outputs for
+consolidated blinded review; do not regenerate them or rerun primary evaluation.
+The commands below require separately authorized real assessment and fresh output
+paths. Replace the illustrative report timestamp with the actual human-report
+creation time; it is not the time of earlier automatic acceptance.
+
 ```powershell
 npm --prefix frontend run build:blind-review
 .venv/Scripts/python.exe -m backend.evaluation.human_cli prepare manifest.json selection.json --out preparation.json
@@ -1246,6 +1282,14 @@ mapping outside the public directory. Open `review.html` directly in a local bro
 The package needs no account, server, CDN or submission endpoint. Use synthetic material
 for development; real assessment needs separate approval. Successful processing exits 0;
 invalid material or output conflicts exit 2. Import/report can take multiple answer files.
+
+Keep the resulting native human report standalone when using the case workflow.
+If suite integration is explicitly selected, export its source-bound report,
+presentation, mapping and answers references and use the
+[offline attachment refresh](#installed-multi-case-suite) commands. Each package/rater
+remains separate, and the new summary revision preserves earlier primary scores
+and receipts. Missing human answers remain visible; no combined automatic/human
+score is produced.
 
 The current renderer provides IANA zone selection and HH:mm clocks, labelled Inferred
 arrival, drafts, submitted revision recovery, JSON download/import and confirmed Clear

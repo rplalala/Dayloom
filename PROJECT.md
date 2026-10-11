@@ -279,6 +279,16 @@ is accepted at the checkpoint in section 5.
 Suite engineering acceptance uses synthetic saved material and injected transport;
 formal benchmark execution and paid acquisition remain separately authorized.
 
+The benchmark workflow accepts the automatic input/report evidence case by case,
+then conducts separately authorized consolidated blinded review of the same
+accepted outputs. Human answers add independent reports; they do not change primary
+scores or block automatic case acceptance. The
+[staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
+owns the boundaries and handoff. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+owns shared operational rules; [case-01 #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
+owns current readiness. This documentation decision starts neither formal benchmark
+execution nor human assessment and does not claim a case has passed acceptance.
+
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
 were delivered as the first slices of
