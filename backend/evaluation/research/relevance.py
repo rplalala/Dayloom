@@ -371,16 +371,6 @@ def markdown(value):
         )
     lines += [
         "",
-        "## Sources",
-        "",
-        "Exact byte hashes below bind source-root-relative materials. JSON retains "
-        "nested evidence references and original request/spec pointers.",
-        "",
-    ]
-    for source in value["source_bindings"]:
-        lines.append("- `" + _cell(source["path"]) + "`: `" + source["sha256"] + "`")
-    lines += [
-        "",
         f"Source digest: `{value['source_digest']}`.",
         f"Semantic digest: `{value['semantic_sha256']}`.",
         "",

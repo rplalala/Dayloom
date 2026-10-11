@@ -11,7 +11,7 @@ from backend.tests.test_rtpeval_research_population_cli import save
 
 pytest_plugins = ("backend.tests.test_rtpeval_research_population_cli",)
 
-TRACKS = ("population", "opportunities", "repair", "tradeoffs")
+TRACKS = ("population", "opportunities", "relevance", "repair", "tradeoffs")
 
 
 @pytest.mark.parametrize("track", TRACKS)
@@ -31,6 +31,7 @@ def test_provenance_links_resolve_from_markdown_location_with_reserved_filenames
     assert result.returncode == 0, result.stdout + result.stderr
     report = json.loads((directory / (track + ".json")).read_bytes())
     markdown = (directory / (track + ".md")).read_text(encoding="utf-8")
+    assert markdown.count("## Sources\n") == 1
     section = markdown.split("## Sources\n", 1)[1]
     links = re.findall(r"\]\(([^)]+)\)", section)
     assert len(links) == len(report["source_bindings"])
