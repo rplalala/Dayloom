@@ -122,3 +122,39 @@ def test_rehashed_foreign_or_changed_native_material_is_rejected(
     assert result.returncode == 2, result.stdout + result.stderr
     assert not output.exists()
     assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
+
+
+@pytest.mark.parametrize("fault", ["groups", "runs"])
+def test_malformed_native_manifest_is_public_material_correction(
+    installed_cli, pair_case, batch, tmp_path, fault
+):
+    prepare_namespaced_usage(batch)
+    case = pair_case()
+    root = batch[-1]
+    descriptor = native_descriptor(root, final_case(case), "quality")
+    declaration = declare_native(root, batch[0], quality=[descriptor])
+    manifest = json.loads((root / descriptor["manifest_ref"]["path"]).read_bytes())
+    if fault == "groups":
+        manifest["groups"] = [None]
+    else:
+        manifest["groups"][0]["selected_runs"] = []
+    descriptor["manifest_ref"] = save(root, "malformed-native.json", manifest)
+    material = json.loads((root / "repair-material.json").read_bytes())
+    material["quality_reports"] = [descriptor]
+    decl = json.loads(declaration.read_bytes())
+    decl["track_refs"]["repair"] = save(root, "repair-material.json", material)
+    save(root, "research.json", decl)
+    output = tmp_path / "malformed-out"
+    result = installed_cli(
+        "research",
+        "report",
+        declaration,
+        "--track",
+        "repair",
+        "--directory",
+        output,
+        evaluation_offline=True,
+    )
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert not output.exists()
+    assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
