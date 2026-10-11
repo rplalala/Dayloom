@@ -266,8 +266,8 @@ Evaluation extensions are developed independently:
 
 | Work | Specification | Current state |
 | --- | --- | --- |
-| Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Implemented; synthetic engineering acceptance complete; [Draft PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
-| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented; synthetic/offline engineering acceptance, combined backend regression and independent Standards/Spec review complete; [Draft PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
+| Unified batch entry point and report integration | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 | Merged; synthetic engineering acceptance complete; [PR #128](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/128) |
+| RAG, Repair and generation tradeoff reports | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 | All six slices implemented; synthetic/offline engineering acceptance, combined backend regression and independent Standards/Spec review complete; [PR #129](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/129) |
 
 Their responsibilities and relationship to native scoring are summarized in the
 [Evaluation extensions](docs/0006-independent-evaluation.md#batch-and-research-extensions).

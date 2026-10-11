@@ -1129,9 +1129,10 @@ local task-context identifier above.
 Full backend/scripts Ruff lint passes. All 51 task-changed Python files pass format
 checks; a separate global format audit finds 50 files whose Git bytes are unchanged
 from the fixed base. Current tracked-document links pass. No new frontend gate is
-claimed. Draft PR #129 retains publication as a draft; GitHub Issues own the remote
-closure lifecycle. Acceptance does not authorize remote merge or mark a version
-ready for freeze.
+claimed. PR #129 carries the research delivery, with PR #128 owning the accepted
+suite dependency. Separately authorized final review and sequential ordinary
+merges retain implementation and correction history; GitHub Issues own closure.
+Synthetic engineering acceptance does not mark a version ready for freeze.
 
 Current commands and wire requirements belong to the installed evaluation guide
 and existing contracts. Validation uses synthetic/saved material under verified
