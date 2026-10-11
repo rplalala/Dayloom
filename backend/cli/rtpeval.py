@@ -16,6 +16,7 @@ def main(
         epilog="validate: offline source-bound batch intake; JSON to stdout.\n"
         "evaluate: automatic evaluation; prepare/replay offline, execute online.\n"
         "suite: source-bound multi-case execution and offline replay/report.\n"
+        "research: offline source-bound research reports.\n"
         "batch: offline explicitly selected material collection.\n"
         "generate: selected-version Planner preparation or explicit execution.\n"
         + "\n".join(f"{name}: {task.description}" for name, task in TASKS.items()),
@@ -23,7 +24,7 @@ def main(
     )
     parser.add_argument(
         "command",
-        choices=("validate", "evaluate", "batch", "generate", "suite", *TASKS),
+        choices=("validate", "evaluate", "batch", "generate", "suite", "research", *TASKS),
         help="Evaluation task group",
     )
     parser.add_argument("arguments", nargs=argparse.REMAINDER, help=argparse.SUPPRESS)
@@ -37,6 +38,8 @@ def main(
         from backend.cli.generate import main as command
     elif args.command == "suite":
         from backend.cli.suite import main as command
+    elif args.command == "research":
+        from backend.cli.research import main as command
     elif args.command == "evaluate":
         from backend.cli.evaluate import main as command
     else:

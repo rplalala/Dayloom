@@ -110,7 +110,9 @@ def prepare_suite(declaration, directory):
         resolved.append(CaseSelection(case, intake, files=files, values=values))
     if reserved > allowance:
         raise ValueError("Sum of per-case reference reservations exceeds whole-suite allowance")
-    track_configuration = prepare_tracks(supplied, resolved, source_root=source.parent)
+    track_configuration = prepare_tracks(
+        supplied, resolved, source_root=source.parent, output_root=root
+    )
     for name, sha in track_configuration.get("source_bindings", {}).items():
         path = Path(name).resolve()
         if (
@@ -142,6 +144,17 @@ def prepare_suite(declaration, directory):
                 "primary": primary,
             }
         )
+    implementation_paths = [
+        Path(__file__),
+        Path(__file__).with_name("suite_tracks.py"),
+        Path(__file__).with_name("suite_external.py"),
+        Path(__file__).parents[1] / "cli" / "suite.py",
+    ]
+    if "research" in track_configuration:
+        implementation_paths += [
+            Path(__file__).with_name("suite_research.py"),
+            *sorted(Path(__file__).parent.joinpath("research").rglob("*.py")),
+        ]
     value = {
         "schema_version": PREPARATION_VERSION,
         "status": "prepared",
@@ -156,12 +169,7 @@ def prepare_suite(declaration, directory):
         "track_configuration": track_configuration,
         "implementation_hashes": {
             str(path.resolve()): hashlib.sha256(path.read_bytes()).hexdigest()
-            for path in (
-                Path(__file__),
-                Path(__file__).with_name("suite_tracks.py"),
-                Path(__file__).with_name("suite_external.py"),
-                Path(__file__).parents[1] / "cli" / "suite.py",
-            )
+            for path in implementation_paths
         },
     }
     value["content_sha256"] = canonical_digest(value)
@@ -190,7 +198,17 @@ def _load(directory, *, implementation=False):
     ):
         raise ValueError("Suite preparation digest or directory mismatch")
     for name, sha in value["source_bindings"].items():
-        if hashlib.sha256(Path(name).read_bytes()).hexdigest() != sha:
+        try:
+            changed = hashlib.sha256(Path(name).read_bytes()).hexdigest() != sha
+        except OSError:
+            from .suite_research import original_source_correction
+
+            original_source_correction(value, name)
+            raise
+        if changed:
+            from .suite_research import original_source_correction
+
+            original_source_correction(value, name)
             raise ValueError("Suite original sources changed")
     if implementation:
         for name, sha in value["implementation_hashes"].items():
@@ -403,6 +421,8 @@ def execute_suite(directory, *, approved_sha256, env_file=None, http_client=None
                     else "execution_failed"
                 ),
             }
+            if hasattr(exc, "research_material_correction"):
+                result["research_material_correction"] = exc.research_material_correction
         rows.append(_case_row(case, result))
         stopped = result["processing_status"] != "complete"
     report = _summary(preparation, rows, allow_material_correction=True)
@@ -460,5 +480,8 @@ def report_suite(directory, *, attachments=None):
     root, preparation = _load(directory)
     _check_closed(root, preparation["content_sha256"])
     original = _read(root / "summary.json")[0]
+    from .suite_research import verify_initial_index
+
+    verify_initial_index(preparation, original)
     report = verify_refreshes(root, preparation, original)
     return append_refresh(root, preparation, report, attachments=attachments)

@@ -14,7 +14,7 @@ belong in this directory. Task specifications and iteration state live in GitHub
 | [0003 Itinerary and transport](0003-itinerary-transport.md) | Primary/reference roles, transport ownership and uncertainty |
 | [0004 Retrieval (V2/V3)](0004-retrieval-persistence%28v2v3%29.md) | Corpus, persistent exact search and compatibility |
 | [0005 Validation and repair (V3)](0005-validation-repair%28v3%29.md) | Permissions, components, re-validation and adoption |
-| [0006 Independent evaluation](0006-independent-evaluation.md) | Submitted artifacts, evidence/scoring and planned boundaries |
+| [0006 Independent evaluation](0006-independent-evaluation.md) | Native quality, research populations and track boundaries |
 | [0007 Application and operations](0007-application-operations.md) | API/UI, assistance, resources and engineering verification |
 
 ## Architecture decisions
@@ -41,6 +41,12 @@ core design. Read only relevant contract sections.
 The [version-specific identity contract](contracts/0002-intake-identity-usage.md#version-specific-identity-requirement)
 owns deterministic V1-V3 API checks and V0-only model correspondence; historical uniform
 LLM reports retain an explicit replay path.
+
+The [offline research guide](../backend/evaluation/README.md#installed-offline-research)
+locates installed commands, original-input/generation material preparation and
+report outputs. The [suite research attachment flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+locates optional integrated reports, append revisions and offline replay; detailed
+definitions remain in the topic contracts above.
 
 ## Other responsibilities
 

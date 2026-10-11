@@ -12,6 +12,7 @@ from .records import canonical_digest
 from .suite_selection import CaseSelection
 
 EXTERNAL_TRACKS = ("human", "controlled_repair")
+ATTACHMENT_TRACKS = (*EXTERNAL_TRACKS, "research")
 
 
 class Sources:
@@ -238,7 +239,7 @@ def _controlled(attachment, sources, prefix):
     }
 
 
-def prepare_external(tracks, cases, *, source_root):
+def prepare_external(tracks, cases, *, source_root, output_root=None, refresh=False):
     """Validate optional external reports before any suite provider work."""
     sources = Sources(source_root)
     external = {}
@@ -262,12 +263,22 @@ def prepare_external(tracks, cases, *, source_root):
         ]
         if len(set(identities)) != len(identities):
             raise ValueError(f"Duplicate {kind} study population")
-    return {
+    configuration = {
         "external": external,
         "source_bindings": sources.bindings,
         "raw_artifacts": sources.raw_artifacts,
         "artifacts": {},
     }
+    if "research" in tracks:
+        from .suite_research import prepare_research
+
+        research = prepare_research(
+            tracks["research"], source_root=source_root, output_root=output_root, refresh=refresh
+        )
+        configuration["research"] = research["research"]
+        configuration["source_bindings"].update(research["source_bindings"])
+        configuration["raw_artifacts"].update(research["raw_artifacts"])
+    return configuration
 
 
 def compose_external(configuration):
@@ -287,6 +298,10 @@ def compose_external(configuration):
         }
         if not studies:
             result[kind]["reason"] = "study_not_supplied"
+    if "research" in configuration:
+        from .suite_research import compose_research
+
+        result["research"] = compose_research(configuration)
     return result
 
 
@@ -299,18 +314,22 @@ def _selected_cases(preparation):
     ]
 
 
-def _attachment_configuration(declaration, preparation, source_root):
+def _attachment_configuration(declaration, preparation, source_root, output_root):
     if (
         set(declaration) != {"schema_version", "suite_id", "tracks"}
         or declaration.get("schema_version") != "rtpeval_suite_attachments_1"
         or declaration.get("suite_id") != preparation["suite_id"]
         or not isinstance(declaration.get("tracks"), dict)
         or not declaration["tracks"]
-        or set(declaration["tracks"]) - set(EXTERNAL_TRACKS)
+        or set(declaration["tracks"]) - set(ATTACHMENT_TRACKS)
     ):
         raise ValueError("Explicit suite-bound external attachment declaration required")
     return prepare_external(
-        declaration["tracks"], _selected_cases(preparation), source_root=source_root
+        declaration["tracks"],
+        _selected_cases(preparation),
+        source_root=source_root,
+        output_root=output_root,
+        refresh=True,
     )
 
 
@@ -320,8 +339,13 @@ def _overlay(previous, configuration, tracks, revision_name):
         if kind not in tracks:
             continue
         row = copy.deepcopy(row)
-        for study in row["studies"]:
-            study["report"] = revision_name + "/" + study["report"]
+        if kind == "research":
+            from .suite_research import relocate_index
+
+            row = relocate_index(row, revision_name)
+        else:
+            for study in row["studies"]:
+                study["report"] = revision_name + "/" + study["report"]
         report["tracks"][kind] = row
     return report
 
@@ -353,10 +377,11 @@ def verify_refreshes(root, preparation, original):
             declaration, declaration_sha = _read(folder / "attachments.json")
             if declaration_sha != lineage["attachments_sha256"]:
                 raise ValueError("Suite refresh attachment declaration changed")
-            config = _attachment_configuration(declaration, preparation, folder / "sources")
+            config = _attachment_configuration(declaration, preparation, folder / "sources", folder)
             frozen = _read(folder / "configuration.json")[0]
             if (
                 config["external"] != frozen["external"]
+                or config.get("research") != frozen.get("research")
                 or config["raw_artifacts"] != frozen["raw_artifacts"]
             ):
                 raise ValueError("Suite refresh native attachment replay differs")
@@ -381,6 +406,12 @@ def append_refresh(root, preparation, previous, *, attachments=None):
     from .snapshot import _bytes
     from .suite import _close, _save, write_raw_artifacts
 
+    reports = root / "reports"
+    folders = sorted(reports.iterdir()) if reports.exists() else []
+    parent = folders[-1] / "summary.json" if folders else root / "summary.json"
+    parent_sha = _read(parent)[1]
+    name = f"reports/{len(folders) + 1:04d}"
+    revision = root / name
     config, declaration, raw_declaration = None, None, None
     source_bytes = {}
     if attachments is not None:
@@ -391,7 +422,7 @@ def append_refresh(root, preparation, previous, *, attachments=None):
         raw_declaration = source.read_bytes()
         if hashlib.sha256(raw_declaration).hexdigest() != declaration_sha:
             raise ValueError("Refresh declaration changed during validation")
-        config = _attachment_configuration(declaration, preparation, source.parent)
+        config = _attachment_configuration(declaration, preparation, source.parent, revision)
         for path, sha in config["source_bindings"].items():
             resolved = Path(path)
             raw = resolved.read_bytes()
@@ -402,11 +433,35 @@ def append_refresh(root, preparation, previous, *, attachments=None):
             ):
                 raise ValueError("Refresh dependency source binding changed/escaped")
             source_bytes[resolved.relative_to(source.parent)] = raw
-    reports = root / "reports"
-    folders = sorted(reports.iterdir()) if reports.exists() else []
-    parent = folders[-1] / "summary.json" if folders else root / "summary.json"
-    parent_sha = _read(parent)[1]
-    name = f"reports/{len(folders) + 1:04d}"
+    inherited = previous.get("tracks", {}).get("research")
+    if inherited is not None and (declaration is None or "research" not in declaration["tracks"]):
+        from .suite_research import prepare_research
+
+        source_root = root / inherited["source_prefix"]
+        research = prepare_research(
+            inherited["attachment"], source_root=source_root, output_root=revision, refresh=True
+        )
+        if config is None:
+            config = prepare_external({}, _selected_cases(preparation), source_root=source_root)
+            declaration = {
+                "schema_version": "rtpeval_suite_attachments_1",
+                "suite_id": preparation["suite_id"],
+                "tracks": {},
+            }
+        for path, sha in research["source_bindings"].items():
+            resolved = Path(path)
+            raw = resolved.read_bytes()
+            relative = resolved.relative_to(source_root)
+            if hashlib.sha256(raw).hexdigest() != sha or (
+                relative in source_bytes and source_bytes[relative] != raw
+            ):
+                raise ValueError("Inherited research source union changed/conflicted")
+            source_bytes[relative] = raw
+        config["research"] = research["research"]
+        config["source_bindings"].update(research["source_bindings"])
+        config["raw_artifacts"].update(research["raw_artifacts"])
+        declaration["tracks"]["research"] = inherited["attachment"]
+        raw_declaration = _bytes(declaration)
     report = _overlay(previous, config, declaration["tracks"], name) if config else previous
     summary_raw = _bytes(report)
     lineage = {
@@ -440,11 +495,15 @@ def verify_prepared_external(preparation):
     tracks = {
         kind: value
         for kind, value in preparation["declaration"].get("tracks", {}).items()
-        if kind in EXTERNAL_TRACKS
+        if kind in ATTACHMENT_TRACKS
     }
-    config = prepare_external(tracks, _selected_cases(preparation), source_root=root)
+    config = prepare_external(
+        tracks, _selected_cases(preparation), source_root=root, output_root=preparation["directory"]
+    )
     frozen = preparation["track_configuration"]
-    if config["external"] != frozen.get("external", {}):
+    if config["external"] != frozen.get("external", {}) or config.get("research") != frozen.get(
+        "research"
+    ):
         raise ValueError("Prepared external native attachment replay differs")
     for name, encoded in config["raw_artifacts"].items():
         if frozen.get("raw_artifacts", {}).get(name) != encoded:

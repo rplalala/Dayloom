@@ -764,8 +764,11 @@ The calculator does not interpret free text to infer a SKU.
 
 The caller supplies hashes of original usage file bytes to the library; the CLI computes
 them itself. Optional historical annotations bind exact usage SHA-256, event kind/ID,
-source SHA-256, source reference and explanation. They can supplement missing billing
-context or an explicitly stated cache assumption, but cannot overwrite observations or
+source SHA-256, source reference and explanation. The research reader requires an
+object-valued `fields` and object-valued supplied `billing_context` in annotations
+or observed events before native rebuilding; omitted context remains missing.
+Annotations can supplement missing billing context or an explicitly stated cache
+assumption, but cannot overwrite observations or
 replace status, model identity, input/output tokens or artifact lineage. An assumption is
 retained beside the estimate rather than becoming observed provider data. An explicit
 unit-rate scenario may use a price row's `assumption`; it is not confirmed SKU evidence.
@@ -912,7 +915,7 @@ within it. Required source artifacts use exact byte SHA-256, JSON media type,
 provenance and optional generation evidence retain exact bytes and relative layout.
 Generation evidence remains producer evidence, not independent evaluator ground truth.
 
-A group declares its original `input_ref` and `selected_runs` keyed by V0–V3. Each
+A group declares its original `input_ref` and `selected_runs` keyed by V0-V3. Each
 existing run supplies result/usage/provenance refs and completion. Missing result/usage
 may be retained as blocked material; a no-result producer provenance records
 `result_sha256=null`. Missing provenance requires a traceable source-bound
@@ -1005,3 +1008,156 @@ A changed original request requires fresh requirements authoring/review rather t
 hashes. Accepted standardized input does not establish a formal benchmark or research
 selection policy. Runnable schema templates and parameters belong to the
 [material guide](../../backend/evaluation/README.md#installed-generation-and-material-handoff).
+
+
+## Research completion and selection
+
+The separate [research population/census contract](0001-evaluation-artifacts.md#original-input-research-declarations-and-attempt-census)
+retains original requests and every planned version/repetition slot. Native
+qualified four-version intake still requires its existing producer completion,
+reviewed requirements, result, usage, and provenance material; research census
+registration neither weakens that gate nor introduces failed attempts into scoring.
+
+An explicitly declared native mapping normalizes producer outcomes to `completed`,
+`clarification_required`, `failed`, `cancelled`, `incomplete`, `unstarted`, and
+`unknown_pending`. Known native statuses retain their meanings: `not_started`
+maps to unstarted, `pending` to unknown/pending, and `required_mechanism_failed`
+to failed. Additional producer-specific states need an explicit mapping. Completed
+normalization still requires native `workflow_status=completed` and all required
+mechanisms: generation for every version, retrieval for V2/V3, validation and
+completed/not-applicable Repair for V3, plus completion of any additional required
+mechanism. A normally finished workflow may contain quality FAIL/UNKNOWN or skipped
+Repair. Missing completion declaration remains unknown, including when result and
+usage files exist. Processing completion is independent of workflow completion.
+
+Every supplied native usage envelope is validated at the common census boundary,
+regardless of the selected research track. Its explicit planner namespace,
+collection status, event arrays, coverage/timing objects and Repair event subsets
+must remain structurally valid and source-matched. Evaluator/oracle namespaces and
+explicit frozen simulation are invalid generation material. A completed producer
+workflow contradicts explicitly failed, cancelled or incomplete capture usage;
+required-mechanism workflow failure can coexist with completed capture usage.
+Absent optional fields in a declared unavailable envelope remain valid.
+
+An undispatched attempt may retain a source-matched unavailable usage placeholder
+without model/provider/cache events, stage spans, measured invocation timing,
+Repair consumption or a capture outcome implying dispatch. Empty Repair subsets
+and zero observed Repair rounds describe no consumption. The placeholder remains
+in the census and source inventory but is excluded from actual consumption.
+Observed generation usage on an undispatched attempt requires material correction.
+
+Primary selection uses the earliest dispatched attempt in the ordered per-slot
+census. A preliminary non-dispatch declaration is not a first invocation; later
+retries cannot replace a failed primary result. The optional `last_dispatched`
+retry-policy view reports the last explicitly linked retry separately and never
+selects by score. All-attempt inventory retains failed/cancelled usage references,
+while planner-only resource semantics remain owned by [usage](#usage) and
+[offline cost accounting](#offline-cost-accounting).
+
+Population summaries retain status/reason counts and the following measures:
+
+| Measure | Numerator / denominator and missingness |
+| --- | --- |
+| Planned completion | Confirmed completed selected slots / every declared planned slot. Unknown/pending slots remain unresolved. With `C` completed, `P` planned, and `U` unresolved, bounds are `C/P` and `(C+U)/P`; exact `fraction` is null until `U=0`. |
+| Conditional completion | Confirmed completed first dispatches / known dispatched first attempts. Pending dispatched records remain unresolved. Missing slot records can hide additional dispatches, so `unknown_dispatch_slots` and lower/upper denominator bounds remain explicit. |
+| All-four completion | Completed V0-V3 request/repetition groups / groups explicitly planned for all four. A known non-completion settles group failure; otherwise an unknown member leaves it unresolved. Partial-version plans remain not applicable with an excluded count. |
+| Repetition summaries | Per-version, per-repetition, per-version/repetition, and original-request views. Repetitions are not additional unique requests. |
+| Attempt census | All declared records, actual dispatches, and dispatches after the first in each slot. Unstarted declarations are records, not invocations or resource consumption. |
+
+For conditional completion, let `D` be known first dispatches, `C` their confirmed
+completions, `U` their pending/unknown outcomes, and `M` slots with no census record.
+The possible dispatch denominator spans `D` through `D+M`. When `D>0`, conservative
+completion bounds are `C/(D+M)` through `(C+U+M)/(D+M)`; exact fraction requires
+`U=M=0`. `confirmed_fraction` describes observed completed/known-dispatched values,
+not a settled full-census estimate. When `D=0`, the conditional rate and its bounds
+remain unavailable, even if unknown records might conceal dispatches. Zero
+all-four denominators likewise have no rate. Every fraction retains integer
+numerator/denominator, units, availability, and unresolved counts.
+
+`quality_candidate_material` reports completed selected attempts, available versus
+missing result references, and non-completed/unresolved slots. It is a material
+inventory with `native_qualification=not_performed`, not a qualified quality subset
+or a replacement for unconditional completion. Track-specific qualified/comparable
+benefit/resource subsets keep their own exclusion and source validation rules.
+
+## Generation research tradeoffs
+
+`rtpeval research validate|report DECLARATION --track tradeoffs` reads the declared
+population and census without acquiring evidence, invoking Planner or fetching
+prices/bills. `report` additionally requires a fresh `--directory`, writes
+`tradeoffs.json` and `tradeoffs.md`, and preserves all source bytes. The output is
+`rtpeval_research_tradeoffs_report_1`; its processing status, profile IDs,
+population digest, exact-byte source bindings, measurement/review coverage and
+semantic SHA-256 remain separate from workflow completion and native quality.
+
+The optional declaration `track_refs.tradeoffs` binds a JSON
+`rtpeval_research_tradeoffs_1` object. It accepts these fields:
+
+| Field | Meaning |
+| --- | --- |
+| `quality_reports` | Array of saved native final-quality descriptors. Each supplies `report_ref`, `manifest_ref`, `identity_ref`, `snapshot_ref` and the native optional argument references used to build that report. The reader reloads accepted four-version intake and replays the unchanged native quality builder against saved evidence. Recomputed semantic hashes alone cannot authenticate modified scores. |
+| `cost_ledgers` | Array of explicit generation accounting descriptors: unique `attempt_ids`, `prices_ref`, nonempty declared `accounting_basis`, and optional `bills_ref`, `annotations_ref`, `report_ref`. Prices remain native `rtpeval_prices_1`; bill/annotation sidecars wrap arrays in `bills`/`annotations`. Optional saved `rtpeval_cost_report_1` output must exactly equal the native reconstruction. |
+| `comparisons` | Optional nonempty ordered array of `{baseline, candidate}` version pairs. Defaults are V2-minus-V1 and V3-minus-V2. Any other pair requires explicit declaration. |
+
+All source references use the population contract's bounded exact-byte reference
+format. Quality joins bind the case/revision/repetition, every selected native
+run, original input and result, and supplied census usage/provenance hashes.
+Cost joins use the exact census usage bytes and native bill/event/result linkage.
+Foreign attempts, duplicate ledger assignments, source drift, forged saved
+reports and contradictory supplied material require material correction. Missing
+optional quality/cost material remains unavailable. The census continues to own
+first-dispatched selection; a completed retry never replaces its failed primary.
+
+`paired_comparisons` retains every request/repetition planned for both requested
+versions, including non-completed selected attempts. `eligible`, `completed`,
+`excluded`, `not_applicable_groups` and `native_quality_pairs` state distinct units.
+Resource differences require completed selected workflows; elapsed differences
+also require successful native usage outcomes and
+`selected_invocation_through_cleanup` timing. Native final-quality rows retain
+both complete per-version values, the original common dimension mask, rule profile,
+coverage, density and exact score fractions. Differences subtract those existing
+values; they create no new score. Descriptive medians retain comparable pair counts.
+
+Resource rows reuse native usage summaries and adapter coverage. Input and total
+tokens include observed model and embedding calls; output tokens apply to
+non-embedding calls, because embeddings do not invent output observations.
+Embedding calls/input/total are also reported separately. Each token view retains
+known/missing call counts and observed subtotals. Missing token observations or
+unverified adapter coverage produce null complete metrics. Model calls, application
+HTTP sends and billable events remain different units; SDK output-tool billing
+observations are excluded from application sends. Repair model/provider IDs define
+subsets counted once, rather than additional consumption or a sum of inclusive spans.
+
+Native actual, estimated and best-available money fields retain currency, dated
+prices, billing coverage, event evidence, assumptions and unallocated bills.
+Comparisons conservatively require matching declared accounting basis, native
+scope, price bytes and price assumptions as well as currency. Best-available
+comparisons additionally distinguish complete-run bills, event bills, estimates
+and mixed billing bases; confirmed empty zero-event runs remain valid zero
+baselines. A compatible zero baseline retains its difference with a null ratio.
+Cost medians group by mode, currency, accounting basis and price hash. No shared
+account charge, credit, tax or free usage is inferred.
+
+`all_attempts` reports each dispatched attempt, its primary/retry identity,
+workflow status, usage coverage and native cost separately from successful pairs.
+Failed/cancelled attempts and retries contribute observed consumption. Workflow
+failure can coexist with completed capture usage when a required mechanism failed;
+that observation remains in the failed/censored elapsed cohort. Successful elapsed
+cohorts distinguish selected primaries from retries, version and timing scope.
+Usage validity and unavailable placeholder retention follow the common census
+validation above.
+
+Overall and per-version consumption have complete totals only when census dispatch
+coverage and native adapter observations are complete and all required measures are
+known. Otherwise observed subtotals remain explicit. Cost consumption preserves
+both native event subtotals and known complete-run total subtotals, so an observed
+run bill remains visible when a pending repetition prevents a complete population
+total. Partial price or token detail cannot become zero expenditure.
+
+Full `population_completion` remains alongside benefit/resource subsets. Compatible
+version completion differences use every planned slot, exact fractions only when
+resolved, and conservative difference bounds when pending. Different planned
+populations disable a direct difference. Per-case caveats retain unequal or
+unverified cache/order/concurrency/configuration/timing conditions. These are
+descriptive observations with no efficiency score, causal effect or significance
+claim; native four-final qualification and scoring remain unchanged.

@@ -139,12 +139,369 @@ never collect answers, execute controlled cases, invoke Repair or rescore primar
 
 `rtpeval_suite_attachments_1` contains the existing `suite_id` and a `tracks` object.
 Offline `report --attachments` preflights the entire supplied refresh before creating
-a revision. Supplied track lists replace their previous attachment selection; omitted
-tracks inherit the prior summary. A revision freezes original attachment/dependency
+a revision. Supplied human/controlled lists replace their previous attachment selection;
+omitted study tracks inherit the prior summary. Research selection and inheritance follow
+the wire below. A revision freezes original attachment/dependency
 bytes, attachment declaration and independently closed summary lineage under
 `reports/NNNN/`, including its parent summary hash. Earlier execution/summary receipts
 remain unchanged. Replay verifies every revision's closed inventory and deterministic
 native study reconstruction, follows parent lineage and returns the latest summary.
+
+### Optional research attachment wire
+
+Initial `rtpeval_suite_1.tracks.research` and refreshed
+`rtpeval_suite_attachments_1.tracks.research` use the same explicit object:
+
+| Field | Required value |
+| --- | --- |
+| `schema_version` | `rtpeval_suite_research_1` |
+| `declaration_ref` | Available exact-byte artifact reference to `rtpeval_research_declaration_1`, relative to the outer suite/attachment declaration |
+| `selected_tracks` | Nonempty distinct list selected from `population`, `opportunities`, `relevance`, `repair`, `tradeoffs` |
+
+The object has exactly these fields. The referenced declaration and every consumed
+dependency must remain within the outer source root; its own references resolve relative
+to its directory. Each selected track loads a fresh research context and uses its existing
+standalone builder. Selection order does not change per-track semantics or source digests.
+Only selected material is consumed. Valid missing optional material remains unavailable
+or partial; structurally supplied, foreign, stale or escaped material requires correction
+before output creation. The [research declaration](#original-input-research-declarations-and-attempt-census)
+owns population/profile/census validation. Its planned inventory is independent of native
+quality `cases`, including failed, cancelled, unstarted and unknown generation slots.
+
+`summary.json.tracks.research` exposes `rtpeval_suite_research_index_1` and an exact-byte
+`index` reference. The saved index carries population/profile identities and digests,
+census reference, unique-request/planned-slot counts, selected track names, per-track
+measurement/review coverage, diagnostics, applicability, source bindings and their union
+`source_digest`. Its `semantic_sha256` digests the saved index excluding that field; the
+summary preserves this digest while locating its artifact references within the suite.
+Each selected entry in `tracks` retains its native research schema, processing/applicability,
+coverage, population/source/semantic digests, diagnostics, JSON/Markdown exact-byte
+references and `source_dependencies`. Unselected entries are `not_requested` with
+`track_not_selected`. Complete report processing does not assert complete measurements.
+
+Initial output stores `tracks/research/index.json`, `tracks/research/reports/<track>.json`
+and `.md`, and the exact consumed source union under `tracks/research/sources/`. The union
+includes native snapshot raw responses and preserves original relative layouts and bytes.
+Markdown references resolve from each output location to the frozen sources. Initial
+original-source checks remain part of the accepted suite lifecycle. Source drift during
+execution stops new native work and records `primary_report.research_material_correction`
+for the affected frozen dependency paths; only consuming research tracks and their links
+lose availability. Restoring original sources preserves the recorded stopped outcome.
+
+Offline refresh writes fresh index/reports under `reports/NNNN/tracks/research/` and frozen
+dependencies under that revision's `sources/`, alongside the attachment declaration,
+configuration, summary, parent-summary lineage and closed receipt. A supplied research
+object replaces the previous selection. Omitted research rebuilds fresh report artifacts
+from the prior frozen sources and selection; its semantic content remains unchanged.
+Every refresh is preflighted before creating a revision. Report/replay verify initial
+research composition, all closed inventories, exact artifact bytes, parent hashes and
+deterministic source-bound reconstruction of every appended research report. Rehashing
+corrupt report/summary metadata cannot substitute for reconstruction. Primary evidence,
+native scores and earlier closed bytes retain the existing lifecycle.
+
+`benefit_resource_links` retains three rows per planned case revision/repetition:
+`rag_v2_minus_v1`, `repair_v3_minus_v2_finals`, and `repair_same_run_v3`. Each row identifies
+selected primary attempts with version, attempt/run/group identities, input/configuration
+hashes and supplied result/usage/provenance hashes. Report pointers bind population, source
+and semantic digests. Linkage checks selected attempts and exact usage hashes against
+independently rebuilt resource rows, rather than joining by case ID alone. RAG links use
+reviewed relevance when selected, otherwise observed opportunity comparisons. Repair
+links retain separate four-final and same-run native views. The same-run resource view
+binds one selected V3 invocation; its draft never supplies an independent V2 measurement.
+Retries remain in all-attempt consumption and cannot replace selected primary resources.
+
+`status`, `benefit_status`, `resource_status`, `source_compatible` and `reasons` retain
+unmatched or partial rows. Source compatibility is independent of measurement availability.
+`resource_measurement_coverage` states known/missing selected-attempt counts per native
+usage metric and observed-subtotal counts. Monetary coverage retains observed/missing
+attempt counts and, separately for native `actual`, `estimated` and `best_available`,
+known/missing total and observed-subtotal counts. A legitimate observed zero is known;
+an observed subtotal does not establish a complete total. Known
+elapsed time, calls, HTTP sends or cost remain visible when tokens are missing; absent
+metrics are not zero. A `matched` usage link has complete declared usage metrics; optional
+cost coverage remains explicit and does not create a monetary estimate. The resource
+report owns literal values, timing/currency/billing scope and missing-value semantics
+defined in [generation resources](0002-intake-identity-usage.md#generation-research-tradeoffs).
+Controlled target inventory remains a separate population: `controlled_resource_link` is
+`not_applicable` with `controlled_simulation_is_a_separate_population`. These are descriptive
+source-compatible links, without a combined score, ranking or causal interpretation.
+The [installed suite guide](../../backend/evaluation/README.md#installed-multi-case-suite)
+owns operator commands.
+
+## Original-input research declarations and attempt census
+
+The offline `rtpeval research validate/report` boundary consumes one explicit
+`rtpeval_research_declaration_1`, rooted at its parent directory. It binds
+`population_ref`, `profile_ref`, optional `census_ref`, and optional `track_refs`
+for separately selected research tracks. References use the existing available
+artifact wire: relative `path`, exact-byte `sha256`, `media_type`, and
+`schema_version` for versioned JSON envelopes. Resolved links and junctions must
+remain inside the declaration root. Configuration artifacts may bind JSON or
+exact non-JSON bytes such as YAML. No directory discovery occurs.
+
+`rtpeval_research_population_1` has `population_id`, `revision`, and ordered
+nonempty `cases`. Each case has a unique `case_id`, case `revision`, original
+`input_ref`, explicit `metadata`, ordered unique `planned_versions`, and ordered
+unique `repetition_ids`. Metadata may be empty; it does not infer research strata.
+Slots are the case-local product of repetitions and declared V0-V3 versions;
+case identity remains distinct from repetition identity. Population size is arbitrary.
+An unrepeated twenty-case four-version inventory has eighty planned slots without
+requiring results, reviewed requirements, or qualified quality groups.
+
+`rtpeval_research_profile_1` declares the following fixed selection contract:
+
+| Field | Meaning |
+| --- | --- |
+| `profile_id`, `revision`, `source_revision` | Selection identity, revision, and declared implementation/source context |
+| `population_id`, `population_revision` | Exact inventory revision |
+| `declared_at`, `timing_basis` | Timezone-aware declaration time and `prospective`, `retrospective`, or `unverified` timing |
+| `first_attempt_rule` | Required `first_dispatched`; planner dispatch is distinct from HTTP sends or evaluator execution |
+| `retry_rule` | Explicit `selection=none` or `last_dispatched`, with `scope=slot`; any retry-policy result is separate from the primary attempt |
+| `completion_policy_ref`, `completion_mapping` | Native producer policy and explicit native-status normalization, defined in [completion semantics](0002-intake-identity-usage.md#research-completion-and-selection) |
+| `configurations` | Exact configuration artifact references keyed by every declared version |
+| `previous_profile_ref` | Optional exact reference to the preceding profile revision |
+
+Prospective declaration time cannot follow any recorded dispatch. Retrospective
+and unverified timing remain visible. Changed profiles use new linked revisions;
+when history is supplied, its profile/population identities, distinct revisions,
+ordered declaration times, schema, and bytes are verified. Hashes preserve supplied
+history; they do not independently prove when a declaration was made.
+
+`rtpeval_research_census_1` binds `population_id`, `population_revision`,
+`profile_id`, `profile_revision`, and an explicit `attempts` array. Missing census
+or missing slot records means unknown availability, rather than unstarted or failed.
+Every supplied record binds the following:
+
+- Slot fields `case_id`, `case_revision`, `version`, and `repetition_id`.
+- Globally unique `attempt_id` and `run_id`; positive contiguous per-slot `order`
+  starting at one; explicit `prior_attempt_id=null` for the first record and the
+  immediate predecessor for subsequent records. Per-slot array order and dispatch
+  timestamps must agree.
+- `dispatched` and timezone-aware `dispatched_at`, with null timestamp when false;
+  exact `input_sha256` and `configuration_sha256`; `reason_type`; and explicit
+  `execution_metadata` for observed cache, concurrency, invocation order, and
+  other execution conditions. An empty metadata object means these conditions
+  were not supplied, rather than equal or controlled.
+- Optional `completion_ref`, `result_ref`, `usage_ref`, and `provenance_ref`.
+  Absence remains unavailable. Supplied JSON is strictly parsed and its exact
+  bytes/schema are checked. Native usage/provenance require `group_id` on the
+  record and match group/run/version/result bindings. Provenance additionally
+  matches the original input; generation usage requires explicit planner namespace.
+  Result `system_version` must match the slot. Any supplied extra native input or
+  configuration hash must also match.
+
+Failed, clarified, cancelled, or pending records need no adopted result. Supplied
+producer completion carries `declared_by`, timezone-aware `declared_at`,
+`policy_ref`, `workflow_status`, and a typed `required_mechanisms` object including
+generation. It cannot precede dispatch. Optional `producer_policy_ref` must agree.
+Result existence, quality PASS, and accepted Repair are never completion evidence.
+A non-dispatch record can declare unstarted or unknown/pending; terminal generation
+outcomes require dispatch. The first dispatched record is selected even if an
+unstarted record precedes it. Further dispatches are explicit retries.
+
+The population report wire is `rtpeval_research_population_report_1`. It retains
+ordered slots and all attempts, selection profile, case/version/repetition views,
+all-four request/repetition rows, reasons, and distinct completion denominators.
+Source bindings are declaration-root-relative, include the declaration's own byte
+hash, and produce a deterministic `source_digest`; `population_digest` binds the
+inventory's canonical content. `semantic_sha256` hashes the full report except
+itself using sorted compact UTF-8 JSON with finite numbers. There is no generated
+clock or output-directory value inside the semantic report.
+
+`validate` returns JSON on stdout without writing artifacts. `report` requires
+`--directory` naming a fresh directory and writes `population.json` and
+`population.md`. Both require explicit `--track population`. Processing returns
+zero on valid material and two with `needs_material_correction` on malformed,
+foreign, stale, contradictory, or unsafe material; it never silently reports a
+smaller cohort. Reports preserve sources byte-for-byte. This boundary reads saved
+material only and does not qualify raw attempts for native quality intake, run
+planners, acquire evidence, or select benchmark cases.
+
+## Canonical candidate opportunity observations
+
+`rtpeval research validate/report --track opportunities` produces
+`rtpeval_research_opportunities_report_1` from the original-input declaration.
+Every planned V1/V2 slot remains a row, including missing, failed and cancelled
+attempts. The identity unit is a canonical Google Place ID. This observational
+track does not decide relevance, verify quality or execute a historical planner.
+
+The report envelope records processing status separately from track applicability:
+no planned V1/V2 slots means `not_applicable`; missing historical captures for
+planned slots remain applicable and unavailable. Profile IDs, population/source
+digests, ordered rows and the semantic hash retain their source bindings.
+`measurement_coverage` counts planned and captured V1/V2 slots and complete,
+partial and unavailable slots for each discovery stage and independent scheduling.
+`review_coverage` counts slots with independent final-place associations and marks
+relevance review as not performed by this track. Top-level diagnostics retain
+case/revision/version/repetition/attempt identity alongside each per-run conflict.
+
+`track_refs.opportunities` references `rtpeval_research_opportunities_1` with an
+explicit `observations` array. Each observation binds `case_id`, `case_revision`,
+`version`, `repetition_id`, the census-selected first dispatched `attempt_id` and
+`run_id`, exact `input_sha256` and `configuration_sha256`, and explicit nullable
+`result_sha256`. `capture_ref` uses the common root-bounded byte reference contract.
+Foreign, duplicate, retry-selected or stale bindings require material correction.
+
+The saved `rtpeval_candidate_capture_1` binds `version` and `run_id`. Its `stages`
+map contains `discovered`, `admitted`, `enriched` and `supplied`; a missing stage
+stays unavailable. Each captured stage declares `status=complete|partial|unavailable`,
+`places` and `reasons`. Each place retains `canonical_place_id`, native
+`google_origins` (query/intent/raw rank/count) and `rag_origins` (entity, typed query,
+rank, similarity, distance, artifact/text hashes, space, policy, resolution and
+Google evidence reference). The exporter retains native query planning, omitted
+queries, entity outcomes, limits and fates under `rag`. Omission rows bind canonical
+place, stage and reason. Complete predecessor inventories cannot contradict later
+memberships; neither an absent history nor a truncated capture establishes zero.
+
+Reports deduplicate places within stages and union their native origins. They retain
+Google-only, RAG-only and mixed partitions, observed counts and nullable complete
+counts. Google used only to resolve a RAG identity is not Google discovery.
+`pre_rag_google_ids` binds the same run's pre-extension Google inventory;
+`incremental_rag_ids` and its completeness remain distinct from complete paired
+V2-versus-V1 stage additions/losses under `cross_version`. Multiple entities, queries
+and intents can remain evidence without adding venues to denominators.
+
+Optional `identity_sources` binds an exact native `manifest_ref`, `evidence_ref`
+and `mode=program|legacy`. The reader loads the native four-final intake, verifies
+its selected input/run/result against the census, and recomputes identity offline.
+Program mode may bind a saved `model_result_ref`; legacy replay requires its native
+`audit_ref` and may bind `reviews_ref`. Projection reviews and all native source
+files retain exact byte links. A self-declared identity digest or producer place ID
+alone cannot establish scheduling. Only independently resolved native final
+primary-visit associations count; Nearby references and generic activities do not.
+Missing associations or unresolved roles keep scheduling partial. Producer supplied
+or scheduled fate conflicts remain diagnostics. The capture's optional
+`result_semantic_sha256`, when present, must match the saved selected final.
+
+JSON and Markdown retain slot identities, completeness, canonical memberships,
+reasons, exact source paths/hashes and deterministic digests without altering input
+files. Source paths resolve under the research declaration's root. Fresh output
+rules follow the [research declaration boundary](#original-input-research-declarations-and-attempt-census).
+[Independent interest comparisons](#independent-interest-relevance-and-corpus-coverage)
+consume original-input interest definitions, reviewed canonical relevance labels and
+their source bindings alongside these inventories. Producer intent associations and
+RAG origin do not supply those verdicts.
+
+## Independent interest relevance and corpus coverage
+
+`rtpeval research validate/report --track relevance` imports independent reviewed
+material and produces `rtpeval_research_relevance_report_1`. It reuses selected
+first-attempt opportunity rows and native independent scheduling. Material readers
+verify exact bytes, case/source bindings and declared completeness; they do not
+execute reviewers or corpus measurements. This view remains separate from primary
+quality scoring.
+
+The report envelope retains profile identity, population/source digests and a
+semantic hash. `measurement_coverage` preserves the opportunity slot/stage census
+and counts complete, partial and unavailable corpus observations per original
+request. `review_coverage` separately counts source-bound interest inventories,
+cases with saved relevance judgments and independent review records, without
+counting version/repetition rows as additional requests. Source-bound opportunity
+conflicts remain top-level diagnostics. No planned V1/V2 slots is not applicable;
+missing independent interest material for planned slots remains unavailable.
+
+`track_refs.relevance` references `rtpeval_research_relevance_1`, binding
+`population_id`, `population_revision`, `profile_id` and `profile_revision`. Its
+explicit `interest_inventory_refs`, `review_refs` and `coverage_refs` arrays may
+be empty; optional `coverage_profile_ref` is a common root-bounded byte reference.
+The subordinate materials are:
+
+| Reference / schema | Required binding and contents |
+| --- | --- |
+| Interest inventory / `rtpeval_research_interests_1` | `case_id`, `case_revision`, `input_sha256`, independently reviewed `requirement_spec_ref`, review metadata and explicit `interests` |
+| Labels / `rtpeval_research_relevance_reviews_1` | Explicit `records` with stable `review_id`, case/input/inventory/spec hashes, interest identity/pointer, venue subject/evidence and independent review metadata |
+| Corpus sidecar / `rtpeval_research_corpus_coverage_1` | Case/input, pinned `snapshot_identity`, fixed `scope`/`scope_sha256`, measurement/declaration times, method and eligible count/completeness |
+| Strata profile / `rtpeval_research_coverage_profile_1` | Stable `coverage_profile_id`/`revision`, population binding, snapshot, fixed case scopes, declaration timing, metric and ordered thresholds |
+| Optional sample measure / `rtpeval_research_interest_coverage_1` | Case/input/scope/snapshot/inventory hashes, `taxonomy_ref`, `sample_ref`, `coding_review_ref`, literal numerator/denominator, method and uncertainty |
+
+Every inventory and label retains `revision`, `reviewer_ref`,
+`reviewer_kind=human|external_model`, timezone-aware `reviewed_at` and `rationale`.
+An external-model record is saved independent review material; importing it invokes
+no model. Each interest has a unique `interest_id`, original-input JSON
+`source_pointer` and exact `source_text`, plus a `requirement_pointer` into the
+reviewed RequirementSpec. The pointed requirement must carry the same stable
+interest/preference/obligation identity. Missing inventories stay unavailable;
+an explicit independently reviewed empty inventory is not applicable.
+
+A label binds `input_sha256`, `interest_inventory_sha256`,
+`requirement_spec_sha256`, `interest_id` and `source_pointer`. It declares exactly
+one nonempty `canonical_place_id` or `unresolved_subject_id`, and a
+`verdict=relevant|not_relevant|unknown`. Known verdicts require
+`venue_evidence_refs`; each saved evidence object binds the same venue subject and
+an independent Google Places, official or reviewed-description source kind.
+Planner judgments, query links, rank and cosine are not review evidence. Duplicate
+review identities, duplicate/contradictory interest-subject judgments, foreign
+venues and stale source bindings require correction. Unresolved judgments retain
+their reviewer/evidence trail without adding a canonical venue count.
+
+Each discovered/admitted/enriched/supplied/scheduled row reports deduplicated
+relevant `canonical_ids`, an observed lower count and nullable `complete_count`,
+with native stage completeness and review reasons. Overall relevance is the union
+across applicable interests; per-interest rows count an identity once. Review
+coverage retains judged/inventoried subjects, their fraction, relevant/negative/
+unknown/absent subjects, expected/supplied judgments and unknown/missing judgments.
+Exact counts require a complete stage and known judgments for every applicable
+interest-subject pair, even when one known positive already establishes the
+observed union. An empty inventory denominator has no review-coverage fraction.
+
+The principal `end_to_end` set is relevant AND admitted AND supplied AND
+independently scheduled, overall and per interest. A final scheduled venue cannot
+reconstruct missing admission or supply history. Selected completed V1/V2 pairs
+with the same case/revision/repetition and reviewed inventory retain signed
+V2-minus-V1 deltas and gained/lost/retained IDs only when the relevant chain is
+complete. Other pairs retain nullable deltas and explicit omission reasons.
+Conversions use the relevant intersection as numerator and the earlier stage's
+relevant count as denominator, including admission-to-supply and
+supply-to-scheduled. Incomplete stages/reviews and zero denominators have no exact
+fraction; observed zero is not substituted for missing evidence.
+
+A corpus `snapshot_identity` includes a byte-bound `snapshot_ref`,
+`artifact_sha256`, `policy_version`, `space_id` and `identity_pointers` mapping each
+identity field to its exact JSON pointer in the saved snapshot manifest. The
+reader checks these values against the manifest and any selected RAG origin.
+Scopes use `kind=radius` with latitude/longitude/positive `radius_m`, or
+`kind=bounding_box` with south<north and west<east within coordinate bounds.
+`scope_sha256` hashes canonical JSON. Profile and sidecar must retain identical
+snapshot identities and exact case scopes; incompatible material fails validation.
+The [retrieval contract](../0004-retrieval-persistence%28v2v3%29.md#pinned-corpus-coverage-sidecars)
+explains the entity/geographic interpretation.
+
+Sidecars retain `measurement_method`, `measured_at`, `declared_at`,
+`timing_basis=prospective|retrospective|unverified`, `count_status`,
+`eligible_entity_count`, `observed_subtotal` and `reasons`. Complete counts are
+nonnegative integers with matching subtotals, including a valid zero. Partial or
+unavailable counts have null eligible counts and explicit reasons, so timeouts,
+truncation or unsuccessful retrieval cannot become exact zero coverage.
+
+Optional reviewed interest coverage binds the same case/input/scope/snapshot and
+interest inventory. `rtpeval_research_interest_taxonomy_1` lists unique applicable
+`interest_ids`; `rtpeval_research_corpus_sample_1` lists unique `entity_ids`.
+`rtpeval_research_corpus_coding_1` binds exact taxonomy/sample/inventory hashes,
+independent reviewer metadata, independent `evidence_refs` covering the sampled
+entities and disjoint `relevant_entity_ids`/`unknown_entity_ids` subsets. The
+numerator equals reviewed relevant entities; the denominator equals sample size
+and cannot exceed a complete eligible census. Unknown coding keeps the fraction
+null and bounds [relevant/sample, (relevant+unknown)/sample]; a zero-size sample
+has no fraction or bounds. Saved method and uncertainty remain in the output.
+
+A strata profile declares `metric=eligible_entity_count|interest_coverage_fraction`
+and ordered nonoverlapping `strata` with stable `stratum_id`, `min_inclusive` and
+nullable final `max_exclusive`. Complete compatible coverage values select a
+stratum; missing or partial measures retain continuous observations without an
+exact assignment. Prospective declarations must precede the first selected
+dispatch; absent dispatch evidence is labeled unverified. Retrospective timing
+remains explicit, alongside the originally declared basis. No input replacement
+or threshold fitting occurs during reporting.
+
+JSON and Markdown retain exact case/repetition rows, stage memberships, reviewer
+metadata, continuous coverage, fixed thresholds, source/semantic digests and
+interpretation limits. Summary `available_pairs`/`omitted_pairs` count complete
+principal comparisons overall; `unstratified_pairs` identifies pairs without an
+exact coverage assignment. Each stratum separately reports its case IDs, available
+and omitted pairs and descriptive principal-delta median. Repeated slots remain
+visible and are not independent samples. Entity/geographic proxies and reviewed
+sample fractions make no citywide recall, unique-venue coverage, ranking,
+statistical-inference or causal-attribution claim.
 
 ## Activity, transport and occupancy scope
 
@@ -436,6 +793,54 @@ The optional `rtpeval_controlled_batch_1` manifest inventories case ID, role,
 Its report assembler verifies file/content hashes and exact case/goal inventory, keeps
 unavailable cases and expected targets, and exposes descriptive counts. It imposes no
 case-count cap and does not generate the formal 24-target/8-control corpus.
+
+<a id="research-controlled"></a>
+
+#### Declared research controlled view
+
+Research Repair material can include a `controlled` object with `study_id`,
+`revision` and an ordered `cases` inventory. Each case declares `case_id`,
+`revision`, `role` (`target` or `control`), unique `expected_goal_ids`,
+unique `expected_guard_ids`, `expectations_sha256` and `descriptor`.
+Target and guard identifiers are disjoint. This population is separate from
+declared original-request generation slots and does not assume a fixed study size.
+
+A present descriptor binds `case_ref`, `execution_ref`, `expectations_ref`,
+`report_ref` and `snapshot_ref`; the last reference names the snapshot's
+`manifest.json`. Native builder inputs use their argument name followed by
+`_ref`, including `requirement_spec_ref`, `identity_report_ref`,
+`schedule_context_ref` and optional correspondence/factual reviews.
+The declaration's expectations hash is the exact file-byte hash. Case identity,
+revision, role and complete target/guard inventory must match the native sources.
+The reader rebuilds the native controlled report from these frozen artifacts and
+requires exact equality; corrupt, foreign or self-rehashed fabricated reports
+are material errors. It does not execute controlled replay.
+
+A missing case uses `descriptor=null` and `expectations_sha256=null`, retaining
+every declared goal and guard as unavailable material. Resolution and preserved
+resolution retain all expected targets; verdict coverage identifies which targets
+have native independent outcomes. Detection is measured over available expected
+targets, authorization over detected targets, model attempts over authorized
+targets, and adoption over model-attempted targets. Each channel also exposes
+the full expected-target count and coverage. Native candidate/identity-free
+opportunities remain observations with their own units, rather than independent
+successes.
+
+Preservation is assessed only after the native target is independently resolved.
+It requires every declared guard's independent final verdict to be PASS, complete
+applicable continuity/correspondence, and no confirmed regression or introduced
+failure. Guard FAIL or a confirmed continuity regression is `violated`;
+guard UNKNOWN, lost verification or unresolved continuity is `unknown`.
+Supplemented `reviewed_checks.continuity` and final checks govern this decision,
+while raw paired scores remain unchanged. No guard is omitted because its material
+is missing. Nonresolved targets remain separately labelled.
+
+Case-level joint success requires all declared targets in that target case to be
+resolved and preserved; its denominator is expected target cases. Controls retain
+native valid-no-change, lawful-change, regressed and unresolved outcomes, with
+missing controls explicitly unavailable. Neither case-level rates nor control
+counts are pooled into generation-slot or target-resolution denominators.
+
 
 The dated [implementation and review record](../records/evaluation/2026-10-04-controlled-repair.md)
 retains development validation, corrections and execution limitations.

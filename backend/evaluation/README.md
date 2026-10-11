@@ -201,6 +201,84 @@ remain separate; valid missing study results cannot lower or raise primary score
 earlier execution evidence intact. The [suite artifact contract](../../docs/contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
 owns wire integrity and replay; native individual commands below remain available.
 
+### Optional research attachments and offline refresh
+
+A research population starts from original requests, independently of the suite's
+accepted four-final cases. Prepare its population, selection profile, attempt
+census and exact saved track material with the [offline research flow](#installed-offline-research)
+first. Failed, cancelled, unstarted and unknown generation slots remain in that
+population; the suite's qualified case list does not replace it.
+
+Add a suite-level `tracks.research` object to the initial suite declaration or a
+later `rtpeval_suite_attachments_1` declaration. Every path is relative to that
+outer declaration; the research declaration's own references remain relative to
+its directory. Keep both declarations and all dependencies within the outer root.
+The [research attachment wire](../../docs/contracts/0001-evaluation-artifacts.md#optional-research-attachment-wire)
+owns exact field and integrity requirements. Replace the illustrative hash below
+with the SHA-256 of the exact saved bytes:
+
+```json
+{
+  "schema_version": "rtpeval_suite_attachments_1",
+  "suite_id": "selected-development-cases",
+  "tracks": {
+    "research": {
+      "schema_version": "rtpeval_suite_research_1",
+      "declaration_ref": {
+        "path": "research/research.json",
+        "sha256": "EXACT_RESEARCH_DECLARATION_SHA256",
+        "schema_version": "rtpeval_research_declaration_1",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      "selected_tracks": ["population", "opportunities", "relevance", "repair", "tradeoffs"]
+    }
+  }
+}
+```
+
+Select any nonempty list of distinct registered tracks explicitly. Omitted
+research leaves the default suite unchanged; omitted track selections are
+`not_requested`. Missing valid optional reviews, captures, native reports or
+usage retain unavailable/partial measurements. Supplied malformed, foreign or
+stale material is a track-specific material correction, even when native quality
+material is valid.
+
+```powershell
+uv run rtpeval suite report artifacts/fresh-suite --attachments attachments.json
+uv run rtpeval suite replay artifacts/fresh-suite
+```
+
+The report operation appends a new receipted revision. Inspect the research index
+linked by `summary.json` under `tracks.research`; it binds the population/profile,
+attempt census, selected reports and their exact source and semantic hashes.
+Initial attachments write `tracks/research/index.json`,
+`tracks/research/reports/<track>.json` and `.md`, with frozen dependencies under
+`tracks/research/sources/`. Later attachments write corresponding reports under
+`reports/NNNN/`, bind the previous summary hash, and freeze dependencies under
+that revision's `sources/`. Earlier primary reports, receipts and summaries remain
+intact. Omitted refresh keys inherit the previous attachments; a supplied
+research object replaces its previous selection.
+
+Processing completion is separate from measurement completeness. Planned slots,
+qualified four-final groups, same-run V3 pairs and controlled targets retain their
+own units and denominators. Source-compatible RAG and Repair benefit links use
+exact selected-attempt bindings to resource evidence; missing benefits or usage
+remain visible. Retries are separate consumption, a V3 draft is not an independent
+V2 run, and frozen controlled simulation is excluded from live generation
+resources. No combined score, ranking or causal conclusion is produced.
+
+Successful replay preserves unavailable/partial measurements; it does not certify
+complete measurement or successful generation. Replay requires no credentials or
+network. It verifies the immutable inventories,
+lineage and deterministically rebuilt research content. Initial suite sources
+retain the native source-drift check against their original root; later attachment
+revisions rebuild from their frozen dependency copies. Keep original initial
+sources available and unchanged. Changed, escaped, missing or corrupt material
+cannot establish successful complete research evidence. Reporting and replay do
+not generate plans, acquire independent evidence, invoke reviewers or execute
+controlled Repair.
+
 ## Installed generation and material handoff
 
 `rtpeval generate` forwards the native [selected-version usage capture](#planner-usage-capture-cli)
@@ -374,6 +452,92 @@ intake accepts. Keep original input/config/capture/handoff files accessible and 
 until that gate; a changed request needs fresh authoring/review, not edited hashes. All
 staging, attachment, finalization and evaluation destinations must be fresh. A failed
 final destination is retained for diagnosis and is not accepted or reusable for recovery.
+
+## Installed offline research
+
+`rtpeval research` reads an explicitly declared original-input population and saved
+material. It preserves planned case/version/repetition slots when generation is
+failed, cancelled, incomplete, unstarted or unknown. Original input registration
+does not require a completed four-version result bundle. Native four-final intake
+continues to own final-quality eligibility.
+
+Prepare material in this order:
+
+1. Preserve the complete original requests and stable case revisions. Declare
+   planned versions and repetition IDs in the population inventory.
+2. Save a versioned selection profile with exact configuration references,
+   first-dispatched primary selection, explicit retry/completion rules and its
+   prospective, retrospective or unverified timing basis.
+3. Bind an optional attempt census to that population and profile. Preserve every
+   linked attempt, exact source hashes, dispatch timestamps, completion declarations,
+   available result/usage/provenance and execution metadata. Missing census rows
+   remain unknown; explicit producer evidence establishes an unstarted slot.
+4. Declare applicable optional track material by exact references. Independent
+   review and evidence preparation remain separate operator activities.
+
+The [population and attempt contract](../../docs/contracts/0001-evaluation-artifacts.md#original-input-research-declarations-and-attempt-census)
+owns detailed fields. References resolve relative to the research declaration;
+all material must remain within its root and pass exact byte-hash validation.
+The declaration uses `rtpeval_research_declaration_1`, `population_ref`,
+`profile_ref`, optional `census_ref` and `track_refs`.
+
+```powershell
+uv run rtpeval research --help
+uv run rtpeval research validate material/research.json --track population
+uv run rtpeval research report material/research.json --track population --directory artifacts/fresh-population-report
+```
+
+Each report requires a fresh output directory and writes `<track>.json` and
+`<track>.md`. Stdout records processing status, the track and deterministic source
+and semantic digests. Exit 0 means reporting completed; it does not establish
+complete measurement or a successful generation outcome. Exit 2 reports material
+correction or argument errors. Inputs are preserved, reporting sends no provider
+requests and does not select replacements or retries.
+
+Population output keeps planned completion, conditional first-dispatched completion
+and all-four completion separate, with numerator/denominator units and unresolved
+bounds. Repeated requests do not become additional unique requests. The
+[completion contract](../../docs/contracts/0002-intake-identity-usage.md#research-completion-and-selection)
+explains producer completion and the distinction from quality qualification.
+
+Use the same declaration with explicit track selection:
+
+```powershell
+uv run rtpeval research report material/research.json --track opportunities --directory artifacts/fresh-opportunities
+uv run rtpeval research report material/research.json --track relevance --directory artifacts/fresh-relevance
+uv run rtpeval research report material/research.json --track repair --directory artifacts/fresh-repair
+uv run rtpeval research report material/research.json --track tradeoffs --directory artifacts/fresh-tradeoffs
+```
+
+| Track | Additional saved material | Reading the output |
+| --- | --- | --- |
+| Opportunities | Exact V1/V2 first-attempt stage captures; native final associations when scheduled places are reported | Observed versus complete unique canonical stage counts and Google/RAG partitions; unavailable history stays missing |
+| Relevance | Independent original-input interest/venue reviews and fixed corpus/scope/stratum sidecars | Relevant stage/intersection counts, judged/inventoried coverage and compatible V2-minus-V1 sets/deltas; geography proxies retain entity units |
+| Repair | Native four-final quality, same-run V3 pair/continuity, mechanism reports and separately declared controlled inventories | Final versus paired changes and controlled target/control preservation use distinct populations and availability denominators |
+| Tradeoffs | Native planner usage, explicit saved prices/bills and compatible quality descriptors | Selected benefit/resource comparisons, all-attempt consumption and full-population completion remain separate |
+
+The [opportunity contract](../../docs/contracts/0001-evaluation-artifacts.md#canonical-candidate-opportunity-observations)
+and [independent relevance/coverage contract](../../docs/contracts/0001-evaluation-artifacts.md#independent-interest-relevance-and-corpus-coverage)
+own track material schemas and stage/review completeness. The
+[Repair contract](../../docs/contracts/0005-quality-human-review.md#declared-research-repair-view)
+and [generation tradeoffs](../../docs/contracts/0002-intake-identity-usage.md#generation-research-tradeoffs)
+explain compatible native sources, masks and resource accounting. Native report
+references require their exact saved source descriptors, rather than an isolated
+summary copied from another run. Relevant labels, coverage and controlled guards
+are separately prepared evidence; reporting does not create or execute them.
+
+To save future opportunity stages, the V1 and V2 runner CLIs accept the default-off
+`--opportunity-capture PATH` option. Use a fresh file path and retain the resulting
+`rtpeval_candidate_capture_1` bytes with their exact attempt/input/final references.
+The programmatic equivalent is `opportunity_capture_path`. The
+[passive export guide](../../docs/0004-retrieval-persistence%28v2v3%29.md#passive-candidate-opportunity-export)
+explains stage availability and write-failure behavior. Historical final outputs
+cannot reconstruct absent admission or supply traces.
+
+Reports are descriptive: no pooled research score, causal claim, version ranking
+or automatic thresholds are produced. To locate selected research reports alongside
+native suite reports, use the explicit [suite research attachment](#optional-research-attachments-and-offline-refresh)
+flow. Original-input populations and qualified suite cases remain separate.
 
 ## Installed task-oriented tools
 

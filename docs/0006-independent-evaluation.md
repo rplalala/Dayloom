@@ -2,7 +2,11 @@
 
 Status: Tickets 01-12 have offline implementations within their approved scopes.
 Source-bound suite orchestration is implemented and its synthetic engineering
-acceptance is complete. Research supplements are tracked separately under #112.
+acceptance is complete. Original-input research reports #113-#118 include explicit
+optional suite attachments, fresh report revisions and deterministic offline replay.
+Synthetic/offline engineering acceptance, combined backend regression and final
+independent Standards/Spec review are complete; the [research acceptance](records/evaluation/intake-identity-usage.md#original-input-research-engineering-acceptance-2026-10-11)
+retains the tested revision and failure/correction evidence.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 
@@ -66,27 +70,45 @@ part of planning and is distinct from independent evaluation.
 ## Batch and research extensions
 
 The installed `rtpeval suite` layer composes native reports over explicit accepted
-case revisions. `rtpeval research` follows its separate implementation graph.
+case revisions. The installed `rtpeval research validate / report` group provides
+explicit offline standalone tracks over original-input populations. Optional suite
+research attachments locate these reports alongside native results while retaining
+their own populations and source lineage.
 
 | Extension | Responsibility | Specification |
 | --- | --- | --- |
 | Installed suite | Explicit accepted four-version cases; sequential native primary evaluation, default generation-resource/cost and mechanism reports, opt-in independent V3 pairs and offline saved human/controlled attachments | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 |
 | Research supplement | Register original inputs and all generation attempts; report independent RAG opportunity/relevance and corpus coverage, V3 final/pair/controlled outcomes, and generation benefits/resources/completion | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 |
 
-Benchmark design supplies original requests; subsequent generation and material
-preparation supply results, observations, independently reviewed material and usage.
-The research population retains unsuccessful and unstarted generation slots outside
-qualified four-version quality groups. Independent interest labels and corpus coverage
-sidecars enter through separate source-bound material; unavailable observations remain
-explicit rather than being inferred from final itineraries.
+### Research track relationships
 
-The research reports address RAG's independently relevant places across admission,
-supply and actual scheduling; Validation/Repair's independent improvement and constraint
-preservation; and the associated generation latency, calls, tokens, cost and completion.
-Four-final comparisons, same-run V3 pairs and controlled-study populations retain
-separate masks and denominators. Generation resources exclude evaluator work and frozen
-controlled simulation. Primary scoring retains its existing definitions; research
-reports remain descriptive.
+Original request inventories and planned case/version/repetition slots are the
+research population. Generation/material preparation supplies all attempts and
+selected source artifacts; completed four-version quality bundles remain a
+qualified subset. Native quality eligibility is unchanged. First dispatch owns
+primary selection, while explicit retries retain separate outcomes and consumption.
+
+| Track | Population and evidence | Output meaning |
+| --- | --- | --- |
+| Population | Original inputs, fixed selection profile and all declared attempts | Planned, dispatched-first and request/repetition all-four completion, with unresolved bounds |
+| Opportunities | Source-bound V1/V2 stage captures and native independent place associations | Unique canonical discovery/admission/enrichment/supply/scheduled memberships and Google/RAG partitions |
+| Relevance/coverage | Independently reviewed original-input interests/venues and pinned corpus scope | Relevant stage/intersection counts, compatible V2-minus-V1 sets/counts and descriptive fixed-stratum summaries |
+| Repair | Native four-final, same-run V3 pair and separate controlled study sources | Final V3-minus-V2 differences, draft-to-final deltas, continuity and inventory-bound target/control preservation |
+| Tradeoffs | Exact selected generation attempts, native quality/usage/cost and all-attempt ledgers | Compatible paired benefits/resources plus failed/retry consumption and full-population completion |
+
+Canonical places, corpus entities, request/repetition groups, controlled cases and
+controlled targets retain distinct units. Missing historical stages, independent
+reviews, guards, coverage or adapter/token observations remain unavailable or
+partial. Producer fates and patch acceptance do not establish independent relevance
+or repair. Native scores, masks and cost semantics remain authoritative; no new
+research score or inferential conclusion is introduced.
+
+The [installed offline research guide](../backend/evaluation/README.md#installed-offline-research)
+locates commands and material handoff. Detailed population/stage/review contracts
+belong to [artifacts](contracts/0001-evaluation-artifacts.md), compatible completion
+and resources to [intake/usage](contracts/0002-intake-identity-usage.md), and final,
+paired and controlled quality interpretation to
+[quality/continuity](contracts/0005-quality-human-review.md).
 
 The suite delegates primary acquisition/scoring to `evaluation_run` and saved
 track preparation/composition to the resources, pair and external adapters.
@@ -96,14 +118,18 @@ refresh appends independently verified lineage without primary rescoring. The
 owns wire bindings; the [installed guide](../backend/evaluation/README.md#installed-multi-case-suite)
 owns the operator flow.
 
-The dependency roots are #107 for the suite and #113 for research. Final
-research integration in #118 depends on suite acceptance #111 and research reports
-#115-#117. It is planned as explicit offline report/refresh/replay integration; report
-attachment does not initiate generation or independent evidence collection.
+The dependency roots are #107 for the suite and #113 for research. Accepted #111
+code supports the #118 optional research adapter. Its source-bound index links
+RAG and Repair benefit rows to compatible selected generation-resource attempts;
+missing measurements remain visible. Same-run V3 resources belong to its selected
+V3 invocation; controlled simulation remains a separate population. Fresh append
+revisions preserve primary scores and prior receipts, and network-denied replay
+rebuilds report semantics. The [operator flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
+owns declarations, output locations and source-retention requirements.
 
-GitHub Issues own detailed specs and live acceptance state. Current native and suite
-contracts retain implemented behavior; dated engineering evidence belongs to the
-[evaluation record](records/evaluation/intake-identity-usage.md).
+GitHub Issues own detailed specs and live acceptance state. Current native, suite
+and standalone research contracts retain implemented behavior; dated engineering
+evidence belongs to the [evaluation record](records/evaluation/intake-identity-usage.md).
 
 ## Scoring semantics and uncertainty
 

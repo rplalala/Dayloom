@@ -26,7 +26,7 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     primary = readme.split("## Command line", 1)[1].split("## Current application", 1)[0]
     guide = (ROOT / "backend/evaluation/README.md").read_text(encoding="utf-8")
-    material = guide.split("## Installed generation and material handoff", 1)[1].split(
+    material = guide.split("## Installed batch validation", 1)[1].split(
         "## Contract and module navigation", 1
     )[0]
     commands = re.findall(r"^uv run rtpeval (.+)$", primary + material, flags=re.MULTILINE)
@@ -37,6 +37,12 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
         "batch finalize ",
         "evaluate execute ",
         "evaluate replay ",
+        "suite prepare ",
+        "suite execute ",
+        "suite report ",
+        "suite replay ",
+        "research validate ",
+        "research report ",
     ):
         assert any(command.startswith(required) for command in commands), required
     help_outputs = {}
@@ -44,7 +50,15 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
         words = command.split()
         # Read the leaf's help without executing placeholder sources. Generate's
         # registration options are documented by its wrapper before native help.
-        leaf = words[:2] if words[0] in {"batch", "evaluate"} else words[:1]
+        leaf = (
+            words[:2]
+            if words[0] in {"batch", "evaluate", "suite", "research"}
+            and len(words) > 1
+            and not words[1].startswith("--")
+            else words[:1]
+            if not words[0].startswith("--")
+            else []
+        )
         key = tuple(leaf)
         if key not in help_outputs:
             result = installed_cli(*leaf, "--help", tools_offline=True)
