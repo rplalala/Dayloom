@@ -5,6 +5,7 @@ from fractions import Fraction
 
 from backend.cli.collection import _require
 
+from .controlled import controlled_view
 from .native import quality_rows, read_mechanism, read_pair, selected_groups
 from .sources import digest
 
@@ -209,7 +210,7 @@ def repair_report(context):
             },
         },
         "four_final": {"rows": final_rows, "summary": summary(final_rows)},
-        "controlled": {"applicability": "not_declared"},
+        "controlled": controlled_view(context, supplied.get("controlled")),
         "measurement_coverage": {"native_pairs": len(pairs), "native_final_groups": len(finals)},
         "review_coverage": {"native_independent_reports": len(pairs) + len(finals)},
         "population_digest": digest(context.population),
@@ -241,6 +242,24 @@ def markdown(report):
             f"| {label} | {values['improved']} | {values['unchanged']} | "
             f"{values['worse']} | {values['unavailable']} |"
         )
+    controlled = report["controlled"]
+    if controlled["applicability"] != "not_declared":
+        resolved, joint = controlled["resolution"], controlled["case_joint_success"]
+        coverage = controlled["verdict_coverage"]
+        lines += [
+            "",
+            "## Declared controlled study",
+            "",
+            f"Independent target resolution: {resolved['numerator']}/{resolved['denominator']}.",
+            f"Joint target-case success: {joint['numerator']}/{joint['denominator']}.",
+            f"Independent target verdict coverage: {coverage['available']}/{coverage['expected']}.",
+            "",
+            "| Preservation | Targets |",
+            "| --- | ---: |",
+        ]
+        lines += [f"| {name} | {count} |" for name, count in controlled["preservation"].items()]
+        lines += ["", "| Control outcome | Cases |", "| --- | ---: |"]
+        lines += [f"| {name} | {count} |" for name, count in controlled["control_outcomes"].items()]
     lines += [
         "",
         "Four-final masks and same-run pair masks retain their native definitions.",
