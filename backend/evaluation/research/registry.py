@@ -1,0 +1,10 @@
+"""Lazy report registry: optional research tracks own their material readers."""
+
+from importlib import import_module
+
+TRACKS = {"population": "backend.evaluation.research.population"}
+
+
+def build_report(context, track):
+    module = import_module(TRACKS[track])
+    return getattr(module, track + "_report")(context), module.markdown
