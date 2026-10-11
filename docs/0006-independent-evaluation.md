@@ -1,7 +1,8 @@
 # Independent evaluation architecture
 
 Status: Tickets 01-12 have offline implementations within their approved scopes.
-The published batch and research extensions below remain unimplemented.
+Source-bound suite orchestration is implemented and its synthetic engineering
+acceptance is complete. Research supplements are tracked separately under #112.
 This is a technical boundary, not a formal benchmark or results report.
 [PROJECT.md](../PROJECT.md) and live Issues own current authorization and task state.
 
@@ -60,14 +61,16 @@ schedule/opening/route scorers and report CLIs stay in `backend/evaluation/`. Pr
 planning does not import this evaluation package. V3's internal validation/repair remains
 part of planning and is distinct from independent evaluation.
 
-## Planned batch and research extensions
+<a id="planned-batch-and-research-extensions"></a>
 
-The following specifications are published; their implementation and acceptance are
-pending. `rtpeval suite` and `rtpeval research` remain proposed command interfaces.
+## Batch and research extensions
 
-| Extension | Planned responsibility | Specification |
+The installed `rtpeval suite` layer composes native reports over explicit accepted
+case revisions. `rtpeval research` follows its separate implementation graph.
+
+| Extension | Responsibility | Specification |
 | --- | --- | --- |
-| Unified batch entry point | Explicitly select accepted four-version case bundles; compose native primary evaluation, default generation-resource/cost and mechanism reports, optional independently evidenced V3 pairs, and existing human/controlled report attachments | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 |
+| Installed suite | Explicit accepted four-version cases; sequential native primary evaluation, default generation-resource/cost and mechanism reports, opt-in independent V3 pairs and offline saved human/controlled attachments | [#106](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/106), children #107-#111 |
 | Research supplement | Register original inputs and all generation attempts; report independent RAG opportunity/relevance and corpus coverage, V3 final/pair/controlled outcomes, and generation benefits/resources/completion | [#112](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/112), children #113-#118 |
 
 Benchmark design supplies original requests; subsequent generation and material
@@ -85,15 +88,22 @@ separate masks and denominators. Generation resources exclude evaluator work and
 controlled simulation. Primary scoring retains its existing definitions; research
 reports remain descriptive.
 
+The suite delegates primary acquisition/scoring to `evaluation_run` and saved
+track preparation/composition to the resources, pair and external adapters.
+Its closed summary preserves separate track statuses and study populations; offline
+refresh appends independently verified lineage without primary rescoring. The
+[artifact contract](contracts/0001-evaluation-artifacts.md#source-bound-suite-lifecycle)
+owns wire bindings; the [installed guide](../backend/evaluation/README.md#installed-multi-case-suite)
+owns the operator flow.
+
 The dependency roots are #107 for the suite and #113 for research. Final
 research integration in #118 depends on suite acceptance #111 and research reports
 #115-#117. It is planned as explicit offline report/refresh/replay integration; report
 attachment does not initiate generation or independent evidence collection.
 
-GitHub Issues own the detailed proposed fields, metrics and acceptance criteria.
-As each slice passes implementation acceptance, update its applicable topic contracts
-and the operational guide, and revise implemented capability in this document and
-PROJECT.md. The parent Issues map those documentation responsibilities by child ticket.
+GitHub Issues own detailed specs and live acceptance state. Current native and suite
+contracts retain implemented behavior; dated engineering evidence belongs to the
+[evaluation record](records/evaluation/intake-identity-usage.md).
 
 ## Scoring semantics and uncertainty
 

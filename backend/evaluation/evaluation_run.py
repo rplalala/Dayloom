@@ -443,6 +443,8 @@ async def execute_run(
         TimeoutError,
         RuntimeError,
         TransportFailure,
+        asyncio.CancelledError,
+        KeyboardInterrupt,
     ) as exc:
         usage = transport.usage()
         _save(execution, "usage.json", usage)
@@ -453,7 +455,11 @@ async def execute_run(
             "acquisition_status": "partial",
             "evidence_status": "not_completed",
             "error_type": type(exc).__name__,
-            "reason": exc.code
+            "reason": "execution_cancelled"
+            if isinstance(exc, asyncio.CancelledError)
+            else "execution_interrupted"
+            if isinstance(exc, KeyboardInterrupt)
+            else exc.code
             if isinstance(exc, TransportFailure)
             else str(exc)
             if type(exc) is ValueError

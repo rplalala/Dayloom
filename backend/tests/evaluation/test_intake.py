@@ -876,6 +876,9 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "opening_run": {"httpx"},  # #90 isolates one incremental model attempt here.
         "evaluation_transport": {"httpx", "urllib", "backend.app.runtime.token_counting"},
         "evaluation_run_cli": {"os", "dotenv"},
+        "suite": {"base64", "os", "dotenv"},  # Credential reads stay in explicit execute.
+        "suite_external": {"base64", "copy"},  # Exact-byte offline attachment retention.
+        "suite_tracks": {"base64"},  # Frozen artifact inventory only.
     }
     for path in Path("backend/evaluation").glob("*.py"):
         if path.stem in controlled:
