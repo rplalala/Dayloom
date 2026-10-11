@@ -1032,3 +1032,85 @@ missing result references, and non-completed/unresolved slots. It is a material
 inventory with `native_qualification=not_performed`, not a qualified quality subset
 or a replacement for unconditional completion. Track-specific qualified/comparable
 benefit/resource subsets keep their own exclusion and source validation rules.
+
+## Generation research tradeoffs
+
+`rtpeval research validate|report DECLARATION --track tradeoffs` reads the declared
+population and census without acquiring evidence, invoking Planner or fetching
+prices/bills. `report` additionally requires a fresh `--directory`, writes
+`tradeoffs.json` and `tradeoffs.md`, and preserves all source bytes. The output is
+`rtpeval_research_tradeoffs_report_1`; its processing status, profile IDs,
+population digest, exact-byte source bindings, measurement/review coverage and
+semantic SHA-256 remain separate from workflow completion and native quality.
+
+The optional declaration `track_refs.tradeoffs` binds a JSON
+`rtpeval_research_tradeoffs_1` object. It accepts these fields:
+
+| Field | Meaning |
+| --- | --- |
+| `quality_reports` | Array of saved native final-quality descriptors. Each supplies `report_ref`, `manifest_ref`, `identity_ref`, `snapshot_ref` and the native optional argument references used to build that report. The reader reloads accepted four-version intake and replays the unchanged native quality builder against saved evidence. Recomputed semantic hashes alone cannot authenticate modified scores. |
+| `cost_ledgers` | Array of explicit generation accounting descriptors: unique `attempt_ids`, `prices_ref`, nonempty declared `accounting_basis`, and optional `bills_ref`, `annotations_ref`, `report_ref`. Prices remain native `rtpeval_prices_1`; bill/annotation sidecars wrap arrays in `bills`/`annotations`. Optional saved `rtpeval_cost_report_1` output must exactly equal the native reconstruction. |
+| `comparisons` | Optional nonempty ordered array of `{baseline, candidate}` version pairs. Defaults are V2-minus-V1 and V3-minus-V2. Any other pair requires explicit declaration. |
+
+All source references use the population contract's bounded exact-byte reference
+format. Quality joins bind the case/revision/repetition, every selected native
+run, original input and result, and supplied census usage/provenance hashes.
+Cost joins use the exact census usage bytes and native bill/event/result linkage.
+Foreign attempts, duplicate ledger assignments, source drift, forged saved
+reports and contradictory supplied material require material correction. Missing
+optional quality/cost material remains unavailable. The census continues to own
+first-dispatched selection; a completed retry never replaces its failed primary.
+
+`paired_comparisons` retains every request/repetition planned for both requested
+versions, including non-completed selected attempts. `eligible`, `completed`,
+`excluded`, `not_applicable_groups` and `native_quality_pairs` state distinct units.
+Resource differences require completed selected workflows; elapsed differences
+also require successful native usage outcomes and
+`selected_invocation_through_cleanup` timing. Native final-quality rows retain
+both complete per-version values, the original common dimension mask, rule profile,
+coverage, density and exact score fractions. Differences subtract those existing
+values; they create no new score. Descriptive medians retain comparable pair counts.
+
+Resource rows reuse native usage summaries and adapter coverage. Input and total
+tokens include observed model and embedding calls; output tokens apply to
+non-embedding calls, because embeddings do not invent output observations.
+Embedding calls/input/total are also reported separately. Each token view retains
+known/missing call counts and observed subtotals. Missing token observations or
+unverified adapter coverage produce null complete metrics. Model calls, application
+HTTP sends and billable events remain different units; SDK output-tool billing
+observations are excluded from application sends. Repair model/provider IDs define
+subsets counted once, rather than additional consumption or a sum of inclusive spans.
+
+Native actual, estimated and best-available money fields retain currency, dated
+prices, billing coverage, event evidence, assumptions and unallocated bills.
+Comparisons conservatively require matching declared accounting basis, native
+scope, price bytes and price assumptions as well as currency. Best-available
+comparisons additionally distinguish complete-run bills, event bills, estimates
+and mixed billing bases; confirmed empty zero-event runs remain valid zero
+baselines. A compatible zero baseline retains its difference with a null ratio.
+Cost medians group by mode, currency, accounting basis and price hash. No shared
+account charge, credit, tax or free usage is inferred.
+
+`all_attempts` reports each dispatched attempt, its primary/retry identity,
+workflow status, usage coverage and native cost separately from successful pairs.
+Failed/cancelled attempts and retries contribute observed consumption. Workflow
+failure can coexist with completed capture usage when a required mechanism failed;
+that observation remains in the failed/censored elapsed cohort. Successful elapsed
+cohorts distinguish selected primaries from retries, version and timing scope.
+An undispatched attempt cannot carry generation usage. Evaluator/oracle namespaces
+and explicit frozen simulation are invalid generation material.
+
+Overall and per-version consumption have complete totals only when census dispatch
+coverage and native adapter observations are complete and all required measures are
+known. Otherwise observed subtotals remain explicit. Cost consumption preserves
+both native event subtotals and known complete-run total subtotals, so an observed
+run bill remains visible when a pending repetition prevents a complete population
+total. Partial price or token detail cannot become zero expenditure.
+
+Full `population_completion` remains alongside benefit/resource subsets. Compatible
+version completion differences use every planned slot, exact fractions only when
+resolved, and conservative difference bounds when pending. Different planned
+populations disable a direct difference. Per-case caveats retain unequal or
+unverified cache/order/concurrency/configuration/timing conditions. These are
+descriptive observations with no efficiency score, causal effect or significance
+claim; native four-final qualification and scoring remain unchanged.

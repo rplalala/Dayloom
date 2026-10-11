@@ -5,6 +5,8 @@ from importlib import import_module
 TRACKS = {
     "population": "backend.evaluation.research.population",
     "opportunities": "backend.evaluation.research.opportunities",
+    "repair": "backend.evaluation.research.repair",
+    "tradeoffs": "backend.evaluation.research.tradeoffs",
 }
 
 
