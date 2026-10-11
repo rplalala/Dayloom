@@ -202,9 +202,122 @@ JSON and Markdown retain slot identities, completeness, canonical memberships,
 reasons, exact source paths/hashes and deterministic digests without altering input
 files. Source paths resolve under the research declaration's root. Fresh output
 rules follow the [research declaration boundary](#original-input-research-declarations-and-attempt-census).
-Later interest comparisons need original input/interest definitions, independently
-reviewed canonical relevance labels and their source bindings alongside these stage
-inventories; producer intent associations and RAG origin do not supply those verdicts.
+[Independent interest comparisons](#independent-interest-relevance-and-corpus-coverage)
+consume original-input interest definitions, reviewed canonical relevance labels and
+their source bindings alongside these inventories. Producer intent associations and
+RAG origin do not supply those verdicts.
+
+## Independent interest relevance and corpus coverage
+
+`rtpeval research validate/report --track relevance` imports independent reviewed
+material and produces `rtpeval_research_relevance_report_1`. It reuses selected
+first-attempt opportunity rows and native independent scheduling. Material readers
+verify exact bytes, case/source bindings and declared completeness; they do not
+execute reviewers or corpus measurements. This view remains separate from primary
+quality scoring.
+
+`track_refs.relevance` references `rtpeval_research_relevance_1`, binding
+`population_id`, `population_revision`, `profile_id` and `profile_revision`. Its
+explicit `interest_inventory_refs`, `review_refs` and `coverage_refs` arrays may
+be empty; optional `coverage_profile_ref` is a common root-bounded byte reference.
+The subordinate materials are:
+
+| Reference / schema | Required binding and contents |
+| --- | --- |
+| Interest inventory / `rtpeval_research_interests_1` | `case_id`, `case_revision`, `input_sha256`, independently reviewed `requirement_spec_ref`, review metadata and explicit `interests` |
+| Labels / `rtpeval_research_relevance_reviews_1` | Explicit `records` with stable `review_id`, case/input/inventory/spec hashes, interest identity/pointer, venue subject/evidence and independent review metadata |
+| Corpus sidecar / `rtpeval_research_corpus_coverage_1` | Case/input, pinned `snapshot_identity`, fixed `scope`/`scope_sha256`, measurement/declaration times, method and eligible count/completeness |
+| Strata profile / `rtpeval_research_coverage_profile_1` | Stable `coverage_profile_id`/`revision`, population binding, snapshot, fixed case scopes, declaration timing, metric and ordered thresholds |
+| Optional sample measure / `rtpeval_research_interest_coverage_1` | Case/input/scope/snapshot/inventory hashes, `taxonomy_ref`, `sample_ref`, `coding_review_ref`, literal numerator/denominator, method and uncertainty |
+
+Every inventory and label retains `revision`, `reviewer_ref`,
+`reviewer_kind=human|external_model`, timezone-aware `reviewed_at` and `rationale`.
+An external-model record is saved independent review material; importing it invokes
+no model. Each interest has a unique `interest_id`, original-input JSON
+`source_pointer` and exact `source_text`, plus a `requirement_pointer` into the
+reviewed RequirementSpec. The pointed requirement must carry the same stable
+interest/preference/obligation identity. Missing inventories stay unavailable;
+an explicit independently reviewed empty inventory is not applicable.
+
+A label binds `input_sha256`, `interest_inventory_sha256`,
+`requirement_spec_sha256`, `interest_id` and `source_pointer`. It declares exactly
+one nonempty `canonical_place_id` or `unresolved_subject_id`, and a
+`verdict=relevant|not_relevant|unknown`. Known verdicts require
+`venue_evidence_refs`; each saved evidence object binds the same venue subject and
+an independent Google Places, official or reviewed-description source kind.
+Planner judgments, query links, rank and cosine are not review evidence. Duplicate
+review identities, duplicate/contradictory interest-subject judgments, foreign
+venues and stale source bindings require correction. Unresolved judgments retain
+their reviewer/evidence trail without adding a canonical venue count.
+
+Each discovered/admitted/enriched/supplied/scheduled row reports deduplicated
+relevant `canonical_ids`, an observed lower count and nullable `complete_count`,
+with native stage completeness and review reasons. Overall relevance is the union
+across applicable interests; per-interest rows count an identity once. Review
+coverage retains judged/inventoried subjects, their fraction, relevant/negative/
+unknown/absent subjects, expected/supplied judgments and unknown/missing judgments.
+Exact counts require a complete stage and known judgments for every applicable
+interest-subject pair, even when one known positive already establishes the
+observed union. An empty inventory denominator has no review-coverage fraction.
+
+The principal `end_to_end` set is relevant AND admitted AND supplied AND
+independently scheduled, overall and per interest. A final scheduled venue cannot
+reconstruct missing admission or supply history. Selected completed V1/V2 pairs
+with the same case/revision/repetition and reviewed inventory retain signed
+V2-minus-V1 deltas and gained/lost/retained IDs only when the relevant chain is
+complete. Other pairs retain nullable deltas and explicit omission reasons.
+Conversions use the relevant intersection as numerator and the earlier stage's
+relevant count as denominator, including admission-to-supply and
+supply-to-scheduled. Incomplete stages/reviews and zero denominators have no exact
+fraction; observed zero is not substituted for missing evidence.
+
+A corpus `snapshot_identity` includes a byte-bound `snapshot_ref`,
+`artifact_sha256`, `policy_version`, `space_id` and `identity_pointers` mapping each
+identity field to its exact JSON pointer in the saved snapshot manifest. The
+reader checks these values against the manifest and any selected RAG origin.
+Scopes use `kind=radius` with latitude/longitude/positive `radius_m`, or
+`kind=bounding_box` with south<north and west<east within coordinate bounds.
+`scope_sha256` hashes canonical JSON. Profile and sidecar must retain identical
+snapshot identities and exact case scopes; incompatible material fails validation.
+The [retrieval contract](../0004-retrieval-persistence%28v2v3%29.md#pinned-corpus-coverage-sidecars)
+explains the entity/geographic interpretation.
+
+Sidecars retain `measurement_method`, `measured_at`, `declared_at`,
+`timing_basis=prospective|retrospective|unverified`, `count_status`,
+`eligible_entity_count`, `observed_subtotal` and `reasons`. Complete counts are
+nonnegative integers with matching subtotals, including a valid zero. Partial or
+unavailable counts have null eligible counts and explicit reasons, so timeouts,
+truncation or unsuccessful retrieval cannot become exact zero coverage.
+
+Optional reviewed interest coverage binds the same case/input/scope/snapshot and
+interest inventory. `rtpeval_research_interest_taxonomy_1` lists unique applicable
+`interest_ids`; `rtpeval_research_corpus_sample_1` lists unique `entity_ids`.
+`rtpeval_research_corpus_coding_1` binds exact taxonomy/sample/inventory hashes,
+independent reviewer metadata, independent `evidence_refs` covering the sampled
+entities and disjoint `relevant_entity_ids`/`unknown_entity_ids` subsets. The
+numerator equals reviewed relevant entities; the denominator equals sample size
+and cannot exceed a complete eligible census. Unknown coding keeps the fraction
+null and bounds [relevant/sample, (relevant+unknown)/sample]; a zero-size sample
+has no fraction or bounds. Saved method and uncertainty remain in the output.
+
+A strata profile declares `metric=eligible_entity_count|interest_coverage_fraction`
+and ordered nonoverlapping `strata` with stable `stratum_id`, `min_inclusive` and
+nullable final `max_exclusive`. Complete compatible coverage values select a
+stratum; missing or partial measures retain continuous observations without an
+exact assignment. Prospective declarations must precede the first selected
+dispatch; absent dispatch evidence is labeled unverified. Retrospective timing
+remains explicit, alongside the originally declared basis. No input replacement
+or threshold fitting occurs during reporting.
+
+JSON and Markdown retain exact case/repetition rows, stage memberships, reviewer
+metadata, continuous coverage, fixed thresholds, source/semantic digests and
+interpretation limits. Summary `available_pairs`/`omitted_pairs` count complete
+principal comparisons overall; `unstratified_pairs` identifies pairs without an
+exact coverage assignment. Each stratum separately reports its case IDs, available
+and omitted pairs and descriptive principal-delta median. Repeated slots remain
+visible and are not independent samples. Entity/geographic proxies and reviewed
+sample fractions make no citywide recall, unique-venue coverage, ranking,
+statistical-inference or causal-attribution claim.
 
 ## Activity, transport and occupancy scope
 
