@@ -65,7 +65,11 @@ def _valid_vectors(path, diagnostics):
 
 def build_evidence_index(output, manifest, raw, usage, *, adapter_coverage):
     missing = []
-    if not (output / "usage.json").is_file():
+    if (
+        not (output / "usage.json").is_file()
+        or manifest.get("status") == "capture_failed"
+        or manifest.get("capture_status") == "capture_failed"
+    ):
         missing.append("usage")
     diagnostics = list(raw.diagnostics) if raw else [{"reason": "raw_capture_not_started"}]
     events = raw.events if raw else []

@@ -134,6 +134,12 @@ def _captured(root, group, version, run, capture, completion, now):
         capture / name for name in ("result.json", "usage.json", "provenance.json")
     )
     result_ref = _ref(root, result_path) if result_path.is_file() else None
+    manifest = _json((capture / "manifest.json").read_bytes())
+    usage_available = (
+        usage_path.is_file()
+        and manifest.get("status") != "capture_failed"
+        and manifest.get("capture_status") != "capture_failed"
+    )
     provenance = (
         _json(provenance_path.read_bytes())
         if provenance_path.is_file()
@@ -169,7 +175,7 @@ def _captured(root, group, version, run, capture, completion, now):
     return {
         **run,
         "result_ref": result_ref,
-        "usage_ref": _ref(root, usage_path, "rtpeval_usage_1") if usage_path.is_file() else None,
+        "usage_ref": _ref(root, usage_path, "rtpeval_usage_1") if usage_available else None,
         "producer_declaration": provenance,
         "completion": completion,
     }

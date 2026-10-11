@@ -195,13 +195,16 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
     except OSError:
         opportunity_existed = False
     captured = []
+    usage_saved = False
     failure = None
     cancelled = False
     tracer = None
 
     def sink(usage):
+        nonlocal usage_saved
         captured.append(usage)
         _save(output, "usage.json", usage)
+        usage_saved = True
 
     async def invoke():
         with usage_stage("planner"):
@@ -280,7 +283,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         cancelled = isinstance(exc, asyncio.CancelledError)
         failure = type(exc).__name__
         failure_record: dict[str, object] = {"error_type": failure}
-        if cancelled and captured and not (output / "usage.json").is_file():
+        if cancelled and captured and not usage_saved:
             failure_record["observed_usage"] = captured[-1]
         _save(output, "failure.json", failure_record)
     if opportunity_path is not None:
@@ -291,7 +294,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
             version=args.version,
             run_id=args.run_id,
         )
-    if not captured or not (output / "usage.json").is_file():
+    if not usage_saved:
         manifest.update(status="cancelled" if cancelled else "capture_failed", failure_type=failure)
         if cancelled:
             manifest["capture_status"] = "capture_failed"

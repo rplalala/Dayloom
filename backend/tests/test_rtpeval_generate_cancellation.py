@@ -183,18 +183,36 @@ def test_installed_cancelled_generation_drives_population_and_tradeoffs(
     assert originals == {p: p.read_bytes() for p in originals}
 
 
-def test_cancelled_usage_sink_failure_retains_known_outcome_and_observations(tmp_path):
+@pytest.mark.parametrize("sink_failure", ["directory", "partial_write"])
+def test_cancelled_usage_sink_failure_retains_known_outcome_and_observations(
+    tmp_path, monkeypatch, sink_failure
+):
     from backend.cli.rtpeval import main
+
+    partial = b'{"schema_version":'
+    if sink_failure == "partial_write":
+        from pathlib import Path
+
+        write_bytes = Path.write_bytes
+
+        def failing_write(path, data):
+            if path == tmp_path / "capture/usage.json":
+                write_bytes(path, partial)
+                raise OSError("Synthetic interrupted artifact write")
+            return write_bytes(path, data)
+
+        monkeypatch.setattr(Path, "write_bytes", failing_write)
 
     class SinkRuntime(InterruptedRuntime):
         async def run(self, *args, **kwargs):
-            (tmp_path / "capture/usage.json").mkdir()
+            if sink_failure == "directory":
+                (tmp_path / "capture/usage.json").mkdir()
             return await super().run(*args, **kwargs)
 
     args = arguments(tmp_path, execute=True)
     assert (
         main(
-            ["generate", *args, *registration(tmp_path)],
+            ["generate", *args, *registration(tmp_path), "--capture-evidence"],
             runtime=SinkRuntime(),
             date_provider=REFERENCE,
         )
@@ -214,4 +232,13 @@ def test_cancelled_usage_sink_failure_retains_known_outcome_and_observations(tmp
     ]["v0"]
     assert not run["completion_qualified"]
     assert "missing_material:usage_ref" in run["blocking_reasons"]
+    assert run["usage_ref"] is None
+    evidence = json.loads((tmp_path / "capture/evidence-index.json").read_bytes())
+    assert evidence["outcome"] == "cancelled"
+    assert "usage" in evidence["missing_fields"]
+    assert (tmp_path / "staging/sources/capture/failure.json").read_bytes() == (
+        tmp_path / "capture/failure.json"
+    ).read_bytes()
+    if sink_failure == "partial_write":
+        assert (tmp_path / "capture/usage.json").read_bytes() == partial
     assert not (tmp_path / "capture/result.json").exists()
