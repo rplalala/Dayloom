@@ -278,16 +278,13 @@ def test_real_v1_graph_is_unchanged_and_input_budget_abort_has_no_submission():
     assert rows[0]["prepared_calls"] == []
 
 
-def test_typed_accepted_catalog_and_actual_rule_qualify_without_model_or_usage_calls():
+def test_typed_accepted_catalog_and_actual_rule_are_captured_without_model_or_usage_calls():
     from datetime import time
 
     from backend.app.evidence.official_models import OfficialCurrentEvidence
     from backend.app.observability.mechanism_observation import accepted_catalog
     from backend.app.policies.official_evidence_resolver import resolve_effective_evidence
     from backend.app.versions.v3.repair_acceptance import assess
-    from backend.evaluation.mechanism_preparation import prepare_sources
-    from backend.evaluation.official_audit import build_audit_queue
-    from backend.evaluation.records import canonical_digest
     from backend.tests.versions.v3.test_repair import context, draft, place
     from backend.tests.versions.v3.test_validation import DAY, NOW
 
@@ -320,52 +317,11 @@ def test_typed_accepted_catalog_and_actual_rule_qualify_without_model_or_usage_c
         assess(draft(), context(effective_places=(effective,)))
         return {"system_version": "v3"}
 
-    result = asyncio.run(capture(invoke, rows))
-    raw = json.dumps(result)
-    sha = hashlib.sha256(raw.encode()).hexdigest()
-    selection = {
-        "status": "accepted",
-        "batch_id": "b",
-        "revision": "one",
-        "inventory": [
-            {
-                "group_id": "g",
-                "input_sha256": "a" * 64,
-                "runs": {"v3": {"final": {"context": {"run_id": "r", "artifact_sha256": sha}}}},
-            }
-        ],
-    }
-    source = {
-        "records": [
-            {
-                "group_id": "g",
-                "run_id": "r",
-                "version": "v3",
-                "input_sha256": "a" * 64,
-                "result_sha256": sha,
-                "raw_utf8": raw,
-            }
-        ]
-    }
-    link = {
-        k: rows[0][k] for k in ("group_id", "run_id", "version", "input_sha256", "result_sha256")
-    }
-    prepared = prepare_sources(
-        selection,
-        source,
-        observations=[
-            {
-                **link,
-                "channel": "capture",
-                "content": rows[0],
-                "content_sha256": canonical_digest(rows[0]),
-            }
-        ],
-    )
-    queue = build_audit_queue(prepared)
-    assert len(queue["units"]) == 1, queue["runs"]
-    assert queue["units"][0]["qualifying_reasons"] == ["rule_selection"]
-    assert queue["units"][0]["claim"]["applicable_start_date"] == str(DAY)
+    assert asyncio.run(capture(invoke, rows)) == {"system_version": "v3"}
+    assert len(rows[0]["catalog"]) == 1
+    assert rows[0]["catalog"][0]["claim"]["applicable_start_date"] == str(DAY)
+    assert rows[0]["occurrences"]
+    assert all(row["reason"] == "rule_selection" for row in rows[0]["occurrences"])
     assert rows[0]["prepared_calls"] == []
 
 

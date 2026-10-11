@@ -10,7 +10,6 @@ from pathlib import Path
 
 import pytest
 
-from backend.evaluation.records import canonical_digest
 from backend.tests.evaluation import test_route_cli as route_commands
 from backend.tests.evaluation import test_routes as route_tests
 from backend.tests.evaluation import test_v3_pair_report as pair_tests
@@ -20,8 +19,6 @@ from backend.tests.evaluation.test_controlled_report import addition_case
 from backend.tests.evaluation.test_human_answers import answer, bundle
 from backend.tests.evaluation.test_human_tasks import config
 from backend.tests.evaluation.test_human_tasks import review as display_review
-from backend.tests.evaluation.test_official_audit import preparation
-from backend.tests.evaluation.test_official_audit import review as audit_review
 from backend.tests.versions.v3.test_b_targets import edit, visit
 from backend.tests.versions.v3.test_validation import DAY
 
@@ -292,65 +289,17 @@ def test_controlled_outcomes_through_module_clis(tmp_path, scenario, expected):
         assert out["guards"][0]["after"]["state"] == "FAIL"
 
 
-def test_mechanism_observations_and_synthetic_audit_through_module_clis(batch):
+def test_mechanism_missing_observations_through_module_clis(batch):
     _, _, write, _, root = batch
-    missing = cli(root, ".mechanism_cli", "prepare", "--manifest", write())
-    missing_path = save(root, "missing-preparation.json", missing)
-    missing_report = cli(root, ".mechanism_cli", "report", missing_path)
-    assert len(missing_report["runs"]) == 4
-    queue = cli(root, ".mechanism_cli", "audit-queue", missing_path)
-    missing_queue = save(root, "missing-queue.json", queue)
-    missing_audit = cli(root, ".mechanism_cli", "audit-report", missing_queue)
-    assert missing_audit["counts"]["qualifying"] is None
-    assert missing_audit["counts"]["observed_qualifying"] == 0
-    template = preparation()["runs"][0]["channels"]["capture"]["records"][0]
-    observations = []
-    for run in missing["runs"]:
-        if run["version"] == "v0":
-            continue
-        row = copy.deepcopy(template)
-        link = {
-            k: run[k] for k in ("group_id", "run_id", "version", "input_sha256", "result_sha256")
-        }
-        row.update(link)
-        row["content"].update(link)
-        row["content_sha256"] = canonical_digest(row["content"])
-        observations.append(row)
-    observation_path = save(root, "synthetic-observations.json", {"records": observations})
-    complete = cli(
-        root,
-        ".mechanism_cli",
-        "prepare",
-        "--manifest",
-        root / "manifest.json",
-        "--observations",
-        observation_path,
-    )
-    complete_path = save(root, "complete-preparation.json", complete)
-    report = cli(root, ".mechanism_cli", "report", complete_path)
+    prepared = cli(root, ".mechanism_cli", "prepare", "--manifest", write())
+    prepared_path = save(root, "mechanism-preparation.json", prepared)
+    report = cli(root, ".mechanism_cli", "report", prepared_path)
     assert len(report["runs"]) == 4
-    queue = cli(root, ".mechanism_cli", "audit-queue", complete_path)
-    assert len(queue["units"]) == 3
-    assert all(len(u["occurrences"]) == 2 for u in queue["units"])
-    queue_path = save(root, "complete-queue.json", queue)
-    pending = cli(root, ".mechanism_cli", "audit-report", queue_path)
-    assert pending["supported_fraction"]["fraction"] is None
-    reviewed = audit_review(queue)
-    template_review = reviewed["records"][0]
-    reviewed["records"] = [
-        {
-            **template_review,
-            "unit_sha256": u["unit_sha256"],
-            "reviewer_ref": "synthetic-example-reviewer",
-            "rationale": "Simulated verdict for offline usage acceptance.",
-        }
-        for u in queue["units"]
-    ]
-    reviews_path = save(root, "synthetic-audit-reviews.json", reviewed)
-    audited = cli(root, ".mechanism_cli", "audit-report", queue_path, "--reviews", reviews_path)
-    assert audited["counts"]["qualifying"] == 3
-    assert audited["counts"]["reviewed"] == 3
-    assert audited["supported_fraction"]["fraction"] == 1
+    by_version = {run["version"]: run for run in report["runs"]}
+    for version in ("v0", "v1", "v2"):
+        assert by_version[version]["coverage"] == "not_applicable"
+    assert by_version["v3"]["coverage"] == "unavailable"
+    assert by_version["v3"]["model_attempts"] is None
 
 
 def test_blinded_package_answer_import_and_report_through_module_clis(batch):

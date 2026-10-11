@@ -81,7 +81,7 @@ ports: **all actual reviews were agent reviews; actual human participants = 0**.
 
 Intake accepted all four exact results with input/result/run/provenance/usage
 association. Actual module processes generated schedule, opening, route, quality,
-resource, V3 pair, mechanism, official-audit, anonymous package, answer import and
+resource, V3 pair, mechanism, anonymous package, answer import and
 review reports. Exit 0 establishes completed processing, including uncertainty;
 it does not establish universal itinerary PASS.
 
@@ -131,9 +131,7 @@ partial actual round trace and independent paired report.
 
 Controlled Repair is **not applicable to this ordinary submission**: a separately
 frozen post-primary target/control replay case was not built or executed. Actual
-live Repair does not automatically supply that case. The native official audit
-queue/report contains zero eligible accepted/qualifying official claims; its empty
-population is not official-fact validation. Both unavailable scopes are explicit
+live Repair does not automatically supply that case. Its unavailable scope is explicit
 in the local readable summary and track-availability record.
 
 ## Trace integrity, association limitations and verification
@@ -169,13 +167,13 @@ local identifiers, not published dependencies or fresh-clone assets. Raw provide
 material, credentials and ignored generated files are not committed.
 
 Task completion is the applicable live-to-evaluator chain and honest availability
-reports. It does not imply every itinerary fact is verified, nonempty official
-auditing, controlled replay, formal evaluation, final research conclusions or a
+reports. It does not imply every itinerary fact is verified, controlled replay,
+formal evaluation, final research conclusions or a
 version freeze.
 
 Recommended separately scoped follow-up: improve V0 transport association and
-Korean address handling; then prepare bounded controlled/official-claim cases if
-those currently unexercised tracks need real execution. Preserve this pilot's
+Korean address handling; then prepare bounded controlled cases if that track needs
+real execution. Preserve this pilot's
 original sources and uncertainty rather than rewriting them after later fixes.
 
 ### Subsequent evaluator replay - 2026-10-05

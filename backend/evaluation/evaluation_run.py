@@ -330,7 +330,7 @@ def _report(
         ]
         + [
             {"track": track, "reason": "outside_four_final_scope"}
-            for track in ("human", "controlled_repair", "official_audit")
+            for track in ("human", "controlled_repair")
         ],
         "usage": {
             "actual_google_sends": sum(e["provider"] == "google" for e in usage["provider_events"]),

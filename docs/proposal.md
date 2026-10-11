@@ -89,7 +89,7 @@ interpretation, itinerary generation, normalized external evidence, V2/V3 retrie
 V3 validation and repair, Product/Developer interfaces and approved evaluation
 Tickets 01-12. These include independent final-output scoring and anonymous review,
 V3 draft/final-primary diagnostics, isolated frozen V3 Repair replay, and selected-source
-mechanism/official-evidence audit. Detailed contracts and dated acceptance records define
+mechanism reporting. Detailed contracts and dated acceptance records define
 the exact delivered subsets.
 
 ### 4.3 Excluded scope
@@ -154,7 +154,7 @@ belong to the linked design and acceptance records.
 | US-11 | As a human reviewer, I want anonymous itinerary alternatives so that my judgment is recorded separately from version attribution and automatic scores. | Review material hides version attribution and automatic scores. The researcher holds the mapping; imported answers retain package/rater/revision context and human preferences remain separate from automatic metrics. |
 | US-12 | As an evaluation operator, I want to compare a saved V3 draft with its final primary plan so that I can inspect changes and their independently assessed outcomes. | Same-run source lineage, paired masks/deltas and independent continuity remain separate. Missing stages or unresolved correspondence remain visible; the draft is not an independently executed V2 result. |
 | US-13 | As an evaluation operator, I want to replay a supplied V3 Repair case under frozen capabilities so that I can inspect detection, adoption and independently reviewed target/control outcomes. | The real post-primary path recomputes permissions. Script mismatches fail replay integrity; lawful changes, regressions and unresolved evidence remain distinct. No formal case corpus is generated. |
-| US-14 | As an evaluation operator, I want mechanism observations and exact official-claim audit units so that I can distinguish internal activity from independently supported facts. | Selected-source hashes, observation coverage and exact review linkage are retained. Default-off capture observes existing seams; gate acceptance and model-input submission do not establish independent truth or causal influence. |
+| US-14 | As an evaluation operator, I want source-linked mechanism observations so that I can inspect triggers, attempts, adoption and internal progress separately from independent quality. | Selected-source hashes and observation coverage are retained. Default-off capture observes existing seams without changing generation; missing observations remain unavailable. |
 
 ## 7. Requirements and traceability
 
@@ -169,7 +169,7 @@ belong to the linked design and acceptance records.
 | FR-05 | Validate and apply only permitted, re-validated V3 corrections | US-05 | [Validation and repair](0005-validation-repair%28v3%29.md) |
 | FR-06 | Provide controlled input assistance, progress, cancellation and separate Product/Developer disclosure | US-06, US-07, US-08 | [Application and operations](0007-application-operations.md) |
 | FR-07 | Maintain independent version entry points and orchestration boundaries | US-08 | [System architecture](0001-system-architecture.md) |
-| FR-08 | Assess submitted artifacts through independent final/paired scoring, anonymous review, frozen controlled Repair and mechanism/official audit workflows | US-09 through US-14 | [Independent evaluation](0006-independent-evaluation.md) |
+| FR-08 | Assess submitted artifacts through independent final/paired scoring, anonymous review, frozen controlled Repair and mechanism reporting | US-09 through US-14 | [Independent evaluation](0006-independent-evaluation.md) |
 
 ### 7.2 Quality requirements
 

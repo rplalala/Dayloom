@@ -28,7 +28,7 @@ sources retain diagnostics but contribute no fallback transport occupancy.
 | 08-09 | Quality report, anonymous review package, answer import and descriptive outcomes | [Quality/human review](contracts/0005-quality-human-review.md) |
 | 10 | Source-driven V3 draft/final-primary preparation, paired masks/deltas and independent continuity | [V3 paired diagnostic](contracts/0005-quality-human-review.md#v3-pairs) |
 | 11 | Isolated frozen real V3 post-primary execution and independently reviewed target/control outcomes | [Controlled Repair](contracts/0001-evaluation-artifacts.md#controlled-repair) |
-| 12 | Selected-source mechanism reports, exact official-claim audit queue/reviews and default-off local submission/selection capture | [Mechanism/audit](contracts/0001-evaluation-artifacts.md#mechanism-official-audit) |
+| 12 | Selected-source mechanism reports and default-off local submission/selection capture | [Mechanism](contracts/0001-evaluation-artifacts.md#mechanism) |
 
 [Artifacts and evidence contracts](contracts/0001-evaluation-artifacts.md) define shared
 material integrity, source roles and independent evidence/time semantics. The five topic
@@ -42,7 +42,7 @@ Snapshot acquisition accepts injected transport. The evaluator-owned
 fresh Google acquisition, V0-only correspondence and all native automatic final-quality
 consumers. Preparation freezes originals, contexts, limits, prices and code; execution
 persists evidence/failures; replay sends nothing. Final-only scope explicitly excludes
-optional V3 and human/controlled/official tracks. Processing, acquisition and unresolved
+optional V3 and human and controlled tracks. Processing, acquisition and unresolved
 evidence are separate fields. Fresh execution requires a prepared, approved allowance.
 
 The [opening/route contract](contracts/0004-opening-routes.md) owns schedule precedence,
@@ -109,14 +109,14 @@ independent of producer decisions. Its two-stage mask is separate from the four-
 See the [development acceptance](records/evaluation/v3-pair-report.md).
 Controlled Repair is the isolated Ticket 11 execution boundary. Ticket 12 reads selected
 saved sources and optionally captured actual observations. Internal acceptance, independent
-quality and independent official-fact review remain separate. Capture adds no model/provider
+quality and resource observations remain separate. Capture adds no model/provider
 calls or tokens by design; its local normalization/storage overhead is unmeasured. Missing
 historical observations cannot be inferred from final outputs or current gate replay.
 This document authorizes no formal run, comparison or final conclusion.
 
 The [controlled replay contract](contracts/0001-evaluation-artifacts.md#controlled-repair)
 owns frozen real V3 execution, control invariants and independently reviewed outcomes.
-The [mechanism/audit contract](contracts/0001-evaluation-artifacts.md#mechanism-official-audit)
+The [mechanism contract](contracts/0001-evaluation-artifacts.md#mechanism)
 owns observation units and actual submission/selection capture. Neither creates a formal
 corpus or proves causal improvement.
 

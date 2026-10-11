@@ -20,7 +20,7 @@ manifest -> automatic report -> offline replay.
 | `validate` | Checks a source-bound native manifest | Offline; intake JSON, without scoring |
 | `evaluate execute / prepare / replay` | Produces the automatic report, optionally prepares or replays saved evidence | Execute online; prepare/replay offline; report, source bindings and receipts |
 | `quality`, `usage`, `cost` | Reads saved independent quality, usage or explicit prices/bills | Offline; separate descriptive reports |
-| `pair`, `controlled`, `review`, `mechanism`, `audit` | Operates distinct specialized tracks | Offline; controlled replay runs frozen V3; external review participation stays separate |
+| `pair`, `controlled`, `review`, `mechanism` | Operates distinct specialized tracks | Offline; controlled replay runs frozen V3; external review participation stays separate |
 | `advanced`, `dev` | Exposes individual evidence tools and development tools | Inspect leaf help; explicit opening/smoke execution can be online |
 
 For an already accepted four-version manifest, the shortest report route is:

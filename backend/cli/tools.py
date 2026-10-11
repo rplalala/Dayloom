@@ -91,29 +91,6 @@ TASKS = {
         {
             "prepare": "Offline selected source and optional supplied observation preparation.",
             "report": "Offline mechanism report; stdout or --output JSON.",
-            "audit-queue": "Offline compatibility operation: supplied official-claim review queue.",
-            "audit-report": (
-                "Offline compatibility operation: supplied official-fact review "
-                "report; no browsing."
-            ),
-        },
-    ),
-    "audit": Task(
-        (
-            "Offline specialized supplied official-fact reviews; queue creation "
-            "and report import do not browse or perform the review."
-        ),
-        children={
-            "queue": _leaf(
-                "backend.evaluation.mechanism_cli",
-                "Offline official-claim queue; stdout or --output JSON.",
-                "audit-queue",
-            ),
-            "report": _leaf(
-                "backend.evaluation.mechanism_cli",
-                "Offline supplied official-fact verdict report; stdout or --output JSON.",
-                "audit-report",
-            ),
         },
     ),
     "advanced": Task(

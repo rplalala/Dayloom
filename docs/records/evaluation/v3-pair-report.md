@@ -76,11 +76,11 @@ diffs established these exact correspondences:
 
 These bindings support reusing validation of identical code, not claiming a new test
 run or relabeling old evidence. Later Ticket 12 publication is recorded in the
-[engineering closeout](2026-10-04-mechanism-official-audit.md#publication-checkpoint).
+[engineering closeout](2026-10-04-mechanism-report.md#publication-checkpoint).
 
 ## Limits
 
 Indistinguishable or contradictory legacy observations cannot uniquely reconstruct
 history. Partial/lower-bound magnitudes do not establish exact improvement. Removal is
 not resolution; aggregate changes describe observed populations, not causal Repair
-success. Controlled Repair and official audit retain separate studies and denominators.
+success. Controlled Repair retains its separate study and denominators.

@@ -1,4 +1,4 @@
-"""Offline selected-source mechanism and independent official-evidence audit commands."""
+"""Offline selected-source mechanism preparation and reporting commands."""
 
 import argparse
 import json
@@ -7,7 +7,6 @@ from pathlib import Path
 from .intake import _read
 from .mechanism_preparation import diagnostic, prepare_sources, read_batch_sources
 from .mechanism_report import report_mechanism
-from .official_audit import build_audit_queue, report_audit
 
 
 def main(argv=None):
@@ -22,12 +21,9 @@ def main(argv=None):
         "--selection", help="Ticket 11 preparation containing its exact result_sources"
     )
     prepare.add_argument("--observations", help="JSON {records: linked optional observation rows}")
-    for name in ("report", "audit-queue", "audit-report"):
-        command = commands.add_parser(name)
-        command.add_argument("input")
-        if name == "audit-report":
-            command.add_argument("--reviews")
-        command.add_argument("--output")
+    report = commands.add_parser("report")
+    report.add_argument("input")
+    report.add_argument("--output")
     prepare.add_argument("--output")
     args = parser.parse_args(argv)
     try:
@@ -42,13 +38,7 @@ def main(argv=None):
                 ).to_dict()
         else:
             value, _ = _read(Path(args.input))
-            if args.command == "report":
-                result = report_mechanism(value)
-            elif args.command == "audit-queue":
-                result = build_audit_queue(value)
-            else:
-                reviews = _read(Path(args.reviews))[0] if args.reviews else None
-                result = report_audit(value, reviews)
+            result = report_mechanism(value)
     except (ValueError, KeyError, TypeError, OSError) as exc:
         result = {"status": "needs_material_correction", "diagnostics": [diagnostic(exc)]}
     raw = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False)

@@ -112,9 +112,7 @@ def test_review_prepares_blinded_material_without_participant_submission(install
     assert json.loads(current.stdout)["schema_version"] == "rtpeval_human_preparation_1"
 
 
-def test_mechanism_and_audit_preserve_missing_population_and_saved_destinations(
-    installed_cli, batch
-):
+def test_mechanism_preserves_missing_observations_and_saved_destinations(installed_cli, batch):
     _, _, write, _, root = batch
     prepared = root / "mechanism.json"
     args = ["prepare", "--manifest", write(), "--output", prepared]
@@ -128,26 +126,6 @@ def test_mechanism_and_audit_preserve_missing_population_and_saved_destinations(
         "report", prepared, legacy=True, legacy_module="backend.evaluation.mechanism_cli"
     )
     assert report.stdout == original.stdout
-    queue = root / "queue.json"
-    current = installed_cli("audit", "queue", prepared, "--output", queue)
-    material = queue.read_bytes() if queue.exists() else b""
-    legacy = installed_cli(
-        "audit-queue",
-        prepared,
-        "--output",
-        queue,
-        legacy=True,
-        legacy_module="backend.evaluation.mechanism_cli",
-    )
-    assert current.returncode == legacy.returncode == 0
-    assert material == queue.read_bytes()
-    current = installed_cli("audit", "report", queue)
-    legacy = installed_cli(
-        "audit-report", queue, legacy=True, legacy_module="backend.evaluation.mechanism_cli"
-    )
-    assert current.returncode == legacy.returncode == 0
-    assert current.stdout == legacy.stdout
-    assert json.loads(current.stdout)["counts"]["qualifying"] is None
 
 
 @pytest.mark.parametrize(
@@ -163,7 +141,6 @@ def test_mechanism_and_audit_preserve_missing_population_and_saved_destinations(
                 "controlled",
                 "review",
                 "mechanism",
-                "audit",
                 "advanced",
                 "dev",
             ),
@@ -198,7 +175,6 @@ def test_mechanism_and_audit_preserve_missing_population_and_saved_destinations(
         (("controlled",), ("replay", "frozen", "offline")),
         (("review",), ("prepare", "package", "import", "report", "offline")),
         (("mechanism",), ("prepare", "report", "offline")),
-        (("audit",), ("queue", "report", "offline", "supplied")),
     ],
 )
 def test_task_help_is_discoverable_without_loading_evaluators(installed_cli, command, phrases):
@@ -217,7 +193,6 @@ def test_task_help_is_discoverable_without_loading_evaluators(installed_cli, com
         (("pair", "report"), "--edit-provenance", False),
         (("controlled", "identity"), "--historical-program", True),
         (("review", "package"), "--private-out", False),
-        (("audit", "queue"), "--output", False),
         (("advanced", "identity"), "--legacy", False),
         (("advanced", "identity-adoption"), "--historical-llm", False),
         (("advanced", "snapshot", "identity-evidence"), "--historical", False),

@@ -7,10 +7,10 @@ comparative research is constructed by these commands.
 [Evaluation architecture](../../docs/0006-independent-evaluation.md) owns scope.
 Ticket 11's [controlled replay contract](../../docs/contracts/0001-evaluation-artifacts.md#controlled-repair)
 defines execution inputs, independent conditions and human supplementation.
-Ticket 12's [contract](../../docs/contracts/0001-evaluation-artifacts.md#mechanism-official-audit)
-defines separate mechanism/audit readers and explicit opt-in capture, disabled by default.
+Ticket 12's [contract](../../docs/contracts/0001-evaluation-artifacts.md#mechanism)
+defines selected-source mechanism readers and explicit opt-in capture, disabled by default.
 The [approved scope](../../docs/contracts/0001-evaluation-artifacts.md#ticket12-implementation-scope)
-defines the local wrapper, reader/audit CLI and offline acceptance boundaries.
+defines the local wrapper, mechanism CLI and offline acceptance boundaries.
 
 ## Installed batch validation
 
@@ -257,9 +257,8 @@ final destination is retained for diagnosis and is not accepted or reusable for 
 Use `uv run rtpeval GROUP --help` and leaf help for exact native parameters. `quality`
 reads an existing independent evidence packet; it is not a necessary follow-up to
 `evaluate execute`. `usage` and `cost` retain descriptive missingness and dated explicit
-prices/bills. `pair`, `controlled`, `review`, `mechanism` and `audit` keep their separate
-schemas and research-track meanings. Audit queue/report does not browse or review facts;
-blinded participant collection is a separate operation. Controlled replay executes the
+prices/bills. `pair`, `controlled`, `review` and `mechanism` keep their separate schemas
+and research-track meanings. Blinded participant collection is a separate operation. Controlled replay executes the
 real frozen V3 chain offline, distinct from saved automatic-evaluation replay.
 
 `advanced` exposes individual identity, snapshot, schedule, opening and route operations.
@@ -304,7 +303,7 @@ and their CLIs remain at the package root. A CLI is not necessarily a smoke util
 correspondence, snapshot coordinates, hours and directed routes, requirements/schedule,
 daily density and final quality reporting. It consumes the selected originals without
 generating or repairing itineraries. Its scope is the four final projections; optional
-V3 stages and human, controlled-Repair and official-audit tracks are explicitly excluded.
+V3 stages, human review and controlled-Repair tracks are explicitly excluded.
 
 ```powershell
 .venv/Scripts/python.exe -m backend.evaluation.evaluation_run_cli prepare manifest.json --directory artifacts/fresh-evaluation --options options.json --prices prices.json --context context.json
@@ -470,7 +469,7 @@ so ordinary Python regression tests need no npm build. Set it as above for the r
 | Four-version quality/resources | Quality `groups[].versions`; resource `metrics` | All V0-V3 retained; the synthetic V1 score is 50 with two opening UNKNOWNs; missing tokens stay null |
 | V3 overlap retime | Pair `continuity`, `correspondence`, `deltas`, `visit_changes` | Confirmed overlap resolved using adopted lineage, zero removed visits; grounding delta is exactly 0/1; unresolved total delta stays null |
 | Four controlled cases | `targets[].independent_outcome` or `control.outcome` | `resolved`, `valid_no_change`, `lawful_change`, `regressed`, respectively |
-| Mechanism/audit | Mechanism `runs`; audit queue `units` and report `counts` | Complete simulated captures give three run-bound claim units, two occurrences each; missing captures leave the population count null |
+| Mechanism reporting | Mechanism `runs` and observation coverage | Four-version selections remain complete; missing V3 observations stay unavailable |
 | Anonymous package | `public/review.html`, private mapping, import/report stdout | Four labels A-D, one imported answer revision and one descriptive task; answers are synthetic |
 | Invalid input | Intake `material_diagnostics`, command exit code | Missing file and changed-source hash mismatch exit 2 with the affected path |
 
@@ -1063,41 +1062,31 @@ Relevant regression tests live in `backend/tests/evaluation/`
 and the [blind-review frontend](../../frontend/src/features/blind-review/BlindReview.tsx).
 Actual historical results are in [evaluation record index](../../docs/records/README.md)
 and linked Issues. Synthetic checks do not establish real provider availability,
-formal benchmark outcomes or a version freeze. Formal controlled-case construction/execution
-and independent official-fact audit execution remain separately authorized.
+formal benchmark outcomes or a version freeze. Formal controlled-case construction/execution remains separately authorized.
 
-## Mechanism and official-evidence audit workflow
+## Mechanism reporting workflow
 
 ```powershell
 .venv/Scripts/python.exe -m backend.evaluation.mechanism_cli prepare --manifest manifest.json --observations linked-observations.json --output mechanism-preparation.json
 .venv/Scripts/python.exe -m backend.evaluation.mechanism_cli prepare --selection controlled-preparation.json --output controlled-mechanism-preparation.json
 .venv/Scripts/python.exe -m backend.evaluation.mechanism_cli report mechanism-preparation.json --output mechanism-report.json
-.venv/Scripts/python.exe -m backend.evaluation.mechanism_cli audit-queue mechanism-preparation.json --output official-audit-queue.json
-.venv/Scripts/python.exe -m backend.evaluation.mechanism_cli audit-report official-audit-queue.json --reviews official-audit-reviews.json --output official-audit-report.json
 ```
 
 The two `prepare` examples are alternatives: an existing curated four-version manifest or
-genuine saved Ticket 11 V3-only preparation. Optional observations and reviews may be omitted;
-missing metadata is unavailable, not zero. Commands read local JSON without provider/model
-calls, case replay or website checks. Reports retain internal mechanisms separately from
-independent quality. Exit 2 identifies material corrections; valid missing observations,
-unreviewed units and unavailable verdicts are retained in successful processing.
+genuine saved Ticket 11 V3-only preparation. Optional observations may be omitted; missing
+metadata is unavailable, not zero. Commands read local JSON without provider/model calls,
+case replay or website checks. Reports retain internal mechanisms separately from independent
+quality. Exit 2 identifies material corrections; valid missing observations remain in
+successful processing.
 
-Library seams: `prepare_sources`, `read_batch_sources`, `report_mechanism`,
-`build_audit_queue` and `report_audit`. The producer explicitly owns
-`backend.app.observability.mechanism_capture.capture_attempt`: wrap its existing invocation,
-supply original input/run identity and the exact saved-result serializer, and save the
-emitted envelope through a synchronous local sink. No new planner run flag is required.
-This capture is independent of enabled tracing/usage; custom injected adapters lacking the
-submission observation remain partial. Sink/capacity/redaction failures preserve planning.
-
-Official units require accepted typed claims and exact actual submission/rule occurrences.
-Preparation-only and accepted-unused claims are excluded; submission does not prove model
-attention or provider receipt. Queue/unit hashes bind independent reviews. Unreviewed and
-unavailable units remain visible. Incomplete collection reports the observed unit count while
-the full qualifying population remains null. See the
-[wire contract](../../docs/contracts/0001-evaluation-artifacts.md#mechanism-audit-executable-wire)
-and [offline acceptance](../../docs/records/evaluation/2026-10-04-mechanism-official-audit.md).
+Library seams: `prepare_sources`, `read_batch_sources` and `report_mechanism`.
+The producer owns `backend.app.observability.mechanism_capture.capture_attempt`: wrap its
+existing invocation, supply original input/run identity and the exact saved-result serializer,
+and save the emitted envelope through a synchronous local sink. This capture is independent
+of enabled tracing/usage; custom injected adapters lacking submission observations remain
+partial. Sink/capacity/redaction failures preserve planning. See the
+[wire contract](../../docs/contracts/0001-evaluation-artifacts.md#mechanism-executable-wire)
+and [offline acceptance](../../docs/records/evaluation/2026-10-04-mechanism-report.md).
 
 ## Controlled V3 offline workflow
 

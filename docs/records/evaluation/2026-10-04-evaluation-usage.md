@@ -22,14 +22,13 @@ test suite, avoiding a dependency on downloaded vocabulary. No payload measureme
 | Unchanged control | A valid one-visit fixture stays unchanged: `valid_no_change`, with zero model attempts. |
 | Lawful addition | Independent checks support adding a second visit: `lawful_change`, with one frozen model attempt. |
 | Exclusive addition | Original text says “Exactly one primary visit on this day.” The fixture deliberately omits this restriction from the planner interpretation. Internal Repair accepts the addition, but the independent guard changes PASS to FAIL and reports `regressed`. |
-| Mechanism and official audit | Actual controlled preparations yield one V3 run rather than invented V0-V2 runs. Separately simulated complete capture channels across V1-V3 give three run-bound claim units, two occurrences each. Simulated reviews cover all three. Missing captures leave total qualifying population null and observed count zero. Other absent optional channels remain unavailable. |
+| Mechanism reporting | Actual controlled preparations yield one V3 run rather than invented V0-V2 runs. Four-version selected material retains all four runs; missing observations remain unavailable. |
 | Blinded package/import/report | The acceptance packet embeds the existing built React renderer, keeps private mapping outside the public directory and exposes labels A-D. Synthetic answers import at revision 1 and produce one descriptive main task. No actual rater session occurs. |
 | Invalid input | A missing manifest and a disposable changed-result copy with its old expected hash both exit 2. Diagnostics identify the file; the latter says `Artifact hash mismatch`. Original selected files remain unchanged. |
 
 Complete processing is distinct from independent PASS. The regression control and UNKNOWN
-examples intentionally process successfully. Synthetic capture occurrences/verdicts and
-ranking answers demonstrate linkage and reporting only; they are not actual recorded model
-submissions, an independent human truth audit, or research observations.
+examples intentionally process successfully. Synthetic capture occurrences and ranking answers demonstrate linkage and reporting only;
+they are not actual recorded model submissions or research observations.
 
 ## Validation and real renderer evidence
 

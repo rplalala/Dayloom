@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-10.
+Current source of truth. Updated 2026-10-11.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -138,7 +138,7 @@ finalization; external agents are separately operated. See
 | Opening | Current/regular API schedules take priority; missing-hours LLM assessment can infer ordinary public-landmark viewing, while explicit restricted activities and museum admission need access evidence; factual coverage stays separate | [Opening/routes](docs/contracts/0004-opening-routes.md#opening) |
 | Routes | Independent coordinates and mode/time-applicable route evidence against original reserved duration; unsupported provider scope remains unresolved | [Opening/routes](docs/contracts/0004-opening-routes.md#route-wire) |
 | Quality and density | Five automatic dimensions with separate evidence availability; source-linked pace deductions adjust the final total without adding hard generation quotas | [Quality/density](docs/contracts/0005-quality-human-review.md) |
-| Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism/official-claim audit interfaces are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
+| Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
 
 Current identity policies are `versioned_api_identity_4` and
 `v0_identity_correspondence_3`; requirement/schedule rules are version 3. Opening retains
@@ -188,16 +188,12 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Current full backend checkpoint: **3471 passed, 10 skipped in 673.89s** on
-2026-10-09 for integrated #98–#102, run from the repository root on unchanged
-`c1280a1`. The gate covers the complete backend suite, including **178 new public CLI
-cases** for collection, finalization, generation registration, task-oriented tools and
-integrated workflows. Nine opt-in isolated PostgreSQL cases and the existing host
-symlink-creation privilege case are skipped. Ruff lint/format and documentation checks
-passed; no new frontend validation is claimed. Initial independent combined implementation
-reviews found zero Standards and zero Spec findings. Final documentation recheck found
-a stale current checkpoint; the separate documentation correction passed focused review
-with zero remaining findings on both axes.
+Current full backend checkpoint: **3456 passed, 10 skipped in 762.69s** on
+2026-10-11. The gate covers the complete backend suite, including installed CLI,
+independent scoring, mechanism reporting, observability and V0-V3 behavior. Nine
+opt-in isolated PostgreSQL cases and the existing host symlink-creation privilege
+case are skipped. Ruff lint/format and documentation link checks passed; no new
+frontend validation is claimed.
 See [unified acceptance](docs/records/evaluation/intake-identity-usage.md#unified-rtpeval-material-workflow-acceptance-2026-10-09)
 for the invalid-working-directory invocation, unchanged-source full rerun and review
 history. Earlier #97 checks retain their original scope in
@@ -234,8 +230,9 @@ Remaining limitations:
   run; a separate 8,000-token package completed within its bounds. Output allowances
   include reasoning tokens. Incomplete responses still stop and preserve their receipts;
   successful processing can retain genuine factual UNKNOWN judgments.
-- Blinded, controlled-Repair and official-audit interfaces exist, but the latest Sydney
-  automatic run did not execute those separate tracks or a formal benchmark.
+- Blinded review, V3 paired diagnostics, controlled Repair and mechanism reports exist.
+  The latest real-material acceptance exercised final scoring, not these separate tracks
+  or a formal benchmark.
 
 Detailed engineering history is indexed in [records](docs/records/README.md), including
 [evaluator records](docs/records/evaluation/intake-identity-usage.md),

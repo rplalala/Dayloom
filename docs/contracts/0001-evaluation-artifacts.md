@@ -357,22 +357,19 @@ case-count cap and does not generate the formal 24-target/8-control corpus.
 The dated [implementation and review record](../records/evaluation/2026-10-04-controlled-repair.md)
 retains development validation, corrections and execution limitations.
 
-Ticket 12 separates mechanism exposure/usage from independent quality and causality. Official
-Evidence Audit includes only accepted facts exposed to a model or used by a rule, with separate
-independent supported/contradicted/scope-mismatch/unavailable outcomes. Rejected/unused/search-
-only material is outside that denominator. The implemented reader, queue and reviewed
-report are specified in the [mechanism/audit contract](#mechanism-official-audit).
+Ticket 12 separates mechanism exposure/usage from independent quality and causality;
+its reports are specified in the [mechanism contract](#mechanism).
 See [Ticket 11](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/23) and
 [Ticket 12](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/24).
 
-<a id="mechanism-official-audit"></a>
+<a id="mechanism"></a>
 
-### Mechanism and official-fact reporting
+### Mechanism reporting
 
-The selected-source reader, mechanism report, exact official-fact audit and default-off
-local capture are implemented. Missing optional observations remain partial/unavailable
-without invalidating independent quality material. The
-[development record](../records/evaluation/2026-10-04-mechanism-official-audit.md)
+The selected-source reader, mechanism report and default-off local capture are implemented.
+Missing optional observations remain partial/unavailable without invalidating independent
+quality material. The
+[development record](../records/evaluation/2026-10-04-mechanism-report.md)
 explains the original capture gap and consequential corrections. New rule replay cannot
 establish which facts an older execution actually used.
 
@@ -405,37 +402,6 @@ and trace copies, count the cumulative result as a final extra round, sum cumula
 counter snapshots, or add cumulative usage to its per-round children. Incomplete trace
 fragments may support explicitly observed cells, never a fabricated complete denominator.
 
-#### Accepted qualifying official-fact audit
-
-Use a run-linked catalog of Evidence-Gate-accepted typed official claims, preserving
-source refs, claim content/hash, source identity, excerpt, retrieval/date applicability
-and subject scope. Link the resolved representation actually submitted or selected to
-its accepted supporting claims. A URL or reference alone is not a verified fact.
-
-The qualifying set is accepted claims with established model-input submission or actual
-rule selection; keep those qualifying reasons distinct. Record preparation-only evidence,
-failed-before-submission calls, rejected claims, search-only material and unused accepted
-claims outside that denominator. An input-submission observation records the application
-handing the exact projected facts to the model invocation; it does not prove provider
-receipt, successful generation, the model's attention or causal influence. Incomplete
-submission observations remain unavailable. Operational-day and conflict representations
-retain their date/scope/uncertainty rather than being rewritten as affirmative truths.
-
-Count a qualifying claim once per run and exact claim/source revision, preserving every
-call/round/rule occurrence separately. Identical values from different source revisions
-do not silently merge. One accepted claim exposed in two rounds and selected by one rule
-has one audit unit and three occurrence links. This is neither a website count nor an
-exposure-frequency-weighted truth score.
-
-Export an audit queue with exact run/input/result/capture hashes, claim and occurrence
-links. Independently supplied reviews bind that exact unit and revision, identify the
-reviewer/time/rationale/supporting sources and classify supported, contradicted,
-scope-mismatch or unavailable. Preserve both all qualifying units and reviewed/verifiable
-coverage. Missing reviews do not remove claims or become supported/contradicted zeros.
-The planner gate's acceptance and its reasoner's confidence are not independent audit
-verdicts. This ticket does not introduce automatic random website checks, additional
-retrieval or universal ticket-price/admission correctness scoring.
-
 #### Accepted minimum capture and delivery scope
 
 Reuse complete saved V3 outcomes and existing compatible trace/usage observations.
@@ -448,13 +414,13 @@ recording failures must not change planning. Do not require raw prompts/provider
 or enabled usage collection. Preserve existing trace redaction and size controls.
 
 Old runs use only surviving, source-linked observations: complete V3 outcomes can still
-support mechanism cells while the official audit is partial/unavailable. Historical
+support mechanism cells while capture observations remain partial/unavailable. Historical
 accepted/exposed/used facts must not be reconstructed from the final itinerary or by
 rerunning the current gate. Existing Ticket 11 frozen material may supply actual replay
 observations only when linked to that replay; it cannot certify an older live execution.
 
-The implemented boundary separates the immutable mechanism reader/report, official audit
-queue/review/report, researcher CLI and minimum opt-in capture above. Reuse artifact
+The implemented boundary consists of the immutable mechanism reader/report, researcher
+CLI and minimum opt-in capture above. Reuse artifact
 hash/link validation and usage summarization. Keep four-final quality scores, identity,
 paired metrics and anonymous review unchanged. No frontend or new acquisition system.
 The extension adds local serialization/storage work; it adds no model input/output
@@ -464,12 +430,12 @@ real overhead was not measured by the offline development checks.
 
 <a id="ticket12-implementation-scope"></a>
 
-<a id="mechanism-audit-executable-wire"></a>
+<a id="mechanism-executable-wire"></a>
 
 #### Executable wire
 
-The [mechanism CLI](../../backend/evaluation/mechanism_cli.py) has `prepare`, `report`,
-`audit-queue` and `audit-report` commands. `prepare --manifest` reuses the existing
+The [mechanism CLI](../../backend/evaluation/mechanism_cli.py) has `prepare` and `report`
+commands. `prepare --manifest` reuses the existing
 four-version intake; `prepare --selection` reads the saved Ticket 11 preparation and
 its embedded exact `result_sources`. Neither command invokes a planner or reconstructs
 a controlled case. Optional `--observations` reads `{ "records": [...] }` with these fields:
@@ -507,33 +473,13 @@ observation is omitted with partial diagnostics rather than altering an exact cl
 Capacity and observation failures are bounded; sink failure logs only its error type.
 Result/exception preservation includes cancellation, independent of enabled usage/tracing.
 
-Capture claim links bind accepted `source_ref` plus exact `claim_sha256`. Queue units retain
-input/result/capture hashes, full typed claim/source content, exact submitted/selected
-representations and every distinct occurrence. Exact duplicate identities retain pointers;
-conflicting identities fail that channel. A source revision remains a separate claim unit.
-Rejected/search-only/non-catalogued material cannot qualify; accepted-unused and prepared-only
-observations stay outside the qualifying set. No rejected-claim count is invented from an
-accepted-only catalog.
-
-Reviews use `rtpeval_official_audit_reviews_1`, exact `queue_sha256` and `records` containing
-`unit_sha256`, `verdict`, `reviewer_ref`, offset-aware `reviewed_at`, `rationale` and nonempty
-`supporting_source_refs`. Verdicts are `supported`, `contradicted`, `scope_mismatch` or
-`unavailable`. Missing reviews stay unreviewed. Review coverage refers to observed qualifying
-units; `counts.qualifying` is null when collection is incomplete, while
-`counts.observed_qualifying` preserves observed units. Supported fractions use independently
-verifiable reviewed units, with unavailable reviews and missing coverage retained separately.
-The queue/report schemas identify canonical content/unit hashes; review material cannot
-change planner gate decisions or quality scores.
-
-Partial capture distinguishes observed accepted/qualifying counts from complete populations.
-`accepted_unused_count` remains null unless observation is complete;
-`accepted_without_qualifying_observation_count` identifies only the observed catalog remainder.
-It does not certify non-use when a submission/occurrence could have been truncated. Trace
-copies are checked against matching saved round status, continuation, usage and shared
-cumulative counter cells; contradiction fails only the trace channel.
+Capture retains accepted claim/source hashes and actual submitted/selected representations
+with their occurrence links. Missing observations stay partial or unavailable. Trace copies
+are checked against matching saved round status, continuation, usage and shared cumulative
+counter cells; contradiction fails only the trace channel.
 
 Offline acceptance and implementation/review history are recorded in the
-[Ticket 12 record](../records/evaluation/2026-10-04-mechanism-official-audit.md).
+[Ticket 12 record](../records/evaluation/2026-10-04-mechanism-report.md).
 
 Whole-trip factual budget PASS, verified access/fees and false-certainty metrics remain deferred.
 Amounts can be descriptive; source role does not certify affordability. V0-V3 comparisons are

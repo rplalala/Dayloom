@@ -503,7 +503,7 @@ unresolved and identity `needs_evidence`. Native counts were PASS / FAIL / UNKNO
 | V2 | 1 / 0 / 0 | 8 / 0 / 0 | 12 / 0 / 0 | 4 / 0 / 4 | 4 / 0 / 0 | 15 | 75.0000 |
 | V3 | 1 / 0 / 0 | 9 / 0 / 0 | 14 / 0 / 0 | 5 / 0 / 4 | 5 / 0 / 0 | 10 | 81.1111 |
 
-Optional V3 projections, human/controlled-Repair/official-audit tracks were excluded.
+Optional V3 projections, human/controlled-Repair tracks were excluded.
 All retained UNKNOWNs were checked against the actual evidence:
 
 | Item | Version | Date/scope | Original venue or obligation | Retained cause |

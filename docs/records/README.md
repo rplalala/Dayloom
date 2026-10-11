@@ -15,7 +15,7 @@ bounded by their recorded date and never grant another execution or freeze.
 | [Evaluation](evaluation/intake-identity-usage.md) | Offline evaluator acceptance, [readiness audit](evaluation/evaluation-readiness-audit.md) and [benchmark design history](evaluation/benchmark-design.md) |
 | [V3 paired evaluation](evaluation/v3-pair-report.md) | Ticket 10 source-driven correspondence, independent deltas and corrected defects |
 | [Controlled V3 repair](evaluation/2026-10-04-controlled-repair.md) | Ticket 11 frozen real execution, independently reviewed outcomes and corrected material/clock boundaries |
-| [Mechanism and official audit](evaluation/2026-10-04-mechanism-official-audit.md) | Ticket 12 selected-source observations, opt-in capture, independent exact-unit reviews and offline validation |
+| [Mechanism reporting](evaluation/2026-10-04-mechanism-report.md) | Ticket 12 selected-source observations, opt-in capture and offline validation |
 | [Evaluation CLI usage](evaluation/2026-10-04-evaluation-usage.md) | Issue #49 synthetic subprocess workflows, report interpretation, material correction examples and offline acceptance |
 | [Seoul real chain pilot](evaluation/2026-10-04-seoul-live-pilot.md) | One authorized four-day live V0-V3 request, independent snapshots, applicable native reports, actual agent reviews and retained uncertainty |
 | [Daily density scoring](evaluation/2026-10-04-daily-density.md) | Final approved table (#52), explicit count precedence, offline Seoul evidence replay and implementation/review acceptance |
