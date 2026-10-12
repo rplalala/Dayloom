@@ -83,9 +83,10 @@ fictional snapshot.
 Preparation requires explicit independent schedule context and route reviews for
 available pairs. Nonempty preferences additionally require a density review, which
 may preserve unresolved meaning. Optional occupancy/correspondence reviews retain
-their existing semantics. Limits are a positive integer `max_google_sends`, a
-positive decimal-string `max_cost_usd` in USD, and finite positive per-call and
-total timeouts. Credentials/model settings are forbidden in these options.
+their existing semantics. Acquisition limits are a positive integer
+`max_google_sends`, a positive decimal-string `max_cost_usd` in USD, and finite
+positive per-call and total timeouts. Offline imported phases permit explicit zero
+send/spend limits. Credentials/model settings are forbidden in these options.
 The price snapshot must support the native Google request identities and execution
 date. Human preference and personal-intent clarification remain external work.
 
@@ -109,8 +110,55 @@ Each native request gets at most one attempt. A started directory is consumed,
 including stopped work, with no retry/resume, Planner regeneration or Repair.
 The native required primary/draft/final union retains source occurrences and
 directed route mode/departure context while deduplicating exact requests. Evidence
-reuse requires the exact current native paired plan, source/context/date and
-coverage; Planner/final-only evidence cannot be relabeled.
+reuse of a complete acquired snapshot requires the exact current native paired plan,
+source/context/date and coverage. Final-only snapshots cannot be relabeled as paired
+acquisition. Per-request reuse uses the explicit import contract below.
+
+### Source-labelled offline imports
+
+`pair acquire import` builds fresh `rtpeval_imported_snapshot_1` identity and
+evidence snapshots for the accepted batch and reviewed paired context. It sends
+no requests. Primary sources must replay successfully and retain closed execution
+receipts; saved generation sources must bind the selected V3 run, original input,
+result, usage, provenance, runtime configuration and hashed evidence index.
+Raw filtered request/response bodies must be complete. Partial captures can supply
+only individually supported observations; source drift requires material correction.
+
+Native primary requests match their complete semantics and verified Google wire.
+Route endpoint evidence digests retain their own validated coordinate lineage;
+an import changes these digests without changing the query. Matching still requires
+the same directed place IDs, coordinates, mode, departure/time basis and options.
+Generation requests match provider operation, method, endpoint, full request body
+and required fields. Details can omit `addressComponents` because claimed-ID
+assessment supports exact names and formatted addresses; absence cannot supply
+address-component judgments. Searches retain the full native mask and scope.
+Details accept the producer's explicit `languageCode=en` alongside the native
+unspecified locale: the English name/address assessment and stable ID, coordinate,
+business-status and hours fields remain independently checked. The full original
+URL and language are recorded; other locales and additional query parameters do
+not match. No search or route locale is silently changed.
+Routes retain directed coordinates, mode, routing options and explicit departure;
+generation matrices without an explicit departure are unsupported. Batch matrix
+responses are not sliced into invented single-request observations.
+
+The import preserves original bytes, paths through a flat copy map, hashes and
+acquisition origin. Primary observations retain per-request UTC times. Generation
+observations retain their recorded run capture interval, explicitly labelled
+`run_capture_window`; its upper bound is not claimed as a measured per-request time.
+`imported_at` records the new import operation. A separate import receipt closes
+all copied bytes. Missing/incompatible observations have empty attempts and
+`no_compatible_observation`, independently of acquisition budget exhaustion.
+
+Imported identity evidence declares `reused_google_places` with import provenance,
+rather than fresh acquisition. Native identity, opening, schedule and route checks
+run again; Planner validation and Repair judgments are never adopted. The paired
+report exposes source origins and inherited usage. Current send/matrix ledgers are
+zero; inherited source usage is informational and is not added to current costs.
+The snapshot cost reader emits no new provider events for imports and retains
+inherited usage separately; the original source remains the accounting authority.
+Preparing with imported evidence requires both phases and selects `offline_reuse`;
+execution cannot fall back to paid acquisition. Unsupported facts remain UNKNOWN.
+Any supplemental acquisition needs its own concrete approved scope and allowance.
 
 The execution bundle saves paired snapshots, original request context and times,
 redacted captured bodies, native failures/hashes, current identity, route plan,

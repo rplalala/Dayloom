@@ -122,9 +122,10 @@ not selected by default, not deleted or disabled. Retain runtime RAG source and
 configuration identity without requiring a separate corpus scan.
 
 Installed tools provide the native captures, intake and reports. Corpus-free
-relevance presentation and the final-case handoff are tracked in #138: the existing
-relevance renderer still includes corpus sections, and this convention does not
-claim a new installed mode or directory-assembly command already exists.
+relevance presentation omits corpus sections unless coverage material or a profile
+is explicitly selected. The final-case handoff remains tracked in #138; no general
+directory-assembly command is implied. Source-labelled paired evidence reuse is
+available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
 
 ## Layout
 

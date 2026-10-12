@@ -1253,6 +1253,32 @@ source material remain unchanged. Another identical Google query has no demonstr
 coverage benefit; museum admission requires applicable authoritative evidence.
 
 
+### Source-labelled paired reuse (2026-10-13)
+
+The case-01 cost review identified overlap between primary evaluation and a second
+paired acquisition. Against fixed base `c299e1f`, implementations `9b6ec56` and
+`3def7ca` add corpus-free presentation and explicit offline paired imports. Primary
+provider receipts and complete selected-generation wire observations retain their
+original acquisition labels; the evaluator reruns checks. A separate imported
+schema represents missing observations without inventing acquisition attempts.
+Current sends and charges stay zero, with source usage retained separately.
+
+The initial full backend run passed 4,087 tests, skipped 16 and failed the static
+dependency allowlist for the new offline `copy` import. The specific allowance was
+corrected. Related regression then passed 481 tests in 323.79 seconds. Boundary
+probes found double-counted inherited attempts, rejected English details, incorrect
+raw coordinate pointers, provenance hashes obstructing route reuse, and ambiguous
+JSON accepted despite matching hashes. Corrections retain route identity/time/options,
+use strict native parsing and keep unsupported observations UNKNOWN. Seventeen
+final integrity/handoff tests passed in 66.69 seconds; explicit zero-budget execution
+and replay passed separately. All 19 changed Python files pass Ruff lint/format.
+This reconciles affected coverage rather than claiming a second clean full run.
+
+Local evidence identifiers are `artifacts/tall45`, `tverify51`, `tconsumer52`,
+`tduplicate53`, `tintegrity54` and `tzero55`. Fixtures deny external network and use
+synthetic responses. Engineering review and real case-01 execution/acceptance remain
+pending; no provider bill, formal version conclusion or freeze follows from this gate.
+
 ## Multi-case suite engineering acceptance (2026-10-11)
 
 The #106 implementation composes the existing native evaluation interfaces through

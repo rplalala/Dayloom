@@ -990,8 +990,9 @@ Existing native browser acceptance remains separate from package generation/impo
 
 For researcher-supplied material, follow the commands below and the relevant contract;
 the demo does not collect missing independent evidence. Four-final scoring requires a
-final-only snapshot, whereas V3 paired reporting requires a paired snapshot. Do not reuse
-one snapshot across those scopes. Exit 0 means processing completed, including FAIL,
+final-only snapshot, whereas V3 paired reporting requires a paired snapshot. Per-request
+reuse creates a separately labelled imported snapshot; it does not relabel the original.
+Exit 0 means processing completed, including FAIL,
 UNKNOWN or unavailable totals; inspect the report rather than treating it as an itinerary PASS.
 
 Save stdout JSON as UTF-8 without BOM. In PowerShell 7, set
@@ -1496,6 +1497,27 @@ distinguishes automated checks from user-reported browser acceptance.
 ### V3 paired diagnostics
 
 #### Installed paired acquisition
+
+For offline reuse, provide the completed primary operation and, optionally, the
+selected V3 generation capture. The [import contract](../../docs/contracts/0001-evaluation-artifacts.md#source-labelled-offline-imports)
+defines request matching, source validation, original times and inherited accounting.
+
+```powershell
+uv run rtpeval pair acquire import manifest.json --directory artifacts/pair-import --primary-run artifacts/primary --generation generation/v3 --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json
+uv run rtpeval pair acquire prepare manifest.json --directory artifacts/pair-report --selection selection.json --options pair-options.json --prices oracle-prices.json --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json --identity-snapshot artifacts/pair-import/identity-snapshot --snapshot artifacts/pair-import/evidence-snapshot
+uv run rtpeval pair acquire execute artifacts/pair-report --approved-sha256 EXACT_CONTENT_SHA256
+uv run rtpeval pair acquire replay artifacts/pair-report
+uv run rtpeval pair acquire export artifacts/pair-report --directory artifacts/pair-export
+```
+
+Imported preparation selects `execution_mode=offline_reuse`. Both phases must be
+provided; it never reads credentials or constructs an HTTP client. Use explicit
+zero send/spend limits with positive timeouts. Imported mode enforces zero current
+sends and a zero current request-price estimate. Missing
+facts remain UNKNOWN. `pair acquire import` does not use paid options or prices.
+Omit absent optional reviews. Supply original independent reviews; import does not
+author them. All destinations are fresh. The remaining flow describes separately
+authorized acquisition when suitable saved observations are unavailable.
 
 `rtpeval pair acquire` connects the native paired workflow for an explicitly
 selected qualified manifest. The [acquisition contract](../../docs/contracts/0001-evaluation-artifacts.md#paired-evidence-acquisition)
