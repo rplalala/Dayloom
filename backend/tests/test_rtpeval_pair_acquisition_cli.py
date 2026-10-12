@@ -210,7 +210,9 @@ def test_offline_import_reuses_primary_observations_and_exports_native_pair(
     assert (root / "manifest.json").is_file()
 
 
-def generation_source(paired_material, directory, *, mask=None, incomplete=False, language=None):
+def generation_source(
+    paired_material, directory, *, mask=None, incomplete=False, language=None, route_body=None
+):
     import httpx
 
     from backend.app.integrations.google.places import PLACES_DETAILS_FIELD_MASK
@@ -268,6 +270,35 @@ def generation_source(paired_material, directory, *, mask=None, incomplete=False
                 "status_code": 200,
             }
         )
+    if route_body is not None:
+        from backend.evaluation.evaluation_transport import ROUTE_MASK
+
+        raw.request(
+            httpx.Request(
+                "POST",
+                "https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix",
+                headers={"X-Goog-FieldMask": ROUTE_MASK},
+                json=route_body,
+            ),
+            "3",
+        )
+        raw.response(
+            httpx.Response(
+                200,
+                json=[{"originIndex": 0, "destinationIndex": 0, "duration": "600s"}],
+            ),
+            "3",
+        )
+        usage["provider_events"].append(
+            {
+                "event_id": "3",
+                "provider": "google",
+                "operation": "route_matrix",
+                "source": "http_request_hook",
+                "outcome": "completed",
+                "status_code": 200,
+            }
+        )
     raw.finish()
     if incomplete:
         for event in raw.events:
@@ -310,6 +341,67 @@ def generation_source(paired_material, directory, *, mask=None, incomplete=False
         ref["sha256"] = hashlib.sha256((root / ref["path"]).read_bytes()).hexdigest()
     save(root, "manifest.json", manifest)
     return directory
+
+
+@pytest.mark.parametrize(
+    "departure, fault, expected_count",
+    [
+        ("2026-10-13T01:00:00Z", None, 1),
+        ("2026-10-13T11:00:00+10:00", None, 1),
+        ("2026-10-13T01:00:01Z", None, 0),
+        ("2026-10-13T01:00:00", None, 0),
+        ("invalid", None, 0),
+        ("2026-10-13T01:00:00Z", "direction", 0),
+        ("2026-10-13T01:00:00Z", "mode", 0),
+        ("2026-10-13T01:00:00Z", "options", 0),
+    ],
+)
+def test_generation_route_reuse_compares_explicit_departure_instants(
+    paired_material, tmp_path, departure, fault, expected_count
+):
+    from backend.evaluation.evaluation_transport import google_wire
+    from backend.evaluation.generation_import import generation_observations
+
+    request = {
+        "key": "route",
+        "operation": "route_matrix",
+        "parameters": {
+            "origin": {"latitude": 10, "longitude": 20},
+            "destination": {"latitude": 10, "longitude": 21},
+            "mode": "DRIVE",
+            "time_basis": "explicit_departure",
+            "departure": "2026-10-13T01:00:00+00:00",
+            "routing_options": {"routing_preference": "TRAFFIC_AWARE"},
+        },
+    }
+    body = google_wire(request)["json"]
+    body["departureTime"] = departure
+    if fault == "direction":
+        body["origins"], body["destinations"] = body["destinations"], body["origins"]
+    elif fault == "mode":
+        body["travelMode"] = "WALK"
+    elif fault == "options":
+        body["routingPreference"] = "TRAFFIC_AWARE_OPTIMAL"
+    generation = generation_source(paired_material, tmp_path / "generation", route_body=body)
+    originals = {
+        p.relative_to(generation).as_posix(): p.read_bytes()
+        for p in generation.rglob("*")
+        if p.is_file()
+    }
+    source = {"files": {name: {"path": name} for name in originals}}
+    observations, usage = generation_observations(
+        originals.__getitem__,
+        source,
+        {"requests": [request]},
+        load_batch(paired_material[0] / "manifest.json").to_dict(),
+    )
+    assert len(observations) == expected_count
+    assert usage["charged_in_current_phase"] is False
+    if observations:
+        assert observations[0]["request"] == request
+        assert observations[0]["origin"]["kind"] == "planner_generation"
+        assert json.loads(originals["evidence/wire/0002-request.json"])["body"] == body
+    assert all((generation / name).read_bytes() == raw for name, raw in originals.items())
 
 
 def test_generation_observations_preserve_producer_origin_and_capture_window(

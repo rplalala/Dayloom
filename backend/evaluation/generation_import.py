@@ -1,9 +1,31 @@
 """Validated producer HTTP captures usable only through labelled paired imports."""
 
 import hashlib
+from datetime import datetime
 from urllib.parse import parse_qsl, urlsplit
 
 from .snapshot import _bytes, _decode, _summary, _utc_time
+
+
+def _same_body(source, expected, operation):
+    if source == expected:
+        return True
+    if operation != "route_matrix" or not isinstance(source, dict):
+        return False
+    if "departureTime" not in source or "departureTime" not in expected:
+        return False
+    try:
+        source_time = datetime.fromisoformat(source["departureTime"])
+        expected_time = datetime.fromisoformat(expected["departureTime"])
+    except (ValueError, TypeError):
+        return False
+    return (
+        source_time.utcoffset() is not None
+        and expected_time.utcoffset() is not None
+        and source_time == expected_time
+        and {k: v for k, v in source.items() if k != "departureTime"}
+        == {k: v for k, v in expected.items() if k != "departureTime"}
+    )
 
 
 def generation_observations(read_bytes, source, plan, intake):
@@ -141,7 +163,7 @@ def generation_observations(read_bytes, source, plan, intake):
             if (
                 event["method"] != wire["method"]
                 or not url_matches
-                or body != wire["json"]
+                or not _same_body(body, wire["json"], request["operation"])
                 or not required <= set(mask.split(","))
             ):
                 continue
