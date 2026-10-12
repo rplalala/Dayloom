@@ -346,6 +346,49 @@ FixtureClient.request = slow
     )
 
 
+def test_interruption_after_http_capture_retains_a_replayable_partial_response(
+    installed_cli, paired_material, tmp_path
+):
+    _, args, _, _ = paired_material
+    directory = tmp_path / "interrupt-after-response"
+    prepared = run(installed_cli, "prepare", *args, "--directory", directory)
+    assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+    fixture = (
+        HTTP_FIXTURE
+        + """
+from pathlib import Path
+original_write = Path.write_bytes
+def interrupted_write(self, data):
+    result = original_write(self, data)
+    if (self.name == '1.json' and self.parent.name == 'http'
+            and json.loads(data).get('status_code') == 200):
+        raise KeyboardInterrupt()
+    return result
+Path.write_bytes = interrupted_write
+"""
+    )
+    executed = run(
+        installed_cli,
+        "execute",
+        directory,
+        "--approved-sha256",
+        json.loads(prepared.stdout)["content_sha256"],
+        bootstrap=fixture,
+    )
+    assert executed.returncode == 2, executed.stdout + executed.stderr
+    report = json.loads(executed.stdout)
+    assert report["reason"] == "execution_interrupted"
+    assert report["usage"]["actual_google_sends"] == 1
+    execution = directory / "execution"
+    event = json.loads((execution / "http/1.json").read_bytes())
+    assert event["status_code"] == 200
+    replayed = run(installed_cli, "replay", directory)
+    assert json.loads(replayed.stdout) == report
+    partial = execution / "identity-snapshot/raw" / (event["request_key"] + "-1.bin")
+    assert partial.read_bytes() == (execution / "http/1.bin").read_bytes()
+    assert not (execution / "identity-snapshot/manifest.json").exists()
+
+
 @pytest.mark.parametrize("fault", ["http_response", "snapshot_response", "missing_response"])
 def test_stopped_replay_rejects_rehashed_partial_response_corruption(
     installed_cli, paired_material, tmp_path, fault

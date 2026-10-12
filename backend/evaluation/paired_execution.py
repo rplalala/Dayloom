@@ -213,7 +213,7 @@ async def execute(directory, *, approved_sha256, env_file=None, http_client=None
             "usage": usage_summary(usage, preparation["prices"]),
             "generated_at": now(),
         }
-        for record in inventory["phases"].values():
+        for phase, record in inventory["phases"].items():
             if record["status"] == "started" and transport:
                 known = {
                     i
@@ -225,6 +225,23 @@ async def execute(directory, *, approved_sha256, env_file=None, http_client=None
                     e["event_id"] for e in transport.events if e["event_id"] not in known
                 ]
                 record["status"] = "stopped"
+                # An interrupt may occur after HTTP persistence, before snapshot consumption.
+                for event in transport.events:
+                    if (
+                        event["event_id"] in record["event_ids"]
+                        and event.get("status_code") is not None
+                    ):
+                        partial = (
+                            execution
+                            / (phase + "-snapshot")
+                            / "raw"
+                            / (event["request_key"] + "-1.bin")
+                        )
+                        if not partial.exists():
+                            partial.parent.mkdir(parents=True, exist_ok=True)
+                            partial.write_bytes(
+                                (execution / "http" / (event["event_id"] + ".bin")).read_bytes()
+                            )
         save(execution, "inventory.json", inventory)
     finally:
         if owns_client and client is not None:
