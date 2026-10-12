@@ -558,6 +558,106 @@ metadata declaration with author, observed dispatch/non-dispatch and exact evide
 refs. Preparation time, file timestamps and result existence cannot establish that
 observation. Export neither launches runs nor constructs missing non-dispatch rows.
 
+### Measuring and exporting pinned corpus coverage
+
+`research corpus` separates offline preparation, explicit measurement and saved
+export. Supply one `rtpeval_corpus_request_1` per original case/revision/scope;
+the population can contain other inputs. Geographic bounds and any coverage
+profile remain caller-owned. The
+[producer wire](../../docs/contracts/0001-evaluation-artifacts.md#pinned-corpus-measurement-producer)
+defines exact references, configuration, saved evidence and completion checks.
+
+An illustrative request uses a numeric scope, never an inferred city boundary:
+
+```json
+{
+  "schema_version": "rtpeval_corpus_request_1",
+  "declaration_ref": {"path": "research.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_declaration_1"},
+  "case_id": "harbor-request", "case_revision": "input-7",
+  "input_sha256": "<exact original-input digest>",
+  "scope": {"kind": "radius", "latitude": 10, "longitude": 20, "radius_m": 2000},
+  "scope_sha256": "<canonical scope digest>",
+  "snapshot_identity": {
+    "snapshot_ref": {"path": "snapshot.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available"},
+    "artifact_sha256": "<exact corpus artifact digest>",
+    "policy_version": "tripworld-production-policy-v1",
+    "space_id": "<production SPACE_ID>",
+    "identity_pointers": {"artifact_sha256": "/corpus/output_sha256", "policy_version": "/policy_version", "space_id": "/space_id"}
+  },
+  "declared_at": "2026-10-01T00:00:00Z", "timing_basis": "unverified",
+  "measurement_configuration": {
+    "max_entities": 10000, "max_source_bytes": 104857600,
+    "timeout_seconds": 30, "statement_timeout_ms": 10000,
+    "connect_timeout_seconds": 5, "batch_size": 1000
+  },
+  "source": {
+    "kind": "saved_dataset", "manifest_pointer": "/corpus",
+    "dataset_ref": {"path": "entities.parquet", "sha256": "<exact corpus artifact digest>", "media_type": "application/vnd.apache.parquet", "availability": "available"},
+    "embedding_index_ref": {"path": "embedding-index.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_corpus_embedding_index_1"}
+  },
+  "coverage_profile_ref": null
+}
+```
+
+Replace placeholders with hashes of saved bytes and the established production
+space ID. `snapshot.json` may wrap the unchanged native manifest under `corpus`,
+alongside the pinned policy/space declarations. `manifest_pointer` selects that
+native manifest. Its artifact hash, entity count and entity/text versions are
+checked against the measured source. The declaration must reside directly in the
+request's source root; references are relative to that root.
+
+Saved data supports native `RetrievalEntity` Parquet or
+`rtpeval_corpus_entities_1` JSON containing an `entities` array. It requires an exact
+`rtpeval_corpus_embedding_index_1` with the corpus artifact hash, production
+`space_id`/`configuration` and saved embedding `text_hashes`. This supplies vector
+membership without loading or generating vectors. An existing named dump alone
+does not establish the pinned source.
+
+```powershell
+uv run rtpeval research corpus prepare material/corpus-request.json --directory artifacts/fresh-corpus-plan
+uv run rtpeval research corpus measure artifacts/fresh-corpus-plan/receipt.json --directory artifacts/fresh-corpus-measurement
+uv run rtpeval research corpus export artifacts/fresh-corpus-measurement/receipt.json --directory artifacts/fresh-corpus-export
+```
+
+For PostgreSQL, declare `source={"kind":"database","manifest_pointer":"/corpus"}`
+and omit dataset/index refs. Preparation stays offline. Only measurement accepts
+explicit database access and an environment-variable name for its connection string:
+
+```powershell
+uv run rtpeval research corpus measure artifacts/fresh-corpus-plan/receipt.json --database --dsn-env CORPUS_READ_ONLY_DSN --directory artifacts/fresh-database-measurement
+```
+
+Use separately approved database access and limits. The connection defaults to
+read-only, and all identity checks and the bounded server-cursor scan share a
+`REPEATABLE READ / READ ONLY` view. No credentials or connection string enter the
+bundle. Connection and statement limits constrain database waits; the remaining
+measurement deadline constrains each query and scan. The scan processes corpus
+entities, including excluded/out-of-scope ones, within `max_entities`; it is not a
+top-k query or unique-venue count. Byte limits bound selected source material and
+retained observations. Oversized inputs fail preparation; scan caps, observation
+byte limits, timeouts and failures retain partial/unavailable counts and reasons.
+Source limits are checked before dependency reads; the scan checks its deadline
+again before declaring completion, including empty or last-row scans. An omitted
+or null request profile retains a supplied relevance-declaration profile with its
+original snapshot, scope and thresholds, subject to compatibility validation.
+
+The root `receipt.json` provides exact `sidecar_ref`, `measurement_ref`,
+`completion_ref` and `declaration_ref` under `material/`. Use the returned
+declaration with `research validate/report --track relevance`. Copies preserve
+original bytes and source layout; new producer filenames avoid existing originals.
+The final source-bound completion record is mandatory for produced sidecars, so an
+interrupted publication cannot pass the relevance reader. Every operation requires
+a fresh destination; an incomplete directory is retained for diagnosis.
+
+Saved export checks observations and original hashes without connecting to the
+database or changing declaration/measurement times. Existing coverage rows,
+interests, reviews and opportunity provenance are retained; exported declarations
+carry relevance and opportunities, while other tracks remain in their original
+declaration. Supplied profile thresholds are copied unchanged. Prospective timing
+is checked against selected dispatch evidence; absent evidence remains unverified.
+These counts describe an entity/geographic proxy. Independent interest inventories,
+sample coding and venue relevance judgments remain separately prepared materials.
+
 ### Reporting saved research material
 
 Each report requires a fresh output directory and writes `<track>.json` and
@@ -629,7 +729,7 @@ consuming saved material from producing or independently reviewing it:
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
 | Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
 | Attempt census | `research export-census` copies explicitly selected producer sources into a validated bundle; future `generate` records actual dispatch metadata | Operators supply population/profile, slot ordering and traceable historical metadata; native registration does not choose census bindings. |
-| Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
+| Corpus measurement and sidecars | `research corpus prepare/measure/export` validates explicit snapshots/scopes, measures saved data or an explicitly selected read-only database, and exports evidenced sidecars | Operators supply geographic bounds, exact source/membership material, budgets and optional fixed thresholds; reviewed interest/sample judgments remain separate. |
 | V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
 | Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |

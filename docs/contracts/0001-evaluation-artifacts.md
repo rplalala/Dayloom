@@ -565,6 +565,92 @@ visible and are not independent samples. Entity/geographic proxies and reviewed
 sample fractions make no citywide recall, unique-venue coverage, ranking,
 statistical-inference or causal-attribution claim.
 
+### Pinned corpus measurement producer
+
+`rtpeval research corpus prepare REQUEST --directory FRESH` accepts
+`rtpeval_corpus_request_1`. Required fields are `declaration_ref`, `case_id`,
+`case_revision`, `input_sha256`, `scope`, `scope_sha256`, `snapshot_identity`,
+`declared_at`, `timing_basis`, `measurement_configuration` and `source`.
+`coverage_profile_ref` is optional; when absent or null, an existing relevance
+declaration's profile is retained and checked against the requested snapshot/scope.
+The declaration shares the request's source root; references use that root.
+Case/input, snapshot JSON pointers, canonical
+scope hash, any supplied profile and selected RAG origins must agree. The request
+can select one case from a larger population; other cases retain their own coverage.
+
+Configuration supplies positive integer `max_entities`, `max_source_bytes`,
+`statement_timeout_ms`, `connect_timeout_seconds` and `batch_size`, plus numeric
+`timeout_seconds` in (0, 3600]. Batch size cannot exceed the entity scan limit.
+Request metadata is limited to one MiB; each selected source and their combined
+saved bytes obey `max_source_bytes` before dependency reading/parsing. Retained
+observation bytes have the same bound. No geography, repetition, thresholds or
+budgets are inferred.
+
+`source.kind=saved_dataset` supplies `dataset_ref` and `embedding_index_ref`;
+`source.kind=database` supplies neither. Optional `manifest_pointer` selects a
+native manifest within the pinned snapshot; otherwise the snapshot is that
+manifest. `output_sha256`, nonnegative `entity_count` and the established
+`inputs` entity-builder/text versions are required. Saved dataset bytes must
+match the pinned artifact hash and declared row count. JSON uses
+`rtpeval_corpus_entities_1` with an `entities` array; Parquet uses native
+`RetrievalEntity` columns. The exact `rtpeval_corpus_embedding_index_1` declares
+`artifact_sha256`, production `space_id`, exact production `configuration` and
+saved `text_hashes`. Presence is evaluated per entity text, including multiple
+entities sharing one embedding or resolved venue. No vectors are generated.
+
+Preparation writes `rtpeval_corpus_preparation_1` in `receipt.json` with
+`processing_status=prepared`, `request_ref`, source bindings and zero database
+connections. It produces no measurement. `corpus measure PREPARATION` validates
+those saved request/source hashes again. Saved-data measurement remains offline;
+database measurement additionally requires `--database --dsn-env NAME`. The
+connection string is read only at that explicit operation and is never serialized.
+
+Database defaults and the transaction are read-only. Build manifest/count,
+embedding configuration, all-entity artifact/policy drift checks and bounded
+server-cursor reads share a repeatable-read transaction and captured snapshot ID.
+Connection and statement waits are bounded; each query uses the remaining overall
+deadline, including the final scan-completion check. Rows use production eligibility
+and compatible embedding membership, then the exact radius or bounding-box
+inclusion rule. The configured row budget
+covers all scanned entities, not only eligible entities in scope. No retrieval
+top-k or venue-ID deduplication substitutes for a complete scan.
+
+`rtpeval_corpus_measurement_1` preserves exact request binding, method,
+start/finish times, verified source identity, entity observations and explicit
+termination reason. Completed scans match the pinned entity count and have no
+duplicate IDs. Scan/observation-byte caps, timeouts, truncated scans and retrieval
+failures preserve a nullable exact count and any supported observed subtotal;
+connection/identity failure cannot assert an observed exact zero. Invalid or
+drifted source identity is a material correction, not accepted complete coverage.
+
+Measurement writes the existing coverage sidecar plus an evidence artifact,
+`rtpeval_corpus_result_1` receipt and derived relevance/declaration material.
+`count_status` is distinct from operation `processing_status=completed`.
+Existing coverage for other cases and externally supplied semantic material are
+retained; the derived declaration carries only relevance and opportunities.
+New artifact names avoid copied originals. Every output uses a fresh directory.
+
+Produced sidecars include `producer_completion_ref` to
+`rtpeval_corpus_completion_1`: `processing_status=completed`,
+`measurement_ref` and canonical `coverage_sha256` of the sidecar excluding that
+completion ref. Pending material is checked by the existing reader before
+publication. Exact originals and derived files are copied and verified, the root
+receipt is saved, and the final completion artifact is written last before final
+reader validation. Its absence, corruption or disagreement invalidates the
+produced sidecar even if a root receipt already exists. Legacy manually supplied
+sidecars without this optional ref retain their current validation rules.
+
+`corpus export MEASUREMENT --directory FRESH` is offline. It verifies exact
+request/evidence/sidecar/completion references, replays saved observations against
+retained dataset material or checked saved database identity, and validates the
+exported relevance declaration. It neither reconnects nor changes saved times.
+Original bytes, fixed thresholds and declaration timing stay unchanged; absent
+dispatch evidence remains unverified. Root receipts expose sidecar, evidence,
+completion and declaration references plus all copied source hashes. A failed
+publication can retain incomplete files for diagnosis; reuse requires a new
+destination. Engineering completion does not qualify a quality batch or produce
+interest/sample judgments or a formal benchmark result.
+
 ## Activity, transport and occupancy scope
 
 Each primary visit is one concrete place occurrence with its own interval. A confirmed

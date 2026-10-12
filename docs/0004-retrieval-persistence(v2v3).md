@@ -97,6 +97,18 @@ do not establish citywide recall or unique venue coverage. Complete census zero
 is distinct from a partial subtotal or missing measurement; SQL timeout,
 truncation and retrieval failure retain unavailable counts and reasons.
 
+Installed `research corpus prepare/measure/export` produces source-bound sidecars
+for numeric radius or ordinary bounding-box scopes. Preparation and saved export
+stay offline; database measurement requires explicit access and a read-only
+repeatable-read view. Exact artifact bytes or checked database build identity bind
+the measured corpus to its manifest. Production eligibility, text policy and
+embedding space remain unchanged. Bounded scans count entities rather than venues;
+caps, timeouts and unavailable observations cannot supply exact counts. The
+[producer contract](contracts/0001-evaluation-artifacts.md#pinned-corpus-measurement-producer)
+owns source formats, budgets, completion records and export validation;
+[installed examples](../backend/evaluation/README.md#measuring-and-exporting-pinned-corpus-coverage)
+show the caller-prepared material and commands.
+
 Research reporting consumes these sidecars without connecting to PostgreSQL,
 collecting provider evidence, regenerating vectors or replacing sparse inputs.
 Wire schemas, snapshot/scope checks, sample coding and predeclared/retrospective

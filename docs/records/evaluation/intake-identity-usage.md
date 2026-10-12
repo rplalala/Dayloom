@@ -966,6 +966,65 @@ producer/export engineering, with no formal benchmark or research outcome claim.
 Final independent Standards and Spec rechecks of both commits and the four
 documentation owners found zero remaining findings.
 
+The 2026-10-12 #135 implementation `b18c509` adds pinned corpus preparation,
+measurement and saved export against fixed base
+`81c17f3fa0b0a1f1bf01c3dd86f5bd2de3e3b27d`. Initial installed-command tests
+reproduced missing preparation, measurement, database and export operations.
+Subsequent public-CLI checks exposed deadline checks occurring only after database
+identity acquisition, unbounded retained observations, missing RAG snapshot
+preflight and a single-case assumption in a larger population. Corrections extend
+the deadline across connection/query/scan, bound saved observations, check the
+requested case's selected RAG origins and preserve other cases. Two distinct input
+layouts and snapshot identities cover radius, ordinary bounding boxes, the
+antimeridian, production exclusions, embedding membership and complete zero.
+Distinct entities sharing one venue remain distinct observations.
+
+An interruption probe initially returned a material-correction status while the
+copied complete sidecar still passed the relevance reader. Produced sidecars now
+require an exact source-bound completion artifact written after the root receipt;
+missing/corrupt completion rejects both relevance intake and saved export. A second
+probe verified this rejection even with a complete root receipt. Incremental
+measurement/export preserves both case sidecars and prior bytes under new producer
+filenames. Saved dataset and injected database fixtures retain nullable exact
+counts and explicit subtotals/reasons for caps, timeouts, truncation and failures.
+Database tests check read-only repeatable-read settings, source drift and exclusion
+of fixture connection secrets; no real database connection was made.
+
+Independent Spec review found source-budget enforcement occurring after common
+reader dependency reads and missing a deadline check at scan completion. Additional
+CLI probes confirmed both single-source/combined-byte gaps and complete counts
+after empty/last-row scans exceeded their deadline. They also exposed a supplied
+relevance profile being dropped when the request did not repeat its reference.
+Correction `1374a08` injects the bounded source reader before dependency loading,
+checks export evidence under the same budget, checks the scan's final deadline and
+retains existing profile thresholds and timing. The correction tests first
+reproduced six failures and one already rejected late prospective profile; all
+22 targeted correction/adjacent tests then passed in 71.08s. Five existing common
+reader compatibility tests passed in 3.98s.
+
+The preceding related gate passed **77 tests, no skips, in 128.01s** on the
+implementation tree: 53 new corpus CLI tests, 22 existing coverage/relevance tests
+and two root-help tests. It was not repeated after the correction; the targeted
+tests above cover that change. The broader backend suite was not run. All eight
+changed Python files passed Ruff lint/format. Seven production files have eight
+Pyright diagnostics, matching the same eight existing diagnostics in the three
+common production files from the complete fixed-base backend snapshot; the four
+new producer files have none. Initial type-narrowing diagnostics were corrected
+without suppressing existing reader issues. Local evidence
+identifiers are `.scratch/issue135-related-final-01.xml`,
+`issue135-deadline-red-01.xml` / `issue135-deadline-green-01.xml`,
+`issue135-bytes-red-01.xml` / `issue135-bytes-green-01.xml`,
+`issue135-interruption-red-01.xml` / `issue135-interruption-green-01.xml`,
+`issue135-completion-01.xml` and `issue135-types-base.json` /
+`issue135-types-final.json`, `issue135-review-red-02.xml` /
+`issue135-review-green-01.xml`, `issue135-context-compat-01.xml` and
+`issue135-types-review-base.json` / `issue135-types-review-final.json` in `.scratch/`.
+Original sources and the unrelated `.gitignore` edit were preserved. These checks
+establish offline producer engineering behavior, without provider/model calls,
+vector generation, corpus mutation or a formal benchmark outcome.
+Final independent Standards and Spec rechecks of both #135 commits and the four
+documentation owners found zero remaining findings.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.
