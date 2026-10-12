@@ -593,8 +593,9 @@ def test_prepare_rejects_incompatible_or_unbounded_sources(
 @pytest.mark.parametrize(
     "basis,late", [("prospective", False), ("retrospective", True), ("prospective", True)]
 )
+@pytest.mark.parametrize("profile_source", ["request", "declaration"])
 def test_profile_thresholds_and_dispatch_timing_remain_caller_owned(
-    installed_cli, research_material, tmp_path, basis, late
+    installed_cli, research_material, tmp_path, basis, late, profile_source
 ):
     from backend.tests.test_rtpeval_research_population_cli import add_attempt
 
@@ -625,6 +626,25 @@ def test_profile_thresholds_and_dispatch_timing_remain_caller_owned(
         ],
     }
     value["coverage_profile_ref"] = save(root, "coverage-profile.json", profile)
+    if profile_source == "declaration":
+        relevance_ref = save(
+            root,
+            "relevance.json",
+            {
+                "schema_version": "rtpeval_research_relevance_1",
+                "population_id": population["population_id"],
+                "population_revision": population["revision"],
+                "profile_id": research_material[2]["profile_id"],
+                "profile_revision": research_material[2]["revision"],
+                "interest_inventory_refs": [],
+                "review_refs": [],
+                "coverage_refs": [],
+                "coverage_profile_ref": value.pop("coverage_profile_ref"),
+            },
+        )
+        declaration = json.loads((root / "research.json").read_bytes())
+        declaration["track_refs"]["relevance"] = relevance_ref
+        value["declaration_ref"] = save(root, "research.json", declaration)
     original = (root / "coverage-profile.json").read_bytes()
     save(root, source.name, value)
     prepared, measured = tmp_path / "prepared", tmp_path / "measured"
@@ -652,6 +672,71 @@ def test_profile_thresholds_and_dispatch_timing_remain_caller_owned(
     assert report["coverage"][0]["timing_basis"] == basis
     assert report["coverage"][0]["stratum_id"] == "sparse"
     assert report["coverage_profile"]["strata"] == profile["strata"]
+    exported = run(
+        installed_cli, "export", measured / "receipt.json", "--directory", tmp_path / "export"
+    )
+    assert exported.returncode == 0, exported.stdout + exported.stderr
+
+
+@pytest.mark.parametrize("combined", [False, True])
+def test_source_budget_is_checked_before_first_dependency_read(
+    installed_cli, research_material, tmp_path, combined
+):
+    source, value = request(research_material)
+    root, population, _, _, write = research_material
+    size = 999000 if combined else 1001000
+    population["cases"][0]["input_ref"] = save(root, "input-0.json", {"request": "x" * size})
+    value["input_sha256"] = population["cases"][0]["input_ref"]["sha256"]
+    value["declaration_ref"] = save(root, "research.json", json.loads(write().read_bytes()))
+    save(root, source.name, value)
+    result = run(
+        installed_cli,
+        "prepare",
+        source,
+        "--directory",
+        tmp_path / "rejected",
+        bootstrap="""
+from pathlib import Path
+original_read = Path.read_bytes
+def guarded_read(path):
+    if path.name == 'input-0.json':
+        raise AssertionError('Over-budget dependency was read before resource check')
+    return original_read(path)
+Path.read_bytes = guarded_read
+""",
+    )
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert "byte limit" in result.stdout
+    assert not (tmp_path / "rejected").exists()
+
+
+@pytest.mark.parametrize("empty", [False, True])
+def test_end_of_saved_scan_deadline_cannot_produce_exact_count(
+    installed_cli, research_material, tmp_path, empty
+):
+    source, _ = request(research_material, [] if empty else [entity("one")])
+    prepared, measured = tmp_path / "prepared", tmp_path / "timed"
+    assert run(installed_cli, "prepare", source, "--directory", prepared).returncode == 0
+    ticks = [0, 10] if empty else [0, 0, 10]
+    result = run(
+        installed_cli,
+        "measure",
+        prepared / "receipt.json",
+        "--directory",
+        measured,
+        bootstrap=f"import time\nticks = iter({ticks!r})\n"
+        "time.monotonic = lambda: next(ticks, 10)\n",
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    sidecar = json.loads((measured / "material/_corpus-sidecar.json").read_bytes())
+    assert sidecar["eligible_entity_count"] is None
+    assert sidecar["count_status"] == ("unavailable" if empty else "partial")
+    assert sidecar["observed_subtotal"] == (0 if empty else 1)
+    assert sidecar["reasons"] == ["timeout"]
+    result = run(
+        installed_cli, "export", measured / "receipt.json", "--directory", tmp_path / "export"
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
 
 
 @pytest.mark.parametrize("format", ["json", "parquet"])

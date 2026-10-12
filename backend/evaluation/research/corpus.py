@@ -30,9 +30,15 @@ class CorpusSources(Sources):
     def read_bytes(self, ref):
         ref = _object(ref, "Explicit corpus source reference required")
         path = _path(self.root, ref.get("path"))
-        _require(path.stat().st_size <= self.max_bytes, "Source byte limit exceeded")
-        raw = super().read_bytes(ref)
+        size = path.stat().st_size
+        _require(size <= self.max_bytes, "Source byte limit exceeded")
         name = Path(os.path.normpath(ref["path"])).as_posix()
+        _require(
+            sum(map(len, self.originals.values())) + (size - len(self.originals.get(name, b"")))
+            <= self.max_bytes,
+            "Total source byte limit exceeded",
+        )
+        raw = super().read_bytes(ref)
         _require(name not in self.originals or self.originals[name] == raw, "Source drift: " + name)
         _require(
             sum(map(len, self.originals.values())) + (0 if name in self.originals else len(raw))
@@ -116,12 +122,7 @@ def _load(path):
     _require(
         declaration_path.parent == sources.root, "Declaration must use the request source root"
     )
-    context = load_context(declaration_path)
-    for binding in context.sources.manifest():
-        sources.read_bytes(
-            {**binding, "availability": "available", "media_type": "application/json"}
-        )
-    context.sources = sources
+    context = load_context(declaration_path, sources=sources)
     relevance_report(context)
     for entry in context.census["attempts"] if context.census else []:
         for field in ("completion_ref", "provenance_ref"):
@@ -208,7 +209,7 @@ def _load(path):
             set(source) <= {"kind", "manifest_pointer"},
             "Database source cannot substitute a saved dataset",
         )
-    profile_ref = request.get("coverage_profile_ref")
+    profile_ref = _profile_ref(context, request)
     _coverage(context, {"coverage_refs": [], "coverage_profile_ref": profile_ref}, {})
     if profile_ref:
         profile = sources.read_ref(profile_ref)
@@ -223,6 +224,13 @@ def _load(path):
             "Coverage profile snapshot/scope mismatch",
         )
     return request, sources, context, manifest
+
+
+def _profile_ref(context, request):
+    if request.get("coverage_profile_ref") is not None:
+        return request["coverage_profile_ref"]
+    ref = context.declaration.get("track_refs", {}).get("relevance")
+    return context.read_ref(ref).get("coverage_profile_ref") if ref else None
 
 
 def _publish(destination, sources, derived, receipt, validate=None):
@@ -418,7 +426,7 @@ def _coverage_declaration(context, request, sidecar_ref):
     material = {
         **material,
         "coverage_refs": [*kept, sidecar_ref],
-        "coverage_profile_ref": request.get("coverage_profile_ref"),
+        "coverage_profile_ref": _profile_ref(context, request),
     }
     prefix = sidecar_ref["path"].removesuffix("-sidecar.json")
     raw = _bytes(material)
@@ -504,6 +512,11 @@ def measure(path, destination, *, database=False, dsn_env=None, clock=None, time
                 evidence["observations"].append(row)
             if (
                 evidence["termination_reason"] is None
+                and timer() - start_tick >= config["timeout_seconds"]
+            ):
+                evidence["termination_reason"] = "timeout"
+            if (
+                evidence["termination_reason"] is None
                 and len(evidence["observations"]) != manifest["entity_count"]
             ):
                 evidence["termination_reason"] = "truncated_scan"
@@ -568,7 +581,7 @@ def measure(path, destination, *, database=False, dsn_env=None, clock=None, time
 def export(path, destination):
     _fresh(destination)
     request_path, receipt = _saved_request(path, "rtpeval_corpus_result_1", "completed")
-    request, sources, _, manifest = _load(request_path)
+    request, sources, original_context, manifest = _load(request_path)
     wrapper = Sources(Path(path).resolve().parent)
     refs = {}
     for field, schema in (
@@ -578,12 +591,12 @@ def export(path, destination):
         ("declaration_ref", "rtpeval_research_declaration_1"),
     ):
         ref = _object(receipt.get(field), "Saved source reference required: " + field)
-        wrapper.read_ref(ref, schema)
         original = _path(wrapper.root, ref["path"])
         _require(
             original.parent == sources.root, "Measurement material must share the declaration root"
         )
         refs[field] = {**ref, "path": original.name}
+        sources.read_ref(refs[field], schema)
     evidence = sources.read_ref(refs["measurement_ref"])
     sources.read_ref(evidence.get("request_ref"), "rtpeval_corpus_request_1")
     _require(
@@ -629,17 +642,12 @@ def export(path, destination):
         "Saved sidecar disagrees with measurement evidence",
     )
     declaration = sources.read_ref(refs["declaration_ref"])
-    context = load_context(sources.root / refs["declaration_ref"]["path"])
-    for binding in context.sources.manifest():
-        sources.read_bytes(
-            {**binding, "availability": "available", "media_type": "application/json"}
-        )
-    context.sources = sources
+    context = load_context(sources.root / refs["declaration_ref"]["path"], sources=sources)
     relevance_report(context)
     material = context.read_ref(declaration["track_refs"]["relevance"])
     _require(
         refs["sidecar_ref"] in material["coverage_refs"]
-        and material.get("coverage_profile_ref") == request.get("coverage_profile_ref"),
+        and material.get("coverage_profile_ref") == _profile_ref(original_context, request),
         "Export declaration does not use saved coverage/profile",
     )
     return _publish(
