@@ -843,6 +843,20 @@ unchanged; recalculation requires a separate source-bound report revision.
 Output reuse is rejected. Injected clients retain unverified
 coverage; the checked default adapters are explicitly declared in the envelope.
 
+Future selected generation writes `planner-dispatch.json` using the
+[dispatch observation wire](0001-evaluation-artifacts.md#installed-census-export-and-dispatch-observations).
+Offline preparation records zero invocations and no dispatch time. Execution observes
+the clock immediately before awaiting the selected Planner, then records completion
+of that observation after return or failure. Metadata binds group/run/version,
+original input bytes, exact `runtime-policy.json` bytes, configuration/policy hashes
+and available source revision. `dispatch_mode=awaited_single_invocation` is the only
+automatically recorded execution condition; cache state, global concurrency and
+cross-run invocation order are not inferred. Metadata capture failure is separately
+marked unavailable in the manifest without replacing a Planner exception. Local
+registration preflight rejection reports zero invocations without creating capture
+material. Generation does not create a population, choose a case/repetition or export
+a census; the operator supplies those bindings to the offline exporter.
+
 `reference_prices` binds dated official unit rates to saved event identity and observed
 billing context. GPT-6 Luna and `text-embedding-3-small` use exact known model identities;
 unknown deployments remain unpriced. GPT-6 Luna input above 272,000 tokens applies the

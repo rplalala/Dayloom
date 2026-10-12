@@ -913,6 +913,59 @@ correction and was not repeated.
 Final independent Standards and Spec rechecks of both implementation commits and
 the three documentation owners found zero remaining findings.
 
+The 2026-10-12 #134 implementation adds explicit offline census export and future
+Planner dispatch observations. Commit `3827bd5`, against fixed base
+`921fdefc37180c5df369595748333b91c2f0327f`, keeps caller-owned population/profile,
+slot ordering and historical evidence separate from generation. The initial public
+export test failed because the installed command was absent; injected-clock tests
+then reproduced the missing dispatch seam. Export retains original bytes, all
+supplied attempts, first-dispatched primary and separate retry selection. Historical
+observations require traceable evidence; missing rows remain unknown. Native metadata
+records actual invocation time and only observed dispatch mode, without inferring
+cache state or global concurrency. Offline preparation and registration rejection
+retain zero invocations. Two synthetic populations use distinct geography, case
+revisions, version subsets and repetition layouts; native success, cancellation and
+preparation handoffs bind actual saved producer artifacts.
+
+The related gate passed 332 tests, with one Windows symlink-privilege skip, in
+254.44s. It covered export/dispatch, generation registration and opportunity capture,
+native usage, population, tradeoffs and common research readers. A prior focused run
+and a subsequent 34-test entry check each encountered Windows `PermissionError` at
+directory rename outside sandbox restrictions; a standalone probe passed, but the
+recurrence justified removing that publication dependency. A guarded filesystem
+reproduction failed before the correction. Publication now validates pending material,
+creates a fresh destination, verifies copied bytes and the published reader, then
+writes completion receipt last. IO failure cannot provide a valid completed receipt.
+The corrected entry check passed 36 tests in 32.99s.
+
+A native handoff check also reproduced missing nested selection originals in the
+bundle. Explicit completion/provenance dependencies are now hash-checked and copied
+without run discovery. All 34 export/dispatch checks passed in 30.20s; the added
+completed native handoff and two existing cancellation/preparation handoffs then
+passed together in 14.43s. These focused checks cover final publication/dependency
+changes; the earlier 332-test gate was not repeated. Ruff lint/format passed. The
+seven-module Pyright comparison against a complete fixed-base backend snapshot has
+19 diagnostics versus 21 at baseline, with no additions; initial type-narrowing and
+clock-dispatch diagnostics were corrected. No complete type or backend-suite pass
+is claimed. Local evidence identifiers are `.scratch/issue134-gate-01.xml`,
+`issue134-final-entry-01.xml`, `issue134-dependencies-green-01.xml`,
+`issue134-native-complete-01.xml` and `issue134-types-base.json` /
+`issue134-types-final.json` in `.scratch/`.
+
+Independent Spec review found that nested references through two directory aliases
+could produce a completed export with missing relative sidecars. The installed CLI
+reproduction failed on the absent copied sidecar; correction `44a8224` preserves
+each logical alias layout while retaining resolved root/hash checks. Its focused
+retest passed, and all 33 census-export tests passed in 34.89s. Original implementation
+history remains intact. Local evidence identifiers are `issue134-alias-red-01.xml`,
+`issue134-alias-green-01.xml` and `issue134-review-fix-01.xml` in `.scratch/`.
+
+Validation preceded the implementation commit on the then-uncommitted tree; original
+source artifacts and the unrelated `.gitignore` edit were preserved. This is offline
+producer/export engineering, with no formal benchmark or research outcome claim.
+Final independent Standards and Spec rechecks of both commits and the four
+documentation owners found zero remaining findings.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.

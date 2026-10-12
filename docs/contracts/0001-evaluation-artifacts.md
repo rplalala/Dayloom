@@ -299,6 +299,68 @@ A non-dispatch record can declare unstarted or unknown/pending; terminal generat
 outcomes require dispatch. The first dispatched record is selected even if an
 unstarted record precedes it. Further dispatches are explicit retries.
 
+### Installed census export and dispatch observations
+
+`rtpeval research export-census INVENTORY --directory FRESH_DIRECTORY` produces
+the existing census and declaration wires from one `rtpeval_research_census_export_1`
+inventory. The inventory's parent is its source root. It supplies exact
+`population_ref`, `profile_ref`, and an explicit ordered `attempt_sources` array;
+there is no directory discovery, latest-result selection or implicit retry.
+
+Each entry supplies `case_id`, `case_revision`, `version`, `repetition_id`,
+`attempt_id`, `order`, `prior_attempt_id`, `group_id`, `run_id`, `reason_type`,
+and `producer_metadata_ref`. Optional `completion_ref`, `result_ref`, `usage_ref`
+and `provenance_ref` use the existing artifact wire. All attempts are retained.
+The exporter derives dispatch observations and input/configuration hashes from
+referenced metadata and checks them against the exact population/profile sources.
+Entries must not separately override these observations. Slot order, predecessor
+links, timestamps, native statuses and primary/retry selection use the existing reader.
+
+`rtpeval_planner_dispatch_1` contains `source_kind=installed_generate` or
+`historical_import`, nonempty `declared_by`, timezone-aware `recorded_at`,
+`group_id`, `run_id`, `version`, `input_sha256`, `configuration_sha256`, explicit
+`dispatched`, nullable `dispatched_at`, `planner_dispatches` and
+`execution_metadata`. Dispatch count is zero or one for this single invocation,
+agrees with `dispatched`, and is unrelated to provider HTTP sends or evaluator work.
+An observed dispatch timestamp cannot follow `recorded_at`; a non-dispatch has no
+dispatch timestamp. Conditions absent from `execution_metadata` remain unknown.
+
+Historical import requires nonempty exact-byte `evidence_refs` identifying the
+source of the operator's explicit observation. The declaration preserves its
+author, time and evidence; it does not independently establish historical truth.
+Missing dispatch metadata/time is a material-correction error. File modification
+times, preparation/export timestamps and result existence cannot fill that gap.
+Missing inventory entries retain unknown slots rather than creating non-dispatch
+rows. Optional unavailable artifact references become null census references with
+their reasons in export diagnostics; they do not acquire a result or receipt.
+
+The bundle keeps copied originals byte-for-byte under `material/`, preserving their
+source-root-relative layout, plus `census-export.json` and `research-export.json`.
+Explicit nested completion/provenance dependencies are resolved from their owning
+artifact, hash-checked and copied within the same bounded root; they do not trigger
+run discovery. Nested references retain each logical directory layout, including
+multiple root-bounded aliases of the same original; root and hash checks use resolved
+source locations. Derived census refs use the canonical location of those native files.
+Those two filenames are reserved at the material root. `export.json` and stdout
+carry `rtpeval_research_census_export_report_1`: completion status, usable census
+and declaration refs, source hashes, slot/attempt counts, missing/unavailable
+diagnostics and metadata provenance. Source and provenance paths are relative to
+its declared `source_root=material`. Originals are checked again before publication;
+the existing population reader and report builder validate the pending bundle.
+Failed validation does not publish the destination. Existing destinations, including
+links with missing targets, are refused. Export completion does not qualify a quality
+batch or indicate that a workflow succeeded.
+After pending validation, the exporter creates the fresh destination, verifies each
+copied file and revalidates the published declaration before writing `export.json`
+last. A publication IO failure may leave an incomplete destination; absent or invalid
+completion receipt means unvalidated export, and a retry requires a new destination.
+
+Exported census records retain `producer_metadata_ref`. The common research reader
+revalidates that metadata, its evidence hashes and its agreement with census fields.
+Historical census records without this optional reference retain their existing
+validation behavior. Exact original population/profile bytes and profile history
+are preserved; track attachments are supplied separately after export.
+
 The population report wire is `rtpeval_research_population_report_1`. It retains
 ordered slots and all attempts, selection profile, case/version/repetition views,
 all-four request/repetition rows, reasons, and distinct completion denominators.

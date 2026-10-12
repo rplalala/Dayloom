@@ -478,8 +478,8 @@ Prepare material in this order:
 2. Save a versioned selection profile with exact configuration references,
    first-dispatched primary selection, explicit retry/completion rules and its
    prospective, retrospective or unverified timing basis.
-3. Bind an optional attempt census to that population and profile. Preserve every
-   linked attempt, exact source hashes, dispatch timestamps, completion declarations,
+3. Export or supply an optional attempt census bound to that population and profile.
+   Preserve every linked attempt, exact source hashes, dispatch timestamps, completion declarations,
    available result/usage/provenance and execution metadata. Missing census rows
    remain unknown; explicit producer evidence establishes an unstarted slot.
 4. Declare applicable optional track material by exact references. Independent
@@ -496,6 +496,69 @@ uv run rtpeval research --help
 uv run rtpeval research validate material/research.json --track population
 uv run rtpeval research report material/research.json --track population --directory artifacts/fresh-population-report
 ```
+
+### Exporting an attempt census
+
+Use an explicit source inventory with `rtpeval_research_census_export_1`, exact
+population/profile refs and ordered `attempt_sources`. Each entry identifies a
+case revision, declared version/repetition, attempt/run/group, contiguous slot-local
+order, immediate predecessor, reason and `producer_metadata_ref`. Supply available
+completion/result/usage/provenance refs; the exporter does not choose or discover runs.
+The [export wire](../../docs/contracts/0001-evaluation-artifacts.md#installed-census-export-and-dispatch-observations)
+owns metadata fields, source-root rules and unavailable-material handling.
+
+For example, a primary and its retry can be selected explicitly:
+
+```json
+{
+  "schema_version": "rtpeval_research_census_export_1",
+  "population_ref": {"path": "population.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_population_1"},
+  "profile_ref": {"path": "profile.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_profile_1"},
+  "attempt_sources": [
+    {
+      "case_id": "harbor-request", "case_revision": "input-7", "version": "v1",
+      "repetition_id": "weekday", "attempt_id": "first", "run_id": "run-first",
+      "group_id": "group-a", "order": 1, "prior_attempt_id": null,
+      "reason_type": "original_dispatch",
+      "producer_metadata_ref": {"path": "first/planner-dispatch.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_planner_dispatch_1"}
+    },
+    {
+      "case_id": "harbor-request", "case_revision": "input-7", "version": "v1",
+      "repetition_id": "weekday", "attempt_id": "retry", "run_id": "run-retry",
+      "group_id": "group-a", "order": 2, "prior_attempt_id": "first",
+      "reason_type": "declared_retry",
+      "producer_metadata_ref": {"path": "retry/planner-dispatch.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_planner_dispatch_1"}
+    }
+  ]
+}
+```
+
+Replace placeholder digests with exact saved-byte hashes. Add each available
+`completion_ref`, `result_ref`, `usage_ref` and `provenance_ref` to its entry;
+omitting completion keeps its outcome unknown even when a result exists.
+
+```powershell
+uv run rtpeval research export-census material/export-input.json --directory artifacts/fresh-census
+uv run rtpeval research validate artifacts/fresh-census/material/research-export.json --track population
+uv run rtpeval research report artifacts/fresh-census/material/research-export.json --track population --directory artifacts/fresh-census-report
+```
+
+Export is offline: it copies selected originals unchanged, validates the pending
+bundle with existing readers and publishes only to a fresh destination. `export.json`
+records exact source hashes, metadata provenance and source/slot diagnostics. Exit 2
+indicates insufficient or invalid material; missing dispatch times are never invented.
+The primary remains `first_dispatched`; any profile-selected retry view is separate.
+The exported declaration initially has no optional track attachments.
+
+Future `generate` captures actual Planner dispatch metadata; offline preparation
+captures zero invocations, while invalid registration preflight reports zero without
+creating a capture. Use the exact saved `runtime-policy.json` as the corresponding
+profile configuration source. Earlier runs need an explicit `historical_import`
+metadata declaration with author, observed dispatch/non-dispatch and exact evidence
+refs. Preparation time, file timestamps and result existence cannot establish that
+observation. Export neither launches runs nor constructs missing non-dispatch rows.
+
+### Reporting saved research material
 
 Each report requires a fresh output directory and writes `<track>.json` and
 `<track>.md`. Stdout records processing status, the track and deterministic source
@@ -565,7 +628,7 @@ consuming saved material from producing or independently reviewing it:
 | RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
 | Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
-| Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
+| Attempt census | `research export-census` copies explicitly selected producer sources into a validated bundle; future `generate` records actual dispatch metadata | Operators supply population/profile, slot ordering and traceable historical metadata; native registration does not choose census bindings. |
 | Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
 | V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
