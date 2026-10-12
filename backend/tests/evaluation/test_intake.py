@@ -874,6 +874,8 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "daily_density": {"backend.pace_policy"},  # Numeric rules only; no planner state.
         "evaluation_run": {"httpx"},
         "opening_run": {"httpx"},  # #90 isolates one incremental model attempt here.
+        "paired_execution": {"os", "shutil", "httpx", "dotenv"},  # Explicit acquire execute.
+        "paired_run": {"os", "shutil"},  # Fresh-path checks and offline exact-byte copies.
         "evaluation_transport": {"httpx", "urllib", "backend.app.runtime.token_counting"},
         "evaluation_run_cli": {"os", "dotenv"},
         "suite": {"base64", "os", "dotenv"},  # Credential reads stay in explicit execute.
