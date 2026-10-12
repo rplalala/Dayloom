@@ -8,7 +8,12 @@ from backend.cli.tools import TASKS
 
 
 def main(
-    argv: Sequence[str] | None = None, *, http_client=None, runtime=None, date_provider=None
+    argv: Sequence[str] | None = None,
+    *,
+    http_client=None,
+    runtime=None,
+    date_provider=None,
+    clock=None,
 ) -> int:
     parser = argparse.ArgumentParser(
         prog="rtpeval",
@@ -54,7 +59,11 @@ def main(
         if args.command in ("evaluate", "suite"):
             return command(args.arguments, http_client=http_client)
         if args.command == "generate":
-            return command(args.arguments, runtime=runtime, date_provider=date_provider)
+            from backend.cli.generate import main as generate_command
+
+            return generate_command(
+                args.arguments, runtime=runtime, date_provider=date_provider, clock=clock
+            )
         return command(args.arguments)
     finally:
         sys.argv[0] = program

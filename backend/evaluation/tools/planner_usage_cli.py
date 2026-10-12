@@ -86,7 +86,8 @@ def _opportunity_ref(path, output, *, existed, version, run_id):
         return {**ref, "reason": "capture_export_unavailable"}
 
 
-def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
+def main(argv=None, *, runtime=None, date_provider=None, result_observer=None, clock=None):
+    clock = clock or (lambda: datetime.now(UTC))
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", required=True, choices=["v0", "v1", "v2", "v3"])
     parser.add_argument("--input-json", required=True, type=Path)
@@ -139,6 +140,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
             "operator-selection.json",
             "producer-completion.json",
             "generation-registration.json",
+            "planner-dispatch.json",
         }
         if (
             path in (args.input_json.resolve(), args.runtime_config.resolve())
@@ -167,7 +169,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         "runtime_config_sha256": _sha(output / "runtime.yaml"),
         "runtime_policy_sha256": policy_hash,
         "reference_date": str(reference_date),
-        "prepared_at": datetime.now(UTC).isoformat(),
+        "prepared_at": clock().isoformat(),
         "execution_requested": args.execute,
         "evidence_requested": args.capture_evidence,
         "status": "prepared",
@@ -180,7 +182,26 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
     if args.opportunity_capture is not None:
         manifest["opportunity_capture_requested"] = True
     _save(output, "manifest.json", manifest)
+    dispatch = {
+        "schema_version": "rtpeval_planner_dispatch_1",
+        "source_kind": "installed_generate",
+        "declared_by": "rtpeval.generate/selected_workflow_1",
+        "recorded_at": manifest["prepared_at"],
+        "source_revision": revision,
+        "group_id": args.group_id,
+        "run_id": args.run_id,
+        "version": args.version,
+        "input_sha256": manifest["input_sha256"],
+        "configuration_sha256": _sha(output / "runtime-policy.json"),
+        "runtime_policy_sha256": policy_hash,
+        "runtime_config_sha256": manifest["runtime_config_sha256"],
+        "dispatched": False,
+        "dispatched_at": None,
+        "planner_dispatches": 0,
+        "execution_metadata": {},
+    }
     if not args.execute:
+        _save(output, "planner-dispatch.json", dispatch)
         print(
             json.dumps({"status": "prepared", "output_directory": str(output), "provider_sends": 0})
         )
@@ -214,9 +235,23 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
                     opportunity_capture_path=opportunity_path,
                     opportunity_capture_run_id=args.run_id,
                 )
-            value = await selected.run(
-                args.version, request, reference_date=reference_date, **trace_options
+            dispatch.update(
+                dispatched=True,
+                dispatched_at=clock().isoformat(),
+                planner_dispatches=1,
+                execution_metadata={"dispatch_mode": "awaited_single_invocation"},
             )
+            try:
+                value = await selected.run(
+                    args.version, request, reference_date=reference_date, **trace_options
+                )
+            finally:
+                try:
+                    dispatch["recorded_at"] = clock().isoformat()
+                    _save(output, "planner-dispatch.json", dispatch)
+                except Exception as exc:
+                    manifest["dispatch_metadata_capture_status"] = "unavailable"
+                    manifest["dispatch_metadata_error_type"] = type(exc).__name__
         if str(value.system_version) != args.version:
             raise ValueError("Selected planner returned a different version")
         for field in ("destination", "start_date", "end_date", "traveler_count", "budget"):

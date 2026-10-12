@@ -238,6 +238,10 @@ def _load_attempts(sources, records, slots, profile):
             record.get("configuration_sha256") == slot["configuration_sha256"],
             "Attempt configuration hash mismatch",
         )
+        if record.get("producer_metadata_ref") is not None:
+            from .dispatch import read_dispatch
+
+            read_dispatch(sources, record["producer_metadata_ref"], record)
         dispatched = timestamp(record.get("dispatched_at")) if record["dispatched"] else None
         _require(
             record["dispatched"] or record.get("dispatched_at") is None,

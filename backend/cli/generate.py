@@ -299,7 +299,7 @@ def _register(selection_path, selection_raw, args, value, destination):
     return collect(config_path, destination)
 
 
-def main(argv=None, *, runtime=None, date_provider=None):
+def main(argv=None, *, runtime=None, date_provider=None, clock=None):
     from backend.evaluation.tools.planner_usage_cli import main as native
 
     options = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
@@ -315,9 +315,9 @@ def main(argv=None, *, runtime=None, date_provider=None):
             "Optional registration: --register-batch CONFIG "
             "--registration-directory FRESH_DIRECTORY"
         )
-        return native(forwarded, runtime=runtime, date_provider=date_provider)
+        return native(forwarded, runtime=runtime, date_provider=date_provider, clock=clock)
     if args.register_batch is None:
-        return native(forwarded, runtime=runtime, date_provider=date_provider)
+        return native(forwarded, runtime=runtime, date_provider=date_provider, clock=clock)
     invocation = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
     invocation.add_argument("--version")
     invocation.add_argument("--group-id")
@@ -351,7 +351,7 @@ def main(argv=None, *, runtime=None, date_provider=None):
             json.dumps(
                 {
                     "schema_version": "rtpeval_generation_registration_1",
-                    "planner": {"status": "not_invoked"},
+                    "planner": {"status": "not_invoked", "planner_dispatches": 0},
                     "registration": {"status": "failed", "diagnostics": [str(exc)]},
                 }
             )
@@ -359,7 +359,11 @@ def main(argv=None, *, runtime=None, date_provider=None):
         return 2
     observed = []
     planner_exit = native(
-        forwarded, runtime=runtime, date_provider=date_provider, result_observer=observed.append
+        forwarded,
+        runtime=runtime,
+        date_provider=date_provider,
+        result_observer=observed.append,
+        clock=clock,
     )
     output = selected.output_directory.resolve()
     manifest = _json((output / "manifest.json").read_bytes())
