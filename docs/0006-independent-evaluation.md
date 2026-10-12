@@ -255,7 +255,7 @@ owns shared operational rules for all scenario children. Responsibilities are:
 | Input scope, selection policy, corpus geography, strata and execution limits | Agent prepares a concrete proposal under current contracts | Approve or revise undecided choices; existing explicit rules and authorization remain valid. |
 | RequirementSpec authoring and review | Separate independent Codex `gpt-6.1-sol` / `high` author and reviewer executions | Authorize the bounded operations; both must actually execute and retain source-bound records. |
 | Interest inventories, relevance labels, sample coding, pace and transport semantics | Independent agent, or an explicitly selected human reviewer | Approve scope or provide an alternative; judgments require original-request or independent evidence. |
-| Census export, corpus counts/sidecars and paired acquisition/reporting | Tools execute; Codex orchestrates | Approve concrete live scope/limits where required; missing exporter/orchestration implementation remains a tool gap. |
+| Census export, corpus counts/sidecars and paired acquisition/reporting | Installed tools execute; Codex orchestrates | Supply explicitly selected source material and approve concrete live scope/limits where required. |
 | Undetermined personal intent | User clarification, or explicit unresolved meaning | Give a substantive answer when needed; approval cannot supply a missing fact. |
 | Human preference, pace and usefulness ranking | Real raters | Read the anonymous material and provide actual answers during the deferred human stage. |
 
@@ -267,9 +267,10 @@ owns author/reviewer provenance, and the
 [relevance contract](contracts/0001-evaluation-artifacts.md#independent-interest-relevance-and-corpus-coverage)
 owns interest/relevance evidence. The
 [material preparation support table](../backend/evaluation/README.md#material-preparation-support)
-distinguishes installed consumers/execution tools, externally operated reviews,
-shared defects #131-#133 and pending exporters/acquisition orchestration #134-#136.
-This division of work does not claim those enhancements are implemented.
+distinguishes installed consumers/producers, externally operated reviews and live
+authorization. Census export, corpus measurement/sidecars and paired acquisition
+have local implementations from #134-#136; independent semantic reviews and real
+human answers remain externally supplied prerequisites.
 
 ## Requirement and schedule units
 

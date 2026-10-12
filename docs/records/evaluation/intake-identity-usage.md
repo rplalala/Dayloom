@@ -1025,6 +1025,77 @@ vector generation, corpus mutation or a formal benchmark outcome.
 Final independent Standards and Spec rechecks of both #135 commits and the four
 documentation owners found zero remaining findings.
 
+The 2026-10-12 #136 implementation `f50e14d`, against fixed base
+`4a8c3f4ad0b21a6092c439f467fc12d146b88bd2`, connects installed paired
+prepare/execute/replay/export to native identity, acquisition, route preparation,
+lineage and diagnostics. Cold preparation keeps exact identity queries and native
+occurrences/legs, deferring identity-dependent venue/route requests with an explicit
+upper bound. Verified saved identity permits an exact evidence plan. Two synthetic
+inputs differ in city, dates and venue/route inventory. Changed-hour pairs retain
+negative signed deltas; newly introduced occurrences retain null totals when
+eligibility differs and unresolved correspondence attribution.
+
+Initial public-CLI tests reproduced missing acquisition/export commands. Subsequent
+boundary probes found unchecked copied contexts, provider errors reported as
+available evidence, synchronous report work outliving the total deadline, cleanup
+failure losing the receipt, cleanup exceeding that deadline, missing mode-specific
+price context and rehashed preparation options differing from original options.
+Corrections bind original and copied options/reviews, retain partial provider
+evidence, bound acquisition/reporting/cleanup, preserve receipts on cleanup failure,
+and derive price context from native reviewed modes. Send/spend limits, cancellation,
+interruption and timeout retain observed oracle usage without retry/resume.
+Exact cached phases send nothing; missing original stages retain unavailable
+diagnostics/null deltas without a snapshot. Rehashed response/journal corruption
+and stale source/code/material are rejected. Exported relative descriptors pass
+the existing native pair, research Repair and opt-in suite readers.
+
+Independent Standards review identified a billing-context duplication heuristic
+and a destination check that resolved dangling links before checking existence.
+Spec review found stopped phases accepted a corrupted HTTP response after the
+outer receipt was recomputed, without comparing retained native partial raw bytes.
+Public-CLI regressions reproduced both destination cases and all three partial
+response variants (HTTP/raw mutation and deletion). Correction `b7446d5` rejects
+existing destinations before resolution, shares native request billing context,
+and checks stopped response correspondence and the partial raw inventory.
+An additional filesystem-boundary probe reproduced interruption immediately after
+HTTP persistence, before native snapshot consumption. Correction `f7f8c7d` preserves
+that observed response in partial raw storage, without claiming a completed
+snapshot. The initially suspected child-task cancellation window did not reproduce
+on the supported Python 3.12 runtime, whose positive-timeout `wait_for` directly
+awaits the transport coroutine.
+
+The related gate passed **115 tests, no skips, in 244.06s**, covering the then-current
+41 acquisition CLI cases and existing native pair, suite pair, research Repair and
+installed root/validation boundaries. Later additions/corrections used targeted
+checks rather than repeating that gate: **17 passed in 75.61s**, **4 in 18.75s**,
+**9 in 38.00s** and **17 in 60.09s**, each at its respective code checkpoint.
+The first review-correction gate passed 21 of 23 tests: one failed because an empty
+stopped phase had not created a raw directory, the other because implementation
+bytes changed during the test run. The former was corrected; with source files
+stable, all **8 affected stopped/corruption tests passed in 40.55s**.
+The final interruption correction passed **11 affected tests in 50.39s**, including
+the new persistence boundary, existing stopping modes, response corruption and cleanup.
+The final acquisition test module contains 54 cases; these counts are incremental
+engineering evidence, not one final full-regression run. All five changed Python
+files pass Ruff lint/format; all four production files have zero Pyright diagnostics,
+as does the existing dispatcher in the complete fixed-base backend snapshot.
+Evidence identifiers are `.scratch/issue136-related-final-01.xml`,
+`issue136-final-boundary-red-01.xml` / `issue136-final-boundary-green-01.xml`,
+`issue136-prices-red-01.xml` / `issue136-prices-green-01.xml`,
+`issue136-cleanup-red-01.xml` / `issue136-cleanup-green-01.xml`,
+`issue136-rehash-red-01.xml` / `issue136-rehash-green-01.xml`,
+`issue136-review-red-01.xml`, `issue136-review-partial-red-01.xml`,
+`issue136-review-green-01.xml` / `issue136-review-green-02.xml`,
+`issue136-review-interrupt-red-01.xml` / `issue136-review-interrupt-green-01.xml`
+and `issue136-types-base.json` / `issue136-types-review-interrupt.json`.
+Installed offline guards deny external network, credentials and runtime startup.
+Injected execution uses synthetic HTTP only; the Windows event-loop fixture permits
+its local socketpair initialization while continuing to deny external connects.
+No backend-wide regression, provider/model/database call, Planner/Repair run,
+formal benchmark or blind assessment is represented by these checks.
+Final independent Standards and Spec rechecks through `f7f8c7d`, including the five
+documentation owners, found zero remaining findings.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.

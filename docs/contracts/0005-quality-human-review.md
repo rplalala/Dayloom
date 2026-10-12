@@ -357,6 +357,8 @@ diagnostics and null paired deltas. `/itinerary` is never a substitute. Availabl
 stages can retain standalone observations. If all pairs are unavailable, no fictional
 snapshot is required. Otherwise require a verified `paired=True` evidence snapshot
 and current identity replay, with the same original input and RequirementSpec.
+The explicit [paired acquisition workflow](0001-evaluation-artifacts.md#paired-evidence-acquisition)
+prepares, acquires, replays and exports this material independently of primary scoring.
 
 Suite pairing is explicit per case through `tracks.pair`. An omitted pair is
 `not_requested`; an explicit empty or incomplete optional declaration retains

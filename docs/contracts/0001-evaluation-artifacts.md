@@ -63,6 +63,81 @@ submitted inputs. Missing optional V3 draft/final-primary projections disable de
 work only; they are not reconstructed. Usage may explicitly be unavailable, rather than zero.
 Exact parsing/projection wire is owned by [intake](0002-intake-identity-usage.md#rtpeval-intake-projection-contract).
 
+## Paired evidence acquisition
+
+`rtpeval pair acquire prepare/execute/replay/export` is an explicit producer for
+the [same-run V3 diagnostic](0005-quality-human-review.md#v3-pairs). It uses native
+paired plans, deterministic API identity, route preparation, independent Google
+transport, pricing and scorers. It does not dispatch review agents or add a second
+evaluator. The [operational guide](../../backend/evaluation/README.md#installed-paired-acquisition)
+owns commands and examples.
+
+`rtpeval_pair_selection_1` identifies the batch/revision and every selected
+group's V3 run, original input, reviewed RequirementSpec and original result hashes,
+in manifest group order, with fixed `/v3/draft` and `/v3/final_primary` pointers.
+The original selected bytes remain authoritative. Native missing/invalid optional
+stages retain `pair_unavailable`, diagnostics and null deltas; they are never
+reconstructed. With no available pair, processing sends nothing and needs no
+fictional snapshot.
+
+Preparation requires explicit independent schedule context and route reviews for
+available pairs. Nonempty preferences additionally require a density review, which
+may preserve unresolved meaning. Optional occupancy/correspondence reviews retain
+their existing semantics. Limits are a positive integer `max_google_sends`, a
+positive decimal-string `max_cost_usd` in USD, and finite positive per-call and
+total timeouts. Credentials/model settings are forbidden in these options.
+The price snapshot must support the native Google request identities and execution
+date. Human preference and personal-intent clarification remain external work.
+
+`rtpeval_pair_acquisition_preparation_1` freezes exact original source and
+implementation hashes, closed copied material inventory, selection, intake,
+reviews, limits, prices and native `paired=True` identity/evidence plans under a
+canonical `content_sha256`. Identity requests are exact before execution.
+Without a verified saved identity snapshot, canonical venue coordinates and
+evidence requests are not yet known: `evidence_status=deferred_until_identity`
+retains native occurrence/leg inventory, a null exact evidence request count and
+an occurrence-based request/cost upper bound. No guessed place or route query is
+sent. After identity acquisition, native route preparation persists the exact
+paired evidence plan. Saved identity evidence permits an exact plan at prepare time.
+
+Execution requires approval of that exact preparation digest. Original sources,
+implementation, copied material, reviews, prices and plans are checked before
+credential access or sends. Only missing phases read an independent Google
+credential and construct a client. Native cumulative send/reference-spend ceilings
+apply across both phases; per-call and overall deadlines constrain acquisition.
+Each native request gets at most one attempt. A started directory is consumed,
+including stopped work, with no retry/resume, Planner regeneration or Repair.
+The native required primary/draft/final union retains source occurrences and
+directed route mode/departure context while deduplicating exact requests. Evidence
+reuse requires the exact current native paired plan, source/context/date and
+coverage; Planner/final-only evidence cannot be relabeled.
+
+The execution bundle saves paired snapshots, original request context and times,
+redacted captured bodies, native failures/hashes, current identity, route plan,
+edit lineage, pair report, journal inventory, oracle usage and a closed receipt.
+`rtpeval_pair_acquisition_report_1` separates processing/acquisition/evidence status:
+completed processing may contain partial provider evidence or FAIL/UNKNOWN units.
+Cancelled, interrupted, timeout and budget-stopped attempts retain observed sends
+and partial records without claiming a completed pair. If interruption occurs
+after HTTP persistence but before snapshot consumption, closeout copies only
+observed response bytes into partial raw storage without completing the snapshot.
+Reference cost reservations,
+measured request counts and estimated costs are distinct from actual account billing;
+cached phases retain their prior capture provenance without counting inherited sends
+as current usage. No model or supplemental opening judgment is dispatched.
+
+Offline replay checks original/code/material bindings, the complete receipt,
+HTTP/native snapshot correspondence, request context, usage and budgets, then
+rebuilds current identity, exact route plan, native edit lineage and pair diagnostics.
+Stopped attempts verify retained HTTP/partial snapshot responses and their inventory;
+they do not become complete.
+Fresh export verifies completed processing first, copies original bytes and evidence,
+and writes `rtpeval_pair_acquisition_export_1` handoff plus a closed root receipt.
+Its `research_pair` descriptor and `suite_pair` paths target existing opt-in
+consumers; the matching research census/profile remains separately supplied.
+Export preserves the report's mask, signed final-minus-draft deltas and
+correspondence uncertainty without changing four-final arithmetic.
+
 ## Source-bound suite lifecycle
 
 `rtpeval_suite_1` declares a nonempty ordered `cases` array, `suite_id` and an

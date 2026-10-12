@@ -730,7 +730,7 @@ consuming saved material from producing or independently reviewing it:
 | Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
 | Attempt census | `research export-census` copies explicitly selected producer sources into a validated bundle; future `generate` records actual dispatch metadata | Operators supply population/profile, slot ordering and traceable historical metadata; native registration does not choose census bindings. |
 | Corpus measurement and sidecars | `research corpus prepare/measure/export` validates explicit snapshots/scopes, measures saved data or an explicitly selected read-only database, and exports evidenced sidecars | Operators supply geographic bounds, exact source/membership material, budgets and optional fixed thresholds; reviewed interest/sample judgments remain separate. |
-| V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
+| V3 paired evidence | `pair acquire prepare/execute/replay/export` connects native paired plans, independent acquisition, receipts and report handoff; `pair prepare/report` remains available | Caller supplies the original selected stages, independent contexts/reviews, compatible prices and explicit limits. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
 | Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |
 
@@ -1480,6 +1480,83 @@ storage behavior; the [acceptance record](../../docs/records/evaluation/blinded-
 distinguishes automated checks from user-reported browser acceptance.
 
 ### V3 paired diagnostics
+
+#### Installed paired acquisition
+
+`rtpeval pair acquire` connects the native paired workflow for an explicitly
+selected qualified manifest. The [acquisition contract](../../docs/contracts/0001-evaluation-artifacts.md#paired-evidence-acquisition)
+defines selection, source bindings, estimates, one-use execution and export.
+Prepare the original input, reviewed RequirementSpec, original V3 stages and
+independent schedule/route reviews first; nonempty preference text also requires
+an independent density review, which may retain unresolved meaning. Optional
+occupancy/correspondence reviews preserve their native uncertainty.
+
+`selection.json` must exactly match the selected manifest groups in order:
+
+```json
+{
+  "schema_version": "rtpeval_pair_selection_1",
+  "batch_id": "selected-batch",
+  "batch_revision": "1",
+  "runs": [{
+    "group_id": "selected-group",
+    "run_id": "selected-v3-run",
+    "input_sha256": "EXACT_INPUT_SHA256",
+    "requirement_spec_sha256": "EXACT_REQUIREMENT_SPEC_SHA256",
+    "result_sha256": "EXACT_V3_RESULT_SHA256",
+    "stage_pointers": {"draft": "/v3/draft", "final_primary": "/v3/final_primary"}
+  }]
+}
+```
+
+The paired options file has exactly four numeric limits:
+
+```json
+{"max_google_sends": 30, "max_cost_usd": "1.00",
+ "timeout_seconds": 10, "total_timeout_seconds": 120}
+```
+
+These illustrative limits are not execution authorization. Supply compatible
+`rtpeval_prices_1` USD reference prices and fresh output directories:
+
+```powershell
+uv run rtpeval pair acquire --help
+uv run rtpeval pair acquire prepare manifest.json --directory artifacts/fresh-pair --selection selection.json --options pair-options.json --prices oracle-prices.json --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json
+# Only after approval of this exact preparation and its live limits:
+uv run rtpeval pair acquire execute artifacts/fresh-pair --approved-sha256 EXACT_CONTENT_SHA256 --env-file .env
+uv run rtpeval pair acquire replay artifacts/fresh-pair
+uv run rtpeval pair acquire export artifacts/fresh-pair --directory artifacts/fresh-pair-export
+```
+
+Prepare, replay and export are offline. Execute reads `GOOGLE_MAPS_API_KEY` only
+after local preflight and only for uncached phases. No model credential or model
+send is used. The native paired reporter requires the manifest's primary reference
+inventory as well as V3 draft/final occurrences; V0 identity needing a model remains
+UNKNOWN. This workflow supplies paired diagnostics, not primary V0 evaluation.
+
+Inspect `preparation.json`: exact identity requests, native evidence occurrence
+inventory and, without saved identity evidence, a deferred evidence request count
+with an occurrence-based cost upper bound. Canonical venue/route requests become
+exact after identity acquisition; inspect `execution/route-preparation.json`,
+`evidence-plan.json`, `inventory.json`, both snapshots and the HTTP journal.
+Reference reservations and measured send counts are separate from invoice billing.
+Provider failures retain units and partial evidence; stopped work keeps usage and
+its closed receipt. A consumed package cannot retry or resume.
+
+Optional `--identity-snapshot DIRECTORY` reuses only a verified exact paired
+identity snapshot; `--snapshot DIRECTORY` additionally requires its matching
+paired evidence plan. The cached native bytes and capture times are retained,
+with zero current-phase sends. Planner or final-only snapshots do not qualify.
+
+Export's `handoff.json` contains relative `manifest`, `suite_pair` paths and a
+`research_pair` artifact descriptor. Use `suite_pair` as the selected case's
+`tracks.pair`; use `research_pair` in the existing Repair material's
+`pair_reports`, with the matching declared first attempts. References are relative
+to the export root; rebase them when joining a larger declaration root. Export
+does not create a population, selection profile or human answers. Stopped
+acquisitions cannot publish a completed handoff.
+
+#### Reporting previously prepared material
 
 ```powershell
 $env:PYTHONIOENCODING = 'utf-8'
