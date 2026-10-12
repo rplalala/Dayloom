@@ -137,8 +137,10 @@ unspecified locale: the English name/address assessment and stable ID, coordinat
 business-status and hours fields remain independently checked. The full original
 URL and language are recorded; other locales and additional query parameters do
 not match. No search or route locale is silently changed.
-Routes retain directed coordinates, mode, routing options and explicit departure;
-generation matrices without an explicit departure are unsupported. Batch matrix
+Routes retain directed coordinates, mode, routing options and explicit departure.
+Aware departure timestamps match by instant, including equivalent `Z` and offset
+spellings, while original request bytes remain unchanged. Generation matrices
+without an explicit departure are unsupported. Batch matrix
 responses are not sliced into invented single-request observations.
 
 The import preserves original bytes, paths through a flat copy map, hashes and

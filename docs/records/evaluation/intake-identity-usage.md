@@ -1271,13 +1271,22 @@ raw coordinate pointers, provenance hashes obstructing route reuse, and ambiguou
 JSON accepted despite matching hashes. Corrections retain route identity/time/options,
 use strict native parsing and keep unsupported observations UNKNOWN. Seventeen
 final integrity/handoff tests passed in 66.69 seconds; explicit zero-budget execution
-and replay passed separately. All 19 changed Python files pass Ruff lint/format.
+and replay passed separately. Independent Standards review found no documented
+violation. Spec review found equivalent departure timestamps rejected by literal
+comparison and an obsolete operator-guide paragraph. A synthetic generation-source
+test reproduced rejection of the same instant expressed as `Z` or an offset;
+the correction compares aware instants while preserving source bytes and all other
+route parameters. Invalid/changed times, direction, mode and options remain excluded.
+The affected paired CLI and offline dependency guard then passed 78 tests in 245.67
+seconds. The guide and import contract now describe the implemented behavior.
+Changed Python files pass Ruff lint/format.
 This reconciles affected coverage rather than claiming a second clean full run.
 
 Local evidence identifiers are `artifacts/tall45`, `tverify51`, `tconsumer52`,
-`tduplicate53`, `tintegrity54` and `tzero55`. Fixtures deny external network and use
-synthetic responses. Engineering review and real case-01 execution/acceptance remain
-pending; no provider bill, formal version conclusion or freeze follows from this gate.
+`tduplicate53`, `tintegrity54`, `tzero55`, `tdeparture56` and `tdeparture57`.
+Fixtures deny external network and use synthetic responses. Real case-01
+execution/acceptance remains pending; no provider bill, formal version conclusion
+or freeze follows from this gate.
 
 ## Multi-case suite engineering acceptance (2026-10-11)
 

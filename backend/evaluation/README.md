@@ -705,12 +705,12 @@ references require their exact saved source descriptors, rather than an isolated
 summary copied from another run. Relevant labels, coverage and controlled guards
 are separately prepared evidence; reporting does not create or execute them.
 
-The native relevance reader permits empty `coverage_refs`. Its current Markdown
-renderer still includes corpus sections, so a corpus-free candidate-process report
-surface remains planned in [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138).
-Do not imply that a new corpus-free command or final-case assembly command is
-already installed. The [benchmark layout](../../benchmark/README.md#layout) must
-retain native dependency roots and source identities when using these tools.
+The native relevance reader permits empty `coverage_refs`. Markdown reports omit
+corpus sections unless explicit coverage material or a coverage profile selects
+that study. Empty interests remain non-applicable, and missing candidate judgments
+remain UNKNOWN. The [benchmark layout](../../benchmark/README.md#layout) retains
+native dependency roots and source identities; final-case acceptance is tracked
+in [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138).
 
 To save future opportunity stages, installed `rtpeval generate` and the V1/V2 runner
 CLIs accept the default-off
