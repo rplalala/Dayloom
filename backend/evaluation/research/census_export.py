@@ -90,7 +90,8 @@ def _native_dependencies(sources, value, parent, seen):
                 "media_type": value.get("media_type") or "application/octet-stream",
             }
             raw = sources.read_bytes(ref)
-            path = _path(sources.root, name)
+            # Read/hash checks resolve aliases; copying and recursion retain their layout.
+            path = sources.root / os.path.normpath(name)
             if path not in seen:
                 seen.add(path)
                 try:

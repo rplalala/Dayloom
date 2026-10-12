@@ -2,6 +2,8 @@
 
 import copy
 import json
+import os
+import subprocess
 
 import pytest
 
@@ -461,3 +463,42 @@ Path.write_bytes = interrupted_write
     if receipt.exists():
         with pytest.raises(json.JSONDecodeError):
             json.loads(receipt.read_bytes())
+
+
+def test_nested_native_dependencies_preserve_each_alias_layout(
+    installed_cli, research_material, tmp_path
+):
+    root, population, _, _, _ = research_material
+    population["cases"] = population["cases"][:1]
+    attempt = add_attempt(research_material, 0, "v0", "failed")
+    sidecar = save(root, "real/sidecar.json", {"observation": "original bytes"})
+    sidecar["path"] = "sidecar.json"
+    provenance = save(root, "real/provenance.json", {"sidecar_ref": sidecar})
+    completion_ref = attempt["completion_ref"]
+    completion = json.loads((root / completion_ref["path"]).read_bytes())
+    for name in ("alias-one", "alias-two"):
+        alias = root / name
+        if os.name == "nt":
+            subprocess.run(
+                ["cmd", "/c", "mklink", "/J", str(alias), str(root / "real")],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+        else:
+            alias.symlink_to(root / "real", target_is_directory=True)
+        completion[name] = {**provenance, "path": name + "/provenance.json"}
+    attempt["completion_ref"] = save(root, completion_ref["path"], completion)
+    source, _ = inventory(research_material)
+    destination = tmp_path / "alias-bundle"
+    result = installed_cli("research", "export-census", source, "--directory", destination)
+    assert result.returncode == 0, result.stdout + result.stderr
+    for name in ("alias-one", "alias-two"):
+        copied = destination / "material" / name
+        assert (copied / "provenance.json").read_bytes() == (
+            root / "real/provenance.json"
+        ).read_bytes()
+        assert (copied / "sidecar.json").read_bytes() == (root / "real/sidecar.json").read_bytes()
+    assert (root / completion_ref["path"]).read_bytes() == (
+        destination / "material" / completion_ref["path"]
+    ).read_bytes()
