@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-12.
+Current source of truth. Updated 2026-10-13.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -279,15 +279,19 @@ is accepted at the checkpoint in section 5.
 Suite engineering acceptance uses synthetic saved material and injected transport;
 formal benchmark execution and paid acquisition remain separately authorized.
 
-The benchmark workflow accepts the automatic input/report evidence case by case,
-then conducts separately authorized consolidated blinded review of the same
-accepted outputs. Human answers add independent reports; they do not change primary
-scores or block automatic case acceptance. The
+The [benchmark workflow](benchmark/README.md#workflow-and-responsibilities)
+accepts automatic input/report evidence case by case, including V1/V2 candidate
+POI process analysis and V2/V3 Repair process analysis. Corpus measurement,
+coverage sidecars and corpus reporting are optional studies. Separately authorized
+consolidated blinded review uses the same accepted outputs and adds independent
+human reports without changing primary scores. The
 [staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
-owns the boundaries and handoff. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-owns shared operational rules; [case-01 #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
-owns current readiness. This documentation decision starts neither formal benchmark
-execution nor human assessment and does not claim a case has passed acceptance.
+owns that handoff; the benchmark README owns the detailed sequence, responsibilities
+and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+requires fresh case-01 completion and a validated final-case package. Previous
+case-01 preparation has been discarded; [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
+waits for an explicit restart. No case acceptance or human assessment is claimed.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

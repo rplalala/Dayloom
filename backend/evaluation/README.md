@@ -560,6 +560,12 @@ observation. Export neither launches runs nor constructs missing non-dispatch ro
 
 ### Measuring and exporting pinned corpus coverage
 
+This optional research workflow is not a prerequisite for ordinary V2 generation
+or case acceptance. The [benchmark workflow](../../benchmark/README.md#workflow-and-responsibilities)
+requires candidate POI process analysis from actual passive stage captures and
+applicable independent relevance reviews; it does not require corpus measurement
+or coverage sidecars. Candidate-stage capture is distinct from a corpus sidecar.
+
 `research corpus` separates offline preparation, explicit measurement and saved
 export. Supply one `rtpeval_corpus_request_1` per original case/revision/scope;
 the population can contain other inputs. Geographic bounds and any coverage
@@ -685,7 +691,7 @@ uv run rtpeval research report material/research.json --track tradeoffs --direct
 | Track | Additional saved material | Reading the output |
 | --- | --- | --- |
 | Opportunities | Exact V1/V2 first-attempt stage captures; native final associations when scheduled places are reported | Observed versus complete unique canonical stage counts and Google/RAG partitions; unavailable history stays missing |
-| Relevance | Independent original-input interest/venue reviews and fixed corpus/scope/stratum sidecars | Relevant stage/intersection counts, judged/inventoried coverage and compatible V2-minus-V1 sets/deltas; geography proxies retain entity units |
+| Relevance | Independent original-input interest/venue reviews; fixed corpus/scope/stratum sidecars only for an explicitly selected coverage study | Relevant stage/intersection counts, judged/inventoried coverage and compatible V2-minus-V1 sets/deltas; optional geography proxies retain entity units |
 | Repair | Native four-final quality, same-run V3 pair/continuity, mechanism reports and separately declared controlled inventories | Final versus paired changes and controlled target/control preservation use distinct populations and availability denominators |
 | Tradeoffs | Native planner usage, explicit saved prices/bills and compatible quality descriptors | Selected benefit/resource comparisons, all-attempt consumption and full-population completion remain separate |
 
@@ -698,6 +704,13 @@ explain compatible native sources, masks and resource accounting. Native report
 references require their exact saved source descriptors, rather than an isolated
 summary copied from another run. Relevant labels, coverage and controlled guards
 are separately prepared evidence; reporting does not create or execute them.
+
+The native relevance reader permits empty `coverage_refs`. Its current Markdown
+renderer still includes corpus sections, so a corpus-free candidate-process report
+surface remains planned in [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138).
+Do not imply that a new corpus-free command or final-case assembly command is
+already installed. The [benchmark layout](../../benchmark/README.md#layout) must
+retain native dependency roots and source identities when using these tools.
 
 To save future opportunity stages, installed `rtpeval generate` and the V1/V2 runner
 CLIs accept the default-off
@@ -729,10 +742,11 @@ consuming saved material from producing or independently reviewing it:
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
 | Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
 | Attempt census | `research export-census` copies explicitly selected producer sources into a validated bundle; future `generate` records actual dispatch metadata | Operators supply population/profile, slot ordering and traceable historical metadata; native registration does not choose census bindings. |
-| Corpus measurement and sidecars | `research corpus prepare/measure/export` validates explicit snapshots/scopes, measures saved data or an explicitly selected read-only database, and exports evidenced sidecars | Operators supply geographic bounds, exact source/membership material, budgets and optional fixed thresholds; reviewed interest/sample judgments remain separate. |
+| Optional corpus measurement and sidecars | `research corpus prepare/measure/export` validates explicit snapshots/scopes, measures saved data or an explicitly selected read-only database, and exports evidenced sidecars | Only for an explicitly selected study: operators supply geographic bounds, source/membership material, budgets and optional thresholds; reviewed samples remain separate. |
 | V3 paired evidence | `pair acquire prepare/execute/replay/export` connects native paired plans, independent acquisition, receipts and report handoff; `pair prepare/report` remains available | Caller supplies the original selected stages, independent contexts/reviews, compatible prices and explicit limits. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
 | Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |
+| Corpus-free mechanism reports and final-case handoff | Existing stage/pair/research tools provide native source material | #138 tracks corpus-free relevance presentation and verification of the fixed `benchmark/<case-id>/` layout; implement only gaps established under an approved scope. |
 
 The defects/enhancements above are tracked in
 [#131](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/131),

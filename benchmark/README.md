@@ -1,7 +1,8 @@
-# Benchmark inputs and accepted material
+# Benchmark workflow and case material
 
 This directory contains 20 English travel-planning requests as working drafts,
-not a frozen benchmark set, and can also store accepted, source-linked case bundles.
+not a frozen benchmark set, and provides the final reader-facing entry point for
+each case's source-linked generation, evaluation and mechanism-analysis material.
 The requests may be revised after inspecting generated itineraries and their
 handoff to and processing by the evaluator. Revisions can address scenario choices,
 request wording, constraints and dates. Record the rationale, update the scenario
@@ -34,11 +35,13 @@ defines the distinct milestones.
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns overall
 coverage and acceptance status, distinguishing completed automatic case reviews
 from the deferred human stage and any later final research acceptance.
-[#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns detailed
-shared responsibilities, staged acceptance, execution budgets, child-Issue lifecycle,
-revisions and retries. Case children apply these rules to their own material and
-decisions rather than redefine them. This README owns
-the scenario index, date rules and storage convention; Issues hold live progress.
+[#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns common
+operational decisions and child-Issue lifecycle. The
+[workflow/layout update plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+owns adoption and fresh case-01 end-to-end acceptance. This README owns the detailed
+reader-facing workflow, responsibility map, optional-study boundary, scenario index,
+date rules and directory convention. Case Issues hold live scope, budgets, attempts
+and acceptance decisions rather than duplicate the common rules.
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -47,6 +50,81 @@ reports bind those exact outputs; they add a separate assessment without replaci
 the accepted input, automatic judgments or scores. The current decision defines
 the workflow only; formal benchmark execution and real blinded assessment still
 require their own explicit authorization.
+
+### Workflow and responsibilities
+
+| Step | Work | Executor | Material or outcome |
+| --- | --- | --- | --- |
+| 1 | Check input meaning, dates and suitability | Codex; user clarification when needed | Exact original request; stop before a necessary input change. |
+| 2 | Author and independently review RequirementSpec | Two distinct source-only Codex agents, `gpt-6.1-sol / high` | Native reviewed spec, real execution records and available authentic task/response transcripts. |
+| 3 | Identify interests stated in the original request | Independent agent | Source-bound POI interest inventory; explicit empty interests when none are stated. |
+| 4 | Prepare configuration, prices, budgets and capture | Codex | Concrete scope/limits, V1/V2 passive candidate-stage capture and V3 same-run draft/final retention. |
+| 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
+| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Native qualified four-final material, actual primary report, independent evidence, scores and limitations. |
+| 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
+| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
+| 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
+| 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then advance to the next case. |
+| 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
+
+Step 7 explores the POI-selection mechanism added between V1 and V2. It retains
+the full captured process, not merely a RAG-return/adopted-POI brief table. Count
+canonical places once per stage while preserving their real Google/RAG origins,
+unresolved entities, recorded omissions and complete/partial/unavailable status.
+Nearby-only references do not count as scheduled visits. Independent relevance
+labels use original-request interests and independent venue evidence, not Planner
+judgments, query labels or similarity. An independently reviewed empty interest
+inventory makes relevance non-applicable; the stage/source report remains required.
+
+Step 8 explores validation/Repair added between V2 and V3. Independent version
+finals describe observed differences; the same-run V3 draft/final pair traces
+actual Repair effects. A V3 draft is not an independent V2 run. Preserve genuine
+no-Repair, unchanged, skipped and unavailable observations. Neither process
+analysis changes primary scoring or establishes causal improvement from independent
+generations. Source contracts remain authoritative for report arithmetic and units.
+
+### User intervention and execution boundaries
+
+After an explicit start instruction and concrete authorized scope/numeric budgets,
+Codex advances steps 1-9 without repeated permission for covered tool or agent
+operations. The user supplies substantive clarification for blocking personal
+intent, approves necessary input changes or uncovered work/budget, decides step 10
+and selects the later human assessment. Real raters must actually read the anonymous
+material and answer; approval and agent inspection do not substitute for responses.
+
+Resolve routine issues within the authorized scope. Stop when execution is paused,
+required personal meaning cannot be established, access is restricted, limits are
+reached, or a defect cannot be resolved without changing scope. No automatic retries,
+budget increases or silent input edits are implied. Genuine low scores, FAIL,
+UNKNOWN and no-Repair outcomes remain observations for joint acceptance. Separate
+generation, independent-agent, evaluator and paired-acquisition consumption;
+unknown prices or missing usage are not zero. Before a full regression, explain
+the reason and expected duration. Git delivery and version/research authorization
+retain their existing boundaries.
+
+### Optional work compared with the initial plan
+
+| Work | Current boundary |
+| --- | --- |
+| Corpus measurement and eligible-entity census | Optional study; no default database-wide scan or generation/acceptance gate. |
+| Corpus coverage sidecar export | Optional with the selected corpus study; not needed for candidate-process analysis. |
+| Corpus geography/strata/sample coverage reports | Optional study; ordinary process reports omit corpus sections and make no corpus-denominator, city-coverage or recall claim. |
+| Suite integration (#106/#118) | Remains optional; standalone native reports suffice. |
+| Controlled Repair experiments | Remain outside the ordinary per-case workflow unless explicitly selected. |
+| Human assessment timing | Deferred to step 11; not an automatic-case closure gate. It remains actual human work when selected. |
+
+Detailed candidate-stage reporting (#114), applicable independent relevance within
+step 7 (#115 without corpus reporting), Repair/pair diagnostics (#116), and attempt/
+resource accountability (#113/#117) remain in the automatic workflow. V1/V2 passive
+candidate capture is a different file from a corpus-measurement sidecar and must be
+enabled before generation. Existing corpus tools remain available; optional means
+not selected by default, not deleted or disabled. Retain runtime RAG source and
+configuration identity without requiring a separate corpus scan.
+
+Installed tools provide the native captures, intake and reports. Corpus-free
+relevance presentation and the final-case handoff are tracked in #138: the existing
+relevance renderer still includes corpus sections, and this convention does not
+claim a new installed mode or directory-assembly command already exists.
 
 ## Layout
 
@@ -59,13 +137,57 @@ benchmark/
     ...
     case-20.json
   <case-id>/
-    <revision>/
-      manifest.json
-      ... referenced request, requirements, results, usage and provenance
+    input.json
+    requirements/                 # step 2: spec and actual author/reviewer records
+    interests/                    # step 3: source-bound independent inventory
+    material/                     # complete native finalized batch root/manifest
+    generation/                   # steps 4-5: selected captures and configuration
+      configuration/
+      v0/
+      v1/
+      v2/
+      v3/
+    evaluation/                   # steps 6 and 8: native evidence/reports/receipts
+      primary/
+      v3-pair/
+    analysis/                     # steps 7-9: native reports and bound dependencies
+      poi-process/
+      repair/
+      resources/
+    human/                        # step 11 only; absent before human preparation
+      packages/
+      private/
+      answers/
+      reports/
 ```
 
-The `inputs/` files are tracked source requests. Each accepted case revision is a
-complete batch-root bundle stored locally under its case ID.
+The `inputs/` files are tracked source requests. `benchmark/<case-id>/` presents
+only the currently selected complete acceptance package, without visible `r1/r2`
+or `a1/a2` layers and without an ambiguous generic `reviews/` directory. Native
+revision, run/attempt IDs, source hashes and schema fields remain inside artifacts;
+omitting folder layers does not remove source identity or authorize overwrites.
+
+`requirements/` retains the actual author draft, reviewed final, handoff and
+execution/transcript material; `interests/` retains the independent inventory and
+its record. Candidate relevance labels/evidence accompany `analysis/poi-process/`;
+other semantic review inputs accompany their corresponding evaluation. Native
+`opportunities` and applicable `relevance` outputs belong under POI process analysis,
+native `repair` under Repair analysis, and population/tradeoff/resource views under
+resources. Keep native file names and dependency layout; required declarations,
+registration or paired export files may supplement this map.
+
+Each selected generation retains its result, usage, provenance, dispatch/completion,
+configuration and actual capture; V1/V2 also retain candidate-stage evidence and V3
+retains the same-run draft/final. The full package includes verification evidence,
+not just final itinerary JSONs. Original preparation and failed/nonselected attempts
+stay in local `artifacts/`, with resource accounting and source dependencies needed
+for replay, rather than cluttering the final-case view.
+
+`human/packages/` holds anonymous questionnaires and presentation; `private/` holds
+researcher-only mappings that are not delivered to raters; `answers/` and `reports/`
+hold actual responses and native human reports. Create these only when the later
+human stage starts. The live acceptance decision remains in the case and parent
+Issues, not a competing local status file. No corpus directory is created by default.
 
 ## Scenario index
 
@@ -171,20 +293,29 @@ readers use manifest references rather than infer files from this example. An ac
 case revision contains one request group and its four selected version runs. Keep case
 and run IDs unique when explicitly assembling a later multi-case evaluation batch.
 
-For new material, point `rtpeval batch finalize --directory` at a fresh case revision
-directory. For an existing accepted bundle, copy the complete batch root without
-changing artifact bytes or relative paths, retain the original evidence, and run
-`rtpeval validate` against the copied manifest before admission. Do not move existing
-prepared evaluation runs: their bindings include original absolute paths.
+For new material, point `rtpeval batch finalize --directory` at a fresh
+`benchmark/<case-id>/material/` destination. Fix generation/evaluation paths before
+execution, or copy a complete source-bound root before preparing its consumers.
+For an existing accepted bundle, copy its complete batch root without changing
+bytes or relative paths, retain the original evidence, and run `rtpeval validate`
+against the copied manifest. Do not move existing prepared evaluation runs: their
+bindings include original absolute paths. Reference roots must contain the files
+they declare; this directory map never permits path escape or digest rewriting.
 
-Accepted revisions are immutable. Changed input or source material requires a new
-revision and validation. Incomplete attempts and unaccepted execution material
-remain outside this directory.
+Accepted sources are immutable. Changed input/source material requires new native
+identities and affected validation even though the reader-facing folder has no
+revision suffix. Never overwrite a consumed native output directory; prepare a
+fresh working root and update the current-case view only after a valid handoff.
+Retain required earlier dependencies and all-attempt consumption. Delete old work
+only under an explicit reset/cleanup instruction, without claiming it still
+establishes readiness or replay. A reset does not alter unrelated engineering work.
 
-Evaluation evidence, reports, controlled executions and blinded-review answers remain
-under explicit fresh directories in `artifacts/`. They are linked to selected inputs;
-they do not overwrite accepted benchmark material. Evaluation does not automatically
-scan or run every case in this directory.
+Selected primary/paired evidence and process reports belong in the corresponding
+case directories above, with explicit fresh native destinations. Later human
+material binds the same accepted outputs and does not overwrite them. Preparation,
+failed/nonselected work and optional controlled studies remain outside the selected
+package in local `artifacts/`. Evaluation never automatically scans or runs every
+case in this directory.
 
 ### Git storage
 

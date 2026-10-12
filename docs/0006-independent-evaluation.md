@@ -93,7 +93,7 @@ primary selection, while explicit retries retain separate outcomes and consumpti
 | --- | --- | --- |
 | Population | Original inputs, fixed selection profile and all declared attempts | Planned, dispatched-first and request/repetition all-four completion, with unresolved bounds |
 | Opportunities | Source-bound V1/V2 stage captures and native independent place associations | Unique canonical discovery/admission/enrichment/supply/scheduled memberships and Google/RAG partitions |
-| Relevance/coverage | Independently reviewed original-input interests/venues and pinned corpus scope | Relevant stage/intersection counts, compatible V2-minus-V1 sets/counts and descriptive fixed-stratum summaries |
+| Relevance/coverage | Independently reviewed original-input interests/venues; pinned corpus scope when an optional coverage study is selected | Relevant stage/intersection counts, compatible V2-minus-V1 sets/counts and optional fixed-stratum summaries |
 | Repair | Native four-final, same-run V3 pair and separate controlled study sources | Final V3-minus-V2 differences, draft-to-final deltas, continuity and inventory-bound target/control preservation |
 | Tradeoffs | Exact selected generation attempts, native quality/usage/cost and all-attempt ledgers | Compatible paired benefits/resources plus failed/retry consumption and full-population completion |
 
@@ -247,30 +247,34 @@ shared rules by reference rather than maintaining another general specification.
 
 ### Preparation and decision responsibilities
 
-The [common workflow Issue #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-owns shared operational rules for all scenario children. Responsibilities are:
+The [benchmark responsibility map](../benchmark/README.md#workflow-and-responsibilities)
+owns the complete per-case sequence and executors. Codex prepares scope and numeric
+limits, orchestrates generation/acquisition and validates saved material. Separate
+source-only agents author and review RequirementSpec; independent agents prepare
+original-request interests, applicable venue relevance and pace/transport semantics
+from source evidence. Tools consume these judgments; they cannot invent them.
+Personal intent requiring clarification comes from the user. Real raters provide
+the later human preference, pace and usefulness answers.
 
-| Work | Executor | User involvement |
-| --- | --- | --- |
-| Input scope, selection policy, corpus geography, strata and execution limits | Agent prepares a concrete proposal under current contracts | Approve or revise undecided choices; existing explicit rules and authorization remain valid. |
-| RequirementSpec authoring and review | Separate independent Codex `gpt-6.1-sol` / `high` author and reviewer executions | Authorize the bounded operations; both must actually execute and retain source-bound records. |
-| Interest inventories, relevance labels, sample coding, pace and transport semantics | Independent agent, or an explicitly selected human reviewer | Approve scope or provide an alternative; judgments require original-request or independent evidence. |
-| Census export, corpus counts/sidecars and paired acquisition/reporting | Installed tools execute; Codex orchestrates | Supply explicitly selected source material and approve concrete live scope/limits where required. |
-| Undetermined personal intent | User clarification, or explicit unresolved meaning | Give a substantive answer when needed; approval cannot supply a missing fact. |
-| Human preference, pace and usefulness ranking | Real raters | Read the anonymous material and provide actual answers during the deferred human stage. |
-
-Approval is not required again for every step already covered by the current
-authorization. Independent agent review must preserve actual reviewer origin and
-source isolation; it is not human assessment. The
+Within the authorized scope, Codex advances preparation through source/replay checks
+without repeated step approvals. The
+[intervention boundary](../benchmark/README.md#user-intervention-and-execution-boundaries)
+defines stops for changed inputs, blocking uncertainty, uncovered operations/limits
+and unresolved defects; the user decides final automatic acceptance. Independent
+agent judgments are not human answers. The
 [requirements contract](contracts/0002-intake-identity-usage.md#external-requirements-handoff)
 owns author/reviewer provenance, and the
 [relevance contract](contracts/0001-evaluation-artifacts.md#independent-interest-relevance-and-corpus-coverage)
-owns interest/relevance evidence. The
-[material preparation support table](../backend/evaluation/README.md#material-preparation-support)
-distinguishes installed consumers/producers, externally operated reviews and live
-authorization. Census export, corpus measurement/sidecars and paired acquisition
-have local implementations from #134-#136; independent semantic reviews and real
-human answers remain externally supplied prerequisites.
+owns interest/relevance evidence.
+
+The [material preparation support table](../backend/evaluation/README.md#material-preparation-support)
+distinguishes installed producers/consumers from external reviews and pending
+adapters. Census export and paired acquisition are installed; corpus measurement
+and sidecars remain installed for optional studies. Detailed candidate POI and
+Repair process analysis belongs to automatic acceptance. Corpus-free relevance
+presentation and final-case handoff readiness are tracked in
+[#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138); documentation
+does not establish their implementation or a completed case run.
 
 ## Requirement and schedule units
 

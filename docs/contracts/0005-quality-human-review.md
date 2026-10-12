@@ -298,6 +298,21 @@ Benchmark cases undergo automatic acceptance first, followed by a separately
 authorized consolidated blinded-review stage. These are workflow milestones, not
 new artifact statuses or a combined score.
 
+The [benchmark workflow](../../benchmark/README.md#workflow-and-responsibilities)
+defines the automatic steps and their required material: independent primary
+evaluation, V1/V2 candidate POI process analysis, V2/V3 Repair process analysis
+with the same-run V3 pair, and actual all-attempt resources/completion. Mechanism
+reports remain descriptive and do not change primary scores. A compact RAG
+return/adoption table can summarize candidate evidence but cannot replace captured
+stage history or applicable independent relevance judgments.
+
+Corpus measurement, corpus coverage sidecars and corpus coverage reporting are
+[optional studies](../../benchmark/README.md#optional-work-compared-with-the-initial-plan).
+Their native contracts remain available when explicitly selected. Retain runtime
+RAG source identity without requiring a database-wide scan. The
+[final-case layout](../../benchmark/README.md#layout) preserves native dependencies
+and later human material; each case Issue owns its actual readiness and decision.
+
 1. **Automatic acceptance:** the user jointly accepts the exact input revision,
    independently reviewed requirements, selected V0-V3 outputs, admitted manifest,
    actual primary evaluation and the case's declared applicable research/resource

@@ -52,10 +52,12 @@ records main-worktree verification and the boundaries of reused regression evide
 
 ## Other responsibilities
 
-- [Benchmark inputs and material storage](../benchmark/README.md): scenario index,
-  date updates and storage conventions. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
-  owns the 20-scenario design and final acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-  owns sequential execution, revisions and input/report joint acceptance.
+- [Benchmark workflow and case material](../benchmark/README.md): per-case sequence,
+  responsibilities and user intervention, optional studies, final-case directories,
+  scenario index and date updates. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
+  owns final benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+  owns shared execution/child-Issue rules; [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+  tracks workflow/layout adoption and fresh case-01 end-to-end acceptance.
 - [Development commands](guides/development.md) and [runtime configuration](../config/README.md).
 - [Historical records](records/README.md): milestone freezes, development evidence,
   topic-specific validation and benchmark-design history. They do not override core design.
