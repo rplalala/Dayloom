@@ -41,6 +41,25 @@ def test_identity_plan_deduplicates_queries_but_retains_occurrences(batch):
     assert plan == build_identity_plan(load_batch(write()))
 
 
+def test_offline_import_records_missing_observations_without_new_sends(batch, tmp_path):
+    from backend.evaluation.snapshot import load_snapshot
+    from backend.evaluation.snapshot_import import import_snapshot
+
+    intake = load_batch(batch[2]()).to_dict()
+    plan = build_identity_plan(intake, paired=True)
+    directory = tmp_path / "derived"
+    imported = import_snapshot(plan, directory, intake=intake)
+    assert imported == load_snapshot(directory, expected_plan=plan)
+    assert imported["schema_version"] == "rtpeval_imported_snapshot_1"
+    assert imported["ledger"]["actual_sends"] == 0
+    assert imported["inherited_usage"] == []
+    assert all(row["attempts"] == [] for row in imported["records"])
+    assert all(
+        row["summary"] == {"status": "unavailable", "reason": "no_compatible_observation"}
+        for row in imported["records"]
+    )
+
+
 def test_acquire_and_replay_preserves_raw_bytes_and_reference_coverage(batch, tmp_path):
     from backend.evaluation.snapshot import (
         AcquisitionPolicy,

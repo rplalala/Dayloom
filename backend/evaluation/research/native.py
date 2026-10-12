@@ -34,7 +34,11 @@ def relative_ref(context, directory, ref):
 
 
 def snapshot_directory(context, ref):
-    value, path = path_ref(context, ref, SNAPSHOT_VERSION)
+    value, path = path_ref(context, ref)
+    _require(
+        value.get("schema_version") in (SNAPSHOT_VERSION, "rtpeval_imported_snapshot_1"),
+        "Unsupported snapshot schema",
+    )
     _require(path.name == "manifest.json", "Snapshot reference must name manifest.json")
     snapshot = load_snapshot(path.parent)
     _require(value == snapshot, "Snapshot changed during native read")
@@ -48,6 +52,23 @@ def snapshot_directory(context, ref):
                         path.parent,
                         {
                             **raw,
+                            "availability": "available",
+                            "media_type": "application/octet-stream",
+                        },
+                    )
+                )
+    if snapshot.get("schema_version") == "rtpeval_imported_snapshot_1":
+        import hashlib
+
+        for source in path.parent.rglob("*"):
+            if source.is_file() and source != path:
+                context.sources.read_bytes(
+                    relative_ref(
+                        context,
+                        path.parent,
+                        {
+                            "path": source.relative_to(path.parent).as_posix(),
+                            "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
                             "availability": "available",
                             "media_type": "application/octet-stream",
                         },

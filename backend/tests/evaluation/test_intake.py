@@ -876,6 +876,8 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "opening_run": {"httpx"},  # #90 isolates one incremental model attempt here.
         "paired_execution": {"os", "shutil", "httpx", "dotenv"},  # Explicit acquire execute.
         "paired_run": {"os", "shutil"},  # Fresh-path checks and offline exact-byte copies.
+        "snapshot_import": {"copy"},  # Offline source-labelled observation copies.
+        "generation_import": {"urllib"},  # URL parsing only; no provider client.
         "evaluation_transport": {"httpx", "urllib", "backend.app.runtime.token_counting"},
         "evaluation_run_cli": {"os", "dotenv"},
         "suite": {"base64", "os", "dotenv"},  # Credential reads stay in explicit execute.

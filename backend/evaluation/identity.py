@@ -165,6 +165,23 @@ def _candidate(raw):
     }
 
 
+def _verified_google_source(record):
+    if record.get("source_kind") == "independent_google_places":
+        return True
+    provenance = record.get("import_provenance", {})
+    if not isinstance(provenance, dict):
+        return False
+    digest = provenance.get("snapshot_sha256")
+    return (
+        record.get("source_kind") == "reused_google_places"
+        and provenance.get("paired") is True
+        and provenance.get("current_sends") == 0
+        and isinstance(digest, str)
+        and len(digest) == 64
+        and all(c in "0123456789abcdef" for c in digest)
+    )
+
+
 def _observation_index(envelope, refs, prepared, *, allow_incomplete=False):
     if not isinstance(envelope, dict) or envelope.get("schema_version") != EVIDENCE_VERSION:
         raise ValueError("Unsupported identity evidence envelope")
@@ -190,7 +207,7 @@ def _observation_index(envelope, refs, prepared, *, allow_incomplete=False):
         if record["observation_id"] in observation_ids:
             raise ValueError("Duplicate identity observation ID")
         observation_ids.add(record["observation_id"])
-        if record.get("source_kind") != "independent_google_places" and not (
+        if not _verified_google_source(record) and not (
             allow_incomplete and record.get("source_kind") is None
         ):
             raise ValueError("Identity observation must declare independent source")
@@ -232,7 +249,7 @@ def _observation_index(envelope, refs, prepared, *, allow_incomplete=False):
 
 
 def _evidence_candidates(record, *, require_provenance=False):
-    if require_provenance and record and record.get("source_kind") != "independent_google_places":
+    if require_provenance and record and not _verified_google_source(record):
         return None, []
     details = record.get("details") if record else None
     search = record.get("search") if record else None

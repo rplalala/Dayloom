@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from .identity import _candidate, _evidence_candidates
+from .identity import _candidate, _evidence_candidates, _verified_google_source
 from .records import text
 
 
@@ -38,7 +38,7 @@ def program_association(ref, observation):
         return _result(None, "missing_claimed_place_id")
     if (
         not observation
-        or observation.get("source_kind") != "independent_google_places"
+        or not _verified_google_source(observation)
         or not details
         or details["status"] != "available"
         or not _provenance(details)

@@ -13,6 +13,11 @@ def main(argv=None, *, http_client=None):
         "prepare", help="Offline selected-stage, review and limit preflight"
     )
     prepare.add_argument("manifest", help="Qualified original batch manifest")
+    imported = commands.add_parser("import", help="Offline source-labelled paired evidence reuse")
+    imported.add_argument("manifest", help="Qualified original batch manifest")
+    imported.add_argument("--primary-run", action="append", default=[])
+    imported.add_argument("--generation", action="append", default=[])
+    imported.add_argument("--directory", required=True)
     for name in ("directory", "selection", "options", "prices"):
         prepare.add_argument("--" + name, required=True)
     for name in (
@@ -25,6 +30,8 @@ def main(argv=None, *, http_client=None):
         "snapshot",
     ):
         prepare.add_argument("--" + name)
+        if name not in ("identity-snapshot", "snapshot"):
+            imported.add_argument("--" + name)
     execute = commands.add_parser(
         "execute", help="Explicit independent acquisition; no retries or resume"
     )
@@ -45,7 +52,20 @@ def main(argv=None, *, http_client=None):
         from backend.evaluation import paired_run
         from backend.evaluation.intake import _read
 
-        if args.command == "prepare":
+        if args.command == "import":
+            from backend.evaluation.snapshot_import import import_pair
+
+            result = import_pair(
+                args.manifest,
+                args.directory,
+                primary_runs=args.primary_run,
+                generations=args.generation,
+                context={
+                    name: _read(Path(getattr(args, option)))[0] if getattr(args, option) else None
+                    for name, option in paired_run.CONTEXT_FILES.items()
+                },
+            )
+        elif args.command == "prepare":
             result = paired_run.prepare(
                 args.manifest,
                 args.directory,

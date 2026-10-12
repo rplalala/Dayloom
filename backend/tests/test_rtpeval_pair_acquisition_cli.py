@@ -77,8 +77,553 @@ def paired_material(batch):
     return root, args, values, intake
 
 
-def run(installed_cli, *args, **kwargs):
-    return installed_cli("pair", "acquire", *args, evaluation_offline=True, **kwargs)
+def run(installed_cli, command, *args, **kwargs):
+    if command == "import":
+        filtered = []
+        iterator = iter(args)
+        for value in iterator:
+            if value in ("--selection", "--options", "--prices"):
+                next(iterator)
+            else:
+                filtered.append(value)
+        args = filtered
+    return installed_cli("pair", "acquire", command, *args, evaluation_offline=True, **kwargs)
+
+
+def primary_run(
+    paired_material, directory, monkeypatch, *, evidence_details_failure=False, failed_place_id=None
+):
+    import asyncio
+
+    import httpx
+
+    from backend.evaluation.evaluation_run import execute_run, prepare_run
+    from backend.tests.evaluation.test_evaluation_run import mock_provider, options
+
+    root, _, values, _ = paired_material
+    prepared = prepare_run(
+        root / "manifest.json",
+        directory,
+        options=options(),
+        prices=run_prices(),
+        schedule_context=values["context"],
+        route_reviews=values["route-reviews"],
+        density_reviews=values["density-reviews"],
+    )
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
+
+    details_calls = {}
+
+    def respond(request):
+        if request.url.host == "places.googleapis.com" and request.method == "GET":
+            if request.url.path.endswith("/" + str(failed_place_id)):
+                return httpx.Response(503, json={"error": "synthetic provider failure"})
+            details_calls[str(request.url)] = details_calls.get(str(request.url), 0) + 1
+            if evidence_details_failure and details_calls[str(request.url)] > 1:
+                return httpx.Response(503, json={"error": "synthetic provider failure"})
+        response = mock_provider(request)
+        if request.url.host == "model.example.test":
+            body = response.json()
+            text = body["output"][0]["content"][0]
+            decisions = json.loads(text["text"])
+            for row in decisions["decisions"].values():
+                row["address_assessment"] = "equivalent"
+                row["evidence_fields"].append("claim.location")
+                row["evidence_fields"].append("claim.claimed_place_id")
+            text["text"] = json.dumps(decisions)
+            return httpx.Response(200, json=body)
+        return response
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
+    try:
+        result = asyncio.run(
+            execute_run(
+                prepared,
+                approved_sha256=prepared["content_sha256"],
+                google_api_key="synthetic-google",
+                model_api_key="synthetic-model",
+                http_client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+    assert result["processing_status"] == "complete", result
+    return directory
+
+
+def test_offline_import_reuses_primary_observations_and_exports_native_pair(
+    installed_cli, paired_material, tmp_path, monkeypatch
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    root, args, _, _ = paired_material
+    primary = primary_run(paired_material, tmp_path / "primary", monkeypatch)
+    imported = tmp_path / "v3-pair/import"
+    result = run(installed_cli, "import", *args, "--primary-run", primary, "--directory", imported)
+    assert result.returncode == 0, result.stdout + result.stderr
+    handoff = json.loads(result.stdout)
+    assert handoff["current_sends"] == 0
+    identity = load_snapshot(imported / "identity-snapshot")
+    evidence = load_snapshot(imported / "evidence-snapshot")
+    assert identity["schema_version"] == evidence["schema_version"] == "rtpeval_imported_snapshot_1"
+    assert all(row["origin"]["kind"] == "primary_evaluation" for row in identity["records"])
+    original = load_snapshot(primary / "execution/identity-snapshot")
+    assert (
+        identity["records"][0]["attempts"][0]["retrieved_at"]
+        == original["records"][0]["attempts"][0]["retrieved_at"]
+    )
+    assert identity["ledger"]["actual_sends"] == evidence["ledger"]["actual_sends"] == 0
+    assert all(row["summary"]["status"] == "available" for row in evidence["records"])
+    directory = tmp_path / "v3-pair/report"
+    result = run(
+        installed_cli,
+        "prepare",
+        *args,
+        "--directory",
+        directory,
+        "--identity-snapshot",
+        imported / "identity-snapshot",
+        "--snapshot",
+        imported / "evidence-snapshot",
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    result = run(
+        installed_cli,
+        "execute",
+        directory,
+        "--approved-sha256",
+        json.loads(result.stdout)["content_sha256"],
+        bootstrap=LOOPBACK_FIXTURE,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    saved = json.loads(result.stdout)
+    assert saved["usage"]["actual_google_sends"] == 0
+    assert saved["pair"]["groups"][0]["pair_status"] == "available"
+    result = run(installed_cli, "replay", directory)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert json.loads(result.stdout) == saved
+    exported = tmp_path / "v3-pair/export"
+    result = run(installed_cli, "export", directory, "--directory", exported)
+    assert result.returncode == 0, result.stdout + result.stderr
+    load_snapshot(exported / "execution/identity-snapshot")
+    assert (root / "manifest.json").is_file()
+
+
+def generation_source(paired_material, directory, *, mask=None, incomplete=False, language=None):
+    import httpx
+
+    from backend.app.integrations.google.places import PLACES_DETAILS_FIELD_MASK
+    from backend.app.observability.raw_capture import RawCapture
+    from backend.evaluation.tools.generation_evidence import build_evidence_index
+
+    root, _, _, _ = paired_material
+    manifest = json.loads((root / "manifest.json").read_bytes())
+    selected = manifest["groups"][0]["selected_runs"]["v3"]
+    directory.mkdir()
+    for name in ("result", "usage", "provenance"):
+        (directory / (name + ".json")).write_bytes(
+            (root / selected[name + "_ref"]["path"]).read_bytes()
+        )
+    usage = json.loads((directory / "usage.json").read_bytes())
+    usage["timing"] = {
+        "started_at": "2026-06-01T00:00:00+00:00",
+        "finished_at": "2026-06-01T00:01:00+00:00",
+    }
+    usage["provider_events"] = []
+    usage["outcome"] = "completed"
+    raw = RawCapture(directory)
+    for eid, pid in (("1", "pid-a"), ("2", "pid-b")):
+        raw.request(
+            httpx.Request(
+                "GET",
+                "https://places.googleapis.com/v1/places/" + pid,
+                params={"languageCode": language} if language else None,
+                headers={"X-Goog-FieldMask": mask or PLACES_DETAILS_FIELD_MASK},
+            ),
+            eid,
+        )
+        raw.response(
+            httpx.Response(
+                200,
+                json={
+                    "id": pid,
+                    "displayName": {"text": "Museum " + pid[-1].upper()},
+                    "formattedAddress": "10 Main St, Example City, Country",
+                    "businessStatus": "OPERATIONAL",
+                    "location": {"latitude": 10, "longitude": 20 if pid == "pid-a" else 21},
+                    "timeZone": {"id": "Etc/UTC"},
+                    "regularOpeningHours": {"periods": []},
+                },
+            ),
+            eid,
+        )
+        usage["provider_events"].append(
+            {
+                "event_id": eid,
+                "provider": "google",
+                "operation": "place_details",
+                "source": "http_request_hook",
+                "outcome": "completed",
+                "status_code": 200,
+            }
+        )
+    raw.finish()
+    if incomplete:
+        for event in raw.events:
+            event["response_body_status"] = "incomplete"
+    save(directory, "usage.json", usage)
+    provenance = json.loads((directory / "provenance.json").read_bytes())
+    (directory / "input.json").write_bytes(
+        (root / manifest["groups"][0]["input_ref"]["path"]).read_bytes()
+    )
+    policy = save(directory, "runtime-policy.json", {"sha256": "f" * 64, "configuration": {}})
+    capture = {
+        **provenance,
+        "source_revision": "fixture-revision",
+        "runtime_policy_sha256": "f" * 64,
+        "status": "completed",
+        "kind": "development_planner_usage_capture",
+        "execution_requested": True,
+        "evidence_requested": True,
+    }
+    save(directory, "manifest.json", capture)
+    save(
+        directory,
+        "evidence-index.json",
+        build_evidence_index(directory, capture, raw, usage, adapter_coverage="default_adapters"),
+    )
+    import hashlib
+
+    provenance["configuration_ref"] = {
+        "path": "runtime-policy.json",
+        "sha256": hashlib.sha256(policy.read_bytes()).hexdigest(),
+    }
+    provenance["evidence_index_ref"] = {
+        "path": "evidence-index.json",
+        "sha256": hashlib.sha256((directory / "evidence-index.json").read_bytes()).hexdigest(),
+    }
+    save(directory, "provenance.json", provenance)
+    for name in ("usage", "provenance"):
+        ref = selected[name + "_ref"]
+        (root / ref["path"]).write_bytes((directory / (name + ".json")).read_bytes())
+        ref["sha256"] = hashlib.sha256((root / ref["path"]).read_bytes()).hexdigest()
+    save(root, "manifest.json", manifest)
+    return directory
+
+
+def test_generation_observations_preserve_producer_origin_and_capture_window(
+    installed_cli, paired_material, tmp_path
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    _, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation")
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    snapshot = load_snapshot(imported / "identity-snapshot")
+    details = [row for row in snapshot["records"] if row["origin"]]
+    assert len(details) == 2
+    assert all(row["origin"]["kind"] == "planner_generation" for row in details)
+    assert all(row["origin"]["observation_time_basis"] == "run_capture_window" for row in details)
+    assert all(row["attempts"][0]["retrieved_at"] == "2026-06-01T00:01:00+00:00" for row in details)
+    assert snapshot["ledger"]["actual_sends"] == 0
+    identity = json.loads((imported / "identity-report.json").read_bytes())
+    assert any(
+        row["resolution"] == "resolved" and row["version"] == "v3" for row in identity["records"]
+    )
+    assert snapshot["inherited_usage"][0]["charged_in_current_phase"] is False
+    from backend.evaluation.snapshot_coordinates import prepare_snapshot_coordinates
+
+    coordinates = prepare_snapshot_coordinates(
+        load_batch(paired_material[0] / "manifest.json"),
+        identity,
+        imported / "identity-snapshot",
+    ).to_dict()
+    assert coordinates["records"]
+    assert all(
+        observation["pointer"] == "/body/location"
+        for record in coordinates["records"]
+        for observation in record["observations"]
+    )
+
+
+@pytest.mark.parametrize("fault", ["mask", "incomplete"])
+def test_incompatible_generation_capture_remains_unknown_without_sends(
+    installed_cli, paired_material, tmp_path, fault
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    _, args, _, _ = paired_material
+    generation = generation_source(
+        paired_material,
+        tmp_path / "generation",
+        mask="id,displayName" if fault == "mask" else None,
+        incomplete=fault == "incomplete",
+    )
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    snapshot = load_snapshot(imported / "identity-snapshot")
+    assert all(
+        row["origin"] is None and row["summary"]["status"] == "unavailable"
+        for row in snapshot["records"]
+    )
+    assert snapshot["ledger"]["actual_sends"] == 0
+
+
+def test_generation_source_drift_is_rejected_before_import_handoff(
+    installed_cli, paired_material, tmp_path
+):
+    _, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation")
+    (generation / "evidence/wire/0000-response.json").write_text('{"body": {}}')
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 2
+    assert "artifact hash mismatch" in result.stdout
+    assert not (imported / "handoff.json").exists()
+
+
+@pytest.mark.parametrize("artifact", ["index", "wire"])
+def test_duplicate_generation_json_is_rejected_even_with_matching_hashes(
+    installed_cli, paired_material, tmp_path, artifact
+):
+    import hashlib
+
+    root, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation")
+    index_path = generation / "evidence-index.json"
+    if artifact == "index":
+        index_path.write_bytes(
+            b'{"schema_version":"rtpeval_generation_evidence_1",' + index_path.read_bytes()[1:]
+        )
+    else:
+        wire_path = generation / "evidence/wire/0000-response.json"
+        wire_path.write_bytes(
+            b'{"representation":"credential_filtered_utf8",' + wire_path.read_bytes()[1:]
+        )
+        index = json.loads(index_path.read_bytes())
+        for ref in index["artifacts"]:
+            if ref["path"] == wire_path.relative_to(generation).as_posix():
+                ref["sha256"] = hashlib.sha256(wire_path.read_bytes()).hexdigest()
+        save(generation, "evidence-index.json", index)
+    provenance = json.loads((generation / "provenance.json").read_bytes())
+    provenance["evidence_index_ref"]["sha256"] = hashlib.sha256(index_path.read_bytes()).hexdigest()
+    save(generation, "provenance.json", provenance)
+    manifest = json.loads((root / "manifest.json").read_bytes())
+    ref = manifest["groups"][0]["selected_runs"]["v3"]["provenance_ref"]
+    (root / ref["path"]).write_bytes((generation / "provenance.json").read_bytes())
+    ref["sha256"] = hashlib.sha256((root / ref["path"]).read_bytes()).hexdigest()
+    save(root, "manifest.json", manifest)
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert not (imported / "handoff.json").exists()
+
+
+def test_import_can_reuse_primary_identity_details_for_evidence_gaps(
+    installed_cli, paired_material, tmp_path, monkeypatch
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    _, args, _, _ = paired_material
+    primary = primary_run(
+        paired_material, tmp_path / "primary", monkeypatch, evidence_details_failure=True
+    )
+    imported = tmp_path / "import"
+    result = run(installed_cli, "import", *args, "--primary-run", primary, "--directory", imported)
+    assert result.returncode == 0, result.stdout + result.stderr
+    snapshot = load_snapshot(imported / "evidence-snapshot")
+    details = {
+        row["key"] for row in snapshot["plan"]["requests"] if row["operation"] == "places_details"
+    }
+    assert len(details) == 2
+    assert all(
+        row["summary"]["status"] == "available"
+        for row in snapshot["records"]
+        if row["key"] in details
+    )
+    assert snapshot["ledger"]["actual_sends"] == 0
+
+
+def test_mixed_sources_preserve_per_request_origins_and_original_usage(
+    installed_cli, paired_material, tmp_path, monkeypatch
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    _, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation", language="en")
+    primary = primary_run(
+        paired_material, tmp_path / "primary", monkeypatch, failed_place_id="pid-b"
+    )
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli,
+        "import",
+        *args,
+        "--primary-run",
+        primary,
+        "--generation",
+        generation,
+        "--directory",
+        imported,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    snapshot = load_snapshot(imported / "identity-snapshot")
+    requests = {row["key"]: row for row in snapshot["plan"]["requests"]}
+    details = {
+        requests[row["key"]]["parameters"]["place_id"]: row
+        for row in snapshot["records"]
+        if requests[row["key"]]["operation"] == "places_details"
+    }
+    assert details["pid-a"]["origin"]["kind"] == "primary_evaluation"
+    assert details["pid-b"]["origin"]["kind"] == "planner_generation"
+    assert all(row["summary"]["status"] == "available" for row in details.values())
+    assert snapshot["ledger"]["actual_sends"] == 0
+    assert len(snapshot["inherited_usage"]) == 2
+
+
+def test_primary_route_reuse_checks_direction_ids_coordinates_mode_time_and_options(
+    paired_material, tmp_path, monkeypatch
+):
+    from backend.evaluation.snapshot import _hash, load_snapshot
+    from backend.evaluation.snapshot_import import import_pair, import_snapshot
+
+    root, _, values, _ = paired_material
+    primary = primary_run(paired_material, tmp_path / "primary", monkeypatch)
+    baseline = tmp_path / "baseline"
+    context_values = {
+        "schedule_context": values["context"],
+        "route_reviews": values["route-reviews"],
+        "density_reviews": values["density-reviews"],
+        "occupancy_reviews": None,
+        "correspondence_reviews": None,
+    }
+    import_pair(root / "manifest.json", baseline, context=context_values, primary_runs=[primary])
+    snapshot = load_snapshot(baseline / "evidence-snapshot")
+    for fault in ("direction", "place_id", "coordinate", "mode", "time", "options"):
+        plan = copy.deepcopy(snapshot["plan"])
+        route = next(row for row in plan["requests"] if row["operation"] == "route_matrix")
+        old_key, params = route["key"], route["parameters"]
+        if fault == "direction":
+            params["origin"], params["destination"] = params["destination"], params["origin"]
+        elif fault == "place_id":
+            params["origin"]["place_id"] = "different-id"
+        elif fault == "coordinate":
+            params["origin"]["latitude"] += 0.01
+        elif fault == "mode":
+            params["mode"] = "DRIVE"
+        elif fault == "time":
+            params.update(time_basis="explicit_departure", departure="2020-01-01T10:00:00Z")
+        else:
+            params["routing_options"] = {"avoid_ferries": True}
+        route["key"] = _hash({"operation": route["operation"], "parameters": params})
+        for leg in plan["legs"]:
+            if leg["request_key"] == old_key:
+                leg["request_key"] = route["key"]
+        imported = import_snapshot(
+            plan, tmp_path / fault, intake=snapshot["intake"], primary_runs=[primary]
+        )
+        observation = next(row for row in imported["records"] if row["key"] == route["key"])
+        assert observation["attempts"] == []
+        assert observation["summary"]["reason"] == "no_compatible_observation"
+        assert imported["ledger"]["actual_sends"] == 0
+
+
+def test_imported_snapshots_do_not_charge_inherited_provider_attempts(
+    installed_cli, paired_material, tmp_path
+):
+    root, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation")
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    output = tmp_path / "cost.json"
+    result = installed_cli(
+        "cost",
+        "--snapshot",
+        imported / "identity-snapshot",
+        "--prices",
+        root / "prices.json",
+        "--output",
+        output,
+        evaluation_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    cost = json.loads(output.read_bytes())
+    assert cost["runs"][0]["estimated_total"] == "0"
+    assert cost["runs"][0]["events"] == []
+    assert cost["runs"][0]["inherited_usage"][0]["actual_source_google_sends"] == 2
+
+
+def test_imported_pair_accepts_explicit_zero_request_and_cost_limits(
+    installed_cli, paired_material, tmp_path
+):
+    root, args, values, _ = paired_material
+    imported = tmp_path / "import"
+    result = run(installed_cli, "import", *args, "--directory", imported)
+    assert result.returncode == 0, result.stdout + result.stderr
+    save(root, "options.json", {**values["options"], "max_google_sends": 0, "max_cost_usd": "0"})
+    directory = tmp_path / "paired"
+    result = run(
+        installed_cli,
+        "prepare",
+        *args,
+        "--directory",
+        directory,
+        "--identity-snapshot",
+        imported / "identity-snapshot",
+        "--snapshot",
+        imported / "evidence-snapshot",
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    preparation = json.loads(result.stdout)
+    assert preparation["execution_mode"] == "offline_reuse"
+    assert preparation["request_inventory"]["estimated_cost_usd"] == "0"
+    result = run(
+        installed_cli,
+        "execute",
+        directory,
+        "--approved-sha256",
+        preparation["content_sha256"],
+        bootstrap=LOOPBACK_FIXTURE,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert json.loads(result.stdout)["usage"]["actual_google_sends"] == 0
+    assert run(installed_cli, "replay", directory).returncode == 0
+
+
+@pytest.mark.parametrize("language, expected_count", [("en", 2), ("fr", 0)])
+def test_generation_details_locale_is_explicitly_checked_and_preserved(
+    installed_cli, paired_material, tmp_path, language, expected_count
+):
+    from backend.evaluation.snapshot import load_snapshot
+
+    _, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation", language=language)
+    imported = tmp_path / "import"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    snapshot = load_snapshot(imported / "identity-snapshot")
+    rows = [row for row in snapshot["records"] if row["origin"] is not None]
+    assert len(rows) == expected_count
+    if rows:
+        assert all(row["origin"]["source_language_code"] == "en" for row in rows)
+        assert all("languageCode=en" in row["origin"]["source_url"] for row in rows)
 
 
 LOOPBACK_FIXTURE = """
@@ -692,18 +1237,38 @@ def test_replay_rejects_corruption_including_rehashed_provider_evidence(
     assert json.loads(result.stdout)["processing_status"] == "needs_material_correction"
 
 
+@pytest.mark.parametrize("imported", [False, True])
 def test_export_research_descriptor_is_accepted_by_existing_repair_reader(
-    installed_cli, paired_material, tmp_path
+    installed_cli, paired_material, tmp_path, imported
 ):
     from backend.tests.research_native_fixtures import declare_native
 
     _, args, _, _ = paired_material
     directory, exported = tmp_path / "acquired", tmp_path / "exported"
-    result = run(installed_cli, "prepare", *args, "--directory", directory)
+    cached_args = []
+    if imported:
+        generation = generation_source(paired_material, tmp_path / "generation", language="en")
+        snapshots = tmp_path / "import"
+        result = run(
+            installed_cli, "import", *args, "--generation", generation, "--directory", snapshots
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        cached_args = [
+            "--identity-snapshot",
+            snapshots / "identity-snapshot",
+            "--snapshot",
+            snapshots / "evidence-snapshot",
+        ]
+    result = run(installed_cli, "prepare", *args, "--directory", directory, *cached_args)
     assert result.returncode == 0, result.stdout + result.stderr
     digest = json.loads(result.stdout)["content_sha256"]
     result = run(
-        installed_cli, "execute", directory, "--approved-sha256", digest, bootstrap=HTTP_FIXTURE
+        installed_cli,
+        "execute",
+        directory,
+        "--approved-sha256",
+        digest,
+        bootstrap=LOOPBACK_FIXTURE if imported else HTTP_FIXTURE,
     )
     assert result.returncode == 0, result.stdout + result.stderr
     result = run(installed_cli, "export", directory, "--directory", exported)

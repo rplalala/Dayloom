@@ -79,6 +79,8 @@ async def execute(directory, *, approved_sha256, env_file=None, http_client=None
     has_pair = available(intake)
     cached = preparation["cached_snapshots"]
     needs_provider = has_pair and ("identity" not in cached or "evidence" not in cached)
+    if preparation.get("execution_mode") == "offline_reuse" and needs_provider:
+        raise ValueError("Offline import does not authorize supplemental acquisition")
     key = None
     if needs_provider:
         if env_file:
