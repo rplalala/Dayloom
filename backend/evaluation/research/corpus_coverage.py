@@ -130,6 +130,24 @@ def _coverage(context, material, inventories):
     supplied = {}
     for ref in material["coverage_refs"]:
         raw = context.read_ref(ref, "rtpeval_research_corpus_coverage_1")
+        if raw.get("producer_completion_ref") is not None:
+            completion = context.read_ref(
+                raw["producer_completion_ref"], "rtpeval_corpus_completion_1"
+            )
+            _require(
+                completion.get("processing_status") == "completed"
+                and completion.get("coverage_sha256")
+                == digest({k: v for k, v in raw.items() if k != "producer_completion_ref"}),
+                "Uncommitted or changed corpus producer sidecar",
+            )
+            evidence = context.read_ref(
+                completion.get("measurement_ref"), "rtpeval_corpus_measurement_1"
+            )
+            _require(
+                evidence.get("finished_at") == raw.get("measured_at")
+                and evidence.get("measurement_method") == raw.get("measurement_method"),
+                "Corpus completion observation mismatch",
+            )
         key = _coverage_binding(raw, cases)
         _require(key not in supplied, "Duplicate corpus coverage case")
         snapshot = _snapshot(context, raw.get("snapshot_identity"))

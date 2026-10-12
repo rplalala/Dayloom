@@ -6,6 +6,7 @@ from collections.abc import AsyncIterator, Callable
 from contextlib import AsyncExitStack, asynccontextmanager
 from dataclasses import dataclass
 from datetime import date
+from pathlib import Path
 from time import monotonic
 from typing import Protocol
 from uuid import uuid4
@@ -46,6 +47,8 @@ class PlannerRuntime(Protocol):
         *,
         reference_date: date,
         tracer: RunTracer | None = None,
+        opportunity_capture_path: Path | None = None,
+        opportunity_capture_run_id: str | None = None,
     ) -> PlanningResult:
         """Run one version; callers never invoke a CLI or parse its output."""
         ...
@@ -158,9 +161,16 @@ class RequestPlannerRuntime:
         *,
         reference_date: date,
         tracer: RunTracer | None = None,
+        opportunity_capture_path: Path | None = None,
+        opportunity_capture_run_id: str | None = None,
     ) -> PlanningResult:
         started = monotonic()
         version = SystemVersion(version)
+        if opportunity_capture_path is not None and version not in (
+            SystemVersion.V1,
+            SystemVersion.V2,
+        ):
+            raise ValueError("Opportunity capture only supports V1/V2")
         request = validate_planning_request(request, reference_date)
         config = self._config or load_runtime_config()
         observer = current_progress()
@@ -185,6 +195,11 @@ class RequestPlannerRuntime:
                     SystemVersion.V3: run_v3,
                 }[version]
                 options = {}
+                if opportunity_capture_path is not None:
+                    options.update(
+                        opportunity_capture_path=opportunity_capture_path,
+                        opportunity_capture_run_id=opportunity_capture_run_id,
+                    )
                 if version == SystemVersion.V3:
                     options["request_started_at"] = started
                 return await runner(

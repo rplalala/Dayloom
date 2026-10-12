@@ -63,6 +63,81 @@ submitted inputs. Missing optional V3 draft/final-primary projections disable de
 work only; they are not reconstructed. Usage may explicitly be unavailable, rather than zero.
 Exact parsing/projection wire is owned by [intake](0002-intake-identity-usage.md#rtpeval-intake-projection-contract).
 
+## Paired evidence acquisition
+
+`rtpeval pair acquire prepare/execute/replay/export` is an explicit producer for
+the [same-run V3 diagnostic](0005-quality-human-review.md#v3-pairs). It uses native
+paired plans, deterministic API identity, route preparation, independent Google
+transport, pricing and scorers. It does not dispatch review agents or add a second
+evaluator. The [operational guide](../../backend/evaluation/README.md#installed-paired-acquisition)
+owns commands and examples.
+
+`rtpeval_pair_selection_1` identifies the batch/revision and every selected
+group's V3 run, original input, reviewed RequirementSpec and original result hashes,
+in manifest group order, with fixed `/v3/draft` and `/v3/final_primary` pointers.
+The original selected bytes remain authoritative. Native missing/invalid optional
+stages retain `pair_unavailable`, diagnostics and null deltas; they are never
+reconstructed. With no available pair, processing sends nothing and needs no
+fictional snapshot.
+
+Preparation requires explicit independent schedule context and route reviews for
+available pairs. Nonempty preferences additionally require a density review, which
+may preserve unresolved meaning. Optional occupancy/correspondence reviews retain
+their existing semantics. Limits are a positive integer `max_google_sends`, a
+positive decimal-string `max_cost_usd` in USD, and finite positive per-call and
+total timeouts. Credentials/model settings are forbidden in these options.
+The price snapshot must support the native Google request identities and execution
+date. Human preference and personal-intent clarification remain external work.
+
+`rtpeval_pair_acquisition_preparation_1` freezes exact original source and
+implementation hashes, closed copied material inventory, selection, intake,
+reviews, limits, prices and native `paired=True` identity/evidence plans under a
+canonical `content_sha256`. Identity requests are exact before execution.
+Without a verified saved identity snapshot, canonical venue coordinates and
+evidence requests are not yet known: `evidence_status=deferred_until_identity`
+retains native occurrence/leg inventory, a null exact evidence request count and
+an occurrence-based request/cost upper bound. No guessed place or route query is
+sent. After identity acquisition, native route preparation persists the exact
+paired evidence plan. Saved identity evidence permits an exact plan at prepare time.
+
+Execution requires approval of that exact preparation digest. Original sources,
+implementation, copied material, reviews, prices and plans are checked before
+credential access or sends. Only missing phases read an independent Google
+credential and construct a client. Native cumulative send/reference-spend ceilings
+apply across both phases; per-call and overall deadlines constrain acquisition.
+Each native request gets at most one attempt. A started directory is consumed,
+including stopped work, with no retry/resume, Planner regeneration or Repair.
+The native required primary/draft/final union retains source occurrences and
+directed route mode/departure context while deduplicating exact requests. Evidence
+reuse requires the exact current native paired plan, source/context/date and
+coverage; Planner/final-only evidence cannot be relabeled.
+
+The execution bundle saves paired snapshots, original request context and times,
+redacted captured bodies, native failures/hashes, current identity, route plan,
+edit lineage, pair report, journal inventory, oracle usage and a closed receipt.
+`rtpeval_pair_acquisition_report_1` separates processing/acquisition/evidence status:
+completed processing may contain partial provider evidence or FAIL/UNKNOWN units.
+Cancelled, interrupted, timeout and budget-stopped attempts retain observed sends
+and partial records without claiming a completed pair. If interruption occurs
+after HTTP persistence but before snapshot consumption, closeout copies only
+observed response bytes into partial raw storage without completing the snapshot.
+Reference cost reservations,
+measured request counts and estimated costs are distinct from actual account billing;
+cached phases retain their prior capture provenance without counting inherited sends
+as current usage. No model or supplemental opening judgment is dispatched.
+
+Offline replay checks original/code/material bindings, the complete receipt,
+HTTP/native snapshot correspondence, request context, usage and budgets, then
+rebuilds current identity, exact route plan, native edit lineage and pair diagnostics.
+Stopped attempts verify retained HTTP/partial snapshot responses and their inventory;
+they do not become complete.
+Fresh export verifies completed processing first, copies original bytes and evidence,
+and writes `rtpeval_pair_acquisition_export_1` handoff plus a closed root receipt.
+Its `research_pair` descriptor and `suite_pair` paths target existing opt-in
+consumers; the matching research census/profile remains separately supplied.
+Export preserves the report's mask, signed final-minus-draft deltas and
+correspondence uncertainty without changing four-final arithmetic.
+
 ## Source-bound suite lifecycle
 
 `rtpeval_suite_1` declares a nonempty ordered `cases` array, `suite_id` and an
@@ -299,6 +374,68 @@ A non-dispatch record can declare unstarted or unknown/pending; terminal generat
 outcomes require dispatch. The first dispatched record is selected even if an
 unstarted record precedes it. Further dispatches are explicit retries.
 
+### Installed census export and dispatch observations
+
+`rtpeval research export-census INVENTORY --directory FRESH_DIRECTORY` produces
+the existing census and declaration wires from one `rtpeval_research_census_export_1`
+inventory. The inventory's parent is its source root. It supplies exact
+`population_ref`, `profile_ref`, and an explicit ordered `attempt_sources` array;
+there is no directory discovery, latest-result selection or implicit retry.
+
+Each entry supplies `case_id`, `case_revision`, `version`, `repetition_id`,
+`attempt_id`, `order`, `prior_attempt_id`, `group_id`, `run_id`, `reason_type`,
+and `producer_metadata_ref`. Optional `completion_ref`, `result_ref`, `usage_ref`
+and `provenance_ref` use the existing artifact wire. All attempts are retained.
+The exporter derives dispatch observations and input/configuration hashes from
+referenced metadata and checks them against the exact population/profile sources.
+Entries must not separately override these observations. Slot order, predecessor
+links, timestamps, native statuses and primary/retry selection use the existing reader.
+
+`rtpeval_planner_dispatch_1` contains `source_kind=installed_generate` or
+`historical_import`, nonempty `declared_by`, timezone-aware `recorded_at`,
+`group_id`, `run_id`, `version`, `input_sha256`, `configuration_sha256`, explicit
+`dispatched`, nullable `dispatched_at`, `planner_dispatches` and
+`execution_metadata`. Dispatch count is zero or one for this single invocation,
+agrees with `dispatched`, and is unrelated to provider HTTP sends or evaluator work.
+An observed dispatch timestamp cannot follow `recorded_at`; a non-dispatch has no
+dispatch timestamp. Conditions absent from `execution_metadata` remain unknown.
+
+Historical import requires nonempty exact-byte `evidence_refs` identifying the
+source of the operator's explicit observation. The declaration preserves its
+author, time and evidence; it does not independently establish historical truth.
+Missing dispatch metadata/time is a material-correction error. File modification
+times, preparation/export timestamps and result existence cannot fill that gap.
+Missing inventory entries retain unknown slots rather than creating non-dispatch
+rows. Optional unavailable artifact references become null census references with
+their reasons in export diagnostics; they do not acquire a result or receipt.
+
+The bundle keeps copied originals byte-for-byte under `material/`, preserving their
+source-root-relative layout, plus `census-export.json` and `research-export.json`.
+Explicit nested completion/provenance dependencies are resolved from their owning
+artifact, hash-checked and copied within the same bounded root; they do not trigger
+run discovery. Nested references retain each logical directory layout, including
+multiple root-bounded aliases of the same original; root and hash checks use resolved
+source locations. Derived census refs use the canonical location of those native files.
+Those two filenames are reserved at the material root. `export.json` and stdout
+carry `rtpeval_research_census_export_report_1`: completion status, usable census
+and declaration refs, source hashes, slot/attempt counts, missing/unavailable
+diagnostics and metadata provenance. Source and provenance paths are relative to
+its declared `source_root=material`. Originals are checked again before publication;
+the existing population reader and report builder validate the pending bundle.
+Failed validation does not publish the destination. Existing destinations, including
+links with missing targets, are refused. Export completion does not qualify a quality
+batch or indicate that a workflow succeeded.
+After pending validation, the exporter creates the fresh destination, verifies each
+copied file and revalidates the published declaration before writing `export.json`
+last. A publication IO failure may leave an incomplete destination; absent or invalid
+completion receipt means unvalidated export, and a retry requires a new destination.
+
+Exported census records retain `producer_metadata_ref`. The common research reader
+revalidates that metadata, its evidence hashes and its agreement with census fields.
+Historical census records without this optional reference retain their existing
+validation behavior. Exact original population/profile bytes and profile history
+are preserved; track attachments are supplied separately after export.
+
 The population report wire is `rtpeval_research_population_report_1`. It retains
 ordered slots and all attempts, selection profile, case/version/repetition views,
 all-four request/repetition rows, reasons, and distinct completion denominators.
@@ -502,6 +639,92 @@ and omitted pairs and descriptive principal-delta median. Repeated slots remain
 visible and are not independent samples. Entity/geographic proxies and reviewed
 sample fractions make no citywide recall, unique-venue coverage, ranking,
 statistical-inference or causal-attribution claim.
+
+### Pinned corpus measurement producer
+
+`rtpeval research corpus prepare REQUEST --directory FRESH` accepts
+`rtpeval_corpus_request_1`. Required fields are `declaration_ref`, `case_id`,
+`case_revision`, `input_sha256`, `scope`, `scope_sha256`, `snapshot_identity`,
+`declared_at`, `timing_basis`, `measurement_configuration` and `source`.
+`coverage_profile_ref` is optional; when absent or null, an existing relevance
+declaration's profile is retained and checked against the requested snapshot/scope.
+The declaration shares the request's source root; references use that root.
+Case/input, snapshot JSON pointers, canonical
+scope hash, any supplied profile and selected RAG origins must agree. The request
+can select one case from a larger population; other cases retain their own coverage.
+
+Configuration supplies positive integer `max_entities`, `max_source_bytes`,
+`statement_timeout_ms`, `connect_timeout_seconds` and `batch_size`, plus numeric
+`timeout_seconds` in (0, 3600]. Batch size cannot exceed the entity scan limit.
+Request metadata is limited to one MiB; each selected source and their combined
+saved bytes obey `max_source_bytes` before dependency reading/parsing. Retained
+observation bytes have the same bound. No geography, repetition, thresholds or
+budgets are inferred.
+
+`source.kind=saved_dataset` supplies `dataset_ref` and `embedding_index_ref`;
+`source.kind=database` supplies neither. Optional `manifest_pointer` selects a
+native manifest within the pinned snapshot; otherwise the snapshot is that
+manifest. `output_sha256`, nonnegative `entity_count` and the established
+`inputs` entity-builder/text versions are required. Saved dataset bytes must
+match the pinned artifact hash and declared row count. JSON uses
+`rtpeval_corpus_entities_1` with an `entities` array; Parquet uses native
+`RetrievalEntity` columns. The exact `rtpeval_corpus_embedding_index_1` declares
+`artifact_sha256`, production `space_id`, exact production `configuration` and
+saved `text_hashes`. Presence is evaluated per entity text, including multiple
+entities sharing one embedding or resolved venue. No vectors are generated.
+
+Preparation writes `rtpeval_corpus_preparation_1` in `receipt.json` with
+`processing_status=prepared`, `request_ref`, source bindings and zero database
+connections. It produces no measurement. `corpus measure PREPARATION` validates
+those saved request/source hashes again. Saved-data measurement remains offline;
+database measurement additionally requires `--database --dsn-env NAME`. The
+connection string is read only at that explicit operation and is never serialized.
+
+Database defaults and the transaction are read-only. Build manifest/count,
+embedding configuration, all-entity artifact/policy drift checks and bounded
+server-cursor reads share a repeatable-read transaction and captured snapshot ID.
+Connection and statement waits are bounded; each query uses the remaining overall
+deadline, including the final scan-completion check. Rows use production eligibility
+and compatible embedding membership, then the exact radius or bounding-box
+inclusion rule. The configured row budget
+covers all scanned entities, not only eligible entities in scope. No retrieval
+top-k or venue-ID deduplication substitutes for a complete scan.
+
+`rtpeval_corpus_measurement_1` preserves exact request binding, method,
+start/finish times, verified source identity, entity observations and explicit
+termination reason. Completed scans match the pinned entity count and have no
+duplicate IDs. Scan/observation-byte caps, timeouts, truncated scans and retrieval
+failures preserve a nullable exact count and any supported observed subtotal;
+connection/identity failure cannot assert an observed exact zero. Invalid or
+drifted source identity is a material correction, not accepted complete coverage.
+
+Measurement writes the existing coverage sidecar plus an evidence artifact,
+`rtpeval_corpus_result_1` receipt and derived relevance/declaration material.
+`count_status` is distinct from operation `processing_status=completed`.
+Existing coverage for other cases and externally supplied semantic material are
+retained; the derived declaration carries only relevance and opportunities.
+New artifact names avoid copied originals. Every output uses a fresh directory.
+
+Produced sidecars include `producer_completion_ref` to
+`rtpeval_corpus_completion_1`: `processing_status=completed`,
+`measurement_ref` and canonical `coverage_sha256` of the sidecar excluding that
+completion ref. Pending material is checked by the existing reader before
+publication. Exact originals and derived files are copied and verified, the root
+receipt is saved, and the final completion artifact is written last before final
+reader validation. Its absence, corruption or disagreement invalidates the
+produced sidecar even if a root receipt already exists. Legacy manually supplied
+sidecars without this optional ref retain their current validation rules.
+
+`corpus export MEASUREMENT --directory FRESH` is offline. It verifies exact
+request/evidence/sidecar/completion references, replays saved observations against
+retained dataset material or checked saved database identity, and validates the
+exported relevance declaration. It neither reconnects nor changes saved times.
+Original bytes, fixed thresholds and declaration timing stay unchanged; absent
+dispatch evidence remains unverified. Root receipts expose sidecar, evidence,
+completion and declaration references plus all copied source hashes. A failed
+publication can retain incomplete files for diagnosis; reuse requires a new
+destination. Engineering completion does not qualify a quality batch or produce
+interest/sample judgments or a formal benchmark result.
 
 ## Activity, transport and occupancy scope
 

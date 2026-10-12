@@ -4,17 +4,24 @@ import argparse
 import asyncio
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import TypedDict
 from uuid import uuid4
 
 from dotenv import load_dotenv
 
 from backend.app.observability.mechanism_capture import capture_attempt as capture_mechanism
 from backend.app.observability.raw_capture import capture_raw
-from backend.app.observability.run_trace import FileRunTracer, RunTraceContext, TracePayloadMode
+from backend.app.observability.run_trace import (
+    FileRunTracer,
+    RunTraceContext,
+    RunTracer,
+    TracePayloadMode,
+)
 from backend.app.observability.usage import usage_stage
 from backend.app.observability.usage_capture import capture_attempt
 from backend.app.policies.trip_dates import SystemDateProvider, create_trip_date_window
@@ -34,6 +41,12 @@ from .reference_prices import build_reference_prices, reference_basis
 ROOT = Path(__file__).resolve().parents[3]
 
 
+class _RunOptions(TypedDict, total=False):
+    tracer: RunTracer
+    opportunity_capture_path: Path
+    opportunity_capture_run_id: str
+
+
 def _save(directory, name, value):
     (directory / name).write_bytes(
         (json.dumps(value, indent=2, ensure_ascii=True) + "\n").encode("utf-8")
@@ -44,7 +57,37 @@ def _sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
+def _opportunity_ref(path, output, *, existed, version, run_id):
+    """Retain export missingness without changing the Planner's outcome."""
+    try:
+        relative = Path(os.path.relpath(path, output)).as_posix()
+    except ValueError:
+        relative = str(path)
+    ref = {
+        "path": relative,
+        "sha256": None,
+        "media_type": "application/json",
+        "schema_version": "rtpeval_candidate_capture_1",
+        "availability": "unavailable",
+    }
+    if existed:
+        return {**ref, "reason": "capture_path_exists"}
+    try:
+        raw = path.read_bytes()
+        capture = json.loads(raw)
+        if (
+            capture.get("schema_version") != ref["schema_version"]
+            or capture.get("version") != version
+            or capture.get("run_id") != run_id
+        ):
+            return {**ref, "reason": "capture_binding_mismatch"}
+        return {**ref, "sha256": hashlib.sha256(raw).hexdigest(), "availability": "available"}
+    except Exception:
+        return {**ref, "reason": "capture_export_unavailable"}
+
+
+def main(argv=None, *, runtime=None, date_provider=None, result_observer=None, clock=None):
+    clock = clock or (lambda: datetime.now(UTC))
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", required=True, choices=["v0", "v1", "v2", "v3"])
     parser.add_argument("--input-json", required=True, type=Path)
@@ -54,6 +97,11 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
     parser.add_argument("--output-directory", required=True, type=Path)
     parser.add_argument("--group-id", required=True)
     parser.add_argument("--run-id", required=True)
+    parser.add_argument(
+        "--opportunity-capture",
+        type=Path,
+        help="Exclusively save passive V1/V2 candidate stages to a local JSON sidecar",
+    )
     parser.add_argument(
         "--capture-evidence",
         action="store_true",
@@ -65,11 +113,41 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         help="Invoke the real selected planner; requires separately authorized live execution",
     )
     args = parser.parse_args(argv)
+    if args.opportunity_capture is not None and args.version not in ("v1", "v2"):
+        parser.error("--opportunity-capture only supports V1/V2")
     reference_date = (date_provider or SystemDateProvider()).today()
     request = validate_planning_request(read_planning_request(args.input_json), reference_date)
     config = load_runtime_config_file(args.runtime_config)
     snapshot, policy_hash = runtime_config_snapshot(config)
     output = args.output_directory.resolve()
+    if args.opportunity_capture is not None:
+        path = args.opportunity_capture.resolve()
+        reserved = {
+            "input.json",
+            "runtime.yaml",
+            "runtime-policy.json",
+            "price-basis.json",
+            "manifest.json",
+            "usage.json",
+            "result.json",
+            "failure.json",
+            "prices.json",
+            "usage-summary.json",
+            "cost-report.json",
+            "evidence-index.json",
+            "mechanism.json",
+            "provenance.json",
+            "operator-selection.json",
+            "producer-completion.json",
+            "generation-registration.json",
+            "planner-dispatch.json",
+        }
+        if (
+            path in (args.input_json.resolve(), args.runtime_config.resolve())
+            or path in {output / name for name in reserved}
+            or path.is_relative_to(output / "evidence")
+        ):
+            parser.error("Opportunity capture path collides with generation material")
     output.mkdir(parents=True, exist_ok=False)
     (output / "input.json").write_bytes(args.input_json.read_bytes())
     (output / "runtime.yaml").write_bytes(args.runtime_config.read_bytes())
@@ -91,7 +169,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         "runtime_config_sha256": _sha(output / "runtime.yaml"),
         "runtime_policy_sha256": policy_hash,
         "reference_date": str(reference_date),
-        "prepared_at": datetime.now(UTC).isoformat(),
+        "prepared_at": clock().isoformat(),
         "execution_requested": args.execute,
         "evidence_requested": args.capture_evidence,
         "status": "prepared",
@@ -101,8 +179,29 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
             "no independent evaluator requests or hard spend guard."
         ),
     }
+    if args.opportunity_capture is not None:
+        manifest["opportunity_capture_requested"] = True
     _save(output, "manifest.json", manifest)
+    dispatch = {
+        "schema_version": "rtpeval_planner_dispatch_1",
+        "source_kind": "installed_generate",
+        "declared_by": "rtpeval.generate/selected_workflow_1",
+        "recorded_at": manifest["prepared_at"],
+        "source_revision": revision,
+        "group_id": args.group_id,
+        "run_id": args.run_id,
+        "version": args.version,
+        "input_sha256": manifest["input_sha256"],
+        "configuration_sha256": _sha(output / "runtime-policy.json"),
+        "runtime_policy_sha256": policy_hash,
+        "runtime_config_sha256": manifest["runtime_config_sha256"],
+        "dispatched": False,
+        "dispatched_at": None,
+        "planner_dispatches": 0,
+        "execution_metadata": {},
+    }
     if not args.execute:
+        _save(output, "planner-dispatch.json", dispatch)
         print(
             json.dumps({"status": "prepared", "output_directory": str(output), "provider_sends": 0})
         )
@@ -111,20 +210,48 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         load_dotenv(args.rag_env_file, override=False)
     load_dotenv(args.env_file, override=False)
     selected = runtime or RequestPlannerRuntime(config=config)
+    opportunity_path = args.opportunity_capture
+    try:
+        opportunity_existed = opportunity_path.exists() if opportunity_path is not None else False
+    except OSError:
+        opportunity_existed = False
     captured = []
+    usage_saved = False
     failure = None
+    cancelled = False
     tracer = None
 
     def sink(usage):
+        nonlocal usage_saved
         captured.append(usage)
         _save(output, "usage.json", usage)
+        usage_saved = True
 
     async def invoke():
         with usage_stage("planner"):
-            trace_options = {"tracer": tracer} if tracer is not None else {}
-            value = await selected.run(
-                args.version, request, reference_date=reference_date, **trace_options
+            trace_options: _RunOptions = {"tracer": tracer} if tracer is not None else {}
+            if opportunity_path is not None:
+                trace_options.update(
+                    opportunity_capture_path=opportunity_path,
+                    opportunity_capture_run_id=args.run_id,
+                )
+            dispatch.update(
+                dispatched=True,
+                dispatched_at=clock().isoformat(),
+                planner_dispatches=1,
+                execution_metadata={"dispatch_mode": "awaited_single_invocation"},
             )
+            try:
+                value = await selected.run(
+                    args.version, request, reference_date=reference_date, **trace_options
+                )
+            finally:
+                try:
+                    dispatch["recorded_at"] = clock().isoformat()
+                    _save(output, "planner-dispatch.json", dispatch)
+                except Exception as exc:
+                    manifest["dispatch_metadata_capture_status"] = "unavailable"
+                    manifest["dispatch_metadata_error_type"] = type(exc).__name__
         if str(value.system_version) != args.version:
             raise ValueError("Selected planner returned a different version")
         for field in ("destination", "start_date", "end_date", "traveler_count", "budget"):
@@ -188,10 +315,24 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
         )
         (output / "result.json").write_bytes(serialize_planning_result(value).encode("utf-8"))
     except (Exception, asyncio.CancelledError, KeyboardInterrupt) as exc:
+        cancelled = isinstance(exc, asyncio.CancelledError)
         failure = type(exc).__name__
-        _save(output, "failure.json", {"error_type": failure})
-    if not captured or not (output / "usage.json").is_file():
-        manifest.update(status="capture_failed", failure_type=failure)
+        failure_record: dict[str, object] = {"error_type": failure}
+        if cancelled and captured and not usage_saved:
+            failure_record["observed_usage"] = captured[-1]
+        _save(output, "failure.json", failure_record)
+    if opportunity_path is not None:
+        manifest["opportunity_capture_ref"] = _opportunity_ref(
+            opportunity_path,
+            output,
+            existed=opportunity_existed,
+            version=args.version,
+            run_id=args.run_id,
+        )
+    if not usage_saved:
+        manifest.update(status="cancelled" if cancelled else "capture_failed", failure_type=failure)
+        if cancelled:
+            manifest["capture_status"] = "capture_failed"
         if args.capture_evidence:
             _save(
                 output,
@@ -212,7 +353,7 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None):
     _save(output, "usage-summary.json", summarize(source["usage"]))
     _save(output, "cost-report.json", build_cost_report([source], prices))
     manifest.update(
-        status="failed" if failure else "completed",
+        status="cancelled" if cancelled else "failed" if failure else "completed",
         failure_type=failure,
         usage_sha256=_sha(output / "usage.json"),
     )

@@ -819,9 +819,43 @@ not serialized. This interface adds no spend reservation guard.
 Completed execution saves exact serialized result bytes, `rtpeval_usage_1`,
 `rtpeval_provenance_1`, usage summary, `rtpeval_prices_1` and cost report. Result version
 and original structured trip facts must match before a result hash can be adopted.
-Failed/cancelled execution keeps observed usage and a cost report, with error type only
-and no adopted result. Output reuse is rejected. Injected clients retain unverified
+Failed/cancelled execution keeps saved usage and its cost report, with exception type
+rather than exception text and no adopted result. A propagated `asyncio.CancelledError`
+sets usage outcome, capture manifest status and native producer workflow status to
+`cancelled`; the CLI still exits 1 and the attempt remains unqualified. Cancellation
+in runtime cleanup before return/adoption has the same status. Ordinary exceptions,
+`KeyboardInterrupt` and `TimeoutError` remain `failed` with their original error types.
+Timeout/deadline failure and nested exception causes do not imply cancellation.
+
+If usage output fails during known cancellation, manifest `status=cancelled` retains
+the workflow outcome and `capture_status=capture_failed` records the capture defect.
+When the usage observer already emitted a ledger, `failure.json.observed_usage` retains
+that normalized observation. It is failure evidence, not a canonical `usage_ref` or an
+automatic replacement cost report; missing usage remains missing rather than zero.
+Canonical usage requires a completed write. A partially written `usage.json` remains
+raw failure evidence; registration omits its `usage_ref`, and the evidence index
+marks usage unavailable even when the residual file exists.
+Other usage-capture failures retain the existing `capture_failed` status.
+Native completion and the source-bound census preserve the cancellation category,
+first-dispatched selection and available resource receipts. Historical artifacts are
+unchanged; recalculation requires a separate source-bound report revision.
+
+Output reuse is rejected. Injected clients retain unverified
 coverage; the checked default adapters are explicitly declared in the envelope.
+
+Future selected generation writes `planner-dispatch.json` using the
+[dispatch observation wire](0001-evaluation-artifacts.md#installed-census-export-and-dispatch-observations).
+Offline preparation records zero invocations and no dispatch time. Execution observes
+the clock immediately before awaiting the selected Planner, then records completion
+of that observation after return or failure. Metadata binds group/run/version,
+original input bytes, exact `runtime-policy.json` bytes, configuration/policy hashes
+and available source revision. `dispatch_mode=awaited_single_invocation` is the only
+automatically recorded execution condition; cache state, global concurrency and
+cross-run invocation order are not inferred. Metadata capture failure is separately
+marked unavailable in the manifest without replacing a Planner exception. Local
+registration preflight rejection reports zero invocations without creating capture
+material. Generation does not create a population, choose a case/repetition or export
+a census; the operator supplies those bindings to the offline exporter.
 
 `reference_prices` binds dated official unit rates to saved event identity and observed
 billing context. GPT-6 Luna and `text-embedding-3-small` use exact known model identities;
@@ -892,8 +926,9 @@ policy, source revision and run identity to saved file digests, HTTP events, dia
 collection status. The index excludes itself, provenance and mutable manifest to avoid
 hash cycles; provenance binds the index and mechanism file hashes. Invocation failures and
 cancellation retain observed evidence without an adopted result. Optional evidence failures
-do not replace planner outcomes; a missing usage file exits as capture failure while retaining
-an available original result and index. Injected coverage stays unverified.
+do not replace planner outcomes; a missing usage file retains an available original result
+and index while exiting unsuccessfully. The [usage capture policy](#selected-version-usage-preparation-and-capture)
+separates known cancellation from the capture defect. Injected coverage stays unverified.
 Trace payloads may be objects, lists or other valid JSON values. Malformed/unreadable
 JSON and unreadable files remain unavailable inventory units rather than interrupting
 successful planner completion; readable malformed files retain their exact hashes.
@@ -902,6 +937,39 @@ Available local evidence is distinct from producer completion, independent sourc
 qualified four-version intake, quality PASS and actual billing. Storage limits are capture
 capacity, not a spending guard. Live dispatch still requires the prepared, explicitly
 approved [smoke handoff](../agents/smoke-tests.md), and performs no independent evaluation.
+
+### Selected-generation opportunity capture
+
+Installed `rtpeval generate` and its native usage CLI accept default-off
+`--opportunity-capture PATH` for V1/V2. Preparation records only
+`opportunity_capture_requested=true`; candidate observations require execution.
+V0/V3 reject the option before preparation. The destination must not collide with
+input/configuration sources, generation-owned files or the evidence directory.
+
+The dispatcher forwards `opportunity_capture_path` and explicit
+`opportunity_capture_run_id` to the existing passive exporter. Capture `run_id`
+equals the selected usage/registration run ID; the local trace retains its separate
+UUID. Independent runner callers may omit the override and retain trace-based identity.
+The existing `rtpeval_candidate_capture_1` schema and stage statuses remain unchanged.
+
+After execution, the capture manifest records `opportunity_capture_ref` with a
+path relative to the output on the same volume, exact-byte SHA-256, schema, media
+type and availability. Existing
+destinations, absent/unreadable exports and run/version mismatches remain unavailable
+with a reason; sidecar failure does not change the Planner outcome. Partial or failed
+captures can be available files without complete stages or a final result.
+The same manifest retains original input/configuration hashes and an available final
+result hash. Registration follows this reference and preserves sidecar bytes/layout
+within the selection's reference root, including captures outside the output directory
+but inside that root. Cross-volume exports retain an absolute path and must be kept
+separately; they cannot provide a relative registration dependency.
+
+Registration does not create an attempt census or declare research completeness.
+The caller separately binds the selected attempt, original input, exact configuration,
+available result (or explicit null) and capture reference in the
+[opportunity declaration](0001-evaluation-artifacts.md#canonical-candidate-opportunity-observations).
+Research readers retain source-hash, run/version and final semantic-hash checks.
+Capture adds no provider requests, prompt changes, selection or quality judgments.
 
 ## Producer material handoff
 
@@ -937,8 +1005,21 @@ Planner or independently select/requalify the cohort.
 
 Selected generation may declare pending slots with only `run_id` and `capture_directory`.
 The chosen version/group/run/output must exactly match one slot; explicit registration
-requires execution and a fresh destination. Observed required workflows use fixed
-`selected_workflow_1`, binding exact native provenance/manifest, completion and original
+requires execution and a fresh destination. Before credential loading, runtime
+construction or dispatch, registration validates the selection envelope and unique
+group/run identities, version names, original input references/hashes, the exact
+selected slot, capture-directory agreement and refusal to replace selected material.
+An existing registration destination, including a dangling directory link, or one
+containing the Planner output is rejected at the same boundary. Invalid initial
+setup returns exit 2 with structured registration
+diagnostics and `planner.status=not_invoked`; it creates no generation artifacts.
+These checks repeat after execution against the captured input and original selection
+bytes. Sources and destinations can change during execution; a later registration
+failure preserves actual Planner result/usage and separate statuses without retry.
+Preparation and generation without registration retain the native path.
+
+Observed required workflows use fixed `selected_workflow_1`, binding exact native
+provenance/manifest, completion and original
 operator selection snapshots. An unrelated operator policy remains unchanged and blocks
 with `completion_policy_mismatch`. Normally completed bounded partial entity resolution
 can qualify; unavailable/deadline-limited retrieval cannot. Other declared slots remain

@@ -45,12 +45,31 @@ TASKS = {
             "optional bills; --output JSON."
         ),
     ),
-    "pair": _group(
-        "backend.evaluation.v3_pair_cli",
-        "Offline specialized V3 draft/final paired diagnostics; JSON to stdout.",
-        {
-            "prepare": "Offline source-linked edit provenance preparation.",
-            "report": "Offline report from frozen draft/final evidence; preserves missing values.",
+    "pair": Task(
+        "V3 paired diagnostics and explicit acquisition; prepare/replay/export are offline.",
+        children={
+            "prepare": _leaf(
+                "backend.evaluation.v3_pair_cli",
+                "Offline source-linked edit provenance preparation.",
+                "prepare",
+            ),
+            "report": _leaf(
+                "backend.evaluation.v3_pair_cli",
+                "Offline report from frozen draft/final evidence; preserves missing values.",
+                "report",
+            ),
+            "acquire": Task(
+                "Source-bound paired acquisition; execution requires explicit limits.",
+                children={
+                    name: _leaf("backend.cli.pair_acquire", detail, name, http_client=True)
+                    for name, detail in {
+                        "prepare": "Offline validate stages, reviews, prices and destination.",
+                        "execute": "Explicit acquisition; preserve failures and stopped attempts.",
+                        "replay": "Offline source, implementation, snapshot and receipt checks.",
+                        "export": "Offline evidence handoff for research and suite pairs.",
+                    }.items()
+                },
+            ),
         },
     ),
     "controlled": _group(

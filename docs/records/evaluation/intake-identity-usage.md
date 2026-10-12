@@ -801,6 +801,343 @@ Operational ownership is now split
 between concise root commands, detailed `backend/evaluation/README.md` parameters and
 current intake lineage rules; the CLI does not dispatch external authors/reviewers.
 
+The 2026-10-12 #131 correction connects passive V1/V2 opportunity capture to this
+installed handoff. The offline installed reproduction first rejected the option
+with exit 2. Forwarding only a path would still leave the capture's trace UUID
+different from the selected census run ID. The correction reuses the existing
+exporter with an explicit selected-run override and a source-hashed manifest
+reference, retaining best-effort missingness and existing registration statuses.
+Default-off generation and V0/V3 behavior remain unchanged. Current rules belong
+to the [capture contract](../../contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture).
+
+The fixed review base is `8d9f40247949b87676d402c075aaa95db68dfdf1`;
+implementation/test commit `7ca00c3`, all-provider parity follow-up `75d5a9e`
+and test-guard correction `5f7da4b` remain separate. The relevant offline gate
+passed 107 tests, followed by four strengthened parity scenarios. A backend-wide
+run started at `75d5a9e` exposed two existing suite source-preservation failures:
+the new fixture rewrote its startup guard per invocation, changing cached `.pyc`
+metadata. Passing synthetic bootstrap through the subprocess environment keeps
+the guard stable. The corrected focused gate passed all 24 tests, including both
+failures, capture behavior and installed offline preparation. The earlier full
+run was stopped after its last reported 79% progress because it retained the old
+fixture in memory; it is not a completed or passing full-suite result. The
+focused result is saved locally in `.scratch/issue131-guard-correction.xml` and
+the interrupted run log in `.scratch/issue131-full.log`.
+
+Independent Standards and Spec reviews and correction checks found zero findings.
+A separate synthetic probe confirmed exact-byte registration of a sidecar outside
+output but inside the selection's reference root. The three changed modules retain
+the same 12 Pyright diagnostics as a complete fixed-base backend snapshot; none
+were added or removed. Validation used synthetic Planner dependencies, contacted
+no live providers and produced no external RequirementSpec review or formal
+benchmark evidence.
+Registration preflight (#132), cancellation classification (#133), census export
+and other preparation enhancements remain separate work.
+
+The 2026-10-12 #132 correction moves locally decidable registration checks ahead
+of credential loading and Planner construction/dispatch. Its initial public-CLI
+test failed at credential loading for a wrong selected run. The shared preflight
+now checks selection structure, unique identities, source hashes, capture agreement,
+replacement restrictions and registration-destination freshness; rejection reports
+`planner.status=not_invoked` without creating a capture. Repeating the checks after
+dispatch preserves actual generated material when selection/input bytes drift or
+a destination conflict appears during execution. Native preparation and generation
+without registration retain their existing behavior.
+
+The fixed review base is `7d583c14f87ba4f7bc89d169232854da89df6091` and local
+implementation/test commit is `71bd77f`. The first corrected case passed, followed
+by 56 generation CLI tests. The completed related gate passed 156 tests in 134.33s,
+covering generation, opportunity sidecars, native usage and collection. Invalid
+setups were checked with injected and unconstructed runtimes, zero credential and
+provider operations, and unchanged source files; installed rejection checks span
+V0-V3. Changed-file lint/format checks passed. Pyright analyzed both the fixed-base
+and current generation module with the same environment/imports: each retains the
+same 10 existing V3 completion diagnostics, with none added or removed. Local
+evidence identifiers are `.scratch/issue132-gate-01.xml` and
+`.scratch/issue132-types-comparison.json`. The gate covered the then-uncommitted
+implementation; the unrelated pre-existing `.gitignore` change was excluded from
+the commit. Validation was offline and targeted; no full-suite result is claimed.
+
+The initial Standards review had zero findings; Spec identified one destination
+link defect. Resolving the supplied path before checking freshness hid an existing
+link whose target was absent, both initially and during dispatch. Two Windows
+directory-junction cases reproduced the defect. Correction `1cd2600` checks the
+original destination with `lexists` before resolution at both boundaries. All 56
+affected preflight, post-dispatch and valid-registration tests passed in 4.39s;
+the 10 baseline type diagnostics remained unchanged. Correction evidence is
+`.scratch/issue132-correction-01.xml`; the earlier 156-test gate precedes this
+correction and was not repeated.
+Final Standards and Spec correction reviews found zero remaining findings.
+
+The 2026-10-12 #133 correction preserves cancellation through selected generation
+and native research lineage. The public registration reproduction initially retained
+`usage.outcome=cancelled` but failed the expected manifest/native completion status.
+Commit `a84fe4d`, against fixed base `8f633238b1fdfcf55af3f622c2897d37374379f5`,
+classifies a propagated `CancelledError` as `cancelled` while retaining exit 1,
+unqualified intake and no adopted result. Interrupts and timeout exceptions keep
+their existing failed classification and original error type. The separate usage-sink
+reproduction initially lost cancellation to `capture_failed`; the correction retains
+known cancellation, records the capture defect separately and preserves an already
+observed ledger in failure evidence without declaring a canonical usage receipt.
+
+The installed synthetic generation test references the exact native producer
+completion and usage in a caller-prepared census. Population validation/reporting
+counts one cancelled attempt and zero failed attempts; tradeoff reporting retains
+its first-dispatched selection and 1,000 observed tokens. An initially omitted schema
+reference in the test handoff was corrected; the two handoff/sink checks then passed.
+The completed related gate passed 150 tests in 97.05s, covering V0-V3 cancellation
+before adoption and during cleanup, usage/evidence, ordinary exceptions, registration,
+opportunity sidecars and existing first-dispatch/retry consumption behavior. Lint,
+format and document links passed. Pyright compared the changed CLI against a complete
+fixed-base backend snapshot and retained the same one existing result-serialization
+diagnostic. Local evidence identifiers are `.scratch/issue133-gate-01.xml` and
+`.scratch/issue133-types-base.json` / `.scratch/issue133-types-current.json`.
+The gate covered the then-uncommitted implementation; the pre-existing unrelated
+`.gitignore` change was preserved and excluded. Validation was offline and targeted,
+with no full-suite result or formal benchmark claim; original generation and research
+artifacts remain unchanged.
+
+Initial Standards review had zero findings; Spec found one partial-write defect.
+The usage sink could create a truncated regular file before failing; checking file
+existence then lost the observed ledger and raised a JSON error before native
+completion or registration. The public generation/registration reproduction failed
+at that JSON read. Correction `8f44567` records successful usage writes and
+excludes failed receipts from registration and evidence availability while preserving
+their residual bytes and observed ledger. Both sink cases passed, followed by 115
+affected cancellation, registration and native-capture tests in 53.77s. Ruff and
+166 document links passed; the same single CLI type diagnostic remained. Correction
+evidence is `.scratch/issue133-correction-01.xml` and
+`.scratch/issue133-types-correction.json`; the earlier 150-test gate precedes this
+correction and was not repeated.
+
+Final independent Standards and Spec rechecks of both implementation commits and
+the three documentation owners found zero remaining findings.
+
+The 2026-10-12 #134 implementation adds explicit offline census export and future
+Planner dispatch observations. Commit `3827bd5`, against fixed base
+`921fdefc37180c5df369595748333b91c2f0327f`, keeps caller-owned population/profile,
+slot ordering and historical evidence separate from generation. The initial public
+export test failed because the installed command was absent; injected-clock tests
+then reproduced the missing dispatch seam. Export retains original bytes, all
+supplied attempts, first-dispatched primary and separate retry selection. Historical
+observations require traceable evidence; missing rows remain unknown. Native metadata
+records actual invocation time and only observed dispatch mode, without inferring
+cache state or global concurrency. Offline preparation and registration rejection
+retain zero invocations. Two synthetic populations use distinct geography, case
+revisions, version subsets and repetition layouts; native success, cancellation and
+preparation handoffs bind actual saved producer artifacts.
+
+The related gate passed 332 tests, with one Windows symlink-privilege skip, in
+254.44s. It covered export/dispatch, generation registration and opportunity capture,
+native usage, population, tradeoffs and common research readers. A prior focused run
+and a subsequent 34-test entry check each encountered Windows `PermissionError` at
+directory rename outside sandbox restrictions; a standalone probe passed, but the
+recurrence justified removing that publication dependency. A guarded filesystem
+reproduction failed before the correction. Publication now validates pending material,
+creates a fresh destination, verifies copied bytes and the published reader, then
+writes completion receipt last. IO failure cannot provide a valid completed receipt.
+The corrected entry check passed 36 tests in 32.99s.
+
+A native handoff check also reproduced missing nested selection originals in the
+bundle. Explicit completion/provenance dependencies are now hash-checked and copied
+without run discovery. All 34 export/dispatch checks passed in 30.20s; the added
+completed native handoff and two existing cancellation/preparation handoffs then
+passed together in 14.43s. These focused checks cover final publication/dependency
+changes; the earlier 332-test gate was not repeated. Ruff lint/format passed. The
+seven-module Pyright comparison against a complete fixed-base backend snapshot has
+19 diagnostics versus 21 at baseline, with no additions; initial type-narrowing and
+clock-dispatch diagnostics were corrected. No complete type or backend-suite pass
+is claimed. Local evidence identifiers are `.scratch/issue134-gate-01.xml`,
+`issue134-final-entry-01.xml`, `issue134-dependencies-green-01.xml`,
+`issue134-native-complete-01.xml` and `issue134-types-base.json` /
+`issue134-types-final.json` in `.scratch/`.
+
+Independent Spec review found that nested references through two directory aliases
+could produce a completed export with missing relative sidecars. The installed CLI
+reproduction failed on the absent copied sidecar; correction `44a8224` preserves
+each logical alias layout while retaining resolved root/hash checks. Its focused
+retest passed, and all 33 census-export tests passed in 34.89s. Original implementation
+history remains intact. Local evidence identifiers are `issue134-alias-red-01.xml`,
+`issue134-alias-green-01.xml` and `issue134-review-fix-01.xml` in `.scratch/`.
+
+Validation preceded the implementation commit on the then-uncommitted tree; original
+source artifacts and the unrelated `.gitignore` edit were preserved. This is offline
+producer/export engineering, with no formal benchmark or research outcome claim.
+Final independent Standards and Spec rechecks of both commits and the four
+documentation owners found zero remaining findings.
+
+The 2026-10-12 #135 implementation `b18c509` adds pinned corpus preparation,
+measurement and saved export against fixed base
+`81c17f3fa0b0a1f1bf01c3dd86f5bd2de3e3b27d`. Initial installed-command tests
+reproduced missing preparation, measurement, database and export operations.
+Subsequent public-CLI checks exposed deadline checks occurring only after database
+identity acquisition, unbounded retained observations, missing RAG snapshot
+preflight and a single-case assumption in a larger population. Corrections extend
+the deadline across connection/query/scan, bound saved observations, check the
+requested case's selected RAG origins and preserve other cases. Two distinct input
+layouts and snapshot identities cover radius, ordinary bounding boxes, the
+antimeridian, production exclusions, embedding membership and complete zero.
+Distinct entities sharing one venue remain distinct observations.
+
+An interruption probe initially returned a material-correction status while the
+copied complete sidecar still passed the relevance reader. Produced sidecars now
+require an exact source-bound completion artifact written after the root receipt;
+missing/corrupt completion rejects both relevance intake and saved export. A second
+probe verified this rejection even with a complete root receipt. Incremental
+measurement/export preserves both case sidecars and prior bytes under new producer
+filenames. Saved dataset and injected database fixtures retain nullable exact
+counts and explicit subtotals/reasons for caps, timeouts, truncation and failures.
+Database tests check read-only repeatable-read settings, source drift and exclusion
+of fixture connection secrets; no real database connection was made.
+
+Independent Spec review found source-budget enforcement occurring after common
+reader dependency reads and missing a deadline check at scan completion. Additional
+CLI probes confirmed both single-source/combined-byte gaps and complete counts
+after empty/last-row scans exceeded their deadline. They also exposed a supplied
+relevance profile being dropped when the request did not repeat its reference.
+Correction `1374a08` injects the bounded source reader before dependency loading,
+checks export evidence under the same budget, checks the scan's final deadline and
+retains existing profile thresholds and timing. The correction tests first
+reproduced six failures and one already rejected late prospective profile; all
+22 targeted correction/adjacent tests then passed in 71.08s. Five existing common
+reader compatibility tests passed in 3.98s.
+
+The preceding related gate passed **77 tests, no skips, in 128.01s** on the
+implementation tree: 53 new corpus CLI tests, 22 existing coverage/relevance tests
+and two root-help tests. It was not repeated after the correction; the targeted
+tests above cover that change. The broader backend suite was not run. All eight
+changed Python files passed Ruff lint/format. Seven production files have eight
+Pyright diagnostics, matching the same eight existing diagnostics in the three
+common production files from the complete fixed-base backend snapshot; the four
+new producer files have none. Initial type-narrowing diagnostics were corrected
+without suppressing existing reader issues. Local evidence
+identifiers are `.scratch/issue135-related-final-01.xml`,
+`issue135-deadline-red-01.xml` / `issue135-deadline-green-01.xml`,
+`issue135-bytes-red-01.xml` / `issue135-bytes-green-01.xml`,
+`issue135-interruption-red-01.xml` / `issue135-interruption-green-01.xml`,
+`issue135-completion-01.xml` and `issue135-types-base.json` /
+`issue135-types-final.json`, `issue135-review-red-02.xml` /
+`issue135-review-green-01.xml`, `issue135-context-compat-01.xml` and
+`issue135-types-review-base.json` / `issue135-types-review-final.json` in `.scratch/`.
+Original sources and the unrelated `.gitignore` edit were preserved. These checks
+establish offline producer engineering behavior, without provider/model calls,
+vector generation, corpus mutation or a formal benchmark outcome.
+Final independent Standards and Spec rechecks of both #135 commits and the four
+documentation owners found zero remaining findings.
+
+The 2026-10-12 #136 implementation `f50e14d`, against fixed base
+`4a8c3f4ad0b21a6092c439f467fc12d146b88bd2`, connects installed paired
+prepare/execute/replay/export to native identity, acquisition, route preparation,
+lineage and diagnostics. Cold preparation keeps exact identity queries and native
+occurrences/legs, deferring identity-dependent venue/route requests with an explicit
+upper bound. Verified saved identity permits an exact evidence plan. Two synthetic
+inputs differ in city, dates and venue/route inventory. Changed-hour pairs retain
+negative signed deltas; newly introduced occurrences retain null totals when
+eligibility differs and unresolved correspondence attribution.
+
+Initial public-CLI tests reproduced missing acquisition/export commands. Subsequent
+boundary probes found unchecked copied contexts, provider errors reported as
+available evidence, synchronous report work outliving the total deadline, cleanup
+failure losing the receipt, cleanup exceeding that deadline, missing mode-specific
+price context and rehashed preparation options differing from original options.
+Corrections bind original and copied options/reviews, retain partial provider
+evidence, bound acquisition/reporting/cleanup, preserve receipts on cleanup failure,
+and derive price context from native reviewed modes. Send/spend limits, cancellation,
+interruption and timeout retain observed oracle usage without retry/resume.
+Exact cached phases send nothing; missing original stages retain unavailable
+diagnostics/null deltas without a snapshot. Rehashed response/journal corruption
+and stale source/code/material are rejected. Exported relative descriptors pass
+the existing native pair, research Repair and opt-in suite readers.
+
+Independent Standards review identified a billing-context duplication heuristic
+and a destination check that resolved dangling links before checking existence.
+Spec review found stopped phases accepted a corrupted HTTP response after the
+outer receipt was recomputed, without comparing retained native partial raw bytes.
+Public-CLI regressions reproduced both destination cases and all three partial
+response variants (HTTP/raw mutation and deletion). Correction `b7446d5` rejects
+existing destinations before resolution, shares native request billing context,
+and checks stopped response correspondence and the partial raw inventory.
+An additional filesystem-boundary probe reproduced interruption immediately after
+HTTP persistence, before native snapshot consumption. Correction `f7f8c7d` preserves
+that observed response in partial raw storage, without claiming a completed
+snapshot. The initially suspected child-task cancellation window did not reproduce
+on the supported Python 3.12 runtime, whose positive-timeout `wait_for` directly
+awaits the transport coroutine.
+
+The related gate passed **115 tests, no skips, in 244.06s**, covering the then-current
+41 acquisition CLI cases and existing native pair, suite pair, research Repair and
+installed root/validation boundaries. Later additions/corrections used targeted
+checks rather than repeating that gate: **17 passed in 75.61s**, **4 in 18.75s**,
+**9 in 38.00s** and **17 in 60.09s**, each at its respective code checkpoint.
+The first review-correction gate passed 21 of 23 tests: one failed because an empty
+stopped phase had not created a raw directory, the other because implementation
+bytes changed during the test run. The former was corrected; with source files
+stable, all **8 affected stopped/corruption tests passed in 40.55s**.
+The final interruption correction passed **11 affected tests in 50.39s**, including
+the new persistence boundary, existing stopping modes, response corruption and cleanup.
+The final acquisition test module contains 54 cases; these counts are incremental
+engineering evidence, not one final full-regression run. All five changed Python
+files pass Ruff lint/format; all four production files have zero Pyright diagnostics,
+as does the existing dispatcher in the complete fixed-base backend snapshot.
+Evidence identifiers are `.scratch/issue136-related-final-01.xml`,
+`issue136-final-boundary-red-01.xml` / `issue136-final-boundary-green-01.xml`,
+`issue136-prices-red-01.xml` / `issue136-prices-green-01.xml`,
+`issue136-cleanup-red-01.xml` / `issue136-cleanup-green-01.xml`,
+`issue136-rehash-red-01.xml` / `issue136-rehash-green-01.xml`,
+`issue136-review-red-01.xml`, `issue136-review-partial-red-01.xml`,
+`issue136-review-green-01.xml` / `issue136-review-green-02.xml`,
+`issue136-review-interrupt-red-01.xml` / `issue136-review-interrupt-green-01.xml`
+and `issue136-types-base.json` / `issue136-types-review-interrupt.json`.
+Installed offline guards deny external network, credentials and runtime startup.
+Injected execution uses synthetic HTTP only; the Windows event-loop fixture permits
+its local socketpair initialization while continuing to deny external connects.
+No backend-wide regression, provider/model/database call, Planner/Repair run,
+formal benchmark or blind assessment is represented by these checks.
+Final independent Standards and Spec rechecks through `f7f8c7d`, including the five
+documentation owners, found zero remaining findings.
+
+The 2026-10-12 combined #131-#136 delivery review used fixed base `8d9f402`
+through the twenty implementation, correction and contract commits ending at
+`d46428e`. Independent Standards and Spec reviews found zero remaining findings.
+The offline backend-wide run at that head collected 4,097 tests: 4,076 passed,
+five failed and sixteen skipped in 1,769.66 seconds. It was not a clean full run.
+Three failures came from Windows legacy path limits under the long test root:
+the native V1/V2 graph registration destinations exceeded the limit, and an
+unchanged controlled-target suite fixture could not copy a nested raw snapshot.
+The source bytes existed; shortening only the temporary root made all three pass.
+Test correction `620f924` gives the two graph fixtures short, unique pytest
+directories while preserving real synthetic dispatch, registration and source
+assertions. Both also passed again under the original long-root layout.
+The other two failures were stale test integration rules. Correction `95e9e08`
+adds precise paired-module import allowances and validates the real nested corpus
+and paired-acquisition command leaves. Production files remained byte-identical
+to `d46428e`; no long-path platform guarantee was introduced.
+
+The final affected run passed all five formerly failing cases in 65.43 seconds
+with a short Windows-compatible temporary root. Five alternate-volume rendering
+tests skipped by the initial process passed separately in 3.16 seconds. These
+results reconcile coverage to 4,086 passing cases and eleven environmental
+exclusions: nine opt-in isolated PostgreSQL tests and two tests requiring Windows
+symlink privileges. This combines the full run and affected retests, rather than
+claiming a second clean backend-wide run at the corrected test head. Twenty-nine
+changed Python files passed Ruff lint; twenty-eight passed formatting. The only
+format exception is an unchanged `planner_runtime.py` block also present at the
+review base. No mypy or Pyright gate is configured. An exploratory comparison of
+all nineteen changed production files found 31 existing Pyright diagnostics
+against 33 at the base, with none introduced and two removed; it was not a clean
+type-check pass. The 269 tracked documentation links and anchors resolved.
+
+Delivery evidence identifiers are
+`.scratch/delivery131-136-20261012/backend.xml`, `capture-red.xml`,
+`capture-short.xml`, `capture-green.xml`, `suite-target.xml`,
+`suite-target-short.xml`, `guards-green.xml`, `final-affected.xml`,
+`cross-volume.xml` and `types-comparison.json` in that same directory. Original
+results remain unchanged. Synthetic native graphs and injected HTTP fixtures
+exercise the public boundaries; no live provider, model, database or Planner/Repair
+execution, formal benchmark or human assessment is represented. This engineering
+delivery does not accept case-01, supply independent semantic reviews or freeze
+V0-V3.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.

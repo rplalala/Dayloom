@@ -30,6 +30,7 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
         "## Contract and module navigation", 1
     )[0]
     commands = re.findall(r"^uv run rtpeval (.+)$", primary + material, flags=re.MULTILINE)
+    commands.extend(re.findall(r"^uv run rtpeval (pair acquire .+)$", guide, flags=re.MULTILINE))
     for required in (
         "generate ",
         "batch collect ",
@@ -43,6 +44,13 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
         "suite replay ",
         "research validate ",
         "research report ",
+        "research corpus prepare ",
+        "research corpus measure ",
+        "research corpus export ",
+        "pair acquire prepare ",
+        "pair acquire execute ",
+        "pair acquire replay ",
+        "pair acquire export ",
     ):
         assert any(command.startswith(required) for command in commands), required
     help_outputs = {}
@@ -50,15 +58,16 @@ def test_documented_primary_workflows_use_accepted_cli_arguments(installed_cli):
         words = command.split()
         # Read the leaf's help without executing placeholder sources. Generate's
         # registration options are documented by its wrapper before native help.
-        leaf = (
-            words[:2]
-            if words[0] in {"batch", "evaluate", "suite", "research"}
+        if words[:2] in (["research", "corpus"], ["pair", "acquire"]):
+            leaf = words[:3] if len(words) > 2 and not words[2].startswith("--") else words[:2]
+        elif (
+            words[0] in {"batch", "evaluate", "suite", "research"}
             and len(words) > 1
             and not words[1].startswith("--")
-            else words[:1]
-            if not words[0].startswith("--")
-            else []
-        )
+        ):
+            leaf = words[:2]
+        else:
+            leaf = words[:1] if not words[0].startswith("--") else []
         key = tuple(leaf)
         if key not in help_outputs:
             result = installed_cli(*leaf, "--help", tools_offline=True)

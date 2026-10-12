@@ -284,7 +284,9 @@ controlled Repair.
 `rtpeval generate` forwards the native [selected-version usage capture](#planner-usage-capture-cli)
 arguments. Without `--execute` it prepares offline; with `--execute` it invokes exactly
 one selected Planner. It retains the native runtime, date admission, usage/evidence options
-and failure artifacts. Registration is optional and requires both `--register-batch CONFIG`
+and failure artifacts. V1/V2 also accept explicit `--opportunity-capture PATH` through
+the [selected-generation capture contract](../../docs/contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture).
+Registration is optional and requires both `--register-batch CONFIG`
 and `--registration-directory FRESH`, together with `--execute`.
 
 The original complete request, configuration and selected captures must remain under the
@@ -336,6 +338,14 @@ plus `operator-selection.json`, `producer-completion.json` and
 and binds actual observations under `selected_workflow_1`. Keep all original files and
 selection snapshots available until finalization. `--capture-evidence` remains explicit;
 Planner evidence is not independent evaluator evidence.
+
+Before dispatch, registration checks the explicit selection, selected input hash,
+capture directory, replacement restrictions and fresh registration destination.
+Invalid initial setup exits 2 with `planner.status=not_invoked` and registration
+diagnostics, without creating a capture or loading credentials/constructing a runtime.
+Execution-time source drift and destination conflicts remain checked after dispatch.
+The [registration contract](../../docs/contracts/0002-intake-identity-usage.md#producer-material-handoff)
+owns these boundaries.
 
 The final stdout object and registration artifact separate `planner.status/exit_code`
 from `registration.status/directory/blocking_reasons`. Planner failure retains exit 1;
@@ -468,8 +478,8 @@ Prepare material in this order:
 2. Save a versioned selection profile with exact configuration references,
    first-dispatched primary selection, explicit retry/completion rules and its
    prospective, retrospective or unverified timing basis.
-3. Bind an optional attempt census to that population and profile. Preserve every
-   linked attempt, exact source hashes, dispatch timestamps, completion declarations,
+3. Export or supply an optional attempt census bound to that population and profile.
+   Preserve every linked attempt, exact source hashes, dispatch timestamps, completion declarations,
    available result/usage/provenance and execution metadata. Missing census rows
    remain unknown; explicit producer evidence establishes an unstarted slot.
 4. Declare applicable optional track material by exact references. Independent
@@ -486,6 +496,169 @@ uv run rtpeval research --help
 uv run rtpeval research validate material/research.json --track population
 uv run rtpeval research report material/research.json --track population --directory artifacts/fresh-population-report
 ```
+
+### Exporting an attempt census
+
+Use an explicit source inventory with `rtpeval_research_census_export_1`, exact
+population/profile refs and ordered `attempt_sources`. Each entry identifies a
+case revision, declared version/repetition, attempt/run/group, contiguous slot-local
+order, immediate predecessor, reason and `producer_metadata_ref`. Supply available
+completion/result/usage/provenance refs; the exporter does not choose or discover runs.
+The [export wire](../../docs/contracts/0001-evaluation-artifacts.md#installed-census-export-and-dispatch-observations)
+owns metadata fields, source-root rules and unavailable-material handling.
+
+For example, a primary and its retry can be selected explicitly:
+
+```json
+{
+  "schema_version": "rtpeval_research_census_export_1",
+  "population_ref": {"path": "population.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_population_1"},
+  "profile_ref": {"path": "profile.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_profile_1"},
+  "attempt_sources": [
+    {
+      "case_id": "harbor-request", "case_revision": "input-7", "version": "v1",
+      "repetition_id": "weekday", "attempt_id": "first", "run_id": "run-first",
+      "group_id": "group-a", "order": 1, "prior_attempt_id": null,
+      "reason_type": "original_dispatch",
+      "producer_metadata_ref": {"path": "first/planner-dispatch.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_planner_dispatch_1"}
+    },
+    {
+      "case_id": "harbor-request", "case_revision": "input-7", "version": "v1",
+      "repetition_id": "weekday", "attempt_id": "retry", "run_id": "run-retry",
+      "group_id": "group-a", "order": 2, "prior_attempt_id": "first",
+      "reason_type": "declared_retry",
+      "producer_metadata_ref": {"path": "retry/planner-dispatch.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_planner_dispatch_1"}
+    }
+  ]
+}
+```
+
+Replace placeholder digests with exact saved-byte hashes. Add each available
+`completion_ref`, `result_ref`, `usage_ref` and `provenance_ref` to its entry;
+omitting completion keeps its outcome unknown even when a result exists.
+
+```powershell
+uv run rtpeval research export-census material/export-input.json --directory artifacts/fresh-census
+uv run rtpeval research validate artifacts/fresh-census/material/research-export.json --track population
+uv run rtpeval research report artifacts/fresh-census/material/research-export.json --track population --directory artifacts/fresh-census-report
+```
+
+Export is offline: it copies selected originals unchanged, validates the pending
+bundle with existing readers and publishes only to a fresh destination. `export.json`
+records exact source hashes, metadata provenance and source/slot diagnostics. Exit 2
+indicates insufficient or invalid material; missing dispatch times are never invented.
+The primary remains `first_dispatched`; any profile-selected retry view is separate.
+The exported declaration initially has no optional track attachments.
+
+Future `generate` captures actual Planner dispatch metadata; offline preparation
+captures zero invocations, while invalid registration preflight reports zero without
+creating a capture. Use the exact saved `runtime-policy.json` as the corresponding
+profile configuration source. Earlier runs need an explicit `historical_import`
+metadata declaration with author, observed dispatch/non-dispatch and exact evidence
+refs. Preparation time, file timestamps and result existence cannot establish that
+observation. Export neither launches runs nor constructs missing non-dispatch rows.
+
+### Measuring and exporting pinned corpus coverage
+
+`research corpus` separates offline preparation, explicit measurement and saved
+export. Supply one `rtpeval_corpus_request_1` per original case/revision/scope;
+the population can contain other inputs. Geographic bounds and any coverage
+profile remain caller-owned. The
+[producer wire](../../docs/contracts/0001-evaluation-artifacts.md#pinned-corpus-measurement-producer)
+defines exact references, configuration, saved evidence and completion checks.
+
+An illustrative request uses a numeric scope, never an inferred city boundary:
+
+```json
+{
+  "schema_version": "rtpeval_corpus_request_1",
+  "declaration_ref": {"path": "research.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_research_declaration_1"},
+  "case_id": "harbor-request", "case_revision": "input-7",
+  "input_sha256": "<exact original-input digest>",
+  "scope": {"kind": "radius", "latitude": 10, "longitude": 20, "radius_m": 2000},
+  "scope_sha256": "<canonical scope digest>",
+  "snapshot_identity": {
+    "snapshot_ref": {"path": "snapshot.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available"},
+    "artifact_sha256": "<exact corpus artifact digest>",
+    "policy_version": "tripworld-production-policy-v1",
+    "space_id": "<production SPACE_ID>",
+    "identity_pointers": {"artifact_sha256": "/corpus/output_sha256", "policy_version": "/policy_version", "space_id": "/space_id"}
+  },
+  "declared_at": "2026-10-01T00:00:00Z", "timing_basis": "unverified",
+  "measurement_configuration": {
+    "max_entities": 10000, "max_source_bytes": 104857600,
+    "timeout_seconds": 30, "statement_timeout_ms": 10000,
+    "connect_timeout_seconds": 5, "batch_size": 1000
+  },
+  "source": {
+    "kind": "saved_dataset", "manifest_pointer": "/corpus",
+    "dataset_ref": {"path": "entities.parquet", "sha256": "<exact corpus artifact digest>", "media_type": "application/vnd.apache.parquet", "availability": "available"},
+    "embedding_index_ref": {"path": "embedding-index.json", "sha256": "<exact digest>", "media_type": "application/json", "availability": "available", "schema_version": "rtpeval_corpus_embedding_index_1"}
+  },
+  "coverage_profile_ref": null
+}
+```
+
+Replace placeholders with hashes of saved bytes and the established production
+space ID. `snapshot.json` may wrap the unchanged native manifest under `corpus`,
+alongside the pinned policy/space declarations. `manifest_pointer` selects that
+native manifest. Its artifact hash, entity count and entity/text versions are
+checked against the measured source. The declaration must reside directly in the
+request's source root; references are relative to that root.
+
+Saved data supports native `RetrievalEntity` Parquet or
+`rtpeval_corpus_entities_1` JSON containing an `entities` array. It requires an exact
+`rtpeval_corpus_embedding_index_1` with the corpus artifact hash, production
+`space_id`/`configuration` and saved embedding `text_hashes`. This supplies vector
+membership without loading or generating vectors. An existing named dump alone
+does not establish the pinned source.
+
+```powershell
+uv run rtpeval research corpus prepare material/corpus-request.json --directory artifacts/fresh-corpus-plan
+uv run rtpeval research corpus measure artifacts/fresh-corpus-plan/receipt.json --directory artifacts/fresh-corpus-measurement
+uv run rtpeval research corpus export artifacts/fresh-corpus-measurement/receipt.json --directory artifacts/fresh-corpus-export
+```
+
+For PostgreSQL, declare `source={"kind":"database","manifest_pointer":"/corpus"}`
+and omit dataset/index refs. Preparation stays offline. Only measurement accepts
+explicit database access and an environment-variable name for its connection string:
+
+```powershell
+uv run rtpeval research corpus measure artifacts/fresh-corpus-plan/receipt.json --database --dsn-env CORPUS_READ_ONLY_DSN --directory artifacts/fresh-database-measurement
+```
+
+Use separately approved database access and limits. The connection defaults to
+read-only, and all identity checks and the bounded server-cursor scan share a
+`REPEATABLE READ / READ ONLY` view. No credentials or connection string enter the
+bundle. Connection and statement limits constrain database waits; the remaining
+measurement deadline constrains each query and scan. The scan processes corpus
+entities, including excluded/out-of-scope ones, within `max_entities`; it is not a
+top-k query or unique-venue count. Byte limits bound selected source material and
+retained observations. Oversized inputs fail preparation; scan caps, observation
+byte limits, timeouts and failures retain partial/unavailable counts and reasons.
+Source limits are checked before dependency reads; the scan checks its deadline
+again before declaring completion, including empty or last-row scans. An omitted
+or null request profile retains a supplied relevance-declaration profile with its
+original snapshot, scope and thresholds, subject to compatibility validation.
+
+The root `receipt.json` provides exact `sidecar_ref`, `measurement_ref`,
+`completion_ref` and `declaration_ref` under `material/`. Use the returned
+declaration with `research validate/report --track relevance`. Copies preserve
+original bytes and source layout; new producer filenames avoid existing originals.
+The final source-bound completion record is mandatory for produced sidecars, so an
+interrupted publication cannot pass the relevance reader. Every operation requires
+a fresh destination; an incomplete directory is retained for diagnosis.
+
+Saved export checks observations and original hashes without connecting to the
+database or changing declaration/measurement times. Existing coverage rows,
+interests, reviews and opportunity provenance are retained; exported declarations
+carry relevance and opportunities, while other tracks remain in their original
+declaration. Supplied profile thresholds are copied unchanged. Prospective timing
+is checked against selected dispatch evidence; absent evidence remains unverified.
+These counts describe an entity/geographic proxy. Independent interest inventories,
+sample coding and venue relevance judgments remain separately prepared materials.
+
+### Reporting saved research material
 
 Each report requires a fresh output directory and writes `<track>.json` and
 `<track>.md`. Stdout records processing status, the track and deterministic source
@@ -526,10 +699,15 @@ references require their exact saved source descriptors, rather than an isolated
 summary copied from another run. Relevant labels, coverage and controlled guards
 are separately prepared evidence; reporting does not create or execute them.
 
-To save future opportunity stages, the V1 and V2 runner CLIs accept the default-off
+To save future opportunity stages, installed `rtpeval generate` and the V1/V2 runner
+CLIs accept the default-off
 `--opportunity-capture PATH` option. Use a fresh file path and retain the resulting
 `rtpeval_candidate_capture_1` bytes with their exact attempt/input/final references.
-The programmatic equivalent is `opportunity_capture_path`. The
+The programmatic equivalent is `opportunity_capture_path`; installed generation also
+forwards the selected run ID as `opportunity_capture_run_id`. Preparation only records
+intent; execution saves the sidecar and its manifest reference. Registration retains
+available sidecar bytes, while the attempt census and research declaration remain
+separate caller-prepared material. The
 [passive export guide](../../docs/0004-retrieval-persistence%28v2v3%29.md#passive-candidate-opportunity-export)
 explains stage availability and write-failure behavior. Historical final outputs
 cannot reconstruct absent admission or supply traces.
@@ -549,10 +727,10 @@ consuming saved material from producing or independently reviewing it:
 | --- | --- | --- |
 | RequirementSpec handoff | `batch collect`, `attach-requirements`, `finalize` and `validate` check and bind saved author/reviewer material | Two real source-only independent-agent operations are separately operated; the CLI does not launch them. |
 | Interests, relevance, sample coding and request semantics | Research relevance readers and native context/review consumers validate saved source-bound material | Independent agents or selected humans prepare actual judgments and evidence; there is no general installed semantic-review launcher. |
-| Generation originals, usage, provenance and registration | Selected-version `generate` and native material assembly exist | Shared defects #131-#133 remain open: installed V1/V2 opportunity capture, registration preflight and cancellation status. Native runner capture is not a substitute for the installed handoff. |
-| Attempt census | `research validate/report --track population` consumes a supplied census | Reusable census export and actual dispatch metadata capture are pending in #134; native registration does not create the census. |
-| Corpus measurement and sidecars | Relevance reporting validates supplied pinned-snapshot/scope sidecars and completeness | Read-only fixed-scope measurement and reusable export are pending in #135; retrieval top-k and general profiling are not this census. |
-| V3 paired evidence | `pair prepare/report`, paired snapshot plans and saved snapshot replay exist; acquisition primitives are available | The installed prepare/execute/replay acquisition orchestration is pending in #136. Primary final evaluation does not implicitly acquire paired material. |
+| Generation originals, usage, provenance and registration | Selected-version `generate` supports passive V1/V2 opportunity capture, selected-run binding, registration preflight and cancelled native completion | Real generation remains separately operated within approved scope and budget. |
+| Attempt census | `research export-census` copies explicitly selected producer sources into a validated bundle; future `generate` records actual dispatch metadata | Operators supply population/profile, slot ordering and traceable historical metadata; native registration does not choose census bindings. |
+| Corpus measurement and sidecars | `research corpus prepare/measure/export` validates explicit snapshots/scopes, measures saved data or an explicitly selected read-only database, and exports evidenced sidecars | Operators supply geographic bounds, exact source/membership material, budgets and optional fixed thresholds; reviewed interest/sample judgments remain separate. |
+| V3 paired evidence | `pair acquire prepare/execute/replay/export` connects native paired plans, independent acquisition, receipts and report handoff; `pair prepare/report` remains available | Caller supplies the original selected stages, independent contexts/reviews, compatible prices and explicit limits. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
 | Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |
 
@@ -1303,6 +1481,83 @@ distinguishes automated checks from user-reported browser acceptance.
 
 ### V3 paired diagnostics
 
+#### Installed paired acquisition
+
+`rtpeval pair acquire` connects the native paired workflow for an explicitly
+selected qualified manifest. The [acquisition contract](../../docs/contracts/0001-evaluation-artifacts.md#paired-evidence-acquisition)
+defines selection, source bindings, estimates, one-use execution and export.
+Prepare the original input, reviewed RequirementSpec, original V3 stages and
+independent schedule/route reviews first; nonempty preference text also requires
+an independent density review, which may retain unresolved meaning. Optional
+occupancy/correspondence reviews preserve their native uncertainty.
+
+`selection.json` must exactly match the selected manifest groups in order:
+
+```json
+{
+  "schema_version": "rtpeval_pair_selection_1",
+  "batch_id": "selected-batch",
+  "batch_revision": "1",
+  "runs": [{
+    "group_id": "selected-group",
+    "run_id": "selected-v3-run",
+    "input_sha256": "EXACT_INPUT_SHA256",
+    "requirement_spec_sha256": "EXACT_REQUIREMENT_SPEC_SHA256",
+    "result_sha256": "EXACT_V3_RESULT_SHA256",
+    "stage_pointers": {"draft": "/v3/draft", "final_primary": "/v3/final_primary"}
+  }]
+}
+```
+
+The paired options file has exactly four numeric limits:
+
+```json
+{"max_google_sends": 30, "max_cost_usd": "1.00",
+ "timeout_seconds": 10, "total_timeout_seconds": 120}
+```
+
+These illustrative limits are not execution authorization. Supply compatible
+`rtpeval_prices_1` USD reference prices and fresh output directories:
+
+```powershell
+uv run rtpeval pair acquire --help
+uv run rtpeval pair acquire prepare manifest.json --directory artifacts/fresh-pair --selection selection.json --options pair-options.json --prices oracle-prices.json --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json
+# Only after approval of this exact preparation and its live limits:
+uv run rtpeval pair acquire execute artifacts/fresh-pair --approved-sha256 EXACT_CONTENT_SHA256 --env-file .env
+uv run rtpeval pair acquire replay artifacts/fresh-pair
+uv run rtpeval pair acquire export artifacts/fresh-pair --directory artifacts/fresh-pair-export
+```
+
+Prepare, replay and export are offline. Execute reads `GOOGLE_MAPS_API_KEY` only
+after local preflight and only for uncached phases. No model credential or model
+send is used. The native paired reporter requires the manifest's primary reference
+inventory as well as V3 draft/final occurrences; V0 identity needing a model remains
+UNKNOWN. This workflow supplies paired diagnostics, not primary V0 evaluation.
+
+Inspect `preparation.json`: exact identity requests, native evidence occurrence
+inventory and, without saved identity evidence, a deferred evidence request count
+with an occurrence-based cost upper bound. Canonical venue/route requests become
+exact after identity acquisition; inspect `execution/route-preparation.json`,
+`evidence-plan.json`, `inventory.json`, both snapshots and the HTTP journal.
+Reference reservations and measured send counts are separate from invoice billing.
+Provider failures retain units and partial evidence; stopped work keeps usage and
+its closed receipt. A consumed package cannot retry or resume.
+
+Optional `--identity-snapshot DIRECTORY` reuses only a verified exact paired
+identity snapshot; `--snapshot DIRECTORY` additionally requires its matching
+paired evidence plan. The cached native bytes and capture times are retained,
+with zero current-phase sends. Planner or final-only snapshots do not qualify.
+
+Export's `handoff.json` contains relative `manifest`, `suite_pair` paths and a
+`research_pair` artifact descriptor. Use `suite_pair` as the selected case's
+`tracks.pair`; use `research_pair` in the existing Repair material's
+`pair_reports`, with the matching declared first attempts. References are relative
+to the export root; rebase them when joining a larger declaration root. Export
+does not create a population, selection profile or human answers. Stopped
+acquisitions cannot publish a completed handoff.
+
+#### Reporting previously prepared material
+
 ```powershell
 $env:PYTHONIOENCODING = 'utf-8'
 .venv/Scripts/python.exe -m backend.evaluation.v3_pair_cli prepare manifest.json identity-report.json | Set-Content -Encoding utf8NoBOM edit-provenance.json
@@ -1510,8 +1765,13 @@ policy authorization and account invoice limits remain separate.
 
 Successful execution saves `result.json`, `usage.json`, `provenance.json`,
 `usage-summary.json`, `prices.json` and `cost-report.json`. Failures/cancellations retain
-observed usage, partial costs and `failure.json` with error type only. Exit 0 means
-preparation or this selected invocation completed; exit 1 means capture/execution failed.
+saved usage, partial costs and `failure.json` with exception type rather than message.
+Known cancellation remains `cancelled` through capture and native completion; missing
+usage capture is separately identified without inventing a canonical receipt.
+The [usage capture policy](../../docs/contracts/0002-intake-identity-usage.md#selected-version-usage-preparation-and-capture)
+defines cancellation, interrupt/deadline handling and saved observation fallback.
+Exit 0 means preparation or this selected invocation completed; exit 1 means
+capture/execution was unsuccessful.
 Invalid input, configuration or output conflicts raise an error before provider dispatch.
 Windows result writes use exact UTF-8 bytes to keep hashes consistent with capture.
 
@@ -1543,11 +1803,12 @@ producer flow; this command performs no independent evaluator requests.
 Add `--capture-evidence` to prepare or capture selected-version generation evidence:
 
 ```powershell
-.venv/Scripts/python.exe -m backend.evaluation.tools.planner_usage_cli --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence
+uv run rtpeval generate --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence --opportunity-capture artifacts/generation-v2-preparation/candidate-opportunities.json
 ```
 
-This command remains offline. After exact live approval, use a different, unused output
-directory and the approved run ID, then add `--execute`. The existing selected planner runs
+This command remains offline and saves no candidate observations. After exact live approval,
+use a different, unused output directory, a fresh sidecar path and the approved run ID,
+then add `--execute`. The existing selected planner runs
 once, with mechanism capture, RAW local trace, credential-filtered owned HTTP request/response
 representations and query-vector capture. SDK stream bodies are observed during normal
 consumption, including decoded gzip; raw HTML retains existing read limits. Nothing drains

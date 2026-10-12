@@ -57,15 +57,23 @@ class ResearchContext:
         return {slot_key(slot): slot["primary_attempt"] for slot in self.slots}
 
 
-def load_context(declaration_path):
+def load_context(declaration_path, *, sources=None):
     path = Path(declaration_path).resolve()
-    raw = path.read_bytes()
+    if sources is None:
+        raw = path.read_bytes()
+        sources = Sources(path.parent)
+    else:
+        _require(sources.root == path.parent, "Injected sources require the declaration root")
+        binding = sources.bindings.get(path.name)
+        _require(binding is not None, "Injected sources require a bound declaration")
+        raw = sources.read_bytes(
+            {**binding, "availability": "available", "media_type": "application/json"}
+        )
     declaration = _json(raw)
     _require(
         declaration.get("schema_version") == "rtpeval_research_declaration_1",
         "Unsupported research declaration",
     )
-    sources = Sources(path.parent)
     sources.bindings[path.name] = {
         "path": path.name,
         "sha256": hashlib.sha256(raw).hexdigest(),
@@ -238,6 +246,10 @@ def _load_attempts(sources, records, slots, profile):
             record.get("configuration_sha256") == slot["configuration_sha256"],
             "Attempt configuration hash mismatch",
         )
+        if record.get("producer_metadata_ref") is not None:
+            from .dispatch import read_dispatch
+
+            read_dispatch(sources, record["producer_metadata_ref"], record)
         dispatched = timestamp(record.get("dispatched_at")) if record["dispatched"] else None
         _require(
             record["dispatched"] or record.get("dispatched_at") is None,

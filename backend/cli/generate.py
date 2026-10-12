@@ -9,7 +9,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
-from backend.cli.collection import CollectionError, _json, _path, collect
+from backend.cli.collection import VERSIONS, CollectionError, _json, _path, _require, _text, collect
 
 PRODUCER_POLICY = "selected_workflow_1"
 PRODUCER = "rtpeval.generate/" + PRODUCER_POLICY
@@ -134,6 +134,12 @@ def _captured(root, group, version, run, capture, completion, now):
         capture / name for name in ("result.json", "usage.json", "provenance.json")
     )
     result_ref = _ref(root, result_path) if result_path.is_file() else None
+    manifest = _json((capture / "manifest.json").read_bytes())
+    usage_available = (
+        usage_path.is_file()
+        and manifest.get("status") != "capture_failed"
+        and manifest.get("capture_status") != "capture_failed"
+    )
     provenance = (
         _json(provenance_path.read_bytes())
         if provenance_path.is_file()
@@ -169,17 +175,20 @@ def _captured(root, group, version, run, capture, completion, now):
     return {
         **run,
         "result_ref": result_ref,
-        "usage_ref": _ref(root, usage_path, "rtpeval_usage_1") if usage_path.is_file() else None,
+        "usage_ref": _ref(root, usage_path, "rtpeval_usage_1") if usage_available else None,
         "producer_declaration": provenance,
         "completion": completion,
     }
 
 
-def _register(selection_path, selection_raw, args, value, destination):
+def _registration_selection(selection_path, selection_raw, args, input_path, destination):
+    """Check locally decidable selection rules before and after Planner dispatch."""
     root = selection_path.parent
     config = _json(selection_raw)
     if config.get("schema_version") != "rtpeval_collection_1":
         raise CollectionError("Expected rtpeval_collection_1 registration selection")
+    for key in ("batch_id", "revision", "created_at", "qualification_policy_ref"):
+        _require(_text(config.get(key)), "Missing collection " + key)
     groups = config.get("groups")
     if (
         not isinstance(groups, list)
@@ -192,8 +201,33 @@ def _register(selection_path, selection_raw, args, value, destination):
         )
     ):
         raise CollectionError("Expected explicit groups and selected_runs maps")
+    group_ids, run_ids = set(), set()
+    for group in groups:
+        gid = group.get("group_id")
+        _require(_text(gid), "Missing group identity")
+        _require(gid not in group_ids, "Duplicate group identity")
+        group_ids.add(gid)
+        _require(set(group["selected_runs"]).issubset(VERSIONS), "Selected runs must name v0-v3")
+        ref = group.get("input_ref")
+        _require(isinstance(ref, dict), "Missing original input reference")
+        _require(
+            ref.get("media_type") == "application/json" and ref.get("availability") == "available",
+            "Original input must be available JSON",
+        )
+        source = _path(root, ref.get("path"))
+        _require(_sha(source) == ref.get("sha256"), "Selected original input hash mismatch")
+        _require(
+            _json(source.read_bytes()).get("input_version") == "planning_request_2",
+            "Unsupported original input",
+        )
+        for run in group["selected_runs"].values():
+            rid = run.get("run_id")
+            _require(_text(rid), "Missing selected run identity")
+            _require(rid not in run_ids, "Duplicate run identity")
+            run_ids.add(rid)
+            if "capture_directory" in run:
+                _path(root, run["capture_directory"])
     output = args.output_directory.resolve()
-    now = datetime.now(UTC).isoformat()
     selected = [
         (g, v, r)
         for g in config["groups"]
@@ -216,12 +250,26 @@ def _register(selection_path, selection_raw, args, value, destination):
         raise CollectionError("Registration refuses replacement of an existing selected capture")
     if _path(root, run.get("capture_directory")) != output:
         raise CollectionError("Selected capture_directory differs from Planner output directory")
-    if _sha(output / "input.json") != group["input_ref"]["sha256"]:
+    if _sha(input_path) != group["input_ref"]["sha256"]:
         raise CollectionError("Selected original input hash differs from Planner input")
     if selection_path.read_bytes() != selection_raw:
         raise CollectionError("Operator selection changed during Planner invocation")
-    if destination.exists():
+    if os.path.lexists(destination):
         raise CollectionError("Registration destination must be fresh")
+    _require(
+        not output.is_relative_to(destination.resolve()),
+        "Registration destination contains Planner output",
+    )
+    return config
+
+
+def _register(selection_path, selection_raw, args, value, destination):
+    root = selection_path.parent
+    output = args.output_directory.resolve()
+    config = _registration_selection(
+        selection_path, selection_raw, args, output / "input.json", destination
+    )
+    now = datetime.now(UTC).isoformat()
     manifest = _json((output / "manifest.json").read_bytes())
     completion = _completion(value, args.version, manifest, now)
     selection_snapshot = root / ("generation-selection-" + uuid4().hex + ".json")
@@ -251,7 +299,7 @@ def _register(selection_path, selection_raw, args, value, destination):
     return collect(config_path, destination)
 
 
-def main(argv=None, *, runtime=None, date_provider=None):
+def main(argv=None, *, runtime=None, date_provider=None, clock=None):
     from backend.evaluation.tools.planner_usage_cli import main as native
 
     options = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
@@ -267,14 +315,15 @@ def main(argv=None, *, runtime=None, date_provider=None):
             "Optional registration: --register-batch CONFIG "
             "--registration-directory FRESH_DIRECTORY"
         )
-        return native(forwarded, runtime=runtime, date_provider=date_provider)
+        return native(forwarded, runtime=runtime, date_provider=date_provider, clock=clock)
     if args.register_batch is None:
-        return native(forwarded, runtime=runtime, date_provider=date_provider)
+        return native(forwarded, runtime=runtime, date_provider=date_provider, clock=clock)
     invocation = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
     invocation.add_argument("--version")
     invocation.add_argument("--group-id")
     invocation.add_argument("--run-id")
     invocation.add_argument("--output-directory", type=Path)
+    invocation.add_argument("--input-json", type=Path)
     invocation.add_argument("--execute", action="store_true")
     selected, _ = invocation.parse_known_args(forwarded)
     if not selected.execute:
@@ -282,11 +331,27 @@ def main(argv=None, *, runtime=None, date_provider=None):
     selection_path = args.register_batch.resolve()
     try:
         selection_raw = selection_path.read_bytes()
-    except OSError as exc:
+        _registration_selection(
+            selection_path,
+            selection_raw,
+            selected,
+            selected.input_json,
+            args.registration_directory,
+        )
+    except (
+        CollectionError,
+        OSError,
+        ValueError,
+        KeyError,
+        TypeError,
+        AttributeError,
+        RecursionError,
+    ) as exc:
         print(
             json.dumps(
                 {
-                    "planner": {"status": "not_invoked"},
+                    "schema_version": "rtpeval_generation_registration_1",
+                    "planner": {"status": "not_invoked", "planner_dispatches": 0},
                     "registration": {"status": "failed", "diagnostics": [str(exc)]},
                 }
             )
@@ -294,7 +359,11 @@ def main(argv=None, *, runtime=None, date_provider=None):
         return 2
     observed = []
     planner_exit = native(
-        forwarded, runtime=runtime, date_provider=date_provider, result_observer=observed.append
+        forwarded,
+        runtime=runtime,
+        date_provider=date_provider,
+        result_observer=observed.append,
+        clock=clock,
     )
     output = selected.output_directory.resolve()
     manifest = _json((output / "manifest.json").read_bytes())
@@ -313,7 +382,7 @@ def main(argv=None, *, runtime=None, date_provider=None):
             selection_raw,
             selected,
             observed[-1] if observed else None,
-            args.registration_directory.resolve(),
+            args.registration_directory,
         )
         report["registration"] = {
             "status": staging["status"],

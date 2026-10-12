@@ -58,8 +58,12 @@ artifacts and configuration, not simply a matching model name.
 
 ### Passive candidate opportunity export
 
-The V1/V2 public runner accepts optional `opportunity_capture_path`; their CLI exposes
-`--opportunity-capture PATH`. With no path, the existing acquisition flow is unchanged.
+The V1/V2 public runner accepts optional `opportunity_capture_path`; both its native
+CLI and installed `rtpeval generate` expose `--opportunity-capture PATH`.
+Installed generation binds the capture to the selected run ID rather than the trace
+UUID; [generation handoff](contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture)
+owns identity forwarding, manifest references, missingness and registration boundaries.
+With no path, the existing acquisition flow is unchanged.
 The caller-owned exporter observes the actual pre-RAG Google pool, merged discovery,
 admission, normally qualified Details and selected supply at their existing seams.
 It preserves Google query origins and complete native RAG provenance/fates. It adds
@@ -92,6 +96,18 @@ coded saved sample with its own denominator and uncertainty. These measurements
 do not establish citywide recall or unique venue coverage. Complete census zero
 is distinct from a partial subtotal or missing measurement; SQL timeout,
 truncation and retrieval failure retain unavailable counts and reasons.
+
+Installed `research corpus prepare/measure/export` produces source-bound sidecars
+for numeric radius or ordinary bounding-box scopes. Preparation and saved export
+stay offline; database measurement requires explicit access and a read-only
+repeatable-read view. Exact artifact bytes or checked database build identity bind
+the measured corpus to its manifest. Production eligibility, text policy and
+embedding space remain unchanged. Bounded scans count entities rather than venues;
+caps, timeouts and unavailable observations cannot supply exact counts. The
+[producer contract](contracts/0001-evaluation-artifacts.md#pinned-corpus-measurement-producer)
+owns source formats, budgets, completion records and export validation;
+[installed examples](../backend/evaluation/README.md#measuring-and-exporting-pinned-corpus-coverage)
+show the caller-prepared material and commands.
 
 Research reporting consumes these sidecars without connecting to PostgreSQL,
 collecting provider evidence, regenerating vectors or replacing sparse inputs.

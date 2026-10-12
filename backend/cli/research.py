@@ -8,11 +8,27 @@ from pathlib import Path
 def main(argv=None):
     from backend.evaluation.research.registry import TRACKS
 
+    if argv and argv[0] == "corpus":
+        from backend.cli.corpus import main as corpus_main
+
+        return corpus_main(argv[1:])
+
     parser = argparse.ArgumentParser(
         prog="rtpeval research",
         description="Offline research over declared original inputs and saved artifacts.",
     )
     commands = parser.add_subparsers(dest="operation", required=True)
+    commands.add_parser(
+        "corpus", help="Prepare, explicitly measure, or offline export pinned corpus coverage"
+    )
+    export = commands.add_parser(
+        "export-census",
+        help="Offline export from an explicit ordered producer-source inventory",
+        description="Copy exact selected sources into a fresh validated census bundle. "
+        "Historical runs require traceable dispatch metadata; no Planner/evaluator calls.",
+    )
+    export.add_argument("inventory", type=Path)
+    export.add_argument("--directory", type=Path, required=True, help="Fresh export directory")
     for operation in ("validate", "report"):
         command = commands.add_parser(operation)
         command.add_argument("declaration", type=Path)
@@ -28,6 +44,11 @@ def main(argv=None):
     from backend.evaluation.research.rendering import render_markdown
 
     try:
+        if args.operation == "export-census":
+            from backend.evaluation.research.census_export import export_census
+
+            print(json.dumps(export_census(args.inventory, args.directory)))
+            return 0
         context = load_context(args.declaration)
         report, render = build_report(context, args.track)
         if args.operation == "report":

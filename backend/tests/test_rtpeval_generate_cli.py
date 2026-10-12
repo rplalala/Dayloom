@@ -55,6 +55,26 @@ def test_installed_generation_preparation_preserves_native_capture(installed_cli
     assert not (tmp_path / "capture/generation-registration.json").exists()
 
 
+def test_installed_opportunity_preparation_is_offline(installed_cli, tmp_path):
+    sidecar = tmp_path / "capture/opportunities.json"
+    result = installed_cli(
+        "generate",
+        *arguments(tmp_path, version="v1"),
+        "--opportunity-capture",
+        sidecar,
+        tools_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    manifest = json.loads((tmp_path / "capture/manifest.json").read_bytes())
+    assert manifest["opportunity_capture_requested"] is True
+    assert "opportunity_capture_ref" not in manifest
+    assert not sidecar.exists()
+    assert not (tmp_path / "capture/result.json").exists()
+    assert not (tmp_path / "capture/usage.json").exists()
+    help_result = installed_cli("generate", "--help", tools_offline=True)
+    assert "--opportunity-capture" in help_result.stdout
+
+
 def registration(tmp_path, version="v0"):
     import hashlib
 
@@ -88,6 +108,156 @@ class Runtime:
         from backend.tests.evaluation.test_planner_usage_cli import result
 
         return result(version, request)
+
+
+@pytest.mark.parametrize(
+    "fault,diagnostic",
+    [
+        ("wrong_run", "exactly one explicitly selected run"),
+        ("wrong_group", "exactly one explicitly selected run"),
+        ("wrong_version", "exactly one explicitly selected run"),
+        ("capture_directory", "capture_directory differs"),
+        ("escape", "escapes collection root"),
+        ("input_hash", "input hash mismatch"),
+        ("different_input", "differs from Planner input"),
+        ("malformed", "Expecting"),
+        ("duplicate_key", "Duplicate JSON key"),
+        ("schema", "Expected rtpeval_collection_1"),
+        ("missing_batch", "Missing collection batch_id"),
+        ("invalid_slots", "selected_runs maps"),
+        ("missing_run", "Missing selected run identity"),
+        ("duplicate_group", "Duplicate group identity"),
+        ("duplicate_run", "Duplicate run identity"),
+        ("unsupported_version", "v0-v3"),
+        ("input_reference", "original input reference"),
+        ("result_ref", "refuses replacement"),
+        ("usage_ref", "refuses replacement"),
+        ("provenance_ref", "refuses replacement"),
+        ("producer_declaration", "refuses replacement"),
+        ("completion", "refuses replacement"),
+        ("existing_directory", "destination must be fresh"),
+        ("existing_file", "destination must be fresh"),
+        ("output_overlap", "contains Planner output"),
+    ],
+)
+@pytest.mark.parametrize("injected", [False, True])
+def test_invalid_registration_does_not_start_planner(
+    tmp_path, monkeypatch, capsys, fault, diagnostic, injected
+):
+    import httpx
+
+    from backend.cli.rtpeval import main
+    from backend.evaluation.tools import planner_usage_cli
+
+    args = arguments(tmp_path, execute=True)
+    selection = registration(tmp_path)
+    path = tmp_path / "selection.json"
+    config = json.loads(path.read_bytes())
+    group = config["groups"][0]
+    slot = group["selected_runs"]["v0"]
+    if fault == "wrong_run":
+        slot["run_id"] = "different-run"
+    elif fault == "wrong_group":
+        group["group_id"] = "other-group"
+    elif fault == "wrong_version":
+        group["selected_runs"] = {"v1": slot}
+    elif fault == "capture_directory":
+        slot["capture_directory"] = "other-capture"
+    elif fault == "escape":
+        slot["capture_directory"] = "../escape"
+    elif fault == "input_hash":
+        group["input_ref"]["sha256"] = "0" * 64
+    elif fault == "different_input":
+        alternate = tmp_path / "different-input.json"
+        alternate.write_text("{}", encoding="utf-8")
+        args[args.index("--input-json") + 1] = str(alternate)
+    elif fault == "schema":
+        config["schema_version"] = "other"
+    elif fault == "missing_batch":
+        del config["batch_id"]
+    elif fault == "invalid_slots":
+        group["selected_runs"] = []
+    elif fault == "missing_run":
+        del slot["run_id"]
+    elif fault == "duplicate_group":
+        config["groups"].append(group)
+    elif fault == "duplicate_run":
+        group["selected_runs"]["v1"] = {"run_id": "r", "capture_directory": "next"}
+    elif fault == "unsupported_version":
+        group["selected_runs"]["v4"] = {"run_id": "next"}
+    elif fault == "input_reference":
+        group["input_ref"] = None
+    elif fault in (
+        "result_ref",
+        "usage_ref",
+        "provenance_ref",
+        "producer_declaration",
+        "completion",
+    ):
+        slot[fault] = {}
+    elif fault == "existing_directory":
+        (tmp_path / "staging").mkdir()
+    elif fault == "existing_file":
+        (tmp_path / "staging").write_text("preserved", encoding="utf-8")
+    elif fault == "output_overlap":
+        selection[-1] = str(tmp_path / "capture")
+    path.write_text(json.dumps(config), encoding="utf-8")
+    if fault == "malformed":
+        path.write_text("{", encoding="utf-8")
+    elif fault == "duplicate_key":
+        path.write_text('{"groups": [], "groups": []}', encoding="utf-8")
+    originals = {p: p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+    attempted = dict.fromkeys(("credentials", "construction", "runtime", "provider"), 0)
+
+    def forbidden(operation):
+        def fail(*args, **kwargs):
+            attempted[operation] += 1
+            raise AssertionError("Invalid registration must remain offline: " + operation)
+
+        return fail
+
+    monkeypatch.setattr(planner_usage_cli, "load_dotenv", forbidden("credentials"))
+    monkeypatch.setattr(
+        planner_usage_cli.RequestPlannerRuntime, "__init__", forbidden("construction")
+    )
+    monkeypatch.setattr(planner_usage_cli.RequestPlannerRuntime, "run", forbidden("runtime"))
+    monkeypatch.setattr(httpx.Client, "send", forbidden("provider"))
+    monkeypatch.setattr(httpx.AsyncClient, "send", forbidden("provider"))
+    guarded_runtime = SimpleNamespace(run=forbidden("runtime")) if injected else None
+    assert (
+        main(["generate", *args, *selection], runtime=guarded_runtime, date_provider=REFERENCE) == 2
+    )
+    report = json.loads(capsys.readouterr().out)
+    assert report["planner"]["status"] == "not_invoked"
+    assert report["registration"]["status"] == "failed"
+    assert diagnostic in report["registration"]["diagnostics"][0]
+    assert attempted == {"credentials": 0, "construction": 0, "runtime": 0, "provider": 0}
+    assert not (tmp_path / "capture").exists()
+    assert {p: p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()} == originals
+
+
+@pytest.mark.parametrize(
+    "version,fault",
+    [("v0", "wrong_run"), ("v1", "directory"), ("v2", "malformed"), ("v3", "capture")],
+)
+def test_installed_registration_rejection_is_offline(installed_cli, tmp_path, version, fault):
+    args = arguments(tmp_path, version=version, execute=True)
+    selection = registration(tmp_path, version=version)
+    path = tmp_path / "selection.json"
+    config = json.loads(path.read_bytes())
+    if fault == "wrong_run":
+        config["groups"][0]["selected_runs"][version]["run_id"] = "wrong"
+    elif fault == "directory":
+        (tmp_path / "staging").mkdir()
+    elif fault == "capture":
+        config["groups"][0]["selected_runs"][version]["capture_directory"] = "other"
+    path.write_text("{" if fault == "malformed" else json.dumps(config), encoding="utf-8")
+    result = installed_cli("generate", *args, *selection, tools_offline=True)
+    assert result.returncode == 2, result.stdout + result.stderr
+    report = json.loads(result.stdout)
+    assert report["planner"]["status"] == "not_invoked"
+    assert report["registration"]["status"] == "failed"
+    assert not (tmp_path / "capture").exists()
 
 
 def test_completed_generation_registers_exact_originals_without_requirements(tmp_path, capsys):
@@ -157,19 +327,75 @@ def test_generation_without_registration_matches_native_artifacts_and_exits(
         }
 
 
-def test_registration_failure_reports_successful_planner_separately(tmp_path, capsys):
+def test_post_dispatch_registration_conflict_preserves_successful_planner(tmp_path, capsys):
     from backend.cli.rtpeval import main
 
     args = arguments(tmp_path, execute=True)
     selection = registration(tmp_path)
-    (tmp_path / "staging").mkdir()
-    assert main(["generate", *args, *selection], runtime=Runtime(), date_provider=REFERENCE) == 2
+
+    class ConflictRuntime(Runtime):
+        async def run(self, *args, **kwargs):
+            (tmp_path / "staging").mkdir()
+            return await super().run(*args, **kwargs)
+
+    assert (
+        main(["generate", *args, *selection], runtime=ConflictRuntime(), date_provider=REFERENCE)
+        == 2
+    )
     report = json.loads(capsys.readouterr().out.splitlines()[-1])
     assert report["planner"]["status"] == "completed"
     assert report["planner"]["exit_code"] == 0
     assert report["registration"]["status"] == "failed"
     assert (tmp_path / "capture/result.json").is_file()
     assert json.loads((tmp_path / "capture/manifest.json").read_bytes())["status"] == "completed"
+
+
+@pytest.mark.parametrize("timing", ["before", "during"])
+def test_registration_refuses_dangling_directory_links(tmp_path, capsys, timing):
+    import os
+
+    from backend.cli.rtpeval import main
+
+    args = arguments(tmp_path, execute=True)
+    selection = registration(tmp_path)
+    target = tmp_path / "link-target"
+    destination = tmp_path / "staging"
+    calls = []
+
+    def create_link():
+        target.mkdir()
+        if os.name == "nt":
+            import _winapi
+
+            _winapi.CreateJunction(str(target), str(destination))
+        else:
+            destination.symlink_to(target, target_is_directory=True)
+        target.rmdir()
+
+    if timing == "before":
+        create_link()
+
+    class LinkRuntime(Runtime):
+        async def run(self, *args, **kwargs):
+            calls.append(True)
+            if timing == "during":
+                create_link()
+            return await super().run(*args, **kwargs)
+
+    assert (
+        main(["generate", *args, *selection], runtime=LinkRuntime(), date_provider=REFERENCE) == 2
+    )
+    report = json.loads(capsys.readouterr().out.splitlines()[-1])
+    assert "destination must be fresh" in report["registration"]["diagnostics"][0]
+    assert not target.exists()
+    if timing == "before":
+        assert calls == []
+        assert report["planner"]["status"] == "not_invoked"
+        assert not (tmp_path / "capture").exists()
+    else:
+        assert calls == [True]
+        assert report["planner"]["status"] == "completed"
+        assert (tmp_path / "capture/result.json").is_file()
 
 
 def test_registered_failure_keeps_attempt_and_never_attests_completion(tmp_path, capsys):
@@ -190,6 +416,8 @@ def test_registered_failure_keeps_attempt_and_never_attests_completion(tmp_path,
     )
     staging = json.loads((tmp_path / "staging/staging.json").read_bytes())
     run = staging["groups"][0]["selected_runs"]["v0"]
+    assert json.loads((tmp_path / "capture/manifest.json").read_bytes())["status"] == "cancelled"
+    assert run["completion"]["workflow_status"] == "cancelled"
     assert not run["completion_qualified"]
     assert "workflow_not_completed" in run["blocking_reasons"]
     assert (tmp_path / "capture/failure.json").is_file()
@@ -394,33 +622,20 @@ def test_new_usage_capture_failure_cannot_become_successful_generation(tmp_path)
     assert (tmp_path / "capture/result.json").is_file()
 
 
-@pytest.mark.parametrize(
-    "fault", ["wrong_run", "escape", "source_drift", "replaced_slot", "invalid_slots"]
-)
-def test_registration_refuses_unbound_or_replaced_selection_after_preserving_capture(
-    tmp_path, fault
-):
+@pytest.mark.parametrize("fault", ["selection_drift", "input_drift"])
+def test_registration_refuses_post_dispatch_source_drift_after_preserving_capture(tmp_path, fault):
     from backend.cli.rtpeval import main
 
     args = arguments(tmp_path, execute=True)
     selection = registration(tmp_path)
     path = tmp_path / "selection.json"
-    config = json.loads(path.read_bytes())
-    slot = config["groups"][0]["selected_runs"]["v0"]
-    if fault == "wrong_run":
-        slot["run_id"] = "other"
-    elif fault == "escape":
-        slot["capture_directory"] = "../escape"
-    elif fault == "invalid_slots":
-        config["groups"][0]["selected_runs"] = []
-    elif fault == "replaced_slot":
-        slot["completion"] = {"workflow_status": "completed"}
-    path.write_text(json.dumps(config), encoding="utf-8")
 
     class DriftRuntime(Runtime):
         async def run(self, *args, **kwargs):
-            if fault == "source_drift":
+            if fault == "selection_drift":
                 path.write_text("{}", encoding="utf-8")
+            else:
+                (tmp_path / "input.json").write_text("{}", encoding="utf-8")
             return await super().run(*args, **kwargs)
 
     assert (
