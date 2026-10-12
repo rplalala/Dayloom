@@ -8,11 +8,19 @@ from pathlib import Path
 def main(argv=None):
     from backend.evaluation.research.registry import TRACKS
 
+    if argv and argv[0] == "corpus":
+        from backend.cli.corpus import main as corpus_main
+
+        return corpus_main(argv[1:])
+
     parser = argparse.ArgumentParser(
         prog="rtpeval research",
         description="Offline research over declared original inputs and saved artifacts.",
     )
     commands = parser.add_subparsers(dest="operation", required=True)
+    commands.add_parser(
+        "corpus", help="Prepare, explicitly measure, or offline export pinned corpus coverage"
+    )
     export = commands.add_parser(
         "export-census",
         help="Offline export from an explicit ordered producer-source inventory",
