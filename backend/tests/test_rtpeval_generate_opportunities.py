@@ -206,7 +206,11 @@ def test_capture_cannot_collide_with_generation_material(installed_cli, tmp_path
 
 
 @pytest.mark.parametrize("version", ["v1", "v2"])
-def test_installed_generation_captures_real_synthetic_graph(installed_cli, tmp_path, version):
+def test_installed_generation_captures_real_synthetic_graph(
+    installed_cli, tmp_path_factory, version
+):
+    # Native trace paths need room below the Windows legacy path-length limit.
+    tmp_path = tmp_path_factory.mktemp("graph")
     args = arguments(tmp_path, version, execute=True)
     (tmp_path / "input.json").write_text(make_request().model_dump_json(), encoding="utf-8")
     result = installed_cli(
