@@ -118,6 +118,9 @@ def relevance_report(context):
         if not runs or all(run["relevance_status"] == "not_applicable" for run in runs)
         else "unavailable",
         "identity_unit": "canonical_place_id",
+        "corpus_study_selected": bool(
+            material["coverage_refs"] or material.get("coverage_profile_ref")
+        ),
         "population_id": context.population["population_id"],
         "population_revision": context.population["revision"],
         "profile_id": context.profile["profile_id"],
@@ -170,8 +173,11 @@ def relevance_report(context):
 
 
 def markdown(value):
+    corpus_selected = value.get("corpus_study_selected", True)
     lines = [
-        "# Independent relevance and corpus coverage",
+        "# Independent relevance" + (" and corpus coverage" if corpus_selected else ""),
+        "",
+        f"Applicability: `{value['applicability']}`.",
         "",
         "Counts use unique canonical places, overall and once per applicable interest. "
         "Independent reviews bind original request pointers and venue evidence. "
@@ -277,100 +283,101 @@ def markdown(value):
                     difference["reasons"],
                 )
             )
-    lines += [
-        "",
-        "## Pinned corpus coverage",
-        "",
-        value["coverage_summary"]["interpretation"],
-        "",
-        "Eligible count measures corpus entities in the fixed scope, not unique venues. "
-        "Optional interest coverage uses a reviewed sample denominator; unknown coding "
-        "retains bounds. Missing, timeout and truncated counts remain unavailable/partial.",
-        "",
-        "| Case / revision | Eligible entity count | Observed subtotal | Status | "
-        "Stratum | Timing basis | Interest fraction | Bounds | Reasons |",
-        "| --- | ---: | ---: | --- | --- | --- | ---: | --- | --- |",
-    ]
-    for coverage in value["coverage"]:
-        reviewed = coverage.get("interest_coverage", {})
-        lines.append(
-            _row(
-                coverage["case_id"] + " / " + coverage["case_revision"],
-                coverage["eligible_entity_count"],
-                coverage["observed_subtotal"],
-                coverage["status"],
-                coverage["stratum_id"],
-                coverage.get("timing_basis"),
-                reviewed.get("fraction"),
-                f"{reviewed.get('lower_bound')} .. {reviewed.get('upper_bound')}",
-                coverage["reasons"],
-            )
-        )
-        if coverage.get("snapshot_identity"):
-            snapshot = coverage["snapshot_identity"]
-            lines += [
-                "",
-                "Pinned snapshot: "
-                + _cell(snapshot["snapshot_ref"]["path"])
-                + " SHA-256 `"
-                + snapshot["snapshot_ref"]["sha256"]
-                + "`; artifact `"
-                + snapshot["artifact_sha256"]
-                + "`, policy "
-                + _cell(snapshot["policy_version"])
-                + ", space "
-                + _cell(snapshot["space_id"])
-                + ".",
-                "Fixed scope: `"
-                + _cell(coverage["scope"])
-                + "`; scope SHA-256 `"
-                + coverage["scope_sha256"]
-                + "`.",
-                "Measurement: "
-                + _cell(coverage["measurement_method"])
-                + " at "
-                + _cell(coverage["measured_at"])
-                + ".",
-            ]
-    summary = value["coverage_summary"]
-    lines += [
-        "",
-        "## Descriptive strata",
-        "",
-        f"Available pairs: {summary['available_pairs']}; "
-        f"omitted pairs: {summary['omitted_pairs']}; "
-        f"unstratified pairs: {summary['unstratified_pairs']}.",
-        "",
-        "| Stratum | Lower inclusive | Upper exclusive | Case IDs | Available pairs "
-        "| Omitted pairs | End-to-end delta median |",
-        "| --- | ---: | ---: | --- | ---: | ---: | ---: |",
-    ]
-    for stratum in summary["strata"]:
-        lines.append(
-            _row(
-                stratum["stratum_id"],
-                stratum["min_inclusive"],
-                stratum["max_exclusive"],
-                stratum["case_ids"],
-                stratum["available_pairs"],
-                stratum["omitted_pairs"],
-                stratum["delta_median"],
-            )
-        )
-    if value["coverage_profile"]:
-        profile = value["coverage_profile"]
+    if corpus_selected:
         lines += [
             "",
-            "Strata profile: "
-            + _cell(profile["coverage_profile_id"])
-            + " / "
-            + _cell(profile["revision"])
-            + "; declared metric "
-            + _cell(profile["metric"])
-            + "; timing "
-            + _cell(profile["timing_basis"])
-            + ".",
+            "## Pinned corpus coverage",
+            "",
+            value["coverage_summary"]["interpretation"],
+            "",
+            "Eligible count measures corpus entities in the fixed scope, not unique venues. "
+            "Optional interest coverage uses a reviewed sample denominator; unknown coding "
+            "retains bounds. Missing, timeout and truncated counts remain unavailable/partial.",
+            "",
+            "| Case / revision | Eligible entity count | Observed subtotal | Status | "
+            "Stratum | Timing basis | Interest fraction | Bounds | Reasons |",
+            "| --- | ---: | ---: | --- | --- | --- | ---: | --- | --- |",
         ]
+        for coverage in value["coverage"]:
+            reviewed = coverage.get("interest_coverage", {})
+            lines.append(
+                _row(
+                    coverage["case_id"] + " / " + coverage["case_revision"],
+                    coverage["eligible_entity_count"],
+                    coverage["observed_subtotal"],
+                    coverage["status"],
+                    coverage["stratum_id"],
+                    coverage.get("timing_basis"),
+                    reviewed.get("fraction"),
+                    f"{reviewed.get('lower_bound')} .. {reviewed.get('upper_bound')}",
+                    coverage["reasons"],
+                )
+            )
+            if coverage.get("snapshot_identity"):
+                snapshot = coverage["snapshot_identity"]
+                lines += [
+                    "",
+                    "Pinned snapshot: "
+                    + _cell(snapshot["snapshot_ref"]["path"])
+                    + " SHA-256 `"
+                    + snapshot["snapshot_ref"]["sha256"]
+                    + "`; artifact `"
+                    + snapshot["artifact_sha256"]
+                    + "`, policy "
+                    + _cell(snapshot["policy_version"])
+                    + ", space "
+                    + _cell(snapshot["space_id"])
+                    + ".",
+                    "Fixed scope: `"
+                    + _cell(coverage["scope"])
+                    + "`; scope SHA-256 `"
+                    + coverage["scope_sha256"]
+                    + "`.",
+                    "Measurement: "
+                    + _cell(coverage["measurement_method"])
+                    + " at "
+                    + _cell(coverage["measured_at"])
+                    + ".",
+                ]
+        summary = value["coverage_summary"]
+        lines += [
+            "",
+            "## Descriptive strata",
+            "",
+            f"Available pairs: {summary['available_pairs']}; "
+            f"omitted pairs: {summary['omitted_pairs']}; "
+            f"unstratified pairs: {summary['unstratified_pairs']}.",
+            "",
+            "| Stratum | Lower inclusive | Upper exclusive | Case IDs | Available pairs "
+            "| Omitted pairs | End-to-end delta median |",
+            "| --- | ---: | ---: | --- | ---: | ---: | ---: |",
+        ]
+        for stratum in summary["strata"]:
+            lines.append(
+                _row(
+                    stratum["stratum_id"],
+                    stratum["min_inclusive"],
+                    stratum["max_exclusive"],
+                    stratum["case_ids"],
+                    stratum["available_pairs"],
+                    stratum["omitted_pairs"],
+                    stratum["delta_median"],
+                )
+            )
+        if value["coverage_profile"]:
+            profile = value["coverage_profile"]
+            lines += [
+                "",
+                "Strata profile: "
+                + _cell(profile["coverage_profile_id"])
+                + " / "
+                + _cell(profile["revision"])
+                + "; declared metric "
+                + _cell(profile["metric"])
+                + "; timing "
+                + _cell(profile["timing_basis"])
+                + ".",
+            ]
     lines += [
         "",
         "## Independent reviews",
