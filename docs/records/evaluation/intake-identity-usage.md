@@ -1096,6 +1096,48 @@ formal benchmark or blind assessment is represented by these checks.
 Final independent Standards and Spec rechecks through `f7f8c7d`, including the five
 documentation owners, found zero remaining findings.
 
+The 2026-10-12 combined #131-#136 delivery review used fixed base `8d9f402`
+through the twenty implementation, correction and contract commits ending at
+`d46428e`. Independent Standards and Spec reviews found zero remaining findings.
+The offline backend-wide run at that head collected 4,097 tests: 4,076 passed,
+five failed and sixteen skipped in 1,769.66 seconds. It was not a clean full run.
+Three failures came from Windows legacy path limits under the long test root:
+the native V1/V2 graph registration destinations exceeded the limit, and an
+unchanged controlled-target suite fixture could not copy a nested raw snapshot.
+The source bytes existed; shortening only the temporary root made all three pass.
+Test correction `620f924` gives the two graph fixtures short, unique pytest
+directories while preserving real synthetic dispatch, registration and source
+assertions. Both also passed again under the original long-root layout.
+The other two failures were stale test integration rules. Correction `95e9e08`
+adds precise paired-module import allowances and validates the real nested corpus
+and paired-acquisition command leaves. Production files remained byte-identical
+to `d46428e`; no long-path platform guarantee was introduced.
+
+The final affected run passed all five formerly failing cases in 65.43 seconds
+with a short Windows-compatible temporary root. Five alternate-volume rendering
+tests skipped by the initial process passed separately in 3.16 seconds. These
+results reconcile coverage to 4,086 passing cases and eleven environmental
+exclusions: nine opt-in isolated PostgreSQL tests and two tests requiring Windows
+symlink privileges. This combines the full run and affected retests, rather than
+claiming a second clean backend-wide run at the corrected test head. Twenty-nine
+changed Python files passed Ruff lint; twenty-eight passed formatting. The only
+format exception is an unchanged `planner_runtime.py` block also present at the
+review base. No mypy or Pyright gate is configured. An exploratory comparison of
+all nineteen changed production files found 31 existing Pyright diagnostics
+against 33 at the base, with none introduced and two removed; it was not a clean
+type-check pass. The 269 tracked documentation links and anchors resolved.
+
+Delivery evidence identifiers are
+`.scratch/delivery131-136-20261012/backend.xml`, `capture-red.xml`,
+`capture-short.xml`, `capture-green.xml`, `suite-target.xml`,
+`suite-target-short.xml`, `guards-green.xml`, `final-affected.xml`,
+`cross-volume.xml` and `types-comparison.json` in that same directory. Original
+results remain unchanged. Synthetic native graphs and injected HTTP fixtures
+exercise the public boundaries; no live provider, model, database or Planner/Repair
+execution, formal benchmark or human assessment is represented. This engineering
+delivery does not accept case-01, supply independent semantic reviews or freeze
+V0-V3.
+
 ### Combined verification and evidence limits
 
 Initial full fixed-base Standards/Spec reviews had zero implementation findings.
