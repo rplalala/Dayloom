@@ -38,10 +38,10 @@ def save(root, name, value):
 
 
 def fresh(directory):
-    path = Path(directory).resolve()
+    path = Path(directory)
     if os.path.lexists(path):
         raise ValueError("Fresh paired output directory required")
-    return path
+    return path.resolve()
 
 
 def file_inventory(directory):
@@ -170,6 +170,16 @@ def lineage(intake, identity, source, context):
     return result
 
 
+def request_billing(request, wire):
+    billing = {"endpoint": wire["endpoint"], "field_mask": wire["field_mask"]}
+    if request["operation"] == "route_matrix":
+        billing.update(
+            travel_mode=request["parameters"]["mode"],
+            routing_preference=request["parameters"]["routing_options"].get("routing_preference"),
+        )
+    return billing
+
+
 def price_inventory(identity_plan, evidence_plan, prices, stamp, *, deferred, route_preparation):
     from ._route_rules import DEFAULT_OPTIONS
     from .evaluation_transport import DETAILS_MASK, ROUTE_MASK, google_wire
@@ -177,15 +187,7 @@ def price_inventory(identity_plan, evidence_plan, prices, stamp, *, deferred, ro
     events = []
     for request in [*identity_plan["requests"], *evidence_plan["requests"]]:
         wire = google_wire(request)
-        billing = {"endpoint": wire["endpoint"], "field_mask": wire["field_mask"]}
-        if request["operation"] == "route_matrix":
-            billing.update(
-                travel_mode=request["parameters"]["mode"],
-                routing_preference=request["parameters"]["routing_options"].get(
-                    "routing_preference"
-                ),
-            )
-        events.append((request["operation"], 1, billing))
+        events.append((request["operation"], 1, request_billing(request, wire)))
     pending = []
     if deferred:
         # Native occurrence rows bound venue sends; native reviewed modes bound route sends.
@@ -590,6 +592,8 @@ def verify_journal(preparation, execution, inventory, usage):
             raise ValueError("Paired phase/plan mismatch")
         if phase == "identity" and plan != preparation["identity_plan"]:
             raise ValueError("Paired identity inventory mismatch")
+        if plan != _read(execution / (phase + "-plan.json"))[0]:
+            raise ValueError("Paired saved phase plan mismatch")
         requests = {r["key"]: r for r in plan["requests"]}
         ids = record["event_ids"]
         if len({by_id[eid]["request_key"] for eid in ids}) != len(ids):
@@ -604,14 +608,7 @@ def verify_journal(preparation, execution, inventory, usage):
                 if request["operation"] == "places_details"
                 else request["operation"]
             )
-            billing = {"endpoint": wire["endpoint"], "field_mask": wire["field_mask"]}
-            if operation == "route_matrix":
-                billing.update(
-                    travel_mode=request["parameters"]["mode"],
-                    routing_preference=request["parameters"]["routing_options"].get(
-                        "routing_preference"
-                    ),
-                )
+            billing = request_billing(request, wire)
             if (
                 event["provider"] != "google"
                 or event["request"] != wire
@@ -623,6 +620,20 @@ def verify_journal(preparation, execution, inventory, usage):
             raw_path = execution / "http" / (eid + ".bin")
             if event.get("status_code") is not None and not raw_path.is_file():
                 raise ValueError("Paired HTTP response missing")
+        if record["status"] == "stopped":
+            raw_directory = execution / (phase + "-snapshot") / "raw"
+            expected_raw = set()
+            for eid in ids:
+                event = by_id[eid]
+                if event.get("status_code") is None:
+                    continue
+                name = event["request_key"] + "-1.bin"
+                expected_raw.add(name)
+                captured = (execution / "http" / (eid + ".bin")).read_bytes()
+                if (raw_directory / name).read_bytes() != captured:
+                    raise ValueError("Paired stopped response differs from partial snapshot")
+            if {p.name for p in raw_directory.glob("*")} != expected_raw:
+                raise ValueError("Paired stopped raw response inventory mismatch")
         if record["status"] in ("acquired", "reused_verified_snapshot"):
             snapshot = load_snapshot(execution / (phase + "-snapshot"), expected_plan=plan)
             if record["status"] == "reused_verified_snapshot":

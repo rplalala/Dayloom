@@ -346,6 +346,60 @@ FixtureClient.request = slow
     )
 
 
+@pytest.mark.parametrize("fault", ["http_response", "snapshot_response", "missing_response"])
+def test_stopped_replay_rejects_rehashed_partial_response_corruption(
+    installed_cli, paired_material, tmp_path, fault
+):
+    import hashlib
+
+    _, args, _, _ = paired_material
+    directory = tmp_path / "cancelled"
+    prepared = run(installed_cli, "prepare", *args, "--directory", directory)
+    assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+    fixture = (
+        HTTP_FIXTURE
+        + """
+import asyncio
+normal_request = FixtureClient.request
+async def cancelling(self, *args, **kwargs):
+    if self.calls == 1: raise asyncio.CancelledError()
+    return await normal_request(self, *args, **kwargs)
+FixtureClient.request = cancelling
+"""
+    )
+    executed = run(
+        installed_cli,
+        "execute",
+        directory,
+        "--approved-sha256",
+        json.loads(prepared.stdout)["content_sha256"],
+        bootstrap=fixture,
+    )
+    assert executed.returncode == 2, executed.stdout + executed.stderr
+    assert json.loads(executed.stdout)["reason"] == "execution_cancelled"
+    intact = run(installed_cli, "replay", directory)
+    assert json.loads(intact.stdout) == json.loads(executed.stdout)
+    execution = directory / "execution"
+    event = json.loads((execution / "http/1.json").read_bytes())
+    partial = execution / "identity-snapshot/raw" / (event["request_key"] + "-1.bin")
+    assert partial.read_bytes() == (execution / "http/1.bin").read_bytes()
+    if fault == "missing_response":
+        partial.unlink()
+    else:
+        corrupted = execution / "http/1.bin" if fault == "http_response" else partial
+        corrupted.write_bytes(b'{"id":"foreign-place"}')
+    receipt = json.loads((execution / "receipt.json").read_bytes())
+    receipt["files"] = {
+        str(p.relative_to(execution)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in execution.rglob("*")
+        if p.is_file() and p != execution / "receipt.json"
+    }
+    save(execution, "receipt.json", receipt)
+    replayed = run(installed_cli, "replay", directory)
+    assert replayed.returncode == 2, replayed.stdout + replayed.stderr
+    assert json.loads(replayed.stdout)["processing_status"] == "needs_material_correction"
+
+
 def test_changed_visit_hours_produce_signed_native_deltas(
     installed_cli, paired_material, batch, tmp_path
 ):
@@ -669,6 +723,42 @@ def test_prepare_rejects_bad_local_material_with_zero_dispatch(
 def test_acquire_help_is_lazy_and_offline(installed_cli, command):
     result = run(installed_cli, *command, "--help", block_intake=True)
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize("operation", ["prepare", "export"])
+def test_existing_dangling_destination_is_rejected_before_resolution(
+    installed_cli, paired_material, tmp_path, operation
+):
+    _, args, _, _ = paired_material
+    source = tmp_path / "source"
+    if operation == "export":
+        result = run(installed_cli, "prepare", *args, "--directory", source)
+        assert result.returncode == 0, result.stdout + result.stderr
+        result = run(
+            installed_cli,
+            "execute",
+            source,
+            "--approved-sha256",
+            json.loads(result.stdout)["content_sha256"],
+            bootstrap=HTTP_FIXTURE,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+    link, target = tmp_path / "existing-link", tmp_path / "missing-target"
+    # Model the native filesystem's dangling-link result without Windows link privileges.
+    bootstrap = f"""
+from pathlib import Path
+link, target = Path({json.dumps(str(link))}), Path({json.dumps(str(target))})
+original_resolve, original_lexists = Path.resolve, os.path.lexists
+def resolve(self, *args, **kwargs):
+    return target if self == link else original_resolve(self, *args, **kwargs)
+def lexists(path):
+    return True if Path(path) == link else original_lexists(path)
+Path.resolve, os.path.lexists = resolve, lexists
+"""
+    arguments = args if operation == "prepare" else [source]
+    result = run(installed_cli, operation, *arguments, "--directory", link, bootstrap=bootstrap)
+    assert result.returncode == 2, result.stdout + result.stderr
+    assert not target.exists()
 
 
 def test_rehashed_preparation_still_binds_original_options_before_dispatch(
