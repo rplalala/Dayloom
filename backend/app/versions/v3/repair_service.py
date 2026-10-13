@@ -47,6 +47,7 @@ async def run_repair_once(
     runtime_config=None,
     semantic_service=None,
     application_proposal=None,
+    proposal_strategy="local",
 ):
     """All collaborators are injected. Optional acquisition failures are local stops.
 
@@ -345,6 +346,7 @@ async def run_repair_once(
                     feedback=feedback,
                     transport_options=transport_options,
                     pending_groups=pending,
+                    proposal_strategy=proposal_strategy,
                 )
                 fingerprint = material_fingerprint(user)
                 timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
@@ -407,6 +409,7 @@ async def run_repair_once(
                 stage_original,
                 f"repair_r{round_index}_new",
                 retain_pending_groups=application_proposal is None,
+                proposal_strategy=proposal_strategy,
             )
             components = component_result["components"]
             proposed = component_result["final"]
@@ -560,6 +563,7 @@ async def run_repair_stage(
     completed = set()
     stop = "model_budget_disabled" if not policy.max_model_calls else "round_limit"
     last = None
+    proposal_strategy = "local"
     model_limit = min(policy.max_rounds, policy.max_model_calls)
     for index in range(1, model_limit + policy.max_deletion_attempts + 1):
         effective = context.model_copy(
@@ -631,10 +635,14 @@ async def run_repair_stage(
         from backend.app.versions.v3.repair_deletion import next_deletion
 
         application_proposal = next_deletion(current, effective, round_scope, budget)
-        strategy = "system_delete" if application_proposal is not None else "local"
+        strategy = "system_delete" if application_proposal is not None else proposal_strategy
         if application_proposal is None and budget.used["model"] >= model_limit:
             stop = "round_or_model_limit" if model_limit else "model_budget_disabled"
             break
+        if strategy == "replan":
+            from backend.app.versions.v3.repair_replan import replan_scope
+
+            round_scope = replan_scope(current, round_scope, scope)
         timing = policy.timing
         required_time = timing.recheck_reserve_seconds + (
             timing.minimum_model_seconds if application_proposal is None else 0
@@ -664,6 +672,7 @@ async def run_repair_stage(
             round_index=index,
             round_deadline=clock() + allocation,
             application_proposal=application_proposal,
+            proposal_strategy=strategy,
             **kwargs,
         )
         result = learn(result, budget, index)
@@ -793,6 +802,8 @@ async def run_repair_stage(
             )
         if stop != "feedback_iteration":
             break
+        if result.model_attempted:
+            proposal_strategy = "local" if accepted else "replan"
         feedback = new_feedback
         budget.feedback_kind = result.feedback_kind
         budget.explore_feedback = bool(result.spatial.get("reasons"))

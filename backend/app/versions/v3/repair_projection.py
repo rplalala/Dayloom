@@ -85,10 +85,18 @@ def build_repair_input(
     feedback=None,
     transport_options=(),
     pending_groups=(),
+    proposal_strategy="local",
 ):
     from backend.app.versions.v3.repair_budget import configured_policy
 
     policy = policy if policy is not None else configured_policy()
+    if proposal_strategy not in {"local", "replan"}:
+        raise ValueError("Unknown Repair proposal strategy")
+    system = REPAIR_SYSTEM_PROMPT
+    if proposal_strategy == "replan":
+        from backend.app.versions.v3.repair_replan import REPLAN_INSTRUCTION
+
+        system = REPLAN_INSTRUCTION + REPAIR_SYSTEM_PROMPT
     if (
         feedback is not None
         and len(json.dumps(feedback, ensure_ascii=True)) > policy.input.feedback_characters
@@ -318,6 +326,11 @@ def build_repair_input(
         ],
     }
     # Limit each variable-size evidence object; do not truncate facts or constraints.
+    if proposal_strategy == "replan":
+        from backend.app.versions.v3.repair_replan import arrangement_context
+
+        payload["affected_day_replan"] = arrangement_context(original, scope, context)
+    payload["proposal_strategy"] = proposal_strategy
     for candidate in payload["candidate_catalog"]:
         if len(json.dumps(candidate, ensure_ascii=True)) > policy.input.candidate_characters:
             raise ValueError("repair_candidate_projection_overflow")
@@ -330,7 +343,7 @@ def build_repair_input(
         sort_keys=True,
     )
     counts = {
-        "system_tokens": count_tokens(REPAIR_SYSTEM_PROMPT + "\n" + INSTRUCTION),
+        "system_tokens": count_tokens(system + "\n" + INSTRUCTION),
         "user_tokens": count_tokens(wire_user),
         "schema_tokens": count_tokens(schema),
         "framing_tokens": policy.input.framing_tokens,
@@ -379,4 +392,4 @@ def build_repair_input(
         )
     if counts["total_tokens"] > counts["input_ceiling"]:
         raise RepairInputOverflow(counts)
-    return REPAIR_SYSTEM_PROMPT, user, counts
+    return system, user, counts

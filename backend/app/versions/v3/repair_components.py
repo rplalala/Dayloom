@@ -87,6 +87,7 @@ async def accept_components(
     prefix,
     *,
     retain_pending_groups=True,
+    proposal_strategy="local",
 ):
     """Sequential acceptance with complete working-state checks and immutable evidence history."""
     import asyncio
@@ -261,6 +262,7 @@ async def accept_components(
                     required,
                     routing_preference=scope.routing_preference,
                     schedule=proposed_schedule,
+                    check_rearrangements=proposal_strategy == "replan",
                 )
                 audit.update(
                     report=after.model_dump(mode="json"),

@@ -121,6 +121,25 @@ def test_actual_unknown_coverage_still_blocks_count_reduction():
     assert not result.rounds[0].exploration_transition
 
 
+def test_same_day_authorized_coverage_debt_remains_assessable_separately():
+    original = three_visits()
+    original.days[0].activities = original.days[0].activities[:2]
+    requirements = contract("EXCLUDED").model_copy(
+        update={"visit_requirements": (), "time_protections": ()}
+    )
+    ctx = context(requirements, named_resolutions=(binding(),), window=create_trip_date_window(DAY))
+    result = execute(original, ctx)
+    assert result.status == "ACCEPTED_PARTIAL", result.reason
+    assert [a.source_place_id for a in result.final.days[0].activities] == ["b"]
+    assert result.adopted_report.diagnostics.days[0].target_status == "not_assessable"
+    assert result.adopted_report.diagnostics.days[0].minimum_coverage == "satisfied"
+    conditional = next(
+        f for f in result.adopted_report.findings if f.reason == "conditional_coverage_deficit"
+    )
+    assert conditional.status == "NEEDS_REVIEW"
+    assert any(r.status == "unresolved" for r in result.related_targets)
+
+
 def test_required_visit_is_protected_even_when_delete_permission_is_present():
     original = three_visits()
     requirements = pace_contract().model_copy(
@@ -224,6 +243,8 @@ def test_system_attempts_leave_all_six_model_sends_available_and_do_not_repeat()
     assert model.calls == result.counters["model"] == 6
     assert result.counters["deterministic_attempts"] == 2
     assert len(result.rounds) == 8
+    assert [r.strategy for r in result.rounds[:3]] == ["system_delete", "system_delete", "local"]
+    assert all(r.strategy == "replan" for r in result.rounds[3:])
 
 
 def test_model_pending_compensation_survives_prior_system_alternatives():

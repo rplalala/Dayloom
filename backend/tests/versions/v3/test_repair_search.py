@@ -173,7 +173,12 @@ def test_sixth_eligible_proposal_and_equivalent_failure_suppression():
     model = Explanations([[], [], [], [], [], [edit()]])
     result = asyncio.run(
         run_repair_stage(
-            original, ctx, scope_for(original, ctx), model=model, request_deadline=monotonic() + 600
+            original,
+            ctx,
+            scope_for(original, ctx),
+            model=model,
+            routes_provider=Routes(),
+            request_deadline=monotonic() + 600,
         )
     )
     assert model.calls == result.counters["model"] == 6

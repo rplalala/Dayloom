@@ -67,7 +67,7 @@ def stage(model, original=None, ctx=None, scope=None, **kwargs):
 
 def test_rejection_feedback_allows_another_proposal_with_unchanged_materials():
     model = SequenceModel([[], [edit()]])
-    result = stage(model)
+    result = stage(model, routes_provider=Routes())
     assert result.status == "ACCEPTED_COMPLETE"
     assert len(result.rounds) == 2 and model.calls == 2
     assert model.inputs[0]["feedback"] is None
@@ -91,7 +91,7 @@ def test_later_provider_failure_preserves_partial_improvement():
 
 def test_repeated_failed_patch_does_not_exhaust_other_operations():
     model = SequenceModel([[], [], [edit()]])
-    result = stage(model)
+    result = stage(model, routes_provider=Routes())
     assert model.calls == 3
     assert result.rounds[1].result.reason == "equivalent_proposal_suppressed"
     assert result.status == "ACCEPTED_COMPLETE"
