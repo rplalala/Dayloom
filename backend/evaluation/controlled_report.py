@@ -197,6 +197,11 @@ def build_controlled_report(
             "detected": sum(r["detection"] == "detected" for r in base["targets"]),
             "authorized": sum(r["authorization"] == "authorized" for r in base["targets"]),
         }
+        if (execution["outcome"].get("repair") or {}).get("search_version") == 1:
+            base["target_counts"].update(
+                operation_attempted=sum(r["operation_attempted"] for r in base["targets"]),
+                deterministic_attempted=sum(r["deterministic_attempted"] for r in base["targets"]),
+            )
         base["target_counts"].update(
             model_attempted=sum(r["model_attempted"] for r in base["targets"]),
             adopted=sum(r["adoption"] == "adopted_component" for r in base["targets"]),

@@ -535,12 +535,26 @@ def compare(
     progress = []
     business_values = []
     originals = {f.finding_id: f for f in initial_report.findings}
-    for key, f in old.items():
-        if f.check == "soft_pace" and f.magnitude is not None:
+    comparable = {
+        finding_key(f): f
+        for f in initial_report.findings
+        if f.check == "soft_pace" and f.magnitude is not None
+    }
+    comparable.update(
+        {k: f for k, f in old.items() if f.check == "soft_pace" and f.magnitude is not None}
+    )
+    for key in comparable:
+        if old.get(key) is None or old[key].magnitude is None:
+            rejections.append("Lost comparable soft pace evidence")
+        else:
             current = new.get(key)
             if current is None or current.magnitude is None:
                 rejections.append("Lost comparable soft pace evidence")
-    before_pace = [f for f in old.values() if f.check == "soft_pace"]
+    before_pace = [
+        old[finding_key(f)]
+        for f in initial_report.findings
+        if f.check == "soft_pace" and f.magnitude is not None and finding_key(f) in old
+    ]
     after_pace = [new.get(finding_key(f)) for f in before_pace]
     pace_improved = (
         bool(before_pace)

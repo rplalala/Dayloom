@@ -56,9 +56,22 @@ def pace_summary(before, after):
         }
 
     first, last = projection(before), projection(after)
+    dates = [
+        f.dates[0] for f in before.findings if f.check == "soft_pace" and f.magnitude is not None
+    ]
+    initial = {f.dates[0]: f.magnitude for f in before.findings if f.check == "soft_pace"}
+    final = {f.dates[0]: f.magnitude for f in after.findings if f.check == "soft_pace"}
+    comparable = {
+        "dates": [str(d) for d in dates],
+        "before_total": sum(initial[d] for d in dates) if dates else None,
+        "after_total": sum(final[d] for d in dates)
+        if dates and all(final.get(d) is not None for d in dates)
+        else None,
+    }
     return {
         "objective": "zero_soft_pace_deductions",
         "is_failure_constraint": False,
+        "comparable": comparable,
         "before": first,
         "after": last,
         "target_state": "reached"

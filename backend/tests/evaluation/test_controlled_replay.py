@@ -77,7 +77,7 @@ def test_missing_route_script_cannot_be_swallowed_as_normal_repair_failure():
     assert any("route_matrix" in error for error in out["diagnostics"])
 
 
-def scripted(value, patch):
+def scripted(value, patch, *, semantic_role="attraction"):
     """Record exact requests at external boundaries with independently chosen replies."""
     value = copy.deepcopy(value)
     for _ in range(64):
@@ -97,7 +97,7 @@ def scripted(value, patch):
                     {
                         "candidate_ref": p["candidate_ref"],
                         "visit_object": p["name"],
-                        "role": "attraction",
+                        "role": semantic_role,
                         "categories": [],
                         "reason": "Synthetic attraction",
                         "evidence_refs": [p["source_ref"]],
@@ -281,3 +281,43 @@ def test_malformed_model_script_is_material_error_even_when_production_catches_i
     out = replay(value)
     assert out["status"] == "execution_material_error"
     assert "invalid_frozen_response:repair_model" in out["diagnostics"]
+
+
+def test_finalization_restores_selected_semantics_after_unavailable_exploration():
+    from backend.tests.versions.v3.test_repair_search import scenario
+
+    original, ctx, _ = scenario((3,))
+    value = case(review=True)
+    value.update(
+        primary=original.model_dump(mode="json"),
+        requirements=ctx.contract.model_dump(mode="json"),
+        supply_ids=list(ctx.original_supply_ids),
+        places=[p.model_dump(mode="json") for p in ctx.places],
+        semantics={},
+    )
+    value["runtime"]["v3_repair"].update(max_deletion_attempts=0, max_model_calls=1, max_rounds=1)
+    value["original_input"]["additional_preferences"] = "relaxed"
+    value["semantic_assessments"] = [
+        dict(
+            place_id=p.place_id,
+            visit_object=p.name,
+            role="attraction",
+            categories=[],
+            reason="Initial grounded role",
+            evidence_refs=[p.source_ref],
+            matches=[],
+            exception_requirement_ids=[],
+        )
+        for p in ctx.places
+    ]
+    value = scripted(value, {"edits": []}, semantic_role="unresolved")
+    execution = replay(value)
+    assert execution["status"] == "complete", execution["diagnostics"]
+    assert any(c["operation"] == "poi_semantics" for c in execution["calls"])
+    outcome = execution["outcome"]
+    repair = outcome["repair"]
+    assert repair["selected_round_index"] is None
+    assert repair["selected_semantic_assessments"] == value["semantic_assessments"]
+    assert outcome["final_report"] == repair["adopted_report"]
+    assert outcome["soft_pace"]["after"]["mean_penalty"] == 40
+    assert outcome["soft_pace"]["target_state"] == "residual"

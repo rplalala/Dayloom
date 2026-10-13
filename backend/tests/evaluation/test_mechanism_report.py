@@ -231,6 +231,9 @@ def test_trace_copy_of_saved_round_is_not_an_extra_attempt():
         ("continuation_reason", "wrong_stop_reason"),
         ("cumulative_counters", {"model": 999}),
         ("usage", {"foreign-model": {"total_tokens": 999}}),
+        ("strategy", "replan"),
+        ("exploration_transition", False),
+        ("best_promoted", False),
     ],
 )
 def test_trace_conflicting_shared_round_cells_are_local_material_errors(field, value):
@@ -273,3 +276,47 @@ def test_separate_usage_does_not_add_to_cumulative_or_round_token_observations()
     report = report_mechanism(base)["runs"][0]
     assert report["usage"]["report"]["metrics"]["total_tokens"] == 10
     assert report["model_attempts"] == 2
+
+
+def test_search_mechanism_keeps_derived_pace_targets_and_separate_promotions():
+    from backend.tests.versions.v3.test_repair_search import deletion, execute, move
+
+    repair, _ = execute([[move("d0_2", 1)], [deletion("d0_2", 1)], [deletion("d2_2", 2)]])
+    outcome = {
+        "original_report": repair.original_report.model_dump(mode="json"),
+        "scope": repair.scope.model_dump(mode="json"),
+        "repair": repair.model_dump(mode="json"),
+    }
+    report = report_mechanism(selected(outcome))
+    run = report["runs"][0]
+    assert run["coverage"] == "available", run["diagnostics"]
+    assert run["model_attempts"] == 3
+    assert run["exploration_transitions"] == 3
+    assert run["best_promotions"] == 2
+    assert run["selected_lineage_rounds"] == 3
+    assert run["rounds"][1]["derived_target_links"]
+    assert run["rounds"][0]["best_promoted"] is False
+    assert run["rounds"][0]["strategy"] == "local"
+
+
+def test_legacy_mechanism_does_not_invent_search_fields_or_change_sources():
+    outcome = actual_outcome()
+    repair = outcome["repair"]
+    for name in ("search_version", "selected_round_index", "selected_semantic_assessments"):
+        repair.pop(name, None)
+    for row in repair["rounds"]:
+        for name in (
+            "strategy",
+            "base_state",
+            "best_state",
+            "exploration_transition",
+            "best_promoted",
+        ):
+            row.pop(name, None)
+    before = copy.deepcopy(outcome)
+    run = report_mechanism(selected(outcome))["runs"][0]
+    assert run["coverage"] == "available"
+    assert run["model_attempts"] == 2 and run["accepted_rounds"] == 1
+    assert "exploration_transitions" not in run
+    assert "strategy" not in run["rounds"][0]
+    assert outcome == before

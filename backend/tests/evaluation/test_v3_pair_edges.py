@@ -323,3 +323,86 @@ def test_unknown_replacement_identity_cannot_certify_a_retained_protection_fix(p
     conflict = pair["continuity"]["protection_conflicts"][0]
     assert conflict["transition"] == "unresolved_correspondence"
     assert conflict["continued_participant"] is None
+
+
+def test_search_selection_keeps_intermediate_ancestors_and_discards_tail(pair_case, batch):
+    def after(itinerary):
+        itinerary["days"][0]["activities"][0].update(
+            start_time="2020-01-01T08:00:00Z",
+            end_time="2020-01-01T09:00:00Z",
+        )
+
+    def repair_change(repair):
+        current = repair["original"]
+        rows = []
+        for index, (start, end) in enumerate(((10, 11), (8, 9), (11, 12)), 1):
+            next_state = copy.deepcopy(current)
+            next_state["days"][0]["activities"][0].update(
+                start_time=f"2020-01-01T{start:02}:00:00Z",
+                end_time=f"2020-01-01T{end:02}:00:00Z",
+            )
+            row = pairs.adopted_edit(
+                current,
+                next_state,
+                [
+                    pairs.edit(
+                        "retime",
+                        start_time=f"2020-01-01T{start:02}:00:00Z",
+                        end_time=f"2020-01-01T{end:02}:00:00Z",
+                    )
+                ],
+            )["rounds"][0]
+            row.update(
+                round_index=index,
+                exploration_transition=True,
+                best_promoted=index == 2,
+                strategy="local",
+            )
+            rows.append(row)
+            current = next_state
+        repair.update(search_version=1, selected_round_index=2, rounds=rows)
+
+    case = pair_case(
+        after=after,
+        edits=[
+            pairs.edit("retime", start_time="2020-01-01T08:00:00Z", end_time="2020-01-01T09:00:00Z")
+        ],
+        repair_change=repair_change,
+    )
+    sources = read_v3_result_sources(case[0], batch[4] / "manifest.json")
+    result = prepare_v3_correspondence(case[0], case[1], sources).to_dict()
+    group = result["groups"][0]
+    assert not group["diagnostics"]
+    relation = next(r for r in group["relations"] if r["relation"] == "modified")
+    assert [event["round_index"] for event in relation["edit_sources"]] == [1, 2]
+    assert relation["basis"] == "validated_adopted_lineage"
+
+
+@pytest.mark.parametrize("selection", [None, 1, "1"])
+def test_original_selection_and_invalid_promotion_references(pair_case, batch, selection):
+    def repair_change(repair):
+        original = repair["original"]
+        explored = copy.deepcopy(original)
+        explored["days"][0]["activities"][0].update(
+            start_time="2020-01-01T10:00:00Z", end_time="2020-01-01T11:00:00Z"
+        )
+        row = pairs.adopted_edit(
+            original,
+            explored,
+            [
+                pairs.edit(
+                    "retime", start_time="2020-01-01T10:00:00Z", end_time="2020-01-01T11:00:00Z"
+                )
+            ],
+        )["rounds"][0]
+        row.update(strategy="local", exploration_transition=True, best_promoted=False)
+        repair.update(search_version=1, selected_round_index=selection, rounds=[row])
+
+    case = pair_case(after=lambda itinerary: None, edits=[], repair_change=repair_change)
+    sources = read_v3_result_sources(case[0], batch[4] / "manifest.json")
+    group = prepare_v3_correspondence(case[0], case[1], sources).to_dict()["groups"][0]
+    if selection is None:
+        assert not group["diagnostics"]
+        assert all(not row["edit_sources"] for row in group["relations"])
+    else:
+        assert any(row["reason"] == "embedded_lineage_unavailable" for row in group["diagnostics"])

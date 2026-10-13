@@ -1,5 +1,6 @@
 """Source-linked adopted V3 edit preparation, separate from independent quality."""
 
+import copy
 import hashlib
 import json
 from dataclasses import dataclass
@@ -165,6 +166,10 @@ def _adopted_chain(result):
     history = {}
     origins = {aid: aid for aid in _activities(current)}
     seen_ids = set(origins)
+    from .repair_selection import selected_prefix
+
+    selected = selected_prefix(repair)
+    retained = (current, copy.deepcopy(history), dict(origins))
     for number, row in enumerate(repair.get("rounds", []), 1):
         require(
             type(row["round_index"]) is int
@@ -272,6 +277,10 @@ def _adopted_chain(result):
             for aid in removed:
                 origins.pop(aid)
         current = adopted
+        if selected == number:
+            retained = (current, copy.deepcopy(history), dict(origins))
+    if selected is not None:
+        current, history, origins = retained
     require(_same_state(current, repair["final"]), "lineage", "Cumulative final mismatch")
     normalizations = _reconcile_final(current, v3["final_primary"], v3.get("final_places", []))
     return {"history": history, "origins": origins, "normalizations": normalizations}

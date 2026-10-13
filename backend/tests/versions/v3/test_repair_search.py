@@ -255,3 +255,40 @@ def test_deadline_after_exploration_keeps_best_and_counts_failed_send():
     assert result.reason == "model_failed_no_retry"
     assert result.rounds[-1].result.reason == "repair_timeout"
     assert result.counters["final_main_visits"] == 9
+
+
+def test_known_date_improvement_survives_unrelated_unavailable_pace():
+    original, ctx, _ = scenario((3, 2))
+    unknown = ctx.contract.daily_pace[0].model_copy(
+        update={
+            "date": DAY + timedelta(days=1),
+            "profile": "unresolved",
+        }
+    )
+    ctx = ctx.model_copy(
+        update={
+            "contract": ctx.contract.model_copy(
+                update={
+                    "daily_pace": (*ctx.contract.daily_pace, unknown),
+                }
+            )
+        }
+    )
+    scope = operation_scope(original, assess(original, ctx), context=ctx)
+    model = SequenceModel([])
+    result = asyncio.run(
+        run_repair_stage(
+            original,
+            ctx,
+            scope,
+            model=model,
+            routes_provider=Routes(),
+            request_deadline=monotonic() + 600,
+        )
+    )
+    assert [len(d.activities) for d in result.final.days] == [2, 2]
+    assert model.calls == 0
+    assert result.soft_pace["target_state"] == "unavailable"
+    assert result.soft_pace["comparable"]["dates"] == [str(DAY)]
+    assert result.soft_pace["comparable"]["before_total"] == 40
+    assert result.soft_pace["comparable"]["after_total"] == 0

@@ -547,7 +547,9 @@ async def run_repair_stage(
         )
     from backend.app.versions.v3.repair_search import improves, objective, state_key
 
-    pace_dates = tuple(f.dates[0] for f in initial.findings if f.check == "soft_pace")
+    pace_dates = tuple(
+        f.dates[0] for f in initial.findings if f.check == "soft_pace" and f.magnitude is not None
+    )
     best = original.model_copy(deep=True)
     best_context = context.model_copy(deep=True)
     best_objective = objective(best, initial, pace_dates, scope)
@@ -794,6 +796,12 @@ async def run_repair_stage(
                 "v3_repair_round",
                 {
                     "round_index": index,
+                    "search_version": 1,
+                    "strategy": records[-1].strategy,
+                    "exploration_transition": accepted,
+                    "best_promoted": records[-1].best_promoted,
+                    "base_state": records[-1].base_state,
+                    "best_state": records[-1].best_state,
                     "status": result.status,
                     "continuation_reason": stop,
                     "cumulative_counters": dict(budget.used),
@@ -905,6 +913,10 @@ async def run_repair_stage(
         inclusion_ids(selected_context)[0],
         routing_preference=scope.routing_preference,
         schedule=current_schedule,
+        check_rearrangements=any(
+            r.strategy == "replan" and r.exploration_transition
+            for r in records[: selected_round or 0]
+        ),
     )
     any_accepted = selected_round is not None
     status = (

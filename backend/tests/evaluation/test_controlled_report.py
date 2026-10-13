@@ -490,3 +490,100 @@ def test_independent_opening_conflict_detection_miss_stays_in_denominator(tmp_pa
     assert out["targets"][0]["detection"] == "missed"
     assert out["targets"][0]["independent_outcome"] == "residual"
     assert out["targets"][0]["before"]["state"] == "FAIL"
+
+
+def test_discarded_exploration_is_not_controlled_final_adoption(tmp_path):
+    from backend.evaluation.controlled_report import build_controlled_report
+    from backend.tests.versions.v3.test_repair_search import move, scenario
+
+    original, ctx, _ = scenario((4, 2, 3))
+    value = case(review=True)
+    value.update(
+        role="target",
+        primary=original.model_dump(mode="json"),
+        requirements=ctx.contract.model_dump(mode="json"),
+        supply_ids=list(ctx.original_supply_ids),
+        places=[p.model_dump(mode="json") for p in ctx.places],
+    )
+    value["original_input"].update(
+        end_date=str(original.end_date), additional_preferences="relaxed"
+    )
+    value["runtime"]["v3_repair"].update(max_deletion_attempts=0, max_model_calls=2, max_rounds=2)
+    value = scripted(value, {"edits": [move("d0_3", 1)]})
+    execution = replay(value)
+    assert execution["status"] == "complete", execution["diagnostics"]
+    assert execution["outcome"]["repair"]["rounds"][0]["exploration_transition"]
+    assert execution["outcome"]["repair"]["selected_round_index"] is None
+    package = material(value, execution, tmp_path / "snapshot")
+    goals = expectations(
+        value,
+        execution,
+        targets=[
+            {
+                "goal_id": "pace",
+                "basis": "review_opportunity",
+                "detector": {"check": "soft_pace", "dates": [str(DAY)]},
+                "condition": {"kind": "daily_count", "date": str(DAY), "maximum": 2},
+            }
+        ],
+    )
+    result = build_controlled_report(
+        value, execution, goals, **package, generated_at="2026-10-04T00:00:00Z"
+    )
+    assert result["status"] == "complete", result["diagnostics"]
+    row = result["targets"][0]
+    assert row["model_attempted"]
+    assert row["adoption"] == "not_adopted"
+    assert row["exploration_transitions"] == 1
+    assert row["best_promotions"] == 0
+
+
+@pytest.mark.parametrize("remaining", [180, 0])
+def test_system_only_adoption_has_no_model_attempt_denominator(tmp_path, remaining):
+    from backend.evaluation.controlled_report import build_controlled_report
+    from backend.tests.versions.v3.test_repair_search import scenario
+
+    original, ctx, _ = scenario((3,))
+    value = case(review=True)
+    value["request_remaining"] = remaining
+    value.update(
+        role="target",
+        primary=original.model_dump(mode="json"),
+        requirements=ctx.contract.model_dump(mode="json"),
+        supply_ids=list(ctx.original_supply_ids),
+        places=[p.model_dump(mode="json") for p in ctx.places],
+    )
+    value["original_input"]["additional_preferences"] = "relaxed"
+    assert value["runtime"]["v3_repair"]["max_deletion_attempts"] == 12
+    value = scripted(value, {"edits": []})
+    execution = replay(value)
+    assert execution["status"] == "complete", execution["diagnostics"]
+    repair = execution["outcome"]["repair"]
+    assert repair["selected_round_index"] == (1 if remaining else None)
+    assert repair["counters"].get("model", 0) == 0
+    assert repair["counters"].get("deterministic_attempts", 0) == bool(remaining)
+    package = material(value, execution, tmp_path / "snapshot")
+    goals = expectations(
+        value,
+        execution,
+        targets=[
+            {
+                "goal_id": "pace",
+                "basis": "review_opportunity",
+                "detector": {"check": "soft_pace", "dates": [str(DAY)]},
+                "condition": {"kind": "daily_count", "date": str(DAY), "maximum": 2},
+            }
+        ],
+    )
+    result = build_controlled_report(
+        value, execution, goals, **package, generated_at="2026-10-04T00:00:00Z"
+    )
+    assert result["status"] == "complete", result["diagnostics"]
+    row = result["targets"][0]
+    assert not row["model_attempted"]
+    assert row["operation_attempted"] == bool(remaining)
+    assert row["deterministic_attempted"] == bool(remaining)
+    assert row["adoption"] == ("adopted_component" if remaining else "not_adopted")
+    assert row["independent_outcome"] == ("resolved" if remaining else "residual")
+    assert result["target_counts"]["operation_attempted"] == bool(remaining)
+    assert result["target_counts"]["deterministic_attempted"] == bool(remaining)

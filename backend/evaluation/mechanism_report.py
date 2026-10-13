@@ -20,7 +20,27 @@ def _targets(report):
     return ids
 
 
-def _rounds(repair, original_targets):
+def _derived_targets(outcome):
+    repair, scope = outcome["repair"], outcome["scope"]
+    if repair.get("search_version") != 1 or not scope:
+        return {}
+    findings = outcome["original_report"]["findings"]
+    if not any(
+        f["check"] == "soft_pace" and f["finding_id"] in scope["target_ids"] for f in findings
+    ):
+        return {}
+    move_dates = {d for p in scope.get("permissions", []) for d in p.get("move_dates", [])}
+    return {
+        f["finding_id"]: f
+        for f in findings
+        if f["check"] == "soft_pace"
+        and f["dates"]
+        and set(f["dates"]) <= set(scope["dates"]) & move_dates
+        and f["finding_id"] not in scope["target_ids"]
+    }
+
+
+def _rounds(repair, original_targets, derived=None):
     require(
         repair["status"] in STATUSES and isinstance(repair["model_attempted"], bool),
         "repair",
@@ -38,8 +58,16 @@ def _rounds(repair, original_targets):
         rows = [
             {"round_index": 1, "result": repair, "target_links": {t: t for t in original_targets}}
         ]
+    from .repair_selection import selected_prefix
+
+    items = sorted(
+        unique_rows(rows, lambda r: r["round_index"], "/v3/repair/rounds"),
+        key=lambda item: item["value"]["round_index"],
+    )
+    prefix = selected_prefix(repair, [item["value"] for item in items])
+    derived = derived or {}
     output = []
-    for item in unique_rows(rows, lambda r: r["round_index"], "/v3/repair/rounds"):
+    for item in items:
         row, refs = item["value"], item["source_refs"]
         index = row["round_index"]
         require(type(index) is int and index >= 1, "round", "Invalid round index")
@@ -53,10 +81,23 @@ def _rounds(repair, original_targets):
         related = {t["permission"]["target_id"] for t in repair.get("related_targets", [])}
         related.update(t["permission"]["target_id"] for t in result.get("related_targets", []))
         require(
-            isinstance(links, dict) and set(links.values()) <= set(original_targets) | related,
+            isinstance(links, dict)
+            and set(links.values()) <= set(original_targets) | related | set(derived),
             "round",
             "Round-local targets do not map to original authorized targets",
         )
+        for local, source in links.items():
+            if source in derived:
+                matches = [
+                    f for f in result["original_report"]["findings"] if f["finding_id"] == local
+                ]
+                require(
+                    len(matches) == 1
+                    and matches[0]["check"] == "soft_pace"
+                    and matches[0]["dates"] == derived[source]["dates"],
+                    "round",
+                    "Invalid derived pace target",
+                )
         component_rows = unique_rows(
             result["components"],
             lambda c: c["component_id"],
@@ -82,6 +123,17 @@ def _rounds(repair, original_targets):
         output.append(
             {
                 "round_index": index,
+                **(
+                    {
+                        "strategy": row["strategy"],
+                        "exploration_transition": row["exploration_transition"],
+                        "best_promoted": row["best_promoted"],
+                        "selected_lineage": index <= prefix and row["exploration_transition"],
+                        "derived_target_links": {k: v for k, v in links.items() if v in derived},
+                    }
+                    if prefix is not None
+                    else {}
+                ),
                 "source_refs": refs,
                 "status": result["status"],
                 "model_attempted": result["model_attempted"],
@@ -134,6 +186,9 @@ def _trace(run, rounds):
                 for trace_field, saved_field in (
                     ("continuation_reason", "continuation_reason"),
                     ("usage", "usage_observation"),
+                    ("strategy", "strategy"),
+                    ("exploration_transition", "exploration_transition"),
+                    ("best_promoted", "best_promoted"),
                 ):
                     if trace_field in row and saved.get(saved_field) is not None:
                         require(
@@ -189,7 +244,9 @@ def _run(run):
                 "Scope must preserve original improvement target IDs",
             )
             repair = outcome["repair"]
-            rounds = _rounds(repair, authorized) if repair is not None else []
+            rounds = (
+                _rounds(repair, authorized, _derived_targets(outcome)) if repair is not None else []
+            )
             output.update(
                 coverage="available",
                 triggered=bool(authorized),
@@ -202,6 +259,13 @@ def _run(run):
                 internal_progress=repair["target_progress"] if repair else [],
                 related_targets=repair.get("related_targets", []) if repair else [],
             )
+            if repair and repair.get("search_version") == 1:
+                output.update(
+                    exploration_transitions=sum(r["exploration_transition"] for r in rounds),
+                    best_promotions=sum(r["best_promoted"] for r in rounds),
+                    selected_lineage_rounds=sum(r["selected_lineage"] for r in rounds),
+                    deterministic_attempts=repair["counters"].get("deterministic_attempts", 0),
+                )
             for field in (
                 "evaluated_components",
                 "accepted_components",

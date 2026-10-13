@@ -8,6 +8,7 @@ from pydantic import Field, model_validator
 from .controlled_models import FrozenModel
 from .place_association import opening_place_id
 from .records import require
+from .repair_selection import selected_prefix
 
 
 class Condition(FrozenModel):
@@ -237,8 +238,14 @@ def detection(goal, outcome):
     authorized = set(found) & set(scope["target_ids"] if scope else [])
     repair = outcome["repair"]
     opportunities, components, attempted = [], [], False
+    prefix = selected_prefix(repair) if repair else None
+    transitions = promotions = 0
+    deterministic_attempted = False
     if repair and authorized:
-        rounds = repair["rounds"] or [{"round_index": 0, "result": repair, "target_links": {}}]
+        rounds = repair["rounds"]
+        if not rounds and prefix is None:
+            rounds = [{"round_index": 0, "result": repair, "target_links": {}}]
+        previous_deterministic = 0
         for round_ in rounds:
             result, links = round_["result"], round_["target_links"]
             local = {
@@ -246,7 +253,16 @@ def detection(goal, outcome):
                 for tid in (result.get("scope") or {}).get("target_ids", [])
                 if links.get(tid, tid) in authorized
             }
+            deterministic_count = result.get("counters", {}).get("deterministic_attempts", 0)
+            deterministic_sent = deterministic_count > previous_deterministic
+            previous_deterministic = deterministic_count
             attempted |= bool(local and result["model_attempted"])
+            if prefix is not None and local:
+                transitions += round_["exploration_transition"]
+                promotions += round_["best_promoted"]
+                deterministic_attempted |= (
+                    round_["strategy"] == "system_delete" and deterministic_sent
+                )
             preparation = result.get("candidate_preparation") or {}
             opportunities.extend(
                 {"round_index": round_["round_index"], "kind": "candidate", **r}
@@ -265,7 +281,18 @@ def detection(goal, outcome):
                 if r["activity_id"] in finding_subjects
             )
             components.extend(
-                {"round_index": round_["round_index"], **c}
+                {
+                    "round_index": round_["round_index"],
+                    **(
+                        {
+                            "selected_lineage": round_["round_index"] <= prefix
+                            and round_["exploration_transition"]
+                        }
+                        if prefix is not None
+                        else {}
+                    ),
+                    **c,
+                }
                 for c in result.get("components", [])
                 if any(kind == "target" and tid in local for kind, tid in c["dependencies"])
             )
@@ -277,8 +304,20 @@ def detection(goal, outcome):
         "opportunities": opportunities,
         "components": components,
         "model_attempted": attempted,
+        **(
+            {
+                "operation_attempted": attempted or deterministic_attempted,
+                "deterministic_attempted": deterministic_attempted,
+                "exploration_transitions": transitions,
+                "best_promotions": promotions,
+            }
+            if prefix is not None
+            else {}
+        ),
         "adoption": "adopted_component"
-        if any(c["status"] == "accepted" for c in components)
+        if any(
+            c["status"] == "accepted" and c.get("selected_lineage") is not False for c in components
+        )
         else "not_adopted",
         "repair_status": repair["status"] if repair else "not_executed",
     }
