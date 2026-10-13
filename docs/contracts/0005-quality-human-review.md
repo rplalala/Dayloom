@@ -439,8 +439,12 @@ input/result SHA256 and original UTF-8 result bytes. Verify exact associations a
 observations before using embedded material. A supplied preparation is recomputed against
 original sources; an arbitrary caller-written edit summary is not accepted.
 
-Within a checked chain, unique producer IDs identify edited slots. Validate Repair original,
-ordered round inputs/adopted states, result original/final and cumulative final. Only
+Within a checked chain, unique producer IDs identify edited slots. For versioned search
+records, use the selected result's required ancestor rounds and exclude discarded exploration;
+historical records retain their original interpretation. The
+[Repair outcome contract](../0005-validation-repair%28v3%29.md#outcomes-and-compatibility)
+owns selection semantics. Validate Repair original, ordered inputs/adopted states in that
+lineage, result original/final and cumulative final. Only
 actually adopted changes, effective edits and accepted component membership establish
 relations. Rejected/pending/rolled-back components do not enter adopted lineage. Compose
 retime/move/replace/delete/add and free-time fragments across rounds; validate parent/root/

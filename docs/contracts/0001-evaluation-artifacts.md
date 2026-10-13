@@ -1100,7 +1100,9 @@ every declared goal and guard as unavailable material. Resolution and preserved
 resolution retain all expected targets; verdict coverage identifies which targets
 have native independent outcomes. Detection is measured over available expected
 targets, authorization over detected targets, model attempts over authorized
-targets, and adoption over model-attempted targets. Each channel also exposes
+targets, and adoption over operation-attempted targets, including system deletion.
+Historical records without `operation_attempted` retain their model-attempt fallback.
+Each channel also exposes
 the full expected-target count and coverage. Native candidate/identity-free
 opportunities remain observations with their own units, rather than independent
 successes.
@@ -1150,7 +1152,11 @@ observations establishing that no event occurred.
 
 Report initial improvement targets, initial authorized targets, model attempts, accepted
 rounds, accepted/proposed components, per-round target presence and internal progress
-separately. Trigger means a nonempty authorized scope, not merely a NEEDS_REVIEW finding.
+separately. Versioned search observations distinguish exploration transitions, retained-result
+promotions and deterministic attempts; an exploration transition alone is not final adoption.
+The [Repair outcome contract](../0005-validation-repair%28v3%29.md#outcomes-and-compatibility)
+owns selected-result and historical compatibility semantics.
+Trigger means a nonempty authorized scope, not merely a NEEDS_REVIEW finding.
 For each optional fraction, expose its numerator, denominator, unit and covered/missing
 run counts. A run acceptance fraction uses triggered runs; a round acceptance fraction
 uses model-attempted rounds; component acceptance uses components actually evaluated,

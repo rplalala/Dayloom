@@ -5,7 +5,7 @@
 These core files consolidate current behavior; development diaries do not
 belong in this directory. Task specifications and iteration state live in GitHub Issues.
 
-[Domain terminology](../GLOSSARY.md) defines the Repair terms used during design.
+[Domain terminology](../GLOSSARY.md) defines Repair exploration and final selection.
 
 ## Core designs
 
