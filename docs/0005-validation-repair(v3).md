@@ -257,6 +257,8 @@ executor still uses five rounds/model calls, per-date pace non-regression, uncha
 material stops and the broad `not_assessable` coverage rejection. These execution
 limitations are the changes described here, not results of a completed refactor.
 The [glossary](../GLOSSARY.md) distinguishes exploration from final selection.
+[Specification #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
+owns implementation scope and live progress.
 
 ### Exploration and retained result
 
@@ -354,3 +356,6 @@ results; controlled original-draft comparisons require sufficient retained conte
 must disclose scripted dependencies. Any later fresh V3 result requires its own provenance
 and independent scoring. Follow the [primary-score handoff](../benchmark/README.md#workflow-and-responsibilities)
 before supplements or process diagnostics.
+Case-01 acceptance also requires the
+[post-refactor revalidation and material handoff](../benchmark/case-01/report.md#post-refactor-acceptance)
+tracked in [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140).

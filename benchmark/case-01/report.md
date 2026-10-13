@@ -4,9 +4,42 @@ The [original request](../inputs/case-01.json) is for Sydney, Australia, on
 13-15 October 2026: three days, one traveler and AUD 900 for the whole trip,
 with no additional preferences. Generation, independent primary evaluation and
 the separately authorized diagnostics completed on 13 October 2026 Sydney time.
-The user's automatic case acceptance remains pending in
-[case #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127).
+These are pre-refactor Repair observations, not an accepted case package.
+[Case #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) remains
+open under the [post-refactor acceptance requirements](#post-refactor-acceptance).
 Human assessment has not been conducted.
+
+## Post-refactor acceptance
+
+The acceptance boundary established on 13 October 2026 requires all of the following,
+in order:
+
+1. The [Repair redesign #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
+   is implemented and its engineering checks pass.
+2. An authorized, scoped case-01 rerun passes its agreed checks. Report the V0-V3
+   primary scores and limitations, then wait for the user's instruction before
+   supplementary acquisition or mechanism diagnostics.
+3. Case-01 results and acceptance documents are updated for the refactored Repair
+   and verified. This includes selected itineraries, RAG attribution, actual V3
+   draft/final changes, scoring, affected analysis, usage/provenance and material references.
+4. The corresponding retained evidence and compact archive are updated and pass
+   integrity, restoration and applicable native replay checks. Preserve original
+   evidence bytes and prior receipts with distinct run/source bindings; deduplicate
+   shared material and remove unnecessary intermediates after verification.
+5. The human user explicitly confirms acceptance of that exact updated package,
+   including its results and remaining limitations.
+
+[Revalidation #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
+tracks this work. Until these conditions hold, case-01 remains unaccepted and its
+related acceptance Issues remain open. Git push, PR publication or merge, and
+engineering checks do not grant acceptance or Issue-closure authority.
+
+Prepare rerun scope, source/date treatment, reuse decisions and budgets separately;
+this requirement does not renew exhausted allowances or start execution. Reuse
+unaffected material only with compatible inputs, runtime, evaluation semantics and
+provenance. Do not silently shift dates, backdate the application clock or present
+scripted checks as a real case result. Retain the observations below as historical
+evidence until genuine post-refactor outcomes are available.
 
 ## Case materials
 

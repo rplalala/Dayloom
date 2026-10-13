@@ -46,6 +46,12 @@ reader-facing workflow, responsibility map, optional-study boundary, scenario in
 date rules and directory convention. Case Issues hold live scope, budgets, attempts
 and acceptance decisions rather than duplicate the common rules.
 
+Git publication does not accept a case or authorize Issue closure. Case-01 requires
+post-refactor revalidation before the user's final decision; its
+[case-specific acceptance conditions](case-01/report.md#post-refactor-acceptance)
+and [tracking Issue #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
+own that requirement. Existing results remain pre-refactor evidence.
+
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
 generation/evaluation evidence for later anonymous packaging. Human answers and

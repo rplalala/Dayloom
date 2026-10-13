@@ -294,12 +294,13 @@ human reports without changing primary scores. The
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns fresh case-01 workflow acceptance. Case-01 generation, primary scoring and
-authorized diagnostics are complete; its [public report](benchmark/case-01/report.md)
-summarizes the observations, with native evidence retained in ignored private storage.
-[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) awaits the user's
-automatic acceptance decision. Subsequent runs report primary scores and pause
-before further diagnostics. No human assessment or case acceptance is claimed.
+owns case-01 workflow acceptance. The pre-refactor case-01 generation, primary scoring
+and authorized diagnostics are complete, with native evidence retained in ignored
+private storage. [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
+remains unaccepted: [revalidation #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
+tracks the [post-refactor acceptance conditions](benchmark/case-01/report.md#post-refactor-acceptance).
+Publication does not accept the case or authorize Issue closure. Subsequent runs
+report primary scores and pause before further diagnostics. Human assessment is pending.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
