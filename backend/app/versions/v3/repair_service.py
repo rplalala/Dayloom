@@ -46,6 +46,7 @@ async def run_repair_once(
     round_deadline=None,
     runtime_config=None,
     semantic_service=None,
+    proposal_strategy="local",
 ):
     """All collaborators are injected. Optional acquisition failures are local stops.
 
@@ -334,6 +335,7 @@ async def run_repair_once(
                 feedback=feedback,
                 transport_options=transport_options,
                 pending_groups=pending,
+                proposal_strategy=proposal_strategy,
             )
             fingerprint = material_fingerprint(user)
             timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
@@ -393,6 +395,7 @@ async def run_repair_once(
                 budget,
                 stage_original,
                 f"repair_r{round_index}_new",
+                proposal_strategy=proposal_strategy,
             )
             components = component_result["components"]
             proposed = component_result["final"]
@@ -543,6 +546,7 @@ async def run_repair_stage(
     completed = set()
     stop = "model_budget_disabled" if not policy.max_model_calls else "round_limit"
     last = None
+    proposal_strategy = "local"
     for index in range(1, min(policy.max_rounds, policy.max_model_calls) + 1):
         effective = context.model_copy(
             update={
@@ -611,6 +615,10 @@ async def run_repair_stage(
             policy=policy,
         )
         timing = policy.timing
+        if proposal_strategy == "replan":
+            from backend.app.versions.v3.repair_replan import replan_scope
+
+            round_scope = replan_scope(current, round_scope, scope)
         if budget.remaining() < timing.minimum_model_seconds + timing.recheck_reserve_seconds:
             stop = "insufficient_stage_time"
             break
@@ -635,6 +643,7 @@ async def run_repair_stage(
             feedback=feedback,
             round_index=index,
             round_deadline=clock() + allocation,
+            proposal_strategy=proposal_strategy,
             **kwargs,
         )
         result = learn(result, budget, index)
@@ -733,7 +742,7 @@ async def run_repair_stage(
         records.append(
             RepairRoundRecord(
                 round_index=index,
-                strategy="local",
+                strategy=proposal_strategy,
                 base_state=state_key(before, effective.schedule),
                 exploration_transition=accepted,
                 best_promoted=promoted,
@@ -764,6 +773,7 @@ async def run_repair_stage(
             )
         if stop != "feedback_iteration":
             break
+        proposal_strategy = "local" if accepted else "replan"
         feedback = new_feedback
         budget.feedback_kind = result.feedback_kind
         budget.explore_feedback = bool(result.spatial.get("reasons"))
