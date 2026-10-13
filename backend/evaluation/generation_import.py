@@ -75,10 +75,28 @@ def generation_observations(read_bytes, source, plan, intake):
         or index["result_sha256"] != sha("result.json")
         or provenance["result_sha256"] != sha("result.json")
         or sha("usage.json") != run["usage_hash"]
-        or sha("provenance.json") != run["provenance_hash"]
         or sha("input.json") != group["input_sha256"]
     ):
         raise ValueError("Generation selected source hash mismatch")
+    native_provenance_sha = sha("provenance.json")
+    if native_provenance_sha != run["provenance_hash"]:
+        name = source.get("selected_provenance")
+        if not isinstance(name, str) or sha(name) != run["provenance_hash"]:
+            raise ValueError("Generation selected provenance hash mismatch")
+        declaration = read(name)
+        native_ref = declaration.get("native_provenance_ref")
+        if (
+            not isinstance(native_ref, dict)
+            or native_ref.get("path") != "provenance.json"
+            or native_ref.get("sha256") != native_provenance_sha
+            or native_ref.get("availability") != "available"
+            or any(
+                declaration.get(key) != value
+                for key, value in provenance.items()
+                if key not in ("declared_by", "declared_at", "rationale")
+            )
+        ):
+            raise ValueError("Generation selected declaration/native provenance mismatch")
     if any(
         index.get(field) != capture.get(field)
         for field in ("source_revision", "runtime_policy_sha256")
@@ -198,6 +216,8 @@ def generation_observations(read_bytes, source, plan, intake):
                         "source_field_mask": mask,
                         "required_fields": sorted(required),
                         "source_run_id": index["run_id"],
+                        "native_provenance_sha256": native_provenance_sha,
+                        "selected_provenance_sha256": run["provenance_hash"],
                         "source_url": event["url"],
                         "source_language_code": language,
                     },

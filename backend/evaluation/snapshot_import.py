@@ -223,7 +223,9 @@ def _derive(root, plan, sources, intake):
     return records, inherited
 
 
-def import_snapshot(plan, directory, *, intake, primary_runs=(), generations=()):
+def import_snapshot(
+    plan, directory, *, intake, primary_runs=(), generations=(), selected_provenances=None
+):
     """Import matching provider observations into a fresh zero-send paired snapshot."""
     from .evaluation_run import replay_run
 
@@ -256,7 +258,22 @@ def import_snapshot(plan, directory, *, intake, primary_runs=(), generations=())
             files[original.replace("\\", "/")] = {"path": copied, "sha256": sha}
         if _inventory(path) != before:
             raise ValueError("Primary source changed during import")
-        sources.append({"kind": kind, "path": name, "files": files})
+        source = {"kind": kind, "path": name, "files": files}
+        if kind == "planner_generation" and selected_provenances:
+            run_id = _decode(_safe(path, "evidence-index.json").read_bytes()).get("run_id")
+            selected = selected_provenances.get(run_id)
+            if selected is not None:
+                raw = Path(selected["path"]).read_bytes()
+                if hashlib.sha256(raw).hexdigest() != selected["sha256"]:
+                    raise ValueError("Selected generation declaration changed during import")
+                declaration_name = "__selected_provenance__.json"
+                if declaration_name in files:
+                    raise ValueError("Selected generation declaration path collision")
+                copied = str(len(files))
+                (destination / copied).write_bytes(raw)
+                files[declaration_name] = {"path": copied, "sha256": selected["sha256"]}
+                source["selected_provenance"] = declaration_name
+        sources.append(source)
     records, inherited = _derive(root, plan, sources, intake)
     value = {
         "schema_version": IMPORTED_VERSION,
@@ -336,6 +353,15 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
     if intake["status"] != "accepted":
         raise ValueError("Qualified import manifest required")
     validate_context(intake, context)
+    native_manifest, _ = _read(Path(manifest))
+    selected_provenances = {}
+    for group in native_manifest["groups"]:
+        run = group["selected_runs"]["v3"]
+        ref = run["provenance_ref"]
+        selected_provenances[run["run_id"]] = {
+            "path": str(_safe(Path(manifest).resolve().parent, ref["path"])),
+            "sha256": ref["sha256"],
+        }
     plan = build_identity_plan(intake, paired=True)
     identity_snapshot = import_snapshot(
         plan,
@@ -343,6 +369,7 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
         intake=intake,
         primary_runs=primary_runs,
         generations=generations,
+        selected_provenances=selected_provenances,
     )
     identity = resolve_versioned_identities(intake, identity_evidence(identity_snapshot)).to_dict()
     route = routes(intake, identity, context, root / "identity-snapshot")
@@ -352,6 +379,7 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
         intake=intake,
         primary_runs=primary_runs,
         generations=generations,
+        selected_provenances=selected_provenances,
     )
     if load_batch(manifest).to_dict() != intake:
         raise ValueError("Original paired source changed during import")

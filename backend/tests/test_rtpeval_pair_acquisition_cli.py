@@ -210,6 +210,77 @@ def test_offline_import_reuses_primary_observations_and_exports_native_pair(
     assert (root / "manifest.json").is_file()
 
 
+@pytest.mark.parametrize("fault", [None, "native_hash", "original_field", "wrapper_drift"])
+def test_generation_import_binds_finalized_producer_declaration(
+    paired_material, installed_cli, tmp_path, fault
+):
+    import hashlib
+
+    from backend.evaluation.snapshot import load_snapshot
+
+    root, args, _, _ = paired_material
+    generation = generation_source(paired_material, tmp_path / "generation")
+    before = {
+        p.relative_to(generation).as_posix(): p.read_bytes()
+        for p in generation.rglob("*")
+        if p.is_file()
+    }
+    manifest = json.loads((root / "manifest.json").read_bytes())
+    selected = manifest["groups"][0]["selected_runs"]["v3"]
+    native = json.loads((generation / "provenance.json").read_bytes())
+    declaration = {
+        **native,
+        "declared_by": "rtpeval.generate/selected_workflow_1",
+        "declared_at": "2026-06-01T00:02:00+00:00",
+        "rationale": "Qualified selected producer declaration",
+        "native_provenance_ref": {
+            "path": "provenance.json",
+            "sha256": hashlib.sha256((generation / "provenance.json").read_bytes()).hexdigest(),
+            "availability": "available",
+            "media_type": "application/json",
+        },
+    }
+    if fault == "native_hash":
+        declaration["native_provenance_ref"]["sha256"] = "0" * 64
+    if fault == "original_field":
+        declaration["configuration_ref"] = {**native["configuration_ref"], "sha256": "0" * 64}
+    declaration_path = save(root, "producer-declaration.json", declaration)
+    selected["provenance_ref"] = {
+        "path": declaration_path.name,
+        "sha256": hashlib.sha256(declaration_path.read_bytes()).hexdigest(),
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_provenance_1",
+    }
+    save(root, "manifest.json", manifest)
+    if fault == "wrapper_drift":
+        declaration_path.write_bytes(declaration_path.read_bytes() + b" ")
+    imported = tmp_path / "imported"
+    result = run(
+        installed_cli, "import", *args, "--generation", generation, "--directory", imported
+    )
+    if fault is None:
+        assert result.returncode == 0, result.stdout + result.stderr
+        snapshot = load_snapshot(imported / "identity-snapshot")
+        details = [r for r in snapshot["records"] if r["summary"]["status"] == "available"]
+        assert details
+        assert all(r["origin"]["kind"] == "planner_generation" for r in details)
+        assert snapshot["ledger"]["actual_sends"] == 0
+        source = snapshot["sources"][0]
+        assert source["selected_provenance"] in source["files"]
+        copied = (
+            imported
+            / "identity-snapshot"
+            / source["path"]
+            / source["files"][source["selected_provenance"]]["path"]
+        )
+        assert copied.read_bytes() == declaration_path.read_bytes()
+    else:
+        assert result.returncode == 2
+        assert not (imported / "handoff.json").exists()
+    assert all((generation / name).read_bytes() == raw for name, raw in before.items())
+
+
 def generation_source(
     paired_material, directory, *, mask=None, incomplete=False, language=None, route_body=None
 ):
