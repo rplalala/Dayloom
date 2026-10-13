@@ -1,6 +1,8 @@
 # Structured validation and targeted repair
 
-Status: Implemented V3 architecture, consolidated 2026-10-03.
+Status: Validation and targeted Repair are implemented. The
+[bounded search redesign](#accepted-bounded-search-redesign) was agreed on
+2026-10-13 and is pending implementation.
 
 ## Validation is a separate stage
 
@@ -107,10 +109,12 @@ its own reviewed input policies and evidence rather than consuming planner inter
 
 The application permits bounded additions or removal/movement of dispensable visits,
 then reuses existing mandatory count/date/time, role, coverage, route/occupancy and
-budget checks. A strict reduction can be accepted without reaching zero. A pace patch
-cannot increase another comparable date's penalty or replace it with uncertainty.
-No role relabeling is an edit operation. At a budget/opportunity stop, keep the latest
-accepted legal itinerary or untouched draft; retained penalties do not fail V3 generation.
+budget checks. Current adoption accepts strict reductions without reaching zero,
+requires no penalty increase on another comparable date and rejects lost comparable
+evidence. Current stops retain the latest accepted itinerary or untouched draft.
+The accepted redesign below changes search and final selection; zero remains a soft
+objective. No role relabeling is an edit operation, and retained penalties do not fail
+V3 generation.
 `soft_pace` summaries in V3 outcome and stage result expose before/after days and mean,
 `reached`/`residual`/`unavailable` state and `is_failure_constraint=false`. Existing
 round patches, stop reasons and actual usage remain authoritative. V0-V2 and V3 draft
@@ -245,3 +249,108 @@ request-wide, not reset per round. Terminal semantic model/contract failures rem
 not a successful generic Repair fallback. Final Nearby occurs once only after normal finalization,
 with no continuation after terminal failure, cancellation or an exhausted request deadline.
 Implementation: [pending groups](../backend/app/versions/v3/repair_pending.py).
+
+## Accepted bounded search redesign
+
+Design agreed on 2026-10-13; implementation and validation are pending. The existing
+executor still uses five rounds/model calls, per-date pace non-regression, unchanged
+material stops and the broad `not_assessable` coverage rejection. These execution
+limitations are the changes described here, not results of a completed refactor.
+The [glossary](../GLOSSARY.md) distinguishes exploration from final selection.
+
+### Exploration and retained result
+
+Maintain an exploration itinerary separately from the best retained itinerary.
+Prioritize confirmed/hard goals and applicable minimum coverage before optional pace.
+For comparable pace evidence, optimize the aggregate deduction across dates rather
+than requiring every date to improve independently. Keep comparison coverage stable;
+missing evidence cannot count as zero or remove an inconvenient date from comparison.
+
+An authorized, checked intermediate state may have equal or greater pace deductions
+than the best retained itinerary. For example, daily counts `3,2,3 -> 2,3,3 -> 2,2,3
+-> 2,2,2` may remain a search path even though its first move has no aggregate gain.
+Such a state is exploration, not a claimed improvement. Temporary soft regression
+does not authorize new hard/protection violations, bypass required checks or erase
+unresolved original findings. Existing dependent compensation remains unpublished
+until its applicable conditions are met.
+
+Promote a publishable improvement under those priorities to the best retained result.
+Preserve it when later proposals are rejected, exploration worsens or limits stop work.
+At finalization, return that result or the original draft when no improvement was found;
+report residual and unavailable goals explicitly. Neither intermediate acceptance nor
+internal pace progress establishes an independent quality-score improvement.
+
+### Proposal strategy and affected-day replanning
+
+The application enumerates a bounded set of already authorized deletions of dispensable
+visits and validates them without a Repair proposal model call. Deletion still uses the
+same requirement, coverage and changed-adjacency checks as model-proposed operations.
+Validation can require service calls and consumes the shared deadline and acquisition
+limits. The system does not blindly trim counts or choose protected visits for removal.
+
+Use local edits before affected-day replanning when they offer a viable next step.
+Switch strategy when local proposals cannot advance the search, leaving time and model
+capacity for replanning rather than consuming the entire allowance first. Replanning
+may jointly edit affected dates when a move or other dependency links them. Unaffected
+dates remain unchanged; this is not a fresh whole-trip primary-generation run.
+Replanning produces structured edits through the existing permission and validation
+path. Mandatory visits, fixed commitments, source identities, visit durations and
+application-owned transport remain protected.
+
+Reuse existing candidates and applicable evidence first. If they cannot support an
+authorized next step, bounded discovery and qualification may introduce new POIs;
+necessary place, opening and route acquisitions share the existing stage limits.
+Missing required evidence blocks adoption instead of becoming a plausible model fact.
+
+### Feedback, deduplication and applicability
+
+Unchanged evidence alone does not stop exploration. Rejection feedback identifies
+attributable conflicts and supports a different authorized proposal using the same
+materials. Deduplicate semantic proposals against their base itinerary, permissions
+and relevant evidence; differences in timestamps or explanation text are not progress.
+Skip a previously failed equivalent proposal without declaring other operations exhausted.
+Detect repeated exploration states so equal/worse transitions cannot create a cycle.
+
+Assess quantity applicability, minimum coverage, deletion authority and route feasibility
+separately. A `not_assessable` quantity diagnostic is not an unconditional ban on reducing
+counts if deletion has an independent authorization and the necessary checks can be
+confirmed. It supplies neither guessed edit authority nor a coverage PASS. An actually
+unresolved condition required for that operation still blocks adoption.
+
+### Limits, outcomes and verification
+
+Local proposal and affected-day replan calls share a maximum of six Repair model calls
+and the existing 360-second stage ceiling, further bounded by the whole-request deadline.
+Deterministic deletion checks do not spend that model allowance, but remain bounded by
+enumeration, time and acquisition limits. No acquisition limit or deadline is reset by a
+new state or strategy. Semantic assessment calls retain their separate accounting.
+
+Stop when applicable authorized goals are complete, shared limits prevent further work,
+required evidence is unavailable or the bounded authorized strategies are exhausted.
+Preserve existing terminal failure/cancellation semantics; there are no hidden retries.
+Do not equate one rejected proposal, unchanged materials or a skipped duplicate with
+all strategies exhausted. Record each proposal's base state, strategy, check outcomes,
+exploration transition, best-result promotion, actual calls and final stop reason.
+Residual soft deductions mean partial/no improvement, not a successful zero target.
+
+Behavioral tests should exercise the existing `run_repair_stage` interface with controlled
+model/provider dependencies, plus production V3 initialization/finalization checks. Cover:
+
+- The equal-deduction path above and a temporarily worse path that later improves.
+- Best-result retention after rejection, a worse terminal state, timeout or exhaustion.
+- System-proposed deletion without a Repair model call, including protected-visit and
+  changed-route rejection.
+- Joint affected-day replanning, unaffected-date preservation and strategy switching
+  before the shared allowance is exhausted.
+- Same-material feedback leading to a different proposal, duplicate proposal suppression
+  and exploration-cycle detection.
+- Independent coverage/applicability checks, unresolved necessary evidence and unchanged
+  comparison coverage.
+- The six-call ceiling across local/replan calls, accounting for deterministic checks,
+  and preserved V0-V2 entry behavior.
+
+Paid case execution is separate from implementation checks. Preserve original case-01
+results; controlled original-draft comparisons require sufficient retained context and
+must disclose scripted dependencies. Any later fresh V3 result requires its own provenance
+and independent scoring. Follow the [primary-score handoff](../benchmark/README.md#workflow-and-responsibilities)
+before supplements or process diagnostics.

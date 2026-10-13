@@ -104,6 +104,11 @@ Details: [requirements](docs/0002-requirements-evidence.md),
   result at stops; zero is not a failure constraint. V0-V2 and V3 initial generation
   have no zero-penalty requirement.
 
+The accepted V3 Repair redesign adds separate exploration/best-result state, bounded
+system deletion proposals and affected-day replanning, with six shared Repair model
+calls under the existing stage deadline. It is not implemented or validated yet; see
+[the accepted design](docs/0005-validation-repair%28v3%29.md#accepted-bounded-search-redesign).
+
 Details: [shared output](docs/0003-itinerary-transport.md),
 [minimum coverage](docs/0003-itinerary-transport.md),
 [V3 current design](docs/0005-validation-repair%28v3%29.md), and
