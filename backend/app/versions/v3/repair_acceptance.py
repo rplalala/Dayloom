@@ -16,6 +16,11 @@ from backend.app.versions.v3.soft_pace import pace_coverage_floor
 from backend.app.versions.v3.validation import validate_draft
 
 
+def coverage_unavailable(row):
+    """Quantity applicability is independent of known primary identity and coverage."""
+    return row.unclassified_activity_count > 0 or row.minimum_coverage == "unknown"
+
+
 @observed("validation")
 def assess(itinerary, context, whitelist=(), evidence=(), transitions=None):
     whitelist = (*context.identity_ledger, *whitelist)
@@ -49,7 +54,7 @@ def assess(itinerary, context, whitelist=(), evidence=(), transitions=None):
         permission = related.permission
         row = next(r for r in report.diagnostics.days if r.date == permission.date)
         if row.distinct_main_poi_count < permission.minimum_count:
-            status = "UNKNOWN" if row.target_status == "not_assessable" else "NEEDS_REVIEW"
+            status = "UNKNOWN" if coverage_unavailable(row) else "NEEDS_REVIEW"
             findings.append(
                 Finding(
                     finding_id=permission.target_id,
@@ -400,7 +405,16 @@ def severity(f, itinerary):
 
 
 def compare(
-    original, proposed, initial_report, reassessed, after, scope, schedule=None, context=None
+    original,
+    proposed,
+    initial_report,
+    reassessed,
+    after,
+    scope,
+    schedule=None,
+    context=None,
+    *,
+    allow_soft_exploration=False,
 ):
     """Evidence-only gains cannot qualify as schedule improvement."""
     old = {finding_key(f): f for f in reassessed.findings}
@@ -497,7 +511,7 @@ def compare(
                     before.distinct_main_poi_count - allowed_loss,
                     f.adopted_evidence.get("zero_counts", ()),
                 )
-        if current.target_status == "not_assessable" or current.distinct_main_poi_count < floor:
+        if coverage_unavailable(current) or current.distinct_main_poi_count < floor:
             rejections.append("Coverage regression is not authorized")
     if any(
         f.check in {"repetition", "overfull"} and f.finding_id in scope.target_ids
@@ -521,14 +535,33 @@ def compare(
     progress = []
     business_values = []
     originals = {f.finding_id: f for f in initial_report.findings}
-    if any(
-        f.check == "soft_pace" and f.finding_id in scope.target_ids for f in initial_report.findings
-    ):
-        for key, f in old.items():
-            if f.check == "soft_pace" and f.magnitude is not None:
-                current = new.get(key)
-                if current is None or current.magnitude is None or current.magnitude > f.magnitude:
-                    rejections.append("Soft pace regression or lost comparable evidence")
+    comparable = {
+        finding_key(f): f
+        for f in initial_report.findings
+        if f.check == "soft_pace" and f.magnitude is not None
+    }
+    comparable.update(
+        {k: f for k, f in old.items() if f.check == "soft_pace" and f.magnitude is not None}
+    )
+    for key in comparable:
+        if old.get(key) is None or old[key].magnitude is None:
+            rejections.append("Lost comparable soft pace evidence")
+        else:
+            current = new.get(key)
+            if current is None or current.magnitude is None:
+                rejections.append("Lost comparable soft pace evidence")
+    before_pace = [
+        old[finding_key(f)]
+        for f in initial_report.findings
+        if f.check == "soft_pace" and f.magnitude is not None and finding_key(f) in old
+    ]
+    after_pace = [new.get(finding_key(f)) for f in before_pace]
+    pace_improved = (
+        bool(before_pace)
+        and all(f.magnitude is not None for f in before_pace)
+        and all(f is not None and f.magnitude is not None for f in after_pace)
+        and sum(f.magnitude for f in after_pace) < sum(f.magnitude for f in before_pace)
+    )
     for target in scope.target_ids:
         f = originals[target]
         key = finding_key(f)
@@ -538,7 +571,15 @@ def compare(
             day = f.dates[0]
             a = before_days[day]
             b = next(r for r in after.diagnostics.days if r.date == day)
-            if "not_assessable" not in (a.target_status, b.target_status):
+            coverage_target = f.reason in {
+                "conditional_coverage_deficit",
+                "minimum_daily_coverage_missing",
+            }
+            if (
+                not coverage_unavailable(a) and not coverage_unavailable(b)
+                if coverage_target
+                else "not_assessable" not in (a.target_status, b.target_status)
+            ):
 
                 def distance(n, finding=f):
                     return max(
@@ -632,7 +673,13 @@ def compare(
                 finding_id=target, check=f.check, outcome=outcome, before=left, after=right
             )
         )
-    if not any(p.outcome in {"resolved", "improved"} for p in progress):
+    exploring_pace = allow_soft_exploration and any(
+        f.check == "soft_pace" and f.finding_id in scope.target_ids for f in initial_report.findings
+    )
+    if not exploring_pace and not any(
+        p.outcome in {"resolved", "improved"} and (p.check != "soft_pace" or pace_improved)
+        for p in progress
+    ):
         rejections.append("No verifiable arrangement improvement")
     if original.model_dump() == proposed.model_dump():
         rejections.append("Evidence or binding changes alone are not arrangement improvement")

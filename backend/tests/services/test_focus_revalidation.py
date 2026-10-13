@@ -26,6 +26,8 @@ def test_followup_has_isolated_single_attempt_and_matching_child(tmp_path, monke
     pilot.prepare()
     head = pilot.read(pilot.OUTPUT / "manifest.json")["git_head"]
     monkeypatch.setattr(pilot.subprocess, "check_output", lambda *a, **kw: head)
+    (tmp_path / ".env.tripworld").touch()
+    monkeypatch.setattr(pilot, "ROOT", tmp_path)
 
     def launch(command, **kwargs):
         assert command[3] == "tools.validation.focus_revalidation"

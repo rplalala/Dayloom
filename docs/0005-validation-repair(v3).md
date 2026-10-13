@@ -1,8 +1,11 @@
 # Structured validation and targeted repair
 
-Status: Validation and targeted Repair are implemented. The
-[bounded search redesign](#accepted-bounded-search-redesign) was agreed on
-2026-10-13 and is pending implementation.
+Status: Validation and bounded Repair search are implemented. Integrated offline
+verification and independent review of the October 13 redesign are complete;
+[the development record](records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
+preserves the regression failures, corrections and final checks.
+The [search contract](#accepted-bounded-search-redesign) defines exploration,
+retained results and proposal strategies.
 
 ## Validation is a separate stage
 
@@ -109,12 +112,10 @@ its own reviewed input policies and evidence rather than consuming planner inter
 
 The application permits bounded additions or removal/movement of dispensable visits,
 then reuses existing mandatory count/date/time, role, coverage, route/occupancy and
-budget checks. Current adoption accepts strict reductions without reaching zero,
-requires no penalty increase on another comparable date and rejects lost comparable
-evidence. Current stops retain the latest accepted itinerary or untouched draft.
-The accepted redesign below changes search and final selection; zero remains a soft
-objective. No role relabeling is an edit operation, and retained penalties do not fail
-V3 generation.
+budget checks. [Search and retention](#exploration-and-retained-result) use aggregate
+deductions over the original comparable dates. Individual dates and intermediate states
+may worsen without becoming the delivered result. No role relabeling is an edit operation,
+and retained penalties do not fail V3 generation.
 `soft_pace` summaries in V3 outcome and stage result expose before/after days and mean,
 `reached`/`residual`/`unavailable` state and `is_failure_constraint=false`. Existing
 round patches, stop reasons and actual usage remain authoritative. V0-V2 and V3 draft
@@ -129,7 +130,10 @@ repair stage.
 Implementation owners: [runner](../backend/app/versions/v3/runner.py),
 [validation](../backend/app/versions/v3/validation.py),
 [acceptance](../backend/app/versions/v3/repair_acceptance.py),
-[components](../backend/app/versions/v3/repair_components.py) and
+[components](../backend/app/versions/v3/repair_components.py),
+[search](../backend/app/versions/v3/repair_search.py),
+[deletion](../backend/app/versions/v3/repair_deletion.py),
+[replanning](../backend/app/versions/v3/repair_replan.py) and
 [service](../backend/app/versions/v3/repair_service.py).
 
 ## Request flow and ownership
@@ -138,8 +142,10 @@ The default-disabled post-primary hook in the shared graph runs after primary id
 checks and before one final Nearby stage. V3 does not rerun interpretation, initial discovery
 or primary generation. Request resources, caches, send/failure records and the request
 entry deadline are shared. Repair counters and its deadline start once per stage.
-The immutable draft, original report, fairly reassessed draft, component proposals and
-latest adopted itinerary remain distinct. Nearby references never supplement primary counts.
+The immutable draft, original report, fairly reassessed draft, component proposals,
+exploration itinerary and best retained itinerary remain distinct. Final source normalization,
+schedule, semantic assessments, transfers, validation and Nearby bind the selected result.
+Nearby references never supplement primary counts.
 
 ## Per-leg mixed transport
 
@@ -190,13 +196,14 @@ Components run once in deterministic confirmed/compensation/review order with a 
 index tie-break. Each uses the latest working itinerary and runs authorization, schedule,
 route acquisition/binding, occupancy adjustment, spatial policy, validator and business
 comparison. Dependent deletion and compensation stay together, except existing narrowly
-authorized EXCLUDED/unexecutable-visit partial-removal policies. Every accepted component
-must measurably improve an authorized goal. A rejected independent component leaves earlier
-accepted components intact. Final global checks reject an illegal combination; the minimal
+authorized EXCLUDED/unexecutable-visit partial-removal policies. A checked component may
+advance soft-pace exploration without promoting the best result. Other goals retain their
+verifiable progress checks. A rejected independent component leaves earlier checked
+components intact. Final global checks reject an illegal combination; the minimal
 safe fallback is the round input if the final combination cannot be justified. There is no
 exponential subset search. Actual sends, obtained evidence and failure history never roll back.
 
-Remaining goals continue from the latest accepted state. Compact component decisions and
+Remaining goals continue from the exploration state. Compact component decisions and
 localized failures enter existing material feedback. Presentation is not qualification;
 a rejected component does not taint unedited candidates. Fingerprints include actual
 transport options/bindings and permissions, not just a round number.
@@ -219,17 +226,24 @@ not proof that deletion is safe. Deferred targets cannot drive current acquisiti
 Dependent deduplication/compensation can remain unpublished until its whole group is accepted.
 Only the narrowly authorized removal exceptions permit partial deletion without compensation.
 
-All rounds share the stage counters, evidence cache, actual-send/failure history and deadline.
+Local proposals and affected-day replanning share at most six actual Repair model sends,
+including failed sends, under one 360-second stage deadline shortened by the remaining
+request deadline. The default model-round ceiling permits six sends; a lower configured
+ceiling can stop earlier. System deletion
+has a separate default ceiling of 12 attempts; zero disables that strategy. It does not
+consume model rounds or sends, and remains available when model sending is disabled.
+All strategies share acquisition counters, evidence cache, actual-send/failure history and time.
 Preparation leaves configured reserves for model/recheck/finalization and final Nearby;
 unused preparation allowance can serve proposals. Reviews/Profile and official web are not
-new Repair acquisitions. Input overflow, terminal model failure and no material opportunity
-stop at their declared boundary. The final stage summary compares original and adopted plans,
-not a rejected proposal. Transport thresholds above are configurable policy, not user facts.
+new Repair acquisitions. Semantic assessment retains separate counters. Expired check allowance
+blocks adoption even when a provider returns a usable value. Input overflow and terminal model
+failure stop at their declared boundary. The final stage summary compares original and selected
+plans. Transport thresholds above are configurable policy, not user facts.
 
 ## Pending compensation and publishable state
 
 Deduplication cannot evade counting by moving a visit to another date or changing its role.
-The Repair model chooses the retained occurrence using sourced obligations, actual windows
+Checked proposals choose the retained occurrence using sourced obligations, actual windows
 and route context; the application does not always keep the first. Explicit count/date-bound
 copies remain protected. The minimum-one rule does not replace the existing conditional
 coverage floor merely to permit a deletion.
@@ -238,7 +252,10 @@ An otherwise valid deduplication group awaiting coverage compensation may be ret
 bounded unpublished proposal. The pending group carries affected dates, base-state fingerprint,
 edits and proposal days; only a matching current base can reactivate it. Descendant edits stay
 in the same atomic group, while independent accepted edits remain publishable. Completion
-rechecks the combined group against the current adopted state. Exhaustion discards pending
+rechecks the combined group against the current exploration base. System deletion candidates
+are checked independently: failed alternatives do not create or accumulate pending edits,
+and existing model compensation remains subject to its original atomic checks.
+Exhaustion discards pending
 dependent windows/transfers without reverting independent improvements or waiving coverage.
 Residual repetition/coverage remains explicit incomplete output. Confirmed excluded or
 unexecutable-visit removal retains its separately authorized partial-removal policy.
@@ -252,10 +269,8 @@ Implementation: [pending groups](../backend/app/versions/v3/repair_pending.py).
 
 ## Accepted bounded search redesign
 
-Design agreed on 2026-10-13; implementation and validation are pending. The existing
-executor still uses five rounds/model calls, per-date pace non-regression, unchanged
-material stops and the broad `not_assessable` coverage rejection. These execution
-limitations are the changes described here, not results of a completed refactor.
+The October 13 implementation replaces material-repeat early stops and per-date
+pace non-regression with bounded exploration and separate final retention.
 The [glossary](../GLOSSARY.md) distinguishes exploration from final selection.
 [Specification #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
 owns implementation scope and live progress.
@@ -264,9 +279,10 @@ owns implementation scope and live progress.
 
 Maintain an exploration itinerary separately from the best retained itinerary.
 Prioritize confirmed/hard goals and applicable minimum coverage before optional pace.
-For comparable pace evidence, optimize the aggregate deduction across dates rather
-than requiring every date to improve independently. Keep comparison coverage stable;
-missing evidence cannot count as zero or remove an inconvenient date from comparison.
+For pace evidence, optimize aggregate deductions over the fixed set of dates whose
+original deductions are known. Never drop a formerly comparable date or treat missing
+evidence as zero. An improvement on known dates may coexist with an unavailable overall
+objective; newly available dates do not silently change the comparison denominator.
 
 An authorized, checked intermediate state may have equal or greater pace deductions
 than the best retained itinerary. For example, daily counts `3,2,3 -> 2,3,3 -> 2,2,3
@@ -278,8 +294,9 @@ until its applicable conditions are met.
 
 Promote a publishable improvement under those priorities to the best retained result.
 Preserve it when later proposals are rejected, exploration worsens or limits stop work.
-At finalization, return that result or the original draft when no improvement was found;
-report residual and unavailable goals explicitly. Neither intermediate acceptance nor
+At finalization, return that result with its matching schedule, candidate/source bindings,
+semantic assessments and arrangement evidence, or the original draft when no improvement
+was found. Report residual and unavailable goals explicitly. Neither intermediate acceptance nor
 internal pace progress establishes an independent quality-score improvement.
 
 ### Proposal strategy and affected-day replanning
@@ -291,13 +308,17 @@ Validation can require service calls and consumes the shared deadline and acquis
 limits. The system does not blindly trim counts or choose protected visits for removal.
 
 Use local edits before affected-day replanning when they offer a viable next step.
-Switch strategy when local proposals cannot advance the search, leaving time and model
+Local nonprogress switches the next model proposal to a distinct affected-day arrangement
+prompt and structured context, leaving time and model
 capacity for replanning rather than consuming the entire allowance first. Replanning
 may jointly edit affected dates when a move or other dependency links them. Unaffected
 dates remain unchanged; this is not a fresh whole-trip primary-generation run.
 Replanning produces structured edits through the existing permission and validation
-path. Mandatory visits, fixed commitments, source identities, visit durations and
-application-owned transport remain protected.
+path. Linked dates include original move and compensation dependencies. Only existing
+authorized peer operations can enter that closure; unrelated dates remain outside it.
+Mandatory visits, fixed commitments, source identities, visit durations and application-owned
+transport remain protected. Original source-date and destination permissions are not rebased
+after a move, so successive steps cannot bypass the original move limit.
 
 Reuse existing candidates and applicable evidence first. If they cannot support an
 authorized next step, bounded discovery and qualification may introduce new POIs;
@@ -319,13 +340,9 @@ counts if deletion has an independent authorization and the necessary checks can
 confirmed. It supplies neither guessed edit authority nor a coverage PASS. An actually
 unresolved condition required for that operation still blocks adoption.
 
-### Limits, outcomes and verification
+### Outcomes and compatibility
 
-Local proposal and affected-day replan calls share a maximum of six Repair model calls
-and the existing 360-second stage ceiling, further bounded by the whole-request deadline.
-Deterministic deletion checks do not spend that model allowance, but remain bounded by
-enumeration, time and acquisition limits. No acquisition limit or deadline is reset by a
-new state or strategy. Semantic assessment calls retain their separate accounting.
+The [shared limits](#target-priority-and-stage-accounting) apply across every state and strategy.
 
 Stop when applicable authorized goals are complete, shared limits prevent further work,
 required evidence is unavailable or the bounded authorized strategies are exhausted.
@@ -335,21 +352,17 @@ all strategies exhausted. Record each proposal's base state, strategy, check out
 exploration transition, best-result promotion, actual calls and final stop reason.
 Residual soft deductions mean partial/no improvement, not a successful zero target.
 
-Behavioral tests should exercise the existing `run_repair_stage` interface with controlled
-model/provider dependencies, plus production V3 initialization/finalization checks. Cover:
+`search_version=1` distinguishes new search records from the historical adopted-state chain.
+Records identify strategy, base state, exploration transition, best promotion and the selected
+round. A null selected round in the new version returns the original draft. Selected provenance
+includes necessary intermediate ancestors and excludes discarded exploration after that result.
+Historical records retain their original interpretation without invented strategy observations.
+Model usage, semantic calls, deterministic attempts and provider acquisitions remain separate;
+missing usage is unavailable rather than a measured zero.
 
-- The equal-deduction path above and a temporarily worse path that later improves.
-- Best-result retention after rejection, a worse terminal state, timeout or exhaustion.
-- System-proposed deletion without a Repair model call, including protected-visit and
-  changed-route rejection.
-- Joint affected-day replanning, unaffected-date preservation and strategy switching
-  before the shared allowance is exhausted.
-- Same-material feedback leading to a different proposal, duplicate proposal suppression
-  and exploration-cycle detection.
-- Independent coverage/applicability checks, unresolved necessary evidence and unchanged
-  comparison coverage.
-- The six-call ceiling across local/replan calls, accounting for deterministic checks,
-  and preserved V0-V2 entry behavior.
+Offline verification uses `run_repair_stage`, actual V3 initialization/finalization and native
+saved-result readers with controlled external dependencies. These checks establish implemented
+behavior and compatible records, not live model effectiveness.
 
 Paid case execution is separate from implementation checks. Preserve original case-01
 results; controlled original-draft comparisons require sufficient retained context and

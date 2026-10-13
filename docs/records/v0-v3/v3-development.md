@@ -1546,3 +1546,78 @@ Its later bounded execution and complete native CLI outcomes are recorded in the
 [identity acceptance history](../evaluation/intake-identity-usage.md#complete-v0-identity-coverage-acceptance-2026-10-09).
 These original stopped packages retain their own incomplete status and source-bound
 rejection; later success does not overwrite them.
+
+## Bounded Repair search and selected-result integration (2026-10-13)
+
+[Specification #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
+and implementation tickets #142-145 replaced the material-repeat stop and per-date
+pace non-regression with checked exploration and a separate retained result. The
+implementation starts at `b9a29e1` and reaches `a0b1114`, preserving the exploration
+(`3aabcaa`), affected-date replan (`878bb41`), deterministic deletion (`426e3c3`),
+integration (`26f1f2a`) and production/reader (`a0b1114`) commits. Corrections remain
+separate commits, followed by a coherent contract and verification documentation update.
+
+Controlled stage tests first exposed the blocked equal-deduction path
+`3,2,3 -> 2,3,3 -> 2,2,3 -> 2,2,2`, then verified it and a temporarily worse path.
+Separate regression cases exposed accumulated failed deletion alternatives and adoption
+after a provider returned beyond the check deadline. The corrections isolate system
+alternatives from pending model compensation and recheck the deadline before adoption.
+Production/reader tests also exposed unknown dates blocking known-date pace progress,
+discarded exploration being counted as final adoption, and a zero-round search being
+read as a historical single round. Fixed original comparison dates, explicit selected
+lineage and version-aware readers resolved those failures without changing independent
+scoring. The actual V3 graph now exercises system deletion, local editing, replanning,
+later failure or six-call exhaustion, selected-state fallback and one final Nearby phase.
+
+Before full regression, the affected V3/native-reader suite passed 570 tests and the
+installed controlled research CLI suite passed 13.
+The full backend run at `a0b1114` completed in 2032.76 seconds with **4161 passed,
+5 failed and 16 skipped**. One failure was a missing module-specific allowance for
+the reader's pure offline `copy` import. Four were test-environment dependencies:
+the PowerShell wrapper expected a local `.venv`, and three mocked launcher cases
+expected an ignored `.env.tripworld` file. The wrapper also produced a GBK decoding
+warning while its Python entry point was absent. A local environment junction resolved
+the wrapper failure; its independent retest passed **1 in 6.33 seconds**, without warnings.
+
+Independent Standards review found one nonblocking positional-objective concern;
+Spec review exposed a final-status error not covered by the original suite. A
+system-only `4 -> 3` exploration with an unchanged exact-count deduction of 100 could
+return the original draft while reporting `ACCEPTED_PARTIAL`. Correction `6d41bbb`
+binds the status to retained improvement, introduces a small named objective value
+and adds the narrow import allowance. Its affected checks passed **225, 1 skipped
+in 25.53 seconds**. Both review findings were independently rechecked and resolved;
+the Spec reviewer also reran the new stage regression successfully.
+
+Test-only correction `3709d0e` isolates the offline launchers from ignored local
+configuration using temporary empty environment files and mocked child processes.
+The three failures were reproduced before correction, then the launcher/runtime/network
+checks passed **29 in 5.86 seconds**. Both reviewers confirmed that the production
+guard and execution boundaries remain intact. Final integrated verification at `3709d0e`
+passed **708 tests, 1 skipped in 209.28 seconds**, exit 0 and no warnings. It covers
+the entire V3 test directory, five affected evaluator files, the installed controlled
+research CLI, both launcher test files and the PowerShell case, including all five
+original full-run failures. The remaining skip requires Windows symlink privileges.
+The full backend suite was not repeated after correction; its original failures,
+16 skips and warning remain recorded rather than replaced by an all-green full-run claim.
+Final independent Standards and Spec rechecks have zero open findings. Backend/scripts
+Ruff lint and all 39 changed Python format checks pass; unchanged global format
+failures remain outside this scope. Test execution and final reviewers used
+`gpt-6.1-sol` with `high` reasoning.
+
+Earlier setup checks separated worktree failures from code regressions. Verified local
+tokenizer cache copies and explicit test temporary directories restored tests blocked by
+missing ignored assets or sandbox temporary-directory permissions. The shared editable CLI
+loaded the original checkout, and its launcher failed inside the sandbox. Per-worktree
+temporary virtual environments bound the installed CLI to the tested source while reusing
+existing dependencies; offline installation used cached build dependencies. No project
+configuration, shared environment or credentials were changed.
+
+Original local evidence identifiers were `.scratch/collect-full-139.log`,
+`.scratch/full-backend-139.log`, `.scratch/powershell-regression-139.log` and
+`.scratch/final-backend-139.log` in the integration worktree. Before delivery cleanup,
+all four logs were preserved byte-for-byte in the primary checkout under
+`logs/v3-repair-139-offline-20261013/`; `manifest.json` records their original paths,
+tested revisions, sizes and SHA-256 hashes. Every copied hash matched its source.
+These ignored files are local evidence identifiers, not published dependencies.
+Original case-01 evidence and its acceptance state are unchanged; post-refactor case
+revalidation remains owned by [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140).

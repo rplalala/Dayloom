@@ -41,6 +41,8 @@ def opening_case(*, closed=False, bound=True, required=None):
 
 def execute(case, patches, *, mode="WALK", routes=None):
     original, ctx, policy = case
+    # Keep the supplied model strategy observable; system deletion has separate stage tests.
+    policy = policy.model_copy(update={"max_deletion_attempts": 0})
     scope = operation_scope(original, assess(original, ctx), context=ctx, policy=policy, mode=mode)
 
     class Sequence(Model):

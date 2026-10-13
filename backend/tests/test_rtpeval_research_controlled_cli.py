@@ -387,3 +387,69 @@ def test_resolved_target_with_independent_regression_is_not_preserved(
         for row in native["reviewed_checks"]["continuity"]["opening"]
     )
     assert controlled["preserved_resolution"]["numerator"] == 0
+
+
+def test_system_only_controlled_adoption_is_in_operation_denominator(
+    installed_cli, research_material, tmp_path
+):
+    from backend.tests.versions.v3.test_repair_search import scenario
+
+    root, _, _, _, write = research_material
+    original, ctx, _ = scenario((3,))
+    value = case(review=True)
+    value.update(
+        role="target",
+        primary=original.model_dump(mode="json"),
+        requirements=ctx.contract.model_dump(mode="json"),
+        supply_ids=list(ctx.original_supply_ids),
+        places=[p.model_dump(mode="json") for p in ctx.places],
+    )
+    value["original_input"]["additional_preferences"] = "relaxed"
+    value = scripted(value, {"edits": []})
+    execution = replay(value)
+    package = material(value, execution, root / "deletion-snapshot")
+    goals = expectations(
+        value,
+        execution,
+        targets=[
+            {
+                "goal_id": "pace",
+                "basis": "review_opportunity",
+                "detector": {"check": "soft_pace", "dates": [str(DAY)]},
+                "condition": {"kind": "daily_count", "date": str(DAY), "maximum": 2},
+            }
+        ],
+    )
+    target = controlled_entry(value, goals, descriptor(root, value, execution, goals, package))
+    declaration = write()
+    contents = json.loads(declaration.read_bytes())
+    contents["track_refs"]["repair"] = save(
+        root,
+        "repair-material.json",
+        {
+            "schema_version": "rtpeval_research_repair_1",
+            "population_id": "original-requests",
+            "population_revision": "r1",
+            "profile_id": "fixed-selection",
+            "profile_revision": "p1",
+            "controlled": {"study_id": "system-delete", "revision": "1", "cases": [target]},
+        },
+    )
+    save(root, "research.json", contents)
+    result = installed_cli(
+        "research",
+        "report",
+        declaration,
+        "--track",
+        "repair",
+        "--directory",
+        tmp_path / "deletion-out",
+        tools_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    report = json.loads((tmp_path / "deletion-out" / "repair.json").read_text())
+    channels = report["controlled"]["observational_channels"]
+    assert channels["model_attempt"]["numerator"] == 0
+    assert channels["adoption"]["numerator"] == 1
+    assert channels["adoption"]["denominator"] == 1
+    assert channels["adoption"]["unit"] == "operation_attempted_targets"

@@ -140,8 +140,9 @@ transport:
 
 # V3-only development policy. Acquisition totals are shared across all rounds.
 v3_repair:
-  max_rounds: 5 # Stage ceiling; shared 360-second deadline may stop earlier.
-  max_model_calls: 5 # One call per round; zero disables model attempts.
+  max_rounds: 6 # Model round ceiling; shared 360-second deadline may stop earlier.
+  max_model_calls: 6 # Shared local/replan sends; zero disables only model attempts.
+  max_deletion_attempts: 12 # Separate finite system proposals; zero disables enumeration.
   quantity_review_enabled: true # CLI may explicitly disable this review policy.
   overfull_review_enabled: false # Independent from shortage review.
   daily_main_min: 2 # Application coverage reference, not an unconditional quota.

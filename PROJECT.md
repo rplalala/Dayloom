@@ -104,10 +104,12 @@ Details: [requirements](docs/0002-requirements-evidence.md),
   result at stops; zero is not a failure constraint. V0-V2 and V3 initial generation
   have no zero-penalty requirement.
 
-The accepted V3 Repair redesign adds separate exploration/best-result state, bounded
-system deletion proposals and affected-day replanning, with six shared Repair model
-calls under the existing stage deadline. It is not implemented or validated yet; see
-[the accepted design](docs/0005-validation-repair%28v3%29.md#accepted-bounded-search-redesign).
+V3 Repair now separates exploration from the best retained result, enumerates bounded
+authorized deletions and replans causally linked affected dates. Local proposals and
+replans share up to six model sends under the existing stage deadline; deterministic deletion
+has its own limit. Production delivery, saved-record compatibility, offline verification
+and independent review are complete;
+see [the search contract](docs/0005-validation-repair%28v3%29.md#accepted-bounded-search-redesign).
 
 Details: [shared output](docs/0003-itinerary-transport.md),
 [minimum coverage](docs/0003-itinerary-transport.md),
@@ -197,21 +199,20 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Post-integration offline checkpoint: **288 focused tests passed, no skips**, plus
-one supplemental all-track coexistence test, on 2026-10-12 in the main worktree at
-`8f3067b`. Network-denied checks cover installed CLI, native multi-case suite and
-research composition, stopped/incomplete work, integrity rejection, refresh and
-replay. The complete backend regression is reused from source-identical tracked
-code at `0a37b95`: **3847 passed, 11 skipped in 1447.78s** on 2026-10-11. Its nine
-opt-in isolated PostgreSQL and two Windows symlink-privilege skips remain untested
-by this acceptance. Independent Standards/Spec reviews have no open findings.
-Full backend/scripts Ruff lint and all 51 changed Python format checks pass.
-The current global format audit rejects 58 unchanged baseline files, including
-eight additional working-tree line-ending diagnostics; it is not a global pass.
-Tracked document link checks pass. The [combined acceptance](docs/records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
-records exact revision/evidence reuse, sandbox failure and successful rerun,
-coexistence coverage and remaining limits; earlier suite/research results retain
-their original scopes and evidence.
+Latest offline checkpoint: the October 13 Repair integration at `a0b1114` completed
+the full backend regression with **4161 passed, 5 failed, 16 skipped and 1 warning
+in 2032.76 seconds**. The failures exposed one narrow offline import allowance and
+four worktree/test-environment dependencies. After correction, the final affected suite
+at `3709d0e` passed **708, 1 skipped in 209.28 seconds**, without warnings; it includes
+all five originally failing cases. The remaining affected-suite skip requires Windows
+symlink privileges. The full suite was not repeated after correction, and its skipped
+coverage remains unverified. Independent Standards/Spec reviews have no open findings.
+Backend/scripts Ruff lint, all 39 changed Python format checks and tracked document
+links pass. The pre-existing global format failures remain outside this task.
+The [Repair integration record](docs/records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
+owns the failure/correction/retest sequence and exact evidence. Earlier network-denied
+installed CLI, suite, research and replay acceptance retains its original scope in the
+[combined acceptance](docs/records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12).
 Earlier #97 checks retain their original scope in
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09)
 and [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09).

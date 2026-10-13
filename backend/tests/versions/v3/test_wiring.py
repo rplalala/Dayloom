@@ -169,6 +169,14 @@ class Model(FakeStructuredLLMClient):
 
 
 async def execute(model=None, places=None, runtime=None, **kwargs):
+    from backend.app.runtime.config_loader import load_runtime_config
+
+    config = kwargs.pop("runtime_config", None) or load_runtime_config()
+    if not kwargs.pop("system_deletions", False):
+        # These model-response fixtures exercise initialization/finalization of model edits.
+        config = config.model_copy(
+            update={"v3_repair": config.v3_repair.model_copy(update={"max_deletion_attempts": 0})}
+        )
     model, places = model or Model(), places or Places()
     runtime = runtime or OwnedRetrieval()
     result = await run_v3(
@@ -182,6 +190,7 @@ async def execute(model=None, places=None, runtime=None, **kwargs):
         development_timeout_seconds=kwargs.pop("development_timeout_seconds", 600),
         # Isolate existing conflict fixtures; default-policy coverage passes None explicitly.
         quantity_review_enabled=kwargs.pop("quantity_review_enabled", False),
+        runtime_config=config,
         **kwargs,
     )
     return result, model, places, runtime
@@ -204,7 +213,7 @@ def test_actual_repair_and_adopted_report(behavior, status):
     outcome = result.v3
     assert outcome.repair.status == status
     assert len(model.calls) == 1
-    assert 1 <= model.repair_calls <= 3
+    assert 1 <= model.repair_calls <= 6
     assert draft.model_dump() == saved
     assert outcome.original_report == outcome.repair.original_report
     assert result.generation_diagnostics == outcome.final_report.diagnostics
@@ -270,7 +279,7 @@ def test_legal_identity_outside_original_supply_reaches_final_and_nearby():
     assert result.generation_diagnostics.days[0].distinct_main_poi_count == 2
     assert result.v3.original_report.diagnostics.days[0].distinct_main_poi_count == 1
     assert len(model.calls) == 1
-    assert 1 <= model.repair_calls <= 3
+    assert 1 <= model.repair_calls <= 6
     assert len(places.nearby) <= 2
     assert result.v3.quantity_review_enabled
 
@@ -475,7 +484,7 @@ def test_cross_phase_rag_cache_failures_and_initial_report_are_preserved(failure
         )
     )
     assert result.v3.repair.status == "ACCEPTED_PARTIAL", result.v3.repair.reason
-    assert len(model.calls) == 2 and 1 <= model.repair_calls <= 3
+    assert len(model.calls) == 2 and 1 <= model.repair_calls <= 6
     assert runtime.prepares == runtime.enters == runtime.closes == 1
     assert runtime.embedding_sends == (0 if failure == "prepare" else 1)
     assert runtime.searches == (1 if failure in {None, "search"} else 0)
@@ -614,7 +623,9 @@ def test_actual_v3_cli_serializes_adopted_result(tmp_path, monkeypatch, capsys):
     assert code == 0
     result = json.loads(capsys.readouterr().out)
     assert result["system_version"] == "v3"
-    assert result["v3"]["repair"]["status"] == "ACCEPTED_COMPLETE"
+    assert result["v3"]["repair"]["status"] == "ACCEPTED_PARTIAL"
+    assert result["v3"]["repair"]["counters"]["deterministic_attempts"] >= 1
+    assert any(r["strategy"] == "system_delete" for r in result["v3"]["repair"]["rounds"])
     assert result["v3"]["quantity_review_enabled"] is False
     assert runtime.closes == 1
 
@@ -722,7 +733,7 @@ def test_v3_outcome_trace_truncation_retains_individual_artifact_markers():
 
     assert tracer.events["v3_finalized"]["truncated"]
     assert "v3_repair_patch" in tracer.events["v3_finalized"]["artifact_events"]
-    assert tracer.events["v3_repair_patch"]["artifact_status"] == "not_executed"
+    assert tracer.events["v3_repair_patch"]["artifact_status"] == "recorded"
     assert tracer.events["v3_repair_proposal"]["artifact_status"] == "not_constructed"
     assert tracer.events["v3_repair_material_feedback"]["truncated"]
 

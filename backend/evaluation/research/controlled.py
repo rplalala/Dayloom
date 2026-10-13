@@ -235,13 +235,17 @@ def controlled_view(context, study):
         )
     detected = [row for row in available if row["native"]["detection"] == "detected"]
     authorized = [row for row in detected if row["native"]["authorization"] == "authorized"]
-    attempted = [row for row in authorized if row["native"]["model_attempted"]]
+    attempted = [
+        row
+        for row in authorized
+        if row["native"].get("operation_attempted", row["native"]["model_attempted"])
+    ]
     channels = {}
     for name, field, positive, population, unit in (
         ("detection", "detection", "detected", available, "available_expected_targets"),
         ("authorization", "authorization", "authorized", detected, "detected_targets"),
         ("model_attempt", "model_attempted", True, authorized, "authorized_targets"),
-        ("adoption", "adoption", "adopted_component", attempted, "model_attempted_targets"),
+        ("adoption", "adoption", "adopted_component", attempted, "operation_attempted_targets"),
     ):
         channels[name] = {
             **rate(

@@ -52,7 +52,10 @@ class RepairBudget:
                 "routes",
                 "elements",
             }
-        ) | {"model": self.policy.max_model_calls}
+        ) | {
+            "model": self.policy.max_model_calls,
+            "deterministic_attempts": self.policy.max_deletion_attempts,
+        }
         self.clock = clock
         self.started = clock()
         self.deadline = min(

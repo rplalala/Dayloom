@@ -76,6 +76,7 @@ def check_addition_layout(
     required=(),
     routing_preference=None,
     schedule=None,
+    check_rearrangements=False,
 ):
     """Recompute stage-added burden against the immutable baseline on every proposal.
 
@@ -116,6 +117,20 @@ def check_addition_layout(
         }
         removed = {a.activity_id for a in old_order} - {a.activity_id for a in ordered}
         changed_edges = {pair for pair in new_pairs - old_pairs.keys() if removed}
+        if check_rearrangements:
+            changed_edges.update(
+                (a.activity_id, b.activity_id)
+                for a, b in zip(ordered, ordered[1:], strict=False)
+                if (a.activity_id, b.activity_id) not in old_pairs
+                or any(
+                    item.activity_id not in old_items
+                    or any(
+                        getattr(item, field) != getattr(old_items[item.activity_id], field)
+                        for field in ("source_place_id", "start_time", "end_time")
+                    )
+                    for item in (a, b)
+                )
+            )
         if not automatic and not changed_edges:
             continue
         daily = 0.0

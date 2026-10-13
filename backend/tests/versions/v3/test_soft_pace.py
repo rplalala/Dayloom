@@ -87,7 +87,8 @@ def test_repair_adopts_zero_pace_without_changing_original_draft():
     pace = next(p for p in result.target_progress if p.check == "soft_pace")
     assert (pace.before, pace.after, pace.outcome) == (40, 0, "resolved")
     assert result.soft_pace["target_state"] == "reached"
-    assert model.calls == 1 and result.counters["model"] == 1
+    assert model.calls == result.counters.get("model", 0) == 0
+    assert result.counters["deterministic_attempts"] == 1
 
 
 def test_actual_v3_runner_carries_pace_from_existing_interpretation_call():
@@ -146,6 +147,7 @@ def test_actual_v3_runner_carries_pace_from_existing_interpretation_call():
             places=ManyPlaces(),
             request=make_request("relaxed"),
             quantity_review_enabled=True,
+            system_deletions=True,
         )
     )
     pace = next(
@@ -157,6 +159,8 @@ def test_actual_v3_runner_carries_pace_from_existing_interpretation_call():
     assert result.v3.repair.soft_pace["after"]["days"][0]["penalty"] == 0
     assert len([c for c in model.calls if c.response_schema is InterpretationDraft]) == 1
     assert len(result.v3.draft.days[0].activities) == 3
+    assert result.v3.repair.rounds[0].strategy == "system_delete"
+    assert result.v3.repair.counters["deterministic_attempts"] >= 1
 
 
 def test_incremental_pace_improvement_is_kept_at_model_limit():
@@ -186,7 +190,7 @@ def test_incremental_pace_improvement_is_kept_at_model_limit():
             scope,
             model=Model([edit(operation="delete", start=None, end=None)]),
             routes_provider=Routes(),
-            policy=policy(max_model_calls=1, max_rounds=1),
+            policy=policy(max_model_calls=1, max_rounds=1, max_deletion_attempts=0),
             request_deadline=monotonic() + 600,
         )
     )
@@ -247,6 +251,7 @@ def test_date_override_and_disabled_optimization_are_read_only():
 
 
 def test_required_visit_cannot_be_deleted_to_improve_pace():
+    from backend.tests.versions.v3.test_multiround import policy
     from backend.tests.versions.v3.test_validation import binding
 
     req = pace_contract().model_copy(
@@ -279,6 +284,7 @@ def test_required_visit_cannot_be_deleted_to_improve_pace():
             scope,
             model=model,
             routes_provider=Routes(),
+            policy=policy(max_deletion_attempts=0),
             request_deadline=monotonic() + 600,
         )
     )

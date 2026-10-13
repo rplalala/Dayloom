@@ -92,6 +92,8 @@ def edit(operation, aid=None, pid=None, day=0, start=None, end=None):
 
 def run(args, patches):
     original, ctx, scope, policy = args
+    # Exercise these explicit model patches independently of application proposals.
+    policy = policy.model_copy(update={"max_deletion_attempts": 0})
 
     class Sequence(Model):
         async def generate_repair_structured(self, **kwargs):
@@ -155,7 +157,7 @@ def test_deduplication_without_compensation_is_atomic_rejection():
     args = repeated()
     result, _ = run(args, [[edit("delete", "a2", day=1)]])
     assert result.status == "REJECTED" and result.final == args[0]
-    assert result.reason in {"no_material_change_for_remaining_targets", "duplicate_failed_patch"}
+    assert result.reason == "round_or_model_limit"
     assert "compensation" in result.rounds[0].result.reason
     assert result.rounds[0].result.comparison is not None
 

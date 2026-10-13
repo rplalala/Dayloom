@@ -44,6 +44,8 @@ def test_failed_process_or_timeout_consumes_attempt_and_stops_batch(tmp_path, mo
 
     head = pilot.read(output / "manifest.json")["git_head"]
     monkeypatch.setattr(pilot.subprocess, "check_output", lambda *a, **kw: head)
+    (tmp_path / ".env.tripworld").touch()
+    monkeypatch.setattr(pilot, "ROOT", tmp_path)
     monkeypatch.setattr(pilot.subprocess, "run", launch)
     assert pilot.execute(pilot.CASES[0]) == 1
     assert not pilot.read(output / f"{pilot.CASES[0]}.finished.json")["continue_allowed"]

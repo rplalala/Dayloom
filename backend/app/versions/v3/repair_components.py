@@ -85,6 +85,9 @@ async def accept_components(
     budget,
     stage_original,
     prefix,
+    *,
+    retain_pending_groups=True,
+    proposal_strategy="local",
 ):
     """Sequential acceptance with complete working-state checks and immutable evidence history."""
     import asyncio
@@ -247,6 +250,7 @@ async def accept_components(
                     local_scope,
                     proposed_schedule,
                     ctx,
+                    allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
                 )
                 spatial = check_addition_layout(
                     stage_original,
@@ -258,6 +262,7 @@ async def accept_components(
                     required,
                     routing_preference=scope.routing_preference,
                     schedule=proposed_schedule,
+                    check_rearrangements=proposal_strategy == "replan",
                 )
                 audit.update(
                     report=after.model_dump(mode="json"),
@@ -271,15 +276,19 @@ async def accept_components(
                         f.check == "repetition" and ("target", f.finding_id) in dependencies
                         for f in initial.findings
                     )
-                    pending = deduplication and retain_pending(
-                        budget,
-                        working,
-                        proposal,
-                        component,
-                        dependencies,
-                        after,
-                        comparison,
-                        spatial,
+                    pending = (
+                        retain_pending_groups
+                        and deduplication
+                        and retain_pending(
+                            budget,
+                            working,
+                            proposal,
+                            component,
+                            dependencies,
+                            after,
+                            comparison,
+                            spatial,
+                        )
                     )
                     audit.update(
                         status="pending" if pending else "rejected",
@@ -291,11 +300,21 @@ async def accept_components(
                     original, context, preparation.ledger, (*evidence, *acquired), original_bindings
                 )
                 global_check = compare(
-                    original, proposal, initial, base, after, scope, proposed_schedule, context
+                    original,
+                    proposal,
+                    initial,
+                    base,
+                    after,
+                    scope,
+                    proposed_schedule,
+                    context,
+                    allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
                 )
                 if not global_check.accepted:
                     audit.update(status="rejected", reason=global_check.reason)
                     continue
+                if budget.remaining() <= 0 or budget.clock() >= budget.io_deadline:
+                    raise TimeoutError("component_deadline")
                 working, schedule = proposal, proposed_schedule
                 from backend.app.versions.v3.repair_pending import complete_pending
 
@@ -323,7 +342,17 @@ async def accept_components(
         (*evidence, *acquired),
         bind_transitions(working, scope.travel_mode or "WALK", scope.routing_preference, schedule),
     )
-    comparison = compare(original, working, initial, reassessed, after, scope, schedule, context)
+    comparison = compare(
+        original,
+        working,
+        initial,
+        reassessed,
+        after,
+        scope,
+        schedule,
+        context,
+        allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
+    )
     final_spatial = check_addition_layout(
         stage_original,
         working,

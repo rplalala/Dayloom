@@ -463,8 +463,8 @@ class V3PostPrimary:
         validate_itinerary_dates(context.contract.requirements, final, context.window)
         final_context = context.model_copy(
             update={
-                "semantic_assessments": tuple(self.acq.poi_semantics.ledger.values())
-                if getattr(self.acq, "poi_semantics", None)
+                "semantic_assessments": repair.selected_semantic_assessments
+                if repair is not None and repair.selected_semantic_assessments is not None
                 else context.semantic_assessments,
                 "schedule": repair.schedule if repair else context.schedule,
                 "active_related": repair.related_targets if repair else (),
