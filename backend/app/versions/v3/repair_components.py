@@ -85,6 +85,8 @@ async def accept_components(
     budget,
     stage_original,
     prefix,
+    *,
+    retain_pending_groups=True,
 ):
     """Sequential acceptance with complete working-state checks and immutable evidence history."""
     import asyncio
@@ -272,15 +274,19 @@ async def accept_components(
                         f.check == "repetition" and ("target", f.finding_id) in dependencies
                         for f in initial.findings
                     )
-                    pending = deduplication and retain_pending(
-                        budget,
-                        working,
-                        proposal,
-                        component,
-                        dependencies,
-                        after,
-                        comparison,
-                        spatial,
+                    pending = (
+                        retain_pending_groups
+                        and deduplication
+                        and retain_pending(
+                            budget,
+                            working,
+                            proposal,
+                            component,
+                            dependencies,
+                            after,
+                            comparison,
+                            spatial,
+                        )
                     )
                     audit.update(
                         status="pending" if pending else "rejected",
@@ -305,6 +311,8 @@ async def accept_components(
                 if not global_check.accepted:
                     audit.update(status="rejected", reason=global_check.reason)
                     continue
+                if budget.remaining() <= 0 or budget.clock() >= budget.io_deadline:
+                    raise TimeoutError("component_deadline")
                 working, schedule = proposal, proposed_schedule
                 from backend.app.versions.v3.repair_pending import complete_pending
 

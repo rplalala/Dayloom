@@ -92,6 +92,8 @@ def edit(operation, aid=None, pid=None, day=0, start=None, end=None):
 
 def run(args, patches):
     original, ctx, scope, policy = args
+    # Exercise these explicit model patches independently of application proposals.
+    policy = policy.model_copy(update={"max_deletion_attempts": 0})
 
     class Sequence(Model):
         async def generate_repair_structured(self, **kwargs):

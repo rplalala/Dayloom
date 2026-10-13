@@ -76,6 +76,10 @@ def move(aid, day, start="18:00", end="19:00"):
 
 def execute(responses, *, counts=(3, 2, 3), **kwargs):
     original, ctx, scope = scenario(counts)
+    # Isolate model-authored intermediate paths from independently tested system deletions.
+    kwargs["policy"] = kwargs.get("policy", policy()).model_copy(
+        update={"max_deletion_attempts": 0}
+    )
     model = SequenceModel(responses)
     result = asyncio.run(
         run_repair_stage(
@@ -205,6 +209,7 @@ def test_repeated_exploration_state_is_suppressed_without_stopping_next_alternat
             model=model,
             routes_provider=Routes(),
             request_deadline=monotonic() + 600,
+            policy=policy(max_deletion_attempts=0),
         )
     )
     assert result.rounds[0].exploration_transition
@@ -235,6 +240,7 @@ def test_deadline_after_exploration_keeps_best_and_counts_failed_send():
             routes_provider=Routes(),
             request_deadline=1000,
             clock=lambda: now[0],
+            policy=policy(max_deletion_attempts=0),
         )
     )
     assert result.final == result.rounds[0].adopted

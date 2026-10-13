@@ -185,8 +185,9 @@ a local documentation coverage test detects a missing path or stale value.
 | `main_generation.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-primary-call structured output ceiling. Zero is invalid. |
 | `main_generation.framing_tokens` | `2048` | integer; >= 2048, <= 2048 | Per-primary-call message framing token reserve. Zero is invalid. |
 | `development_timeout_seconds` | `600` | integer; >= 1, <= 600 | Maximum permitted explicit development CLI request allowance. Presence alone does not enable this timeout; V3 requires an explicit allowance from entry. Zero is invalid. |
-| `v3_repair.max_rounds` | `6` | integer; >= 1, <= 6 | Total rounds per Repair stage, shared across dates/targets. Each round has at most one model call. Zero is invalid. |
+| `v3_repair.max_rounds` | `6` | integer; >= 1, <= 6 | Model rounds per Repair stage, shared across dates/targets. System deletions use their own attempt ceiling. Zero is invalid. |
 | `v3_repair.max_model_calls` | `6` | integer; >= 0, <= 6 | Model sending ceiling per entire stage; zero disables Repair model attempts. Must not exceed max_rounds. Zero disables the allowance. |
+| `v3_repair.max_deletion_attempts` | `12` | integer; >= 0, <= 120 | System deletion attempts per stage, separately bounded from proposal model sends and sharing stage time/provider limits. Zero disables enumeration. |
 | `v3_repair.quantity_review_enabled` | `true` | boolean; schema-validated | Default coverage review-target activation; CLI can explicitly disable it. It never turns NEEDS_REVIEW into CONFIRMED. |
 | `v3_repair.alternatives_per_gap` | `2` | integer; >= 1 | Distinct alternatives per authorized quantity gap as a preparation reference. Fewer options may still be used. Zero is invalid. |
 | `v3_repair.exploration_positions` | `2` | integer; >= 0, <= 2 | Reusable exploration positions within the same input union across the stage, not extra candidates or per-date quotas. Zero removes reserved presentation opportunities. Zero removes the corresponding tolerance. |

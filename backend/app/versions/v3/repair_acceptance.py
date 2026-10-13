@@ -16,6 +16,11 @@ from backend.app.versions.v3.soft_pace import pace_coverage_floor
 from backend.app.versions.v3.validation import validate_draft
 
 
+def coverage_unavailable(row):
+    """Quantity applicability is independent of known primary identity and coverage."""
+    return row.unclassified_activity_count > 0 or row.minimum_coverage == "unknown"
+
+
 @observed("validation")
 def assess(itinerary, context, whitelist=(), evidence=(), transitions=None):
     whitelist = (*context.identity_ledger, *whitelist)
@@ -49,7 +54,7 @@ def assess(itinerary, context, whitelist=(), evidence=(), transitions=None):
         permission = related.permission
         row = next(r for r in report.diagnostics.days if r.date == permission.date)
         if row.distinct_main_poi_count < permission.minimum_count:
-            status = "UNKNOWN" if row.target_status == "not_assessable" else "NEEDS_REVIEW"
+            status = "UNKNOWN" if coverage_unavailable(row) else "NEEDS_REVIEW"
             findings.append(
                 Finding(
                     finding_id=permission.target_id,
@@ -506,7 +511,7 @@ def compare(
                     before.distinct_main_poi_count - allowed_loss,
                     f.adopted_evidence.get("zero_counts", ()),
                 )
-        if current.target_status == "not_assessable" or current.distinct_main_poi_count < floor:
+        if coverage_unavailable(current) or current.distinct_main_poi_count < floor:
             rejections.append("Coverage regression is not authorized")
     if any(
         f.check in {"repetition", "overfull"} and f.finding_id in scope.target_ids
@@ -552,7 +557,15 @@ def compare(
             day = f.dates[0]
             a = before_days[day]
             b = next(r for r in after.diagnostics.days if r.date == day)
-            if "not_assessable" not in (a.target_status, b.target_status):
+            coverage_target = f.reason in {
+                "conditional_coverage_deficit",
+                "minimum_daily_coverage_missing",
+            }
+            if (
+                not coverage_unavailable(a) and not coverage_unavailable(b)
+                if coverage_target
+                else "not_assessable" not in (a.target_status, b.target_status)
+            ):
 
                 def distance(n, finding=f):
                     return max(

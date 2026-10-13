@@ -46,6 +46,7 @@ async def run_repair_once(
     round_deadline=None,
     runtime_config=None,
     semantic_service=None,
+    application_proposal=None,
 ):
     """All collaborators are injected. Optional acquisition failures are local stops.
 
@@ -265,107 +266,119 @@ async def run_repair_once(
         if remaining() <= 0:
             return result("SKIPPED", "phase_or_request_deadline")
         async with asyncio.timeout(remaining()):
-            # Optional preparation cannot consume the model/recheck allocation.
-            budget.route_phase = "preparation"
-            budget.io_deadline = min(
-                budget.clock() + timing.preparation_seconds,
-                round_deadline - timing.minimum_model_seconds - timing.recheck_reserve_seconds,
-            )
-            preparation = await observed("repair_preparation")(prepare_candidates)(
-                context,
-                scope,
-                budget,
-                original=snapshot,
-                pool=pool,
-                provider=places_provider,
-                intent_ids=intent_ids,
-                rag=rag,
-                geographic_scope=geographic_scope,
-                semantic_service=semantic_service,
-            )
-            whitelist = preparation.ledger
-            if semantic_service:
-                context = context.model_copy(
-                    update={"semantic_assessments": tuple(semantic_service.ledger.values())}
-                )
-            if not scope.permissions and not preparation.authorizations:
-                return result("SKIPPED", "no_executable_candidate_operation")
-            all_places = {p.place_id: p for p in context.places}
-            all_places.update({c.place.place_id: c.place for c in whitelist})
-            original_bindings = bind_transitions(
-                snapshot,
-                None if scope.unsupported_explicit_mode else (scope.travel_mode or "WALK"),
-                scope.routing_preference,
-                context.schedule,
-            )
-            extra = await acquire_transitions(
-                snapshot,
-                scoped_bindings(snapshot, scope, original_bindings),
-                context.route_evidence,
-                tuple(all_places.values()),
-                routes_provider,
-                budget,
-                context.schedule,
-            )
-            from backend.app.versions.v3.repair_transport import prepare_options
-
-            transport_options, option_routes = await prepare_options(
-                snapshot,
-                preparation,
-                scope,
-                context,
-                (*context.route_evidence, *extra),
-                routes_provider,
-                budget,
-                initial,
-            )
-            extra = (*extra, *option_routes)
             from backend.app.versions.v3.repair_pending import active_pending, combine_pending
 
             pending = active_pending(budget, snapshot)
-            system, user, sizing = build_repair_input(
-                snapshot,
-                initial,
-                scope,
-                context,
-                preparation,
-                (*context.route_evidence, *extra),
-                policy=policy,
-                feedback=feedback,
-                transport_options=transport_options,
-                pending_groups=pending,
-            )
-            fingerprint = material_fingerprint(user)
-            timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
-            if timeout < timing.minimum_model_seconds:
-                return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
-            model_timeout = timeout
-            budget.charge(model=1)
-            attempted = True
-            from langchain_core.callbacks import UsageMetadataCallbackHandler
+            if application_proposal is not None:
+                from backend.app.versions.v3.repair_models import CandidatePreparation
 
-            callback = UsageMetadataCallbackHandler()
-            from backend.app.observability.mechanism_observation import (
-                model_projection,
-                repair_representation,
-            )
+                budget.charge(deterministic_attempts=1)
+                preparation = CandidatePreparation(ledger=context.identity_ledger)
+                whitelist = preparation.ledger
+                all_places = {p.place_id: p for p in context.places}
+                all_places.update({c.place.place_id: c.place for c in whitelist})
+                raw = application_proposal
+            else:
+                # Optional preparation cannot consume the model/recheck allocation.
+                budget.route_phase = "preparation"
+                budget.io_deadline = min(
+                    budget.clock() + timing.preparation_seconds,
+                    round_deadline - timing.minimum_model_seconds - timing.recheck_reserve_seconds,
+                )
+                preparation = await observed("repair_preparation")(prepare_candidates)(
+                    context,
+                    scope,
+                    budget,
+                    original=snapshot,
+                    pool=pool,
+                    provider=places_provider,
+                    intent_ids=intent_ids,
+                    rag=rag,
+                    geographic_scope=geographic_scope,
+                    semantic_service=semantic_service,
+                )
+                whitelist = preparation.ledger
+                if semantic_service:
+                    context = context.model_copy(
+                        update={"semantic_assessments": tuple(semantic_service.ledger.values())}
+                    )
+                if not scope.permissions and not preparation.authorizations:
+                    return result("SKIPPED", "no_executable_candidate_operation")
+                all_places = {p.place_id: p for p in context.places}
+                all_places.update({c.place.place_id: c.place for c in whitelist})
+                original_bindings = bind_transitions(
+                    snapshot,
+                    None if scope.unsupported_explicit_mode else (scope.travel_mode or "WALK"),
+                    scope.routing_preference,
+                    context.schedule,
+                )
+                extra = await acquire_transitions(
+                    snapshot,
+                    scoped_bindings(snapshot, scope, original_bindings),
+                    context.route_evidence,
+                    tuple(all_places.values()),
+                    routes_provider,
+                    budget,
+                    context.schedule,
+                )
+                from backend.app.versions.v3.repair_transport import prepare_options
 
-            try:
-                async with asyncio.timeout(timeout):
-                    with model_projection(
-                        "repair", lambda: repair_representation(user), round_index=round_index
-                    ):
-                        raw = await observed("repair_model")(model.generate_repair_structured)(
-                            system_prompt=system,
-                            user_prompt=user,
-                            output_tokens=policy.input.output_tokens,
-                            usage_callback=callback,
-                        )
-            finally:
-                usage = dict(callback.usage_metadata)
-            model_returned = True
+                transport_options, option_routes = await prepare_options(
+                    snapshot,
+                    preparation,
+                    scope,
+                    context,
+                    (*context.route_evidence, *extra),
+                    routes_provider,
+                    budget,
+                    initial,
+                )
+                extra = (*extra, *option_routes)
+                system, user, sizing = build_repair_input(
+                    snapshot,
+                    initial,
+                    scope,
+                    context,
+                    preparation,
+                    (*context.route_evidence, *extra),
+                    policy=policy,
+                    feedback=feedback,
+                    transport_options=transport_options,
+                    pending_groups=pending,
+                )
+                fingerprint = material_fingerprint(user)
+                timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
+                if timeout < timing.minimum_model_seconds:
+                    return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
+                model_timeout = timeout
+                budget.charge(model=1)
+                attempted = True
+                from langchain_core.callbacks import UsageMetadataCallbackHandler
+
+                callback = UsageMetadataCallbackHandler()
+                from backend.app.observability.mechanism_observation import (
+                    model_projection,
+                    repair_representation,
+                )
+
+                try:
+                    async with asyncio.timeout(timeout):
+                        with model_projection(
+                            "repair", lambda: repair_representation(user), round_index=round_index
+                        ):
+                            raw = await observed("repair_model")(model.generate_repair_structured)(
+                                system_prompt=system,
+                                user_prompt=user,
+                                output_tokens=policy.input.output_tokens,
+                                usage_callback=callback,
+                            )
+                finally:
+                    usage = dict(callback.usage_metadata)
+                model_returned = True
             patch = RepairPatch.model_validate(raw)
-            effective_patch = combine_pending(patch, pending)
+            effective_patch = (
+                patch if application_proposal is not None else combine_pending(patch, pending)
+            )
             from backend.app.versions.v3.repair_search import proposal_key
 
             decision_key = proposal_key(effective_patch, snapshot, context, scope, extra)
@@ -393,6 +406,7 @@ async def run_repair_once(
                 budget,
                 stage_original,
                 f"repair_r{round_index}_new",
+                retain_pending_groups=application_proposal is None,
             )
             components = component_result["components"]
             proposed = component_result["final"]
@@ -436,7 +450,7 @@ async def run_repair_once(
     except asyncio.CancelledError:
         raise
     except TimeoutError:
-        return result("REJECTED" if attempted else "SKIPPED", "repair_timeout")
+        return result("REJECTED" if attempted or patch is not None else "SKIPPED", "repair_timeout")
     except Exception as exc:
         from backend.app.schemas.poi_semantics import SemanticAssessmentError
 
@@ -444,7 +458,10 @@ async def run_repair_once(
             raise
         if hasattr(exc, "counts"):
             sizing = exc.counts
-        return result("REJECTED" if attempted else "SKIPPED", f"{type(exc).__name__}:{exc}")
+        return result(
+            "REJECTED" if attempted or patch is not None else "SKIPPED",
+            f"{type(exc).__name__}:{exc}",
+        )
 
 
 def relevant_routes(itinerary, scope, evidence, schedule=None):
@@ -543,7 +560,8 @@ async def run_repair_stage(
     completed = set()
     stop = "model_budget_disabled" if not policy.max_model_calls else "round_limit"
     last = None
-    for index in range(1, min(policy.max_rounds, policy.max_model_calls) + 1):
+    model_limit = min(policy.max_rounds, policy.max_model_calls)
+    for index in range(1, model_limit + policy.max_deletion_attempts + 1):
         effective = context.model_copy(
             update={
                 "semantic_assessments": tuple(kwargs["semantic_service"].ledger.values())
@@ -610,14 +628,24 @@ async def run_repair_stage(
             context=effective,
             policy=policy,
         )
+        from backend.app.versions.v3.repair_deletion import next_deletion
+
+        application_proposal = next_deletion(current, effective, round_scope, budget)
+        strategy = "system_delete" if application_proposal is not None else "local"
+        if application_proposal is None and budget.used["model"] >= model_limit:
+            stop = "round_or_model_limit" if model_limit else "model_budget_disabled"
+            break
         timing = policy.timing
-        if budget.remaining() < timing.minimum_model_seconds + timing.recheck_reserve_seconds:
+        required_time = timing.recheck_reserve_seconds + (
+            timing.minimum_model_seconds if application_proposal is None else 0
+        )
+        if budget.remaining() < required_time:
             stop = "insufficient_stage_time"
             break
         affordable = max(
             1,
             min(
-                policy.max_rounds - index + 1,
+                model_limit - budget.used["model"] + int(application_proposal is not None),
                 int(budget.remaining() // timing.round_reference_seconds),
             ),
         )
@@ -635,6 +663,7 @@ async def run_repair_stage(
             feedback=feedback,
             round_index=index,
             round_deadline=clock() + allocation,
+            application_proposal=application_proposal,
             **kwargs,
         )
         result = learn(result, budget, index)
@@ -733,7 +762,7 @@ async def run_repair_stage(
         records.append(
             RepairRoundRecord(
                 round_index=index,
-                strategy="local",
+                strategy=strategy,
                 base_state=state_key(before, effective.schedule),
                 exploration_transition=accepted,
                 best_promoted=promoted,
