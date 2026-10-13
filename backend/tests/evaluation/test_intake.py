@@ -877,6 +877,7 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "paired_execution": {"os", "shutil", "httpx", "dotenv"},  # Explicit acquire execute.
         "paired_run": {"os", "shutil"},  # Fresh-path checks and offline exact-byte copies.
         "snapshot_import": {"copy"},  # Offline source-labelled observation copies.
+        "v3_correspondence": {"copy"},  # Offline adopted-itinerary lineage copies.
         "generation_import": {"urllib"},  # URL parsing only; no provider client.
         "evaluation_transport": {"httpx", "urllib", "backend.app.runtime.token_counting"},
         "evaluation_run_cli": {"os", "dotenv"},

@@ -933,7 +933,7 @@ async def run_repair_stage(
         )
         if any_accepted
         else "REJECTED"
-        if any(r.result.model_attempted for r in records)
+        if any(r.result.model_attempted or r.exploration_transition for r in records)
         else last.status
     )
     cumulative_usage = {}

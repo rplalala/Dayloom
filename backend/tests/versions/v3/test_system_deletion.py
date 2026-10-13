@@ -178,6 +178,29 @@ def test_deterministic_attempt_limit_returns_earlier_partial_improvement():
     assert result.soft_pace["target_state"] == "residual"
 
 
+def test_equal_pace_deletion_without_best_promotion_reports_no_improvement():
+    from backend.tests.versions.v3.test_validation import place
+
+    original = three_visits()
+    original.days[0].activities.append(activity("four", "d", "18:00", "19:00"))
+    ctx = context(
+        pace_contract(exact_count=2),
+        places=tuple(place(pid) for pid in "abcd"),
+        original_supply_ids=tuple("abcd"),
+        policy=ValidationPolicy(review_targets={"soft_pace"}),
+    )
+    result = execute(original, ctx, policy=policy(max_model_calls=0, max_deletion_attempts=1))
+    assert result.rounds[0].exploration_transition
+    assert len(result.rounds[0].adopted.days[0].activities) == 3
+    assert not result.rounds[0].best_promoted
+    assert result.final == original
+    assert result.selected_round_index is None
+    assert not result.comparison.accepted
+    assert result.soft_pace["before"]["mean_penalty"] == 100
+    assert result.soft_pace["after"]["mean_penalty"] == 100
+    assert result.status == "REJECTED", result.reason
+
+
 def test_deterministic_deduplication_cannot_publish_uncompensated_removal():
     from backend.tests.versions.v3.test_b_targets import repeated
 

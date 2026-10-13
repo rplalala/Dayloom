@@ -1,7 +1,20 @@
 """Comparable priorities for bounded Repair exploration and final retention."""
 
+from typing import NamedTuple
+
 from backend.app.versions.v3.repair_acceptance import severity
 from backend.app.versions.v3.repair_feedback import digest
+
+
+class RepairObjective(NamedTuple):
+    hard_severity: float
+    coverage_deficit: int
+    review_magnitude: float
+    pace_deduction: float | None
+
+    @property
+    def priorities(self) -> tuple[float, int, float]:
+        return self.hard_severity, self.coverage_deficit, self.review_magnitude
 
 
 def state_key(itinerary, schedule=None):
@@ -60,13 +73,17 @@ def objective(itinerary, report, pace_dates, scope):
         if f.status == "NEEDS_REVIEW" and f.check != "soft_pace"
         for row in (next((r for r in report.diagnostics.days if r.date in f.dates), None),)
     )
-    return hard, coverage, review, pace
+    return RepairObjective(hard, coverage, review, pace)
 
 
-def improves(candidate, best):
-    if candidate[:3] != best[:3]:
-        return candidate[:3] < best[:3]
-    return candidate[3] is not None and best[3] is not None and candidate[3] < best[3]
+def improves(candidate: RepairObjective, best: RepairObjective):
+    if candidate.priorities != best.priorities:
+        return candidate.priorities < best.priorities
+    return (
+        candidate.pace_deduction is not None
+        and best.pace_deduction is not None
+        and candidate.pace_deduction < best.pace_deduction
+    )
 
 
 def proposal_key(patch, itinerary, context, scope, evidence):
