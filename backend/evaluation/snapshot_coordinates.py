@@ -112,8 +112,20 @@ def prepare_snapshot_coordinates(intake, identity_report, snapshot_directory):
                     origin = {
                         "request_key": key,
                         "raw_sha256": attempt["raw"]["sha256"],
-                        "pointer": pointer + "/location",
+                        "pointer": (
+                            "/body"
+                            if record.get("origin", {})
+                            and record["origin"]["kind"] == "planner_generation"
+                            else ""
+                        )
+                        + pointer
+                        + "/location",
                         "retrieved_at": attempt["retrieved_at"],
+                        **(
+                            {"acquisition_origin": record["origin"]}
+                            if snapshot.get("schema_version") == "rtpeval_imported_snapshot_1"
+                            else {}
+                        ),
                     }
                     if "location" in place:
                         candidates[(key, pointer)] = {
@@ -164,7 +176,9 @@ def prepare_snapshot_coordinates(intake, identity_report, snapshot_directory):
                     "latitude": point["latitude"],
                     "longitude": point["longitude"],
                     "evidence_sha256": digest,
-                    "source_kind": "independent_snapshot",
+                    "source_kind": "imported_snapshot"
+                    if snapshot.get("schema_version") == "rtpeval_imported_snapshot_1"
+                    else "independent_snapshot",
                     "observations": sources,
                 }
             )

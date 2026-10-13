@@ -63,6 +63,7 @@ TASKS = {
                 children={
                     name: _leaf("backend.cli.pair_acquire", detail, name, http_client=True)
                     for name, detail in {
+                        "import": "Offline labelled reuse; missing observations stay unavailable.",
                         "prepare": "Offline validate stages, reviews, prices and destination.",
                         "execute": "Explicit acquisition; preserve failures and stopped attempts.",
                         "replay": "Offline source, implementation, snapshot and receipt checks.",

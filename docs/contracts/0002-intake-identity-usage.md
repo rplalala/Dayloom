@@ -981,7 +981,11 @@ All references resolve relative to their declaring artifact's root and must rema
 within it. Required source artifacts use exact byte SHA-256, JSON media type,
 `availability=available` and the applicable envelope schema. Input, result, usage,
 provenance and optional generation evidence retain exact bytes and relative layout.
-Generation evidence remains producer evidence, not independent evaluator ground truth.
+Generation evidence retains producer origin. Complete, source-bound raw provider
+observations can be imported for paired diagnostics under the
+[source-labelled import contract](0001-evaluation-artifacts.md#source-labelled-offline-imports).
+Independent checks run again; Planner judgments and cached normalized claims do
+not establish evaluator ground truth.
 
 A group declares its original `input_ref` and `selected_runs` keyed by V0-V3. Each
 existing run supplies result/usage/provenance refs and completion. Missing result/usage

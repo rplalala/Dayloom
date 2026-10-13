@@ -5,6 +5,8 @@
 These core files consolidate current behavior; development diaries do not
 belong in this directory. Task specifications and iteration state live in GitHub Issues.
 
+[Domain terminology](../GLOSSARY.md) defines the Repair terms used during design.
+
 ## Core designs
 
 | Owner | Contents |
@@ -52,10 +54,20 @@ records main-worktree verification and the boundaries of reused regression evide
 
 ## Other responsibilities
 
-- [Benchmark inputs and material storage](../benchmark/README.md): scenario index,
-  date updates and storage conventions. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
-  owns the 20-scenario design and final acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-  owns sequential execution, revisions and input/report joint acceptance.
+- [Benchmark workflow and case material](../benchmark/README.md): per-case sequence,
+  responsibilities and user intervention, optional studies, public itinerary views and case reports
+  and selected materials, ignored private execution storage and compact long-term archives,
+  scenario index and date updates. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
+  owns final benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+  owns shared execution/child-Issue rules; [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+  tracks workflow/layout adoption and case-01 end-to-end acceptance. The
+  [case-01 acceptance boundary](../benchmark/case-01/report.md#post-refactor-acceptance)
+  and [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140) track
+  required revalidation after the Repair refactor; publication does not accept the case.
+- [AI assistance records](../benchmark/README.md#ai-assistance-records): actual
+  performers, contributions, validation and evidence gaps for later thesis disclosure;
+  [case-01](../benchmark/case-01/report.md#system-and-external-assistance) records the
+  observed work, with its case Issue owning the public decision/disclosure summary.
 - [Development commands](guides/development.md) and [runtime configuration](../config/README.md).
 - [Historical records](records/README.md): milestone freezes, development evidence,
   topic-specific validation and benchmark-design history. They do not override core design.

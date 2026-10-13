@@ -1,0 +1,532 @@
+{
+  "schema_version": "rtpeval_research_relevance_report_1",
+  "processing_status": "completed",
+  "track": "relevance",
+  "applicability": "not_applicable",
+  "identity_unit": "canonical_place_id",
+  "corpus_study_selected": false,
+  "population_id": "case01-fresh",
+  "population_revision": "1",
+  "profile_id": "case01-first-dispatched",
+  "profile_revision": "1",
+  "population_digest": "cba4ffbdb8c004f21c4a84e4f962aab0644dc1dbf3a70646de2b7b6b63d28d89",
+  "measurement_coverage": {
+    "opportunities": {
+      "unit": "planned_v1_v2_slots",
+      "planned_slots": 2,
+      "captured_slots": 2,
+      "stages": {
+        "discovered": {
+          "complete": 1,
+          "partial": 1,
+          "unavailable": 0
+        },
+        "admitted": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "enriched": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "supplied": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "scheduled": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        }
+      }
+    },
+    "corpus": {
+      "unit": "original_requests",
+      "planned_cases": 1,
+      "complete": 0,
+      "partial": 0,
+      "unavailable": 1
+    }
+  },
+  "review_coverage": {
+    "unit": "original_requests",
+    "planned_cases": 1,
+    "interest_inventory_cases": 1,
+    "relevance_review_cases": 0,
+    "relevance_review_records": 0
+  },
+  "diagnostics": [],
+  "runs": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "version": "v1",
+      "repetition_id": "1",
+      "attempt_id": "case01-v1-20261012T232752Z",
+      "completion_status": "completed",
+      "relevance_status": "not_applicable",
+      "stages": {
+        "discovered": {
+          "status": "not_applicable",
+          "canonical_ids": [],
+          "observed_count": 0,
+          "complete_count": null,
+          "reasons": [
+            "no_user_poi_interests"
+          ]
+        },
+        "admitted": {
+          "status": "not_applicable",
+          "canonical_ids": [],
+          "observed_count": 0,
+          "complete_count": null,
+          "reasons": [
+            "no_user_poi_interests"
+          ]
+        },
+        "enriched": {
+          "status": "not_applicable",
+          "canonical_ids": [],
+          "observed_count": 0,
+          "complete_count": null,
+          "reasons": [
+            "no_user_poi_interests"
+          ]
+        },
+        "supplied": {
+          "status": "not_applicable",
+          "canonical_ids": [],
+          "observed_count": 0,
+          "complete_count": null,
+          "reasons": [
+            "no_user_poi_interests"
+          ]
+        },
+        "scheduled": {
+          "status": "not_applicable",
+          "canonical_ids": [],
+          "observed_count": 0,
+          "complete_count": null,
+          "reasons": [
+            "no_user_poi_interests"
+          ]
+        }
+      },
+      "end_to_end": {
+        "status": "not_applicable",
+        "canonical_ids": [],
+        "observed_count": 0,
+        "complete_count": null,
+        "reasons": [
+          "no_user_poi_interests"
+        ]
+      },
+      "interest_inventory": {
+        "$case_material_ref": {
+          "path": "../../interests/interests.json",
+          "pointer": "",
+          "semantic_sha256": "71eecafa9a564122956bb236945770194034eb33d8d163c09bf4aa83499795a3"
+        }
+      },
+      "per_interest": [],
+      "conversions": {
+        "discovered_to_admitted": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_enriched": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "enriched_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "supplied_to_scheduled": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "version": "v2",
+      "repetition_id": "1",
+      "attempt_id": "case01-v2-20261012T232752Z",
+      "completion_status": "completed",
+      "relevance_status": "not_applicable",
+      "stages": {
+        "$case_material_ref": {
+          "path": "relevance.json",
+          "pointer": "/runs/0/stages",
+          "semantic_sha256": "bf9ea7b4653dba501270b159292cd5ff632b8340ab72055b2ff86c6b1663d8ff"
+        }
+      },
+      "end_to_end": {
+        "status": "not_applicable",
+        "canonical_ids": [],
+        "observed_count": 0,
+        "complete_count": null,
+        "reasons": [
+          "no_user_poi_interests"
+        ]
+      },
+      "interest_inventory": {
+        "$case_material_ref": {
+          "path": "../../interests/interests.json",
+          "pointer": "",
+          "semantic_sha256": "71eecafa9a564122956bb236945770194034eb33d8d163c09bf4aa83499795a3"
+        }
+      },
+      "per_interest": [],
+      "conversions": {
+        "$case_material_ref": {
+          "path": "relevance.json",
+          "pointer": "/runs/0/conversions",
+          "semantic_sha256": "988eb5fa4a876dea67488a448694a87f278fcb80c7946295b7b73013fc4449f7"
+        }
+      }
+    }
+  ],
+  "opportunity_semantic_sha256": "4390d3eec56141161012eeaf7bc5b3389e9236127c9309e46318275528517b64",
+  "interest_inventory_bindings": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "sha256": "3ae2ee08eb8de93e4230e151c55b969682b8982e3a6c8f6abebdee09afb8bd06",
+      "value": {
+        "$case_material_ref": {
+          "path": "../../interests/interests.json",
+          "pointer": "",
+          "semantic_sha256": "71eecafa9a564122956bb236945770194034eb33d8d163c09bf4aa83499795a3"
+        }
+      }
+    }
+  ],
+  "independent_reviews": [],
+  "comparisons": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "repetition_id": "1",
+      "end_to_end": {
+        "status": "unavailable",
+        "delta": null,
+        "v1_count": null,
+        "v2_count": null,
+        "gained_ids": [],
+        "lost_ids": [],
+        "retained_ids": [],
+        "reasons": [
+          "incomplete_or_incompatible_pair"
+        ]
+      },
+      "stages": {
+        "discovered": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "admitted": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "enriched": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "supplied": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "scheduled": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        }
+      },
+      "per_interest": []
+    }
+  ],
+  "coverage": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "status": "unavailable",
+      "eligible_entity_count": null,
+      "observed_subtotal": null,
+      "stratum_id": null,
+      "reasons": [
+        "missing_independent_coverage"
+      ]
+    }
+  ],
+  "coverage_profile": null,
+  "coverage_summary": {
+    "interpretation": "Descriptive eligible-entity/geographic proxy; repeated slots are not independent samples. No citywide recall or unique-venue coverage claim.",
+    "available_pairs": 0,
+    "omitted_pairs": 1,
+    "unstratified_pairs": 1,
+    "strata": []
+  },
+  "source_bindings": [
+    {
+      "path": "analysis/poi-process/opportunities-material.json",
+      "sha256": "0a147968fe9f8d625ba53ff49876f8b4c4d0c4554028258f5ff9dcfb41b7969d",
+      "schema_version": "rtpeval_research_opportunities_1"
+    },
+    {
+      "path": "analysis/poi-process/relevance-material.json",
+      "sha256": "34080ab21162807c4d7be63b35b0fe6534d92b38ec3d3533a0877c1eeeb77e08",
+      "schema_version": "rtpeval_research_relevance_1"
+    },
+    {
+      "path": "analysis/resources/census/material/census-export.json",
+      "sha256": "aa92291dfd856ccca0a10c3b73985f4020a66aaee4ce53f805e6056e2262d6c6",
+      "schema_version": "rtpeval_research_census_1"
+    },
+    {
+      "path": "evaluation/primary/run/execution/identity-evidence.json",
+      "sha256": "99a8ed082850aa1cc81339939d3bb67586acbaa7c92403b42102e67e352121f6",
+      "schema_version": "rtpeval_identity_evidence_1"
+    },
+    {
+      "path": "evaluation/primary/run/execution/model-result.json",
+      "sha256": "f68884a95abc0f4366ce50b1ce3d71fb54eb7e605b10ec2085d6a46d585e6c32",
+      "schema_version": "rtpeval_identity_model_result_2"
+    },
+    {
+      "path": "generation/configuration/runtime-policy.json",
+      "sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v0/planner-dispatch.json",
+      "sha256": "c654b9ac33436c28f14fc39ab3f27e627e2d6fa3a395457ba2a74a34d84260e5",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v0/producer-completion.json",
+      "sha256": "c64e9618147e40025db833444060062ec5427efe68c5e09b57eaa19e5dd6f17e",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v1/opportunities.json",
+      "sha256": "fa1ef6749eec9de8ffb7a2fb432eec5a7f516af7e5984b169fef6a4d2a574d28",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "generation/v1/planner-dispatch.json",
+      "sha256": "08acee5772147069d65eb98c8d89967a7681f9172ff9849460340ff7b8082fac",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v1/producer-completion.json",
+      "sha256": "63bc72952dbf0652e95a51a662c3791893a4592ac902822e84867f7225f9eba0",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v2/opportunities.json",
+      "sha256": "b3fb5c16a2633da9724effe56dd3250b36a45b4d962f526f5190c54f9f6f7100",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "generation/v2/planner-dispatch.json",
+      "sha256": "33423cf52d49a126df6c6278c241dab116c7ba87d9eaaf8befa4a25bae301138",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v2/producer-completion.json",
+      "sha256": "f011bd3b9ccfa7d590bcd6cdb773cb2d56005f276e31519dcda4cf87ba12a4ec",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v3/planner-dispatch.json",
+      "sha256": "91215281f4bda1755590279c66d89771e4327099a9279cabd8224ae5604694a5",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v3/producer-completion.json",
+      "sha256": "b83f7ae561b532bdf553b851c81f60bdc60c0b329b47b44eaacb08f1609b77fa",
+      "schema_version": null
+    },
+    {
+      "path": "input.json",
+      "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+      "schema_version": null
+    },
+    {
+      "path": "interests/interests.json",
+      "sha256": "3ae2ee08eb8de93e4230e151c55b969682b8982e3a6c8f6abebdee09afb8bd06",
+      "schema_version": "rtpeval_research_interests_1"
+    },
+    {
+      "path": "material/manifest.json",
+      "sha256": "17f5cdd5fdc4191ba1c6230970013502cec3a447f4efbd26adabcf6ddc555272",
+      "schema_version": "rtpeval_batch_1"
+    },
+    {
+      "path": "material/requirements/requirements/reviewed-requirements.json",
+      "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+      "schema_version": "rtpeval_requirements_1"
+    },
+    {
+      "path": "material/sources/generation/v0/producer-declaration-0-v0.json",
+      "sha256": "9bc988c3a001f794bbd8f73a1df412f68b7252596add31ed8cecb3342de9871f",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v0/result.json",
+      "sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v0/usage.json",
+      "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v1/producer-declaration-0-v1.json",
+      "sha256": "27601aa9431e7657ed4f3c71833329d451cb35c696823bffb290a2401b620e41",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v1/result.json",
+      "sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v1/usage.json",
+      "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v2/producer-declaration-0-v2.json",
+      "sha256": "14ca4be12b7b327979298144f999288aba49483c1dfb1c2d6e05a0d5748b9bc4",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v2/result.json",
+      "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v2/usage.json",
+      "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v3/producer-declaration-0-v3.json",
+      "sha256": "8d58dc5296b8efaeadd9be8aeda869527394da941f3b0cdc38f765fc1d662267",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v3/result.json",
+      "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v3/usage.json",
+      "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/input.json",
+      "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+      "schema_version": null
+    },
+    {
+      "path": "population.json",
+      "sha256": "3f44e1b591e281f81b3b3aa2a678ef20e63da4170977e26c6845d6fd3179c4d2",
+      "schema_version": "rtpeval_research_population_1"
+    },
+    {
+      "path": "profile.json",
+      "sha256": "3c65e2671bf35d20af214d32da1dc86c356a26f25fcfde98d4a9fbccf9e7d915",
+      "schema_version": "rtpeval_research_profile_1"
+    },
+    {
+      "path": "requirements/reviewed-requirements.json",
+      "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+      "schema_version": "rtpeval_requirements_1"
+    },
+    {
+      "path": "research.json",
+      "sha256": "7d0f11b9de766470b4b0aea6fc1001f9c3dbc93a7934fefc0ff527f3276b9755",
+      "schema_version": "rtpeval_research_declaration_1"
+    }
+  ],
+  "source_digest": "1470869471f5d2ed18b29063a010fd85456ebc9eee78d857016694a1f39c4cf9",
+  "semantic_sha256": "8507301eba29c77f131e5cbce672895c73c92ac29bb47ad0e92df85a90e9e93c"
+}

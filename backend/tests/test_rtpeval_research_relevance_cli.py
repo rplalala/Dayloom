@@ -832,6 +832,11 @@ def test_independently_reviewed_no_poi_interest_is_not_applicable(
     assert report["runs"][0]["stages"]["discovered"]["status"] == "not_applicable"
     assert report["runs"][0]["end_to_end"]["status"] == "not_applicable"
     assert report["comparisons"][0]["end_to_end"]["delta"] is None
+    markdown = (tmp_path / "no-interest/relevance.md").read_text(encoding="utf-8")
+    assert "not_applicable" in markdown
+    assert "Pinned corpus coverage" not in markdown
+    assert "Descriptive strata" not in markdown
+    assert "corpus coverage" not in markdown
 
 
 def test_sample_cannot_exceed_complete_eligible_corpus(installed_cli, research_material):

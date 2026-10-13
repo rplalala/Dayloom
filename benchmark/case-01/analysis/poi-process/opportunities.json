@@ -1,0 +1,4199 @@
+{
+  "schema_version": "rtpeval_research_opportunities_report_1",
+  "processing_status": "completed",
+  "track": "opportunities",
+  "applicability": "applicable",
+  "population_digest": "cba4ffbdb8c004f21c4a84e4f962aab0644dc1dbf3a70646de2b7b6b63d28d89",
+  "measurement_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "planned_slots": 2,
+    "captured_slots": 2,
+    "stages": {
+      "discovered": {
+        "complete": 1,
+        "partial": 1,
+        "unavailable": 0
+      },
+      "admitted": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "enriched": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "supplied": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "scheduled": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      }
+    }
+  },
+  "review_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "independent_association_slots": 2,
+    "relevance_review": "not_performed"
+  },
+  "diagnostics": [],
+  "identity_unit": "canonical_place_id",
+  "population_id": "case01-fresh",
+  "population_revision": "1",
+  "profile_id": "case01-first-dispatched",
+  "profile_revision": "1",
+  "runs": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "version": "v1",
+      "repetition_id": "1",
+      "attempt_id": "case01-v1-20261012T232752Z",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+            "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+            "ChIJD0lkZ2quEmsR9KnyAXBzPN0",
+            "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+            "ChIJK70U2mquEmsRcBQFGlUT4lM",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJLaHjJtqvEmsRQ-f397pg050",
+            "ChIJLat3W0euEmsRCQCK0yaDjTc",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+            "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+            "ChIJVQabi2muEmsRWNBCrgYzza8",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+            "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+            "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJgXsyH2KvEmsRCtHLJB32xog",
+            "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+            "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+            "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+            "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+            "ChIJpRij3C3HEmsRhPx7e8Lskko",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJqf2hB6CvEmsR-VlKBt29swE",
+            "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+            "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJsfWVuAOvEmsRlIlTGlDNuWI",
+            "ChIJt9trB0euEmsR8NbepO14j3M",
+            "ChIJuUFiBzmuEmsRB5kohGRewMg",
+            "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+            "ChIJvcwFd0euEmsR1zPa9nahwMM",
+            "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJx5OOkhOuEmsR3S-z27E229c",
+            "ChIJy5rTDTavEmsRMzWjIWyf0yw",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "observed_count": 56,
+          "complete_count": 56,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/discovered/canonical_ids",
+                "semantic_sha256": "02d654254dd3b21e7deb410750a2fa5ce2d758b956ab37e573431815a74f8063"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJD0lkZ2quEmsR9KnyAXBzPN0",
+            "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+            "ChIJK70U2mquEmsRcBQFGlUT4lM",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJLaHjJtqvEmsRQ-f397pg050",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+            "ChIJVQabi2muEmsRWNBCrgYzza8",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+            "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+            "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJgXsyH2KvEmsRCtHLJB32xog",
+            "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+            "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+            "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJqf2hB6CvEmsR-VlKBt29swE",
+            "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+            "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJsfWVuAOvEmsRlIlTGlDNuWI",
+            "ChIJt9trB0euEmsR8NbepO14j3M",
+            "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+            "ChIJvcwFd0euEmsR1zPa9nahwMM",
+            "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy5rTDTavEmsRMzWjIWyf0yw",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/admitted/canonical_ids",
+                "semantic_sha256": "adb08f95ae2b6d904bf960fc305bac5d7a86b3c47beafeebd7901b28c9c268d3"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+            "ChIJVQabi2muEmsRWNBCrgYzza8",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJt9trB0euEmsR8NbepO14j3M",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy5rTDTavEmsRMzWjIWyf0yw",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "observed_count": 24,
+          "complete_count": 24,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/enriched/canonical_ids",
+                "semantic_sha256": "c63abd860971435a440ae6a9d853389f0278f925c2225f722cf7a5502f375849"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJt9trB0euEmsR8NbepO14j3M",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+              "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+              "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+              "ChIJq6qqWiSsEmsRJuIpepyEua4",
+              "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+              "ChIJt9trB0euEmsR8NbepO14j3M",
+              "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "observed_count": 8,
+        "complete_count": 8,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/quality-report.json",
+            "pointer": "/groups/0/versions/v1/descriptive/identity_checks",
+            "semantic_sha256": "f3816d331ce5a60f3f8a32b5cf2f27c9b51b79a176aa064a61bb5cd0fc1655bf"
+          }
+        },
+        "identity_source_digest": "6d26c3208ebba1cc4d567a20979af699ae560a43f02d4eb10053956f37de1a77",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "material/manifest.json",
+            "sha256": "17f5cdd5fdc4191ba1c6230970013502cec3a447f4efbd26adabcf6ddc555272",
+            "availability": "available",
+            "media_type": "application/json",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "evaluation/primary/run/execution/identity-evidence.json",
+            "sha256": "99a8ed082850aa1cc81339939d3bb67586acbaa7c92403b42102e67e352121f6",
+            "availability": "available",
+            "media_type": "application/json",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "evaluation/primary/run/execution/model-result.json",
+            "sha256": "f68884a95abc0f4366ce50b1ce3d71fb54eb7e605b10ec2085d6a46d585e6c32",
+            "availability": "available",
+            "media_type": "application/json",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      },
+      "places": {
+        "ChIJ--msMD2uEmsRRhbBMOYC2J0": {
+          "canonical_place_id": "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ384_FGCuEmsRFAbHLAWVPGg": {
+          "canonical_place_id": "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ3S-JXmauEmsRUcIaWtf4MzE": {
+          "canonical_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ47iDxkKuEmsR_bma_SA7k1E": {
+          "canonical_place_id": "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ49XqJV2uEmsRPsTAF7eOlGg": {
+          "canonical_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5ZNEF0KuEmsRqquBArgces0": {
+          "canonical_place_id": "ChIJ5ZNEF0KuEmsRqquBArgces0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ68aBlEKuEmsRHUA9oME5Zh0": {
+          "canonical_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJC_S-IkKxEmsRVp-YfEjrUdY": {
+          "canonical_place_id": "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD0lkZ2quEmsR9KnyAXBzPN0": {
+          "canonical_place_id": "ChIJD0lkZ2quEmsR9KnyAXBzPN0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": {
+          "canonical_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJFRY_smmuEmsR_KsiZoS75Gw": {
+          "canonical_place_id": "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJFXqWgs-vEmsRqV5gK5HY03I": {
+          "canonical_place_id": "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJISz8NjyuEmsRFTQ9Iw7Ear8": {
+          "canonical_place_id": "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Queen Victoria Building in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJJzsqNUSuEmsRU_pdp_pbC-4": {
+          "canonical_place_id": "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJK70U2mquEmsRcBQFGlUT4lM": {
+          "canonical_place_id": "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJKc8tok6vEmsRsafPJow_QCs": {
+          "canonical_place_id": "ChIJKc8tok6vEmsRsafPJow_QCs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLaHjJtqvEmsRQ-f397pg050": {
+          "canonical_place_id": "ChIJLaHjJtqvEmsRQ-f397pg050",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLat3W0euEmsRCQCK0yaDjTc": {
+          "canonical_place_id": "ChIJLat3W0euEmsRCQCK0yaDjTc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPVqlfGyuEmsRHPcnCX1X1OE": {
+          "canonical_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQ9b_zXquEmsRY6cF2rm2v0M": {
+          "canonical_place_id": "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJSytgJF2uEmsRC6q8BDZh5qA": {
+          "canonical_place_id": "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJT2CGg0GuEmsRYLRNCFoOvv4": {
+          "canonical_place_id": "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJTze93zmuEmsRhvE6T4Y9DhU": {
+          "canonical_place_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJVQabi2muEmsRWNBCrgYzza8": {
+          "canonical_place_id": "ChIJVQabi2muEmsRWNBCrgYzza8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": {
+          "canonical_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJXZiB72uuEmsRVR6p6XmuVUk": {
+          "canonical_place_id": "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJYV-J-ziuEmsRIMyoFaMedU4": {
+          "canonical_place_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJZ5059kGuEmsRyi06bHH3PeE": {
+          "canonical_place_id": "ChIJZ5059kGuEmsRyi06bHH3PeE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8": {
+          "canonical_place_id": "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ_1pC8mmuEmsRrvud0Ftcoyg": {
+          "canonical_place_id": "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ_9AgbkKuEmsRAgAuY-sp7-s": {
+          "canonical_place_id": "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ": {
+          "canonical_place_id": "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJgXsyH2KvEmsRCtHLJB32xog": {
+          "canonical_place_id": "ChIJgXsyH2KvEmsRCtHLJB32xog",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJhb_gD_KuEmsRvB3fJIJmoNY": {
+          "canonical_place_id": "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJkeoK_UKuEmsRe-UTnQNgyK0": {
+          "canonical_place_id": "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJkfDzJ72vEmsR8xtYbk5f0p0": {
+          "canonical_place_id": "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJlwsH0RWuEmsR3Cg3WEDw76I": {
+          "canonical_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJn_I-u4WvEmsRoRzrEkMwh-k": {
+          "canonical_place_id": "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp-X0MWiuEmsR5k38ahXMlCs": {
+          "canonical_place_id": "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJpRij3C3HEmsRhPx7e8Lskko": {
+          "canonical_place_id": "ChIJpRij3C3HEmsRhPx7e8Lskko",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq6qqWiSsEmsRJuIpepyEua4": {
+          "canonical_place_id": "ChIJq6qqWiSsEmsRJuIpepyEua4",
+          "google_origins": [
+            {
+              "intent_id": "landmark_7",
+              "source_query": "Taronga Zoo Sydney in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJqf2hB6CvEmsR-VlKBt29swE": {
+          "canonical_place_id": "ChIJqf2hB6CvEmsR-VlKBt29swE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJr9lSEmuvEmsRRD_l58GVOKk": {
+          "canonical_place_id": "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJs-MWMVuuEmsRN7STbIW1hv8": {
+          "canonical_place_id": "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJs49dtkKuEmsRYM0yFmh9AQU": {
+          "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_3",
+              "source_query": "The Rocks in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJsfWVuAOvEmsRlIlTGlDNuWI": {
+          "canonical_place_id": "ChIJsfWVuAOvEmsRlIlTGlDNuWI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJt9trB0euEmsR8NbepO14j3M": {
+          "canonical_place_id": "ChIJt9trB0euEmsR8NbepO14j3M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJuUFiBzmuEmsRB5kohGRewMg": {
+          "canonical_place_id": "ChIJuUFiBzmuEmsRB5kohGRewMg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJv2Yr02quEmsRTqyo1N7vfeE": {
+          "canonical_place_id": "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJvcwFd0euEmsR1zPa9nahwMM": {
+          "canonical_place_id": "ChIJvcwFd0euEmsR1zPa9nahwMM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJvyZ8WvCvEmsRTqM2KE94_aw": {
+          "canonical_place_id": "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwUZfrEGuEmsRYS-TQiy0kxM": {
+          "canonical_place_id": "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJx4FyRJytEmsReOktxgkYwyA": {
+          "canonical_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Bondi Beach in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJx5OOkhOuEmsR3S-z27E229c": {
+          "canonical_place_id": "ChIJx5OOkhOuEmsR3S-z27E229c",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJy5rTDTavEmsRMzWjIWyf0yw": {
+          "canonical_place_id": "ChIJy5rTDTavEmsRMzWjIWyf0yw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJy6BwuD-uEmsRyiRskH1UG-I": {
+          "canonical_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJLat3W0euEmsRCQCK0yaDjTc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJuUFiBzmuEmsRB5kohGRewMg",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJx5OOkhOuEmsR3S-z27E229c",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJpRij3C3HEmsRhPx7e8Lskko",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJvcwFd0euEmsR1zPa9nahwMM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJqf2hB6CvEmsR-VlKBt29swE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJLaHjJtqvEmsRQ-f397pg050",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJsfWVuAOvEmsRlIlTGlDNuWI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJD0lkZ2quEmsR9KnyAXBzPN0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJgXsyH2KvEmsRCtHLJB32xog",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJKc8tok6vEmsRsafPJow_QCs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ5ZNEF0KuEmsRqquBArgces0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJZ5059kGuEmsRyi06bHH3PeE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJy5rTDTavEmsRMzWjIWyf0yw",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJVQabi2muEmsRWNBCrgYzza8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "incremental_rag_ids": [],
+      "diagnostics": [],
+      "pre_rag_google_ids": {
+        "$case_material_ref": {
+          "path": "opportunities.json",
+          "pointer": "/runs/0/stages/discovered/canonical_ids",
+          "semantic_sha256": "02d654254dd3b21e7deb410750a2fa5ce2d758b956ab37e573431815a74f8063"
+        }
+      },
+      "incremental_rag_status": "complete",
+      "rag_provenance": null,
+      "observation": {
+        "case_id": "case-01",
+        "case_revision": "1",
+        "version": "v1",
+        "repetition_id": "1",
+        "attempt_id": "case01-v1-20261012T232752Z",
+        "run_id": "case01-v1-20261012T232752Z",
+        "input_sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+        "configuration_sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512",
+        "result_sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+        "capture_ref": {
+          "path": "generation/v1/opportunities.json",
+          "sha256": "fa1ef6749eec9de8ffb7a2fb432eec5a7f516af7e5984b169fef6a4d2a574d28",
+          "availability": "available",
+          "media_type": "application/json",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "semantic_sha256": "18b4bd82e05dd0606e7163fc945dd56d8c7f135a94b3d9b0ce17f55541e8078b"
+          }
+        }
+      }
+    },
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "version": "v2",
+      "repetition_id": "1",
+      "attempt_id": "case01-v2-20261012T232752Z",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "canonical_ids": [
+            "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+            "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+            "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+            "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+            "ChIJDctb3EKuEmsRch3YymPBwjI",
+            "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+            "ChIJK70U2mquEmsRcBQFGlUT4lM",
+            "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJLaHjJtqvEmsRQ-f397pg050",
+            "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "ChIJLat3W0euEmsRCQCK0yaDjTc",
+            "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+            "ChIJOSiQjEGuEmsRTrciobba0qs",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+            "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+            "ChIJUeoNaTquEmsRX5K4sQses2M",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+            "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+            "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+            "ChIJaauHdjquEmsRl1v0I7_e62A",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+            "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+            "ChIJgXsyH2KvEmsRCtHLJB32xog",
+            "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+            "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+            "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+            "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+            "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "ChIJpRij3C3HEmsRhPx7e8Lskko",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJqf2hB6CvEmsR-VlKBt29swE",
+            "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+            "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJt9trB0euEmsR8NbepO14j3M",
+            "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "ChIJuUFiBzmuEmsRB5kohGRewMg",
+            "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+            "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJx5OOkhOuEmsR3S-z27E229c",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+            "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+          ],
+          "observed_count": 66,
+          "complete_count": null,
+          "reasons": [
+            "rag_partial"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+              "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+              "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+              "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+              "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "ChIJ5ZNEF0KuEmsRqquBArgces0",
+              "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+              "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+              "ChIJDctb3EKuEmsRch3YymPBwjI",
+              "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+              "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+              "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+              "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+              "ChIJK70U2mquEmsRcBQFGlUT4lM",
+              "ChIJKc8tok6vEmsRsafPJow_QCs",
+              "ChIJLaHjJtqvEmsRQ-f397pg050",
+              "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+              "ChIJOSiQjEGuEmsRTrciobba0qs",
+              "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+              "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+              "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+              "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+              "ChIJZ5059kGuEmsRyi06bHH3PeE",
+              "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+              "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+              "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+              "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+              "ChIJgXsyH2KvEmsRCtHLJB32xog",
+              "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+              "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+              "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+              "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+              "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+              "ChIJpRij3C3HEmsRhPx7e8Lskko",
+              "ChIJq6qqWiSsEmsRJuIpepyEua4",
+              "ChIJqf2hB6CvEmsR-VlKBt29swE",
+              "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+              "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+              "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+              "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+              "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+              "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+              "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "ChIJx5OOkhOuEmsR3S-z27E229c",
+              "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+            ],
+            "rag_only": [
+              "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+              "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+              "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+              "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+              "ChIJUeoNaTquEmsRX5K4sQses2M",
+              "ChIJaauHdjquEmsRl1v0I7_e62A",
+              "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+              "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+              "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+              "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+            ],
+            "mixed": [
+              "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "ChIJLat3W0euEmsRCQCK0yaDjTc",
+              "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+              "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+              "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+              "ChIJt9trB0euEmsR8NbepO14j3M",
+              "ChIJuUFiBzmuEmsRB5kohGRewMg",
+              "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            ]
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+            "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+            "ChIJDctb3EKuEmsRch3YymPBwjI",
+            "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJK70U2mquEmsRcBQFGlUT4lM",
+            "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJLaHjJtqvEmsRQ-f397pg050",
+            "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+            "ChIJOSiQjEGuEmsRTrciobba0qs",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+            "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+            "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+            "ChIJaauHdjquEmsRl1v0I7_e62A",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+            "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+            "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+            "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+            "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJqf2hB6CvEmsR-VlKBt29swE",
+            "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+            "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+            "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+              "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+              "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "ChIJ5ZNEF0KuEmsRqquBArgces0",
+              "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+              "ChIJDctb3EKuEmsRch3YymPBwjI",
+              "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+              "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+              "ChIJK70U2mquEmsRcBQFGlUT4lM",
+              "ChIJKc8tok6vEmsRsafPJow_QCs",
+              "ChIJLaHjJtqvEmsRQ-f397pg050",
+              "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+              "ChIJOSiQjEGuEmsRTrciobba0qs",
+              "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+              "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+              "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+              "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+              "ChIJZ5059kGuEmsRyi06bHH3PeE",
+              "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+              "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+              "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+              "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+              "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+              "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+              "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+              "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+              "ChIJq6qqWiSsEmsRJuIpepyEua4",
+              "ChIJqf2hB6CvEmsR-VlKBt29swE",
+              "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+              "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+              "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+              "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+              "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+              "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+            ],
+            "rag_only": [
+              "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+              "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+              "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+              "ChIJaauHdjquEmsRl1v0I7_e62A",
+              "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+              "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+            ],
+            "mixed": [
+              "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+              "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+              "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            ]
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ5ZNEF0KuEmsRqquBArgces0",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+            "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+            "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+            "ChIJK70U2mquEmsRcBQFGlUT4lM",
+            "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+            "ChIJKc8tok6vEmsRsafPJow_QCs",
+            "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+            "ChIJZ5059kGuEmsRyi06bHH3PeE",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJaauHdjquEmsRl1v0I7_e62A",
+            "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+            "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+          ],
+          "observed_count": 30,
+          "complete_count": 30,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+              "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "ChIJ5ZNEF0KuEmsRqquBArgces0",
+              "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+              "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+              "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+              "ChIJK70U2mquEmsRcBQFGlUT4lM",
+              "ChIJKc8tok6vEmsRsafPJow_QCs",
+              "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+              "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+              "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+              "ChIJZ5059kGuEmsRyi06bHH3PeE",
+              "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+              "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+              "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+              "ChIJq6qqWiSsEmsRJuIpepyEua4",
+              "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+              "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+              "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+            ],
+            "rag_only": [
+              "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+              "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+              "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+              "ChIJaauHdjquEmsRl1v0I7_e62A",
+              "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+              "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+            ],
+            "mixed": [
+              "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            ]
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+            "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+            "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+            "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+            "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+            "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+            "ChIJq6qqWiSsEmsRJuIpepyEua4",
+            "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+            "ChIJx4FyRJytEmsReOktxgkYwyA",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+              "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+              "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+              "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+              "ChIJq6qqWiSsEmsRJuIpepyEua4",
+              "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+              "ChIJx4FyRJytEmsReOktxgkYwyA"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            ]
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "observed_count": 7,
+        "complete_count": 7,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/quality-report.json",
+            "pointer": "/groups/0/versions/v2/descriptive/identity_checks",
+            "semantic_sha256": "e544d53a5c8fb86923bbf9654341113ba712133a91cd782f055eaffab7a2be0a"
+          }
+        },
+        "identity_source_digest": "6d26c3208ebba1cc4d567a20979af699ae560a43f02d4eb10053956f37de1a77",
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "semantic_sha256": "18b4bd82e05dd0606e7163fc945dd56d8c7f135a94b3d9b0ce17f55541e8078b"
+          }
+        }
+      },
+      "places": {
+        "ChIJ--msMD2uEmsRRhbBMOYC2J0": {
+          "canonical_place_id": "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ": {
+          "canonical_place_id": "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ384_FGCuEmsRFAbHLAWVPGg": {
+          "canonical_place_id": "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ3S-JXmauEmsRUcIaWtf4MzE": {
+          "canonical_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ47iDxkKuEmsR_bma_SA7k1E": {
+          "canonical_place_id": "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ49XqJV2uEmsRPsTAF7eOlGg": {
+          "canonical_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5ZNEF0KuEmsRqquBArgces0": {
+          "canonical_place_id": "ChIJ5ZNEF0KuEmsRqquBArgces0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ68aBlEKuEmsRHUA9oME5Zh0": {
+          "canonical_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ8YjpZpyvEmsRr4Q59vK0b1s": {
+          "canonical_place_id": "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:4b05876bf964a520b49122e3",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.26477421908224974,
+              "distance_km": 1.3349408523348847,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0d3689e1cdfc909fd72ca0db0bb1347677e9a4167e6b793f68b559ad14bdd3a1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJ8YjpZpyvEmsRr4Q59vK0b1s"
+            }
+          ]
+        },
+        "ChIJC_S-IkKxEmsRVp-YfEjrUdY": {
+          "canonical_place_id": "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDctb3EKuEmsRch3YymPBwjI": {
+          "canonical_place_id": "ChIJDctb3EKuEmsRch3YymPBwjI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": {
+          "canonical_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.276705367761531,
+              "distance_km": 1.2659566313305544,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8cc08a074dceb1b536d2e291bd3945398bad673ebc8115558303123eacdfac1f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+            }
+          ]
+        },
+        "ChIJFRY_smmuEmsR_KsiZoS75Gw": {
+          "canonical_place_id": "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJFXqWgs-vEmsRqV5gK5HY03I": {
+          "canonical_place_id": "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJISz8NjyuEmsRFTQ9Iw7Ear8": {
+          "canonical_place_id": "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "google_origins": [
+            {
+              "intent_id": "landmark_7",
+              "source_query": "Queen Victoria Building in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJJzsqNUSuEmsRU_pdp_pbC-4": {
+          "canonical_place_id": "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJK70U2mquEmsRcBQFGlUT4lM": {
+          "canonical_place_id": "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJKaeYMj-uEmsRAgZ4clX6UO8": {
+          "canonical_place_id": "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:5397ca4c498efd97094160a5",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.2724248008474831,
+              "distance_km": 0.5355312437589335,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fc509fe887fae210259aac44593a541ef72363eff49d80cb8faca1131b6b271d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJKaeYMj-uEmsRAgZ4clX6UO8"
+            }
+          ]
+        },
+        "ChIJKc8tok6vEmsRsafPJow_QCs": {
+          "canonical_place_id": "ChIJKc8tok6vEmsRsafPJow_QCs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLaHjJtqvEmsRQ-f397pg050": {
+          "canonical_place_id": "ChIJLaHjJtqvEmsRQ-f397pg050",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLaRY2DuuEmsRkgiW8LMz2Hs": {
+          "canonical_place_id": "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.2711907625198364,
+              "distance_km": 1.2751440485348453,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7572aed9ea29a25db3e032615a9c6a5f3e19b4754cef5f5b49ac2d64049eb2ad",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJLaRY2DuuEmsRkgiW8LMz2Hs"
+            }
+          ]
+        },
+        "ChIJLat3W0euEmsRCQCK0yaDjTc": {
+          "canonical_place_id": "ChIJLat3W0euEmsRCQCK0yaDjTc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJLat3W0euEmsRCQCK0yaDjTc",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 14,
+              "cosine": 0.2705761765746879,
+              "distance_km": 0.9691545604092976,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "3b5d7b626001ed5b12e11d9a32d1b844a9f19172e998a80e3cea997528d27fb0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJLat3W0euEmsRCQCK0yaDjTc"
+            }
+          ]
+        },
+        "ChIJNbpd8kKuEmsRBZKmQcttLg0": {
+          "canonical_place_id": "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJOSiQjEGuEmsRTrciobba0qs": {
+          "canonical_place_id": "ChIJOSiQjEGuEmsRTrciobba0qs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPVqlfGyuEmsRHPcnCX1X1OE": {
+          "canonical_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 15,
+              "cosine": 0.26943664136906664,
+              "distance_km": 1.1496828289980885,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ed62396dafc3c67125417d80f957831608b84fd7265fcc16dd9aed701d12d469",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+            }
+          ]
+        },
+        "ChIJQ9b_zXquEmsRY6cF2rm2v0M": {
+          "canonical_place_id": "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJSytgJF2uEmsRC6q8BDZh5qA": {
+          "canonical_place_id": "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJTze93zmuEmsRhvE6T4Y9DhU": {
+          "canonical_place_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 5,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJTze93zmuEmsRhvE6T4Y9DhU",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.2692209780216217,
+              "distance_km": 1.1465902345994394,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "e4599ecde96e793ae6799df63f680c0b2cf6e154c89dc097c95725999691166a",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJTze93zmuEmsRhvE6T4Y9DhU"
+            }
+          ]
+        },
+        "ChIJUdIgnCSuEmsRLzoJwyTgSW0": {
+          "canonical_place_id": "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3068020574090434,
+              "distance_km": 1.8229290590588842,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d81f6c16d987cebc2c5c90a29bff8ac5450a9268264f1ae5aa9f525cd8818e1c",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJUdIgnCSuEmsRLzoJwyTgSW0"
+            }
+          ]
+        },
+        "ChIJUeoNaTquEmsRX5K4sQses2M": {
+          "canonical_place_id": "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJUeoNaTquEmsRX5K4sQses2M",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.30286971364852566,
+              "distance_km": 1.4202414830192973,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0817ed2693e9112c290188f8b8268cd967800f0ef17c4c720150e0a341a3a9d9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJUeoNaTquEmsRX5K4sQses2M"
+            }
+          ]
+        },
+        "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": {
+          "canonical_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJX-KovvuvEmsRFsh3OtGJ70Q": {
+          "canonical_place_id": "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJXZiB72uuEmsRVR6p6XmuVUk": {
+          "canonical_place_id": "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJYV-J-ziuEmsRIMyoFaMedU4": {
+          "canonical_place_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJYV-J-ziuEmsRIMyoFaMedU4",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.30224228806025666,
+              "distance_km": 0.9643873170345845,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8c30606917d2a43e473d616dfd44a0b53fad07429be811dd6c47e954a9df6ea2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJYV-J-ziuEmsRIMyoFaMedU4"
+            }
+          ]
+        },
+        "ChIJZ5059kGuEmsRyi06bHH3PeE": {
+          "canonical_place_id": "ChIJZ5059kGuEmsRyi06bHH3PeE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8": {
+          "canonical_place_id": "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ_1pC8mmuEmsRrvud0Ftcoyg": {
+          "canonical_place_id": "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJaauHdjquEmsRl1v0I7_e62A": {
+          "canonical_place_id": "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJaauHdjquEmsRl1v0I7_e62A",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 18,
+              "cosine": 0.2673130929470062,
+              "distance_km": 1.4353571221817463,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "47e8ebeca11f14f60648a7a48d79bcbd270eb2234d4666a25b8e508c63e0b279",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJaauHdjquEmsRl1v0I7_e62A"
+            }
+          ]
+        },
+        "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ": {
+          "canonical_place_id": "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": {
+          "canonical_place_id": "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.2673462192622559,
+              "distance_km": 2.103547536259255,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "adef9316f6b21667c589908421a6553262506fc8618a8342d902c6d18ca91533",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJdTGLUyKuEmsRAADy-Wh9AQ8"
+            }
+          ]
+        },
+        "ChIJe_2ak22uEmsRnSWFP7OKD4k": {
+          "canonical_place_id": "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJgXsyH2KvEmsRCtHLJB32xog": {
+          "canonical_place_id": "ChIJgXsyH2KvEmsRCtHLJB32xog",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJhb_gD_KuEmsRvB3fJIJmoNY": {
+          "canonical_place_id": "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJkeoK_UKuEmsRe-UTnQNgyK0": {
+          "canonical_place_id": "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJkfDzJ72vEmsR8xtYbk5f0p0": {
+          "canonical_place_id": "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.2782374322414398,
+              "distance_km": 0.8310392666325315,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "21fc3f2e90154ff9f42ad9763c77a8b05a93e9a00e8aa9db08a755fa39caffe1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJkfDzJ72vEmsR8xtYbk5f0p0"
+            }
+          ]
+        },
+        "ChIJlwsH0RWuEmsR3Cg3WEDw76I": {
+          "canonical_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 2,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJn_I-u4WvEmsRoRzrEkMwh-k": {
+          "canonical_place_id": "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp-X0MWiuEmsR5k38ahXMlCs": {
+          "canonical_place_id": "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp2L1hySuEmsRfKR3EG9fO3I": {
+          "canonical_place_id": "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJp2L1hySuEmsRfKR3EG9fO3I",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.2655958393571285,
+              "distance_km": 1.9769950825179257,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "f05f6c060952ad2b2edcf267839df797213405da923dcbc1af3f72432e75c617",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJp2L1hySuEmsRfKR3EG9fO3I"
+            }
+          ]
+        },
+        "ChIJpRij3C3HEmsRhPx7e8Lskko": {
+          "canonical_place_id": "ChIJpRij3C3HEmsRhPx7e8Lskko",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq6qqWiSsEmsRJuIpepyEua4": {
+          "canonical_place_id": "ChIJq6qqWiSsEmsRJuIpepyEua4",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Taronga Zoo Sydney in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJqf2hB6CvEmsR-VlKBt29swE": {
+          "canonical_place_id": "ChIJqf2hB6CvEmsR-VlKBt29swE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJrzOaiy-uEmsRM4FVjuzZ5UU": {
+          "canonical_place_id": "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJs-MWMVuuEmsRN7STbIW1hv8": {
+          "canonical_place_id": "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJs49dtkKuEmsRYM0yFmh9AQU": {
+          "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_4",
+              "source_query": "The Rocks in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJt9trB0euEmsR8NbepO14j3M": {
+          "canonical_place_id": "ChIJt9trB0euEmsR8NbepO14j3M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:4b058762f964a5201d8f22e3",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.2803037846178946,
+              "distance_km": 1.2381912164634055,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "e62899fac6a73da3fa4934768b0bdd777729910ba4add7f6e58f21545bcfc680",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJt9trB0euEmsR8NbepO14j3M"
+            }
+          ]
+        },
+        "ChIJu284rCWuEmsR0XGjjcQ0YOI": {
+          "canonical_place_id": "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJu284rCWuEmsR0XGjjcQ0YOI",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.28426043046296945,
+              "distance_km": 2.051712910269379,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9bc55e41ac25fa23c40153b0083dee098cf3b316f8e21543d31a64feec3a97f4",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJu284rCWuEmsR0XGjjcQ0YOI"
+            }
+          ]
+        },
+        "ChIJuUFiBzmuEmsRB5kohGRewMg": {
+          "canonical_place_id": "ChIJuUFiBzmuEmsRB5kohGRewMg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 9,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJuUFiBzmuEmsRB5kohGRewMg",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.31121756501302567,
+              "distance_km": 0.9824979857694162,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea23ce391687af326b34bb3066cd1e487b84e13bdb1d7d62e6f133af7b3d7fad",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJuUFiBzmuEmsRB5kohGRewMg"
+            }
+          ]
+        },
+        "ChIJv2Yr02quEmsRTqyo1N7vfeE": {
+          "canonical_place_id": "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJvyZ8WvCvEmsRTqM2KE94_aw": {
+          "canonical_place_id": "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwUZfrEGuEmsRYS-TQiy0kxM": {
+          "canonical_place_id": "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": {
+          "canonical_place_id": "ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.33092995513320744,
+              "distance_km": 1.9674789701726976,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "030ba1ba24b1832b578f0dab3bbf588e16f013da933475f9250ec1214dcddaf2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+            }
+          ]
+        },
+        "ChIJx4FyRJytEmsReOktxgkYwyA": {
+          "canonical_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Bondi Beach in Sydney, Australia",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJx5OOkhOuEmsR3S-z27E229c": {
+          "canonical_place_id": "ChIJx5OOkhOuEmsR3S-z27E229c",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Sydney, Australia",
+              "provider_rank": 12,
+              "actual_result_count": 17,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJy6BwuD-uEmsRyiRskH1UG-I": {
+          "canonical_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Sydney, Australia",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+              "query": {
+                "query_id": "rag_default_1",
+                "text": "top attractions",
+                "origin": "system_default",
+                "intent_ids": [],
+                "requirement_refs": [],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.31010065614577254,
+              "distance_km": 0.9136849468896996,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "10b76a6ba02fd4cd772ced6e10025c20f11aa304adf18820cf9e084bc786bd24",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+            }
+          ]
+        },
+        "ChIJz0XdlSKxEmsR3e6szWnyuiE": {
+          "canonical_place_id": "ChIJz0XdlSKxEmsR3e6szWnyuiE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Sydney, Australia",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJgXsyH2KvEmsRCtHLJB32xog",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJLat3W0euEmsRCQCK0yaDjTc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJuUFiBzmuEmsRB5kohGRewMg",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJt9trB0euEmsR8NbepO14j3M",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJx5OOkhOuEmsR3S-z27E229c",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJpRij3C3HEmsRhPx7e8Lskko",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJqf2hB6CvEmsR-VlKBt29swE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJOSiQjEGuEmsRTrciobba0qs",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJDctb3EKuEmsRch3YymPBwjI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJLaHjJtqvEmsRQ-f397pg050",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJKc8tok6vEmsRsafPJow_QCs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ5ZNEF0KuEmsRqquBArgces0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJZ5059kGuEmsRyi06bHH3PeE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJz0XdlSKxEmsR3e6szWnyuiE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "incremental_rag_ids": [
+        "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+        "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+        "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+        "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+        "ChIJUeoNaTquEmsRX5K4sQses2M",
+        "ChIJaauHdjquEmsRl1v0I7_e62A",
+        "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+        "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+        "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+        "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+      ],
+      "diagnostics": [],
+      "pre_rag_google_ids": [
+        "ChIJ--msMD2uEmsRRhbBMOYC2J0",
+        "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+        "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+        "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+        "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+        "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+        "ChIJ5ZNEF0KuEmsRqquBArgces0",
+        "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+        "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+        "ChIJDctb3EKuEmsRch3YymPBwjI",
+        "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+        "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+        "ChIJFXqWgs-vEmsRqV5gK5HY03I",
+        "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+        "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+        "ChIJK70U2mquEmsRcBQFGlUT4lM",
+        "ChIJKc8tok6vEmsRsafPJow_QCs",
+        "ChIJLaHjJtqvEmsRQ-f397pg050",
+        "ChIJLat3W0euEmsRCQCK0yaDjTc",
+        "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+        "ChIJOSiQjEGuEmsRTrciobba0qs",
+        "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+        "ChIJQ9b_zXquEmsRY6cF2rm2v0M",
+        "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+        "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+        "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+        "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+        "ChIJXZiB72uuEmsRVR6p6XmuVUk",
+        "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+        "ChIJZ5059kGuEmsRyi06bHH3PeE",
+        "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+        "ChIJ_1pC8mmuEmsRrvud0Ftcoyg",
+        "ChIJbcBT3ZqvEmsR9_PAlbbIKjQ",
+        "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+        "ChIJgXsyH2KvEmsRCtHLJB32xog",
+        "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+        "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+        "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+        "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+        "ChIJn_I-u4WvEmsRoRzrEkMwh-k",
+        "ChIJp-X0MWiuEmsR5k38ahXMlCs",
+        "ChIJpRij3C3HEmsRhPx7e8Lskko",
+        "ChIJq6qqWiSsEmsRJuIpepyEua4",
+        "ChIJqf2hB6CvEmsR-VlKBt29swE",
+        "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+        "ChIJs-MWMVuuEmsRN7STbIW1hv8",
+        "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+        "ChIJt9trB0euEmsR8NbepO14j3M",
+        "ChIJuUFiBzmuEmsRB5kohGRewMg",
+        "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+        "ChIJvyZ8WvCvEmsRTqM2KE94_aw",
+        "ChIJwUZfrEGuEmsRYS-TQiy0kxM",
+        "ChIJx4FyRJytEmsReOktxgkYwyA",
+        "ChIJx5OOkhOuEmsR3S-z27E229c",
+        "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+        "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+      ],
+      "incremental_rag_status": "partial",
+      "rag_provenance": {
+        "version": "tripworld_runtime_1",
+        "status": "partial",
+        "queries": [
+          {
+            "query_id": "rag_default_1",
+            "text": "top attractions",
+            "origin": "system_default",
+            "intent_ids": [],
+            "requirement_refs": [],
+            "version": "rag_query_plan_1"
+          }
+        ],
+        "omitted_queries": [],
+        "returned_positions": 20,
+        "unique_entities": 20,
+        "resolution_attempts": 12,
+        "details_sends": 11,
+        "fallback_sends": 4,
+        "embedding_sends": 1,
+        "retrieval_queries": 1,
+        "cache_hits": 0,
+        "entities": [
+          {
+            "entity_id": "google:ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+          },
+          {
+            "entity_id": "google:ChIJuUFiBzmuEmsRB5kohGRewMg",
+            "status": "google_observation",
+            "canonical_id": "ChIJuUFiBzmuEmsRB5kohGRewMg"
+          },
+          {
+            "entity_id": "google:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+            "status": "google_observation",
+            "canonical_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          },
+          {
+            "entity_id": "google:ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJUdIgnCSuEmsRLzoJwyTgSW0"
+          },
+          {
+            "entity_id": "google:ChIJUeoNaTquEmsRX5K4sQses2M",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJUeoNaTquEmsRX5K4sQses2M"
+          },
+          {
+            "entity_id": "google:ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "status": "google_observation",
+            "canonical_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4"
+          },
+          {
+            "entity_id": "fsq:foursquare:4b058765f964a520339022e3",
+            "status": "fallback_not_unique"
+          },
+          {
+            "entity_id": "google:ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+          },
+          {
+            "entity_id": "fsq:foursquare:4b058762f964a5201d8f22e3",
+            "status": "resolved",
+            "method": "fallback",
+            "canonical_id": "ChIJt9trB0euEmsR8NbepO14j3M"
+          },
+          {
+            "entity_id": "google:ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "status": "google_observation",
+            "canonical_id": "ChIJkfDzJ72vEmsR8xtYbk5f0p0"
+          },
+          {
+            "entity_id": "google:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "status": "google_observation",
+            "canonical_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+          },
+          {
+            "entity_id": "fsq:foursquare:5397ca4c498efd97094160a5",
+            "status": "resolved",
+            "method": "fallback",
+            "canonical_id": "ChIJKaeYMj-uEmsRAgZ4clX6UO8"
+          },
+          {
+            "entity_id": "google:ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJLaRY2DuuEmsRkgiW8LMz2Hs"
+          },
+          {
+            "entity_id": "google:ChIJLat3W0euEmsRCQCK0yaDjTc",
+            "status": "google_observation",
+            "canonical_id": "ChIJLat3W0euEmsRCQCK0yaDjTc"
+          },
+          {
+            "entity_id": "google:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "status": "google_observation",
+            "canonical_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+          },
+          {
+            "entity_id": "google:ChIJTze93zmuEmsRhvE6T4Y9DhU",
+            "status": "google_observation",
+            "canonical_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU"
+          },
+          {
+            "entity_id": "google:ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJdTGLUyKuEmsRAADy-Wh9AQ8"
+          },
+          {
+            "entity_id": "google:ChIJaauHdjquEmsRl1v0I7_e62A",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJaauHdjquEmsRl1v0I7_e62A"
+          },
+          {
+            "entity_id": "google:ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "status": "resolved",
+            "method": "direct_id",
+            "canonical_id": "ChIJp2L1hySuEmsRfKR3EG9fO3I"
+          },
+          {
+            "entity_id": "fsq:foursquare:4b05876bf964a520b49122e3",
+            "status": "resolved",
+            "method": "fallback",
+            "canonical_id": "ChIJ8YjpZpyvEmsRr4Q59vK0b1s"
+          }
+        ],
+        "origins": {
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJDflB7BWuEmsRYPbx-Wh9AQ8/rag_origins",
+              "semantic_sha256": "85b43846ab001bcbef2eeb6a5d82f88070f13d5a4bf9938a0482b8d8987528a1"
+            }
+          },
+          "ChIJLat3W0euEmsRCQCK0yaDjTc": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJLat3W0euEmsRCQCK0yaDjTc/rag_origins",
+              "semantic_sha256": "e70819fdb1deb8b21fc3897df2f19932a12379f86c483cefa4dc11bc230d1cad"
+            }
+          },
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJPVqlfGyuEmsRHPcnCX1X1OE/rag_origins",
+              "semantic_sha256": "8a04f21bb92970d182c2f7af5a2e4335a4a2eccef438d4103f285960beca0aa6"
+            }
+          },
+          "ChIJTze93zmuEmsRhvE6T4Y9DhU": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJTze93zmuEmsRhvE6T4Y9DhU/rag_origins",
+              "semantic_sha256": "4f3acd8b4a57feba668e64b9a405858ba12cebb3895b2c5a6b56eb2a11b21867"
+            }
+          },
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJYV-J-ziuEmsRIMyoFaMedU4/rag_origins",
+              "semantic_sha256": "2bd20f50100a56f3fb11da1ee3413dec39bda43940bc8ed1caf9f576eccefa9b"
+            }
+          },
+          "ChIJkfDzJ72vEmsR8xtYbk5f0p0": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJkfDzJ72vEmsR8xtYbk5f0p0/rag_origins",
+              "semantic_sha256": "e9051b6a54595196c2c69a43dacba8af687ac8be4127bca1c4c09721bd8f7de0"
+            }
+          },
+          "ChIJt9trB0euEmsR8NbepO14j3M": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJt9trB0euEmsR8NbepO14j3M/rag_origins",
+              "semantic_sha256": "d82342c89d084f2e10fc41ab2eddd130cc8e460dcc92bb0e0e5e21511dd0bc75"
+            }
+          },
+          "ChIJuUFiBzmuEmsRB5kohGRewMg": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJuUFiBzmuEmsRB5kohGRewMg/rag_origins",
+              "semantic_sha256": "ba74b9974f02723129fd3ea940088d9fd524a06236b2db1289cee8a2c11b41c5"
+            }
+          },
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJy6BwuD-uEmsRyiRskH1UG-I/rag_origins",
+              "semantic_sha256": "4bbef5b842d077481592236dbc847ec3678b0100d1f7fe034b1943ef683c8bef"
+            }
+          },
+          "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJwbKbCiWuEmsRgBXuDPx5lJ0/rag_origins",
+              "semantic_sha256": "a846859a3e8dd22c53a49611a42d62bdba360753679ab70d252f314568ebfc4d"
+            }
+          },
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJUdIgnCSuEmsRLzoJwyTgSW0/rag_origins",
+              "semantic_sha256": "c046256ae6057767894a671d59563dad718db6d63ed99a7fb1cb222a22bb9276"
+            }
+          },
+          "ChIJUeoNaTquEmsRX5K4sQses2M": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJUeoNaTquEmsRX5K4sQses2M/rag_origins",
+              "semantic_sha256": "47dcffc7605fada0210b8423bf3049abd562c0a2b31d7748923dfeba0b2ac808"
+            }
+          },
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJu284rCWuEmsR0XGjjcQ0YOI/rag_origins",
+              "semantic_sha256": "6b1c86c1500134abf18635e28ebe3cc10ef37cdb8189e932f20abe0edc230153"
+            }
+          },
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJKaeYMj-uEmsRAgZ4clX6UO8/rag_origins",
+              "semantic_sha256": "54c73c1aa05012ead86ca01524f3386e23967de6b585f8ec1bd0274081401b74"
+            }
+          },
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJLaRY2DuuEmsRkgiW8LMz2Hs/rag_origins",
+              "semantic_sha256": "99a94756a90ced54b0e91cd15d1c8feed0cf099a4b2e9e6a387b3239e91b8609"
+            }
+          },
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJdTGLUyKuEmsRAADy-Wh9AQ8/rag_origins",
+              "semantic_sha256": "3253dc913636cd0760c14b9194d0bc6977d66f7520b32ecb70a6c9821297c3f3"
+            }
+          },
+          "ChIJaauHdjquEmsRl1v0I7_e62A": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJaauHdjquEmsRl1v0I7_e62A/rag_origins",
+              "semantic_sha256": "bf0021ece22c384e1c9e88ec66185edd1291f15a0418fe0dc48248ff2bb858a1"
+            }
+          },
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJp2L1hySuEmsRfKR3EG9fO3I/rag_origins",
+              "semantic_sha256": "74ab1c53e43efc54637bfda0705749c7005d23027ef11e88670f26394947ad1f"
+            }
+          },
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/places/ChIJ8YjpZpyvEmsRr4Q59vK0b1s/rag_origins",
+              "semantic_sha256": "cfbba98f6b4bbcde81f893245490c947bd88b1039b409bcadffe258b9b969907"
+            }
+          }
+        },
+        "stops": [],
+        "phase_seconds": {
+          "embedding": 2.517820200009737,
+          "retrieval": 0.5027665999950841,
+          "resolution": 6.192042900016531
+        },
+        "config": {
+          "version": "tripworld_runtime_1",
+          "max_queries": 4,
+          "max_positions": 80,
+          "total_query_tokens": 2048,
+          "top_k": 20,
+          "resolution_entities": 30,
+          "details_calls": 30,
+          "fallback_calls": 4,
+          "radius_km": 15,
+          "identity_radius_km": 1,
+          "deadline_seconds": 360.0,
+          "embedding_timeout": 8.0,
+          "sql_timeout": 60.0,
+          "connect_timeout": 10.0,
+          "google_timeout": 4.0,
+          "retries": 0
+        },
+        "scope": {
+          "latitude": -33.8622503,
+          "longitude": 151.207684,
+          "radius_km": 15.0,
+          "country": null
+        },
+        "runtime_diagnostics": [
+          {
+            "stage": "prepare",
+            "status": "completed",
+            "seconds": 0.14701690000947565
+          },
+          {
+            "stage": "connection",
+            "status": "completed",
+            "seconds": 0.055568399955518544
+          },
+          {
+            "stage": "compatibility",
+            "status": "completed",
+            "seconds": 0.07528600003570318
+          },
+          {
+            "stage": "embedding",
+            "status": "completed",
+            "seconds": 2.5177642999915406
+          },
+          {
+            "stage": "development_capture",
+            "status": "completed",
+            "file": "query-991d73232ce04e4a85713ff25196442c.npz"
+          },
+          {
+            "stage": "sql",
+            "status": "completed",
+            "seconds": 0.5021289000287652,
+            "sql_timeout_expired": false
+          },
+          {
+            "stage": "execute",
+            "status": "completed",
+            "seconds": 0.5015960999880917
+          },
+          {
+            "stage": "fetch_decode",
+            "status": "completed",
+            "seconds": 0.0004867999814450741
+          }
+        ],
+        "embedding_http_attempts": [
+          {
+            "attempt_id": "69d6ff28daaf485fae829b9d6250c6c5",
+            "status_code": 200,
+            "request_id": "req_ff95838038c64fec95942bc0a5d8a8e7"
+          }
+        ],
+        "embedding_usage": {
+          "prompt_tokens": 2,
+          "total_tokens": 2
+        },
+        "elapsed_seconds": 9.6053768999991,
+        "new_canonical_ids": [
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+          "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+        ],
+        "mixed_source_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "ChIJLat3W0euEmsRCQCK0yaDjTc",
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+          "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+          "ChIJt9trB0euEmsR8NbepO14j3M",
+          "ChIJuUFiBzmuEmsRB5kohGRewMg",
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "google_overlap_entities": 8,
+        "origin_associations": {
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJLat3W0euEmsRCQCK0yaDjTc": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE": {
+            "intent_ids": [
+              "default_2"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJTze93zmuEmsRhvE6T4Y9DhU": {
+            "intent_ids": [
+              "default_0",
+              "default_2"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJkfDzJ72vEmsR8xtYbk5f0p0": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJt9trB0euEmsR8NbepO14j3M": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJuUFiBzmuEmsRB5kohGRewMg": {
+            "intent_ids": [
+              "default_0",
+              "default_2"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I": {
+            "intent_ids": [
+              "default_0"
+            ],
+            "requirement_refs": []
+          },
+          "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJUeoNaTquEmsRX5K4sQses2M": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJaauHdjquEmsRl1v0I7_e62A": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I": {
+            "intent_ids": [],
+            "requirement_refs": []
+          },
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s": {
+            "intent_ids": [],
+            "requirement_refs": []
+          }
+        },
+        "admission": {
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": "admitted",
+          "ChIJLat3W0euEmsRCQCK0yaDjTc": "capacity",
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE": "admitted",
+          "ChIJTze93zmuEmsRhvE6T4Y9DhU": "capacity",
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4": "admitted",
+          "ChIJkfDzJ72vEmsR8xtYbk5f0p0": "admitted",
+          "ChIJt9trB0euEmsR8NbepO14j3M": "capacity",
+          "ChIJuUFiBzmuEmsRB5kohGRewMg": "capacity",
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I": "admitted",
+          "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": "capacity",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0": "capacity",
+          "ChIJUeoNaTquEmsRX5K4sQses2M": "capacity",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI": "admitted",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8": "admitted",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs": "admitted",
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": "capacity",
+          "ChIJaauHdjquEmsRl1v0I7_e62A": "admitted",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I": "admitted",
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s": "admitted"
+        },
+        "fate": {
+          "admitted": [
+            "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+            "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+            "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+            "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+            "ChIJaauHdjquEmsRl1v0I7_e62A",
+            "ChIJkfDzJ72vEmsR8xtYbk5f0p0",
+            "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "enriched": [
+            "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+            "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+            "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJaauHdjquEmsRl1v0I7_e62A",
+            "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+            "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "supplied": [
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "scheduled": [
+            "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+            "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+          ],
+          "nearby_only": []
+        },
+        "canonical_outcomes": {
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s": "not_selected_by_supply",
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": "enrichment_capacity_not_attempted",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8": "not_selected_by_supply",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs": "not_selected_by_supply",
+          "ChIJLat3W0euEmsRCQCK0yaDjTc": "capacity",
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE": "scheduled",
+          "ChIJTze93zmuEmsRhvE6T4Y9DhU": "capacity",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0": "capacity",
+          "ChIJUeoNaTquEmsRX5K4sQses2M": "capacity",
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4": "enrichment_capacity_not_attempted",
+          "ChIJaauHdjquEmsRl1v0I7_e62A": "not_selected_by_supply",
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": "capacity",
+          "ChIJkfDzJ72vEmsR8xtYbk5f0p0": "enrichment_capacity_not_attempted",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I": "not_selected_by_supply",
+          "ChIJt9trB0euEmsR8NbepO14j3M": "capacity",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI": "not_selected_by_supply",
+          "ChIJuUFiBzmuEmsRB5kohGRewMg": "capacity",
+          "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": "capacity",
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I": "scheduled"
+        }
+      },
+      "observation": {
+        "case_id": "case-01",
+        "case_revision": "1",
+        "version": "v2",
+        "repetition_id": "1",
+        "attempt_id": "case01-v2-20261012T232752Z",
+        "run_id": "case01-v2-20261012T232752Z",
+        "input_sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+        "configuration_sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512",
+        "result_sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+        "capture_ref": {
+          "path": "generation/v2/opportunities.json",
+          "sha256": "b3fb5c16a2633da9724effe56dd3250b36a45b4d962f526f5190c54f9f6f7100",
+          "availability": "available",
+          "media_type": "application/json",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "semantic_sha256": "18b4bd82e05dd0606e7163fc945dd56d8c7f135a94b3d9b0ce17f55541e8078b"
+          }
+        }
+      }
+    }
+  ],
+  "cross_version": [
+    {
+      "case_id": "case-01",
+      "case_revision": "1",
+      "repetition_id": "1",
+      "discovered": {
+        "status": "unavailable",
+        "v2_added_ids": null,
+        "v1_only_ids": null
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "ChIJDctb3EKuEmsRch3YymPBwjI",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+          "ChIJOSiQjEGuEmsRTrciobba0qs",
+          "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+          "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "ChIJe_2ak22uEmsRnSWFP7OKD4k",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "ChIJrzOaiy-uEmsRM4FVjuzZ5UU",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+          "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+        ],
+        "v1_only_ids": [
+          "ChIJ47iDxkKuEmsR_bma_SA7k1E",
+          "ChIJD0lkZ2quEmsR9KnyAXBzPN0",
+          "ChIJFRY_smmuEmsR_KsiZoS75Gw",
+          "ChIJJzsqNUSuEmsRU_pdp_pbC-4",
+          "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+          "ChIJVQabi2muEmsRWNBCrgYzza8",
+          "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+          "ChIJgXsyH2KvEmsRCtHLJB32xog",
+          "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+          "ChIJsfWVuAOvEmsRlIlTGlDNuWI",
+          "ChIJt9trB0euEmsR8NbepO14j3M",
+          "ChIJv2Yr02quEmsRTqyo1N7vfeE",
+          "ChIJvcwFd0euEmsR1zPa9nahwMM",
+          "ChIJy5rTDTavEmsRMzWjIWyf0yw"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ2VIOmsKvEmsRqbR1JPyuNUQ",
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJNbpd8kKuEmsRBZKmQcttLg0",
+          "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+          "ChIJX-KovvuvEmsRFsh3OtGJ70Q",
+          "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+          "ChIJz0XdlSKxEmsR3e6szWnyuiE"
+        ],
+        "v1_only_ids": [
+          "ChIJT2CGg0GuEmsRYLRNCFoOvv4",
+          "ChIJVQabi2muEmsRWNBCrgYzza8",
+          "ChIJ_9AgbkKuEmsRAgAuY-sp7-s",
+          "ChIJr9lSEmuvEmsRRD_l58GVOKk",
+          "ChIJt9trB0euEmsR8NbepO14j3M",
+          "ChIJy5rTDTavEmsRMzWjIWyf0yw"
+        ]
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "ChIJSytgJF2uEmsRC6q8BDZh5qA"
+        ],
+        "v1_only_ids": [
+          "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "ChIJt9trB0euEmsR8NbepO14j3M"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ68aBlEKuEmsRHUA9oME5Zh0"
+        ],
+        "v1_only_ids": [
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "ChIJISz8NjyuEmsRFTQ9Iw7Ear8"
+        ]
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "analysis/poi-process/opportunities-material.json",
+      "sha256": "0a147968fe9f8d625ba53ff49876f8b4c4d0c4554028258f5ff9dcfb41b7969d",
+      "schema_version": "rtpeval_research_opportunities_1"
+    },
+    {
+      "path": "analysis/resources/census/material/census-export.json",
+      "sha256": "aa92291dfd856ccca0a10c3b73985f4020a66aaee4ce53f805e6056e2262d6c6",
+      "schema_version": "rtpeval_research_census_1"
+    },
+    {
+      "path": "evaluation/primary/run/execution/identity-evidence.json",
+      "sha256": "99a8ed082850aa1cc81339939d3bb67586acbaa7c92403b42102e67e352121f6",
+      "schema_version": "rtpeval_identity_evidence_1"
+    },
+    {
+      "path": "evaluation/primary/run/execution/model-result.json",
+      "sha256": "f68884a95abc0f4366ce50b1ce3d71fb54eb7e605b10ec2085d6a46d585e6c32",
+      "schema_version": "rtpeval_identity_model_result_2"
+    },
+    {
+      "path": "generation/configuration/runtime-policy.json",
+      "sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v0/planner-dispatch.json",
+      "sha256": "c654b9ac33436c28f14fc39ab3f27e627e2d6fa3a395457ba2a74a34d84260e5",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v0/producer-completion.json",
+      "sha256": "c64e9618147e40025db833444060062ec5427efe68c5e09b57eaa19e5dd6f17e",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v1/opportunities.json",
+      "sha256": "fa1ef6749eec9de8ffb7a2fb432eec5a7f516af7e5984b169fef6a4d2a574d28",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "generation/v1/planner-dispatch.json",
+      "sha256": "08acee5772147069d65eb98c8d89967a7681f9172ff9849460340ff7b8082fac",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v1/producer-completion.json",
+      "sha256": "63bc72952dbf0652e95a51a662c3791893a4592ac902822e84867f7225f9eba0",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v2/opportunities.json",
+      "sha256": "b3fb5c16a2633da9724effe56dd3250b36a45b4d962f526f5190c54f9f6f7100",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "generation/v2/planner-dispatch.json",
+      "sha256": "33423cf52d49a126df6c6278c241dab116c7ba87d9eaaf8befa4a25bae301138",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v2/producer-completion.json",
+      "sha256": "f011bd3b9ccfa7d590bcd6cdb773cb2d56005f276e31519dcda4cf87ba12a4ec",
+      "schema_version": null
+    },
+    {
+      "path": "generation/v3/planner-dispatch.json",
+      "sha256": "91215281f4bda1755590279c66d89771e4327099a9279cabd8224ae5604694a5",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "generation/v3/producer-completion.json",
+      "sha256": "b83f7ae561b532bdf553b851c81f60bdc60c0b329b47b44eaacb08f1609b77fa",
+      "schema_version": null
+    },
+    {
+      "path": "input.json",
+      "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+      "schema_version": null
+    },
+    {
+      "path": "material/manifest.json",
+      "sha256": "17f5cdd5fdc4191ba1c6230970013502cec3a447f4efbd26adabcf6ddc555272",
+      "schema_version": "rtpeval_batch_1"
+    },
+    {
+      "path": "material/requirements/requirements/reviewed-requirements.json",
+      "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+      "schema_version": "rtpeval_requirements_1"
+    },
+    {
+      "path": "material/sources/generation/v0/producer-declaration-0-v0.json",
+      "sha256": "9bc988c3a001f794bbd8f73a1df412f68b7252596add31ed8cecb3342de9871f",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v0/result.json",
+      "sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v0/usage.json",
+      "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v1/producer-declaration-0-v1.json",
+      "sha256": "27601aa9431e7657ed4f3c71833329d451cb35c696823bffb290a2401b620e41",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v1/result.json",
+      "sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v1/usage.json",
+      "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v2/producer-declaration-0-v2.json",
+      "sha256": "14ca4be12b7b327979298144f999288aba49483c1dfb1c2d6e05a0d5748b9bc4",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v2/result.json",
+      "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v2/usage.json",
+      "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/generation/v3/producer-declaration-0-v3.json",
+      "sha256": "8d58dc5296b8efaeadd9be8aeda869527394da941f3b0cdc38f765fc1d662267",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "material/sources/generation/v3/result.json",
+      "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+      "schema_version": null
+    },
+    {
+      "path": "material/sources/generation/v3/usage.json",
+      "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/sources/input.json",
+      "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+      "schema_version": null
+    },
+    {
+      "path": "population.json",
+      "sha256": "3f44e1b591e281f81b3b3aa2a678ef20e63da4170977e26c6845d6fd3179c4d2",
+      "schema_version": "rtpeval_research_population_1"
+    },
+    {
+      "path": "profile.json",
+      "sha256": "3c65e2671bf35d20af214d32da1dc86c356a26f25fcfde98d4a9fbccf9e7d915",
+      "schema_version": "rtpeval_research_profile_1"
+    },
+    {
+      "path": "research.json",
+      "sha256": "7d0f11b9de766470b4b0aea6fc1001f9c3dbc93a7934fefc0ff527f3276b9755",
+      "schema_version": "rtpeval_research_declaration_1"
+    }
+  ],
+  "source_digest": "083a48093039f405e0dfdeca458775019c3dfe70209b9fbf913c50c5f82df66a",
+  "semantic_sha256": "bb2a038090edb95ff5e5d05a72ad3f804643ee5c369f61ca930a5072ad4ac964"
+}

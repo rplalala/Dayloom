@@ -1,0 +1,19 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-01",
+  "case_revision": "1",
+  "revision": "1",
+  "input_sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+  "requirement_spec_ref": {
+    "path": "requirements/reviewed-requirements.json",
+    "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37",
+    "schema_version": "rtpeval_requirements_1",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "reviewer_ref": "/root/interests_reviewer",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-12T22:13:22Z",
+  "rationale": "The original request specifies Sydney, travel dates, one traveler and an AUD 900 budget, with an empty additional_preferences string. It states no POI interests. The independently reviewed RequirementSpec contains empty subjects, obligations, soft_preferences and unresolved_items. Destination, dates, traveler count and budget do not create POI interests. The explicit empty inventory records the absence of request-derived POI interests.",
+  "interests": []
+}

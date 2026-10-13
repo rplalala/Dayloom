@@ -1,7 +1,11 @@
-# Benchmark inputs and accepted material
+# Benchmark workflow and case material
 
 This directory contains 20 English travel-planning requests as working drafts,
-not a frozen benchmark set, and can also store accepted, source-linked case bundles.
+not a frozen benchmark set. Each public case directory contains a reader-facing
+report and selected source-linked materials without duplicate copies. Raw capture,
+preparation and execution work stays in ignored `scratch/<case-id>/` storage;
+after review, this becomes a compact private archive rather than a permanent
+collection of every temporary working directory.
 The requests may be revised after inspecting generated itineraries and their
 handoff to and processing by the evaluator. Revisions can address scenario choices,
 request wording, constraints and dates. Record the rationale, update the scenario
@@ -34,11 +38,19 @@ defines the distinct milestones.
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns overall
 coverage and acceptance status, distinguishing completed automatic case reviews
 from the deferred human stage and any later final research acceptance.
-[#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns detailed
-shared responsibilities, staged acceptance, execution budgets, child-Issue lifecycle,
-revisions and retries. Case children apply these rules to their own material and
-decisions rather than redefine them. This README owns
-the scenario index, date rules and storage convention; Issues hold live progress.
+[#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns common
+operational decisions and child-Issue lifecycle. The
+[workflow/layout update plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+owns adoption and fresh case-01 end-to-end acceptance. This README owns the detailed
+reader-facing workflow, responsibility map, optional-study boundary, scenario index,
+date rules and directory convention. Case Issues hold live scope, budgets, attempts
+and acceptance decisions rather than duplicate the common rules.
+
+Git publication does not accept a case or authorize Issue closure. Case-01 requires
+post-refactor revalidation before the user's final decision; its
+[case-specific acceptance conditions](case-01/report.md#post-refactor-acceptance)
+and [tracking Issue #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
+own that requirement. Existing results remain pre-refactor evidence.
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -47,6 +59,118 @@ reports bind those exact outputs; they add a separate assessment without replaci
 the accepted input, automatic judgments or scores. The current decision defines
 the workflow only; formal benchmark execution and real blinded assessment still
 require their own explicit authorization.
+
+### Workflow and responsibilities
+
+| Step | Work | Executor | Material or outcome |
+| --- | --- | --- | --- |
+| 1 | Check input meaning, dates and suitability | Codex; user clarification when needed | Exact original request; stop before a necessary input change. |
+| 2 | Author and independently review RequirementSpec | Two distinct source-only Codex agents, `gpt-6.1-sol / high` | Native reviewed spec, real execution records and available authentic task/response transcripts. |
+| 3 | Identify interests stated in the original request | Independent agent | Source-bound POI interest inventory; explicit empty interests when none are stated. |
+| 4 | Prepare configuration, prices, budgets and capture | Codex | Concrete scope/limits, V1/V2 passive candidate-stage capture and V3 same-run draft/final retention. |
+| 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
+| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Native qualified four-final material, actual primary report, independent evidence, scores and limitations; report each version to the user and pause. |
+| 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
+| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
+| 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
+| 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then advance to the next case. |
+| 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
+
+Steps 7-9 begin only after the user instructs continuation following the primary
+score handoff. Optional missing-hours assessment also requires that instruction.
+
+Step 7 explores the POI-selection mechanism added between V1 and V2. It retains
+the full captured process, not merely a RAG-return/adopted-POI brief table. Count
+canonical places once per stage while preserving their real Google/RAG origins,
+unresolved entities, recorded omissions and complete/partial/unavailable status.
+Nearby-only references do not count as scheduled visits. Independent relevance
+labels use original-request interests and independent venue evidence, not Planner
+judgments, query labels or similarity. An independently reviewed empty interest
+inventory makes relevance non-applicable; the stage/source report remains required.
+
+Step 8 explores validation/Repair added between V2 and V3. Independent version
+finals describe observed differences; the same-run V3 draft/final pair traces
+actual Repair effects. A V3 draft is not an independent V2 run. Preserve genuine
+no-Repair, unchanged, skipped and unavailable observations. Neither process
+analysis changes primary scoring or establishes causal improvement from independent
+generations. Source contracts remain authoritative for report arithmetic and units.
+
+### AI assistance records
+
+The workflow table describes intended responsibilities. Each case's public
+`report.md` must separately record the work and its **actual performer**, including
+external AI assistance. Its case Issue holds the current disclosure summary and
+pending human decisions. This provides evidence for later thesis AI-use disclosure;
+it is not a substitute for the institution's applicable submission requirements.
+
+Distinguish AI calls inside the studied Planner/evaluator from external Codex help
+with development, testing, experimental judgments, orchestration and documentation.
+For each material contribution, retain:
+
+- The work, purpose, actual human/tool/agent identity and verified model/configuration
+  where available; dates, operation IDs and source revisions identify its scope.
+- The inputs made available to that actor, the output used and whether it influenced
+  code, reviewed semantic inputs, evidence interpretation, selection or presentation.
+- The actual review or validation performed, including who made the human decisions.
+  Separate agents and automated checks do not establish real human review.
+- Source/evidence identifiers and known gaps. Missing model identity, complete
+  transcripts, token counts or billing remain unavailable rather than inferred.
+
+Record actual assistance and corrections even when the final itinerary is unchanged.
+Explain why external assistance was needed and which decisions still required the
+researcher. Maintain the case report and Issue in place as later work occurs; do
+not generate an extra disclosure document for every operation. Private original
+records remain retained for verification without publishing prompts, credentials
+or raw provider/model responses. Public documentation links only to tracked sources
+or accessible remote evidence. Before repository publication, the Issue gives a
+self-contained account rather than linking unpublished files or local commits.
+
+### User intervention and execution boundaries
+
+After an explicit start instruction and concrete authorized scope/numeric budgets,
+Codex advances through primary scoring in steps 1-6 within that scope. After
+reporting the V0-V3 primary scores, FAIL/UNKNOWN findings and limitations, pause
+and wait for the user's next instruction before optional supplements, mechanism
+analysis or final case acceptance. Covered operations within a subsequently
+authorized stage need no repeated approval. The user supplies clarification for blocking personal
+intent, approves necessary input changes or uncovered work/budget, decides step 10
+and selects the later human assessment. Real raters must actually read the anonymous
+material and answer; approval and agent inspection do not substitute for responses.
+
+Resolve routine issues within the authorized scope. Stop when execution is paused,
+required personal meaning cannot be established, access is restricted, limits are
+reached, or a defect cannot be resolved without changing scope. No automatic retries,
+budget increases or silent input edits are implied. Genuine low scores, FAIL,
+UNKNOWN and no-Repair outcomes remain observations for joint acceptance. Separate
+generation, independent-agent, evaluator and paired-acquisition consumption;
+unknown prices or missing usage are not zero. Before a full regression, explain
+the reason and expected duration. Git delivery and version/research authorization
+retain their existing boundaries.
+
+### Optional work compared with the initial plan
+
+| Work | Current boundary |
+| --- | --- |
+| Corpus measurement and eligible-entity census | Optional study; no default database-wide scan or generation/acceptance gate. |
+| Corpus coverage sidecar export | Optional with the selected corpus study; not needed for candidate-process analysis. |
+| Corpus geography/strata/sample coverage reports | Optional study; ordinary process reports omit corpus sections and make no corpus-denominator, city-coverage or recall claim. |
+| Suite integration (#106/#118) | Remains optional; standalone native reports suffice. |
+| Controlled Repair experiments | Remain outside the ordinary per-case workflow unless explicitly selected. |
+| Human assessment timing | Deferred to step 11; not an automatic-case closure gate. It remains actual human work when selected. |
+
+Detailed candidate-stage reporting (#114), applicable independent relevance within
+step 7 (#115 without corpus reporting), Repair/pair diagnostics (#116), and attempt/
+resource accountability (#113/#117) remain in the automatic workflow. V1/V2 passive
+candidate capture is a different file from a corpus-measurement sidecar and must be
+enabled before generation. Existing corpus tools remain available; optional means
+not selected by default, not deleted or disabled. Retain runtime RAG source and
+configuration identity without requiring a separate corpus scan.
+
+Installed tools provide the native captures, intake and reports. Corpus-free
+relevance presentation omits corpus sections unless coverage material or a profile
+is explicitly selected. The final-case handoff remains tracked in #138; no general
+directory-assembly command is implied. Source-labelled paired evidence reuse is
+available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
 
 ## Layout
 
@@ -59,13 +183,94 @@ benchmark/
     ...
     case-20.json
   <case-id>/
-    <revision>/
-      manifest.json
-      ... referenced request, requirements, results, usage and provenance
+    report.md                     # reader-facing observations and material links
+    itinerary.md                  # daily schedules, POI origins and draft/final changes
+    material-index.json           # canonical paths, hashes and original sources
+    requirements/
+    interests/
+    generation/                   # itineraries, usage, provenance, shared policy
+      v0/
+      v1/
+      v2/
+      v3/                         # final itinerary and lossless draft difference
+    evaluation/
+      primary/
+      v3-pair/
+    analysis/
+      poi-process/
+      repair/
+      resources/
+  scratch/
+    <case-id>/                     # ignored private storage
+      work/                        # active execution/preparation and temporary files
+      archive/                     # compact long-term evidence after cleanup
+        README.md                  # retention and offline restoration instructions
+        manifest.json              # original logical paths, SHA-256 and lengths
+        blobs.zip                  # one compressed copy of each unique byte sequence
+        archive.py                 # standard-library verify/restore helper
+        verification.json          # archive integrity and restored replay checks
 ```
 
-The `inputs/` files are tracked source requests. Each accepted case revision is a
-complete batch-root bundle stored locally under its case ID.
+The public case contains both material and explanation. `itinerary.md` presents
+the saved V0-V3 daily schedules, recorded RAG POI origins and actual V3 draft/final
+changes. Use captured canonical source associations, distinguish mixed Google/RAG
+origins from RAG-only introductions, and preserve partial/unavailable attribution.
+Keep full schedules in this reader view; `report.md` retains evaluation conclusions
+and links to it instead of repeating the schedules. `report.md` also links the
+reviewed requirements, interest inventory, selected itineraries, usage/provenance,
+primary and paired scoring, candidate process, Repair and resource outputs.
+`material-index.json` records canonical public paths, publication hashes, original
+source hashes and exact JSON-subtree locations where material is extracted.
+Reference tracked `inputs/<case-id>.json` rather than copy the request. Store shared
+configuration and identical RAG-origin inventories once, and use references for
+repeated output content. Public material
+must exclude credentials, private transcripts and raw provider/model responses.
+
+In the public material view, repeated large JSON objects use `$case_material_ref`
+with a relative file path, JSON Pointer and expanded semantic hash. The material index
+defines this publication format. Expand references to recover the original JSON
+values; these views are not closed native acquisition/replay bundles. A V3 draft
+may use a lossless delta from its final itinerary when their common content would
+otherwise be copied. Preserve every actual difference, including recommendations.
+
+Maintain one reader-facing report per case by rewriting the applicable sections;
+routine tasks do not create another report. Common rules remain in this README
+and contracts. The case Issue owns live acceptance and pending decisions. Public
+navigation and shared material references resolve within tracked sources.
+
+When human review is authorized, private `human/packages/`, `private/`, `answers/`
+and `reports/` retain anonymous presentation, researcher mappings, real responses
+and native reports. No human or corpus directories are created by default.
+
+### Private archive retention
+
+During execution, retain the native working layout needed by preparation and
+consumed outputs. After case review, clean up that case's private storage as part
+of the handoff: keep original requests, reviewed semantic inputs and actual actor
+records, selected generation captures/results, all-attempt identities and usage,
+configuration/source versions, independent evidence, final reports, receipts and
+their required native dependencies. Preserve consequential failure/correction
+evidence and explicit unavailable telemetry. Storage cleanup does not itself record
+user acceptance or authorize another run; an explicit earlier cleanup instruction
+may compact completed evidence while acceptance remains pending.
+
+Delete synthetic test/preflight trees, compiled caches, assembly scripts,
+unreferenced intermediate views and superseded preparation/registration/export
+copies after checking their dependencies. Failed or nonselected attempts with real
+consumption retain their authentic usage/completion and necessary failure evidence;
+redundant copied source trees are not required solely because they once belonged
+to those attempts. Do not remove another case's or shared engineering evidence.
+
+Store repeated immutable bytes once in the private archive, with a manifest mapping
+each retained original logical path to its SHA-256 and byte length. Native closed
+inventories can require multiple logical paths; restore those paths from shared
+bytes into a fresh temporary root for offline verification. Do not modify native
+receipts, source hashes or absolute preparation bindings to hide relocation. Validate
+archive contents, public-source equivalence and native offline replay from the
+restored tree before deleting the old working directories. Remove the temporary
+restoration after validation; it is not another permanent archive copy. Retained
+original paths in public material indexes and actor tables identify archive manifest
+entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
@@ -75,7 +280,7 @@ on Saturday 2026-10-17 and ends on Sunday 2026-10-18.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |
-| [01](inputs/case-01.json) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
+| [01](case-01/report.md) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
 | [02](inputs/case-02.json) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
 | [03](inputs/case-03.json) | Travel preferences | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
 | [04](inputs/case-04.json) | Travel preferences | Paris | 4 | 2 | EUR 1,400 | Art, architecture and riverside walks; checks a coherent mix of indoor visits and outdoor sightseeing. |
@@ -171,25 +376,41 @@ readers use manifest references rather than infer files from this example. An ac
 case revision contains one request group and its four selected version runs. Keep case
 and run IDs unique when explicitly assembling a later multi-case evaluation batch.
 
-For new material, point `rtpeval batch finalize --directory` at a fresh case revision
-directory. For an existing accepted bundle, copy the complete batch root without
-changing artifact bytes or relative paths, retain the original evidence, and run
-`rtpeval validate` against the copied manifest before admission. Do not move existing
-prepared evaluation runs: their bindings include original absolute paths.
+For new material, point `rtpeval batch finalize --directory` at a fresh
+`benchmark/scratch/<case-id>/work/material/` destination. Fix private generation and
+evaluation paths before execution. For an existing bundle, preserve its complete
+source-bound root, bytes and relative dependencies during an authorized relocation.
+Native preparations may pin absolute paths: moving files does not make their old
+execute/replay commands portable. Retain those original declarations and verify
+relocated data with applicable native descriptor/portable readers and the exact
+declared runtime. Document unsupported old-path replay explicitly; do not rewrite
+source hashes, receipts or preparations to claim portability. Reference roots must
+contain the files they declare; this map never permits path escape.
 
-Accepted revisions are immutable. Changed input or source material requires a new
-revision and validation. Incomplete attempts and unaccepted execution material
-remain outside this directory.
+Accepted sources are immutable. Changed input/source material requires new native
+identities and affected validation even though the reader-facing folder has no
+revision suffix. Never overwrite a consumed native output directory; prepare a
+fresh working root and update the current-case view only after a valid handoff.
+Retain required earlier dependencies and all-attempt consumption under the
+[private archive retention rules](#private-archive-retention). Routine post-review
+cleanup removes unnecessary work after the required integrity and replay checks.
+A reset does not alter unrelated engineering work.
 
-Evaluation evidence, reports, controlled executions and blinded-review answers remain
-under explicit fresh directories in `artifacts/`. They are linked to selected inputs;
-they do not overwrite accepted benchmark material. Evaluation does not automatically
-scan or run every case in this directory.
+Selected primary/paired evidence and process reports belong in the corresponding
+case directories above, with explicit fresh native destinations. Later human
+material binds the same accepted outputs and does not overwrite them. Preparation,
+failed/nonselected work and optional controlled studies use the private case's
+`work/` directory while active; retain their necessary evidence in the compact
+archive and discard unnecessary working copies after review. Evaluation never
+automatically scans or runs every case in this directory.
 
 ### Git storage
 
-Accepted case bundles are ignored by Git; this README, the local ignore rules
-and the original request JSON files in `inputs/` are tracked. Keep private prompts
-and raw provider/model payloads out of commits. Shareable acceptance summaries
-belong in the existing `docs/records/` owners. A source request is not an accepted
-case bundle; case admission follows the rules above.
+Public case materials and canonical inputs are eligible for Git by default;
+the benchmark ignore rules exclude only the private `scratch/` tree. Repository-wide
+environment, cache and build exclusions still apply. Keep raw provider/model payloads,
+private prompts, native execution bundles and temporary files in `scratch/` rather
+than public case directories. Case observations belong in
+their one public report; distinct engineering events remain in their existing
+`docs/records/` owner without duplicating the case report. Tracking a report does
+not publish it remotely or establish case acceptance.

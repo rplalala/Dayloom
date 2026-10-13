@@ -63,7 +63,10 @@ CLI and installed `rtpeval generate` expose `--opportunity-capture PATH`.
 Installed generation binds the capture to the selected run ID rather than the trace
 UUID; [generation handoff](contracts/0002-intake-identity-usage.md#selected-generation-opportunity-capture)
 owns identity forwarding, manifest references, missingness and registration boundaries.
-With no path, the existing acquisition flow is unchanged.
+With no path, the existing acquisition flow is unchanged. The
+[benchmark workflow](../benchmark/README.md#workflow-and-responsibilities) selects
+this capture for V1/V2 candidate-process analysis; runtime use outside that
+workflow remains opt-in.
 The caller-owned exporter observes the actual pre-RAG Google pool, merged discovery,
 admission, normally qualified Details and selected supply at their existing seams.
 It preserves Google query origins and complete native RAG provenance/fates. It adds
@@ -81,8 +84,15 @@ The source-bound artifact and independent scheduling contract belongs to
 
 ## Pinned corpus coverage sidecars
 
-The offline relevance research track imports a saved eligible-entity census for
-an original-input-bound fixed geographic scope. The pinned manifest's exact bytes,
+Corpus measurement and these coverage sidecars are an explicitly selected optional
+study under the [benchmark workflow](../benchmark/README.md#optional-work-compared-with-the-initial-plan).
+Ordinary candidate POI process analysis uses passive stage captures and applicable
+independent relevance reviews without a corpus census. The runtime database and
+its source identity remain part of RAG generation; the tools below are retained.
+
+When corpus coverage is selected, the offline relevance research track imports a
+saved eligible-entity census for an original-input-bound fixed geographic scope.
+The pinned manifest's exact bytes,
 artifact hash, text policy and embedding space remain part of that sidecar's
 identity; selected RAG provenance must match. Each profile fixes case scopes and
 declaration timing before assigning coverage strata; each sidecar retains its

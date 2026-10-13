@@ -371,6 +371,8 @@ def build_cost_report(sources, prices, *, bills=None, annotations=None):
         }
         run["repair"] = totals([e for e in events if e["repair"]], covered=covered)
         run["missing_fields"] = usage.get("missing_fields", [])
+        if "inherited_usage" in usage:
+            run["inherited_usage"] = usage["inherited_usage"]
         run_bill = bound.get((sha, "run", None))
         if run_bill:
             run.update(

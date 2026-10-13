@@ -54,14 +54,16 @@ def file_inventory(directory):
     return files
 
 
-def options_checked(value):
+def options_checked(value, *, allow_zero=False):
     fields = {"max_google_sends", "max_cost_usd", "timeout_seconds", "total_timeout_seconds"}
     if not isinstance(value, dict) or set(value) != fields:
         raise ValueError("Explicit paired limits required; no credentials or model configuration")
-    if type(value["max_google_sends"]) is not int or value["max_google_sends"] < 1:
+    minimum = 0 if allow_zero else 1
+    if type(value["max_google_sends"]) is not int or value["max_google_sends"] < minimum:
         raise ValueError("Positive integer Google request ceiling required")
-    if amount(value["max_cost_usd"]) <= 0:
+    if not allow_zero and amount(value["max_cost_usd"]) == 0:
         raise ValueError("Positive USD reference spend ceiling required")
+    amount(value["max_cost_usd"])
     for key in ("timeout_seconds", "total_timeout_seconds"):
         if type(value[key]) not in (int, float) or not math.isfinite(value[key]) or value[key] <= 0:
             raise ValueError("Positive finite timeout required: " + key)
@@ -262,7 +264,6 @@ def prepare(
     if intake["status"] != "accepted":
         raise ValueError("Qualified source manifest required")
     selection_checked(intake, selection)
-    options_checked(options)
     validate_prices(prices)
     if prices["currency"] != "USD":
         raise ValueError("Paired spend ceiling requires USD prices")
@@ -283,6 +284,13 @@ def prepare(
             raise ValueError("Saved paired evidence requires its exact identity snapshot")
         load_snapshot(snapshot, expected_plan=evidence_plan)
         cached["evidence"] = str(Path(snapshot).resolve())
+    imported = any(
+        load_snapshot(path)["schema_version"] == "rtpeval_imported_snapshot_1"
+        for path in cached.values()
+    )
+    if imported and set(cached) != {"identity", "evidence"}:
+        raise ValueError("Imported evidence requires both phases; no automatic supplemental sends")
+    options_checked(options, allow_zero=imported)
     lineage(intake, identity, source, context)
     stamp = now()
     inventory = (
@@ -294,7 +302,7 @@ def prepare(
             deferred=available(intake) and not identity_snapshot,
             route_preparation=route_preparation,
         )
-        if available(intake)
+        if available(intake) and not imported
         else {}
     )
     if not available(intake):
@@ -305,6 +313,15 @@ def prepare(
             "evidence_request_upper_bound": 0,
             "estimated_cost_usd": "0",
             "estimate_basis": "no_available_pair",
+        }
+    if imported:
+        inventory = {
+            "identity_request_count": len(identity_plan["requests"]),
+            "evidence_status": "exact" if available(intake) else "pair_unavailable",
+            "evidence_request_count": len(evidence_plan["requests"]),
+            "evidence_request_upper_bound": len(evidence_plan["requests"]),
+            "estimated_cost_usd": "0",
+            "estimate_basis": "offline_import_zero_current_sends",
         }
     pins = {str(source): hashlib.sha256(source.read_bytes()).hexdigest()}
     original = _read(source)[0]
@@ -383,6 +400,7 @@ def prepare(
         },
         "max_model_sends": 0,
         "max_retries": 0,
+        **({"execution_mode": "offline_reuse", "max_current_google_sends": 0} if imported else {}),
     }
     root.mkdir(parents=True, exist_ok=False)
     for name in native_names:
@@ -451,7 +469,8 @@ def verify(directory):
     if load_batch(root / value["native_manifest"]).to_dict() != value["intake"]:
         raise ValueError("Copied paired sources changed")
     selection_checked(value["intake"], value["selection"])
-    options_checked(value["options"])
+    imported = value.get("execution_mode") == "offline_reuse"
+    options_checked(value["options"], allow_zero=imported)
     validate_context(value["intake"], value["context"])
     validate_prices(value["prices"])
     identity_plan = build_identity_plan(value["intake"], paired=True)
@@ -471,6 +490,20 @@ def verify(directory):
         raise ValueError("Prepared paired evidence plan differs from native sources")
     if "evidence" in value["cached_snapshots"]:
         load_snapshot(root / "material/cache/evidence", expected_plan=plan)
+    actual_imported = any(
+        load_snapshot(root / "material/cache" / phase)["schema_version"]
+        == "rtpeval_imported_snapshot_1"
+        for phase in value["cached_snapshots"]
+    )
+    if (
+        imported != actual_imported
+        or actual_imported
+        and (
+            set(value["cached_snapshots"]) != {"identity", "evidence"}
+            or value.get("max_current_google_sends") != 0
+        )
+    ):
+        raise ValueError("Paired offline import mode/source mismatch")
     return value
 
 

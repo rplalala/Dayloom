@@ -335,8 +335,25 @@ def load_snapshot(directory, expected_plan=None):
     """Validate and replay persisted observations without any transport dependency."""
     root = Path(directory).resolve()
     value, _ = _read(root / "manifest.json")
+    if value.get("schema_version") == "rtpeval_imported_snapshot_1":
+        from .snapshot_import import load_imported_snapshot
+
+        return load_imported_snapshot(root, expected_plan)
     if value.get("schema_version") != SNAPSHOT_VERSION:
         raise ValueError("Unsupported snapshot schema")
+
+    def read_raw(name):
+        relative = Path(name)
+        path = (root / relative).resolve()
+        if relative.is_absolute() or relative.drive or not path.is_relative_to(root):
+            raise ValueError("Snapshot path escapes root")
+        return path.read_bytes()
+
+    return _validate_acquired_snapshot(value, read_raw, expected_plan)
+
+
+def _validate_acquired_snapshot(value, read_raw, expected_plan=None):
+    """Validate original acquisition bytes, including archive-backed import copies."""
     started = _utc_time(value.get("started_at"))
     finished = _utc_time(value.get("finished_at"))
     if finished < started:
@@ -394,11 +411,7 @@ def load_snapshot(directory, expected_plan=None):
                     raise ValueError("Invalid persisted transport failure")
                 derived = {"status": "provider_error", "reason": attempt["error_code"]}
                 continue
-            relative = Path(ref["path"])
-            path = (root / relative).resolve()
-            if relative.is_absolute() or relative.drive or not path.is_relative_to(root):
-                raise ValueError("Snapshot path escapes root")
-            raw = path.read_bytes()
+            raw = read_raw(ref["path"])
             if hashlib.sha256(raw).hexdigest() != ref["sha256"]:
                 raise ValueError("Snapshot raw hash mismatch")
             derived = _summary(requests[record["key"]], attempt["status_code"], raw)
@@ -430,11 +443,23 @@ def identity_evidence(snapshot, *, historical=False):
     requests = {r["key"]: r for r in plan["requests"]}
     observed = {r["key"]: r for r in snapshot["records"]}
     records = []
+    imported = snapshot.get("schema_version") == "rtpeval_imported_snapshot_1"
     for ref in plan["references"]:
         item = {
             "reference_id": ref["reference_id"],
             "observation_id": _hash({"snapshot": _hash(snapshot), "ref": ref["reference_id"]}),
-            "source_kind": "independent_google_places",
+            "source_kind": "reused_google_places" if imported else "independent_google_places",
+            **(
+                {
+                    "import_provenance": {
+                        "snapshot_sha256": _hash(snapshot),
+                        "paired": True,
+                        "current_sends": 0,
+                    }
+                }
+                if imported
+                else {}
+            ),
         }
         for kind, key in ref["requests"].items():
             record, parameters = observed[key], requests[key]["parameters"]
@@ -443,6 +468,7 @@ def identity_evidence(snapshot, *, historical=False):
                 "status": summary["status"],
                 "snapshot_request_key": key,
                 "attempts": record["attempts"],
+                **({"acquisition_origin": record["origin"]} if imported else {}),
             }
             if kind == "details":
                 data["requested_place_id"] = parameters["place_id"]

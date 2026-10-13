@@ -1,0 +1,16 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case01-requirements",
+  "revision": "1",
+  "group_id": "case-01",
+  "input_sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/requirements_reviewer",
+    "reviewed_at": "2026-10-12T22:10:29Z"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [],
+  "unresolved_items": []
+}

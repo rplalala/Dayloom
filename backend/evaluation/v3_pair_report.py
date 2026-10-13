@@ -335,6 +335,21 @@ def build_v3_pair_report(
                 for name, component in components.items()
             }
             base["snapshot_hashes"] = {"manifest": manifest_hash, "plan": snapshot["plan_hash"]}
+            if snapshot.get("schema_version") == "rtpeval_imported_snapshot_1":
+                base["evidence_provenance"] = {
+                    "kind": "source_labelled_offline_import",
+                    "current_sends": 0,
+                    "observations": [
+                        {
+                            "request_key": row["key"],
+                            "origin": row["origin"],
+                            "status": row["summary"]["status"],
+                        }
+                        for row in snapshot["records"]
+                    ],
+                    "inherited_usage": snapshot["inherited_usage"],
+                    "accounting": "Inherited source observations are not additional consumption.",
+                }
         identities = {r["reference_id"]: r for r in identity["records"]}
         correspondence = prepare_v3_correspondence(
             intake, identity_report, result_sources, correspondence_reviews, edit_provenance

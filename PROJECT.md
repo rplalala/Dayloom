@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-12.
+Current source of truth. Updated 2026-10-13.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -104,6 +104,11 @@ Details: [requirements](docs/0002-requirements-evidence.md),
   result at stops; zero is not a failure constraint. V0-V2 and V3 initial generation
   have no zero-penalty requirement.
 
+The accepted V3 Repair redesign adds separate exploration/best-result state, bounded
+system deletion proposals and affected-day replanning, with six shared Repair model
+calls under the existing stage deadline. It is not implemented or validated yet; see
+[the accepted design](docs/0005-validation-repair%28v3%29.md#accepted-bounded-search-redesign).
+
 Details: [shared output](docs/0003-itinerary-transport.md),
 [minimum coverage](docs/0003-itinerary-transport.md),
 [V3 current design](docs/0005-validation-repair%28v3%29.md), and
@@ -135,7 +140,7 @@ finalization; external agents are separately operated. See
 | Capability | Current behavior | Detailed owner |
 | --- | --- | --- |
 | Intake and identity | Original claims, source hashes and version-owned targets; V0 model correspondence, V1-V3 independent API/program checks without evaluator-model fallback | [Intake/identity/usage](docs/contracts/0002-intake-identity-usage.md) |
-| Evidence and accounting | Frozen Search/Details/Matrix snapshots, failure receipts, source-linked coordinates, actual usage and explicit retail estimates when billing is unavailable | [Artifacts](docs/contracts/0001-evaluation-artifacts.md), [usage](docs/contracts/0002-intake-identity-usage.md#offline-cost-accounting) |
+| Evidence and accounting | Frozen Search/Details/Matrix snapshots, failure receipts, source-linked coordinates, source-labelled offline paired imports, actual usage and explicit retail estimates when billing is unavailable | [Artifacts](docs/contracts/0001-evaluation-artifacts.md), [usage](docs/contracts/0002-intake-identity-usage.md#offline-cost-accounting) |
 | Requirements and schedule | Explicit counts/dates/exclusions/fixed times; verified occurrence associations with separate grounding; V0 declared transport occupancy and V1-V3 transfers | [Requirements/schedule](docs/contracts/0003-requirement-schedule.md) |
 | Opening | Current/regular API schedules take priority; missing-hours LLM assessment can infer ordinary public-landmark viewing, while explicit restricted activities and museum admission need access evidence; factual coverage stays separate | [Opening/routes](docs/contracts/0004-opening-routes.md#opening) |
 | Routes | Independent coordinates and mode/time-applicable route evidence against original reserved duration; unsupported provider scope remains unresolved | [Opening/routes](docs/contracts/0004-opening-routes.md#route-wire) |
@@ -279,15 +284,23 @@ is accepted at the checkpoint in section 5.
 Suite engineering acceptance uses synthetic saved material and injected transport;
 formal benchmark execution and paid acquisition remain separately authorized.
 
-The benchmark workflow accepts the automatic input/report evidence case by case,
-then conducts separately authorized consolidated blinded review of the same
-accepted outputs. Human answers add independent reports; they do not change primary
-scores or block automatic case acceptance. The
+The [benchmark workflow](benchmark/README.md#workflow-and-responsibilities)
+accepts automatic input/report evidence case by case, including V1/V2 candidate
+POI process analysis and V2/V3 Repair process analysis. Corpus measurement,
+coverage sidecars and corpus reporting are optional studies. Separately authorized
+consolidated blinded review uses the same accepted outputs and adds independent
+human reports without changing primary scores. The
 [staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
-owns the boundaries and handoff. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-owns shared operational rules; [case-01 #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
-owns current readiness. This documentation decision starts neither formal benchmark
-execution nor human assessment and does not claim a case has passed acceptance.
+owns that handoff; the benchmark README owns the detailed sequence, responsibilities
+and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+owns case-01 workflow acceptance. The pre-refactor case-01 generation, primary scoring
+and authorized diagnostics are complete, with native evidence retained in ignored
+private storage. [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
+remains unaccepted: [revalidation #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
+tracks the [post-refactor acceptance conditions](benchmark/case-01/report.md#post-refactor-acceptance).
+Publication does not accept the case or authorize Issue closure. Subsequent runs
+report primary scores and pause before further diagnostics. Human assessment is pending.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
