@@ -119,6 +119,7 @@ identity/grounding, route windows, score arithmetic or pace formulas.
 | #90 review correction `017c548` | Evaluator **1216 passed, 1 skipped**, 228.81 seconds | Standalone preparation/import lacked implementation binding; every packet now includes/rebuilds evaluator hashes. This later gate was not another full backend run. |
 | #91, base `ad1b72b26ac145acfe6bf197f912f9f854c3a979`, implementation `34506a6` | Public judgment **39 passed**, 24.55 seconds; actual CLI **7 passed**, 18.85 seconds; backend **3164 passed, 10 skipped**, 311.14 seconds | Category/intent gates, immutable quotes, raw types and API priority exercised with mocks. |
 | #91 review correction `9f80a20` | Public scoring/CLI **41 passed**, 32.33 seconds | Spec's conditional-entry coverage gap corrected with exact original notes/request/import assertions; production unchanged since full gate. |
+| #140 quotation clarification, 2026-10-13, base `9b7fb8b`, implementation `7739f0f` | Opening judgment/CLI **43 passed**, 30.78 seconds; Ruff/format/diff checks passed; Standards and Spec reviews found no issues | Request complete verbatim copies of an original activity field and put interpretation only in `rationale`. Schema, policy and strict substring validation remain unchanged. Initial test setup failed because sandbox temporary/cache paths were unwritable; a fresh workspace temporary directory and disabled pytest cache resolved the environment failure. |
 
 Final reviews closed all findings; changed-file Ruff/format/diff checks passed and no
 configured type checker was claimed. Mock gates do not establish real-model accuracy.
@@ -126,6 +127,38 @@ Historical policy-1 replay used all 70 trusted evaluator source bindings. Git-no
 or uniform-CRLF content initially failed frozen byte hashes; matching exact retained
 mixed-newline bytes restored replay without modifying repository sources/preparations.
 The old packet/response was not rebound into policy 2.
+
+The separately prepared #140 supplement on 2026-10-13 received HTTP 200 but stopped
+with `Original activity quotation required`: V2 Opera House visit 006 substituted
+"in the supplied evidence" for "by the supplied evidence". None of its nine decisions
+was accepted; [case-01](../../../benchmark/case-01/report.md) retains the primary scores.
+The consumed preparation and original request, response and usage remain unchanged.
+A retained producer snapshot verified 332 Python file hashes, including 82 exact native
+byte bindings, and reproduced the stopped report with zero network attempts. A derived
+mock with the complete original field passed the quotation boundary; this proves the
+validator accepts valid source text, not that real-model quotation reliability improved.
+
+A fresh, separately approved preparation at `815fcae` then completed on 2026-10-13,
+Sydney 21:18:46.505559–21:18:58.654406. Its `gpt-6-luna` / medium response contained
+**nine PASS decisions**, each quoting a complete original field verbatim. The strict
+native importer accepted all nine and network-denied replay reproduced the report
+exactly. One send used **10665 input + 1728 output = 12393 tokens**, with 10662
+cache-write tokens and zero cached reads; reference cost was **USD 0.00219705**,
+with no actual invoice. The executor used `gpt-6.1-sol` / high. Native exit was 0;
+an outer console echo hit a GBK encoding error after completion, without changing
+saved evidence or causing a resend.
+
+Supplemental scores were V0 **73.3333**, V1 **93.3333**, V2 **96.6667** and V3 **100**.
+Only opening verdict coverage changed; factual hours coverage, the confirmed V0
+museum-hours failure, identity/routes/occupancy and density remained unchanged.
+Four UNKNOWN remained: one V0 identity, one V0 opening and two V0 routes. These
+model access PASSs do not establish official opening hours or general model accuracy.
+The [initial case-01 dataset](../../../benchmark/case-01/report.md#opening-assessment)
+contains both API-only and supplemented scores, accepted with their limitations
+on 2026-10-14. The independent
+[Repair smoke](../v0-v3/v3-development.md#post-refactor-model-smoke) used separate
+synthetic inputs. Local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-c`,
+including the original native opening execution, execution logs and parent assessment.
 
 ## Two real source-bound assessments
 

@@ -1619,5 +1619,102 @@ all four logs were preserved byte-for-byte in the primary checkout under
 `logs/v3-repair-139-offline-20261013/`; `manifest.json` records their original paths,
 tested revisions, sizes and SHA-256 hashes. Every copied hash matched its source.
 These ignored files are local evidence identifiers, not published dependencies.
-Original case-01 evidence and its acceptance state are unchanged; post-refactor case
-revalidation remains owned by [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140).
+The [initial case-01 dataset](../../../benchmark/case-01/report.md#acceptance)
+owns the selected benchmark outputs and their acceptance. The following module
+diagnostics are separate engineering evidence and do not change those case results.
+
+### Post-refactor model smoke
+
+On 2026-10-13, separate one-use packages at clean source `815fcae` exercised real
+`gpt-6-luna` Repair calls with explicitly synthetic Sydney place identities and
+300-second/100-meter routes. The local fixture covered October 14; the date fixtures
+covered October 14–16. Original case-01 input remained unchanged. The current-session
+executor used `gpt-6.1-sol` / high. Limits were one local, up to three natural-search
+and one conditional isolated-replan model sends, zero retries/Google/RAG calls,
+24000 input / 8192 output tokens per send and a USD 1 reference allowance without
+an invoice or monetary hard guard.
+
+| Fixture | Real calls and native result | Retained effect |
+| --- | --- | --- |
+| Local overlap | 1; `REJECTED` | Proposed `d1v2` retime 11:05–12:05 shortened the original two-hour duration. The native permission check rejected it; the overlapping original remained. Successful local retime was not established. |
+| Natural date search | 2; `system_delete → local REJECTED → replan ACCEPTED_COMPLETE`, selected round 3 | Counts changed 3/1/2 to 2/2/2. Local's parsed year-1011 timestamp was rejected. Replan restored deleted `d1v1`'s source place on October 15 through `add`, allocating `repair_r3_new_1`. All six source places survived, but activity identity changed and native `main_visits_lost` retained `d1v1`; this was not an identity-preserving move. |
+| Conditional isolated replan | 1; `ACCEPTED_COMPLETE` | Native `move` shifted `d1v3` October 14 → 15 at 15:00–16:00. Every original activity/source ID and requested date survived; counts became 2/2/2, with no lost main visits. |
+
+Natural search did not meet the identity-preserving-move condition, so the prepared
+isolated call ran once. It demonstrates the isolated strategy, not natural escalation
+to that specific move. Both accepted results had no remaining violations or improvement
+targets and zero soft-pace deductions. Independent network-denied reconstruction matched
+all three retained global reports. The isolated `run_repair_once` result has no
+`adopted_report`; its complete three-date check is in `proposed_report` and the component
+report. The native local rejection was preserved and not retried.
+
+Repair used **16860 input + 2109 output = 18969 tokens**, reference **USD 0.003019560**;
+actual invoice is unavailable. Its paid processes took **41.156 seconds**, within the
+720-second cumulative limit; stage elapsed time was **301.630 seconds**. Together with
+the independent [opening supplement](../evaluation/opening.md#missing-hours-model-policy-revisions),
+the run consumed five model sends and four paid commands, without allowance transfers.
+All 370 frozen preparation files remained unchanged. These are engineering smoke
+observations with synthetic environment evidence. The rejected local call did not establish
+successful editing; real provider routes, full-pipeline controlled acceptance and general
+Repair quality remain unproved.
+Original local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-c`, with
+separate `live-local-overlap`, `live-cross-date-search` and `live-isolated-replan`
+request/response bytes, receipts, native results, execution summary and parent assessment.
+
+On 2026-10-14, offline diagnosis from source `ee8f6e7` replayed the retained local
+response through native Repair with networking denied and reproduced the same duration
+rejection. An explicitly scripted counterfactual changed only the proposed end from
+12:05 to 13:05. The complete native stage then accepted the two-hour 11:05–13:05 retime,
+preserving every activity/source identity and other visit field, with no remaining
+confirmed conflict or improvement target. This establishes a legal arrangement for
+the synthetic fixture and confirms the original rejection; it is not another model
+response or evidence of real model compliance.
+
+The original prompt already required duration preservation, but projected only endpoint
+timestamps. The model's reason for shortening remains unknown. Implementation `c0a1ea4`
+adds application-computed current `duration_seconds` to editable activities and gives
+explicit endpoint arithmetic, retaining the existing `allow_duration_change` exception.
+Native authorization, duration rejection, schemas, budgets and V0–V2 remain unchanged.
+Measured local input sizing increased from 5060 to 5155 tokens, below its 24000 ceiling.
+The accepted counterfactual remains scripted; the separate subsequent live check below
+provides the local model-edit observation.
+
+Four new local/replan and duration-permission combinations first failed on the missing
+projected duration, then passed after correction. The focused permission suite passed
+12 tests. V3 regression initially passed 478 tests with ten setup errors because the
+explicit pytest temporary directory's parent was missing. Creating that parent and
+rerunning those ten cases yielded **10 passed in 7.70 seconds**, covering all 488 V3
+cases across the two runs. Model reference transport passed **9 tests in 4.26 seconds**;
+affected Ruff lint/format and diff checks passed. The full backend suite was not rerun.
+Local diagnostic evidence identifier:
+`D:/Workspace/Capstone/case01-140/local-retime-offline-20261014`, containing the retained
+response replay, scripted duration counterfactual, test logs and integrity/sizing checks.
+
+A new one-use local smoke at clean source `7188aa8` executed on 2026-10-14, after frozen
+preparation and both review axes passed. It used an independent October 15 synthetic
+fixture, leaving original case-01 and prior controlled dates unchanged. The real
+`gpt-6-luna` response retimed `d1v2` from 10:00–12:00 to **11:05–13:05**, retaining
+`d1v1` at 09:00–11:00. Both visits kept their 7200-second duration, activity/source
+identity and every non-time field. Selected round 1 was `local / ACCEPTED_COMPLETE`;
+overlap fell from 3600 seconds to zero. Complete native checks retained no confirmed
+conflict or improvement target. Two opening, two visitor-suitability and one verified-cost
+UNKNOWN remained; the result does not certify those conditions.
+
+The single HTTP 200 call used **2933 input + 290 output = 3223 tokens**, with 2930
+cache-write input tokens, no cached reads and 162 reasoning tokens included in output.
+Frozen reference pricing yields **USD 0.00051155**, not an invoice. Execution took
+**9.8295689 seconds**, from 06:10:10.907 to 06:10:20.745 Sydney time, within the
+180-second limit. Limits were one send, zero retries, 24000 input / 8192 output tokens
+and USD 0.25 reference allowance without monetary hard protection. Google/RAG/semantic
+sends remained zero; the 300-second/100-meter route was still synthetic. Execution and
+review agents used `gpt-6.1-sol` / high; business-model settings remained unchanged.
+
+Parent assessment matched the raw HTTP response to the normalized native patch and
+reconstructed the full retained report exactly with networking denied. All seven frozen
+preparation files, prior 2643/370/78 evidence files and 30 public materials passed hash
+checks. This demonstrates one real local retime with synthetic environment evidence,
+alongside the earlier isolated cross-date move; it is not full generation-pipeline or
+case-01 acceptance. No further call was made after consuming the one-send allowance.
+Local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-d-local-retime`, with
+frozen fixture/handoff, offline SDK probes, original HTTP bytes, receipt, native result,
+command log and independent parent assessment.

@@ -41,16 +41,18 @@ from the deferred human stage and any later final research acceptance.
 [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns common
 operational decisions and child-Issue lifecycle. The
 [workflow/layout update plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns adoption and fresh case-01 end-to-end acceptance. This README owns the detailed
+owns workflow adoption and case-01 end-to-end acceptance. This README owns the detailed
 reader-facing workflow, responsibility map, optional-study boundary, scenario index,
 date rules and directory convention. Case Issues hold live scope, budgets, attempts
 and acceptance decisions rather than duplicate the common rules.
 
-Git publication does not accept a case or authorize Issue closure. Case-01 requires
-post-refactor revalidation before the user's final decision; its
-[case-specific acceptance conditions](case-01/report.md#post-refactor-acceptance)
-and [tracking Issue #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
-own that requirement. Existing results remain pre-refactor evidence.
+Git publication does not accept a case or authorize Issue closure. The human user
+accepted the [initial case-01 dataset](case-01/report.md#acceptance) on 14 October 2026
+Australia/Sydney. Its selected V0-V3 outputs, independent primary/opening/pair results,
+process reports and verified private archive retain authentic source identities and
+dates. Separate Repair engineering diagnostics do not contribute to case scores.
+The case report owns the exact accepted selection and limitations; Issue publication
+and closure remain separate from that acceptance.
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched

@@ -1,105 +1,111 @@
 # Case-01: Sydney evaluation report
 
-The [original request](../inputs/case-01.json) is for Sydney, Australia, on
-13-15 October 2026: three days, one traveler and AUD 900 for the whole trip,
-with no additional preferences. Generation, independent primary evaluation and
-the separately authorized diagnostics completed on 13 October 2026 Sydney time.
-These are pre-refactor Repair observations, not an accepted case package.
-[Case #127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) remains
-open under the [post-refactor acceptance requirements](#post-refactor-acceptance).
-Human assessment has not been conducted.
+The initial case-01 dataset contains the selected V0-V3 outputs for the
+[original request](../inputs/case-01.json): Sydney, Australia, 13-15 October 2026,
+three days, one traveler and an AUD 900 whole-trip budget, with no additional
+preferences. The source batch is `case01-20261012T220558Z`, revision `3`.
+Generation, primary evaluation and opening assessment retain their actual execution
+dates and producer identities.
 
-## Post-refactor acceptance
+The independently evaluated primary totals are **67.7778, 83.9583, 89.5238 and
+91.6667** for V0-V3. With the accepted opening assessment, the totals are
+**73.3333, 93.3333, 96.6667 and 100**. API-only and model-supplemented results
+remain separate. The same-run V3 pair records the actual three-deletion Repair.
 
-The acceptance boundary established on 13 October 2026 requires all of the following,
-in order:
+## Acceptance
 
-1. The [Repair redesign #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
-   is implemented and its engineering checks pass.
-2. An authorized, scoped case-01 rerun passes its agreed checks. Report the V0-V3
-   primary scores and limitations, then wait for the user's instruction before
-   supplementary acquisition or mechanism diagnostics.
-3. Case-01 results and acceptance documents are updated for the refactored Repair
-   and verified. This includes selected itineraries, RAG attribution, actual V3
-   draft/final changes, scoring, affected analysis, usage/provenance and material references.
-4. The corresponding retained evidence and compact archive are updated and pass
-   integrity, restoration and applicable native replay checks. Preserve original
-   evidence bytes and prior receipts with distinct run/source bindings; deduplicate
-   shared material and remove unnecessary intermediates after verification.
-5. The human user explicitly confirms acceptance of that exact updated package,
-   including its results and remaining limitations.
+The human user accepted the selected input, results and stated limitations on
+**14 October 2026 Australia/Sydney**, then designated these selected results as the
+initial case-01 dataset. The approved source package is commit `3d50891`; this
+presentation preserves its selected itinerary and evaluation values.
 
-[Revalidation #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
-tracks this work. Until these conditions hold, case-01 remains unaccepted and its
-related acceptance Issues remain open. Git push, PR publication or merge, and
-engineering checks do not grant acceptance or Issue-closure authority.
-
-Prepare rerun scope, source/date treatment, reuse decisions and budgets separately;
-this requirement does not renew exhausted allowances or start execution. Reuse
-unaffected material only with compatible inputs, runtime, evaluation semantics and
-provenance. Do not silently shift dates, backdate the application clock or present
-scripted checks as a real case result. Retain the observations below as historical
-evidence until genuine post-refactor outcomes are available.
+The [material index](material-index.json) binds the selected sources and current
+publication hashes. Requirements, generation/evaluation admission, primary-score
+handoff, candidate/Repair analysis, source and resource consistency, private
+retention, restoration and native offline replay are complete. Independent
+Standards and Spec review found no outstanding issues. Blinded human assessment
+remains a separate deferred stage. Git publication and Issue closure have not occurred.
+The case follows the [common acceptance workflow](../README.md#per-case-execution-and-joint-review).
 
 ## Case materials
 
-The [material index](material-index.json) identifies the canonical files, their
-publication hashes and their original source hashes/subtree locations. Materials
-are retained once; shared content uses relative `$case_material_ref` references
-with JSON Pointers as defined in the index. Expanding them recovers the original
-JSON values. The publication views are distinct from a closed native replay bundle.
-
 | Material | Files |
 | --- | --- |
-| Readable itineraries and changes | [V0-V3 schedules, RAG POI labels and V3 draft/final comparison](itinerary.md) |
-| Reviewed requirements and interests | [RequirementSpec](requirements/reviewed-requirements.json), [interest inventory](interests/interests.json) |
-| Selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3 final](generation/v3/itinerary.json) |
-| Same-run V3 draft | [Lossless draft delta](generation/v3/draft.json) from the final itinerary; apply its `replace` fields after expanding references |
-| Recorded generation usage | [V0](generation/v0/usage.json), [V1](generation/v1/usage.json), [V2](generation/v2/usage.json), [V3](generation/v3/usage.json) |
-| Producer provenance | [V0](generation/v0/provenance.json), [V1](generation/v1/provenance.json), [V2](generation/v2/provenance.json), [V3](generation/v3/provenance.json); [shared runtime policy](generation/runtime-policy.json) |
-| Independent scoring | [Primary quality](evaluation/primary/quality-report.json), [V3 draft/final pair](evaluation/v3-pair/pair-report.json) |
-| Candidate process | [Stage memberships, sources and omissions](analysis/poi-process/opportunities.json), [shared V2/V3 RAG origins](generation/rag-origins.json), [relevance applicability](analysis/poi-process/relevance.json) |
-| Repair outcomes | [Same-run and four-final comparison](analysis/repair/repair.json) |
-| Attempts and resources | [Population](analysis/resources/population.json), [tradeoffs](analysis/resources/tradeoffs.json), [service accounting](analysis/resources/accounting.json) |
+| Readable schedules and changes | [Itineraries and RAG labels](itinerary.md) |
+| Reviewed request semantics | [RequirementSpec](requirements/reviewed-requirements.json), [interest inventory](interests/interests.json) |
+| Selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
+| Same-run V3 draft | [Lossless draft delta](generation/v3/draft.json) |
+| Generation usage | [V0](generation/v0/usage.json), [V1](generation/v1/usage.json), [V2](generation/v2/usage.json), [V3](generation/v3/usage.json) |
+| Producer provenance | [V0](generation/v0/provenance.json), [V1](generation/v1/provenance.json), [V2](generation/v2/provenance.json), [V3](generation/v3/provenance.json) |
+| Runtime policies | [V0-V2](generation/runtime-policy.json), [V3](generation/v3/runtime-policy.json) |
+| Independent evaluation | [API-only quality](evaluation/primary/quality-report.json), [V3 pair](evaluation/v3-pair/pair-report.json), [opening assessment](evaluation/opening/report.json), [supplemented quality](evaluation/opening/quality-report.json) |
+| Candidate process | [Stage analysis](analysis/poi-process/opportunities.json), [RAG origins](generation/rag-origins.json), [interest applicability](analysis/poi-process/relevance.json) |
+| Repair | [Actual lineage and independent final differences](analysis/repair/repair.json) |
+| Resources | [Attempt inventory](analysis/resources/population.json), [descriptive tradeoffs](analysis/resources/tradeoffs.json), [accounting](analysis/resources/accounting.json) |
 
-The [itinerary view](itinerary.md#v3-draft-versus-final) details the preserved
-draft/final difference. Original native provenance/report bindings identify the original
-retained source package; they are not rewritten as publication-file bindings.
+## Source provenance
 
-## Selection and requirements
+| Version | Recorded generation source | Recorded run |
+| --- | --- | --- |
+| V0 | `b3ddccd5b462367d35eff12f8aa9cfe10f840557` | `case01-v0-20261012T232752Z` |
+| V1 | `b3ddccd5b462367d35eff12f8aa9cfe10f840557` | `case01-v1-20261012T232752Z` |
+| V2 | `b3ddccd5b462367d35eff12f8aa9cfe10f840557` | `case01-v2-20261012T232752Z` |
+| V3 | `a970002b2373a0c9059040781fdba267cc01df91` | `case01-v3-repair140-followup-20261013T064153Z` |
 
-Batch `case01-20261012T220558Z`, revision `1`, contains one first-dispatched,
-completed attempt for each of V0-V3. No retry or replacement was selected.
-Run IDs follow `case01-v<version>-20261012T232752Z`; that shared suffix identifies
-prospective issuance, rather than each run's actual dispatch time. Original
-results, usage, completion, configuration and provenance remain preserved.
+Independent primary and pair scoring use source `a970002`; the opening assessment
+uses `815fcae`. The dataset contains source-bound outputs from the recorded revisions,
+with compatible inputs/evaluation contracts; it is not a single-revision generation
+experiment. Original dates, source hashes, run IDs and native receipts are unchanged.
 
-Distinct source-only author and reviewer executions produced the RequirementSpec.
-Its subjects, obligations, soft preferences and unresolved items are empty.
-The independently reviewed POI-interest inventory is also empty. Destination and
-generated sightseeing choices do not create unstated user interests.
+Distinct source-only requirement author/reviewer executions produced empty subjects,
+obligations, soft preferences and unresolved requirements. The independent interest
+inventory is also empty. Generated sightseeing choices do not create user interests.
 
 ## Primary scoring
 
-The selected primary report includes one separately approved missing-hours model
-assessment. Counts below are PASS / FAIL / UNKNOWN. Overall scores include the
-native auxiliary pace adjustment, so perfect observed evidence counts do not
-necessarily give an overall score of 100.
+Counts are PASS / FAIL / UNKNOWN. The common mask is grounding, non-overlap,
+opening and routes; requirements are N/A because no checks apply. Overall totals
+include the native pace deduction. All non-overlap checks PASS.
 
-| Version | Overall / 100 | Grounding | Opening | Routes | Generation reference USD |
-| --- | ---: | --- | --- | --- | ---: |
-| V0 | 73.3333 | 8 / 0 / 1 | 7 / 1 / 1 | 4 / 0 / 2 | 0.00241055 |
-| V1 | 93.3333 | 8 / 0 / 0 | 8 / 0 / 0 | 5 / 0 / 0 | 1.638289475 |
-| V2 | 96.6667 | 7 / 0 / 0 | 7 / 0 / 0 | 4 / 0 / 0 | 1.985985875 |
-| V3 | 93.3333 | 8 / 0 / 0 | 8 / 0 / 0 | 5 / 0 / 0 | 2.02191637 |
+| Version | API-only overall / 100 | Pace deduction | Grounding | Opening | Routes |
+| --- | ---: | ---: | --- | --- | --- |
+| V0 | 67.7778 | 10.0000 | 8 / 0 / 1 | 5 / 1 / 3 | 4 / 0 / 2 |
+| V1 | 83.9583 | 6.6667 | 8 / 0 / 0 | 5 / 0 / 3 | 5 / 0 / 0 |
+| V2 | 89.5238 | 3.3333 | 7 / 0 / 0 | 5 / 0 / 2 | 4 / 0 / 0 |
+| V3 | 91.6667 | 0.0000 | 6 / 0 / 0 | 4 / 0 / 2 | 3 / 0 / 0 |
 
-The initial primary report contained 14 UNKNOWN checks. The supplement resolved
-the ten eligible missing-hours checks; four V0 UNKNOWN checks remain across
-identity, opening and routes. The V0 opening FAIL remains an observed result.
-These independently generated itineraries support a description of this case,
-without establishing a causal or version-wide ranking.
+API-only scoring has 13 UNKNOWN checks: one identity, ten opening and two routes.
+V0's Australian Museum visit on 15 October, 09:30-12:00 Sydney time, overlaps
+a confirmed closed interval by 1,800 seconds. Independent generation differences
+do not establish a causal or version-wide quality ranking.
+
+### Opening assessment
+
+The evaluator's `gpt-6-luna / medium` assessment accepted nine PASS decisions
+on 13 October at 21:18:46-21:18:58 Sydney time. Each quotes a complete original
+activity field verbatim and passed native material validation. This assessment
+fills eligible access gaps; it provides no new official hours or factual evidence.
+
+| Version | Supplemented overall / 100 | Opening PASS / FAIL / UNKNOWN | Remaining factual UNKNOWN |
+| --- | ---: | --- | ---: |
+| V0 | 73.3333 | 7 / 1 / 1 | 4 |
+| V1 | 93.3333 | 8 / 0 / 0 | 0 |
+| V2 | 96.6667 | 7 / 0 / 0 | 0 |
+| V3 | 100 | 6 / 0 / 0 | 0 |
+
+Other dimensions and pace deductions are unchanged. V0 retains the confirmed
+museum opening FAIL, one unresolved identity, one opening gap and two route gaps.
+V3's 100 is a score under this profile and accepted model overlay, not complete
+official evidence or a general performance guarantee. The pair retains its own
+saved evidence/profile and does not inherit this four-final overlay.
+
+The selected assessment used one model send, 10,665 input and 1,728 output tokens,
+zero retries and zero additional Google/RAG sends. Network-denied native replay
+reproduced the report exactly. Rejected acquisition material remains private and
+is included in the separate rejected-attempt cost scope.
 
 ## Candidate POI process
+
 
 | Stage | V1 distinct places | V2 distinct places | V2 gained / V1-only / retained |
 | --- | ---: | ---: | --- |
@@ -109,157 +115,110 @@ without establishing a causal or version-wide ranking.
 | Supplied | 12 | 12 | 2 / 2 / 10 |
 | Scheduled | 8 | 7 | 1 / 2 / 6 |
 
-V2 discovery has 47 observed Google-only, ten RAG-only and nine mixed-source
-identities, including ten incremental observed RAG identities. Its complete
-discovery count is unavailable. Native memberships retain omissions: 44 observed
-discovered places were not supplied in V1 and 54 in V2. Scheduled membership uses
-independent identity association and excludes nearby-only references.
-Interest relevance is non-applicable because the request states no POI interests.
-No corpus measurement was selected; these counts do not establish corpus recall
-or isolate a causal RAG effect.
+V2 observed discovery contains 47 Google-only, ten RAG-only and nine mixed identities;
+ten are incremental observed RAG identities. Complete discovery remains unavailable.
+The full canonical memberships/origins/omissions are retained. Observed discovered
+places not supplied total 44 in V1 and 54 in V2. Scheduled sets use current independent
+identity association and exclude Nearby-only references. Empty interests make relevance
+non-applicable. No corpus census, recall estimate or causal RAG benefit is claimed.
 
 ## V3 Repair and independent pair
 
-Generation made one Repair attempt with two model calls. Its proposed Sydney
-Tower Eye move was rejected because coverage and pace comparability did not
-support accepting it; the draft was retained. Independent draft/final evaluation
-found no added, removed or replaced visits and an overall delta of zero.
 
-Each pair stage scored 83.9583 under its own evidence/profile boundary, with
-five opening PASS and three opening UNKNOWN checks, eight grounding PASS and
-five route PASS checks. This pair's absolute scores are distinct from the selected
-primary scores. Primary opening-model verdicts were not imported as raw evidence.
-All 31 identity and 23 evidence observations matched primary-evaluation responses
-in this case. Valid original generation observations remain retained but were not
-needed for these matches. Pair acquisition made no Google/model sends or retries.
+The selected real V3 run accepted three `system_delete` rounds. Sydney Opera House,
+Taronga Zoo Sydney and Royal Botanic Garden Sydney were removed from their respective
+draft dates. Daily main-POI counts changed from 3/3/3 to 2/2/2. All six surviving
+activity records are unchanged; no addition, replacement, retiming or cross-date move
+was accepted. No local or replan model call was used. Final routes were recomputed;
+three final-only Nearby suggestions are outside primary visits and Repair effects.
 
-V2/V3 independent final differences and the unchanged same-run V3 pair answer
-different questions. Neither supports a claim that Repair improved this case.
+The native source-labelled pair imported saved observations without new provider calls.
+Identity acquisition has 30 available and one unavailable request observation; evidence
+has 22 available and one unavailable. Missing compatible observations remain UNKNOWN;
+inherited usage is not charged again. Exact zero-network replay passed.
+
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Pace deduction | Opening P / F / U | Routes P / F / U |
+| --- | ---: | ---: | ---: | --- | --- |
+| Draft | 77.5 | 87.5 | 10 | 6 / 0 / 3 | 5 / 0 / 1 |
+| Final primary | 91.6667 | 91.6667 | 0 | 4 / 0 / 2 | 3 / 0 / 0 |
+
+The overall paired change is 14.1667 percentage points. There are three removed visits,
+zero added/replaced visits and zero confirmed venue losses under native correspondence.
+Protected commitments and protection conflicts are empty for this request; they do not
+establish protected-activity test coverage. V2/V3 independent finals share three canonical
+visits, with three V3-only and four V2-only visits. That comparison is descriptive and
+separate from the same-run Repair lineage.
+
+The final round returned `ACCEPTED_COMPLETE` with `authorized_targets_complete`:
+all three daily soft-pace targets reached zero. The stage ended normally after
+meeting its targets. No model retime or replan was required for this case.
 
 ## Resources and cost basis
 
-| Service bucket | Reference USD |
+| Selected result component | Reference USD |
 | --- | ---: |
-| V0-V3 generation | 5.64860227 |
-| Primary evaluation | 1.262721675 |
-| Missing-hours supplement | 0.002489925 |
-| Paired acquisition: new service calls | 0 |
-| Total | **6.91381387** |
+| V0 generation | 0.00241055 |
+| V1 generation | 1.638289475 |
+| V2 generation | 1.985985875 |
+| V3 generation | 1.991064 |
+| Four-final primary evaluation | 1.19074005 |
+| Selected opening assessment | 0.00219705 |
+| Selected result total | **6.810687000** |
 
-The saved estimate uses dated 13 October 2026 official retail references and a
-disclosed OpenAI proxy for Foundry pricing. Actual account rates and invoices are
-unavailable. Codex actor token/billing telemetry is also unavailable; zero new
-paired service calls does not establish zero Codex cost. Inherited evidence usage,
-Repair calls and embedding/HTTP transport subsets are not charged twice.
+Rejected case acquisition attempts add USD 1.643382200: an unqualified V3
+retrieval attempt (USD 1.641240025) and an invalid opening response
+(USD 0.002142175). Selected and rejected case acquisition together total
+**USD 8.454069200**. Saved paired observations are not charged again.
 
-Across the case, 254 Google sends and 16 model calls were recorded, including two
-embeddings. Primary used 59 Google sends and one model call; the missing-hours
-supplement used one model call. Six approved paid commands used 327.062 seconds
-of active execution within the 3,600-second limit. Ten approved review operations
-used 1,188.868426 seconds within their separate limits. A pre-native wrapper parse
-failure took 0.455678 seconds and dispatched no provider call.
+Separate synthetic Repair engineering diagnostics consumed USD 0.003531110;
+they are excluded from selected-result cost and case scores. Their observations
+belong to the [Repair engineering record](../../docs/records/v0-v3/v3-development.md#post-refactor-model-smoke).
+Ordinary cases execute only the Repair strategies needed by their actual targets.
+
+The [accounting view](analysis/resources/accounting.json) distinguishes these scopes
+without double-counting generation Repair or saved evidence. Dated retail/OpenAI
+proxy rates are estimates; Foundry account rates, actual invoices and external
+Codex token/billing telemetry are unavailable. Activity costs are also missing,
+so the itinerary does not independently establish compliance with AUD 900.
+The generator has no monetary hard guard; call/time limits do not imply an invoice cap.
 
 ## System and external assistance
 
-This records the actual case work on 13 October 2026 Australia/Sydney, including
-subsequent material preparation. AI within the studied system and external Codex
-assistance have distinct roles. The experiment was assisted, not unattended.
+| Work | Actual performer | Used output and verification |
+| --- | --- | --- |
+| V0-V3 generation | Native Planner, recorded `gpt-6-luna`; V2/V3 embedding `text-embedding-3-small` | Source-linked itineraries/usage; V3 retained three deterministic deletions. |
+| Requirements and interests | Distinct `/root/requirements_author`, `/root/requirements_reviewer`, `/root/interests_reviewer`, recorded `gpt-6.1-sol / high` | Original-request-only reviewed inputs; empty semantics retained. |
+| Primary schedule/route context | `/root/issue140_primary_context_high`, external Codex `gpt-6.1-sol / high` | Source-only Sydney time-zone and route interpretation checked by native consumers. |
+| Selected V3 execution | `/root/issue140_v3_execution_high`, external Codex `gpt-6.1-sol / high` | Authentic generation capture and native selection/finalization. |
+| Primary evaluation | `/root/issue140_primary_execution_high`, external Codex `gpt-6.1-sol / high`; evaluator `gpt-6-luna / medium` | Native reports, 55 Google sends and one identity-model send; raw receipts and replay. |
+| Opening assessment | `/root/issue140_phase_c_execution_high`, external Codex `gpt-6.1-sol / high`; evaluator `gpt-6-luna / medium` | Nine source-quoted judgments checked by native validation and exact replay. |
+| Material preparation, analysis and presentation | Parent Codex operator | Native candidate/pair readers, deterministic lineage, resource reconciliation, lossless expansion and archive verification. |
+| Review | External Standards/Spec Codex reviewers configured `gpt-6.1-sol / high` | Independent material and source consistency checks. |
+| Scope, budgets and case acceptance | Human user | Approved execution and accepted the selected results with their stated limitations. |
 
-| Work | Actual performer | Contribution and influence | Verification or decision |
-| --- | --- | --- | --- |
-| Generate V0-V3 itineraries, retrieve candidates and propose V3 Repair | Native Planner; configured `gpt-6-luna`, with `text-embedding-3-small` in V2/V3 | Produced the selected outputs and internal judgments; V3 proposed but rejected a change | Native result, usage and provenance bindings; final itineraries were not manually edited |
-| Acquire independent primary evidence and assess eligible missing hours | Native evaluator; Google services and its declared `gpt-6-luna / medium` assessments | Produced independent evidence/assessment inputs, including model-assisted V0 identity and the optional opening supplement | Saved snapshots/receipts, preserved FAIL/UNKNOWN and replay; model judgments were not human answers |
-| Compute primary scores, paired outcomes and process/resource reports | Native deterministic evaluator/readers with external semantic inputs | Calculated results under the recorded rules; zero new paired service sends | Native integrity/reconstruction and arithmetic checks |
-| Author and review requirements | `/root/requirements_author` and distinct `/root/requirements_reviewer`, external Codex | Created and reviewed the native RequirementSpec from the original request; no generated itinerary or score was supplied to either | Two source-only execution records and native handoff; empty additional requirements retained |
-| Identify request interests | `/root/interests_reviewer`, external Codex | Confirmed the empty interest inventory; relevance was non-applicable | Source-bound execution record and native interest/relevance validation |
-| Supply primary and paired semantic context | `/root/case01_primary_context` and `/root/case01_pair_context`, external Codex | Reviewed schedule/time-zone, route and occupancy associations used by native checks; these inputs can affect evaluation | Separate primary/pair records, pair schema correction and native source validation |
-| Launch the six approved paid commands | `/root/case01_executor`, external Codex, `gpt-6.1-sol / medium` | Invoked installed tools sequentially within the selected plan; did not author independent reviews | Original command/completion records and actual resource accounting |
-| Implement and check engineering corrections | Parent Codex operator; `/root/case01_standards` and `/root/case01_spec` performed independent code reviews | Corrected corpus-free presentation, source-labelled imports, equivalent departure-time matching and finalized provenance binding | TDD/regression checks, Standards/Spec reviews and corrective rechecks; implementation history preserved |
-| Prepare sources, reconcile costs, replay, deduplicate material and write technical reports | Parent Codex operator | Orchestrated the handoff, verified sources and prepared the public account/materials; assistance includes technical documentation | Native report reproduction, source hashes, lossless material checks and tracked links |
-| Set substantive intent, approve scope/budgets and decide case acceptance | Human user | Supplied the original request and execution decisions | Automatic acceptance is still pending; real raters have not supplied answers |
-
-Codex assistance was needed because installed tools require reviewed semantic
-inputs and explicit operational/source bindings. They do not independently author
-the request's RequirementSpec, resolve every semantic association or reconcile
-the complete experimental handoff. Engineering defects also needed correction and
-checks before the evidence could be consumed consistently. Separate source-only
-author/reviewer contexts reduce dependence on Planner outputs; they do not establish
-human ground truth or independence between model families. Planner tuning was
-outside this case's scope. This record supports later disclosure of development,
-experimental annotation, execution and technical-writing assistance. Thesis prose
-and final research conclusions were not produced under this case scope.
-
-### Recorded actors and evidence limits
-
-The bounded experimental review ledger records ten external Codex operations,
-all `gpt-6.1-sol / high`: requirements author 1, requirements reviewer 1, interests
-reviewer 1, primary-context reviewer 1, pair-context reviewer 2 (including its
-correction), Standards reviewer 1 and Spec reviewer 3 (including two rechecks).
-The separate executor is `gpt-6.1-sol / medium` and launched six paid commands.
-These counts are not the total of all AI use across the project or subsequent
-parent-operated documentation/storage work.
-
-The retained parent-operator records do not establish its exact model/version,
-complete activity duration, tokens or billing. The review transport also lacks
-token/billing telemetry and complete internal transcripts; retained task bindings,
-operation sidecars and available response excerpts do not imply complete transcripts.
-Independent AI reviews and automated tests are recorded as such. Human case acceptance
-and blinded human assessment remain separate pending decisions.
-
-Private evidence identifiers are original logical paths in the archive manifest
-at `benchmark/scratch/case-01/archive/manifest.json`:
-
-| Record | SHA-256 |
-| --- | --- |
-| `analysis/resources/actors/operations.json` | `095ffe9501326854f64e8416169e6c9f9fc0385157dd32d48c7457ed3ad7d521` |
-| `analysis/resources/commands/executions.json` | `6a6d0892a0e253054fd7c594e2289f915ba379171e870be5788cb4c40a32e983` |
-
-The [case Issue's assistance record](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127#ai-assistance-and-actual-performers)
-contains the public execution/disclosure summary. The
-[common recording convention](../README.md#ai-assistance-records) applies to later cases.
+External Codex assistance influenced reviewed semantic inputs, orchestration,
+interpretation and presentation. It supplies no human ground truth or blinded
+assessment. The parent prepared materials not authored by installed tools; native
+consumers and separate reviewers checked the used outputs. Original failed-attempt
+actor/transport records remain private. The parent's exact backend model and full
+internal transcripts/token billing are not independently attested by these artifacts.
 
 ## Evidence identity and reproducibility
 
-The execution-era scoring source is
-`b3ddccd5b462367d35eff12f8aa9cfe10f840557`; the two corrected provenance-import
-modules come from `ee73e274bf1cc5612b3f84605f9efa58feab6c23`. Private replay checks
-the exact retained scoring files and adapters. This is a disclosed composed
-source runtime, rather than a single-release replay claim.
+The original input SHA-256 is
+`81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88`;
+the source revision-3 manifest SHA-256 is
+`bca79c972635e884e86569a5f78e3c48347ddb3cf97f75fdd0f70352fdf673f2`.
+The [material index](material-index.json) records all publication/source hashes and
+exact JSON-subtree locations. Shared references expand losslessly; the V3 draft
+delta reconstructs its complete source value. Public views are selected publication
+material, not closed native acquisition bundles.
 
-| Evidence | SHA-256 / native content hash |
-| --- | --- |
-| Original request bytes | `81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88` |
-| Reviewed RequirementSpec bytes | `1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37` |
-| Selected primary quality content | `c8eb50ec6a511fb5bb69106317fed0102f7c558047d53ff0ceecbc6dbbd73057` |
-| Same-run pair content | `26d17225b1249b9d99048b03d557f89e30116da673ea0f77ddfe69aabd3aec3f` |
-
-Selected original evidence and required native dependencies are retained in ignored
-`benchmark/scratch/case-01/archive/`. The compact archive maps 4,184 original logical
-paths to 1,185 unique byte sequences, stored once in a compressed data package.
-Including its manifest, restore helper, guide and verification receipt, it occupies
-about 6.34 MB, reduced from 348.23 MB of private working material.
-Cleanup removed test/preflight trees, compiled caches, assembly scripts, redundant
-paired import/working copies, superseded selections and unnecessary source exports.
-Authentic generation/evidence captures, reviewed inputs, actor/command/usage
-records, selected native reports and their replay dependencies remain retained.
-
-Restoring the archive to a fresh temporary directory verified every retained file's
-original hash and length. Network-denied native reconstruction reproduced all five
-saved process/resource reports exactly, including their quality and pair dependencies.
-The 25 public material entries also matched their restored original selected JSON
-values or exact extracted subtrees after expanding shared references. Temporary
-restoration and old working directories were then deleted; source evidence bytes,
-itineraries and native receipts were not rewritten. This cleanup was authorized
-while case acceptance remained pending and does not itself accept the experiment.
-
-The private archive guide provides verify/restore and descriptor-based replay
-commands. Original preparations retain historical absolute bindings; their standalone
-acquisition commands remain non-portable after relocation. Public views are not
-native replay bundles, and full replay requires private archived evidence plus the
-repository's installed Python dependencies.
-
-Storage and subsequent execution follow the [common workflow](../README.md).
-Future runs report V0-V3 primary scores and pause for the user's instruction
-before optional supplements, diagnostics and final case acceptance.
-[Workflow #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-tracks the workflow acceptance separately from the case decision.
+The ignored compact archive at `benchmark/scratch/case-01/archive/` preserves raw
+captures, reviewed inputs, native preparations/receipts, usage/prices, source snapshots
+and required replay dependencies. Original bytes and execution dates remain intact;
+other operational and engineering material is retained outside the initial dataset.
+Integrity, fresh restoration, public-source equivalence and applicable native
+offline replay passed before redundant working copies were deleted. Replay denies
+network access and requires installed Python/runtime dependencies. Private model/
+provider payloads and credentials are excluded from public material.
