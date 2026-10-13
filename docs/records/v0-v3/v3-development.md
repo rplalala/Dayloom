@@ -1612,9 +1612,12 @@ temporary virtual environments bound the installed CLI to the tested source whil
 existing dependencies; offline installation used cached build dependencies. No project
 configuration, shared environment or credentials were changed.
 
-Local evidence identifiers are `.scratch/full-backend-139.log`,
-`.scratch/powershell-regression-139.log` and `.scratch/final-backend-139.log`
-in the retained integration worktree. These
-ignored logs are historical evidence identifiers, not published dependencies.
+Original local evidence identifiers were `.scratch/collect-full-139.log`,
+`.scratch/full-backend-139.log`, `.scratch/powershell-regression-139.log` and
+`.scratch/final-backend-139.log` in the integration worktree. Before delivery cleanup,
+all four logs were preserved byte-for-byte in the primary checkout under
+`logs/v3-repair-139-offline-20261013/`; `manifest.json` records their original paths,
+tested revisions, sizes and SHA-256 hashes. Every copied hash matched its source.
+These ignored files are local evidence identifiers, not published dependencies.
 Original case-01 evidence and its acceptance state are unchanged; post-refactor case
 revalidation remains owned by [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140).
