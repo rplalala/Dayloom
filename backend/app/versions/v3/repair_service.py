@@ -1,4 +1,4 @@
-"""Standalone single-round repair service. No runner, graph, Nearby or client factory."""
+"""Bounded Repair search using the existing permissioned proposal/check path."""
 
 import asyncio
 import json
@@ -100,6 +100,7 @@ async def run_repair_once(
     model_timeout = None
     fingerprint = None
     components = ()
+    decision_key = None
 
     def audit(value):
         if value is None:
@@ -219,6 +220,13 @@ async def run_repair_once(
             },
         )
 
+        if decision_key is not None:
+            budget.proposal_history[decision_key] = {
+                "key": decision_key,
+                "outcome": status,
+                "reason": reason,
+                "edits": [e.model_dump(mode="json") for e in effective_patch.edits],
+            }
         if tracer is not None:
             # Separate compact artifacts survive truncation of the full V3 outcome.
             for name, value in (
@@ -328,9 +336,6 @@ async def run_repair_once(
                 pending_groups=pending,
             )
             fingerprint = material_fingerprint(user)
-            if fingerprint in getattr(budget, "input_fingerprints", set()):
-                return result("SKIPPED", "no_material_change_for_remaining_targets")
-            budget.input_fingerprints = getattr(budget, "input_fingerprints", set()) | {fingerprint}
             timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
             if timeout < timing.minimum_model_seconds:
                 return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
@@ -361,6 +366,12 @@ async def run_repair_once(
             model_returned = True
             patch = RepairPatch.model_validate(raw)
             effective_patch = combine_pending(patch, pending)
+            from backend.app.versions.v3.repair_search import proposal_key
+
+            decision_key = proposal_key(effective_patch, snapshot, context, scope, extra)
+            budget.proposal_history = getattr(budget, "proposal_history", {})
+            if decision_key in budget.proposal_history:
+                return result("REJECTED", "equivalent_proposal_suppressed")
             if any(d.target_id not in scope.target_ids for d in patch.target_dispositions):
                 raise ValueError("Unauthorized target disposition")
             if remaining() <= 0:
@@ -476,7 +487,7 @@ async def run_repair_stage(
     runtime_config=None,
     **kwargs,
 ):
-    """One resource ledger and latest-adopted state across explicit feedback iterations."""
+    """One resource ledger; checked exploration is separate from retained delivery."""
     from backend.app.versions.v3.repair_acceptance import finding_key
     from backend.app.versions.v3.repair_models import RepairRoundRecord
 
@@ -489,6 +500,9 @@ async def run_repair_stage(
         runtime_config=runtime_config,
     )
     policy = budget.policy
+    budget.allow_soft_exploration = True
+    original = original.model_copy(deep=True)
+    context = context.model_copy(deep=True)
     initial = assess(original, context)
     from backend.app.versions.v3.soft_pace import pace_summary
 
@@ -502,22 +516,39 @@ async def run_repair_stage(
             if f.finding_id in scope.target_ids and f.reason == "minimum_daily_coverage_missing":
                 ordinary_key = ("coverage", (), f.dates, (), ())
                 original_keys[ordinary_key] = f.finding_id
+    # Moving a visit may transfer a residual pace target to another authorized date.
+    if any(f.check == "soft_pace" and f.finding_id in scope.target_ids for f in initial.findings):
+        original_keys.update(
+            {
+                finding_key(f): f.finding_id
+                for f in initial.findings
+                if f.check == "soft_pace" and set(f.dates) <= set(scope.dates)
+            }
+        )
+    from backend.app.versions.v3.repair_search import improves, objective, state_key
+
+    pace_dates = tuple(f.dates[0] for f in initial.findings if f.check == "soft_pace")
+    best = original.model_copy(deep=True)
+    best_context = context.model_copy(deep=True)
+    best_objective = objective(best, initial, pace_dates, scope)
+    selected_round = None
+    best_adjustments = ()
+    current_adjustments = ()
     current = original.model_copy(deep=True)
     current_schedule = context.schedule
     active_related = scope.active_related
     ledger = {c.place.place_id: c for c in context.identity_ledger}
     routes, records, feedback = (), [], None
-    patch_fingerprints = set()
+    visited = {state_key(current, current_schedule)}
     completed = set()
     stop = "model_budget_disabled" if not policy.max_model_calls else "round_limit"
     last = None
     for index in range(1, min(policy.max_rounds, policy.max_model_calls) + 1):
-        if kwargs.get("semantic_service"):
-            context = context.model_copy(
-                update={"semantic_assessments": tuple(kwargs["semantic_service"].ledger.values())}
-            )
         effective = context.model_copy(
             update={
+                "semantic_assessments": tuple(kwargs["semantic_service"].ledger.values())
+                if kwargs.get("semantic_service")
+                else context.semantic_assessments,
                 "schedule": current_schedule,
                 "active_related": active_related,
                 "identity_ledger": tuple(ledger.values()),
@@ -539,7 +570,7 @@ async def run_repair_stage(
                 finding_key(f) in original_keys
                 or f.finding_id in {r.permission.target_id for r in active_related}
             )
-            and finding_key(f) not in completed
+            and (f.check == "soft_pace" or finding_key(f) not in completed)
             and f.finding_id in authorized
         )
         if not remaining_targets:
@@ -628,39 +659,85 @@ async def run_repair_stage(
         ledger.update({c.place.place_id: c for c in result.repair_whitelist})
         routes = (*routes, *result.acquired_routes)
         accepted = result.status.startswith("ACCEPTED")
+        candidate_key = state_key(result.final, result.schedule)
+        if accepted and candidate_key in visited:
+            result = result.model_copy(
+                update={
+                    "status": "REJECTED",
+                    "reason": "repeated_exploration_state_suppressed",
+                    "final": before,
+                    "schedule": current_schedule,
+                }
+            )
+            accepted = False
+        promoted = False
         if accepted:
+            visited.add(candidate_key)
             current = result.final
             current_schedule = result.schedule
             active_related = result.related_targets
+            current_adjustments = (*current_adjustments, *result.window_adjustments)
+            candidate_context = effective.model_copy(
+                update={
+                    "semantic_assessments": tuple(kwargs["semantic_service"].ledger.values())
+                    if kwargs.get("semantic_service")
+                    else effective.semantic_assessments,
+                    "schedule": current_schedule,
+                    "active_related": active_related,
+                    "identity_ledger": tuple(ledger.values()),
+                    "route_evidence": (*context.route_evidence, *routes),
+                    "transitions": bind_transitions(
+                        current,
+                        scope.travel_mode or "WALK",
+                        scope.routing_preference,
+                        current_schedule,
+                    ),
+                }
+            )
+            candidate_report = assess(current, candidate_context)
+            candidate_objective = objective(current, candidate_report, pace_dates, scope)
+            promoted = improves(candidate_objective, best_objective)
+            if promoted:
+                best, best_context = (
+                    current.model_copy(deep=True),
+                    candidate_context.model_copy(deep=True),
+                )
+                best_objective, selected_round = candidate_objective, index
+                best_adjustments = current_adjustments
             by_id = {f.finding_id: f for f in report.findings}
             completed.update(
                 finding_key(by_id[p.finding_id])
                 for p in result.target_progress
-                if p.outcome == "resolved" and p.finding_id in by_id
+                if p.outcome == "resolved" and p.check != "soft_pace" and p.finding_id in by_id
             )
-        serialized_patch = result.parsed_patch.model_dump_json() if result.parsed_patch else None
-        repeated = serialized_patch is not None and serialized_patch in patch_fingerprints
-        if serialized_patch is not None:
-            patch_fingerprints.add(serialized_patch)
         terminal_failure = result.model_attempted and result.parsed_patch is None
         stop = (
-            "duplicate_failed_patch"
-            if repeated and not accepted
-            else "model_failed_no_retry"
+            "model_failed_no_retry"
             if terminal_failure
             else "authorized_targets_complete"
-            if set(original_keys) <= completed
+            if accepted
+            and not any(
+                finding_key(f) in original_keys
+                and f.finding_id in {t.finding_id for t in candidate_report.improvement_targets}
+                for f in candidate_report.findings
+            )
             and all(r.status == "resolved" for r in active_related)
             else result.reason
             if result.status == "SKIPPED"
             else "feedback_iteration"
         )
         new_feedback = round_feedback(result, accepted)
+        new_feedback["tried_operations"] = list(getattr(budget, "proposal_history", {}).values())
         if len(json.dumps(new_feedback, ensure_ascii=True)) > policy.input.feedback_characters:
             stop = "feedback_capacity_exceeded"
         records.append(
             RepairRoundRecord(
                 round_index=index,
+                strategy="local",
+                base_state=state_key(before, effective.schedule),
+                exploration_transition=accepted,
+                best_promoted=promoted,
+                best_state=state_key(best, best_context.schedule),
                 target_links={
                     f.finding_id: original_keys.get(finding_key(f), f.finding_id)
                     for f in remaining_findings
@@ -695,6 +772,10 @@ async def run_repair_stage(
     if last is None:
         return RepairResult(
             status="SKIPPED",
+            search_version=1,
+            selected_semantic_assessments=context.semantic_assessments,
+            schedule=context.schedule,
+            adopted_report=initial,
             soft_pace=pace_summary(initial, initial),
             reason=stop,
             model_attempted=False,
@@ -716,28 +797,31 @@ async def run_repair_stage(
             usage_status="not_called",
             scope=scope,
         )
+    # Restore the complete retained snapshot; later exploration evidence does not rebind it.
+    current, current_schedule, active_related = (
+        best,
+        best_context.schedule,
+        best_context.active_related,
+    )
+    selected_context = best_context
     # Final progress is measured against the original targets, never the last rejected proposal.
     reassessed = assess(
         original,
         context,
-        tuple(ledger.values()),
-        routes,
+        selected_context.identity_ledger,
+        selected_context.route_evidence,
         bind_transitions(
             original,
             None if scope.unsupported_explicit_mode else (scope.travel_mode or "WALK"),
             scope.routing_preference,
-            current_schedule,
+            context.schedule,
         ),
     )
-    if kwargs.get("semantic_service"):
-        context = context.model_copy(
-            update={"semantic_assessments": tuple(kwargs["semantic_service"].ledger.values())}
-        )
     final_report = assess(
         current,
-        context.model_copy(update={"schedule": current_schedule, "active_related": active_related}),
-        tuple(ledger.values()),
-        routes,
+        selected_context,
+        (),
+        (),
         bind_transitions(
             current,
             None if scope.unsupported_explicit_mode else (scope.travel_mode or "WALK"),
@@ -746,7 +830,14 @@ async def run_repair_stage(
         ),
     )
     summary = compare(
-        original, current, initial, reassessed, final_report, scope, current_schedule, context
+        original,
+        current,
+        initial,
+        reassessed,
+        final_report,
+        scope,
+        current_schedule,
+        selected_context,
     )
     from backend.app.versions.v3.repair_acceptance import inclusion_ids
     from backend.app.versions.v3.repair_spatial import check_addition_layout
@@ -762,20 +853,20 @@ async def run_repair_stage(
             or final_activities[a.activity_id].source_place_id != a.source_place_id
         )
     )
-    final_places = {p.place_id: p for p in context.places}
-    final_places.update({key: candidate.place for key, candidate in ledger.items()})
+    final_places = {p.place_id: p for p in selected_context.places}
+    final_places.update({c.place.place_id: c.place for c in selected_context.identity_ledger})
     stage_spatial = check_addition_layout(
         original,
         current,
         tuple(final_places.values()),
-        (*context.route_evidence, *routes),
+        selected_context.route_evidence,
         scope.travel_mode,
         policy.spatial,
-        inclusion_ids(context)[0],
+        inclusion_ids(selected_context)[0],
         routing_preference=scope.routing_preference,
         schedule=current_schedule,
     )
-    any_accepted = any(r.result.status.startswith("ACCEPTED") for r in records)
+    any_accepted = selected_round is not None
     status = (
         (
             "ACCEPTED_COMPLETE"
@@ -806,6 +897,12 @@ async def run_repair_stage(
                         destination[key] = destination.get(key, 0) + value
 
             accumulate(values, target)
+    budget.used["final_scheduled_unique"] = len(
+        {a.source_place_id for d in current.days for a in d.activities if a.source_place_id}
+    )
+    budget.used["final_main_visits"] = sum(
+        a.activity_kind == "main_poi" for d in current.days for a in d.activities
+    )
     return last.model_copy(
         update={
             "pending_groups": tuple(
@@ -814,12 +911,10 @@ async def run_repair_stage(
             ),
             "schedule": current_schedule,
             "related_targets": active_related,
-            "window_adjustments": tuple(
-                a
-                for r in records
-                if r.result.status.startswith("ACCEPTED")
-                for a in r.result.window_adjustments
-            ),
+            "window_adjustments": best_adjustments,
+            "search_version": 1,
+            "selected_round_index": selected_round,
+            "selected_semantic_assessments": selected_context.semantic_assessments,
             "status": status,
             "reason": stop,
             "usage": cumulative_usage,
@@ -837,8 +932,10 @@ async def run_repair_stage(
             "main_visits_lost": net_losses,
             "coverage_regressions": summary.coverage_regressions,
             "spatial": stage_spatial,
-            "repair_whitelist": tuple(ledger.values()),
-            "acquired_routes": routes,
+            "repair_whitelist": selected_context.identity_ledger,
+            "acquired_routes": tuple(
+                r for r in selected_context.route_evidence if r not in context.route_evidence
+            ),
             "rounds": tuple(records),
             "acquisition_audit": tuple(dict(row) for row in budget.acquisition_audit),
             "counters": dict(budget.used),

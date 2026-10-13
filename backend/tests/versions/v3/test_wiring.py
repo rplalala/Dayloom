@@ -204,7 +204,7 @@ def test_actual_repair_and_adopted_report(behavior, status):
     outcome = result.v3
     assert outcome.repair.status == status
     assert len(model.calls) == 1
-    assert 1 <= model.repair_calls <= 3
+    assert 1 <= model.repair_calls <= 6
     assert draft.model_dump() == saved
     assert outcome.original_report == outcome.repair.original_report
     assert result.generation_diagnostics == outcome.final_report.diagnostics
@@ -270,7 +270,7 @@ def test_legal_identity_outside_original_supply_reaches_final_and_nearby():
     assert result.generation_diagnostics.days[0].distinct_main_poi_count == 2
     assert result.v3.original_report.diagnostics.days[0].distinct_main_poi_count == 1
     assert len(model.calls) == 1
-    assert 1 <= model.repair_calls <= 3
+    assert 1 <= model.repair_calls <= 6
     assert len(places.nearby) <= 2
     assert result.v3.quantity_review_enabled
 
@@ -475,7 +475,7 @@ def test_cross_phase_rag_cache_failures_and_initial_report_are_preserved(failure
         )
     )
     assert result.v3.repair.status == "ACCEPTED_PARTIAL", result.v3.repair.reason
-    assert len(model.calls) == 2 and 1 <= model.repair_calls <= 3
+    assert len(model.calls) == 2 and 1 <= model.repair_calls <= 6
     assert runtime.prepares == runtime.enters == runtime.closes == 1
     assert runtime.embedding_sends == (0 if failure == "prepare" else 1)
     assert runtime.searches == (1 if failure in {None, "search"} else 0)
@@ -722,7 +722,7 @@ def test_v3_outcome_trace_truncation_retains_individual_artifact_markers():
 
     assert tracer.events["v3_finalized"]["truncated"]
     assert "v3_repair_patch" in tracer.events["v3_finalized"]["artifact_events"]
-    assert tracer.events["v3_repair_patch"]["artifact_status"] == "not_executed"
+    assert tracer.events["v3_repair_patch"]["artifact_status"] == "recorded"
     assert tracer.events["v3_repair_proposal"]["artifact_status"] == "not_constructed"
     assert tracer.events["v3_repair_material_feedback"]["truncated"]
 

@@ -209,6 +209,10 @@ class TargetProgress(ValidationModel):
 
 
 class RepairResult(ValidationModel):
+    # Missing fields on historical records mean the pre-search single adopted chain.
+    search_version: Literal[1] | None = None
+    selected_round_index: int | None = None
+    selected_semantic_assessments: tuple[POISemanticAssessment, ...] | None = None
     soft_pace: dict = Field(default_factory=dict)
     pending_groups: tuple[dict, ...] = ()
     effective_patch: RepairPatch | None = None
@@ -256,6 +260,11 @@ class RepairResult(ValidationModel):
 
 class RepairRoundRecord(ValidationModel):
     round_index: int
+    strategy: str | None = None
+    base_state: str | None = None
+    exploration_transition: bool = False
+    best_promoted: bool = False
+    best_state: str | None = None
     target_links: dict[str, str] = Field(default_factory=dict)
     input_itinerary: Itinerary
     result: RepairResult

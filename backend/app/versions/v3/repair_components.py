@@ -247,6 +247,7 @@ async def accept_components(
                     local_scope,
                     proposed_schedule,
                     ctx,
+                    allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
                 )
                 spatial = check_addition_layout(
                     stage_original,
@@ -291,7 +292,15 @@ async def accept_components(
                     original, context, preparation.ledger, (*evidence, *acquired), original_bindings
                 )
                 global_check = compare(
-                    original, proposal, initial, base, after, scope, proposed_schedule, context
+                    original,
+                    proposal,
+                    initial,
+                    base,
+                    after,
+                    scope,
+                    proposed_schedule,
+                    context,
+                    allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
                 )
                 if not global_check.accepted:
                     audit.update(status="rejected", reason=global_check.reason)
@@ -323,7 +332,17 @@ async def accept_components(
         (*evidence, *acquired),
         bind_transitions(working, scope.travel_mode or "WALK", scope.routing_preference, schedule),
     )
-    comparison = compare(original, working, initial, reassessed, after, scope, schedule, context)
+    comparison = compare(
+        original,
+        working,
+        initial,
+        reassessed,
+        after,
+        scope,
+        schedule,
+        context,
+        allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
+    )
     final_spatial = check_addition_layout(
         stage_original,
         working,

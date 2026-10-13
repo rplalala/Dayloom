@@ -194,14 +194,14 @@ def test_four_actual_rounds_share_state_and_keep_partial_when_last_rejected():
         )
 
 
-def test_five_round_default_stops_at_shared_call_limit():
+def test_six_round_default_stops_at_shared_call_limit():
     from backend.tests.versions.v3.test_multiround import SequenceModel, edit, stage
 
     model = SequenceModel(
-        [[edit(f"10:{minute}", f"11:{minute}")] for minute in (35, 40, 45, 50, 55)]
+        [[edit(f"10:{minute}", f"11:{minute}")] for minute in (31, 35, 40, 45, 50, 55)]
     )
     result = stage(model)
-    assert model.calls == len(result.rounds) == result.counters["model"] == 5
+    assert model.calls == len(result.rounds) == result.counters["model"] == 6
     assert result.reason == "round_or_model_limit"
     assert result.status == "ACCEPTED_PARTIAL"
     assert result.final == result.rounds[-1].adopted

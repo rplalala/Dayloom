@@ -163,7 +163,15 @@ def test_honolulu_real_validation_scope_preparation_projection():
     from backend.app.versions.v3.repair_budget import configured_policy
 
     saved, original, ctx, _ = honolulu_fixture()
-    result, model = execute((original, ctx, configured_policy()), [[]], mode="WALK")
+    result, model = execute(
+        (
+            original,
+            ctx,
+            configured_policy().model_copy(update={"max_model_calls": 2, "max_rounds": 2}),
+        ),
+        [[]],
+        mode="WALK",
+    )
     first = result.rounds[0].result
     assert len(first.scope.target_ids) == 2
     # Historical multiplicity has not been assessed under the new exact-count contract.
@@ -175,7 +183,7 @@ def test_honolulu_real_validation_scope_preparation_projection():
     assert all(str(p.date) != "2026-10-01" for p in first.scope.coverage_permissions)
     assert first.sizing["total_tokens"] < 120000
     assert model.calls == 2 and result.final == original
-    assert result.reason == "duplicate_failed_patch"
+    assert result.reason == "round_or_model_limit"
     assert (
         result.rounds[0].result.material_fingerprint != result.rounds[1].result.material_fingerprint
     )

@@ -373,8 +373,8 @@ class RepairSpatialConfig(TransportPolicyConfig):
 
 
 class V3RepairConfig(_RepairConfigModel):
-    max_rounds: StrictInt = Field(ge=1, le=5)
-    max_model_calls: StrictInt = Field(ge=0, le=5)
+    max_rounds: StrictInt = Field(ge=1, le=6)
+    max_model_calls: StrictInt = Field(ge=0, le=6)
     quantity_review_enabled: StrictBool
     overfull_review_enabled: StrictBool
     daily_main_min: StrictInt = Field(ge=1, le=5)

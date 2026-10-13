@@ -377,17 +377,17 @@ def tokyo_fixture():
     )
 
 
-def test_tokyo_partial_then_noop_stops_without_repeating_third_model():
+def test_tokyo_partial_then_noop_retains_best_at_bounded_stop():
     saved, original, ctx, scope = tokyo_fixture()
-    model = SequenceModel([p["edits"] for p in saved["patches"]])
-    result = stage(model, original, ctx, scope)
+    model = SequenceModel([p["edits"] for p in saved["patches"]] + [[]])
+    result = stage(model, original, ctx, scope, policy=policy(max_model_calls=3, max_rounds=3))
     assert result.status == "ACCEPTED_PARTIAL", result.reason
-    assert model.calls == 2
-    assert result.reason == "no_material_change_for_remaining_targets"
+    assert model.calls == 3
+    assert result.reason == "round_or_model_limit"
     assert result.rounds[0].result.status == "ACCEPTED_PARTIAL"
     assert result.rounds[1].result.feedback_kind == "no_op_patch"
     assert result.final == result.rounds[0].adopted
-    assert result.rounds[-1].result.model_attempted is False
+    assert result.rounds[-1].result.model_attempted is True
     assert not result.conflict_records
     assert len(result.rounds[1].result.candidate_preparation.input_candidates) == 5
 

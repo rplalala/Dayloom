@@ -65,13 +65,13 @@ def stage(model, original=None, ctx=None, scope=None, **kwargs):
     )
 
 
-def test_no_improvement_without_material_change_stops_before_second_model():
+def test_rejection_feedback_allows_another_proposal_with_unchanged_materials():
     model = SequenceModel([[], [edit()]])
     result = stage(model)
-    assert result.status == "REJECTED"
-    assert len(result.rounds) == 2 and model.calls == 1
+    assert result.status == "ACCEPTED_COMPLETE"
+    assert len(result.rounds) == 2 and model.calls == 2
     assert model.inputs[0]["feedback"] is None
-    assert result.reason == "no_material_change_for_remaining_targets"
+    assert result.reason == "authorized_targets_complete"
     assert result.counters.get("details", 0) == 0
     assert result.original == overlap_draft()
     assert result.rounds[0].result.status == "REJECTED"
@@ -89,12 +89,13 @@ def test_later_provider_failure_preserves_partial_improvement():
     assert result.adopted_report is not result.rounds[1].result.proposed_report
 
 
-def test_repeated_failed_patch_stops_before_third_call():
+def test_repeated_failed_patch_does_not_exhaust_other_operations():
     model = SequenceModel([[], [], [edit()]])
     result = stage(model)
-    assert model.calls == 1
-    assert result.reason == "no_material_change_for_remaining_targets"
-    assert result.final == result.original
+    assert model.calls == 3
+    assert result.rounds[1].result.reason == "equivalent_proposal_suppressed"
+    assert result.status == "ACCEPTED_COMPLETE"
+    assert result.final != result.original
 
 
 def test_configured_model_round_limit_changes_real_execution():
@@ -220,7 +221,7 @@ def test_runtime_spatial_value_changes_actual_policy_result():
 @pytest.mark.parametrize(
     "change",
     [
-        {"max_rounds": 6},
+        {"max_rounds": 7},
         {"acquisition": {"canonical": 31}},
         {"timing": {"stage_seconds": 361}},
         {"max_rounds": True},
@@ -353,9 +354,9 @@ def test_actual_graph_feedback_rounds_then_nearby_once(monkeypatch):
             return await super().generate_repair_structured(**kwargs)
 
     result, model, _, owner = asyncio.run(execute(FeedbackGraphModel()))
-    assert result.v3.repair.status == "REJECTED"
-    assert result.v3.repair.reason == "no_material_change_for_remaining_targets"
-    assert model.repair_calls == 1 and len(model.calls) == 1
+    assert result.v3.repair.status == "ACCEPTED_COMPLETE"
+    assert result.v3.repair.reason == "authorized_targets_complete"
+    assert model.repair_calls == 2 and len(model.calls) == 1
     assert len(calls) == 1 and owner.closes == 1
 
 

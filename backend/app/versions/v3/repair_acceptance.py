@@ -400,7 +400,16 @@ def severity(f, itinerary):
 
 
 def compare(
-    original, proposed, initial_report, reassessed, after, scope, schedule=None, context=None
+    original,
+    proposed,
+    initial_report,
+    reassessed,
+    after,
+    scope,
+    schedule=None,
+    context=None,
+    *,
+    allow_soft_exploration=False,
 ):
     """Evidence-only gains cannot qualify as schedule improvement."""
     old = {finding_key(f): f for f in reassessed.findings}
@@ -521,14 +530,19 @@ def compare(
     progress = []
     business_values = []
     originals = {f.finding_id: f for f in initial_report.findings}
-    if any(
-        f.check == "soft_pace" and f.finding_id in scope.target_ids for f in initial_report.findings
-    ):
-        for key, f in old.items():
-            if f.check == "soft_pace" and f.magnitude is not None:
-                current = new.get(key)
-                if current is None or current.magnitude is None or current.magnitude > f.magnitude:
-                    rejections.append("Soft pace regression or lost comparable evidence")
+    for key, f in old.items():
+        if f.check == "soft_pace" and f.magnitude is not None:
+            current = new.get(key)
+            if current is None or current.magnitude is None:
+                rejections.append("Lost comparable soft pace evidence")
+    before_pace = [f for f in old.values() if f.check == "soft_pace"]
+    after_pace = [new.get(finding_key(f)) for f in before_pace]
+    pace_improved = (
+        bool(before_pace)
+        and all(f.magnitude is not None for f in before_pace)
+        and all(f is not None and f.magnitude is not None for f in after_pace)
+        and sum(f.magnitude for f in after_pace) < sum(f.magnitude for f in before_pace)
+    )
     for target in scope.target_ids:
         f = originals[target]
         key = finding_key(f)
@@ -632,7 +646,13 @@ def compare(
                 finding_id=target, check=f.check, outcome=outcome, before=left, after=right
             )
         )
-    if not any(p.outcome in {"resolved", "improved"} for p in progress):
+    exploring_pace = allow_soft_exploration and any(
+        f.check == "soft_pace" and f.finding_id in scope.target_ids for f in initial_report.findings
+    )
+    if not exploring_pace and not any(
+        p.outcome in {"resolved", "improved"} and (p.check != "soft_pace" or pace_improved)
+        for p in progress
+    ):
         rejections.append("No verifiable arrangement improvement")
     if original.model_dump() == proposed.model_dump():
         rejections.append("Evidence or binding changes alone are not arrangement improvement")

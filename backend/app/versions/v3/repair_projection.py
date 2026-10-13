@@ -41,6 +41,10 @@ Do not edit placeholders directly. Respect fixed time_protection and use only re
 An empty edits array means no supported arrangement improvement was found.
 Arrangement constraints identify only previous failed combinations; other legal times remain
 available. Opportunity states are preparation hints, never full feasibility or admission proof.
+Hard targets and applicable minimum coverage precede optional soft pace optimization.
+A checked intermediate arrangement may have equal or greater aggregate soft pace deductions;
+the application retains its best publishable result separately. Use feedback.tried_operations
+to avoid equivalent failed proposals and cycles. Preserve comparable evidence and hard progress.
 Resolve as many currently authorized targets as can be safely and coherently improved.
 Do not add edits merely to touch more targets. Independent date groups may be accepted separately;
 dependent deletions, compensation, visits and their transfers remain atomic together.
