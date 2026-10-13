@@ -1,0 +1,488 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "day1-australian-museum",
+      "to_activity_id": "day1-art-gallery-nsw",
+      "origin_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "destination_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-13T12:30:00+11:00",
+      "arrival_time": "2026-10-13T12:41:34+11:00",
+      "provider_duration_seconds": 694.0,
+      "distance_meters": 860,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-opera-house",
+      "to_activity_id": "day2-mca",
+      "origin_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "destination_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-14T11:30:00+11:00",
+      "arrival_time": "2026-10-14T11:44:53+11:00",
+      "provider_duration_seconds": 893.0,
+      "distance_meters": 1108,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-mca",
+      "to_activity_id": "day2-the-rocks",
+      "origin_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+      "destination_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-14T14:00:00+11:00",
+      "arrival_time": "2026-10-14T14:04:02+11:00",
+      "provider_duration_seconds": 242.0,
+      "distance_meters": 261,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day3-botanic-garden",
+      "to_activity_id": "day3-tower-eye",
+      "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T11:00:00+11:00",
+      "arrival_time": "2026-10-15T11:19:34+11:00",
+      "provider_duration_seconds": 1174.0,
+      "distance_meters": 1350,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-australian-museum",
+      "to_activity_id": "day1-art-gallery-nsw",
+      "origin": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "destination": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "departure": "2026-10-13T12:30:00+11:00",
+      "next_start": "2026-10-13T13:30:00+11:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 694,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-12T23:37:09.760410+00:00",
+              "retrieved_at": "2026-10-12T23:37:10.400063+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+                "destination_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 694,
+                "fallback_info": null,
+                "requested_at": "2026-10-12T23:37:09.760410Z",
+                "retrieved_at": "2026-10-12T23:37:10.400063Z",
+                "origin_index": 3,
+                "destination_index": 6,
+                "distance_meters": 860,
+                "duration_seconds": 694,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-opera-house",
+      "to_activity_id": "day2-mca",
+      "origin": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "destination": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+      "departure": "2026-10-14T11:30:00+11:00",
+      "next_start": "2026-10-14T12:00:00+11:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 893,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-12T23:37:09.157425+00:00",
+              "retrieved_at": "2026-10-12T23:37:09.747119+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                "destination_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 893,
+                "fallback_info": null,
+                "requested_at": "2026-10-12T23:37:09.157425Z",
+                "retrieved_at": "2026-10-12T23:37:09.747119Z",
+                "origin_index": 0,
+                "destination_index": 9,
+                "distance_meters": 1108,
+                "duration_seconds": 893,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-mca",
+      "to_activity_id": "day2-the-rocks",
+      "origin": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+      "destination": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+      "departure": "2026-10-14T14:00:00+11:00",
+      "next_start": "2026-10-14T14:30:00+11:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 242,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-12T23:37:09.760410+00:00",
+              "retrieved_at": "2026-10-12T23:37:10.400063+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+                "destination_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 242,
+                "fallback_info": null,
+                "requested_at": "2026-10-12T23:37:09.760410Z",
+                "retrieved_at": "2026-10-12T23:37:10.400063Z",
+                "origin_index": 4,
+                "destination_index": 3,
+                "distance_meters": 261,
+                "duration_seconds": 242,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-botanic-garden",
+      "to_activity_id": "day3-tower-eye",
+      "origin": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "departure": "2026-10-15T11:00:00+11:00",
+      "next_start": "2026-10-15T12:00:00+11:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1174,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-12T23:37:09.157425+00:00",
+              "retrieved_at": "2026-10-12T23:37:09.747119+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+                "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1174,
+                "fallback_info": null,
+                "requested_at": "2026-10-12T23:37:09.157425Z",
+                "retrieved_at": "2026-10-12T23:37:09.747119Z",
+                "origin_index": 2,
+                "destination_index": 7,
+                "distance_meters": 1350,
+                "duration_seconds": 1174,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Billabong Waterhole",
+      "source_place_id": "ChIJSSRK9livEmsR2NBQoYiHXXw",
+      "reason": "Cafe near Australian Museum (approximately 57 m straight-line).",
+      "associated_day": "2026-10-13",
+      "area": "Level 4/1 William St, Darlinghurst NSW 2010, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-ce4e10ea-6cf8-43cf-b2ef-3a49f4696d2c:1"
+    },
+    {
+      "place_name": "The Gallery Café",
+      "source_place_id": "ChIJASPIoDKvEmsRl1FwrxoNJjI",
+      "reason": "Restaurant near Art Gallery of New South Wales (approximately 34 m straight-line).",
+      "associated_day": "2026-10-13",
+      "area": "Art Gallery Rd, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-616f5bcc-bb88-4d59-80d1-f24e36c26f88:1"
+    },
+    {
+      "place_name": "Western Foyers",
+      "source_place_id": "ChIJoVOojGauEmsRKrmCjyzBbbI",
+      "reason": "Restaurant near Sydney Opera House (approximately 66 m straight-line).",
+      "associated_day": "2026-10-14",
+      "area": "Shop 14/2 Circular Quay E, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-ce9e754c-7b02-466c-adfc-44f61769875e:0"
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "days": [
+    {
+      "date": "2026-10-13",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-australian-museum",
+          "title": "Explore the Australian Museum",
+          "place_name": "Australian Museum",
+          "source_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "location": "1 William St, Darlinghurst NSW 2010, Australia",
+          "start_time": "2026-10-13T10:00:00+11:00",
+          "end_time": "2026-10-13T12:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A mostly indoor start suited to the forecast of moderate rain showers. Supplied hours list 10:00–17:00; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-art-gallery-nsw",
+          "title": "Visit the Art Gallery of New South Wales",
+          "place_name": "Art Gallery of New South Wales",
+          "source_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "location": "Art Gallery Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-13T13:30:00+11:00",
+          "end_time": "2026-10-13T16:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours list 10:00–17:00; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-opera-house",
+          "title": "Visit Sydney Opera House",
+          "place_name": "Sydney Opera House",
+          "source_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "location": "Bennelong Point, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-14T10:00:00+11:00",
+          "end_time": "2026-10-14T11:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "Opening hours and date-specific operating status were not established by the supplied evidence; confirm access before planning an interior visit."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-mca",
+          "title": "Explore the Museum of Contemporary Art Australia",
+          "place_name": "Museum of Contemporary Art Australia",
+          "source_place_id": "ChIJ68aBlEKuEmsRHUA9oME5Zh0",
+          "location": "140 George St, The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-14T12:00:00+11:00",
+          "end_time": "2026-10-14T14:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours list 10:00–17:00; date-specific exceptions are unknown. A useful indoor stop in the drizzle forecast."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-the-rocks",
+          "title": "Explore The Rocks",
+          "place_name": "The Rocks",
+          "source_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "location": "The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-14T14:30:00+11:00",
+          "end_time": "2026-10-14T16:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Allow for an unhurried district visit; operating details for this date were not established in the supplied evidence."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-botanic-garden",
+          "title": "Visit Royal Botanic Garden Sydney",
+          "place_name": "Royal Botanic Garden Sydney",
+          "source_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-15T09:30:00+11:00",
+          "end_time": "2026-10-15T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours list 07:00–17:00; date-specific exceptions are unknown. The forecast calls for dense drizzle, so expect a wet outdoor visit."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-tower-eye",
+          "title": "Visit Sydney Tower Eye",
+          "place_name": "Sydney Tower Eye",
+          "source_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+          "location": "Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-15T12:00:00+11:00",
+          "end_time": "2026-10-15T13:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours list 11:00–19:00; date-specific exceptions are unknown. Views may be affected by the forecast drizzle."
+        }
+      ]
+    }
+  ]
+}

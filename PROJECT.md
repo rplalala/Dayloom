@@ -289,9 +289,12 @@ human reports without changing primary scores. The
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-requires fresh case-01 completion and a validated final-case package. Previous
-case-01 preparation has been discarded; [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
-waits for an explicit restart. No case acceptance or human assessment is claimed.
+owns fresh case-01 workflow acceptance. Case-01 generation, primary scoring and
+authorized diagnostics are complete; its [public report](benchmark/case-01/report.md)
+summarizes the observations, with native evidence retained in ignored private storage.
+[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) awaits the user's
+automatic acceptance decision. Subsequent runs report primary scores and pause
+before further diagnostics. No human assessment or case acceptance is claimed.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

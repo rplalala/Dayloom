@@ -1,0 +1,255 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Sydney Observatory",
+      "source_place_id": null,
+      "reason": "A historic observatory and additional point of interest that could complement time spent exploring The Rocks.",
+      "associated_day": "2026-10-14",
+      "area": "The Rocks",
+      "uncertainty": "The proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Hyde Park Barracks",
+      "source_place_id": null,
+      "reason": "A heritage museum near the planned Hyde Park visit, offering an optional historical perspective on central Sydney.",
+      "associated_day": "2026-10-15",
+      "area": "Hyde Park",
+      "uncertainty": "The proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "days": [
+    {
+      "date": "2026-10-13",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-opera-house",
+          "title": "Sydney Opera House",
+          "place_name": "Sydney Opera House",
+          "source_place_id": null,
+          "location": "Bennelong Point, Sydney",
+          "start_time": "2026-10-13T09:00:00+11:00",
+          "end_time": "2026-10-13T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Allow time to enjoy the building and harbor setting. Any interior visit or tour would depend on availability; this itinerary does not confirm it."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day1-walk-to-garden",
+          "title": "Walk to the Royal Botanic Garden",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-13T11:00:00+11:00",
+          "end_time": "2026-10-13T11:20:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 20-minute walk via the harbor-side paths; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-opera-house",
+            "to_activity_id": "day1-botanic-garden"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-botanic-garden",
+          "title": "Royal Botanic Garden Sydney",
+          "place_name": "Royal Botanic Garden Sydney",
+          "source_place_id": null,
+          "location": "Mrs Macquaries Road, Sydney",
+          "start_time": "2026-10-13T11:20:00+11:00",
+          "end_time": "2026-10-13T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A relaxed garden visit with harbor views."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day1-walk-to-art-gallery",
+          "title": "Walk to the Art Gallery of New South Wales",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-13T13:00:00+11:00",
+          "end_time": "2026-10-13T13:25:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 25-minute walk from the garden; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-botanic-garden",
+            "to_activity_id": "day1-art-gallery"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-art-gallery",
+          "title": "Art Gallery of New South Wales",
+          "place_name": "Art Gallery of New South Wales",
+          "source_place_id": null,
+          "location": "Art Gallery Road, Sydney",
+          "start_time": "2026-10-13T13:25:00+11:00",
+          "end_time": "2026-10-13T16:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Time for a focused visit to the gallery; exhibitions and access are not confirmed."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-rocks",
+          "title": "Explore The Rocks",
+          "place_name": "The Rocks",
+          "source_place_id": null,
+          "location": "The Rocks, Sydney",
+          "start_time": "2026-10-14T09:00:00+11:00",
+          "end_time": "2026-10-14T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Explore the historic precinct and its lanes at an unhurried pace."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day2-walk-to-mca",
+          "title": "Walk to the Museum of Contemporary Art Australia",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-14T11:00:00+11:00",
+          "end_time": "2026-10-14T11:15:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 15-minute walk; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-rocks",
+            "to_activity_id": "day2-mca"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-mca",
+          "title": "Museum of Contemporary Art Australia",
+          "place_name": "Museum of Contemporary Art Australia",
+          "source_place_id": null,
+          "location": "Circular Quay West, Sydney",
+          "start_time": "2026-10-14T11:15:00+11:00",
+          "end_time": "2026-10-14T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A contemporary art visit on the harbor."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day2-transit-to-taronga",
+          "title": "Travel to Taronga Zoo",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-14T13:00:00+11:00",
+          "end_time": "2026-10-14T13:45:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 45-minute journey including getting to the ferry and crossing from the Circular Quay area; route and duration are not live-verified, and no service times or fares are confirmed.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "day2-mca",
+            "to_activity_id": "day2-taronga-zoo"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-taronga-zoo",
+          "title": "Taronga Zoo Sydney",
+          "place_name": "Taronga Zoo Sydney",
+          "source_place_id": null,
+          "location": "Bradleys Head Road, Mosman",
+          "start_time": "2026-10-14T13:45:00+11:00",
+          "end_time": "2026-10-14T17:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Allow several hours for a substantial zoo visit. Admission and operating details are not checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-australian-museum",
+          "title": "Australian Museum",
+          "place_name": "Australian Museum",
+          "source_place_id": null,
+          "location": "1 William Street, Sydney",
+          "start_time": "2026-10-15T09:30:00+11:00",
+          "end_time": "2026-10-15T12:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Time for a visit to the museum's natural history and cultural collections; access and exhibitions are not confirmed."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day3-walk-to-hyde-park",
+          "title": "Walk to Hyde Park",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T12:00:00+11:00",
+          "end_time": "2026-10-15T12:15:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 15-minute walk; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-australian-museum",
+            "to_activity_id": "day3-hyde-park"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-hyde-park",
+          "title": "Hyde Park",
+          "place_name": "Hyde Park",
+          "source_place_id": null,
+          "location": "Sydney central business district",
+          "start_time": "2026-10-15T12:15:00+11:00",
+          "end_time": "2026-10-15T13:15:00+11:00",
+          "estimated_cost": null,
+          "notes": "A relaxed park visit among the city's central landmarks."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day3-walk-to-qvb",
+          "title": "Walk to the Queen Victoria Building",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T13:15:00+11:00",
+          "end_time": "2026-10-15T13:35:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model-estimated 20-minute walk; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-hyde-park",
+            "to_activity_id": "day3-qvb"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-qvb",
+          "title": "Queen Victoria Building",
+          "place_name": "Queen Victoria Building",
+          "source_place_id": null,
+          "location": "George Street, Sydney",
+          "start_time": "2026-10-15T13:35:00+11:00",
+          "end_time": "2026-10-15T15:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Explore the landmark building and its architecture; individual shop access is not confirmed."
+        }
+      ]
+    }
+  ]
+}

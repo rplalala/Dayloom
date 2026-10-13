@@ -121,6 +121,12 @@ evidence snapshots for the accepted batch and reviewed paired context. It sends
 no requests. Primary sources must replay successfully and retain closed execution
 receipts; saved generation sources must bind the selected V3 run, original input,
 result, usage, provenance, runtime configuration and hashed evidence index.
+When native finalization qualifies a producer declaration, the import retains its
+exact bytes and selected hash alongside the generation's original provenance.
+The declaration's explicit `native_provenance_ref` must bind those original bytes;
+the original fields must agree, except qualification actor/time/rationale metadata.
+This explicit lineage replaces direct hash equality between the two different
+artifacts; missing, changed or contradictory links remain material errors.
 Raw filtered request/response bodies must be complete. Partial captures can supply
 only individually supported observations; source drift requires material correction.
 

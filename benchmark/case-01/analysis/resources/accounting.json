@@ -1,0 +1,157 @@
+{
+  "schema_version": "case01_observed_accounting_1",
+  "currency": "USD",
+  "rows": [
+    {
+      "bucket": "generation_v0",
+      "run_id": "case01-v0-20261012T232752Z",
+      "usage_ref": {
+        "path": "generation/v0/usage.json",
+        "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f"
+      },
+      "cost_ref": {
+        "path": "generation/configuration/observed-cost-v0.json",
+        "sha256": "e37be473ff7f1504d41da4a190d0af67a8f291fa15672d409522dec2b9f1e781"
+      },
+      "model_calls": 1,
+      "google_sends": 0,
+      "http_sends": 1,
+      "observed_tokens": 7027,
+      "estimated_usd": "0.00241055",
+      "actual_bill": null,
+      "unpriced_events": 0,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "bucket": "generation_v1",
+      "run_id": "case01-v1-20261012T232752Z",
+      "usage_ref": {
+        "path": "generation/v1/usage.json",
+        "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f"
+      },
+      "cost_ref": {
+        "path": "generation/configuration/observed-cost-v1.json",
+        "sha256": "4091072175dda6fc7a46804756a5875c0cb0db75484dd5178dd81de1c2d590d3"
+      },
+      "model_calls": 3,
+      "google_sends": 54,
+      "http_sends": 58,
+      "observed_tokens": 35862,
+      "estimated_usd": "1.638289475",
+      "actual_bill": null,
+      "unpriced_events": 0,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "bucket": "generation_v2",
+      "run_id": "case01-v2-20261012T232752Z",
+      "usage_ref": {
+        "path": "generation/v2/usage.json",
+        "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623"
+      },
+      "cost_ref": {
+        "path": "generation/configuration/observed-cost-v2.json",
+        "sha256": "fe412711d5205e3a9fa5df903b7dbcb648616728aa098d5c304d1433f6cafe73"
+      },
+      "model_calls": 4,
+      "google_sends": 69,
+      "http_sends": 74,
+      "observed_tokens": 35997,
+      "estimated_usd": "1.985985875",
+      "actual_bill": null,
+      "unpriced_events": 0,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "bucket": "generation_v3",
+      "run_id": "case01-v3-20261012T232752Z",
+      "usage_ref": {
+        "path": "generation/v3/usage.json",
+        "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d"
+      },
+      "cost_ref": {
+        "path": "generation/configuration/observed-cost-v3.json",
+        "sha256": "ccad3e06ef3a996d7ef1a28aebebdfc1fe80fafd3a6dca53058f7f8bc9402aba"
+      },
+      "model_calls": 6,
+      "google_sends": 72,
+      "http_sends": 79,
+      "observed_tokens": 76608,
+      "estimated_usd": "2.02191637",
+      "actual_bill": null,
+      "unpriced_events": 0,
+      "repair_model_calls_subset": 2
+    },
+    {
+      "bucket": "primary",
+      "usage_ref": {
+        "path": "evaluation/primary/run/execution/usage.json",
+        "sha256": "09aa2bd1de2f1b727f7e512fa71a185eaf53625040cab26d4ba644f0ef801a5e"
+      },
+      "report_ref": {
+        "path": "evaluation/primary/run/execution/report.json",
+        "sha256": "cb2ea3bab8a65c6ed67dcfa4ab89c9402ac75978339392cd8b2a95bcc367d305"
+      },
+      "model_calls": 1,
+      "google_sends": 59,
+      "retries": 0,
+      "estimated_usd": "1.262721675",
+      "actual_bill": null,
+      "unpriced_events": 0
+    },
+    {
+      "bucket": "opening",
+      "usage_ref": {
+        "path": "evaluation/primary/opening/execution/usage.json",
+        "sha256": "5483f7a11a33af937fed3ce51dee70ddf287ab9b34d5085af924385ddd0e4db0"
+      },
+      "report_ref": {
+        "path": "evaluation/primary/opening/execution/report.json",
+        "sha256": "57ae01ed387e254a915d72c3dc66430a98401ed6c9640dac8025f05e2804f61d"
+      },
+      "model_calls": 1,
+      "google_sends": 0,
+      "retries": 0,
+      "estimated_usd": "0.002489925",
+      "actual_bill": null,
+      "unpriced_events": 0
+    },
+    {
+      "bucket": "pair",
+      "usage_ref": {
+        "path": "evaluation/v3-pair/run/execution/usage.json",
+        "sha256": "d2bcb06519f823bda8bbe522c3a333e79d3a6debe0df67458771fe62972defbc"
+      },
+      "report_ref": {
+        "path": "evaluation/v3-pair/run/execution/report.json",
+        "sha256": "c94cb725be8dae511c8ac6374e0bc67adf6d4debb98e3a5a50e60ba2a11cbdb2"
+      },
+      "model_calls": 0,
+      "google_sends": 0,
+      "retries": 0,
+      "estimated_usd": "0",
+      "actual_bill": null,
+      "unpriced_events": 0
+    }
+  ],
+  "estimated_total": "6.913813870",
+  "actual_account_bill": null,
+  "codex_actor_bill": null,
+  "google_sends": 254,
+  "model_calls_including_embedding": 16,
+  "allowances_ref": {
+    "path": "generation/configuration/approved-allowances.json",
+    "sha256": "d27be301d8eebb6efc8578f3014f521a6a419229c5d687fa16e4ca78f7cd8445"
+  },
+  "commands_ref": {
+    "path": "analysis/resources/commands/executions.json",
+    "sha256": "6a6d0892a0e253054fd7c594e2289f915ba379171e870be5788cb4c40a32e983"
+  },
+  "actors_ref": {
+    "path": "analysis/resources/actors/operations.json",
+    "sha256": "095ffe9501326854f64e8416169e6c9f9fc0385157dd32d48c7457ed3ad7d521"
+  },
+  "basis": "2026-10-13 official retail references; disclosed OpenAI proxy for Foundry. Account prices/invoice unavailable. No API price assigned to Codex actors.",
+  "deduplication": "Each original generation/primary/opening usage is charged once. Pair inherited source usage is informational and excluded. Repair and embedding transport are subsets, not extra added charges.",
+  "scope": "Observed instrumented service consumption. Review/executor token telemetry and billing are unavailable; zero pair sends does not imply zero Codex execution cost."
+}

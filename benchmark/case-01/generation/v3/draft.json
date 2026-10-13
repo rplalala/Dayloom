@@ -1,0 +1,10 @@
+{
+  "schema_version": "case_itinerary_delta_1",
+  "base_ref": {
+    "path": "itinerary.json",
+    "sha256": "42745c69d58ee2c7f1401cdd6afcc4e9d54aee3444686d396864fcd60b828d38"
+  },
+  "replace": {
+    "reference_recommendations": []
+  }
+}

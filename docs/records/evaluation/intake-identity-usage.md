@@ -1262,6 +1262,13 @@ provider receipts and complete selected-generation wire observations retain thei
 original acquisition labels; the evaluator reruns checks. A separate imported
 schema represents missing observations without inventing acquisition attempts.
 Current sends and charges stay zero, with source usage retained separately.
+Native finalization qualifies producer declarations with actor/time/rationale while
+binding the original provenance explicitly. Real case material exposed an importer
+that incorrectly required those two files to have the same byte hash. Correction
+`ee73e27` validates the selected declaration, its exact original-provenance link and
+all original non-qualification fields, then copies both into the immutable import.
+Missing links, wrong native hashes, conflicting configuration and wrapper drift
+remain rejected; source result, usage, evidence and request semantics are unchanged.
 
 The initial full backend run passed 4,087 tests, skipped 16 and failed the static
 dependency allowlist for the new offline `copy` import. The specific allowance was
@@ -1282,11 +1289,67 @@ seconds. The guide and import contract now describe the implemented behavior.
 Changed Python files pass Ruff lint/format.
 This reconciles affected coverage rather than claiming a second clean full run.
 
+The native-finalization regression first reproduced the hash mismatch, then passed
+with the original source link bound explicitly. The complete affected paired CLI
+passed 81 tests in 250.22 seconds, and the offline intake dependency guard passed
+separately. Final independent corrective review closed the real provenance defect
+without new findings. The three bounded corrective operations cover the departure
+finding, the pair review's invalid empty optional source list, and this finalized
+provenance defect; all ten approved review operations are used.
+
+Fresh case-01 completed one native dispatch per V0-V3, primary acquisition and one
+incremental missing-hours model assessment. Four-final intake and the exact-source
+census pass. Reference service estimates are USD 5.64860227 for generation,
+1.262721675 for primary and 0.002489925 for opening, total 6.91381387; account and
+Codex actor bills remain unavailable. The six paid commands used 327.062 seconds
+of active execution, without retries. Primary used 59 Google and one model send;
+opening used zero Google and one model send. The paired import, execution, replay
+and portable handoff use zero Google/model sends and retries. In this actual run,
+all 31 identity and 23 evidence observations matched primary responses; valid
+generation observations remain source-bound without being needed for the pair.
+
+Selected primary quality retains four V0 UNKNOWN checks and one opening FAIL.
+The paired draft/final each retain three opening UNKNOWN checks, with zero overall
+delta; the separate primary opening-model verdicts are not imported as raw evidence.
+V3 Repair rejected its proposed change. Empty original POI interests make relevance
+non-applicable; complete candidate/process reports still retain V1/V2 memberships,
+origins and omissions, including partial V2 discovery. These are descriptive case
+observations, with user automatic acceptance and later human review still pending.
+
+The paid opening packet pins 81 implementation files at execution source `b3ddccd`.
+Changing the import adapters afterward correctly makes bare current-tree opening
+replay stale. The local case retains exact execution-era scoring sources and an
+explicit runtime declaration, with only the two hash-verified `ee73e27` import
+adapters selected separately. Network-denied replay reproduces original primary,
+opening, pair and all five native report semantics without altering packets or
+receipts. This is a disclosed composed source runtime, not a single-release replay
+claim. Selected quality content hash is
+`c8eb50ec6a511fb5bb69106317fed0102f7c558047d53ff0ceecbc6dbbd73057`;
+pair content hash is
+`26d17225b1249b9d99048b03d557f89e30116da673ea0f77ddfe69aabd3aec3f`.
+
 Local evidence identifiers are `artifacts/tall45`, `tverify51`, `tconsumer52`,
-`tduplicate53`, `tintegrity54`, `tzero55`, `tdeparture56` and `tdeparture57`.
-Fixtures deny external network and use synthetic responses. Real case-01
-execution/acceptance remains pending; no provider bill, formal version conclusion
-or freeze follows from this gate.
+`tduplicate53`, `tintegrity54`, `tzero55`, `tdeparture56`, `tdeparture57`,
+`tfinalized59`, `tfinalized62` and `tstatic63`. Synthetic engineering fixtures deny
+external network. The real package's original identifier was `benchmark/case-01/`.
+Authorized storage relocation preserved the original 7,699 non-cache files before
+subsequent cleanup on 2026-10-13 from base `f9c6d25` with local documentation
+changes. The compact private archive now retains 4,184 original
+logical paths and 1,185 unique byte sequences in ignored
+`benchmark/scratch/case-01/archive/`, about 6.34 MB including metadata and helpers.
+Synthetic tests/preflights, compiled caches, assembly scripts, redundant paired
+working/import trees and superseded selections/source exports were deleted. Authentic
+captures, semantic reviews, all-attempt consumption and required native dependencies
+remain archived without changing original bytes, receipts or source hashes.
+Restoring to a fresh root verified all retained hashes/lengths and reproduced all
+five saved process/resource reports, including quality and pair dependencies, under
+network denial. Original preparations retain historical absolute bindings, so their
+standalone acquisition replay commands remain non-portable. The
+[public case report](../../../benchmark/case-01/report.md) links selected requirements,
+itineraries, usage/provenance and evaluation/mechanism/resource outputs. Its 25 material
+entries expand to the restored original selected JSON values. Original source paths
+now identify archive manifest entries; the private helper restores them for replay.
+Case acceptance remains pending. No formal version conclusion or freeze follows.
 
 ## Multi-case suite engineering acceptance (2026-10-11)
 

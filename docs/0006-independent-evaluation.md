@@ -256,8 +256,8 @@ from source evidence. Tools consume these judgments; they cannot invent them.
 Personal intent requiring clarification comes from the user. Real raters provide
 the later human preference, pace and usefulness answers.
 
-Within the authorized scope, Codex advances preparation through source/replay checks
-without repeated step approvals. The
+Within the authorized scope, Codex advances through generation and primary scoring,
+reports the V0-V3 results and pauses for the user's next instruction. The
 [intervention boundary](../benchmark/README.md#user-intervention-and-execution-boundaries)
 defines stops for changed inputs, blocking uncertainty, uncovered operations/limits
 and unresolved defects; the user decides final automatic acceptance. Independent

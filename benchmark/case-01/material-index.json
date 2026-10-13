@@ -1,0 +1,313 @@
+{
+  "schema_version": "case_public_material_1",
+  "case_id": "case-01",
+  "input_ref": {
+    "path": "../inputs/case-01.json",
+    "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88"
+  },
+  "private_source_root_identifier": "benchmark/scratch/case-01",
+  "scope": "Selected shareable outputs; not a closed native acquisition/replay bundle. Original source paths and report bindings identify retained private evidence.",
+  "materials": [
+    {
+      "material": "requirements/reviewed-requirements.json",
+      "path": "requirements/reviewed-requirements.json",
+      "sha256": "6179b513c9292c694ca77155f569a34707062883f9bea1f2366f4cfbfc89c882",
+      "bytes": 444,
+      "representation": "exact_json_value_normalized_lf",
+      "original_source": {
+        "path": "requirements/reviewed-requirements.json",
+        "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37"
+      }
+    },
+    {
+      "material": "interests/interests.json",
+      "path": "interests/interests.json",
+      "sha256": "3ae2ee08eb8de93e4230e151c55b969682b8982e3a6c8f6abebdee09afb8bd06",
+      "bytes": 1097,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "interests/interests.json",
+        "sha256": "3ae2ee08eb8de93e4230e151c55b969682b8982e3a6c8f6abebdee09afb8bd06"
+      }
+    },
+    {
+      "material": "generation/runtime-policy.json",
+      "path": "generation/runtime-policy.json",
+      "sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512",
+      "bytes": 6465,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/configuration/runtime-policy.json",
+        "sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512"
+      }
+    },
+    {
+      "material": "generation/v0/itinerary.json",
+      "path": "generation/v0/itinerary.json",
+      "sha256": "732d6f5b732f69f0464ddbde865b0cdf9bceb2f9be5ba4bc986f533fa7757805",
+      "bytes": 10069,
+      "representation": "exact_json_subtree",
+      "original_source": {
+        "path": "generation/v0/result.json",
+        "sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "material": "generation/v0/usage.json",
+      "path": "generation/v0/usage.json",
+      "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f",
+      "bytes": 3047,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v0/usage.json",
+        "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f"
+      }
+    },
+    {
+      "material": "generation/v0/provenance.json",
+      "path": "generation/v0/provenance.json",
+      "sha256": "eb58f695b44b32f58fa0a79e8414fbad67d923efe3bc14c733dd05c3571ecfc4",
+      "bytes": 970,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v0/provenance.json",
+        "sha256": "eb58f695b44b32f58fa0a79e8414fbad67d923efe3bc14c733dd05c3571ecfc4"
+      }
+    },
+    {
+      "material": "generation/v1/itinerary.json",
+      "path": "generation/v1/itinerary.json",
+      "sha256": "6b1cd4da3a16f6215cd40b205bded6121d0a987d070fca1a100719c5704ed0fd",
+      "bytes": 22235,
+      "representation": "exact_json_subtree",
+      "original_source": {
+        "path": "generation/v1/result.json",
+        "sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "material": "generation/v1/usage.json",
+      "path": "generation/v1/usage.json",
+      "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f",
+      "bytes": 39602,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v1/usage.json",
+        "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f"
+      }
+    },
+    {
+      "material": "generation/v1/provenance.json",
+      "path": "generation/v1/provenance.json",
+      "sha256": "574b2e1a1458cc5a87d08731f6337b74dde54971ae58f112d4b76a00ee6abf8d",
+      "bytes": 970,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v1/provenance.json",
+        "sha256": "574b2e1a1458cc5a87d08731f6337b74dde54971ae58f112d4b76a00ee6abf8d"
+      }
+    },
+    {
+      "material": "generation/v2/itinerary.json",
+      "path": "generation/v2/itinerary.json",
+      "sha256": "ab63696fd68b0a068725599125110bebd9cb75a8a059fb0dffaa53b165c0180f",
+      "bytes": 18519,
+      "representation": "exact_json_subtree",
+      "original_source": {
+        "path": "generation/v2/result.json",
+        "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "material": "generation/v2/usage.json",
+      "path": "generation/v2/usage.json",
+      "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623",
+      "bytes": 52219,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v2/usage.json",
+        "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623"
+      }
+    },
+    {
+      "material": "generation/v2/provenance.json",
+      "path": "generation/v2/provenance.json",
+      "sha256": "46d810b5ecc025f87784f835538b9f96d3cc0b858822bc17b73581b1c4e16891",
+      "bytes": 970,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v2/provenance.json",
+        "sha256": "46d810b5ecc025f87784f835538b9f96d3cc0b858822bc17b73581b1c4e16891"
+      }
+    },
+    {
+      "material": "generation/v3/itinerary.json",
+      "path": "generation/v3/itinerary.json",
+      "sha256": "42745c69d58ee2c7f1401cdd6afcc4e9d54aee3444686d396864fcd60b828d38",
+      "bytes": 23919,
+      "representation": "exact_json_subtree",
+      "original_source": {
+        "path": "generation/v3/result.json",
+        "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "material": "generation/v3/usage.json",
+      "path": "generation/v3/usage.json",
+      "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d",
+      "bytes": 61799,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v3/usage.json",
+        "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d"
+      }
+    },
+    {
+      "material": "generation/v3/provenance.json",
+      "path": "generation/v3/provenance.json",
+      "sha256": "5f99c543729e9f310039b6bd10e00e0b38e9b2628f4acdab726b820214662d55",
+      "bytes": 970,
+      "representation": "exact_source_bytes",
+      "original_source": {
+        "path": "generation/v3/provenance.json",
+        "sha256": "5f99c543729e9f310039b6bd10e00e0b38e9b2628f4acdab726b820214662d55"
+      }
+    },
+    {
+      "material": "generation/v3/draft.json",
+      "path": "generation/v3/draft.json",
+      "sha256": "6bbb2ad821c7aa1240bff59a8c3774b0443219b9c0ebf90a069d4f1eb6914812",
+      "bytes": 237,
+      "representation": "lossless_delta_from_final_itinerary",
+      "original_source": {
+        "path": "generation/v3/result.json",
+        "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+        "json_pointer": "/v3/draft"
+      }
+    },
+    {
+      "material": "evaluation/primary/quality-report.json",
+      "path": "evaluation/primary/quality-report.json",
+      "sha256": "eb3b38739dc04e123c4e4804af0ea029c3e2292ac0843ace7670110a0ef6e8d1",
+      "bytes": 879832,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "evaluation/primary/quality-report.json",
+        "sha256": "60c585647147df8f2a1a15ac104295101768127cbf829562a9e040452257d691"
+      }
+    },
+    {
+      "material": "evaluation/v3-pair/pair-report.json",
+      "path": "evaluation/v3-pair/pair-report.json",
+      "sha256": "235993d2747604303a7b526ae963554738558724ba96b50dfa9113947f6c020d",
+      "bytes": 471827,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "evaluation/v3-pair/handoff/execution/pair-report.json",
+        "sha256": "7b531b30d5c6e0258a56567783b37ee99531cdd65f768e7535a638cb86439da9"
+      }
+    },
+    {
+      "material": "analysis/poi-process/opportunities.json",
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "4e214f18c653cb799ebdddd0e3fda832336581a672edf43d0e8fb6a132dc3e3c",
+      "bytes": 153976,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "analysis/poi-process/opportunities/opportunities.json",
+        "sha256": "b6a92846916cdc5e29d9922d1eec413c3d3d2a9c70216f3cc9ced898adac4673"
+      }
+    },
+    {
+      "material": "analysis/poi-process/relevance.json",
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "dc89908d831bd2166710c9ce92ceaee439103680972f89f0539d77b7d584c5d3",
+      "bytes": 16720,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "analysis/poi-process/relevance/relevance.json",
+        "sha256": "0da8e8768622b78125fe741d437eab57997132e5c7efd90422f5c71fa0fe2226"
+      }
+    },
+    {
+      "material": "analysis/repair/repair.json",
+      "path": "analysis/repair/repair.json",
+      "sha256": "701e1f7502cc9b5cdb6325f93c4c206de8e2b58fabf295831f7d6dc3e0653468",
+      "bytes": 292913,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "analysis/repair/report/repair.json",
+        "sha256": "f216043feef0e29b1914e3186a4be0fc014c62b1c7d34dfaddd9fdfd99d59d02"
+      }
+    },
+    {
+      "material": "analysis/resources/population.json",
+      "path": "analysis/resources/population.json",
+      "sha256": "e13b46eeaf4ef9bb65baf5460405026f0dbbbd6a6a78241a99e04eda00bff07f",
+      "bytes": 29822,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "analysis/resources/population/population.json",
+        "sha256": "32dfbc8ee1f9d3345938a9b4c3d0f701a50c6c0a51faab29db9bd81e6f4d6152"
+      }
+    },
+    {
+      "material": "analysis/resources/tradeoffs.json",
+      "path": "analysis/resources/tradeoffs.json",
+      "sha256": "9e998662c26c0a006101dfa2970244fae57183e40179faf1c2ef2d93b0dffb12",
+      "bytes": 804198,
+      "representation": "exact_source_bytes_with_shared_json_references",
+      "original_source": {
+        "path": "analysis/resources/tradeoffs/tradeoffs.json",
+        "sha256": "1260f20052a475a84a2e51596f6a82e26e1d7a28bcca211a4f19e7224bf241c3"
+      }
+    },
+    {
+      "material": "analysis/resources/accounting.json",
+      "path": "analysis/resources/accounting.json",
+      "sha256": "ec5d879124501d3f0556958474c90c612d6644649a1bcc8ebaf20db875cd5b19",
+      "bytes": 5640,
+      "representation": "exact_json_value_normalized_lf",
+      "original_source": {
+        "path": "analysis/resources/accounting.json",
+        "sha256": "da7af522dd50a456a904b0eaccb34bf38bcd29b67510ece2633042687ed75a97"
+      }
+    },
+    {
+      "material": "generation/rag-origins.json",
+      "path": "generation/rag-origins.json",
+      "sha256": "76e2dcc2a6ad514b7818ee6dcec4238ce58590472c3da623caadf60706720797",
+      "bytes": 16880,
+      "representation": "exact_json_subtree",
+      "original_source": {
+        "path": "generation/v2/result.json",
+        "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+        "json_pointer": "/rag_discovery/origins"
+      },
+      "additional_original_sources": [
+        {
+          "path": "generation/v3/result.json",
+          "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+          "json_pointer": "/rag_discovery/origins"
+        }
+      ]
+    }
+  ],
+  "shared_json_reference_format": {
+    "marker": "$case_material_ref",
+    "path_base": "directory containing the referring material file",
+    "pointer": "RFC 6901 JSON Pointer into the referenced publication JSON; then recursively expand its selected value",
+    "semantic_sha256": "SHA-256 of expanded JSON encoded as UTF-8 with sorted object keys, no ASCII escaping and compact separators",
+    "scope": "Publication references; original native reports and their receipt/content hashes remain preserved privately."
+  },
+  "private_source_storage": {
+    "format": "case_private_archive_1",
+    "manifest_identifier": "benchmark/scratch/case-01/archive/manifest.json",
+    "blob_identifier": "benchmark/scratch/case-01/archive/blobs.zip",
+    "path_semantics": "Original source paths are logical entries restored from the private archive; they are not live files under its storage root."
+  }
+}

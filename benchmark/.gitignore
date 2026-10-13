@@ -1,6 +1,2 @@
-/*
-!/.gitignore
-!/README.md
-!/inputs/
-/inputs/*
-!/inputs/case-*.json
+# Private execution material and long-term archives
+/scratch/

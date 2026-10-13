@@ -746,7 +746,7 @@ consuming saved material from producing or independently reviewing it:
 | V3 paired evidence | `pair acquire prepare/execute/replay/export` connects native paired plans, independent acquisition, receipts and report handoff; `pair prepare/report` remains available | Caller supplies the original selected stages, independent contexts/reviews, compatible prices and explicit limits. Primary final evaluation does not implicitly acquire paired material. |
 | Independent primary evaluation | `evaluate prepare/execute/replay` acquires, reports and replays qualified four-final material | Caller supplies required reviewed contexts, compatible prices/options and explicit live limits/authorization. |
 | Deferred human assessment | Native human prepare/package/import/report and optional offline suite attachments exist | Real raters must supply answers; package processing, agent output and approval cannot generate human assessment. |
-| Corpus-free mechanism reports and final-case handoff | Existing stage/pair/research tools provide native source material | #138 tracks corpus-free relevance presentation and verification of the fixed `benchmark/<case-id>/` layout; implement only gaps established under an approved scope. |
+| Corpus-free mechanism reports and final-case handoff | Existing stage/pair/research tools provide native source material | #138 tracks corpus-free relevance presentation and verification of the public case materials and private working/archive layout described in [benchmark storage](../../benchmark/README.md#layout); implement only gaps established under an approved scope. |
 
 The defects/enhancements above are tracked in
 [#131](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/131),

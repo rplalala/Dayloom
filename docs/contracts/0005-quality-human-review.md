@@ -311,7 +311,12 @@ Corpus measurement, corpus coverage sidecars and corpus coverage reporting are
 Their native contracts remain available when explicitly selected. Retain runtime
 RAG source identity without requiring a database-wide scan. The
 [final-case layout](../../benchmark/README.md#layout) preserves native dependencies
-and later human material; each case Issue owns its actual readiness and decision.
+and later human material in ignored private scratch storage, with a public case
+report and deduplicated selected materials. The
+[private archive retention rules](../../benchmark/README.md#private-archive-retention)
+require compact long-term evidence, deletion of unnecessary working copies and
+restored offline validation before removal. Each case Issue owns readiness and decisions;
+the primary-score handoff pauses for the user's next instruction.
 
 1. **Automatic acceptance:** the user jointly accepts the exact input revision,
    independently reviewed requirements, selected V0-V3 outputs, admitted manifest,
