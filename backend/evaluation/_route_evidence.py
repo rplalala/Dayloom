@@ -135,7 +135,7 @@ def conjunction(components):
 
 def components(leg, observed, applicable):
     components = {
-        "mode_policy": leg["mode_policy"],
+        "mode_policy": leg.get("mode_policy_score", leg["mode_policy"]),
         "availability": {
             "state": observed["state"] if applicable else "UNKNOWN",
             "reason": observed["reason"] if applicable else "query_context_inapplicable",

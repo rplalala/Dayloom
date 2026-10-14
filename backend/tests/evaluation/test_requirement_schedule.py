@@ -89,6 +89,65 @@ def first(report, version="v0"):
     return next(item for item in report["results"] if item["version"] == version)
 
 
+@pytest.mark.parametrize("mode,state", [("WALK", "PASS"), ("DRIVE", "FAIL"), (None, "UNKNOWN")])
+def test_transport_obligation_is_executable_with_independent_sources(scenario, mode, state):
+    obligation = {
+        "obligation_id": "mode-policy",
+        "kind": "transport_modes",
+        "resolution": "resolved",
+        "scope": "whole_trip",
+        "allowed_modes": ["WALK", "TRANSIT"],
+        "source_refs": SOURCE,
+    }
+
+    def change(results):
+        for version, result in results.items():
+            itinerary = result["itinerary"]
+            if version == "v0":
+                activity = itinerary["days"][0]["activities"][1]
+                activity["title"] = "Transfer"
+                activity["transport"] = {
+                    "mode": mode,
+                    "from_activity_id": "a",
+                    "to_activity_id": "b",
+                }
+            else:
+                itinerary["transfers"] = [
+                    {
+                        "from_activity_id": "a",
+                        "to_activity_id": "b",
+                        "mode": mode,
+                        "departure_time": "2020-01-01T10:00:00+00:00",
+                        "arrival_time": "2020-01-01T10:20:00+00:00",
+                    }
+                ]
+
+    intake, identity, _ = scenario([obligation], change=change)
+    report = score_requirement_schedule(intake, identity).to_dict()
+    assert report["status"] == "complete", report
+    assert report["rules_version"] == "rtpeval_requirement_schedule_rules_4"
+    for version in ("v0", "v1", "v2", "v3"):
+        check = first(report, version)["requirements"]["checks"][0]
+        assert check["state"] == state
+        assert check["sources"] == SOURCE
+        assert check["aggregation_owner"] == "requirements"
+        assert first(report, version)["requirements"]["denominator"] == 1
+        assert first(report, version)["requirements"]["unclassified_obligations"] == []
+    from backend.evaluation.routes import prepare_routes
+
+    routes = prepare_routes(intake, identity).to_dict()
+    assert routes["status"] == "complete", routes
+    assert routes["rules"]["version"] == "rtpeval_route_rules_3"
+    assert all(
+        leg["mode_policy"]["state"] == state for row in routes["results"] for leg in row["legs"]
+    )
+    assert all(
+        leg["mode_policy_score"]["state"] == ("UNKNOWN" if mode is None else "PASS")
+        for row in routes["results"]
+        for leg in row["legs"]
+    )
+
+
 def test_identity_report_requires_current_association_policy(scenario):
     intake, identity, _ = scenario()
     stale = identity.to_dict()

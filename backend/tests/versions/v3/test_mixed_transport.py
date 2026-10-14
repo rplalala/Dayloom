@@ -79,6 +79,25 @@ def test_drive_reserve_must_fit_actual_gap_and_explicit_walk_is_restrictive():
     assert allowed_modes(scope) == ("WALK",)
 
 
+def test_hard_modes_exclude_cached_drive_from_repair_candidates():
+    original = draft()
+    ctx = context(
+        places=(place(), place("b", longitude=0.03)),
+        route_evidence=(measured("WALK", 4200), measured("DRIVE", 1080)),
+    )
+    scope = scope_for(original, ctx, check="coverage", add_dates=(DAY,)).model_copy(
+        update={"allowed_transport_modes": ("WALK", "TRANSIT")}
+    )
+    assert allowed_modes(scope) == ("WALK", "TRANSIT")
+    result = run(
+        original=original,
+        ctx=ctx,
+        scope=scope,
+        model=Model([edit("12:00", "13:00", operation="add", activity_id=None, place_id="b")]),
+    )
+    assert all(t.mode != "DRIVE" for t in result.final.transfers)
+
+
 def test_transit_time_mismatch_and_unknown_drive_do_not_become_options():
     left, right = activity(), activity("two", "b", "12:00", "13:00")
     assert (

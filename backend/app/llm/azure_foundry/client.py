@@ -13,6 +13,7 @@ from pydantic import BaseModel, ValidationError
 
 from backend.app.evidence.experience_models import ExperienceProfileDraft
 from backend.app.llm.azure_foundry.dto import (
+    FoundryCurrentInterpretationDTO,
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
     FoundryItineraryDTO,
@@ -39,9 +40,15 @@ from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.model_references import INSTRUCTION
 
 
-def requirement_wire_format():
+def requirement_wire_format(*, current=False):
     """Static DTO schema using the documented Azure Responses subset."""
-    schema = FoundryInterpretationDTO.model_json_schema()
+    schema = (
+        FoundryCurrentInterpretationDTO if current else FoundryInterpretationDTO
+    ).model_json_schema()
+    if current:
+        from backend.app.llm.azure_foundry.requirement_wire import current_schema
+
+        schema = current_schema(schema)
 
     def enums(node):
         if isinstance(node, dict):
@@ -57,7 +64,7 @@ def requirement_wire_format():
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "PreferenceDraftV10",
+            "name": "PreferenceDraftV13" if current else "PreferenceDraftV10",
             "strict": True,
             "schema": schema,
         },
@@ -134,7 +141,7 @@ class AzureFoundryStructuredLLMClient:
             "deployment": deployment,
             "api": "responses/v1",
             "max_retries": 0,
-            "contract": "preference_draft_12",
+            "contract": "preference_draft_13",
         }
         transport_options = {}
         if http_client is not None:
@@ -173,9 +180,14 @@ class AzureFoundryStructuredLLMClient:
                     "status": "validated" if error is None else type(error).__name__,
                 }
             )
+            if error is not None and detail.get("status") == "clarification_required":
+                detail["stage"] = "hard_requirements"
             try:
                 saved = self.requirement_capture.record(
-                    call_id, "canonicalization", detail, secrets=self._capture_secrets
+                    call_id,
+                    detail.get("stage", "canonicalization"),
+                    detail,
+                    secrets=self._capture_secrets,
                 )
                 if saved is None:
                     self.last_call_metadata.setdefault("secondary_errors", []).append(
@@ -188,15 +200,35 @@ class AzureFoundryStructuredLLMClient:
 
     @staged("requirements")
     async def _interpret(self, system_prompt, user_prompt):
+        from backend.app.llm.azure_foundry.requirement_wire import (
+            SourceSpans,
+            current_prompt,
+            planning_envelope,
+            restore_current,
+        )
+
         call_id = uuid4().hex
-        wire = requirement_wire_format()
+        envelope = planning_envelope(user_prompt)
+        if self._requirement_config.get("contract") == "preference_draft_12":
+            # Frozen response readers select the historical contract explicitly.
+            envelope = None
+        spans = None
+        if envelope is not None:
+            spans = SourceSpans(user_prompt, envelope["additional_preferences"])
+            user_prompt = json.dumps({**envelope, "source_spans": spans.inventory()})
+            system_prompt = current_prompt(system_prompt)
+        wire = requirement_wire_format(current=envelope is not None)
         base = {
             "request_id": digest(user_prompt),
             "prompt_hash": digest(system_prompt),
             "schema_hash": digest(wire),
             "config_hash": digest(self._requirement_config),
-            "prompt_version": "preference_prompt_19",
-            "schema_version": "preference_draft_12",
+            "prompt_version": "preference_prompt_20"
+            if envelope is not None
+            else "preference_prompt_19",
+            "schema_version": "preference_draft_13"
+            if envelope is not None
+            else "preference_draft_12",
             "config": self._requirement_config,
         }
         self.last_call_metadata = {"call_id": call_id, **base, "secondary_errors": []}
@@ -287,7 +319,13 @@ class AzureFoundryStructuredLLMClient:
                     ) from None
                 raise
             stage = "transport_dto"
-            dto = FoundryInterpretationDTO.model_validate(payload)
+            if envelope is not None:
+                payload = restore_current(payload, spans)
+            dto = (
+                FoundryCurrentInterpretationDTO
+                if envelope is not None
+                else FoundryInterpretationDTO
+            ).model_validate(payload)
             stage = "draft_domain"
             draft = _FOUNDRY_BINDINGS[InterpretationDraft].to_domain(dto)
             draft._diagnostic_call_id = call_id

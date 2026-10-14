@@ -215,6 +215,30 @@ def test_failed_execution_keeps_observed_usage_without_fabricating_result(tmp_pa
     assert "PRIVATE" not in "".join(p.read_text() for p in output.iterdir())
 
 
+def test_native_failure_retains_requirement_code_stage_and_path(tmp_path):
+    from backend.app.schemas.requirement_boundary import RequirementBoundaryError
+    from backend.evaluation.tools.planner_usage_cli import main
+
+    class FailedRuntime:
+        async def run(self, *args, **kwargs):
+            raise RequirementBoundaryError(
+                "invalid_source_span",
+                stage="wire_mapping",
+                errors=(
+                    {
+                        "loc": ("semantic_requirements", 0, "source_refs", 0),
+                        "type": "invalid_source_span",
+                    },
+                ),
+            )
+
+    assert main(arguments(tmp_path), runtime=FailedRuntime(), date_provider=REFERENCE) == 1
+    failure = json.loads((tmp_path / "capture/failure.json").read_bytes())
+    assert failure["detail"]["code"] == "invalid_source_span"
+    assert failure["detail"]["stage"] == "wire_mapping"
+    assert failure["detail"]["errors"][0]["loc"] == ["semantic_requirements", 0, "source_refs", 0]
+
+
 def test_result_from_different_input_is_not_bound_to_this_request(tmp_path):
     from backend.evaluation.tools.planner_usage_cli import main
 

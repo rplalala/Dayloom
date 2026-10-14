@@ -3,7 +3,7 @@
 from datetime import date, datetime
 from typing import Literal
 
-from pydantic import Field, model_validator
+from pydantic import Field, model_serializer, model_validator
 
 from backend.app.evidence.effective_models import EffectivePlaceEvidence
 from backend.app.evidence.models import PlaceEvidence, RouteEvidence
@@ -52,6 +52,7 @@ class RelatedTarget(ValidationModel):
 
 
 class RepairScope(ValidationModel):
+    allowed_transport_modes: tuple[Literal["WALK", "TRANSIT", "DRIVE"], ...] | None = None
     deferred_review_target_ids: tuple[str, ...] = ()
     window_roots: tuple[str, ...] = ()
     coverage_permissions: tuple[CoveragePermission, ...] = ()
@@ -70,6 +71,13 @@ class RepairScope(ValidationModel):
     routing_preference: str | None = None
     mode_source: str | None = None
     unsupported_explicit_mode: str | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_optional_modes(self, handler):
+        result = handler(self)
+        if self.allowed_transport_modes is None:
+            result.pop("allowed_transport_modes", None)
+        return result
 
     @model_validator(mode="after")
     def unique_scope(self):

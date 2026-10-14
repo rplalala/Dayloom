@@ -15,6 +15,7 @@ from backend.app.schemas.request import PlanningRequest
 from backend.app.services.preference_interpretation import interpret_preferences
 from backend.app.versions.v1 import runner
 from backend.app.versions.v1.config import V1Settings
+from backend.tests.llm.azure_foundry.requirement_fixtures import current_response
 from backend.tests.llm.azure_foundry.test_requirement_acceptance_harness import response
 from backend.tests.versions.v1.test_interpreted_requirements import draft_for
 from tools.validation.poi_semantics_acceptance import run_case
@@ -75,7 +76,10 @@ def setup_case(tmp_path, monkeypatch, payload=None):
     def handler(request):
         sends.append(json.loads(request.content))
         return httpx.Response(
-            200, json=response(json.dumps(payload or visit_payload(hard=True)), 1)
+            200,
+            json=response(
+                json.dumps(current_response(payload or visit_payload(hard=True), request)), 1
+            ),
         )
 
     def create(settings):
@@ -248,7 +252,7 @@ def test_saved_draft_identifies_the_prompt_revision(tmp_path, monkeypatch):
     run_case(request, output, capture_requirements=True, reference_date="2026-09-26")
     records = [json.loads(p.read_text()) for p in (output / "requirements").glob("*.json")]
     draft = next(r for r in records if r["validation_stage"] == "draft_validated")
-    assert draft["prompt_version"] == "preference_prompt_19"
+    assert draft["prompt_version"] == "preference_prompt_20"
 
 
 def test_case_logging_does_not_leave_a_handler_bound_to_closed_output(tmp_path, monkeypatch):
@@ -324,7 +328,7 @@ def test_real_sdk_named_count_routing_preserves_independent_hard_condition(extra
 
     def handler(request):
         sends.append(request)
-        return httpx.Response(200, json=response(json.dumps(payload), 1))
+        return httpx.Response(200, json=response(json.dumps(current_response(payload, request)), 1))
 
     async def exercise():
         client = AzureFoundryStructuredLLMClient(

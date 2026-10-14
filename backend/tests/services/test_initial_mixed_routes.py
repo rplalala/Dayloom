@@ -82,6 +82,26 @@ def test_cached_drive_selected_without_transit_send_and_reserve_is_separate():
     assert result.route_diagnostics[0]["result"] == "PASS"
 
 
+@pytest.mark.parametrize("fail", [False, True])
+def test_hard_mode_set_prevents_drive_acquisition_and_cached_fallback(fail):
+    svc = service(Provider(fail=fail))
+    original = draft([activity(), activity("two", "b", "12:00", "13:00")])
+    ctx = context()
+    mode = TransportModeDecision(
+        travel_mode="WALK", reason="hard_allowed_modes", allowed_modes=("WALK", "TRANSIT")
+    )
+    bundle = RouteEvidenceBundle(
+        baseline=measured("WALK", 3600), alternatives=[measured("DRIVE", 900)]
+    )
+    final, _ = asyncio.run(svc.bind(original, ctx.contract, ctx.places, bundle, mode))
+    assert all(r.travel_mode in ("WALK", "TRANSIT") for r in svc.acq._routes.requests)
+    assert all(t.mode in ("WALK", "TRANSIT") and t.reserve_seconds == 0 for t in final.transfers)
+    assert final.route_diagnostics[0]["considered_modes"] == ["WALK", "TRANSIT"]
+    if fail:
+        assert not final.transfers
+        assert final.route_diagnostics[0]["result"] == "UNKNOWN"
+
+
 def test_representative_transit_is_replaced_at_actual_departure():
     svc = service()
     representative = activity().end_time + timedelta(hours=4)

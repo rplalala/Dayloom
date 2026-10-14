@@ -19,6 +19,7 @@ from backend.app.schemas.interpreted_requirements import (
     SourceQuote,
     SourceReference,
     TimeProtection,
+    TransportConstraint,
     VisitRequirement,
 )
 from backend.app.schemas.request import PlanningRequest
@@ -139,15 +140,52 @@ def validate_canonical_requirements(contract, request: PlanningRequest):
     pace = value.daily_pace
     if pace is not None:
         if len({p.date for p in pace}) != len(pace) or sum(p.date is None for p in pace) != 1:
-            raise RequirementBoundaryError("invalid_daily_pace_scope")
-        for p in pace:
+            raise RequirementBoundaryError(
+                "invalid_daily_pace_scope",
+                errors=({"loc": ("daily_pace",), "type": "invalid_daily_pace_scope"},),
+            )
+        for i, p in enumerate(pace):
             if p.date is not None and not request.start_date <= p.date <= request.end_date:
-                raise RequirementBoundaryError("daily_pace_outside_request")
+                raise RequirementBoundaryError(
+                    "daily_pace_outside_request",
+                    errors=(
+                        {"loc": ("daily_pace", i, "date"), "type": "daily_pace_outside_request"},
+                    ),
+                )
             if not p.source_refs and (
                 p.profile != "ordinary" or p.exact_count is not None or p.date is not None
             ):
-                raise RequirementBoundaryError("daily_pace_source_required")
+                raise RequirementBoundaryError(
+                    "daily_pace_source_required",
+                    errors=(
+                        {
+                            "loc": ("daily_pace", i, "source_refs"),
+                            "type": "daily_pace_source_required",
+                        },
+                    ),
+                )
     _operational_sources(value, text)
+    restriction = value.transport_constraint
+    if restriction is not None:
+        semantics = {r.requirement_id: r for r in value.semantic_requirements}
+        for ref in restriction.source_refs:
+            if (
+                text[ref.start : ref.end] != ref.quote
+                or locate_source(text, SourceQuote(quote=ref.quote, occurrence=ref.occurrence))
+                != ref
+            ):
+                raise RequirementBoundaryError("invalid_transport_constraint_source")
+        linked = [semantics.get(key) for key in restriction.requirement_refs]
+        if any(
+            r is None
+            or r.kind != "constraint"
+            or r.scope != "transport"
+            or r.strength != "hard"
+            or r.subject_refs != ("party",)
+            or not set(r.source_refs) <= set(restriction.source_refs)
+            for r in linked
+        ) or set(restriction.source_refs) != {s for r in linked if r for s in r.source_refs}:
+            raise RequirementBoundaryError("invalid_transport_constraint_link")
     return value
 
 
@@ -360,7 +398,24 @@ def canonicalize_requirements(
                         source_refs=_sources(v.source_refs, text),
                     )
                 )
+        if (
+            draft.transport_constraint
+            and not set(draft.transport_constraint.requirement_refs) <= aliases.keys()
+        ):
+            raise RequirementBoundaryError("invalid_transport_constraint_link")
         result = InterpretedTripRequirements(
+            transport_constraint=None
+            if draft.transport_constraint is None
+            else TransportConstraint(
+                allowed_modes=tuple(sorted(draft.transport_constraint.allowed_modes)),
+                requirement_refs=tuple(
+                    r.requirement_id
+                    for r in semantics
+                    if r.requirement_id
+                    in {aliases[k] for k in draft.transport_constraint.requirement_refs}
+                ),
+                source_refs=_sources(draft.transport_constraint.source_refs, text),
+            ),
             daily_pace=None
             if draft.daily_pace is None
             else tuple(
@@ -395,14 +450,30 @@ def canonicalize_requirements(
 def assess_requirements(contract: InterpretedTripRequirements) -> tuple[RequirementAssessment, ...]:
     """No registered predicate currently certifies arbitrary open semantic text."""
     linked = {r.requirement_id for r in contract.experience_evidence_requests}
+    restriction = contract.transport_constraint
+    supported = (
+        set(restriction.requirement_refs)
+        if restriction and set(restriction.allowed_modes) & {"WALK", "TRANSIT", "DRIVE"}
+        else set()
+    )
     return tuple(
         RequirementAssessment(
             requirement_id=r.requirement_id,
-            capability="evidence_assessment" if r.requirement_id in linked else "semantic_only",
+            capability="registered_predicate"
+            if r.requirement_id in supported
+            else "evidence_assessment"
+            if r.requirement_id in linked
+            else "semantic_only",
+            predicate_id="allowed_transport_modes" if r.requirement_id in supported else None,
+            predicate_version="1" if r.requirement_id in supported else None,
             evaluation_scope=r.scope,
             evidence_state="not_acquired",
             check_result="unknown",
-            disposition="clarify" if r.strength == "hard" else "advise",
+            disposition="enforce"
+            if r.requirement_id in supported
+            else "clarify"
+            if r.strength == "hard"
+            else "advise",
         )
         for r in contract.semantic_requirements
     )
