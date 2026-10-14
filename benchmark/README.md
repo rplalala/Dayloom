@@ -56,8 +56,9 @@ and closure remain separate from that acceptance.
 
 The [case-02 London report](case-02/report.md) presents its selected schedules,
 independent scores, candidate/Repair observations and all-attempt resources.
-[#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149) tracks its
-pending joint automatic acceptance. Case reports state their own evidence basis
+The user accepted the selected case-02 results and stated limitations on
+14 October 2026 Australia/Sydney; [#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149)
+tracks its acceptance and archive status. Case reports state their own evidence basis
 and limitations; the common workflow below applies across cases.
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
@@ -286,8 +287,9 @@ entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
-Dates and durations are inclusive. The accepted case-01 input retains its original
-2026-10-13 through 2026-10-15 dates. Pending cases 02-20 use 2026-10-14 as the
+Dates and durations are inclusive. Accepted case-01 and case-02 inputs retain their
+original dates: 2026-10-13 through 2026-10-15 for Sydney and 2026-10-15 through
+2026-10-17 for London. Pending cases 03-20 use 2026-10-14 as the
 policy reference date and start on 2026-10-15, except case-05, which starts on
 Saturday 2026-10-17 and ends on Sunday 2026-10-18. Revalidate pending dates against
 the actual application reference date before execution.
@@ -295,7 +297,7 @@ the actual application reference date before execution.
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |
 | [01](case-01/report.md) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
-| [02](inputs/case-02.json) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
+| [02](case-02/report.md) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
 | [03](inputs/case-03.json) | Travel preferences | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
 | [04](inputs/case-04.json) | Travel preferences | Paris | 4 | 2 | EUR 1,400 | Art, architecture and riverside walks; checks a coherent mix of indoor visits and outdoor sightseeing. |
 | [05](inputs/case-05.json) | Travel preferences | Singapore | 2 | 2 | SGD 800 | A fairly full weekend using public transport; checks use of limited time without an explicit daily stop quota. |

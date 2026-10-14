@@ -14,11 +14,24 @@ opening hours for the model-supported visit.
 
 ## Acceptance and material
 
-Automatic generation, evaluation, candidate/Repair analysis and all-attempt
-resource reconciliation are complete. **Human joint automatic acceptance is
-pending.** Blinded human assessment remains deferred. The original native captures,
-reports, receipts and execution records remain in private working storage;
-archive compaction follows case review under the [common retention policy](../README.md#private-archive-retention).
+The human user accepted the selected input, results and all stated limitations on
+**14 October 2026 Australia/Sydney**, authorizing archival of the reviewed material
+at commit `9a82d33334199169f33f1e977437dec5af9fc6a9`. Automatic generation,
+evaluation, candidate/Repair analysis and all-attempt resource reconciliation are
+complete. Blinded human assessment remains a separate deferred stage.
+
+The private archive retains 4,589 original logical files backed by 727 unique byte
+sequences, compressed to 3,330,822 bytes. Original requests, selected and failed
+captures, semantic/actor records, reports, receipts and consumed native dependencies
+retain their original hashes and byte lengths. The [common retention policy](../README.md#private-archive-retention)
+governs restoration and cleanup; acceptance does not itself authorize another live
+run, Git publication or Issue closure.
+
+Fresh restoration verified every retained file's hash and length, all public
+source bindings, exact original/corrected primary reports, supplemented opening,
+paired evidence and four native process/resource reports. Replay used restored
+case bytes with read-only historical-path mapping and zero network attempts.
+Redundant working copies and the temporary restoration were removed after checks.
 
 The [material index](material-index.json) records exact original sources, subtree
 locations, publication hashes and transformations. These public views preserve

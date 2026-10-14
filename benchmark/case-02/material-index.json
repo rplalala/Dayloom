@@ -1,7 +1,7 @@
 {
   "schema_version": "case_material_index_1",
   "case_id": "case-02",
-  "acceptance": "pending human joint automatic acceptance",
+  "acceptance": "accepted by human user",
   "format": "public views and exact itinerary subtrees; original closed native bundles remain private",
   "input": {
     "path": "../inputs/case-02.json",
@@ -374,6 +374,22 @@
     "opening_replay": "exact match, network denied",
     "paired_replay": "exact match, network denied",
     "research_replay": "four exact matches, network denied",
-    "private_archive_compaction": "after human case review; work retained"
+    "private_archive_compaction": "verified deduplicated archive; fresh restoration, source equivalence and native offline replay passed"
+  },
+  "accepted_on": "2026-10-14",
+  "acceptance_timezone": "Australia/Sydney",
+  "accepted_material_revision": "9a82d33334199169f33f1e977437dec5af9fc6a9",
+  "private_archive": {
+    "schema_version": "case_private_archive_1",
+    "manifest_sha256": "5b459a019058a180608a23f28da75e8095f71f2bb7ee65df5cdcac1a2183c080",
+    "blob_archive_sha256": "5ea2f0e7f19f81efd5b1c2ed2909de3888e3e12151c220aa8bc8952cc2d6432d",
+    "metrics": {
+      "logical_files": 4589,
+      "unique_blobs": 727,
+      "logical_bytes": 99720490,
+      "unique_bytes": 30143702,
+      "compressed_bytes": 3330822
+    },
+    "original_logical_paths": "private_native_bindings and material source paths identify archive manifest entries"
   }
 }
