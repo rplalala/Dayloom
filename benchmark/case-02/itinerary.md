@@ -63,6 +63,35 @@ the complete selected schedules, transfers and reference recommendations.
 | 2026-10-17 | 2026-10-17T10:00:00+01:00 | 2026-10-17T10:45:00+01:00 | See Buckingham Palace |
 | 2026-10-17 | 2026-10-17T11:30:00+01:00 | 2026-10-17T13:00:00+01:00 | Explore Hyde Park |
 
+## Recorded POI origins
+
+The [origin inventory](generation/poi-origins.json) joins submitted canonical IDs
+to the [saved candidate process](analysis/poi-process/selected-process.json) for
+V1/V2 and the retained original V3 RAG discovery. Mixed means recorded Google
+and RAG discovery; it does not establish that RAG caused selection. No selected
+visit has a recorded RAG-only origin. All ten V1 visits are Google-only.
+
+| Version | Scheduled place | Recorded origin |
+| --- | --- | --- |
+| V2 | Westminster Abbey | Google only |
+| V2 | Big Ben | Google + RAG |
+| V2 | London Eye | Google + RAG |
+| V2 | The British Museum | Google only |
+| V2 | St. Paul's Cathedral | Google only |
+| V2 | The National Gallery | Google only |
+| V2 | Tower of London | Google + RAG |
+| V2 | Tower Bridge | Google + RAG |
+| V3 | Tower of London | Google + RAG |
+| V3 | Tower Bridge | Google + RAG |
+| V3 | London Eye | Google + RAG |
+| V3 | The National Gallery | No recorded RAG association |
+| V3 | Buckingham Palace | No recorded RAG association |
+| V3 | Hyde Park | No recorded RAG association |
+
+V3 has no complete passive candidate-stage partition in this case. Its absent RAG
+associations are shown explicitly, without inferring a Google-only partition. V0
+does not run RAG or candidate discovery, so these origin labels are N/A.
+
 ## Same-run V3 Repair
 
 The draft contained eight visits. Two `system_delete` rounds removed Westminster
