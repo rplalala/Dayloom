@@ -182,6 +182,27 @@ policy; preserve old reports and replay them with their retained implementation.
 the policy requires a newly bound packet and genuinely acquired response, not edited old
 model decisions. No new Google acquisition is required merely to add absent provider types.
 
+Fresh `evaluation_run_cli prepare / execute / replay` packages use
+`rtpeval_execution_preparation_2`. After independent identity and Google evidence
+acquisition, the executor prepares the source-bound missing-hours packet and, when
+eligible visits exist, sends one medium-effort access assessment before composing
+the single final primary report. It reuses the collected evidence and sends no
+additional Google requests. No eligible visits skips the model call; explicit
+`assess_missing_hours=false` selects an API-only run. The report records the stage
+as complete, skipped or disabled and preserves factual/model-supported coverage.
+
+The preparation binds at most two model sends: one V0 identity request and one
+conditional access assessment, using the explicit model/deployment and endpoint.
+Identity keeps its configured low/medium effort; access uses medium. Per-model
+input/output and request deadlines share the run's total time and USD allowance.
+Prices must cover `opening_access` when that call is needed. A failed, malformed,
+unpriced or unaffordable assessment stops execution with receipts/usage and no
+preliminary quality score; it does not silently fall back or retry. Replay rebuilds
+eligibility, validates both model HTTP/material/usage bindings and recomputes the
+one final score without network access. Legacy version-1 packages retain API-only
+execution semantics under their recorded sources and rules.
+
+For historical API-only runs and separately authorized corrections,
 `evaluation_run_cli prepare-opening / execute-opening / replay-opening` consumes a completed
 four-final run, verifies its immutable sources/receipt and independently replays identity.
 It reuses retained Google evidence and never reruns Google acquisition or V0 identity calls.

@@ -71,7 +71,7 @@ require their own explicit authorization.
 | 3 | Identify interests stated in the original request | Independent agent | Source-bound POI interest inventory; explicit empty interests when none are stated. |
 | 4 | Prepare configuration, prices, budgets and capture | Codex | Concrete scope/limits, V1/V2 passive candidate-stage capture and V3 same-run draft/final retention. |
 | 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
-| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Native qualified four-final material, actual primary report, independent evidence, scores and limitations; report each version to the user and pause. |
+| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Qualified four-final material and reviewed context; independent identity/evidence, eligible missing-hours access assessment, then one final primary calculation; report each version and pause. |
 | 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
 | 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
 | 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
@@ -79,7 +79,11 @@ require their own explicit authorization.
 | 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
 
 Steps 7-9 begin only after the user instructs continuation following the primary
-score handoff. Optional missing-hours assessment also requires that instruction.
+score handoff. Step 6 includes [eligible missing-hours access assessment](../docs/contracts/0004-opening-routes.md#missing-hours-access-judgment)
+within its prepared model, pricing and execution allowance, before final scoring.
+No eligible visits means no assessment call. An explicitly selected API-only run
+records that assessment is disabled. Supplemental rescoring remains available for
+historical API-only material or corrections, rather than a normal second scoring stage.
 
 Step 7 explores the POI-selection mechanism added between V1 and V2. It retains
 the full captured process, not merely a RAG-return/adopted-POI brief table. Count
@@ -132,7 +136,7 @@ self-contained account rather than linking unpublished files or local commits.
 After an explicit start instruction and concrete authorized scope/numeric budgets,
 Codex advances through primary scoring in steps 1-6 within that scope. After
 reporting the V0-V3 primary scores, FAIL/UNKNOWN findings and limitations, pause
-and wait for the user's next instruction before optional supplements, mechanism
+and wait for the user's next instruction before separately selected studies, mechanism
 analysis or final case acceptance. Covered operations within a subsequently
 authorized stage need no repeated approval. The user supplies clarification for blocking personal
 intent, approves necessary input changes or uncovered work/budget, decides step 10
