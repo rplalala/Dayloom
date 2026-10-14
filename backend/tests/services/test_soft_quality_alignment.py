@@ -15,6 +15,7 @@ from backend.app.schemas.request import PlanningRequest
 from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.app.services.preference_interpretation import interpret_preferences
 from backend.app.services.preference_prompts import PREFERENCE_INTERPRETATION_SYSTEM_PROMPT
+from backend.tests.llm.azure_foundry.requirement_fixtures import current_response
 from backend.tests.llm.azure_foundry.test_requirement_acceptance_harness import response
 
 FIXTURE = Path(__file__).parents[1] / "fixtures/preference_gate/historical_rich_trip_ambiguity.json"
@@ -57,7 +58,8 @@ async def interpret(payload, request):
 
     def handler(http_request):
         sends.append(json.loads(http_request.content))
-        return httpx.Response(200, json=response(json.dumps(payload), 1))
+        projected = current_response(payload, http_request)
+        return httpx.Response(200, json=response(json.dumps(projected), 1))
 
     client = AzureFoundryStructuredLLMClient(
         endpoint="https://fixture.invalid/openai/v1",
