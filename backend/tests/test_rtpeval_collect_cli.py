@@ -183,6 +183,47 @@ def test_completion_origin_faults_refuse_recovery_without_writes(
     assert {p: p.read_bytes() for p in originals} == originals
 
 
+@pytest.mark.parametrize("bind_alias", [False, True])
+def test_legacy_completion_context_is_bound_for_each_immutable_selection_alias(
+    legacy_completion_collection, bind_alias
+):
+    from backend.cli.collection import CollectionError, collect, read_staging
+
+    config, save, root = legacy_completion_collection
+    origin = config["completion_origins"][0]
+    snapshot = root / origin["selection_ref"]["path"]
+    alias = root / "replacement-config.json"
+    alias.write_bytes(snapshot.read_bytes())
+    alias_origin = copy.deepcopy(origin)
+    alias_origin["selection_ref"]["path"] = alias.name
+    if bind_alias:
+        config["completion_origins"].append(alias_origin)
+    current = root / "current-completion.json"
+    wrapper = json.loads(current.read_bytes())
+    wrapper["operator_config_ref"] = alias_origin["selection_ref"]
+    current.write_text(json.dumps(wrapper), encoding="utf-8")
+    run = config["groups"][0]["selected_runs"]["v3"]
+    provenance = root / run["provenance_ref"]["path"]
+    declaration = json.loads(provenance.read_bytes())
+    declaration["producer_completion_ref"]["sha256"] = hashlib.sha256(
+        current.read_bytes()
+    ).hexdigest()
+    provenance.write_text(json.dumps(declaration), encoding="utf-8")
+    run["provenance_ref"]["sha256"] = hashlib.sha256(provenance.read_bytes()).hexdigest()
+    path = save()
+    originals = {p: p.read_bytes() for p in root.rglob("*.json")}
+    output = root / "recovery"
+    if bind_alias:
+        staging = collect(path, output)
+        assert read_staging(output / "staging.json") == staging
+        assert (output / "sources/replacement-config.json").read_bytes() == snapshot.read_bytes()
+    else:
+        with pytest.raises(CollectionError, match="escapes collection root"):
+            collect(path, output)
+        assert not output.exists()
+    assert {p: p.read_bytes() for p in originals} == originals
+
+
 @pytest.mark.parametrize("path_kind", ["escape", "absolute"])
 def test_bound_native_completion_still_rejects_invalid_dependency_paths(
     legacy_completion_collection, path_kind
