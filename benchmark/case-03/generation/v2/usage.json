@@ -1,0 +1,2422 @@
+{
+  "model_calls": [
+    {
+      "event_id": "01a13c2a-8bfd-7a41-a5f6-af11816e0419",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 9.327999999979511,
+      "input_tokens": 9402,
+      "output_tokens": 870,
+      "total_tokens": 10272,
+      "cached_input_tokens": 9399,
+      "cache_write_input_tokens": 0,
+      "reasoning_tokens": 516,
+      "usage_details": {
+        "input_tokens": 9402,
+        "output_tokens": 870,
+        "total_tokens": 10272,
+        "input_token_details": {
+          "cache_creation": 0,
+          "cache_read": 9399
+        },
+        "output_token_details": {
+          "reasoning": 516
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a13c2a-b50a-77d0-ac27-5a7477949aca",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 3.312999999965541,
+      "input_tokens": 217,
+      "output_tokens": 202,
+      "total_tokens": 419,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "reasoning_tokens": 123,
+      "usage_details": {
+        "input_tokens": 217,
+        "output_tokens": 202,
+        "total_tokens": 419,
+        "input_token_details": {
+          "cache_creation": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 123
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "0b51ca92b79b404e9237a4406c8ae9af",
+      "provider": "openai",
+      "operation": "embedding",
+      "stage": "embedding",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "text-embedding-3-small",
+      "source": "sdk_response_usage",
+      "elapsed_seconds": 2.765999999945052,
+      "input_tokens": 13,
+      "output_tokens": null,
+      "total_tokens": 13,
+      "usage_details": {
+        "prompt_tokens": 13,
+        "total_tokens": 13
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a13c2b-b0af-7602-8030-c9c2a71daf47",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 31.45299999997951,
+      "input_tokens": 3212,
+      "output_tokens": 4108,
+      "total_tokens": 7320,
+      "cached_input_tokens": 1177,
+      "cache_write_input_tokens": 2032,
+      "reasoning_tokens": 1730,
+      "usage_details": {
+        "input_tokens": 3212,
+        "output_tokens": 4108,
+        "total_tokens": 7320,
+        "input_token_details": {
+          "cache_creation": 2032,
+          "cache_read": 1177
+        },
+        "output_token_details": {
+          "reasoning": 1730
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a13c2c-2ba7-73c0-8fdd-e3c215e56762",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 11.5,
+      "input_tokens": 2123,
+      "output_tokens": 1400,
+      "total_tokens": 3523,
+      "cached_input_tokens": 1177,
+      "cache_write_input_tokens": 943,
+      "reasoning_tokens": 505,
+      "usage_details": {
+        "input_tokens": 2123,
+        "output_tokens": 1400,
+        "total_tokens": 3523,
+        "input_token_details": {
+          "cache_creation": 943,
+          "cache_read": 1177
+        },
+        "output_token_details": {
+          "reasoning": 505
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a13c2c-6ac7-7080-9401-5648ec5f4361",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 18.01500000001397,
+      "input_tokens": 2243,
+      "output_tokens": 2197,
+      "total_tokens": 4440,
+      "cached_input_tokens": 1177,
+      "cache_write_input_tokens": 1063,
+      "reasoning_tokens": 1112,
+      "usage_details": {
+        "input_tokens": 2243,
+        "output_tokens": 2197,
+        "total_tokens": 4440,
+        "input_token_details": {
+          "cache_creation": 1063,
+          "cache_read": 1177
+        },
+        "output_token_details": {
+          "reasoning": 1112
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a13c2c-d9af-73c2-9282-e96574bbb4bc",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 46.40700000000652,
+      "input_tokens": 37773,
+      "output_tokens": 6503,
+      "total_tokens": 44276,
+      "cached_input_tokens": 2315,
+      "cache_write_input_tokens": 35455,
+      "reasoning_tokens": 4142,
+      "usage_details": {
+        "input_tokens": 37773,
+        "output_tokens": 6503,
+        "total_tokens": 44276,
+        "input_token_details": {
+          "cache_creation": 35455,
+          "cache_read": 2315
+        },
+        "output_token_details": {
+          "reasoning": 4142
+        }
+      },
+      "total_status": "reported"
+    }
+  ],
+  "provider_events": [
+    {
+      "event_id": "01d01f5d536b4332b7ff4fbed978b35b",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2a-8bfd-7a41-a5f6-af11816e0419",
+      "model_provider": "langchain",
+      "elapsed_seconds": 8.96799999999348,
+      "status_code": 200
+    },
+    {
+      "event_id": "e680b31d26a646ce90c279fe0ed527bf",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType"
+      },
+      "elapsed_seconds": 1.062000000034459,
+      "status_code": 200
+    },
+    {
+      "event_id": "4aad258700f94df1be3899583ee16ef1",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2a-b50a-77d0-ac27-5a7477949aca",
+      "model_provider": "langchain",
+      "elapsed_seconds": 3.202999999979511,
+      "status_code": 200
+    },
+    {
+      "event_id": "049b603e6d494b68869caff97b5c7014",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5630000000819564,
+      "status_code": 200
+    },
+    {
+      "event_id": "c4d211608f18400a827480f18b965d55",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.7190000000409782,
+      "status_code": 200
+    },
+    {
+      "event_id": "128eda369dd54f6bb288b85df8bbf2b2",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.48400000005494803,
+      "status_code": 200
+    },
+    {
+      "event_id": "912c96c668d3438eb379240773dc25f9",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5940000000409782,
+      "status_code": 200
+    },
+    {
+      "event_id": "2e97a0ab89a54f2aade91a65fa45fbf6",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5320000000065193,
+      "status_code": 200
+    },
+    {
+      "event_id": "ad4ba5e377b9447185f8a819225fc417",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.4690000000409782,
+      "status_code": 200
+    },
+    {
+      "event_id": "5b14bee1c03a47888601ccf59a79e603",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.46799999999348074,
+      "status_code": 200
+    },
+    {
+      "event_id": "a22f16a8dd60426ba63a5424bb70bc06",
+      "provider": "openai",
+      "operation": "embedding",
+      "stage": "embedding",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "0b51ca92b79b404e9237a4406c8ae9af",
+      "model_provider": "openai",
+      "elapsed_seconds": 2.75,
+      "status_code": 200
+    },
+    {
+      "event_id": "c10cd3b646f5408ebc246e5bf4a5de26",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31299999996554106,
+      "status_code": 200
+    },
+    {
+      "event_id": "92bb5f8187ab41aaa0414c198e9c317e",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31299999996554106,
+      "status_code": 200
+    },
+    {
+      "event_id": "542be14c29a842139d3f232c096d4aff",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.28200000000651926,
+      "status_code": 200
+    },
+    {
+      "event_id": "5a16a9a33bce48868744b42e6438cb86",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31200000003445894,
+      "status_code": 200
+    },
+    {
+      "event_id": "56459f161aa44bee960644988167279b",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.9209999999729916,
+      "status_code": 200
+    },
+    {
+      "event_id": "e751410b708549b5919c7c01b5256ec2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "7329bccec5af43a5b9cb51fd91189783",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.4059999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "da61bd5a752d42fa842e9a048111a8f2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.39000000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "5b6a5657f3fc4cf8b83b27a900516fcd",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "ee1ebdfda91f428c950acae6f6ac7710",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "3589415e06e24a1b91e7e5ea8a8f0d45",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31200000003445894,
+      "status_code": 200
+    },
+    {
+      "event_id": "fb085e1777194056b809767ddc60ed37",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5620000000344589,
+      "status_code": 200
+    },
+    {
+      "event_id": "465e0f2096bc42aa8b140ecfe4002bb9",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "82dc1bc1e9274b9e9be357c21e13e22a",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.39000000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "ce70ecf11f08424cb293af431ba90887",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.4220000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "a647d898e15a49099a50e47dfcd0e792",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.3910000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "195edceae3d6427383a8c31420e573ad",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5,
+      "status_code": 200
+    },
+    {
+      "event_id": "36e8f65009f94763b40373930d9ca847",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.375,
+      "status_code": 200
+    },
+    {
+      "event_id": "a009302ba45c4c3e9a3a6f324a9a389f",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31200000003445894,
+      "status_code": 200
+    },
+    {
+      "event_id": "4cb54641c1bc4800bce93da7aba72b99",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.4220000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "b8a686dedfa141faa9de5e1893135d9e",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.3280000000959262,
+      "status_code": 200
+    },
+    {
+      "event_id": "0870c8ec3dca450aa8a3cf5bd6888265",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "b688b86e277e4c0691ad1c12bae9afe5",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "bbe39963bdb1458f8db3b493a97ddc86",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "55a49374184044a6a05ad7351852a4f4",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "f276709332174d2e91ab277db6d626a5",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.375,
+      "status_code": 200
+    },
+    {
+      "event_id": "1765cb7c78cb443d85fa9af845506fe9",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "c500b48025c443169c999a775fb1f0b9",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31200000003445894,
+      "status_code": 200
+    },
+    {
+      "event_id": "f1f3b95f8b684c098131948915af40d2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.4529999999795109,
+      "status_code": 200
+    },
+    {
+      "event_id": "8d212b55c0474806b6c2c9839d0c7edb",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.28200000000651926,
+      "status_code": 200
+    },
+    {
+      "event_id": "76cb9870043f4dbf9d966005881ceeb3",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.3440000000409782,
+      "status_code": 200
+    },
+    {
+      "event_id": "3aaef64be9954738851fd87a2f6b75da",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.3130000000819564,
+      "status_code": 200
+    },
+    {
+      "event_id": "511c6829b2964cb0808fc1c1b64d0d19",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.28200000000651926,
+      "status_code": 200
+    },
+    {
+      "event_id": "99a8b2f8f08040d89338cdefbd123b96",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "ee630d31b5474cd5bfa35dd17aaf9af9",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "06aa265e7127477ca9f35a485216ba46",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "e1a01970636642c1891b469e5cf45ca2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31299999996554106,
+      "status_code": 200
+    },
+    {
+      "event_id": "0582e24c1b1445db9772a5851ae08f0e",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.3279999999795109,
+      "status_code": 200
+    },
+    {
+      "event_id": "b367023e6d9941848a66fbde3110191f",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.3279999999795109,
+      "status_code": 200
+    },
+    {
+      "event_id": "92857820618243c699a3921109d28b0d",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.39000000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "eb817562609e43e3bf48cc12eeeb98bf",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31299999996554106,
+      "status_code": 200
+    },
+    {
+      "event_id": "387f60a1aa3b4159872e396e1bf5ccea",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "79d3ba4c7fe94436a98b85e5a122edcf",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "82cd4b108222409b97e3b9df48e2cea1",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.32900000002700835,
+      "status_code": 200
+    },
+    {
+      "event_id": "5b3619293d394293892162e13451986a",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.4529999999795109,
+      "status_code": 200
+    },
+    {
+      "event_id": "1819584d57eb4a36a56ee25b9d798afa",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.31200000003445894,
+      "status_code": 200
+    },
+    {
+      "event_id": "06711b07c2b749019bf8c111483c48d6",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.28100000007543713,
+      "status_code": 200
+    },
+    {
+      "event_id": "ff72035c890c41e1879614dadc0ba463",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2b-b0af-7602-8030-c9c2a71daf47",
+      "model_provider": "langchain",
+      "elapsed_seconds": 31.31200000003446,
+      "status_code": 200
+    },
+    {
+      "event_id": "f8323e427f034bdf978a94091204b869",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2c-2ba7-73c0-8fdd-e3c215e56762",
+      "model_provider": "langchain",
+      "elapsed_seconds": 11.5,
+      "status_code": 200
+    },
+    {
+      "event_id": "d34da9e91f19419597c721d058f60524",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "9948bd9232c84fdd8fdd7f455d2859c0",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2969999999040738,
+      "status_code": 200
+    },
+    {
+      "event_id": "1cc5fb1bef8e47b99460491f81ab0881",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "3a359e38534640b384da6cb122c491bf",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.8440000000409782,
+      "status_code": 200
+    },
+    {
+      "event_id": "d876350653584b9ea6b172337fadf160",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "37a67d5a8a5047969814335c615b0b80",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "09f5bb0395854c45b830ce38840f2c26",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "5af49338dbe74b5799588430f73beac7",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "73477f02e16144649c4c8a9758940806",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "dede1832bcb443298e1a803dd7c48908",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "ea706f4481334c44bd5966ac5a01933c",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "5cd814b03d594a0a8274c9aa7898d8d5",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.29599999997299165,
+      "status_code": 200
+    },
+    {
+      "event_id": "724ddfbca1cb447096db78ede0397781",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/10/billing_context",
+          "semantic_sha256": "0918ffa7cb016237b95603d17382d6531030895325b9aec61409a22374c895c5"
+        }
+      },
+      "elapsed_seconds": 0.2970000000204891,
+      "status_code": 200
+    },
+    {
+      "event_id": "9615256cf9a549e0ac9b690a9b38c340",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2c-6ac7-7080-9401-5648ec5f4361",
+      "model_provider": "langchain",
+      "elapsed_seconds": 18.01500000001397,
+      "status_code": 200
+    },
+    {
+      "event_id": "0260e841ea634aa4a10d50e86a524857",
+      "provider": "open_meteo",
+      "operation": "weather",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "elapsed_seconds": 1.202999999979511,
+      "status_code": 200
+    },
+    {
+      "event_id": "cf12746ffadb4bae8d192312239d8734",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 56,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "0654fd12ad77433d9371b56a1cb63db1",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 56,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "0f25cc31a4954b8c9f44a3d695b60672",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 56,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "70d9beb2ec2541a7ae3c27f6a654a323",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 28,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "4e0e95e1b6c34972a9a692737320cf83",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "e420076a12a048eb9ec0ff73cf62d7eb",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "ef52ed3afd4e4fb28f49a71840e6faaf",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "826cd2a334d4470abae36ba5effba184",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "4626981e72124f94bd250f559d28dfb9",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.2660000000614673,
+      "status_code": 200
+    },
+    {
+      "event_id": "d8715fb441ed4ba3895ceb68ed9b08b1",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "b0bc151d6faa4403bdcfaa2889a8198f",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "2c2a9c50cc0f4e8592d5ab6472079f5a",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "0375501229144cd2926463142dc2dc38",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "bb81c0438a584c06abfcaee41c091ff7",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "8e99fcf127fe49728fbd6a5f7228ff56",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "6b5aef853df74eb9b96462a83a2699ff",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "122626e6dc544739a7246985758f7da9",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "749b11fd5f144697be930f708272081f",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "a2ee37742ffe44caa6e398f22583a026",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "bf3dea15540a4989a299c312338fde90",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "092ef616e6da492eaeeed2f070a32878",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a13c2c-d9af-73c2-9282-e96574bbb4bc",
+      "model_provider": "langchain",
+      "elapsed_seconds": 46.26600000006147,
+      "status_code": 200
+    },
+    {
+      "event_id": "7949fd6dbf6441af81e5e6d97d207b3a",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3279999999795109,
+      "status_code": 200
+    },
+    {
+      "event_id": "ffc6077b41a045789673209e8ee28e05",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.26599999994505197,
+      "status_code": 200
+    },
+    {
+      "event_id": "3ea8a254b69d4f0481487b5f9920a1a0",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.28100000007543713,
+      "status_code": 200
+    },
+    {
+      "event_id": "3a8dda6cf00e4ddbb3bb74f43997c1b1",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.26500000001396984,
+      "status_code": 200
+    },
+    {
+      "event_id": "45ec1aca2414444abbacf48810f12589",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/92/billing_context",
+          "semantic_sha256": "4425f982ccf9ec2fd0d1168fa4c162af84fbafe3387070e763eb7a6a72c9d8b8"
+        }
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "35e41cc9240945edb7b94d8edefe6798",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/92/billing_context",
+          "semantic_sha256": "4425f982ccf9ec2fd0d1168fa4c162af84fbafe3387070e763eb7a6a72c9d8b8"
+        }
+      },
+      "elapsed_seconds": 0.2809999999590218,
+      "status_code": 200
+    },
+    {
+      "event_id": "60488bd822174fefbed90212f86687cf",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "$case_material_ref": {
+          "path": "../v1/usage.json",
+          "pointer": "/provider_events/92/billing_context",
+          "semantic_sha256": "4425f982ccf9ec2fd0d1168fa4c162af84fbafe3387070e763eb7a6a72c9d8b8"
+        }
+      },
+      "elapsed_seconds": 0.3589999999385327,
+      "status_code": 200
+    }
+  ],
+  "cache_events": [
+    {
+      "event_id": "15c2471fbcdd4d0e822480508ebb7321",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "1464354452d94c0e88d078e3d660ab4f",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "465447b6d5db473b80ecd72db9834373",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "be56056d1ae54013adf63b3db6c484aa",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "d56ca833451343418fdf3dcf633dfe8d",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "5a781349972e4d49aae3a3c9d9a1f9d8",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "c6030feb5df9439b845b3234c735ddf4",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "38cea5f4ac6e464485ffa05c8a5a99c7",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "f3e2ba6130b94bfbb4350657d0f631b1",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "433d33f45ae44da582fba7db2720f421",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "42db639fd2db482d864152999b508ee7",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "5413dbeb57e3497f8f8765fddfc9d761",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "c0b886cd34c84ba5beb4285b697929d3",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "0c73cf5ea177482e905bafb31b1fce69",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "2a21b4daea9240608953e1e5e68e3133",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    }
+  ],
+  "stage_summaries": [
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 9.343999999924563,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 9.343999999924563,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 9.358999999938533,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 3.312999999965541,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "embedding",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 2.765999999945052,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "retrieval",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 46.59399999992456,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 31.484000000054948,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 11.530999999959022,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 18.031000000075437,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 46.42200000002049,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "planner",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 201.89000000001397,
+      "scope": "inclusive_not_additive"
+    }
+  ],
+  "repair_summary": {
+    "observed_rounds": 0,
+    "model_event_ids": [],
+    "provider_event_ids": []
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "timing": {
+    "scope": "selected_invocation_through_cleanup",
+    "started_at": "2026-10-14T20:46:21.557782+00:00",
+    "finished_at": "2026-10-14T20:49:43.568665+00:00",
+    "elapsed_seconds": 201.89000000001397,
+    "status": "measured"
+  },
+  "outcome": "completed",
+  "schema_version": "rtpeval_usage_1",
+  "group_id": "case-03",
+  "run_id": "case-03-v2-attempt-1",
+  "version": "v2",
+  "namespace": "planner",
+  "result_sha256": "0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204",
+  "collection_status": "available",
+  "coverage": {
+    "$case_material_ref": {
+      "path": "../v0/usage.json",
+      "pointer": "/coverage",
+      "semantic_sha256": "4dc4968bc02d26f08c87f91f42c67e7a497c53684fa2dcf9af2966c1fffe4537"
+    }
+  }
+}

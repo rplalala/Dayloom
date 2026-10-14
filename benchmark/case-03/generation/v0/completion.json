@@ -1,0 +1,33 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": null,
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": {
+    "declared_by": "rtpeval.generate/selected_workflow_1",
+    "declared_at": "2026-10-14T20:35:55.510540+00:00",
+    "policy_ref": "selected_workflow_1",
+    "producer_policy_ref": "selected_workflow_1",
+    "workflow_status": "completed",
+    "required_mechanisms": {
+      "generation": "completed"
+    },
+    "observations": [],
+    "failure_type": null,
+    "operator_selection_ref": {
+      "$private_evidence_ref": {
+        "path": "../../generation-selection-81f7a17770a5459ba5f03af279a2eaa0.json",
+        "sha256": "7e43c43c6e3c9dbe7522bbab686793be6ad525899d16e0a59fd9017f4ca7e09a",
+        "media_type": "application/json",
+        "availability": "available"
+      }
+    },
+    "operator_config_ref": {
+      "$private_evidence_ref": {
+        "path": "../../selection.json",
+        "sha256": "7e43c43c6e3c9dbe7522bbab686793be6ad525899d16e0a59fd9017f4ca7e09a",
+        "media_type": "application/json",
+        "availability": "available"
+      }
+    }
+  }
+}

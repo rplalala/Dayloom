@@ -1,0 +1,868 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "day1-meiji-jingu",
+      "to_activity_id": "day1-opera-city-gallery",
+      "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "destination_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T11:30:00+09:00",
+      "arrival_time": "2026-10-15T11:56:03+09:00",
+      "provider_duration_seconds": 1563.0,
+      "distance_meters": 1800,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day1-opera-city-gallery",
+      "to_activity_id": "day1-shinjuku-gyoen",
+      "origin_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "destination_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T13:45:00+09:00",
+      "arrival_time": "2026-10-15T14:22:16+09:00",
+      "provider_duration_seconds": 2236.0,
+      "distance_meters": 2640,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-tokyo-tower",
+      "to_activity_id": "day2-maple-waterfall",
+      "origin_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "destination_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T11:30:00+09:00",
+      "arrival_time": "2026-10-16T11:32:09+09:00",
+      "provider_duration_seconds": 129.0,
+      "distance_meters": 139,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-maple-waterfall",
+      "to_activity_id": "day2-teamlab-borderless",
+      "origin_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "destination_place_id": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T12:15:00+09:00",
+      "arrival_time": "2026-10-16T12:25:24+09:00",
+      "provider_duration_seconds": 624.0,
+      "distance_meters": 674,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day3-ueno-park",
+      "to_activity_id": "day3-tokyo-skytree",
+      "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "destination_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+      "mode": "DRIVE",
+      "mode_source": "APPLICATION_CAR_FALLBACK",
+      "departure_time": "2026-10-17T12:00:00+09:00",
+      "arrival_time": "2026-10-17T12:28:56+09:00",
+      "provider_duration_seconds": 1136.0,
+      "distance_meters": 4765,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day4-shibuya-crossing",
+      "to_activity_id": "day4-shibuya-sky",
+      "origin_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-18T11:15:00+09:00",
+      "arrival_time": "2026-10-18T11:19:40+09:00",
+      "provider_duration_seconds": 280.0,
+      "distance_meters": 316,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day4-shibuya-sky",
+      "to_activity_id": "day4-tokyo-camii",
+      "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "destination_place_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+      "mode": "DRIVE",
+      "mode_source": "APPLICATION_CAR_FALLBACK",
+      "departure_time": "2026-10-18T13:30:00+09:00",
+      "arrival_time": "2026-10-18T13:51:03+09:00",
+      "provider_duration_seconds": 663.0,
+      "distance_meters": 3548,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-meiji-jingu",
+      "to_activity_id": "day1-opera-city-gallery",
+      "origin": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "destination": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "departure": "2026-10-15T11:30:00+09:00",
+      "next_start": "2026-10-15T12:15:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1563,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:45.585394+00:00",
+              "retrieved_at": "2026-10-14T20:48:46.261274+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                "destination_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1563,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:45.585394Z",
+                "retrieved_at": "2026-10-14T20:48:46.261274Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 1800,
+                "duration_seconds": 1563,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day1-opera-city-gallery",
+      "to_activity_id": "day1-shinjuku-gyoen",
+      "origin": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "destination": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "departure": "2026-10-15T13:45:00+09:00",
+      "next_start": "2026-10-15T14:30:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2236,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:47.824286+00:00",
+              "retrieved_at": "2026-10-14T20:48:49.307766+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+                "destination_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2236,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:47.824286Z",
+                "retrieved_at": "2026-10-14T20:48:49.307766Z",
+                "origin_index": 0,
+                "destination_index": 4,
+                "distance_meters": 2640,
+                "duration_seconds": 2236,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-tokyo-tower",
+      "to_activity_id": "day2-maple-waterfall",
+      "origin": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "destination": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "departure": "2026-10-16T11:30:00+09:00",
+      "next_start": "2026-10-16T11:45:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 129,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:45.585394+00:00",
+              "retrieved_at": "2026-10-14T20:48:46.261274+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+                "destination_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 129,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:45.585394Z",
+                "retrieved_at": "2026-10-14T20:48:46.261274Z",
+                "origin_index": 0,
+                "destination_index": 9,
+                "distance_meters": 139,
+                "duration_seconds": 129,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-maple-waterfall",
+      "to_activity_id": "day2-teamlab-borderless",
+      "origin": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "destination": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+      "departure": "2026-10-16T12:15:00+09:00",
+      "next_start": "2026-10-16T13:15:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 624,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:47.824286+00:00",
+              "retrieved_at": "2026-10-14T20:48:49.307766+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+                "destination_place_id": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 624,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:47.824286Z",
+                "retrieved_at": "2026-10-14T20:48:49.307766Z",
+                "origin_index": 1,
+                "destination_index": 13,
+                "distance_meters": 674,
+                "duration_seconds": 624,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-ueno-park",
+      "to_activity_id": "day3-tokyo-skytree",
+      "origin": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "destination": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+      "departure": "2026-10-17T12:00:00+09:00",
+      "next_start": "2026-10-17T14:00:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 3393,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:46.267159+00:00",
+              "retrieved_at": "2026-10-14T20:48:47.821411+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+                "destination_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 3393,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:46.267159Z",
+                "retrieved_at": "2026-10-14T20:48:47.821411Z",
+                "origin_index": 1,
+                "destination_index": 12,
+                "distance_meters": 3910,
+                "duration_seconds": 3393,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1136,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:49:41.507177+00:00",
+              "retrieved_at": "2026-10-14T20:49:41.790675+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+                "destination_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1136,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:49:41.507177Z",
+                "retrieved_at": "2026-10-14T20:49:41.790675Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 4765,
+                "duration_seconds": 1136,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day4-shibuya-crossing",
+      "to_activity_id": "day4-shibuya-sky",
+      "origin": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "destination": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "departure": "2026-10-18T11:15:00+09:00",
+      "next_start": "2026-10-18T12:00:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 280,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:45.585394+00:00",
+              "retrieved_at": "2026-10-14T20:48:46.261274+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 280,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:45.585394Z",
+                "retrieved_at": "2026-10-14T20:48:46.261274Z",
+                "origin_index": 2,
+                "destination_index": 10,
+                "distance_meters": 316,
+                "duration_seconds": 280,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day4-shibuya-sky",
+      "to_activity_id": "day4-tokyo-camii",
+      "origin": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "destination": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+      "departure": "2026-10-18T13:30:00+09:00",
+      "next_start": "2026-10-18T16:00:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2705,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:48:47.824286+00:00",
+              "retrieved_at": "2026-10-14T20:48:49.307766+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "destination_place_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2705,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:48:47.824286Z",
+                "retrieved_at": "2026-10-14T20:48:49.307766Z",
+                "origin_index": 2,
+                "destination_index": 7,
+                "distance_meters": 3129,
+                "duration_seconds": 2705,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 663,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T20:49:42.095005+00:00",
+              "retrieved_at": "2026-10-14T20:49:42.385518+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "destination_place_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 663,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T20:49:42.095005Z",
+                "retrieved_at": "2026-10-14T20:49:42.385518Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 3548,
+                "duration_seconds": 663,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Treasure Hall Lawn",
+      "source_place_id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
+      "reason": "Park near Meiji Jingu (approximately 337 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-96733fb7-f4c5-4ad0-b9b5-a3988e06a1ec:0"
+    },
+    {
+      "place_name": "Excelsior Caffé Tokyo Opera City",
+      "source_place_id": "ChIJYQxU7S3zGGARbi0hbdTY-28",
+      "reason": "Cafe near Tokyo Opera City Art Gallery (approximately 14 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "Japan, 〒163-1401 Tokyo, Shinjuku City, Nishishinjuku, 3-chōme−20−２ 東京オペラシティ １Ｆ",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-b2a84e05-387c-49c1-a830-101f9b864fc5:1"
+    },
+    {
+      "place_name": "SASAYAIORI+ Shinjuku Gyoen National Garden",
+      "source_place_id": "ChIJhyufvT-NGGARhd-JSPbvlww",
+      "reason": "Cafe near Shinjuku Gyoen National Garden (approximately 45 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "5-chōme-1-11 Sendagaya, Shibuya, Tokyo 151-0051, Japan",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-38b13436-5926-4817-b960-71bbc5c16aa0:1"
+    }
+  ],
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-meiji-jingu",
+          "title": "Visit Meiji Jingu",
+          "place_name": "Meiji Jingu",
+          "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+          "start_time": "2026-10-15T10:00:00+09:00",
+          "end_time": "2026-10-15T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "A traditional shrine visit. Date-specific opening hours are unknown in the supplied evidence; allow time to confirm access."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-opera-city-gallery",
+          "title": "Explore Tokyo Opera City Art Gallery",
+          "place_name": "Tokyo Opera City Art Gallery",
+          "source_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "location": "3-chōme-20-2 Nishishinjuku, Shinjuku City, Tokyo 163-1403, Japan",
+          "start_time": "2026-10-15T12:15:00+09:00",
+          "end_time": "2026-10-15T13:45:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied date-specific hours are 11:00–19:00. Exhibition details and admission costs were not provided."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-shinjuku-gyoen",
+          "title": "Stroll through Shinjuku Gyoen National Garden",
+          "place_name": "Shinjuku Gyoen National Garden",
+          "source_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "location": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
+          "start_time": "2026-10-15T14:30:00+09:00",
+          "end_time": "2026-10-15T16:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied date-specific hours are 09:00–16:30; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-tokyo-tower",
+          "title": "Visit Tokyo Tower",
+          "place_name": "Tokyo Tower",
+          "source_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "location": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+          "start_time": "2026-10-16T10:00:00+09:00",
+          "end_time": "2026-10-16T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours pattern is 09:00–23:00, but date-specific exceptions are unknown. Admission costs were not provided."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-maple-waterfall",
+          "title": "Pause at Maple Waterfall",
+          "place_name": "Maple Waterfall",
+          "source_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "location": "4-chōme-3-25 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+          "start_time": "2026-10-16T11:45:00+09:00",
+          "end_time": "2026-10-16T12:15:00+09:00",
+          "estimated_cost": null,
+          "notes": "A brief scenic stop. The supplied hours pattern is open 24 hours; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-teamlab-borderless",
+          "title": "Explore teamLab Borderless",
+          "place_name": "teamLab Borderless: MORI Building DIGITAL ART MUSEUM",
+          "source_place_id": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+          "location": "Japan, 〒106-0041 Tokyo, Minato City, Toranomon, 5-chōme−9−９ Azabudai Hills Garden Plaza B, B1",
+          "start_time": "2026-10-16T13:15:00+09:00",
+          "end_time": "2026-10-16T15:15:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours pattern is 08:30–22:00, but date-specific exceptions are unknown. Admission and reservation details were not provided."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-ueno-park",
+          "title": "Enjoy Ueno Park",
+          "place_name": "Ueno Park",
+          "source_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "location": "4 Uenokoen, Taito City, Tokyo 110-0007, Japan",
+          "start_time": "2026-10-17T10:00:00+09:00",
+          "end_time": "2026-10-17T12:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "A relaxed outdoor visit. The supplied hours pattern is 05:00–23:00; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-tokyo-skytree",
+          "title": "Visit Tokyo Skytree",
+          "place_name": "Tokyo Skytree",
+          "source_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "location": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+          "start_time": "2026-10-17T14:00:00+09:00",
+          "end_time": "2026-10-17T16:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours pattern is 09:00–22:00, but date-specific exceptions are unknown. Allow ample time between visits; the supplied walk estimate from Ueno Park is about 56 minutes and exceeds the preferred walking-leg limit."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-shibuya-crossing",
+          "title": "See Shibuya Scramble Crossing",
+          "place_name": "Shibuya Scramble Crossing",
+          "source_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "location": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+          "start_time": "2026-10-18T10:30:00+09:00",
+          "end_time": "2026-10-18T11:15:00+09:00",
+          "estimated_cost": null,
+          "notes": "A brief look at a well-known modern urban landmark. Date-specific operating hours were not verified in the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-shibuya-sky",
+          "title": "Take in the city views at Shibuya Sky",
+          "place_name": "Shibuya Sky",
+          "source_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "location": "Japan, 〒150-6145 Tokyo, Shibuya, 2-chōme−24−１２ スクランブルスクエア 14階・45階 46階・屋上",
+          "start_time": "2026-10-18T12:00:00+09:00",
+          "end_time": "2026-10-18T13:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours pattern is 10:00–22:30, but date-specific exceptions are unknown. Admission costs were not provided."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-tokyo-camii",
+          "title": "Visit Tokyo Camii & Diyanet Turkish Culture Center",
+          "place_name": "Tokyo Camii & Diyanet Turkish Culture Center",
+          "source_place_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+          "location": "1-19 Ōyamachō, Shibuya, Tokyo 151-0065, Japan",
+          "start_time": "2026-10-18T16:00:00+09:00",
+          "end_time": "2026-10-18T17:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "A cultural and religious site, offering a different perspective from the Japanese shrine visit. The supplied hours pattern is 10:00–18:00; date-specific exceptions are unknown."
+        }
+      ]
+    }
+  ]
+}

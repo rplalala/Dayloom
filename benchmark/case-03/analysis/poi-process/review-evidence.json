@@ -1,0 +1,2727 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": null,
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": [
+    {
+      "canonical_place_id": "ChIJ-X4hzjKMGGARDSsGeHOACgw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/0/venue_evidence_refs/0",
+              "semantic_sha256": "54730e79532e870521ce80aa5f7848463228d0c82d453f01a5158b1879906eab"
+            }
+          },
+          "facts": {
+            "id": "ChIJ-X4hzjKMGGARDSsGeHOACgw",
+            "displayName": {
+              "text": "Nezu Shrine",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-28-9 Nezu, Bunkyo City, Tokyo 113-0031, Japan",
+            "primaryType": "shinto_shrine",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7201366,
+              "longitude": 139.76076949999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/3/venue_evidence_refs/0",
+              "semantic_sha256": "a26059452f782e889674add7af916ee494c07a04fdb1d6a61077b3019686f7b7"
+            }
+          },
+          "facts": {
+            "id": "ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+            "displayName": {
+              "text": "Yurakucho",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Yurakucho, Chiyoda City, Tokyo 100-0006, Japan",
+            "location": {
+              "latitude": 35.6745957,
+              "longitude": 139.7620134
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/6/venue_evidence_refs/0",
+              "semantic_sha256": "4d39f100b0c47492db200039a916daefae17ac0574f63d69cd46467460b93c3b"
+            }
+          },
+          "facts": {
+            "id": "ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+            "displayName": {
+              "text": "Shibuya",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Shibuya, Tokyo, Japan",
+            "location": {
+              "latitude": 35.6619707,
+              "longitude": 139.70379499999999
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ0T2P0HjsGGAR9Akk125OLXE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/9/venue_evidence_refs/0",
+              "semantic_sha256": "3f4e5ec86ee83d8be66bc0f193671716b8888f24595a8433d6cf07ef3ee70f73"
+            }
+          },
+          "facts": {
+            "id": "ChIJ0T2P0HjsGGAR9Akk125OLXE",
+            "displayName": {
+              "text": "Tokyo Daibutsu",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5-chōme-28-3 Akatsuka, Itabashi City, Tokyo 175-0092, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7820494,
+              "longitude": 139.6446226
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ1aKIaXCLGGARkyTMVC2TFi8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/12/venue_evidence_refs/0",
+              "semantic_sha256": "c90353677ba9441f37a92a35f3bc5f750076372b2d2159882b0702729f166fbc"
+            }
+          },
+          "facts": {
+            "id": "ChIJ1aKIaXCLGGARkyTMVC2TFi8",
+            "displayName": {
+              "text": "Ise Sueyoshi",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒106-0031 Tokyo, Minato City, Nishiazabu, 4-chōme−2−１５ 水野ビル 3F",
+            "primaryType": "japanese_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6586527,
+              "longitude": 139.7235382
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ23HgvY-LGGARzGvMuq9sbFQ",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/15/venue_evidence_refs/0",
+              "semantic_sha256": "2044d0b2f6d889d4851d5f50d750ea0c90f16473bd9c245b4f8395a43d8fe80c"
+            }
+          },
+          "facts": {
+            "id": "ChIJ23HgvY-LGGARzGvMuq9sbFQ",
+            "displayName": {
+              "text": "Shinji-ike Pond",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Hibiyakōen, Chiyoda City, Tokyo 100-0012, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.674719700000004,
+              "longitude": 139.7582922
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ2VtGysKLGGAR2oS8_Y_o-pk",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/18/venue_evidence_refs/0",
+              "semantic_sha256": "8bfd66cee70c322aa4a3b898ab5fd1a6823e190a154dcf4d93f5f21b26432205"
+            }
+          },
+          "facts": {
+            "id": "ChIJ2VtGysKLGGAR2oS8_Y_o-pk",
+            "displayName": {
+              "text": "Ad Museum Tokyo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Catetta Shiodome, 1-chōme-8-2 Higashishinbashi, Minato City, Tokyo 105-7090, Japan",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.664778399999996,
+              "longitude": 139.762191
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/21/venue_evidence_refs/0",
+              "semantic_sha256": "c6bae434fa53150a0d4694282e8d177e31cbc1ba328c5923306b702661db6cbc"
+            }
+          },
+          "facts": {
+            "id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "displayName": {
+              "text": "Tokyo Skytree",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+            "primaryType": "observation_deck",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7100627,
+              "longitude": 139.81070040000003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/24/venue_evidence_refs/0",
+              "semantic_sha256": "5c621e917acf526c78ac7af4cab1abf6d569631b230c6b3b8a34afb4f894e6f8"
+            }
+          },
+          "facts": {
+            "id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "displayName": {
+              "text": "Shibuya Sky",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒150-6145 Tokyo, Shibuya, 2-chōme−24−１２ スクランブルスクエア 14階・45階 46階・屋上",
+            "primaryType": "observation_deck",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6586719,
+              "longitude": 139.7019848
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/27/venue_evidence_refs/0",
+              "semantic_sha256": "31296d209eeef49903b7eb00a8e313bb6e6dc27229c12cfe382f65ed17c29c7e"
+            }
+          },
+          "facts": {
+            "id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "displayName": {
+              "text": "Tokyo Tower Main Deck",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+            "primaryType": "observation_deck",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6586037,
+              "longitude": 139.7454541
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/30/venue_evidence_refs/0",
+              "semantic_sha256": "9d09feb14b296ae0ba019e50dfe4071b97eae5316a60bafd7be19d8de2cc8880"
+            }
+          },
+          "facts": {
+            "id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "displayName": {
+              "text": "Meiji Jingu",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+            "primaryType": "shinto_shrine",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6763976,
+              "longitude": 139.6993259
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ5YTMQADzGGARBkwRINC34Ms",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/33/venue_evidence_refs/0",
+              "semantic_sha256": "c5f3e3aaa19d03495d75005f83d3effcfa6f6e17d95f45190087135d49036e63"
+            }
+          },
+          "facts": {
+            "id": "ChIJ5YTMQADzGGARBkwRINC34Ms",
+            "displayName": {
+              "text": "Tokyo Opera City",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-20-2 Nishishinjuku, Shinjuku City, Tokyo 160-0023, Japan",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.682668199999995,
+              "longitude": 139.6870892
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/36/venue_evidence_refs/0",
+              "semantic_sha256": "1e5debbd587074ab73d01cf6b6fa1fec70b41e1dd80ffeb78017ca7803aff845"
+            }
+          },
+          "facts": {
+            "id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+            "displayName": {
+              "text": "Tokyo Gallery + BTAP",
+              "languageCode": "en"
+            },
+            "formattedAddress": "8-chōme-10-5 Ginza, Chuo City, Tokyo 104-0061, Japan",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.667784499999996,
+              "longitude": 139.76236
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/39/venue_evidence_refs/0",
+              "semantic_sha256": "75d94304e0435e363c87a8228755b3a3f3b750a83e74429c6b02301c13b5b772"
+            }
+          },
+          "facts": {
+            "id": "ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+            "displayName": {
+              "text": "Tokyo Midtown Yaesu",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒104-0028 Tokyo, Chuo City, Yaesu, 2-chōme−2−１ 東京ミッドタウン八重洲セントラルタワ 2階",
+            "primaryType": "shopping_mall",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6792346,
+              "longitude": 139.7690488
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/42/venue_evidence_refs/0",
+              "semantic_sha256": "95e970bcb41abbe4416a93917a03a62aff2dcb691e7de1a8f8fd137bfb312961"
+            }
+          },
+          "facts": {
+            "id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "displayName": {
+              "text": "Sensō-ji",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+            "primaryType": "buddhist_temple",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7147651,
+              "longitude": 139.7966553
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ8Vuh65yOGGARyj4L5IBFiIk",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/45/venue_evidence_refs/0",
+              "semantic_sha256": "f86bc3bae5a7c5a0fc004ab04e2bdc94e6f42d3fc55f52412378c38d9909ced2"
+            }
+          },
+          "facts": {
+            "id": "ChIJ8Vuh65yOGGARyj4L5IBFiIk",
+            "displayName": {
+              "text": "National Museum of Nature and Science",
+              "languageCode": "en"
+            },
+            "formattedAddress": "7-20 Uenokōen, Taito City, Tokyo 110-8718, Japan",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7164273,
+              "longitude": 139.7763336
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ8W36eaGLGGARyraUMe00ZHI",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/48/venue_evidence_refs/0",
+              "semantic_sha256": "8542e715d152b416b060f63706c9ec4afde03d2968365f691111ad41fd6c9150"
+            }
+          },
+          "facts": {
+            "id": "ChIJ8W36eaGLGGARyraUMe00ZHI",
+            "displayName": {
+              "text": "Arigato Travel / Arigato Japan Food Tours",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒154-0004 Tokyo, Setagaya City, Taishidō, 4-chōme−17−１０ Heights – 200",
+            "primaryType": "tour_agency",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.645761799999995,
+              "longitude": 139.6694894
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ8WQHFoqNGGARpc767pcSol8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/51/venue_evidence_refs/0",
+              "semantic_sha256": "409e2d6877a83d0b307e51e99b4734e72f401afe2df5742719c6ff86c100f354"
+            }
+          },
+          "facts": {
+            "id": "ChIJ8WQHFoqNGGARpc767pcSol8",
+            "displayName": {
+              "text": "HALAL WAGYU RAMEN SHINJUKU-TEI Tokyo Shinjuku",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−11−６ エクレ新宿 B103",
+            "primaryType": "ramen_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.691919,
+              "longitude": 139.706456
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/54/venue_evidence_refs/0",
+              "semantic_sha256": "89a118b47dd46653af6e61e663d8c7596d27b9a6418e181e68ee3052fe13c0f9"
+            }
+          },
+          "facts": {
+            "id": "ChIJ91khboGMGGARBo42MbnQzg8",
+            "displayName": {
+              "text": "Japan Traditional Crafts Aoyama Square",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒107-0052 Tokyo, Minato City, Akasaka, 8-chōme−1−２２ １F",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6734771,
+              "longitude": 139.7276153
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/57/venue_evidence_refs/0",
+              "semantic_sha256": "bd5b35168cfe28ed4bd2081412401965652548ffc11b1fd78bbd2982a3bc161d"
+            }
+          },
+          "facts": {
+            "id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "displayName": {
+              "text": "Kokyo Gaien National Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Kōkyogaien, Chiyoda City, Tokyo 100-0002, Japan",
+            "primaryType": "national_park",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.680116999999996,
+              "longitude": 139.7583125
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJAz6oc8CMGGARxoIUXZ8nOE4",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/60/venue_evidence_refs/0",
+              "semantic_sha256": "c7bfbe5e2388f94379002a07ebb6fc726e4d3760db6f8a626275520d0023fa62"
+            }
+          },
+          "facts": {
+            "id": "ChIJAz6oc8CMGGARxoIUXZ8nOE4",
+            "displayName": {
+              "text": "Shinjuku Gyoen Cherry Tree Area",
+              "languageCode": "en"
+            },
+            "formattedAddress": "6 Chome-1 Sendagaya, Shibuya, Tokyo 151-0051, Japan",
+            "primaryType": "botanical_garden",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6822873,
+              "longitude": 139.7101213
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJBVDeRkaMGGARXsIjrhYCIhs",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/63/venue_evidence_refs/0",
+              "semantic_sha256": "a06f6edc1da1cf64f58ebb0f7f590967b3b2d72abe05c0dd756e698c47e848d2"
+            }
+          },
+          "facts": {
+            "id": "ChIJBVDeRkaMGGARXsIjrhYCIhs",
+            "displayName": {
+              "text": "Koishikawa Korakuen Gardens",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-6-6 Kōraku, Bunkyo City, Tokyo 112-0004, Japan",
+            "primaryType": "garden",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7056913,
+              "longitude": 139.7492718
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/66/venue_evidence_refs/0",
+              "semantic_sha256": "91eab3baa7c6749f87b400f0921db82a934096d07507f1c200bcb5a60ef9180e"
+            }
+          },
+          "facts": {
+            "id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "displayName": {
+              "text": "Tokyo Opera City Art Gallery",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-20-2 Nishishinjuku, Shinjuku City, Tokyo 163-1403, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6824478,
+              "longitude": 139.6873281
+            }
+          }
+        },
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/66/venue_evidence_refs/1",
+              "semantic_sha256": "584e98432e829132c6adefa9be814384a2b905a2d67e8f31f5238cf91376635e"
+            }
+          },
+          "facts": {
+            "id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "displayName": {
+              "text": "Tokyo Opera City Art Gallery",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-20-2 Nishishinjuku, Shinjuku City, Tokyo 163-1403, Japan",
+            "primaryType": "art_museum",
+            "types": [
+              "art_museum",
+              "tourist_attraction",
+              "museum",
+              "point_of_interest",
+              "establishment"
+            ],
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6824478,
+              "longitude": 139.6873281
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/69/venue_evidence_refs/0",
+              "semantic_sha256": "aabe6595d4bba4f16047c82ea8380ae344ddda9772d4e83083c9519861af86ee"
+            }
+          },
+          "facts": {
+            "id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "displayName": {
+              "text": "Tokyo Tower",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+            "primaryType": "observation_deck",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6585805,
+              "longitude": 139.7454329
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/72/venue_evidence_refs/0",
+              "semantic_sha256": "e09489e920f596201908eb936e91b38e5bcef225e68a238c96138dc08d3058ba"
+            }
+          },
+          "facts": {
+            "id": "ChIJD1M2GbCMGGARmUFziof73JM",
+            "displayName": {
+              "text": "Yoyogi Park Clock Tower",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-1 Yoyogikamizonochō, Shibuya, Tokyo 151-0052, Japan",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6690816,
+              "longitude": 139.7007898
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJE-vjIBzzGGARoevP-nYK02k",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/75/venue_evidence_refs/0",
+              "semantic_sha256": "50684bbdab3872cb321427deb4e445f4b79d5749652cec6a074411104c902397"
+            }
+          },
+          "facts": {
+            "id": "ChIJE-vjIBzzGGARoevP-nYK02k",
+            "displayName": {
+              "text": "MIRAI SUISAN FISHERIES",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-52-15 Izumi, Suginami City, Tokyo 168-0063, Japan",
+            "primaryType": "seafood_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6808494,
+              "longitude": 139.6467037
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/78/venue_evidence_refs/0",
+              "semantic_sha256": "98810f08a1715706fa309ed59c90345d79f18e04a59bf7e5744ddf7305e980ee"
+            }
+          },
+          "facts": {
+            "id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "displayName": {
+              "text": "Tokyo National Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7188351,
+              "longitude": 139.7765215
+            }
+          }
+        },
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/78/venue_evidence_refs/1",
+              "semantic_sha256": "487960bd70011bb724b509cc8dfe9c638b688f506946c5ce484dd4fe61817708"
+            }
+          },
+          "facts": {
+            "id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "displayName": {
+              "text": "Tokyo National Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
+            "primaryType": "museum",
+            "types": [
+              "art_museum",
+              "tourist_attraction",
+              "museum",
+              "point_of_interest",
+              "establishment"
+            ],
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7188351,
+              "longitude": 139.7765215
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/81/venue_evidence_refs/0",
+              "semantic_sha256": "14ebd0dad4bb79d0857d2684950cbf2d04a4438c79afbcc663916fdad91b8859"
+            }
+          },
+          "facts": {
+            "id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+            "displayName": {
+              "text": "Tokyo Arts and Space Hongo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-chōme-4-16 Hongō, Bunkyo City, Tokyo 113-0033, Japan",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7029503,
+              "longitude": 139.75926379999999
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/84/venue_evidence_refs/0",
+              "semantic_sha256": "e1afd282bcb948bdfee550ac966dd1193f411f4ff373de1ce1bb7a0e3a679e96"
+            }
+          },
+          "facts": {
+            "id": "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+            "displayName": {
+              "text": "Tokyo Camii & Diyanet Turkish Culture Center",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-19 Ōyamachō, Shibuya, Tokyo 151-0065, Japan",
+            "primaryType": "mosque",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6681609,
+              "longitude": 139.67655349999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/87/venue_evidence_refs/0",
+              "semantic_sha256": "a8d7458a19075c975cbe86da587543f3aa3ae77feafbfb5c216680c68c2bcff4"
+            }
+          },
+          "facts": {
+            "id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+            "displayName": {
+              "text": "Tokyo Toy Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "四谷ひろば, 内, 4-chōme-２０-1 Yotsuya, Shinjuku City, Tokyo 160-0004, Japan",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6896845,
+              "longitude": 139.71801539999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJI42jra-NGGARz8-Vdy1WPx4",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/90/venue_evidence_refs/0",
+              "semantic_sha256": "1dadd88e77567636b54f0b63f7f5330c08b294b25b275455bd1db470d46e56e1"
+            }
+          },
+          "facts": {
+            "id": "ChIJI42jra-NGGARz8-Vdy1WPx4",
+            "displayName": {
+              "text": "JB's TOKYO",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-33-3 Yoyogi, Shibuya, Tokyo 151-0053, Japan",
+            "primaryType": "hamburger_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.682799200000005,
+              "longitude": 139.7021823
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/93/venue_evidence_refs/0",
+              "semantic_sha256": "16049b01d861b398971ed9d7e97a35002f60ce916b6c7009f28b4721ee1d1d31"
+            }
+          },
+          "facts": {
+            "id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+            "displayName": {
+              "text": "Taro Okamoto Memorial Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "6-chōme-1-19 Minamiaoyama, Minato City, Tokyo 107-0062, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.661308,
+              "longitude": 139.71558299999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/96/venue_evidence_refs/0",
+              "semantic_sha256": "c83141ea9131561c0c769595e2de91c24b4423cb7a84484bfa7edc6004f8fdd9"
+            }
+          },
+          "facts": {
+            "id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "displayName": {
+              "text": "Shibuya Scramble Crossing",
+              "languageCode": "en"
+            },
+            "formattedAddress": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.659482,
+              "longitude": 139.7005596
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/99/venue_evidence_refs/0",
+              "semantic_sha256": "94aad251119032f4c0af61f2f969af0892a1fa9c756946a4b5d82589b863dad5"
+            }
+          },
+          "facts": {
+            "id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "displayName": {
+              "text": "Maple Waterfall",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4-chōme-3-25 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+            "primaryType": "scenic_spot",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6580922,
+              "longitude": 139.7461092
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/102/venue_evidence_refs/0",
+              "semantic_sha256": "14d2143ef9fe48b8f7539e1f1d30b2b5007ca74b9ad283d95dd656ded51c4c3b"
+            }
+          },
+          "facts": {
+            "id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+            "displayName": {
+              "text": "The National Museum of Modern Art, Tokyo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-1 Kitanomarukōen, Chiyoda City, Tokyo 102-0091, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6905432,
+              "longitude": 139.7546932
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJLYwD5TTuGGARBZKEP5BV4U0",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/105/venue_evidence_refs/0",
+              "semantic_sha256": "98adbb8f530cf0f79c7cb91311663996ceaef64586136572b83fd50c3c2fa9fd"
+            }
+          },
+          "facts": {
+            "id": "ChIJLYwD5TTuGGARBZKEP5BV4U0",
+            "displayName": {
+              "text": "Ghibli Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-1-83 Shimorenjaku, Mitaka, Tokyo 181-0013, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.696238,
+              "longitude": 139.5704317
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJLZrOfdeMGGARdcjAP55yY00",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/108/venue_evidence_refs/0",
+              "semantic_sha256": "f3e9f84532acac2e245ccc12102e6fd39b935a89baa3356b386be54aa6b1db10"
+            }
+          },
+          "facts": {
+            "id": "ChIJLZrOfdeMGGARdcjAP55yY00",
+            "displayName": {
+              "text": "Teppan Baby",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒160-0021 Tokyo, Shinjuku City, Kabukichō, 1-chōme−17−４ Pocket Building, B1F",
+            "primaryType": "japanese_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6940479,
+              "longitude": 139.7012389
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/111/venue_evidence_refs/0",
+              "semantic_sha256": "3092d6664aaa440c6bf547ec736c4a23c3a7f1b67350dcf400ef8692da3d741b"
+            }
+          },
+          "facts": {
+            "id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "displayName": {
+              "text": "Yoyogi Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-1 Yoyogikamizonochō, Shibuya, Tokyo 151-0052, Japan",
+            "primaryType": "park",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6700649,
+              "longitude": 139.6949656
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/114/venue_evidence_refs/0",
+              "semantic_sha256": "1683add539f32308b0e2c5f83448af6dbb2ba6c46139dfc9ef46eea94a79f66d"
+            }
+          },
+          "facts": {
+            "id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+            "displayName": {
+              "text": "Edo-Tokyo Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-4-1 Yokoami, Sumida City, Tokyo 130-0015, Japan",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6965972,
+              "longitude": 139.7957336
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/117/venue_evidence_refs/0",
+              "semantic_sha256": "1845873168d5404712d4a87d44dba459f23444273129dd21eed6ff3eac47fc9f"
+            }
+          },
+          "facts": {
+            "id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+            "displayName": {
+              "text": "The National Art Center, Tokyo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "7-chōme-22-2 Roppongi, Minato City, Tokyo 106-8558, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.665289,
+              "longitude": 139.726374
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/120/venue_evidence_refs/0",
+              "semantic_sha256": "8f341257c08f9b1767e2458c10bbc713b3c765b25d36a66df64199e668c444d8"
+            }
+          },
+          "facts": {
+            "id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "displayName": {
+              "text": "Omoide Yokocho Memory Lane",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-2-2 Nishishinjuku, Shinjuku City, Tokyo 160-0023, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.692703699999996,
+              "longitude": 139.6995778
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/123/venue_evidence_refs/0",
+              "semantic_sha256": "5ad89d3eb4539a7f063be120085d22ca8f7901c9c8e6edabd187c374c7f9b558"
+            }
+          },
+          "facts": {
+            "id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "displayName": {
+              "text": "Imperial Palace East National Gardens",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+            "primaryType": "national_park",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6867824,
+              "longitude": 139.75714449999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/126/venue_evidence_refs/0",
+              "semantic_sha256": "aa1635ddeb3d8c218889b03d560c790b60494bb458ce4dc02dc5e1a481804305"
+            }
+          },
+          "facts": {
+            "id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "displayName": {
+              "text": "Shinjuku Gyoen National Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
+            "primaryType": "garden",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.685176299999995,
+              "longitude": 139.7100517
+            }
+          }
+        },
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/126/venue_evidence_refs/1",
+              "semantic_sha256": "4b51cd9cb71f99f22b715c6aafc715669982775caa3182516ac13ae92cbef962"
+            }
+          },
+          "facts": {
+            "id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "displayName": {
+              "text": "Shinjuku Gyoen National Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
+            "primaryType": "garden",
+            "types": [
+              "garden",
+              "playground",
+              "state_park",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.685176299999995,
+              "longitude": 139.7100517
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/129/venue_evidence_refs/0",
+              "semantic_sha256": "cda73574ff5af4908b5f8035d7f5fda603b6fce9698023f1481aeb7955ea7514"
+            }
+          },
+          "facts": {
+            "id": "ChIJQ5Sa1PqJGGARUSaNKKOrMVg",
+            "displayName": {
+              "text": "teamLab Borderless: MORI Building DIGITAL ART MUSEUM",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒106-0041 Tokyo, Minato City, Toranomon, 5-chōme−9−９ Azabudai Hills Garden Plaza B, B1",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6620689,
+              "longitude": 139.7432671
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/132/venue_evidence_refs/0",
+              "semantic_sha256": "e8fb4c4c43884fa86ff4b20d24251d92b22706d4e476697ebed2fe176bccb1fc"
+            }
+          },
+          "facts": {
+            "id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "displayName": {
+              "text": "Snake Mound",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4 Chome-3 Shibakoen, Minato City, Tokyo 105-0011, Japan",
+            "primaryType": "historical_landmark",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6584614,
+              "longitude": 139.7463888
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/135/venue_evidence_refs/0",
+              "semantic_sha256": "c58a58c200c62e97a6ba598891823fc8e69083470def5d238adafc5b7dd851cf"
+            }
+          },
+          "facts": {
+            "id": "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+            "displayName": {
+              "text": "Tokyo Metropolitan Teien Art Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5-chōme-21-9 Shirokanedai, Minato City, Tokyo 108-0071, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6369465,
+              "longitude": 139.7190408
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJR6AfJquMGGARLtT29Rg6HLY",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/138/venue_evidence_refs/0",
+              "semantic_sha256": "2431f78d6bc261bbb7501035a3c54897362b130f320b924a81b1fd1fab1cbc6e"
+            }
+          },
+          "facts": {
+            "id": "ChIJR6AfJquMGGARLtT29Rg6HLY",
+            "displayName": {
+              "text": "The Shōtō Museum of Art",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-chōme-14-14 Shōtō, Shibuya, Tokyo 150-0046, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6586207,
+              "longitude": 139.6916654
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJSzG_eFyLGGARQFPb6kRJLv8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/141/venue_evidence_refs/0",
+              "semantic_sha256": "ae92cdb8ee5577dac5723406e16f2fcec5e2660e8f6d79cdc0c48e35aedefee8"
+            }
+          },
+          "facts": {
+            "id": "ChIJSzG_eFyLGGARQFPb6kRJLv8",
+            "displayName": {
+              "text": "Halal Wagyu Yakiniku Gyumon Shibuya",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-14-5 Shibuya, Tokyo 150-0002, Japan",
+            "primaryType": "halal_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6555994,
+              "longitude": 139.7065348
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJT0NgR6eOGGARRQCUEuKhtCc",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/144/venue_evidence_refs/0",
+              "semantic_sha256": "12a19968f25d6d5b382d1d176700bbbf947e97d9ec0274c53da346cdc6608eb6"
+            }
+          },
+          "facts": {
+            "id": "ChIJT0NgR6eOGGARRQCUEuKhtCc",
+            "displayName": {
+              "text": "Tokyo Free Walking Tour - Tokyo Localized",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒110-0005 Tokyo, Taito City, Ueno, 3-chōme−15−７ UenoYour 510",
+            "primaryType": "tour_agency",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7055703,
+              "longitude": 139.7726841
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/147/venue_evidence_refs/0",
+              "semantic_sha256": "21aeb34caa3073c3e3fc8d47d845ff92d8876a9d9aad4c30291f01a8dfdb91ef"
+            }
+          },
+          "facts": {
+            "id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "displayName": {
+              "text": "Imperial Palace",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+            "primaryType": "castle",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.685175,
+              "longitude": 139.75279949999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJV1RKZQeNGGARpY4MVddf7Ps",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/150/venue_evidence_refs/0",
+              "semantic_sha256": "45f4b9fe9b6c26ac35208a84c425ae96e8cb2fd7b6fae3e0f36c2a242c8cfdcd"
+            }
+          },
+          "facts": {
+            "id": "ChIJV1RKZQeNGGARpY4MVddf7Ps",
+            "displayName": {
+              "text": "ChopLife African tokyo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "ichiban-gai St, Daichi Kuwabara, building 4f, 1-chōme-23-12 Kabukichō, Shinjuku City, Tokyo 160-0021, Japan",
+            "primaryType": "restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.694449999999996,
+              "longitude": 139.701092
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/153/venue_evidence_refs/0",
+              "semantic_sha256": "2f7bd9265e0d79485d52b540342462a536d800d29cdf4307636d5134bedd69ac"
+            }
+          },
+          "facts": {
+            "id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
+            "displayName": {
+              "text": "Treasure Hall Lawn",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+            "primaryType": "garden",
+            "types": [
+              "garden",
+              "shinto_shrine",
+              "tourist_attraction",
+              "park",
+              "place_of_worship",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.679221999999996,
+              "longitude": 139.6979799
+            }
+          }
+        },
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/153/venue_evidence_refs/1",
+              "semantic_sha256": "87d9a9513ceca02c8ae04a26081ccc196f58ac8d45892738ab5fe48b51f0ddd0"
+            }
+          },
+          "facts": {
+            "id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
+            "displayName": {
+              "text": "Treasure Hall Lawn",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+            "primaryType": "garden",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.679221999999996,
+              "longitude": 139.6979799
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJVS2OnNyMGGARpgpxtssiR4o",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/156/venue_evidence_refs/0",
+              "semantic_sha256": "7599dbb54e8e8e867ff28572210fd5b2bf6efb71bca57b83b4764cff852fa462"
+            }
+          },
+          "facts": {
+            "id": "ChIJVS2OnNyMGGARpgpxtssiR4o",
+            "displayName": {
+              "text": "Fukumimi Shinjuku",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−9−５ Gold Build, 2階",
+            "primaryType": "japanese_izakaya_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6913258,
+              "longitude": 139.7067186
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJVVVVwXiLGGARdfqsI40Y-u8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/159/venue_evidence_refs/0",
+              "semantic_sha256": "faf2fc6577b15e60f7614e71c1007e48ea03c53db3c6887e11c0bb51cf89d7fe"
+            }
+          },
+          "facts": {
+            "id": "ChIJVVVVwXiLGGARdfqsI40Y-u8",
+            "displayName": {
+              "text": "Tokyo Midtown Design Hub",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒107-6205 Tokyo, Minato City, Akasaka, 9-chōme−7−１ ミッドタウン・タワー5F",
+            "primaryType": "art_gallery",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6659484,
+              "longitude": 139.73118739999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/162/venue_evidence_refs/0",
+              "semantic_sha256": "f4d5a9f6baf63742be81c721f563bb722b06cb10befd2d8a1f49cafb88a9df3c"
+            }
+          },
+          "facts": {
+            "id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "displayName": {
+              "text": "Fish Market Tsukiji Outer Market",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒104-0045 Tokyo, Chuo City, Tsukiji, 4-chōme−16 および６丁目一部",
+            "primaryType": "wholesaler",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6647703,
+              "longitude": 139.7702515
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/165/venue_evidence_refs/0",
+              "semantic_sha256": "b93cda606e7a2af9bc61d620b1c02314fb7f83846f1bed8d84c98149522a6457"
+            }
+          },
+          "facts": {
+            "id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "displayName": {
+              "text": "Tsukiji Uogashi",
+              "languageCode": "en"
+            },
+            "formattedAddress": "6-chōme-27-1 Tsukiji, Chuo City, Tokyo 104-0045, Japan",
+            "primaryType": "market",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.664270699999996,
+              "longitude": 139.7704177
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJXbmU8UGNGGARXX5B4fnBvZg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/168/venue_evidence_refs/0",
+              "semantic_sha256": "bdf9976a5b99ea6c80ae49ffb0753243c5c6d213c91eef0a88672b69f52bbca4"
+            }
+          },
+          "facts": {
+            "id": "ChIJXbmU8UGNGGARXX5B4fnBvZg",
+            "displayName": {
+              "text": "Wagyu (Halal) Steak HamBurger & Ramen (Japanese food) Harajuku Shibuya Restaurant 5W-Tokyo 1962",
+              "languageCode": "ja"
+            },
+            "formattedAddress": "Japan, 〒150-0001 Tokyo, Shibuya, Jingūmae, 1-chōme−8−２５ BU1825 原宿 202",
+            "primaryType": "restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6703352,
+              "longitude": 139.705805
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/171/venue_evidence_refs/0",
+              "semantic_sha256": "c60cc5aa011834300851ebc5ab60486bd781af0392d43d766fc4866bffb19d0d"
+            }
+          },
+          "facts": {
+            "id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "displayName": {
+              "text": "Tsukiji Market",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4-chōme-14-14 Tsukiji, Chuo City, Tokyo 104-0045, Japan",
+            "primaryType": "market",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.664956499999995,
+              "longitude": 139.77097469999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJZ7niwauLGGARePgvKhVxLVg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/174/venue_evidence_refs/0",
+              "semantic_sha256": "fab892b791f7ec0a43b6b604c8ef2bc001ed72f23104e279b4cef3a0b6b7c251"
+            }
+          },
+          "facts": {
+            "id": "ChIJZ7niwauLGGARePgvKhVxLVg",
+            "displayName": {
+              "text": "One Hundred Steps Staircase",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-8-1 Shimomeguro, Meguro City, Tokyo 153-0064, Japan",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6321271,
+              "longitude": 139.71378909999999
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ__-DeJ-LGGARkDXKs4k2XSw",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/177/venue_evidence_refs/0",
+              "semantic_sha256": "68f48019055b513dfd5a0914a7a8a08788d564535704e22ec1c240352cb2335f"
+            }
+          },
+          "facts": {
+            "id": "ChIJ__-DeJ-LGGARkDXKs4k2XSw",
+            "displayName": {
+              "text": "Soul Food House",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒106-0045 Tokyo, Minato City, Azabujūban, 2-chōme−8−１０ Ｐａｔｉｏ６F",
+            "primaryType": "american_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.655364,
+              "longitude": 139.73457299999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/180/venue_evidence_refs/0",
+              "semantic_sha256": "05bbce2687764540d197da3478d7a63a70269b535819da19d50bd9614ffad9fe"
+            }
+          },
+          "facts": {
+            "id": "ChIJ______qJGGARHpd1TBA9uZ8",
+            "displayName": {
+              "text": "Tokyo Culture Culture",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒150-0002 Tokyo, Shibuya, 1-chōme−23−１６ cocoti SHIBUYA 4F",
+            "primaryType": "restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6620432,
+              "longitude": 139.702579
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/183/venue_evidence_refs/0",
+              "semantic_sha256": "f19b66f1410d83a9ef3e73eddb366defc01abd477a47a6c625f88bfb04ab1025"
+            }
+          },
+          "facts": {
+            "id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+            "displayName": {
+              "text": "Suntory Museum of Art",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒107-8643 Tokyo, Minato City, Akasaka, 9-chōme−7−４ 東京ミッドタウン ガレリア 3階",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6664406,
+              "longitude": 139.73041569999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJbXJXkKeMGGARp6EVFMxZR44",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/186/venue_evidence_refs/0",
+              "semantic_sha256": "60b3e2ec3d188937224c74463f7ea1a0e3c798246a51cfee878f29d43eadc8a7"
+            }
+          },
+          "facts": {
+            "id": "ChIJbXJXkKeMGGARp6EVFMxZR44",
+            "displayName": {
+              "text": "Ninja Food Tours",
+              "languageCode": "en"
+            },
+            "formattedAddress": "7-chōme-19-21 Nishishinjuku, Shinjuku City, Tokyo 160-0023, Japan",
+            "primaryType": "tour_agency",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6946854,
+              "longitude": 139.6962029
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/189/venue_evidence_refs/0",
+              "semantic_sha256": "34d21aa42249e061376ba8903510f2bbe5e7da9d27c0d7f430f4a8be28089022"
+            }
+          },
+          "facts": {
+            "id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+            "displayName": {
+              "text": "Tokyo Metropolitan Art Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "8-36 Uenokōen, Taito City, Tokyo 110-0007, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.717211299999995,
+              "longitude": 139.7729387
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJba17TbqMGGARFtDV6hkZbcs",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/192/venue_evidence_refs/0",
+              "semantic_sha256": "983d4017def0c25e69fd8c724b8fd51bbc0166af7b6bfe62fe9a795a0289a763"
+            }
+          },
+          "facts": {
+            "id": "ChIJba17TbqMGGARFtDV6hkZbcs",
+            "displayName": {
+              "text": "AFURI Harajuku",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒151-0051 Tokyo, Shibuya, Sendagaya, 3-chōme−63−１ グランデフォレスタ原宿 1F",
+            "primaryType": "ramen_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6730053,
+              "longitude": 139.7038019
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJfQYVKUGLGGARTPG-4xvT0eA",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/195/venue_evidence_refs/0",
+              "semantic_sha256": "ac88e7a78ea2ba7a736fe8a8ae3a07df0e6b9b49d6bfe26f8c497382fdf51097"
+            }
+          },
+          "facts": {
+            "id": "ChIJfQYVKUGLGGARTPG-4xvT0eA",
+            "displayName": {
+              "text": "Mark's Tokyo",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-23-14 Meguro, Meguro City, Tokyo 153-0063, Japan",
+            "primaryType": "american_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6352541,
+              "longitude": 139.7106637
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/198/venue_evidence_refs/0",
+              "semantic_sha256": "7f913ef19a3318ec73bced41094f46151b759495453c3ce78ed43249e9d32bcb"
+            }
+          },
+          "facts": {
+            "id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+            "displayName": {
+              "text": "Mori Art Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒106-6150 Tokyo, Minato City, Roppongi, 6-chōme−10−１ Roppongi Hills Mori Tower, 53階",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6604621,
+              "longitude": 139.7292785
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJh5F6GpuNGGARZ6dHiggrfyQ",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/201/venue_evidence_refs/0",
+              "semantic_sha256": "bd508e2d50691ce3170b60fa03aac1943464b0cec0d9f27962178f62430678f9"
+            }
+          },
+          "facts": {
+            "id": "ChIJh5F6GpuNGGARZ6dHiggrfyQ",
+            "displayName": {
+              "text": "Edo-Tokyo Open Air Architectural Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒184-0005 Tokyo, Koganei, Sakurachō, 3-chōme−7−１ 内 都立小金井公園",
+            "primaryType": "museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7155722,
+              "longitude": 139.5125434
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/204/venue_evidence_refs/0",
+              "semantic_sha256": "2bb167a8816baa81b454dbd7afe66dbb603b89f30a893da4a6222cca91a1cea7"
+            }
+          },
+          "facts": {
+            "id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "displayName": {
+              "text": "Tokyo Skytree Town",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-1-1 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7099311,
+              "longitude": 139.8116642
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJiZggVguMGGARaW4UFY3Mo8Q",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/207/venue_evidence_refs/0",
+              "semantic_sha256": "13ffb59e2609bd39e5c3173373efc070470d9b43f2e27ccceff4555da4fe89c9"
+            }
+          },
+          "facts": {
+            "id": "ChIJiZggVguMGGARaW4UFY3Mo8Q",
+            "displayName": {
+              "text": "Edo Castle Ruins",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+            "primaryType": "historical_landmark",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6883712,
+              "longitude": 139.7544177
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJie-XJjSLGGARkF7l_8BMlUM",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/210/venue_evidence_refs/0",
+              "semantic_sha256": "affcaf571c760fe2cf029961510f7b51a7414bf40d0bbc485e7f0753fda1908c"
+            }
+          },
+          "facts": {
+            "id": "ChIJie-XJjSLGGARkF7l_8BMlUM",
+            "displayName": {
+              "text": "Namiki Dōri Street",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3 Chome-3 Ginza, Chuo City, Tokyo 104-0061, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6736764,
+              "longitude": 139.7656132
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/213/venue_evidence_refs/0",
+              "semantic_sha256": "0e85c29042c645ded506b6c7823b56281ff89740139e1ff437bb0e118f589e32"
+            }
+          },
+          "facts": {
+            "id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+            "displayName": {
+              "text": "Tokyo Arts",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒150-0022 Tokyo, Shibuya, Ebisuminami, 3-chōme−7−１７ KiKi Bldg 1F",
+            "primaryType": "art_gallery",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.64571180000001,
+              "longitude": 139.7036837
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJkz7EQwCNGGARg1YTKnaQl2c",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/216/venue_evidence_refs/0",
+              "semantic_sha256": "81ebd23b64c1180d3a15b7e018a9f3c1d5ed975aed4fa7e600f671e2a3d48fa8"
+            }
+          },
+          "facts": {
+            "id": "ChIJkz7EQwCNGGARg1YTKnaQl2c",
+            "displayName": {
+              "text": "Kuta Bali Cafe Harajuku halal food",
+              "languageCode": "en"
+            },
+            "formattedAddress": "原宿ル・ポンテビル, ３F, 1-chōme-14-2 Jingūmae, Shibuya, Tokyo 150-0001, Japan",
+            "primaryType": "indonesian_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6714092,
+              "longitude": 139.703105
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/219/venue_evidence_refs/0",
+              "semantic_sha256": "18dc88face18309391fb72bddc6f6dc74357ebf79b5faf43ab749f13e6df7469"
+            }
+          },
+          "facts": {
+            "id": "ChIJnctryNSMGGARLv4MknPFseU",
+            "displayName": {
+              "text": "North Observation Deck, Tokyo Metropolitan Government Building No. 1",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒163-8001 Tokyo, Shinjuku City, Nishishinjuku, 2-chōme−8−１ Tochomae Station, 45F",
+            "primaryType": "observation_deck",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.689733,
+              "longitude": 139.6916563
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/222/venue_evidence_refs/0",
+              "semantic_sha256": "e80bcead7dd76abaea7cede9e0f83119d6aca3807dde2409383a2f3ef4ca961f"
+            }
+          },
+          "facts": {
+            "id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "displayName": {
+              "text": "Tokyo Metropolitan Government Building",
+              "languageCode": "en"
+            },
+            "formattedAddress": "2-chōme-8-1 Nishishinjuku, Shinjuku City, Tokyo 163-8001, Japan",
+            "primaryType": "government_office",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6894807,
+              "longitude": 139.6916863
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJpSVXPn-MGGARioXfGNnH_uU",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/225/venue_evidence_refs/0",
+              "semantic_sha256": "71649b774236438df4d08994f5364f6d51639e3f32d9aaa7d322cd228f39b42f"
+            }
+          },
+          "facts": {
+            "id": "ChIJpSVXPn-MGGARioXfGNnH_uU",
+            "displayName": {
+              "text": "Izakaya Sanzoku",
+              "languageCode": "en"
+            },
+            "formattedAddress": "カランドリエビル B1, 4-chōme-2-8 Akasaka, Minato City, Tokyo 107-0052, Japan",
+            "primaryType": "japanese_izakaya_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6752439,
+              "longitude": 139.7359716
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/228/venue_evidence_refs/0",
+              "semantic_sha256": "59ff934bf70c80889955c5dd7baf539f8a899986f5f78a703472a35e2104073d"
+            }
+          },
+          "facts": {
+            "id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+            "displayName": {
+              "text": "Tokyo Photographic Art Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒153-0062 Tokyo, Meguro City, Mita, 1-chōme−13−３ 恵比寿ガーデンプレイス内",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6416411,
+              "longitude": 139.71328929999999
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/231/venue_evidence_refs/0",
+              "semantic_sha256": "30fadf57ccaf42fcba607af13a1bf79e2e47d7d3a39949d79de1096217a6afb9"
+            }
+          },
+          "facts": {
+            "id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "displayName": {
+              "text": "tsukiji outer market",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1 Chome-9 Tsukiji, Chuo City, Tokyo 104-0045, Japan",
+            "primaryType": "japanese_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6633249,
+              "longitude": 139.7609384
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJqw9CNumMGGARftSbwtwPwlE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/234/venue_evidence_refs/0",
+              "semantic_sha256": "331fb1a624c30185fec6e2d353e6e27eb87f673a396451013f1dbf7be3a5f21c"
+            }
+          },
+          "facts": {
+            "id": "ChIJqw9CNumMGGARftSbwtwPwlE",
+            "displayName": {
+              "text": "Totem Pole Photo Gallery",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒160-0004 Tokyo, Shinjuku City, Yotsuya, 4-chōme−22 第二富士川ビル 1F",
+            "primaryType": "art_gallery",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6902387,
+              "longitude": 139.7160501
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJr3wQKlrzGGARjrdyKWytAxo",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/237/venue_evidence_refs/0",
+              "semantic_sha256": "f9180fc0854eb112820ef8b041ae781e4f32d87e915150e9e6e359a2efb29e38"
+            }
+          },
+          "facts": {
+            "id": "ChIJr3wQKlrzGGARjrdyKWytAxo",
+            "displayName": {
+              "text": "MAPLE CAFE -KAEDE-",
+              "languageCode": "ja"
+            },
+            "formattedAddress": "Japan, 〒168-0061 Tokyo, Suginami City, Ōmiya, 1-chōme−1−８ NOA Bldg 1F",
+            "primaryType": "cafe",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6826025,
+              "longitude": 139.6460807
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/240/venue_evidence_refs/0",
+              "semantic_sha256": "0c972cc670d9857183f6677112f080daef48ac40f674b8e1d2b9019a9edd3401"
+            }
+          },
+          "facts": {
+            "id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "displayName": {
+              "text": "Shinjuku Golden-Gai",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒160-0021 Tokyo, Shinjuku City, Kabukichō, 1-chōme−1−６ あかるい花園 五番街",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6941118,
+              "longitude": 139.70476109999998
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/243/venue_evidence_refs/0",
+              "semantic_sha256": "514140cdfd7241b5b2386add900a0371f4bd4895407733c03d324cdd49dd5073"
+            }
+          },
+          "facts": {
+            "id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+            "displayName": {
+              "text": "TOKYO CULTUART by BEAMS",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒150-0001 Tokyo, Shibuya, Jingūmae, 3-chōme−24−７ ヌア原宿ビル 3F",
+            "primaryType": "general_store",
+            "businessStatus": "CLOSED_PERMANENTLY",
+            "location": {
+              "latitude": 35.671179099999996,
+              "longitude": 139.7076445
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/246/venue_evidence_refs/0",
+              "semantic_sha256": "e2919b10ec127b9bca75402d957f5e50e936018182d874af453001ae8b23a9d3"
+            }
+          },
+          "facts": {
+            "id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+            "displayName": {
+              "text": "Yamatane Museum of Art",
+              "languageCode": "en"
+            },
+            "formattedAddress": "3-chōme-12-36 Hiroo, Shibuya, Tokyo 150-0012, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6531502,
+              "longitude": 139.7136591
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJt5Uc_wTzGGARt9J2c4KYz30",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/249/venue_evidence_refs/0",
+              "semantic_sha256": "cd0526a555704eee467aa49b11f1292e60112418ca5f8226c1464f28393b6689"
+            }
+          },
+          "facts": {
+            "id": "ChIJt5Uc_wTzGGARt9J2c4KYz30",
+            "displayName": {
+              "text": "Shake Kojima",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Japan, 〒168-0063 Tokyo, Suginami City, Izumi, 1-chōme−3−１５ めんそーれ市場内",
+            "primaryType": "japanese_izakaya_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.672698,
+              "longitude": 139.6581258
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJu7SN-AuNGGARHed0s1vWCvc",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/252/venue_evidence_refs/0",
+              "semantic_sha256": "c979786322cb47652ca98db056920daf6fd010f73a9b2176c242f6943ccadee2"
+            }
+          },
+          "facts": {
+            "id": "ChIJu7SN-AuNGGARHed0s1vWCvc",
+            "displayName": {
+              "text": "Ushinobi Shinjuku | Wagyu & Sake",
+              "languageCode": "en"
+            },
+            "formattedAddress": "NSK Building, 201, 1-chōme-22-1 Hyakuninchō, Shinjuku City, Tokyo 169-0073, Japan",
+            "primaryType": "japanese_izakaya_restaurant",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6991248,
+              "longitude": 139.697035
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/255/venue_evidence_refs/0",
+              "semantic_sha256": "c5ab773f554125c61865aabc338d9a51f44ffd3533a5d4369e7e039d46197dde"
+            }
+          },
+          "facts": {
+            "id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "displayName": {
+              "text": "Tokyo Dome City",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-3-61 Kōraku, Bunkyo City, Tokyo 112-0004, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7053406,
+              "longitude": 139.7521112
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/258/venue_evidence_refs/0",
+              "semantic_sha256": "62402aa8d5ddecae41192289d65a1ab618e76cc5de730a5343e9c3d992eb4b9f"
+            }
+          },
+          "facts": {
+            "id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "displayName": {
+              "text": "Ueno Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4 Uenokoen, Taito City, Tokyo 110-0007, Japan",
+            "primaryType": "park",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7147557,
+              "longitude": 139.7734312
+            }
+          }
+        },
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/258/venue_evidence_refs/1",
+              "semantic_sha256": "37da4ee4c296cba26f00c93a9f984a6b85a71d15522a9498be7d92ebf72a3ab4"
+            }
+          },
+          "facts": {
+            "id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "displayName": {
+              "text": "Ueno Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4 Uenokoen, Taito City, Tokyo 110-0007, Japan",
+            "primaryType": "park",
+            "types": [
+              "park",
+              "state_park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.7147557,
+              "longitude": 139.7734312
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/261/venue_evidence_refs/0",
+              "semantic_sha256": "8892bb097f35cc38261849ef2f6573830e51aa0be81f21f4e1cbcc013a5e730c"
+            }
+          },
+          "facts": {
+            "id": "ChIJwfegutyLGGARGjiY-L2eSps",
+            "displayName": {
+              "text": "Hamarikyu Gardens",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-1 Hamarikyūteien, Chuo City, Tokyo 104-0046, Japan",
+            "primaryType": "garden",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6596559,
+              "longitude": 139.7634091
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/264/venue_evidence_refs/0",
+              "semantic_sha256": "bac2fd1569f1b2509f9feacac1273b330be1c5ac835f4944c1fa09a8aaf68ff1"
+            }
+          },
+          "facts": {
+            "id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+            "displayName": {
+              "text": "Nezu Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "6-chōme-5-1 Minamiaoyama, Minato City, Tokyo 107-0062, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6622568,
+              "longitude": 139.7170937
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/267/venue_evidence_refs/0",
+              "semantic_sha256": "156f046c74eca74ed574baae1836c83a03b620502da24dfb15ff2ae2335edaf0"
+            }
+          },
+          "facts": {
+            "id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+            "displayName": {
+              "text": "Ōta Memorial Museum of Art",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1-chōme-10-10 Jingūmae, Shibuya, Tokyo 150-0001, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6693959,
+              "longitude": 139.7049808
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/270/venue_evidence_refs/0",
+              "semantic_sha256": "08a03b05fa0f1301dc7f4d5c886632e249e31be1dbd511768b2a5f6c4c86db77"
+            }
+          },
+          "facts": {
+            "id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "displayName": {
+              "text": "TOKYO Word Mark Monument",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1 Chome-3 Aomi, Koto City, Tokyo 135-0064, Japan",
+            "primaryType": "tourist_attraction",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6267115,
+              "longitude": 139.7799908
+            }
+          }
+        }
+      ]
+    },
+    {
+      "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+      "evidence": [
+        {
+          "ref": {
+            "$case_material_ref": {
+              "path": "relevance.json",
+              "pointer": "/data/independent_reviews/273/venue_evidence_refs/0",
+              "semantic_sha256": "adbdc7fff7f93e137a46f6a1579fa90f4ad1556201734176946bea4600acceb4"
+            }
+          },
+          "facts": {
+            "id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+            "displayName": {
+              "text": "Seikado Bunko Art Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "千代田区丸の内2-1-1 明治生命館1F, 2-chōme-1-1 Marunouchi, Chiyoda City, Tokyo 100-0005, Japan",
+            "primaryType": "art_museum",
+            "businessStatus": "OPERATIONAL",
+            "location": {
+              "latitude": 35.6789407,
+              "longitude": 139.7616559
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

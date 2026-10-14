@@ -1,0 +1,34 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": "rtpeval_provenance_1",
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": {
+    "schema_version": "rtpeval_provenance_1",
+    "group_id": "case-03",
+    "run_id": "case-03-v2-attempt-1",
+    "version": "v2",
+    "input_sha256": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+    "result_sha256": "0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204",
+    "source_revision": "f49503a3359ddb6ed64c79465fc010143a5b141c",
+    "configuration_ref": {
+      "$case_material_ref": {
+        "path": "../v0/provenance.json",
+        "pointer": "/data/configuration_ref",
+        "semantic_sha256": "b9b437e7f5a3978790e1a90ee4fac9f7664b04ecd2078bb97862104a59af1708"
+      }
+    },
+    "evidence_index_ref": {
+      "$private_evidence_ref": {
+        "path": "evidence-index.json",
+        "sha256": "d7575beb8379c7304a87286cfe8749e5262c2c24ccf35ce6d2c2301d54354547"
+      }
+    },
+    "mechanism_ref": {
+      "$private_evidence_ref": {
+        "path": "mechanism.json",
+        "sha256": "5bebf613e4ad0e454225c8f71c146defec331b53a1c6ebb090b339b257040cf9"
+      }
+    },
+    "scope": "Development capture only; producer completion and batch qualification are separate."
+  }
+}

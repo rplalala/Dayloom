@@ -1,0 +1,58 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": "rtpeval_research_interests_1",
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": {
+    "schema_version": "rtpeval_research_interests_1",
+    "case_id": "case-03",
+    "case_revision": "1",
+    "revision": "1",
+    "input_sha256": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+    "requirement_spec_ref": {
+      "$private_evidence_ref": {
+        "path": "semantics/reviewed-final.json",
+        "sha256": "9739f808d101eb29085af80cb850aaeb5b9dac59cccbe236f24576748f2214e1",
+        "media_type": "application/json",
+        "availability": "available",
+        "schema_version": "rtpeval_requirements_1"
+      }
+    },
+    "reviewer_ref": "/root/case03_semantic_reviewer",
+    "reviewer_kind": "external_model",
+    "reviewed_at": "2026-10-14T19:11:15+00:00",
+    "rationale": "The complete original request states three venue-interest categories. Balanced introduction concerns composition and moderate pace concerns scheduling, so neither is an additional venue-interest category. Stable preference identities and exact original JSON Pointer text are preserved.",
+    "interests": [
+      {
+        "interest_id": "case-03-well-known-sights",
+        "source_pointer": "/additional_preferences",
+        "source_text": "We are two adults visiting Tokyo for the first time. We would like a balanced introduction to the city, including well-known sights, traditional culture and modern urban neighbourhoods. We prefer a moderate pace with enough time to enjoy each place.",
+        "requirement_pointer": "/soft_preferences/1"
+      },
+      {
+        "interest_id": "case-03-traditional-culture",
+        "source_pointer": "/additional_preferences",
+        "source_text": "We are two adults visiting Tokyo for the first time. We would like a balanced introduction to the city, including well-known sights, traditional culture and modern urban neighbourhoods. We prefer a moderate pace with enough time to enjoy each place.",
+        "requirement_pointer": "/soft_preferences/2"
+      },
+      {
+        "interest_id": "case-03-modern-urban-neighbourhoods",
+        "source_pointer": "/additional_preferences",
+        "source_text": "We are two adults visiting Tokyo for the first time. We would like a balanced introduction to the city, including well-known sights, traditional culture and modern urban neighbourhoods. We prefer a moderate pace with enough time to enjoy each place.",
+        "requirement_pointer": "/soft_preferences/3"
+      }
+    ],
+    "technical_normalization": {
+      "actor_ref": "/root",
+      "source_ref": {
+        "$private_evidence_ref": {
+          "path": "semantics/interests-native.json",
+          "sha256": "8864c10f25b7fd38329970b192ce05648dfec29100a470bf089a3e0549ba2874",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_research_interests_1"
+        }
+      },
+      "change": "Rebase RequirementSpec path to declaration root only."
+    }
+  }
+}

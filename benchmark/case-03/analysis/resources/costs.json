@@ -1,0 +1,55 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": "rtpeval_cost_report_1",
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": {
+    "schema_version": "rtpeval_cost_report_1",
+    "currency": "USD",
+    "scope": "observed_instrumented_adapters_only",
+    "runs": [
+      {
+        "$case_material_ref": {
+          "path": "tradeoffs.json",
+          "pointer": "/data/all_attempts/rows/0/cost/native",
+          "semantic_sha256": "e96d3101024e68ff2e99d0f6d371c4aaf6d71e33c56b43f015b678d1a5064317"
+        }
+      },
+      {
+        "$case_material_ref": {
+          "path": "tradeoffs.json",
+          "pointer": "/data/all_attempts/rows/1/cost/native",
+          "semantic_sha256": "e99665e6f92eb4ecd9313ba9a9dea5775ed3370c41490b00fb867f4abe796625"
+        }
+      },
+      {
+        "$case_material_ref": {
+          "path": "tradeoffs.json",
+          "pointer": "/data/all_attempts/rows/2/cost/native",
+          "semantic_sha256": "99f91d8998455b1013cc588a6d71969e673f177eb092eca5f6bdc3923e75ba9d"
+        }
+      },
+      {
+        "$case_material_ref": {
+          "path": "tradeoffs.json",
+          "pointer": "/data/all_attempts/rows/3/cost/native",
+          "semantic_sha256": "71fe9938b3ac11e6de4c531dd69e7d3231c59dcd9e906aed251cf21e9660eaf6"
+        }
+      }
+    ],
+    "unallocated_bills": [],
+    "prices": {
+      "$case_material_ref": {
+        "path": "tradeoffs.json",
+        "pointer": "/data/all_attempts/rows/0/cost/prices",
+        "semantic_sha256": "f379b1db4b5d8a1403ca1503eb252c5d8c6a506393a308b3b3f843f8ab304bb7"
+      }
+    },
+    "limitations": {
+      "$case_material_ref": {
+        "path": "tradeoffs.json",
+        "pointer": "/data/all_attempts/rows/0/cost/limitations",
+        "semantic_sha256": "1fcf562e4321f99b6054a39e63d78265de51ec46adba2c944022735976ea1246"
+      }
+    }
+  }
+}
