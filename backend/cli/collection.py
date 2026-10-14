@@ -51,14 +51,14 @@ def _text(value):
     return isinstance(value, str) and bool(value.strip())
 
 
-def _path(root, name):
+def _path(root, name, *, owner=None):
     _require(_text(name), "Missing relative source path")
     relative = Path(name)
     _require(
         not relative.is_absolute() and not relative.drive and ":" not in name,
         "Source path must be relative",
     )
-    path = (root / relative).resolve()
+    path = ((root if owner is None else owner) / relative).resolve()
     _require(path.is_relative_to(root), "Source path escapes collection root")
     return path
 
@@ -133,16 +133,101 @@ def _assemble(config_path):
         bindings.append({"original_path": str(source), "staged_path": target, "sha256": digest})
         return {**ref, "path": target}, value
 
+    origins, used_origins = {}, set()
+    entries = config.get("completion_origins", [])
+    _require(isinstance(entries, list), "Completion origins must be an explicit list")
+    for entry in entries:
+        _require(isinstance(entry, dict), "Invalid completion origin")
+        _require(
+            all(_text(entry.get(k)) for k in ("group_id", "run_id"))
+            and entry.get("version") in VERSIONS,
+            "Missing completion origin identity",
+        )
+        _, selection = artifact(entry.get("selection_ref"))
+        _require(
+            selection.get("schema_version") == "rtpeval_collection_1", "Invalid origin selection"
+        )
+        _, completion = artifact(entry.get("completion_ref"))
+        selection_path = _path(source_root, entry["selection_ref"]["path"])
+        completion_path = _path(source_root, entry["completion_ref"]["path"])
+        key = (selection_path, entry["group_id"], entry["version"], entry["run_id"])
+        _require(key not in origins, "Duplicate completion origin")
+        origins[key] = (completion_path, completion)
+
     visited = set()
+
+    def selection_dependencies(selection, parent, selection_path):
+        """Apply only explicit, exact-native bindings to legacy inline completions."""
+        seen_groups, seen_runs = set(), set()
+        for key, value in selection.items():
+            if key != "groups":
+                dependencies(value, parent)
+                continue
+            _require(isinstance(value, list), "Invalid origin selection groups")
+            for group in value:
+                _require(isinstance(group, dict), "Invalid origin selection group")
+                gid = group.get("group_id")
+                _require(_text(gid) and gid not in seen_groups, "Ambiguous origin selection group")
+                seen_groups.add(gid)
+                for group_key, group_value in group.items():
+                    if group_key != "selected_runs":
+                        dependencies(group_value, parent)
+                        continue
+                    _require(isinstance(group_value, dict), "Invalid origin selected runs")
+                    for version, run in group_value.items():
+                        _require(isinstance(run, dict), "Invalid origin selected run")
+                        rid = run.get("run_id")
+                        _require(
+                            version in VERSIONS and _text(rid) and rid not in seen_runs,
+                            "Ambiguous origin selected run",
+                        )
+                        seen_runs.add(rid)
+                        identity = (
+                            selection_path,
+                            gid,
+                            version,
+                            rid,
+                        )
+                        origin = origins.get(identity)
+                        for run_key, run_value in run.items():
+                            owner = parent
+                            if run_key == "completion" and origin:
+                                native_path, native_completion = origin
+                                _require(
+                                    run_value == native_completion,
+                                    "Completion origin differs from native declaration",
+                                )
+                                result_ref = run.get("result_ref")
+                                _require(
+                                    isinstance(result_ref, dict),
+                                    "Completion origin requires a bound result",
+                                )
+                                result_path = _path(
+                                    source_root, result_ref.get("path"), owner=parent
+                                )
+                                result_raw = result_path.read_bytes()
+                                _require(
+                                    _digest(result_raw) == result_ref.get("sha256"),
+                                    "Completion origin result hash mismatch",
+                                )
+                                _require(
+                                    _json(result_raw).get("system_version") == version,
+                                    "Completion origin result version mismatch",
+                                )
+                                _require(
+                                    native_path.parent == result_path.parent,
+                                    "Completion origin owner differs from result owner",
+                                )
+                                owner = native_path.parent
+                                used_origins.add(identity)
+                            dependencies(run_value, owner)
 
     def dependencies(value, parent):
         if isinstance(value, dict):
             if "path" in value and "sha256" in value:
                 if value.get("availability") == "unavailable":
                     return
-                path = _path(
-                    source_root, (parent / value["path"]).relative_to(source_root).as_posix()
-                )
+                path = _path(source_root, value.get("path"), owner=parent)
                 raw = path.read_bytes()
                 _require(value["sha256"] == _digest(raw), "Dependency hash mismatch: " + path.name)
                 target = "sources/" + path.relative_to(source_root).as_posix()
@@ -156,7 +241,10 @@ def _assemble(config_path):
                         nested = _json(raw)
                     except (ValueError, UnicodeError):
                         nested = None
-                    dependencies(nested, path.parent)
+                    if path in {key[0] for key in origins}:
+                        selection_dependencies(nested, path.parent, path)
+                    else:
+                        dependencies(nested, path.parent)
                 return
             for nested in value.values():
                 dependencies(nested, parent)
@@ -296,6 +384,7 @@ def _assemble(config_path):
                 "missing_versions": [v for v in VERSIONS if v not in runs],
             }
         )
+    _require(used_origins == set(origins), "Unused completion origin binding")
     staging = {
         "schema_version": "rtpeval_staging_1",
         "batch_id": config["batch_id"],

@@ -1,6 +1,7 @@
 """Offline selected-material staging through the installed process boundary."""
 
 import copy
+import hashlib
 import json
 
 import pytest
@@ -45,6 +46,182 @@ def collection(batch):
         return path
 
     return config, save, root
+
+
+@pytest.fixture
+def legacy_completion_collection(collection):
+    config, save, root = collection
+
+    def ref(path):
+        return {
+            "path": path.relative_to(root).as_posix(),
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "media_type": "application/json",
+            "availability": "available",
+        }
+
+    runs = config["groups"][0]["selected_runs"]
+    capture = root / "prior/captures/v0"
+    capture.mkdir(parents=True)
+    result = root / runs["v0"]["result_ref"]["path"]
+    (capture / "result.json").write_bytes(result.read_bytes())
+    runs["v0"]["result_ref"] = ref(capture / "result.json")
+    old_selection = root / "prior/old-selection.json"
+    old_selection.write_text('{"evidence":"original-selection"}', encoding="utf-8")
+    completion = copy.deepcopy(runs["v0"]["completion"])
+    completion["operator_selection_ref"] = {
+        **ref(old_selection),
+        "path": "../../old-selection.json",
+    }
+    native = capture / "producer-completion.json"
+    native.write_text(json.dumps(completion), encoding="utf-8")
+    snapshot_config = copy.deepcopy(config)
+    snapshot_config["groups"][0]["selected_runs"]["v0"]["completion"] = completion
+    snapshot_config["groups"][0]["selected_runs"]["v3"] = {
+        "run_id": runs["v3"]["run_id"],
+        "capture_directory": "future",
+    }
+    snapshot = root / "replacement-selection.json"
+    snapshot.write_text(json.dumps(snapshot_config), encoding="utf-8")
+    current_completion = root / "current-completion.json"
+    current_completion.write_text(
+        json.dumps({"operator_selection_ref": ref(snapshot)}), encoding="utf-8"
+    )
+    provenance_path = root / runs["v3"]["provenance_ref"]["path"]
+    provenance = json.loads(provenance_path.read_bytes())
+    provenance["producer_completion_ref"] = ref(current_completion)
+    provenance_path.write_text(json.dumps(provenance), encoding="utf-8")
+    runs["v3"]["provenance_ref"]["sha256"] = hashlib.sha256(
+        provenance_path.read_bytes()
+    ).hexdigest()
+    config["completion_origins"] = [
+        {
+            "selection_ref": ref(snapshot),
+            "group_id": config["groups"][0]["group_id"],
+            "version": "v0",
+            "run_id": runs["v0"]["run_id"],
+            "completion_ref": ref(native),
+        }
+    ]
+    return config, save, root
+
+
+def test_collect_recovers_bound_legacy_completion_without_rewriting_sources(
+    legacy_completion_collection,
+):
+    from backend.cli.collection import collect, read_staging
+
+    _, save, root = legacy_completion_collection
+    path = save()
+    originals = {p: p.read_bytes() for p in root.rglob("*.json")}
+    output = root / "recovery"
+    staging = collect(path, output)
+    assert staging["status"] == "pending_review"
+    assert all(r["completion_qualified"] for r in staging["groups"][0]["selected_runs"].values())
+    assert not staging["qualified_four_version_batch"]
+    assert read_staging(output / "staging.json") == staging
+    assert {p: p.read_bytes() for p in originals} == originals
+    assert (output / "sources/replacement-selection.json").read_bytes() == originals[
+        root / "replacement-selection.json"
+    ]
+
+
+@pytest.mark.parametrize(
+    "fault", ["missing", "duplicate", "hash", "mismatch", "owner", "escape", "unused"]
+)
+def test_completion_origin_faults_refuse_recovery_without_writes(
+    legacy_completion_collection, fault
+):
+    from backend.cli.collection import CollectionError, collect
+
+    config, save, root = legacy_completion_collection
+    origin = config["completion_origins"][0]
+    if fault == "missing":
+        del config["completion_origins"]
+    elif fault == "duplicate":
+        config["completion_origins"].append(copy.deepcopy(origin))
+    elif fault == "hash":
+        origin["completion_ref"]["sha256"] = "0" * 64
+    elif fault in ("mismatch", "owner"):
+        source = root / origin["completion_ref"]["path"]
+        value = json.loads(source.read_bytes())
+        if fault == "mismatch":
+            value["declared_at"] = "different"
+        else:
+            source = root / "wrong-owner.json"
+            origin["completion_ref"]["path"] = source.name
+        source.write_text(json.dumps(value), encoding="utf-8")
+        origin["completion_ref"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+    elif fault == "escape":
+        origin["selection_ref"]["path"] = "../outside.json"
+    else:
+        origin["run_id"] = "wrong-run"
+        # Avoid reaching the unrelated escape so the unused binding itself must be rejected.
+        snapshot = root / origin["selection_ref"]["path"]
+        value = json.loads(snapshot.read_bytes())
+        value["groups"][0]["selected_runs"]["v0"]["completion"].pop("operator_selection_ref")
+        snapshot.write_text(json.dumps(value), encoding="utf-8")
+        origin["selection_ref"]["sha256"] = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        current = root / "current-completion.json"
+        wrapper = json.loads(current.read_bytes())
+        wrapper["operator_selection_ref"]["sha256"] = origin["selection_ref"]["sha256"]
+        current.write_text(json.dumps(wrapper), encoding="utf-8")
+        run = config["groups"][0]["selected_runs"]["v3"]
+        provenance = root / run["provenance_ref"]["path"]
+        declaration = json.loads(provenance.read_bytes())
+        declaration["producer_completion_ref"]["sha256"] = hashlib.sha256(
+            current.read_bytes()
+        ).hexdigest()
+        provenance.write_text(json.dumps(declaration), encoding="utf-8")
+        run["provenance_ref"]["sha256"] = hashlib.sha256(provenance.read_bytes()).hexdigest()
+    path = save()
+    originals = {p: p.read_bytes() for p in root.rglob("*.json")}
+    output = root / "recovery"
+    with pytest.raises(CollectionError):
+        collect(path, output)
+    assert not output.exists()
+    assert {p: p.read_bytes() for p in originals} == originals
+
+
+@pytest.mark.parametrize("path_kind", ["escape", "absolute"])
+def test_bound_native_completion_still_rejects_invalid_dependency_paths(
+    legacy_completion_collection, path_kind
+):
+    from backend.cli.collection import CollectionError, collect
+
+    config, save, root = legacy_completion_collection
+    origin = config["completion_origins"][0]
+    native_path = root / origin["completion_ref"]["path"]
+    completion = json.loads(native_path.read_bytes())
+    completion["operator_selection_ref"]["path"] = (
+        "../../../../outside.json"
+        if path_kind == "escape"
+        else str(root / "prior/old-selection.json")
+    )
+    native_path.write_text(json.dumps(completion), encoding="utf-8")
+    origin["completion_ref"]["sha256"] = hashlib.sha256(native_path.read_bytes()).hexdigest()
+    snapshot = root / origin["selection_ref"]["path"]
+    selection = json.loads(snapshot.read_bytes())
+    selection["groups"][0]["selected_runs"]["v0"]["completion"] = completion
+    snapshot.write_text(json.dumps(selection), encoding="utf-8")
+    origin["selection_ref"]["sha256"] = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+    current = root / "current-completion.json"
+    wrapper = json.loads(current.read_bytes())
+    wrapper["operator_selection_ref"]["sha256"] = origin["selection_ref"]["sha256"]
+    current.write_text(json.dumps(wrapper), encoding="utf-8")
+    run = config["groups"][0]["selected_runs"]["v3"]
+    provenance = root / run["provenance_ref"]["path"]
+    declaration = json.loads(provenance.read_bytes())
+    declaration["producer_completion_ref"]["sha256"] = hashlib.sha256(
+        current.read_bytes()
+    ).hexdigest()
+    provenance.write_text(json.dumps(declaration), encoding="utf-8")
+    run["provenance_ref"]["sha256"] = hashlib.sha256(provenance.read_bytes()).hexdigest()
+    path = save()
+    output = root / "recovery"
+    with pytest.raises(CollectionError):
+        collect(path, output)
+    assert not output.exists()
 
 
 def test_partial_collection_preserves_exact_bytes_and_pending_review(installed_cli, collection):
