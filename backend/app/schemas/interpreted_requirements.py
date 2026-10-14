@@ -3,7 +3,15 @@
 from datetime import date, time
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, PrivateAttr, StringConstraints, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    PrivateAttr,
+    StringConstraints,
+    model_serializer,
+    model_validator,
+)
 
 from backend.app.evidence.experience_models import (
     ALLOWED_VALUES,
@@ -11,9 +19,13 @@ from backend.app.evidence.experience_models import (
     ExperienceValue,
 )
 from backend.app.schemas.request import TravelRequirements
-from backend.app.schemas.trip_intent import RequestedPlaceInformation, TransportPreferenceIntent
+from backend.app.schemas.trip_intent import (
+    RequestedPlaceInformation,
+    TransportPreferenceIntent,
+    TravelMode,
+)
 
-CONTRACT_VERSION = "interpreted_requirements_4"
+CONTRACT_VERSION = "interpreted_requirements_5"
 DRAFT_HANDLE_LIMIT = 256
 TemporaryHandle = Annotated[str, StringConstraints(min_length=1, max_length=DRAFT_HANDLE_LIMIT)]
 Strength = Literal["low", "medium", "high", "hard"]
@@ -364,10 +376,36 @@ class DailyPace(DailyPaceDraft):
     source_refs: tuple[SourceReference, ...] = Field(max_length=8)
 
 
+class TransportConstraintDraft(ContractModel):
+    allowed_modes: tuple[TravelMode, ...] = Field(min_length=1, max_length=4)
+    requirement_refs: tuple[TemporaryHandle, ...] = Field(min_length=1, max_length=24)
+    source_refs: tuple[SourceQuote, ...] = Field(min_length=1, max_length=3)
+
+    @model_validator(mode="after")
+    def unique_modes(self):
+        if len(set(self.allowed_modes)) != len(self.allowed_modes):
+            raise ValueError("Duplicate allowed mode")
+        if len(set(self.requirement_refs)) != len(self.requirement_refs):
+            raise ValueError("Duplicate transport requirement")
+        return self
+
+
+class TransportConstraint(TransportConstraintDraft):
+    source_refs: tuple[SourceReference, ...] = Field(min_length=1, max_length=3)
+
+
 class InterpretationDraft(ContractModel):
     """One interpreter result. Local links are replaced with application IDs."""
 
     _diagnostic_call_id: str | None = PrivateAttr(default=None)
+    transport_constraint: TransportConstraintDraft | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_transport_constraint(self, handler):
+        result = handler(self)
+        if self.transport_constraint is None:
+            result.pop("transport_constraint", None)
+        return result
 
     # None is historical/unassessed. Current model entry requires an explicit assessment.
     preference_input_assessment: PreferenceInputAssessment | None = None
@@ -401,6 +439,7 @@ class InterpretationDraft(ContractModel):
                 self.named_places,
                 self.subjects,
                 self.operational_conflicts,
+                (self.transport_constraint,) if self.transport_constraint else (),
                 self.preference_input_assessment.issues if self.preference_input_assessment else (),
             )
             for item in group
@@ -440,9 +479,18 @@ class InterpretationDraft(ContractModel):
 
 
 class InterpretedTripRequirements(ContractModel):
-    contract_version: Literal["interpreted_requirements_3", "interpreted_requirements_4"] = (
-        CONTRACT_VERSION
-    )
+    contract_version: Literal[
+        "interpreted_requirements_3", "interpreted_requirements_4", "interpreted_requirements_5"
+    ] = CONTRACT_VERSION
+    transport_constraint: TransportConstraint | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_transport_constraint(self, handler):
+        result = handler(self)
+        if self.transport_constraint is None:
+            result.pop("transport_constraint", None)
+        return result
+
     request_sha256: str
     daily_pace: tuple[DailyPace, ...] | None = Field(default=None, max_length=32)
     input_version: Literal["planning_request_2"] = "planning_request_2"

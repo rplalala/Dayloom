@@ -1,6 +1,5 @@
 """LangGraph definition for the V0 plain-LLM workflow."""
 
-
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from pydantic import ValidationError
@@ -62,6 +61,11 @@ def build_v0_graph(llm_client: StructuredLLMClient) -> CompiledStateGraph:
                 response_schema=Itinerary,
             )
             itinerary = validate_output_sources(itinerary)
+            from backend.app.policies.transport_constraints import validate_restricted_transport
+
+            validate_restricted_transport(
+                itinerary, state["interpreted_requirements"].transport_constraint, plain=True
+            )
         except Exception as exc:
             raise V0StageError("generate_itinerary") from exc
 

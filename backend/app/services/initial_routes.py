@@ -57,6 +57,8 @@ class RouteWork:
 
 
 def permitted_modes(mode):
+    if mode.allowed_modes is not None:
+        return tuple(m.value for m in mode.allowed_modes)
     if mode.is_explicit or mode.travel_mode != "WALK":
         return (mode.travel_mode.value if hasattr(mode.travel_mode, "value") else mode.travel_mode,)
     return ("WALK", "TRANSIT", "DRIVE")
@@ -254,7 +256,9 @@ class InitialRoutes:
             {"policy": self.policy.model_dump(), "projection": compact_routes(bundle)},
         )
         self.acq._tracer.payload(
-            "evidence", "route_evidence_bundle", bundle,
+            "evidence",
+            "route_evidence_bundle",
+            bundle,
             minimum_mode=TracePayloadMode.NORMALIZED,
         )
         self.audit("pre")
@@ -358,6 +362,9 @@ class InitialRoutes:
         final = itinerary.model_copy(
             update={"transfers": transfers, "route_diagnostics": diagnostics}, deep=True
         )
+        from backend.app.policies.transport_constraints import validate_restricted_transport
+
+        validate_restricted_transport(final, contract.transport_constraint)
         self.audit("post")
         return final, bundle.model_copy(update={"alternatives": evidence[1:]})
 

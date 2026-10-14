@@ -10,6 +10,8 @@ from backend.app.versions.v3.repair_schedule import available_intervals, ordered
 
 
 def allowed_modes(scope):
+    if scope.allowed_transport_modes is not None:
+        return scope.allowed_transport_modes
     if scope.unsupported_explicit_mode:
         return ()
     explicit = scope.mode_source and (
@@ -45,6 +47,8 @@ async def resolve_transfers(
                 pair not in old_pairs
                 or left != old.get(left.activity_id)
                 or right != old.get(right.activity_id)
+                or pair in saved
+                and saved[pair].mode not in modes
             )
             if not changed:
                 if pair in saved:

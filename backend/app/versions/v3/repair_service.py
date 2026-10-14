@@ -54,6 +54,19 @@ async def run_repair_once(
     Inputs must be an accepted V2 primary snapshot. Cancellation is always propagated.
     No result from a rejected patch becomes the final itinerary.
     """
+    restriction = context.contract.transport_constraint
+    if restriction is not None:
+        supported = ("WALK", "TRANSIT", "DRIVE")
+        scoped = scope.allowed_transport_modes
+        scope = scope.model_copy(
+            update={
+                "allowed_transport_modes": tuple(
+                    m
+                    for m in supported
+                    if m in restriction.allowed_modes and (scoped is None or m in scoped)
+                )
+            }
+        )
     progress_details(
         "repair_targets",
         {

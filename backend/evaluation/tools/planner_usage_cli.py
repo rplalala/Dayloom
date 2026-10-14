@@ -318,6 +318,21 @@ def main(argv=None, *, runtime=None, date_provider=None, result_observer=None, c
         cancelled = isinstance(exc, asyncio.CancelledError)
         failure = type(exc).__name__
         failure_record: dict[str, object] = {"error_type": failure}
+        from backend.app.schemas.interpreted_requirements import ClarificationRequired
+        from backend.app.schemas.requirement_boundary import RequirementBoundaryError
+
+        cause = exc
+        while cause is not None:
+            if isinstance(cause, (RequirementBoundaryError, ClarificationRequired)):
+                detail = cause.as_dict()
+                failure_record["detail"] = {
+                    key: detail[key]
+                    for key in ("status", "code", "stage", "errors", "requirement_ids")
+                    if key in detail
+                }
+                failure_record["detail"].setdefault("stage", "hard_requirements")
+                break
+            cause = cause.__cause__
         if cancelled and captured and not usage_saved:
             failure_record["observed_usage"] = captured[-1]
         _save(output, "failure.json", failure_record)

@@ -11,7 +11,7 @@ from ._route_evidence import (
     observation,
     seconds_exact,
 )
-from ._route_inputs import coordinates, policy_component, route_context
+from ._route_inputs import coordinates, policy_component, requirement_mode_review, route_context
 from ._route_inputs import route_reviews as read_route_reviews
 from ._route_preparation import prepare_leg
 from ._route_rules import DEFAULT_OPTIONS, DRIVE_RESERVE_SECONDS, RULES
@@ -125,6 +125,17 @@ def prepare_routes(
                 canonical_digest(_value(value)) if value is not None else None
             )
         base["rules"], base["rules_hash"] = RULES, canonical_digest(RULES)
+        if any(
+            o["kind"] == "transport_modes"
+            for g in prepared["inventory"]
+            for o in g["requirement_spec"]["obligations"]
+        ):
+            rules = {
+                **RULES,
+                "version": "rtpeval_route_rules_3",
+                "transport_requirement_bridge": "whole_trip_1",
+            }
+            base["rules"], base["rules_hash"] = rules, canonical_digest(rules)
         if identity_snapshot_directory is not None:
             base["source_hashes"]["snapshot_coordinates"] = canonical_digest(coordinate_preparation)
         for group in prepared["inventory"]:
@@ -152,7 +163,7 @@ def prepare_routes(
                             leg["identity_grounding_verdicts"] = [
                                 r.get("grounding_verdict") for r in endpoint_records
                             ]
-                    review = policies.get(group["group_id"])
+                    review = requirement_mode_review(group, policies.get(group["group_id"]))
                     for leg in legs:
                         if (
                             leg["mode"] is None
@@ -170,6 +181,10 @@ def prepare_routes(
                         leg["mode_policy"] = policy_component(
                             review, leg["mode"], leg["declared_day"]
                         )
+                        if review and "scoring_review" in review:
+                            leg["mode_policy_score"] = policy_component(
+                                review["scoring_review"], leg["mode"], leg["declared_day"]
+                            )
                         leg["mode_review"] = review
                         if leg["mode"] is None:
                             leg["reasons"].append("route_mode_unresolved")
@@ -391,6 +406,7 @@ def score_routes(
     }
     if prepared["status"] != "complete":
         return RouteResult(prepared["status"], freeze(base))
+    base["rules"], base["rules_hash"] = prepared["rules"], prepared["rules_hash"]
     if "coordinate_preparation" in prepared:
         base["coordinate_preparation"] = prepared["coordinate_preparation"]
     try:

@@ -147,7 +147,8 @@ def observe_generation(
         else "complete"
         if semantic_rows
         and contract
-        and contract.contract_version == "interpreted_requirements_4"
+        and contract.contract_version
+        in ("interpreted_requirements_4", "interpreted_requirements_5")
         and contract.visit_requirements is not None
         else "unassessed",
         policy_issues=issues,
