@@ -54,6 +54,13 @@ dates. Separate Repair engineering diagnostics do not contribute to case scores.
 The case report owns the exact accepted selection and limitations; Issue publication
 and closure remain separate from that acceptance.
 
+The [case-02 London report](case-02/report.md) presents its selected schedules,
+independent scores, candidate/Repair observations and all-attempt resources.
+The user accepted the selected case-02 results and stated limitations on
+14 October 2026 Australia/Sydney; [#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149)
+tracks its acceptance and archive status. Case reports state their own evidence basis
+and limitations; the common workflow below applies across cases.
+
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
 generation/evaluation evidence for later anonymous packaging. Human answers and
@@ -71,7 +78,7 @@ require their own explicit authorization.
 | 3 | Identify interests stated in the original request | Independent agent | Source-bound POI interest inventory; explicit empty interests when none are stated. |
 | 4 | Prepare configuration, prices, budgets and capture | Codex | Concrete scope/limits, V1/V2 passive candidate-stage capture and V3 same-run draft/final retention. |
 | 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
-| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Native qualified four-final material, actual primary report, independent evidence, scores and limitations; report each version to the user and pause. |
+| 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Qualified four-final material and reviewed context; independent identity/evidence, eligible missing-hours access assessment, then one final primary calculation; report each version and pause. |
 | 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
 | 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
 | 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
@@ -79,7 +86,11 @@ require their own explicit authorization.
 | 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
 
 Steps 7-9 begin only after the user instructs continuation following the primary
-score handoff. Optional missing-hours assessment also requires that instruction.
+score handoff. Step 6 includes [eligible missing-hours access assessment](../docs/contracts/0004-opening-routes.md#missing-hours-access-judgment)
+within its prepared model, pricing and execution allowance, before final scoring.
+No eligible visits means no assessment call. An explicitly selected API-only run
+records that assessment is disabled. Supplemental rescoring remains available for
+historical API-only material or corrections, rather than a normal second scoring stage.
 
 Step 7 explores the POI-selection mechanism added between V1 and V2. It retains
 the full captured process, not merely a RAG-return/adopted-POI brief table. Count
@@ -132,7 +143,7 @@ self-contained account rather than linking unpublished files or local commits.
 After an explicit start instruction and concrete authorized scope/numeric budgets,
 Codex advances through primary scoring in steps 1-6 within that scope. After
 reporting the V0-V3 primary scores, FAIL/UNKNOWN findings and limitations, pause
-and wait for the user's next instruction before optional supplements, mechanism
+and wait for the user's next instruction before separately selected studies, mechanism
 analysis or final case acceptance. Covered operations within a subsequently
 authorized stage need no repeated approval. The user supplies clarification for blocking personal
 intent, approves necessary input changes or uncovered work/budget, decides step 10
@@ -276,8 +287,9 @@ entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
-Dates and durations are inclusive. The accepted case-01 input retains its original
-2026-10-13 through 2026-10-15 dates. Pending cases 02-20 use 2026-10-14 as the
+Dates and durations are inclusive. Accepted case-01 and case-02 inputs retain their
+original dates: 2026-10-13 through 2026-10-15 for Sydney and 2026-10-15 through
+2026-10-17 for London. Pending cases 03-20 use 2026-10-14 as the
 policy reference date and start on 2026-10-15, except case-05, which starts on
 Saturday 2026-10-17 and ends on Sunday 2026-10-18. Revalidate pending dates against
 the actual application reference date before execution.
@@ -285,7 +297,7 @@ the actual application reference date before execution.
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |
 | [01](case-01/report.md) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
-| [02](inputs/case-02.json) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
+| [02](case-02/report.md) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
 | [03](inputs/case-03.json) | Travel preferences | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
 | [04](inputs/case-04.json) | Travel preferences | Paris | 4 | 2 | EUR 1,400 | Art, architecture and riverside walks; checks a coherent mix of indoor visits and outdoor sightseeing. |
 | [05](inputs/case-05.json) | Travel preferences | Singapore | 2 | 2 | SGD 800 | A fairly full weekend using public transport; checks use of limited time without an explicit daily stop quota. |

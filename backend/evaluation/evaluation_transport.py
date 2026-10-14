@@ -70,6 +70,30 @@ def model_usage(raw, options):
     return value
 
 
+def verify_model_capture(execution, event, material, options, usage, *, reasoning_effort):
+    """Bind a saved model judgment and usage to its exact captured HTTP attempt."""
+    body = {
+        **material["packet"]["request"],
+        "max_output_tokens": options["max_output_tokens"],
+        "store": False,
+        "reasoning": {"effort": reasoning_effort},
+    }
+    if (
+        event["request"]
+        != {"method": "POST", "url": options["model_endpoint"] + "responses", "json": body}
+        or event.get("status_code") != 200
+        or _decode((Path(execution) / "http" / (event["event_id"] + ".bin")).read_bytes())
+        != material["response"]
+        or event["requested_at"] != material["requested_at"]
+        or event["retrieved_at"] != material["retrieved_at"]
+    ):
+        raise ValueError("Model HTTP receipt differs from judgment material")
+    if event.get("model_event_id") != usage.get("event_id") or any(
+        usage[k] != v for k, v in model_usage(material["response"], options).items()
+    ):
+        raise ValueError("Model usage differs from captured HTTP response")
+
+
 def google_wire(request):
     operation, params = request["operation"], request["parameters"]
     if operation == "places_search":
@@ -241,8 +265,10 @@ class EvaluationTransport:
             "reasoning": {"effort": reasoning_effort},
         }
         if count_tokens(json.dumps(body)) + 1024 > options["max_input_tokens"]:
-            raise ValueError("Complete identity packet exceeds input allowance")
-        if self.model_calls:
+            raise ValueError("Complete model packet exceeds input allowance: " + operation)
+        if len(self.model_calls) >= self.preparation["max_model_sends"] or any(
+            call["operation"] == operation for call in self.model_calls
+        ):
             raise ValueError("Model send allowance consumed")
         event_id = "v0-identity" if operation == "identity" else "opening-access"
         event = {
@@ -278,7 +304,7 @@ class EvaluationTransport:
             {"Authorization": "Bearer " + self.model_key},
         )
         if response.status_code != 200:
-            raise ValueError("Identity model HTTP request failed")
+            raise ValueError("Model HTTP request failed: " + operation)
         raw = _decode(response.body)
         model.update(outcome="completed", **model_usage(raw, options))
         return raw, self.events[-1]

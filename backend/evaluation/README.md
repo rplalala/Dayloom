@@ -33,8 +33,8 @@ not score quality or certify the producer's benchmark selection.
 The installed interface also exposes [automatic evaluation](#installed-automatic-evaluation),
 [multi-case suites](#installed-multi-case-suite),
 [selected generation and material handoff](#installed-generation-and-material-handoff), and
-[task-oriented tools](#installed-task-oriented-tools). Existing module commands below retain
-their behavior. The thin dispatcher lives in `backend/cli/`,
+[task-oriented tools](#installed-task-oriented-tools). Module interfaces below remain
+available with their documented execution policies. The thin dispatcher lives in `backend/cli/`,
 outside the evaluator implementation files bound by prepared execution hashes.
 
 ## Installed automatic evaluation
@@ -75,9 +75,10 @@ the two selectors cannot be combined. Both routes preserve native budgets and on
 rules. Preparation needs a fresh directory; a started execution consumes its package
 even when stopped. A credential refusal before starting preserves the prepared package;
 an operator may explicitly select the legacy route after correcting credentials. The CLI
-does not automatically recover it or repeat an attempt. No retry, resume, extra probe or
-implicit opening supplement is added. Repository authorization and live execution rules
-still apply. Existing module commands retain their behavior.
+does not automatically recover it or repeat an attempt. Eligible missing-hours access
+assessment is included before final scoring under the prepared allowance. No retry,
+resume or extra Google probe is added. Repository authorization and live execution
+rules still apply; historical API-only and incremental interfaces remain available.
 
 ## Installed multi-case suite
 
@@ -771,7 +772,8 @@ real frozen V3 chain offline, distinct from saved automatic-evaluation replay.
 `advanced` exposes individual identity, snapshot, schedule, opening and route operations.
 Explicit `advanced opening-run prepare / execute / replay` retains the incremental
 opening route; execute is online and requires its own prepared one-use package/digest.
-The primary evaluation does not add that supplement. `dev` exposes development tools;
+The separate route supports historical API-only runs and corrections; fresh primary
+evaluation includes eligible assessment before scoring. `dev` exposes development tools;
 its smoke execution can be online and needs its own approved plan. See
 [incremental opening](#incremental-missing-hours-access-assessment),
 [development-only smoke](#development-only-v0-smoke-route-requests-and-budget), and
@@ -807,8 +809,9 @@ and their CLIs remain at the package root. A CLI is not necessarily a smoke util
 ## Fresh automatic evaluation CLI
 
 `evaluation_run_cli` composes native intake, fresh Google Search/Details, V0-only model
-correspondence, snapshot coordinates, hours and directed routes, requirements/schedule,
-daily density and final quality reporting. It consumes the selected originals without
+correspondence, snapshot coordinates, hours and directed routes, eligible missing-hours
+access assessment, requirements/schedule, daily density and one final quality calculation.
+It consumes the selected originals without
 generating or repairing itineraries. Its scope is the four final projections; optional
 V3 stages, human review and controlled-Repair tracks are explicitly excluded.
 
@@ -828,9 +831,9 @@ The options object requires these fields:
 
 | Field | Meaning |
 | --- | --- |
-| `model`, `model_endpoint` | Explicit V0 deployment and HTTPS Responses base URL ending in `/openai/v1/` |
+| `model`, `model_endpoint` | Explicit identity/access deployment and HTTPS Responses base URL ending in `/openai/v1/` |
 | `max_google_sends` | Shared send ceiling across both fresh snapshot phases |
-| `max_input_tokens`, `max_output_tokens` | Complete packet sizing allowance and server output limit |
+| `max_input_tokens`, `max_output_tokens` | Per-model complete packet sizing allowance and server output limit |
 | `timeout_seconds`, `total_timeout_seconds` | Per-request and whole-execution limits |
 | `max_cost_usd` | Conservative reference-price reservation allowance, not an invoice cap |
 
@@ -840,6 +843,24 @@ old preparations. The supplied value is frozen in the preparation digest, sent i
 the Responses request and checked against the captured HTTP journal during replay.
 Invalid values fail during offline preparation. The separately fixed-medium opening
 workflow does not admit this identity-only option.
+
+Fresh preparations use `rtpeval_execution_preparation_2` and normalize optional
+`assess_missing_hours` to `true`. The package binds at most two model sends: one V0
+identity call and one conditional medium-effort `opening_access` call, sharing the
+configured deployment, total deadline and reference USD allowance. The price book
+must cover both operations when needed. Set `assess_missing_hours=false` explicitly
+for an API-only scope; it binds one model send. The prepare summary exposes this
+choice and the model ceiling. This flag requires a JSON boolean.
+
+After evidence acquisition, `opening-packet.json` records source-bound eligibility.
+Eligible assessment completes before `report.json` is composed; no eligible visits
+skips the call. `opening_assessment` records complete/skipped/disabled status, while
+the report retains separate factual and model-supported access coverage. An assessment
+failure or exhausted allowance saves a stopped report and usage/receipt without an
+initial quality score or silent API-only fallback. Replay checks eligibility and both
+captured model responses before recomputing the one final score. Version-1 packages
+retain their original API-only semantics; exact historical policy replay needs its
+retained implementation. Full contract: [missing-hours assessment](../../docs/contracts/0004-opening-routes.md#missing-hours-access-judgment).
 
 New current V0 identity requests require a `decisions` object with one required key per
 prepared short reference, covering visits and requirement subjects. Each judgment's
@@ -861,7 +882,7 @@ without downloading it. Runtime dependency errors after an attempt preserve the 
 report and observed sends. Regression tests use synthetic tokenization; real packet sizing
 uses the existing offline vocabulary.
 Execution preserves request wires without credential headers, raw HTTP bytes, times,
-native snapshots, V0 material, full check reports and evaluator-only usage/cost estimates.
+native snapshots, identity/access material, full check reports and evaluator-only usage/cost estimates.
 `report.json` distinguishes `processing_status`, `acquisition_status` and `evidence_status`,
 retains source-linked UNKNOWN reasons and exclusions, and may complete with FAIL/UNKNOWN.
 The UNKNOWN inventory includes daily density and links identity/downstream uncertainty
@@ -883,7 +904,8 @@ explicit exterior wording. Explicit restricted activities and museum admission s
 require applicable evidence; genuinely unresolved intent stays UNKNOWN. Model judgment does not invent hours or
 remove missing factual evidence and original grounding errors.
 
-Reuse a completed four-final execution; no new Google or V0 identity request is made:
+For historical API-only material or a separately authorized correction, reuse a
+completed four-final execution; no new Google or V0 identity request is made:
 
 ```powershell
 .venv/Scripts/python.exe -m backend.evaluation.evaluation_run_cli prepare-opening artifacts/fresh-evaluation --directory artifacts/opening-access --options opening-options.json --prices opening-prices.json

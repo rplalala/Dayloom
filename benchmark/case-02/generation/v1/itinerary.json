@@ -1,0 +1,785 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "2026-10-15-westminster-abbey",
+      "to_activity_id": "2026-10-15-big-ben",
+      "origin_place_id": "ChIJLzVDusQEdkgRelObBaL_jto",
+      "destination_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T11:00:00+01:00",
+      "arrival_time": "2026-10-15T11:04:51+01:00",
+      "provider_duration_seconds": 291.0,
+      "distance_meters": 326,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-15-big-ben",
+      "to_activity_id": "2026-10-15-london-eye",
+      "origin_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "destination_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T11:50:00+01:00",
+      "arrival_time": "2026-10-15T11:58:26+01:00",
+      "provider_duration_seconds": 506.0,
+      "distance_meters": 599,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-15-london-eye",
+      "to_activity_id": "2026-10-15-national-gallery",
+      "origin_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "destination_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T13:10:00+01:00",
+      "arrival_time": "2026-10-15T13:27:04+01:00",
+      "provider_duration_seconds": 1024.0,
+      "distance_meters": 1097,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-16-tower-of-london",
+      "to_activity_id": "2026-10-16-tower-bridge",
+      "origin_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "destination_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T12:30:00+01:00",
+      "arrival_time": "2026-10-16T12:37:57+01:00",
+      "provider_duration_seconds": 477.0,
+      "distance_meters": 568,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-16-tower-bridge",
+      "to_activity_id": "2026-10-16-st-pauls",
+      "origin_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "destination_place_id": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T14:30:00+01:00",
+      "arrival_time": "2026-10-16T14:57:42+01:00",
+      "provider_duration_seconds": 1662.0,
+      "distance_meters": 2217,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-17-natural-history-museum",
+      "to_activity_id": "2026-10-17-hyde-park",
+      "origin_place_id": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+      "destination_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-17T12:30:00+01:00",
+      "arrival_time": "2026-10-17T13:02:24+01:00",
+      "provider_duration_seconds": 1944.0,
+      "distance_meters": 2291,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "2026-10-17-hyde-park",
+      "to_activity_id": "2026-10-17-buckingham-palace-exterior",
+      "origin_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "destination_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-17T14:45:00+01:00",
+      "arrival_time": "2026-10-17T15:10:40+01:00",
+      "provider_duration_seconds": 1540.0,
+      "distance_meters": 1915,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "2026-10-15-westminster-abbey",
+      "to_activity_id": "2026-10-15-big-ben",
+      "origin": "ChIJLzVDusQEdkgRelObBaL_jto",
+      "destination": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "departure": "2026-10-15T11:00:00+01:00",
+      "next_start": "2026-10-15T11:20:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 291,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:02.181233+00:00",
+              "retrieved_at": "2026-10-14T03:14:03.829002+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJLzVDusQEdkgRelObBaL_jto",
+                "destination_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 291,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:02.181233Z",
+                "retrieved_at": "2026-10-14T03:14:03.829002Z",
+                "origin_index": 3,
+                "destination_index": 0,
+                "distance_meters": 326,
+                "duration_seconds": 291,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-15-big-ben",
+      "to_activity_id": "2026-10-15-london-eye",
+      "origin": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "destination": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "departure": "2026-10-15T11:50:00+01:00",
+      "next_start": "2026-10-15T12:10:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 506,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:02.181233+00:00",
+              "retrieved_at": "2026-10-14T03:14:03.829002+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+                "destination_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 506,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:02.181233Z",
+                "retrieved_at": "2026-10-14T03:14:03.829002Z",
+                "origin_index": 0,
+                "destination_index": 5,
+                "distance_meters": 599,
+                "duration_seconds": 506,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-15-london-eye",
+      "to_activity_id": "2026-10-15-national-gallery",
+      "origin": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "destination": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "departure": "2026-10-15T13:10:00+01:00",
+      "next_start": "2026-10-15T14:00:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1024,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:03.837888+00:00",
+              "retrieved_at": "2026-10-14T03:14:05.320791+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+                "destination_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1024,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:03.837888Z",
+                "retrieved_at": "2026-10-14T03:14:05.320791Z",
+                "origin_index": 0,
+                "destination_index": 9,
+                "distance_meters": 1097,
+                "duration_seconds": 1024,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-16-tower-of-london",
+      "to_activity_id": "2026-10-16-tower-bridge",
+      "origin": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "destination": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "departure": "2026-10-16T12:30:00+01:00",
+      "next_start": "2026-10-16T13:15:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 477,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:02.181233+00:00",
+              "retrieved_at": "2026-10-14T03:14:03.829002+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+                "destination_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 477,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:02.181233Z",
+                "retrieved_at": "2026-10-14T03:14:03.829002Z",
+                "origin_index": 1,
+                "destination_index": 4,
+                "distance_meters": 568,
+                "duration_seconds": 477,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-16-tower-bridge",
+      "to_activity_id": "2026-10-16-st-pauls",
+      "origin": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "destination": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+      "departure": "2026-10-16T14:30:00+01:00",
+      "next_start": "2026-10-16T15:15:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1662,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:02.181233+00:00",
+              "retrieved_at": "2026-10-14T03:14:03.829002+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+                "destination_place_id": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1662,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:02.181233Z",
+                "retrieved_at": "2026-10-14T03:14:03.829002Z",
+                "origin_index": 4,
+                "destination_index": 10,
+                "distance_meters": 2217,
+                "duration_seconds": 1662,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-17-natural-history-museum",
+      "to_activity_id": "2026-10-17-hyde-park",
+      "origin": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+      "destination": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "departure": "2026-10-17T12:30:00+01:00",
+      "next_start": "2026-10-17T13:15:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1944,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:03.837888+00:00",
+              "retrieved_at": "2026-10-14T03:14:05.320791+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+                "destination_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1944,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:03.837888Z",
+                "retrieved_at": "2026-10-14T03:14:05.320791Z",
+                "origin_index": 2,
+                "destination_index": 8,
+                "distance_meters": 2291,
+                "duration_seconds": 1944,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "2026-10-17-hyde-park",
+      "to_activity_id": "2026-10-17-buckingham-palace-exterior",
+      "origin": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "destination": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "departure": "2026-10-17T14:45:00+01:00",
+      "next_start": "2026-10-17T15:30:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1540,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:14:03.837888+00:00",
+              "retrieved_at": "2026-10-14T03:14:05.320791+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+                "destination_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1540,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:14:03.837888Z",
+                "retrieved_at": "2026-10-14T03:14:05.320791Z",
+                "origin_index": 3,
+                "destination_index": 2,
+                "distance_meters": 1915,
+                "duration_seconds": 1540,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Cellarium Cafe & Terrace",
+      "source_place_id": "ChIJe_lebMQEdkgRlxzT_LzCE60",
+      "reason": "Restaurant near Westminster Abbey (approximately 89 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "Westminster Abbey, Dean's Yard, The Sanctuary, London SW1P 3PA, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-961dced9-e6fc-4714-bfef-c5552232a977:0"
+    },
+    {
+      "place_name": "Metaverse",
+      "source_place_id": "ChIJ45vrx8cEdkgRkGR3nThqW5Q",
+      "reason": "Museum near London Eye (approximately 7 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "Riverside Building, County Hall, London SE1 7PB, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-09d9eb60-35fa-47ba-bfc1-f2327ed79c2e:0"
+    },
+    {
+      "place_name": "Muriel's Espresso Bar",
+      "source_place_id": "ChIJ9ww8IN4FdkgRgZYTxSda7b0",
+      "reason": "Cafe near The National Gallery (approximately 19 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "National Gallery, Trafalgar Sq, London WC2N 5DN, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-5396d7ff-42a2-4aee-8ad3-1901365045d6:1"
+    }
+  ],
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-17",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-15-westminster-abbey",
+          "title": "Visit Westminster Abbey",
+          "place_name": "Westminster Abbey",
+          "source_place_id": "ChIJLzVDusQEdkgRelObBaL_jto",
+          "location": "Dean's Yard, London SW1P 3PA, UK",
+          "start_time": "2026-10-15T09:30:00+01:00",
+          "end_time": "2026-10-15T11:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Opening hours for this date are unknown in the supplied evidence; confirm visiting arrangements before setting out."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-15-big-ben",
+          "title": "See Big Ben",
+          "place_name": "Big Ben",
+          "source_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+          "location": "London SW1A 0AA, UK",
+          "start_time": "2026-10-15T11:20:00+01:00",
+          "end_time": "2026-10-15T11:50:00+01:00",
+          "estimated_cost": null,
+          "notes": "Plan this as a brief landmark stop; supplied hours and access information are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-15-london-eye",
+          "title": "London Eye visit",
+          "place_name": "London Eye",
+          "source_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+          "location": "Riverside Building, County Hall, Westminster Bridge Rd, London SE1 7PB, UK",
+          "start_time": "2026-10-15T12:10:00+01:00",
+          "end_time": "2026-10-15T13:10:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 11:00–18:00; ticket prices and requirements are not established by the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-15-national-gallery",
+          "title": "Explore The National Gallery",
+          "place_name": "The National Gallery",
+          "source_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+          "location": "Trafalgar Square, London WC2N 5DN, UK",
+          "start_time": "2026-10-15T14:00:00+01:00",
+          "end_time": "2026-10-15T16:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 10:00–18:00."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-16-tower-of-london",
+          "title": "Explore the Tower of London",
+          "place_name": "Tower of London",
+          "source_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+          "location": "London EC3N 4AB, UK",
+          "start_time": "2026-10-16T09:30:00+01:00",
+          "end_time": "2026-10-16T12:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 09:00–17:30. Forecast calls for moderate drizzle, so allow for wet conditions."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-16-tower-bridge",
+          "title": "Visit Tower Bridge",
+          "place_name": "Tower Bridge",
+          "source_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+          "location": "Tower Bridge Rd, London SE1 2UP, UK",
+          "start_time": "2026-10-16T13:15:00+01:00",
+          "end_time": "2026-10-16T14:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 09:30–18:00."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-16-st-pauls",
+          "title": "Visit St. Paul's Cathedral",
+          "place_name": "St. Paul's Cathedral",
+          "source_place_id": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+          "location": "St. Paul's Churchyard, London EC4M 8AD, UK",
+          "start_time": "2026-10-16T15:15:00+01:00",
+          "end_time": "2026-10-16T16:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 08:30–16:30."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-17-natural-history-museum",
+          "title": "Explore the Natural History Museum",
+          "place_name": "Natural History Museum",
+          "source_place_id": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+          "location": "Cromwell Rd, South Kensington, London SW7 5BD, UK",
+          "start_time": "2026-10-17T10:00:00+01:00",
+          "end_time": "2026-10-17T12:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 10:00–17:50."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-17-hyde-park",
+          "title": "Spend time in Hyde Park",
+          "place_name": "Hyde Park",
+          "source_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+          "location": "London, UK",
+          "start_time": "2026-10-17T13:15:00+01:00",
+          "end_time": "2026-10-17T14:45:00+01:00",
+          "estimated_cost": null,
+          "notes": "Supplied hours for this date are 05:00–00:00. Forecast is overcast and cool."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "2026-10-17-buckingham-palace-exterior",
+          "title": "See Buckingham Palace from outside",
+          "place_name": "Buckingham Palace",
+          "source_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+          "location": "London SW1A 1AA, UK",
+          "start_time": "2026-10-17T15:30:00+01:00",
+          "end_time": "2026-10-17T16:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "This is planned as an exterior landmark stop only. Supplied date-specific operating status and hours are unknown; palace interior access is not planned."
+        }
+      ]
+    }
+  ]
+}

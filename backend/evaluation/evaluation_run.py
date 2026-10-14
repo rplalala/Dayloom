@@ -14,7 +14,8 @@ from .intake import _read, load_batch
 from .records import canonical_digest
 from .snapshot import TransportFailure, _bytes, build_identity_plan
 
-VERSION = "rtpeval_execution_preparation_1"
+VERSION = "rtpeval_execution_preparation_2"
+LEGACY_VERSION = "rtpeval_execution_preparation_1"
 
 
 def _save(root, name, value):
@@ -37,13 +38,17 @@ def _options(options, *, allow_no_google=False):
         "max_input_tokens",
         "max_output_tokens",
     }
-    optional = set() if allow_no_google else {"reasoning_effort"}
+    optional = set() if allow_no_google else {"reasoning_effort", "assess_missing_hours"}
     if not required <= set(value) or set(value) - required - optional:
         raise ValueError(
             "Explicit execution options required; credentials are not preparation data"
         )
     if "reasoning_effort" in value and value["reasoning_effort"] not in ("low", "medium"):
         raise ValueError("Identity reasoning effort must be low or medium")
+    if "assess_missing_hours" in value and type(value["assess_missing_hours"]) is not bool:
+        raise ValueError("assess_missing_hours must be a boolean")
+    if not allow_no_google:
+        value.setdefault("assess_missing_hours", True)
     for key in ("max_google_sends", "max_input_tokens", "max_output_tokens"):
         minimum = 0 if key == "max_google_sends" and allow_no_google else 1
         if type(value[key]) is not int or value[key] < minimum:
@@ -70,7 +75,7 @@ def _options(options, *, allow_no_google=False):
 
 
 def _verify(preparation, *, implementation=False):
-    if preparation.get("schema_version") != VERSION or canonical_digest(
+    if preparation.get("schema_version") not in (VERSION, LEGACY_VERSION) or canonical_digest(
         {k: v for k, v in preparation.items() if k != "content_sha256"}
     ) != preparation.get("content_sha256"):
         raise ValueError("Evaluation preparation digest mismatch")
@@ -234,7 +239,15 @@ def _acquisition_links(unknowns, snapshots, identity):
 
 
 def _report(
-    preparation, execution, identity, evidence_plan, usage, generated_at, *, opening_judgment=None
+    preparation,
+    execution,
+    identity,
+    evidence_plan,
+    usage,
+    generated_at,
+    *,
+    opening_judgment=None,
+    opening_assessment=None,
 ):
     from .cost_report import build_cost_report
     from .opening import score_opening
@@ -311,6 +324,7 @@ def _report(
         [{"sha256": canonical_digest(usage), "usage": usage}], preparation["prices"]
     )
     return {
+        **({"opening_assessment": opening_assessment} if opening_assessment is not None else {}),
         "schema_version": "rtpeval_execution_report_1",
         "preparation_sha256": preparation["content_sha256"],
         "scope": preparation["scope"],
@@ -351,6 +365,7 @@ async def execute_run(
     from .identity_binding import RESULT_VERSION as BOUND_RESULT_VERSION
     from .identity_llm import prepare_identity_judgment
     from .identity_program import resolve_versioned_identities
+    from .primary_opening import assess_primary_opening
     from .routes import prepare_routes
     from .snapshot import AcquisitionPolicy, acquire_snapshot, identity_evidence
 
@@ -431,9 +446,24 @@ async def execute_run(
                     retry_delay_seconds=0,
                 ),
             )
+            opening_stage, opening_material = None, None
+            if preparation["schema_version"] == VERSION:
+                opening_stage, opening_material = await assess_primary_opening(
+                    preparation, execution, identity, plan, transport
+                )
+                _save(execution, "opening-assessment.json", opening_stage)
             usage = transport.usage()
             _save(execution, "usage.json", usage)
-            report = _report(preparation, execution, identity, plan, usage, _now())
+            report = _report(
+                preparation,
+                execution,
+                identity,
+                plan,
+                usage,
+                _now(),
+                opening_judgment=opening_material,
+                opening_assessment=opening_stage,
+            )
             _verify(preparation, implementation=True)
     except (
         ValueError,
@@ -513,10 +543,10 @@ def verify_receipt(execution, preparation_sha256):
 
 def replay_run(directory):
     """Verify originals and all captured bytes, then independently recompose the final report."""
-    from .evaluation_transport import model_usage, usage_event
+    from .evaluation_transport import usage_event, verify_model_capture
     from .identity_program import resolve_versioned_identities
     from .routes import prepare_routes
-    from .snapshot import _decode, identity_evidence, load_snapshot
+    from .snapshot import identity_evidence, load_snapshot
 
     preparation = _read(Path(directory) / "preparation.json")[0]
     root = _verify(preparation)
@@ -530,40 +560,27 @@ def replay_run(directory):
     if [usage_event(e) for e in journal] != usage["provider_events"]:
         raise ValueError("HTTP journal and usage differ")
     if saved["processing_status"] == "stopped":
+        if saved["usage"]["raw"] != usage:
+            raise ValueError("Stopped report usage differs")
         return saved
     evidence = identity_evidence(
         load_snapshot(execution / "identity-snapshot", expected_plan=preparation["identity_plan"])
     )
     material = _read(execution / "model-result.json")[0]
-    model_events = [e for e in journal if e["provider"] == "azure_foundry"]
+    model_events = [e for e in journal if e.get("model_event_id") == "v0-identity"]
     if len(model_events) != 1:
         raise ValueError("Model HTTP receipt missing or duplicated")
-    event = model_events[0]
-    expected_body = {
-        **material["packet"]["request"],
-        "max_output_tokens": preparation["options"]["max_output_tokens"],
-        "store": False,
-        "reasoning": {"effort": preparation["options"].get("reasoning_effort", "low")},
-    }
-    if (
-        event["request"]
-        != {
-            "method": "POST",
-            "url": preparation["options"]["model_endpoint"] + "responses",
-            "json": expected_body,
-        }
-        or event.get("status_code") != 200
-        or _decode((execution / "http" / (event["event_id"] + ".bin")).read_bytes())
-        != material["response"]
-        or event["requested_at"] != material["requested_at"]
-        or event["retrieved_at"] != material["retrieved_at"]
-    ):
-        raise ValueError("Model HTTP receipt differs from identity material")
-    if len(usage["model_calls"]) != 1 or any(
-        usage["model_calls"][0][k] != v
-        for k, v in model_usage(material["response"], preparation["options"]).items()
-    ):
-        raise ValueError("Model usage differs from captured HTTP response")
+    identity_calls = [call for call in usage["model_calls"] if call["operation"] == "identity"]
+    if len(identity_calls) != 1:
+        raise ValueError("Exactly one identity model attempt required")
+    verify_model_capture(
+        execution,
+        model_events[0],
+        material,
+        preparation["options"],
+        identity_calls[0],
+        reasoning_effort=preparation["options"].get("reasoning_effort", "low"),
+    )
     identity = resolve_versioned_identities(
         preparation["intake"], evidence, model_result=material
     ).to_dict()
@@ -581,8 +598,30 @@ def replay_run(directory):
         or routes["evidence_plan"] != _read(execution / "evidence-plan.json")[0]
     ):
         raise ValueError("Route preparation replay differs")
+    opening_stage, opening_material = None, None
+    if preparation["schema_version"] == VERSION:
+        from .primary_opening import replay_primary_opening
+
+        opening_stage, opening_material = replay_primary_opening(
+            preparation, execution, identity, routes["evidence_plan"], journal, usage
+        )
+        if opening_stage != _read(execution / "opening-assessment.json")[0]:
+            raise ValueError("Opening assessment stage replay differs")
+    expected_models = 1 + int(opening_material is not None)
+    if (
+        len(usage["model_calls"]) != expected_models
+        or sum(e["provider"] == "azure_foundry" for e in journal) != expected_models
+    ):
+        raise ValueError("Model HTTP inventory differs from selected stages")
     report = _report(
-        preparation, execution, identity, routes["evidence_plan"], usage, saved["generated_at"]
+        preparation,
+        execution,
+        identity,
+        routes["evidence_plan"],
+        usage,
+        saved["generated_at"],
+        opening_judgment=opening_material,
+        opening_assessment=opening_stage,
     )
     if report != saved:
         raise ValueError("Final evaluation report replay differs")
@@ -649,7 +688,7 @@ def prepare_run(
             str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest() for p in implementation
         },
         "scope": "four_final_automatic_quality",
-        "max_model_sends": 1,
+        "max_model_sends": 2 if options.get("assess_missing_hours", True) else 1,
         "max_retries": 0,
     }
     value["content_sha256"] = canonical_digest(value)

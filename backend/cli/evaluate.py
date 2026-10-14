@@ -21,8 +21,8 @@ def _execute(argv: Sequence[str], *, http_client=None) -> int:
         prog="rtpeval evaluate execute",
         description="Online automatic evaluation; emits the native report and preserves stops.",
         epilog="One-step mode requires --directory, --options and --prices. The internal digest "
-        "proves integrity, not independent authorization. No retries, resume or implicit "
-        "opening assessment.",
+        "proves integrity, not independent authorization. Missing-hours access assessment "
+        "precedes final scoring under the prepared limits. No retries or resume.",
     )
     parser.add_argument(
         "source", help="Qualified batch manifest, or a prepared directory in legacy mode"

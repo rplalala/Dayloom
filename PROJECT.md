@@ -131,7 +131,9 @@ Optional offline prepare/replay and prepared-directory/exact-digest execution re
 available. Top-level and evaluate-group help load no evaluator implementation. Dispatch
 lives outside preparation-bound evaluator files. Budgets, credentials, source/receipt
 integrity, one-use rules, version-specific identity/reasoning policies and separate statuses
-remain native. No retries or implicit opening supplement are added. See
+remain native. Eligible missing-hours access assessment now precedes the single final
+primary score within the prepared allowance; API-only execution is an explicit option.
+No automatic retry is added. See
 [installed evaluation](backend/evaluation/README.md#installed-automatic-evaluation).
 The integrated implementation also exposes explicit offline collection, external reviewed
 requirements attachment/native finalization, selected generation registration and task-oriented

@@ -195,7 +195,9 @@ corpus or proves causal improvement.
 
 Commands, installed task groups, explicit options and one-use execution are documented in
 the [evaluation package guide](../backend/evaluation/README.md). Optional preparation/replay
-remain offline. No implicit supplemental assessment or retry is added. See
+remain offline. Fresh execution performs eligible missing-hours assessment before
+the single final score under the bound allowance; separate research tracks and retries
+remain outside that execution. See the [opening contract](contracts/0004-opening-routes.md#missing-hours-access-judgment) and
 [ADR: evaluation independence](adr/0004-independent-evaluation.md).
 
 ## Batch and benchmark terminology

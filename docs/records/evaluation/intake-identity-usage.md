@@ -1,6 +1,6 @@
 # Intake, identity, usage and material workflow history
 
-This record synthesizes evaluator engineering from September 29 through October 11,
+This record synthesizes evaluator engineering from September 29 through October 14,
 2026. Current interfaces and compatibility rules belong to the
 [intake contract](../../contracts/0002-intake-identity-usage.md),
 [artifact contract](../../contracts/0001-evaluation-artifacts.md) and
@@ -1629,3 +1629,36 @@ the Issue records commands and live completion. Prior originals remain under
 This acceptance adds offline engineering evidence without fresh Planner generation,
 paid acquisition, participant or controlled-study execution, frontend validation,
 formal benchmark results or version freeze.
+
+### Missing-hours assessment before final scoring (2026-10-14)
+
+Status: Implemented and offline validated at local implementation commit `7865e6a`,
+from base `a6c3a5d`. Related workflow/contract documentation was pending during
+implementation checks; Planner generation and selected case materials were unchanged.
+
+Fresh evaluator packages now collect independent identity and Google evidence,
+assess eligible missing-hours access, then calculate one final primary score.
+The conditional medium-effort call shares the prepared total time/USD allowance
+and reuses Google evidence. No eligible visits skips the call; explicit API-only
+selection disables it. Failure retains receipts/usage without an initial score or
+retry. Historical API-only and separate incremental interfaces remain available.
+Current behavior belongs to the [opening contract](../../contracts/0004-opening-routes.md#missing-hours-access-judgment).
+
+The initial public-interface test failed because no integrated assessment was
+reported, then passed after implementation. A 106-case affected evaluator/CLI/suite
+run passed 105 cases; the remaining budget fixture used a reservation value that
+still permitted the second model send. After correcting that fixture, all 17
+integrated/legacy-opening retests passed, including refusal before an unaffordable
+access send. Coverage includes success, skip/disable, HTTP/invalid judgment/pricing
+failure, shared budgets, quote/HTTP binding and network-free replay. Changed Python
+lint/format and 14 added documentation links passed. The retained case-02 version-1
+primary report also replayed unchanged with sockets denied and one historical model
+send; no inline assessment was added to it.
+
+Independent Standards review found no blocking violation; Spec review found no
+missing requirement, scope expansion or implementation error. This is synthetic
+engineering validation and historical evidence replay, with no new paid acquisition,
+itinerary generation or case acceptance. Local test-material identifiers are
+`artifacts/pytest-integrated-opening-final/`, `artifacts/pytest-integrated-opening-budget/`
+and `artifacts/pytest-integrated-opening-check/`; original tool outputs retain the
+actual test and review results. Real integrated provider execution remains untested.

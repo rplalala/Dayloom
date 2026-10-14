@@ -40,14 +40,17 @@ optional trusted `expected_plan` and required offset-aware `generated_at`. It re
 immutable `QualityReportResult`; `to_dict()` exports `rtpeval_quality_report_2`.
 No provider client, planner graph or extra dependency is constructed.
 
-Optional source-bound `opening_judgment` selects `rtpeval_access_quality_4`: opening PASS
+Source-bound `opening_judgment` selects `rtpeval_access_quality_4`: opening PASS
 can use API schedules or the [missing-hours access assessment](0004-opening-routes.md#missing-hours-access-judgment).
 Arithmetic, populations and denominators remain unchanged. Model-supported PASS is a
 policy judgment, not verified hours. Ordinary viewing at public landmarks may be inferred;
 restricted activities and museum admission retain separate access-evidence requirements.
 Opening primary metrics retain factual coverage,
 unknown durations and separate model-assessed/decidable counts. API-only reports retain
-their original profile. Scoring/import never invokes a model.
+their original profile. Scoring/import never invokes a model. Fresh automatic execution
+supplies eligible judgments before invoking this final scorer once; the
+[opening execution contract](0004-opening-routes.md#missing-hours-access-judgment)
+owns conditional calls, budgets, skips and historical API-only compatibility.
 
 Executable commands are in the [package guide](../../backend/evaluation/README.md).
 

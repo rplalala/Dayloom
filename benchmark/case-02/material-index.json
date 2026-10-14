@@ -1,0 +1,409 @@
+{
+  "schema_version": "case_material_index_1",
+  "case_id": "case-02",
+  "acceptance": "accepted by human user",
+  "format": "public views and exact itinerary subtrees; original closed native bundles remain private",
+  "input": {
+    "path": "../inputs/case-02.json",
+    "sha256": "afd045d47b93bef9cc3743bcd2512805bc5b85cf35d1e0b97d23a740e53c9c1b"
+  },
+  "generation_source_revision": "8808340ceae7f6bd5688eccf4f4b461a98934b2b",
+  "current_evaluation_source_revision": "ab78e0ed8c4f3b92f39ed04ee67f6c05fae5f4a3",
+  "materials": [
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "d69656bed61f661fca50ca3f39e8c83aa88dd71ade7a781758654b8cf262c70b",
+      "source_logical_path": "work/captures/v0/result.json",
+      "source_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "c8bf5fd1b60e4420bb5f780aa12ba665af30c604681dd7f1ca0127998a235503",
+      "source_logical_path": "work/captures/v1-a2/result.json",
+      "source_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "509ecb1a2a96c2f7b308b776e2572cc1a95b445c4c4102066c3b64457cbfd9ea",
+      "source_logical_path": "work/captures/v2/result.json",
+      "source_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "b46856301f19a4ce4151309d6de7a991f0298ecd45bb02743b0ef746c0aed3ca",
+      "source_logical_path": "work/captures/v3/result.json",
+      "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v3/draft.json",
+      "sha256": "b3b51d6558365403797ea8134ad3553287c20db3b3065cfdc96a49455cb8b448",
+      "source_logical_path": "work/captures/v3/result.json",
+      "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "json_pointer": "/v3/draft"
+    },
+    {
+      "path": "generation/v3/final-primary.json",
+      "sha256": "96d55eec17ba42111cc17c116bbadb3ed1107b93075b3bb47a4e411ea8514fa4",
+      "source_logical_path": "work/captures/v3/result.json",
+      "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "json_pointer": "/v3/final_primary"
+    },
+    {
+      "path": "requirements/reviewed-requirements.json",
+      "sha256": "ced2e8efd5b7000b3e4857d6cc299d7d18f89c7ba50afaff21019fca060259af",
+      "source_logical_path": "work/semantics/isolated-reviewer/requirement-reviewed-final.json",
+      "source_sha256": "0607151136012ca98617a898b1b391d4ef1a9ce99a3f40e2df9e35c77d8fdeba",
+      "json_pointer": "",
+      "transformation": "Replace private execution identifier with reviewer role; preserve reviewed semantics and date"
+    },
+    {
+      "path": "interests/interests.json",
+      "sha256": "e5d1b0c38bc4a298d58822d3e31597f6a9e023a043fb7a2518abf8a1fe8c39ec",
+      "source_logical_path": "work/semantics/isolated-interests/interests-reviewed-final.json",
+      "source_sha256": "1a86fdcb8ae0a4c0b095f41e165c55cece9b20e07f4c3accdbb7887c69ff8715",
+      "json_pointer": "",
+      "transformation": "Resolve public RequirementSpec reference, label private reviewer by role and omit private actor-record references; interests remain unchanged"
+    },
+    {
+      "path": "evaluation/primary/quality-report.json",
+      "sha256": "87f8346eb380f4518d6688a04921c98ec4e611e1bc8b83344117d4c16ab06f64",
+      "source_logical_path": "work/route-review-correction/quality-report.json",
+      "source_sha256": "4b0e44707af25c02b2ed2ee9a54cad47293d6f0922f9ca8f2d8cb6283d3c1a1a",
+      "json_pointer": "",
+      "transformation": "Extract native totals, fractions, dimensions and density; omit embedded duplicate component evidence"
+    },
+    {
+      "path": "evaluation/opening/quality-report.json",
+      "sha256": "1110d1e4c4188d8bd28c178350bf0fdc8de37054d52bd21fa164d5c112c50364",
+      "source_logical_path": "work/opening-reviewed-r1/execution/report.json",
+      "source_sha256": "fd612bb6c281e6fc610a9b4e5673c6ed5038a4ba1a1a8a9d92d433d0d2e7c447",
+      "json_pointer": "/quality",
+      "transformation": "Extract native totals, fractions, dimensions and density; omit embedded duplicate component evidence"
+    },
+    {
+      "path": "evaluation/opening/access-summary.json",
+      "sha256": "559837f7d9497a3930117ef24aa92f213fbda2507b41afb7c52fc60606e2d9cb",
+      "source_logical_path": "work/opening-reviewed-r1/execution/report.json",
+      "source_sha256": "fd612bb6c281e6fc610a9b4e5673c6ed5038a4ba1a1a8a9d92d433d0d2e7c447",
+      "json_pointer": "",
+      "transformation": "Extract independent states, semantic access labels and source bindings; omit provider payloads and model response prose"
+    },
+    {
+      "path": "evaluation/v3-pair/pair-report.json",
+      "sha256": "defa69f9182898678c69984b04a94458ee2766b6323ee0be3e11b402cee5b55a",
+      "source_logical_path": "work/pair-reviewed-r1/execution/pair-report.json",
+      "source_sha256": "9f3c235db8fbd9d3f1782ad8eb16f91ba8712d63ad7252141f4e43c6b6ea71cb",
+      "json_pointer": "",
+      "transformation": "Extract native paired scores, aggregate dimensions, density, deltas and edit counts; omit duplicate component evidence"
+    },
+    {
+      "path": "analysis/poi-process/selected-process.json",
+      "sha256": "aff54b6b0f80f99b8b41bca60add7d8693fbc97e9922adbb8ae1f05cd073d313",
+      "source_logical_path": "work/process-native/selected-final-opportunities.json",
+      "source_sha256": "8585bc7f0b95cfabfc7dbd9cabdeccec532c8251ea4f273be2798099bb691f2b",
+      "json_pointer": "",
+      "transformation": "Retain canonical memberships, origin partitions, omissions and independent scheduled sets; summarize RAG telemetry and omit raw queries/actor references"
+    },
+    {
+      "path": "analysis/resources/accounting.json",
+      "sha256": "1cdaa49bfe9c21b8ebbed7d58af8c636bee9d68538d31b51bd9c40652fa84b65",
+      "source_logical_path": "work/process-native/tradeoffs.json",
+      "source_sha256": "c758bf8755fa0a0932c3ede222f306fa3e4d9caa610636b962dcce7249a41f80",
+      "json_pointer": "",
+      "transformation": "Extract all-attempt metrics and reference costs; add separately bound evaluator stage estimates without allocating them to Planner versions",
+      "additional_sources": [
+        {
+          "logical_path": "work/primary-resume/execution/report.json",
+          "sha256": "d4603b0dfca2c5d2d5a9e8d5e239891fc5dfd629082a571674de7e97fad33375"
+        },
+        {
+          "logical_path": "work/opening-reviewed-r1/execution/report.json",
+          "sha256": "fd612bb6c281e6fc610a9b4e5673c6ed5038a4ba1a1a8a9d92d433d0d2e7c447"
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/population-summary.json",
+      "sha256": "9524f28b86e546ebab82d1673a422427247ffdd81696561ffea869ddc20ed878",
+      "source_logical_path": "work/process-native/population.json",
+      "source_sha256": "c23e7f3f33797edb6a111a772b432b8ca2aa0064f111d4748f78f9f5dd80b072",
+      "json_pointer": "",
+      "transformation": "Retain native first-dispatched summary; label retry-selected final coverage separately"
+    },
+    {
+      "path": "analysis/repair/repair-summary.json",
+      "sha256": "fe0310b79ac74c7223c3275b625f73de82da090e6ede826e4958d9a7ec786c78",
+      "source_logical_path": "work/pair-reviewed-r1/execution/pair-report.json",
+      "source_sha256": "9f3c235db8fbd9d3f1782ad8eb16f91ba8712d63ad7252141f4e43c6b6ea71cb",
+      "json_pointer": "",
+      "transformation": "Extract native pair counts/totals and same-run producer Repair observations from original V3 result; producer observations are not independent verdicts",
+      "additional_sources": [
+        {
+          "logical_path": "work/captures/v3/result.json",
+          "sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+          "json_pointer": "/v3/repair"
+        }
+      ]
+    },
+    {
+      "path": "generation/poi-origins.json",
+      "sha256": "5b6b6e81d2734381a17795434432c4cf9cab45690f97f3efb9823cbd99024e4e",
+      "source_logical_path": "work/captures/v3/result.json",
+      "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "json_pointer": "/v3/original_rag_discovery",
+      "transformation": "Join submitted activity IDs/canonical IDs to complete V1/V2 discovery partitions and recorded V3 RAG associations; keep unavailable V3 partition attribution explicit",
+      "additional_sources": [
+        {
+          "logical_path": "work/process-native/selected-final-opportunities.json",
+          "sha256": "8585bc7f0b95cfabfc7dbd9cabdeccec532c8251ea4f273be2798099bb691f2b"
+        }
+      ]
+    }
+  ],
+  "private_native_bindings": [
+    {
+      "logical_path": "work/primary-resume/execution/report.json",
+      "sha256": "d4603b0dfca2c5d2d5a9e8d5e239891fc5dfd629082a571674de7e97fad33375"
+    },
+    {
+      "logical_path": "work/primary-resume/execution/receipt.json",
+      "sha256": "cd785096c720e7d2952f8f9af198fd0e04f573248eda793f3a0280a1681f59d3"
+    },
+    {
+      "logical_path": "work/opening-reviewed-r1/preparation.json",
+      "sha256": "5c5b4841ac09396cb0e858bb657a7c1ef5d7100822cf175c894f930859b0907d"
+    },
+    {
+      "logical_path": "work/opening-reviewed-r1/execution/report.json",
+      "sha256": "fd612bb6c281e6fc610a9b4e5673c6ed5038a4ba1a1a8a9d92d433d0d2e7c447"
+    },
+    {
+      "logical_path": "work/opening-reviewed-r1/execution/receipt.json",
+      "sha256": "44f5379b475ebc385cdeba72e5e30523a11b0905d13fa020a350739de2edd1cd"
+    },
+    {
+      "logical_path": "work/pair-reviewed-r1/preparation.json",
+      "sha256": "c7130148b89dbbfc2da108c23cb3420277833fc9990f139669a6edea3f87d6e9"
+    },
+    {
+      "logical_path": "work/pair-reviewed-r1/execution/report.json",
+      "sha256": "3ea2dfdcbf8a25df1deff6d4ec71c05d7b73fd3f243468ceb7932afb3f0117a8"
+    },
+    {
+      "logical_path": "work/pair-reviewed-r1/execution/receipt.json",
+      "sha256": "cde45eec5ffc81684dc8cfc1db1acfb38eb7f931a17e294755ede53d3aa24128"
+    },
+    {
+      "logical_path": "work/research-declaration.json",
+      "sha256": "bb1d68bd0bf10b8cc5d08adbab5e0afead18f2905dd6575953797bf7cfa2376e"
+    },
+    {
+      "logical_path": "work/process-native/population.json",
+      "sha256": "c23e7f3f33797edb6a111a772b432b8ca2aa0064f111d4748f78f9f5dd80b072"
+    },
+    {
+      "logical_path": "work/process-native/opportunities.json",
+      "sha256": "7d754c140d6ed92bb47c743c35599c6b8709402e6711b4b67d8af2beb2544ae0"
+    },
+    {
+      "logical_path": "work/process-native/relevance.json",
+      "sha256": "ab510ca73ee5960fd0814e51443066fd37258934b50bf69fb2aeb168eaf90f5a"
+    },
+    {
+      "logical_path": "work/process-native/tradeoffs.json",
+      "sha256": "c758bf8755fa0a0932c3ede222f306fa3e4d9caa610636b962dcce7249a41f80"
+    },
+    {
+      "logical_path": "work/captures/v0/planner-dispatch.json",
+      "sha256": "499f8db21f91a676e1a5e1d4c8880042a4b4bfd1465020d9ae846137f58239e0",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v0/usage.json",
+      "sha256": "fcc7c2e0965b3a1b88d24493dde45d5eb20086b9f6a7b1631925548006dad76b",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v0/provenance.json",
+      "sha256": "c3a42f8ea879b371f3ac4c9bde2b60fded06644ef120416da1514507d43944d2",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v0/producer-completion.json",
+      "sha256": "b471f19aa14b067bcc293f46d87915e245323aaf1d8162f4d41cef0ccc55e263",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v0/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v0/prices.json",
+      "sha256": "ef942f37f5cefac541b5fbbf2a38f89f6b92d5476bb50ec5c10d3d42cf73894a",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1/planner-dispatch.json",
+      "sha256": "02954a3936dd89245b1aa6c528a138465fed652863e92cdb64e585beb72b9aae",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1/usage.json",
+      "sha256": "c61b65696a4ace35dafb71f9640ff86cc52c22a0a36af921f829eda62129a6f1",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1/provenance.json",
+      "sha256": null,
+      "availability": "unavailable"
+    },
+    {
+      "logical_path": "work/captures/v1/producer-completion.json",
+      "sha256": "d2d48b843c663aa6b95aac93a0ecf0ab1db6e8f448ebc9b5ed1e17d24d67f387",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1/prices.json",
+      "sha256": "0df5963c6c1acfa432c4d8b21d9b1c518cbe0b1e3eb8f6f07c4d5fad0084c23c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/planner-dispatch.json",
+      "sha256": "1cd15ef9ae32d4fbb9dff8a11d6ee1e1d3ec9af50d7178b074db9b191ae62d89",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/usage.json",
+      "sha256": "919ee48ed11f146112721be872430ff53f91614d0b85a93af3dd8ccbb06fc6c0",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/provenance.json",
+      "sha256": "af142c78bfd378df6c42745a34af5cb8afec9ac98e7c7abb285226b56bcae68a",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/producer-completion.json",
+      "sha256": "43a66989b72e0dbbfeea90afbf7b82d4e6cfeeb8138dcc7edfcc7873f331eb8f",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v1-a2/prices.json",
+      "sha256": "3b899c3a3579619c62f7e90d45e562eb4ae30891a5b55fbb9d0ba60a55589389",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/planner-dispatch.json",
+      "sha256": "ef97ba4f93b1d938701cc5e6604a9d8f7f7bc3b05d5a022a0ab0564e18e53dba",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/usage.json",
+      "sha256": "bb388fdc66bc3fae4cb4311bd872f27dc350e1c3c8f249eeb820350975ea41f3",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/provenance.json",
+      "sha256": "e312423163829133ffc65fb161de1d34da0a9da9a896b08769162241dd029555",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/producer-completion.json",
+      "sha256": "78ad5841cd995a91fca255da5a5bc5b8fdd56510834b60b952c22890fb6b9bea",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v2/prices.json",
+      "sha256": "10e8412d19ee212e7b7b64b03d2a5fb500ef9187540586c765a7dbb86540c2ec",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/planner-dispatch.json",
+      "sha256": "2689e7f844d7ca8e07195f639e4eeca6eb48c725413290c6fb28533d8e7b4c76",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/usage.json",
+      "sha256": "e26d12b632d7b3db704fcef4a954ea7277206bcf932c5f3d46a0529a7167eb38",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/provenance.json",
+      "sha256": "54ae45d3332b8e372b87590811b118b7a3299f1e055022bde7bfc476e2b6274b",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/producer-completion.json",
+      "sha256": "a273280c51e3f6bda630714be80c82c018772bb1eca894b5621398fce768a178",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/captures/v3/prices.json",
+      "sha256": "2371dec1dad9e8bdb377f278b817a7b85508a68b3cfb6a84af67b4aa86fbc433",
+      "availability": "available"
+    },
+    {
+      "logical_path": "work/semantics/isolated-reviewer/requirement-reviewed-final.json",
+      "sha256": "0607151136012ca98617a898b1b391d4ef1a9ce99a3f40e2df9e35c77d8fdeba"
+    },
+    {
+      "logical_path": "work/semantics/isolated-interests/interests-reviewed-final.json",
+      "sha256": "1a86fdcb8ae0a4c0b095f41e165c55cece9b20e07f4c3accdbb7887c69ff8715"
+    },
+    {
+      "logical_path": "work/route-review-correction/route-review.json",
+      "sha256": "ae66fad00f3f86aad19e284261bba9373fb95b0d36ab0523fd35a4bf0f82a6e8"
+    },
+    {
+      "logical_path": "work/schedule-context.json",
+      "sha256": "1c8c7c1ca8f5e00d884aa21c5320631c0dd801eaad71ebaabc6acbce4143a01a"
+    }
+  ],
+  "verification": {
+    "opening_replay": "exact match, network denied",
+    "paired_replay": "exact match, network denied",
+    "research_replay": "four exact matches, network denied",
+    "private_archive_compaction": "verified deduplicated archive; fresh restoration, source equivalence and native offline replay passed"
+  },
+  "accepted_on": "2026-10-14",
+  "acceptance_timezone": "Australia/Sydney",
+  "accepted_material_revision": "9a82d33334199169f33f1e977437dec5af9fc6a9",
+  "private_archive": {
+    "schema_version": "case_private_archive_1",
+    "manifest_sha256": "5b459a019058a180608a23f28da75e8095f71f2bb7ee65df5cdcac1a2183c080",
+    "blob_archive_sha256": "5ea2f0e7f19f81efd5b1c2ed2909de3888e3e12151c220aa8bc8952cc2d6432d",
+    "metrics": {
+      "logical_files": 4589,
+      "unique_blobs": 727,
+      "logical_bytes": 99720490,
+      "unique_bytes": 30143702,
+      "compressed_bytes": 3330822
+    },
+    "original_logical_paths": "private_native_bindings and material source paths identify archive manifest entries"
+  }
+}

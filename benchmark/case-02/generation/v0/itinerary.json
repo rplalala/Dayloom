@@ -1,0 +1,264 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "St James's Park",
+      "source_place_id": null,
+      "reason": "An optional green-space stroll that fits naturally with the Westminster and Buckingham Palace area planned for this day.",
+      "associated_day": "2026-10-15",
+      "area": "Westminster and Buckingham Palace",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked; this is an unscheduled suggestion.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Leadenhall Market",
+      "source_place_id": null,
+      "reason": "A historic covered market that could complement the day's Tower of London and Tower Bridge visits if you would like another brief architectural stop.",
+      "associated_day": "2026-10-16",
+      "area": "Tower Hill",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked; this is an unscheduled suggestion.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Seven Dials",
+      "source_place_id": null,
+      "reason": "A compact nearby streets-and-courtyards area that can supplement the Covent Garden portion of the day without requiring another major attraction.",
+      "associated_day": "2026-10-17",
+      "area": "Covent Garden",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked; this is an unscheduled suggestion.",
+      "source_ref": null
+    }
+  ],
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-17",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-westminster-abbey",
+          "title": "Westminster Abbey",
+          "place_name": "Westminster Abbey",
+          "source_place_id": null,
+          "location": "Westminster",
+          "start_time": "2026-10-15T09:30:00+01:00",
+          "end_time": "2026-10-15T11:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Allow time to explore the historic abbey. Visit duration is a planning estimate; current access and opening information have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day1-walk-abbey-to-buckingham",
+          "title": "Walk to Buckingham Palace",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T11:30:00+01:00",
+          "end_time": "2026-10-15T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 30 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-westminster-abbey",
+            "to_activity_id": "day1-buckingham-palace"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-buckingham-palace",
+          "title": "Buckingham Palace exterior",
+          "place_name": "Buckingham Palace",
+          "source_place_id": null,
+          "location": "Westminster",
+          "start_time": "2026-10-15T12:00:00+01:00",
+          "end_time": "2026-10-15T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "A visit focused on the palace exterior and surrounding public area; no interior access is assumed."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day1-walk-buckingham-to-eye",
+          "title": "Walk to the London Eye",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T13:00:00+01:00",
+          "end_time": "2026-10-15T13:35:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 35 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-buckingham-palace",
+            "to_activity_id": "day1-london-eye"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-london-eye",
+          "title": "London Eye",
+          "place_name": "London Eye",
+          "source_place_id": null,
+          "location": "South Bank",
+          "start_time": "2026-10-15T13:35:00+01:00",
+          "end_time": "2026-10-15T15:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Allow time for the riverside attraction. Visit duration is a planning estimate; current access and ticket availability have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-tower-of-london",
+          "title": "Tower of London",
+          "place_name": "Tower of London",
+          "source_place_id": null,
+          "location": "Tower Hill",
+          "start_time": "2026-10-16T09:30:00+01:00",
+          "end_time": "2026-10-16T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Allow a substantial visit for the historic complex. Visit duration is a planning estimate; current access and opening information have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day2-walk-tower-to-bridge",
+          "title": "Walk to Tower Bridge",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-16T12:00:00+01:00",
+          "end_time": "2026-10-16T12:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 15 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-tower-of-london",
+            "to_activity_id": "day2-tower-bridge"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-tower-bridge",
+          "title": "Tower Bridge",
+          "place_name": "Tower Bridge",
+          "source_place_id": null,
+          "location": "Thames river crossing near Tower Hill",
+          "start_time": "2026-10-16T12:15:00+01:00",
+          "end_time": "2026-10-16T13:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Explore the bridge and riverside surroundings; no interior visit is assumed. Visit duration is a planning estimate."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day2-walk-bridge-to-borough",
+          "title": "Walk to Borough Market",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-16T13:30:00+01:00",
+          "end_time": "2026-10-16T14:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 30 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-tower-bridge",
+            "to_activity_id": "day2-borough-market"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-borough-market",
+          "title": "Borough Market",
+          "place_name": "Borough Market",
+          "source_place_id": null,
+          "location": "Southwark",
+          "start_time": "2026-10-16T14:00:00+01:00",
+          "end_time": "2026-10-16T15:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Browse the historic market and its food stalls; this is an optional market visit, not a scheduled meal. Current opening and stall availability have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-british-museum",
+          "title": "British Museum",
+          "place_name": "British Museum",
+          "source_place_id": null,
+          "location": "Bloomsbury",
+          "start_time": "2026-10-17T09:30:00+01:00",
+          "end_time": "2026-10-17T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Choose a manageable selection of galleries rather than trying to cover the whole collection. Visit duration is a planning estimate; current access and opening information have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day3-walk-museum-to-covent",
+          "title": "Walk to Covent Garden",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-17T12:00:00+01:00",
+          "end_time": "2026-10-17T12:25:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 25 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-british-museum",
+            "to_activity_id": "day3-covent-garden"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-covent-garden",
+          "title": "Covent Garden",
+          "place_name": "Covent Garden",
+          "source_place_id": null,
+          "location": "Covent Garden",
+          "start_time": "2026-10-17T12:25:00+01:00",
+          "end_time": "2026-10-17T13:45:00+01:00",
+          "estimated_cost": null,
+          "notes": "Explore the market area and surrounding streets; street performances and individual venues are not guaranteed."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day3-walk-covent-to-national-gallery",
+          "title": "Walk to the National Gallery",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-17T13:45:00+01:00",
+          "end_time": "2026-10-17T14:05:00+01:00",
+          "estimated_cost": null,
+          "notes": "Estimated duration: 20 minutes. Route and duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-covent-garden",
+            "to_activity_id": "day3-national-gallery"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-national-gallery",
+          "title": "National Gallery",
+          "place_name": "National Gallery",
+          "source_place_id": null,
+          "location": "Trafalgar Square",
+          "start_time": "2026-10-17T14:05:00+01:00",
+          "end_time": "2026-10-17T16:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "A focused gallery visit provides a relaxed finish to the trip. Visit duration is a planning estimate; current access and opening information have not been checked."
+        }
+      ]
+    }
+  ]
+}

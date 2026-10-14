@@ -1,0 +1,216 @@
+{
+  "schema_version": "case02_poi_origin_view_1",
+  "interpretation": "Recorded discovery provenance, not independent relevance or causal adoption",
+  "definitions": {
+    "google_only": "In the complete V1/V2 Google-only discovery partition",
+    "mixed": "Recorded Google discovery and TripWorld RAG origin",
+    "rag_only": "Recorded incremental RAG-only origin",
+    "no_recorded_rag_association": "Absent from V3 recorded RAG associations; no complete V3 candidate partition is asserted"
+  },
+  "visits": [
+    {
+      "version": "v1",
+      "activity_id": "2026-10-15-westminster-abbey",
+      "place_name": "Westminster Abbey",
+      "canonical_place_id": "ChIJLzVDusQEdkgRelObBaL_jto",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-15-big-ben",
+      "place_name": "Big Ben",
+      "canonical_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-15-london-eye",
+      "place_name": "London Eye",
+      "canonical_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-15-national-gallery",
+      "place_name": "The National Gallery",
+      "canonical_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-16-tower-of-london",
+      "place_name": "Tower of London",
+      "canonical_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-16-tower-bridge",
+      "place_name": "Tower Bridge",
+      "canonical_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-16-st-pauls",
+      "place_name": "St. Paul's Cathedral",
+      "canonical_place_id": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-17-natural-history-museum",
+      "place_name": "Natural History Museum",
+      "canonical_place_id": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-17-hyde-park",
+      "place_name": "Hyde Park",
+      "canonical_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v1",
+      "activity_id": "2026-10-17-buckingham-palace-exterior",
+      "place_name": "Buckingham Palace",
+      "canonical_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-15-westminster-abbey",
+      "place_name": "Westminster Abbey",
+      "canonical_place_id": "ChIJLzVDusQEdkgRelObBaL_jto",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-15-big-ben",
+      "place_name": "Big Ben",
+      "canonical_place_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "origin": "mixed",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-15-london-eye",
+      "place_name": "London Eye",
+      "canonical_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "origin": "mixed",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-16-british-museum",
+      "place_name": "The British Museum",
+      "canonical_place_id": "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-16-st-pauls",
+      "place_name": "St. Paul's Cathedral",
+      "canonical_place_id": "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-16-national-gallery",
+      "place_name": "The National Gallery",
+      "canonical_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "origin": "google_only",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-17-tower-of-london",
+      "place_name": "Tower of London",
+      "canonical_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "origin": "mixed",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v2",
+      "activity_id": "2026-10-17-tower-bridge",
+      "place_name": "Tower Bridge",
+      "canonical_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "origin": "mixed",
+      "basis": "complete_candidate_discovery_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261015-tower-of-london",
+      "place_name": "Tower of London",
+      "canonical_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "origin": "mixed",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261015-tower-bridge",
+      "place_name": "Tower Bridge",
+      "canonical_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "origin": "mixed",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261016-london-eye",
+      "place_name": "London Eye",
+      "canonical_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "origin": "mixed",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261016-national-gallery",
+      "place_name": "The National Gallery",
+      "canonical_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "origin": "no_recorded_rag_association",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261017-buckingham-palace",
+      "place_name": "Buckingham Palace",
+      "canonical_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "origin": "no_recorded_rag_association",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    },
+    {
+      "version": "v3",
+      "activity_id": "london-20261017-hyde-park",
+      "place_name": "Hyde Park",
+      "canonical_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "origin": "no_recorded_rag_association",
+      "basis": "producer_original_rag_discovery_no_complete_candidate_partition"
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "analysis/poi-process/selected-process.json",
+      "sha256": "aff54b6b0f80f99b8b41bca60add7d8693fbc97e9922adbb8ae1f05cd073d313",
+      "pointer": "/runs"
+    },
+    {
+      "logical_path": "work/captures/v3/result.json",
+      "sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "pointer": "/v3/original_rag_discovery"
+    }
+  ]
+}
