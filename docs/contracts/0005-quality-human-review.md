@@ -348,8 +348,11 @@ the primary-score handoff pauses for the user's next instruction.
    closed revision. Preserve earlier reports/receipts and primary scores. This step
    acquires no provider evidence and does not rerun planning or primary evaluation.
 
-Deferred human review does not block sequential automatic case acceptance or reopen
-an accepted case solely to add answers. Complete the human stage only when its
+Deferred human review does not block automatic acceptance in independent case
+queues or reopen an accepted case solely to add answers. Parallel scheduling and
+integration follow the
+[benchmark workflow](../../benchmark/README.md#parallel-sessions-and-integration).
+Complete the human stage only when its
 separately approved inventory has actual reports and explicit missing/unjudgeable
 coverage; automatic acceptance alone cannot establish completed human assessment
 or final research conclusions. Human results add descriptive pair outcomes and,

@@ -4,6 +4,16 @@ Apply [repository rules](../AGENTS.md) to all benchmark work, including ignored 
 [README](README.md) owns workflow, roles and storage; evaluator contracts own schemas
 and scoring. Read the relevant linked sections rather than entire case archives.
 
+## Parallel case workers
+
+Follow [parallel ownership and integration](README.md#parallel-sessions-and-integration)
+before worktree setup, dispatch or return. The coordinator stays in the main worktree;
+workers use the recorded common baseline and their assigned case paths/Issues.
+Verify each local locked environment, ignored configuration, tokenizer/RAG resources
+and installed import/CLI paths before declaring readiness. Return shared changes to
+the coordinator. Setup ends in a waiting state; covered case scope, numeric allowances
+and central concurrency controls precede live execution. Apply pauses per case.
+
 ## External Codex handoffs
 
 - Explicitly include this file in each handoff. Specify the role, permitted inputs,
@@ -42,7 +52,9 @@ Report four final scores, common dimensions, density deductions, FAIL/UNKNOWN ca
 resources and limitations; follow the [stage pause](README.md#user-intervention-and-execution-boundaries).
 Process, paired and human reports retain separate meanings. Corrections create new
 bound reports and preserve original evidence; post-score rescoring is not a routine stage.
-The parent validates returned artifacts and offline replay. Maintain actual
+The coordinator validates returned artifacts, source bindings and offline replay,
+then integrates completed worker commits and resolves conflicts under the README.
+Preserve required ignored evidence before worktree archival. Maintain actual
 [AI assistance](README.md#ai-assistance-records) and [private evidence](README.md#private-archive-retention),
 including metadata gaps. Update existing authorized reports/Issues in place with
 sanitized summaries; agent review is not human review.
