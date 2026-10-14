@@ -24,7 +24,7 @@ publication hashes. Requirements, generation/evaluation admission, primary-score
 handoff, candidate/Repair analysis, source and resource consistency, private
 retention, restoration and native offline replay are complete. Independent
 Standards and Spec review found no outstanding issues. Blinded human assessment
-remains a separate deferred stage. Git publication and Issue closure have not occurred.
+remains a separate deferred stage. Acceptance and Git/Issue delivery are separate decisions.
 The case follows the [common acceptance workflow](../README.md#per-case-execution-and-joint-review).
 
 ## Case materials

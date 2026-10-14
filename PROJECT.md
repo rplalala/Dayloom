@@ -299,9 +299,9 @@ owns case-01 workflow acceptance. The human user accepted the
 [initial case-01 dataset](benchmark/case-01/report.md#acceptance) on 14 October 2026,
 including its selected V0-V3 results, independent reports and stated limitations.
 Native evidence is retained in verified ignored private storage. Case tracker
-[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) and related
-Issues await separate publication/closure; local acceptance does not authorize Git
-delivery. Subsequent runs report primary scores and pause before further diagnostics.
+[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) owns the recorded
+acceptance scope. Git publication and Issue closure follow their own authorization.
+Subsequent runs report primary scores and pause before further diagnostics.
 Blinded human assessment remains deferred.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
