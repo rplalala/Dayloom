@@ -1,0 +1,514 @@
+{
+  "schema_version": "case02_resources_view_1",
+  "allowance_usd": {
+    "generation": "40",
+    "evaluation": "10",
+    "total": "50"
+  },
+  "all_attempts": [
+    {
+      "attempt_id": "case-02-r1-v0-a1",
+      "run_id": "case-02-r1-v0-a1",
+      "version": "v0",
+      "status": "completed",
+      "selected_primary": true,
+      "metrics": {
+        "elapsed_seconds": 34.07900000002701,
+        "model_calls": 1,
+        "http_sends": 1,
+        "input_tokens": 2942,
+        "output_tokens": 4293,
+        "total_tokens": 7235,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 1,
+        "http_sends": 1,
+        "input_tokens": 2942,
+        "output_tokens": 4293,
+        "total_tokens": 7235,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "token_coverage": {
+        "input_tokens": {
+          "total": 2942,
+          "observed_subtotal": 2942,
+          "known_calls": 1,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 4293,
+          "observed_subtotal": 4293,
+          "known_calls": 1,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 7235,
+          "observed_subtotal": 7235,
+          "known_calls": 1,
+          "missing_calls": 0
+        },
+        "embedding_input_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        },
+        "embedding_total_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        }
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "elapsed_cohort": "successful_invocation_through_cleanup",
+      "selected_for_final_quality": true,
+      "reference_priced_subtotal_usd": "0.002514175",
+      "reference_total_usd": "0.002514175",
+      "actual_invoice": null
+    },
+    {
+      "attempt_id": "case-02-r1-v1-a1",
+      "run_id": "case-02-r1-v1-a1",
+      "version": "v1",
+      "status": "failed",
+      "selected_primary": true,
+      "metrics": {
+        "elapsed_seconds": 248.0,
+        "model_calls": 3,
+        "http_sends": 55,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 3,
+        "http_sends": 55,
+        "input_tokens": 2442,
+        "output_tokens": 1759,
+        "total_tokens": 4201,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "token_coverage": {
+        "input_tokens": {
+          "total": null,
+          "observed_subtotal": 2442,
+          "known_calls": 2,
+          "missing_calls": 1
+        },
+        "output_tokens": {
+          "total": null,
+          "observed_subtotal": 1759,
+          "known_calls": 2,
+          "missing_calls": 1
+        },
+        "total_tokens": {
+          "total": null,
+          "observed_subtotal": 4201,
+          "known_calls": 2,
+          "missing_calls": 1
+        },
+        "embedding_input_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        },
+        "embedding_total_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        }
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "elapsed_cohort": "failed_or_censored",
+      "selected_for_final_quality": false,
+      "reference_priced_subtotal_usd": "1.5371791",
+      "reference_total_usd": null,
+      "actual_invoice": null
+    },
+    {
+      "attempt_id": "case-02-r1-v1-a2",
+      "run_id": "case-02-r1-v1-a2",
+      "version": "v1",
+      "status": "completed",
+      "selected_primary": false,
+      "metrics": {
+        "elapsed_seconds": 68.35999999998603,
+        "model_calls": 3,
+        "http_sends": 57,
+        "input_tokens": 30938,
+        "output_tokens": 5148,
+        "total_tokens": 36086,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 3,
+        "http_sends": 57,
+        "input_tokens": 30938,
+        "output_tokens": 5148,
+        "total_tokens": 36086,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "token_coverage": {
+        "input_tokens": {
+          "total": 30938,
+          "observed_subtotal": 30938,
+          "known_calls": 3,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 5148,
+          "observed_subtotal": 5148,
+          "known_calls": 3,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 36086,
+          "observed_subtotal": 36086,
+          "known_calls": 3,
+          "missing_calls": 0
+        },
+        "embedding_input_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        },
+        "embedding_total_tokens": {
+          "total": 0,
+          "observed_subtotal": 0,
+          "known_calls": 0,
+          "missing_calls": 0
+        }
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "elapsed_cohort": "successful_invocation_through_cleanup",
+      "selected_for_final_quality": true,
+      "reference_priced_subtotal_usd": "1.606435525",
+      "reference_total_usd": "1.606435525",
+      "actual_invoice": null
+    },
+    {
+      "attempt_id": "case-02-r1-v2-a1",
+      "run_id": "case-02-r1-v2-a1",
+      "version": "v2",
+      "status": "completed",
+      "selected_primary": true,
+      "metrics": {
+        "elapsed_seconds": 74.625,
+        "model_calls": 4,
+        "http_sends": 69,
+        "input_tokens": 31054,
+        "output_tokens": 5473,
+        "total_tokens": 36527,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 4,
+        "http_sends": 69,
+        "input_tokens": 31054,
+        "output_tokens": 5473,
+        "total_tokens": 36527,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2
+      },
+      "token_coverage": {
+        "input_tokens": {
+          "total": 31054,
+          "observed_subtotal": 31054,
+          "known_calls": 4,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 5473,
+          "observed_subtotal": 5473,
+          "known_calls": 3,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 36527,
+          "observed_subtotal": 36527,
+          "known_calls": 4,
+          "missing_calls": 0
+        },
+        "embedding_input_tokens": {
+          "total": 2,
+          "observed_subtotal": 2,
+          "known_calls": 1,
+          "missing_calls": 0
+        },
+        "embedding_total_tokens": {
+          "total": 2,
+          "observed_subtotal": 2,
+          "known_calls": 1,
+          "missing_calls": 0
+        }
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "elapsed_cohort": "successful_invocation_through_cleanup",
+      "selected_for_final_quality": true,
+      "reference_priced_subtotal_usd": "1.814211425",
+      "reference_total_usd": "1.814211425",
+      "actual_invoice": null
+    },
+    {
+      "attempt_id": "case-02-r1-v3-a1",
+      "run_id": "case-02-r1-v3-a1",
+      "version": "v3",
+      "status": "completed",
+      "selected_primary": true,
+      "metrics": {
+        "elapsed_seconds": 70.625,
+        "model_calls": 4,
+        "http_sends": 70,
+        "input_tokens": 30727,
+        "output_tokens": 5147,
+        "total_tokens": 35874,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 4,
+        "http_sends": 70,
+        "input_tokens": 30727,
+        "output_tokens": 5147,
+        "total_tokens": 35874,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2
+      },
+      "token_coverage": {
+        "input_tokens": {
+          "total": 30727,
+          "observed_subtotal": 30727,
+          "known_calls": 4,
+          "missing_calls": 0
+        },
+        "output_tokens": {
+          "total": 5147,
+          "observed_subtotal": 5147,
+          "known_calls": 3,
+          "missing_calls": 0
+        },
+        "total_tokens": {
+          "total": 35874,
+          "observed_subtotal": 35874,
+          "known_calls": 4,
+          "missing_calls": 0
+        },
+        "embedding_input_tokens": {
+          "total": 2,
+          "observed_subtotal": 2,
+          "known_calls": 1,
+          "missing_calls": 0
+        },
+        "embedding_total_tokens": {
+          "total": 2,
+          "observed_subtotal": 2,
+          "known_calls": 1,
+          "missing_calls": 0
+        }
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "elapsed_cohort": "successful_invocation_through_cleanup",
+      "selected_for_final_quality": true,
+      "reference_priced_subtotal_usd": "1.84600755",
+      "reference_total_usd": "1.84600755",
+      "actual_invoice": null
+    }
+  ],
+  "generation_totals": {
+    "model_calls": {
+      "total": 15,
+      "observed_subtotal": 15,
+      "known_attempts": 5,
+      "missing_attempts": 0
+    },
+    "http_sends": {
+      "total": 252,
+      "observed_subtotal": 252,
+      "known_attempts": 5,
+      "missing_attempts": 0
+    },
+    "input_tokens": {
+      "total": null,
+      "observed_subtotal": 98103,
+      "known_attempts": 4,
+      "missing_attempts": 1
+    },
+    "output_tokens": {
+      "total": null,
+      "observed_subtotal": 21820,
+      "known_attempts": 4,
+      "missing_attempts": 1
+    },
+    "total_tokens": {
+      "total": null,
+      "observed_subtotal": 119923,
+      "known_attempts": 4,
+      "missing_attempts": 1
+    },
+    "embedding_calls": {
+      "total": 2,
+      "observed_subtotal": 2,
+      "known_attempts": 5,
+      "missing_attempts": 0
+    },
+    "embedding_input_tokens": {
+      "total": 4,
+      "observed_subtotal": 4,
+      "known_attempts": 5,
+      "missing_attempts": 0
+    },
+    "embedding_total_tokens": {
+      "total": 4,
+      "observed_subtotal": 4,
+      "known_attempts": 5,
+      "missing_attempts": 0
+    }
+  },
+  "generation_cost_consumption": [
+    {
+      "version": "v0",
+      "currency": "USD",
+      "accounting_basis": "reference_price_estimate_invoice_unavailable",
+      "prices_sha256": "ef942f37f5cefac541b5fbbf2a38f89f6b92d5476bb50ec5c10d3d42cf73894a",
+      "known_cost_attempts": 1,
+      "actual_known_run_total_subtotal": null,
+      "actual_total": null,
+      "actual_observed_subtotal": null,
+      "estimated_known_run_total_subtotal": "0.002514175",
+      "estimated_total": "0.002514175",
+      "estimated_observed_subtotal": "0.002514175",
+      "best_available_known_run_total_subtotal": "0.002514175",
+      "best_available_total": "0.002514175",
+      "best_available_observed_subtotal": "0.002514175"
+    },
+    {
+      "version": "v1",
+      "currency": "USD",
+      "accounting_basis": "reference_price_estimate_invoice_unavailable",
+      "prices_sha256": "0df5963c6c1acfa432c4d8b21d9b1c518cbe0b1e3eb8f6f07c4d5fad0084c23c",
+      "known_cost_attempts": 1,
+      "actual_known_run_total_subtotal": null,
+      "actual_total": null,
+      "actual_observed_subtotal": null,
+      "estimated_known_run_total_subtotal": null,
+      "estimated_total": null,
+      "estimated_observed_subtotal": "1.5371791",
+      "best_available_known_run_total_subtotal": null,
+      "best_available_total": null,
+      "best_available_observed_subtotal": "1.5371791"
+    },
+    {
+      "version": "v1",
+      "currency": "USD",
+      "accounting_basis": "reference_price_estimate_invoice_unavailable",
+      "prices_sha256": "3b899c3a3579619c62f7e90d45e562eb4ae30891a5b55fbb9d0ba60a55589389",
+      "known_cost_attempts": 1,
+      "actual_known_run_total_subtotal": null,
+      "actual_total": null,
+      "actual_observed_subtotal": null,
+      "estimated_known_run_total_subtotal": "1.606435525",
+      "estimated_total": null,
+      "estimated_observed_subtotal": "1.606435525",
+      "best_available_known_run_total_subtotal": "1.606435525",
+      "best_available_total": null,
+      "best_available_observed_subtotal": "1.606435525"
+    },
+    {
+      "version": "v2",
+      "currency": "USD",
+      "accounting_basis": "reference_price_estimate_invoice_unavailable",
+      "prices_sha256": "10e8412d19ee212e7b7b64b03d2a5fb500ef9187540586c765a7dbb86540c2ec",
+      "known_cost_attempts": 1,
+      "actual_known_run_total_subtotal": null,
+      "actual_total": null,
+      "actual_observed_subtotal": null,
+      "estimated_known_run_total_subtotal": "1.814211425",
+      "estimated_total": "1.814211425",
+      "estimated_observed_subtotal": "1.814211425",
+      "best_available_known_run_total_subtotal": "1.814211425",
+      "best_available_total": "1.814211425",
+      "best_available_observed_subtotal": "1.814211425"
+    },
+    {
+      "version": "v3",
+      "currency": "USD",
+      "accounting_basis": "reference_price_estimate_invoice_unavailable",
+      "prices_sha256": "2371dec1dad9e8bdb377f278b817a7b85508a68b3cfb6a84af67b4aa86fbc433",
+      "known_cost_attempts": 1,
+      "actual_known_run_total_subtotal": null,
+      "actual_total": null,
+      "actual_observed_subtotal": null,
+      "estimated_known_run_total_subtotal": "1.84600755",
+      "estimated_total": "1.84600755",
+      "estimated_observed_subtotal": "1.84600755",
+      "best_available_known_run_total_subtotal": "1.84600755",
+      "best_available_total": "1.84600755",
+      "best_available_observed_subtotal": "1.84600755"
+    }
+  ],
+  "primary_reference_usd": "1.272032925",
+  "opening_reference_usd": "0.00245605",
+  "pair_current_reference_usd": "0",
+  "known_priced_reference_subtotal_usd": "8.080836750",
+  "failed_v1_main_usage_and_charge": "unknown",
+  "actual_invoice_total": null,
+  "external_Codex_usage_and_billing": "unavailable; separate from studied providers"
+}

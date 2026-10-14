@@ -1,0 +1,1588 @@
+{
+  "schema_version": "case02_poi_process_view_1",
+  "selection": "V1 second dispatched attempt versus V2 first dispatched attempt; separate from native first-attempt reports",
+  "differences": {
+    "discovered": {
+      "retained": [
+        "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+        "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+        "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+        "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+        "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+        "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+        "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+        "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+        "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+        "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+        "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+        "ChIJH4dEsM8EdkgRandd6RPxN5o",
+        "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+        "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+        "ChIJJcPOl7obdkgRR628STCNC3Q",
+        "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+        "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+        "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+        "ChIJLzVDusQEdkgRelObBaL_jto",
+        "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+        "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+        "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+        "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+        "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+        "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+        "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "ChIJSzwgydoDdkgRndnXVYQGXBI",
+        "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+        "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+        "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+        "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+        "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+        "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+        "ChIJaQQ3lEobdkgRmauadcnji9s",
+        "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+        "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "ChIJc2nSALkEdkgRviluWxwFsxA",
+        "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+        "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+        "ChIJeclqF84EdkgRtKAjTmWFr0I",
+        "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+        "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+        "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+        "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+        "ChIJmZuNDMQEdkgRfB9O9456eQc",
+        "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+        "ChIJo1d0SykbdkgRKMqwk0BNpME",
+        "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+        "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+        "ChIJq4lX1doEdkgR5JXPstgQjc0",
+        "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+        "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+        "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+        "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+        "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+        "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+        "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+        "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+      ],
+      "gained": [
+        "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+        "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+        "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+        "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+        "ChIJIRauBakEdkgRjoeyuI53AOc",
+        "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+        "ChIJ_c6npyobdkgRwkGJb16SWVA",
+        "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+        "ChIJkeddM88adkgR80g3pdkn0vw",
+        "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+        "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+        "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+        "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+      ],
+      "lost": []
+    },
+    "admitted": {
+      "retained": [
+        "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+        "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+        "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+        "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+        "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+        "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+        "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+        "ChIJH4dEsM8EdkgRandd6RPxN5o",
+        "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+        "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+        "ChIJJcPOl7obdkgRR628STCNC3Q",
+        "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+        "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+        "ChIJLzVDusQEdkgRelObBaL_jto",
+        "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+        "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+        "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+        "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+        "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+        "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+        "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+        "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+        "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+        "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "ChIJc2nSALkEdkgRviluWxwFsxA",
+        "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+        "ChIJeclqF84EdkgRtKAjTmWFr0I",
+        "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+        "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+        "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+        "ChIJmZuNDMQEdkgRfB9O9456eQc",
+        "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+        "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+        "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+        "ChIJq4lX1doEdkgR5JXPstgQjc0",
+        "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+        "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+        "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+      ],
+      "gained": [
+        "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+        "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+        "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+        "ChIJIRauBakEdkgRjoeyuI53AOc",
+        "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+        "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+        "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+      ],
+      "lost": [
+        "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+        "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+        "ChIJaQQ3lEobdkgRmauadcnji9s",
+        "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+        "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+        "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+        "ChIJxeRd2Q8FdkgRErWRUrYv_xU"
+      ]
+    },
+    "enriched": {
+      "retained": [
+        "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+        "ChIJH4dEsM8EdkgRandd6RPxN5o",
+        "ChIJLzVDusQEdkgRelObBaL_jto",
+        "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+        "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+        "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+        "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+        "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "ChIJc2nSALkEdkgRviluWxwFsxA",
+        "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+        "ChIJeclqF84EdkgRtKAjTmWFr0I",
+        "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+        "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+        "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+        "ChIJmZuNDMQEdkgRfB9O9456eQc",
+        "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+        "ChIJq4lX1doEdkgR5JXPstgQjc0",
+        "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+        "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+      ],
+      "gained": [
+        "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+        "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+        "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+        "ChIJIRauBakEdkgRjoeyuI53AOc",
+        "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+        "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+        "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+      ],
+      "lost": [
+        "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+        "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s"
+      ]
+    },
+    "supplied": {
+      "retained": [
+        "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+        "ChIJLzVDusQEdkgRelObBaL_jto",
+        "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "ChIJeclqF84EdkgRtKAjTmWFr0I",
+        "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+        "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+        "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+      ],
+      "gained": [
+        "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+        "ChIJIRauBakEdkgRjoeyuI53AOc"
+      ],
+      "lost": [
+        "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+        "ChIJeclqF84EdkgRYkL4mtJ7rLM"
+      ]
+    },
+    "scheduled": {
+      "retained": [
+        "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "ChIJLzVDusQEdkgRelObBaL_jto",
+        "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "ChIJeclqF84EdkgRtKAjTmWFr0I",
+        "ChIJh7wHoqwEdkgR3l-vqQE1HTo"
+      ],
+      "gained": [
+        "ChIJB9OTMDIbdkgRp0JWbQGZsS8"
+      ],
+      "lost": [
+        "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+        "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+        "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "version": "v1",
+      "run_id": "case-02-r1-v1-a2",
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+            "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+            "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+            "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+            "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+            "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+            "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+            "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+            "ChIJJcPOl7obdkgRR628STCNC3Q",
+            "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+            "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+            "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJSzwgydoDdkgRndnXVYQGXBI",
+            "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+            "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+            "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+            "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+            "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJaQQ3lEobdkgRmauadcnji9s",
+            "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJo1d0SykbdkgRKMqwk0BNpME",
+            "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+            "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+            "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+            "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+            "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+            "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 60,
+          "complete_count": 60,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+              "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+              "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+              "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+              "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+              "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+              "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+              "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+              "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+              "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+              "ChIJJcPOl7obdkgRR628STCNC3Q",
+              "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+              "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+              "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+              "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJSzwgydoDdkgRndnXVYQGXBI",
+              "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+              "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+              "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+              "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+              "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJaQQ3lEobdkgRmauadcnji9s",
+              "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJo1d0SykbdkgRKMqwk0BNpME",
+              "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+              "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+              "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+              "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+              "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+              "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+            "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+            "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+            "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+            "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+            "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+            "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+            "ChIJJcPOl7obdkgRR628STCNC3Q",
+            "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+            "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+            "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+            "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJaQQ3lEobdkgRmauadcnji9s",
+            "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+            "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+            "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+            "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+              "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+              "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+              "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+              "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+              "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+              "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+              "ChIJJcPOl7obdkgRR628STCNC3Q",
+              "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+              "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+              "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+              "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJaQQ3lEobdkgRmauadcnji9s",
+              "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+              "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+              "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+              "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 24,
+          "complete_count": 24,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "scheduled": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+          ],
+          "observed_count": 10,
+          "association_count": 10
+        }
+      },
+      "incremental_rag_ids": [],
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJo1d0SykbdkgRKMqwk0BNpME",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJSzwgydoDdkgRndnXVYQGXBI",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJJcPOl7obdkgRR628STCNC3Q",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJaQQ3lEobdkgRmauadcnji9s",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJH4dEsM8EdkgRandd6RPxN5o",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJz6lGCtIEdkgRxh8LSA7ILjs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJq4lX1doEdkgR5JXPstgQjc0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJc2nSALkEdkgRviluWxwFsxA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJmZuNDMQEdkgRfB9O9456eQc",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "relevance": "not_applicable_empty_reviewed_interests",
+      "rag_summary": null
+    },
+    {
+      "version": "v2",
+      "run_id": "case-02-r1-v2-a1",
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+            "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+            "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+            "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+            "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+            "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+            "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+            "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+            "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+            "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+            "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+            "ChIJIRauBakEdkgRjoeyuI53AOc",
+            "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+            "ChIJJcPOl7obdkgRR628STCNC3Q",
+            "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+            "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+            "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+            "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+            "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJSzwgydoDdkgRndnXVYQGXBI",
+            "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+            "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+            "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+            "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+            "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJ_c6npyobdkgRwkGJb16SWVA",
+            "ChIJaQQ3lEobdkgRmauadcnji9s",
+            "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJkeddM88adkgR80g3pdkn0vw",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+            "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+            "ChIJo1d0SykbdkgRKMqwk0BNpME",
+            "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+            "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+            "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+            "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+            "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+            "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+            "ChIJxRitKU0DdkgRazPYpNTm0Q4",
+            "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 73,
+          "complete_count": 73,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+              "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+              "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+              "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+              "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+              "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+              "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+              "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+              "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+              "ChIJIRauBakEdkgRjoeyuI53AOc",
+              "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+              "ChIJJcPOl7obdkgRR628STCNC3Q",
+              "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+              "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+              "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+              "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+              "ChIJSzwgydoDdkgRndnXVYQGXBI",
+              "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+              "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+              "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+              "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJaQQ3lEobdkgRmauadcnji9s",
+              "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJo1d0SykbdkgRKMqwk0BNpME",
+              "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+              "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+              "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+              "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+              "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [
+              "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+              "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+              "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+              "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+              "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+              "ChIJ_c6npyobdkgRwkGJb16SWVA",
+              "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+              "ChIJkeddM88adkgR80g3pdkn0vw",
+              "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+              "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+              "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+              "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+            ],
+            "mixed": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+              "ChIJxRO7WVEDdkgRrGM1fCYoHqY"
+            ]
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+            "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+            "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+            "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+            "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+            "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+            "ChIJIRauBakEdkgRjoeyuI53AOc",
+            "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+            "ChIJJcPOl7obdkgRR628STCNC3Q",
+            "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+            "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+            "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+            "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+            "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+            "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+            "ChIJxRitKU0DdkgRazPYpNTm0Q4",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+              "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+              "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+              "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+              "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+              "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+              "ChIJIRauBakEdkgRjoeyuI53AOc",
+              "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+              "ChIJJcPOl7obdkgRR628STCNC3Q",
+              "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+              "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+              "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+              "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+              "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [
+              "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+              "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+              "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+              "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+              "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+            ],
+            "mixed": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk"
+            ]
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJH4dEsM8EdkgRandd6RPxN5o",
+            "ChIJIRauBakEdkgRjoeyuI53AOc",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+            "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+            "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJc2nSALkEdkgRviluWxwFsxA",
+            "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+            "ChIJmZuNDMQEdkgRfB9O9456eQc",
+            "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+            "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+            "ChIJq4lX1doEdkgR5JXPstgQjc0",
+            "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+            "ChIJxRitKU0DdkgRazPYpNTm0Q4",
+            "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+          ],
+          "observed_count": 29,
+          "complete_count": 29,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJH4dEsM8EdkgRandd6RPxN5o",
+              "ChIJIRauBakEdkgRjoeyuI53AOc",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+              "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+              "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+              "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+              "ChIJc2nSALkEdkgRviluWxwFsxA",
+              "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJmZuNDMQEdkgRfB9O9456eQc",
+              "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+              "ChIJq4lX1doEdkgR5JXPstgQjc0",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+              "ChIJz6lGCtIEdkgRxh8LSA7ILjs"
+            ],
+            "rag_only": [
+              "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+              "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+              "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+              "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+              "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+            ],
+            "mixed": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+              "ChIJk9LIC8cEdkgR2TkO-raMEDk"
+            ]
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+            "ChIJIRauBakEdkgRjoeyuI53AOc",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+            "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+            "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+              "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+              "ChIJIRauBakEdkgRjoeyuI53AOc",
+              "ChIJLzVDusQEdkgRelObBaL_jto",
+              "ChIJeclqF84EdkgRtKAjTmWFr0I",
+              "ChIJh7wHoqwEdkgR3l-vqQE1HTo",
+              "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+              "ChIJtV5bzSAFdkgRpwLZFPWrJgo"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+              "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+              "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+              "ChIJc2nSALkEdkgRkuoJJBfzkUI"
+            ]
+          }
+        },
+        "scheduled": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+            "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+            "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+            "ChIJLzVDusQEdkgRelObBaL_jto",
+            "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+            "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+            "ChIJeclqF84EdkgRtKAjTmWFr0I",
+            "ChIJh7wHoqwEdkgR3l-vqQE1HTo"
+          ],
+          "observed_count": 8,
+          "association_count": 8
+        }
+      },
+      "incremental_rag_ids": [
+        "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+        "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+        "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+        "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+        "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+        "ChIJ_c6npyobdkgRwkGJb16SWVA",
+        "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+        "ChIJkeddM88adkgR80g3pdkn0vw",
+        "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+        "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+        "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+        "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+      ],
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJaQQ3lEobdkgRmauadcnji9s",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJczuZfc0adkgRc8X-u3ZiHcE",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ1-i2m5sDdkgRSZeMgkGOqm8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJiztkrE4DdkgRp4kYU3gUOnM",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJxeRd2Q8FdkgRErWRUrYv_xU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJBUDOGcAEdkgRoQKLoxgPtWg",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJw1d-sUMFdkgRH2XN_U0Jt54",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJqZLwP-UbdkgR3fNcCBoNLjk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJo1d0SykbdkgRKMqwk0BNpME",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJXzsYqi8bdkgR2wmXF6YbzBU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJkeddM88adkgR80g3pdkn0vw",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ08o_oFQDdkgRDZ6tiQDJXOc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ_c6npyobdkgRwkGJb16SWVA",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJP9oAE0MFdkgR3iKGFKZO1SE",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJKUrjG7wcdkgRbfTuKDBgWXI",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJs0HnpkcDdkgRJjUYVf4jca4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJVTZUsMcCdkgRMc_-OpJq9v8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJSzwgydoDdkgRndnXVYQGXBI",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ6Uc23iwbdkgRH5yvKze7gKY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJSYQ2ZTMbdkgRnxwrnUoH22I",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJJcPOl7obdkgRR628STCNC3Q",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJD2bPdVcDdkgRuUSgnOXnKDE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJWQP2EmgbdkgRScFFWbQpF1A",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJKXTZKcwEdkgRZs8E0eH5zVI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJLU07DdoFdkgRbImA_ez8Nkw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJbUnC58oEdkgR4pwzPtYGrbY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ8bI-k9MEdkgRobzRv88VVdI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4bF21K8FdkgRDXc6FiSVAzE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJoaH8k8YEdkgRnmDd5iuUl9Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJJUQ-d8oEdkgR-JVIDfRa6aY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4xzwSXsFdkgRml3YYuSdE9o",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJvWjCxekEdkgRoCgQVJHZH_U",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJUUj2OtIEdkgRbNmNisTEtQw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJp5w4kdYEdkgRzuu4EVm4VY4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJHaVdDdUEdkgRRDlV-jZ6Q1U",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJxRitKU0DdkgRazPYpNTm0Q4",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJH4dEsM8EdkgRandd6RPxN5o",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJYxIC5M4EdkgR1KNQDHX_n1k",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJeclqF84EdkgRYkL4mtJ7rLM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJM2cdNMkEdkgRdP7zYX1ndM8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJz6lGCtIEdkgRxh8LSA7ILjs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJmypXbAMFdkgRC_s5T0q8U3A",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJSWN4ldUEdkgRGqo3OSnf1CY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJq4lX1doEdkgR5JXPstgQjc0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJc2nSALkEdkgRviluWxwFsxA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJmZuNDMQEdkgRfB9O9456eQc",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJMcWMvKgFdkgRM5MbNLzvnA8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "relevance": "not_applicable_empty_reviewed_interests",
+      "rag_summary": {
+        "status": "complete",
+        "returned_positions": 20,
+        "unique_entities": 20,
+        "resolution_attempts": 12,
+        "details_sends": 12,
+        "fallback_sends": 0,
+        "embedding_sends": 1,
+        "retrieval_queries": 1,
+        "cache_hits": 0
+      }
+    }
+  ]
+}

@@ -54,6 +54,12 @@ dates. Separate Repair engineering diagnostics do not contribute to case scores.
 The case report owns the exact accepted selection and limitations; Issue publication
 and closure remain separate from that acceptance.
 
+The [case-02 London report](case-02/report.md) presents its selected schedules,
+independent scores, candidate/Repair observations and all-attempt resources.
+[#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149) tracks its
+pending joint automatic acceptance. Case reports state their own evidence basis
+and limitations; the common workflow below applies across cases.
+
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
 generation/evaluation evidence for later anonymous packaging. Human answers and

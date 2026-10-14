@@ -1,0 +1,644 @@
+{
+  "schema_version": "case02_opening_view_1",
+  "policy": "llm_access_reasonableness_2",
+  "results": [
+    {
+      "version": "v0",
+      "reference_id": "dfdec12f5e5ed55d775dfe6c2ef2b26bc1ebe5616abca8d480d6f69af19c184a",
+      "state": "UNKNOWN",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "dfdec12f5e5ed55d775dfe6c2ef2b26bc1ebe5616abca8d480d6f69af19c184a",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "UNKNOWN",
+        "access_mode": "ticketed",
+        "intent_basis": "original_activity",
+        "venue_category": "indoor_attraction",
+        "visit_window": "unknown",
+        "restrictions": "uncertain"
+      }
+    },
+    {
+      "version": "v0",
+      "reference_id": "87210f692ed6c534132452be976adad07d94559c70842d936236ec6acb64091c",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "87210f692ed6c534132452be976adad07d94559c70842d936236ec6acb64091c",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "exterior",
+        "intent_basis": "original_activity",
+        "venue_category": "public_landmark",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v0",
+      "reference_id": "26a1566a3c93d90cc8e765071fed88ba8b5afd6be30d5152eeee77cc0d81395e",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "26a1566a3c93d90cc8e765071fed88ba8b5afd6be30d5152eeee77cc0d81395e",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v0",
+      "reference_id": "0a622247931f0eb02ba20723322523ee16cc6c8d5f860dd0c77c729a0fa7fc7f",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "0a622247931f0eb02ba20723322523ee16cc6c8d5f860dd0c77c729a0fa7fc7f",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v0",
+      "reference_id": "67b151eb93584f4b6dd7fb2319241356ab3c84109e09fd2d42409bfb0c225358",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "67b151eb93584f4b6dd7fb2319241356ab3c84109e09fd2d42409bfb0c225358",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v0",
+      "reference_id": "2b8fbc4a607796302657d4a06befaaf27bfe8f1f8f8d48e8c56cd619e6052f2d",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "2b8fbc4a607796302657d4a06befaaf27bfe8f1f8f8d48e8c56cd619e6052f2d",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v0",
+      "reference_id": "ff4b087dc0ae54828d252b18fc93e54f911a9748d15d0f7cb20c9537c0ee830b",
+      "state": "FAIL",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ff4b087dc0ae54828d252b18fc93e54f911a9748d15d0f7cb20c9537c0ee830b",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v0",
+      "reference_id": "153a28ee90f02a7dec28737de5614054dcbdb2ee77dbe35d3b4ddab268e90023",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "153a28ee90f02a7dec28737de5614054dcbdb2ee77dbe35d3b4ddab268e90023",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "public_outdoor",
+        "intent_basis": "original_activity",
+        "venue_category": "public_area",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v0",
+      "reference_id": "ec2a71e97f97d56761955a06e59c0f540b5b4de368f17f63148bee5314fac21a",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/4",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ec2a71e97f97d56761955a06e59c0f540b5b4de368f17f63148bee5314fac21a",
+        "run_id": "case-02-r1-v0-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "067e04a18c398e25b4c7313bad67a66295d758f4f2b6dcc60e145d943f80ed3d",
+      "state": "UNKNOWN",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "067e04a18c398e25b4c7313bad67a66295d758f4f2b6dcc60e145d943f80ed3d",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "UNKNOWN",
+        "access_mode": "ticketed",
+        "intent_basis": "original_activity",
+        "venue_category": "indoor_attraction",
+        "visit_window": "unknown",
+        "restrictions": "uncertain"
+      }
+    },
+    {
+      "version": "v1",
+      "reference_id": "2386f97687601f7074fed0a863dc27dfd07fa3598d75adab0c81a90d3af7d063",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "2386f97687601f7074fed0a863dc27dfd07fa3598d75adab0c81a90d3af7d063",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "public_outdoor",
+        "intent_basis": "public_landmark_default",
+        "venue_category": "public_landmark",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v1",
+      "reference_id": "7b2b767e4f16854313daf7c9b5ff9dcc9084196399bfd754577fce0330c4280a",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "7b2b767e4f16854313daf7c9b5ff9dcc9084196399bfd754577fce0330c4280a",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "c0edb7820e8ae92a574f1053ec645ff1969359cb26f11fd538cf5bfbf0cfb353",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/3",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c0edb7820e8ae92a574f1053ec645ff1969359cb26f11fd538cf5bfbf0cfb353",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "ee12f84b246f72a474ad8f57021e4a423f6a76923e5fbcf4f24efeb753f8fed4",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ee12f84b246f72a474ad8f57021e4a423f6a76923e5fbcf4f24efeb753f8fed4",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "1bf352ed9456807d91f639819fee03776af8bf0ae96e7f1417abacd2c7e6140b",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1bf352ed9456807d91f639819fee03776af8bf0ae96e7f1417abacd2c7e6140b",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "3f96d233cda0b86d1c8e72bbdec41df20a3867a82c0ae67dc5eb8f85cb1c4836",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "3f96d233cda0b86d1c8e72bbdec41df20a3867a82c0ae67dc5eb8f85cb1c4836",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "a78ffdfa00cd84df5cd170bb69c8d0382004255a51c5339fb068edb9056e5cb5",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "a78ffdfa00cd84df5cd170bb69c8d0382004255a51c5339fb068edb9056e5cb5",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "1c8cd97275fa753c84d5db9a0752074df17c331ce32d56019ec998ef55837540",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1c8cd97275fa753c84d5db9a0752074df17c331ce32d56019ec998ef55837540",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [
+        "truncated_boundary_unknown"
+      ],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v1",
+      "reference_id": "572658767dbc5bc08f2de795eca499149adf31da0a99786bb1ff13284f9d90f3",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "572658767dbc5bc08f2de795eca499149adf31da0a99786bb1ff13284f9d90f3",
+        "run_id": "case-02-r1-v1-a2"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "exterior",
+        "intent_basis": "original_activity",
+        "venue_category": "public_landmark",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v2",
+      "reference_id": "6616fdaf06cbcb8a01a26e1949fe04d4a3e63c6a725aac90b575a5206d9594f0",
+      "state": "UNKNOWN",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "6616fdaf06cbcb8a01a26e1949fe04d4a3e63c6a725aac90b575a5206d9594f0",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "UNKNOWN",
+        "access_mode": "ticketed",
+        "intent_basis": "original_activity",
+        "venue_category": "indoor_attraction",
+        "visit_window": "unknown",
+        "restrictions": "uncertain"
+      }
+    },
+    {
+      "version": "v2",
+      "reference_id": "ad7e747a5e05793a7df05ec94526abba2cb786fc9df0ecbcf7b7f7321133e407",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "ad7e747a5e05793a7df05ec94526abba2cb786fc9df0ecbcf7b7f7321133e407",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "public_outdoor",
+        "intent_basis": "public_landmark_default",
+        "venue_category": "public_landmark",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v2",
+      "reference_id": "740dc92f1082b294394105de8e26375dc0412fc77ab897cd4300b8dfbd5c9965",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "740dc92f1082b294394105de8e26375dc0412fc77ab897cd4300b8dfbd5c9965",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v2",
+      "reference_id": "21ace3386d3e888d887427f532d30bda91a758dce1d4ea9598215bea5be6b932",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "21ace3386d3e888d887427f532d30bda91a758dce1d4ea9598215bea5be6b932",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v2",
+      "reference_id": "b6068d90fd8a43c8cbc1fac381a48709fa1965dcd6c2e47763aa00383fb07e74",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "b6068d90fd8a43c8cbc1fac381a48709fa1965dcd6c2e47763aa00383fb07e74",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v2",
+      "reference_id": "517e6e2978b77cc58e85caca18efa1c42247e9b7387466982593f91838b90600",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "517e6e2978b77cc58e85caca18efa1c42247e9b7387466982593f91838b90600",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v2",
+      "reference_id": "1fb2cb53cc7f96dea7005ff699cf0445f760fed8f5152fb27f3f0efb609a2ef1",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "1fb2cb53cc7f96dea7005ff699cf0445f760fed8f5152fb27f3f0efb609a2ef1",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v2",
+      "reference_id": "c16195410d475a90c7d513e57d3c8e8e85931e76a2a981737ea38d4ded1bee9c",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c16195410d475a90c7d513e57d3c8e8e85931e76a2a981737ea38d4ded1bee9c",
+        "run_id": "case-02-r1-v2-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v3",
+      "reference_id": "4638186236aae24b323fc6ed0fdffc15231529abfbe89553defb0588a2038575",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "4638186236aae24b323fc6ed0fdffc15231529abfbe89553defb0588a2038575",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v3",
+      "reference_id": "d5fe032a94b6a0974cc49bcd8e5a5d51da60ab06d39badee2edd731c513fe6a9",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/0/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "d5fe032a94b6a0974cc49bcd8e5a5d51da60ab06d39badee2edd731c513fe6a9",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v3",
+      "reference_id": "3b705a181a1bf9fa5fc900bdd9b12e163dbe1f516719296707fdd1238c061471",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "3b705a181a1bf9fa5fc900bdd9b12e163dbe1f516719296707fdd1238c061471",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v3",
+      "reference_id": "6ed3e5f173f22536d01e6bf0e5dd8bf614e99516819ffc3a5ec0edb9f1abbeed",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/1/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "6ed3e5f173f22536d01e6bf0e5dd8bf614e99516819ffc3a5ec0edb9f1abbeed",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [],
+      "basis": "API_evidence"
+    },
+    {
+      "version": "v3",
+      "reference_id": "a4b43d71825f80ede296ab4d8a2ff785849c4ea8eb3af71434a0d0fda8c5ef5a",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "a4b43d71825f80ede296ab4d8a2ff785849c4ea8eb3af71434a0d0fda8c5ef5a",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_pass"
+      ],
+      "basis": "model_supported",
+      "assessment": {
+        "state": "PASS",
+        "access_mode": "exterior",
+        "intent_basis": "original_activity",
+        "venue_category": "public_landmark",
+        "visit_window": "reasonable",
+        "restrictions": "none_known"
+      }
+    },
+    {
+      "version": "v3",
+      "reference_id": "b80e5fd8e0405edc08a42c0fea0e1ec607c9bbab6d7299df95f338896dc1d66e",
+      "state": "PASS",
+      "source": {
+        "artifact_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+        "batch_id": "case-02-batch",
+        "group_id": "case-02",
+        "pointer": "/itinerary/days/2/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "b80e5fd8e0405edc08a42c0fea0e1ec607c9bbab6d7299df95f338896dc1d66e",
+        "run_id": "case-02-r1-v3-a1"
+      },
+      "reasons": [
+        "truncated_boundary_unknown"
+      ],
+      "basis": "API_evidence"
+    }
+  ],
+  "API_hours_missing_counts": {
+    "v0": 3,
+    "v1": 3,
+    "v2": 2,
+    "v3": 1
+  },
+  "model_supported_pass_is_not_API_verified_hours": true
+}

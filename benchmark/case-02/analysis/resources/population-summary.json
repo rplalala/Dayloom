@@ -1,0 +1,49 @@
+{
+  "schema_version": "case02_population_view_1",
+  "first_attempt_summary": {
+    "planned_completion": {
+      "numerator": 3,
+      "denominator": 4,
+      "unit": "planned_slots",
+      "confirmed_fraction": 0.75,
+      "fraction": 0.75,
+      "lower_bound": 0.75,
+      "upper_bound": 0.75,
+      "unresolved": 0,
+      "availability": "available"
+    },
+    "conditional_completion": {
+      "numerator": 3,
+      "denominator": 4,
+      "unit": "dispatched_first_attempts",
+      "confirmed_fraction": 0.75,
+      "fraction": 0.75,
+      "lower_bound": 0.75,
+      "upper_bound": 0.75,
+      "unresolved": 0,
+      "availability": "available",
+      "unknown_dispatch_slots": 0,
+      "denominator_lower_bound": 4,
+      "denominator_upper_bound": 4
+    },
+    "status_counts": {
+      "completed": 3,
+      "clarification_required": 0,
+      "failed": 1,
+      "cancelled": 0,
+      "incomplete": 0,
+      "unstarted": 0,
+      "unknown_pending": 0
+    },
+    "reason_counts": {
+      "completed": 3,
+      "generation_failed": 1
+    },
+    "attempt_census": {
+      "records": 5,
+      "dispatched": 5,
+      "retry_dispatches": 1
+    }
+  },
+  "selected_final_completion": "four completed finals, including authorized V1 second attempt"
+}

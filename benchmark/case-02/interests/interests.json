@@ -1,0 +1,20 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-02",
+  "case_revision": "case-02-r1",
+  "group_id": "case-02",
+  "revision": "case-02-interests-r1",
+  "input_sha256": "afd045d47b93bef9cc3743bcd2512805bc5b85cf35d1e0b97d23a740e53c9c1b",
+  "requirement_spec_ref": {
+    "path": "requirements/reviewed-requirements.json",
+    "sha256": "ced2e8efd5b7000b3e4857d6cc299d7d18f89c7ba50afaff21019fca060259af",
+    "media_type": "application/json",
+    "schema_version": "rtpeval_requirements_1",
+    "availability": "available"
+  },
+  "reviewer_ref": "independent_source_only_reviewer",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-14T12:18:24.935479+11:00",
+  "rationale": "The complete original case-02 request has an empty additional_preferences string. Destination, trip dates, traveler count and GBP budget do not express any named-place, activity, venue, cuisine or thematic POI interests. The isolated author's explicit interests=[] is complete and source-grounded; no interests may be inferred from logistics or the reviewed RequirementSpec.",
+  "interests": []
+}

@@ -1,0 +1,389 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "london-20261015-tower-of-london",
+      "to_activity_id": "london-20261015-tower-bridge",
+      "origin_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "destination_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-15T12:00:00+01:00",
+      "arrival_time": "2026-10-15T12:07:57+01:00",
+      "provider_duration_seconds": 477.0,
+      "distance_meters": 568,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "london-20261016-london-eye",
+      "to_activity_id": "london-20261016-national-gallery",
+      "origin_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "destination_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T14:00:00+01:00",
+      "arrival_time": "2026-10-16T14:17:04+01:00",
+      "provider_duration_seconds": 1024.0,
+      "distance_meters": 1097,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "london-20261017-buckingham-palace",
+      "to_activity_id": "london-20261017-hyde-park",
+      "origin_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "destination_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-17T10:45:00+01:00",
+      "arrival_time": "2026-10-17T11:12:06+01:00",
+      "provider_duration_seconds": 1626.0,
+      "distance_meters": 1915,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "london-20261015-tower-of-london",
+      "to_activity_id": "london-20261015-tower-bridge",
+      "origin": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "destination": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "departure": "2026-10-15T12:00:00+01:00",
+      "next_start": "2026-10-15T12:45:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 477,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:18:51.317603+00:00",
+              "retrieved_at": "2026-10-14T03:18:51.944657+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+                "destination_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 477,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:18:51.317603Z",
+                "retrieved_at": "2026-10-14T03:18:51.944657Z",
+                "origin_index": 0,
+                "destination_index": 3,
+                "distance_meters": 568,
+                "duration_seconds": 477,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "london-20261016-london-eye",
+      "to_activity_id": "london-20261016-national-gallery",
+      "origin": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "destination": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+      "departure": "2026-10-16T14:00:00+01:00",
+      "next_start": "2026-10-16T15:00:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1024,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:18:51.950403+00:00",
+              "retrieved_at": "2026-10-14T03:18:52.602513+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+                "destination_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1024,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:18:51.950403Z",
+                "retrieved_at": "2026-10-14T03:18:52.602513Z",
+                "origin_index": 1,
+                "destination_index": 7,
+                "distance_meters": 1097,
+                "duration_seconds": 1024,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "london-20261017-buckingham-palace",
+      "to_activity_id": "london-20261017-hyde-park",
+      "origin": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+      "destination": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+      "departure": "2026-10-17T10:45:00+01:00",
+      "next_start": "2026-10-17T11:30:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1626,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-14T03:18:51.317603+00:00",
+              "retrieved_at": "2026-10-14T03:18:51.944657+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+                "destination_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1626,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T03:18:51.317603Z",
+                "retrieved_at": "2026-10-14T03:18:51.944657Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 1915,
+                "duration_seconds": 1626,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Royal Armouries",
+      "source_place_id": "ChIJh7JjNEkDdkgRbNhPZVVibMs",
+      "reason": "Museum near Tower of London (approximately 10 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "HM Tower Of London, London EC3N 4AB, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-e5d1977b-2a8f-4d8d-9c96-1870385cbfe7:0"
+    },
+    {
+      "place_name": "Metaverse",
+      "source_place_id": "ChIJ45vrx8cEdkgRkGR3nThqW5Q",
+      "reason": "Museum near London Eye (approximately 7 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "Riverside Building, County Hall, London SE1 7PB, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-6477e268-0c87-407c-be99-793813c63c70:0"
+    },
+    {
+      "place_name": "Muriel's Espresso Bar",
+      "source_place_id": "ChIJ9ww8IN4FdkgRgZYTxSda7b0",
+      "reason": "Cafe near The National Gallery (approximately 19 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "National Gallery, Trafalgar Sq, London WC2N 5DN, UK",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-962b9363-6501-4d9a-97ca-51afa142e1a1:1"
+    }
+  ],
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-17",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261015-tower-of-london",
+          "title": "Visit the Tower of London",
+          "place_name": "Tower of London",
+          "source_place_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+          "location": "London EC3N 4AB, UK",
+          "start_time": "2026-10-15T09:30:00+01:00",
+          "end_time": "2026-10-15T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261015-tower-bridge",
+          "title": "Visit Tower Bridge",
+          "place_name": "Tower Bridge",
+          "source_place_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+          "location": "Tower Bridge Rd, London SE1 2UP, UK",
+          "start_time": "2026-10-15T12:45:00+01:00",
+          "end_time": "2026-10-15T14:15:00+01:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261016-london-eye",
+          "title": "Visit the London Eye",
+          "place_name": "London Eye",
+          "source_place_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+          "location": "Riverside Building, County Hall, Westminster Bridge Rd, London SE1 7PB, UK",
+          "start_time": "2026-10-16T13:00:00+01:00",
+          "end_time": "2026-10-16T14:00:00+01:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261016-national-gallery",
+          "title": "Visit The National Gallery",
+          "place_name": "The National Gallery",
+          "source_place_id": "ChIJeclqF84EdkgRtKAjTmWFr0I",
+          "location": "Trafalgar Square, London WC2N 5DN, UK",
+          "start_time": "2026-10-16T15:00:00+01:00",
+          "end_time": "2026-10-16T17:00:00+01:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261017-buckingham-palace",
+          "title": "See Buckingham Palace",
+          "place_name": "Buckingham Palace",
+          "source_place_id": "ChIJtV5bzSAFdkgRpwLZFPWrJgo",
+          "location": "London SW1A 1AA, UK",
+          "start_time": "2026-10-17T10:00:00+01:00",
+          "end_time": "2026-10-17T10:45:00+01:00",
+          "estimated_cost": null,
+          "notes": "Plan an exterior landmark visit; date-specific opening hours and access are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "london-20261017-hyde-park",
+          "title": "Explore Hyde Park",
+          "place_name": "Hyde Park",
+          "source_place_id": "ChIJhRoYKUkFdkgRDL20SU9sr9E",
+          "location": "London, UK",
+          "start_time": "2026-10-17T11:30:00+01:00",
+          "end_time": "2026-10-17T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    }
+  ]
+}

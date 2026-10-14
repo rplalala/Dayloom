@@ -1,0 +1,119 @@
+{
+  "schema_version": "case02_repair_view_1",
+  "same_run_id": "case-02-r1-v3-a1",
+  "independent_pair_basis": "API-only opening; source-labelled reuse, zero current sends",
+  "scores": {
+    "draft": {
+      "primary": {
+        "exact_fraction": {
+          "denominator": 96,
+          "numerator": 71
+        },
+        "reason": null,
+        "score_0_100": 73.95833333333333
+      },
+      "auxiliary": {
+        "exact_fraction": {
+          "denominator": 32,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 90.625,
+        "total_included_dimensions": 4,
+        "unavailable_dimensions": []
+      },
+      "opening_counts": {
+        "FAIL": 0,
+        "PASS": 5,
+        "UNKNOWN": 3
+      },
+      "density_penalty": 16.666666666666668
+    },
+    "final_primary": {
+      "primary": {
+        "exact_fraction": {
+          "denominator": 24,
+          "numerator": 23
+        },
+        "reason": null,
+        "score_0_100": 95.83333333333333
+      },
+      "auxiliary": {
+        "exact_fraction": {
+          "denominator": 24,
+          "numerator": 23
+        },
+        "reason": null,
+        "score_0_100": 95.83333333333333,
+        "total_included_dimensions": 4,
+        "unavailable_dimensions": []
+      },
+      "opening_counts": {
+        "FAIL": 0,
+        "PASS": 5,
+        "UNKNOWN": 1
+      },
+      "density_penalty": 0.0
+    }
+  },
+  "delta": {
+    "exact_fraction": {
+      "denominator": 32,
+      "numerator": 7
+    },
+    "percentage_points": 21.875
+  },
+  "visit_changes": {
+    "added_count": 0,
+    "confirmed_venue_loss_count": 0,
+    "primary_role_loss_count": 0,
+    "removed_count": 2,
+    "replaced_count": 0,
+    "unresolved_after": [],
+    "unresolved_before": []
+  },
+  "continuity_counts": {
+    "conflicts": {},
+    "grounding": {
+      "removed": 2,
+      "unchanged": 6
+    },
+    "opening": {
+      "removed": 2,
+      "unchanged": 6
+    },
+    "protection_conflicts": {},
+    "requirements": {},
+    "routes": {
+      "structural_leg_removed": 2,
+      "unchanged": 3
+    }
+  },
+  "producer_repair": {
+    "status": "ACCEPTED_COMPLETE",
+    "reason": "authorized_targets_complete",
+    "model_attempted": false,
+    "main_visits_lost": [
+      "london-20261016-westminster-abbey",
+      "london-20261016-big-ben"
+    ],
+    "coverage_regressions": [
+      "2026-10-16"
+    ],
+    "counters": {
+      "deterministic_attempts": 2,
+      "repair_input_candidates": 0,
+      "final_scheduled_unique": 6,
+      "repair_input_unused": 0,
+      "original_supply_unused": 6,
+      "final_main_visits": 6
+    },
+    "selected_round_index": 2
+  },
+  "producer_strategies": [
+    "system_delete",
+    "system_delete"
+  ],
+  "independent_V2_final_is_not_V3_draft": true,
+  "cross_version_difference_does_not_establish_causality": true
+}
