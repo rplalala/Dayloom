@@ -80,7 +80,7 @@ def test_one_step_emits_native_report_and_replays_without_scoring_again(
     assert report["usage"]["actual_google_sends"] == 5
     assert report["usage"]["actual_model_sends"] == 1
     assert report["usage"]["retries"] == 0
-    assert len(calls) == 6  # No implicit opening assessment or extra probes.
+    assert len(calls) == 6  # Complete API schedules need no access-assessment call.
     assert json.loads((directory / "execution/report.json").read_bytes()) == report
     preparation = json.loads((directory / "preparation.json").read_bytes())
     receipt = json.loads((directory / "execution/receipt.json").read_bytes())

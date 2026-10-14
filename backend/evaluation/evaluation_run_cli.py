@@ -20,7 +20,7 @@ def main(argv=None, *, http_client=None):
     for option in ("context", "occupancy-reviews", "route-reviews", "density-reviews"):
         prepare.add_argument("--" + option)
     execute = commands.add_parser(
-        "execute", help="Fresh independent Google and V0-only model acquisition"
+        "execute", help="Independent evidence and eligible access assessment before final scoring"
     )
     execute.add_argument("directory")
     execute.add_argument("--approved-sha256", required=True)
@@ -68,6 +68,8 @@ def main(argv=None, *, http_client=None):
                 "directory": result["directory"],
                 "preparation_sha256": result["content_sha256"],
                 "identity_request_count": len(result["identity_plan"]["requests"]),
+                "max_model_sends": result["max_model_sends"],
+                "assess_missing_hours": result["options"]["assess_missing_hours"],
             }
         elif args.command == "execute":
             if args.env_file:

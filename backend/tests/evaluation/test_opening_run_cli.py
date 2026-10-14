@@ -25,7 +25,9 @@ def prepare_base(batch, capsys, *, public_landmarks=False):
         write(version)
     directory = root / "evaluation"
     option_path, price_path = root / "options.json", root / "prices.json"
-    option_path.write_text(json.dumps(options()), encoding="utf-8")
+    option_path.write_text(
+        json.dumps({**options(), "assess_missing_hours": False}), encoding="utf-8"
+    )
     price_path.write_text(json.dumps(run_prices()), encoding="utf-8")
     assert (
         main(
