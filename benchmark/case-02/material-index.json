@@ -148,6 +148,20 @@
           "json_pointer": "/v3/repair"
         }
       ]
+    },
+    {
+      "path": "generation/poi-origins.json",
+      "sha256": "5b6b6e81d2734381a17795434432c4cf9cab45690f97f3efb9823cbd99024e4e",
+      "source_logical_path": "work/captures/v3/result.json",
+      "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
+      "json_pointer": "/v3/original_rag_discovery",
+      "transformation": "Join submitted activity IDs/canonical IDs to complete V1/V2 discovery partitions and recorded V3 RAG associations; keep unavailable V3 partition attribution explicit",
+      "additional_sources": [
+        {
+          "logical_path": "work/process-native/selected-final-opportunities.json",
+          "sha256": "8585bc7f0b95cfabfc7dbd9cabdeccec532c8251ea4f273be2798099bb691f2b"
+        }
+      ]
     }
   ],
   "private_native_bindings": [

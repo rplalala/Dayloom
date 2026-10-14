@@ -46,7 +46,7 @@ their native preparations or receipts.
 | Selected final schedules | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
 | Same-run V3 stages | [Draft](generation/v3/draft.json), [final primary](generation/v3/final-primary.json) |
 | Independent scores | [Corrected API-only](evaluation/primary/quality-report.json), [model-supplemented](evaluation/opening/quality-report.json), [access states](evaluation/opening/access-summary.json) |
-| Process observations | [POI stages and differences](analysis/poi-process/selected-process.json), [V3 pair](evaluation/v3-pair/pair-report.json), [Repair](analysis/repair/repair-summary.json) |
+| Process observations | [POI stages and differences](analysis/poi-process/selected-process.json), [recorded origins](generation/poi-origins.json), [V3 pair](evaluation/v3-pair/pair-report.json), [Repair](analysis/repair/repair-summary.json) |
 | Completion and resources | [First-attempt population](analysis/resources/population-summary.json), [all-attempt accounting](analysis/resources/accounting.json) |
 
 ## Primary scores and evidence
