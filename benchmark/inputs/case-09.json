@@ -1,8 +1,8 @@
 {
   "input_version": "planning_request_2",
   "destination": "Sydney, Australia",
-  "start_date": "2026-10-13",
-  "end_date": "2026-10-16",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
   "traveler_count": 3,
   "budget": {"amount": 2200, "currency": "AUD"},
   "additional_preferences": "We are travelling as a family of two adults and one child. We enjoy science, nature and outdoor spaces. Please favour an itinerary with breaks and less continuous walking. We have rented a car and prefer to drive between sightseeing stops."

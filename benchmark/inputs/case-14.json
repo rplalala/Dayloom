@@ -1,9 +1,9 @@
 {
   "input_version": "planning_request_2",
   "destination": "Tokyo, Japan",
-  "start_date": "2026-10-13",
-  "end_date": "2026-10-17",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-19",
   "traveler_count": 3,
   "budget": {"amount": 300000, "currency": "JPY"},
-  "additional_preferences": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-14. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+  "additional_preferences": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-16. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
 }
