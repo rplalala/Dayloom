@@ -1,8 +1,8 @@
 {
   "input_version": "planning_request_2",
   "destination": "Sydney, Australia",
-  "start_date": "2026-10-13",
-  "end_date": "2026-10-17",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-19",
   "traveler_count": 2,
   "budget": {"amount": 2200, "currency": "AUD"},
   "additional_preferences": "We are two adults who enjoy harbour views, history and parks. Include exactly one visit to Sydney Opera House during the trip. We prefer a moderate pace and are flexible about the remaining sightseeing choices."

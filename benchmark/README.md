@@ -276,9 +276,11 @@ entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
-Dates and durations are inclusive. The initial date assignment uses 2026-10-11 as
-the policy reference date. All trips start on 2026-10-13 except case-05, which starts
-on Saturday 2026-10-17 and ends on Sunday 2026-10-18.
+Dates and durations are inclusive. The accepted case-01 input retains its original
+2026-10-13 through 2026-10-15 dates. Pending cases 02-20 use 2026-10-14 as the
+policy reference date and start on 2026-10-15, except case-05, which starts on
+Saturday 2026-10-17 and ends on Sunday 2026-10-18. Revalidate pending dates against
+the actual application reference date before execution.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -314,8 +316,8 @@ different planning needs; the cases are not matched experimental pairs.
 The planner's shared [date policy](../backend/app/policies/trip_dates.py) uses the
 application's configured time zone. On each execution date, the complete requested
 range must fall between that day's date and 13 days later, inclusive, and trips
-must last at most ten inclusive days. For reference date 2026-10-11, the allowed
-window is 2026-10-11 through 2026-10-24.
+must last at most ten inclusive days. For reference date 2026-10-14, the allowed
+window is 2026-10-14 through 2026-10-27.
 
 1. Choose dates for the planned execution period and validate them against the
    actual application reference date. A later execution can invalidate an earlier
@@ -345,10 +347,12 @@ window is 2026-10-11 through 2026-10-24.
 
 ## Offline checks
 
-After edits, parse all 20 files as UTF-8 JSON, validate each using
-`PlanningRequest.model_validate_json`, and separately validate its dates using
+After edits, parse all 20 files as UTF-8 JSON and validate each using
+`PlanningRequest.model_validate_json`. Separately validate pending inputs using
 `create_trip_date_window` and `validate_requested_trip_dates` with an explicit
-reference date. Schema validation alone does not enforce the moving date window.
+execution reference date. Accepted inputs retain their consumed bytes and original
+date bindings; a later moving window does not invalidate that historical evidence.
+Schema validation alone does not enforce the moving date window.
 
 Check that the filenames cover case-01 through case-20 exactly once, the index
 agrees with destination, duration, traveler count and budget, and the dated
