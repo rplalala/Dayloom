@@ -1,0 +1,1993 @@
+{
+  "batch_id": "case01-20261012T220558Z",
+  "batch_revision": "3",
+  "components": {
+    "opening": {
+      "batch_id": "case01-20261012T220558Z",
+      "batch_revision": "3",
+      "diagnostics": [],
+      "model_provenance": {
+        "packet_sha256": "e6d85c305e670dd0aa3879eddbaeeee644fdfc6955eee425c85e3d7a680913f9",
+        "prompt_sha256": "d5decde76fb3a9229a87009a39e4c43a715a885be1f546ff24a1fb46d6c90a98",
+        "reported_model": "gpt-6-luna",
+        "requested_at": "2026-10-13T10:18:46.505559+00:00",
+        "requested_model": "gpt-6-luna",
+        "retrieved_at": "2026-10-13T10:18:58.654406+00:00",
+        "usage": {
+          "input_tokens": 10665,
+          "input_tokens_details": {
+            "cache_write_tokens": 10662,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1728,
+          "output_tokens_details": {
+            "reasoning_tokens": 493
+          },
+          "total_tokens": 12393
+        }
+      },
+      "rules": {
+        "basis_order": [
+          "applicable_current",
+          "regular_for_unresolved_intervals"
+        ],
+        "compliance_denominator": "PASS+FAIL",
+        "current_window_days": 7,
+        "grace_seconds": 0,
+        "identity_scope": "required_excluded_fixed_time_1",
+        "intervals": "half_open",
+        "missing_hours_fallback": "llm_access_reasonableness_2",
+        "model_pass_is_verified_hours": false,
+        "open_now": "query_instant_not_planned_visit",
+        "public_landmark_intent": "ordinary_sightseeing_unless_restricted_activity",
+        "special_date_without_schedule": "diagnostic_only",
+        "timestamp_fraction_digits": 6,
+        "timezone": "independent_place_or_reviewed_context",
+        "unknown_time_is_closed": false,
+        "version": "rtpeval_opening_rules_4"
+      },
+      "rules_hash": "3db88619bc16740ffe73fb84169e03cfb83b0de0b9e4db71f807b2f5b9f1af6a",
+      "schema_version": "rtpeval_opening_report_1",
+      "source_hashes": {
+        "expected_opening_plan": "5b9d14803357ce4ae29daf5c61b47e515c0df4a427df6e1fa90bec5a1df18f03",
+        "identity_report": "d7b88c2ec6953a434654342ac6180653d6a4e1717c5987eed31cff6ce0b98873",
+        "intake": "ad22c41a34485717a6c7260898cb29dadce6835c76c3f0f3d4a903a42346f4b4",
+        "opening_judgment": "9bcb6185cf283fd5b780ec9f7dc23cc07cf457ffe4da71db4f4f9e45d28874a1",
+        "schedule_context": "9db3f7bc69ac5338f15803baf8ae5eddc2ca5853fd564f79def516584bf80f21",
+        "snapshot_manifest": "8a5b43f70910f5b0b7374cfe42186c6bcb940ff768b693873ae2d07933db69f7",
+        "snapshot_plan": "5f98a6b5d5e255e2ab40a89b5b43801483b1ce9bf28f245a483734f27e429e58",
+        "trusted_expected_plan": "5f98a6b5d5e255e2ab40a89b5b43801483b1ce9bf28f245a483734f27e429e58"
+      },
+      "status": "complete"
+    },
+    "requirement_schedule": {
+      "batch_id": "case01-20261012T220558Z",
+      "batch_revision": "3",
+      "diagnostics": [],
+      "rules_hash": "ec74c88fc37089626fb5bc5e96e85d61ed10a8f22cda120f23f39d5b1a8ae225",
+      "rules_version": "rtpeval_requirement_schedule_rules_3",
+      "schema_version": "rtpeval_requirement_schedule_report_1",
+      "status": "complete"
+    },
+    "routes": {
+      "$case_material_ref": {
+        "path": "../primary/quality-report.json",
+        "pointer": "/components/routes",
+        "semantic_sha256": "6cbb67b593dd981e41e38904c8a1206e7c7b3a1bc8e31ebbf12d567d22bbff15"
+      }
+    }
+  },
+  "content_hash": "a13d26abbbca8f9f0057048ff8acdb62e40d09bd939ab3fbf225fdb86da29331",
+  "diagnostics": [],
+  "generated_at": "2026-10-13T10:18:58.657407+00:00",
+  "groups": [
+    {
+      "all_totals_available": true,
+      "diagnostics": [],
+      "dimension_weights": {
+        "grounding": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "non_overlap": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "opening": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "routes": {
+          "denominator": 4,
+          "numerator": 1
+        }
+      },
+      "group_id": "case-01",
+      "included_dimensions": [
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "total_included_dimensions": 4,
+      "versions": {
+        "v0": {
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 6,
+              "numerator": 5
+            },
+            "reason": null,
+            "score_0_100": 83.33333333333333,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "component_source_hashes": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v0/component_source_hashes",
+              "semantic_sha256": "d32ebedef83f6630e5d3b04835048acb3ba7f76708a8da70c688c3c0bb6aef27"
+            }
+          },
+          "daily_density": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v0/daily_density",
+              "semantic_sha256": "bc08842ceb81a836a332fb3c21ba068151a66adca421aa136815315399f0de24"
+            }
+          },
+          "descriptive": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v0/descriptive",
+              "semantic_sha256": "914b088d36dd21c593274e70cf4ffae3183c2b44e2ce15b1c7aa497df86915a4"
+            }
+          },
+          "dimensions": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/grounding",
+                "semantic_sha256": "61787dfee9dbd773f3a0d0295eb857757ef09963aeed82c847e4e447df8c9b71"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/non_overlap",
+                "semantic_sha256": "2114ad990209c22e061d65793c9c5f4389c33ccc7bb3fb1e1a4c535f3a44bdde"
+              }
+            },
+            "opening": {
+              "conditional_compliance": 0.875,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 9,
+                  "numerator": 7
+                },
+                "reason": null,
+                "score_0_100": 77.77777777777777
+              },
+              "counts": {
+                "FAIL": 1,
+                "PASS": 7,
+                "UNKNOWN": 1
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 1
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.1111111111111111,
+                "unknown_rate": 0.1111111111111111,
+                "verification_coverage": 0.8888888888888888,
+                "verified_fraction": 0.7777777777777778
+              },
+              "state": "FAIL",
+              "verified_score_0_100": 77.77777777777777
+            },
+            "requirements": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/requirements",
+                "semantic_sha256": "8894a1f8615cd7051f939b44314d6a54a3a2db6356cf9fae9ab484c1fd705163"
+              }
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/routes",
+                "semantic_sha256": "a2cfd7205ed7b12e027d8d043e14d55ddf9fabeb99c7d8845c0ed54beb95509e"
+              }
+            }
+          },
+          "occupancy": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v0/occupancy",
+              "semantic_sha256": "42a0ddf71eef085310d32db6fc6b9ac4187bd3bfd1165466fbb1ca431dfa8f5a"
+            }
+          },
+          "overall_total": {
+            "exact_fraction": {
+              "denominator": 15,
+              "numerator": 11
+            },
+            "reason": null,
+            "score_0_100": 73.33333333333333
+          },
+          "primary_metrics": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/primary_metrics/grounding",
+                "semantic_sha256": "34a4c77df12056adf37a05a5b57d1a2d0b0a537f8b92a94240bef05f43b658d1"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/primary_metrics/non_overlap",
+                "semantic_sha256": "03a8780bec2881e4bc5b4b51729f7cb80eeb579f754cc9250a6432850929aea2"
+              }
+            },
+            "opening": {
+              "applicable_count": 9,
+              "applicable_denominator": 9,
+              "basis_counts": {
+                "current": 6,
+                "llm_access_reasonableness": 2,
+                "mixed": 0,
+                "regular": 0,
+                "unavailable": 1
+              },
+              "checks": [
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Allow time to enjoy the building and harbor setting. Any interior visit or tour would depend on availability; this itinerary does not confirm it.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Sydney Opera House is a public landmark. The notes describe enjoying the building and harbor setting; the conditional interior visit or tour is not a commitment to enter. Ordinary exterior sightseeing is the applicable default. The 2026-10-13 09:00–11:00 local interval is a reasonable daytime visit; no restriction on exterior viewing is established.",
+                    "reference_id": "visit001",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day1-opera-house",
+                  "associated_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/0/basis_segments",
+                      "semantic_sha256": "4f5efee5a1f682f3e71613088918532333bf148dff6e0a7cb2ceb5901c45cdbe"
+                    }
+                  },
+                  "canonical_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-13",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5-1.bin",
+                          "sha256": "a1bbdb39ecbba84ec4fb8179314acb9801f56fea76f13184a5a6fea41f70a155"
+                        },
+                        "requested_at": "2026-10-13T06:57:31.027733+00:00",
+                        "retrieved_at": "2026-10-13T06:57:31.170258+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "Sydney Opera House is a public landmark. The notes describe enjoying the building and harbor setting; the conditional interior visit or tour is not a commitment to enter. Ordinary exterior sightseeing is the applicable default. The 2026-10-13 09:00–11:00 local interval is a reasonable daytime visit; no restriction on exterior viewing is established.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-13T00:00:00+00:00",
+                      "seconds": 7200.0,
+                      "start": "2026-10-12T22:00:00+00:00"
+                    },
+                    "original_end": "2026-10-13T11:00:00+11:00",
+                    "original_start": "2026-10-13T09:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "f310bfe188942d9b977e8353f7d4168c472068525d02598c0186bf7645e68c35",
+                  "source": {
+                    "artifact_sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/0/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "f310bfe188942d9b977e8353f7d4168c472068525d02598c0186bf7645e68c35",
+                    "run_id": "case01-v0-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 7200.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/1",
+                    "semantic_sha256": "7e68f613243e46cda01a4e79ebe8de475b60609a813fb361c8e373bb8f28aac1"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/2",
+                    "semantic_sha256": "eca29f9e68ca98304cf9659e9fab1324bc9ffa62b44e86f7608538f0f865a3a4"
+                  }
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Explore the historic precinct and its lanes at an unhurried pace.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "The Rocks is a historic public precinct and public area. Exploring its precinct and lanes implies ordinary outdoor sightseeing. The 2026-10-14 09:00–11:00 local interval is a reasonable daytime visit; no applicable restriction is established.",
+                    "reference_id": "visit002",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_area",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day2-rocks",
+                  "associated_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/3/basis_segments",
+                      "semantic_sha256": "6f9e8c4ec5a29cadf9198e213fc5d1bc3d475139b3e3419cfa11f71c0ac6c7ce"
+                    }
+                  },
+                  "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-14",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb-1.bin",
+                          "sha256": "036aca90823c59d4bd5506c8a8507ac9feca1d17223621e201484affa2deae55"
+                        },
+                        "requested_at": "2026-10-13T06:57:27.952056+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.116457+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "The Rocks is a historic public precinct and public area. Exploring its precinct and lanes implies ordinary outdoor sightseeing. The 2026-10-14 09:00–11:00 local interval is a reasonable daytime visit; no applicable restriction is established.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-14T00:00:00+00:00",
+                      "seconds": 7200.0,
+                      "start": "2026-10-13T22:00:00+00:00"
+                    },
+                    "original_end": "2026-10-14T11:00:00+11:00",
+                    "original_start": "2026-10-14T09:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "c4d9d79a87d63b0e8cbf4cb9d35fb06488268e8b9d71c09c0ad8a1fad99f96bd",
+                  "source": {
+                    "artifact_sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/1/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "c4d9d79a87d63b0e8cbf4cb9d35fb06488268e8b9d71c09c0ad8a1fad99f96bd",
+                    "run_id": "case01-v0-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 7200.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/4",
+                    "semantic_sha256": "324d24fcd32c2dda2b7d2bbbba1a5ff29ad9f129a1f107975461099f8a2a861b"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/5",
+                    "semantic_sha256": "ca9ea39d99c952232d4c452ba87acee5436d5325708df3b68e656027ff114955"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/6",
+                    "semantic_sha256": "6cc9d5b79409b7e7c459218f810c21d8ca668b9232e5e2c49c93027714b68fb3"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/7",
+                    "semantic_sha256": "f9f98047fa994bd8aaaf505bf9a7e818c356f294da9909666a9acab79d7b4bec"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v0/primary_metrics/opening/checks/8",
+                    "semantic_sha256": "6f13fc63ddeae2062a42132c3e4ac8d69f1d1838152d9982136a129d489a05c7"
+                  }
+                }
+              ],
+              "complete_evidence_count": 6,
+              "complete_evidence_coverage": {
+                "denominator": 9,
+                "numerator": 6,
+                "rate": 0.6666666666666666,
+                "reason": null
+              },
+              "conditional_compliance": {
+                "denominator": 8,
+                "numerator": 7,
+                "rate": 0.875
+              },
+              "counts": {
+                "FAIL": 1,
+                "N/A": 0,
+                "PASS": 7,
+                "UNKNOWN": 1
+              },
+              "duration_subtotals": {
+                "$case_material_ref": {
+                  "path": "../primary/quality-report.json",
+                  "pointer": "/groups/0/versions/v0/primary_metrics/opening/duration_subtotals",
+                  "semantic_sha256": "dd78a983ac2c96b79b05beb60382bdfe8f1f64f4a065d73437ef4be49c5287f0"
+                }
+              },
+              "evidence_counts": {
+                "complete": 6,
+                "missing": 3,
+                "partial": 0
+              },
+              "identity_available_count": 8,
+              "llm_assessed_count": 2,
+              "llm_decidable_count": 2,
+              "nonapplicable_records": {
+                "$case_material_ref": {
+                  "path": "../primary/quality-report.json",
+                  "pointer": "/groups/0/versions/v0/primary_metrics/opening/nonapplicable_records",
+                  "semantic_sha256": "1d3a7c8df4cc17342fd040770bac736d508ab83d0a77edbd860288b790c0c79c"
+                }
+              },
+              "state": "FAIL",
+              "structural_coverage": {
+                "denominator": 9,
+                "numerator": 9,
+                "rate": 1.0,
+                "reason": null
+              },
+              "structurally_evaluable_count": 9,
+              "unresolved_role_count": 0,
+              "verdict_decidable_count": 8,
+              "verdict_decidable_coverage": {
+                "denominator": 9,
+                "numerator": 8,
+                "rate": 0.8888888888888888,
+                "reason": null
+              }
+            },
+            "requirements": {
+              "checks": [],
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "known_unit_count": 0,
+              "reasons": [],
+              "state": "N/A",
+              "unclassified_obligations": [],
+              "verified_fraction": null
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/primary_metrics/routes",
+                "semantic_sha256": "9caeb97b86bfc89eea76bbd568c47baaf088cbe98e885015a05af167b956720a"
+              }
+            }
+          },
+          "projection": "final",
+          "run_id": "case01-v0-20261012T232752Z",
+          "schedule_measures": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v0/schedule_measures",
+              "semantic_sha256": "3ea92e53165ae648621a315300a570b8159b7c406c1391472af7f67cb7bfaf72"
+            }
+          }
+        },
+        "v1": {
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "component_source_hashes": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v1/component_source_hashes",
+              "semantic_sha256": "aedbca1c485ace2f9ed0c902d359da3efb3774257c81d0d87c9e94afa802dbcd"
+            }
+          },
+          "daily_density": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v1/daily_density",
+              "semantic_sha256": "6b6ec355db58884e87b38ef939dd2a656ba661d5f7191161fca4584ada5cd300"
+            }
+          },
+          "descriptive": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v1/descriptive",
+              "semantic_sha256": "6eb35e9f705fd434c6fa534a7b9e5a21d0ec36cfcbd58ba6cc9514bcd28683d6"
+            }
+          },
+          "dimensions": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/dimensions/grounding",
+                "semantic_sha256": "114821a087c8b485f828e5736e0044e07c3ee9be7707bae6a90c268138cdf11b"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/dimensions/non_overlap",
+                "semantic_sha256": "ffd263f37acf2a5c538b3ed885a9cf8f4754425b171eec48952dedb2e9682b6f"
+              }
+            },
+            "opening": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/dimensions/grounding",
+                "semantic_sha256": "114821a087c8b485f828e5736e0044e07c3ee9be7707bae6a90c268138cdf11b"
+              }
+            },
+            "requirements": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/requirements",
+                "semantic_sha256": "8894a1f8615cd7051f939b44314d6a54a3a2db6356cf9fae9ab484c1fd705163"
+              }
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/dimensions/routes",
+                "semantic_sha256": "afcc507afd8ba39c7e321cad401217f44e10bd8bed11e9cd9928df7754e090d9"
+              }
+            }
+          },
+          "occupancy": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v1/occupancy",
+              "semantic_sha256": "a37c5f17a5e9296c514cdfc8d4c2fd5db806e38bb5ae2385375f47b79e4b2a9f"
+            }
+          },
+          "overall_total": {
+            "exact_fraction": {
+              "denominator": 15,
+              "numerator": 14
+            },
+            "reason": null,
+            "score_0_100": 93.33333333333333
+          },
+          "primary_metrics": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/primary_metrics/grounding",
+                "semantic_sha256": "4392a1ac4e725697b3235da48dc1f5f316b4bb9c9737b600b4c4d06050d3dc2e"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/primary_metrics/non_overlap",
+                "semantic_sha256": "eb581c8d9e0ba2a277b46efd35e2439ae9ba1dc9432c89da9ac59427b37d94c8"
+              }
+            },
+            "opening": {
+              "applicable_count": 8,
+              "applicable_denominator": 8,
+              "basis_counts": {
+                "current": 5,
+                "llm_access_reasonableness": 3,
+                "mixed": 0,
+                "regular": 0,
+                "unavailable": 0
+              },
+              "checks": [
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Date-specific operating status and hours were not established in the supplied evidence. Rain showers are forecast; check conditions before this outdoor-area visit.",
+                    "intent_basis": "original_activity",
+                    "rationale": "Sydney Opera House is a public landmark, and the notes explicitly specify an outdoor-area visit. The 2026-10-13 10:00–11:30 local interval is a reasonable daytime period. Rain may affect comfort, but no access restriction is established; missing operating details do not establish a restriction on this exterior visit.",
+                    "reference_id": "visit003",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day1-opera-house",
+                  "associated_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/0/basis_segments",
+                      "semantic_sha256": "8dc3508302ceababf948b6bf4548d549c859cb2d590ff0fee38319ea8a653346"
+                    }
+                  },
+                  "canonical_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-13",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5-1.bin",
+                          "sha256": "a1bbdb39ecbba84ec4fb8179314acb9801f56fea76f13184a5a6fea41f70a155"
+                        },
+                        "requested_at": "2026-10-13T06:57:31.027733+00:00",
+                        "retrieved_at": "2026-10-13T06:57:31.170258+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "Sydney Opera House is a public landmark, and the notes explicitly specify an outdoor-area visit. The 2026-10-13 10:00–11:30 local interval is a reasonable daytime period. Rain may affect comfort, but no access restriction is established; missing operating details do not establish a restriction on this exterior visit.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-13T00:30:00+00:00",
+                      "seconds": 5400.0,
+                      "start": "2026-10-12T23:00:00+00:00"
+                    },
+                    "original_end": "2026-10-13T11:30:00+11:00",
+                    "original_start": "2026-10-13T10:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "2a1c048405d6eee706929e03885aa1b2ba481b08120c38eef85ce272150397d1",
+                  "source": {
+                    "artifact_sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/0/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "2a1c048405d6eee706929e03885aa1b2ba481b08120c38eef85ce272150397d1",
+                    "run_id": "case01-v1-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 5400.0
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Date-specific operating details were unavailable in the supplied evidence. Rain showers are forecast, so expect an outdoor district visit to be weather-exposed.",
+                    "intent_basis": "original_activity",
+                    "rationale": "The Rocks is a public district and public area; the notes explicitly identify an outdoor district visit. The 2026-10-13 12:15–13:30 local interval is a reasonable daytime period. Rain affects exposure but is not an established access restriction.",
+                    "reference_id": "visit004",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_area",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day1-rocks",
+                  "associated_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/1/basis_segments",
+                      "semantic_sha256": "31838a10fe59c3e14eb69f9d15843b79ee7b41cfd280d955ff12af5f0bcf4da1"
+                    }
+                  },
+                  "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-13",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb-1.bin",
+                          "sha256": "036aca90823c59d4bd5506c8a8507ac9feca1d17223621e201484affa2deae55"
+                        },
+                        "requested_at": "2026-10-13T06:57:27.952056+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.116457+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "The Rocks is a public district and public area; the notes explicitly identify an outdoor district visit. The 2026-10-13 12:15–13:30 local interval is a reasonable daytime period. Rain affects exposure but is not an established access restriction.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-13T02:30:00+00:00",
+                      "seconds": 4500.0,
+                      "start": "2026-10-13T01:15:00+00:00"
+                    },
+                    "original_end": "2026-10-13T13:30:00+11:00",
+                    "original_start": "2026-10-13T12:15:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "0f39ff3fb5ecd7412f88f2009fea6f299a42969e7e1f6a82ceaf62554a58d7f9",
+                  "source": {
+                    "artifact_sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/0/activities/1",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "0f39ff3fb5ecd7412f88f2009fea6f299a42969e7e1f6a82ceaf62554a58d7f9",
+                    "run_id": "case01-v1-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 4500.0
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Date-specific operating status and hours were not established in the supplied evidence. Rain showers are forecast; check conditions before visiting.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Sydney Harbour Bridge is a public landmark. The generic visit implies ordinary viewing from public outdoor or exterior areas, not a restricted climb or tour. The 2026-10-13 14:00–15:00 local interval is a reasonable daytime period; no restriction on ordinary viewing is established.",
+                    "reference_id": "visit005",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day1-harbour-bridge",
+                  "associated_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/2/basis_segments",
+                      "semantic_sha256": "bf8e279a1589d93c231eaeab0860050e5c0622ec4f74979cb2d95c78869e8766"
+                    }
+                  },
+                  "canonical_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-13",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/6549d1fa09b705e187b14060a49994fc713507006dd81a8ed724279b21c32472-1.bin",
+                          "sha256": "4357d555156a656b787a557fd499083955c5e7552529f5867f2700dc79ba4e77"
+                        },
+                        "requested_at": "2026-10-13T06:57:28.468466+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.630834+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "6549d1fa09b705e187b14060a49994fc713507006dd81a8ed724279b21c32472",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "Sydney Harbour Bridge is a public landmark. The generic visit implies ordinary viewing from public outdoor or exterior areas, not a restricted climb or tour. The 2026-10-13 14:00–15:00 local interval is a reasonable daytime period; no restriction on ordinary viewing is established.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-13T04:00:00+00:00",
+                      "seconds": 3600.0,
+                      "start": "2026-10-13T03:00:00+00:00"
+                    },
+                    "original_end": "2026-10-13T15:00:00+11:00",
+                    "original_start": "2026-10-13T14:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "1c3caf6ac1263d09f0c904ce8c3c5887a9a604f5623d53713e2db7cd847302e7",
+                  "source": {
+                    "artifact_sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/0/activities/2",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "1c3caf6ac1263d09f0c904ce8c3c5887a9a604f5623d53713e2db7cd847302e7",
+                    "run_id": "case01-v1-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 3600.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/3",
+                    "semantic_sha256": "83eb4b8dbabaf7035f029d2bc29fcaadfe3754efed63dba1ab61e248320e6982"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/4",
+                    "semantic_sha256": "d1b7e14efe0b079e79c9fb2925bec34f9ec174d588ca3c8c5ee5233c88d0a6c1"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/5",
+                    "semantic_sha256": "12fe60a3b5ac7047995a5a02b40846f1306c645c6fddad139fa6e27de9a36bbf"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/6",
+                    "semantic_sha256": "6c549a0d93c797115ba6b20b3aaedda5b405559a25b6640273af83c7fe28a3b0"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v1/primary_metrics/opening/checks/7",
+                    "semantic_sha256": "a31f421804d53470cab214b85aba465c534019cc2741bbbc6ad93fe0dd592044"
+                  }
+                }
+              ],
+              "complete_evidence_count": 5,
+              "complete_evidence_coverage": {
+                "denominator": 8,
+                "numerator": 5,
+                "rate": 0.625,
+                "reason": null
+              },
+              "conditional_compliance": {
+                "denominator": 8,
+                "numerator": 8,
+                "rate": 1.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "N/A": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "duration_subtotals": {
+                "$case_material_ref": {
+                  "path": "../primary/quality-report.json",
+                  "pointer": "/groups/0/versions/v1/primary_metrics/opening/duration_subtotals",
+                  "semantic_sha256": "8cc67a26ffca87403e0c35c6bdf50228c7182e8fc8975a358d768b78914e0ba2"
+                }
+              },
+              "evidence_counts": {
+                "complete": 5,
+                "missing": 3,
+                "partial": 0
+              },
+              "identity_available_count": 8,
+              "llm_assessed_count": 3,
+              "llm_decidable_count": 3,
+              "nonapplicable_records": [],
+              "state": "PASS",
+              "structural_coverage": {
+                "denominator": 8,
+                "numerator": 8,
+                "rate": 1.0,
+                "reason": null
+              },
+              "structurally_evaluable_count": 8,
+              "unresolved_role_count": 0,
+              "verdict_decidable_count": 8,
+              "verdict_decidable_coverage": {
+                "denominator": 8,
+                "numerator": 8,
+                "rate": 1.0,
+                "reason": null
+              }
+            },
+            "requirements": {
+              "checks": [],
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "known_unit_count": 0,
+              "reasons": [],
+              "state": "N/A",
+              "unclassified_obligations": [],
+              "verified_fraction": null
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v1/primary_metrics/routes",
+                "semantic_sha256": "8af9f6a6587db787585492993655a1c7553e2f7f24e66571782d951014aff4e2"
+              }
+            }
+          },
+          "projection": "final",
+          "run_id": "case01-v1-20261012T232752Z",
+          "schedule_measures": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v1/schedule_measures",
+              "semantic_sha256": "d938f7f8c081d14348e01b60ececf3adce23b8297d640f2d3b376e9706971405"
+            }
+          }
+        },
+        "v2": {
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "component_source_hashes": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v2/component_source_hashes",
+              "semantic_sha256": "f5222aca5070a7a9ce4d0dddf12c1880c02c8f7b4b762e554055b16fd8009fc2"
+            }
+          },
+          "daily_density": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v2/daily_density",
+              "semantic_sha256": "d3d1bc631f5582b672b33efe57021122386f4db1927a842daf2a3a24949ba593"
+            }
+          },
+          "descriptive": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v2/descriptive",
+              "semantic_sha256": "7d93896872fcaedd114b5d97a6ab0894d3e8f112d1fdab4e6e0b053f75eddc0b"
+            }
+          },
+          "dimensions": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/dimensions/grounding",
+                "semantic_sha256": "7e2e1d2acf970e2bc04210e18db6f8ee1a621c3f9c5c7a709d95b2ac4f97412d"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/dimensions/non_overlap",
+                "semantic_sha256": "fd898f42c62082246d58c32c4df81e8b4f3f3e1f8a7f46b54a0d3454c30645a0"
+              }
+            },
+            "opening": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/dimensions/grounding",
+                "semantic_sha256": "7e2e1d2acf970e2bc04210e18db6f8ee1a621c3f9c5c7a709d95b2ac4f97412d"
+              }
+            },
+            "requirements": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/requirements",
+                "semantic_sha256": "8894a1f8615cd7051f939b44314d6a54a3a2db6356cf9fae9ab484c1fd705163"
+              }
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/dimensions/routes",
+                "semantic_sha256": "ba1c36cca5cad91e7fa45fdc39e47118b39a3a43c197ca68905e303f34dd12c9"
+              }
+            }
+          },
+          "occupancy": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v2/occupancy",
+              "semantic_sha256": "0a9b7c4050feecea9b5a91cd8841b9a1c7bc1d3bf010426b73b1a0f4f80ca074"
+            }
+          },
+          "overall_total": {
+            "exact_fraction": {
+              "denominator": 30,
+              "numerator": 29
+            },
+            "reason": null,
+            "score_0_100": 96.66666666666667
+          },
+          "primary_metrics": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/primary_metrics/grounding",
+                "semantic_sha256": "46c0e4fb263ecf969025e1c954130f111013933bfe65fc1c04bf1823b04d4679"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/primary_metrics/non_overlap",
+                "semantic_sha256": "851bd1df56b623e5c10d40b82726ed8dbbb7d846289820cc90fb26d77802fd7e"
+              }
+            },
+            "opening": {
+              "applicable_count": 7,
+              "applicable_denominator": 7,
+              "basis_counts": {
+                "current": 5,
+                "llm_access_reasonableness": 2,
+                "mixed": 0,
+                "regular": 0,
+                "unavailable": 0
+              },
+              "checks": [
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/0",
+                    "semantic_sha256": "22dd8754e9c0e5f4004e6c0eafd89a5a85cff71a1bf782a998637d9f0f7984a8"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/1",
+                    "semantic_sha256": "f397bce8298009b40ce6e11db59f18654103e51259340c2027a8d0b60897598a"
+                  }
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Opening hours and date-specific operating status were not established by the supplied evidence; confirm access before planning an interior visit.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Sydney Opera House is a public landmark. The note makes interior access conditional on future planning and does not commit this visit to entry, so ordinary exterior sightseeing is the applicable default. The 2026-10-14 10:00–11:30 local interval is a reasonable daytime visit; no restriction on exterior viewing is established.",
+                    "reference_id": "visit006",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day2-opera-house",
+                  "associated_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/2/basis_segments",
+                      "semantic_sha256": "2c7d86f7c1fd3d7be6f8d64135974c4fd1015eccde8f03ecd5b797eb5b8b3cc3"
+                    }
+                  },
+                  "canonical_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-14",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5-1.bin",
+                          "sha256": "a1bbdb39ecbba84ec4fb8179314acb9801f56fea76f13184a5a6fea41f70a155"
+                        },
+                        "requested_at": "2026-10-13T06:57:31.027733+00:00",
+                        "retrieved_at": "2026-10-13T06:57:31.170258+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "d16296358def427a38d2b1995294b4afa794d71fae971fdb2ba2d068b079d9b5",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "Sydney Opera House is a public landmark. The note makes interior access conditional on future planning and does not commit this visit to entry, so ordinary exterior sightseeing is the applicable default. The 2026-10-14 10:00–11:30 local interval is a reasonable daytime visit; no restriction on exterior viewing is established.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-14T00:30:00+00:00",
+                      "seconds": 5400.0,
+                      "start": "2026-10-13T23:00:00+00:00"
+                    },
+                    "original_end": "2026-10-14T11:30:00+11:00",
+                    "original_start": "2026-10-14T10:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "0709d16a3b0abf1c2435bc0d6a1d23b443b3229b938f9cfe7b6db10a5e8b770d",
+                  "source": {
+                    "artifact_sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/1/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "0709d16a3b0abf1c2435bc0d6a1d23b443b3229b938f9cfe7b6db10a5e8b770d",
+                    "run_id": "case01-v2-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 5400.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/3",
+                    "semantic_sha256": "8c6012a9ce356aa8b60b36f499d66e4a788a91080a84b11bc58f5fc6c0110516"
+                  }
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Allow for an unhurried district visit; operating details for this date were not established in the supplied evidence.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "The Rocks is a public district and public area. The generic district visit implies ordinary outdoor sightseeing. The 2026-10-14 14:30–16:00 local interval is a reasonable daytime period; the absence of operating details does not establish a restriction on public-area access.",
+                    "reference_id": "visit007",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_area",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day2-the-rocks",
+                  "associated_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/4/basis_segments",
+                      "semantic_sha256": "3a14e9ed65921b66dadbc77666befa3fd650eafde2779d5a7f91618d1aeef933"
+                    }
+                  },
+                  "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-14",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb-1.bin",
+                          "sha256": "036aca90823c59d4bd5506c8a8507ac9feca1d17223621e201484affa2deae55"
+                        },
+                        "requested_at": "2026-10-13T06:57:27.952056+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.116457+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "The Rocks is a public district and public area. The generic district visit implies ordinary outdoor sightseeing. The 2026-10-14 14:30–16:00 local interval is a reasonable daytime period; the absence of operating details does not establish a restriction on public-area access.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-14T05:00:00+00:00",
+                      "seconds": 5400.0,
+                      "start": "2026-10-14T03:30:00+00:00"
+                    },
+                    "original_end": "2026-10-14T16:00:00+11:00",
+                    "original_start": "2026-10-14T14:30:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "2f496f8b7db73493cdc4506d9cf63d6e8116bca5b397b1e710ee022bdbda218b",
+                  "source": {
+                    "artifact_sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/1/activities/2",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "2f496f8b7db73493cdc4506d9cf63d6e8116bca5b397b1e710ee022bdbda218b",
+                    "run_id": "case01-v2-20261012T232752Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 5400.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/5",
+                    "semantic_sha256": "a8a654718227d4a0c0f03bf3857465bc6f8d58db9e39d8bbc5513dc84a9fc8f7"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v2/primary_metrics/opening/checks/6",
+                    "semantic_sha256": "b8da696a223946be3b8f442d6d9f5713574aa46f50c3fd06fa76eafe83bc8105"
+                  }
+                }
+              ],
+              "complete_evidence_count": 5,
+              "complete_evidence_coverage": {
+                "denominator": 7,
+                "numerator": 5,
+                "rate": 0.7142857142857143,
+                "reason": null
+              },
+              "conditional_compliance": {
+                "denominator": 7,
+                "numerator": 7,
+                "rate": 1.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "N/A": 0,
+                "PASS": 7,
+                "UNKNOWN": 0
+              },
+              "duration_subtotals": {
+                "$case_material_ref": {
+                  "path": "../primary/quality-report.json",
+                  "pointer": "/groups/0/versions/v2/primary_metrics/opening/duration_subtotals",
+                  "semantic_sha256": "062ddc55bae5680b82773930157f6667dc94d4e096870af353e701e046aa5a1c"
+                }
+              },
+              "evidence_counts": {
+                "complete": 5,
+                "missing": 2,
+                "partial": 0
+              },
+              "identity_available_count": 7,
+              "llm_assessed_count": 2,
+              "llm_decidable_count": 2,
+              "nonapplicable_records": [],
+              "state": "PASS",
+              "structural_coverage": {
+                "denominator": 7,
+                "numerator": 7,
+                "rate": 1.0,
+                "reason": null
+              },
+              "structurally_evaluable_count": 7,
+              "unresolved_role_count": 0,
+              "verdict_decidable_count": 7,
+              "verdict_decidable_coverage": {
+                "denominator": 7,
+                "numerator": 7,
+                "rate": 1.0,
+                "reason": null
+              }
+            },
+            "requirements": {
+              "checks": [],
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "known_unit_count": 0,
+              "reasons": [],
+              "state": "N/A",
+              "unclassified_obligations": [],
+              "verified_fraction": null
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v2/primary_metrics/routes",
+                "semantic_sha256": "3d4b191b74fba89d558ae0724f7c0e67d4f8842ccb6973eccc89cdd3c864a68b"
+              }
+            }
+          },
+          "projection": "final",
+          "run_id": "case01-v2-20261012T232752Z",
+          "schedule_measures": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v2/schedule_measures",
+              "semantic_sha256": "fd17b4f1d1f603ef8e09d62fa4388e81e5b471ac0cb8ee0662ac5774042324b5"
+            }
+          }
+        },
+        "v3": {
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "component_source_hashes": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v3/component_source_hashes",
+              "semantic_sha256": "a3ec0a81c9f78cda531ec4555a5250eaf7db2d4ec065a7c9b523e8909fe4a708"
+            }
+          },
+          "daily_density": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v3/daily_density",
+              "semantic_sha256": "3ad120610bcbb10a06fbb85ee773e3e25073b772e3019122ccb46cbc9955428a"
+            }
+          },
+          "descriptive": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v3/descriptive",
+              "semantic_sha256": "a1afbec8c7ccabe18e3991f251155923d242b1b81a3362be17ef2a03e802f5cc"
+            }
+          },
+          "dimensions": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/dimensions/grounding",
+                "semantic_sha256": "835bb34262bd878b3c858bf614511c68aa657eaedc14b40e07cf822611c8cb35"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/dimensions/non_overlap",
+                "semantic_sha256": "c81b143177e10616690c97e513359266f9e7f603a616c846a5e2e2f67e1129cc"
+              }
+            },
+            "opening": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/dimensions/grounding",
+                "semantic_sha256": "835bb34262bd878b3c858bf614511c68aa657eaedc14b40e07cf822611c8cb35"
+              }
+            },
+            "requirements": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v0/dimensions/requirements",
+                "semantic_sha256": "8894a1f8615cd7051f939b44314d6a54a3a2db6356cf9fae9ab484c1fd705163"
+              }
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/dimensions/routes",
+                "semantic_sha256": "4a3c2586efaf983d57d90421ada5b41139282043cc1e1c8cd15570ef1cefcf4a"
+              }
+            }
+          },
+          "occupancy": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v3/occupancy",
+              "semantic_sha256": "d77f9e20ee0c77e06c25713860264c0e75c0eacf24672ca6e2c6bd31988e4383"
+            }
+          },
+          "overall_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "primary_metrics": {
+            "grounding": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/primary_metrics/grounding",
+                "semantic_sha256": "5698f38693acbfedef678931c177541cbbc2f4fb1dd0163b9833428ae5ced215"
+              }
+            },
+            "non_overlap": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/primary_metrics/non_overlap",
+                "semantic_sha256": "ceaa86c525ebc69c09a0a0e75a48cb77c7a0094aecca1f5cf4d98fc5dac2a336"
+              }
+            },
+            "opening": {
+              "applicable_count": 6,
+              "applicable_denominator": 6,
+              "basis_counts": {
+                "current": 4,
+                "llm_access_reasonableness": 2,
+                "mixed": 0,
+                "regular": 0,
+                "unavailable": 0
+              },
+              "checks": [
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "title",
+                    "activity_quote": "Explore The Rocks",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "The Rocks is a public precinct and public area; this generic exploration visit implies ordinary outdoor sightseeing. The 2026-10-13 12:00–13:00 local interval is a reasonable daytime period. Unknown operating hours and forecast rain do not establish a restriction on access to the public area.",
+                    "reference_id": "visit008",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_area",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day1-the-rocks",
+                  "associated_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/0/basis_segments",
+                      "semantic_sha256": "385c302437d8e46360f1fb9fbb7a9a81198a914b91e5ff41361b98abf09ce48b"
+                    }
+                  },
+                  "canonical_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-13",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb-1.bin",
+                          "sha256": "036aca90823c59d4bd5506c8a8507ac9feca1d17223621e201484affa2deae55"
+                        },
+                        "requested_at": "2026-10-13T06:57:27.952056+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.116457+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "55ac183cc8a3112e8289f7b2985b73b2f71e7c43b789cb1f869c8cfef6ce5adb",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "The Rocks is a public precinct and public area; this generic exploration visit implies ordinary outdoor sightseeing. The 2026-10-13 12:00–13:00 local interval is a reasonable daytime period. Unknown operating hours and forecast rain do not establish a restriction on access to the public area.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-13T02:00:00+00:00",
+                      "seconds": 3600.0,
+                      "start": "2026-10-13T01:00:00+00:00"
+                    },
+                    "original_end": "2026-10-13T13:00:00+11:00",
+                    "original_start": "2026-10-13T12:00:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "c2dffea8dcaab452d5c870c42216c6fd305355ec37dd58295577362adbe557ec",
+                  "source": {
+                    "artifact_sha256": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/0/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "c2dffea8dcaab452d5c870c42216c6fd305355ec37dd58295577362adbe557ec",
+                    "run_id": "case01-v3-repair140-followup-20261013T064153Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 3600.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/1",
+                    "semantic_sha256": "bd1cc4091cde9b0943cfabd0a0a52cd5c2828b4ea78789f523f4a9b0a93702a1"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/2",
+                    "semantic_sha256": "c50dd9fb1f7d3436a6452205a92b88bb2e9094b1a855d338ee2dfc53c4583dfd"
+                  }
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/3",
+                    "semantic_sha256": "ab61163f769ef9548204a007f85a52c72fe17ec7e02d68944d1741706f340b0a"
+                  }
+                },
+                {
+                  "access_judgment": {
+                    "access_mode": "public_outdoor",
+                    "activity_field": "notes",
+                    "activity_quote": "Date-specific opening or access information is unknown. Drizzle is forecast.",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Sydney Harbour Bridge is a public landmark. The activity is a generic visit to see the bridge, which ordinarily means public outdoor or exterior viewing, not a climb or paid tour. The 2026-10-15 11:30–12:30 local interval is a reasonable daytime period; drizzle is not an established access restriction.",
+                    "reference_id": "visit009",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
+                  },
+                  "activity_id": "day3-harbour-bridge",
+                  "associated_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                  "basis": "llm_access_reasonableness",
+                  "basis_segments": {
+                    "$case_material_ref": {
+                      "path": "../primary/quality-report.json",
+                      "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/4/basis_segments",
+                      "semantic_sha256": "beaad8b27007d3a9f4cc9a8e0e51aba3568ea5abc32f88d34f065ae8b99bba9f"
+                    }
+                  },
+                  "canonical_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                  "confirmed_outside_lower_bound_seconds": 0.0,
+                  "declared_day": "2026-10-15",
+                  "evidence_reference": {
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "raw/6549d1fa09b705e187b14060a49994fc713507006dd81a8ed724279b21c32472-1.bin",
+                          "sha256": "4357d555156a656b787a557fd499083955c5e7552529f5867f2700dc79ba4e77"
+                        },
+                        "requested_at": "2026-10-13T06:57:28.468466+00:00",
+                        "retrieved_at": "2026-10-13T06:57:28.630834+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [],
+                    "request_key": "6549d1fa09b705e187b14060a49994fc713507006dd81a8ed724279b21c32472",
+                    "summary": {
+                      "status": "available"
+                    }
+                  },
+                  "evidence_status": "missing",
+                  "explanation": "Sydney Harbour Bridge is a public landmark. The activity is a generic visit to see the bridge, which ordinarily means public outdoor or exterior viewing, not a climb or paid tour. The 2026-10-15 11:30–12:30 local interval is a reasonable daytime period; drizzle is not an established access restriction.",
+                  "identity_available": true,
+                  "identity_grounding_verdict": "PASS",
+                  "interval": {
+                    "date_consistent": true,
+                    "interval": {
+                      "end": "2026-10-15T01:30:00+00:00",
+                      "seconds": 3600.0,
+                      "start": "2026-10-15T00:30:00+00:00"
+                    },
+                    "original_end": "2026-10-15T12:30:00+11:00",
+                    "original_start": "2026-10-15T11:30:00+11:00",
+                    "reasons": [],
+                    "status": "known"
+                  },
+                  "known_open_seconds": 0.0,
+                  "outside_seconds": null,
+                  "reasons": [
+                    "hours_missing",
+                    "llm_access_reasonableness_pass"
+                  ],
+                  "reference_id": "a368d22557f55326b39afc6291261e7b125b952a6bcc237e29fb10b68c5ac749",
+                  "source": {
+                    "artifact_sha256": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
+                    "batch_id": "case01-20261012T220558Z",
+                    "group_id": "case-01",
+                    "pointer": "/itinerary/days/2/activities/0",
+                    "projection_version": "rtpeval_projection_1",
+                    "record_id": "a368d22557f55326b39afc6291261e7b125b952a6bcc237e29fb10b68c5ac749",
+                    "run_id": "case01-v3-repair140-followup-20261013T064153Z"
+                  },
+                  "state": "PASS",
+                  "structurally_evaluable": true,
+                  "timezone": {
+                    "id": "Australia/Sydney",
+                    "origin": "place_timeZone",
+                    "provider": {
+                      "id": "Australia/Sydney"
+                    },
+                    "reviewed_group_zone": "Australia/Sydney",
+                    "zone_data": {
+                      "iana_version": "2026c",
+                      "package_version": "2026.3",
+                      "source": "tzdata",
+                      "zone_file_sha256": "820d45a868a88f81c731d5b2c758b4ed000039b6260a80433f8e0f094a604b59"
+                    }
+                  },
+                  "unknown_seconds": 3600.0
+                },
+                {
+                  "$case_material_ref": {
+                    "path": "../primary/quality-report.json",
+                    "pointer": "/groups/0/versions/v3/primary_metrics/opening/checks/5",
+                    "semantic_sha256": "767b0ff9503d5f7a660e68268d4766f38ade19d117053961a20cf3e333cd234c"
+                  }
+                }
+              ],
+              "complete_evidence_count": 4,
+              "complete_evidence_coverage": {
+                "denominator": 6,
+                "numerator": 4,
+                "rate": 0.6666666666666666,
+                "reason": null
+              },
+              "conditional_compliance": {
+                "denominator": 6,
+                "numerator": 6,
+                "rate": 1.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "N/A": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "duration_subtotals": {
+                "$case_material_ref": {
+                  "path": "../primary/quality-report.json",
+                  "pointer": "/groups/0/versions/v3/primary_metrics/opening/duration_subtotals",
+                  "semantic_sha256": "3b965c6ef3ae5b7ee89d0c0696e1dcf72fc02193b185aaa7b48815f21c699a9e"
+                }
+              },
+              "evidence_counts": {
+                "complete": 4,
+                "missing": 2,
+                "partial": 0
+              },
+              "identity_available_count": 6,
+              "llm_assessed_count": 2,
+              "llm_decidable_count": 2,
+              "nonapplicable_records": [],
+              "state": "PASS",
+              "structural_coverage": {
+                "denominator": 6,
+                "numerator": 6,
+                "rate": 1.0,
+                "reason": null
+              },
+              "structurally_evaluable_count": 6,
+              "unresolved_role_count": 0,
+              "verdict_decidable_count": 6,
+              "verdict_decidable_coverage": {
+                "denominator": 6,
+                "numerator": 6,
+                "rate": 1.0,
+                "reason": null
+              }
+            },
+            "requirements": {
+              "checks": [],
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "known_unit_count": 0,
+              "reasons": [],
+              "state": "N/A",
+              "unclassified_obligations": [],
+              "verified_fraction": null
+            },
+            "routes": {
+              "$case_material_ref": {
+                "path": "../primary/quality-report.json",
+                "pointer": "/groups/0/versions/v3/primary_metrics/routes",
+                "semantic_sha256": "a0033fd1dca00c79e7eb7492de7c4f0d5434cca08c657f60772af572dd34feef"
+              }
+            }
+          },
+          "projection": "final",
+          "run_id": "case01-v3-repair140-followup-20261013T064153Z",
+          "schedule_measures": {
+            "$case_material_ref": {
+              "path": "../primary/quality-report.json",
+              "pointer": "/groups/0/versions/v3/schedule_measures",
+              "semantic_sha256": "70e7f8b7aaea51b2d5a6f33749538e26820dc5316ea30b8c8044483882b633c1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "rules_profile": {
+    "daily_density": {
+      "$case_material_ref": {
+        "path": "../primary/quality-report.json",
+        "pointer": "/rules_profile/daily_density",
+        "semantic_sha256": "1148179dbd6e7186db599f6dd3b0ffa071b23cb96417927fd695a4d0c6b20eed"
+      }
+    },
+    "dimensions": [
+      "requirements",
+      "grounding",
+      "non_overlap",
+      "opening",
+      "routes"
+    ],
+    "empty_mask": "total unavailable",
+    "exclude": "all four established denominators equal zero",
+    "factual_hours_coverage": "separate_from_model_assessment",
+    "included_no_checks": "raw N/A; contribution zero",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness",
+    "profile_id": "rtpeval_access_quality_4",
+    "public_landmark_intent": "ordinary_sightseeing_unless_restricted_activity",
+    "scope": "final projections only; no optional track contributions",
+    "total": "unrounded rational mean over the group common mask",
+    "unresolved_denominator": "include; dimension and affected total unavailable",
+    "verified_fraction": "PASS / (PASS + FAIL + UNKNOWN)"
+  },
+  "rules_profile_hash": "c24741e2394f2bcf6fda12824e7ed887cae1f7dab962ccffa2a3af17aa8b9af5",
+  "rules_profile_id": "rtpeval_access_quality_4",
+  "schema_version": "rtpeval_quality_report_2",
+  "source_hashes": {
+    "$case_material_ref": {
+      "path": "../primary/quality-report.json",
+      "pointer": "/source_hashes",
+      "semantic_sha256": "683711fc7212c401be5d2921775147f3a78e8e01b9ba21311e74c29bde9a35f7"
+    }
+  },
+  "stage_availability": {
+    "$case_material_ref": {
+      "path": "../primary/quality-report.json",
+      "pointer": "/stage_availability",
+      "semantic_sha256": "1a6c60e5e8aa8d8ec8635fab265e4896545474602403c20752b23b28ca5029e4"
+    }
+  },
+  "status": "complete"
+}

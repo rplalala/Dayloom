@@ -6,7 +6,7 @@
     "sha256": "81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88"
   },
   "private_source_root_identifier": "benchmark/scratch/case-01",
-  "scope": "Selected shareable outputs; not a closed native acquisition/replay bundle. Original source paths and report bindings identify retained private evidence.",
+  "scope": "Accepted initial case-01 dataset: selected source-bound outputs and reports, plus labelled process/resource views. Native source identities and dates are preserved.",
   "materials": [
     {
       "material": "requirements/reviewed-requirements.json",
@@ -17,7 +17,8 @@
       "original_source": {
         "path": "requirements/reviewed-requirements.json",
         "sha256": "1a225da333fceb01d0f62bf35807982ad121a27bd10b024918232ab877a80f37"
-      }
+      },
+      "expanded_semantic_sha256": "eff845fc34fd933a9c6ab3bd7d243ebba9c24bf7de0bc31da463262ee762b4bd"
     },
     {
       "material": "interests/interests.json",
@@ -28,7 +29,8 @@
       "original_source": {
         "path": "interests/interests.json",
         "sha256": "3ae2ee08eb8de93e4230e151c55b969682b8982e3a6c8f6abebdee09afb8bd06"
-      }
+      },
+      "expanded_semantic_sha256": "71eecafa9a564122956bb236945770194034eb33d8d163c09bf4aa83499795a3"
     },
     {
       "material": "generation/runtime-policy.json",
@@ -39,7 +41,8 @@
       "original_source": {
         "path": "generation/configuration/runtime-policy.json",
         "sha256": "88cb301f8c84dbccf2c4304f0674f48a7e067bcf83830ffcf56b276877da4512"
-      }
+      },
+      "expanded_semantic_sha256": "ff2fd0b0d2884aedb1112023a0bb228cad191b4d0db45eede3040730461d1173"
     },
     {
       "material": "generation/v0/itinerary.json",
@@ -51,7 +54,8 @@
         "path": "generation/v0/result.json",
         "sha256": "940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9",
         "json_pointer": "/itinerary"
-      }
+      },
+      "expanded_semantic_sha256": "f1410e42e0afb2b2cc0be3368012fe977bdbeadb9a1c2396e2d2f637a46e921f"
     },
     {
       "material": "generation/v0/usage.json",
@@ -62,7 +66,8 @@
       "original_source": {
         "path": "generation/v0/usage.json",
         "sha256": "2166bead552a3a5ca988f302ffd85e473e874e3d1554875901b2461ba4a75f2f"
-      }
+      },
+      "expanded_semantic_sha256": "3628750e81dbc15295510f74a393959f9ec33f2e1b195f38b09f68b848f77858"
     },
     {
       "material": "generation/v0/provenance.json",
@@ -73,7 +78,8 @@
       "original_source": {
         "path": "generation/v0/provenance.json",
         "sha256": "eb58f695b44b32f58fa0a79e8414fbad67d923efe3bc14c733dd05c3571ecfc4"
-      }
+      },
+      "expanded_semantic_sha256": "437358b1b81207c87ee53d06f0f10519a7e31297d6af9e6608d68d4e19347a49"
     },
     {
       "material": "generation/v1/itinerary.json",
@@ -85,7 +91,8 @@
         "path": "generation/v1/result.json",
         "sha256": "7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d",
         "json_pointer": "/itinerary"
-      }
+      },
+      "expanded_semantic_sha256": "1eac3e94f08378dc14eaf563ca22919ebbacd6020ffbd141ed1508e1a876f349"
     },
     {
       "material": "generation/v1/usage.json",
@@ -96,7 +103,8 @@
       "original_source": {
         "path": "generation/v1/usage.json",
         "sha256": "c715a9d095bfc6a7d8bcde85c90cad96137f08f4feadd7f4cc0880f744a2112f"
-      }
+      },
+      "expanded_semantic_sha256": "07179b63dc983c2e8867df08345047451c744fb09837b81acd950c661280cde4"
     },
     {
       "material": "generation/v1/provenance.json",
@@ -107,7 +115,8 @@
       "original_source": {
         "path": "generation/v1/provenance.json",
         "sha256": "574b2e1a1458cc5a87d08731f6337b74dde54971ae58f112d4b76a00ee6abf8d"
-      }
+      },
+      "expanded_semantic_sha256": "f54054d81abd98125656c19c5198a1a117f7485a984fa0349df3c45dd5fb37f7"
     },
     {
       "material": "generation/v2/itinerary.json",
@@ -119,7 +128,8 @@
         "path": "generation/v2/result.json",
         "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
         "json_pointer": "/itinerary"
-      }
+      },
+      "expanded_semantic_sha256": "3d4a534d137829f9b81833beb3a6bb68bbce6ab1979792aa2d73ca0c383a6541"
     },
     {
       "material": "generation/v2/usage.json",
@@ -130,7 +140,8 @@
       "original_source": {
         "path": "generation/v2/usage.json",
         "sha256": "89def715f0c05bb0541f2925d4798822c6709613fdf33c3cacb2150c3b59d623"
-      }
+      },
+      "expanded_semantic_sha256": "2b2668fd9bfc9e3b2e88b14ec5553de16130a1983cd63cc06214b932a36e0043"
     },
     {
       "material": "generation/v2/provenance.json",
@@ -141,160 +152,240 @@
       "original_source": {
         "path": "generation/v2/provenance.json",
         "sha256": "46d810b5ecc025f87784f835538b9f96d3cc0b858822bc17b73581b1c4e16891"
-      }
+      },
+      "expanded_semantic_sha256": "4d3ad2d8bad3db1f531cff4fd8311fd00ad4e269efe083f52f41fb9a50ca3344"
     },
     {
       "material": "generation/v3/itinerary.json",
       "path": "generation/v3/itinerary.json",
-      "sha256": "42745c69d58ee2c7f1401cdd6afcc4e9d54aee3444686d396864fcd60b828d38",
-      "bytes": 23919,
-      "representation": "exact_json_subtree",
+      "representation": "exact_json_subtree_with_shared_references",
+      "expanded_semantic_sha256": "635dd46f930f04e41760dc89fe9a35ae63cddebbd1ba6cb8b4b7509be2e0bf0a",
       "original_source": {
-        "path": "generation/v3/result.json",
-        "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/result.json",
+        "sha256": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
         "json_pointer": "/itinerary"
-      }
+      },
+      "sha256": "3d0fc88c6416772778b994a356481ccddad600f2b1f53df04888817492c66c5c",
+      "bytes": 14730
     },
     {
       "material": "generation/v3/usage.json",
       "path": "generation/v3/usage.json",
-      "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d",
-      "bytes": 61799,
-      "representation": "exact_source_bytes",
+      "representation": "exact_json_value_with_shared_references",
+      "expanded_semantic_sha256": "25e6a948877b46022aa5a86809111e20e1c295bc89b1891d714c24e78244a630",
       "original_source": {
-        "path": "generation/v3/usage.json",
-        "sha256": "8222226f08b71bf7e319c7d308035ffe8f0e2ecd910f9bbf18e9d1261cc0da0d"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/usage.json",
+        "sha256": "8281946ad0d2c0a5fd603f0d92739432393124f06f7c902b6ed0d99216938b5b"
+      },
+      "sha256": "8281946ad0d2c0a5fd603f0d92739432393124f06f7c902b6ed0d99216938b5b",
+      "bytes": 59106
     },
     {
       "material": "generation/v3/provenance.json",
       "path": "generation/v3/provenance.json",
-      "sha256": "5f99c543729e9f310039b6bd10e00e0b38e9b2628f4acdab726b820214662d55",
-      "bytes": 970,
-      "representation": "exact_source_bytes",
+      "representation": "exact_json_value_with_shared_references",
+      "expanded_semantic_sha256": "46765212d1b9720c058f69eb564becf84eb6d385c74e52757bea55715de2b88c",
       "original_source": {
-        "path": "generation/v3/provenance.json",
-        "sha256": "5f99c543729e9f310039b6bd10e00e0b38e9b2628f4acdab726b820214662d55"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/provenance.json",
+        "sha256": "54e5296e51beb94ad6f8b50b67a6479263aa85af0e11faa7a445587b16f268fd"
+      },
+      "sha256": "54e5296e51beb94ad6f8b50b67a6479263aa85af0e11faa7a445587b16f268fd",
+      "bytes": 989
     },
     {
       "material": "generation/v3/draft.json",
       "path": "generation/v3/draft.json",
-      "sha256": "6bbb2ad821c7aa1240bff59a8c3774b0443219b9c0ebf90a069d4f1eb6914812",
-      "bytes": 237,
       "representation": "lossless_delta_from_final_itinerary",
+      "expanded_semantic_sha256": "849ad186b9a65dd07ac63452fce9a99e23fcac9cb7d65181128df9b26d4e0c78",
       "original_source": {
-        "path": "generation/v3/result.json",
-        "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/result.json",
+        "sha256": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
         "json_pointer": "/v3/draft"
-      }
+      },
+      "sha256": "96f0aef07499b4d6ace166ea40525110638670a8e2f0cd93d8115c14dcd39013",
+      "bytes": 17831
     },
     {
       "material": "evaluation/primary/quality-report.json",
       "path": "evaluation/primary/quality-report.json",
-      "sha256": "eb3b38739dc04e123c4e4804af0ea029c3e2292ac0843ace7670110a0ef6e8d1",
-      "bytes": 879832,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "exact_json_subtree_with_shared_references",
+      "expanded_semantic_sha256": "c5fa1b9bfc82208c0333fa536f8fdc53c4b064efc7d9a60eb52da8a6c113d123",
       "original_source": {
-        "path": "evaluation/primary/quality-report.json",
-        "sha256": "60c585647147df8f2a1a15ac104295101768127cbf829562a9e040452257d691"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "primary/execution/report.json",
+        "sha256": "838c6cab8ce3ef4f5fbe1b34e27f4defb5bc62f0d5763301559d0bed70e738b8",
+        "json_pointer": "/quality"
+      },
+      "sha256": "5fe6edb494fc224008a12a670568d240718857ef69933ffca6c210feb8f1ad26",
+      "bytes": 806601
     },
     {
       "material": "evaluation/v3-pair/pair-report.json",
       "path": "evaluation/v3-pair/pair-report.json",
-      "sha256": "235993d2747604303a7b526ae963554738558724ba96b50dfa9113947f6c020d",
-      "bytes": 471827,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "exact_json_value_with_shared_references",
+      "expanded_semantic_sha256": "84976766a9d2e69a1cc6a0477826772625eff30b87d265ed0fc886bc6b09cd39",
       "original_source": {
-        "path": "evaluation/v3-pair/handoff/execution/pair-report.json",
-        "sha256": "7b531b30d5c6e0258a56567783b37ee99531cdd65f768e7535a638cb86439da9"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "phase-b/pair/execution/pair-report.json",
+        "sha256": "84976766a9d2e69a1cc6a0477826772625eff30b87d265ed0fc886bc6b09cd39"
+      },
+      "sha256": "9fd6e436e7e6605cc0d47dc4a5879a5c5a20e681ea4788b29069e83ec74877e7",
+      "bytes": 456948
     },
     {
       "material": "analysis/poi-process/opportunities.json",
       "path": "analysis/poi-process/opportunities.json",
-      "sha256": "4e214f18c653cb799ebdddd0e3fda832336581a672edf43d0e8fb6a132dc3e3c",
-      "bytes": 153976,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "native_reader_source_bound_diagnostic",
+      "expanded_semantic_sha256": "d35b5e51d7f40621c23e818272515725ed91e06f8d7ea83ea352dab7b87ce40b",
       "original_source": {
-        "path": "analysis/poi-process/opportunities/opportunities.json",
-        "sha256": "b6a92846916cdc5e29d9922d1eec413c3d3d2a9c70216f3cc9ced898adac4673"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "phase-b/candidate-analysis.json",
+        "sha256": "f9a524be2aa0c38c5ca902564d15707027ba1dc33e79f4383cd40c8575465f08"
+      },
+      "sha256": "96de112b2ae512de9c4d90073bf1f5ea0469f7e271862ac7d94c0c5edb281821",
+      "bytes": 128852
     },
     {
       "material": "analysis/poi-process/relevance.json",
       "path": "analysis/poi-process/relevance.json",
-      "sha256": "dc89908d831bd2166710c9ce92ceaee439103680972f89f0539d77b7d584c5d3",
-      "bytes": 16720,
-      "representation": "exact_source_bytes_with_shared_json_references",
-      "original_source": {
-        "path": "analysis/poi-process/relevance/relevance.json",
-        "sha256": "0da8e8768622b78125fe741d437eab57997132e5c7efd90422f5c71fa0fe2226"
-      }
+      "representation": "derived_source_bound_publication_view",
+      "expanded_semantic_sha256": "939802f9cf7d03cea40e7f5b058b7f226fa6348d47bc1a8945bd23f2d5e62734",
+      "sha256": "b1f741d388d437f17f6a24ee1e7f61cbff9d19bee1b5d0a6690524e124a6140f",
+      "bytes": 416
     },
     {
       "material": "analysis/repair/repair.json",
       "path": "analysis/repair/repair.json",
-      "sha256": "701e1f7502cc9b5cdb6325f93c4c206de8e2b58fabf295831f7d6dc3e0653468",
-      "bytes": 292913,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "derived_source_bound_publication_view",
+      "expanded_semantic_sha256": "d1f464f64a3c21380cd28fcb3cc646d1335e877e8842477a970fead6fd4e7321",
       "original_source": {
-        "path": "analysis/repair/report/repair.json",
-        "sha256": "f216043feef0e29b1914e3186a4be0fc014c62b1c7d34dfaddd9fdfd99d59d02"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "phase-b/repair-lineage-analysis.json",
+        "sha256": "1e5df7471f0a21ca3696aa59df1ce3868b4511d7bbe763630f0aafccb668a104"
+      },
+      "sha256": "dacc325c37511f488e5b02157d4b0a445e95921c2a0af4a14042a364416d7aad",
+      "bytes": 13015
     },
     {
       "material": "analysis/resources/population.json",
       "path": "analysis/resources/population.json",
-      "sha256": "e13b46eeaf4ef9bb65baf5460405026f0dbbbd6a6a78241a99e04eda00bff07f",
-      "bytes": 29822,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "derived_source_bound_publication_view",
+      "expanded_semantic_sha256": "d6975294bbc9cdec57941b684ac254eff0bd1a8f89079d21773294e877b7a616",
       "original_source": {
-        "path": "analysis/resources/population/population.json",
-        "sha256": "32dfbc8ee1f9d3345938a9b4c3d0f701a50c6c0a51faab29db9bd81e6f4d6152"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "phase-c/parent-assessment.json",
+        "sha256": "1e7614de339f19fbf5d52d8ea7dcf97f37f8b57b69d48ed382e22f0f2e9d4b3a"
+      },
+      "supporting_sources": [
+        {
+          "storage": "issue140_local_evidence",
+          "path": "phase-d-local-retime/parent-assessment.json",
+          "sha256": "5c7ea15c4ef6dd1ad2773726d3725b5f93dc9c9046f0300be01f65e24a3b8730"
+        }
+      ],
+      "sha256": "edb3370bcb4a72946456cc32c2f0cb11fd9433ae3c70c66ebf774a04e3f5bacf",
+      "bytes": 2749
     },
     {
       "material": "analysis/resources/tradeoffs.json",
       "path": "analysis/resources/tradeoffs.json",
-      "sha256": "9e998662c26c0a006101dfa2970244fae57183e40179faf1c2ef2d93b0dffb12",
-      "bytes": 804198,
-      "representation": "exact_source_bytes_with_shared_json_references",
+      "representation": "derived_source_bound_publication_view",
+      "expanded_semantic_sha256": "88f713b12f0991ba3253e296c3838966bdfb31bc01cd44e58b8c52c018d07042",
       "original_source": {
-        "path": "analysis/resources/tradeoffs/tradeoffs.json",
-        "sha256": "1260f20052a475a84a2e51596f6a82e26e1d7a28bcca211a4f19e7224bf241c3"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "phase-c/parent-assessment.json",
+        "sha256": "1e7614de339f19fbf5d52d8ea7dcf97f37f8b57b69d48ed382e22f0f2e9d4b3a"
+      },
+      "sha256": "5f58409ee4f008be42d6e93fce7616638b1a58562b6be60628bbbf66c618a358",
+      "bytes": 1366
     },
     {
       "material": "analysis/resources/accounting.json",
       "path": "analysis/resources/accounting.json",
-      "sha256": "ec5d879124501d3f0556958474c90c612d6644649a1bcc8ebaf20db875cd5b19",
-      "bytes": 5640,
-      "representation": "exact_json_value_normalized_lf",
+      "representation": "derived_source_bound_publication_view",
+      "expanded_semantic_sha256": "32dab0af60314879a116c13a8279eff18c3c5ff27934961dabc927d52c5a0cb0",
       "original_source": {
-        "path": "analysis/resources/accounting.json",
-        "sha256": "da7af522dd50a456a904b0eaccb34bf38bcd29b67510ece2633042687ed75a97"
-      }
+        "storage": "issue140_local_evidence",
+        "path": "stage-a-completed.json",
+        "sha256": "bc454371747e398cee66fd41237d77d9c3cecba1a2499359b50e7df467287922"
+      },
+      "supporting_sources": [
+        {
+          "storage": "issue140_local_evidence",
+          "path": "phase-b/opening/execution/usage.json",
+          "sha256": "e119291b03e817c4ccfc03684f2d8c1f09240465366f6351c625aaffcad32fb7"
+        },
+        {
+          "storage": "issue140_local_evidence",
+          "path": "phase-c/parent-assessment.json",
+          "sha256": "1e7614de339f19fbf5d52d8ea7dcf97f37f8b57b69d48ed382e22f0f2e9d4b3a"
+        },
+        {
+          "storage": "issue140_local_evidence",
+          "path": "phase-d-local-retime/parent-assessment.json",
+          "sha256": "5c7ea15c4ef6dd1ad2773726d3725b5f93dc9c9046f0300be01f65e24a3b8730"
+        }
+      ],
+      "sha256": "a5e6e93a5627bb253f7ff25d236ac375ada1fc1b6ff3e2e2cdd0d5c337320bb9",
+      "bytes": 5042
     },
     {
       "material": "generation/rag-origins.json",
       "path": "generation/rag-origins.json",
-      "sha256": "76e2dcc2a6ad514b7818ee6dcec4238ce58590472c3da623caadf60706720797",
-      "bytes": 16880,
-      "representation": "exact_json_subtree",
+      "representation": "versioned_source_subtree_view",
+      "expanded_semantic_sha256": "1e4e993b424814ac29344cc66560de5a25ffbf5cd89984969354c76ccd90b87a",
       "original_source": {
-        "path": "generation/v2/result.json",
-        "sha256": "11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e",
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/result.json",
+        "sha256": "c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828",
         "json_pointer": "/rag_discovery/origins"
       },
-      "additional_original_sources": [
-        {
-          "path": "generation/v3/result.json",
-          "sha256": "9468586415775787f4fe5b1871f90dff6b7930861097f30cb6160235ae5204a0",
-          "json_pointer": "/rag_discovery/origins"
-        }
-      ]
+      "sha256": "433d1ef4d3042f11fff8dede8cd308c919a594beecc15f86be802af6ccdb4ca1",
+      "bytes": 19044
+    },
+    {
+      "material": "generation/v3/runtime-policy.json",
+      "path": "generation/v3/runtime-policy.json",
+      "representation": "exact_json_value_with_shared_references",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "original_source": {
+        "storage": "issue140_local_evidence",
+        "path": "generation/v3-followup/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "bytes": 6500
+    },
+    {
+      "material": "evaluation/opening/report.json",
+      "path": "evaluation/opening/report.json",
+      "representation": "exact_json_value_with_shared_references",
+      "expanded_semantic_sha256": "c3d7d3cc489ce5b8d9fa7c948ff155c1c4136d9bfad2eee5a6e3914d21d7946e",
+      "original_source": {
+        "storage": "issue140_local_evidence",
+        "path": "phase-c/opening/execution/report.json",
+        "sha256": "c3d7d3cc489ce5b8d9fa7c948ff155c1c4136d9bfad2eee5a6e3914d21d7946e"
+      },
+      "sha256": "d218c1cb425c3414dbe11296fc5443dd203edc35c75a4d4dcd9a90734fe2c61f",
+      "bytes": 521759
+    },
+    {
+      "material": "evaluation/opening/quality-report.json",
+      "path": "evaluation/opening/quality-report.json",
+      "representation": "exact_json_subtree_with_shared_references",
+      "expanded_semantic_sha256": "74cbe35f97f787eefe191012147f8f349a6aaa6844e027b9797a6dc1a299b076",
+      "original_source": {
+        "storage": "issue140_local_evidence",
+        "path": "phase-c/opening/execution/report.json",
+        "sha256": "c3d7d3cc489ce5b8d9fa7c948ff155c1c4136d9bfad2eee5a6e3914d21d7946e",
+        "json_pointer": "/quality"
+      },
+      "sha256": "73ad236987543d29503be2cced70c2c7450e96e2e4311f367aab77fc09b79c5c",
+      "bytes": 93275
     }
   ],
   "shared_json_reference_format": {
@@ -305,9 +396,35 @@
     "scope": "Publication references; original native reports and their receipt/content hashes remain preserved privately."
   },
   "private_source_storage": {
-    "format": "case_private_archive_1",
-    "manifest_identifier": "benchmark/scratch/case-01/archive/manifest.json",
-    "blob_identifier": "benchmark/scratch/case-01/archive/blobs.zip",
-    "path_semantics": "Original source paths are logical entries restored from the private archive; they are not live files under its storage root."
+    "archive": {
+      "format": "case_private_archive_1",
+      "manifest_identifier": "benchmark/scratch/case-01/archive/manifest.json",
+      "blob_identifier": "benchmark/scratch/case-01/archive/blobs.zip",
+      "path_semantics": "Source identifiers map to unchanged logical archive entries. Sources tagged issue140_local_evidence use logical prefix revalidation/; untagged sources use archive-root paths."
+    }
+  },
+  "selected_batch_revision": "3",
+  "selected_v3_run_id": "case01-v3-repair140-followup-20261013T064153Z",
+  "reader_documents": [
+    {
+      "path": "report.md",
+      "sha256": "af9705928e2bfd676ae9eb3d2bdb7d11d64f7eac70a8b225f13e1d1d1f0b8746",
+      "bytes": 14331
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "02364d8b9af26a2c6c80b47d8d6d1b4460e6e0d1ff44f13fdd397c453b74ba2f",
+      "bytes": 13211
+    }
+  ],
+  "dataset_role": "initial",
+  "automatic_acceptance": {
+    "status": "accepted",
+    "confirmed_on": "2026-10-14",
+    "timezone": "Australia/Sydney",
+    "approved_source_commit": "3d5089185fa081f810f9a92208070c810e114179",
+    "approved_material_index_sha256": "ec6d913cb96ee5c611f93864b2170c914ffc0d8e7b8f996d77de1909a1e17c94",
+    "scope": "Selected original input, V0-V3 outputs, independent primary/opening/pair results, process analyses and stated limitations; current presentation is the initial dataset.",
+    "blinded_human_assessment": "deferred"
   }
 }

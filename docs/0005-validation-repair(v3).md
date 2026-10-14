@@ -57,8 +57,11 @@ to fit hours. Removed-obligation progress stays distinct from verified resolutio
 retained route endpoints require applicable checks of the actual changed chain.
 
 Repair receives compact current context, canonical candidates, target worksheets, allowed
-operations, route options and bounded feedback. It proposes edits and target dispositions;
-it cannot author provider evidence or expand its own operation scope. Invalid structured
+operations, route options and bounded feedback. Each editable activity includes
+application-computed `duration_seconds` for its current
+interval, so preservation instructions do not require timestamp subtraction by the model.
+The model proposes edits and target dispositions; it cannot author provider evidence or
+expand its own operation scope. Invalid structured
 output fails before adoption; partial malformed JSON is not salvaged as an itinerary.
 
 ## Components, adoption and fallback
@@ -369,6 +372,8 @@ results; controlled original-draft comparisons require sufficient retained conte
 must disclose scripted dependencies. Any later fresh V3 result requires its own provenance
 and independent scoring. Follow the [primary-score handoff](../benchmark/README.md#workflow-and-responsibilities)
 before supplements or process diagnostics.
-Case-01 acceptance also requires the
-[post-refactor revalidation and material handoff](../benchmark/case-01/report.md#post-refactor-acceptance)
-tracked in [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140).
+Case acceptance follows the
+[staged automatic acceptance contract](contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review).
+The [initial case-01 record](../benchmark/case-01/report.md#acceptance) identifies
+its accepted outputs and limitations. Separate engineering diagnostics do not
+replace case evidence or add mandatory strategies to ordinary Repair execution.

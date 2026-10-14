@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-13.
+Current source of truth. Updated 2026-10-14.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -295,13 +295,14 @@ human reports without changing primary scores. The
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns case-01 workflow acceptance. The pre-refactor case-01 generation, primary scoring
-and authorized diagnostics are complete, with native evidence retained in ignored
-private storage. [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
-remains unaccepted: [revalidation #140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140)
-tracks the [post-refactor acceptance conditions](benchmark/case-01/report.md#post-refactor-acceptance).
-Publication does not accept the case or authorize Issue closure. Subsequent runs
-report primary scores and pause before further diagnostics. Human assessment is pending.
+owns case-01 workflow acceptance. The human user accepted the
+[initial case-01 dataset](benchmark/case-01/report.md#acceptance) on 14 October 2026,
+including its selected V0-V3 results, independent reports and stated limitations.
+Native evidence is retained in verified ignored private storage. Case tracker
+[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) owns the recorded
+acceptance scope. Git publication and Issue closure follow their own authorization.
+Subsequent runs report primary scores and pause before further diagnostics.
+Blinded human assessment remains deferred.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

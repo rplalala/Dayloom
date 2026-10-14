@@ -47,6 +47,12 @@ Query-time openNow and undated businessStatus do not prove
 future closure; nevertheless retain known access uncertainty rather than assuming
 it away. Explain the actual activity and full interval, including night-time or
 cross-date access. Cite an exact nonempty quote from an original activity field.
+Set activity_field to the supplied field you used, then copy its complete original
+value verbatim into activity_quote. Preserve every word, spelling, punctuation,
+capitalization and whitespace; do not paraphrase, correct or combine source text.
+Choose another nonempty original field if needed. Put your interpretation only
+in rationale. Before returning, check each quote against that same reference_id's
+activity field: even a one-word substitution makes the entire response invalid.
 Return one decision for EVERY supplied reference_id, using only supplied IDs.
 Never emit FAIL from speculative knowledge or rewrite the source to obtain PASS.
 """

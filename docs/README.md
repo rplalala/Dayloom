@@ -61,9 +61,9 @@ records main-worktree verification and the boundaries of reused regression evide
   owns final benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
   owns shared execution/child-Issue rules; [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
   tracks workflow/layout adoption and case-01 end-to-end acceptance. The
-  [case-01 acceptance boundary](../benchmark/case-01/report.md#post-refactor-acceptance)
-  and [#140](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140) track
-  required revalidation after the Repair refactor; publication does not accept the case.
+  [initial case-01 dataset](../benchmark/case-01/report.md#acceptance) records the
+  user's 14 October 2026 automatic acceptance and its limitations. Issue publication
+  and closure are separate; blinded human assessment remains deferred.
 - [AI assistance records](../benchmark/README.md#ai-assistance-records): actual
   performers, contributions, validation and evidence gaps for later thesis disclosure;
   [case-01](../benchmark/case-01/report.md#system-and-external-assistance) records the

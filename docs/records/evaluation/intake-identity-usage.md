@@ -1297,59 +1297,36 @@ without new findings. The three bounded corrective operations cover the departur
 finding, the pair review's invalid empty optional source list, and this finalized
 provenance defect; all ten approved review operations are used.
 
-Fresh case-01 completed one native dispatch per V0-V3, primary acquisition and one
-incremental missing-hours model assessment. Four-final intake and the exact-source
-census pass. Reference service estimates are USD 5.64860227 for generation,
-1.262721675 for primary and 0.002489925 for opening, total 6.91381387; account and
-Codex actor bills remain unavailable. The six paid commands used 327.062 seconds
-of active execution, without retries. Primary used 59 Google and one model send;
-opening used zero Google and one model send. The paired import, execution, replay
-and portable handoff use zero Google/model sends and retries. In this actual run,
-all 31 identity and 23 evidence observations matched primary responses; valid
-generation observations remain source-bound without being needed for the pair.
+Source-bound acquisition exercised native Planner capture, four-final intake,
+primary evaluation, opening assessment and paired evidence import. These executions
+verified receipt integrity, exact-source census, source-compatible reuse and zero-send
+pair handoff. The [initial case-01 report](../../../benchmark/case-01/report.md)
+owns the selected benchmark outputs, scores, process observations and resource scopes;
+this engineering record does not maintain a second case result table.
 
-Selected primary quality retains four V0 UNKNOWN checks and one opening FAIL.
-The paired draft/final each retain three opening UNKNOWN checks, with zero overall
-delta; the separate primary opening-model verdicts are not imported as raw evidence.
-V3 Repair rejected its proposed change. Empty original POI interests make relevance
-non-applicable; complete candidate/process reports still retain V1/V2 memberships,
-origins and omissions, including partial V2 discovery. These are descriptive case
-observations, with user automatic acceptance and later human review still pending.
+The acquisition packet pinned 81 implementation files at source `b3ddccd`.
+Changing import adapters correctly makes bare current-tree replay stale. Exact
+execution-era scoring sources and two separately hash-verified `ee73e27` import
+adapters reproduced saved native report semantics under network denial. This
+composed runtime preserves packets, original source bytes and receipts; it does
+not claim a single-release replay. Required producer snapshots and authentic
+failed-attempt evidence remain retained privately.
 
-The paid opening packet pins 81 implementation files at execution source `b3ddccd`.
-Changing the import adapters afterward correctly makes bare current-tree opening
-replay stale. The local case retains exact execution-era scoring sources and an
-explicit runtime declaration, with only the two hash-verified `ee73e27` import
-adapters selected separately. Network-denied replay reproduces original primary,
-opening, pair and all five native report semantics without altering packets or
-receipts. This is a disclosed composed source runtime, not a single-release replay
-claim. Selected quality content hash is
-`c8eb50ec6a511fb5bb69106317fed0102f7c558047d53ff0ceecbc6dbbd73057`;
-pair content hash is
-`26d17225b1249b9d99048b03d557f89e30116da673ea0f77ddfe69aabd3aec3f`.
+Local engineering evidence identifiers include `artifacts/tall45`, `tverify51`,
+`tconsumer52`, `tduplicate53`, `tintegrity54`, `tzero55`, `tdeparture56`,
+`tdeparture57`, `tfinalized59`, `tfinalized62` and `tstatic63`. Synthetic fixtures deny
+external network. The compact archive at `benchmark/scratch/case-01/archive/`
+retains 11,156 logical paths backed by 1,825 unique byte sequences. Fresh restoration,
+hashes/lengths and applicable native report replay passed before redundant work
+was deleted. Original preparations retain historical absolute bindings; read-only
+relocation supports verified replay without rebinding acquisition authority.
 
-Local evidence identifiers are `artifacts/tall45`, `tverify51`, `tconsumer52`,
-`tduplicate53`, `tintegrity54`, `tzero55`, `tdeparture56`, `tdeparture57`,
-`tfinalized59`, `tfinalized62` and `tstatic63`. Synthetic engineering fixtures deny
-external network. The real package's original identifier was `benchmark/case-01/`.
-Authorized storage relocation preserved the original 7,699 non-cache files before
-subsequent cleanup on 2026-10-13 from base `f9c6d25` with local documentation
-changes. The compact private archive now retains 4,184 original
-logical paths and 1,185 unique byte sequences in ignored
-`benchmark/scratch/case-01/archive/`, about 6.34 MB including metadata and helpers.
-Synthetic tests/preflights, compiled caches, assembly scripts, redundant paired
-working/import trees and superseded selections/source exports were deleted. Authentic
-captures, semantic reviews, all-attempt consumption and required native dependencies
-remain archived without changing original bytes, receipts or source hashes.
-Restoring to a fresh root verified all retained hashes/lengths and reproduced all
-five saved process/resource reports, including quality and pair dependencies, under
-network denial. Original preparations retain historical absolute bindings, so their
-standalone acquisition replay commands remain non-portable. The
-[public case report](../../../benchmark/case-01/report.md) links selected requirements,
-itineraries, usage/provenance and evaluation/mechanism/resource outputs. Its 25 material
-entries expand to the restored original selected JSON values. Original source paths
-now identify archive manifest entries; the private helper restores them for replay.
-Case acceptance remains pending. No formal version conclusion or freeze follows.
+The human user accepted the initial case-01 selected results and limitations on
+2026-10-14. Blinded human assessment remains deferred. The
+[material index](../../../benchmark/case-01/material-index.json) owns current
+publication/source hashes and exact selection; raw provider/model material is private.
+Automatic case acceptance does not establish a version freeze or a general research
+conclusion, and does not authorize Git publication or Issue closure.
 
 ## Multi-case suite engineering acceptance (2026-10-11)
 

@@ -188,6 +188,57 @@ def test_time_only_repair_needs_no_new_candidates_and_preserves_protected_fields
     assert result.final_place_ids == ("a", "b")
 
 
+@pytest.mark.parametrize("strategy", ["local", "replan"])
+@pytest.mark.parametrize("allow_duration_change", [False, True])
+def test_two_hour_retime_exposes_duration_and_respects_permission(strategy, allow_duration_change):
+    original = draft([activity(start="09:00", end="11:00"), activity("two", "b", "10:00", "12:00")])
+    ctx = context()
+    scope = scope_for(
+        original,
+        ctx,
+        permissions=(
+            {
+                "activity_id": "two",
+                "operations": ("retime",),
+                "allow_duration_change": allow_duration_change,
+            },
+        ),
+    )
+
+    class DurationAwareModel(Model):
+        async def generate_repair_structured(self, **kwargs):
+            payload = json.loads(kwargs["user_prompt"])
+            assert payload["editable_activities"][0]["duration_seconds"] == 7200
+            assert (
+                payload["scope"]["permissions"][0]["allow_duration_change"] is allow_duration_change
+            )
+            return await super().generate_repair_structured(**kwargs)
+
+    end = "12:05" if allow_duration_change else "13:05"
+    model = DurationAwareModel([edit("11:05", end)])
+    result = run(
+        original=original,
+        ctx=ctx,
+        scope=scope,
+        model=model,
+        routes_provider=Routes(duration=300),
+        proposal_strategy=strategy,
+    )
+    assert result.status == "ACCEPTED_COMPLETE", result.reason
+    assert result.target_progress[0].before == 3600
+    assert result.target_progress[0].after == 0
+    assert result.final.days[0].activities[0] == original.days[0].activities[0]
+    before, after = original.days[0].activities[1], result.final.days[0].activities[1]
+    assert (
+        after.activity_id == before.activity_id and after.source_place_id == before.source_place_id
+    )
+    assert (after.end_time - after.start_time).total_seconds() == (
+        3600 if allow_duration_change else 7200
+    )
+    assert original.days[0].activities[1].start_time.hour == 10
+    assert model.calls == 1
+
+
 def test_repair_keeps_transport_application_owned():
     model = Model()
     result = run(model=model)

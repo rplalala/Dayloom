@@ -1,6 +1,6 @@
 # Case-01 itineraries and V3 changes
 
-These are the saved selected V0-V3 outputs for Sydney, 13-15 October 2026,
+These are the initial case-01 V0-V3 outputs for Sydney, 13-15 October 2026,
 one traveler and an AUD 900 whole-trip budget. The [original request](../inputs/case-01.json)
 and [evaluation report](report.md) retain the input and independent findings.
 All clock times below are Sydney local time (UTC+11). Activity costs were not
@@ -23,18 +23,7 @@ linked itinerary JSON; independent PASS/FAIL/UNKNOWN belongs to the report.
 - V0/V1 did not use RAG. Nearby reference recommendations are unscheduled
   suggestions and are kept separate from visits.
 
-The [shared RAG origin inventory](generation/rag-origins.json) preserves the
-identical origin maps captured in the selected V2 and V3 results.
-Both source hashes and JSON locations are recorded in the [material index](material-index.json).
-The [candidate process report](analysis/poi-process/opportunities.json) supplies
-the V1/V2 stage memberships and provenance. Labels use canonical IDs, not name similarity.
-
-| Version | Scheduled main POIs | With recorded RAG origin | Recorded origin of those matches |
-| --- | ---: | ---: | --- |
-| V0 | 9 | 0 | RAG not used |
-| V1 | 8 | 0 | RAG not used |
-| V2 | 7 | 2 | Art Gallery of New South Wales and Sydney Tower Eye: Google + RAG |
-| V3 | 8 | 1 | Sydney Tower Eye: Google + RAG |
+The [run-specific RAG origin inventory](generation/rag-origins.json) retains separate V2 and selected V3 maps. Association labels use the corresponding source run.
 
 ## V0
 
@@ -157,77 +146,63 @@ Saved source: [itinerary JSON](generation/v2/itinerary.json).
 
 ## V3
 
+Recorded V3 run: `case01-v3-repair140-followup-20261013T064153Z`.
 Saved source: [itinerary JSON](generation/v3/itinerary.json).
+All times below are Australia/Sydney; recorded route estimates remain separate from visits.
 
 ### 2026-10-13
 
 | Local time | Activity or journey | Location | Kind / mode | Recorded origin |
 | --- | --- | --- | --- | --- |
-| 09:30-10:45 | Explore Queen Victoria Building | 455 George St, Sydney NSW 2000, Australia | Main POI | No recorded RAG match |
-| 10:45-11:14:33 | Queen Victoria Building → Sydney Opera House | Between scheduled stops | WALK | Recorded Google route estimate |
-| 11:30-13:00 | Visit Sydney Opera House | Bennelong Point, Sydney NSW 2000, Australia | Main POI | No recorded RAG match |
-| 13:00-13:27:04 | Sydney Opera House → Sydney Tower Eye | Between scheduled stops | WALK | Recorded Google route estimate |
-| 14:00-15:00 | Visit Sydney Tower Eye | Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia | Main POI | **Google + RAG** |
+| 12:00-13:00 | Explore The Rocks | The Rocks NSW 2000, Australia | Main POI | No recorded RAG match |
+| 13:00:00-13:24:28 | The Rocks → Art Gallery of New South Wales | Between scheduled stops | WALK | Recorded Google route estimate |
+| 14:00-16:00 | Visit the Art Gallery of New South Wales | Art Gallery Rd, Sydney NSW 2000, Australia | Main POI | **Google + RAG** |
 
 ### 2026-10-14
 
 | Local time | Activity or journey | Location | Kind / mode | Recorded origin |
 | --- | --- | --- | --- | --- |
-| 09:30-11:00 | Visit Royal Botanic Garden Sydney | Mrs Macquaries Rd, Sydney NSW 2000, Australia | Main POI | No recorded RAG match |
-| 11:00-11:36:22 | Royal Botanic Garden Sydney → Taronga Zoo Sydney | Between scheduled stops | TRANSIT | Recorded Google route estimate |
-| 12:30-15:30 | Explore Taronga Zoo Sydney | Bradleys Head Rd, Mosman NSW 2088, Australia | Main POI | No recorded RAG match |
+| 15:30-16:15 | Explore the Queen Victoria Building | 455 George St, Sydney NSW 2000, Australia | Main POI | No recorded RAG match |
+| 16:15:00-16:18:45 | Queen Victoria Building → Sydney Tower Eye | Between scheduled stops | WALK | Recorded Google route estimate |
+| 16:30-17:30 | Visit Sydney Tower Eye | Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia | Main POI | **Google + RAG** |
 
 ### 2026-10-15
 
 | Local time | Activity or journey | Location | Kind / mode | Recorded origin |
 | --- | --- | --- | --- | --- |
-| 09:30-10:45 | Explore The Rocks | The Rocks NSW 2000, Australia | Main POI | No recorded RAG match |
-| 10:45-11:00:40 | The Rocks → Sydney Harbour Bridge | Between scheduled stops | WALK | Recorded Google route estimate |
-| 11:15-12:15 | See Sydney Harbour Bridge | Sydney Hbr Brg, Sydney NSW, Australia | Main POI | No recorded RAG match |
-| 12:15-12:32:05 | Sydney Harbour Bridge → Observatory Hill Park | Between scheduled stops | WALK | Recorded Google route estimate |
-| 12:45-13:30 | Visit Observatory Hill Park | 1001 Upper Fort St, Millers Point NSW 2000, Australia | Main POI | No recorded RAG match |
+| 11:30-12:30 | See Sydney Harbour Bridge | Sydney Hbr Brg, Sydney NSW, Australia | Main POI | No recorded RAG match |
+| 12:30:00-12:43:38 | Sydney Harbour Bridge → Susannah Place | Between scheduled stops | WALK | Recorded Google route estimate |
+| 14:00-15:30 | Visit Susannah Place | 58/64 Gloucester St, The Rocks NSW 2000, Australia | Main POI | No recorded RAG match |
 
 ### Unscheduled reference recommendations
 
 | Associated date | Place | Area | Recorded origin |
 | --- | --- | --- | --- |
-| 2026-10-13 | Koko Black - Lower Ground QVB | Queen Victoria Building, Shop L-048, Sydney NSW 2000, Australia | Google Nearby Search; no recorded RAG origin |
-| 2026-10-13 | Western Foyers | Shop 14/2 Circular Quay E, Sydney NSW 2000, Australia | Google Nearby Search; no recorded RAG origin |
-| 2026-10-14 | Botanic Gardens Cafe | 4A Macquarie St, Sydney NSW 2000, Australia | Google Nearby Search; no recorded RAG origin |
+| 2026-10-13 | Munich Brauhaus Sydney | 33 Playfair St &, Argyle St, The Rocks NSW 2000, Australia | Google Nearby Search; unscheduled and unverified |
+| 2026-10-13 | The Gallery Café | Art Gallery Rd, Sydney NSW 2000, Australia | Google Nearby Search; unscheduled and unverified |
+| 2026-10-14 | Koko Black - Lower Ground QVB | Queen Victoria Building, Shop L-048, Sydney NSW 2000, Australia | Google Nearby Search; unscheduled and unverified |
 
 ## V3 draft versus final
 
-The [saved draft delta](generation/v3/draft.json) reconstructs the original draft
-from the final itinerary. The V3 schedule above represents both stages; it is
-shown once because all scheduled activity and transfer fields are identical.
+The [lossless draft delta](generation/v3/draft.json) reconstructs the exact original draft from the selected final itinerary. Repair accepted three deterministic `system_delete` rounds; all six surviving activity records are unchanged.
 
-| Output part | Draft | Final | Actual change |
-| --- | --- | --- | --- |
-| Scheduled activities | 8 main POIs across 3 days | Same activities | No added, removed, replaced or moved visits |
-| Dates, start/end times, order, titles, canonical IDs, locations, costs and notes | Original values | Identical values | None |
-| Transfers | 5 recorded journeys | Same journeys and all recorded fields | None |
-| Route diagnostics and remaining output metadata | Original values | Identical values | None |
-| Unscheduled reference recommendations | Empty | 3 entries listed under V3 above | Koko Black - Lower Ground QVB, Western Foyers and Botanic Gardens Cafe added to final presentation |
+| Date | Deleted draft activity | Original local time | Final count |
+| --- | --- | --- | ---: |
+| 2026-10-13 | Sydney Opera House | 10:00-11:30 | 2 |
+| 2026-10-14 | Taronga Zoo Sydney | 10:00-13:30 | 2 |
+| 2026-10-15 | Royal Botanic Garden Sydney | 09:00-10:30 | 2 |
 
-Repair proposed moving Sydney Tower Eye from 13 October to 14 October, but the
-candidate was rejected for coverage/pace regressions and a lack of verifiable
-arrangement improvement. No schedule edit was accepted. The three final-only
-nearby suggestions are Google Nearby Search references outside the scheduled
-visits; they do not constitute an accepted Repair move or resolve the pace targets.
+Draft daily counts were 3/3/3; final counts are 2/2/2. No model edit, addition or cross-date move was used in this selected real run. Routes were recomputed after deletion. Final-only Nearby references are presentation additions outside Repair and primary visits.
 
-The [independent pair report](evaluation/v3-pair/pair-report.json) found zero
-overall delta: draft and final each scored 83.9583 under the paired profile.
-These pair scores use a different evidence/profile boundary from the primary
-scores in the [evaluation report](report.md#primary-scoring).
+The [independent pair](evaluation/v3-pair/pair-report.json) scores the draft at 77.5 and final at 91.6667, a 14.1667 percentage-point change under the paired evidence/profile. Opening remains partial: three draft UNKNOWN and two final UNKNOWN. The separately accepted four-final opening supplement raises the selected V3 final score to 100 under its model overlay; it does not alter this pair's saved evidence or draft/final scores.
 
 ## Scheduled RAG matches
 
-Each association below uses the canonical ID in the activity and the recorded
-`rag_default_1` query (`top attractions`). Rank is the returned retrieval position,
-not an independent relevance grade or causal attribution.
+Associations use each selected run's recorded `rag_default_1` (`top attractions`) query. Rank is retrieval position, not an independent relevance grade or causal attribution.
 
 | Version | Scheduled POI | Canonical ID | RAG rank | Origin |
 | --- | --- | --- | ---: | --- |
 | V2 | Art Gallery of New South Wales | `ChIJPVqlfGyuEmsRHPcnCX1X1OE` | 15 | Google + RAG |
 | V2 | Sydney Tower Eye | `ChIJy6BwuD-uEmsRyiRskH1UG-I` | 3 | Google + RAG |
+| V3 | Art Gallery of New South Wales | `ChIJPVqlfGyuEmsRHPcnCX1X1OE` | 15 | Google + RAG |
 | V3 | Sydney Tower Eye | `ChIJy6BwuD-uEmsRyiRskH1UG-I` | 3 | Google + RAG |
