@@ -1,9 +1,12 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Singapore",
+  "destination": "London, United Kingdom",
   "start_date": "2026-10-15",
-  "end_date": "2026-10-17",
-  "traveler_count": 3,
-  "budget": {"amount": 1500, "currency": "SGD"},
-  "additional_preferences": "Our group consists of two adults and one older family member. We enjoy gardens, history, culture and scenic views. We prefer a relaxed itinerary with nearby stops grouped together, less continuous walking and plenty of time for breaks."
+  "end_date": "2026-10-18",
+  "traveler_count": 1,
+  "budget": {
+    "amount": 1300,
+    "currency": "GBP"
+  },
+  "additional_preferences": "I would like to explore British Museum over two separate visits. Include exactly two visits to British Museum during the trip, on two different dates. For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art."
 }

@@ -2,8 +2,8 @@
   "input_version": "planning_request_2",
   "destination": "Paris, France",
   "start_date": "2026-10-15",
-  "end_date": "2026-10-17",
-  "traveler_count": 1,
-  "budget": {"amount": 650, "currency": "EUR"},
-  "additional_preferences": "I am travelling alone on a limited budget. I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits. I am happy to prioritise lower-cost experiences."
+  "end_date": "2026-10-18",
+  "traveler_count": 2,
+  "budget": {"amount": 1500, "currency": "EUR"},
+  "additional_preferences": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-16, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
 }

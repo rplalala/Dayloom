@@ -1,9 +1,9 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Tokyo, Japan",
+  "destination": "Sydney, Australia",
   "start_date": "2026-10-15",
-  "end_date": "2026-10-19",
-  "traveler_count": 3,
-  "budget": {"amount": 300000, "currency": "JPY"},
-  "additional_preferences": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-16. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+  "end_date": "2026-10-21",
+  "traveler_count": 2,
+  "budget": {"amount": 3200, "currency": "AUD"},
+  "additional_preferences": "We are two adults who enjoy nature and harbour views and prefer a relaxed pace overall. On 2026-10-15, plan exactly one sightseeing visit. Leave 2026-10-18 completely free of planned activities and travel as a rest day. We are flexible about the sightseeing choices on the other dates."
 }

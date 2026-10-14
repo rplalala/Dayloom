@@ -1,9 +1,9 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Tokyo, Japan",
+  "destination": "Paris, France",
   "start_date": "2026-10-15",
   "end_date": "2026-10-17",
   "traveler_count": 1,
-  "budget": {"amount": 90000, "currency": "JPY"},
-  "additional_preferences": "I have visited Tokyo before and would like to explore traditional gardens, smaller art venues and distinctive neighbourhoods. Do not include visits to Sensō-ji Temple or Tokyo Skytree, as I have already visited them. I prefer public transport for getting around."
+  "budget": {"amount": 650, "currency": "EUR"},
+  "additional_preferences": "I am travelling alone on a limited budget. I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits. I am happy to prioritise lower-cost experiences."
 }

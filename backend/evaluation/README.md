@@ -85,7 +85,7 @@ rules still apply; historical API-only and incremental interfaces remain availab
 A suite composes explicitly selected accepted case revisions. Each case owns one
 request group and exactly four selected V0-V3 runs. Prepare material with the existing
 collection/review/finalization flow first; a suite does not generate or qualify it.
-There is no automatic source scan, best-run selection or fixed 20-case count.
+There is no automatic source scan, best-run selection or fixed case count.
 
 Create a declaration beside its selected source directories. All input paths are
 relative to this declaration's directory and must remain inside it:

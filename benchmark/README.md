@@ -1,8 +1,9 @@
 # Benchmark workflow and case material
 
-This directory contains 20 English travel-planning requests as working drafts,
-not a frozen benchmark set. Each public case directory contains a reader-facing
-report and selected source-linked materials without duplicate copies. Raw capture,
+This directory contains 15 English travel-planning requests. Pending inputs remain
+working drafts; directory placement does not freeze the set. Each public case
+directory contains a reader-facing report and selected source-linked materials
+without duplicate copies. Raw capture,
 preparation and execution work stays in ignored `scratch/<case-id>/` storage;
 after review, this becomes a compact private archive rather than a permanent
 collection of every temporary working directory.
@@ -26,7 +27,7 @@ results, usage and provenance under the existing
 
 ## Per-case execution and joint review
 
-Prepare and complete cases one at a time in case-ID order, from case-01 to case-20.
+Prepare and complete cases one at a time in case-ID order, from case-01 to case-15.
 Create a scenario child Issue when preparing that case; it tracks request revisions,
 attempts, findings and the matched evaluation report. The user confirms automatic
 joint acceptance of the input and its declared reports before proceeding to the
@@ -194,7 +195,7 @@ benchmark/
   inputs/
     case-01.json
     ...
-    case-20.json
+    case-15.json
   <case-id>/
     report.md                     # reader-facing observations and material links
     itinerary.md                  # daily schedules, POI origins and draft/final changes
@@ -289,8 +290,8 @@ entries, rather than live files beside the compressed archive.
 
 Dates and durations are inclusive. Accepted case-01 and case-02 inputs retain their
 original dates: 2026-10-13 through 2026-10-15 for Sydney and 2026-10-15 through
-2026-10-17 for London. Pending cases 03-20 use 2026-10-14 as the
-policy reference date and start on 2026-10-15, except case-05, which starts on
+2026-10-17 for London. Pending cases 03-15 use 2026-10-14 as the
+policy reference date and start on 2026-10-15, except case-04, which starts on
 Saturday 2026-10-17 and ends on Sunday 2026-10-18. Revalidate pending dates against
 the actual application reference date before execution.
 
@@ -299,29 +300,41 @@ the actual application reference date before execution.
 | [01](case-01/report.md) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
 | [02](case-02/report.md) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
 | [03](inputs/case-03.json) | Travel preferences | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
-| [04](inputs/case-04.json) | Travel preferences | Paris | 4 | 2 | EUR 1,400 | Art, architecture and riverside walks; checks a coherent mix of indoor visits and outdoor sightseeing. |
-| [05](inputs/case-05.json) | Travel preferences | Singapore | 2 | 2 | SGD 800 | A fairly full weekend using public transport; checks use of limited time without an explicit daily stop quota. |
-| [06](inputs/case-06.json) | Travel preferences | Barcelona | 5 | 1 | EUR 1,300 | Solo architecture and art travel at a relaxed pace; checks depth and time at places rather than many daily stops. |
-| [07](inputs/case-07.json) | Explicit constraints | Tokyo | 3 | 1 | JPY 90,000 | Repeat visitor seeking less familiar places while excluding Senso-ji Temple and Tokyo Skytree; checks exclusions alongside positive interests. |
-| [08](inputs/case-08.json) | Travel preferences | London | 5 | 2 | GBP 1,800 | History, science and substantial museum visits with park walks; checks longer visits and relaxed pacing with little shopping interest. |
-| [09](inputs/case-09.json) | Travel preferences | Sydney | 4 | 3 | AUD 2,200 | Two adults and a child prefer science, nature, breaks and driving; checks family preferences together with transport intent. |
-| [10](inputs/case-10.json) | Travel preferences | Singapore | 3 | 3 | SGD 1,500 | Two adults and an older family member prefer nearby stops and less continuous walking; checks comfortable grouping without medical assumptions. |
-| [11](inputs/case-11.json) | Travel preferences | Paris | 3 | 1 | EUR 650 | Lower-cost parks, neighborhoods and exterior architecture, with a few paid visits; checks cost-conscious selection without inventing a numeric quota. |
-| [12](inputs/case-12.json) | Explicit constraints | Barcelona | 3 | 2 | EUR 1,000 | Exactly one Sagrada Familia visit and no Park Guell visit; checks required and excluded places together. |
-| [13](inputs/case-13.json) | Explicit constraints | Sydney | 5 | 2 | AUD 2,200 | Exactly one Sydney Opera House visit with flexible surrounding choices; isolates a single required place. |
-| [14](inputs/case-14.json) | Explicit constraints | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
-| [15](inputs/case-15.json) | Explicit constraints | London | 7 | 1 | GBP 2,200 | Exactly two British Museum visits on different dates; checks deliberate repetition rather than accidental duplicate visits. |
-| [16](inputs/case-16.json) | Explicit constraints | Paris | 4 | 2 | EUR 1,500 | A two-hour online meeting block on day two; checks protection of both activities and travel within a local-time interval. |
-| [17](inputs/case-17.json) | Explicit constraints | Singapore | 3 | 2 | SGD 1,100 | Exactly one National Museum of Singapore visit on day two, with a flexible preference for about 10:00 and 90 minutes; checks a dated required visit alongside soft timing preferences. |
-| [18](inputs/case-18.json) | Travel preferences | Tokyo | 7 | 2 | JPY 300,000 | Modern art and design are the main focus, complemented by gardens and neighborhoods; checks interest priority across a fairly full longer trip. |
-| [19](inputs/case-19.json) | Explicit constraints | Sydney | 7 | 2 | AUD 3,200 | An explicit day-one target of exactly one sightseeing visit and a full rest day on day four; checks dated pace/count guidance alongside whole-day protection. |
-| [20](inputs/case-20.json) | Explicit constraints | Barcelona | 7 | 4 | EUR 4,200 | Two pairs have different interests, with one required place and a protected afternoon; checks a realistic combination of group preferences and constraints. |
+| [04](inputs/case-04.json) | Explicit constraints | Singapore | 2 | 2 | SGD 800 | A fairly full garden/city weekend using only walking and public transport; checks an explicit transport restriction on a short trip. |
+| [05](inputs/case-05.json) | Travel preferences | Barcelona | 5 | 1 | EUR 1,300 | Solo architecture and art travel at a relaxed pace; checks depth and time at places rather than many daily stops. |
+| [06](inputs/case-06.json) | Travel preferences | Sydney | 4 | 3 | AUD 2,200 | Two adults and a child prefer science, nature, breaks and driving; checks family preferences and soft transport intent. |
+| [07](inputs/case-07.json) | Travel preferences | Paris | 3 | 1 | EUR 650 | Lower-cost parks, neighborhoods and exterior architecture, with a few paid visits; checks cost-conscious selection without inventing a numeric quota. |
+| [08](inputs/case-08.json) | Explicit constraints | Barcelona | 3 | 2 | EUR 1,000 | Exactly one Sagrada Familia visit and no Park Guell visit; checks required and excluded places together. |
+| [09](inputs/case-09.json) | Explicit constraints | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
+| [10](inputs/case-10.json) | Explicit constraints | London | 4 | 1 | GBP 1,300 | Exactly two British Museum visits on different dates; checks deliberate repetition within a shorter trip. |
+| [11](inputs/case-11.json) | Explicit constraints | Paris | 4 | 2 | EUR 1,500 | Day-two 14:00-16:00 meeting with no activities or travel; checks a protected local-time interval. |
+| [12](inputs/case-12.json) | Explicit constraints | Singapore | 3 | 2 | SGD 1,100 | Exactly one museum visit on day two, with a flexible 10:00 start and 90-minute duration; checks hard dates versus soft timing. |
+| [13](inputs/case-13.json) | Travel preferences | Tokyo | 5 | 2 | JPY 220,000 | Modern art/design as the main focus, with gardens and neighborhoods as complements; checks interest priority at a fairly full pace. |
+| [14](inputs/case-14.json) | Explicit constraints | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
+| [15](inputs/case-15.json) | Explicit constraints | Barcelona | 7 | 4 | EUR 4,200 | Different group interests, one required landmark and a protected day-two afternoon; checks combined preferences and constraints. |
 
-The current draft contains two basic requests, nine preference scenarios and nine
-explicit constraint scenarios. Eight trips last two or three days, eight last four or five
-days, and four last seven days. Sydney and Tokyo have four cases each; London,
-Paris, Singapore and Barcelona have three each. Similar interests appear with
-different planning needs; the cases are not matched experimental pairs.
+The current set contains two basic requests, five cases with soft preferences only
+and eight cases with explicit constraints. Six trips last two or three days, seven
+last four or five days, and two last seven days. Sydney, Tokyo and Barcelona have
+three cases each; London, Paris and Singapore have two each. Selection emphasizes
+distinct supported interests and constraints. The cases are not matched
+experimental pairs, and scenario budgets are not verified local travel prices.
+
+### Selection revision
+
+The user approved the reduction from 20 to 15 on 14 October 2026. Accepted 01/02
+retain all input, result and archive bytes. Current 03-15 correspond, in order, to
+previous 03, 05, 06, 09, 11, 12, 14, 15, 16, 17, 18, 19 and 20. Previous 04, 07,
+08, 10 and 13 were retired because their general sightseeing, exclusions,
+walking/breaks and required-visit coverage overlaps retained cases. The
+[earlier draft](https://github.com/rplalala/Reliable-Trip-Plan-Agent/tree/8808340ceae7f6bd5688eccf4f4b461a98934b2b/benchmark/inputs)
+remains historical; current documents and new case work use the new IDs.
+
+Three retained requests changed beyond renumbering: current 04 makes walking and
+public transport an exclusive restriction; current 10 shortens seven days to four
+and GBP 2,200 to GBP 1,300 while keeping its two-date museum requirement; current
+13 shortens seven days to five and JPY 300,000 to JPY 220,000 while keeping its
+main/secondary interests. No execution or version behavior changes are implied.
 
 ## Date update rules
 
@@ -337,7 +350,7 @@ window is 2026-10-14 through 2026-10-27.
 2. Preserve each trip's duration and the relationships below. Update both the
    structured dates and every explicit date in `additional_preferences` together.
 3. A common shift by a multiple of seven days preserves the initial weekdays.
-   With another shift, assign case-05 a Saturday-to-Sunday interval separately;
+   With another shift, assign case-04 a Saturday-to-Sunday interval separately;
    do not turn its weekend request into a weekday trip.
 4. Keep local clock times and their destination-local meaning unchanged. Recheck
    official opening information for required places on the new dates, especially
@@ -350,23 +363,24 @@ window is 2026-10-14 through 2026-10-27.
 
 | Case | Relationship to preserve |
 | --- | --- |
-| 05 | Two consecutive days: Saturday and Sunday. |
-| 14 | Ueno Park on day two, exactly once; Tokyo National Museum exactly once on a suitable date within the trip. |
-| 16 | Day two: no planned activities or travel from 14:00 to 16:00, Paris local time. |
-| 17 | Day two: exactly one museum visit during the trip. About 10:00, Singapore local time, and about 90 minutes are flexible preferences. |
-| 19 | Day one: explicit pace/count target of exactly one sightseeing visit; day four: no planned activities or travel. |
-| 20 | Day two: no planned activities or travel from 15:00 to 18:00, Barcelona local time. |
+| 04 | Two consecutive days: Saturday and Sunday. |
+| 09 | Ueno Park on day two, exactly once; Tokyo National Museum exactly once on a suitable date within the trip. |
+| 10 | Exactly two British Museum visits on different dates within the four-day trip. |
+| 11 | Day two: no planned activities or travel from 14:00 to 16:00, Paris local time. |
+| 12 | Day two: exactly one museum visit during the trip. About 10:00, Singapore local time, and about 90 minutes are flexible preferences. |
+| 14 | Day one: explicit pace/count target of exactly one sightseeing visit; day four: no planned activities or travel. |
+| 15 | Day two: no planned activities or travel from 15:00 to 18:00, Barcelona local time. |
 
 ## Offline checks
 
-After edits, parse all 20 files as UTF-8 JSON and validate each using
+After edits, parse all 15 files as UTF-8 JSON and validate each using
 `PlanningRequest.model_validate_json`. Separately validate pending inputs using
 `create_trip_date_window` and `validate_requested_trip_dates` with an explicit
 execution reference date. Accepted inputs retain their consumed bytes and original
 date bindings; a later moving window does not invalidate that historical evidence.
 Schema validation alone does not enforce the moving date window.
 
-Check that the filenames cover case-01 through case-20 exactly once, the index
+Check that the filenames cover case-01 through case-15 exactly once, the index
 agrees with destination, duration, traveler count and budget, and the dated
 preferences retain the relationships above. Also check that local index links
 resolve. These checks are offline and do not invoke the planner or establish

@@ -1,9 +1,0 @@
-{
-  "input_version": "planning_request_2",
-  "destination": "Sydney, Australia",
-  "start_date": "2026-10-15",
-  "end_date": "2026-10-21",
-  "traveler_count": 2,
-  "budget": {"amount": 3200, "currency": "AUD"},
-  "additional_preferences": "We are two adults who enjoy nature and harbour views and prefer a relaxed pace overall. On 2026-10-15, plan exactly one sightseeing visit. Leave 2026-10-18 completely free of planned activities and travel as a rest day. We are flexible about the sightseeing choices on the other dates."
-}

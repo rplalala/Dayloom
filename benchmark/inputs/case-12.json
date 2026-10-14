@@ -1,9 +1,9 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Barcelona, Spain",
+  "destination": "Singapore",
   "start_date": "2026-10-15",
   "end_date": "2026-10-17",
   "traveler_count": 2,
-  "budget": {"amount": 1000, "currency": "EUR"},
-  "additional_preferences": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+  "budget": {"amount": 1100, "currency": "SGD"},
+  "additional_preferences": "We are two adults. Include exactly one visit to the National Museum of Singapore during the trip, and schedule it on 2026-10-16. If practical, we would prefer to start that visit around 10:00, Singapore local time, and spend about 90 minutes there, but both the start time and duration are flexible. We are flexible about the other sightseeing choices and their timing."
 }

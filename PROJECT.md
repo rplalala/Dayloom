@@ -297,12 +297,16 @@ human reports without changing primary scores. The
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns case-01 workflow acceptance. The human user accepted the
-[initial case-01 dataset](benchmark/case-01/report.md#acceptance) on 14 October 2026,
-including its selected V0-V3 results, independent reports and stated limitations.
-Native evidence is retained in verified ignored private storage. Case tracker
-[#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127) owns the recorded
-acceptance scope. Git publication and Issue closure follow their own authorization.
+owns case-01 workflow acceptance. The active set has 15 requests following the
+user-approved 14 October 2026 selection revision; the benchmark index owns the
+coverage and old-to-new mapping. The human user accepted
+[case-01](benchmark/case-01/report.md#acceptance) and
+[case-02](benchmark/case-02/report.md#acceptance-and-material) on 14 October 2026,
+including their selected V0-V3 results, independent reports and stated limitations.
+Their original inputs, results and verified private archives remain unchanged.
+Case trackers [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
+and [#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149) own those
+acceptance scopes. Git publication and Issue closure follow their own authorization.
 Subsequent runs report primary scores and pause before further diagnostics.
 Blinded human assessment remains deferred.
 

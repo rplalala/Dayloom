@@ -1,9 +1,12 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Sydney, Australia",
+  "destination": "Tokyo, Japan",
   "start_date": "2026-10-15",
   "end_date": "2026-10-19",
   "traveler_count": 2,
-  "budget": {"amount": 2200, "currency": "AUD"},
-  "additional_preferences": "We are two adults who enjoy harbour views, history and parks. Include exactly one visit to Sydney Opera House during the trip. We prefer a moderate pace and are flexible about the remaining sightseeing choices."
+  "budget": {
+    "amount": 220000,
+    "currency": "JPY"
+  },
+  "additional_preferences": "We are two adults whose main focus for this trip is modern art and design. We would also enjoy gardens and distinctive neighbourhoods to complement those interests. We prefer a fairly full itinerary and are happy to use public transport."
 }
