@@ -143,13 +143,27 @@ def restore_current(payload, spans):
     return value
 
 
+def _replace_instruction(prompt, before, after):
+    if prompt.count(before) != 1:
+        raise RequirementBoundaryError(
+            "requirement_prompt_version_mismatch",
+            stage="configuration",
+            category="configuration_failure",
+            errors=({"loc": ("system_prompt",), "type": "instruction_version_mismatch"},),
+        )
+    return prompt.replace(before, after, 1)
+
+
 def current_prompt(prompt):
     """Project the historical instructions together with their new wire representation."""
-    prompt = prompt.replace("shared requirements 4", "shared requirements 5")
-    prompt = prompt.replace(
-        "preference_prompt_19 / preference_draft_12", "preference_prompt_20 / preference_draft_13"
+    prompt = _replace_instruction(prompt, "shared requirements 4", "shared requirements 5")
+    prompt = _replace_instruction(
+        prompt,
+        "preference_prompt_19 / preference_draft_12",
+        "preference_prompt_20 / preference_draft_13",
     )
-    prompt = prompt.replace(
+    prompt = _replace_instruction(
+        prompt,
         "copied EXACTLY including casing and punctuation, each <=320 Unicode code "
         "points. occurrence is\n"
         "zero-based among exact occurrences, including repeated quotes. Do not "
@@ -158,25 +172,33 @@ def current_prompt(prompt):
         "{first_id,last_id}; the application restores text, occurrence and offsets. "
         "Never copy quotes.",
     )
-    prompt = prompt.replace("provide that quote and occurrence", "select that source interval")
-    prompt = prompt.replace("exact quote/occurrence pairs", "source-span endpoint pairs")
-    prompt = prompt.replace(
+    prompt = _replace_instruction(
+        prompt, "provide that quote and occurrence", "select that source interval"
+    )
+    prompt = _replace_instruction(
+        prompt, "exact quote/occurrence pairs", "source-span endpoint pairs"
+    )
+    prompt = _replace_instruction(
+        prompt,
         "Use exact original text, including case and punctuation; never rewrite "
         "quotes or guess occurrence.",
         "Select original source intervals using their IDs; never author quote text "
         "or occurrence values.",
     )
-    prompt = prompt.replace(
+    prompt = _replace_instruction(
+        prompt,
         '{"quote":"I want to visit the Bronx Zoo in New York.","occurrence":0}',
         '{"first_id":"<first-source-id>","last_id":"<last-source-id>"}',
     )
-    prompt = prompt.replace(
+    prompt = _replace_instruction(
+        prompt,
         "Return one default record with date=null\nand at most one override for each "
         "requested date.",
         "Return daily_pace={trip_default:{date:null,profile,exact_count,source_refs},\n"
         "date_overrides:[]} with at most one dated override for each requested date.",
     )
-    prompt = prompt.replace(
+    prompt = _replace_instruction(
+        prompt,
         "ordinary without an expressed pace may use [].",
         "ordinary trip_default without an expressed pace uses source_refs=[].",
     )

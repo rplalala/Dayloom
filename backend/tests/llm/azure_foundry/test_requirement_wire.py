@@ -128,3 +128,26 @@ def test_explicit_legacy_binding_reads_historical_pace_without_rewriting(pace):
         with pytest.raises(RequirementBoundaryError) as error:
             run_wire(payload, contract="preference_draft_12")
         assert error.value.code == "invalid_daily_pace_scope"
+
+
+def test_prompt_projection_drift_stops_before_any_model_send(monkeypatch):
+    from backend.app.services import preference_interpretation as service
+
+    monkeypatch.setattr(
+        service,
+        "PREFERENCE_INTERPRETATION_SYSTEM_PROMPT",
+        service.PREFERENCE_INTERPRETATION_SYSTEM_PROMPT.replace(
+            "Return one default record", "Return the default record"
+        ),
+    )
+    sends = []
+
+    def answer(prompt):
+        sends.append(prompt)
+        return wire_empty()
+
+    with pytest.raises(RequirementBoundaryError) as error:
+        run_wire(answer)
+    assert error.value.code == "requirement_prompt_version_mismatch"
+    assert error.value.category == "configuration_failure"
+    assert sends == []
