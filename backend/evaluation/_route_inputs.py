@@ -153,6 +153,30 @@ def requirement_mode_review(group, review):
             (s["field_path"], s.get("quote"), s.get("occurrence", 0)) for s in item["source_refs"]
         }
 
+    def intervals(item):
+        result = []
+        for ref in item["source_refs"]:
+            if "quote" not in ref:
+                return []
+            original = group["input"][ref["field_path"]]
+            start, offset = -1, 0
+            for _ in range(ref.get("occurrence", 0) + 1):
+                start = original.index(ref["quote"], offset)
+                offset = start + len(ref["quote"])
+            result.append((ref["field_path"], start, offset))
+        return result
+
+    def same_source_region(left, right):
+        a, b = intervals(left), intervals(right)
+
+        def covers(first, second):
+            return all(
+                any(f == g and (s <= u < v <= e or u <= s < e <= v) for g, u, v in second)
+                for f, s, e in first
+            )
+
+        return bool(a and b) and covers(a, b) and covers(b, a)
+
     for policy in policies:
         shared = [o for o in obligations if source_keys(o) == source_keys(policy)]
         if shared:
@@ -165,7 +189,12 @@ def requirement_mode_review(group, review):
                 group["group_id"],
                 "Inconsistent source-bound transport interpretations",
             )
-        else:
+        elif not any(
+            policy["scope"] == o["scope"]
+            and set(policy["allowed_modes"]) == set(o["allowed_modes"])
+            and same_source_region(policy, o)
+            for o in obligations
+        ):
             additional.append(policy)
     scoring_review = {
         **(review or {}),

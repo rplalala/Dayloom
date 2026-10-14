@@ -2,7 +2,6 @@
 
 import copy
 import json
-import re
 from hashlib import sha256
 
 from backend.app.schemas.requirement_boundary import RequirementBoundaryError
@@ -11,15 +10,12 @@ SOURCE_TEXT_FIELDS = {"source_text", "target_source_text", "scope_text", "date_s
 
 
 class SourceSpans:
-    """Application-owned token spans; endpoints select a contiguous original interval."""
+    """Application-owned codepoint spans preserve every original substring boundary."""
 
     def __init__(self, prompt, text):
         self.text = text
         prefix = sha256(prompt.encode("utf-8")).hexdigest()[:16]
-        self.spans = {
-            f"s{prefix}_{i}": (m.start(), m.end())
-            for i, m in enumerate(re.finditer(r"\S{1,64}", text))
-        }
+        self.spans = {f"s{prefix}_{i}": (i, i + 1) for i in range(len(text))}
 
     def inventory(self):
         return [

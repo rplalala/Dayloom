@@ -15,6 +15,65 @@ pytest_plugins = ("backend.tests.evaluation.test_intake",)
 SOURCE = [{"field_path": "additional_preferences", "quote": "architecture"}]
 
 
+@pytest.mark.parametrize("broad_policy", [True, False])
+def test_nested_transport_sources_have_one_aggregation_owner(broad_policy):
+    from backend.evaluation._route_inputs import policy_component, requirement_mode_review
+
+    clause = "only walk and use public transport"
+    sentence = "Please " + clause + "."
+    original = sentence + " Separately, only take public transport."
+
+    def source(quote):
+        return [{"field_path": "additional_preferences", "quote": quote}]
+
+    obligation = {
+        "obligation_id": "mode",
+        "kind": "transport_modes",
+        "resolution": "resolved",
+        "scope": "whole_trip",
+        "allowed_modes": ["WALK", "TRANSIT"],
+        "source_refs": source(clause if broad_policy else sentence),
+    }
+    policy = {
+        "policy_id": "route",
+        "scope": "whole_trip",
+        "allowed_modes": ["WALK", "TRANSIT"],
+        "source_refs": source(sentence if broad_policy else clause),
+    }
+    independent = {
+        "policy_id": "other",
+        "scope": "whole_trip",
+        "allowed_modes": ["TRANSIT"],
+        "source_refs": source("Separately, only take public transport."),
+    }
+    group = {
+        "group_id": "g",
+        "input": {
+            "additional_preferences": original,
+            "start_date": "2026-10-15",
+            "end_date": "2026-10-15",
+        },
+        "requirement_spec": {"obligations": [obligation]},
+    }
+    bridged = requirement_mode_review(group, {"status": "restricted", "policies": [policy]})
+    assert policy_component(bridged, "DRIVE", "2026-10-15")["state"] == "FAIL"
+    assert policy_component(bridged["scoring_review"], "DRIVE", "2026-10-15")["state"] == "PASS"
+    combined = requirement_mode_review(
+        group, {"status": "restricted", "policies": [policy, independent]}
+    )
+    assert combined["scoring_review"]["policies"] == [independent]
+    assert policy_component(combined["scoring_review"], "WALK", "2026-10-15")["state"] == "FAIL"
+
+    repeated = copy.deepcopy(group)
+    repeated["input"]["additional_preferences"] += " " + sentence
+    repeated_policy = copy.deepcopy(policy)
+    repeated_policy["source_refs"][0]["occurrence"] = 1
+    separate = requirement_mode_review(
+        repeated, {"status": "restricted", "policies": [repeated_policy]}
+    )
+    assert separate["scoring_review"]["policies"] == [repeated_policy]
+
+
 @pytest.fixture
 def scenario(batch):
     manifest, results, write, save, root = batch
