@@ -2,7 +2,7 @@
 
 This history follows reference failures, bounded correction, short-reference adoption
 and adapter validation. Current rules are in [model identity references](../../0001-system-architecture.md#model-identity-references)
-and [semantic qualification](../../0002-requirements-evidence.md#semantic-qualification-and-multiplicity).
+and [shared requirements provenance](../../0002-requirements-evidence.md#input-gate-and-provenance-contract).
 Historical replay assertions describe their recorded revision and grant no execution permission.
 
 ## September 27: failure classes and correction scope
@@ -277,3 +277,90 @@ Six selected samples had no new restoration failure. They establish neither gene
 error rate nor full orchestration, venue-policy truth, prose accuracy or a benchmark.
 Native identity adoption was still zero, four V0 routes UNKNOWN, and #67 Proposed.
 Short references reduce long-ID copying exposure without eliminating semantic errors.
+
+## October 15: shared requirement boundary correction
+
+[Issue #165](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/165) consolidates
+three generation failures at `f49503a`: case-04 could not execute an exclusive
+WALK/TRANSIT set; case-07 accepted an empty pace list before canonical rejection;
+case-05 supplied four paraphrased source quotations. All three inputs were
+`VALID/CLEAR`. These failures establish boundary defects, not ambiguous requests
+or infeasible routes. The original attempts and case-05's successful V0 remain historical results.
+
+The offline implementation starts from `9a834a665de89a709ffb62efa7d5898be807c900`.
+Implementation commit `0f979a1` connects typed hard modes through V0-V3, source-ID
+restoration, structural pace defaults, native diagnostics and independent evaluation.
+Current rules belong to the [requirements contract](../../0002-requirements-evidence.md#input-gate-and-provenance-contract),
+[transport ownership](../../0003-itinerary-transport.md#transport-ownership),
+[Repair resource boundary](../../0005-validation-repair%28v3%29.md#transport-and-resource-boundaries)
+and [RequirementSpec](../../contracts/0003-requirement-schedule.md#rtpeval-requirement-spec-contract).
+
+| Boundary | Historical reading | New production representation |
+| --- | --- | --- |
+| Interpretation | Prompt 19 / draft 12; quote/occurrence DTO | Prompt 20 / draft 13; request-bound source endpoints restored before provenance validation |
+| Pace | Version-aware list/null; empty list remains invalid | Required `trip_default` and `date_overrides`, mapped to the canonical list |
+| Requirements | Canonical versions 3/4 remain readable | Version 5 adds a source-linked hard mode set; unsupported hard semantics still clarify |
+| Evaluation | Requirement rules 3 / route rules 2 remain unchanged without the new kind | Inputs containing `transport_modes` select rules 4 / 3; resolved mode verdicts have one requirement owner |
+
+Standards review found no hard violation and one P3 prompt-projection fragility.
+Commit `1aca1f7` checks every required replacement before a model send. Spec review
+found two P2 defects: coarse token spans lost valid sub-scope boundaries, and nested
+quotations could duplicate transport penalties. Commit `fb87a68` provides codepoint
+endpoints and source-interval equivalence while retaining independent restrictions.
+Both axes rechecked those corrections clear. Commit `8c25e99` subsequently adapts
+soft-quality MockTransport responses to the current wire without rewriting the
+historical JSON fixture; both reviewers also rechecked it clear.
+The broader regression exposed six date-dependent installed-CLI checks; `27b520c`
+and `3021b83` pin their existing test reference date without changing production date policy.
+Three guarded CLI subprocesses exceeded their 30-second launcher timeout. Commit
+`da85c41` raises only the test helper's startup wait to 60 seconds; network/credential
+guards, native execution deadlines and provider budgets remain unchanged. Both review
+axes rechecked the correction clear.
+
+| Offline validation | Result and interpretation |
+| --- | --- |
+| Full backend run | 4196 passed, 17 failed, 16 skipped in 6126.73 seconds. The run overlapped corrections; it is not a final-revision green gate. |
+| Final Azure/provider/evaluator regression | 422 passed in 168.29 seconds; six supplementary exact-scope, Unicode and source-ownership cases passed in 7.03 seconds. |
+| Corrected mock-wire and dated CLI files | Soft-quality alignment: 9 passed in 11.00 seconds; generation CLI: 87 passed in 133.58 seconds; opportunities CLI: 21 passed in 126.62 seconds. |
+| Bounded CLI startup retest | All three previously timed-out scenarios passed in 206.26 seconds with the 60-second test-helper timeout. |
+| Final static-source provider retest | Both wrapped 401/503 mock-provider cases passed in 17.48 seconds. |
+| Route/Repair and independent entry points | 44 route/Repair tests and three independent V1/V2/V3 runner-entry tests passed. |
+| Static checks | Backend/scripts and affected validation-tool Ruff lint, 43 changed Python format checks and tracked document links passed. |
+
+The 17 full-run failures comprise seven obsolete mock response shapes, six dated CLI
+checks, three launcher timeouts and one mock-provider classification anomaly. The first
+16 have explicit corrections and passing affected regressions. The classification
+anomaly did not reproduce on the final static source; the full-run log does not expose
+its underlying caught exception, so source changes during that run remain a possible
+explanation rather than a proven cause. Original failure logs remain retained. An
+earlier sandbox-limited full run stopped at 29% and supplied no suite verdict.
+The full suite was not repeated after correction, and the 16 skipped tests remain
+unverified. Affected suites overlap and their counts are not a combined coverage total.
+No frontend validation was added by this backend task.
+
+Preservation checks compare 478 original/public files, including all 388 files under
+the case-04/05/07 private attempt roots, with zero changed hashes. A network-denied
+saved-response probe still reproduces the original hard-gate, empty-pace and four
+paraphrase failures; its ordinary-default control preserves all four case-07 semantics.
+No captured response is corrected in place.
+
+Case-01/02's eight public itineraries round-trip exactly through the current schema.
+Current native intake also accepts both original source-bound manifests through
+read-only archive-byte access, with networking denied.
+Available archive replays reproduce case-01 primary, paired, stopped/accepted opening,
+legacy processing and all retained global-search reports, plus case-02 original primary,
+corrected API quality, supplemented opening, paired and processing reports and public
+source bindings. All replay acquisition is denied. These are exact historical-policy
+replays, not evaluation under the new transport operator.
+
+Initial archive replay exposed a missing case-01 `rglob` relocation and rejected changed
+case-02 producer hashes. Read-only relocation and exact retained producer bytes resolved
+those failures without weakening native receipts or source pins. Temporary restoration
+copies were removed after acceptance; original archives and reports remain unchanged.
+Both archives pass their native verifier again: 11,156 case-01 and 4,589 case-02
+logical files retain all original bytes.
+
+The source inventory grows with preference length. A future live preparation must size
+the expanded actual request and use fresh revision/run/attempt bindings. Offline
+acceptance provides no new itinerary, primary score, route feasibility evidence or
+case-continuation authority. Display/read compatibility does not relabel historical results.

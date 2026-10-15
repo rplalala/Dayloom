@@ -72,6 +72,11 @@ accepted improvements; missing facts never become a successful repair claim.
 
 ## Transport and resource boundaries
 
+Repair scope inherits the shared hard transport-mode set. The Repair entry intersects
+its scoped modes with the authoritative requirement set before candidate work or model
+proposals. Cached DRIVE evidence and unchanged saved transfers cannot bypass a
+WALK/TRANSIT restriction; final validation checks adopted modes again.
+
 Changed real adjacencies require both neighboring legs to be considered at applicable
 departure times. Representative route preparation is not insertion feasibility. Fixed
 occupancy, required visits, daily burden and separately represented application reserves

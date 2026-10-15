@@ -1,6 +1,6 @@
 # Requirements, candidate supply and evidence
 
-Status: Implemented shared contracts, consolidated 2026-10-03.
+Status: Implemented shared contracts, updated 2026-10-15.
 
 ## Request and interpretation
 
@@ -24,13 +24,13 @@ ambiguous conditions. Gate validity is input acceptability, not a feasibility gu
 Clarification, dedicated safety outcomes, provider failure and malformed model output
 remain different outcomes. Unsupported hard conditions are not silently softened.
 
-The existing interpretation call also returns optional `daily_pace`: one null-date
-default and unique requested-date overrides, with `ordinary`, `relaxed`, `rich` or
+The interpretation call returns `daily_pace`: one null-date default and unique
+requested-date overrides, with `ordinary`, `relaxed`, `rich` or
 `unresolved` profile, optional explicitly requested exact daily count and original
 source quotes. Canonicalization verifies quote spans and date scope. Relaxed/rich
 style does not invent an exact count. Empty preferences supply ordinary style locally;
-historical absent/null metadata stays unassessed. `PreferenceDraftV10` and
-`preference_prompt_19` identify the current wire/prompt. Only V3 Repair uses this
+historical absent/null metadata stays unassessed. `PreferenceDraftV13` and
+`preference_prompt_20` identify the current wire/prompt. Only V3 Repair uses this
 metadata as an optimization target; initial generation gains no zero-penalty constraint.
 
 ## Evidence ownership
@@ -64,6 +64,32 @@ quote occurrences. Safety blocks precede rewrite, clarification and continuation
 Missing assessment, inconsistent disposition and invalid source references are system
 contract failures, not evidence that the user wrote an invalid request.
 
+Current planning envelopes select `preference_draft_13` and canonical
+`interpreted_requirements_5`. The provider receives request-bound IDs for original
+single-codepoint spans, including whitespace. Every original substring boundary is
+representable, including short scopes within unbroken text. Each source selects inclusive
+`first_id`/`last_id` endpoints;
+the program restores the exact contiguous original text, occurrence and Unicode
+offsets before existing provenance validation. This covers semantic, focus, subject,
+issue, operational, pace and transport sources, including source-text fields. Unknown,
+reversed and foreign-request IDs fail with a field path. Selection does not certify
+the model's semantic interpretation. No fuzzy matching or retry is added. The inventory
+grows with preference length; fresh live preparation must account for the actual expanded
+request. Required prompt projection replacements are checked before any model send;
+instruction drift is a configuration failure.
+
+The new pace wire has a required `trip_default` object and `date_overrides` array.
+The mapper requires a null default date and non-null override dates; canonical checks
+enforce unique in-trip dates and sources for expressed styles/counts. An ordinary
+unsourced default has no exact count. Relaxed/rich styles create no numerical quota.
+Historical quote/occurrence DTOs, list/null pace and canonical versions 3/4 retain
+their existing read paths; malformed historical empty pace remains invalid.
+
+Native generation `failure.json` retains the exception type and allowlisted
+category/status, code, stage, field paths or requirement IDs from the boundary cause.
+Source, pace and hard-gate failures remain distinguishable without copying sensitive
+source quotations into default failure telemetry.
+
 Supported input issues cover destination/structured-field conflicts, scoped hard
 contradictions, unsupported scope, material ambiguity, non-travel task control and the
 explicit supported safety categories. Contradictions require distinct located sources.
@@ -76,6 +102,11 @@ source links. Canonicalization rewrites duplicate links without duplicate reward
 subjects are not silently party-wide. Named counts/dates belong to named visit obligations;
 category goals use semantic assessment. Unsupported hard semantics require clarification;
 ordinary rich/varied/enjoyable wishes stay soft without invented quotas or luxury budgets.
+The supported exception is a whole-party, whole-trip `transport_constraint`: a nonempty
+unique `allowed_modes` set linked to hard transport constraint requirements and their
+exact canonical sources. Its narrow registered predicate authorizes enforcement;
+it does not establish route feasibility. Single-mode `transport_preference` remains
+a preference subordinate to this set. Unsupported modes/semantics remain explicit.
 The narrowed experience scope is ordinary/exclusive. Historical themed payloads are
 not silently upgraded.
 

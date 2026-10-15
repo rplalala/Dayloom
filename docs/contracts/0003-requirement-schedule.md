@@ -67,6 +67,7 @@ operator is returned for specification correction instead of silently executing 
 
 | Kind | Executable fields |
 | --- | --- |
+| `transport_modes` | `scope=whole_trip`; nonempty unique `allowed_modes` drawn from `WALK`, `TRANSIT`, `DRIVE`. No venue subject or invented mode claim. |
 | `required_visit` | `subject_ref`; `count={mode:minimum\|exact,value:positive integer}`; optional `distinct_dates` boolean (omission means no extra distinct-date constraint); `date_obligations` array of `{date,count_mode:minimum\|exact,count:positive integer}` (omission means none). |
 | `excluded_visit` | `subject_ref`; `scope=whole_trip\|specified_dates`; `dates` is required and nonempty for specified dates, absent for whole-trip scope. |
 | `protected_time` | `date`; `interval={kind:full_day}` or `{kind:clock,start:HH:MM[:SS],end:HH:MM[:SS]}`; explicit `scope=primary_visits\|scheduled_commitments`. Clock endpoints are same-day, strictly increasing; `24:00` is allowed only as the end. |
@@ -77,6 +78,17 @@ calendar dates within inclusive Input trip dates. Duplicate date entries for one
 obligation, invalid references, nonpositive durations and unsupported resolved scope
 values are material diagnostics. Full-day protection expands to local midnight to
 the following local midnight, not a presumed 86400 seconds on a DST date.
+
+`transport_modes` retains the independently reviewed original-input clause and sources.
+Requirement/schedule rules 4 expose one check per obligation: permitted claims PASS,
+disallowed claims FAIL and missing mode/association remains UNKNOWN. Resolved checks
+declare `aggregation_owner=requirements` and count once in that dimension, including
+unbound disallowed declarations. The route-policy bridge retains complete mode diagnostics
+but excludes that obligation and source-equivalent reviewed policies from route scoring,
+preventing the same mode violation from being counted in both dimensions.
+Unsupported/unresolved obligations retain their original meaning and incomplete/UNKNOWN
+status until explicitly resolved. Inputs without this new kind retain rules 3 and
+their historical report hashes; stored specifications/reports are never upgraded in place.
 
 For an explicit named-place visit obligation without stated repeat/count meaning,
 upstream preparation writes `count={mode:exact,value:1}` for the requested trip and
@@ -287,8 +299,9 @@ a time-UNKNOWN commitment, not a missing occupancy denominator; known intersecti
 produce FAIL. This adds no canonical venue, route or replacement timestamp. Unbound V1-V3
 transfers and conflicting bound journey alternatives retain their existing uncertainty.
 This occupancy correction introduced requirement/schedule and route rules version 2.
-Requirement/schedule rules are now version 3 for physical-association matching; route
-rules remain version 2. Old reports retain their original rule/code revision for exact
+Physical-association matching subsequently introduced requirement/schedule rules 3.
+The current transport operator selects the versions defined above. Old reports retain
+their original rule/code revision for exact
 reproduction.
 
 Missing/invalid times on an established commitment give a time-UNKNOWN unit. Mode

@@ -43,6 +43,15 @@ rather than standalone schema construction, owns normalization.
 
 ## Transport ownership
 
+A source-linked hard `allowed_modes` set constrains V0 declarations and all V1-V3
+route acquisition, offered options, cached evidence selection and adopted transfers.
+The default WALK/TRANSIT/DRIVE expansion is limited to that set. DRIVE reserves and
+fallbacks require DRIVE permission. Missing allowed-route evidence remains an explicit
+UNKNOWN/deficit diagnostic; it never authorizes a disallowed fallback. Unrestricted
+requests retain existing routing behavior. Under a hard restriction, V0 must declare
+an allowed mode for transport activities and cover journeys between distinct named
+visits; missing/unknown or disallowed declarations fail output acceptance without a retry.
+
 | Version | Submitted transport representation | Evidence boundary |
 | --- | --- | --- |
 | V0 | Explicitly estimated model transport activities | No Routes request; estimates remain unverified |
