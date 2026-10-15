@@ -290,6 +290,26 @@ or infeasible routes. The original attempts and case-05's successful V0 remain h
 The offline implementation starts from `9a834a665de89a709ffb62efa7d5898be807c900`.
 Implementation commit `0f979a1` connects typed hard modes through V0-V3, source-ID
 restoration, structural pace defaults, native diagnostics and independent evaluation.
+For PR delivery, the eight task commits were replayed onto remote `main` at
+`6b11572c1c2331b61f263727dd7901ba8353752c`, excluding unrelated unpublished case-03
+and batch material. The original D-drive main worktree and commits remain intact.
+
+| Original engineering commit | Delivery commit | Purpose |
+| --- | --- | --- |
+| `0f979a1` | `27159e3` | Shared requirement implementation and tests |
+| `1aca1f7` | `6ab7682` | Prompt projection guard |
+| `fb87a68` | `49fd164` | Exact source granularity and transport score ownership |
+| `8c25e99` | `fea23ea` | Current-wire mock response mapping |
+| `27b520c` | `f606146` | Generation CLI reference date |
+| `3021b83` | `1e98e17` | Capture-collision fixture reference date |
+| `da85c41` | `a7d0310` | Bounded test launcher wait |
+| `16a078a` | `6eaa173` | Current contracts and offline acceptance record |
+
+All 675 backend/tools Git blobs match original checkpoint `16a078a`; the 51 release
+paths match the original reviewed task diff. Test and replay results below remain
+evidence from the original worktree, not a newly executed suite on the delivery branch.
+The full regression was not repeated after corrections or for delivery.
+
 Current rules belong to the [requirements contract](../../0002-requirements-evidence.md#input-gate-and-provenance-contract),
 [transport ownership](../../0003-itinerary-transport.md#transport-ownership),
 [Repair resource boundary](../../0005-validation-repair%28v3%29.md#transport-and-resource-boundaries)
