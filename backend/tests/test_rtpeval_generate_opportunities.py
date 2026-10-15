@@ -12,7 +12,7 @@ from backend.cli.rtpeval import main
 from backend.tests.request_fixtures import make_request
 from backend.tests.services.test_tripworld_discovery import Retrieval, hit
 from backend.tests.test_rtpeval_cli import installed_cli as cli_fixture
-from backend.tests.test_rtpeval_generate_cli import arguments, registration
+from backend.tests.test_rtpeval_generate_cli import REFERENCE_BOOTSTRAP, arguments, registration
 from backend.tests.versions.v0.fakes import FakeStructuredLLMClient
 from backend.tests.versions.v1.fakes import FakeRoutesProvider, FakeWeatherProvider, make_itinerary
 from backend.tests.versions.v2.test_opportunity_capture import stable
@@ -200,6 +200,7 @@ def test_capture_cannot_collide_with_generation_material(installed_cli, tmp_path
         "--opportunity-capture",
         tmp_path / "capture" / name,
         tools_offline=True,
+        bootstrap=REFERENCE_BOOTSTRAP,
     )
     assert result.returncode == 2
     assert not (tmp_path / "capture").exists()
