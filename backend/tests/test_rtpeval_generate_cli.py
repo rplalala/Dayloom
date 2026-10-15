@@ -278,12 +278,54 @@ def test_completed_generation_registers_exact_originals_without_requirements(tmp
     assert staging["pending_requirement_review"]
     run = staging["groups"][0]["selected_runs"]["v0"]
     assert run["completion_qualified"]
+    readiness = json.loads((tmp_path / "staging/semantic-readiness.json").read_bytes())
+    assert readiness["schema_version"] == "rtpeval_semantic_readiness_1"
+    assert readiness["scope"] == "selected_final_activities"
+    assert readiness["batch_id"] == "b"
+    assert readiness["activities"] == []  # This existing fixture has an empty itinerary.
     for name in ("input.json", "result.json", "usage.json", "provenance.json"):
         assert (tmp_path / "staging/sources/capture" / name).read_bytes() == (
             tmp_path / "capture" / name
         ).read_bytes()
     assert (tmp_path / "selection.json").read_bytes() == original_selection
     assert (tmp_path / "capture/operator-selection.json").read_bytes() == original_selection
+    report = json.loads(capsys.readouterr().out.splitlines()[-1])
+    assert report["planner"]["status"] == "completed"
+    assert report["registration"]["status"] == "incomplete"
+
+
+def test_post_generation_registration_detects_synthetic_ambiguous_activity(tmp_path, capsys):
+    from datetime import datetime
+
+    from backend.app.schemas.itinerary import Activity
+    from backend.cli.rtpeval import main
+    from backend.tests.evaluation.test_planner_usage_cli import result
+
+    class SyntheticRuntime:
+        async def run(self, version, request, **kwargs):
+            value = result(version, request)
+            value.itinerary.days[0].activities.append(
+                Activity(
+                    activity_id="synthetic-a",
+                    activity_kind="generic_activity",
+                    title="Synthetic unfamiliar exploration",
+                    notes="Synthetic fixture, no reviewer run.",
+                    start_time=datetime.fromisoformat("2026-10-14T09:00:00+11:00"),
+                    end_time=datetime.fromisoformat("2026-10-14T10:00:00+11:00"),
+                )
+            )
+            return value
+
+    args = arguments(tmp_path, execute=True)
+    selection = registration(tmp_path)
+    assert (
+        main(["generate", *args, *selection], runtime=SyntheticRuntime(), date_provider=REFERENCE)
+        == 0
+    )
+    readiness = json.loads((tmp_path / "staging/semantic-readiness.json").read_bytes())
+    assert readiness["missing_role_count"] == readiness["awaiting_role_count"] == 1
+    assert readiness["queue"][0]["source"]["run_id"] == "r"
+    assert readiness["queue"][0]["source"]["pointer"] == "/itinerary/days/0/activities/0"
     report = json.loads(capsys.readouterr().out.splitlines()[-1])
     assert report["planner"]["status"] == "completed"
     assert report["registration"]["status"] == "incomplete"

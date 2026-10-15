@@ -385,7 +385,15 @@ def _assemble(config_path):
             }
         )
     _require(used_origins == set(origins), "Unused completion origin binding")
+    review_refs = {}
+    for field, schema in (
+        ("projection_reviews_ref", "rtpeval_reviews_1"),
+        ("occupancy_reviews_ref", "rtpeval_occupancy_reviews_1"),
+    ):
+        if field in config:
+            review_refs[field], _ = artifact(config[field], schema)
     staging = {
+        **review_refs,
         "schema_version": "rtpeval_staging_1",
         "batch_id": config["batch_id"],
         "revision": config["revision"],
@@ -434,6 +442,17 @@ def collect(config_path, output_directory):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(raw)
     (output / "staging.json").write_text(json.dumps(staging, indent=2) + "\n", encoding="utf-8")
+    from .reviews import preflight
+
+    if all(
+        r.get("result_ref") and r["completion_qualified"]
+        for g in staging["groups"]
+        for r in g["selected_runs"].values()
+    ):
+        readiness = preflight(output / "staging.json")
+        (output / "semantic-readiness.json").write_bytes(
+            (json.dumps(readiness, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        )
     return staging
 
 
