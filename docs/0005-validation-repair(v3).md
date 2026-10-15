@@ -242,7 +242,12 @@ has a separate default ceiling of 12 attempts; zero disables that strategy. It d
 consume model rounds or sends, and remains available when model sending is disabled.
 All strategies share acquisition counters, evidence cache, actual-send/failure history and time.
 Preparation leaves configured reserves for model/recheck/finalization and final Nearby;
-unused preparation allowance can serve proposals. Reviews/Profile and official web are not
+the average per-round allocation limits optional preparation, while model and recheck work
+may use the remaining hard round allowance without restarting preparation or a failed call.
+Local input work counts toward that allowance, and late results cannot consume the recheck
+reserve or authorize adoption beyond the hard deadline. Timing details belong to the
+[configuration reference](../config/README.md#counting-timing-and-invariants).
+Reviews/Profile and official web are not
 new Repair acquisitions. Semantic assessment retains separate counters. Expired check allowance
 blocks adoption even when a provider returns a usable value. Input overflow and terminal model
 failure stop at their declared boundary. The final stage summary compares original and selected

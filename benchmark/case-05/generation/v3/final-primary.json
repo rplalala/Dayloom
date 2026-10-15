@@ -1,0 +1,7 @@
+{
+  "$case_material_ref": {
+    "path": "itinerary.json",
+    "pointer": "",
+    "expanded_semantic_sha256": "d40f88459c981988478c39513462b55256ff4acfb726df892a2474446f57dbaf"
+  }
+}

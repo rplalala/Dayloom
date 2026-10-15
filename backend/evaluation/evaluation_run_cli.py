@@ -134,7 +134,7 @@ def main(argv=None, *, http_client=None):
         if isinstance(exc, MissingSemanticReviews):
             result["processing_status"] = "needs_semantic_review"
             result["semantic_readiness"] = exc.report
-    print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    print(json.dumps(result, ensure_ascii=True, indent=2, allow_nan=False))
     return (
         0
         if result.get("status") == "prepared" or result.get("processing_status") == "complete"

@@ -1657,6 +1657,7 @@ All 370 frozen preparation files remained unchanged. These are engineering smoke
 observations with synthetic environment evidence. The rejected local call did not establish
 successful editing; real provider routes, full-pipeline controlled acceptance and general
 Repair quality remain unproved.
+
 Original local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-c`, with
 separate `live-local-overlap`, `live-cross-date-search` and `live-isolated-replan`
 request/response bytes, receipts, native results, execution summary and parent assessment.
@@ -1718,3 +1719,80 @@ case-01 acceptance. No further call was made after consuming the one-send allowa
 Local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-d-local-retime`, with
 frozen fixture/handoff, offline SDK probes, original HTTP bytes, receipt, native result,
 command log and independent parent assessment.
+
+### Offline round allocation diagnosis (2026-10-15)
+
+Status: Implemented in local commits `04cc66a` and review correction `a290868` from
+clean base `ccccf27`; runtime configuration values remain unchanged. The original
+diagnosis at source `0f365304` found that case-05 revision 2 retained its original
+draft after a rejected empty first patch and a skipped replan.
+The second round recorded 318.469 seconds of stage time and 39.657 seconds of local
+time remaining. After the 20-second recheck reserve, its 19.657-second model allowance
+was below the configured 30-second minimum. The protection check therefore correctly
+prevented a send, while the local skip terminated the stage despite substantial global
+time remaining. Its aggregate REJECTED status reflects the earlier model attempt;
+the reason records the later skip. No Repair improvement was selected.
+
+A network-blocked synthetic probe invokes the real stage, preparation, input builder
+and acceptance path with an injected clock and local model/route substitutes. After
+an empty first patch costing 11 simulated seconds, it injects 30.5 seconds of local
+input-building work in round two. This is a controlled cost, not a measurement of
+case-05 CPU time. All four pre-correction diagnostic comparisons passed:
+
+| Controlled condition | Local model sends | Outcome |
+| --- | ---: | --- |
+| Original 60-second round reference, injected local work | 1 | Second round skipped; stage still has 318.5 seconds |
+| Only round reference changed to 120 seconds | 2 | Authorized synthetic overlap repair accepted |
+| Original reference, no injected local work | 2 | Same synthetic repair accepted |
+| Genuinely insufficient whole-stage allowance | 0 | Stage skipped before model work |
+
+The old allocation divided remaining stage time across projected affordable rounds and
+used that average as a hard cutoff. Local input construction could then consume the
+model/recheck allowance after the I/O preparation deadline. The correction retains that
+average only for optional preparation; a separate hard deadline bounds each round by
+its configured cap and the stage deadline. The standalone round uses the same cap.
+Input construction and model projection are timed, and available time is checked again
+before charging/invoking the model. Late results with insufficient recheck allowance are
+rejected, and terminal time shortages preserve the best retained result without another
+send. Current semantics belong to the
+[configuration reference](../../../config/README.md#counting-timing-and-invariants).
+
+The public-stage regression first reproduced the premature rejection, then passed
+without changing the original reference value or stage budget. Additional regressions
+first exposed uncapped standalone rounds, late results consuming recheck allowance,
+and model projection consuming time after the initial gate. Spec review then identified
+two additional gaps: final synchronous checks could cross the hard deadline before
+adoption, and an outer timeout after patch parsing could still start another round.
+Four regression cases reproduced both gaps; a final adoption gate and terminal timeout
+handling corrected them, including preservation of a previously accepted partial result.
+These corrections retain the minimum model allowance, recheck/finalization reserves and
+pre-send accounting.
+Controlled cost remains injected, not a measurement of case-05 CPU time or evidence
+that the real case would produce an improved itinerary.
+
+The initial full V3 run passed 497 cases and exposed two assertions tied to the old
+soft deadline and delayed expiry reason. Updating those assertions retained their
+call-limit, cancellation and rollback checks; all 499 V3 cases then passed. Controlled
+preparation, replay, report, CLI and mechanism readers passed 53 tests. The subsequent
+review corrections add four timing cases, bringing the targeted timing suite to
+14 passing cases. Model timeouts before a parsed patch retain the existing
+`model_failed_no_retry` stage reason; timeouts during parsed-patch revalidation stop
+with `repair_timeout`. The 503-case V3 rerun initially passed 501 cases and failed
+two existing model-timeout reason assertions. Correcting branch precedence without
+changing those assertions yielded **53 passed** across timing, Repair search and V3
+wiring modules, including both failures. This covers all 503 V3 cases across the
+full run and affected-module retest. Ruff lint/format, diff and changed-document link
+checks passed. Standards review had no code findings; both Spec findings were closed
+after correction, with no new findings on recheck. Validation used these code revisions
+with the timing updates to `config/README.md`, `docs/0005-validation-repair(v3).md` and
+this record still uncommitted; documentation forms a separate final commit. The full
+backend suite and real-provider smoke were not run.
+
+The original four observations and 39-pass multiround check remain historical evidence
+under `.scratch/case05-cli-repair-validation/`. New regression receipts and preservation
+checks use `.scratch/repair-timing-fix/`. Neither rewrites retained case material;
+all **5383 protected files** matched their original hashes after the correction.
+No provider call, case rerun, new case score or integration into the main worktree
+occurred.
+The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
+has separate implementation and validation scope.

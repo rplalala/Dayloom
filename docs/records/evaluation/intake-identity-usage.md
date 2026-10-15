@@ -1724,3 +1724,33 @@ rescoring or case-11/12 dispatch occurred. Case-07 retains its original results 
 unavailable totals. Actual supplementary reviews and any revised evaluation package
 require separate authorization and fresh source-bound preparation; evidence reuse
 and four numeric totals are not promised.
+
+### Legacy stdout encoding correction (2026-10-15)
+
+Case-05 revision 2 at source `0f365304` saved its complete primary report and receipt,
+then exited 1 when `evaluation_run_cli` printed an unescaped Unicode report to GBK
+stdout. The traceback identifies U+00EF in accented venue text. Native score completion
+and the later presentation failure remain separate observations. The report SHA-256 is
+`895c847c6d4f72342d325efd9bfdbc3fde9c2fdda971563095270c4f53a657bc`.
+
+Local implementation commit `c8e8a61`, from the above base with no unrelated worktree
+changes, changes only this CLI's stdout serialization to ASCII-escaped
+JSON. Decoded Unicode content, native file serialization, scoring and exit-code rules
+are unchanged. A synthetic full CLI execution with mocked HTTP and strict GBK stdout
+first reproduced `UnicodeEncodeError`, then passed after the one-line correction:
+the emitted JSON equals the saved report, its accented text survives decoding and the
+native receipt validates. The affected native evaluator file passes 29 tests and the
+installed evaluation CLI passes 42. Changed Python lint and format checks pass.
+
+Initial sandbox temporary-directory failure and overlong Windows test paths were
+isolated from application failures; short workspace temporary paths restored those
+tests. An installed-launcher sandbox failure required the same offline checks on the
+host. These are offline engineering checks, not another execution of case-05. Historical
+reports, receipts and their implementation bindings retain their original bytes and
+source revision; this correction does not migrate or rescore them. All 4,286 protected
+case-05 evidence, accepted case-01/02 and input files retain their hashes. Repair allocation
+was separately [diagnosed offline](../v0-v3/v3-development.md#offline-round-allocation-diagnosis-2026-10-15).
+
+Independent Standards and Spec reviews have no open findings. Review caught the Repair
+diagnosis subsection interrupting older event evidence; moving it after that event's
+complete text resolved the finding on recheck. The full backend suite was not rerun.
