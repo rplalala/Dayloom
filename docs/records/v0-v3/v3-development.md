@@ -1657,6 +1657,7 @@ All 370 frozen preparation files remained unchanged. These are engineering smoke
 observations with synthetic environment evidence. The rejected local call did not establish
 successful editing; real provider routes, full-pipeline controlled acceptance and general
 Repair quality remain unproved.
+
 Original local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-c`, with
 separate `live-local-overlap`, `live-cross-date-search` and `live-isolated-replan`
 request/response bytes, receipts, native results, execution summary and parent assessment.
@@ -1718,3 +1719,44 @@ case-01 acceptance. No further call was made after consuming the one-send allowa
 Local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-d-local-retime`, with
 frozen fixture/handoff, offline SDK probes, original HTTP bytes, receipt, native result,
 command log and independent parent assessment.
+
+### Offline round allocation diagnosis (2026-10-15)
+
+Status: A premature-stop mechanism is confirmed offline; Repair implementation and
+runtime configuration remain unchanged. At source `0f365304`, case-05 revision 2
+retained its original draft after a rejected empty first patch and a skipped replan.
+The second round recorded 318.469 seconds of stage time and 39.657 seconds of local
+time remaining. After the 20-second recheck reserve, its 19.657-second model allowance
+was below the configured 30-second minimum. The protection check therefore correctly
+prevented a send, while the local skip terminated the stage despite substantial global
+time remaining. Its aggregate REJECTED status reflects the earlier model attempt;
+the reason records the later skip. No Repair improvement was selected.
+
+A network-blocked synthetic probe invokes the real stage, preparation, input builder
+and acceptance path with an injected clock and local model/route substitutes. After
+an empty first patch costing 11 simulated seconds, it injects 30.5 seconds of local
+input-building work in round two. This is a controlled cost, not a measurement of
+case-05 CPU time. All four comparisons passed:
+
+| Controlled condition | Local model sends | Outcome |
+| --- | ---: | --- |
+| Current 60-second round reference, injected local work | 1 | Second round skipped; stage still has 318.5 seconds |
+| Only round reference changed to 120 seconds | 2 | Authorized synthetic overlap repair accepted |
+| Current reference, no injected local work | 2 | Same synthetic repair accepted |
+| Genuinely insufficient whole-stage allowance | 0 | Stage skipped before model work |
+
+The allocation uses remaining stage time divided across projected affordable rounds,
+while local input construction can consume the model/recheck reserve after the I/O
+preparation deadline. The experiment isolates this allocation/termination defect;
+it does not attribute the real case's local cost to a particular function or prove
+that the 120-second control would improve its itinerary. A future correction should
+account for bounded local construction work and available stage time while preserving
+minimum model, recheck, request and call-count limits. No such correction or default
+change was authorized in this task.
+
+The unchanged multiround regression file also passed 39 tests. The probe and four
+JSON observations remain private historical evidence under
+`.scratch/case05-cli-repair-validation/`. Its synthetic inputs are independent of
+the retained case request/results; no provider call, case rerun or new score occurred.
+The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
+has separate implementation and validation scope.
