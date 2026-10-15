@@ -1,0 +1,370 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "day1-australian-museum",
+      "to_activity_id": "day1-hyde-park",
+      "origin_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "destination_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-15T12:30:00+11:00",
+      "arrival_time": "2026-10-15T12:41:27+11:00",
+      "provider_duration_seconds": 87.0,
+      "distance_meters": 254,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day3-royal-botanic-garden",
+      "to_activity_id": "day3-sydney-opera-house",
+      "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-17T11:30:00+11:00",
+      "arrival_time": "2026-10-17T11:48:04+11:00",
+      "provider_duration_seconds": 484.0,
+      "distance_meters": 2253,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day4-sydney-harbour-bridge",
+      "to_activity_id": "day4-the-rocks",
+      "origin_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+      "destination_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-18T11:00:00+11:00",
+      "arrival_time": "2026-10-18T11:14:09+11:00",
+      "provider_duration_seconds": 249.0,
+      "distance_meters": 1955,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-australian-museum",
+      "to_activity_id": "day1-hyde-park",
+      "origin": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "destination": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "departure": "2026-10-15T12:30:00+11:00",
+      "next_start": "2026-10-15T13:00:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 87,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T19:41:40.799752+00:00",
+              "retrieved_at": "2026-10-14T19:41:41.220026+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+                "destination_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 87,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T19:41:40.799752Z",
+                "retrieved_at": "2026-10-14T19:41:41.220026Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 254,
+                "duration_seconds": 87,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-royal-botanic-garden",
+      "to_activity_id": "day3-sydney-opera-house",
+      "origin": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "departure": "2026-10-17T11:30:00+11:00",
+      "next_start": "2026-10-17T12:00:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 484,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T19:41:39.910852+00:00",
+              "retrieved_at": "2026-10-14T19:41:40.400153+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+                "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 484,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T19:41:39.910852Z",
+                "retrieved_at": "2026-10-14T19:41:40.400153Z",
+                "origin_index": 2,
+                "destination_index": 0,
+                "distance_meters": 2253,
+                "duration_seconds": 484,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day4-sydney-harbour-bridge",
+      "to_activity_id": "day4-the-rocks",
+      "origin": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+      "destination": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+      "departure": "2026-10-18T11:00:00+11:00",
+      "next_start": "2026-10-18T11:45:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 249,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T19:41:39.910852+00:00",
+              "retrieved_at": "2026-10-14T19:41:40.400153+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                "destination_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 249,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T19:41:39.910852Z",
+                "retrieved_at": "2026-10-14T19:41:40.400153Z",
+                "origin_index": 1,
+                "destination_index": 4,
+                "distance_meters": 1955,
+                "duration_seconds": 249,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Billabong Waterhole",
+      "source_place_id": "ChIJSSRK9livEmsR2NBQoYiHXXw",
+      "reason": "Cafe near Australian Museum (approximately 57 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "Level 4/1 William St, Darlinghurst NSW 2010, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-ed1fd56f-3d37-4847-b175-60991aee5bff:1"
+    },
+    {
+      "place_name": "Forage and Graze Cafe",
+      "source_place_id": "ChIJrUQtMmOtEmsRAZrZedSrn0M",
+      "reason": "Restaurant near Taronga Zoo Sydney (approximately 165 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "1 Bradleys Head Rd, Mosman NSW 2088, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-23ae2f74-9c1b-46fa-bd22-a318c1f6e993:0"
+    },
+    {
+      "place_name": "Botanic Gardens Cafe",
+      "source_place_id": "ChIJQQVQuW6uEmsRdZZsAFcwFUU",
+      "reason": "Cafe near Royal Botanic Garden Sydney (approximately 71 m straight-line).",
+      "associated_day": "2026-10-17",
+      "area": "4A Macquarie St, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-a9988d8f-2498-4306-aa40-661677daf26d:1"
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-australian-museum",
+          "title": "Visit Australian Museum",
+          "place_name": "Australian Museum",
+          "source_place_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "location": "1 William St, Darlinghurst NSW 2010, Australia",
+          "start_time": "2026-10-15T10:15:00+11:00",
+          "end_time": "2026-10-15T12:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A relaxed indoor visit for a drizzly day. The supplied evidence identifies a museum but does not specify its subject matter; science-related content is not confirmed."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-hyde-park",
+          "title": "Short visit to Hyde Park",
+          "place_name": "Hyde Park",
+          "source_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "location": "Elizabeth St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-15T13:00:00+11:00",
+          "end_time": "2026-10-15T14:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Keep this outdoor stop brief and unhurried given the forecast moderate drizzle and high precipitation probability."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-taronga-zoo",
+          "title": "Taronga Zoo Sydney",
+          "place_name": "Taronga Zoo Sydney",
+          "source_place_id": "ChIJq6qqWiSsEmsRJuIpepyEua4",
+          "location": "Bradleys Head Rd, Mosman NSW 2088, Australia",
+          "start_time": "2026-10-16T10:00:00+11:00",
+          "end_time": "2026-10-16T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Allow one main visit rather than stacking stops; take the day at a relaxed pace. The forecast indicates moderate drizzle with a high precipitation probability."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-royal-botanic-garden",
+          "title": "Royal Botanic Garden Sydney",
+          "place_name": "Royal Botanic Garden Sydney",
+          "source_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-17T09:30:00+11:00",
+          "end_time": "2026-10-17T11:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A relaxed nature and outdoor-space visit. The supplied hours show 07:00–17:00 for this date, but are a typical-hours baseline rather than confirmation against date-specific exceptions; forecast calls for drizzle."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-sydney-opera-house",
+          "title": "Sydney Opera House visit",
+          "place_name": "Sydney Opera House",
+          "source_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "location": "Bennelong Point, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-17T12:00:00+11:00",
+          "end_time": "2026-10-17T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Keep the stop brief and allow a break after the garden. Hours and date-specific operating status are unknown in the supplied evidence."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-sydney-harbour-bridge",
+          "title": "Sydney Harbour Bridge sightseeing stop",
+          "place_name": "Sydney Harbour Bridge",
+          "source_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "location": "Sydney Hbr Brg, Sydney NSW, Australia",
+          "start_time": "2026-10-18T10:00:00+11:00",
+          "end_time": "2026-10-18T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A short sightseeing stop, not a planned bridge crossing. Date-specific operating status and hours are unknown; forecast indicates drizzle."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-the-rocks",
+          "title": "The Rocks",
+          "place_name": "The Rocks",
+          "source_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "location": "The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-18T11:45:00+11:00",
+          "end_time": "2026-10-18T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A gentle district visit after the bridge stop. Current operating status and specific opening hours are unavailable in the supplied evidence."
+        }
+      ]
+    }
+  ]
+}

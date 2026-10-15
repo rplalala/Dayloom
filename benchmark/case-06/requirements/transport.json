@@ -1,0 +1,31 @@
+{
+  "schema_version": "rtpeval_route_reviews_1",
+  "batch_id": "case-06-primary-20261015-01",
+  "revision": "5",
+  "groups": [
+    {
+      "group_id": "case-06",
+      "input_sha256": "fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a",
+      "reviewer_ref": "/root/case06_reviewer",
+      "reviewed_at": "2026-10-14T19:03:32.090875Z",
+      "status": "unrestricted",
+      "reason": "Complete request reviewed. Driving between sightseeing stops is a preference supported by rental-car availability. It is not an exclusive transport restriction; less continuous walking is also qualitative. No hard allowed-mode policy or compulsory stated_mode is justified.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We have rented a car and prefer to drive between sightseeing stops.",
+          "occurrence": 0,
+          "offset_start": 172,
+          "offset_end": 239
+        },
+        {
+          "field_path": "additional_preferences",
+          "quote": "Please favour an itinerary with breaks and less continuous walking.",
+          "occurrence": 0,
+          "offset_start": 104,
+          "offset_end": 171
+        }
+      ]
+    }
+  ]
+}

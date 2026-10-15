@@ -1,0 +1,38 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-06",
+  "case_revision": "1",
+  "input_sha256": "fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a",
+  "requirement_spec_ref": {
+    "path": "reviewed-final.json",
+    "sha256": "286cb15b1925871dde6bff77cc693b861466cadef58d67023d853beaa2f27266",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "revision": "1",
+  "reviewer_ref": "/root/case06_reviewer",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-14T19:03:32.090875Z",
+  "rationale": "Independent complete-original-request review confirms three source-stated POI interests: science, nature and outdoor spaces. Family composition, breaks, reduced continuous walking and driving are context or pace/transport preferences. No exclusive focus, named-place requirement or interest quota is stated. The inventory binds the independently reviewed final RequirementSpec.",
+  "interests": [
+    {
+      "interest_id": "science",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are travelling as a family of two adults and one child. We enjoy science, nature and outdoor spaces. Please favour an itinerary with breaks and less continuous walking. We have rented a car and prefer to drive between sightseeing stops.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "nature",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are travelling as a family of two adults and one child. We enjoy science, nature and outdoor spaces. Please favour an itinerary with breaks and less continuous walking. We have rented a car and prefer to drive between sightseeing stops.",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "interest_id": "outdoor-spaces",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are travelling as a family of two adults and one child. We enjoy science, nature and outdoor spaces. Please favour an itinerary with breaks and less continuous walking. We have rented a car and prefer to drive between sightseeing stops.",
+      "requirement_pointer": "/soft_preferences/2"
+    }
+  ]
+}

@@ -1,0 +1,457 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "day1-garden",
+      "to_activity_id": "day1-observatory",
+      "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination_place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-15T11:00:00+11:00",
+      "arrival_time": "2026-10-15T11:22:44+11:00",
+      "provider_duration_seconds": 764.0,
+      "distance_meters": 3258,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day2-gallery",
+      "to_activity_id": "day2-tower",
+      "origin_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-16T12:00:00+11:00",
+      "arrival_time": "2026-10-16T12:15:21+11:00",
+      "provider_duration_seconds": 321.0,
+      "distance_meters": 968,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day3-bondi",
+      "to_activity_id": "day3-opera-house",
+      "origin_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+      "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-17T11:30:00+11:00",
+      "arrival_time": "2026-10-17T12:03:05+11:00",
+      "provider_duration_seconds": 1385.0,
+      "distance_meters": 10495,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    },
+    {
+      "from_activity_id": "day4-hyde-park",
+      "to_activity_id": "day4-harbour-bridge",
+      "origin_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "destination_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+      "mode": "DRIVE",
+      "mode_source": "USER_EXPLICIT",
+      "departure_time": "2026-10-18T11:00:00+11:00",
+      "arrival_time": "2026-10-18T11:20:53+11:00",
+      "provider_duration_seconds": 653.0,
+      "distance_meters": 6441,
+      "reserve_seconds": 600.0,
+      "routing_preference": "TRAFFIC_UNAWARE",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "basic_drive_estimate",
+      "validation_state": "PASS",
+      "unknowns": [
+        "Car transport must be arranged; cost and availability not verified."
+      ]
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-garden",
+      "to_activity_id": "day1-observatory",
+      "origin": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "destination": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+      "departure": "2026-10-15T11:00:00+11:00",
+      "next_start": "2026-10-15T12:30:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 764,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+                "destination_place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 764,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 0,
+                "destination_index": 2,
+                "distance_meters": 3258,
+                "duration_seconds": 764,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-gallery",
+      "to_activity_id": "day2-tower",
+      "origin": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "destination": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "departure": "2026-10-16T12:00:00+11:00",
+      "next_start": "2026-10-16T14:00:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 321,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+                "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 321,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 2,
+                "destination_index": 9,
+                "distance_meters": 968,
+                "duration_seconds": 321,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-bondi",
+      "to_activity_id": "day3-opera-house",
+      "origin": "ChIJx4FyRJytEmsReOktxgkYwyA",
+      "destination": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "departure": "2026-10-17T11:30:00+11:00",
+      "next_start": "2026-10-17T14:00:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1385,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.520188+00:00",
+              "retrieved_at": "2026-10-14T21:21:32.828009+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+                "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1385,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.520188Z",
+                "retrieved_at": "2026-10-14T21:21:32.828009Z",
+                "origin_index": 1,
+                "destination_index": 0,
+                "distance_meters": 10495,
+                "duration_seconds": 1385,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day4-hyde-park",
+      "to_activity_id": "day4-harbour-bridge",
+      "origin": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "destination": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+      "departure": "2026-10-18T11:00:00+11:00",
+      "next_start": "2026-10-18T13:00:00+11:00",
+      "considered_modes": [
+        "DRIVE"
+      ],
+      "adopted_mode": "DRIVE",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "DRIVE",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 653,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+                "destination_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 653,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 3,
+                "destination_index": 3,
+                "distance_meters": 6441,
+                "duration_seconds": 653,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Botanic Gardens Cafe",
+      "source_place_id": "ChIJQQVQuW6uEmsRdZZsAFcwFUU",
+      "reason": "Cafe near Royal Botanic Garden Sydney (approximately 71 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "4A Macquarie St, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-c3dad2ea-33ad-4864-8c10-a31dab37b460:1"
+    },
+    {
+      "place_name": "Observatory Hill Park",
+      "source_place_id": "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+      "reason": "Park near Sydney Observatory (approximately 48 m straight-line).",
+      "associated_day": "2026-10-15",
+      "area": "1001 Upper Fort St, Millers Point NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-94ef7243-6991-4755-b7d8-03d3d7e1f09a:0"
+    },
+    {
+      "place_name": "The Gallery Café",
+      "source_place_id": "ChIJASPIoDKvEmsRl1FwrxoNJjI",
+      "reason": "Restaurant near Art Gallery of New South Wales (approximately 34 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "Art Gallery Rd, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-10c38524-1209-4190-888e-2cd5d17e7095:1"
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-garden",
+          "title": "Visit Royal Botanic Garden Sydney",
+          "place_name": "Royal Botanic Garden Sydney",
+          "source_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-15T09:30:00+11:00",
+          "end_time": "2026-10-15T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A shorter garden visit leaves time to take breaks. Light drizzle is forecast; the supplied opening-hours pattern is typical, and date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-observatory",
+          "title": "Explore Sydney Observatory",
+          "place_name": "Sydney Observatory",
+          "source_place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+          "location": "1003 Upper Fort St, Millers Point NSW 2000, Australia",
+          "start_time": "2026-10-15T12:30:00+11:00",
+          "end_time": "2026-10-15T14:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Science-focused visit. The supplied hours show a 12:00–19:30 pattern for this date, but the official evidence describes it as a general baseline and date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-gallery",
+          "title": "Visit Art Gallery of New South Wales",
+          "place_name": "Art Gallery of New South Wales",
+          "source_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "location": "Art Gallery Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-16T10:30:00+11:00",
+          "end_time": "2026-10-16T12:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Rain showers are forecast, making this an indoor option. The supplied 10:00–17:00 hours are a typical pattern; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-tower",
+          "title": "Visit Sydney Tower Eye",
+          "place_name": "Sydney Tower Eye",
+          "source_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+          "location": "Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-16T14:00:00+11:00",
+          "end_time": "2026-10-16T15:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied 11:00–19:00 hours are a typical pattern, not confirmation of date-specific hours; exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-bondi",
+          "title": "Spend time at Bondi Beach",
+          "place_name": "Bondi Beach",
+          "source_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+          "location": "Bondi Beach, NSW 2026, Australia",
+          "start_time": "2026-10-17T10:00:00+11:00",
+          "end_time": "2026-10-17T11:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A nature and outdoor-space stop; light drizzle is forecast. Supplied evidence does not confirm date-specific operating status or hours."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-opera-house",
+          "title": "Visit Sydney Opera House",
+          "place_name": "Sydney Opera House",
+          "source_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+          "location": "Bennelong Point, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-17T14:00:00+11:00",
+          "end_time": "2026-10-17T15:15:00+11:00",
+          "estimated_cost": null,
+          "notes": "Date-specific opening hours and status are not confirmed in the supplied evidence; check current arrangements before visiting."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-hyde-park",
+          "title": "Take a relaxed visit to Hyde Park",
+          "place_name": "Hyde Park",
+          "source_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "location": "Elizabeth St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-18T10:00:00+11:00",
+          "end_time": "2026-10-18T11:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Moderate drizzle is forecast. The supplied opening-hours pattern is open 24 hours, but date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4-harbour-bridge",
+          "title": "See Sydney Harbour Bridge",
+          "place_name": "Sydney Harbour Bridge",
+          "source_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "location": "Sydney Hbr Brg, Sydney NSW, Australia",
+          "start_time": "2026-10-18T13:00:00+11:00",
+          "end_time": "2026-10-18T14:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Moderate drizzle is forecast; consider keeping this outdoor landmark visit brief. Date-specific operating status and hours are not confirmed in the supplied evidence."
+        }
+      ]
+    }
+  ]
+}

@@ -1,229 +1,213 @@
 # Case 06: Sydney family trip
 
-## Status and request
+## Acceptance and selected material
 
-**Blocked at batch registration, 15 October 2026 Australia/Sydney.** V0-V2
-completed their single selected generation attempts and remain selected unchanged.
-V3 a1 failed with `TimeoutError`; the authorized replacement a2 completed Planner
-generation but failed registration with `Source path escapes collection root`. No accepted
-four-version manifest, primary preparation, primary score or opening-access
-assessment exists. This is a registration failure, not an evaluated quality UNKNOWN.
+**Case-06 revision 5 final package accepted on 15 October 2026 Australia/Sydney.**
+The researcher accepted the exact selected input/results, primary scores, offline
+analyses and all stated limitations as the final case-06 data and documentation
+baseline. The reviewed package is local commit `6ce08f5`; this acceptance update
+changes status metadata only. Blinded human ratings remain deferred. Case-08/10
+are explicitly paused pending a separate start instruction.
 
-[Issue #155](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/155) owns
-this case's live state; [parent #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
-owns the approved first-wave budgets and concurrency. The researcher authorized
-the initial steps 1-6 with USD 30 generation and USD 10 primary evaluation, one
-attempt per version and zero automatic retries. After a1 failed, the researcher
-approved one additional V3 attempt with a USD 12 reference allowance, confirmed
-a live slot and explicitly started a2. The USD 40 case and USD 200 batch reference
-allowances remain unchanged; the original a1 bill is unknown. All live processes
-have ended. No retry or registration repair was performed. Primary evaluation
-requires a separate human instruction; case-08/10 remain unstarted. Coordination
-now occurs directly with the researcher, without automatic queue or backfill.
+The [original request](../inputs/case-06.json) is a Sydney trip on 15–18 October 2026
+for three travelers, with a whole-group budget of AUD 2,200. Two adults and a child
+enjoy science, nature and outdoor spaces, prefer breaks and less continuous walking,
+and have a rental car with a preference for driving. The request bytes and dates are
+unchanged. Independently reviewed semantics retain three soft interests, unrestricted
+transport, relaxed density and `Australia/Sydney`; there are no hard visit obligations.
 
-The unchanged [original request](../inputs/case-06.json) is a four-day Sydney trip,
-15-18 October 2026, for three travelers with a whole-group budget of AUD 2,200.
-Two adults and a child enjoy science, nature and outdoor spaces, favor breaks and
-less continuous walking, and have a rental car with a preference for driving.
+The selected data consists of the original V0–V2 results and the authorized V3 a2
+result. Each selected generation is complete. V2/a2 retain partial retrieval
+observations; producer completion does not establish complete corpus measurement.
+Original failed/nonselected evidence is retained separately and contributes to the
+all-attempt resource account. It is not substituted for a selected final result.
 
-## Semantic preparation and source binding
+[Issue #155](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/155) owns the
+live acceptance state; [parent #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
+owns the first-wave budget. This package makes no general version ranking, causal
+Repair claim, corpus recall estimate or version-freeze decision. Case-08/10 remain
+unstarted, with no automatic queue or backfill.
 
-Different source-only Codex agents authored and reviewed the native requirements
-and interest inventory before generation. No named-place, count, exclusion or
-fixed-time obligation was stated. Family context, breaks, walking comfort and
-driving remain soft preferences; the review adds no age, walking threshold or
-rest quota. Science, nature and outdoor spaces remain separate interests.
-The reviewed transport status is `unrestricted`, without compulsory `stated_mode`.
-Density is `relaxed`, `exact_count=null`, with no dated overrides. Independent
-destination context identifies `Australia/Sydney`.
+## Material map
 
-Native external-handoff validation passed against the unchanged input and genuine
-author/reviewer files. The semantic sources are prepared and hash-verified; they
-have not been attached to an accepted four-version evaluation package. Occupancy
-review and primary-package validation were not reached.
-
-| Binding | Value |
+| Material | Final reader view |
 | --- | --- |
-| Delivered starting commit | `6b11572c1c2331b61f263727dd7901ba8353752c` |
-| Generation source commit | `f49503a3359ddb6ed64c79465fc010143a5b141c` |
-| Replacement a2 source commit | `2f53f87f32d9ae45fca5c8b3aa6d6d616757ce24`; only this case report differs from the original generation source |
-| Original input SHA-256 | `fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a` |
-| `config/runtime.yaml` SHA-256 | `a6c932272e8d5037ed66fb057e629f8dcff44f3e12117d2dbcb16c8905454058` |
-| Reviewed RequirementSpec SHA-256 | `286cb15b1925871dde6bff77cc693b861466cadef58d67023d853beaa2f27266` |
-| Reviewed interests SHA-256 | `9734530783049ff5b416ffb6c21b2f2f72001a9781ac8c2a1ae80fb13e8da9d0` |
-| Native batch identity | `case-06-primary-20261015-01`, revision `1`, group `case-06` |
+| Complete schedules, transfers, unscheduled references and recorded POI origins | [Itineraries](itinerary.md) |
+| Exact public hashes, original sources, selected runs and lossless reference format | [Material index](material-index.json) |
+| Independently reviewed source meaning | [Requirements](requirements/reviewed-requirements.json), [interests](interests/interests.json) |
+| Reviewed timezone, transport, density and occupancy | [Schedule](requirements/schedule.json), [transport](requirements/transport.json), [density](requirements/density.json), [occupancy](requirements/occupancy.json) |
+| Selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
+| Selected usage | [V0](generation/v0/usage.json), [V1](generation/v1/usage.json), [V2](generation/v2/usage.json), [V3](generation/v3/usage.json) |
+| Selected provenance | [V0](generation/v0/provenance.json), [V1](generation/v1/provenance.json), [V2](generation/v2/provenance.json), [V3](generation/v3/provenance.json) |
+| Shared configuration and recorded RAG origins | [Runtime policy](generation/runtime-policy.json), [V2 origins](generation/v2/rag-origins.json), [V3 origins](generation/v3/rag-origins.json) |
+| Final independent primary report | [Primary](evaluation/primary/report.json) |
+| Candidate stages and independent interest judgments | [Opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [review records](interests/relevance-reviews.json) |
+| Same-run V3 stages and Repair observations | [Lossless draft delta](generation/v3/draft-delta.json), [validation](generation/v3/validation.json), [paired diagnostics](evaluation/v3-pair/report.json), [Repair view](analysis/repair/repair.json), [mechanisms](analysis/repair/mechanism.json) |
+| Selected and all-attempt resources | [Accounting](analysis/resources/accounting.json) |
 
-Every actual generation dispatch revalidated the complete input window against
-`SystemDateProvider('Australia/Sydney')`, returning 2026-10-15. No date was changed
-or backdated. Original runs use `case-06-vN-20261015-a1`; the replacement is
-`case-06-v3-20261015-a2`, selected in native batch revision `2` with the original
-V0-V2 run identities and bindings.
+Public JSON values use indexed `$case_material_ref` links to store repeated large
+objects once. Expanding those references recovers the exact source JSON value.
+V3's draft delta reconstructs its original draft from the delivered itinerary.
+The index identifies original hashes and subtree pointers. Intrinsic native source
+paths are private evidence identifiers; public views are not relocated native
+execution bundles. Raw provider/model payloads and private transcripts remain private.
 
-## Generation and observed consumption
+## Final primary results
 
-| Version | Actual attempts | Outcome | Model calls | Google sends | Observed tokens | Elapsed seconds | Reference USD |
-| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| V0 | 1 | Completed | 2 | 0 | 21,232 | 132.437 | 0.00573635 |
-| V1 | 1 | Completed | 11 | 50 | 67,857 | 139.203 | 2.07843713 |
-| V2 | 1 | Completed | 12 | 66 | 73,237 | 150.453 | 2.44711137 |
-| V3 a1 | 1 | Failed: `TimeoutError` | 1 | 0 | Unavailable | 1639.141 | Unavailable |
-| V3 a2 | 1 additional | Planner completed; registration failed | 12 | 75 | 71,837 | 151.532 | 2.627493645 |
+| Version | Grounding | Non-overlap | Opening | Routes | Auxiliary score | Density deduction | Final primary score |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| V0 | 87.5 | 100 | 87.5 | 75 | 87.5 | 0 | **87.5** |
+| V1 | 100 | 100 | 100 | 100 | 100 | 15 | **85** |
+| V2 | 100 | 100 | 100 | 100 | 100 | 5 | **95** |
+| V3 | 100 | 100 | 100 | 100 | 100 | 0 | **100** |
 
-V2's model count includes one `text-embedding-3-small` call; the other model calls
-use the observed `gpt-6-luna` deployment. V1/V2 passive candidate capture is
-available. V2's producer declares retrieval completion while preserving its
-`partial` retrieval observation. No candidate or Repair process analysis was run.
+The four common dimensions each have weight 1/4. Requirements has no hard checks
+and is uniformly excluded. No common-dimension FAIL was found. V0's Sydney Observatory
+visit on 18 October retains `model_conflicting_assessment`; unresolved identity
+propagates to its opening check and one route. Grounding/opening each have 7 PASS and
+1 UNKNOWN, while routes has 3 PASS and 1 UNKNOWN. UNKNOWN remains in the denominator
+and reduces verified scores without being asserted as a violation.
 
-V0-V2 have complete reported usage and no unpriced events. Their reference subtotal
-is **USD 4.53128485**, with **162,326 observed tokens**. This is not the complete
-case cost or token total: V3 a1 has one uncompleted Foundry HTTP send, absent provider
-usage and two unpriced cost events. Its account and reference totals are null.
-The a2 model count includes one embedding call; its 88 HTTP sends include 76 tool
-sends (75 Google and one weather send). Its 71,837 tokens comprise 58,181 input
-and 13,656 output tokens, with no missing usage fields, incomplete HTTP sends or
-unpriced cost events. The known V0-V2 plus a2 reference subtotal is
-**USD 7.158778495**, with **234,163 observed tokens**. The failed a1 remains outside
-those known subtotals. Actual account invoices and external Codex tokens/billing remain unavailable.
-Generation prices retain the native 2026-10-08 reference basis; the coordinator
-rechecked public references on 2026-10-15. Foundry prices are the declared OpenAI
-retail proxy, excluding credits, free quotas, discounts and tax.
+Relaxed daily-density deductions are averaged over four requested dates. V1 counts
+2/1/3/2 primary visits, giving daily deductions 0/20/40/0 and a mean of 15. V2 counts
+2/1/2/2, giving 0/20/0/0 and a mean of 5. V0/V3 each have two visits daily and no
+pace deduction. The independent missing-hours assessment covered 10 eligible visits
+before final scoring. Model-supported access remains distinct from API-verified hours.
 
-## V3 attempts and evaluation gate
+The approved single primary operation completed in 51.75 seconds with exit 0 and its
+owned process ended. Acquisition and processing are complete; evidence remains
+`unresolved` because of V0's retained UNKNOWN. Limits were USD 10 reference cost,
+250 Google sends, two model sends, 64,000 input/8,192 output tokens per model request,
+90 seconds per HTTP request and a 1,200-second outer deadline, with zero retries.
 
-Before a2, a private standard-library process guard passed six offline checks,
-including a three-second timeout ending after 3.016 seconds. The real CLI prepare
-check completed without provider sends; 508 V0-V2 dependency files passed native
-reuse validation. The guard SHA-256 is
-`c4aa39c0171460a6af462793c694aa0be7943368fca060c632fd87f04e6810bd`.
-The replacement retained the existing token and Repair limits, used a 600-second
-outer process deadline, and allowed no automatic retry. This guard bounds process
-execution rather than monetary billing.
+## Candidate process and interest relevance
 
-The a2 guard started at `2026-10-14T21:19:12.711096+00:00` and ended at
-`2026-10-14T21:22:04.594960+00:00`, with the owned subprocess ended and exit code
-`2`. Outer elapsed time was 171.891 seconds; native selected-invocation-through-
-cleanup time was 151.532 seconds. The deadline was not reached. Planner exit code
-was `0`, with result, provenance and usage retained. Its producer
-declares generation, retrieval and validation completed, while preserving a
-`partial` retrieval observation. Repair is `not_applicable` with
-`no_authorized_targets`, and Repair model calls are zero. These are producer
-observations rather than evaluated quality judgments.
+Canonical Google Place IDs are counted once per stage. Nearby-only references are
+excluded from scheduled visits. `G/R/M` means Google-only / RAG-only introduction /
+mixed Google and RAG origins within the same captured run.
 
-Registration then failed with `Source path escapes collection root`; no staging
-directory or qualified four-version package was created. Offline diagnosis on
-15 October reproduced the exact failure twice from the saved collection, with
-network access disabled and no source writes. The parent preparation helper had
-embedded complete native V0-V2 completion dictionaries in the new root-level
-selection without rebinding their capture-relative references. Recursion followed
-a2 provenance, a2 producer completion, its operator selection snapshot, then
-`groups[0].selected_runs.v0.completion.operator_selection_ref`. Its unchanged path,
-`../../generation-selection-378b0eb726694dfbb287f3ffac922169.json`, was resolved
-against `work/` instead of the original `primary-20261015-01/captures/v0/` owner.
-The resulting target escaped the bounded root; the containment check correctly
-rejected it. In the native owner the target exists and its hash matches. V1/V2
-carry the same copied-reference pattern. No link anomaly was found; enlarging the
-root points to a nonexistent wrong target rather than repairing ownership.
+| Stage | V1 canonical places | V2 canonical places | V2 G/R/M | V2 added / V1-only / retained |
+| --- | ---: | ---: | --- | --- |
+| Discovered | 62 complete | 70 observed, partial | 51/11/8 | Unavailable: V2 inventory is partial |
+| Admitted | 56 | 56 | 44/8/4 | 19/19/37 |
+| Enriched | 28 | 36 | 24/8/4 | 13/5/23 |
+| Supplied | 14 | 14 | 10/1/3 | 4/4/10 |
+| Independently confirmed scheduled | 8 | 7 | 6/0/1 | 3/4/4 |
 
-The earlier offline preparation checked V0-V2 directly and a pending V3 slot,
-without exercising the completed V3 provenance-to-selection dependency chain.
-Top-level completion qualification checks metadata but does not traverse those
-inline reference fields; the new chain exposed the preparation defect only after
-generation. Existing source-bound reuse tests use reference-free fixture completion
-metadata and do not cover this pattern.
+V1's captured origins are Google-only throughout. V2 records 11 observed RAG-only
+introductions at discovery, one supplied RAG-only venue and three supplied mixed-origin
+venues. Its seven scheduled places contain one mixed-origin venue and no RAG-only
+introduction. The report retains query origins, omissions, admission/enrichment/supply
+fates and the partial discovery boundary. These sets describe two independent
+realizations; they do not isolate a causal RAG effect.
 
-A diagnostic copy of the collector, executed only in memory with native-owner
-context for embedded declarations, validated 809 dependency files and completed
-all four producer qualification checks. The embedded V0-V2 declarations matched
-the original native completion dictionaries. True root escapes and dependency hash
-mismatches remained rejected. This is a feasibility probe, not an installed fix,
-staging package or evaluator qualification. Original files, a2 result/usage and
-failed selection/collection bytes remain unchanged.
+A fresh independent reviewer judged all 91 inventoried subjects against the three
+source interests using only saved independent venue evidence. Only 13 subjects have
+such evidence. Of 273 interest–venue judgments, seven are relevant (four nature and
+three outdoor-spaces judgments), 266 are UNKNOWN and none is established not relevant.
+All science judgments remain UNKNOWN because the saved fields do not establish the
+needed function. Literal park/garden/zoo/beach functions support the positive labels;
+missing descriptions and ambiguous names are not filled from Planner labels or memory.
 
-The proposed repair normalizes future selections and defines verified native-origin
-handling for preserved legacy snapshots, retaining containment and exact-byte hash
-checks. Shared collector/generator contracts and regression tests require a separately
-approved implementation scope. After that repair, a fresh offline collection can
-reuse the existing a2 capture and original V0-V2; the failed registration remains
-historical evidence. No application change, re-registration, paid retry or primary
-call followed this diagnosis.
+There are four confirmed relevant supplied venues in each version, and confirmed
+relevant scheduled lower bounds of four for V1 and three for V2. Complete relevance
+counts, relevant-stage conversion rates and relevance gain/loss comparisons remain
+unavailable because of UNKNOWN judgments. No corpus coverage study or additional
+venue acquisition was performed.
 
-### Original a1 failure
+## Repair and same-run V3 observations
 
-V3 preparation was recorded at `2026-10-14T19:46:00.635867+00:00`; producer failure
-completion was recorded at `2026-10-14T20:13:20.615575+00:00`. The native
-`selected_invocation_through_cleanup` elapsed time of 1639.141 seconds exceeds the
-approved 600-second total. The execution child reported that a requested
-40-second tool wait blocked for approximately 1632 seconds and returned no stdout;
-its next poll received exit 1. These are retained observations. The cause and
-which portion of the interval consumed the excess time have not been diagnosed.
+V3 a2 declares `no_authorized_targets`, `repair=null` and zero Repair model sends.
+Its draft and final_primary values are identical, including their scheduled visits
+and transfers. The delivered itinerary adds only three unscheduled Nearby references;
+the lossless draft delta preserves that distinction. Internal validation findings are
+retained as producer observations, separate from independent quality judgments.
 
-Only one model call and one incomplete model HTTP send were observed in V3,
-both in the native `requirements` stage;
-Google, embedding and Repair sends were zero. No provider tokens were returned.
-The producer declares generation, retrieval, validation and Repair `failed`.
-There is no result, provenance or draft/final pair. Zero Repair calls here does
-not establish a successful no-Repair outcome.
+Native paired diagnostics reused the primary's closed independent observations with
+explicit zero-send/zero-cost limits. Both original V3 stages are available, and their
+paired primary-score difference is exactly zero. This API-only diagnostic gives
+90.625 to each stage with the same three opening UNKNOWNs; it does not import the
+primary's model-supported missing-hours judgments. These separate pair scores do not
+replace the accepted V3 primary score of 100. Paired source charges are inherited,
+not billed again.
 
-### Evaluation gate
+The independent V2 and V3 final primary scores differ by +5 points, entirely from
+mean density deductions of 5 versus 0; their common-dimension auxiliary scores are
+both 100. Since V3 performed no Repair and its own stages are unchanged, this
+cross-generation difference is not evidence of Repair improvement.
 
-The original a1 registration remains `blocked`; a2 registration is `failed` despite
-its completed Planner output. Therefore native four-final intake,
-independent evidence acquisition, common-dimension scores, density deductions,
-FAIL/UNKNOWN quality findings and primary replay are **not evaluated** for every
-version. Reviewed density policy is preparation, not a computed deduction.
-The primary evaluator has zero attempts and zero sends. No partial score or
-replacement result was fabricated. The separately authorized a2 is the only
-additional attempt; no automatic generation retry or consumed-package restart occurred.
+## Resource account
 
-## Evidence and actual AI assistance
+| Selected generation | Model calls | Google sends | Observed tokens | Native elapsed seconds | Reference USD |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| V0 | 2 | 0 | 21,232 | 132.437 | 0.00573635 |
+| V1 | 11 | 50 | 67,857 | 139.203 | 2.07843713 |
+| V2 | 12 | 66 | 73,237 | 150.453 | 2.44711137 |
+| V3 | 12 | 75 | 71,837 | 151.532 | 2.627493645 |
 
-The preserved private worktree is
-`C:\Users\70522\.codex\worktrees\dae0\Reliable-Trip-Plan-Agent`.
-Its case-relative evidence root is
-`benchmark/scratch/case-06/work/primary-20261015-01/`.
-These paths identify retained private evidence, not public download links.
-It contains original inputs/configuration snapshots, semantic drafts/finals and
-real execution/partial-transcript records, immutable selections, V0-V2
-result/usage/provenance/completion and passive captures, V3 failure/usage/completion
-and trace, and original staging/registration dependencies. The replacement's
-private root is `benchmark/scratch/case-06/work/v3-replacement-prep-20261015-01/`,
-containing offline preparation, a2 capture and external guard evidence. After a2,
-all 1,932 original files and their byte hashes remained unchanged. No cleanup,
-relocation or compact archive replay was performed.
+V2/V3 model counts each include one embedding call. Selected generation totals are
+234,163 tokens and USD 7.158778495 reference cost. The all-attempt ledger includes
+five actual generation dispatches: 38 model calls and 232 HTTP sends. One earlier
+nonselected failed attempt has one incomplete model HTTP send, unavailable provider
+tokens and two unpriced events. Complete all-attempt token/cost totals therefore
+remain null; the known subtotal is not presented as a complete total.
 
-| Evidence | Exact original SHA-256 |
+Primary evaluation used 65 Google sends and two model sends, with 24,240 input and
+2,930 output tokens. Reference cost is USD 1.34649485 (Google 1.342; models
+0.00449485). Known generation plus primary consumption is **261,333 tokens and
+USD 8.505273345**. The offline follow-up adds zero provider sends and zero current
+reference cost. Repair is counted as a subset; paired inherited usage is counted
+once; oracle consumption is not assigned to a Planner version.
+
+Actual account invoices and external Codex token/billing data are unavailable.
+Reference prices exclude credits, free quotas, discounts and tax. Case USD 40 and
+batch USD 200 remain reference allowances rather than invoice hard guards.
+
+## Integrity and retained evidence
+
+The input, selected results and consumed primary report retain their original bytes.
+All 35 public JSON materials passed lossless expansion and source-value/subtree
+comparison. Native source/receipt replay passed for the accepted primary and for the
+zero-send paired operation. The native opportunity, relevance, mechanism and
+all-attempt accounting reports retain deterministic source/semantic digests.
+
+Private evidence remains separately under the original ignored case work roots and
+`benchmark/scratch/case-06/archive/`. The archive maps original logical paths to exact
+SHA-256 blobs and lengths, retaining failed attempts, registration/preparation copies,
+raw captures, actual actor records and native dependencies. Originals remain in place.
+The archive retains 13,411 logical files in 1,679 unique blobs (4,628,252 compressed
+bytes). Fresh restoration reproduced native opportunities, relevance, resources,
+mechanisms, V3 paired diagnostics and the primary report. The source-byte recheck
+passed. Its `verification.json` records these checks; native absolute-path
+declarations are preserved rather than edited.
+
+| Binding | SHA-256 / identity |
 | --- | --- |
+| Exact input | `fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a` |
 | V0 result | `326246140a2ca791d6bd73433a606c80cc1eccce354e85ea9a2d36fc814c5942` |
 | V1 result | `8e61f4d5aceb0188c5252353c5ddb8cda353ec822b9919fd793592e71d398fc6` |
 | V2 result | `0c22b9a3be6d5a09d7ac1a9794363df39f5e7a05c066c10ad0930ce19c6ac962` |
-| V3 `failure.json` | `ee787e1b44f8e25d67510a0d5217328cbfa78602c505f6d59e3aabf0e9e965dd` |
-| V3 `usage.json` | `d3c7f36ed32e93e59f67166a0c4d311697800bfd44cdf634451ab74c0a22fb41` |
-| V3 producer completion | `9d60f182b74220c93b4113b58d76465f43bb5b772fe44603db12b670c92fe214` |
-| V3 a2 result | `23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e` |
-| V3 a2 usage | `7729992af42c09ff39eb59948e851e9a3606987037d0bd547c86f76ae540f365` |
+| V3 selected result | `23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e` |
+| Qualified revision 5 manifest | `0cd4ed9a0870428724302c99033cdd560469f11f8eb9593be785d2e1d11f305b` |
+| Accepted package source / index | `6ce08f5`; reviewed index `042b44660904803d7914074251aa63eefc831403fafc4efda5db19d6c2dc5540` |
+| Primary preparation digest | `16ab31a5aa52c268b241903f69b5f90541a7462ff88b6ad9f7d52f13b3d0c478` |
+| Primary final native report | `e2ec4fd28f13479e00191eaf28df89b5bba4376453affe4f1c54073c4e7cf613` |
+| Primary closed receipt | `6bffaa787e7d3ec6a705828d7c2f1e0ae5fede709b8143ffc235f85201e9cd23` |
+| Generation sources | V0–V2 `f49503a3359ddb6ed64c79465fc010143a5b141c`; V3 a2 `2f53f87f32d9ae45fca5c8b3aa6d6d616757ce24` |
+| Primary dispatch source | `5e296d2ccd268dd88fbdcfd8fac628ca59bb3b3b` |
+| Offline analysis starting source | `de0a0c7`; no application or evaluator implementation changes |
 
-| Work | Actual actor/configuration | Retained scope and limitations |
+## Actual assistance and review
+
+| Contribution | Actual performer | Scope and evidence limits |
 | --- | --- | --- |
-| Requirements/interests/transport/density/time authoring | `/root/case06_author`, selected `gpt-6.1-sol/high`, fresh context | Complete original request and current contracts; actual draft and execution record retained. A current index exposed case-01 acceptance status without quality/results; this limited exposure is disclosed. |
-| Independent semantic review | `/root/case06_reviewer`, selected `gpt-6.1-sol/high`, fresh context | Same complete original request and exact author draft; native finals and genuine review record retained. No itinerary, score or mechanism context. |
-| Prepared live generation commands | `/root/case06_execution`, selected `gpt-6.1-sol/medium` | Same current-session child executed sequential commands, retained original outcomes and reported consumption/failure. |
-| Authorized V3 replacement execution | `/root/case06_a2_execution`, selected `gpt-6.1-sol/medium`, fresh context | Executed the frozen guarded command once, inspected bindings and consumption, and stopped at registration failure. Terminal observations and a derived parent assessment are retained; complete transcript and external token/billing data are unavailable. |
-| Orchestration and documentation | Parent Codex agent | Scope/source/date/environment gates, native handoff checks, command preparation, receipt inspection and this report; no shared implementation changes. |
-| Human decisions | Researcher | Approved initial scope/budgets, then V3 a2 with USD 12 reference allowance and a confirmed live slot; primary evaluation remains separately paused. No case acceptance or human quality rating. |
+| Source semantics | `/root/case06_author` and distinct `/root/case06_reviewer`, `gpt-6.1-sol/high`, fresh contexts | Independently authored/reviewed original request meaning. Author's acceptance-status-only case-01 index exposure is disclosed; no case-01 quality/results. Original spec, interests and genuine partial records retained. |
+| Generation, authorized a2 and primary execution | `/root/case06_execution`, `/root/case06_a2_execution`, `/root/case06_primary_execution`, `gpt-6.1-sol/medium` | Actual prepared commands, outcomes and reported usage retained. Separate execution children did not supply human ratings. |
+| Independent relevance | `/root/case06_relevance_review`, fresh context; exact inherited model identity unavailable | Original interests and saved independent venue fields only; no Planner labels, version/stage membership, itineraries or scores. Actual 273 judgments and execution hashes/times retained. |
+| Preparation, registration correction, offline analyses and final presentation | Parent Codex agent | Source binding, original preservation, native reports, lossless public views, archive/restoration checks and documentation. No new Planner/provider invocation in this stage. |
+| Registration implementation review | `/root/case06_registration_standards` and `/root/case06_registration_spec`, fresh contexts | Standards and Spec checks completed without findings. Detailed correction evidence stays private; exact inherited review-model identity is unavailable. |
+| Decisions | Researcher | Authorized the selected generation/replacement, accepted revision 5 primary scores/limitations and approved existing-evidence follow-up. Accepted the complete final package and all limitations as the final case-06 baseline; case-08/10 paused and human quality ratings deferred. |
 
-Author/reviewer start timestamps are their earliest observed clock samples after
-initial reading, not verified dispatch times. Their partial authentic messages
-are retained; complete session exports, exact external-agent tokens and bills are
-unavailable. Agent review does not constitute human review.
-
-Environment preparation found a sandbox DB connection timeout; the same native
-query-only compatibility check passed outside the sandbox with zero embedding
-sends. The installed `rtpeval.exe` trampoline could not canonicalize its path;
-the same local locked Python environment invoked `backend.cli.rtpeval.main`
-successfully. A V2 approval rejection occurred before process creation and any
-generation attempt. Static inspection verified that `.env.tripworld` supplies only
-DB authentication, embedding sends bounded query text, and existing Google/Foundry
-flows use venue fields/normalized evidence without environment-file contents.
-Approval then allowed the identical command. This did not retry a provider request.
-The initial coordinator message rejection was resolved by direct human messaging
-authorization. No credentials or shared runtime policy were changed.
+Complete external-agent transcript exports, exact tokens and invoices remain unavailable;
+authentic partial messages and actual outputs are retained. Agent inspection and user
+scope approval are separate from real blinded-rater responses.

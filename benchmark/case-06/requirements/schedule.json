@@ -1,0 +1,15 @@
+{
+  "schema_version": "rtpeval_schedule_context_1",
+  "batch_id": "case-06-primary-20261015-01",
+  "revision": "5",
+  "groups": [
+    {
+      "group_id": "case-06",
+      "input_sha256": "fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a",
+      "timezone": "Australia/Sydney",
+      "source_ref": "Independent reviewed factual destination context: original Input destination is Sydney, Australia; its civil timezone is IANA Australia/Sydney. This uses the destination, not host timezone or Planner metadata. No network lookup or provider evidence was acquired.",
+      "reviewer_ref": "/root/case06_reviewer",
+      "reviewed_at": "2026-10-14T19:03:32.090875Z"
+    }
+  ]
+}
