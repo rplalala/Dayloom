@@ -1,6 +1,6 @@
 # Intake, identity, usage and material workflow history
 
-This record synthesizes evaluator engineering from September 29 through October 14,
+This record synthesizes evaluator engineering from September 29 through October 15,
 2026. Current interfaces and compatibility rules belong to the
 [intake contract](../../contracts/0002-intake-identity-usage.md),
 [artifact contract](../../contracts/0001-evaluation-artifacts.md) and
@@ -1662,3 +1662,65 @@ itinerary generation or case acceptance. Local test-material identifiers are
 `artifacts/pytest-integrated-opening-final/`, `artifacts/pytest-integrated-opening-budget/`
 and `artifacts/pytest-integrated-opening-check/`; original tool outputs retain the
 actual test and review results. Real integrated provider execution remains untested.
+
+### Post-generation review readiness (2026-10-15)
+
+[Issue #168](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/168)
+exposed an orchestration gap: legal generic activities could reach paid primary
+acquisition without output-specific role/occupancy decisions. Case-07's preserved
+post-#166 report has V0=90 and unavailable V1-V3 totals, with seven unresolved
+activities distributed 1/5/1. Its empty source-only occupancy envelope did not cover
+the generated population. These observations do not invalidate accepted cases.
+
+The first-phase implementation is local commit `08d987f`, from fixed base
+`ebe590b112c9f845e077bb9fe04d60e88507427e`. It adds a source-bound offline queue,
+retains supplied native role/occupancy reviews through normal material finalization,
+and stops missing required review work before acquisition. Completed unresolved
+decisions remain eligible preparation with genuine downstream uncertainty. A role
+decision making an otherwise ambiguous generic activity non-primary requires a
+separate occupancy decision; absence of notes cannot supply that decision. Current
+behavior belongs to the [readiness contract](../../contracts/0002-intake-identity-usage.md#post-generation-review-readiness).
+Planner schemas, prompts, generation and score policies remain unchanged.
+
+Initial seam tests reproduced preparation accepting missing reviews and the CLI
+lacking supplied-review arguments. A saved-material control additionally exposed
+the non-primary/no-notes boundary. Each received a failing test before correction.
+An exploratory regression overlapped readiness-field updates and produced eleven
+cross-process view mismatches; the fixed-source rerun passed **461 tests, one skip,
+in 756.17 seconds**. The skip is the existing symlink check because Windows did not
+grant symlink creation privileges. Two supplemental synthetic registration checks
+passed after correcting an empty-itinerary fixture assumption. Lint, ten-file
+format checking and tracked-document navigation passed. This is scoped regression,
+not a final all-backend green claim; earlier full-suite limits remain unchanged.
+
+Standards review found no documented-rule violation and one nonblocking P3
+duplication recommendation for staging/native projection construction. Both paths
+use the existing `project` implementation; extracting their construction loop is
+deferred to keep historical native intake outside this phase's changes. Spec review
+found no confirmed missing behavior, implementation defect or scope expansion.
+
+The installed CLI detected all seven exact case-07 pointers. Synthetic non-primary
+controls then required seven occupancy decisions. A mixed synthetic occupancy
+envelope completed coverage while retaining two unresolved decisions; only a fresh
+offline preparation was written. The original empty envelope was rejected at
+one-step execution before provider sends. No mock decision was adopted as an
+actual case review. Native archived intake and review coverage passed for accepted
+case-01 revision 3, case-02 material-r2, case-03 revision 1 and case-06 revision 5;
+all sixteen selected version projections retained their values. Synthetic tests
+cover both historical preparation versions without the new readiness field.
+Frozen original real-case scoring/replay was not rerun.
+
+All **4,070 protected original file hashes** match, including tracked benchmark
+material, case-07 evidence and the four accepted private archives. Case-07's
+preparation digest, original primary report/receipt and selected V1-V3 hashes match
+the identifiers in #168. Private evidence identifiers are `.scratch/issue168/`:
+`static-final.xml`, `registration-final.log`, `case07-03/result.json`,
+`accepted-result.json`, `original-case07-bindings.json` and
+`preservation-navigation.json`; they are not public navigation dependencies.
+
+This acceptance covers workflow engineering and synthetic review controls only.
+No real semantic reviewer, model/provider acquisition, generation rerun, real-case
+rescoring or case-11/12 dispatch occurred. Case-07 retains its original results and
+unavailable totals. Actual supplementary reviews and any revised evaluation package
+require separate authorization and fresh source-bound preparation; evidence reuse
+and four numeric totals are not promised.

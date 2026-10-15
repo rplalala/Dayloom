@@ -24,6 +24,67 @@ A source reference is (batch_id, group_id, run_id, artifact_sha256, JSON pointer
 
 Quality view exposes itinerary fields, reviewed requirements and later independent records only. Planner requirements, supply, RAG origins, validation findings, cost projections, route diagnostics and Repair records remain outside it. Preserve Transfer mode, endpoint/time/duration claims as claims; validation_state, unknowns, evidence_refs, mode_source and calculation_basis cannot decide quality. Mechanism readers access their own data channel. Human rendering must strip private source/version/provider identifiers while retaining meaningful itinerary text and uncertainty.
 
+## Post-generation review readiness
+
+Structural intake acceptance and independent review coverage are separate. After
+collection of qualified selected results, `semantic-readiness.json` records an
+offline `rtpeval_semantic_readiness_1` view. `rtpeval batch preflight` recomputes
+that view from verified producer staging or a native manifest. It inspects selected
+final activities only; optional V3 stages retain their own source identities but
+do not enlarge the primary review population. This view neither qualifies a batch
+nor establishes score decidability.
+
+Each activity retains its exact group/run/result hash/pointer, declared day and
+original fields. The queue separates `missing_role_review` from
+`missing_occupancy_review`. Occupancy is `awaiting_role` while a required role review
+is absent. A role review explicitly returning `unresolved` is complete review work,
+with occupancy `unresolved_role`; an occupancy review returning `unresolved` is also
+complete work. These states preserve downstream UNKNOWN and unavailable denominators.
+No title expansion, prose inference, timestamp-based commitment assumption or
+Planner/Repair judgment supplies an independent decision.
+
+The role projection and [occupancy rules](0003-requirement-schedule.md#occupancy)
+determine which activities need review. A newly reviewed non-primary generic activity
+whose original role was unresolved also needs a separate occupancy decision, even
+without notes. Non-primary does not establish flexible time. Established visits and
+version-owned transport retain their rules; existing unequivocal placeholders can
+remain automatically uncommitted. Invalid times on an established commitment remain
+time uncertainty rather than missing review work.
+
+Reuse `rtpeval_reviews_1` through `projection_reviews_ref` and
+`rtpeval_occupancy_reviews_1` through `occupancy_reviews_ref`. Collection can retain
+these optional exact-byte JSON references, and finalization can accept separately
+supplied review files. A staged reference and a separately supplied file for the same
+review type are conflicting inputs and are rejected. Review pointers must identify
+actual selected activities, including their proper projection; stale hashes, runs,
+versions, duplicate decisions and incomplete provenance require correction. Fresh
+workflow gates require offset-aware review times. Legacy role envelopes without a
+top-level revision remain readable; every decision still needs its review revision.
+Protected-obligation occupancy links require the reviewed RequirementSpec available
+at finalization; supply those reviews there rather than in source-only staging.
+
+Fresh primary preparation resolves any bound occupancy file and rejects a conflicting
+explicit `--occupancy-reviews` value. It freezes the exact review content and the
+readiness view. Missing required work returns `needs_semantic_review` before creating
+an executable preparation or making any provider send. Invalid supplied material
+returns material correction. Execution rechecks bound review files and the frozen
+coverage before acquisition. Review completion does not clear independent identity,
+opening, route, temporal or daily-count uncertainty, or promise four numeric totals.
+
+No command launches a semantic reviewer. An independently operated reviewer needs
+the complete original request and exact submitted activity context, without scores,
+target outcomes or Planner conclusions. Retain actual actor, configuration, time,
+rationale and source evidence externally; envelope validity does not authenticate an
+actor or establish review independence/quality. Agent review is not human review.
+Synthetic controls must be labelled and must not enter an actual case package.
+
+Planner schemas, prompts, V0-V3 generation and scoring policies are unchanged.
+Older staging and review formats remain readable, and preparations lacking the new
+readiness field follow their frozen historical replay path. A historical package is
+not silently upgraded or resumed. Real supplementary reviews and any later revised
+evaluation require fresh preparation/revision, preserved original evidence and
+separate authorization; old snapshots cannot be relabelled for a corrected run.
+
 ## Suite selection and generation resources
 
 A suite selects already accepted single-group four-version manifests with explicit
@@ -77,8 +138,9 @@ separate identity review. It cannot establish semantic role contradictions or fa
 identity. Legacy endpoint parsing applies only without a structured transport declaration;
 this revision adds no general semantic model or new LLM invocation.
 
-Generic locationless activities are transition-like; named unresolved POIs stay visits.
-Nearby is unscheduled. Unknown/inconsistent roles retain review and applicability counts.
+Existing exact placeholder titles without place claims can be transition-like;
+other generic locationless activities need independent role review. Named unresolved
+POIs stay visits. Nearby is unscheduled. Unknown/inconsistent roles retain review and applicability counts.
 Neither candidate membership nor costs establish independent role/identity.
 
 Preserve delivered day membership. For a day with comparable valid timestamps, order visit candidates by start, then end, then original pointer for display stability. Equal/overlapping times remain conflicts/ambiguities, not corrected chronology. Invalid or incomparable clocks cannot establish adjacency by arbitrary lexical sorting; emit an adjacency-unresolved record with involved sources.
