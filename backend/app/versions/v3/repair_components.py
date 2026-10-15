@@ -113,6 +113,7 @@ async def accept_components(
         original, scope.travel_mode or "WALK", scope.routing_preference, context.schedule
     )
     latest_spatial = {}
+    deadline_exceeded = False
     partitions = partition_patch(original, patch, initial, scope)
     for number, (component, indices, dependencies) in enumerate(partitions, 1):
         audit = dict(
@@ -135,7 +136,8 @@ async def accept_components(
             audit.update(
                 reason="component_deadline", budget_after=dict(budget.used), elapsed_seconds=0
             )
-            continue
+            deadline_exceeded = True
+            break
         ctx = context.model_copy(update={"schedule": schedule})
         before = assess(
             working,
@@ -164,10 +166,11 @@ async def accept_components(
                 )
             }
         )
+        component_timeout = asyncio.timeout(
+            max(0, min(budget.remaining(), budget.io_deadline - budget.clock()))
+        )
         try:
-            async with asyncio.timeout(
-                max(0, min(budget.remaining(), budget.io_deadline - budget.clock()))
-            ):
+            async with component_timeout:
                 proposal, removed = apply_patch(
                     working,
                     component,
@@ -269,6 +272,8 @@ async def accept_components(
                     comparison=comparison.model_dump(mode="json"),
                     spatial=spatial,
                 )
+                if budget.remaining() <= 0 or budget.clock() >= budget.io_deadline:
+                    raise TimeoutError("component_deadline")
                 if not comparison.accepted or not spatial["accepted"]:
                     from backend.app.versions.v3.repair_pending import retain_pending
 
@@ -310,11 +315,11 @@ async def accept_components(
                     context,
                     allow_soft_exploration=getattr(budget, "allow_soft_exploration", False),
                 )
+                if budget.remaining() <= 0 or budget.clock() >= budget.io_deadline:
+                    raise TimeoutError("component_deadline")
                 if not global_check.accepted:
                     audit.update(status="rejected", reason=global_check.reason)
                     continue
-                if budget.remaining() <= 0 or budget.clock() >= budget.io_deadline:
-                    raise TimeoutError("component_deadline")
                 working, schedule = proposal, proposed_schedule
                 from backend.app.versions.v3.repair_pending import complete_pending
 
@@ -327,11 +332,18 @@ async def accept_components(
             raise
         except Exception as exc:
             audit.update(status="rejected", reason=f"{type(exc).__name__}:{exc}")
+            deadline_exceeded = (
+                component_timeout.expired()
+                or budget.remaining() <= 0
+                or budget.clock() >= budget.io_deadline
+            )
         finally:
             audit.update(
                 budget_after=dict(budget.used),
                 elapsed_seconds=max(0, budget.clock() - component_started),
             )
+        if deadline_exceeded:
+            break
     reassessed = assess(
         original, context, preparation.ledger, (*evidence, *acquired), original_bindings
     )
@@ -385,6 +397,7 @@ async def accept_components(
         losses=tuple(losses),
         extra=tuple(acquired),
         components=tuple(audits),
+        deadline_exceeded=deadline_exceeded,
         reassessed=reassessed,
         after=after,
         comparison=comparison,
