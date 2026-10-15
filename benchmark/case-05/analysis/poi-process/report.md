@@ -1,6 +1,6 @@
 # Case-05 candidate process
 
-The selected Barcelona execution revision 2 retains the [original request](../../../inputs/case-05.json). This is a descriptive account of saved candidate stages and independently resolved final identities. Independent interest review is complete within the retained evidence, with partial known relevance; this report does not accept the case.
+The selected Barcelona execution revision 2 retains the [original request](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/6b11572c1c2331b61f263727dd7901ba8353752c/benchmark/inputs/case-05.json). This is a descriptive account of saved candidate stages and independently resolved final identities. Independent interest review is complete within the retained evidence, with partial known relevance; this report does not accept the case.
 
 | Canonical place stage | V1 | V2 | Availability |
 | --- | ---: | ---: | --- |
