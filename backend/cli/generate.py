@@ -35,6 +35,21 @@ def _ref(root, path, schema=None):
     return value
 
 
+def _selection_completion(value, owner, root):
+    """Copy completion metadata with byte references rooted at the selection."""
+    if isinstance(value, dict):
+        if "path" in value and "sha256" in value:
+            if value.get("availability") == "unavailable":
+                return copy.deepcopy(value)
+            path = _path(root, value.get("path"), owner=owner)
+            _require(_sha(path) == value["sha256"], "Completion reference hash mismatch")
+            return {**value, "path": path.relative_to(root).as_posix()}
+        return {key: _selection_completion(item, owner, root) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_selection_completion(item, owner, root) for item in value]
+    return value
+
+
 def _completion(value, version, manifest, now):
     mechanisms = {"generation": "completed" if value is not None else "failed"}
     observations = []
@@ -177,7 +192,7 @@ def _captured(root, group, version, run, capture, completion, now):
         "result_ref": result_ref,
         "usage_ref": _ref(root, usage_path, "rtpeval_usage_1") if usage_available else None,
         "producer_declaration": provenance,
-        "completion": completion,
+        "completion": _selection_completion(completion, capture, root),
     }
 
 
@@ -227,6 +242,8 @@ def _registration_selection(selection_path, selection_raw, args, input_path, des
             run_ids.add(rid)
             if "capture_directory" in run:
                 _path(root, run["capture_directory"])
+            if run.get("completion") is not None:
+                _selection_completion(run["completion"], root, root)
     output = args.output_directory.resolve()
     selected = [
         (g, v, r)

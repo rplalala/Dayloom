@@ -1,0 +1,165 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-06-requirements",
+  "revision": "1",
+  "group_id": "case-06",
+  "input_sha256": "fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case06_reviewer",
+    "reviewed_at": "2026-10-14T19:03:32.090875Z"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [
+    {
+      "preference_id": "science",
+      "kind": "poi_interest",
+      "wording": "science",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "science",
+          "occurrence": 0,
+          "offset_start": 68,
+          "offset_end": 75
+        }
+      ],
+      "rationale": "An expressed interest, with no exclusive focus, named venue or requested visit quota."
+    },
+    {
+      "preference_id": "nature",
+      "kind": "poi_interest",
+      "wording": "nature",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "nature",
+          "occurrence": 0,
+          "offset_start": 77,
+          "offset_end": 83
+        }
+      ],
+      "rationale": "An expressed interest, with no exclusive focus, named venue or requested visit quota."
+    },
+    {
+      "preference_id": "outdoor-spaces",
+      "kind": "poi_interest",
+      "wording": "outdoor spaces",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "outdoor spaces",
+          "occurrence": 0,
+          "offset_start": 88,
+          "offset_end": 102
+        }
+      ],
+      "rationale": "An expressed interest, with no exclusive focus, named venue or requested visit quota."
+    },
+    {
+      "preference_id": "family-context",
+      "kind": "traveler_context",
+      "wording": "Family of two adults and one child",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are travelling as a family of two adults and one child.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 58
+        }
+      ],
+      "rationale": "Preserves family composition as planning context; no child age or specific accessibility restriction is supplied."
+    },
+    {
+      "preference_id": "breaks",
+      "kind": "pace_preference",
+      "wording": "Include breaks",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Please favour an itinerary with breaks and less continuous walking.",
+          "occurrence": 0,
+          "offset_start": 104,
+          "offset_end": 171
+        }
+      ],
+      "rationale": "Favour expresses a soft pace preference; no number, duration, clock window or protected commitment is specified."
+    },
+    {
+      "preference_id": "less-continuous-walking",
+      "kind": "pace_preference",
+      "wording": "Less continuous walking",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Please favour an itinerary with breaks and less continuous walking.",
+          "occurrence": 0,
+          "offset_start": 104,
+          "offset_end": 171
+        }
+      ],
+      "rationale": "Qualitative walking preference; no maximum time or distance, exclusion of walking, or recurring hard constraint is stated."
+    },
+    {
+      "preference_id": "drive-between-stops",
+      "kind": "transport_preference",
+      "wording": "Prefer driving between sightseeing stops",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We have rented a car and prefer to drive between sightseeing stops.",
+          "occurrence": 0,
+          "offset_start": 172,
+          "offset_end": 239
+        }
+      ],
+      "rationale": "A rental car is available and driving is preferred; prefer does not prohibit WALK or TRANSIT and does not supply an exact compulsory stated mode."
+    }
+  ],
+  "unresolved_items": [
+    {
+      "item_id": "break-cadence-and-duration",
+      "classification": "soft_preference",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Please favour an itinerary with breaks and less continuous walking.",
+          "occurrence": 0,
+          "offset_start": 104,
+          "offset_end": 171
+        }
+      ],
+      "reason": "The request does not quantify break frequency or duration; retain flexible breaks without inventing protected time or a daily quota."
+    },
+    {
+      "item_id": "walking-threshold",
+      "classification": "soft_preference",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Please favour an itinerary with breaks and less continuous walking.",
+          "occurrence": 0,
+          "offset_start": 104,
+          "offset_end": 171
+        }
+      ],
+      "reason": "No numeric continuous walking ceiling is supplied; this soft preference cannot be converted into an executable duration or distance limit."
+    },
+    {
+      "item_id": "child-age-and-needs",
+      "classification": "soft_preference",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are travelling as a family of two adults and one child.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 58
+        }
+      ],
+      "reason": "The child age and any special mobility or activity needs are unspecified; do not infer an age, stroller requirement or venue restriction."
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Art Gallery of New South Wales",
+      "source_place_id": null,
+      "reason": "An optional indoor cultural stop that could complement the Royal Botanic Garden visit if the family wants another nearby, varied experience.",
+      "associated_day": "2026-10-15",
+      "area": "Sydney CBD, near the Royal Botanic Garden",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Museum of Contemporary Art Australia",
+      "source_place_id": null,
+      "reason": "An optional additional museum experience to consider around the Barangaroo and The Rocks part of the itinerary.",
+      "associated_day": "2026-10-18",
+      "area": "The Rocks, near Barangaroo",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1_australian_museum",
+          "title": "Explore the Australian Museum",
+          "place_name": "Australian Museum",
+          "source_place_id": null,
+          "location": "Sydney CBD, Sydney",
+          "start_time": "2026-10-15T10:00:00+11:00",
+          "end_time": "2026-10-15T12:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A science and natural-history-focused visit. Keep the pace flexible, with a seated break if useful. Suggested visit timing only; current access and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day1_drive_to_gardens",
+          "title": "Drive to the Royal Botanic Garden",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T12:30:00+11:00",
+          "end_time": "2026-10-15T12:50:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model estimate, not live-verified: about 20 minutes by car via central city streets; route and duration may vary.",
+          "transport": {
+            "mode": "DRIVE",
+            "from_activity_id": "day1_australian_museum",
+            "to_activity_id": "day1_royal_botanic_garden"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1_royal_botanic_garden",
+          "title": "Relaxed visit to the Royal Botanic Garden",
+          "place_name": "Royal Botanic Garden Sydney",
+          "source_place_id": null,
+          "location": "Sydney CBD, Sydney",
+          "start_time": "2026-10-15T13:00:00+11:00",
+          "end_time": "2026-10-15T15:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A flexible outdoor stop after the museum; take a gentle stroll and leave time for breaks rather than trying to cover the whole garden. Suggested visit timing only; current access and availability have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2_taronga_zoo",
+          "title": "Visit Taronga Zoo",
+          "place_name": "Taronga Zoo Sydney",
+          "source_place_id": null,
+          "location": "Mosman, Sydney",
+          "start_time": "2026-10-16T09:30:00+11:00",
+          "end_time": "2026-10-16T13:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "Allow for a slower visit with pauses, and choose highlights rather than aiming to see everything. Suggested visit timing only; current access and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day2_drive_to_balmoral",
+          "title": "Drive to Balmoral Beach",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-16T13:30:00+11:00",
+          "end_time": "2026-10-16T14:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model estimate, not live-verified: about 30 minutes by car via Mosman roads; route and duration may vary.",
+          "transport": {
+            "mode": "DRIVE",
+            "from_activity_id": "day2_taronga_zoo",
+            "to_activity_id": "day2_balmoral_beach"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2_balmoral_beach",
+          "title": "Unhurried time at Balmoral Beach",
+          "place_name": "Balmoral Beach",
+          "source_place_id": null,
+          "location": "Mosman, Sydney",
+          "start_time": "2026-10-16T14:00:00+11:00",
+          "end_time": "2026-10-16T16:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A relaxed outdoor contrast to the zoo; enjoy the foreshore at your own pace, with time to sit and rest. Suggested visit timing only; current conditions and availability have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3_audley",
+          "title": "Enjoy the Audley area of Royal National Park",
+          "place_name": "Audley, Royal National Park",
+          "source_place_id": null,
+          "location": "Royal National Park, south of Sydney",
+          "start_time": "2026-10-17T10:00:00+11:00",
+          "end_time": "2026-10-17T12:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "A nature-focused stop; keep walking optional and allow time to pause in the park setting. Suggested visit timing only; current access and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day3_drive_to_wattamolla",
+          "title": "Drive to Wattamolla",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-17T12:00:00+11:00",
+          "end_time": "2026-10-17T12:45:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model estimate, not live-verified: about 45 minutes by car on park roads toward Wattamolla; route and duration may vary.",
+          "transport": {
+            "mode": "DRIVE",
+            "from_activity_id": "day3_audley",
+            "to_activity_id": "day3_wattamolla"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3_wattamolla",
+          "title": "Spend time at Wattamolla",
+          "place_name": "Wattamolla, Royal National Park",
+          "source_place_id": null,
+          "location": "Royal National Park, south of Sydney",
+          "start_time": "2026-10-17T13:00:00+11:00",
+          "end_time": "2026-10-17T15:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "Enjoy the coastal and natural setting at a relaxed pace; this can be a short-stroll or sit-and-enjoy stop rather than a long walk. Suggested visit timing only; current access and conditions have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4_sydney_observatory",
+          "title": "Explore Sydney Observatory",
+          "place_name": "Sydney Observatory",
+          "source_place_id": null,
+          "location": "The Rocks, Sydney",
+          "start_time": "2026-10-18T10:00:00+11:00",
+          "end_time": "2026-10-18T12:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "An astronomy-focused stop to round out the science interests. Suggested visit timing only; current access arrangements and availability have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "day4_drive_to_barangaroo",
+          "title": "Drive to Barangaroo Reserve",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-18T12:00:00+11:00",
+          "end_time": "2026-10-18T12:20:00+11:00",
+          "estimated_cost": null,
+          "notes": "Model estimate, not live-verified: about 20 minutes by car through the city; route and duration may vary.",
+          "transport": {
+            "mode": "DRIVE",
+            "from_activity_id": "day4_sydney_observatory",
+            "to_activity_id": "day4_barangaroo"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day4_barangaroo",
+          "title": "Relaxed outdoor visit to Barangaroo Reserve",
+          "place_name": "Barangaroo Reserve",
+          "source_place_id": null,
+          "location": "Barangaroo, Sydney",
+          "start_time": "2026-10-18T12:30:00+11:00",
+          "end_time": "2026-10-18T14:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "A low-key outdoor finish; keep the visit flexible and take breaks as needed. Suggested visit timing only; current access and availability have not been checked."
+        }
+      ]
+    }
+  ]
+}

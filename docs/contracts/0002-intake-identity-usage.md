@@ -977,8 +977,8 @@ The installed producer flow uses `rtpeval_collection_1` configuration and
 `rtpeval_staging_1` staging independently of native `rtpeval_batch_1` intake. Explicit
 batch/revision/time/policy fields, ordered groups and selected run IDs own selection.
 No newest/best selection, replacement, retries, generation or cohort reduction occurs.
-All references resolve relative to their declaring artifact's root and must remain
-within it. Required source artifacts use exact byte SHA-256, JSON media type,
+References resolve against their declaring owner directory and must remain within
+the collection source root. Required source artifacts use exact byte SHA-256, JSON media type,
 `availability=available` and the applicable envelope schema. Input, result, usage,
 provenance and optional generation evidence retain exact bytes and relative layout.
 Generation evidence retains producer origin. Complete, source-bound raw provider
@@ -994,6 +994,20 @@ may be retained as blocked material; a no-result producer provenance records
 `rtpeval_provenance_1` `producer_declaration`, with actual declarer/time/rationale;
 it cannot coexist with `provenance_ref` or be inferred from filenames.
 Explicit unavailable usage uses the existing usage envelope and remains unavailable.
+
+For preserved legacy selection snapshots that embedded native completion dictionaries
+without rebasing their relative references, an offline collection may declare
+`completion_origins`. Each entry binds exact-byte `selection_ref` and `completion_ref`,
+plus the selected `group_id`, `version` and `run_id`. The selection must be an
+`rtpeval_collection_1` artifact. At that exact snapshot/run, the embedded completion
+must equal the bound native declaration and the native file must share the directory
+of the snapshot's hash-verified, version-matching `result_ref`. Only that completion's
+dependency base changes to its bound native directory; other snapshot references
+retain their declaring directory. Missing, duplicate, unused, mismatched or escaping
+bindings are rejected before collection writes. All native bytes, root containment,
+dependency hashes and ordinary completion qualification checks remain in force.
+This explicit source-context repair neither modifies historical snapshots nor
+qualifies an evaluator batch.
 
 Completion declares `declared_by`, `declared_at`, `policy_ref`, `workflow_status` and
 `required_mechanisms`. The policy must match `qualification_policy_ref` and the workflow
@@ -1017,6 +1031,10 @@ An existing registration destination, including a dangling directory link, or on
 containing the Planner output is rejected at the same boundary. Invalid initial
 setup returns exit 2 with structured registration
 diagnostics and `planner.status=not_invoked`; it creates no generation artifacts.
+Existing selected completion references are also checked for relative paths,
+collection-root containment and exact hashes before dispatch. New generated
+collection declarations rebase completion references from the capture directory
+to the selection root; the native completion file remains unchanged.
 These checks repeat after execution against the captured input and original selection
 bytes. Sources and destinations can change during execution; a later registration
 failure preserves actual Planner result/usage and separate statuses without retry.

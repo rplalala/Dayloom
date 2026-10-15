@@ -1,0 +1,6450 @@
+{
+  "soft_pace": {
+    "objective": "zero_soft_pace_deductions",
+    "is_failure_constraint": false,
+    "comparable": {
+      "dates": [
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18"
+      ],
+      "before_total": 0.0,
+      "after_total": 0.0
+    },
+    "before": {
+      "mean_penalty": 0.0,
+      "days": [
+        {
+          "date": "2026-10-15",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-16",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-17",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-18",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "after": {
+      "mean_penalty": 0.0,
+      "days": [
+        {
+          "date": "2026-10-15",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-16",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-17",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-18",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "target_state": "reached"
+  },
+  "review_policy": {
+    "quantity": true,
+    "soft_pace": true,
+    "overfull": false
+  },
+  "quantity_review_enabled": true,
+  "draft": {
+    "$case_material_ref": {
+      "path": "draft-delta.json",
+      "json_pointer": "",
+      "expanded_semantic_sha256": "94e0ff708709e1bd803d5d7d3b41edc4e089785dc57f7617dabe7efda0c5e24a"
+    }
+  },
+  "original_report": {
+    "contract_version": "v3_validation_1",
+    "diagnostics": {
+      "policy_completion": "complete",
+      "policy_issues": [],
+      "goal_progress": [
+        {
+          "requirement_id": "semantic_1",
+          "expected": 1,
+          "matched": 3,
+          "matched_dates": 3,
+          "satisfied": true,
+          "soft": true,
+          "preference": "Favor nature and outdoor-space experiences.",
+          "target_origin": "ordinary_preference",
+          "focus_source": null,
+          "remaining": 0,
+          "coverage_status": "covered",
+          "basis": "model_semantic_judgment_not_operating_fact"
+        },
+        {
+          "requirement_id": "semantic_2",
+          "expected": 1,
+          "matched": 1,
+          "matched_dates": 1,
+          "satisfied": true,
+          "soft": true,
+          "preference": "Favor science-related experiences.",
+          "target_origin": "ordinary_preference",
+          "focus_source": null,
+          "remaining": 0,
+          "coverage_status": "covered",
+          "basis": "model_semantic_judgment_not_operating_fact"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-15",
+          "day_present": true,
+          "applicability": "same_day_remaining_hours_unsupported",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "not_assessable",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-16",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-17",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-18",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        }
+      ],
+      "days_meeting_default_target": 3,
+      "days_below_target": 0,
+      "days_above_target": 0,
+      "days_unassessable": 1,
+      "empty_days": 0,
+      "days_with_zero_main_pois": 0,
+      "scheduled_unique_supply": 8,
+      "unused_supply": 6,
+      "cross_day_repeated_visits": 0,
+      "related_requirement_ids": [
+        "semantic_1",
+        "semantic_2",
+        "semantic_3",
+        "semantic_4"
+      ],
+      "assessment_basis": "default_target_observation_not_feasibility"
+    },
+    "findings": [
+      {
+        "finding_id": "finding_1",
+        "check": "coverage",
+        "status": "UNKNOWN",
+        "reason": "default_target_observation_without_executable_exception_contract",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "generation_diagnostics:2026-10-15"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_2",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden"
+        ],
+        "place_ids": [
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-15",
+              "place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "source_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "retrieved_at": "2026-10-14T21:20:07.508048+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-15T07:00:00",
+                  "2026-10-15T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_3",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden"
+        ],
+        "place_ids": [
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_4",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-observatory"
+        ],
+        "place_ids": [
+          "ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-15",
+              "place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+              "source_ref": "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ",
+              "retrieved_at": "2026-10-14T21:20:15.629709+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-15T12:00:00",
+                  "2026-10-15T19:30:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_5",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-observatory"
+        ],
+        "place_ids": [
+          "ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_6",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery"
+        ],
+        "place_ids": [
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-16",
+              "place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "source_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "retrieved_at": "2026-10-14T21:20:02.668418+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-16T10:00:00",
+                  "2026-10-16T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_7",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery"
+        ],
+        "place_ids": [
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_8",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-tower"
+        ],
+        "place_ids": [
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-16",
+              "place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+              "source_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+              "retrieved_at": "2026-10-14T21:20:09.960188+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-16T11:00:00",
+                  "2026-10-16T19:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_9",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-tower"
+        ],
+        "place_ids": [
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_10",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi"
+        ],
+        "place_ids": [
+          "ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-17",
+              "place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "source_ref": "google_places:ChIJx4FyRJytEmsReOktxgkYwyA",
+              "retrieved_at": "2026-10-14T21:20:08.195368+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_11",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi"
+        ],
+        "place_ids": [
+          "ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_12",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-opera-house"
+        ],
+        "place_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-17",
+              "place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "source_ref": "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "retrieved_at": "2026-10-14T21:20:07.176228+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_13",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-opera-house"
+        ],
+        "place_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_14",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park"
+        ],
+        "place_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-18",
+              "place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "source_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "retrieved_at": "2026-10-14T21:20:09.234987+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-18T00:00:00",
+                  "2026-10-19T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_15",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park"
+        ],
+        "place_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_16",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-18",
+              "place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "source_ref": "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "retrieved_at": "2026-10-14T21:20:07.825788+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_17",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_18",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day1-garden",
+          "day1-observatory"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 5400.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 764,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+                "destination_place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 764,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 0,
+                "destination_index": 2,
+                "distance_meters": 3258,
+                "duration_seconds": 764,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_19",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day2-gallery",
+          "day2-tower"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 7200.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 321,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+                "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 321,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 2,
+                "destination_index": 9,
+                "distance_meters": 968,
+                "duration_seconds": 321,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_20",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day3-bondi",
+          "day3-opera-house"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 9000.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1385,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.520188+00:00",
+              "retrieved_at": "2026-10-14T21:21:32.828009+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+                "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1385,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.520188Z",
+                "retrieved_at": "2026-10-14T21:21:32.828009Z",
+                "origin_index": 1,
+                "destination_index": 0,
+                "distance_meters": 10495,
+                "duration_seconds": 1385,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_21",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day4-hyde-park",
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 7200.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 653,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+                "destination_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 653,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 3,
+                "destination_index": 3,
+                "distance_meters": 6441,
+                "duration_seconds": 653,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_22",
+        "check": "budget",
+        "status": "UNKNOWN",
+        "reason": "verified_party_currency_cost_coverage_not_supported",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_23",
+        "check": "semantic_requirements",
+        "status": "UNKNOWN",
+        "reason": "open_semantics_not_executable_predicates",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [
+          "semantic_1",
+          "semantic_2",
+          "semantic_3",
+          "semantic_4"
+        ],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_24",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden",
+          "day1-observatory"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_25",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery",
+          "day2-tower"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_26",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi",
+          "day3-opera-house"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_27",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park",
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      }
+    ],
+    "place_use_observations": [
+      {
+        "place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+        "primary_type": "performing_arts_theater",
+        "source_ref": "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+      },
+      {
+        "place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+        "primary_type": "bridge",
+        "source_ref": "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+      },
+      {
+        "place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+        "primary_type": "park",
+        "source_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+      },
+      {
+        "place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+        "primary_type": "art_gallery",
+        "source_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+      },
+      {
+        "place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+        "primary_type": "botanical_garden",
+        "source_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+      },
+      {
+        "place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+        "primary_type": null,
+        "source_ref": "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+      },
+      {
+        "place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+        "primary_type": "beach",
+        "source_ref": "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+      },
+      {
+        "place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+        "primary_type": "observation_deck",
+        "source_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+      }
+    ],
+    "improvement_targets": [],
+    "scope": "read_only_partial_validation"
+  },
+  "scope": null,
+  "repair": null,
+  "final_primary": {
+    "$case_material_ref": {
+      "path": "draft-delta.json",
+      "json_pointer": "",
+      "expanded_semantic_sha256": "94e0ff708709e1bd803d5d7d3b41edc4e089785dc57f7617dabe7efda0c5e24a"
+    }
+  },
+  "final_report": {
+    "contract_version": "v3_validation_1",
+    "diagnostics": {
+      "policy_completion": "complete",
+      "policy_issues": [],
+      "goal_progress": [
+        {
+          "requirement_id": "semantic_1",
+          "expected": 1,
+          "matched": 3,
+          "matched_dates": 3,
+          "satisfied": true,
+          "soft": true,
+          "preference": "Favor nature and outdoor-space experiences.",
+          "target_origin": "ordinary_preference",
+          "focus_source": null,
+          "remaining": 0,
+          "coverage_status": "covered",
+          "basis": "model_semantic_judgment_not_operating_fact"
+        },
+        {
+          "requirement_id": "semantic_2",
+          "expected": 1,
+          "matched": 1,
+          "matched_dates": 1,
+          "satisfied": true,
+          "soft": true,
+          "preference": "Favor science-related experiences.",
+          "target_origin": "ordinary_preference",
+          "focus_source": null,
+          "remaining": 0,
+          "coverage_status": "covered",
+          "basis": "model_semantic_judgment_not_operating_fact"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-15",
+          "day_present": true,
+          "applicability": "same_day_remaining_hours_unsupported",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "not_assessable",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-16",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-17",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        },
+        {
+          "date": "2026-10-18",
+          "day_present": true,
+          "applicability": "default_full_day",
+          "count_basis": "canonical_id",
+          "main_activity_count": 2,
+          "distinct_main_poi_count": 2,
+          "repeated_main_poi_count": 0,
+          "generic_activity_count": 0,
+          "transport_activity_count": 0,
+          "free_time_activity_count": 0,
+          "unclassified_activity_count": 0,
+          "target_status": "within_target",
+          "minimum_coverage": "satisfied",
+          "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+          "minimum_coverage_evidence": [],
+          "empty_day": false
+        }
+      ],
+      "days_meeting_default_target": 3,
+      "days_below_target": 0,
+      "days_above_target": 0,
+      "days_unassessable": 1,
+      "empty_days": 0,
+      "days_with_zero_main_pois": 0,
+      "scheduled_unique_supply": 8,
+      "unused_supply": 6,
+      "cross_day_repeated_visits": 0,
+      "related_requirement_ids": [
+        "semantic_1",
+        "semantic_2",
+        "semantic_3",
+        "semantic_4"
+      ],
+      "assessment_basis": "default_target_observation_not_feasibility"
+    },
+    "findings": [
+      {
+        "finding_id": "finding_1",
+        "check": "coverage",
+        "status": "UNKNOWN",
+        "reason": "default_target_observation_without_executable_exception_contract",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "generation_diagnostics:2026-10-15"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_2",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden"
+        ],
+        "place_ids": [
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-15",
+              "place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "source_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+              "retrieved_at": "2026-10-14T21:20:07.508048+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-15T07:00:00",
+                  "2026-10-15T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_3",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden"
+        ],
+        "place_ids": [
+          "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_4",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-observatory"
+        ],
+        "place_ids": [
+          "ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-15",
+              "place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+              "source_ref": "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ",
+              "retrieved_at": "2026-10-14T21:20:15.629709+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-15T12:00:00",
+                  "2026-10-15T19:30:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_5",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-observatory"
+        ],
+        "place_ids": [
+          "ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_6",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery"
+        ],
+        "place_ids": [
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-16",
+              "place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "source_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+              "retrieved_at": "2026-10-14T21:20:02.668418+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-16T10:00:00",
+                  "2026-10-16T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_7",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery"
+        ],
+        "place_ids": [
+          "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_8",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-tower"
+        ],
+        "place_ids": [
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-16",
+              "place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+              "source_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+              "retrieved_at": "2026-10-14T21:20:09.960188+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-16T11:00:00",
+                  "2026-10-16T19:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_9",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-tower"
+        ],
+        "place_ids": [
+          "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_10",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi"
+        ],
+        "place_ids": [
+          "ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-17",
+              "place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+              "source_ref": "google_places:ChIJx4FyRJytEmsReOktxgkYwyA",
+              "retrieved_at": "2026-10-14T21:20:08.195368+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_11",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi"
+        ],
+        "place_ids": [
+          "ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_12",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-opera-house"
+        ],
+        "place_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-17",
+              "place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "source_ref": "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+              "retrieved_at": "2026-10-14T21:20:07.176228+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_13",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-opera-house"
+        ],
+        "place_ids": [
+          "ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_14",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park"
+        ],
+        "place_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-18",
+              "place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "source_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+              "retrieved_at": "2026-10-14T21:20:09.234987+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-18T00:00:00",
+                  "2026-10-19T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-15",
+              "source_window_end": "2026-10-21"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_15",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park"
+        ],
+        "place_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_16",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-18",
+              "place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "source_ref": "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+              "retrieved_at": "2026-10-14T21:20:07.825788+00:00",
+              "timezone": "Australia/Sydney",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_17",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [
+          "ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_18",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day1-garden",
+          "day1-observatory"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 5400.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 764,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+                "destination_place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 764,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 0,
+                "destination_index": 2,
+                "distance_meters": 3258,
+                "duration_seconds": 764,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_19",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day2-gallery",
+          "day2-tower"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 7200.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 321,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+                "destination_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 321,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 2,
+                "destination_index": 9,
+                "distance_meters": 968,
+                "duration_seconds": 321,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_20",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day3-bondi",
+          "day3-opera-house"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 9000.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1385,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.520188+00:00",
+              "retrieved_at": "2026-10-14T21:21:32.828009+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+                "destination_place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1385,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.520188Z",
+                "retrieved_at": "2026-10-14T21:21:32.828009Z",
+                "origin_index": 1,
+                "destination_index": 0,
+                "distance_meters": 10495,
+                "duration_seconds": 1385,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_21",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "day4-hyde-park",
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 7200.0,
+          "application_reserve_seconds": 600.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 653,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "DRIVE",
+              "routing_preference": "TRAFFIC_UNAWARE",
+              "departure_time": null,
+              "requested_at": "2026-10-14T21:21:32.833413+00:00",
+              "retrieved_at": "2026-10-14T21:21:33.136048+00:00",
+              "basis": "basic_drive_estimate",
+              "element": {
+                "origin_place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+                "destination_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 653,
+                "fallback_info": null,
+                "requested_at": "2026-10-14T21:21:32.833413Z",
+                "retrieved_at": "2026-10-14T21:21:33.136048Z",
+                "origin_index": 3,
+                "destination_index": 3,
+                "distance_meters": 6441,
+                "duration_seconds": 653,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_22",
+        "check": "budget",
+        "status": "UNKNOWN",
+        "reason": "verified_party_currency_cost_coverage_not_supported",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_23",
+        "check": "semantic_requirements",
+        "status": "UNKNOWN",
+        "reason": "open_semantics_not_executable_predicates",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [
+          "semantic_1",
+          "semantic_2",
+          "semantic_3",
+          "semantic_4"
+        ],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_24",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-15"
+        ],
+        "activity_ids": [
+          "day1-garden",
+          "day1-observatory"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_25",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-16"
+        ],
+        "activity_ids": [
+          "day2-gallery",
+          "day2-tower"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_26",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-17"
+        ],
+        "activity_ids": [
+          "day3-bondi",
+          "day3-opera-house"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_27",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-18"
+        ],
+        "activity_ids": [
+          "day4-hyde-park",
+          "day4-harbour-bridge"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "relaxed",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "Please favour an itinerary with breaks and less continuous walking.",
+                "occurrence": 0,
+                "start": 104,
+                "end": 171,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      }
+    ],
+    "place_use_observations": [
+      {
+        "place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+        "primary_type": "performing_arts_theater",
+        "source_ref": "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+      },
+      {
+        "place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+        "primary_type": "bridge",
+        "source_ref": "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+      },
+      {
+        "place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+        "primary_type": "park",
+        "source_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+      },
+      {
+        "place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+        "primary_type": "art_gallery",
+        "source_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+      },
+      {
+        "place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+        "primary_type": "botanical_garden",
+        "source_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+      },
+      {
+        "place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+        "primary_type": null,
+        "source_ref": "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+      },
+      {
+        "place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+        "primary_type": "beach",
+        "source_ref": "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+      },
+      {
+        "place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+        "primary_type": "observation_deck",
+        "source_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+      }
+    ],
+    "improvement_targets": [],
+    "scope": "read_only_partial_validation"
+  },
+  "final_identity_ids": [
+    "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+    "ChIJx4FyRJytEmsReOktxgkYwyA",
+    "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+    "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+    "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+    "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+    "ChIJS6lgEBauEmsRqT-MKZXklkY",
+    "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+    "ChIJt9trB0euEmsR8NbepO14j3M",
+    "ChIJZwwO2GuuEmsR0R7jY0Dw1gk"
+  ],
+  "final_places": [
+    {
+      "place_id": "ChIJ3S-JXmauEmsRUcIaWtf4MzE",
+      "name": "Sydney Opera House",
+      "formatted_address": "Bennelong Point, Sydney NSW 2000, Australia",
+      "latitude": -33.856784399999995,
+      "longitude": 151.21529669999998,
+      "primary_type": "performing_arts_theater",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:06.828238Z",
+      "opening_hours": null,
+      "current_opening_hours": null,
+      "regular_opening_hours": null,
+      "rating": 4.8,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.sydneyoperahouse.com/",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:07.176228Z",
+      "source_ref": "google_places:ChIJ3S-JXmauEmsRUcIaWtf4MzE"
+    },
+    {
+      "place_id": "ChIJx4FyRJytEmsReOktxgkYwyA",
+      "name": "Bondi Beach",
+      "formatted_address": "Bondi Beach, NSW 2026, Australia",
+      "latitude": -33.8914755,
+      "longitude": 151.2766845,
+      "primary_type": "beach",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:07.828303Z",
+      "opening_hours": null,
+      "current_opening_hours": null,
+      "regular_opening_hours": null,
+      "rating": 4.6,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": null,
+      "website_uri": null,
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:08.195368Z",
+      "source_ref": "google_places:ChIJx4FyRJytEmsReOktxgkYwyA"
+    },
+    {
+      "place_id": "ChIJhXXngUOuEmsRryJYPyfsBtQ",
+      "name": "Sydney Observatory",
+      "formatted_address": "1003 Upper Fort St, Millers Point NSW 2000, Australia",
+      "latitude": -33.8598345,
+      "longitude": 151.2048766,
+      "primary_type": null,
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:15.322471Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18"
+        ],
+        "weekday_descriptions": [
+          "Monday: Closed",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: 12:00 – 7:30 PM",
+          "Friday: 12:00 – 7:30 PM",
+          "Saturday: 12:00 – 7:30 PM",
+          "Sunday: 12:00 – 7:30 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T01:00:00Z",
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18"
+        ],
+        "weekday_descriptions": [
+          "Monday: Closed",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: 12:00 – 7:30 PM",
+          "Friday: 12:00 – 7:30 PM",
+          "Saturday: 12:00 – 7:30 PM",
+          "Sunday: 12:00 – 7:30 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T01:00:00Z",
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 12,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 12,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 12,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 12,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 30
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: Closed",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: 12:00 – 7:30 PM",
+          "Friday: 12:00 – 7:30 PM",
+          "Saturday: 12:00 – 7:30 PM",
+          "Sunday: 12:00 – 7:30 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T01:00:00Z",
+        "next_close_time": null
+      },
+      "rating": 4.6,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true
+      },
+      "website_uri": "https://powerhouse.com.au/visit/sydney-observatory",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:15.629709Z",
+      "source_ref": "google_places:ChIJhXXngUOuEmsRryJYPyfsBtQ"
+    },
+    {
+      "place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+      "name": "Sydney Harbour Bridge",
+      "formatted_address": "Sydney Hbr Brg, Sydney NSW, Australia",
+      "latitude": -33.852306299999995,
+      "longitude": 151.2107871,
+      "primary_type": "bridge",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:07.510046Z",
+      "opening_hours": null,
+      "current_opening_hours": null,
+      "regular_opening_hours": null,
+      "rating": 4.8,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleEntrance": true
+      },
+      "website_uri": "https://www.dcceew.gov.au/parks-heritage/heritage/places/national/sydney-harbour-bridge",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:07.825788Z",
+      "source_ref": "google_places:ChIJ49XqJV2uEmsRPsTAF7eOlGg"
+    },
+    {
+      "place_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "name": "Royal Botanic Garden Sydney",
+      "formatted_address": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
+      "latitude": -33.864185899999995,
+      "longitude": 151.2165708,
+      "primary_type": "botanical_garden",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:07.180301Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 5:00 PM",
+          "Tuesday: 7:00 AM – 5:00 PM",
+          "Wednesday: 7:00 AM – 5:00 PM",
+          "Thursday: 7:00 AM – 5:00 PM",
+          "Friday: 7:00 AM – 5:00 PM",
+          "Saturday: 7:00 AM – 5:00 PM",
+          "Sunday: 7:00 AM – 5:00 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T06:00:00Z"
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 5:00 PM",
+          "Tuesday: 7:00 AM – 5:00 PM",
+          "Wednesday: 7:00 AM – 5:00 PM",
+          "Thursday: 7:00 AM – 5:00 PM",
+          "Friday: 7:00 AM – 5:00 PM",
+          "Saturday: 7:00 AM – 5:00 PM",
+          "Sunday: 7:00 AM – 5:00 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T06:00:00Z"
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 5:00 PM",
+          "Tuesday: 7:00 AM – 5:00 PM",
+          "Wednesday: 7:00 AM – 5:00 PM",
+          "Thursday: 7:00 AM – 5:00 PM",
+          "Friday: 7:00 AM – 5:00 PM",
+          "Saturday: 7:00 AM – 5:00 PM",
+          "Sunday: 7:00 AM – 5:00 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T06:00:00Z"
+      },
+      "rating": 4.7,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.botanicgardens.org.au/royal-botanic-garden-sydney",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:07.508048Z",
+      "source_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+    },
+    {
+      "place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+      "name": "The Rocks",
+      "formatted_address": "The Rocks NSW 2000, Australia",
+      "latitude": -33.859062,
+      "longitude": 151.2080421,
+      "primary_type": null,
+      "business_status": null,
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:08.200104Z",
+      "opening_hours": null,
+      "current_opening_hours": null,
+      "regular_opening_hours": null,
+      "rating": null,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": null,
+      "website_uri": null,
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:08.520131Z",
+      "source_ref": "google_places:ChIJs49dtkKuEmsRYM0yFmh9AQU"
+    },
+    {
+      "place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "name": "Art Gallery of New South Wales",
+      "formatted_address": "Art Gallery Rd, Sydney NSW 2000, Australia",
+      "latitude": -33.8688037,
+      "longitude": 151.2174138,
+      "primary_type": "art_gallery",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:02.328508Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 5:00 PM",
+          "Tuesday: 10:00 AM – 5:00 PM",
+          "Wednesday: 10:00 AM – 10:00 PM",
+          "Thursday: 10:00 AM – 5:00 PM",
+          "Friday: 10:00 AM – 5:00 PM",
+          "Saturday: 10:00 AM – 5:00 PM",
+          "Sunday: 10:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 5:00 PM",
+          "Tuesday: 10:00 AM – 5:00 PM",
+          "Wednesday: 10:00 AM – 10:00 PM",
+          "Thursday: 10:00 AM – 5:00 PM",
+          "Friday: 10:00 AM – 5:00 PM",
+          "Saturday: 10:00 AM – 5:00 PM",
+          "Sunday: 10:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 5:00 PM",
+          "Tuesday: 10:00 AM – 5:00 PM",
+          "Wednesday: 10:00 AM – 10:00 PM",
+          "Thursday: 10:00 AM – 5:00 PM",
+          "Friday: 10:00 AM – 5:00 PM",
+          "Saturday: 10:00 AM – 5:00 PM",
+          "Sunday: 10:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "rating": 4.7,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.artgallery.nsw.gov.au/",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:02.668418Z",
+      "source_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+    },
+    {
+      "place_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "name": "Hyde Park",
+      "formatted_address": "Elizabeth St, Sydney NSW 2000, Australia",
+      "latitude": -33.8715202,
+      "longitude": 151.21162429999998,
+      "primary_type": "park",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:08.886403Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 4,
+              "hour": 0,
+              "minute": 0,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 23,
+              "minute": 59,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 4,
+              "hour": 0,
+              "minute": 0,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 23,
+              "minute": 59,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 0,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "rating": 4.6,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true
+      },
+      "website_uri": "https://www.cityofsydney.nsw.gov.au/parks/hyde-park?utm_content=Hyde%20Park%20-%20Sydney&utm_campaign=googlemybusiness&utm_medium=organic&utm_source=google&utm_term=plcid_12610484903724465125",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:09.234987Z",
+      "source_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+    },
+    {
+      "place_id": "ChIJ384_FGCuEmsRFAbHLAWVPGg",
+      "name": "Luna Park Sydney",
+      "formatted_address": "1 Olympic Dr, Milsons Point NSW 2061, Australia",
+      "latitude": -33.847698699999995,
+      "longitude": 151.2098382,
+      "primary_type": "amusement_park",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:09.238474Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 20,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 2:00 PM",
+          "Tuesday: 10:00 AM – 2:00 PM",
+          "Wednesday: 10:00 AM – 2:00 PM",
+          "Thursday: 10:00 AM – 2:00 PM",
+          "Friday: 10:00 AM – 8:00 PM",
+          "Saturday: 10:00 AM – 8:00 PM",
+          "Sunday: 10:00 AM – 6:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 14,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 20,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 2:00 PM",
+          "Tuesday: 10:00 AM – 2:00 PM",
+          "Wednesday: 10:00 AM – 2:00 PM",
+          "Thursday: 10:00 AM – 2:00 PM",
+          "Friday: 10:00 AM – 8:00 PM",
+          "Saturday: 10:00 AM – 8:00 PM",
+          "Sunday: 10:00 AM – 6:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 10:00 AM – 2:00 PM",
+          "Tuesday: 10:00 AM – 2:00 PM",
+          "Wednesday: 10:00 AM – 2:00 PM",
+          "Thursday: 10:00 AM – 2:00 PM",
+          "Friday: 10:00 AM – 8:00 PM",
+          "Saturday: 10:00 AM – 8:00 PM",
+          "Sunday: 10:00 AM – 6:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T23:00:00Z",
+        "next_close_time": null
+      },
+      "rating": 4.1,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.lunaparksydney.com/",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:09.621239Z",
+      "source_ref": "google_places:ChIJ384_FGCuEmsRFAbHLAWVPGg"
+    },
+    {
+      "place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "name": "Sydney Tower Eye",
+      "formatted_address": "Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia",
+      "latitude": -33.8703155,
+      "longitude": 151.2088801,
+      "primary_type": "observation_deck",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:09.625160Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 11:00 AM – 7:00 PM",
+          "Tuesday: 11:00 AM – 7:00 PM",
+          "Wednesday: 11:00 AM – 7:00 PM",
+          "Thursday: 11:00 AM – 7:00 PM",
+          "Friday: 11:00 AM – 7:00 PM",
+          "Saturday: 11:00 AM – 7:00 PM",
+          "Sunday: 11:00 AM – 7:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T00:00:00Z",
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 11,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 11:00 AM – 7:00 PM",
+          "Tuesday: 11:00 AM – 7:00 PM",
+          "Wednesday: 11:00 AM – 7:00 PM",
+          "Thursday: 11:00 AM – 7:00 PM",
+          "Friday: 11:00 AM – 7:00 PM",
+          "Saturday: 11:00 AM – 7:00 PM",
+          "Sunday: 11:00 AM – 7:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T00:00:00Z",
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 11,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 19,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 11:00 AM – 7:00 PM",
+          "Tuesday: 11:00 AM – 7:00 PM",
+          "Wednesday: 11:00 AM – 7:00 PM",
+          "Thursday: 11:00 AM – 7:00 PM",
+          "Friday: 11:00 AM – 7:00 PM",
+          "Saturday: 11:00 AM – 7:00 PM",
+          "Sunday: 11:00 AM – 7:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-15T00:00:00Z",
+        "next_close_time": null
+      },
+      "rating": 4.4,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.sydneytowereye.com.au/?utm_source=gmb&utm_medium=organic&utm_campaign=yext&utm_content=5",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:09.960188Z",
+      "source_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    },
+    {
+      "place_id": "ChIJS6lgEBauEmsRqT-MKZXklkY",
+      "name": "Pool of Reflection",
+      "formatted_address": "120 Elizabeth St, Sydney NSW 2000, Australia",
+      "latitude": -33.8751342,
+      "longitude": 151.2110624,
+      "primary_type": "historical_landmark",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:12.547550Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 4,
+              "hour": 0,
+              "minute": 0,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 23,
+              "minute": 59,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 4,
+              "hour": 0,
+              "minute": 0,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 23,
+              "minute": 59,
+              "truncated": true,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 0,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": null
+      },
+      "rating": 4.8,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": null,
+      "website_uri": "http://www.anzacmemorial.nsw.gov.au/",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:12.848459Z",
+      "source_ref": "google_places:ChIJS6lgEBauEmsRqT-MKZXklkY"
+    },
+    {
+      "place_id": "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+      "name": "BridgeClimb Sydney",
+      "formatted_address": "3 Cumberland St, The Rocks NSW 2000, Australia",
+      "latitude": -33.857439,
+      "longitude": 151.2077747,
+      "primary_type": "tourist_attraction",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:09.963002Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 9:00 AM – 5:00 PM",
+          "Tuesday: 9:00 AM – 5:00 PM",
+          "Wednesday: 9:00 AM – 5:00 PM",
+          "Thursday: 9:00 AM – 5:00 PM",
+          "Friday: 9:00 AM – 5:00 PM",
+          "Saturday: 9:00 AM – 5:00 PM",
+          "Sunday: 9:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T22:00:00Z",
+        "next_close_time": null
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 9:00 AM – 5:00 PM",
+          "Tuesday: 9:00 AM – 5:00 PM",
+          "Wednesday: 9:00 AM – 5:00 PM",
+          "Thursday: 9:00 AM – 5:00 PM",
+          "Friday: 9:00 AM – 5:00 PM",
+          "Saturday: 9:00 AM – 5:00 PM",
+          "Sunday: 9:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T22:00:00Z",
+        "next_close_time": null
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 17,
+              "minute": 0
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 9:00 AM – 5:00 PM",
+          "Tuesday: 9:00 AM – 5:00 PM",
+          "Wednesday: 9:00 AM – 5:00 PM",
+          "Thursday: 9:00 AM – 5:00 PM",
+          "Friday: 9:00 AM – 5:00 PM",
+          "Saturday: 9:00 AM – 5:00 PM",
+          "Sunday: 9:00 AM – 5:00 PM"
+        ],
+        "open_now": false,
+        "next_open_time": "2026-10-14T22:00:00Z",
+        "next_close_time": null
+      },
+      "rating": 4.7,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": false,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true
+      },
+      "website_uri": "https://www.bridgeclimb.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:10.860421Z",
+      "source_ref": "google_places:ChIJSytgJF2uEmsRC6q8BDZh5qA"
+    },
+    {
+      "place_id": "ChIJt9trB0euEmsR8NbepO14j3M",
+      "name": "Darling Harbour",
+      "formatted_address": "Sydney NSW 2000, Australia",
+      "latitude": -33.874880000000005,
+      "longitude": 151.2009,
+      "primary_type": "tourist_attraction",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:14.144370Z",
+      "opening_hours": null,
+      "current_opening_hours": null,
+      "regular_opening_hours": null,
+      "rating": 4.7,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "website_uri": "https://www.darlingharbour.com/",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:14.977654Z",
+      "source_ref": "google_places:ChIJt9trB0euEmsR8NbepO14j3M"
+    },
+    {
+      "place_id": "ChIJZwwO2GuuEmsR0R7jY0Dw1gk",
+      "name": "Palace Rose Garden and Pavilion",
+      "formatted_address": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
+      "latitude": -33.8646251,
+      "longitude": 151.2139951,
+      "primary_type": "garden",
+      "business_status": "OPERATIONAL",
+      "timezone_id": "Australia/Sydney",
+      "requested_at": "2026-10-14T21:20:15.632953Z",
+      "opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 6:30 PM",
+          "Tuesday: 7:00 AM – 6:30 PM",
+          "Wednesday: 7:00 AM – 6:30 PM",
+          "Thursday: 7:00 AM – 6:30 PM",
+          "Friday: 7:00 AM – 6:30 PM",
+          "Saturday: 7:00 AM – 6:30 PM",
+          "Sunday: 7:00 AM – 6:30 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T07:30:00Z"
+      },
+      "current_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 18
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 19
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 20
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 21
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 15
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 16
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 18,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 10,
+                "day": 17
+              }
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "provider_current_window",
+        "valid_from": "2026-10-15",
+        "valid_through": "2026-10-21",
+        "source_dated_days": [
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21"
+        ],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 6:30 PM",
+          "Tuesday: 7:00 AM – 6:30 PM",
+          "Wednesday: 7:00 AM – 6:30 PM",
+          "Thursday: 7:00 AM – 6:30 PM",
+          "Friday: 7:00 AM – 6:30 PM",
+          "Saturday: 7:00 AM – 6:30 PM",
+          "Sunday: 7:00 AM – 6:30 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T07:30:00Z"
+      },
+      "regular_opening_hours": {
+        "periods_state": "present",
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 18,
+              "minute": 30
+            }
+          }
+        ],
+        "special_days": [],
+        "applicability": "regular_weekly_pattern",
+        "valid_from": null,
+        "valid_through": null,
+        "source_dated_days": [],
+        "weekday_descriptions": [
+          "Monday: 7:00 AM – 6:30 PM",
+          "Tuesday: 7:00 AM – 6:30 PM",
+          "Wednesday: 7:00 AM – 6:30 PM",
+          "Thursday: 7:00 AM – 6:30 PM",
+          "Friday: 7:00 AM – 6:30 PM",
+          "Saturday: 7:00 AM – 6:30 PM",
+          "Sunday: 7:00 AM – 6:30 PM"
+        ],
+        "open_now": true,
+        "next_open_time": null,
+        "next_close_time": "2026-10-15T07:30:00Z"
+      },
+      "rating": 4.7,
+      "price_level": null,
+      "price_range": null,
+      "accessibility_options": {
+        "wheelchairAccessibleEntrance": true
+      },
+      "website_uri": "https://www.botanicgardens.org.au/venues-and-lawns/all-venues-and-lawns/rose-garden-and-pavilion",
+      "availability": "available",
+      "unavailable_reason": null,
+      "retrieved_at": "2026-10-14T21:20:15.921020Z",
+      "source_ref": "google_places:ChIJZwwO2GuuEmsR0R7jY0Dw1gk"
+    }
+  ],
+  "draft_cost_projections": [
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[0].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[0].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[1].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[1].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[2].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[2].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[3].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[3].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    }
+  ],
+  "final_cost_projections": [
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[0].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[0].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[1].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[1].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[2].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[2].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[3].activities[0].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    },
+    {
+      "stage": "itinerary_cost_projection",
+      "field_path": "days[3].activities[1].estimated_cost",
+      "estimated_cost_projection": "explicit_null",
+      "currency": null,
+      "lower_bound": null,
+      "upper_bound": null,
+      "midpoint": null,
+      "error_category": null
+    }
+  ],
+  "original_rag_discovery": {
+    "$case_material_ref": {
+      "path": "rag-origins.json",
+      "json_pointer": "",
+      "expanded_semantic_sha256": "c646ced1973d9bfc51b9478dab69730dbda186e3d7323b88e56c0454cd22ef3a"
+    }
+  },
+  "reason": "no_authorized_targets"
+}

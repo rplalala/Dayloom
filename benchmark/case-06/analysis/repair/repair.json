@@ -1,0 +1,113 @@
+{
+  "schema_version": "case_repair_evidence_view_1",
+  "selected_run_id": "case-06-v3-20261015-a2",
+  "same_run": {
+    "draft_equals_final_primary": true,
+    "reason": "no_authorized_targets",
+    "repair": null,
+    "repair_model_sends": 0,
+    "paired_delta": {
+      "percentage_points": 0.0,
+      "exact_fraction": {
+        "numerator": 0,
+        "denominator": 1
+      }
+    },
+    "pair_rule_scope": {
+      "profile_id": "rtpeval_v3_pair_rules_2",
+      "scope": "selected same-run V3 draft and final_primary",
+      "mask": "pair union; exclude only two established zero denominators",
+      "delta": "after minus before; exact fractions; unavailable remains null",
+      "correspondence": "validated adopted sources before unique fallback and review",
+      "quality": "independent checks; deletion and replacement do not repair old facts",
+      "daily_density": {
+        "profile_id": "rtpeval_daily_density_2",
+        "penalties_by_count_0_to_5": {
+          "ordinary": [
+            100,
+            40,
+            0,
+            10,
+            50,
+            80
+          ],
+          "relaxed": [
+            100,
+            20,
+            0,
+            40,
+            70,
+            90
+          ],
+          "rich": [
+            100,
+            60,
+            0,
+            0,
+            30,
+            70
+          ]
+        },
+        "count_6_or_more": 100,
+        "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
+        "population": "source-distinct primary visit occurrences on every requested date",
+        "mean": "equal requested-date weight; exact arithmetic; empty dates included",
+        "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
+        "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable"
+      }
+    },
+    "nearby_reference_additions": 3
+  },
+  "independent_final_difference_v3_minus_v2": {
+    "overall_total": {
+      "percentage_points": 5.0,
+      "exact_fraction": {
+        "numerator": 1,
+        "denominator": 20
+      }
+    },
+    "auxiliary_total": {
+      "percentage_points": 0.0,
+      "exact_fraction": {
+        "numerator": 0,
+        "denominator": 1
+      }
+    },
+    "daily_density_penalty": -5.0,
+    "dimensions": {
+      "grounding": {
+        "percentage_points": 0.0,
+        "exact_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "non_overlap": {
+        "percentage_points": 0.0,
+        "exact_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "opening": {
+        "percentage_points": 0.0,
+        "exact_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "requirements": {
+        "percentage_points": null,
+        "exact_fraction": null
+      },
+      "routes": {
+        "percentage_points": 0.0,
+        "exact_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      }
+    }
+  },
+  "interpretation": "Independent generations describe final differences. Unchanged same-run primary stages and zero Repair sends do not establish a Repair benefit. Nearby references are unscheduled and do not change primary visits."
+}
