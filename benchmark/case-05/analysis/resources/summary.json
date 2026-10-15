@@ -1,8 +1,24 @@
 {
-  "schema_version": "case05_resource_summary_1",
+  "schema_version": "case05_resource_summary_2",
   "case_id": "case-05",
+  "scenario_count": 1,
+  "input_revisions": 2,
+  "execution_revisions": 3,
+  "cohorts": [
+    {
+      "input_revision": "input-1",
+      "dispatched_attempts": 6,
+      "source_digest": "026493df1369d10e8b93ef13f03ec41eb6be52ceb0307a3b2bcc982cdd096760"
+    },
+    {
+      "input_revision": "input-2",
+      "dispatched_attempts": 4,
+      "source_digest": "302eeab1b08914c73fd749f315b650f79c80732b8e605673917c009879cbd94a"
+    }
+  ],
   "generation_attempts": [
     {
+      "input_revision": "input-1",
       "execution_revision": "original-execution",
       "version": "v0",
       "run_id": "case-05-v0-attempt-01",
@@ -26,11 +42,12 @@
         "observed_token_subtotal": 0,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "0.002901315",
+      "reference_usd": "0.002901315",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
     },
     {
+      "input_revision": "input-1",
       "execution_revision": "original-execution",
       "version": "v1",
       "run_id": "case-05-v1-attempt-01",
@@ -54,11 +71,12 @@
         "observed_token_subtotal": 0,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "0.0010237",
+      "reference_usd": "0.0010237",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
     },
     {
+      "input_revision": "input-1",
       "execution_revision": "revision-02",
       "version": "v0",
       "run_id": "case-05-r02-v0-attempt-01",
@@ -82,11 +100,12 @@
         "observed_token_subtotal": 0,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "0.005518225",
+      "reference_usd": "0.005518225",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
     },
     {
+      "input_revision": "input-1",
       "execution_revision": "revision-02",
       "version": "v1",
       "run_id": "case-05-r02-v1-attempt-01",
@@ -110,11 +129,12 @@
         "observed_token_subtotal": 0,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "2.80578068",
+      "reference_usd": "2.80578068",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
     },
     {
+      "input_revision": "input-1",
       "execution_revision": "revision-02",
       "version": "v2",
       "run_id": "case-05-r02-v2-attempt-01",
@@ -138,11 +158,12 @@
         "observed_token_subtotal": 0,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "2.80424982",
+      "reference_usd": "2.80424982",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
     },
     {
+      "input_revision": "input-1",
       "execution_revision": "revision-02",
       "version": "v3",
       "run_id": "case-05-r02-v3-attempt-01",
@@ -166,130 +187,214 @@
         "observed_token_subtotal": 89501,
         "scope": "subset_counted_once"
       },
-      "estimated_total_usd": "2.847875495",
+      "reference_usd": "2.847875495",
       "unpriced_events": 0,
-      "actual_invoice_total_usd": null
+      "actual_invoice_usd": null
+    },
+    {
+      "input_revision": "input-2",
+      "execution_revision": "revision-03",
+      "version": "v0",
+      "run_id": "case-05-r03-v0-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 49.95299999997951,
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 17886,
+        "output_tokens": 6009,
+        "total_tokens": 23895,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "0.0052401",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null
+    },
+    {
+      "input_revision": "input-2",
+      "execution_revision": "revision-03",
+      "version": "v1",
+      "run_id": "case-05-r03-v1-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 113.54700000002049,
+        "model_calls": 4,
+        "http_sends": 68,
+        "input_tokens": 67356,
+        "output_tokens": 8784,
+        "total_tokens": 76140,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.363167335",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null
+    },
+    {
+      "input_revision": "input-2",
+      "execution_revision": "revision-03",
+      "version": "v2",
+      "run_id": "case-05-r03-v2-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 159.125,
+        "model_calls": 6,
+        "http_sends": 92,
+        "input_tokens": 69241,
+        "output_tokens": 13385,
+        "total_tokens": 82626,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 7,
+        "embedding_total_tokens": 7,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.790165025",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null
+    },
+    {
+      "input_revision": "input-2",
+      "execution_revision": "revision-03",
+      "version": "v3",
+      "run_id": "case-05-r03-v3-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 171.15599999995902,
+        "model_calls": 8,
+        "http_sends": 76,
+        "input_tokens": 214588,
+        "output_tokens": 13735,
+        "total_tokens": 228323,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 3,
+        "http_sends": 7,
+        "total_tokens": 149869,
+        "observed_token_subtotal": 149869,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.418508775",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null
     }
   ],
-  "generation_totals": {
-    "model_calls": {
-      "total": 23,
-      "observed_subtotal": 23,
-      "known_attempts": 6,
-      "missing_attempts": 0
+  "primary_attempts": [
+    {
+      "execution_revision": "revision-02",
+      "namespace": "oracle",
+      "metrics": {
+        "run_id": "C:\\Users\\70522\\.codex\\worktrees\\f370\\Reliable-Trip-Plan-Agent\\benchmark\\scratch\\case-05\\work\\revision-02\\primary\\execution",
+        "outcome": "unavailable",
+        "namespace": "oracle",
+        "timing_scope": null,
+        "metrics": {
+          "elapsed_seconds": null,
+          "total_tokens": 20099,
+          "model_calls": 2,
+          "http_sends": 51,
+          "cache_hits": 0
+        },
+        "observed_token_subtotal": 20099,
+        "observed_model_calls": 2,
+        "observed_http_sends": 51,
+        "cache_lookup_hits": 0,
+        "observed_tool_http_sends": 49,
+        "token_observed_calls": 2,
+        "token_missing_calls": 0,
+        "adapter_coverage": "declared_default_adapters",
+        "repair_model_calls": 0,
+        "repair_token_observed_subtotal": null,
+        "failed_http_responses": 0,
+        "incomplete_http_sends": 0,
+        "missing_fields": [
+          "actual_account_billing"
+        ]
+      },
+      "reference_usd": "1.079222475",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null,
+      "cli_exit_code": 1,
+      "native_scoring_status": "complete",
+      "usage_sha256": "cd48d4d3ab55ae0765e5465f39c1d26feb578a5abc0f956b85dfc2cd1efc6ead"
     },
-    "http_sends": {
-      "total": 282,
-      "observed_subtotal": 282,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "input_tokens": {
-      "total": 340764,
-      "observed_subtotal": 340764,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "output_tokens": {
-      "total": 51363,
-      "observed_subtotal": 51363,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "total_tokens": {
-      "total": 392127,
-      "observed_subtotal": 392127,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "embedding_calls": {
-      "total": 2,
-      "observed_subtotal": 2,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "embedding_input_tokens": {
-      "total": 16,
-      "observed_subtotal": 16,
-      "known_attempts": 6,
-      "missing_attempts": 0
-    },
-    "embedding_total_tokens": {
-      "total": 16,
-      "observed_subtotal": 16,
-      "known_attempts": 6,
-      "missing_attempts": 0
+    {
+      "execution_revision": "revision-03",
+      "namespace": "oracle",
+      "metrics": {
+        "run_id": "C:\\Users\\70522\\.codex\\worktrees\\f370\\Reliable-Trip-Plan-Agent\\benchmark\\scratch\\case-05\\work\\r03-d16\\primary\\execution",
+        "outcome": "unavailable",
+        "namespace": "oracle",
+        "timing_scope": null,
+        "metrics": {
+          "elapsed_seconds": null,
+          "total_tokens": 14487,
+          "model_calls": 2,
+          "http_sends": 72,
+          "cache_hits": 0
+        },
+        "observed_token_subtotal": 14487,
+        "observed_model_calls": 2,
+        "observed_http_sends": 72,
+        "cache_lookup_hits": 0,
+        "observed_tool_http_sends": 70,
+        "token_observed_calls": 2,
+        "token_missing_calls": 0,
+        "adapter_coverage": "declared_default_adapters",
+        "repair_model_calls": 0,
+        "repair_token_observed_subtotal": null,
+        "failed_http_responses": 0,
+        "incomplete_http_sends": 0,
+        "missing_fields": [
+          "actual_account_billing"
+        ]
+      },
+      "reference_usd": "1.5282911",
+      "unpriced_events": 0,
+      "actual_invoice_usd": null,
+      "cli_exit_code": 0,
+      "native_scoring_status": "complete",
+      "usage_sha256": "4783c25fcbac4d974a05c424daff4707a86a49eac263248955606916ea06932f"
     }
-  },
-  "generation_reference_estimate_usd": "8.467349235",
-  "combined_reference_estimate_usd": "9.546571710",
-  "actual_invoice_total_usd": null,
-  "external_codex_tokens_and_billing": null,
-  "new_business_api_sends": 0,
-  "new_business_api_cost_usd": "0",
-  "repair_accounting": "subset included once in V3 generation",
-  "automatic_retries": 0,
-  "limitations": [
-    "retail/reference estimates, not invoices",
-    "execution revisions are not additional unique requests",
-    "non-dispatch declarations are retrospective; original source records unchanged",
-    "external AI assistance has unavailable complete transcripts, usage and billing"
   ],
-  "primary": {
-    "model_calls": 2,
-    "http_sends": 51,
-    "tokens": 20099,
-    "estimated_total_usd": "1.079222475",
-    "unpriced_event_count": 0,
-    "native_scoring_status": "complete",
-    "original_cli_exit_code": 1
-  },
-  "native_ledger_sha256": "52d1341c25e766efcc80d750ea5dca08e8198a2fb47932af435c7cf7beb19b45",
-  "native_ledger_source_digest": "026493df1369d10e8b93ef13f03ec41eb6be52ceb0307a3b2bcc982cdd096760",
-  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-offline-01/reports/resources",
-  "external_codex_review": {
-    "actor": "/root/case05_relevance_review",
-    "operation_count": 1,
-    "scope": "171 independent interest-by-venue judgments from a frozen stage-blind packet",
-    "reviewer_kind": "external_model",
-    "human_review": false,
-    "started_at": "2026-10-15T17:22:40+11:00",
-    "ended_at": "2026-10-15T06:26:02.3786569+00:00",
-    "runtime": {
-      "actor_identity_basis": "Assigned current collaboration actor path.",
-      "model": null,
-      "reasoning_effort": null,
-      "model_settings_status": "Parent/default settings inherited; model identity and reasoning effort not independently verified by telemetry.",
-      "measured_usage": null,
-      "usage_status": "External Codex token usage unavailable in this reviewer runtime.",
-      "measured_billing_usd": null,
-      "billing_status": "External Codex billing unavailable; no token or cost estimate invented."
-    },
-    "business_provider_activity": {
-      "new_api_calls": 0,
-      "sends": 0,
-      "cost_usd": "0",
-      "basis": "No business provider, browser, network or service tools were invoked during this review; only local file/clock tools were used."
-    },
-    "reviewer_record_sha256": "79b12e4ec467f1c391250881b0774005010df24e4e9fe42b763d8453c97e60f8",
-    "labels_sha256": "2e0db2268ccb8adbee5b43eb7197451c765b738a5d9a66e0c9637d1a8a6f2553",
-    "source_packet_sha256": "9a2e39edf580349ed576666b595f1a7d69fb015e315dbd79ebc4db6755473eec",
-    "full_platform_transcript": "unavailable; original handoff, outputs and declared local-tool record retained",
-    "billing_interpretation": "External Codex usage and billing are unavailable, not zero and not part of business API USD 0."
-  },
-  "offline_v3_pair": {
-    "processing_status": "complete",
-    "configured_total_timeout_seconds": 600,
-    "native_stage_elapsed_seconds": 99.223376,
-    "actual_google_sends": 0,
-    "actual_model_sends": 0,
-    "automatic_retries": 0,
-    "current_reference_cost_usd": "0",
-    "actual_account_billing": null,
-    "paired_result_selected": true,
-    "completed_handoff_available": true,
-    "replay": "exact_via_native_export",
-    "closed_receipt": "verified",
-    "previous_stopped_attempt_preserved": true
-  }
+  "generation_reference_usd": "16.044430470",
+  "primary_reference_usd": "2.607513575",
+  "all_attempt_reference_usd": "18.651944045",
+  "selected_r03_reference_usd": "9.105372335",
+  "current_closeout_business_api_sends": 0,
+  "current_closeout_business_api_cost_usd": "0",
+  "repair_accounting": "Subset included once in V3 generation; inherited paired observations are not new consumption",
+  "actual_invoice_usd": null,
+  "external_codex_tokens": null,
+  "external_codex_billing": null,
+  "automatic_retries": 0
 }

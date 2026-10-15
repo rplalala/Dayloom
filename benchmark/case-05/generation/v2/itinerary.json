@@ -1,0 +1,454 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "barcelona-20261016-casa-batllo",
+      "to_activity_id": "barcelona-20261016-gothic-quarter",
+      "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "destination_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-16T12:00:00+02:00",
+      "arrival_time": "2026-10-16T12:23:43+02:00",
+      "provider_duration_seconds": 1423.0,
+      "distance_meters": 1793,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "barcelona-20261017-sagrada-familia",
+      "to_activity_id": "barcelona-20261017-base-elements-gallery",
+      "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination_place_id": "ChIJn645y_iipBIRaQv0NuxgaJM",
+      "mode": "TRANSIT",
+      "mode_source": "APPLICATION_TRANSIT_FALLBACK",
+      "departure_time": "2026-10-17T12:00:00+02:00",
+      "arrival_time": "2026-10-17T12:19:49+02:00",
+      "provider_duration_seconds": 1189.0,
+      "distance_meters": 4319,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "time_applicable",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "barcelona-20261018-muhba",
+      "to_activity_id": "barcelona-20261018-el-born",
+      "origin_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-18T12:30:00+02:00",
+      "arrival_time": "2026-10-18T12:39:28+02:00",
+      "provider_duration_seconds": 568.0,
+      "distance_meters": 697,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "barcelona-20261016-casa-batllo",
+      "to_activity_id": "barcelona-20261016-gothic-quarter",
+      "origin": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "destination": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "departure": "2026-10-16T12:00:00+02:00",
+      "next_start": "2026-10-16T14:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1423,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-15T20:33:48.523593+00:00",
+              "retrieved_at": "2026-10-15T20:33:50.010678+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+                "destination_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1423,
+                "fallback_info": null,
+                "requested_at": "2026-10-15T20:33:48.523593Z",
+                "retrieved_at": "2026-10-15T20:33:50.010678Z",
+                "origin_index": 1,
+                "destination_index": 2,
+                "distance_meters": 1793,
+                "duration_seconds": 1423,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "barcelona-20261017-sagrada-familia",
+      "to_activity_id": "barcelona-20261017-base-elements-gallery",
+      "origin": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination": "ChIJn645y_iipBIRaQv0NuxgaJM",
+      "departure": "2026-10-17T12:00:00+02:00",
+      "next_start": "2026-10-17T15:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "TRANSIT",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2587,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-15T20:33:51.554929+00:00",
+              "retrieved_at": "2026-10-15T20:33:53.080798+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "destination_place_id": "ChIJn645y_iipBIRaQv0NuxgaJM",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2587,
+                "fallback_info": null,
+                "requested_at": "2026-10-15T20:33:51.554929Z",
+                "retrieved_at": "2026-10-15T20:33:53.080798Z",
+                "origin_index": 0,
+                "destination_index": 5,
+                "distance_meters": 3175,
+                "duration_seconds": 2587,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1189,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "TRANSIT",
+              "routing_preference": null,
+              "departure_time": "2026-10-17T12:00:00+02:00",
+              "requested_at": "2026-10-15T20:34:29.025828+00:00",
+              "retrieved_at": "2026-10-15T20:34:29.344746+00:00",
+              "basis": "time_applicable",
+              "element": {
+                "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "destination_place_id": "ChIJn645y_iipBIRaQv0NuxgaJM",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1189,
+                "fallback_info": null,
+                "requested_at": "2026-10-15T20:34:29.025828Z",
+                "retrieved_at": "2026-10-15T20:34:29.344746Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 4319,
+                "duration_seconds": 1189,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "barcelona-20261018-muhba",
+      "to_activity_id": "barcelona-20261018-el-born",
+      "origin": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "destination": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "departure": "2026-10-18T12:30:00+02:00",
+      "next_start": "2026-10-18T14:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 568,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-15T20:33:51.554929+00:00",
+              "retrieved_at": "2026-10-15T20:33:53.080798+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 568,
+                "fallback_info": null,
+                "requested_at": "2026-10-15T20:33:51.554929Z",
+                "retrieved_at": "2026-10-15T20:33:53.080798Z",
+                "origin_index": 1,
+                "destination_index": 12,
+                "distance_meters": 697,
+                "duration_seconds": 568,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Faborit Casa Amatller Barcelona",
+      "source_place_id": "ChIJIwsuTu2ipBIR9f-8rv_gBG8",
+      "reason": "Restaurant near Casa Batll\u00f3 (approximately 30 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "Pg. de Gr\u00e0cia, 41, Eixample, 08007 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-09582038-aea2-4980-ad4e-f9f0e64295ef:1"
+    },
+    {
+      "place_name": "Gotik quarter",
+      "source_place_id": "ChIJWd28LwCjpBIRIyWsXJJD_I0",
+      "reason": "Park near Gothic Quarter (approximately 15 m straight-line).",
+      "associated_day": "2026-10-16",
+      "area": "Pla\u00e7a de Sant Miquel, 3, Ciutat Vella, 08002 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-4f4c6f0a-cd62-4578-92de-2d663598becb:0"
+    },
+    {
+      "place_name": "Sagrada fam\u00edlia",
+      "source_place_id": "ChIJHdkZGACjpBIRi_R46Pnc-JU",
+      "reason": "Museum near Basilica of the Sagrada Familia (approximately 0 m straight-line).",
+      "associated_day": "2026-10-17",
+      "area": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-9483c6f6-36f7-44fb-aa5c-e957f91d5f08:0"
+    }
+  ],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-16",
+  "end_date": "2026-10-20",
+  "days": [
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261016-casa-batllo",
+          "title": "Casa Batll\u00f3",
+          "place_name": "Casa Batll\u00f3",
+          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "location": "Pg. de Gr\u00e0cia, 43, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-16T10:00:00+02:00",
+          "end_time": "2026-10-16T12:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Leave time for an unhurried visit. Date-specific exceptions to the general opening-hours pattern are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261016-gothic-quarter",
+          "title": "Gothic Quarter",
+          "place_name": "Gothic Quarter",
+          "source_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+          "location": "Gothic Quarter, Ciutat Vella, Barcelona, Spain",
+          "start_time": "2026-10-16T14:00:00+02:00",
+          "end_time": "2026-10-16T16:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Flexible time to explore the historic quarter at a relaxed pace. Opening hours and current operational status were not verified."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261017-sagrada-familia",
+          "title": "Basilica of the Sagrada Familia",
+          "place_name": "Basilica of the Sagrada Familia",
+          "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+          "location": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+          "start_time": "2026-10-17T10:00:00+02:00",
+          "end_time": "2026-10-17T12:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Allow time to explore the basilica without rushing. Date-specific exceptions to the general opening-hours pattern are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261017-base-elements-gallery",
+          "title": "Art Gallery Barcelona - Base Elements Gallery",
+          "place_name": "Art Gallery Barcelona - Base Elements Gallery",
+          "source_place_id": "ChIJn645y_iipBIRaQv0NuxgaJM",
+          "location": "Carrer del Palau, 4, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-17T15:30:00+02:00",
+          "end_time": "2026-10-17T17:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Scheduled within the supplied current-date opening interval. The forecast indicates a high chance of thunderstorms, so this indoor visit offers a weather-sheltered option."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261018-muhba",
+          "title": "Casa Padell\u00e0s (Barcelona History Museum MUHBA)",
+          "place_name": "Casa Padell\u00e0s (Barcelona History Museum MUHBA)",
+          "source_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "location": "Pl. del Rei, s/n, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-18T10:30:00+02:00",
+          "end_time": "2026-10-18T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "A leisurely history-museum visit. The forecast indicates a high chance of thunderstorms; date-specific exceptions to the general opening-hours pattern are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261018-el-born",
+          "title": "El Born Centre de Cultura i Mem\u00f2ria",
+          "place_name": "El Born Centre de Cultura i Mem\u00f2ria",
+          "source_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+          "location": "Mercat del Born, Pla\u00e7a Comercial, 12, Ciutat Vella, 08003 Barcelona, Spain",
+          "start_time": "2026-10-18T14:00:00+02:00",
+          "end_time": "2026-10-18T16:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Time for an unhurried cultural visit. The forecast indicates a high chance of thunderstorms; date-specific exceptions to the general opening-hours pattern are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261019-montjuic-castle",
+          "title": "Montju\u00efc Castle",
+          "place_name": "Montju\u00efc Castle",
+          "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "location": "Ctra. de Montju\u00efc, 66, Sants-Montju\u00efc, 08038 Barcelona, Spain",
+          "start_time": "2026-10-19T11:00:00+02:00",
+          "end_time": "2026-10-19T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A single, unhurried castle visit. The planned time is within the supplied current-date opening interval; date-specific exceptions to the general operational baseline are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "barcelona-20261020-casa-amatller",
+          "title": "Casa Amatller",
+          "place_name": "Casa Amatller",
+          "source_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+          "location": "Pg. de Gr\u00e0cia, 41, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-20T11:00:00+02:00",
+          "end_time": "2026-10-20T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A relaxed visit to the museum. Its subject details were not established in the supplied evidence; date-specific exceptions to the general opening-hours pattern are unknown."
+        }
+      ]
+    }
+  ]
+}

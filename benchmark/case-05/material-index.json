@@ -1,0 +1,205 @@
+{
+  "schema_version": "case_material_index_1",
+  "case_id": "case-05",
+  "acceptance": "pending main integration, tests and explicit researcher acceptance",
+  "execution_revision": "3",
+  "input_revision": "2",
+  "format": "Public views and exact itinerary subtrees; original closed native bundles and raw evidence remain private. $case_material_ref paths are relative to the containing file; expand pointer and verify canonical semantic SHA256. Public artifact reference hashes use LF publication bytes; interest requirement references resolve from the case root. Native originals retain their original bytes and hashes.",
+  "input": {
+    "path": "../inputs/case-05.json",
+    "sha256": "c6261b92d9579dda48b13c6a13a3bf31479ae1b3624cbe2160b0fec1face14f6"
+  },
+  "generation_source_revision": "b1ab089fd24bab98795a9f7c0728b84e7ba2c5fd",
+  "materials": [
+    {
+      "path": "evaluation/primary/summary.json",
+      "sha256": "56ac38c5c4695036ee67ea13feb931412c5ba19e154d9a39d7b8e4af214e45e0",
+      "source_logical_path": "work/r03-d16/primary/execution/report.json",
+      "source_sha256": "fc905d3ae1ecf80d24d74d26d5e92f2737cf975533aaef25d54faa5a05b2160d",
+      "transformation": "Selected status, scores, dimension counts and assessment metadata; source native report retained unchanged."
+    },
+    {
+      "path": "requirements/reviewed-requirements.json",
+      "sha256": "aa7f15176f67e7a2b22e11e93b5599d096d0ee357af52242fcc86ab0fe7f2da2",
+      "source_logical_path": "work/r03-d16/source-review/semantics/reviewed-final.json",
+      "source_sha256": "c2e919615a812064dee0dabe6d84bcc810e84bc531c77f1c5d1daf4ab07f0eaa",
+      "json_pointer": ""
+    },
+    {
+      "path": "interests/interests.json",
+      "sha256": "0f65a8d2c31478feb63142990568425a212b61e71c2a2ae98f1aaeb3b9213914",
+      "source_logical_path": "work/r03-close/interests-bound.json",
+      "source_sha256": "96e1e769f989257fb2310a46d1a0031ecd807cacabce1f7b06d2d1316469b342",
+      "transformation": "Public requirement reference rebased to case root; original reviewed interests and actor fields retained."
+    },
+    {
+      "path": "generation/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "source_logical_path": "work/r03-d16/captures/v0/runtime-policy.json",
+      "source_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "json_pointer": ""
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "75cb2322ecfaa4da24463f9087df3cbaa815bb93db37a49054f993fd315201c3",
+      "source_logical_path": "work/r03-d16/captures/v0/result.json",
+      "source_sha256": "8a0c8d67831ce57890c605f44db605087279cccdb658f448cc1abd0034a65bed",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v0/usage-summary.json",
+      "sha256": "8479cce6741c38a5437674b8922fc8c720dfee870445aba4c285ba0b0fa8a8f7",
+      "source_logical_path": "work/r03-d16/captures/v0/usage.json",
+      "source_sha256": "f5f09724417b4c034afb75c4d1e5773d1ef73f886635546de1b09ffbbd0f65a4",
+      "transformation": "Native all-attempt metrics and saved reference-cost reconstruction; Repair counted as subset."
+    },
+    {
+      "path": "generation/v0/provenance.json",
+      "sha256": "0eb8ede603f5ce70ec935274b776fac8b4d0f1907a8c9c6c8ee3a333762e7784",
+      "source_logical_path": "work/r03-d16/captures/v0/provenance.json",
+      "source_sha256": "19c6558030550fea88527079a3694d99198a389670386d21632e4afd67d77118",
+      "transformation": "Public shared configuration path rebased; private evidence/mechanism references omitted and original retained."
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "f6ee0d9fabdcd0d0993a390afbb9eab7db23e5a45c50bd37b96c4753a61d8d1e",
+      "source_logical_path": "work/r03-d16/captures/v1/result.json",
+      "source_sha256": "dda0f1589c5e26e692113dc08efb8b2d1513ef82a386025780191040e6b9f0f1",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v1/usage-summary.json",
+      "sha256": "a420cd1ee93ad800f9afc218bec591a6f87097b78d92cd97dee13d82f6870678",
+      "source_logical_path": "work/r03-d16/captures/v1/usage.json",
+      "source_sha256": "ef6a1f71e17701605f0ba079422e2461812f3c7b25eea53a9ef77943781f2042",
+      "transformation": "Native all-attempt metrics and saved reference-cost reconstruction; Repair counted as subset."
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "79cf5678778b348aa0e314ae225865be674ee611620bf6ef2250ec580f3d9d20",
+      "source_logical_path": "work/r03-d16/captures/v1/provenance.json",
+      "source_sha256": "930bbd127ade65a7927f05fbfd38deb94d012c6d929fdade212ac8788cc83a28",
+      "transformation": "Public shared configuration path rebased; private evidence/mechanism references omitted and original retained."
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "84a577c840f45192025aea99e5441cfd2dd8dbd8120db3ccd9a34eaa6d1c8225",
+      "source_logical_path": "work/r03-d16/captures/v2/result.json",
+      "source_sha256": "a7ec687dbce4af83465f9c46c82c2e83113d08532ac072fdcf3e0492c63a43ea",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v2/usage-summary.json",
+      "sha256": "59011de1a70f6136ca24ef922b7bb7577845679d8a9e24a02ccf878b2d64bc8d",
+      "source_logical_path": "work/r03-d16/captures/v2/usage.json",
+      "source_sha256": "5ec9aeb034d516b46c424042be2d9da8b1d2eb877c77300b7f692379dff96ec3",
+      "transformation": "Native all-attempt metrics and saved reference-cost reconstruction; Repair counted as subset."
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "d4ae340c089b5e029938211075e5e13965fb41569679ce2246b52a70e2b7de5b",
+      "source_logical_path": "work/r03-d16/captures/v2/provenance.json",
+      "source_sha256": "72a12dab0c7b1ede5a13ff781c4fb0b683c341b76c7cd56e4cf84d501c5ba971",
+      "transformation": "Public shared configuration path rebased; private evidence/mechanism references omitted and original retained."
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "23bbc22bb187da24a6e0260acc0a1cfea6d0f239301cfce4b979832cf5da0959",
+      "source_logical_path": "work/r03-d16/captures/v3/result.json",
+      "source_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
+      "json_pointer": "/v3/final_primary"
+    },
+    {
+      "path": "generation/v3/usage-summary.json",
+      "sha256": "ab976f2a0eee5516c7c61c52d9bebe51f0c582a9abb5404826309d12dc096c52",
+      "source_logical_path": "work/r03-d16/captures/v3/usage.json",
+      "source_sha256": "3db5fc21191f72ae4f747dd19b26341ac2c73840868ae51821d60488fe78d677",
+      "transformation": "Native all-attempt metrics and saved reference-cost reconstruction; Repair counted as subset."
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "e634b897cbc516fa50051804c47e2a255587c0f49e71492933f1cd84400dd5ba",
+      "source_logical_path": "work/r03-d16/captures/v3/provenance.json",
+      "source_sha256": "8df4efef1739f1d989b91df7409ddc3cdb875137b398a345d29e000619fa5c9d",
+      "transformation": "Public shared configuration path rebased; private evidence/mechanism references omitted and original retained."
+    },
+    {
+      "path": "generation/poi-origins.json",
+      "sha256": "da4f2b939874aee263fbcbbcb134ab56e04cc5bfd22d57a979e5cd04c29fa280",
+      "source_logical_path": "work/r03-close/reports/opportunities/opportunities.json",
+      "source_sha256": "8e87ef6c9bb5bfd2969a31c7a050b35e2ba438b42e2efc6502ac5ed154eae23e",
+      "transformation": "V1/V2 canonical origin records and incremental RAG IDs."
+    },
+    {
+      "path": "generation/v3/draft.json",
+      "sha256": "fff710fab4351c276f4b4a1469bd4a955e7689b3baa2aac6000fa52a677d9fb8",
+      "source_logical_path": "work/r03-d16/captures/v3/result.json",
+      "source_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
+      "json_pointer": "/v3/draft"
+    },
+    {
+      "path": "generation/v3/final-primary.json",
+      "sha256": "093a1275a2a749950d88a001fa005ee0da2a53d82026ee0c73b95fa5fdc29fcd",
+      "source_logical_path": "work/r03-d16/captures/v3/result.json",
+      "source_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
+      "json_pointer": "/v3/final_primary",
+      "transformation": "Expand the relative material reference to recover the exact final_primary JSON value."
+    },
+    {
+      "path": "analysis/poi-process/summary.json",
+      "sha256": "2dc8763ceaf258effbd40793c2717e2037a1ad3a974e30a50a431f55c8b4a0dd",
+      "source_logical_path": "work/r03-close/reports/opportunities/opportunities.json",
+      "source_sha256": "8e87ef6c9bb5bfd2969a31c7a050b35e2ba438b42e2efc6502ac5ed154eae23e",
+      "transformation": "Native opportunity and independent relevance views; no corpus study selected."
+    },
+    {
+      "path": "analysis/resources/summary.json",
+      "sha256": "e6bd71ffff8087e041d4d9babbaa1407c813348846c6cbb7674014bdf82dbd52",
+      "source_logical_path": "work/r03-close/reports/resources/summary.json",
+      "source_sha256": "5cbbb4e563ac2ab447ed6c2b70fa20e6cdf79b5b722d9eef9419cf87c5321c18",
+      "json_pointer": ""
+    },
+    {
+      "path": "evaluation/v3-pair/summary.json",
+      "sha256": "d96e48c59da3522fc160f63d143b5714df54afe1e8d96bff2c60c00eb2a99301",
+      "source_logical_path": "work/r03-close/pair/execution/report.json",
+      "source_sha256": "da0eeeacc85ce94c49ccaf2c429c9f6a30b7d9d42c5dbbf8f45d98e54ef136e8",
+      "transformation": "Native paired scores, changes, correspondence coverage and continuity classifications; raw checks retained privately."
+    },
+    {
+      "path": "analysis/repair/summary.json",
+      "sha256": "8c0cebbbe105f1ae85079d890f620a8120301508c4b6a8fec5f245aa338a7503",
+      "source_logical_path": "work/r03-close/reports/repair/mechanism-report.json",
+      "source_sha256": "a9b3d82ba5b39cc66d7c6666af1a20136d33307c268c00764120f52231698613",
+      "transformation": "Native mechanism observations joined with actual timing and independent pair classifications; no controlled experiment."
+    }
+  ],
+  "native_verification": {
+    "started_at": "2026-10-15T22:28:06.488554+00:00",
+    "finished_at": "2026-10-15T22:29:30.830203+00:00",
+    "primary_replay": "exact",
+    "primary_report_sha256": "fc905d3ae1ecf80d24d74d26d5e92f2737cf975533aaef25d54faa5a05b2160d",
+    "primary_receipt_sha256": "c05a2f6d721a18e4fcbd05fde10d53dd9847986c787193f61857224669667e25",
+    "pair_replay": "exact_via_native_export",
+    "pair_report_sha256": "da0eeeacc85ce94c49ccaf2c429c9f6a30b7d9d42c5dbbf8f45d98e54ef136e8",
+    "pair_receipt_sha256": "433445acb994f8a6165f48e00137a7b230fae8d487c748cbd1527d726afe4364",
+    "portable_handoff_sha256": "fb60ca942d0d057a9222a303a26e0c0dee603f464cd4ce5a1b49350289123c58",
+    "portable_handoff_closed_receipt": "verified",
+    "network": "denied",
+    "http_client_construction": "denied",
+    "current_provider_sends": 0
+  },
+  "private_evidence_root_identifier": "benchmark/scratch/case-05/work/r03-d16 and r03-close; native absolute bindings retained",
+  "archive_status": "Base and addendum integrity verified; all logical files restored; primary, pair, opportunity, relevance, mechanism, Repair research and both resource cohorts replayed exactly. Originals retained.",
+  "private_archive": {
+    "evidence_identifier": "benchmark/scratch/case-05/archive/revision-03",
+    "logical_files": 23786,
+    "unique_blobs": 2234,
+    "compressed_bytes": 13766280,
+    "base_manifest_sha256": "dffa806ad3fb45fea799fa0c97a4331eac1ac5d4d246f71efb72d892c77300ed",
+    "addendum_manifest_sha256": "881e1c232d955b9b587186923e7da7b9be03b5e29b6ebf35e7bc09bd5b43eb7f",
+    "restored_verification_sha256": "a3536f5c082f4d0f98a1d893a2d35c3ee0313006c855a91930ec895d8c2d287a",
+    "protected_previous_files": 17125,
+    "original_files_deleted": 0
+  }
+}

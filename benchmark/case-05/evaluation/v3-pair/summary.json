@@ -1,34 +1,9 @@
 {
-  "schema_version": "case05_v3_pair_attempt_summary_1",
-  "case_id": "case-05",
-  "source_run_id": "case-05-r02-v3-attempt-01",
-  "execution_mode": "offline_reuse",
+  "schema_version": "case05_v3_pair_view_2",
+  "execution_revision": "3",
+  "source_run_id": "case-05-r03-v3-attempt-01",
   "processing_status": "complete",
-  "acquisition_status": "complete",
-  "evidence_status": "available",
-  "configured_total_timeout_seconds": 600,
-  "native_stage_elapsed_seconds": 99.223376,
-  "started_at": "2026-10-15T10:28:36.474107+00:00",
-  "finished_at": "2026-10-15T10:30:15.697483+00:00",
-  "native_report_generated_at": "2026-10-15T10:29:07.770926+00:00",
-  "elapsed_basis": "native started marker through wrapper return after closed receipt",
-  "actual_google_sends": 0,
-  "actual_model_sends": 0,
-  "automatic_retries": 0,
-  "current_reference_cost_usd": "0",
-  "actual_account_billing": null,
-  "source_draft_equals_final": true,
-  "source_repair_status": "REJECTED",
-  "source_repair_reason": "insufficient_time_for_model_and_rechecks",
-  "paired_result_selected": true,
-  "completed_handoff_available": true,
-  "replay": "exact_via_native_export",
-  "closed_receipt": "verified",
-  "preparation_sha256": "fdb1743844b0a5102b97ad83d1399f097803e5c161aa02320a19241a4b9f18b9",
-  "report_sha256": "d6e3c43e1e6b2d9d10b8dece0a8fd9ca31306303a0e370eac31728f2db6a6c81",
-  "receipt_sha256": "0f569247969da1187edb0202d1804a16cb9e8053e4956236ba1cc220cc6144c6",
-  "handoff_sha256": "99c988b8ccc2224b8a90723b65e99fa24186c44521c49f9b03c48f821e062dca",
-  "pair_status": "available",
+  "execution_mode": "offline_reuse",
   "stages": {
     "draft": {
       "auxiliary_total": {
@@ -49,7 +24,7 @@
         "reason": null,
         "score_0_100": 79.83333333333333
       },
-      "mean_density_penalty": 16.0,
+      "density_penalty": 16.0,
       "dimensions": {
         "grounding": {
           "state": "PASS",
@@ -106,53 +81,53 @@
     "final_primary": {
       "auxiliary_total": {
         "exact_fraction": {
-          "denominator": 24,
-          "numerator": 23
+          "denominator": 40,
+          "numerator": 39
         },
         "reason": null,
-        "score_0_100": 95.83333333333333,
+        "score_0_100": 97.5,
         "total_included_dimensions": 4,
         "unavailable_dimensions": []
       },
       "overall_total": {
         "exact_fraction": {
-          "denominator": 600,
-          "numerator": 479
+          "denominator": 40,
+          "numerator": 39
         },
         "reason": null,
-        "score_0_100": 79.83333333333333
+        "score_0_100": 97.5
       },
-      "mean_density_penalty": 16.0,
+      "density_penalty": 0.0,
       "dimensions": {
         "grounding": {
           "state": "PASS",
           "counts": {
             "FAIL": 0,
-            "PASS": 6,
+            "PASS": 10,
             "UNKNOWN": 0
           },
-          "denominator": 6,
+          "denominator": 10,
           "verified_score_0_100": 100.0
         },
         "non_overlap": {
           "state": "PASS",
           "counts": {
             "FAIL": 0,
-            "PASS": 7,
+            "PASS": 15,
             "UNKNOWN": 0
           },
-          "denominator": 7,
+          "denominator": 15,
           "verified_score_0_100": 100.0
         },
         "opening": {
           "state": "UNKNOWN",
           "counts": {
             "FAIL": 0,
-            "PASS": 5,
+            "PASS": 9,
             "UNKNOWN": 1
           },
-          "denominator": 6,
-          "verified_score_0_100": 83.33333333333333
+          "denominator": 10,
+          "verified_score_0_100": 90.0
         },
         "requirements": {
           "state": "N/A",
@@ -168,10 +143,10 @@
           "state": "PASS",
           "counts": {
             "FAIL": 0,
-            "PASS": 1,
+            "PASS": 5,
             "UNKNOWN": 0
           },
-          "denominator": 1,
+          "denominator": 5,
           "verified_score_0_100": 100.0
         }
       }
@@ -180,22 +155,22 @@
   "score_deltas": {
     "auxiliary_total": {
       "exact_fraction": {
-        "denominator": 1,
-        "numerator": 0
+        "denominator": 60,
+        "numerator": 1
       },
-      "percentage_points": 0.0
+      "percentage_points": 1.6666666666666667
     },
     "overall_total": {
       "exact_fraction": {
-        "denominator": 1,
-        "numerator": 0
+        "denominator": 300,
+        "numerator": 53
       },
-      "percentage_points": 0.0
+      "percentage_points": 17.666666666666668
     },
-    "daily_density_penalty": 0.0
+    "daily_density_penalty": -16.0
   },
   "visit_changes": {
-    "added_count": 0,
+    "added_count": 4,
     "confirmed_venue_loss_count": 0,
     "primary_role_loss_count": 0,
     "removed_count": 0,
@@ -203,19 +178,61 @@
     "unresolved_after": [],
     "unresolved_before": []
   },
-  "primary_v3_score_unchanged": 84,
-  "opening_basis": "Native paired API-only evidence; primary model-supported missing-hours assessment is not imported into this paired score",
-  "previous_attempt": {
-    "processing_status": "stopped",
-    "reason": "execution_timeout",
-    "configured_total_timeout_seconds": 120,
-    "native_stage_elapsed_seconds": 296.002257,
-    "preparation_sha256": "42029dbdf9d18ed4a950693f62ef500091af4d6ffe35aaf43b25f328f48bb5f0",
-    "stopped_report_sha256": "46aa5cd54a91774c54aac0c5b15ef908b81d24d8c8b261a6a901de7b95b46eb9",
-    "replay": "exact_stopped_receipt",
-    "closed_receipt": "verified"
+  "correspondence": {
+    "coverage": {
+      "after": {
+        "established_count": 10,
+        "occurrence_count": 10,
+        "unresolved_count": 0
+      },
+      "before": {
+        "established_count": 6,
+        "occurrence_count": 6,
+        "unresolved_count": 0
+      }
+    },
+    "unresolved": {
+      "after": [],
+      "before": []
+    },
+    "review_request_count": 0
   },
-  "pre_execution_interruption": "Parent stopped initial local hash/preflight work before execution directory creation; no consumed-package retry or provider send",
-  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-review-01/",
-  "source_runtime": "original producer 0f365304; isolated unchanged historical reader"
+  "continuity_transitions": {
+    "conflicts": {},
+    "grounding": {
+      "added": 4,
+      "unchanged": 6
+    },
+    "opening": {
+      "added": 4,
+      "unchanged": 6
+    },
+    "protection_conflicts": {},
+    "requirements": {},
+    "routes": {
+      "unchanged": 1,
+      "structural_leg_added": 4
+    }
+  },
+  "verification": {
+    "started_at": "2026-10-15T22:28:06.488554+00:00",
+    "finished_at": "2026-10-15T22:29:30.830203+00:00",
+    "primary_replay": "exact",
+    "primary_report_sha256": "fc905d3ae1ecf80d24d74d26d5e92f2737cf975533aaef25d54faa5a05b2160d",
+    "primary_receipt_sha256": "c05a2f6d721a18e4fcbd05fde10d53dd9847986c787193f61857224669667e25",
+    "pair_replay": "exact_via_native_export",
+    "pair_report_sha256": "da0eeeacc85ce94c49ccaf2c429c9f6a30b7d9d42c5dbbf8f45d98e54ef136e8",
+    "pair_receipt_sha256": "433445acb994f8a6165f48e00137a7b230fae8d487c748cbd1527d726afe4364",
+    "portable_handoff_sha256": "fb60ca942d0d057a9222a303a26e0c0dee603f464cd4ce5a1b49350289123c58",
+    "portable_handoff_closed_receipt": "verified",
+    "network": "denied",
+    "http_client_construction": "denied",
+    "current_provider_sends": 0
+  },
+  "actual_google_sends": 0,
+  "actual_model_sends": 0,
+  "automatic_retries": 0,
+  "current_reference_usd": "0",
+  "primary_v3_score_unchanged": 100,
+  "opening_basis": "API-only saved evidence; primary model-supported missing-hours assessment not imported."
 }
