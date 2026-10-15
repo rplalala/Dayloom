@@ -1,0 +1,250 @@
+{
+  "schema_version": "case05_resource_summary_1",
+  "case_id": "case-05",
+  "generation_attempts": [
+    {
+      "execution_revision": "original-execution",
+      "version": "v0",
+      "run_id": "case-05-v0-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 41.51500000001397,
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 12946,
+        "output_tokens": 5271,
+        "total_tokens": 18217,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "0.002901315",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    },
+    {
+      "execution_revision": "original-execution",
+      "version": "v1",
+      "run_id": "case-05-v1-attempt-01",
+      "status": "failed",
+      "metrics": {
+        "elapsed_seconds": 17.140999999945052,
+        "model_calls": 1,
+        "http_sends": 1,
+        "input_tokens": 9393,
+        "output_tokens": 1859,
+        "total_tokens": 11252,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "0.0010237",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    },
+    {
+      "execution_revision": "revision-02",
+      "version": "v0",
+      "run_id": "case-05-r02-v0-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 62.84400000004098,
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 18955,
+        "output_tokens": 6298,
+        "total_tokens": 25253,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "0.005518225",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    },
+    {
+      "execution_revision": "revision-02",
+      "version": "v1",
+      "run_id": "case-05-r02-v1-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 140.9220000000205,
+        "model_calls": 5,
+        "http_sends": 91,
+        "input_tokens": 70924,
+        "output_tokens": 13623,
+        "total_tokens": 84547,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "2.80578068",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    },
+    {
+      "execution_revision": "revision-02",
+      "version": "v2",
+      "run_id": "case-05-r02-v2-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 125.89000000001397,
+        "model_calls": 6,
+        "http_sends": 92,
+        "input_tokens": 69154,
+        "output_tokens": 11810,
+        "total_tokens": 80964,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 8,
+        "embedding_total_tokens": 8,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "2.80424982",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    },
+    {
+      "execution_revision": "revision-02",
+      "version": "v3",
+      "run_id": "case-05-r02-v3-attempt-01",
+      "status": "completed",
+      "metrics": {
+        "elapsed_seconds": 176.28099999995902,
+        "model_calls": 7,
+        "http_sends": 94,
+        "input_tokens": 159392,
+        "output_tokens": 12502,
+        "total_tokens": 171894,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 8,
+        "embedding_total_tokens": 8,
+        "cache_hits": 0
+      },
+      "repair": {
+        "model_calls": 1,
+        "http_sends": 2,
+        "total_tokens": 89501,
+        "observed_token_subtotal": 89501,
+        "scope": "subset_counted_once"
+      },
+      "estimated_total_usd": "2.847875495",
+      "unpriced_events": 0,
+      "actual_invoice_total_usd": null
+    }
+  ],
+  "generation_totals": {
+    "model_calls": {
+      "total": 23,
+      "observed_subtotal": 23,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "http_sends": {
+      "total": 282,
+      "observed_subtotal": 282,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "input_tokens": {
+      "total": 340764,
+      "observed_subtotal": 340764,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "output_tokens": {
+      "total": 51363,
+      "observed_subtotal": 51363,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "total_tokens": {
+      "total": 392127,
+      "observed_subtotal": 392127,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "embedding_calls": {
+      "total": 2,
+      "observed_subtotal": 2,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "embedding_input_tokens": {
+      "total": 16,
+      "observed_subtotal": 16,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    },
+    "embedding_total_tokens": {
+      "total": 16,
+      "observed_subtotal": 16,
+      "known_attempts": 6,
+      "missing_attempts": 0
+    }
+  },
+  "generation_reference_estimate_usd": "8.467349235",
+  "combined_reference_estimate_usd": "9.546571710",
+  "actual_invoice_total_usd": null,
+  "external_codex_tokens_and_billing": null,
+  "new_business_api_sends": 0,
+  "new_business_api_cost_usd": "0",
+  "repair_accounting": "subset included once in V3 generation",
+  "automatic_retries": 0,
+  "limitations": [
+    "retail/reference estimates, not invoices",
+    "execution revisions are not additional unique requests",
+    "non-dispatch declarations are retrospective; original source records unchanged",
+    "external AI assistance has unavailable complete transcripts, usage and billing"
+  ],
+  "primary": {
+    "model_calls": 2,
+    "http_sends": 51,
+    "tokens": 20099,
+    "estimated_total_usd": "1.079222475",
+    "unpriced_event_count": 0,
+    "native_scoring_status": "complete",
+    "original_cli_exit_code": 1
+  },
+  "native_ledger_sha256": "52d1341c25e766efcc80d750ea5dca08e8198a2fb47932af435c7cf7beb19b45",
+  "native_ledger_source_digest": "026493df1369d10e8b93ef13f03ec41eb6be52ceb0307a3b2bcc982cdd096760",
+  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-offline-01/reports/resources"
+}
