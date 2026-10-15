@@ -1,0 +1,298 @@
+{
+  "itinerary": {
+    "output_version": "itinerary_2",
+    "transfers": [],
+    "route_diagnostics": [],
+    "reference_recommendations": [
+      {
+        "place_name": "ArtScience Museum",
+        "source_place_id": null,
+        "reason": "An optional museum stop near the Marina Bay sights planned for day 1, if you would like to add an indoor attraction to that area.",
+        "associated_day": "2026-10-17",
+        "area": "Marina Bay, near Gardens by the Bay and Marina Bay Sands",
+        "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+        "source_ref": null
+      },
+      {
+        "place_name": "Esplanade \u2013 Theatres on the Bay",
+        "source_place_id": null,
+        "reason": "An optional arts and waterfront stop to consider near the Merlion Park and Marina Bay part of day 1.",
+        "associated_day": "2026-10-17",
+        "area": "Marina Bay waterfront",
+        "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+        "source_ref": null
+      }
+    ],
+    "destination": "Singapore",
+    "start_date": "2026-10-17",
+    "end_date": "2026-10-18",
+    "days": [
+      {
+        "date": "2026-10-17",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day1_botanic_gardens",
+            "title": "Singapore Botanic Gardens",
+            "place_name": "Singapore Botanic Gardens",
+            "source_place_id": null,
+            "location": "Singapore",
+            "start_time": "2026-10-17T09:00:00+08:00",
+            "end_time": "2026-10-17T10:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Explore the gardens at an unhurried walking pace."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day1_transfer_1",
+            "title": "Public transport to National Gallery Singapore",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-17T10:45:00+08:00",
+            "end_time": "2026-10-17T11:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 30 minutes by public transport from Singapore Botanic Gardens to National Gallery Singapore; route and duration are not live-verified.",
+            "transport": {
+              "mode": "TRANSIT",
+              "from_activity_id": "day1_botanic_gardens",
+              "to_activity_id": "day1_national_gallery"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day1_national_gallery",
+            "title": "National Gallery Singapore",
+            "place_name": "National Gallery Singapore",
+            "source_place_id": null,
+            "location": "Civic District",
+            "start_time": "2026-10-17T11:15:00+08:00",
+            "end_time": "2026-10-17T13:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Time for a focused visit to the galleries and the Civic District setting."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day1_transfer_2",
+            "title": "Walk to Merlion Park",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-17T13:00:00+08:00",
+            "end_time": "2026-10-17T13:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 15 minutes on foot from National Gallery Singapore to Merlion Park; route and duration are not live-verified.",
+            "transport": {
+              "mode": "WALK",
+              "from_activity_id": "day1_national_gallery",
+              "to_activity_id": "day1_merlion"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day1_merlion",
+            "title": "Merlion Park and Marina Bay views",
+            "place_name": "Merlion Park",
+            "source_place_id": null,
+            "location": "Marina Bay",
+            "start_time": "2026-10-17T13:15:00+08:00",
+            "end_time": "2026-10-17T13:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Take in the waterfront and the city skyline."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day1_transfer_3",
+            "title": "Walk to Gardens by the Bay",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-17T13:45:00+08:00",
+            "end_time": "2026-10-17T14:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 30 minutes on foot from Merlion Park to Gardens by the Bay; route and duration are not live-verified.",
+            "transport": {
+              "mode": "WALK",
+              "from_activity_id": "day1_merlion",
+              "to_activity_id": "day1_gardens_by_the_bay"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day1_gardens_by_the_bay",
+            "title": "Gardens by the Bay",
+            "place_name": "Gardens by the Bay",
+            "source_place_id": null,
+            "location": "Marina Bay",
+            "start_time": "2026-10-17T14:15:00+08:00",
+            "end_time": "2026-10-17T17:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Allow time to explore the gardens and distinctive Supertree Grove area. Any ticketed attractions are optional; access and availability have not been checked."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day1_transfer_4",
+            "title": "Walk to Marina Bay Sands SkyPark",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-17T17:30:00+08:00",
+            "end_time": "2026-10-17T17:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 15 minutes on foot from Gardens by the Bay to Marina Bay Sands SkyPark; route and duration are not live-verified.",
+            "transport": {
+              "mode": "WALK",
+              "from_activity_id": "day1_gardens_by_the_bay",
+              "to_activity_id": "day1_skypark"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day1_skypark",
+            "title": "Marina Bay Sands SkyPark",
+            "place_name": "Marina Bay Sands SkyPark",
+            "source_place_id": null,
+            "location": "Marina Bay",
+            "start_time": "2026-10-17T17:45:00+08:00",
+            "end_time": "2026-10-17T19:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "A high-level city-view stop to finish the day. Entry arrangements and availability have not been checked."
+          }
+        ]
+      },
+      {
+        "date": "2026-10-18",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day2_chinatown",
+            "title": "Chinatown and Buddha Tooth Relic Temple",
+            "place_name": "Buddha Tooth Relic Temple",
+            "source_place_id": null,
+            "location": "Chinatown",
+            "start_time": "2026-10-18T09:00:00+08:00",
+            "end_time": "2026-10-18T10:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Explore the temple and surrounding Chinatown streets; access to interiors has not been checked."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day2_transfer_1",
+            "title": "Public transport to Fort Canning Park",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-18T10:30:00+08:00",
+            "end_time": "2026-10-18T10:50:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 20 minutes by public transport from Chinatown to Fort Canning Park; route and duration are not live-verified.",
+            "transport": {
+              "mode": "TRANSIT",
+              "from_activity_id": "day2_chinatown",
+              "to_activity_id": "day2_fort_canning"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day2_fort_canning",
+            "title": "Fort Canning Park",
+            "place_name": "Fort Canning Park",
+            "source_place_id": null,
+            "location": "Central Singapore",
+            "start_time": "2026-10-18T10:50:00+08:00",
+            "end_time": "2026-10-18T12:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "A green, hilltop park visit with time to walk among its historic and landscaped areas."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day2_transfer_2",
+            "title": "Public transport to Kampong Glam",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-18T12:30:00+08:00",
+            "end_time": "2026-10-18T13:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 30 minutes by public transport from Fort Canning Park to Kampong Glam; route and duration are not live-verified.",
+            "transport": {
+              "mode": "TRANSIT",
+              "from_activity_id": "day2_fort_canning",
+              "to_activity_id": "day2_kampong_glam"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day2_kampong_glam",
+            "title": "Kampong Glam and Sultan Mosque precinct",
+            "place_name": "Sultan Mosque",
+            "source_place_id": null,
+            "location": "Kampong Glam",
+            "start_time": "2026-10-18T13:00:00+08:00",
+            "end_time": "2026-10-18T14:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Explore the historic neighborhood and admire Sultan Mosque; plan this as a precinct visit, since interior access has not been checked."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day2_transfer_3",
+            "title": "Public transport to Singapore Flyer",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-18T14:15:00+08:00",
+            "end_time": "2026-10-18T14:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 30 minutes by public transport from Kampong Glam to Singapore Flyer; route and duration are not live-verified.",
+            "transport": {
+              "mode": "TRANSIT",
+              "from_activity_id": "day2_kampong_glam",
+              "to_activity_id": "day2_flyer"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day2_flyer",
+            "title": "Singapore Flyer",
+            "place_name": "Singapore Flyer",
+            "source_place_id": null,
+            "location": "Marina Bay",
+            "start_time": "2026-10-18T14:45:00+08:00",
+            "end_time": "2026-10-18T16:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "A city-view experience; entry arrangements and availability have not been checked."
+          },
+          {
+            "activity_kind": "transport",
+            "activity_id": "day2_transfer_4",
+            "title": "Walk to Marina Barrage",
+            "place_name": null,
+            "source_place_id": null,
+            "location": null,
+            "start_time": "2026-10-18T16:15:00+08:00",
+            "end_time": "2026-10-18T16:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Model estimate: about 30 minutes on foot from Singapore Flyer to Marina Barrage; route and duration are not live-verified.",
+            "transport": {
+              "mode": "WALK",
+              "from_activity_id": "day2_flyer",
+              "to_activity_id": "day2_marina_barrage"
+            }
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "day2_marina_barrage",
+            "title": "Marina Barrage",
+            "place_name": "Marina Barrage",
+            "source_place_id": null,
+            "location": "Marina Bay",
+            "start_time": "2026-10-18T16:45:00+08:00",
+            "end_time": "2026-10-18T18:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Finish with an open-air waterfront stop and views across the bay."
+          }
+        ]
+      }
+    ]
+  }
+}

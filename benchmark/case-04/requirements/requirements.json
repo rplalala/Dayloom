@@ -1,0 +1,105 @@
+{
+  "subjects": [],
+  "obligations": [
+    {
+      "obligation_id": "public-transport-and-walking-only",
+      "kind": "transport_modes",
+      "resolution": "resolved",
+      "scope": "whole_trip",
+      "allowed_modes": [
+        "WALK",
+        "TRANSIT"
+      ],
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Use public transport and walking only; do not include car, taxi or ride-hailing transfers.",
+          "occurrence": 0,
+          "offset_start": 148,
+          "offset_end": 238
+        }
+      ]
+    }
+  ],
+  "soft_preferences": [
+    {
+      "preference_id": "gardens",
+      "wording": "gardens",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "gardens",
+          "occurrence": 0,
+          "offset_start": 106,
+          "offset_end": 113
+        }
+      ]
+    },
+    {
+      "preference_id": "major-city-sights",
+      "wording": "major city sights",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "major city sights",
+          "occurrence": 0,
+          "offset_start": 119,
+          "offset_end": 136
+        }
+      ]
+    },
+    {
+      "preference_id": "views",
+      "wording": "views",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "views",
+          "occurrence": 0,
+          "offset_start": 141,
+          "offset_end": 146
+        }
+      ]
+    },
+    {
+      "preference_id": "fairly-full-itinerary",
+      "wording": "a fairly full itinerary",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "a fairly full itinerary",
+          "occurrence": 0,
+          "offset_start": 68,
+          "offset_end": 91
+        }
+      ]
+    },
+    {
+      "preference_id": "active-use-of-both-days",
+      "wording": "make active use of both days",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "make active use of both days",
+          "occurrence": 0,
+          "offset_start": 252,
+          "offset_end": 280
+        }
+      ]
+    },
+    {
+      "preference_id": "trip-mix-gardens-city-sights-and-views",
+      "wording": "combines gardens with major city sights and views",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "combines gardens with major city sights and views",
+          "occurrence": 0,
+          "offset_start": 97,
+          "offset_end": 146
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}

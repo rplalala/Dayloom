@@ -1,0 +1,176 @@
+{
+  "schema_version": "case04_public_material_index_1",
+  "input": {
+    "path": "../inputs/case-04.json",
+    "sha256": "06ea61ff07fed40a3abef8c7bbbc42676f99d7d28db4805efd5f627afa4be4b7"
+  },
+  "source_revision": "941f4986be876dbb4586e8a34ec156f89630f755",
+  "scope": "Curated public views; private native dependencies and receipts remain the replay authority",
+  "reference_format": {
+    "key": "$case_material_ref",
+    "fields": [
+      "path",
+      "pointer",
+      "expanded_semantic_sha256"
+    ],
+    "resolution": "path relative to containing file, JSON Pointer, canonical expanded content hash"
+  },
+  "files": [
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "6fbe13959093a2b3f26889efee2518f3c131f6e1c6bb037101c4f452f1731dc8",
+      "publication": "derived_view",
+      "source_sha256": "b860a2fa8f16960934a8c4e06de1470f7463077edf2e1388ebb16b7e4e179a5c"
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "8b5c37cc54eb82b6f9586a841eb327a0021d40f0c6ad47af8fb8e7d55d93e482",
+      "publication": "derived_view",
+      "source_sha256": "4ee8bca56624df20d72f95dfec13268743f1c080349d38d33a036cafb04819b3"
+    },
+    {
+      "path": "analysis/poi-process/report.md",
+      "sha256": "989e020fd2932ab5c7363ed0184aca39dd819c164ab2591d18a7d62361ac2e90",
+      "publication": "reader_view"
+    },
+    {
+      "path": "analysis/repair/changes.json",
+      "sha256": "68936a9a4e9b8ada20a4cb01a68489d694d52f1f5f047ed06dfc8f0e4e6ea6b8",
+      "publication": "derived_view",
+      "source_sha256": "ccc8fcc81fc9aa3027d3ffd3de8d49091568465389d5cd3977faaf86f3e021a4"
+    },
+    {
+      "path": "analysis/repair/report.md",
+      "sha256": "9e8ef8e234044d38ec29d64b42da76a3daa55fff4b96c6847ea6a7dfa1660e90",
+      "publication": "reader_view"
+    },
+    {
+      "path": "analysis/resources/report.md",
+      "sha256": "874297681bbfc840e397f33dc0c88d69268fea8f5a00e75131854152a9f266ad",
+      "publication": "reader_view"
+    },
+    {
+      "path": "analysis/resources/resources.json",
+      "sha256": "1142c51b6be95e3758fa9a9244bdd3e4f400615d639ad691e8b283a3ca903c23",
+      "publication": "derived_view"
+    },
+    {
+      "path": "evaluation/primary/quality.json",
+      "sha256": "0b04f53514f1ec52f5b20fdebfa3a7d6245a7bd795fc0e71548812f64f61e00a",
+      "publication": "derived_view",
+      "source_sha256": "c442387fa92f4ed2e263dfaa39faf0deb809259203f22d52e3025a0bd5103b1f"
+    },
+    {
+      "path": "evaluation/v3-pair/provenance.json",
+      "sha256": "fd6e42967948010a021e5017d16a10439dc3cbbedc80dc9c7fc3a6bdf7314921",
+      "publication": "derived_view"
+    },
+    {
+      "path": "evaluation/v3-pair/summary.json",
+      "sha256": "7ed84fb1243c277536cfe38a9d6a3dfe7f9d62bce7270b445091d734338b83a8",
+      "publication": "derived_view",
+      "source_sha256": "cf6f46641d95489afed878b13bd9103ffdd31daae34067283e4b1875c9298d1b"
+    },
+    {
+      "path": "generation/rag-origins.json",
+      "sha256": "e780744a06776c2b11c3e2d409d6f12a4fb0715a31bb99d08af6d823f4d0f691",
+      "publication": "derived_view"
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "ea2e08db6c42b4af5ffe9b0345d51b3381f1566042ddd63deff93c619fa620b4",
+      "publication": "lossless_subtree",
+      "source_sha256": "539d12725d3a98966cf05f726969a3a830ccc6f7900d0c04a3c73f61cdd0aad4",
+      "source_pointer": "/itinerary",
+      "publication_pointer": "/itinerary",
+      "expanded_semantic_sha256": "96942990da8215aff1b736800f010951071145ecbc7bd7ea29bc27070257c913"
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "67a8f2c57c978c9f48ea273079a55b56767019d49ab40ee9b4080e0fc6606950",
+      "publication": "sanitized_subtree",
+      "source_sha256": "f018e695651ef51d6e106f63ee2ac1ee1f432cd6d5cc60796cd1211dca1f12ff",
+      "source_pointer": "/itinerary",
+      "publication_pointer": "/itinerary",
+      "expanded_semantic_sha256": "7ada12937443ed43c046280379c59211541cbfe72edca194614d62e503ec9517",
+      "source_redactions": [
+        "/reference_recommendations/0/source_ref",
+        "/reference_recommendations/1/source_ref",
+        "/reference_recommendations/2/source_ref"
+      ],
+      "source_expanded_semantic_sha256": "fc83219d20ca4a56079772f409c67b566a7e4633c6fd1ec0a5899aa81f7d9cf5"
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "4e5a199139d59ad3c057da0f9577d11e24bee6d03187a6b648b23d1b0330b077",
+      "publication": "sanitized_subtree",
+      "source_sha256": "2b1161d9cfd459ea5310f68700db8e92142f41d142bfdb9269d88a022bf12056",
+      "source_pointer": "/itinerary",
+      "publication_pointer": "/itinerary",
+      "expanded_semantic_sha256": "5dc15eee19de97d1f42e37524b6bd668613b4e25d7a11fde2fe9cd676d0289c2",
+      "source_redactions": [
+        "/reference_recommendations/0/source_ref",
+        "/reference_recommendations/1/source_ref",
+        "/reference_recommendations/2/source_ref"
+      ],
+      "source_expanded_semantic_sha256": "42ea52d542b0b19b00ad67ae98514cfbe14861cd1bf2a9c825d6a3be11c75437"
+    },
+    {
+      "path": "generation/v3/draft.json",
+      "sha256": "bb6474c5fb2f1ec50e36e82bdfd1312e5f29f2b86ae0b55ffdaf175a01dc9f5d",
+      "publication": "sanitized_reference_view",
+      "source_sha256": "ccc8fcc81fc9aa3027d3ffd3de8d49091568465389d5cd3977faaf86f3e021a4",
+      "source_pointer": "/v3/draft",
+      "publication_pointer": "/itinerary",
+      "expanded_semantic_sha256": "13d25e7a8175bfcd8ef27f96ced61b43d0441428a93126162d17a14a6a584300",
+      "source_redactions": [],
+      "source_expanded_semantic_sha256": "13d25e7a8175bfcd8ef27f96ced61b43d0441428a93126162d17a14a6a584300"
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "c3e38ac0ecb6055b66073b760fada6c55cc348d6a094989df87f864deff926af",
+      "publication": "sanitized_subtree",
+      "source_sha256": "ccc8fcc81fc9aa3027d3ffd3de8d49091568465389d5cd3977faaf86f3e021a4",
+      "source_pointer": "/itinerary",
+      "publication_pointer": "/itinerary",
+      "expanded_semantic_sha256": "2be165c85b32ce4b6795b71949a546444859ece974875d276eb175d7e618ca8f",
+      "source_redactions": [
+        "/reference_recommendations/0/source_ref",
+        "/reference_recommendations/1/source_ref",
+        "/reference_recommendations/2/source_ref"
+      ],
+      "source_expanded_semantic_sha256": "43b7011666363cfa8310eb1a7643836ef693814766f139b42c4f20c1c79939e2"
+    },
+    {
+      "path": "interests/interests.json",
+      "sha256": "8798f3082e473e4ea31353ad2ead6eee8ad1597665ac6f161889c88b9c67374a",
+      "publication": "lossless_subtree",
+      "source_sha256": "e5c4ec1d7cb50041b556c25052e17595e1f58555b73396e892623879f8e77044",
+      "source_pointer": "/interests",
+      "publication_pointer": "/interests",
+      "expanded_semantic_sha256": "1d6edcddd9555b2de96eadc2579f0143bf705961a02984c1b1d937dbfa07aab3"
+    },
+    {
+      "path": "interests/relevance.json",
+      "sha256": "f22877d37f0d0957995d50305c738268e82d176eedecea48e95fe831c6d2c7dc",
+      "publication": "derived_view",
+      "source_sha256": "3514be3b250db96951c973c223edc066a5be54ea747562f26c58364d251d9b5b"
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "98794695e317370143ebb3110c41a85551eb41c5e0df7a24a2f73bd521ad54c8",
+      "publication": "reader_view"
+    },
+    {
+      "path": "requirements/requirements.json",
+      "sha256": "7104bec7009c84e5cfbc0261025c6ffcc578c795731e19af05b2e78e3b55b450",
+      "publication": "derived_view",
+      "source_sha256": "15f0935a215b767fff033b0fe0048df72231e12f0cb1c22cf2d16f7aecf14f4f"
+    }
+  ],
+  "sanitization": {
+    "scope": "Internal nearby-request tokens in unscheduled recommendation source_ref fields only",
+    "replacement": "Stable within-file recommendation ordinal; provider source kind and result position retained",
+    "source_equivalence": "All remaining fields, submitted schedule content and transport data match the private originals; native originals remain unchanged"
+  }
+}

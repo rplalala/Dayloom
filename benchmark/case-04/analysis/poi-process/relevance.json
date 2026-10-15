@@ -1,0 +1,1819 @@
+{
+  "source_sha256": "4ee8bca56624df20d72f95dfec13268743f1c080349d38d33a036cafb04819b3",
+  "runs": [
+    {
+      "version": "v1",
+      "relevance_status": "applicable",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 3,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 62,
+            "inventoried_subjects": 62,
+            "fraction": 1.0,
+            "relevant_subjects": 3,
+            "negative_subjects": 0,
+            "unknown_subjects": 59,
+            "absent_review_subjects": 0,
+            "expected_judgments": 186,
+            "supplied_judgments": 186,
+            "unknown_judgments": 183,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "admitted": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 3,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 48,
+            "inventoried_subjects": 48,
+            "fraction": 1.0,
+            "relevant_subjects": 3,
+            "negative_subjects": 0,
+            "unknown_subjects": 45,
+            "absent_review_subjects": 0,
+            "expected_judgments": 144,
+            "supplied_judgments": 144,
+            "unknown_judgments": 141,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "enriched": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 2,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 20,
+            "inventoried_subjects": 20,
+            "fraction": 1.0,
+            "relevant_subjects": 2,
+            "negative_subjects": 0,
+            "unknown_subjects": 18,
+            "absent_review_subjects": 0,
+            "expected_judgments": 60,
+            "supplied_judgments": 60,
+            "unknown_judgments": 58,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "new_success_target",
+            "unknown_relevance_judgments"
+          ]
+        },
+        "supplied": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 2,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 10,
+            "inventoried_subjects": 10,
+            "fraction": 1.0,
+            "relevant_subjects": 2,
+            "negative_subjects": 0,
+            "unknown_subjects": 8,
+            "absent_review_subjects": 0,
+            "expected_judgments": 30,
+            "supplied_judgments": 30,
+            "unknown_judgments": 28,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "scheduled": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 2,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 9,
+            "inventoried_subjects": 9,
+            "fraction": 1.0,
+            "relevant_subjects": 2,
+            "negative_subjects": 0,
+            "unknown_subjects": 7,
+            "absent_review_subjects": 0,
+            "expected_judgments": 27,
+            "supplied_judgments": 27,
+            "unknown_judgments": 25,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        }
+      },
+      "end_to_end": {
+        "status": "partial",
+        "canonical_ids": [
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "observed_count": 2,
+        "complete_count": null,
+        "reasons": [
+          "incomplete_relevance_or_chain"
+        ]
+      },
+      "per_interest": [
+        {
+          "interest_id": "gardens",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 62,
+                "inventoried_subjects": 62,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 60,
+                "absent_review_subjects": 0,
+                "expected_judgments": 62,
+                "supplied_judgments": 62,
+                "unknown_judgments": 60,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 46,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 46,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 20,
+                "inventoried_subjects": 20,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 18,
+                "absent_review_subjects": 0,
+                "expected_judgments": 20,
+                "supplied_judgments": 20,
+                "unknown_judgments": 18,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "new_success_target",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 8,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 8,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 9,
+                "inventoried_subjects": 9,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 7,
+                "absent_review_subjects": 0,
+                "expected_judgments": 9,
+                "supplied_judgments": 9,
+                "unknown_judgments": 7,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "observed_count": 2,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        },
+        {
+          "interest_id": "major-city-sights",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 62,
+                "inventoried_subjects": 62,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 62,
+                "absent_review_subjects": 0,
+                "expected_judgments": 62,
+                "supplied_judgments": 62,
+                "unknown_judgments": 62,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 48,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 48,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 20,
+                "inventoried_subjects": 20,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 20,
+                "absent_review_subjects": 0,
+                "expected_judgments": 20,
+                "supplied_judgments": 20,
+                "unknown_judgments": 20,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "new_success_target",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 10,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 10,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 9,
+                "inventoried_subjects": 9,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 9,
+                "absent_review_subjects": 0,
+                "expected_judgments": 9,
+                "supplied_judgments": 9,
+                "unknown_judgments": 9,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [],
+            "observed_count": 0,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        },
+        {
+          "interest_id": "views",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJOeEf9S2vewIRM0B9a06CKwg"
+              ],
+              "observed_count": 1,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJOeEf9S2vewIRM0B9a06CKwg"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 62,
+                "inventoried_subjects": 62,
+                "fraction": 1.0,
+                "relevant_subjects": 1,
+                "negative_subjects": 0,
+                "unknown_subjects": 61,
+                "absent_review_subjects": 0,
+                "expected_judgments": 62,
+                "supplied_judgments": 62,
+                "unknown_judgments": 61,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJOeEf9S2vewIRM0B9a06CKwg"
+              ],
+              "observed_count": 1,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJOeEf9S2vewIRM0B9a06CKwg"
+                ],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 1,
+                "negative_subjects": 0,
+                "unknown_subjects": 47,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 47,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 20,
+                "inventoried_subjects": 20,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 20,
+                "absent_review_subjects": 0,
+                "expected_judgments": 20,
+                "supplied_judgments": 20,
+                "unknown_judgments": 20,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "new_success_target",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 10,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 10,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 9,
+                "inventoried_subjects": 9,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 9,
+                "absent_review_subjects": 0,
+                "expected_judgments": 9,
+                "supplied_judgments": 9,
+                "unknown_judgments": 9,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [],
+            "observed_count": 0,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        }
+      ],
+      "conversions": {
+        "discovered_to_admitted": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_enriched": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "enriched_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "supplied_to_scheduled": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        }
+      }
+    },
+    {
+      "version": "v2",
+      "relevance_status": "applicable",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "stage_status": "partial",
+          "canonical_ids": [
+            "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+            "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJP9jJLh8a2jERhU3Mx563lXE",
+            "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 7,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+              "ChIJE6uwTPsZ2jERZFH4XI60LHw"
+            ],
+            "rag_only": [
+              "ChIJP9jJLh8a2jERhU3Mx563lXE"
+            ],
+            "mixed": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 73,
+            "inventoried_subjects": 73,
+            "fraction": 1.0,
+            "relevant_subjects": 7,
+            "negative_subjects": 0,
+            "unknown_subjects": 66,
+            "absent_review_subjects": 0,
+            "expected_judgments": 219,
+            "supplied_judgments": 219,
+            "unknown_judgments": 212,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "rag_partial",
+            "unknown_relevance_judgments"
+          ]
+        },
+        "admitted": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 3,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [],
+            "rag_only": [],
+            "mixed": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 48,
+            "inventoried_subjects": 48,
+            "fraction": 1.0,
+            "relevant_subjects": 3,
+            "negative_subjects": 0,
+            "unknown_subjects": 45,
+            "absent_review_subjects": 0,
+            "expected_judgments": 144,
+            "supplied_judgments": 144,
+            "unknown_judgments": 141,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "enriched": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 3,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [],
+            "rag_only": [],
+            "mixed": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 48,
+            "inventoried_subjects": 48,
+            "fraction": 1.0,
+            "relevant_subjects": 3,
+            "negative_subjects": 0,
+            "unknown_subjects": 45,
+            "absent_review_subjects": 0,
+            "expected_judgments": 144,
+            "supplied_judgments": 144,
+            "unknown_judgments": 141,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "queue_exhausted",
+            "unknown_relevance_judgments"
+          ]
+        },
+        "supplied": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 2,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [],
+            "rag_only": [],
+            "mixed": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 10,
+            "inventoried_subjects": 10,
+            "fraction": 1.0,
+            "relevant_subjects": 2,
+            "negative_subjects": 0,
+            "unknown_subjects": 8,
+            "absent_review_subjects": 0,
+            "expected_judgments": 30,
+            "supplied_judgments": 30,
+            "unknown_judgments": 28,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "scheduled": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ],
+          "observed_count": 2,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [],
+            "rag_only": [],
+            "mixed": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 8,
+            "inventoried_subjects": 8,
+            "fraction": 1.0,
+            "relevant_subjects": 2,
+            "negative_subjects": 0,
+            "unknown_subjects": 6,
+            "absent_review_subjects": 0,
+            "expected_judgments": 24,
+            "supplied_judgments": 24,
+            "unknown_judgments": 22,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        }
+      },
+      "end_to_end": {
+        "status": "partial",
+        "canonical_ids": [
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "observed_count": 2,
+        "complete_count": null,
+        "reasons": [
+          "incomplete_relevance_or_chain"
+        ]
+      },
+      "per_interest": [
+        {
+          "interest_id": "gardens",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "partial",
+              "canonical_ids": [
+                "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+                "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJP9jJLh8a2jERhU3Mx563lXE",
+                "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 6,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [
+                  "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+                  "ChIJE6uwTPsZ2jERZFH4XI60LHw"
+                ],
+                "rag_only": [
+                  "ChIJP9jJLh8a2jERhU3Mx563lXE"
+                ],
+                "mixed": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 73,
+                "inventoried_subjects": 73,
+                "fraction": 1.0,
+                "relevant_subjects": 6,
+                "negative_subjects": 0,
+                "unknown_subjects": 67,
+                "absent_review_subjects": 0,
+                "expected_judgments": 73,
+                "supplied_judgments": 73,
+                "unknown_judgments": 67,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "rag_partial",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 46,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 46,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 46,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 46,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "queue_exhausted",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 8,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 8,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "observed_count": 2,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 8,
+                "inventoried_subjects": 8,
+                "fraction": 1.0,
+                "relevant_subjects": 2,
+                "negative_subjects": 0,
+                "unknown_subjects": 6,
+                "absent_review_subjects": 0,
+                "expected_judgments": 8,
+                "supplied_judgments": 8,
+                "unknown_judgments": 6,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [
+              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            ],
+            "observed_count": 2,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        },
+        {
+          "interest_id": "major-city-sights",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "partial",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 73,
+                "inventoried_subjects": 73,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 73,
+                "absent_review_subjects": 0,
+                "expected_judgments": 73,
+                "supplied_judgments": 73,
+                "unknown_judgments": 73,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "rag_partial",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 48,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 48,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 48,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 48,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "queue_exhausted",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 10,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 10,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 8,
+                "inventoried_subjects": 8,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 8,
+                "absent_review_subjects": 0,
+                "expected_judgments": 8,
+                "supplied_judgments": 8,
+                "unknown_judgments": 8,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [],
+            "observed_count": 0,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        },
+        {
+          "interest_id": "views",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "discovered": {
+              "status": "partial",
+              "stage_status": "partial",
+              "canonical_ids": [
+                "ChIJOeEf9S2vewIRM0B9a06CKwg"
+              ],
+              "observed_count": 1,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJOeEf9S2vewIRM0B9a06CKwg"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 73,
+                "inventoried_subjects": 73,
+                "fraction": 1.0,
+                "relevant_subjects": 1,
+                "negative_subjects": 0,
+                "unknown_subjects": 72,
+                "absent_review_subjects": 0,
+                "expected_judgments": 73,
+                "supplied_judgments": 73,
+                "unknown_judgments": 72,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "rag_partial",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "admitted": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJOeEf9S2vewIRM0B9a06CKwg"
+              ],
+              "observed_count": 1,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJOeEf9S2vewIRM0B9a06CKwg"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 1,
+                "negative_subjects": 0,
+                "unknown_subjects": 47,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 47,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "enriched": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [
+                "ChIJOeEf9S2vewIRM0B9a06CKwg"
+              ],
+              "observed_count": 1,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": [
+                  "ChIJOeEf9S2vewIRM0B9a06CKwg"
+                ]
+              },
+              "review_coverage": {
+                "judged_subjects": 48,
+                "inventoried_subjects": 48,
+                "fraction": 1.0,
+                "relevant_subjects": 1,
+                "negative_subjects": 0,
+                "unknown_subjects": 47,
+                "absent_review_subjects": 0,
+                "expected_judgments": 48,
+                "supplied_judgments": 48,
+                "unknown_judgments": 47,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "queue_exhausted",
+                "unknown_relevance_judgments"
+              ]
+            },
+            "supplied": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 10,
+                "inventoried_subjects": 10,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 10,
+                "absent_review_subjects": 0,
+                "expected_judgments": 10,
+                "supplied_judgments": 10,
+                "unknown_judgments": 10,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            },
+            "scheduled": {
+              "status": "partial",
+              "stage_status": "complete",
+              "canonical_ids": [],
+              "observed_count": 0,
+              "complete_count": null,
+              "origin_partitions": {
+                "google_only": [],
+                "rag_only": [],
+                "mixed": []
+              },
+              "review_coverage": {
+                "judged_subjects": 8,
+                "inventoried_subjects": 8,
+                "fraction": 1.0,
+                "relevant_subjects": 0,
+                "negative_subjects": 0,
+                "unknown_subjects": 8,
+                "absent_review_subjects": 0,
+                "expected_judgments": 8,
+                "supplied_judgments": 8,
+                "unknown_judgments": 8,
+                "missing_judgments": 0
+              },
+              "reasons": [
+                "unknown_relevance_judgments"
+              ]
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [],
+            "observed_count": 0,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        }
+      ],
+      "conversions": {
+        "discovered_to_admitted": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_enriched": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "enriched_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "supplied_to_scheduled": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        }
+      }
+    }
+  ]
+}

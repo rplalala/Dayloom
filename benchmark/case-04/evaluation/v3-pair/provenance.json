@@ -1,0 +1,12 @@
+{
+  "execution_mode": "offline_reuse",
+  "current_google_sends": 0,
+  "current_model_sends": 0,
+  "current_reference_usd": "0",
+  "evidence_status": "partial",
+  "source_labels": [
+    "independent_primary_evaluation",
+    "planner_generation"
+  ],
+  "limitations": "Imported observation source labels and original times remain in private native evidence; missing facts retain UNKNOWN. Inherited costs are not charged again."
+}

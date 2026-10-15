@@ -1,0 +1,1699 @@
+{
+  "input_sha256": "06ea61ff07fed40a3abef8c7bbbc42676f99d7d28db4805efd5f627afa4be4b7",
+  "source_sha256": "3514be3b250db96951c973c223edc066a5be54ea747562f26c58364d251d9b5b",
+  "evidence_policy": "Independent Primary Google venue metadata only; no Planner judgments or prior world knowledge",
+  "records": [
+    {
+      "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name is Buddha Tooth Relic Temple and the address is on S Bridge Rd. These identify a temple but neither establish a garden offering nor exclude one."
+    },
+    {
+      "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The name Buddha Tooth Relic Temple identifies a religious venue in Singapore. No supplied fact establishes its prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The temple name and street address provide no observation facility, panorama or specific viewing experience; views relevance is unresolved."
+    },
+    {
+      "canonical_place_id": "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ15nIVN0Z2jERDvML_R3kSQo",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ15nIVN0Z2jERDvML_R3kSQo",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ15nIVN0Z2jERDvML_R3kSQo",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3eg6SXMZ2jERCxutt4adUyY",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3eg6SXMZ2jERCxutt4adUyY",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3eg6SXMZ2jERCxutt4adUyY",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3xSV5_ob2jERCnZyINDAtN4",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3xSV5_ob2jERCnZyINDAtN4",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ3xSV5_ob2jERCnZyINDAtN4",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "Marina Barrage is the supplied venue name. Marina Gardens Dr is an address component, not evidence that this subject itself offers gardens."
+    },
+    {
+      "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The supplied Marina Barrage name and address establish its identity and location, but no fact describes its prominence or visitor-sight status."
+    },
+    {
+      "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The name Marina Barrage and its address do not describe a viewing facility or sightlines. A water-related name alone does not establish a views experience."
+    },
+    {
+      "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6TgDW3IU2jERgoko8dksZTc",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6TgDW3IU2jERgoko8dksZTc",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6TgDW3IU2jERgoko8dksZTc",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied display name Marina Bay Sands Garden Park explicitly identifies a garden park, directly matching the gardens interest."
+    },
+    {
+      "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Garden Park name establishes a garden setting, but the supplied Marina Bay Sands address does not establish that this particular subject is a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The garden park name and Bayfront Avenue address do not establish a viewpoint or visible scenery. Views cannot be assumed from those location terms."
+    },
+    {
+      "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name Marina Bay Sands Singapore and Bayfront Ave address do not describe gardens or establish their absence at this subject."
+    },
+    {
+      "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "Marina Bay Sands Singapore is provided as a name and address only. Its prominence as a major city sight is not established by the supplied facts."
+    },
+    {
+      "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "No observation deck, elevation or viewing experience is described for the subject named Marina Bay Sands Singapore. Such facilities cannot be transferred from another subject."
+    },
+    {
+      "canonical_place_id": "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name Merlion Park establishes a park identity, but a park name alone does not establish a garden offering or exclude it."
+    },
+    {
+      "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Merlion Park name and Fullerton Rd address do not supply evidence that this park has major city-sight status."
+    },
+    {
+      "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "Merlion Park is supplied without a scenery or viewing description. Its street address alone does not establish a views experience."
+    },
+    {
+      "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied National Museum of Singapore name identifies a museum. No venue fact establishes whether a garden experience is offered or absent."
+    },
+    {
+      "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The name National Museum of Singapore establishes a national museum identity, but no supplied description establishes its prominence as a major city sight; the title alone is insufficient for that status."
+    },
+    {
+      "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The museum name and Stamford Rd address do not identify a panorama, viewpoint or other viewing experience."
+    },
+    {
+      "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied display name Garden by the Bay - Bay East explicitly identifies a garden, directly matching gardens without requiring other interests to match."
+    },
+    {
+      "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Garden by the Bay - Bay East name and Marina Gardens Dr address do not establish the prominence of this specific garden as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "By the Bay in the name suggests a location, but the supplied facts do not establish sightlines, a viewpoint or a defined viewing experience."
+    },
+    {
+      "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "National Gallery Singapore is supplied as a name and postal location. A gallery identity does not establish whether this venue offers a garden experience."
+    },
+    {
+      "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The National Gallery Singapore title identifies a national gallery, but the supplied facts do not establish its prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The gallery name and Singapore postal address provide no evidence of an observation area or scenic views."
+    },
+    {
+      "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJMdewuaQZ2jERwwfStN_krnM",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJMdewuaQZ2jERwwfStN_krnM",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJMdewuaQZ2jERwwfStN_krnM",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied name Gardens by the Bay explicitly identifies gardens, providing a direct match to the gardens interest."
+    },
+    {
+      "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "Gardens by the Bay is identified by name and address only. The supplied facts do not establish its major city-sight status."
+    },
+    {
+      "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The Gardens by the Bay name and Marina Gardens Dr address do not describe a viewpoint or viewing experience; bay-related wording alone is insufficient."
+    },
+    {
+      "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "SkyPark Observation Deck identifies an observation facility. SkyPark is not sufficient evidence of a garden, and no garden offering or exclusion is described."
+    },
+    {
+      "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The supplied observation-deck name and Level 56 address establish a venue function and elevation, but not its prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+      "interest_id": "views",
+      "verdict": "relevant",
+      "rationale": "The explicit SkyPark Observation Deck name identifies a viewing facility, and the supplied Tower 3 Level 56 address supports an elevated observation setting. This directly matches views."
+    },
+    {
+      "canonical_place_id": "ChIJP9jJLh8a2jERhU3Mx563lXE",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied name Ginger Garden explicitly identifies a garden; the address also places it in Singapore Botanic Gardens. The name itself directly supports gardens relevance."
+    },
+    {
+      "canonical_place_id": "ChIJP9jJLh8a2jERhU3Mx563lXE",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Ginger Garden name and Singapore Botanic Gardens address do not establish this individual garden as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJP9jJLh8a2jERhU3Mx563lXE",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The Ginger Garden name and garden-complex address do not describe a viewpoint, sightlines or other views experience."
+    },
+    {
+      "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied name National Orchid Garden explicitly identifies an orchid garden, directly supporting the gardens interest."
+    },
+    {
+      "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "National Orchid Garden identifies a named garden, but the National title and Cluny Rd address alone do not establish its prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The orchid-garden name and street address do not describe a viewing facility or scenic outlook; garden identity does not independently establish views relevance."
+    },
+    {
+      "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name The Helix Bridge identifies a bridge, but there is no description establishing a garden offering or its absence."
+    },
+    {
+      "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Helix Bridge name and the general address Singapore do not establish that this bridge is a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The bridge name does not establish accessible viewpoints, what can be seen, or a views experience. Those properties cannot be inferred solely from bridge identity."
+    },
+    {
+      "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "Marina Bay Waterfront Promenade identifies a waterfront promenade, but the supplied facts do not describe a garden offering or establish its absence."
+    },
+    {
+      "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The waterfront promenade name and general Singapore address do not establish prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "Waterfront Promenade indicates a waterside walking setting, but no supplied fact describes an outlook or sightlines. The broad views match remains uncertain from the name alone."
+    },
+    {
+      "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name Fort Canning Park identifies a park. Without a garden description, park identity alone does not establish or exclude a gardens experience."
+    },
+    {
+      "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "Fort Canning Park is supplied with only a general Singapore address. The name alone does not establish historical importance or major city-sight status."
+    },
+    {
+      "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The park name and general location do not establish elevation, sightlines or a viewpoint; no views experience is described."
+    },
+    {
+      "canonical_place_id": "ChIJW7B7zRIZ2jERINTI_uV1O-A",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJW7B7zRIZ2jERINTI_uV1O-A",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJW7B7zRIZ2jERINTI_uV1O-A",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWZX956MZ2jERIGdnbs_SgMw",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWZX956MZ2jERIGdnbs_SgMw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWZX956MZ2jERIGdnbs_SgMw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJY618FAQQ2jERzo1f5IAj4Bg",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJY618FAQQ2jERzo1f5IAj4Bg",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJY618FAQQ2jERzo1f5IAj4Bg",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYQzLG2YZ2jERNcDUA6ReADY",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYQzLG2YZ2jERNcDUA6ReADY",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYQzLG2YZ2jERNcDUA6ReADY",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYZ8284w82jERmqMxhqDAFWQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYZ8284w82jERmqMxhqDAFWQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJYZ8284w82jERmqMxhqDAFWQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJaczGWKMZ2jERizrM83vLEM0",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJaczGWKMZ2jERizrM83vLEM0",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJaczGWKMZ2jERizrM83vLEM0",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name Sultan Mosque identifies a religious venue, with no evidence establishing or excluding a garden experience."
+    },
+    {
+      "canonical_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The Sultan Mosque name and Muscat St address do not establish the venue as a major city sight. Prominence cannot be added from familiarity with its name."
+    },
+    {
+      "canonical_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The mosque name and street address provide no viewing facility, panorama or scenery description."
+    },
+    {
+      "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The exact supplied subject name is National Parks Board. Its address mentions Singapore Botanic Gardens, but that does not establish that this subject itself offers a garden visit; the subject is not replaced with the gardens."
+    },
+    {
+      "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "National Parks Board is a named subject at a Singapore Botanic Gardens address. Neither the name nor address establishes that this subject is a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The National Parks Board name and garden-complex address do not describe a viewing facility or scenic outlook for this subject."
+    },
+    {
+      "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJcwAAUPoa2jERiv_0ph5iKlg",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJcwAAUPoa2jERiv_0ph5iKlg",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJcwAAUPoa2jERiv_0ph5iKlg",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJg4jcdA0Z2jERe0XPfVA08bU",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJg4jcdA0Z2jERe0XPfVA08bU",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJg4jcdA0Z2jERe0XPfVA08bU",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJixzGhuMZ2jERpijfVdsTdFw",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJixzGhuMZ2jERpijfVdsTdFw",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJixzGhuMZ2jERpijfVdsTdFw",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlcijSfYa2jERGZ3CD7lpz_E",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlcijSfYa2jERGZ3CD7lpz_E",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJlcijSfYa2jERGZ3CD7lpz_E",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJoZOhmQkZ2jERehLfvKlsoCA",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJoZOhmQkZ2jERehLfvKlsoCA",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJoZOhmQkZ2jERehLfvKlsoCA",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq7P-2n4P2jERoflGFhUAEfQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq7P-2n4P2jERoflGFhUAEfQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq7P-2n4P2jERoflGFhUAEfQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "interest_id": "gardens",
+      "verdict": "relevant",
+      "rationale": "The supplied name Singapore Botanic Gardens explicitly identifies botanical gardens, directly matching the gardens interest."
+    },
+    {
+      "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "Singapore Botanic Gardens is identified by name and Cluny Rd address, but the supplied facts do not establish its prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The botanic-gardens name and street address do not independently describe a viewpoint or views experience."
+    },
+    {
+      "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to gardens cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to major city sights cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The packet supplies no independent venue facts or venue evidence references for this canonical subject. Its relevance to views cannot be established or rejected; neither the identifier nor absence of facts is negative evidence."
+    },
+    {
+      "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "interest_id": "gardens",
+      "verdict": "unknown",
+      "rationale": "The supplied name Singapore Flyer and Raffles Ave address do not describe gardens or establish their absence."
+    },
+    {
+      "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "interest_id": "major-city-sights",
+      "verdict": "unknown",
+      "rationale": "Singapore Flyer is supplied only as a proper name and address; no description establishes its function or prominence as a major city sight."
+    },
+    {
+      "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "interest_id": "views",
+      "verdict": "unknown",
+      "rationale": "The supplied facts do not describe what Singapore Flyer is or whether it offers observation or views. A viewing function cannot be supplied from prior knowledge of the proper name."
+    }
+  ]
+}

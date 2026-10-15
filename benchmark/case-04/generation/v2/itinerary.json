@@ -1,0 +1,660 @@
+{
+  "itinerary": {
+    "output_version": "itinerary_2",
+    "transfers": [
+      {
+        "from_activity_id": "sg-20261017-botanic-gardens",
+        "to_activity_id": "sg-20261017-buddha-tooth-relic-temple",
+        "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+        "destination_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "mode": "TRANSIT",
+        "mode_source": "APPLICATION_TRANSIT_FALLBACK",
+        "departure_time": "2026-10-17T10:30:00+08:00",
+        "arrival_time": "2026-10-17T11:01:57+08:00",
+        "provider_duration_seconds": 1917.0,
+        "distance_meters": 6376,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "time_applicable",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sg-20261017-buddha-tooth-relic-temple",
+        "to_activity_id": "sg-20261017-national-museum",
+        "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "destination_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-17T12:00:00+08:00",
+        "arrival_time": "2026-10-17T12:31:53+08:00",
+        "provider_duration_seconds": 1913.0,
+        "distance_meters": 2272,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sg-20261017-national-museum",
+        "to_activity_id": "sg-20261017-fort-canning",
+        "origin_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+        "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-17T15:30:00+08:00",
+        "arrival_time": "2026-10-17T15:41:34+08:00",
+        "provider_duration_seconds": 694.0,
+        "distance_meters": 707,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sg-20261018-gardens-by-the-bay",
+        "to_activity_id": "sg-20261018-singapore-flyer",
+        "origin_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+        "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-18T12:00:00+08:00",
+        "arrival_time": "2026-10-18T12:23:40+08:00",
+        "provider_duration_seconds": 1420.0,
+        "distance_meters": 1721,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sg-20261018-singapore-flyer",
+        "to_activity_id": "sg-20261018-merlion-park",
+        "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-18T14:00:00+08:00",
+        "arrival_time": "2026-10-18T14:18:36+08:00",
+        "provider_duration_seconds": 1116.0,
+        "distance_meters": 1352,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sg-20261018-merlion-park",
+        "to_activity_id": "sg-20261018-marina-barrage",
+        "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "destination_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-18T15:15:00+08:00",
+        "arrival_time": "2026-10-18T15:54:45+08:00",
+        "provider_duration_seconds": 2385.0,
+        "distance_meters": 2919,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      }
+    ],
+    "route_diagnostics": [
+      {
+        "from_activity_id": "sg-20261017-botanic-gardens",
+        "to_activity_id": "sg-20261017-buddha-tooth-relic-temple",
+        "origin": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+        "destination": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "departure": "2026-10-17T10:30:00+08:00",
+        "next_start": "2026-10-17T11:15:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "TRANSIT",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "CONFIRMED",
+            "reason": "specific_mode_transfer_deficit",
+            "evidence": [
+              {
+                "duration_seconds": 5224,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+                  "destination_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 5224,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 2,
+                  "destination_index": 5,
+                  "distance_meters": 6101,
+                  "duration_seconds": 5224,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1917,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "TRANSIT",
+                "routing_preference": null,
+                "departure_time": "2026-10-17T10:30:00+08:00",
+                "requested_at": "2026-10-15T04:07:30.935138+00:00",
+                "retrieved_at": "2026-10-15T04:07:31.358290+00:00",
+                "basis": "time_applicable",
+                "element": {
+                  "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+                  "destination_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1917,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:30.935138Z",
+                  "retrieved_at": "2026-10-15T04:07:31.358290Z",
+                  "origin_index": 0,
+                  "destination_index": 0,
+                  "distance_meters": 6376,
+                  "duration_seconds": 1917,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sg-20261017-buddha-tooth-relic-temple",
+        "to_activity_id": "sg-20261017-national-museum",
+        "origin": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "destination": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+        "departure": "2026-10-17T12:00:00+08:00",
+        "next_start": "2026-10-17T13:00:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1913,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                  "destination_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1913,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 5,
+                  "destination_index": 4,
+                  "distance_meters": 2272,
+                  "duration_seconds": 1913,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sg-20261017-national-museum",
+        "to_activity_id": "sg-20261017-fort-canning",
+        "origin": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+        "destination": "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "departure": "2026-10-17T15:30:00+08:00",
+        "next_start": "2026-10-17T16:00:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 694,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+                  "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 694,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 4,
+                  "destination_index": 8,
+                  "distance_meters": 707,
+                  "duration_seconds": 694,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sg-20261018-gardens-by-the-bay",
+        "to_activity_id": "sg-20261018-singapore-flyer",
+        "origin": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+        "destination": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "departure": "2026-10-18T12:00:00+08:00",
+        "next_start": "2026-10-18T13:00:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1420,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                  "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1420,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 1,
+                  "destination_index": 3,
+                  "distance_meters": 1721,
+                  "duration_seconds": 1420,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sg-20261018-singapore-flyer",
+        "to_activity_id": "sg-20261018-merlion-park",
+        "origin": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "destination": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "departure": "2026-10-18T14:00:00+08:00",
+        "next_start": "2026-10-18T14:30:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1116,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                  "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1116,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 3,
+                  "destination_index": 0,
+                  "distance_meters": 1352,
+                  "duration_seconds": 1116,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sg-20261018-merlion-park",
+        "to_activity_id": "sg-20261018-marina-barrage",
+        "origin": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "destination": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+        "departure": "2026-10-18T15:15:00+08:00",
+        "next_start": "2026-10-18T16:00:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 2385,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:07:03.752558+00:00",
+                "retrieved_at": "2026-10-15T04:07:04.440666+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                  "destination_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 2385,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:07:03.752558Z",
+                  "retrieved_at": "2026-10-15T04:07:04.440666Z",
+                  "origin_index": 0,
+                  "destination_index": 9,
+                  "distance_meters": 2919,
+                  "duration_seconds": 2385,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "reference_recommendations": [
+      {
+        "place_name": "Snake Tree",
+        "source_place_id": "ChIJn2hbOHsb2jERiQvHx670a_o",
+        "reason": "Park near Singapore Botanic Gardens (approximately 0 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "Singapore Botanic Gardens, on Lawn, B along Main Gate Road, Singapore 259569",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-1:0"
+      },
+      {
+        "place_name": "Lian Xin Vegetarian",
+        "source_place_id": "ChIJ-c0qznIZ2jERtO9HJCNB-EI",
+        "reason": "Restaurant near Buddha Tooth Relic Temple (approximately 1 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "288 S Bridge Rd, B1 Buddha Tooth Relic Temple and Museum, Singapore 058840",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-2:0"
+      },
+      {
+        "place_name": "Dame Museum Caf\u00e9",
+        "source_place_id": "ChIJcxmDvOkZ2jERwUnS5lCEC8M",
+        "reason": "Restaurant near National Museum of Singapore (approximately 15 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "93 Stamford Rd, #01-04/05 National Museum of Singapore, Singapore 178897",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-3:1"
+      }
+    ],
+    "destination": "Singapore",
+    "start_date": "2026-10-17",
+    "end_date": "2026-10-18",
+    "days": [
+      {
+        "date": "2026-10-17",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261017-botanic-gardens",
+            "title": "Explore Singapore Botanic Gardens",
+            "place_name": "Singapore Botanic Gardens",
+            "source_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+            "location": "1 Cluny Rd, Singapore 259569",
+            "start_time": "2026-10-17T08:00:00+08:00",
+            "end_time": "2026-10-17T10:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for slight rain showers; allow for wet conditions."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261017-buddha-tooth-relic-temple",
+            "title": "Visit Buddha Tooth Relic Temple",
+            "place_name": "Buddha Tooth Relic Temple",
+            "source_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+            "location": "288 S Bridge Rd, Singapore 058840",
+            "start_time": "2026-10-17T11:15:00+08:00",
+            "end_time": "2026-10-17T12:00:00+08:00",
+            "estimated_cost": null,
+            "notes": null
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261017-national-museum",
+            "title": "Explore the National Museum of Singapore",
+            "place_name": "National Museum of Singapore",
+            "source_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+            "location": "93 Stamford Rd, Singapore 178897",
+            "start_time": "2026-10-17T13:00:00+08:00",
+            "end_time": "2026-10-17T15:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for slight rain showers; this indoor visit offers a change from the day's outdoor stops."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261017-fort-canning",
+            "title": "Walk through Fort Canning Park",
+            "place_name": "Fort Canning Park",
+            "source_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+            "location": "Singapore",
+            "start_time": "2026-10-17T16:00:00+08:00",
+            "end_time": "2026-10-17T17:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for slight rain showers; allow for wet conditions."
+          }
+        ]
+      },
+      {
+        "date": "2026-10-18",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261018-gardens-by-the-bay",
+            "title": "Explore Gardens by the Bay",
+            "place_name": "Gardens by the Bay",
+            "source_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "location": "18 Marina Gardens Dr, Singapore 018953",
+            "start_time": "2026-10-18T09:00:00+08:00",
+            "end_time": "2026-10-18T12:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for moderate drizzle; allow for wet conditions."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261018-singapore-flyer",
+            "title": "Take in the views at Singapore Flyer",
+            "place_name": "Singapore Flyer",
+            "source_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+            "location": "30 Raffles Ave., Singapore 039803",
+            "start_time": "2026-10-18T13:00:00+08:00",
+            "end_time": "2026-10-18T14:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for moderate drizzle; visibility may be affected."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261018-merlion-park",
+            "title": "Visit Merlion Park",
+            "place_name": "Merlion Park",
+            "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+            "location": "1 Fullerton Rd, Singapore 049213",
+            "start_time": "2026-10-18T14:30:00+08:00",
+            "end_time": "2026-10-18T15:15:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for moderate drizzle; allow for wet conditions."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sg-20261018-marina-barrage",
+            "title": "Visit Marina Barrage",
+            "place_name": "Marina Barrage",
+            "source_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+            "location": "8 Marina Gardens Dr, #01-03 Marina Barrage, Singapore 018951",
+            "start_time": "2026-10-18T16:00:00+08:00",
+            "end_time": "2026-10-18T17:00:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast calls for moderate drizzle; allow for wet conditions."
+          }
+        ]
+      }
+    ]
+  }
+}

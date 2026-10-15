@@ -1,0 +1,445 @@
+{
+  "itinerary": {
+    "output_version": "itinerary_2",
+    "transfers": [
+      {
+        "from_activity_id": "sat-promenade",
+        "to_activity_id": "sat-merlion",
+        "origin_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+        "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-17T14:30:00+08:00",
+        "arrival_time": "2026-10-17T14:49:22+08:00",
+        "provider_duration_seconds": 1162.0,
+        "distance_meters": 1449,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sat-merlion",
+        "to_activity_id": "sat-flyer",
+        "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-17T15:45:00+08:00",
+        "arrival_time": "2026-10-17T16:03:41+08:00",
+        "provider_duration_seconds": 1121.0,
+        "distance_meters": 1352,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sun-buddha-temple",
+        "to_activity_id": "sun-sultan-mosque",
+        "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "destination_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-18T12:45:00+08:00",
+        "arrival_time": "2026-10-18T13:25:20+08:00",
+        "provider_duration_seconds": 2420.0,
+        "distance_meters": 2874,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      },
+      {
+        "from_activity_id": "sun-sultan-mosque",
+        "to_activity_id": "sun-fort-canning",
+        "origin_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+        "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "mode": "WALK",
+        "mode_source": "APPLICATION_DEFAULT_WALK",
+        "departure_time": "2026-10-18T14:45:00+08:00",
+        "arrival_time": "2026-10-18T15:20:40+08:00",
+        "provider_duration_seconds": 2140.0,
+        "distance_meters": 2410,
+        "reserve_seconds": 0.0,
+        "routing_preference": null,
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "calculation_basis": "walk_provider_estimate",
+        "validation_state": "PASS",
+        "unknowns": []
+      }
+    ],
+    "route_diagnostics": [
+      {
+        "from_activity_id": "sat-promenade",
+        "to_activity_id": "sat-merlion",
+        "origin": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+        "destination": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "departure": "2026-10-17T14:30:00+08:00",
+        "next_start": "2026-10-17T15:15:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1162,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:10:57.356656+00:00",
+                "retrieved_at": "2026-10-15T04:10:57.748556+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+                  "destination_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1162,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:10:57.356656Z",
+                  "retrieved_at": "2026-10-15T04:10:57.748556Z",
+                  "origin_index": 2,
+                  "destination_index": 0,
+                  "distance_meters": 1449,
+                  "duration_seconds": 1162,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sat-merlion",
+        "to_activity_id": "sat-flyer",
+        "origin": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "destination": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "departure": "2026-10-17T15:45:00+08:00",
+        "next_start": "2026-10-17T16:30:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 1121,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:10:56.690953+00:00",
+                "retrieved_at": "2026-10-15T04:10:57.350315+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                  "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 1121,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:10:56.690953Z",
+                  "retrieved_at": "2026-10-15T04:10:57.350315Z",
+                  "origin_index": 0,
+                  "destination_index": 3,
+                  "distance_meters": 1352,
+                  "duration_seconds": 1121,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sun-buddha-temple",
+        "to_activity_id": "sun-sultan-mosque",
+        "origin": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "destination": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+        "departure": "2026-10-18T12:45:00+08:00",
+        "next_start": "2026-10-18T14:00:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 2420,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:10:56.690953+00:00",
+                "retrieved_at": "2026-10-15T04:10:57.350315+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                  "destination_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 2420,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:10:56.690953Z",
+                  "retrieved_at": "2026-10-15T04:10:57.350315Z",
+                  "origin_index": 5,
+                  "destination_index": 6,
+                  "distance_meters": 2874,
+                  "duration_seconds": 2420,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "from_activity_id": "sun-sultan-mosque",
+        "to_activity_id": "sun-fort-canning",
+        "origin": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+        "destination": "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "departure": "2026-10-18T14:45:00+08:00",
+        "next_start": "2026-10-18T15:45:00+08:00",
+        "considered_modes": [
+          "WALK",
+          "TRANSIT"
+        ],
+        "adopted_mode": "WALK",
+        "result": "PASS",
+        "reason": "bound",
+        "mode_results": [
+          {
+            "mode": "WALK",
+            "status": "PASS",
+            "reason": "time_connection_only",
+            "evidence": [
+              {
+                "duration_seconds": 2140,
+                "source_ref": "google_routes:compute_route_matrix",
+                "travel_mode": "WALK",
+                "routing_preference": null,
+                "departure_time": null,
+                "requested_at": "2026-10-15T04:10:57.356656+00:00",
+                "retrieved_at": "2026-10-15T04:10:57.748556+00:00",
+                "basis": "walk_provider_estimate",
+                "element": {
+                  "origin_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+                  "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                  "evidence_type": "provider_observed",
+                  "derived_from_origin_place_id": null,
+                  "derived_from_destination_place_id": null,
+                  "status": "OK",
+                  "condition": "ROUTE_EXISTS",
+                  "status_state": "success",
+                  "static_duration_seconds": 2140,
+                  "fallback_info": null,
+                  "requested_at": "2026-10-15T04:10:57.356656Z",
+                  "retrieved_at": "2026-10-15T04:10:57.748556Z",
+                  "origin_index": 0,
+                  "destination_index": 7,
+                  "distance_meters": 2410,
+                  "duration_seconds": 2140,
+                  "availability": "available",
+                  "unavailable_reason": null
+                }
+              }
+            ]
+          },
+          {
+            "mode": "TRANSIT",
+            "status": "UNKNOWN",
+            "reason": "applicable_route_unavailable",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "reference_recommendations": [
+      {
+        "place_name": "JUMBO Signatures",
+        "source_place_id": "ChIJ3z7wXGAZ2jERvEErIRegmjk",
+        "reason": "Restaurant near Marina Bay Waterfront Promenade (approximately 66 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "The Shoppes at Marina Bay Sands, 2 Bayfront Ave, B1- 01B, Singapore 018972",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-1:0"
+      },
+      {
+        "place_name": "MOS Burger One Fullerton (Merlion Park)",
+        "source_place_id": "ChIJizw5GtwZ2jERyDOgK1yZYUk",
+        "reason": "Restaurant near Merlion Park (approximately 31 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "1 Fullerton Rd, #01-10 One Fullerton, Singapore 049213",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-2:2"
+      },
+      {
+        "place_name": "Juice Je",
+        "source_place_id": "ChIJF9eKGVcZ2jER-bnUkuwnrsg",
+        "reason": "Cafe near Singapore Flyer (approximately 0 m straight-line).",
+        "associated_day": "2026-10-17",
+        "area": "30 Raffles Ave., Singapore Flyer, Singapore 039803",
+        "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+        "source_ref": "google_places_nearby:recommendation-3:0"
+      }
+    ],
+    "destination": "Singapore",
+    "start_date": "2026-10-17",
+    "end_date": "2026-10-18",
+    "days": [
+      {
+        "date": "2026-10-17",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sat-promenade",
+            "title": "Explore Marina Bay Waterfront Promenade",
+            "place_name": "Marina Bay Waterfront Promenade",
+            "source_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+            "location": "Singapore",
+            "start_time": "2026-10-17T13:30:00+08:00",
+            "end_time": "2026-10-17T14:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast indicates a high chance of slight rain showers; the open-air visit may be affected."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sat-merlion",
+            "title": "Visit Merlion Park",
+            "place_name": "Merlion Park",
+            "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+            "location": "1 Fullerton Rd, Singapore 049213",
+            "start_time": "2026-10-17T15:15:00+08:00",
+            "end_time": "2026-10-17T15:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast indicates a high chance of slight rain showers; this outdoor visit may be affected."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sat-flyer",
+            "title": "Experience the Singapore Flyer",
+            "place_name": "Singapore Flyer",
+            "source_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+            "location": "30 Raffles Ave., Singapore 039803",
+            "start_time": "2026-10-17T16:30:00+08:00",
+            "end_time": "2026-10-17T17:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast indicates a high chance of slight rain showers; visibility and conditions may be affected."
+          }
+        ]
+      },
+      {
+        "date": "2026-10-18",
+        "activities": [
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sun-buddha-temple",
+            "title": "Visit Buddha Tooth Relic Temple",
+            "place_name": "Buddha Tooth Relic Temple",
+            "source_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+            "location": "288 S Bridge Rd, Singapore 058840",
+            "start_time": "2026-10-18T12:00:00+08:00",
+            "end_time": "2026-10-18T12:45:00+08:00",
+            "estimated_cost": null,
+            "notes": null
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sun-sultan-mosque",
+            "title": "Visit Sultan Mosque",
+            "place_name": "Sultan Mosque",
+            "source_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+            "location": "3 Muscat St, Singapore 198833",
+            "start_time": "2026-10-18T14:00:00+08:00",
+            "end_time": "2026-10-18T14:45:00+08:00",
+            "estimated_cost": null,
+            "notes": "Scheduled within the supplied Sunday opening interval."
+          },
+          {
+            "activity_kind": "main_poi",
+            "activity_id": "sun-fort-canning",
+            "title": "Explore Fort Canning Park",
+            "place_name": "Fort Canning Park",
+            "source_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+            "location": "Singapore",
+            "start_time": "2026-10-18T15:45:00+08:00",
+            "end_time": "2026-10-18T16:30:00+08:00",
+            "estimated_cost": null,
+            "notes": "Forecast indicates moderate drizzle; this outdoor visit may be affected."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "source_sha256": "ccc8fcc81fc9aa3027d3ffd3de8d49091568465389d5cd3977faaf86f3e021a4",
+  "status": "ACCEPTED_COMPLETE",
+  "reason": "authorized_targets_complete",
+  "model_attempted": false,
+  "selected_round_index": 3,
+  "counters": {
+    "deterministic_attempts": 3,
+    "repair_input_candidates": 0,
+    "final_scheduled_unique": 6,
+    "repair_input_unused": 0,
+    "original_supply_unused": 4,
+    "final_main_visits": 6
+  },
+  "main_visits_lost": [
+    "sat-gardens",
+    "sat-barrage",
+    "sun-botanic-gardens"
+  ],
+  "soft_pace": {
+    "objective": "zero_soft_pace_deductions",
+    "is_failure_constraint": false,
+    "comparable": {
+      "dates": [
+        "2026-10-17",
+        "2026-10-18"
+      ],
+      "before_total": 100.0,
+      "after_total": 0.0
+    },
+    "before": {
+      "mean_penalty": 50.0,
+      "days": [
+        {
+          "date": "2026-10-17",
+          "penalty": 70.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-18",
+          "penalty": 30.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "after": {
+      "mean_penalty": 0.0,
+      "days": [
+        {
+          "date": "2026-10-17",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-18",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "target_state": "reached"
+  },
+  "rounds": [
+    {
+      "round_index": 1,
+      "strategy": "system_delete",
+      "best_promoted": true,
+      "result_status": "ACCEPTED_PARTIAL",
+      "result_reason": "partial_target_improvement",
+      "main_visits_lost": [
+        "sat-gardens"
+      ]
+    },
+    {
+      "round_index": 2,
+      "strategy": "system_delete",
+      "best_promoted": true,
+      "result_status": "ACCEPTED_PARTIAL",
+      "result_reason": "partial_target_improvement",
+      "main_visits_lost": [
+        "sat-barrage"
+      ]
+    },
+    {
+      "round_index": 3,
+      "strategy": "system_delete",
+      "best_promoted": true,
+      "result_status": "ACCEPTED_COMPLETE",
+      "result_reason": "authorized_targets_complete",
+      "main_visits_lost": [
+        "sun-botanic-gardens"
+      ]
+    }
+  ],
+  "removed_activities": [
+    {
+      "activity_kind": "main_poi",
+      "activity_id": "sat-gardens",
+      "title": "Visit Gardens by the Bay",
+      "place_name": "Gardens by the Bay",
+      "source_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "location": "18 Marina Gardens Dr, Singapore 018953",
+      "start_time": "2026-10-17T09:00:00+08:00",
+      "end_time": "2026-10-17T11:30:00+08:00",
+      "estimated_cost": null,
+      "notes": "Forecast indicates a high chance of slight rain showers; this visit may be affected by weather."
+    },
+    {
+      "activity_kind": "main_poi",
+      "activity_id": "sat-barrage",
+      "title": "Visit Marina Barrage",
+      "place_name": "Marina Barrage",
+      "source_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "location": "8 Marina Gardens Dr, #01-03 Marina Barrage, Singapore 018951",
+      "start_time": "2026-10-17T12:00:00+08:00",
+      "end_time": "2026-10-17T12:45:00+08:00",
+      "estimated_cost": null,
+      "notes": "Forecast indicates a high chance of slight rain showers; this outdoor visit may be affected."
+    },
+    {
+      "activity_kind": "main_poi",
+      "activity_id": "sun-botanic-gardens",
+      "title": "Explore Singapore Botanic Gardens",
+      "place_name": "Singapore Botanic Gardens",
+      "source_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "location": "1 Cluny Rd, Singapore 259569",
+      "start_time": "2026-10-18T09:00:00+08:00",
+      "end_time": "2026-10-18T11:00:00+08:00",
+      "estimated_cost": null,
+      "notes": "Forecast indicates moderate drizzle; this outdoor visit may be affected."
+    }
+  ],
+  "retained_activity_fields_changed": [],
+  "four_final": {
+    "baseline": "v2",
+    "candidate": "v3",
+    "classification": "improved",
+    "deltas": {
+      "overall_total": {
+        "percentage_points": 30.0,
+        "exact_fraction": {
+          "numerator": 3,
+          "denominator": 10
+        }
+      },
+      "auxiliary_total": {
+        "percentage_points": 0.0,
+        "exact_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "daily_density_penalty": -30.0,
+      "dimensions": {
+        "grounding": {
+          "percentage_points": 0.0,
+          "exact_fraction": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "non_overlap": {
+          "percentage_points": 0.0,
+          "exact_fraction": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "opening": {
+          "percentage_points": 0.0,
+          "exact_fraction": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "requirements": {
+          "percentage_points": 0.0,
+          "exact_fraction": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "routes": {
+          "percentage_points": 0.0,
+          "exact_fraction": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        }
+      }
+    },
+    "submitted_place_differences": {
+      "basis": "Submitted source_place_id associations; separate generations, not a Repair edit lineage",
+      "v2_only": [
+        {
+          "source_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "name": "Marina Barrage"
+        },
+        {
+          "source_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "name": "National Museum of Singapore"
+        },
+        {
+          "source_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "name": "Gardens by the Bay"
+        },
+        {
+          "source_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "name": "Singapore Botanic Gardens"
+        }
+      ],
+      "v3_only": [
+        {
+          "source_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "name": "Marina Bay Waterfront Promenade"
+        },
+        {
+          "source_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+          "name": "Sultan Mosque"
+        }
+      ],
+      "shared": [
+        {
+          "source_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "name": "Buddha Tooth Relic Temple"
+        },
+        {
+          "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "name": "Merlion Park"
+        },
+        {
+          "source_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "name": "Fort Canning Park"
+        },
+        {
+          "source_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "name": "Singapore Flyer"
+        }
+      ]
+    }
+  }
+}
