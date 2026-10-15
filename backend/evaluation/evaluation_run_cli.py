@@ -129,7 +129,7 @@ def main(argv=None, *, http_client=None):
             "error_type": type(exc).__name__,
             "reason": str(exc),
         }
-    print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    print(json.dumps(result, ensure_ascii=True, indent=2, allow_nan=False))
     return (
         0
         if result.get("status") == "prepared" or result.get("processing_status") == "complete"
