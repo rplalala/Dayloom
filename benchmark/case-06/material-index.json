@@ -510,5 +510,13 @@
         }
       ]
     }
-  ]
+  ],
+  "post_fix_compatibility": {
+    "path": "analysis/compatibility/post-fix.json",
+    "sha256": "33fb85ee7558f0427d2da5821ebaf967edc7a93009e82d0f92dff502ab1ba386",
+    "bytes": 7822,
+    "representation": "sanitized_derived_offline_acceptance_summary",
+    "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
+    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection."
+  }
 }

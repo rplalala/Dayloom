@@ -1033,8 +1033,8 @@
   "documents": [
     {
       "path": "report.md",
-      "sha256": "f3a473979eadffe29e81f1380e32a4f136973b6e7747c058594abaac4e36a9da",
-      "bytes": 18411
+      "sha256": "991d2a53a344793cd66131a6cff7907ab78e10afcb862b68fbdba0ad539ef113",
+      "bytes": 20328
     },
     {
       "path": "itinerary.md",
@@ -1052,5 +1052,13 @@
     "material_table_sha256": "e2085af31cfbc6fa73615243bd03824a6dadf0ea7943ed991f3a521ed8aa283b",
     "scope": "Exact original input, reviewed semantic inputs, selected V0-V3 outputs, independent primary/pair and candidate/Repair/resource reports, public presentation and stated limitations; verified private evidence archive retained.",
     "continuation": "Acceptance record, hash refresh, issue #152 update and local main-worktree synchronization authorized. Pause after checks; blinded review deferred and case-09/13 waiting."
+  },
+  "post_fix_compatibility": {
+    "path": "analysis/compatibility/post-fix.json",
+    "sha256": "9d9b1766b5ecf3f24868e0ad4969a34c41d4126f3d8a467da666df0260d01dcc",
+    "bytes": 7822,
+    "representation": "sanitized_derived_offline_acceptance_summary",
+    "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
+    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection."
   }
 }

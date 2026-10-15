@@ -51,6 +51,11 @@ locates optional integrated reports, append revisions and offline replay; detail
 definitions remain in the topic contracts above.
 The [combined offline acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
 records main-worktree verification and the boundaries of reused regression evidence.
+The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
+separates missing output-specific review work from completed unresolved judgments
+before primary acquisition, without changing Planner generation or score policies;
+the [engineering acceptance](records/evaluation/intake-identity-usage.md#post-generation-review-readiness-2026-10-15)
+records the saved-case checks and synthetic-control limits.
 
 ## Other responsibilities
 

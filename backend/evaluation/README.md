@@ -406,6 +406,22 @@ produce `pending_review`; collection always sets `qualified_four_version_batch=f
 and `pending_requirement_review=true`. It does not scan, select another run, regenerate,
 author requirements or construct a provider runtime.
 
+Qualified selected results also emit `semantic-readiness.json` beside staging,
+including when registration follows generation. This is a source-bound activity
+review queue, separate from producer completion and requirements review. Recompute
+it offline at any time:
+
+```powershell
+uv run rtpeval batch preflight artifacts/staging/staging.json
+```
+
+The command also accepts a finalized native manifest. Exit 2 with
+`status=needs_semantic_review` identifies missing work; invalid material has a
+separate correction status. Role and occupancy are separate decisions. Complete
+review may still leave genuine UNKNOWN and unavailable scores. The
+[readiness contract](../../docs/contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
+owns states, source/provenance requirements and compatibility.
+
 ### External requirements review and finalization
 
 Operate the author and reviewer separately using **Codex `gpt-6.1-sol`, reasoning effort
@@ -449,7 +465,8 @@ use `artifacts/staging-v3/staging.json` after all four required workflows qualif
 
 ```powershell
 uv run rtpeval batch attach-requirements artifacts/staging/staging.json material/handoff.json --directory artifacts/attached
-uv run rtpeval batch finalize artifacts/attached/attachment.json --directory artifacts/finalized
+uv run rtpeval batch finalize artifacts/attached/attachment.json --directory artifacts/finalized --projection-reviews material/role-reviews.json --occupancy-reviews material/occupancy-reviews.json
+uv run rtpeval batch preflight artifacts/finalized/manifest.json
 uv run rtpeval validate artifacts/finalized/manifest.json
 uv run rtpeval evaluate execute artifacts/finalized/manifest.json --directory artifacts/fresh-evaluation --options options.json --prices prices.json --env-file .env
 uv run rtpeval evaluate replay artifacts/fresh-evaluation
@@ -463,6 +480,31 @@ intake accepts. Keep original input/config/capture/handoff files accessible and 
 until that gate; a changed request needs fresh authoring/review, not edited hashes. All
 staging, attachment, finalization and evaluation destinations must be fresh. A failed
 final destination is retained for diagnosis and is not accepted or reusable for recovery.
+
+The two review arguments supply existing native envelopes, not review instructions;
+omit a type when no decisions of that type are needed. Alternatively, collection can
+retain `projection_reviews_ref` and `occupancy_reviews_ref` from its configuration.
+Do not supply the same type again at finalization. Attach reviews linking protected
+obligations at finalization, where reviewed requirements are available. Both paths
+preserve exact review bytes and original result hashes without manual manifest edits.
+
+Finalization reports structural `accepted` separately from its nested
+`semantic_readiness`; an accepted manifest can still require review work. A missing
+role decision appears before any dependent occupancy decision can be requested.
+Reviewing a generic activity as non-primary alone does not establish whether its
+window is committed. An empty source-only envelope cannot cover new activities.
+Preparation, including one-step `evaluate execute`, stops missing required work
+before provider sends. Bound occupancy reviews enter preparation automatically;
+an explicit conflicting occupancy file is rejected. All preparation destinations
+remain fresh, and completing reviews makes no guarantee of numerical scores.
+
+The CLI does not call Codex or another reviewer. Independently operated output review
+uses the original request and exact submitted activity context without scores or
+desired outcomes; retain actual actor/settings/time and rationale, and disclose
+unobservable external usage/billing. Requirement authoring above remains source-only.
+Synthetic test decisions are not actual reviews. Existing accepted data, reports,
+receipts and historical replay bindings stay immutable; later real reviews and a
+revised evaluation need their own authorization and fresh package.
 
 ## Installed offline research
 

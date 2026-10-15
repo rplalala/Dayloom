@@ -304,7 +304,7 @@ def read_attachment(attachment_path):
     return value, staging, files
 
 
-def finalize(attachment_path, directory):
+def finalize(attachment_path, directory, *, projection_reviews=None, occupancy_reviews=None):
     """Publish a fresh native manifest only after native intake accepts every group."""
     output = Path(directory).resolve()
     _require(not output.exists(), "Finalization destination must be fresh")
@@ -344,6 +344,27 @@ def finalize(attachment_path, directory):
             for group, reviewed in zip(staging["groups"], attachment["groups"], strict=True)
         ],
     }
+    for field, supplied, schema in (
+        ("projection_reviews_ref", projection_reviews, "rtpeval_reviews_1"),
+        ("occupancy_reviews_ref", occupancy_reviews, "rtpeval_occupancy_reviews_1"),
+    ):
+        if field in staging:
+            _require(supplied is None, "Conflicting staged and supplied " + field)
+            manifest[field] = staging[field]
+        elif supplied is not None:
+            raw = Path(supplied).read_bytes()
+            envelope = _json(raw)
+            _require(envelope.get("schema_version") == schema, "Invalid " + field + " schema")
+            name = "semantic-reviews/" + field + ".json"
+            _require(name not in files, "Semantic review path collision")
+            files[name] = raw
+            manifest[field] = {
+                "path": name,
+                "sha256": _digest(raw),
+                "schema_version": schema,
+                "media_type": "application/json",
+                "availability": "available",
+            }
     _write_files(output, files)
     candidate = output / "intake-candidate.json"
     candidate.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
@@ -356,7 +377,15 @@ def finalize(attachment_path, directory):
             intake.status == "accepted",
             "Native intake rejected finalization: " + str(intake.to_dict()),
         )
+        from backend.evaluation.review_artifacts import review_inputs
+        from backend.evaluation.semantic_readiness import review_readiness
+
+        occupancy = review_inputs(candidate, manifest, intake.to_dict())
+        readiness = review_readiness(intake.to_dict(), occupancy)
         candidate.rename(output / "manifest.json")
+        (output / "semantic-readiness.json").write_bytes(
+            (json.dumps(readiness, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        )
     finally:
         if candidate.exists():
             candidate.unlink()
@@ -364,4 +393,5 @@ def finalize(attachment_path, directory):
         "status": "accepted",
         "manifest": str(output / "manifest.json"),
         "intake": intake.to_dict(),
+        "semantic_readiness": readiness,
     }

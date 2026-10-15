@@ -274,6 +274,10 @@ V1-V3 transfers or conflicting journey alternatives remain UNKNOWN/denominator-u
 in this slice. Further transport-association adjudication is not silently introduced
 as an occupancy review feature.
 
+Fresh primary acquisition additionally checks [post-generation review coverage](0002-intake-identity-usage.md#post-generation-review-readiness).
+Missing independent work is a preparation blocker, while a completed unresolved
+review preserves the uncertainty below. This gate changes no scoring rule.
+
 Automatic occupancy decisions are limited to established primary visits, selected
 transport claims and clearly uncommitted placeholders. Named unresolved primary
 visits remain commitments even when their canonical identity is unknown. Generic

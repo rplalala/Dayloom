@@ -81,6 +81,19 @@ def _verify(preparation, *, implementation=False):
         raise ValueError("Evaluation preparation digest mismatch")
     if load_batch(preparation["manifest"]).to_dict() != preparation["intake"]:
         raise ValueError("Original evaluation sources changed")
+    if "semantic_readiness" in preparation:
+        from .review_artifacts import review_inputs
+        from .semantic_readiness import review_readiness
+
+        occupancy = review_inputs(
+            preparation["manifest"],
+            _read(Path(preparation["manifest"]))[0],
+            preparation["intake"],
+            preparation["context"]["occupancy_reviews"],
+        )
+        readiness = review_readiness(preparation["intake"], occupancy)
+        if readiness != preparation["semantic_readiness"] or readiness["status"] != "ready":
+            raise ValueError("Prepared semantic review coverage changed")
     root = Path(preparation["directory"])
     if _read(root / "preparation.json")[0] != preparation:
         raise ValueError("Saved execution preparation changed")
@@ -647,6 +660,9 @@ def prepare_run(
     intake = load_batch(source).to_dict()
     if intake["status"] != "accepted":
         raise ValueError("Accepted four-version batch required")
+    from .review_artifacts import review_inputs
+
+    occupancy_reviews = review_inputs(source, _read(source)[0], intake, occupancy_reviews)
     options = _options(options)
     validate_prices(prices)
     if prices["currency"] != "USD":
@@ -658,6 +674,11 @@ def prepare_run(
 
     schedule_timezones(intake, schedule_context)
     _occupancy_reviews(intake, occupancy_reviews)
+    from .semantic_readiness import MissingSemanticReviews, review_readiness
+
+    readiness = review_readiness(intake, occupancy_reviews)
+    if readiness["status"] != "ready":
+        raise MissingSemanticReviews(readiness)
     read_route_reviews(intake, route_reviews)
     prepare_density_policies(intake, density_reviews)
     for group in intake["inventory"]:
@@ -675,6 +696,7 @@ def prepare_run(
         "manifest": str(source),
         "directory": str(Path(directory).resolve()),
         "intake": intake,
+        "semantic_readiness": readiness,
         "options": options,
         "prices": prices,
         "identity_plan": build_identity_plan(intake),

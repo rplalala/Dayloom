@@ -41,8 +41,16 @@ def main(argv=None):
         ),
     )
     finalize_parser.add_argument("attachment", type=Path)
+    for option in ("projection-reviews", "occupancy-reviews"):
+        finalize_parser.add_argument("--" + option, type=Path)
     finalize_parser.add_argument(
         "--directory", required=True, type=Path, help="Fresh finalized directory"
+    )
+    preflight_parser = commands.add_parser(
+        "preflight", help="Offline activity-review coverage queue"
+    )
+    preflight_parser.add_argument(
+        "source", type=Path, help="Producer staging or native batch manifest"
     )
     args = parser.parse_args(argv)
     from backend.cli.collection import CollectionError, collect
@@ -54,12 +62,21 @@ def main(argv=None):
             from backend.cli.finalization import attach_requirements
 
             result = attach_requirements(args.staging, args.handoff, args.directory)
+        elif args.operation == "preflight":
+            from backend.cli.reviews import preflight
+
+            result = preflight(args.source)
         else:
             from backend.cli.finalization import finalize
 
-            result = finalize(args.attachment, args.directory)
+            result = finalize(
+                args.attachment,
+                args.directory,
+                projection_reviews=args.projection_reviews,
+                occupancy_reviews=args.occupancy_reviews,
+            )
     except (CollectionError, OSError, ValueError, KeyError, TypeError, RecursionError) as exc:
         print(json.dumps({"status": "needs_material_correction", "diagnostics": [str(exc)]}))
         return 2
     print(json.dumps(result))
-    return 0
+    return 2 if result.get("status") == "needs_semantic_review" else 0

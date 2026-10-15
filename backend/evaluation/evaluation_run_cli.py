@@ -129,6 +129,11 @@ def main(argv=None, *, http_client=None):
             "error_type": type(exc).__name__,
             "reason": str(exc),
         }
+        from .semantic_readiness import MissingSemanticReviews
+
+        if isinstance(exc, MissingSemanticReviews):
+            result["processing_status"] = "needs_semantic_review"
+            result["semantic_readiness"] = exc.report
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
     return (
         0

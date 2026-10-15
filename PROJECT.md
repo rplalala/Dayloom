@@ -141,7 +141,10 @@ No automatic retry is added. See
 The integrated implementation also exposes explicit offline collection, external reviewed
 requirements attachment/native finalization, selected generation registration and task-oriented
 adapters to the existing tools. Collection stays unqualified until reviewed four-version
-finalization; external agents are separately operated. See
+finalization; external agents are separately operated. Post-generation offline review
+queues distinguish missing activity-role/occupancy work from reviewed uncertainty;
+fresh primary preparation blocks missing required coverage before acquisition.
+See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md#post-generation-review-readiness) and
 [material handoff](backend/evaluation/README.md#installed-generation-and-material-handoff).
 
 | Capability | Current behavior | Detailed owner |

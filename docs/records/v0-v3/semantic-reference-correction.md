@@ -384,3 +384,61 @@ The source inventory grows with preference length. A future live preparation mus
 the expanded actual request and use fresh revision/run/attempt bindings. Offline
 acceptance provides no new itinerary, primary score, route feasibility evidence or
 case-continuation authority. Display/read compatibility does not relabel historical results.
+
+### Post-fix real-material compatibility
+
+On 15 October 2026, the accepted case-03 and case-06 material passed a dedicated
+offline compatibility check against merged source
+`8326fb8c017f17df2426275a8634e35b91325394`, using Windows CPython 3.12.14.
+The check imported the current implementation; it did not substitute retained producer
+code. The original request reference date, 2026-10-15, remained pinned for historical
+response reading. The accepted [case-03](../../../benchmark/case-03/report.md) and
+[case-06](../../../benchmark/case-06/report.md) reports retain their original generation,
+primary scoring, evidence and acceptance identities.
+
+| Real material | Case-03 | Case-06 |
+| --- | --- | --- |
+| Saved interpretation responses through the current complete service | Four V0-V3 responses accepted | Four selected responses accepted, including V3 a2 |
+| Pace and transport | Ordinary default; WALK routing default; no hard mode set | Relaxed default; soft DRIVE preference; no hard mode set |
+| Saved canonical contracts | Three V1-V3 version-4 contracts read without value changes | Three V1-V3 version-4 contracts read without value changes |
+| Full selected result schema round-trip | All four complete results preserved | All four complete results preserved |
+| Current native intake | Original revision 1 accepted; no material/projection diagnostics | Original revision 5 accepted; no material/projection diagnostics |
+
+The saved wire name is `PreferenceDraftV10`; explicit `preference_draft_12` reader
+configuration selects its historical quote/list interpretation path. For each actual
+response, current canonicalization preserved the saved V1-V3 contract's content apart
+from the deliberate version-4 to version-5 tag. Different generations' interpretations
+were compared separately, not collapsed into a common model interpretation. Both cases
+retain one null-date pace default with no exact count. Their independently reviewed
+RequirementSpecs have no hard obligations; case-06's driving preference is not promoted
+to a mandatory mode restriction.
+
+Eight additional in-memory controls converted those same response values to the current
+source-endpoint and required-default wire, then passed the complete service with identical
+canonical content to the corresponding historical reader. These are explicitly derived
+adapter controls, not captured responses from a new model invocation. Six negative controls
+still reject a fabricated legacy pace quotation, a missing current default and a foreign
+source ID, once per case. Their error codes remain `invalid_source_occurrence`,
+`invalid_daily_pace_default` and `invalid_source_span`. The latter two retain field paths;
+the fabricated legacy pace quotation currently reports canonicalization with no field path.
+That diagnostic limit does not affect acceptance of the unchanged real responses.
+
+Native intake read 30 unique archived files at their original logical locations through
+a read-only archive-byte view. Original manifests, source hashes, run IDs, usage and
+provenance were unchanged; V3's optional paired projections remain available for both
+cases. No original receipt/source pin was edited to obtain acceptance. All 675 tracked
+backend/tools files stayed fixed during the check. Before/after hashes match for 89
+protected files: 79 tracked case/input files and ten private archive files. Archive blob
+hashes and declared lengths were verified in memory. External sockets and DNS were denied,
+with zero attempted network operations, provider calls or scoring operations.
+
+The private verification script and full derived result are retained under the ignored
+historical identifier `.scratch/case0306-compatibility/`. Case-specific sanitized projections
+are published with the [case-03](../../../benchmark/case-03/analysis/compatibility/post-fix.json)
+and [case-06](../../../benchmark/case-06/analysis/compatibility/post-fix.json) presentations.
+Their report/index refresh follows the audit's 89-file preservation check and retains prior
+publication hashes separately; original indexed data and acceptance bindings are unchanged.
+This result completes real-material reading/intake compatibility; it creates no replacement
+attempt, primary report or score.
+It does not establish new-wire model behavior or new planning quality. The earlier full-suite
+limitations above remain unchanged; no full regression was repeated for this check.
