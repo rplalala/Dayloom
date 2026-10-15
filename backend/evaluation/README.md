@@ -1368,8 +1368,10 @@ through the separately authorized injected caller before scoring. Preparation do
 invent coordinates or transport restrictions. Missing optional context/review retains
 UNKNOWN or applicability diagnostics. Route preparation exports `route_contexts` and its ready-made `evidence_plan`.
 
-Requirement/schedule rules version 3 uses verified occurrence associations for count,
-date, exclusion and fixed-time matching. `requirement_identity` exposes the physical
+Requirement/schedule matching uses verified occurrence associations for count,
+date, exclusion and fixed-time matching. Source-reviewed `transport_modes` obligations
+are executable; the [RequirementSpec contract](../../docs/contracts/0003-requirement-schedule.md#obligations)
+owns rule selection and aggregation. `requirement_identity` exposes the physical
 identity and grounding provenance used. Historical identity reports retain canonical-only
 matching. After an authorized rule change, save a new offline recalculation separately
 from the frozen execution report/receipts. Exact replay of an earlier report uses its

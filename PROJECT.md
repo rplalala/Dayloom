@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-14.
+Current source of truth. Updated 2026-10-15.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -62,6 +62,9 @@ Details: [shared architecture](docs/0001-system-architecture.md),
   skip that model call. Application-owned requirements retain exact source and
   subject provenance. Unsupported hard conditions and unresolved required identities
   preserve clarification boundaries.
+- Current interpretation uses request-bound source selections and a required pace
+  default. Whole-trip hard transport mode sets constrain V0 acceptance and V1-V3
+  acquisition, selection and Repair; unsupported hard semantics still require clarification.
 - Ordinary positive POI interests use soft targets of one distinct qualifying POI,
   or two for an explicitly sourced trip focus. Explicit counts, dates, exclusions
   and exclusive restrictions take priority. Broad enjoyment does not invent quotas.
@@ -154,7 +157,9 @@ finalization; external agents are separately operated. See
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Current identity policies are `versioned_api_identity_4` and
-`v0_identity_correspondence_3`; requirement/schedule rules are version 3. Opening retains
+`v0_identity_correspondence_3`. Requirement/schedule and route rules select versions
+4/3 for the new `transport_modes` operator and retain 3/2 for inputs without it.
+Opening retains
 API-only rules 2 and selects rules 4 with validated policy-2 access judgments. Verified physical
 associations can support occurrence matching,
 opening and route checks while original grounding FAILs remain visible. Requirement
@@ -201,29 +206,26 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint: the October 13 Repair integration at `a0b1114` completed
-the full backend regression with **4161 passed, 5 failed, 16 skipped and 1 warning
-in 2032.76 seconds**. The failures exposed one narrow offline import allowance and
-four worktree/test-environment dependencies. After correction, the final affected suite
-at `3709d0e` passed **708, 1 skipped in 209.28 seconds**, without warnings; it includes
-all five originally failing cases. The remaining affected-suite skip requires Windows
-symlink privileges. The full suite was not repeated after correction, and its skipped
-coverage remains unverified. Independent Standards/Spec reviews have no open findings.
-Backend/scripts Ruff lint, all 39 changed Python format checks and tracked document
-links pass. The pre-existing global format failures remain outside this task.
-The [Repair integration record](docs/records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
-owns the failure/correction/retest sequence and exact evidence. Earlier network-denied
-installed CLI, suite, research and replay acceptance retains its original scope in the
-[combined acceptance](docs/records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12).
-Earlier #97 checks retain their original scope in
-[one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09)
-and [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09).
-Earlier fresh native evaluator/opening and manifest-based quality CLI agreement and
-exact zero-network replay remain retained evidence; #97 made no new live run.
+Latest offline checkpoint: the October 15 shared requirement boundary correction
+for [#165](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/165) completed
+a full backend run with **4196 passed, 17 failed and 16 skipped in 6126.73 seconds**.
+That run overlapped review corrections and is not a final-revision green gate.
+Seven historical mock-wire failures, six calendar-dependent CLI checks and three
+CLI startup timeouts were corrected and passed affected regressions. The remaining
+mock-provider classification anomaly did not reproduce against the final static source;
+its original underlying exception is not established. Final affected checks include
+422 Azure/provider/evaluator tests, six additional source-boundary cases, all corrected
+fixture files and the three timeout scenarios. The full suite was not repeated after
+correction; skipped coverage remains unverified. Independent Standards/Spec reviews
+have no open findings. Backend/scripts Ruff lint, all 43 changed Python format checks
+and tracked document links pass. The pre-existing global format failures remain outside
+this task. All 478 checked original/public evidence files retain their hashes, and
+case-01/02 current intake and available historical replays pass without acquisition.
+The [shared boundary correction record](docs/records/v0-v3/semantic-reference-correction.md#october-15-shared-requirement-boundary-correction)
+owns exact results, corrections and compatibility limits. Earlier acceptance retains
+its original scope in the [Repair integration record](docs/records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
+and [CLI acceptance record](docs/records/evaluation/intake-identity-usage.md).
 Historical packets retain their original implementation for exact replay.
-Acceptance details: [complete CLI flow](docs/records/evaluation/intake-identity-usage.md#complete-v0-identity-coverage-acceptance-2026-10-09),
-[source facts](docs/records/v0-v3/v3-development.md#google-backed-output-facts-2026-10-09)
-and [serialization and fresh execution](docs/records/v0-v3/v3-development.md#source-protected-v3-cli-execution-2026-10-09).
 The latest recorded frontend gate is **98 passed**, with TypeScript, build and lint
 passing; this backend task does not rerun or imply new frontend validation.
 Actual failure/correction/retest sequences belong in the linked acceptance records.

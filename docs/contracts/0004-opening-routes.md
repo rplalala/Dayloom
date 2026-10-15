@@ -249,12 +249,13 @@ route_reviews=None, coordinate_evidence=None, *, paired=False)` returns immutabl
 `RoutePreparation`. `score_routes` additionally takes a snapshot directory and optional
 `expected_plan`, returning immutable `RouteResult`. `to_dict()` exports independent copies.
 Schemas are `rtpeval_route_preparation_1`, `rtpeval_route_report_1`; rules are
+`rtpeval_route_rules_3` with `transport_modes` obligations, otherwise
 `rtpeval_route_rules_2` (historical reports retain rules 1). Preparation selects sources/intervals before observing route results
 and emits both `route_contexts` and a complete Ticket 04 evidence plan. No provider is called.
 
 Reuse existing rtpeval_schedule_context_1 and rtpeval_occupancy_reviews_1 unchanged.
-Source/obligation/occupancy validators were moved to private _schedule_preparation.py
-without Ticket 05 policy changes. No new executable RequirementSpec kind was added.
+Shared source/obligation/occupancy validators live in private `_schedule_preparation.py`.
+The source-linked `transport_modes` operator supplements the independent route reviews.
 
 rtpeval_route_reviews_1 requires batch_id, nonempty revision and groups. Each unique
 group links group_id/input_sha256 with reviewer_ref and offset-aware reviewed_at:
@@ -469,6 +470,16 @@ establish new acquisition authority or update the frozen coverage/price referenc
 <a id="route-verdicts"></a>
 
 ## Route selection, applicability and scoring
+
+The bridge adds resolved, source-linked `transport_modes` RequirementSpec
+obligations to the existing independent mode-policy check. Applicable policies
+intersect per date; contradictions require material correction. A known disallowed
+claim FAILs, missing modes remain UNKNOWN, and another unresolved policy cannot
+become PASS through the bridge. The requirement dimension owns these obligations;
+route scoring excludes their duplicate mode policies while retaining full diagnostics.
+Equivalent whole-trip mode sets with the same or nested original-source intervals
+share that owner. Distinct source occurrences and independent restrictions remain
+separate.
 
 Keep consecutive primary occurrences within each delivered day; no inter-day routes.
 Confirmed same-canonical legs are N/A; distinct venues at one address remain distinct.
