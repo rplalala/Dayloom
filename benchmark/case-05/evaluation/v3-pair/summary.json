@@ -1,0 +1,44 @@
+{
+  "schema_version": "case05_v3_pair_attempt_summary_1",
+  "case_id": "case-05",
+  "source_run_id": "case-05-r02-v3-attempt-01",
+  "execution_mode": "offline_reuse",
+  "processing_status": "stopped",
+  "reason": "execution_timeout",
+  "configured_total_timeout_seconds": 120,
+  "native_stage_elapsed_seconds": 296.002257,
+  "started_at": "2026-10-15T06:26:41.887505+00:00",
+  "finished_at": "2026-10-15T06:31:37.889762+00:00",
+  "actual_google_sends": 0,
+  "actual_model_sends": 0,
+  "automatic_retries": 0,
+  "current_reference_cost_usd": "0",
+  "actual_account_billing": null,
+  "source_draft_equals_final": true,
+  "source_repair_status": "REJECTED",
+  "source_repair_reason": "insufficient_time_for_model_and_rechecks",
+  "paired_result_selected": false,
+  "completed_handoff_available": false,
+  "replay": "exact_stopped_receipt",
+  "closed_receipt": "verified",
+  "preparation_sha256": "42029dbdf9d18ed4a950693f62ef500091af4d6ffe35aaf43b25f328f48bb5f0",
+  "stopped_report_sha256": "46aa5cd54a91774c54aac0c5b15ef908b81d24d8c8b261a6a901de7b95b46eb9",
+  "intermediate_diagnostic": {
+    "sha256": "df430592453dc4a67dff6d77112ef67d479a7cc59fdc923c4576b808cd383261",
+    "status": "unselected_intermediate_not_completed_pair"
+  },
+  "fresh_proposal": {
+    "status": "prepared_pending_explicit_approval",
+    "content_sha256": "fdb1743844b0a5102b97ad83d1399f097803e5c161aa02320a19241a4b9f18b9",
+    "options": {
+      "max_cost_usd": "0",
+      "max_google_sends": 0,
+      "timeout_seconds": 10,
+      "total_timeout_seconds": 600
+    },
+    "same_source_context_evidence_and_prices": true,
+    "executed": false
+  },
+  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-review-01/",
+  "source_runtime": "original producer 0f365304; isolated unchanged historical reader"
+}

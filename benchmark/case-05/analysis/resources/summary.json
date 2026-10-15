@@ -246,5 +246,49 @@
   },
   "native_ledger_sha256": "52d1341c25e766efcc80d750ea5dca08e8198a2fb47932af435c7cf7beb19b45",
   "native_ledger_source_digest": "026493df1369d10e8b93ef13f03ec41eb6be52ceb0307a3b2bcc982cdd096760",
-  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-offline-01/reports/resources"
+  "evidence_identifier": "benchmark/scratch/case-05/work/post-primary-offline-01/reports/resources",
+  "external_codex_review": {
+    "actor": "/root/case05_relevance_review",
+    "operation_count": 1,
+    "scope": "171 independent interest-by-venue judgments from a frozen stage-blind packet",
+    "reviewer_kind": "external_model",
+    "human_review": false,
+    "started_at": "2026-10-15T17:22:40+11:00",
+    "ended_at": "2026-10-15T06:26:02.3786569+00:00",
+    "runtime": {
+      "actor_identity_basis": "Assigned current collaboration actor path.",
+      "model": null,
+      "reasoning_effort": null,
+      "model_settings_status": "Parent/default settings inherited; model identity and reasoning effort not independently verified by telemetry.",
+      "measured_usage": null,
+      "usage_status": "External Codex token usage unavailable in this reviewer runtime.",
+      "measured_billing_usd": null,
+      "billing_status": "External Codex billing unavailable; no token or cost estimate invented."
+    },
+    "business_provider_activity": {
+      "new_api_calls": 0,
+      "sends": 0,
+      "cost_usd": "0",
+      "basis": "No business provider, browser, network or service tools were invoked during this review; only local file/clock tools were used."
+    },
+    "reviewer_record_sha256": "79b12e4ec467f1c391250881b0774005010df24e4e9fe42b763d8453c97e60f8",
+    "labels_sha256": "2e0db2268ccb8adbee5b43eb7197451c765b738a5d9a66e0c9637d1a8a6f2553",
+    "source_packet_sha256": "9a2e39edf580349ed576666b595f1a7d69fb015e315dbd79ebc4db6755473eec",
+    "full_platform_transcript": "unavailable; original handoff, outputs and declared local-tool record retained",
+    "billing_interpretation": "External Codex usage and billing are unavailable, not zero and not part of business API USD 0."
+  },
+  "offline_v3_pair": {
+    "processing_status": "stopped",
+    "reason": "execution_timeout",
+    "configured_total_timeout_seconds": 120,
+    "native_stage_elapsed_seconds": 296.002257,
+    "actual_google_sends": 0,
+    "actual_model_sends": 0,
+    "automatic_retries": 0,
+    "current_reference_cost_usd": "0",
+    "actual_account_billing": null,
+    "paired_result_selected": false,
+    "replay": "exact_stopped_receipt",
+    "closed_receipt": "verified"
+  }
 }
