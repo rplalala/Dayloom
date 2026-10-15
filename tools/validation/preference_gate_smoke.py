@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import time
+from datetime import date
 from pathlib import Path
 from uuid import uuid4
 
@@ -157,7 +158,17 @@ def capture_wire(row):
     if len(messages) != 1:
         raise ValueError("Expected exactly one captured structured response")
     payload = json.loads(messages[0]["text"])
-    dto = FoundryInterpretationDTO.model_validate(payload)
+    if row.get("model_metadata", {}).get("schema_version") == "preference_draft_13":
+        from backend.app.llm.azure_foundry.dto import FoundryCurrentInterpretationDTO
+        from backend.app.llm.azure_foundry.requirement_wire import SourceSpans, restore_current
+        from backend.app.schemas.request import PlanningRequest
+
+        original = PlanningRequest.model_validate(row["input"])
+        prompt = shared.preference_prompt(original, date.fromisoformat(row["reference_date"]))
+        spans = SourceSpans(prompt, original.additional_preferences)
+        dto = FoundryCurrentInterpretationDTO.model_validate(restore_current(payload, spans))
+    else:
+        dto = FoundryInterpretationDTO.model_validate(payload)
     row["strict_parsed_dto"] = dto.model_dump(mode="json")
     row["parse_capture_status"] = "wire_parsed"
 
@@ -269,6 +280,7 @@ async def run_smoke(
                         break
                     row = {
                         "case_id": case["case_id"],
+                        "reference_date": reference.isoformat(),
                         "input": case["request"],
                         "frozen_expected": {
                             k: v for k, v in case.items() if k.startswith("expected_")

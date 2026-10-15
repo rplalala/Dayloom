@@ -49,6 +49,9 @@ def validate_draft(
     # Reuse shared checks on a detached primary-only copy; discard normalization.
     primary = itinerary.model_copy(deep=True, update={"reference_recommendations": []})
     validate_output_sources(primary, places=places, supplied_ids=supplied_ids)
+    from backend.app.policies.transport_constraints import validate_restricted_transport
+
+    validate_restricted_transport(primary, contract.transport_constraint)
     validate_itinerary_dates(contract.requirements, primary, window)
     by_id = {p.place_id: p for p in places}
     effective = {p.place_id: p for p in effective_places}

@@ -172,6 +172,9 @@ class ModelTransport(httpx.MockTransport):
         else:
             value = self.values[self.ordinary_index]
             self.ordinary_index += 1
+        from backend.tests.llm.azure_foundry.requirement_fixtures import current_response
+
+        value = current_response(value, request)
         raw = response(value if isinstance(value, str) else json.dumps(value), len(self.requests))
         if self.missing_usage:
             raw.pop("usage")

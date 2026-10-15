@@ -3,7 +3,7 @@
 import re
 from dataclasses import dataclass
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, model_serializer
 
 from backend.app.evidence.models import (
     NonWalkablePairEvidence,
@@ -23,8 +23,16 @@ class TransportModeDecision(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     travel_mode: TravelMode
+    allowed_modes: tuple[TravelMode, ...] | None = None
     reason: str
     routing_preference: str | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_optional_modes(self, handler):
+        result = handler(self)
+        if self.allowed_modes is None:
+            result.pop("allowed_modes", None)
+        return result
 
     @property
     def is_explicit(self) -> bool:
@@ -106,9 +114,7 @@ def select_transport_mode(
             return TransportModeDecision(
                 travel_mode=mode,
                 reason="explicit_mode_in_extracted_preferences",
-                routing_preference=(
-                    "TRAFFIC_UNAWARE" if mode is TravelMode.DRIVE else None
-                ),
+                routing_preference=("TRAFFIC_UNAWARE" if mode is TravelMode.DRIVE else None),
             )
 
     return TransportModeDecision(
@@ -119,9 +125,27 @@ def select_transport_mode(
 
 def select_transport_mode_from_intent(
     intent: TransportPreferenceIntent | None,
+    constraint=None,
 ) -> TransportModeDecision:
     """Apply the existing routing default to one validated typed user intent."""
 
+    if constraint is not None:
+        allowed = tuple(
+            m
+            for m in (TravelMode.WALK, TravelMode.TRANSIT, TravelMode.DRIVE)
+            if m in constraint.allowed_modes
+        )
+        if not allowed:
+            from backend.app.schemas.interpreted_requirements import ClarificationRequired
+
+            raise ClarificationRequired("unsupported_transport_modes", constraint.requirement_refs)
+        chosen = intent.mode if intent and intent.mode in allowed else allowed[0]
+        return TransportModeDecision(
+            travel_mode=chosen,
+            allowed_modes=allowed,
+            reason="hard_allowed_modes",
+            routing_preference="TRAFFIC_UNAWARE" if chosen == "DRIVE" else None,
+        )
     if intent is None:
         return TransportModeDecision(
             travel_mode=TravelMode.WALK,
@@ -269,9 +293,5 @@ def select_alternative_route_pairs(
         selected.append(pair)
         selected_keys.add((pair.place_id_a, pair.place_id_b))
         selected_origins.add(pair.place_id_a)
-    truncated = [
-        pair
-        for pair in pairs
-        if (pair.place_id_a, pair.place_id_b) not in selected_keys
-    ]
+    truncated = [pair for pair in pairs if (pair.place_id_a, pair.place_id_b) not in selected_keys]
     return selected, truncated

@@ -41,10 +41,12 @@ def implementation_hashes():
 
 
 def boundary_identity(client):
+    from backend.app.llm.azure_foundry.requirement_wire import current_prompt
+
     return {
-        "prompt_hash": digest(PREFERENCE_INTERPRETATION_SYSTEM_PROMPT),
-        "prompt_version": "preference_prompt_19",
-        "wire_hash": digest(requirement_wire_format()),
+        "prompt_hash": digest(current_prompt(PREFERENCE_INTERPRETATION_SYSTEM_PROMPT)),
+        "prompt_version": "preference_prompt_20",
+        "wire_hash": digest(requirement_wire_format(current=True)),
         "contract_version": CONTRACT_VERSION,
         "canonical_schema_hash": digest(InterpretedTripRequirements.model_json_schema()),
         "configuration": client._requirement_config,
@@ -79,7 +81,7 @@ def freeze_matrix(source, output, client):
     }
     write_once(output / "manifest.json", manifest)
     write_once(output / "manifest_hash.json", {"sha256": digest(manifest)})
-    write_once(output / "wire_schema.json", requirement_wire_format())
+    write_once(output / "wire_schema.json", requirement_wire_format(current=True))
     return manifest
 
 

@@ -39,6 +39,28 @@ RULES = {
 }
 
 
+def _transport_component(projection, obligation):
+    """One obligation result over independently projected mode claims, not route feasibility."""
+    from ._route_inputs import policy_component
+
+    review = {"status": "restricted", "policies": [obligation]}
+    rows = []
+    for leg in projection["legs"]:
+        claims = leg["claims"]
+        for claim in claims or [{"mode": None}]:
+            rows.append(policy_component(review, claim["mode"], leg["declared_day"]))
+    for claim in projection.get("unbound_transport", []):
+        row = policy_component(review, claim["mode"], None)
+        if row["state"] == "PASS":
+            row = {**row, "state": "UNKNOWN", "reason": "transport_association_unresolved"}
+        rows.append(row)
+    return {
+        "kind": "transport_modes",
+        "state": _conjunction([r["state"] for r in rows]) if rows else "PASS",
+        "claims": rows,
+    }
+
+
 @dataclass(frozen=True)
 class RequirementScheduleResult:
     status: str
@@ -244,6 +266,8 @@ def _requirement_checks(group, projection, identity_index, timezone):
                     "reason": obligation.get("reason", "semantics_unresolved"),
                 }
             )
+        elif kind == "transport_modes":
+            components.append(_transport_component(projection, obligation))
         elif kind == "required_visit":
             confirmed, possible = _matches(
                 occurrences, subjects.get(obligation["subject_ref"]), days
@@ -307,6 +331,11 @@ def _requirement_checks(group, projection, identity_index, timezone):
                 "sources": obligation["source_refs"],
                 "components": components,
                 "state": _conjunction([c["state"] for c in components]),
+                **(
+                    {"aggregation_owner": "requirements"}
+                    if kind == "transport_modes" and obligation["resolution"] == "resolved"
+                    else {}
+                ),
             }
         )
     return checks, occurrences
@@ -491,6 +520,17 @@ def score_requirement_schedule(
         "results": [],
         "diagnostics": [],
     }
+    if any(
+        o["kind"] == "transport_modes"
+        for g in prepared.get("inventory", [])
+        for o in g["requirement_spec"]["obligations"]
+    ):
+        rules = {
+            **RULES,
+            "version": "rtpeval_requirement_schedule_rules_4",
+            "transport_modes": "source_bound_whole_trip_claims_1",
+        }
+        base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
     try:
         require(prepared.get("status") == "accepted", "intake", "Accepted intake is required")
         completeness = {group["group_id"]: _validate_spec(group) for group in prepared["inventory"]}

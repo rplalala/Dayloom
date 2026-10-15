@@ -10,6 +10,12 @@ from backend.tests.test_rtpeval_cli import installed_cli as cli_fixture
 
 installed_cli = cli_fixture
 REFERENCE = SimpleNamespace(today=lambda: date(2026, 10, 8))
+REFERENCE_BOOTSTRAP = """
+from datetime import date
+from types import SimpleNamespace
+from backend.evaluation.tools import planner_usage_cli
+planner_usage_cli.SystemDateProvider = lambda: SimpleNamespace(today=lambda: date(2026, 10, 8))
+"""
 
 
 def arguments(tmp_path, version="v0", execute=False):
@@ -45,7 +51,7 @@ def arguments(tmp_path, version="v0", execute=False):
 
 def test_installed_generation_preparation_preserves_native_capture(installed_cli, tmp_path):
     args = arguments(tmp_path)
-    current = installed_cli("generate", *args, tools_offline=True)
+    current = installed_cli("generate", *args, tools_offline=True, bootstrap=REFERENCE_BOOTSTRAP)
     assert current.returncode == 0, current.stderr
     original = (tmp_path / "capture/input.json").read_bytes()
     assert original == (tmp_path / "input.json").read_bytes()
@@ -63,6 +69,7 @@ def test_installed_opportunity_preparation_is_offline(installed_cli, tmp_path):
         "--opportunity-capture",
         sidecar,
         tools_offline=True,
+        bootstrap=REFERENCE_BOOTSTRAP,
     )
     assert result.returncode == 0, result.stdout + result.stderr
     manifest = json.loads((tmp_path / "capture/manifest.json").read_bytes())

@@ -80,6 +80,9 @@ def execute(
             return handler_override(request)
         value = values[len(sends) - 1]
         payload = value.model_dump(mode="json") if hasattr(value, "model_dump") else value
+        from backend.tests.llm.azure_foundry.requirement_fixtures import current_response
+
+        payload = current_response(payload, request)
         text = payload if isinstance(payload, str) else json.dumps(payload)
         return httpx.Response(200, json=response(text, len(sends)))
 

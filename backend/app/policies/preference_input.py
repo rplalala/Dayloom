@@ -93,16 +93,21 @@ def check_preference_input(draft, request):
     # A blocked assessment must not hide fabricated provenance elsewhere in the same DTO.
     from backend.app.policies.interpreted_requirements import locate_source
 
-    for group in (
-        draft.semantic_requirements,
-        draft.named_places,
-        draft.subjects,
-        draft.time_protections or (),
-        draft.visit_requirements or (),
+    for field, group in (
+        ("semantic_requirements", draft.semantic_requirements),
+        ("named_places", draft.named_places),
+        ("subjects", draft.subjects),
+        ("time_protections", draft.time_protections or ()),
+        ("visit_requirements", draft.visit_requirements or ()),
     ):
-        for item in group:
-            for source in item.source_refs:
-                locate_source(text, source)
+        for i, item in enumerate(group):
+            for j, source in enumerate(item.source_refs):
+                try:
+                    locate_source(text, source)
+                except RequirementBoundaryError as exc:
+                    raise RequirementBoundaryError(
+                        exc.code, errors=({"loc": (field, i, "source_refs", j), "type": exc.code},)
+                    ) from exc
     conflicts = [exact_sources(c.source_refs, text) for c in draft.operational_conflicts]
     rows = []
     represented = set()

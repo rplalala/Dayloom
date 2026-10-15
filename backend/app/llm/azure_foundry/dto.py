@@ -259,6 +259,12 @@ class FoundryDailyPaceDTO(FoundryTransportDTO):
     source_refs: list[FoundrySourceQuoteDTO]
 
 
+class FoundryTransportConstraintDTO(FoundryTransportDTO):
+    allowed_modes: list[Literal["WALK", "TRANSIT", "DRIVE", "BICYCLE"]]
+    requirement_refs: list[str]
+    source_refs: list[FoundrySourceQuoteDTO]
+
+
 class FoundryInterpretationDTO(FoundryTransportDTO):
     daily_pace: list[FoundryDailyPaceDTO] | None
     preference_input_assessment: FoundryPreferenceInputAssessmentDTO
@@ -274,6 +280,10 @@ class FoundryInterpretationDTO(FoundryTransportDTO):
     experience_evidence_requests: list[FoundryEvidenceRequestDTO]
     extraction_issues: list[str]
     overflow: bool
+
+
+class FoundryCurrentInterpretationDTO(FoundryInterpretationDTO):
+    transport_constraint: FoundryTransportConstraintDTO | None
 
 
 class FoundryDateTimeDTO(FoundryTransportDTO):
