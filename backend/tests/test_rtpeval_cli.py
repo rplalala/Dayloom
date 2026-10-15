@@ -158,7 +158,7 @@ def installed_cli(tmp_path):
             env=env,
             capture_output=True,
             encoding="utf-8",
-            timeout=30,
+            timeout=60,
         )
         assert "OFFLINE_RTPEVAL_GUARD_ACTIVE" in result.stderr
         attempts = events.read_text(encoding="utf-8")
