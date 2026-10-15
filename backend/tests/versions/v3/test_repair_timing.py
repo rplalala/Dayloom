@@ -182,3 +182,78 @@ def test_local_projection_work_rechecks_time_before_charging_or_calling_the_mode
     assert result.reason == "insufficient_time_for_model_and_rechecks"
     assert result.timing["preparation_elapsed_seconds"] == 71
     assert result.final == original
+
+
+@pytest.mark.parametrize("stage", [False, True])
+def test_final_synchronous_revalidation_cannot_adopt_after_the_hard_deadline(monkeypatch, stage):
+    from backend.app.versions.v3 import repair_spatial
+
+    now = [100.0]
+    spatial = repair_spatial.check_addition_layout
+
+    def slow_final_spatial(*args, **kwargs):
+        value = spatial(*args, **kwargs)
+        if "check_rearrangements" not in kwargs:
+            now[0] += 121
+        return value
+
+    monkeypatch.setattr(repair_spatial, "check_addition_layout", slow_final_spatial)
+    original, ctx = overlap_draft(), context()
+    model = Model()
+    run = repair_service.run_repair_stage if stage else repair_service.run_repair_once
+    result = asyncio.run(
+        run(
+            original,
+            ctx,
+            scope_for(original, ctx),
+            model=model,
+            routes_provider=Routes(),
+            request_deadline=1000,
+            clock=lambda: now[0],
+        )
+    )
+    assert result.status == "REJECTED" and result.reason == "phase_deadline"
+    assert result.final == result.original == original
+    assert model.calls == 1
+    if stage:
+        assert len(result.rounds) == 1 and result.selected_round_index is None
+
+
+@pytest.mark.parametrize("retain_partial", [False, True])
+def test_timeout_after_patch_parsing_stops_without_another_send(monkeypatch, retain_partial):
+    from backend.app.versions.v3 import repair_components
+
+    accept = repair_components.accept_components
+    calls = 0
+
+    async def timeout_revalidation(*args, **kwargs):
+        nonlocal calls
+        value = await accept(*args, **kwargs)
+        calls += 1
+        if calls == (2 if retain_partial else 1):
+            raise TimeoutError("controlled_outer_round_timeout")
+        return value
+
+    monkeypatch.setattr(repair_components, "accept_components", timeout_revalidation)
+    original, ctx = overlap_draft(), context()
+    model = SequenceModel([[edit("10:50", "11:50")], [edit()]] if retain_partial else [[edit()]])
+    result = asyncio.run(
+        repair_service.run_repair_stage(
+            original,
+            ctx,
+            scope_for(original, ctx),
+            model=model,
+            routes_provider=Routes(),
+            request_deadline=1000,
+            clock=lambda: 100,
+        )
+    )
+    assert result.reason == "repair_timeout"
+    assert model.calls == len(result.rounds) == (2 if retain_partial else 1)
+    assert result.rounds[-1].result.parsed_patch is not None
+    assert result.rounds[-1].continuation_reason == "repair_timeout"
+    if retain_partial:
+        assert result.status == "ACCEPTED_PARTIAL" and result.selected_round_index == 1
+        assert result.final == result.rounds[0].adopted != original
+    else:
+        assert result.status == "REJECTED" and result.final == original

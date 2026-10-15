@@ -510,6 +510,8 @@ async def run_repair_once(
             complete = all(p.outcome == "resolved" for p in progress) and all(
                 r.status == "resolved" for r in linked
             )
+            if remaining() <= 0:
+                return result("REJECTED", "phase_deadline")
             return result(
                 "ACCEPTED_COMPLETE" if complete else "ACCEPTED_PARTIAL",
                 "authorized_targets_complete" if complete else "partial_target_improvement",
@@ -824,6 +826,8 @@ async def run_repair_stage(
             if result.reason in {"phase_deadline", "insufficient_time_for_rechecks"}
             else "model_failed_no_retry"
             if terminal_failure
+            else "repair_timeout"
+            if result.reason == "repair_timeout"
             else "authorized_targets_complete"
             if accepted
             and not any(
