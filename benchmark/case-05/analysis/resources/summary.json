@@ -278,17 +278,18 @@
     "billing_interpretation": "External Codex usage and billing are unavailable, not zero and not part of business API USD 0."
   },
   "offline_v3_pair": {
-    "processing_status": "stopped",
-    "reason": "execution_timeout",
-    "configured_total_timeout_seconds": 120,
-    "native_stage_elapsed_seconds": 296.002257,
+    "processing_status": "complete",
+    "configured_total_timeout_seconds": 600,
+    "native_stage_elapsed_seconds": 99.223376,
     "actual_google_sends": 0,
     "actual_model_sends": 0,
     "automatic_retries": 0,
     "current_reference_cost_usd": "0",
     "actual_account_billing": null,
-    "paired_result_selected": false,
-    "replay": "exact_stopped_receipt",
-    "closed_receipt": "verified"
+    "paired_result_selected": true,
+    "completed_handoff_available": true,
+    "replay": "exact_via_native_export",
+    "closed_receipt": "verified",
+    "previous_stopped_attempt_preserved": true
   }
 }

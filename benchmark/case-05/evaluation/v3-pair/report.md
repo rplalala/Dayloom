@@ -1,24 +1,26 @@
-# Case-05 V3 paired attempt
+# Case-05 V3 paired observation
 
-Status: **stopped by the frozen total timeout; no completed pair result selected**. Native stopped-result replay and the closed receipt verify exactly. The consumed directory was not retried or resumed, and no completed handoff was exported.
+Status: **complete**, with an available same-run draft/final pair, exact native replay during export, byte-verified portable handoff and verified closed receipts. The researcher explicitly approved the fresh 600-second preparation digest. Google/model sends and retries were zero; current business API reference cost was USD 0.
 
-The selected sources are the original revision-2 V3 draft and final from the same invocation. Their saved itinerary values are equal and original Repair remains `REJECTED / insufficient_time_for_model_and_rechecks`. This observation is not a run of the later Repair timing correction.
+The original revision-2 V3 draft and final are equal. Original Repair remains `REJECTED / insufficient_time_for_model_and_rechecks`; there are no added, removed or replaced primary visits and the paired score delta is zero. This observes the original run and does not exercise or establish live acceptance of the later Repair timing correction.
 
-| Control / observation | Value |
-| --- | --- |
-| Execution mode | Source-labelled offline reuse |
-| Frozen total timeout | 120 seconds |
-| Native stage elapsed until stopped closeout | 296.002 seconds |
-| Google sends / model sends / retries | 0 / 0 / 0 |
-| Current reference API cost | USD 0 |
-| Stopped-report replay / closed receipt | Exact / verified |
+| Paired API-only metric | Draft | Final |
+| --- | ---: | ---: |
+| Auxiliary score | 95.833333 | 95.833333 |
+| Mean density deduction | 16 | 16 |
+| Paired overall score | 79.833333 | 79.833333 |
+| Opening PASS / UNKNOWN | 5 / 1 | 5 / 1 |
 
-Local verification and diagnostic construction exceeded the deadline. A native intermediate diagnostic file was written, but the enclosing operation stopped with `execution_timeout` and selected no pair. The intermediate file is retained as failure evidence; its metrics are not presented as a completed pair, substituted for the original primary score or exported as accepted material. No profiling conclusion about the exact local bottleneck is claimed.
+These paired metrics use native saved API evidence. The original primary evaluation included a model-supported missing-hours access assessment; that assessment is not imported into this paired score. The original V3 primary score remains **84**. The paired opening UNKNOWN and the separate interest-relevance UNKNOWN judgments have different populations and meanings. Grounding, non-overlap and routes pass in both paired stages; requirements remains N/A. No new assessment, primary rescoring or generation occurred.
 
-The first wrapper initialization failed before native execution or package consumption because its socket guard intercepted the Windows event loop's local self-pipe. Constructing that local loop before enabling external-network blocking allowed the single native attempt. Business HTTP-client construction and external sockets remained denied throughout actual execution. Both the startup error and the genuine stopped attempt are retained.
+The frozen total timeout was 600 seconds; native stage elapsed time was 99.223 seconds. Source-labelled imports retain their original times, request semantics and inherited usage. Inherited usage is informational and is not charged again. The independent reader uses exact historical source `0f365304` in an isolated directory; project code and runtime budgets are unchanged.
 
-A fresh **600-second proposal is prepared but unexecuted**, retaining the same source input, selection, contexts, evidence and prices. It retains zero Google/model sends, USD 0, and zero retries. It requires a new explicit approval; the old package and its limits remain unchanged. The proposed digest and exact original/stopped source hashes are in [summary.json](summary.json).
+## Sources and verification
 
-Evidence remains under the historical identifier `benchmark/scratch/case-05/work/post-primary-review-01/`, including the independent-review outputs, stopped replay verification and fresh proposal. The original producer reader is restored separately from exact source `0f365304`; project code is unchanged. These views were assembled on 2026-10-15 from worker source `9acc76f`, with only case report views uncommitted during checks.
+The [summary](summary.json) retains exact preparation/report/receipt/handoff hashes, stage counts, deltas and the earlier stopped attempt. Private native dependencies remain under the historical identifier `benchmark/scratch/case-05/work/post-primary-review-01/`, including `pair-proposed-600`, `pair-600-handoff` and `pair-600-closeout`. Native export replayed the completed source before copying; every copied material/execution byte was checked against its source and both closed receipts were verified with network and HTTP clients denied.
 
-The [candidate report](../../analysis/poi-process/report.md) distinguishes completed relevance judgments from partial known evidence. The [resource report](../../analysis/resources/report.md) separates original Planner/evaluator consumption from external Codex assistance and this zero-send attempt. No generation or primary evaluation was dispatched; case-15, full case closeout, integration and final user acceptance remain pending.
+The [candidate report](../../analysis/poi-process/report.md) retains complete review records with partial known relevance; the researcher chose to proceed without additional collection. The [resource report](../../analysis/resources/report.md) retains all original attempts and separates external Codex assistance. Full V2/V3 Repair process presentation, complete public case presentation/archive closeout, main-worktree integration, integrated tests and explicit final acceptance remain pending. Case-15 has not started. These views were updated on 2026-10-15 from worker source `f326208`, with only the paired/resource views changed during checks.
+
+## Historical execution limits
+
+The earlier 120-second package stopped after 296.002 seconds; its stopped report, intermediate diagnostic, exact stopped replay and closed receipt remain preserved and unselected. A fresh package was explicitly approved; the consumed package was not retried or resumed. Before the fresh package started, the parent interrupted long local hash/preflight work after mistaking it for interpreter startup delay. No execution directory existed; the interruption and all 10,461 protected-file hashes are retained. The subsequent single actual execution used the unchanged approved package. The earlier Windows event-loop self-pipe wrapper failure also remains preserved.
