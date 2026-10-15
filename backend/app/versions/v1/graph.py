@@ -186,7 +186,9 @@ def build_tools_graph(
         return {"weather_evidence": weather}
 
     async def acquire_routes(state: V1State) -> dict[str, object]:
-        mode = select_transport_mode_from_intent(state["transport_preference"])
+        mode = select_transport_mode_from_intent(
+            state["transport_preference"], state["interpreted_requirements"].transport_constraint
+        )
         tracer.event("route_matrix_started", mode.model_dump(mode="json"))
         routes = await initial_routes.prepare(
             places=state["place_evidence"],

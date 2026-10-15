@@ -10,6 +10,7 @@ from backend.app.policies.trip_dates import TripDateErrorCode, TripDatePolicyErr
 from backend.app.schemas.interpreted_requirements import InterpretationDraft
 from backend.app.schemas.itinerary import Itinerary
 from backend.app.schemas.planning import SystemVersion
+from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.app.services.preference_interpretation import empty_preference_draft
 from backend.app.versions.v0.graph import (
     V0StageError,
@@ -26,6 +27,49 @@ from backend.tests.versions.v0.fakes import (
 
 def make_request(**kwargs):
     return shared_request(requirements=make_requirements(), **kwargs)
+
+
+@pytest.mark.parametrize("mode", ["WALK", "TRANSIT", "DRIVE", None])
+def test_v0_acceptance_enforces_sourced_hard_modes_without_tools(mode):
+    from datetime import timedelta
+
+    from backend.app.schemas.itinerary import Activity
+    from backend.tests.services.test_hard_transport import TEXT, constrained_draft
+
+    itinerary = make_itinerary()
+    left = itinerary.days[0].activities[0]
+    right = left.model_copy(
+        update={
+            "activity_id": "second",
+            "place_name": "Another venue",
+            "start_time": left.end_time + timedelta(hours=1),
+            "end_time": left.end_time + timedelta(hours=2),
+        }
+    )
+    transfer = Activity(
+        activity_id="journey",
+        activity_kind="transport",
+        title="Estimated transfer",
+        start_time=left.end_time,
+        end_time=right.start_time,
+        transport={
+            "mode": mode,
+            "from_activity_id": left.activity_id,
+            "to_activity_id": right.activity_id,
+        },
+    )
+    itinerary.days[0].activities.extend([transfer, right])
+    client = FakeStructuredLLMClient([constrained_draft(), itinerary])
+    invocation = run_v0(
+        make_request(additional_preferences=TEXT), client, reference_date=date(2026, 9, 11)
+    )
+    if mode in ("WALK", "TRANSIT"):
+        assert asyncio.run(invocation).itinerary == itinerary
+    else:
+        with pytest.raises(V0StageError) as error:
+            asyncio.run(invocation)
+        assert isinstance(error.value.__cause__, RequirementBoundaryError)
+    assert len(client.calls) == 2
 
 
 def test_v0_graph_has_exact_two_node_topology() -> None:

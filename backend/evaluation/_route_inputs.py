@@ -136,6 +136,102 @@ def route_reviews(intake, envelope):
     return result
 
 
+def requirement_mode_review(group, review):
+    """Bridge independently reviewed executable obligations into the existing route policy."""
+    obligations = [
+        o
+        for o in group["requirement_spec"]["obligations"]
+        if o["kind"] == "transport_modes" and o["resolution"] == "resolved"
+    ]
+    if not obligations:
+        return review
+    policies = list((review or {}).get("policies", []))
+    additional = []
+
+    def source_keys(item):
+        return {
+            (s["field_path"], s.get("quote"), s.get("occurrence", 0)) for s in item["source_refs"]
+        }
+
+    def intervals(item):
+        result = []
+        for ref in item["source_refs"]:
+            if "quote" not in ref:
+                return []
+            original = group["input"][ref["field_path"]]
+            start, offset = -1, 0
+            for _ in range(ref.get("occurrence", 0) + 1):
+                start = original.index(ref["quote"], offset)
+                offset = start + len(ref["quote"])
+            result.append((ref["field_path"], start, offset))
+        return result
+
+    def same_source_region(left, right):
+        a, b = intervals(left), intervals(right)
+
+        def covers(first, second):
+            return all(
+                any(f == g and (s <= u < v <= e or u <= s < e <= v) for g, u, v in second)
+                for f, s, e in first
+            )
+
+        return bool(a and b) and covers(a, b) and covers(b, a)
+
+    for policy in policies:
+        shared = [o for o in obligations if source_keys(o) == source_keys(policy)]
+        if shared:
+            require(
+                all(
+                    policy["scope"] == "whole_trip"
+                    and set(policy["allowed_modes"]) == set(o["allowed_modes"])
+                    for o in shared
+                ),
+                group["group_id"],
+                "Inconsistent source-bound transport interpretations",
+            )
+        elif not any(
+            policy["scope"] == o["scope"]
+            and set(policy["allowed_modes"]) == set(o["allowed_modes"])
+            and same_source_region(policy, o)
+            for o in obligations
+        ):
+            additional.append(policy)
+    scoring_review = {
+        **(review or {}),
+        "policies": additional,
+        "status": "unresolved"
+        if review and review["status"] == "unresolved"
+        else "restricted"
+        if additional
+        else "unrestricted",
+    }
+    policies.extend(
+        {
+            "policy_id": "requirement:" + o["obligation_id"],
+            "scope": "whole_trip",
+            "allowed_modes": o["allowed_modes"],
+            "source_refs": o["source_refs"],
+        }
+        for o in obligations
+    )
+    for day in _days(group["input"]):
+        sets = [
+            set(p["allowed_modes"])
+            for p in policies
+            if p["scope"] == "whole_trip" or day in p.get("dates", [])
+        ]
+        require(
+            bool(set.intersection(*sets)), group["group_id"], "Contradictory transport restrictions"
+        )
+    return {
+        **(review or {}),
+        "status": "restricted",
+        "policies": policies,
+        "unresolved_policy": review is not None and review["status"] == "unresolved",
+        "scoring_review": scoring_review,
+    }
+
+
 def policy_component(review, mode, day):
     if review is None or review["status"] == "unresolved":
         return {"state": "UNKNOWN", "reason": "request_mode_policy_unavailable"}
@@ -146,7 +242,7 @@ def policy_component(review, mode, day):
         return {"state": "UNKNOWN", "reason": "route_mode_unresolved", "policies": policies}
     failed = any(mode not in p["allowed_modes"] for p in policies)
     return {
-        "state": "FAIL" if failed else "PASS",
+        "state": "FAIL" if failed else "UNKNOWN" if review.get("unresolved_policy") else "PASS",
         "policies": policies,
         "reason": "claimed_mode_disallowed" if failed else None,
     }

@@ -372,6 +372,9 @@ class V3PostPrimary:
                     ),
                     "routing_preference": decision.routing_preference,
                     "mode_source": decision.reason,
+                    "allowed_transport_modes": None
+                    if decision.allowed_modes is None
+                    else tuple(m.value for m in decision.allowed_modes),
                     "unsupported_explicit_mode": decision.travel_mode.value
                     if decision.is_explicit and mode is None
                     else None,

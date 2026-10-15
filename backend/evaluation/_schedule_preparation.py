@@ -8,6 +8,7 @@ from .records import require, text
 from .schedule_time import expand_protection
 
 OBLIGATION_FIELDS = {
+    "transport_modes": {"allowed_modes", "scope"},
     "required_visit": {"subject_ref", "count", "distinct_dates", "date_obligations"},
     "excluded_visit": {"subject_ref", "scope", "dates"},
     "protected_time": {"date", "interval", "scope"},
@@ -104,7 +105,7 @@ def _validate_spec(group):
             incomplete |= kind not in OBLIGATION_FIELDS
             continue
         require(
-            kind in ("required_visit", "excluded_visit", "protected_time", "fixed_visit_time"),
+            kind in OBLIGATION_FIELDS,
             oid,
             "Unsupported executable obligation kind",
         )
@@ -115,7 +116,7 @@ def _validate_spec(group):
             oid,
             "Unknown executable fields",
         )
-        if kind != "protected_time":
+        if kind not in ("protected_time", "transport_modes"):
             require(
                 text(item.get("subject_ref")) and item["subject_ref"] in subjects,
                 oid,
@@ -127,6 +128,18 @@ def _validate_spec(group):
                 oid,
                 "Obligation date outside requested dates",
             )
+        if kind == "transport_modes":
+            modes = item.get("allowed_modes")
+            require(
+                item.get("scope") == "whole_trip"
+                and isinstance(modes, list)
+                and bool(modes)
+                and all(isinstance(m, str) and m in {"WALK", "TRANSIT", "DRIVE"} for m in modes)
+                and len(set(modes)) == len(modes),
+                oid,
+                "Invalid transport mode restriction",
+            )
+            continue
         if kind == "required_visit":
             count = item.get("count")
             require(
