@@ -44,6 +44,7 @@ async def run_repair_once(
     feedback=None,
     round_index=1,
     round_deadline=None,
+    round_reference_deadline=None,
     runtime_config=None,
     semantic_service=None,
     application_proposal=None,
@@ -93,7 +94,16 @@ async def run_repair_once(
     policy = budget.policy
     timing = policy.timing
     stage_original = stage_original if stage_original is not None else original
-    round_deadline = min(round_deadline or budget.deadline, budget.deadline)
+    round_started = budget.clock()
+    round_deadline = min(
+        round_deadline if round_deadline is not None else budget.deadline,
+        round_started + timing.round_seconds,
+        budget.deadline,
+    )
+    round_reference_deadline = min(
+        round_reference_deadline if round_reference_deadline is not None else round_deadline,
+        round_deadline,
+    )
 
     def remaining():
         return min(budget.remaining(), max(0, round_deadline - budget.clock()))
@@ -113,9 +123,11 @@ async def run_repair_once(
     window_adjustments = ()
     usage = {}
     model_timeout = None
+    model_available = None
     fingerprint = None
     components = ()
     decision_key = None
+    preparation_started = preparation_elapsed = input_build_elapsed = None
 
     def audit(value):
         if value is None:
@@ -212,10 +224,26 @@ async def run_repair_once(
                 "stage_started": budget.started,
                 "stage_deadline": budget.deadline,
                 "round_deadline": round_deadline,
+                "round_started": round_started,
+                "round_reference_deadline": round_reference_deadline,
                 "request_deadline": request_deadline,
                 "preparation_or_route_deadline": budget.io_deadline,
                 "model_timeout_seconds": model_timeout,
                 "stage_remaining_seconds": budget.remaining(),
+                "round_remaining_seconds": remaining(),
+                "reference_remaining_seconds": max(0, round_reference_deadline - budget.clock()),
+                "preparation_elapsed_seconds": preparation_elapsed
+                if preparation_elapsed is not None
+                else budget.clock() - preparation_started
+                if preparation_started is not None
+                else None,
+                "input_build_elapsed_seconds": input_build_elapsed,
+                "model_available_seconds": max(
+                    0, min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
+                )
+                if model_available is None
+                else model_available,
+                "limiting_deadline": "stage" if round_deadline == budget.deadline else "round",
             },
             parsed_patch=audit_patch,
             proposed=audit_proposed,
@@ -294,10 +322,13 @@ async def run_repair_once(
                 raw = application_proposal
             else:
                 # Optional preparation cannot consume the model/recheck allocation.
+                preparation_started = budget.clock()
                 budget.route_phase = "preparation"
                 budget.io_deadline = min(
                     budget.clock() + timing.preparation_seconds,
-                    round_deadline - timing.minimum_model_seconds - timing.recheck_reserve_seconds,
+                    round_reference_deadline
+                    - timing.minimum_model_seconds
+                    - timing.recheck_reserve_seconds,
                 )
                 preparation = await observed("repair_preparation")(prepare_candidates)(
                     context,
@@ -318,6 +349,8 @@ async def run_repair_once(
                     )
                 if not scope.permissions and not preparation.authorizations:
                     return result("SKIPPED", "no_executable_candidate_operation")
+                if remaining() < timing.minimum_model_seconds + timing.recheck_reserve_seconds:
+                    return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
                 all_places = {p.place_id: p for p in context.places}
                 all_places.update({c.place.place_id: c.place for c in whitelist})
                 original_bindings = bind_transitions(
@@ -348,6 +381,9 @@ async def run_repair_once(
                     initial,
                 )
                 extra = (*extra, *option_routes)
+                if remaining() < timing.minimum_model_seconds + timing.recheck_reserve_seconds:
+                    return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
+                input_build_started = budget.clock()
                 system, user, sizing = build_repair_input(
                     snapshot,
                     initial,
@@ -362,12 +398,12 @@ async def run_repair_once(
                     proposal_strategy=proposal_strategy,
                 )
                 fingerprint = material_fingerprint(user)
+                input_build_elapsed = budget.clock() - input_build_started
+                preparation_elapsed = budget.clock() - preparation_started
                 timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
+                model_available = max(0, timeout)
                 if timeout < timing.minimum_model_seconds:
                     return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
-                model_timeout = timeout
-                budget.charge(model=1)
-                attempted = True
                 from langchain_core.callbacks import UsageMetadataCallbackHandler
 
                 callback = UsageMetadataCallbackHandler()
@@ -377,10 +413,20 @@ async def run_repair_once(
                 )
 
                 try:
-                    async with asyncio.timeout(timeout):
-                        with model_projection(
-                            "repair", lambda: repair_representation(user), round_index=round_index
-                        ):
+                    with model_projection(
+                        "repair", lambda: repair_representation(user), round_index=round_index
+                    ):
+                        preparation_elapsed = budget.clock() - preparation_started
+                        timeout = min(
+                            timing.model_seconds, remaining() - timing.recheck_reserve_seconds
+                        )
+                        model_available = max(0, timeout)
+                        if timeout < timing.minimum_model_seconds:
+                            return result("SKIPPED", "insufficient_time_for_model_and_rechecks")
+                        model_timeout = timeout
+                        budget.charge(model=1)
+                        attempted = True
+                        async with asyncio.timeout(timeout):
                             raw = await observed("repair_model")(model.generate_repair_structured)(
                                 system_prompt=system,
                                 user_prompt=user,
@@ -390,6 +436,12 @@ async def run_repair_once(
                 finally:
                     usage = dict(callback.usage_metadata)
                 model_returned = True
+            if remaining() <= 0:
+                return result("REJECTED" if attempted else "SKIPPED", "phase_deadline")
+            if remaining() < timing.recheck_reserve_seconds:
+                return result(
+                    "REJECTED" if attempted else "SKIPPED", "insufficient_time_for_rechecks"
+                )
             patch = RepairPatch.model_validate(raw)
             effective_patch = (
                 patch if application_proposal is not None else combine_pending(patch, pending)
@@ -673,6 +725,8 @@ async def run_repair_stage(
             ),
         )
         allocation = min(timing.round_seconds, budget.remaining() / affordable)
+        round_started = clock()
+        round_deadline = min(round_started + timing.round_seconds, budget.deadline)
         budget.round_index = index
         before = current.model_copy(deep=True)
         budget.target_keys = {f.finding_id: repr(finding_key(f)) for f in remaining_findings}
@@ -685,7 +739,8 @@ async def run_repair_stage(
             stage_original=original,
             feedback=feedback,
             round_index=index,
-            round_deadline=clock() + allocation,
+            round_deadline=round_deadline,
+            round_reference_deadline=min(round_started + allocation, round_deadline),
             application_proposal=application_proposal,
             proposal_strategy=strategy,
             **kwargs,
@@ -765,7 +820,9 @@ async def run_repair_stage(
             )
         terminal_failure = result.model_attempted and result.parsed_patch is None
         stop = (
-            "model_failed_no_retry"
+            result.reason
+            if result.reason in {"phase_deadline", "insufficient_time_for_rechecks"}
+            else "model_failed_no_retry"
             if terminal_failure
             else "authorized_targets_complete"
             if accepted

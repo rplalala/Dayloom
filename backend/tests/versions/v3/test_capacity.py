@@ -206,7 +206,9 @@ def test_six_round_default_stops_at_shared_call_limit():
     assert result.status == "ACCEPTED_PARTIAL"
     assert result.final == result.rounds[-1].adopted
     assert len({r.result.timing["stage_deadline"] for r in result.rounds}) == 1
-    assert result.rounds[0].result.timing["model_timeout_seconds"] <= 52
+    timing = result.rounds[0].result.timing
+    assert timing["round_reference_deadline"] < timing["round_deadline"]
+    assert timing["model_timeout_seconds"] <= 70
 
 
 def test_four_round_allocation_uses_one_stage_clock_and_reserves_recheck():
