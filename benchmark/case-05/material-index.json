@@ -1,7 +1,7 @@
 {
   "schema_version": "case_material_index_1",
   "case_id": "case-05",
-  "acceptance": "pending main integration, tests and explicit researcher acceptance",
+  "acceptance": "main integration and offline validation complete; explicit researcher acceptance pending",
   "execution_revision": "3",
   "input_revision": "2",
   "format": "Public views and exact itinerary subtrees; original closed native bundles and raw evidence remain private. $case_material_ref paths are relative to the containing file; expand pointer and verify canonical semantic SHA256. Public artifact reference hashes use LF publication bytes; interest requirement references resolve from the case root. Native originals retain their original bytes and hashes.",
@@ -201,5 +201,31 @@
     "restored_verification_sha256": "a3536f5c082f4d0f98a1d893a2d35c3ee0313006c855a91930ec895d8c2d287a",
     "protected_previous_files": 17125,
     "original_files_deleted": 0
+  },
+  "main_integration": {
+    "main_before": "7b7b0d1fbddcfa1a3a72dc62680927f9a2358774",
+    "worker_head": "de56f7a625b3205894efbba4d53798ee002f0b7f",
+    "merge_commit": "5e4fe61a0c685b68141e81f963ef0300e74ae096",
+    "validated_code_commit": "d7dd30a9fa733ff528d981aa403c10a9aee04245",
+    "validation": {
+      "v3_passed": 507,
+      "evaluation_cli_passed": 460,
+      "timing_cases_within_v3": 18,
+      "full_backend_suite_run": false,
+      "standards_review": "no open findings",
+      "spec_review": "no open findings",
+      "historical_exact_replay": "archived producer code; all original bindings and implementation pins retained",
+      "main_compatibility": "semantic readiness ready; current pair, mechanism, opportunities, relevance and resource readers exact; opening eligibility/request/source evidence equal; strict historical primary and derived Repair reject changed implementation pins"
+    },
+    "preservation": {
+      "other_benchmark_files_unchanged": 169,
+      "other_private_archive_files_unchanged": 23,
+      "migrated_archive_files_unchanged": 13,
+      "selected_source_data_unchanged": true,
+      "original_evidence_deleted": 0
+    },
+    "new_business_api_calls": 0,
+    "new_business_api_cost_usd": 0,
+    "researcher_acceptance": "pending"
   }
 }

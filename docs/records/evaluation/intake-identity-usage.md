@@ -1733,24 +1733,23 @@ stdout. The traceback identifies U+00EF in accented venue text. Native score com
 and the later presentation failure remain separate observations. The report SHA-256 is
 `895c847c6d4f72342d325efd9bfdbc3fde9c2fdda971563095270c4f53a657bc`.
 
-Local implementation commit `c8e8a61`, from the above base with no unrelated worktree
-changes, changes only this CLI's stdout serialization to ASCII-escaped
-JSON. Decoded Unicode content, native file serialization, scoring and exit-code rules
-are unchanged. A synthetic full CLI execution with mocked HTTP and strict GBK stdout
-first reproduced `UnicodeEncodeError`, then passed after the one-line correction:
-the emitted JSON equals the saved report, its accented text survives decoding and the
-native receipt validates. The affected native evaluator file passes 29 tests and the
-installed evaluation CLI passes 42. Changed Python lint and format checks pass.
+Implementation commit `c8e8a61` changes this CLI's stdout serialization to
+ASCII-escaped JSON. Decoded Unicode content, native file serialization, scoring and
+exit-code rules are unchanged. A mocked full CLI execution with strict GBK stdout
+first reproduced the error, then verified Unicode round-trip and native receipt validity.
+No global console encoding change is required.
 
-Initial sandbox temporary-directory failure and overlong Windows test paths were
-isolated from application failures; short workspace temporary paths restored those
-tests. An installed-launcher sandbox failure required the same offline checks on the
-host. These are offline engineering checks, not another execution of case-05. Historical
-reports, receipts and their implementation bindings retain their original bytes and
-source revision; this correction does not migrate or rescore them. All 4,286 protected
-case-05 evidence, accepted case-01/02 and input files retain their hashes. Repair allocation
-was separately [diagnosed offline](../v0-v3/v3-development.md#offline-round-allocation-diagnosis-2026-10-15).
+The correction is integrated into MAIN through merge `5e4fe61`, preserving the existing
+semantic-readiness gate. An additional strict-GBK test confirms that missing activity
+reviews still produce `needs_semantic_review`, exit 2 and no HTTP client or execution
+artifacts. All 460 selected evaluation/CLI tests pass, including complete and blocked CLI paths. Case-05 revision 3's
+already captured primary exits normally, and its immutable report/receipt replay exactly
+with archived producer code. Current MAIN retains the historical implementation-fingerprint
+check; it does not relabel old material as current-code execution.
 
-Independent Standards and Spec reviews have no open findings. Review caught the Repair
-diagnosis subsection interrupting older event evidence; moving it after that event's
-complete text resolved the finding on recheck. The full backend suite was not rerun.
+The [case-05 report](../../../benchmark/case-05/report.md) records integrated test/replay
+scope and preservation checks. Separate Standards and Spec reviews cover the merged
+code and corrections. Original evidence and other accepted case data are preserved;
+no generation, scoring or provider call was repeated. The full backend suite was not run.
+The [Repair allocation correction](../v0-v3/v3-development.md#offline-round-allocation-diagnosis-2026-10-15)
+retains its separate implementation scope. Joint researcher acceptance remains pending.

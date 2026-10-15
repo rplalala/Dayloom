@@ -1722,8 +1722,9 @@ command log and independent parent assessment.
 
 ### Offline round allocation diagnosis (2026-10-15)
 
-Status: Implemented in local commits `04cc66a` and review correction `a290868` from
-clean base `ccccf27`; runtime configuration values remain unchanged. The original
+Status: Integrated into MAIN through `5e4fe61` and reviewed correction `d7dd30a`.
+Original implementation commits `04cc66a` and `a290868` remain in the merge history;
+runtime configuration values remain unchanged. The original
 diagnosis at source `0f365304` found that case-05 revision 2 retained its original
 draft after a rejected empty first patch and a skipped replan.
 The second round recorded 318.469 seconds of stage time and 39.657 seconds of local
@@ -1757,42 +1758,29 @@ rejected, and terminal time shortages preserve the best retained result without 
 send. Current semantics belong to the
 [configuration reference](../../../config/README.md#counting-timing-and-invariants).
 
-The public-stage regression first reproduced the premature rejection, then passed
-without changing the original reference value or stage budget. Additional regressions
-first exposed uncapped standalone rounds, late results consuming recheck allowance,
-and model projection consuming time after the initial gate. Spec review then identified
-two additional gaps: final synchronous checks could cross the hard deadline before
-adoption, and an outer timeout after patch parsing could still start another round.
-Four regression cases reproduced both gaps; a final adoption gate and terminal timeout
-handling corrected them, including preservation of a previously accepted partial result.
-These corrections retain the minimum model allowance, recheck/finalization reserves and
-pre-send accounting.
-Controlled cost remains injected, not a measurement of case-05 CPU time or evidence
-that the real case would produce an improved itinerary.
+The integrated implementation keeps model timeout before patch parsing terminal with
+`model_failed_no_retry`; timeout during parsed-patch revalidation ends the stage with
+`repair_timeout`. Both accepted and rejected final checks enforce the hard deadline.
+Component-owned deadlines propagate a terminal result while retaining component audits,
+obtained evidence and the best result from earlier rounds. Ordinary no-improvement
+rejections can still continue under the existing policy.
 
-The initial full V3 run passed 497 cases and exposed two assertions tied to the old
-soft deadline and delayed expiry reason. Updating those assertions retained their
-call-limit, cancellation and rollback checks; all 499 V3 cases then passed. Controlled
-preparation, replay, report, CLI and mechanism readers passed 53 tests. The subsequent
-review corrections add four timing cases, bringing the targeted timing suite to
-14 passing cases. Model timeouts before a parsed patch retain the existing
-`model_failed_no_retry` stage reason; timeouts during parsed-patch revalidation stop
-with `repair_timeout`. The 503-case V3 rerun initially passed 501 cases and failed
-two existing model-timeout reason assertions. Correcting branch precedence without
-changing those assertions yielded **53 passed** across timing, Repair search and V3
-wiring modules, including both failures. This covers all 503 V3 cases across the
-full run and affected-module retest. Ruff lint/format, diff and changed-document link
-checks passed. Standards review had no code findings; both Spec findings were closed
-after correction, with no new findings on recheck. Validation used these code revisions
-with the timing updates to `config/README.md`, `docs/0005-validation-repair(v3).md` and
-this record still uncommitted; documentation forms a separate final commit. The full
-backend suite and real-provider smoke were not run.
+Integration merge `5e4fe61` retains both branch histories, including the original
+implementation and review correction. A further Spec finding reproduced continued
+model sends after rejected final revalidation or a caught component deadline; correction
+`d7dd30a` closes both paths. The final integrated V3 suite passes **507 tests**, including
+**18 timing cases**, with unchanged budgets and safety reserves. Another **460 selected
+evaluation/CLI tests** pass. Migrated source-bound replay and validation scope are recorded in the current
+[case-05 report](../../../benchmark/case-05/report.md). Standards and Spec review
+corrections are checked independently. The full backend suite was not run.
 
-The original four observations and 39-pass multiround check remain historical evidence
-under `.scratch/case05-cli-repair-validation/`. New regression receipts and preservation
-checks use `.scratch/repair-timing-fix/`. Neither rewrites retained case material;
-all **5383 protected files** matched their original hashes after the correction.
-No provider call, case rerun, new case score or integration into the main worktree
-occurred.
+Case-05 revision 3 exercises the soft-reference/hard-window distinction with real
+provider observations already captured in its one authorized attempt. Its historical
+primary and Repair research replay exactly with archived producer code; MAIN separately
+verifies current readers, semantic readiness and identical opening eligibility/evidence.
+Historical primary implementation fingerprints remain enforced. The integration adds
+no provider sends, generation rerun or rescoring and preserves other accepted case data.
+The original diagnostic and regression evidence remains private; the migrated case
+archive retains all original source bindings. Final researcher acceptance remains pending.
 The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
 has separate implementation and validation scope.
