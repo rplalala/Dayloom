@@ -5,8 +5,8 @@
 **Case-06 revision 5 final package accepted on 15 October 2026 Australia/Sydney.**
 The researcher accepted the exact selected input/results, primary scores, offline
 analyses and all stated limitations as the final case-06 data and documentation
-baseline. The reviewed package is local commit `6ce08f5`; this acceptance update
-changes status metadata only. Blinded human ratings remain deferred. Case-08/10
+baseline. The reviewed package is local commit `6ce08f5`; recording its acceptance
+changed status metadata only. Blinded human ratings remain deferred. Case-08/10
 are explicitly paused pending a separate start instruction.
 
 The [original request](../inputs/case-06.json) is a Sydney trip on 15–18 October 2026
@@ -27,6 +27,33 @@ live acceptance state; [parent #151](https://github.com/rplalala/Reliable-Trip-P
 owns the first-wave budget. This package makes no general version ranking, causal
 Repair claim, corpus recall estimate or version-freeze decision. Case-08/10 remain
 unstarted, with no automatic queue or backfill.
+
+### Post-fix offline compatibility
+
+The [derived compatibility summary](analysis/compatibility/post-fix.json) records a
+passing check on 15 October 2026 against merged source
+`8326fb8c017f17df2426275a8634e35b91325394`, Windows CPython 3.12.14, with the original
+reference date pinned. All four selected interpretation responses, including V3 a2,
+passed the current complete historical-reader service. Three saved canonical v4 contracts
+and four complete results read without value changes. The unchanged revision-5 manifest
+passed current native intake with no material/projection diagnostics and available V3
+paired projections. Relaxed pace and the soft DRIVE preference remain intact; neither an
+exact count nor a hard mode restriction is introduced.
+
+Four current-wire controls converted those response values in memory and preserved their
+canonical content; they are not new model outputs. No complete generation-graph replay or
+primary rescoring was performed. The shared audit's 89-file preservation check predates
+this report/index display refresh. The summary retains its result digest and the prior
+published report/index bindings. All 35 original indexed JSON materials, selected runs,
+revision-5 acceptance, historical scores and source/usage bindings remain unchanged.
+
+The earlier full backend run was 4196 passed / 17 failed / 16 skipped and overlapped
+corrections. Sixteen failures have fixes and passing affected retests; one original
+mock-provider anomaly did not reproduce and its cause remains unknown. The final full
+suite was not rerun, and skipped coverage remains unverified. The malformed legacy pace
+quote control still lacks a diagnostic field path despite rejection. The
+[shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#post-fix-real-material-compatibility)
+owns the detailed execution; this update adds no live calls or new case dispatch.
 
 ## Material map
 

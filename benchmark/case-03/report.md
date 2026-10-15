@@ -1,12 +1,38 @@
 # Case-03: Tokyo evaluation report
 
-The selected case-03 results cover Tokyo, Japan, **15–18 October 2026**, two adults and a JPY 160,000 whole-trip budget. The [original request](../inputs/case-03.json) asks for a balanced first visit combining well-known sights, traditional culture and modern urban neighbourhoods at a moderate pace. The batch is `case-03-batch`, revision `1`; all generation and evaluator code uses source `f49503a3359ddb6ed64c79465fc010143a5b141c`.
+The selected case-03 results cover Tokyo, Japan, **15–18 October 2026**, two adults and a JPY 160,000 whole-trip budget. The [original request](../inputs/case-03.json) asks for a balanced first visit combining well-known sights, traditional culture and modern urban neighbourhoods at a moderate pace. The batch is `case-03-batch`, revision `1`; original generation and primary evaluation used source `f49503a3359ddb6ed64c79465fc010143a5b141c`.
 
 The final primary scores are **71.3961 / 97.5 / 92.5 / 100** for V0–V3. Each version and the primary evaluator used one actual attempt with zero retries. These are descriptive observations from one request and independent generations; they do not establish a causal or version-wide ranking.
 
 ## Acceptance status
 
 **Accepted by the human researcher on 15 October 2026 Australia/Sydney.** The decision accepts the exact input, reviewed semantic inputs, selected V0-V3 outputs, independent evaluation and analysis reports, public presentation and stated limitations at material commit `54e7d53b3bd73785c0766f3d081afbbc5c057dbc`. Original source identities, result values and evidence remain unchanged. The researcher also authorized recording acceptance, refreshing material hashes, updating Issue #152 and synchronizing public commits/private evidence to the main worktree. Blinded human assessment remains deferred; no participant responses or human quality judgments were supplied. Work pauses after synchronization checks; case-09 and case-13 remain waiting.
+
+### Post-fix offline compatibility
+
+The [derived compatibility summary](analysis/compatibility/post-fix.json) records a
+passing check on 15 October 2026 against merged source
+`8326fb8c017f17df2426275a8634e35b91325394`, Windows CPython 3.12.14, with the original
+reference date pinned. All four real interpretation responses passed the current complete
+historical-reader service; three saved canonical v4 contracts and four complete results
+read without value changes. Original revision-1 native intake accepted without material
+or projection diagnostics, including the optional V3 paired projections. Ordinary pace,
+no exact count and unrestricted transport remain intact; WALK is a routing default.
+
+Four additional current-wire controls are in-memory conversions of those same responses,
+not newly generated model output. They preserve each response's canonical content. This
+check did not replay the complete generation graphs or recompute primary scores. The
+shared verification preserved 89 case/input/archive files before this display refresh;
+the summary binds that audit result and the prior report/index bytes at the tested revision.
+This refresh adds the summary and updates report/index presentation only; all 36 original
+indexed JSON materials, historical scores and acceptance bindings remain unchanged.
+
+The earlier full backend run was 4196 passed / 17 failed / 16 skipped and overlapped
+corrections. Sixteen failures have fixes and passing affected retests; one original
+mock-provider anomaly did not reproduce and its cause remains unknown. No final full-suite
+rerun is claimed; skipped coverage remains unverified. A controlled malformed legacy pace
+quotation is rejected but still lacks a diagnostic field path. Detailed execution and
+limitations belong to the [shared compatibility record](../../docs/records/v0-v3/semantic-reference-correction.md#post-fix-real-material-compatibility).
 
 ## Materials and source identity
 

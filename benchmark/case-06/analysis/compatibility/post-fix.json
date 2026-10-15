@@ -1,0 +1,221 @@
+{
+  "schema_version": "case_postfix_compatibility_1",
+  "case_id": "case-06",
+  "status": "passed",
+  "representation": "sanitized_derived_offline_acceptance_summary",
+  "checked_on": "2026-10-15",
+  "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Windows"
+  },
+  "historical_reference_date": "2026-10-15",
+  "source_audit": {
+    "historical_identifier": ".scratch/case0306-compatibility/compatibility-result.json",
+    "sha256": "5b59921ccd54d2f19cde5a7c785490d00feb7b243ba93c9a64dcb1ee252c6a0d",
+    "bytes": 8589,
+    "public_navigation_dependency": false
+  },
+  "prior_publication": {
+    "revision": "8326fb8c017f17df2426275a8634e35b91325394",
+    "files": {
+      "report.md": {
+        "url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/8326fb8c017f17df2426275a8634e35b91325394/benchmark/case-06/report.md",
+        "sha256": "3009ccaf6badade922144830d1ca2558b699ad4c916d933a1dac02842ad8eb83",
+        "bytes": 15708
+      },
+      "material-index.json": {
+        "url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/8326fb8c017f17df2426275a8634e35b91325394/benchmark/case-06/material-index.json",
+        "sha256": "7311467226e879090f753a55461ee2200e7d4828fb76f2b568a51a4b224f3bad",
+        "bytes": 25239
+      }
+    }
+  },
+  "checks": {
+    "historical_complete_service": {
+      "status": "passed",
+      "responses": 4,
+      "reader_contract": "preference_draft_12"
+    },
+    "historical_canonical_reading": {
+      "status": "passed",
+      "contracts": 3,
+      "version": "interpreted_requirements_4",
+      "value_changes": 0
+    },
+    "recanonicalization": {
+      "status": "passed",
+      "version": "interpreted_requirements_5",
+      "difference_from_saved_contract": "contract_version_tag_only"
+    },
+    "full_result_schema_roundtrip": {
+      "status": "passed",
+      "results": 4,
+      "value_changes": 0
+    },
+    "current_wire_controls": {
+      "status": "passed",
+      "responses": 4,
+      "wire": "PreferenceDraftV13",
+      "origin": "in_memory_derived_from_same_saved_responses",
+      "canonical_content_changes": 0,
+      "actual_current_model_outputs": 0
+    },
+    "native_intake": {
+      "status": "accepted",
+      "revision": "5",
+      "manifest_sha256": "0cd4ed9a0870428724302c99033cdd560469f11f8eb9593be785d2e1d11f305b",
+      "versions": [
+        "v0",
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "paired_available": true,
+      "material_diagnostics": [],
+      "projection_diagnostics": []
+    },
+    "negative_controls": [
+      {
+        "code": "invalid_source_occurrence",
+        "stage": "canonicalization",
+        "locations": []
+      },
+      {
+        "code": "invalid_daily_pace_default",
+        "stage": "wire_mapping",
+        "locations": [
+          [
+            "daily_pace",
+            "trip_default"
+          ]
+        ]
+      },
+      {
+        "code": "invalid_source_span",
+        "stage": "wire_mapping",
+        "locations": [
+          [
+            "daily_pace",
+            "trip_default",
+            "source_refs",
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "per_version_observations": [
+    {
+      "response_sha256": "b19d8e9d4b14014a9097a9186151acdd136e0605d3a9d3f7117aaf7a66e09859",
+      "original_wire_name": "PreferenceDraftV10",
+      "reference_date": "2026-10-15",
+      "canonical_sha256": "2de42e3dc734a84984ddfa8cf7a590e01c2ddc2b6fee9d4348744e506a64a42d",
+      "version": "v0",
+      "full_result_sha256": "326246140a2ca791d6bd73433a606c80cc1eccce354e85ea9a2d36fc814c5942",
+      "pace": "relaxed",
+      "transport_mode": "DRIVE",
+      "hard_transport_constraint": false,
+      "semantic_count": 4,
+      "saved_canonical_roundtrip": false,
+      "current_wire_control": "in_memory_derived_only"
+    },
+    {
+      "response_sha256": "ec49c3a97b8d939b0ff07df29d08839aaa908475012e7727764d1c3b3593047c",
+      "original_wire_name": "PreferenceDraftV10",
+      "reference_date": "2026-10-15",
+      "canonical_sha256": "a193f98fb5d7ba77dcd605e51022b0ecfe358372fa4d0570b10a720c57148f02",
+      "version": "v1",
+      "full_result_sha256": "8e61f4d5aceb0188c5252353c5ddb8cda353ec822b9919fd793592e71d398fc6",
+      "pace": "relaxed",
+      "transport_mode": "DRIVE",
+      "hard_transport_constraint": false,
+      "semantic_count": 4,
+      "saved_canonical_roundtrip": true,
+      "current_wire_control": "in_memory_derived_only"
+    },
+    {
+      "response_sha256": "70eafa5e04e655f7e9ac1d96f876ecfc022b5fa573b9de8c23a236af1e654cce",
+      "original_wire_name": "PreferenceDraftV10",
+      "reference_date": "2026-10-15",
+      "canonical_sha256": "cbff324add04c53d669d8f242e4f1c01e0bf753aaeb83d5db3a3809345a7b3c0",
+      "version": "v2",
+      "full_result_sha256": "0c22b9a3be6d5a09d7ac1a9794363df39f5e7a05c066c10ad0930ce19c6ac962",
+      "pace": "relaxed",
+      "transport_mode": "DRIVE",
+      "hard_transport_constraint": false,
+      "semantic_count": 4,
+      "saved_canonical_roundtrip": true,
+      "current_wire_control": "in_memory_derived_only"
+    },
+    {
+      "response_sha256": "5e56a70d7eeb9cfd0cfbea6af91dd2453be29fb5583f7fba5f8951427497ad9e",
+      "original_wire_name": "PreferenceDraftV10",
+      "reference_date": "2026-10-15",
+      "canonical_sha256": "cea7ea024b1b5fd68ec60c0099b808a6f20753f935befd3853f372deb54e0319",
+      "version": "v3",
+      "full_result_sha256": "23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e",
+      "pace": "relaxed",
+      "transport_mode": "DRIVE",
+      "hard_transport_constraint": false,
+      "semantic_count": 4,
+      "saved_canonical_roundtrip": true,
+      "current_wire_control": "in_memory_derived_only"
+    }
+  ],
+  "semantic_invariants": {
+    "default_pace": "relaxed",
+    "exact_daily_count": null,
+    "transport_mode": "DRIVE",
+    "transport_mode_role": "soft_preference",
+    "hard_transport_constraint": false,
+    "independent_hard_obligations": [],
+    "comparison_scope": "Each historical generation is compared separately; interpretations are not conflated across versions."
+  },
+  "preservation_at_audit": {
+    "scope": "Shared case-03/case-06 compatibility execution before the subsequent display refresh",
+    "protected_case_input_archive_files": 89,
+    "changed_files": 0,
+    "backend_tools_files_fixed": 675,
+    "unique_archive_files_read_by_current_intake": 30,
+    "original_source_and_receipt_bindings_modified": false
+  },
+  "display_refresh": {
+    "changed_presentation_paths": [
+      "report.md",
+      "material-index.json"
+    ],
+    "added_summary_path": "analysis/compatibility/post-fix.json",
+    "original_indexed_data_materials_changed": 0,
+    "original_indexed_data_material_count": 35,
+    "historical_selection_and_acceptance_modified": false,
+    "previous_presentation_retained": "Prior report/index bytes remain bound to the published revision above."
+  },
+  "execution_boundaries": {
+    "external_network": "denied",
+    "network_attempts": 0,
+    "provider_calls": 0,
+    "new_model_outputs": 0,
+    "scoring_operations": 0,
+    "full_generation_graph_replay": false,
+    "replacement_attempt_or_primary_report": false
+  },
+  "limitations": {
+    "new_model_behavior_or_planning_quality": "not established",
+    "final_full_backend_suite_rerun": false,
+    "earlier_full_run": {
+      "passed": 4196,
+      "failed": 17,
+      "skipped": 16,
+      "overlapped_corrections": true
+    },
+    "corrected_failures_with_passing_affected_retests": 16,
+    "original_mock_provider_anomaly": "not reproduced on final static source; underlying cause unknown",
+    "skipped_coverage": "unverified",
+    "legacy_bad_pace_quote_diagnostic": {
+      "code": "invalid_source_occurrence",
+      "stage": "canonicalization",
+      "field_path_available": false
+    }
+  }
+}

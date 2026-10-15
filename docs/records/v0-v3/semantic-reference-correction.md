@@ -432,8 +432,13 @@ protected files: 79 tracked case/input files and ten private archive files. Arch
 hashes and declared lengths were verified in memory. External sockets and DNS were denied,
 with zero attempted network operations, provider calls or scoring operations.
 
-The private verification script and derived result are retained under the ignored
-historical identifier `.scratch/case0306-compatibility/`. This result completes real-material
-reading/intake compatibility; it creates no replacement attempt, primary report or score.
+The private verification script and full derived result are retained under the ignored
+historical identifier `.scratch/case0306-compatibility/`. Case-specific sanitized projections
+are published with the [case-03](../../../benchmark/case-03/analysis/compatibility/post-fix.json)
+and [case-06](../../../benchmark/case-06/analysis/compatibility/post-fix.json) presentations.
+Their report/index refresh follows the audit's 89-file preservation check and retains prior
+publication hashes separately; original indexed data and acceptance bindings are unchanged.
+This result completes real-material reading/intake compatibility; it creates no replacement
+attempt, primary report or score.
 It does not establish new-wire model behavior or new planning quality. The earlier full-suite
 limitations above remain unchanged; no full regression was repeated for this check.
