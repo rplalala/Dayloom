@@ -485,6 +485,10 @@ async def run_repair_once(
             comparison, spatial = component_result["comparison"], component_result["spatial"]
             losses = component_result["losses"]
             progress, regressions = comparison.progress, comparison.coverage_regressions
+            if remaining() <= 0:
+                return result("REJECTED", "phase_deadline")
+            if component_result["deadline_exceeded"]:
+                return result("REJECTED", "repair_timeout")
             if not comparison.accepted:
                 proposed = None if components else snapshot
                 if len(components) == 1 and components[0].get("proposal"):
