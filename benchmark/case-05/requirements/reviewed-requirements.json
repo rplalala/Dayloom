@@ -1,0 +1,73 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-05-requirements",
+  "revision": "2",
+  "group_id": "case-05",
+  "input_sha256": "c6261b92d9579dda48b13c6a13a3bf31479ae1b3624cbe2160b0fec1face14f6",
+  "review": {
+    "status": "reviewed",
+    "author_ref": "/root/case05_r03_author",
+    "reviewer_ref": "/root/case05_r03_reviewer",
+    "reviewed_at": "2026-10-15T20:21:39.1202540+00:00"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [
+    {
+      "preference_id": "interest-architecture",
+      "wording": "architecture",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "architecture",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "interest-historic-neighbourhoods",
+      "wording": "historic neighbourhoods",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "historic neighbourhoods",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "interest-art",
+      "wording": "art",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "art",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "preference-relaxed-pace",
+      "wording": "I prefer a relaxed pace",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I prefer a relaxed pace",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "preference-in-depth-exploration",
+      "wording": "would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+          "occurrence": 0
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}
