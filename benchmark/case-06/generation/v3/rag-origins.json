@@ -1,0 +1,1716 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "partial",
+  "queries": [
+    {
+      "query_id": "rag_1",
+      "text": "Nature and outdoor spaces",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ],
+      "version": "rag_query_plan_1"
+    },
+    {
+      "query_id": "rag_2",
+      "text": "Science-related experiences",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 40,
+  "unique_entities": 32,
+  "resolution_attempts": 24,
+  "details_sends": 21,
+  "fallback_sends": 4,
+  "embedding_sends": 1,
+  "retrieval_queries": 2,
+  "cache_hits": 0,
+  "entities": [
+    {
+      "entity_id": "google:ChIJaZrLHzuuEmsRYPzx-Wh9AQ8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8"
+    },
+    {
+      "entity_id": "google:ChIJYV-J-ziuEmsRIMyoFaMedU4",
+      "status": "google_observation",
+      "canonical_id": "ChIJYV-J-ziuEmsRIMyoFaMedU4"
+    },
+    {
+      "entity_id": "google:ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJdTGLUyKuEmsRAADy-Wh9AQ8"
+    },
+    {
+      "entity_id": "google:ChIJ5_mOwD-uEmsRiciKenXJd3c",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ5_mOwD-uEmsRiciKenXJd3c"
+    },
+    {
+      "entity_id": "google:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "status": "google_observation",
+      "canonical_id": "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+    },
+    {
+      "entity_id": "google:ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+    },
+    {
+      "entity_id": "google:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "status": "google_observation",
+      "canonical_id": "ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+    },
+    {
+      "entity_id": "fsq:foursquare:4b058765f964a520339022e3",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJS6MuAnCuEmsRjVr4zXUIQDc",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJS6MuAnCuEmsRjVr4zXUIQDc"
+    },
+    {
+      "entity_id": "google:ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "status": "google_observation",
+      "canonical_id": "ChIJlwsH0RWuEmsR3Cg3WEDw76I"
+    },
+    {
+      "entity_id": "google:ChIJ4V6ljheuEmsRLdmicjF4WNc",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ4V6ljheuEmsRLdmicjF4WNc"
+    },
+    {
+      "entity_id": "google:ChIJLat3W0euEmsRCQCK0yaDjTc",
+      "status": "google_observation",
+      "canonical_id": "ChIJLat3W0euEmsRCQCK0yaDjTc"
+    },
+    {
+      "entity_id": "google:ChIJuUFiBzmuEmsRB5kohGRewMg",
+      "status": "google_observation",
+      "canonical_id": "ChIJuUFiBzmuEmsRB5kohGRewMg"
+    },
+    {
+      "entity_id": "google:ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ-zNYUWquEmsRMaHK_PnWcxE"
+    },
+    {
+      "entity_id": "google:ChIJ9cZboRqvEmsRkwOU1kuXPL8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ9cZboRqvEmsRkwOU1kuXPL8"
+    },
+    {
+      "entity_id": "google:ChIJu284rCWuEmsR0XGjjcQ0YOI",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+    },
+    {
+      "entity_id": "google:ChIJTze93zmuEmsRhvE6T4Y9DhU",
+      "status": "google_observation",
+      "canonical_id": "ChIJTze93zmuEmsRhvE6T4Y9DhU"
+    },
+    {
+      "entity_id": "google:ChIJ2QUmiz6uEmsRQfMmet7xkzs",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ2QUmiz6uEmsRQfMmet7xkzs"
+    },
+    {
+      "entity_id": "google:ChIJq40aAzyuEmsRIUypOWN2FJU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJq40aAzyuEmsRIUypOWN2FJU"
+    },
+    {
+      "entity_id": "fsq:foursquare:59ff8665e679bc36f4090e6e",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "fsq:foursquare:4cfd8e017945224b221c91e7",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "fsq:foursquare:5397ca4c498efd97094160a5",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJKaeYMj-uEmsRAgZ4clX6UO8"
+    },
+    {
+      "entity_id": "google:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+    },
+    {
+      "entity_id": "google:ChIJbaOi5DyuEmsR4vLb1Zn8vkk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJbaOi5DyuEmsR4vLb1Zn8vkk"
+    },
+    {
+      "entity_id": "google:ChIJcSh2ED2uEmsRTADl4svsRb0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJcSh2ED2uEmsRTADl4svsRb0"
+    },
+    {
+      "entity_id": "google:ChIJ7bCJDSKuEmsRWqRvcwTxhgg",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ7bCJDSKuEmsRWqRvcwTxhgg"
+    },
+    {
+      "entity_id": "google:ChIJ_91ASQmvEmsRM-BIBUTvA3Q",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ_91ASQmvEmsRM-BIBUTvA3Q"
+    },
+    {
+      "entity_id": "google:ChIJRzzaXz6uEmsRrImlmJUqnmU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJRzzaXz6uEmsRrImlmJUqnmU"
+    },
+    {
+      "entity_id": "google:ChIJTzjMIqyvEmsRtgldKUdQ_Bk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJTzjMIqyvEmsRtgldKUdQ_Bk"
+    },
+    {
+      "entity_id": "google:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+      "status": "google_observation",
+      "canonical_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    },
+    {
+      "entity_id": "google:ChIJCZ5rATyuEmsRcAjUsjLzbGU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJCZ5rATyuEmsRcAjUsjLzbGU"
+    },
+    {
+      "entity_id": "google:ChIJBaqDDzquEmsRcCI5e-3rStM",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJBaqDDzquEmsRcCI5e-3rStM"
+    }
+  ],
+  "origins": {
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.368711747603909,
+        "distance_km": 1.2659566313305544,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8cc08a074dceb1b536d2e291bd3945398bad673ebc8115558303123eacdfac1f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJDflB7BWuEmsRYPbx-Wh9AQ8"
+      }
+    ],
+    "ChIJLat3W0euEmsRCQCK0yaDjTc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJLat3W0euEmsRCQCK0yaDjTc",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.25942057258837736,
+        "distance_km": 0.9691545604092976,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "3b5d7b626001ed5b12e11d9a32d1b844a9f19172e998a80e3cea997528d27fb0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJLat3W0euEmsRCQCK0yaDjTc"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJLat3W0euEmsRCQCK0yaDjTc",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.33788152481538003,
+        "distance_km": 0.9691545604092976,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "3b5d7b626001ed5b12e11d9a32d1b844a9f19172e998a80e3cea997528d27fb0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJLat3W0euEmsRCQCK0yaDjTc"
+      }
+    ],
+    "ChIJTze93zmuEmsRhvE6T4Y9DhU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJTze93zmuEmsRhvE6T4Y9DhU",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.23036736249923706,
+        "distance_km": 1.1465902345994394,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e4599ecde96e793ae6799df63f680c0b2cf6e154c89dc097c95725999691166a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJTze93zmuEmsRhvE6T4Y9DhU"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJTze93zmuEmsRhvE6T4Y9DhU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.27466338872909546,
+        "distance_km": 1.1465902345994394,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e4599ecde96e793ae6799df63f680c0b2cf6e154c89dc097c95725999691166a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJTze93zmuEmsRhvE6T4Y9DhU"
+      }
+    ],
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.37372564516816476,
+        "distance_km": 0.7954764320963232,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "bab2c5607bb05339f39b443bb44a50d66fb7fb717ad426d873e5920809fb434d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.23419023956002272,
+        "distance_km": 0.7954764320963232,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "bab2c5607bb05339f39b443bb44a50d66fb7fb717ad426d873e5920809fb434d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJWaTdYGuuEmsRoOfx-Wh9AQ8"
+      }
+    ],
+    "ChIJYV-J-ziuEmsRIMyoFaMedU4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJYV-J-ziuEmsRIMyoFaMedU4",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.28932736186168695,
+        "distance_km": 0.9643873170345845,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8c30606917d2a43e473d616dfd44a0b53fad07429be811dd6c47e954a9df6ea2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJYV-J-ziuEmsRIMyoFaMedU4"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJYV-J-ziuEmsRIMyoFaMedU4",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.28031993747711015,
+        "distance_km": 0.9643873170345845,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8c30606917d2a43e473d616dfd44a0b53fad07429be811dd6c47e954a9df6ea2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJYV-J-ziuEmsRIMyoFaMedU4"
+      }
+    ],
+    "ChIJlwsH0RWuEmsR3Cg3WEDw76I": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.26000418603457787,
+        "distance_km": 1.4213074226591595,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a279ba55ff861f2a6f6d222b3e1bb5a6099db86f661080ce45ea429bf21fab6c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJlwsH0RWuEmsR3Cg3WEDw76I"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.28262006783068894,
+        "distance_km": 1.4213074226591595,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a279ba55ff861f2a6f6d222b3e1bb5a6099db86f661080ce45ea429bf21fab6c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJlwsH0RWuEmsR3Cg3WEDw76I"
+      }
+    ],
+    "ChIJuUFiBzmuEmsRB5kohGRewMg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJuUFiBzmuEmsRB5kohGRewMg",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.23754261359826456,
+        "distance_km": 0.9824979857694162,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ea23ce391687af326b34bb3066cd1e487b84e13bdb1d7d62e6f133af7b3d7fad",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJuUFiBzmuEmsRB5kohGRewMg"
+      }
+    ],
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJy6BwuD-uEmsRyiRskH1UG-I",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 19,
+        "cosine": 0.19566889431065992,
+        "distance_km": 0.9136849468896996,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "10b76a6ba02fd4cd772ced6e10025c20f11aa304adf18820cf9e084bc786bd24",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJy6BwuD-uEmsRyiRskH1UG-I"
+      }
+    ],
+    "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJaZrLHzuuEmsRYPzx-Wh9AQ8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.3937805060279075,
+        "distance_km": 1.5764339609769342,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a2ac2525bd6c1bd128d9bcbd465fc97837a3fd03b701d3ee85ad4f5f142d1797",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJaZrLHzuuEmsRYPzx-Wh9AQ8"
+      }
+    ],
+    "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.3824916709954549,
+        "distance_km": 2.103547536259255,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "adef9316f6b21667c589908421a6553262506fc8618a8342d902c6d18ca91533",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJdTGLUyKuEmsRAADy-Wh9AQ8"
+      }
+    ],
+    "ChIJ5_mOwD-uEmsRiciKenXJd3c": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ5_mOwD-uEmsRiciKenXJd3c",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.2791752912088752,
+        "distance_km": 0.8480291954552374,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ab3846544c41537f7e7d2df2f75f3e041c06a7736f6cd59ecf52dd788a232467",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ5_mOwD-uEmsRiciKenXJd3c"
+      }
+    ],
+    "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.2625577136805417,
+        "distance_km": 1.9674789701726976,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "030ba1ba24b1832b578f0dab3bbf588e16f013da933475f9250ec1214dcddaf2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+      }
+    ],
+    "ChIJS6MuAnCuEmsRjVr4zXUIQDc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJS6MuAnCuEmsRjVr4zXUIQDc",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.3676187834285265,
+        "distance_km": 0.9453803244706144,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ab8d604adc4da8c6867abd32ce3336105451b964f07d8aa8455dac493ebf8481",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJS6MuAnCuEmsRjVr4zXUIQDc"
+      }
+    ],
+    "ChIJ4V6ljheuEmsRLdmicjF4WNc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ4V6ljheuEmsRLdmicjF4WNc",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.3673540949821472,
+        "distance_km": 2.0076963462542947,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "84786edfafeecc826f43dac4805c7260cecb83f4856a48af6141521db4d65f78",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ4V6ljheuEmsRLdmicjF4WNc"
+      }
+    ],
+    "ChIJ-zNYUWquEmsRMaHK_PnWcxE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.3330259323120117,
+        "distance_km": 0.6686994289308975,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "82640c4860ec2255010b148d63157da37f2834d6294a7b309c52040bb6fc868e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ-zNYUWquEmsRMaHK_PnWcxE"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.23342233896255493,
+        "distance_km": 0.6686994289308975,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "82640c4860ec2255010b148d63157da37f2834d6294a7b309c52040bb6fc868e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ-zNYUWquEmsRMaHK_PnWcxE"
+      }
+    ],
+    "ChIJ9cZboRqvEmsRkwOU1kuXPL8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ9cZboRqvEmsRkwOU1kuXPL8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.3264732360839844,
+        "distance_km": 2.376180816415645,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "21d495ad68114466cd020ddc66fd5c1ee70dc74e178f7188d786f2d200b04f4f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ9cZboRqvEmsRkwOU1kuXPL8"
+      }
+    ],
+    "ChIJu284rCWuEmsR0XGjjcQ0YOI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJu284rCWuEmsR0XGjjcQ0YOI",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.3151104842159298,
+        "distance_km": 2.051712910269379,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9bc55e41ac25fa23c40153b0083dee098cf3b316f8e21543d31a64feec3a97f4",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJu284rCWuEmsR0XGjjcQ0YOI"
+      }
+    ],
+    "ChIJ2QUmiz6uEmsRQfMmet7xkzs": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ2QUmiz6uEmsRQfMmet7xkzs",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.2905262535496804,
+        "distance_km": 1.0923270131371623,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "49e7834b2a54d82fbc92732ccb154e3a1c7a0bdbfc9dd1c819d8d5098f78b224",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ2QUmiz6uEmsRQfMmet7xkzs"
+      }
+    ],
+    "ChIJq40aAzyuEmsRIUypOWN2FJU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJq40aAzyuEmsRIUypOWN2FJU",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.21420980138211854,
+        "distance_km": 1.2205589078446997,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a09966efb5823691833623c17426fa54c34ee15355168788524b80b2bfc03d7e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJq40aAzyuEmsRIUypOWN2FJU"
+      }
+    ],
+    "ChIJKaeYMj-uEmsRAgZ4clX6UO8": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:5397ca4c498efd97094160a5",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.2782774401737791,
+        "distance_km": 0.5355312437589335,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "fc509fe887fae210259aac44593a541ef72363eff49d80cb8faca1131b6b271d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJKaeYMj-uEmsRAgZ4clX6UO8"
+      }
+    ],
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.20496337384203867,
+        "distance_km": 1.1496828289980885,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ed62396dafc3c67125417d80f957831608b84fd7265fcc16dd9aed701d12d469",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.2712995546281608,
+        "distance_km": 1.1496828289980885,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ed62396dafc3c67125417d80f957831608b84fd7265fcc16dd9aed701d12d469",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJPVqlfGyuEmsRHPcnCX1X1OE"
+      }
+    ],
+    "ChIJbaOi5DyuEmsR4vLb1Zn8vkk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJbaOi5DyuEmsR4vLb1Zn8vkk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.27797847986221313,
+        "distance_km": 1.5939724763044059,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "45fb49801732437393d00d67422a6bc0b91b6ed4402f09a4cd67def87137fba5",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJbaOi5DyuEmsR4vLb1Zn8vkk"
+      }
+    ],
+    "ChIJcSh2ED2uEmsRTADl4svsRb0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJcSh2ED2uEmsRTADl4svsRb0",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.20424135029315948,
+        "distance_km": 1.595751614051965,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9f222c8680337b92bb49c51eeee388e8f64a2eca51a881dc7517aa54de449169",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJcSh2ED2uEmsRTADl4svsRb0"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJcSh2ED2uEmsRTADl4svsRb0",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.27363526821136475,
+        "distance_km": 1.595751614051965,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9f222c8680337b92bb49c51eeee388e8f64a2eca51a881dc7517aa54de449169",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJcSh2ED2uEmsRTADl4svsRb0"
+      }
+    ],
+    "ChIJ7bCJDSKuEmsRWqRvcwTxhgg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ7bCJDSKuEmsRWqRvcwTxhgg",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.20136264566667816,
+        "distance_km": 2.33943604658946,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "bf6c7331fdb52ba0e955859f887ab0f4c552f48e91d13f9321d20367a964fd94",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ7bCJDSKuEmsRWqRvcwTxhgg"
+      }
+    ],
+    "ChIJ_91ASQmvEmsRM-BIBUTvA3Q": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ_91ASQmvEmsRM-BIBUTvA3Q",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.19910905371796583,
+        "distance_km": 1.7364945575587438,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6fb9dd39e9457f7ea8ede7a4b992e553166d3134a883a58992448940dcffe5dd",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ_91ASQmvEmsRM-BIBUTvA3Q"
+      }
+    ],
+    "ChIJRzzaXz6uEmsRrImlmJUqnmU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJRzzaXz6uEmsRrImlmJUqnmU",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.19857299919644,
+        "distance_km": 1.1564569304604175,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f94a42fef925a716dcba5a320c938185af7da13cba2d777e051025ba9b0d960d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJRzzaXz6uEmsRrImlmJUqnmU"
+      }
+    ],
+    "ChIJTzjMIqyvEmsRtgldKUdQ_Bk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJTzjMIqyvEmsRtgldKUdQ_Bk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 19,
+        "cosine": 0.2705237865447998,
+        "distance_km": 1.1915478557263366,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "4168e2cd8c0f570fcd749b443b929bc1554a20974cd76c31f2fd01d35c8b2d24",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJTzjMIqyvEmsRtgldKUdQ_Bk"
+      }
+    ],
+    "ChIJCZ5rATyuEmsRcAjUsjLzbGU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJCZ5rATyuEmsRcAjUsjLzbGU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Nature and outdoor spaces",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.26986056329482233,
+        "distance_km": 0.296531031306975,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "14a04075010cbab86228a91dd060fcbb796f22e2912bab64eb1040d90cc249f0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJCZ5rATyuEmsRcAjUsjLzbGU"
+      }
+    ],
+    "ChIJBaqDDzquEmsRcCI5e-3rStM": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJBaqDDzquEmsRcCI5e-3rStM",
+        "query": {
+          "query_id": "rag_2",
+          "text": "Science-related experiences",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.1924453263017344,
+        "distance_km": 1.265798188293513,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "24f1827e6479c23bd4b6ef6e1be624b40b3528510a133e2de299d11101fad5a6",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJBaqDDzquEmsRcCI5e-3rStM"
+      }
+    ]
+  },
+  "stops": [],
+  "phase_seconds": {
+    "embedding": 2.418536600074731,
+    "retrieval": 0.4593665999127552,
+    "resolution": 11.213139700004831
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": -33.8622503,
+    "longitude": 151.207684,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.07824549998622388
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.03276019997429103
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.041320100077427924
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 2.4183943999232724
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-76822236d8ec43be8f1f71a02de51ba5.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.42538099992088974,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.4239134999224916
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.001393200014717877
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.025375099969096482,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.024685999960638583
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.0006426000036299229
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "30535f6894fd4249a64191e252fcc093",
+      "status_code": 200,
+      "request_id": "req_267c7f4e887846dd8f46da030acb6f55"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 7,
+    "total_tokens": 7
+  },
+  "elapsed_seconds": 14.366404199972749,
+  "new_canonical_ids": [
+    "ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+    "ChIJ2QUmiz6uEmsRQfMmet7xkzs",
+    "ChIJ4V6ljheuEmsRLdmicjF4WNc",
+    "ChIJ5_mOwD-uEmsRiciKenXJd3c",
+    "ChIJ7bCJDSKuEmsRWqRvcwTxhgg",
+    "ChIJ9cZboRqvEmsRkwOU1kuXPL8",
+    "ChIJBaqDDzquEmsRcCI5e-3rStM",
+    "ChIJCZ5rATyuEmsRcAjUsjLzbGU",
+    "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+    "ChIJRzzaXz6uEmsRrImlmJUqnmU",
+    "ChIJS6MuAnCuEmsRjVr4zXUIQDc",
+    "ChIJTzjMIqyvEmsRtgldKUdQ_Bk",
+    "ChIJ_91ASQmvEmsRM-BIBUTvA3Q",
+    "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8",
+    "ChIJbaOi5DyuEmsR4vLb1Zn8vkk",
+    "ChIJcSh2ED2uEmsRTADl4svsRb0",
+    "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+    "ChIJq40aAzyuEmsRIUypOWN2FJU",
+    "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+    "ChIJwbKbCiWuEmsRgBXuDPx5lJ0"
+  ],
+  "mixed_source_ids": [
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+    "ChIJLat3W0euEmsRCQCK0yaDjTc",
+    "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+    "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+    "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+    "ChIJuUFiBzmuEmsRB5kohGRewMg",
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+  ],
+  "google_overlap_entities": 8,
+  "origin_associations": {
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJLat3W0euEmsRCQCK0yaDjTc": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJTze93zmuEmsRhvE6T4Y9DhU": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJYV-J-ziuEmsRIMyoFaMedU4": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJlwsH0RWuEmsR3Cg3WEDw76I": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJuUFiBzmuEmsRB5kohGRewMg": {
+      "intent_ids": [
+        "default_0",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I": {
+      "intent_ids": [
+        "default_0",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ5_mOwD-uEmsRiciKenXJd3c": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJS6MuAnCuEmsRjVr4zXUIQDc": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ4V6ljheuEmsRLdmicjF4WNc": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ-zNYUWquEmsRMaHK_PnWcxE": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ9cZboRqvEmsRkwOU1kuXPL8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJu284rCWuEmsR0XGjjcQ0YOI": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ2QUmiz6uEmsRQfMmet7xkzs": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJq40aAzyuEmsRIUypOWN2FJU": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJKaeYMj-uEmsRAgZ4clX6UO8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJbaOi5DyuEmsR4vLb1Zn8vkk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJcSh2ED2uEmsRTADl4svsRb0": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ7bCJDSKuEmsRWqRvcwTxhgg": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJ_91ASQmvEmsRM-BIBUTvA3Q": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJRzzaXz6uEmsRrImlmJUqnmU": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJTzjMIqyvEmsRtgldKUdQ_Bk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJCZ5rATyuEmsRcAjUsjLzbGU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJBaqDDzquEmsRcCI5e-3rStM": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    }
+  },
+  "admission": {
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": "admitted",
+    "ChIJLat3W0euEmsRCQCK0yaDjTc": "capacity",
+    "ChIJTze93zmuEmsRhvE6T4Y9DhU": "admitted",
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": "admitted",
+    "ChIJYV-J-ziuEmsRIMyoFaMedU4": "admitted",
+    "ChIJlwsH0RWuEmsR3Cg3WEDw76I": "admitted",
+    "ChIJuUFiBzmuEmsRB5kohGRewMg": "capacity",
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I": "admitted",
+    "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8": "capacity",
+    "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": "capacity",
+    "ChIJ5_mOwD-uEmsRiciKenXJd3c": "ineligible",
+    "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": "admitted",
+    "ChIJS6MuAnCuEmsRjVr4zXUIQDc": "capacity",
+    "ChIJ4V6ljheuEmsRLdmicjF4WNc": "capacity",
+    "ChIJ-zNYUWquEmsRMaHK_PnWcxE": "admitted",
+    "ChIJ9cZboRqvEmsRkwOU1kuXPL8": "capacity",
+    "ChIJu284rCWuEmsR0XGjjcQ0YOI": "admitted",
+    "ChIJ2QUmiz6uEmsRQfMmet7xkzs": "admitted",
+    "ChIJq40aAzyuEmsRIUypOWN2FJU": "admitted",
+    "ChIJKaeYMj-uEmsRAgZ4clX6UO8": "admitted",
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE": "admitted",
+    "ChIJbaOi5DyuEmsR4vLb1Zn8vkk": "admitted",
+    "ChIJcSh2ED2uEmsRTADl4svsRb0": "admitted",
+    "ChIJ7bCJDSKuEmsRWqRvcwTxhgg": "admitted",
+    "ChIJ_91ASQmvEmsRM-BIBUTvA3Q": "admitted",
+    "ChIJRzzaXz6uEmsRrImlmJUqnmU": "admitted",
+    "ChIJTzjMIqyvEmsRtgldKUdQ_Bk": "admitted",
+    "ChIJCZ5rATyuEmsRcAjUsjLzbGU": "admitted",
+    "ChIJBaqDDzquEmsRcCI5e-3rStM": "ineligible"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+      "ChIJ2QUmiz6uEmsRQfMmet7xkzs",
+      "ChIJ7bCJDSKuEmsRWqRvcwTxhgg",
+      "ChIJCZ5rATyuEmsRcAjUsjLzbGU",
+      "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+      "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "ChIJRzzaXz6uEmsRrImlmJUqnmU",
+      "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+      "ChIJTzjMIqyvEmsRtgldKUdQ_Bk",
+      "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+      "ChIJ_91ASQmvEmsRM-BIBUTvA3Q",
+      "ChIJbaOi5DyuEmsR4vLb1Zn8vkk",
+      "ChIJcSh2ED2uEmsRTADl4svsRb0",
+      "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+      "ChIJq40aAzyuEmsRIUypOWN2FJU",
+      "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+      "ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+      "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    ],
+    "enriched": [
+      "ChIJ-zNYUWquEmsRMaHK_PnWcxE",
+      "ChIJ2QUmiz6uEmsRQfMmet7xkzs",
+      "ChIJ7bCJDSKuEmsRWqRvcwTxhgg",
+      "ChIJCZ5rATyuEmsRcAjUsjLzbGU",
+      "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+      "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "ChIJRzzaXz6uEmsRrImlmJUqnmU",
+      "ChIJTze93zmuEmsRhvE6T4Y9DhU",
+      "ChIJTzjMIqyvEmsRtgldKUdQ_Bk",
+      "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "ChIJYV-J-ziuEmsRIMyoFaMedU4",
+      "ChIJ_91ASQmvEmsRM-BIBUTvA3Q",
+      "ChIJbaOi5DyuEmsR4vLb1Zn8vkk",
+      "ChIJcSh2ED2uEmsRTADl4svsRb0",
+      "ChIJq40aAzyuEmsRIUypOWN2FJU",
+      "ChIJu284rCWuEmsR0XGjjcQ0YOI",
+      "ChIJwbKbCiWuEmsRgBXuDPx5lJ0",
+      "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    ],
+    "supplied": [
+      "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    ],
+    "scheduled": [
+      "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+      "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+      "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8",
+      "ChIJy6BwuD-uEmsRyiRskH1UG-I"
+    ],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {
+    "ChIJ-zNYUWquEmsRMaHK_PnWcxE": "not_selected_by_supply",
+    "ChIJ2QUmiz6uEmsRQfMmet7xkzs": "not_selected_by_supply",
+    "ChIJ4V6ljheuEmsRLdmicjF4WNc": "capacity",
+    "ChIJ5_mOwD-uEmsRiciKenXJd3c": "ineligible",
+    "ChIJ7bCJDSKuEmsRWqRvcwTxhgg": "not_selected_by_supply",
+    "ChIJ9cZboRqvEmsRkwOU1kuXPL8": "capacity",
+    "ChIJBaqDDzquEmsRcCI5e-3rStM": "ineligible",
+    "ChIJCZ5rATyuEmsRcAjUsjLzbGU": "not_selected_by_supply",
+    "ChIJDflB7BWuEmsRYPbx-Wh9AQ8": "scheduled",
+    "ChIJKaeYMj-uEmsRAgZ4clX6UO8": "not_selected_by_supply",
+    "ChIJLat3W0euEmsRCQCK0yaDjTc": "capacity",
+    "ChIJPVqlfGyuEmsRHPcnCX1X1OE": "scheduled",
+    "ChIJRzzaXz6uEmsRrImlmJUqnmU": "not_selected_by_supply",
+    "ChIJS6MuAnCuEmsRjVr4zXUIQDc": "capacity",
+    "ChIJTze93zmuEmsRhvE6T4Y9DhU": "not_selected_by_supply",
+    "ChIJTzjMIqyvEmsRtgldKUdQ_Bk": "not_selected_by_supply",
+    "ChIJWaTdYGuuEmsRoOfx-Wh9AQ8": "scheduled",
+    "ChIJYV-J-ziuEmsRIMyoFaMedU4": "not_selected_by_supply",
+    "ChIJ_91ASQmvEmsRM-BIBUTvA3Q": "not_selected_by_supply",
+    "ChIJaZrLHzuuEmsRYPzx-Wh9AQ8": "capacity",
+    "ChIJbaOi5DyuEmsR4vLb1Zn8vkk": "not_selected_by_supply",
+    "ChIJcSh2ED2uEmsRTADl4svsRb0": "not_selected_by_supply",
+    "ChIJdTGLUyKuEmsRAADy-Wh9AQ8": "capacity",
+    "ChIJlwsH0RWuEmsR3Cg3WEDw76I": "enrichment_capacity_not_attempted",
+    "ChIJq40aAzyuEmsRIUypOWN2FJU": "not_selected_by_supply",
+    "ChIJu284rCWuEmsR0XGjjcQ0YOI": "not_selected_by_supply",
+    "ChIJuUFiBzmuEmsRB5kohGRewMg": "capacity",
+    "ChIJwbKbCiWuEmsRgBXuDPx5lJ0": "not_selected_by_supply",
+    "ChIJy6BwuD-uEmsRyiRskH1UG-I": "scheduled"
+  }
+}

@@ -726,6 +726,67 @@ def test_later_selected_invocation_preserves_prior_capture_and_cohort(tmp_path):
     assert read_staging(tmp_path / "later-staging/staging.json")["status"] == "incomplete"
 
 
+def test_nested_generation_emits_collection_rooted_completion_references(tmp_path):
+    import hashlib
+
+    from backend.cli.rtpeval import main
+
+    args = arguments(tmp_path, execute=True)
+    selection_args = registration(tmp_path)
+    path = tmp_path / "selection.json"
+    config = json.loads(path.read_bytes())
+    config["groups"][0]["selected_runs"]["v0"]["capture_directory"] = "prior/captures/v0"
+    path.write_text(json.dumps(config), encoding="utf-8")
+    capture = tmp_path / "prior/captures/v0"
+    args[args.index("--output-directory") + 1] = str(capture)
+    assert (
+        main(["generate", *args, *selection_args], runtime=Runtime(), date_provider=REFERENCE) == 0
+    )
+    native = json.loads((capture / "producer-completion.json").read_bytes())
+    staging = json.loads((tmp_path / "staging/staging.json").read_bytes())
+    inline = staging["groups"][0]["selected_runs"]["v0"]["completion"]
+    for key in ("operator_selection_ref", "operator_config_ref"):
+        assert native[key]["path"].startswith("../../")
+        source = tmp_path / inline[key]["path"]
+        assert source.is_file()
+        assert hashlib.sha256(source.read_bytes()).hexdigest() == inline[key]["sha256"]
+
+
+@pytest.mark.parametrize("fault", ["escape", "hash", "absolute"])
+def test_invalid_reused_completion_is_rejected_before_dispatch(installed_cli, tmp_path, fault):
+    import hashlib
+
+    args = arguments(tmp_path, execute=True)
+    selection_args = registration(tmp_path)
+    path = tmp_path / "selection.json"
+    config = json.loads(path.read_bytes())
+    evidence = tmp_path / "original-selection.json"
+    evidence.write_text('{"evidence":"selection"}', encoding="utf-8")
+    reference = {
+        "path": evidence.name,
+        "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest(),
+        "media_type": "application/json",
+        "availability": "available",
+    }
+    if fault == "escape":
+        reference["path"] = "../outside.json"
+    elif fault == "hash":
+        reference["sha256"] = "0" * 64
+    else:
+        reference["path"] = str(evidence)
+    config["groups"][0]["selected_runs"]["v1"] = {
+        "run_id": "prior",
+        "completion": {"operator_selection_ref": reference},
+    }
+    path.write_text(json.dumps(config), encoding="utf-8")
+    result = installed_cli("generate", *args, *selection_args, tools_offline=True)
+    assert result.returncode == 2
+    report = json.loads(result.stdout)
+    assert report["planner"]["status"] == "not_invoked"
+    assert report["planner"]["planner_dispatches"] == 0
+    assert not (tmp_path / "capture").exists()
+
+
 def test_registration_keeps_already_source_bound_other_selected_runs(tmp_path):
     import hashlib
 

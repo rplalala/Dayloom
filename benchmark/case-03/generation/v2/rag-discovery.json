@@ -1,0 +1,835 @@
+{
+  "schema_version": "case_public_native_view_1",
+  "native_schema_version": null,
+  "notice": "Reader-facing projection, not a native execution/replay bundle. Private evidence references are archive identifiers.",
+  "data": {
+    "version": "tripworld_runtime_1",
+    "status": "partial",
+    "queries": [
+      {
+        "query_id": "rag_1",
+        "text": "well-known Tokyo sights, traditional culture, and modern urban neighbourhoods",
+        "origin": "user",
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ],
+        "version": "rag_query_plan_1"
+      }
+    ],
+    "omitted_queries": [],
+    "returned_positions": 20,
+    "unique_entities": 20,
+    "resolution_attempts": 19,
+    "details_sends": 16,
+    "fallback_sends": 3,
+    "embedding_sends": 1,
+    "retrieval_queries": 1,
+    "cache_hits": 0,
+    "entities": [
+      {
+        "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ______qJGGARHpd1TBA9uZ8"
+      },
+      {
+        "entity_id": "google:ChIJrWQOSKOMGGARINdTU-VzqoM",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJrWQOSKOMGGARINdTU-VzqoM"
+      },
+      {
+        "entity_id": "google:ChIJ5YTMQADzGGARBkwRINC34Ms",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ5YTMQADzGGARBkwRINC34Ms"
+      },
+      {
+        "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJHeBCIOyMGGAR7BktETlUP_w"
+      },
+      {
+        "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ91khboGMGGARBo42MbnQzg8"
+      },
+      {
+        "entity_id": "google:ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ-fIw6O-LGGARYd7WTcAcSHU"
+      },
+      {
+        "entity_id": "google:ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ0Qgx67KMGGARd2ZbObLZHPE"
+      },
+      {
+        "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+      },
+      {
+        "entity_id": "google:ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ7bdA-w2LGGAR_J0QgTXCquw"
+      },
+      {
+        "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJCaoz7S3zGGARrAnbz14VDcw"
+      },
+      {
+        "entity_id": "google:ChIJVVVVwXiLGGARdfqsI40Y-u8",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJVVVVwXiLGGARdfqsI40Y-u8"
+      },
+      {
+        "entity_id": "fsq:foursquare:53a6547d498e7d4828890ec8",
+        "status": "fallback_not_unique"
+      },
+      {
+        "entity_id": "google:ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+        "status": "google_observation",
+        "canonical_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg"
+      },
+      {
+        "entity_id": "google:ChIJ0T2P0HjsGGAR9Akk125OLXE",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ0T2P0HjsGGAR9Akk125OLXE"
+      },
+      {
+        "entity_id": "google:ChIJFUO-WUfzGGARhzhX4px1Jsc",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJFUO-WUfzGGARhzhX4px1Jsc"
+      },
+      {
+        "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+      },
+      {
+        "entity_id": "fsq:foursquare:51fd312e498efb75c5d3cf9d",
+        "status": "fallback_not_unique"
+      },
+      {
+        "entity_id": "fsq:foursquare:4e5f5340b0fb27e2bd450341",
+        "status": "fallback_not_unique"
+      },
+      {
+        "entity_id": "google:ChIJqw9CNumMGGARftSbwtwPwlE",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJqw9CNumMGGARftSbwtwPwlE"
+      },
+      {
+        "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+        "status": "resolved",
+        "method": "direct_id",
+        "canonical_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+      }
+    ],
+    "origins": {
+      "ChIJCewJkL2LGGAR3Qmk0vCTGkg": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 13,
+          "cosine": 0.5165022899805144,
+          "distance_km": 8.817493021393407,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "569316adecbde956de1bfd112967f02aec556fe5a161f84e3906298af4c0302f",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "google_observation",
+          "evidence_ref": "google_places:ChIJCewJkL2LGGAR3Qmk0vCTGkg"
+        }
+      ],
+      "ChIJ______qJGGARHpd1TBA9uZ8": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 1,
+          "cosine": 0.5647827386856079,
+          "distance_km": 4.987412675461347,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+        }
+      ],
+      "ChIJrWQOSKOMGGARINdTU-VzqoM": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJrWQOSKOMGGARINdTU-VzqoM",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 2,
+          "cosine": 0.5500079289085823,
+          "distance_km": 5.236554871180861,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "5353b3a737b6533097b303793257a8d47d9530e2c9d14ca85500a6f9e749f891",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJrWQOSKOMGGARINdTU-VzqoM"
+        }
+      ],
+      "ChIJ5YTMQADzGGARBkwRINC34Ms": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ5YTMQADzGGARBkwRINC34Ms",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 3,
+          "cosine": 0.5319660584946846,
+          "distance_km": 3.432609517482022,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "e27a97f62c96986c7e1070b0788efdc4ae2e80fa6570f2e8ba51cf8bd1fe166b",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ5YTMQADzGGARBkwRINC34Ms"
+        }
+      ],
+      "ChIJHeBCIOyMGGAR7BktETlUP_w": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 4,
+          "cosine": 0.5301927328109741,
+          "distance_km": 6.36051515508925,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "4abf1864ab2e6e69da7deca4d4fee582cd4c24c1caf499b3cca1d999d18d230f",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJHeBCIOyMGGAR7BktETlUP_w"
+        }
+      ],
+      "ChIJ91khboGMGGARBo42MbnQzg8": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 5,
+          "cosine": 0.5285587029790114,
+          "distance_km": 7.022705530097316,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+        }
+      ],
+      "ChIJ-fIw6O-LGGARYd7WTcAcSHU": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 6,
+          "cosine": 0.5232826471328735,
+          "distance_km": 10.234025534540539,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "5da32a8e17b66e92b717aada3f903e8530e893762c7e53b962b0de859eafab43",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ-fIw6O-LGGARYd7WTcAcSHU"
+        }
+      ],
+      "ChIJ0Qgx67KMGGARd2ZbObLZHPE": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 7,
+          "cosine": 0.5191412281478193,
+          "distance_km": 5.248418020117905,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "656f8f4a5f02e1f4043b927daa7d9a02b3fa3af2e79ce86b6151f0cd07e57c48",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ0Qgx67KMGGARd2ZbObLZHPE"
+        }
+      ],
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 8,
+          "cosine": 0.5185562372207642,
+          "distance_km": 5.919548594385647,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "b684fc855e10e6748e4592a099875a3be94b7da901a1d64dd5ea4b0a4630fcba",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+        }
+      ],
+      "ChIJ7bdA-w2LGGAR_J0QgTXCquw": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 9,
+          "cosine": 0.5183975122448854,
+          "distance_km": 10.774116310905644,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "0cbbdeec78970840897568a5ba17c80d1a06d175f45aa35e732603590f8b2ac4",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ7bdA-w2LGGAR_J0QgTXCquw"
+        }
+      ],
+      "ChIJCaoz7S3zGGARrAnbz14VDcw": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 10,
+          "cosine": 0.518083393573761,
+          "distance_km": 3.4317197776906077,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+        }
+      ],
+      "ChIJVVVVwXiLGGARdfqsI40Y-u8": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJVVVVwXiLGGARdfqsI40Y-u8",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 11,
+          "cosine": 0.5180500745773315,
+          "distance_km": 7.42315786727487,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "fd5e53d9c3ea7e673d7435b0fcf5b16addfe71dad998809e09e1540dce863705",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJVVVVwXiLGGARdfqsI40Y-u8"
+        }
+      ],
+      "ChIJ0T2P0HjsGGAR9Akk125OLXE": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ0T2P0HjsGGAR9Akk125OLXE",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 14,
+          "cosine": 0.5142276593582437,
+          "distance_km": 11.75360283312406,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "f0914bb874b5ff7e2f6ccd3cec2a653db7bddc78b1ffebc0a14d5262fdfab630",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ0T2P0HjsGGAR9Akk125OLXE"
+        }
+      ],
+      "ChIJFUO-WUfzGGARhzhX4px1Jsc": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJFUO-WUfzGGARhzhX4px1Jsc",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 15,
+          "cosine": 0.5139609132397449,
+          "distance_km": 2.5642033717710304,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "cee42553e77e166cd533883aa53db509598cb3bfe2f003d141d2390ede3ba89e",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJFUO-WUfzGGARhzhX4px1Jsc"
+        }
+      ],
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 16,
+          "cosine": 0.513525842007898,
+          "distance_km": 10.192344693410622,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "75b229b22d0508318e07ecb29f249d33d0cc16168cb7180d7c7477611d3ed697",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+        }
+      ],
+      "ChIJqw9CNumMGGARftSbwtwPwlE": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJqw9CNumMGGARftSbwtwPwlE",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 19,
+          "cosine": 0.5117102861404419,
+          "distance_km": 6.159568055802606,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "edaf92882a5198b127983f760e741f1fe9769fbda6145ebc872d98a20ffacdbd",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJqw9CNumMGGARftSbwtwPwlE"
+        }
+      ],
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU": [
+        {
+          "source": "tripworld",
+          "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "query": {
+            "$case_material_ref": {
+              "path": "rag-discovery.json",
+              "pointer": "/data/queries/0",
+              "semantic_sha256": "10821e1953fae25298390646224eb42e7af0dbc3a1c12702a053d022f41179ab"
+            }
+          },
+          "rank": 20,
+          "cosine": 0.5081833600997925,
+          "distance_km": 10.307369436998124,
+          "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+          "text_hash": "075cf7a261262c8ca4344630d6b23f98ed8b953a37eb0e39d1e3a63a20ce0ddc",
+          "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+          "policy_version": "tripworld-production-policy-v1",
+          "resolution": "direct_id",
+          "evidence_ref": "google_places:ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+        }
+      ]
+    },
+    "stops": [],
+    "phase_seconds": {
+      "embedding": 2.8115010999608785,
+      "retrieval": 35.72710260003805,
+      "resolution": 7.845028599957004
+    },
+    "config": {
+      "$case_material_ref": {
+        "path": "../runtime-policy.json",
+        "pointer": "/configuration/tripworld_discovery",
+        "semantic_sha256": "53ba5102cef3f9cae2efdb71b8d38e687c9dc66fda2cc9160692c82ff479b955"
+      }
+    },
+    "scope": {
+      "latitude": 35.6764225,
+      "longitude": 139.650027,
+      "radius_km": 15.0,
+      "country": null
+    },
+    "runtime_diagnostics": [
+      {
+        "stage": "prepare",
+        "status": "completed",
+        "seconds": 0.06491980003193021
+      },
+      {
+        "stage": "connection",
+        "status": "completed",
+        "seconds": 0.03995869995560497
+      },
+      {
+        "stage": "compatibility",
+        "status": "completed",
+        "seconds": 0.022691500023938715
+      },
+      {
+        "stage": "embedding",
+        "status": "completed",
+        "seconds": 2.811460999888368
+      },
+      {
+        "stage": "development_capture",
+        "status": "completed",
+        "file": "query-49cdf62fdac24794b4367fcfb755d490.npz"
+      },
+      {
+        "stage": "sql",
+        "status": "completed",
+        "seconds": 35.72688840003684,
+        "sql_timeout_expired": false
+      },
+      {
+        "stage": "execute",
+        "status": "completed",
+        "seconds": 35.725950599997304
+      },
+      {
+        "stage": "fetch_decode",
+        "status": "completed",
+        "seconds": 0.0008997000986710191
+      }
+    ],
+    "embedding_http_attempts": [
+      {
+        "attempt_id": "e8e39bc13deb4ce7bdcde4a3dc11286b",
+        "status_code": 200,
+        "request_id": "req_e9f8a8035ce1472eb14dfebca4eca268"
+      }
+    ],
+    "embedding_usage": {
+      "prompt_tokens": 13,
+      "total_tokens": 13
+    },
+    "elapsed_seconds": 46.58538399997633,
+    "new_canonical_ids": [
+      "ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+      "ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+      "ChIJ0T2P0HjsGGAR9Akk125OLXE",
+      "ChIJ5YTMQADzGGARBkwRINC34Ms",
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+      "ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+      "ChIJ91khboGMGGARBo42MbnQzg8",
+      "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+      "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+      "ChIJHeBCIOyMGGAR7BktETlUP_w",
+      "ChIJVVVVwXiLGGARdfqsI40Y-u8",
+      "ChIJ______qJGGARHpd1TBA9uZ8",
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+      "ChIJqw9CNumMGGARftSbwtwPwlE",
+      "ChIJrWQOSKOMGGARINdTU-VzqoM"
+    ],
+    "mixed_source_ids": [
+      "ChIJCewJkL2LGGAR3Qmk0vCTGkg"
+    ],
+    "google_overlap_entities": 1,
+    "origin_associations": {
+      "ChIJCewJkL2LGGAR3Qmk0vCTGkg": {
+        "intent_ids": [
+          "default_0",
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ______qJGGARHpd1TBA9uZ8": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJrWQOSKOMGGARINdTU-VzqoM": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ5YTMQADzGGARBkwRINC34Ms": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJHeBCIOyMGGAR7BktETlUP_w": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ91khboGMGGARBo42MbnQzg8": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ-fIw6O-LGGARYd7WTcAcSHU": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ0Qgx67KMGGARd2ZbObLZHPE": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ7bdA-w2LGGAR_J0QgTXCquw": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJCaoz7S3zGGARrAnbz14VDcw": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJVVVVwXiLGGARdfqsI40Y-u8": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ0T2P0HjsGGAR9Akk125OLXE": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJFUO-WUfzGGARhzhX4px1Jsc": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJqw9CNumMGGARftSbwtwPwlE": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      },
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU": {
+        "intent_ids": [
+          "discovery_1"
+        ],
+        "requirement_refs": [
+          "semantic_1"
+        ]
+      }
+    },
+    "admission": {
+      "ChIJCewJkL2LGGAR3Qmk0vCTGkg": "admitted",
+      "ChIJ______qJGGARHpd1TBA9uZ8": "admitted",
+      "ChIJrWQOSKOMGGARINdTU-VzqoM": "ineligible",
+      "ChIJ5YTMQADzGGARBkwRINC34Ms": "admitted",
+      "ChIJHeBCIOyMGGAR7BktETlUP_w": "admitted",
+      "ChIJ91khboGMGGARBo42MbnQzg8": "admitted",
+      "ChIJ-fIw6O-LGGARYd7WTcAcSHU": "admitted",
+      "ChIJ0Qgx67KMGGARd2ZbObLZHPE": "admitted",
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY": "admitted",
+      "ChIJ7bdA-w2LGGAR_J0QgTXCquw": "admitted",
+      "ChIJCaoz7S3zGGARrAnbz14VDcw": "admitted",
+      "ChIJVVVVwXiLGGARdfqsI40Y-u8": "admitted",
+      "ChIJ0T2P0HjsGGAR9Akk125OLXE": "admitted",
+      "ChIJFUO-WUfzGGARhzhX4px1Jsc": "admitted",
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0": "admitted",
+      "ChIJqw9CNumMGGARftSbwtwPwlE": "admitted",
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU": "admitted"
+    },
+    "fate": {
+      "admitted": [
+        "ChIJ-fIw6O-LGGARYd7WTcAcSHU",
+        "ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+        "ChIJ0T2P0HjsGGAR9Akk125OLXE",
+        "ChIJ5YTMQADzGGARBkwRINC34Ms",
+        "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+        "ChIJ7bdA-w2LGGAR_J0QgTXCquw",
+        "ChIJ91khboGMGGARBo42MbnQzg8",
+        "ChIJCaoz7S3zGGARrAnbz14VDcw",
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+        "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+        "ChIJFUO-WUfzGGARhzhX4px1Jsc",
+        "ChIJHeBCIOyMGGAR7BktETlUP_w",
+        "ChIJVVVVwXiLGGARdfqsI40Y-u8",
+        "ChIJ______qJGGARHpd1TBA9uZ8",
+        "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+        "ChIJqw9CNumMGGARftSbwtwPwlE"
+      ],
+      "enriched": {
+        "$case_material_ref": {
+          "path": "rag-discovery.json",
+          "pointer": "/data/fate/admitted",
+          "semantic_sha256": "0a52613c77b1ee0e38ad0619e683387f334ee82e2ca41852964b8898c85bc65e"
+        }
+      },
+      "supplied": [
+        "ChIJ0Qgx67KMGGARd2ZbObLZHPE",
+        "ChIJCaoz7S3zGGARrAnbz14VDcw",
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+        "ChIJFUO-WUfzGGARhzhX4px1Jsc"
+      ],
+      "scheduled": [
+        "ChIJCaoz7S3zGGARrAnbz14VDcw",
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+        "ChIJFUO-WUfzGGARhzhX4px1Jsc"
+      ],
+      "nearby_only": []
+    },
+    "canonical_outcomes": {
+      "ChIJ-fIw6O-LGGARYd7WTcAcSHU": "not_selected_by_supply",
+      "ChIJ0Qgx67KMGGARd2ZbObLZHPE": "supplied_not_scheduled",
+      "ChIJ0T2P0HjsGGAR9Akk125OLXE": "not_selected_by_supply",
+      "ChIJ5YTMQADzGGARBkwRINC34Ms": "not_selected_by_supply",
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0": "not_selected_by_supply",
+      "ChIJ7bdA-w2LGGAR_J0QgTXCquw": "not_selected_by_supply",
+      "ChIJ91khboGMGGARBo42MbnQzg8": "not_selected_by_supply",
+      "ChIJCaoz7S3zGGARrAnbz14VDcw": "scheduled",
+      "ChIJCewJkL2LGGAR3Qmk0vCTGkg": "scheduled",
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU": "not_selected_by_supply",
+      "ChIJFUO-WUfzGGARhzhX4px1Jsc": "scheduled",
+      "ChIJHeBCIOyMGGAR7BktETlUP_w": "not_selected_by_supply",
+      "ChIJVVVVwXiLGGARdfqsI40Y-u8": "not_selected_by_supply",
+      "ChIJ______qJGGARHpd1TBA9uZ8": "not_selected_by_supply",
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY": "not_selected_by_supply",
+      "ChIJqw9CNumMGGARftSbwtwPwlE": "not_selected_by_supply",
+      "ChIJrWQOSKOMGGARINdTU-VzqoM": "ineligible"
+    }
+  }
+}

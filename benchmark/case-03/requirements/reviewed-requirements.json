@@ -1,0 +1,77 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-03-requirements",
+  "revision": "1",
+  "group_id": "case-03",
+  "input_sha256": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case03_semantic_reviewer",
+    "reviewed_at": "2026-10-14T19:11:15+00:00"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [
+    {
+      "preference_id": "case-03-balanced-introduction",
+      "wording": "a balanced introduction to the city",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "a balanced introduction to the city",
+          "occurrence": 0
+        }
+      ],
+      "interpretation": "Seek a varied first-time introduction across the stated interests; no required venue, category quota, allocation ratio or daily distribution is specified."
+    },
+    {
+      "preference_id": "case-03-well-known-sights",
+      "wording": "well-known sights",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "well-known sights",
+          "occurrence": 0
+        }
+      ],
+      "interpretation": "A soft interest in recognizable Tokyo sights. No named venue or mandatory visit count is stated."
+    },
+    {
+      "preference_id": "case-03-traditional-culture",
+      "wording": "traditional culture",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "traditional culture",
+          "occurrence": 0
+        }
+      ],
+      "interpretation": "A soft interest in traditional cultural places and experiences; no particular institution, ceremony or venue is required."
+    },
+    {
+      "preference_id": "case-03-modern-urban-neighbourhoods",
+      "wording": "modern urban neighbourhoods",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "modern urban neighbourhoods",
+          "occurrence": 0
+        }
+      ],
+      "interpretation": "A soft interest in contemporary urban neighbourhoods; no particular district or visit count is required."
+    },
+    {
+      "preference_id": "case-03-moderate-pace",
+      "wording": "a moderate pace with enough time to enjoy each place",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "a moderate pace with enough time to enjoy each place",
+          "occurrence": 0
+        }
+      ],
+      "interpretation": "Prefer a moderate pace and meaningful time at each place. No exact daily activity count, visit duration, clock window, rest interval or protected-time obligation is stated."
+    }
+  ],
+  "unresolved_items": []
+}

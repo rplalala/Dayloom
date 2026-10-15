@@ -298,7 +298,11 @@ human reports without changing primary scores. The
 [staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-owns operational/child-Issue rules; [adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
+records common workflow adoption; [parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
+owns case-03–15 dispatch, budgets and worker integration under the
+[parallel workflow](benchmark/README.md#parallel-sessions-and-integration).
+The coordinator stays in the main worktree; five workers own disjoint case queues.
+[Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
 owns case-01 workflow acceptance. The active set has 15 requests following the
 user-approved 14 October 2026 selection revision; the benchmark index owns the
 coverage and old-to-new mapping. The human user accepted

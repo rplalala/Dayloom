@@ -243,9 +243,13 @@ The current working drafts and storage convention are in the
 [benchmark index](../benchmark/README.md).
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns final
 benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-defines sequential case execution and the child-Issue revision/acceptance rules.
-Each scenario child records its live plan, attempts and decision, applying the
-shared rules by reference rather than maintaining another general specification.
+records common workflow adoption. [Parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
+owns remaining-case coordination under the
+[parallel session rules](../benchmark/README.md#parallel-sessions-and-integration).
+Cases may progress in independent worker queues; generation remains sequential
+within each case and source-bound acceptance remains individual. Each scenario
+child records its live plan, attempts and decision, applying shared rules by
+reference rather than maintaining another general specification.
 
 ### Preparation and decision responsibilities
 

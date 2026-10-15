@@ -1,0 +1,27 @@
+{
+  "schema_version": "rtpeval_density_reviews_1",
+  "batch_id": "case-03-batch",
+  "batch_revision": "1",
+  "groups": [
+    {
+      "group_id": "case-03",
+      "input_sha256": "ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2",
+      "reviewer_ref": "/root/case03_semantic_reviewer",
+      "reviewed_at": "2026-10-14T19:11:15+00:00",
+      "review_origin": "agent",
+      "rationale": "Review of the complete original request supports ordinary density from moderate pace. Enough time to enjoy each place remains qualitative. No relaxed or rich pace, exact count, dated exception, venue quota, or distribution ratio is requested.",
+      "default": {
+        "profile": "ordinary",
+        "exact_count": null,
+        "source_refs": [
+          {
+            "field_path": "additional_preferences",
+            "quote": "We prefer a moderate pace with enough time to enjoy each place.",
+            "occurrence": 0
+          }
+        ]
+      },
+      "days": []
+    }
+  ]
+}

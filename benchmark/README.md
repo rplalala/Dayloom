@@ -27,12 +27,13 @@ results, usage and provenance under the existing
 
 ## Per-case execution and joint review
 
-Prepare and complete cases one at a time in case-ID order, from case-01 to case-15.
-Create a scenario child Issue when preparing that case; it tracks request revisions,
-attempts, findings and the matched evaluation report. The user confirms automatic
-joint acceptance of the input and its declared reports before proceeding to the
-next case. Consolidated blinded review follows separately and does not block this
-sequence. Native material admission alone does not complete this review; the
+Cases may progress concurrently in coordinator-assigned worker queues. Each case
+has its own child Issue tracking request revisions, attempts, findings and matched
+reports; children may be prepared together for an approved batch. Queue order is
+local to its worker, not a dependency between workers. The user explicitly accepts
+each exact input/report selection; another case can progress while that decision
+is pending. Consolidated blinded review follows separately. Native material
+admission alone does not complete automatic acceptance; the
 [evaluation architecture](../docs/0006-independent-evaluation.md#material-admission-and-scenario-acceptance)
 defines the distinct milestones.
 
@@ -46,6 +47,66 @@ owns workflow adoption and case-01 end-to-end acceptance. This README owns the d
 reader-facing workflow, responsibility map, optional-study boundary, scenario index,
 date rules and directory convention. Case Issues hold live scope, budgets, attempts
 and acceptance decisions rather than duplicate the common rules.
+[Parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
+owns case-03 through case-15 and their native case children.
+
+### Parallel sessions and integration
+
+The coordinator uses the existing main worktree. Each worker uses an independent
+managed worktree created from the same recorded latest delivered commit. Record
+that starting revision and any subsequently integrated workflow/shared-fix commits;
+new runtime changes require compatible preparation and affected checks before use.
+Keep one active case per worker. V0-V3 generation remains sequential within a case;
+independent workers may run concurrently within centrally approved limits.
+
+| Worker | Assigned queue |
+| --- | --- |
+| A | 03, 09, 13 |
+| B | 04, 14 |
+| C | 05, 15 |
+| D | 06, 08, 10 |
+| E | 07, 11, 12 |
+
+Workers own their assigned `inputs/case-XX.json`, public `case-XX/` and ignored
+`scratch/case-XX/` paths and case Issues. Input changes still need their applicable
+approval. The coordinator owns shared workflow/index documents, application code,
+runtime configuration, dependency files, overall Issues and integration. Proposed
+shared fixes return to the coordinator for scoped work. Accepted case-01/02 inputs,
+results and private archives remain unchanged.
+
+Before a worker is ready, rebuild its own `.venv` from the pinned `uv.lock`, including
+retrieval/development dependencies; copying another worktree's environment can
+retain incorrect editable imports and CLI paths. Migrate required local ignored
+environment files, both checksum-verified tokenizer vocabularies and the retrieval
+manifest/completed-build metadata used by V2/V3. Keep database connection settings
+bound to the existing query-only corpus. Verify settings, local import/CLI paths,
+schemas, cache checksums and applicable read-only database compatibility without
+model/Google requests. Keep credentials, caches and private material out of Git,
+Issues and public handoffs. Recheck configuration and accessibility before dispatch.
+
+The coordinator records per-case/stage budgets and aggregate concurrency/resource
+allowances in the batch Issue before live dispatch. A worker proceeds only within
+an explicitly covered start/continuation scope. A primary-score pause, blocked case
+or pending acceptance affects that case; it does not stop unrelated workers.
+Within each worker, continue the assigned queue after acceptance unless an explicit
+batch instruction covers a different progression. Prepared sessions wait for the
+coordinator; setup alone does not start reviews, generation or paid acquisition.
+
+Return the starting/head commits, owned changed paths, case Issue/status, exact
+source bindings, completed checks, resources/limits and private archive locations.
+Distinguish primary completion, further analysis, user acceptance and readiness for
+integration. After all assigned work is complete, the coordinator integrates reviewed
+worker commits into the main worktree, resolves conflicts and runs affected offline
+checks. Preserve original implementation and correction commits. Resolve overlapping
+shared edits by their current authority, not by blindly selecting one side; verify
+accepted sources against recorded byte hashes before and after integration.
+
+Git integration does not transfer ignored evidence. Preserve its source-bound roots
+under the [bundle handling](#bundle-handling) and [private archive rules](#private-archive-retention)
+until native dependencies, absolute-path preparations and restored archive replay
+are accounted for. Worker worktrees can be archived only after needed ignored
+material is preserved and verified. Git publication and human acceptance retain
+their separate authorization and completion meanings.
 
 Git publication does not accept a case or authorize Issue closure. The human user
 accepted the [initial case-01 dataset](case-01/report.md#acceptance) on 14 October 2026
@@ -83,7 +144,7 @@ require their own explicit authorization.
 | 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
 | 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
 | 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
-| 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then advance to the next case. |
+| 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then follow the worker's covered queue instruction. |
 | 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
 
 Steps 7-9 begin only after the user instructs continuation following the primary

@@ -1,0 +1,301 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Kappabashi Kitchenware Street",
+      "source_place_id": null,
+      "reason": "An optional Asakusa-area stroll that complements the Sensō-ji visit with a different side of the neighborhood.",
+      "associated_day": "2026-10-15",
+      "area": "Asakusa",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Hamarikyu Gardens",
+      "source_place_id": null,
+      "reason": "An optional garden visit to consider near the central Tokyo areas explored around Marunouchi and Ginza.",
+      "associated_day": "2026-10-17",
+      "area": "Ginza and central Tokyo",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-15",
+  "end_date": "2026-10-18",
+  "days": [
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d1_sensoji",
+          "title": "Visit Sensō-ji and explore the Asakusa temple precinct",
+          "place_name": "Sensō-ji",
+          "source_place_id": null,
+          "location": "Asakusa, Tokyo",
+          "start_time": "2026-10-15T10:00:00+09:00",
+          "end_time": "2026-10-15T12:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "Take time to appreciate the temple precinct and its traditional atmosphere."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d1_tr_sensoji_skytree",
+          "title": "Travel from Asakusa to Tokyo Skytree",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-15T12:00:00+09:00",
+          "end_time": "2026-10-15T12:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "d1_sensoji",
+            "to_activity_id": "d1_skytree"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d1_skytree",
+          "title": "Explore Tokyo Skytree and its surrounding complex",
+          "place_name": "Tokyo Skytree",
+          "source_place_id": null,
+          "location": "Sumida, Tokyo",
+          "start_time": "2026-10-15T12:30:00+09:00",
+          "end_time": "2026-10-15T15:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "A modern landmark that offers a contrasting perspective after Asakusa's traditional temple district."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d2_meiji",
+          "title": "Visit Meiji Jingū",
+          "place_name": "Meiji Jingū",
+          "source_place_id": null,
+          "location": "Shibuya, Tokyo",
+          "start_time": "2026-10-16T09:30:00+09:00",
+          "end_time": "2026-10-16T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Allow unhurried time for the wooded approach and shrine grounds."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d2_tr_meiji_harajuku",
+          "title": "Walk from Meiji Jingū toward Harajuku",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-16T11:30:00+09:00",
+          "end_time": "2026-10-16T11:50:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 20-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d2_meiji",
+            "to_activity_id": "d2_harajuku"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d2_harajuku",
+          "title": "Explore Harajuku and Omotesandō",
+          "place_name": "Harajuku and Omotesandō",
+          "source_place_id": null,
+          "location": "Shibuya, Tokyo",
+          "start_time": "2026-10-16T11:50:00+09:00",
+          "end_time": "2026-10-16T14:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "A relaxed look at a contemporary shopping and design area; choose streets and shops at your own pace."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d2_tr_harajuku_shibuya",
+          "title": "Walk from Harajuku toward Shibuya",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-16T14:00:00+09:00",
+          "end_time": "2026-10-16T14:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d2_harajuku",
+            "to_activity_id": "d2_shibuya"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d2_shibuya",
+          "title": "Explore Shibuya, including its famous crossing",
+          "place_name": "Shibuya Crossing and surrounding district",
+          "source_place_id": null,
+          "location": "Shibuya, Tokyo",
+          "start_time": "2026-10-16T14:30:00+09:00",
+          "end_time": "2026-10-16T17:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Spend the afternoon experiencing one of Tokyo's best-known modern urban districts."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d3_east_gardens",
+          "title": "Walk through the East Gardens of the Imperial Palace",
+          "place_name": "Imperial Palace East Gardens",
+          "source_place_id": null,
+          "location": "Chiyoda, Tokyo",
+          "start_time": "2026-10-17T09:30:00+09:00",
+          "end_time": "2026-10-17T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "A central green space for a change of pace and a glimpse of the palace area's history."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d3_tr_gardens_marunouchi",
+          "title": "Walk toward Tokyo Station and Marunouchi",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-17T11:30:00+09:00",
+          "end_time": "2026-10-17T12:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d3_east_gardens",
+            "to_activity_id": "d3_marunouchi"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d3_marunouchi",
+          "title": "Explore Tokyo Station and Marunouchi",
+          "place_name": "Tokyo Station and Marunouchi",
+          "source_place_id": null,
+          "location": "Chiyoda, Tokyo",
+          "start_time": "2026-10-17T12:00:00+09:00",
+          "end_time": "2026-10-17T14:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "See the station area's landmark architecture and the surrounding business district."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d3_tr_marunouchi_ginza",
+          "title": "Walk from Marunouchi to Ginza",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-17T14:00:00+09:00",
+          "end_time": "2026-10-17T14:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d3_marunouchi",
+            "to_activity_id": "d3_ginza"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d3_ginza",
+          "title": "Explore Ginza",
+          "place_name": "Ginza",
+          "source_place_id": null,
+          "location": "Chūō, Tokyo",
+          "start_time": "2026-10-17T14:30:00+09:00",
+          "end_time": "2026-10-17T17:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "Enjoy this central district's architecture, department stores, and streets at a comfortable pace."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d4_shinjuku_gyoen",
+          "title": "Enjoy Shinjuku Gyoen National Garden",
+          "place_name": "Shinjuku Gyoen National Garden",
+          "source_place_id": null,
+          "location": "Shinjuku, Tokyo",
+          "start_time": "2026-10-18T09:30:00+09:00",
+          "end_time": "2026-10-18T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "A restorative garden visit before heading to the waterfront district."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d4_tr_shinjuku_odaiba",
+          "title": "Travel from Shinjuku to Odaiba",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-18T11:30:00+09:00",
+          "end_time": "2026-10-18T12:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 60-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "d4_shinjuku_gyoen",
+            "to_activity_id": "d4_odaiba_park"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d4_odaiba_park",
+          "title": "Visit Odaiba Seaside Park",
+          "place_name": "Odaiba Seaside Park",
+          "source_place_id": null,
+          "location": "Odaiba, Tokyo",
+          "start_time": "2026-10-18T12:30:00+09:00",
+          "end_time": "2026-10-18T14:15:00+09:00",
+          "estimated_cost": null,
+          "notes": "Take in the waterfront and views of Tokyo Bay as part of an introduction to the city's modern, reclaimed-land districts."
+        },
+        {
+          "activity_kind": "transport",
+          "activity_id": "d4_tr_odaiba_miraikan",
+          "title": "Walk across Odaiba to Miraikan",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-18T14:15:00+09:00",
+          "end_time": "2026-10-18T14:45:00+09:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d4_odaiba_park",
+            "to_activity_id": "d4_miraikan"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "d4_miraikan",
+          "title": "Explore the National Museum of Emerging Science and Innovation",
+          "place_name": "Miraikan",
+          "source_place_id": null,
+          "location": "Odaiba, Tokyo",
+          "start_time": "2026-10-18T14:45:00+09:00",
+          "end_time": "2026-10-18T17:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "A modern science museum that adds a technology-focused experience to the waterfront visit."
+        }
+      ]
+    }
+  ]
+}

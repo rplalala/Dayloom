@@ -1,0 +1,383 @@
+{
+  "schema_version": "case_resource_accounting_view_1",
+  "currency": "USD",
+  "selected_generation": [
+    {
+      "version": "v0",
+      "run_id": "case-06-v0-20261015-a1",
+      "model_calls": 2,
+      "google_sends": 0,
+      "http_sends": 2,
+      "tokens": 21232,
+      "elapsed_seconds": 132.43700000003446,
+      "reference_usd": "0.00573635",
+      "actual_invoice": null,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "version": "v1",
+      "run_id": "case-06-v1-20261015-a1",
+      "model_calls": 11,
+      "google_sends": 50,
+      "http_sends": 62,
+      "tokens": 67857,
+      "elapsed_seconds": 139.2029999999795,
+      "reference_usd": "2.07843713",
+      "actual_invoice": null,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "version": "v2",
+      "run_id": "case-06-v2-20261015-a1",
+      "model_calls": 12,
+      "google_sends": 66,
+      "http_sends": 79,
+      "tokens": 73237,
+      "elapsed_seconds": 150.45300000009593,
+      "reference_usd": "2.44711137",
+      "actual_invoice": null,
+      "repair_model_calls_subset": 0
+    },
+    {
+      "version": "v3",
+      "run_id": "case-06-v3-20261015-a2",
+      "model_calls": 12,
+      "google_sends": 75,
+      "http_sends": 88,
+      "tokens": 71837,
+      "elapsed_seconds": 151.53200000000652,
+      "reference_usd": "2.627493645",
+      "actual_invoice": null,
+      "repair_model_calls_subset": 0
+    }
+  ],
+  "all_attempt_generation": {
+    "dispatched_attempts": 5,
+    "by_version": {
+      "v0": {
+        "dispatched_attempts": 1,
+        "ledger_complete": true,
+        "totals": {
+          "model_calls": {
+            "total": 2,
+            "observed_subtotal": 2,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "http_sends": {
+            "total": 2,
+            "observed_subtotal": 2,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "input_tokens": {
+            "total": 13012,
+            "observed_subtotal": 13012,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "output_tokens": {
+            "total": 8220,
+            "observed_subtotal": 8220,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "total_tokens": {
+            "total": 21232,
+            "observed_subtotal": 21232,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_calls": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_input_tokens": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_total_tokens": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          }
+        }
+      },
+      "v1": {
+        "dispatched_attempts": 1,
+        "ledger_complete": true,
+        "totals": {
+          "model_calls": {
+            "total": 11,
+            "observed_subtotal": 11,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "http_sends": {
+            "total": 62,
+            "observed_subtotal": 62,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "input_tokens": {
+            "total": 56886,
+            "observed_subtotal": 56886,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "output_tokens": {
+            "total": 10971,
+            "observed_subtotal": 10971,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "total_tokens": {
+            "total": 67857,
+            "observed_subtotal": 67857,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_calls": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_input_tokens": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_total_tokens": {
+            "total": 0,
+            "observed_subtotal": 0,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          }
+        }
+      },
+      "v2": {
+        "dispatched_attempts": 1,
+        "ledger_complete": true,
+        "totals": {
+          "model_calls": {
+            "total": 12,
+            "observed_subtotal": 12,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "http_sends": {
+            "total": 79,
+            "observed_subtotal": 79,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "input_tokens": {
+            "total": 59261,
+            "observed_subtotal": 59261,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "output_tokens": {
+            "total": 13976,
+            "observed_subtotal": 13976,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "total_tokens": {
+            "total": 73237,
+            "observed_subtotal": 73237,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_calls": {
+            "total": 1,
+            "observed_subtotal": 1,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_input_tokens": {
+            "total": 2,
+            "observed_subtotal": 2,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          },
+          "embedding_total_tokens": {
+            "total": 2,
+            "observed_subtotal": 2,
+            "known_attempts": 1,
+            "missing_attempts": 0
+          }
+        }
+      },
+      "v3": {
+        "dispatched_attempts": 2,
+        "ledger_complete": true,
+        "totals": {
+          "model_calls": {
+            "total": 13,
+            "observed_subtotal": 13,
+            "known_attempts": 2,
+            "missing_attempts": 0
+          },
+          "http_sends": {
+            "total": 89,
+            "observed_subtotal": 89,
+            "known_attempts": 2,
+            "missing_attempts": 0
+          },
+          "input_tokens": {
+            "total": null,
+            "observed_subtotal": 58181,
+            "known_attempts": 1,
+            "missing_attempts": 1
+          },
+          "output_tokens": {
+            "total": null,
+            "observed_subtotal": 13656,
+            "known_attempts": 1,
+            "missing_attempts": 1
+          },
+          "total_tokens": {
+            "total": null,
+            "observed_subtotal": 71837,
+            "known_attempts": 1,
+            "missing_attempts": 1
+          },
+          "embedding_calls": {
+            "total": 1,
+            "observed_subtotal": 1,
+            "known_attempts": 2,
+            "missing_attempts": 0
+          },
+          "embedding_input_tokens": {
+            "total": 7,
+            "observed_subtotal": 7,
+            "known_attempts": 2,
+            "missing_attempts": 0
+          },
+          "embedding_total_tokens": {
+            "total": 7,
+            "observed_subtotal": 7,
+            "known_attempts": 2,
+            "missing_attempts": 0
+          }
+        }
+      }
+    },
+    "cost_consumption": [
+      {
+        "version": "v0",
+        "currency": "USD",
+        "accounting_basis": "saved_declared_reference_not_invoice",
+        "prices_sha256": "c111bc40a22e260cfeb38349bd3ab22572f1526032da8b8429d6c030ba0d780d",
+        "known_cost_attempts": 1,
+        "actual_known_run_total_subtotal": null,
+        "actual_total": null,
+        "actual_observed_subtotal": null,
+        "estimated_known_run_total_subtotal": "0.00573635",
+        "estimated_total": "0.00573635",
+        "estimated_observed_subtotal": "0.00573635",
+        "best_available_known_run_total_subtotal": "0.00573635",
+        "best_available_total": "0.00573635",
+        "best_available_observed_subtotal": "0.00573635"
+      },
+      {
+        "version": "v1",
+        "currency": "USD",
+        "accounting_basis": "saved_declared_reference_not_invoice",
+        "prices_sha256": "beeb0404d7ad5ad83963b66547f75024bba54862d8e014d2e7118b1f48d19a59",
+        "known_cost_attempts": 1,
+        "actual_known_run_total_subtotal": null,
+        "actual_total": null,
+        "actual_observed_subtotal": null,
+        "estimated_known_run_total_subtotal": "2.07843713",
+        "estimated_total": "2.07843713",
+        "estimated_observed_subtotal": "2.07843713",
+        "best_available_known_run_total_subtotal": "2.07843713",
+        "best_available_total": "2.07843713",
+        "best_available_observed_subtotal": "2.07843713"
+      },
+      {
+        "version": "v2",
+        "currency": "USD",
+        "accounting_basis": "saved_declared_reference_not_invoice",
+        "prices_sha256": "44bf241f645a04fb6b53144d166b25361b8ac51e457e1a4555d6f880a6c330d2",
+        "known_cost_attempts": 1,
+        "actual_known_run_total_subtotal": null,
+        "actual_total": null,
+        "actual_observed_subtotal": null,
+        "estimated_known_run_total_subtotal": "2.44711137",
+        "estimated_total": "2.44711137",
+        "estimated_observed_subtotal": "2.44711137",
+        "best_available_known_run_total_subtotal": "2.44711137",
+        "best_available_total": "2.44711137",
+        "best_available_observed_subtotal": "2.44711137"
+      },
+      {
+        "version": "v3",
+        "currency": "USD",
+        "accounting_basis": "saved_declared_reference_not_invoice",
+        "prices_sha256": "20f17e0caf502c5d318d00f89f1ffd2c1a822dc4b8c6a708792fb15da2125ea0",
+        "known_cost_attempts": 1,
+        "actual_known_run_total_subtotal": null,
+        "actual_total": null,
+        "actual_observed_subtotal": null,
+        "estimated_known_run_total_subtotal": null,
+        "estimated_total": null,
+        "estimated_observed_subtotal": null,
+        "best_available_known_run_total_subtotal": null,
+        "best_available_total": null,
+        "best_available_observed_subtotal": null
+      },
+      {
+        "version": "v3",
+        "currency": "USD",
+        "accounting_basis": "saved_declared_reference_not_invoice",
+        "prices_sha256": "adc6b1d61e1f96552067e98fae116fd3df3fa47c8219bdd2285c40608216779f",
+        "known_cost_attempts": 1,
+        "actual_known_run_total_subtotal": null,
+        "actual_total": null,
+        "actual_observed_subtotal": null,
+        "estimated_known_run_total_subtotal": "2.627493645",
+        "estimated_total": null,
+        "estimated_observed_subtotal": "2.627493645",
+        "best_available_known_run_total_subtotal": "2.627493645",
+        "best_available_total": null,
+        "best_available_observed_subtotal": "2.627493645"
+      }
+    ],
+    "native_report_semantic_sha256": "35205672d0c33ced6654833a89681ce95569d25a5d7b46a0b8f59cb791af6ef2",
+    "selection_note": "Original first-dispatched attempts remain in the census; selected V3 is the separately authorized a2. All five actual generation attempts contribute to consumption. Failed or nonselected attempts are excluded from final primary quality."
+  },
+  "primary": {
+    "google_sends": 65,
+    "model_sends": 2,
+    "tokens": 27170,
+    "reference_usd": "1.34649485",
+    "actual_invoice": null
+  },
+  "offline_followup": {
+    "google_sends": 0,
+    "model_provider_sends": 0,
+    "current_reference_usd": "0",
+    "paired_sources": "Inherited primary evidence, charged once in the primary bucket"
+  },
+  "known_generation_reference_usd": "7.158778495",
+  "known_generation_tokens": 234163,
+  "known_generation_plus_primary_reference_usd": "8.505273345",
+  "known_generation_plus_primary_tokens": 261333,
+  "all_attempt_reference_total": null,
+  "all_attempt_token_total": null,
+  "limitations": [
+    "One original failed attempt has one incomplete model HTTP send, unavailable provider tokens and two unpriced events.",
+    "Account invoices and external Codex tokens/bills unavailable. Reference prices exclude quotas, credits, discounts and tax.",
+    "Repair is a subset; inherited paired usage is not charged again; oracle usage is not assigned to Planner versions."
+  ]
+}

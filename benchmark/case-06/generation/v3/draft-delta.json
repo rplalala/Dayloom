@@ -1,0 +1,16 @@
+{
+  "schema_version": "case_itinerary_delta_1",
+  "base_ref": {
+    "path": "itinerary.json",
+    "json_pointer": "",
+    "expanded_semantic_sha256": "3cc16e8ff8c392263b5308ac9729ae7fea09eab657b1692a64c95f2ee8dc8ac9"
+  },
+  "operations": [
+    {
+      "op": "replace",
+      "path": "/reference_recommendations",
+      "value": []
+    }
+  ],
+  "expanded_semantic_sha256": "94e0ff708709e1bd803d5d7d3b41edc4e089785dc57f7617dabe7efda0c5e24a"
+}
