@@ -261,7 +261,8 @@ def mock_provider(request):
     )
 
 
-def test_execute_and_replay_complete_native_flow_without_regenerating(batch):
+@pytest.mark.parametrize("dated_total", [False, True])
+def test_execute_and_replay_complete_native_flow_without_regenerating(batch, dated_total):
     from backend.evaluation.evaluation_run import execute_run, prepare_run, replay_run
 
     manifest, results, write, save, root = batch
@@ -277,6 +278,18 @@ def test_execute_and_replay_complete_native_flow_without_regenerating(batch):
             "source_refs": [{"field_path": "additional_preferences", "quote": "architecture"}],
         }
     ]
+    if dated_total:
+        spec["obligations"] = [
+            {
+                "obligation_id": "daily-total",
+                "kind": "daily_visit_count",
+                "resolution": "resolved",
+                "date": "2020-01-01",
+                "scope": "primary_visits",
+                "count": {"mode": "exact", "value": 1},
+                "source_refs": [{"field_path": "additional_preferences", "quote": "architecture"}],
+            }
+        ]
     manifest["groups"][0]["requirement_spec_ref"] = save(
         "requirements.json", spec, spec["schema_version"]
     )
@@ -305,6 +318,11 @@ def test_execute_and_replay_complete_native_flow_without_regenerating(batch):
             )
 
     report = asyncio.run(execute())
+    assert report["reports"]["requirement_schedule"]["rules_version"] == (
+        "rtpeval_requirement_schedule_rules_5"
+        if dated_total
+        else "rtpeval_requirement_schedule_rules_3"
+    )
     assert report["processing_status"] == "complete"
     assert report["acquisition_status"] == "complete"
     assert {u["version"] for u in report["unknowns"] if u["stage"] == "daily_density"} == {

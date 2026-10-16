@@ -76,7 +76,24 @@ def operation_scope(draft, report, *, mode=None, context=None, policy=None):
         if f.finding_id not in eligible:
             continue
         selected = []
-        if f.check == "overlap" and f.status == "CONFIRMED":
+        if f.check == "daily_visit_count" and f.status == "CONFIRMED":
+            from backend.app.versions.v3.repair_targets import dispensable_visit
+
+            dates.update(f.dates)
+            if f.adopted_evidence["upper"] < f.adopted_evidence["count"]:
+                additions.update(f.dates)
+                direct_additions.update(f.dates)
+            else:
+                selected = [
+                    aid
+                    for aid in f.activity_ids
+                    if aid in activities
+                    and not uncertain_binding(aid)
+                    and (context is None or dispensable_visit(draft, aid, context))
+                ]
+                for aid in selected:
+                    permissions[aid].add("delete")
+        elif f.check == "overlap" and f.status == "CONFIRMED":
             for aid in f.activity_ids:
                 if (
                     activities[aid][1].activity_kind != "free_time"
@@ -209,7 +226,15 @@ def operation_scope(draft, report, *, mode=None, context=None, policy=None):
             dates.add(day)
             if (
                 (
-                    f.check in {"repetition", "overfull", "opening", "route", "soft_pace"}
+                    f.check
+                    in {
+                        "repetition",
+                        "overfull",
+                        "opening",
+                        "route",
+                        "soft_pace",
+                        "daily_visit_count",
+                    }
                     or f.reason == "experience_goal_dates_unmet"
                 )
                 and not uncertain_binding(aid)
@@ -237,7 +262,9 @@ def operation_scope(draft, report, *, mode=None, context=None, policy=None):
                     parent_id=f.finding_id,
                     date=day,
                     trigger_activity_ids=ids,
-                    minimum_count=pace_coverage_floor(
+                    minimum_count=(0 if f.adopted_evidence["count"] == 0 else 1)
+                    if f.check == "daily_visit_count"
+                    else pace_coverage_floor(
                         policy.daily_main_min,
                         rows[day].distinct_main_poi_count,
                         f.adopted_evidence.get("zero_counts", ()) if f.check == "soft_pace" else (),

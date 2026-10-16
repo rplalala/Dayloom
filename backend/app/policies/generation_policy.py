@@ -7,6 +7,11 @@ by a company can be a museum; its cafe is not the museum. One requested Michelin
 does not authorize every restaurant as a main visit. Never invent Michelin qualifications.
 Once a one-off category goal is met, favor other suitable unrepresented experiences. Continuing
 preferences are not mandatory quotas; explicit exclusions, counts and visit dates take priority.
+Dated daily_visit_constraints apply to ALL primary sightseeing/experience occurrences on that
+date. Two separate visits to one venue count twice. Hard exact totals override default coverage
+and soft pace targets; a one-visit day must stay at one. Supporting meals, transport, free time
+and unscheduled references do not count. Zero primary visits permits supporting commitments;
+an explicitly protected full rest day separately prohibits activities and travel.
 For each ordinary positive POI interest, aim for one distinct qualifying scheduled POI. Use two
 only when exact user wording makes that interest a focus of this trip, not merely "especially
 like" or an ambiguous possibility. These soft coverage targets are not explicit quantities,

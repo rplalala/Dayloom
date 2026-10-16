@@ -41,12 +41,12 @@ def implementation_hashes():
 
 
 def boundary_identity(client):
-    from backend.app.llm.azure_foundry.requirement_wire import indexed_prompt
+    from backend.app.llm.azure_foundry.requirement_wire import dated_prompt
 
     return {
-        "prompt_hash": digest(indexed_prompt(PREFERENCE_INTERPRETATION_SYSTEM_PROMPT)),
-        "prompt_version": "preference_prompt_21",
-        "wire_hash": digest(requirement_wire_format(current=True, indexed=True)),
+        "prompt_hash": digest(dated_prompt(PREFERENCE_INTERPRETATION_SYSTEM_PROMPT)),
+        "prompt_version": "preference_prompt_22",
+        "wire_hash": digest(requirement_wire_format(current=True, indexed=True, dated=True)),
         "contract_version": CONTRACT_VERSION,
         "canonical_schema_hash": digest(InterpretedTripRequirements.model_json_schema()),
         "configuration": client._requirement_config,

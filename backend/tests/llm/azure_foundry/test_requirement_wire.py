@@ -48,6 +48,37 @@ def test_required_trip_default_passes_complete_service():
     assert result.daily_pace[0].date is None
 
 
+def test_dated_count_wire_restores_sources_before_hard_capability_acceptance():
+    from backend.tests.services.test_daily_visit_constraints import TEXT, counted_draft
+
+    def answer(prompt):
+        data = counted_draft().model_dump(mode="json")
+        data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+        selection = [{"first_ref": 0, "last_ref": len(prompt["source_spans"]) - 1}]
+        data["semantic_requirements"][0]["source_refs"] = selection
+        data["daily_visit_constraints"][0]["source_refs"] = selection
+        return data
+
+    result = run_wire(answer, TEXT, contract="preference_draft_15")
+    assert result.contract_version == "interpreted_requirements_6"
+    rule = result.daily_visit_constraints[0]
+    assert rule.source_refs[0].quote == TEXT
+    assert rule.requirement_refs == ("semantic_1",)
+
+
+def test_dated_wire_requires_an_assessed_count_list_and_supported_schema():
+    from backend.app.llm.azure_foundry.client import requirement_wire_format
+    from backend.tests.llm.azure_foundry.test_dto import assert_foundry_schema_contract
+
+    schema = requirement_wire_format(current=True, indexed=True, dated=True)["json_schema"][
+        "schema"
+    ]
+    assert_foundry_schema_contract(schema)
+    assert "daily_visit_constraints" in schema["required"]
+    with pytest.raises(RequirementBoundaryError):
+        run_wire(wire_empty(), contract="preference_draft_15")
+
+
 def test_compact_source_selections_restore_through_complete_interpretation():
     from backend.tests.versions.v1.test_interpreted_requirements import draft_for
 

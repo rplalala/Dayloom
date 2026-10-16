@@ -3,7 +3,7 @@
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, model_serializer
 
 
 class DayGenerationDiagnostics(BaseModel):
@@ -28,6 +28,15 @@ class DayGenerationDiagnostics(BaseModel):
 
 
 class GenerationDiagnostics(BaseModel):
+    daily_visit_counts: tuple[dict, ...] | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_assessed_counts(self, handler):
+        result = handler(self)
+        if self.daily_visit_counts is None:
+            result.pop("daily_visit_counts", None)
+        return result
+
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"
     policy_issues: tuple[dict, ...] = ()
     goal_progress: tuple[dict, ...] = ()

@@ -14,6 +14,7 @@ from pydantic import BaseModel, ValidationError
 from backend.app.evidence.experience_models import ExperienceProfileDraft
 from backend.app.llm.azure_foundry.dto import (
     FoundryCurrentInterpretationDTO,
+    FoundryDatedInterpretationDTO,
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
     FoundryItineraryDTO,
@@ -40,10 +41,14 @@ from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.model_references import INSTRUCTION
 
 
-def requirement_wire_format(*, current=False, indexed=False):
+def requirement_wire_format(*, current=False, indexed=False, dated=False):
     """Static DTO schema using the documented Azure Responses subset."""
     schema = (
-        FoundryCurrentInterpretationDTO if current else FoundryInterpretationDTO
+        FoundryDatedInterpretationDTO
+        if dated
+        else FoundryCurrentInterpretationDTO
+        if current
+        else FoundryInterpretationDTO
     ).model_json_schema()
     if current:
         from backend.app.llm.azure_foundry.requirement_wire import current_schema
@@ -64,7 +69,9 @@ def requirement_wire_format(*, current=False, indexed=False):
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "PreferenceDraftV14"
+            "name": "PreferenceDraftV15"
+            if dated
+            else "PreferenceDraftV14"
             if indexed
             else "PreferenceDraftV13"
             if current
@@ -145,7 +152,7 @@ class AzureFoundryStructuredLLMClient:
             "deployment": deployment,
             "api": "responses/v1",
             "max_retries": 0,
-            "contract": "preference_draft_14",
+            "contract": "preference_draft_15",
         }
         transport_options = {}
         if http_client is not None:
@@ -208,6 +215,7 @@ class AzureFoundryStructuredLLMClient:
             IndexedSourceSpans,
             SourceSpans,
             current_prompt,
+            dated_prompt,
             indexed_prompt,
             planning_envelope,
             restore_current,
@@ -219,11 +227,12 @@ class AzureFoundryStructuredLLMClient:
             # Frozen response readers select the historical contract explicitly.
             envelope = None
         spans = None
-        indexed = (
-            envelope is not None
-            and self._requirement_config.get("contract", "preference_draft_14")
-            == "preference_draft_14"
-        )
+        contract_version = self._requirement_config.get("contract", "preference_draft_15")
+        dated = envelope is not None and contract_version == "preference_draft_15"
+        indexed = envelope is not None and contract_version in {
+            "preference_draft_14",
+            "preference_draft_15",
+        }
         source_request_sha256 = None
         if envelope is not None:
             span_type = IndexedSourceSpans if indexed else SourceSpans
@@ -232,20 +241,28 @@ class AzureFoundryStructuredLLMClient:
                 source_request_sha256 = spans.request_sha256
             user_prompt = json.dumps({**envelope, "source_spans": spans.inventory()})
             system_prompt = (
-                indexed_prompt(system_prompt) if indexed else current_prompt(system_prompt)
+                dated_prompt(system_prompt)
+                if dated
+                else indexed_prompt(system_prompt)
+                if indexed
+                else current_prompt(system_prompt)
             )
-        wire = requirement_wire_format(current=envelope is not None, indexed=indexed)
+        wire = requirement_wire_format(current=envelope is not None, indexed=indexed, dated=dated)
         base = {
             "request_id": digest(user_prompt),
             "prompt_hash": digest(system_prompt),
             "schema_hash": digest(wire),
             "config_hash": digest(self._requirement_config),
-            "prompt_version": "preference_prompt_21"
+            "prompt_version": "preference_prompt_22"
+            if dated
+            else "preference_prompt_21"
             if indexed
             else "preference_prompt_20"
             if envelope is not None
             else "preference_prompt_19",
-            "schema_version": "preference_draft_14"
+            "schema_version": "preference_draft_15"
+            if dated
+            else "preference_draft_14"
             if indexed
             else "preference_draft_13"
             if envelope is not None
@@ -348,7 +365,9 @@ class AzureFoundryStructuredLLMClient:
             if envelope is not None:
                 payload = restore_current(payload, spans, request_sha256=source_request_sha256)
             dto = (
-                FoundryCurrentInterpretationDTO
+                FoundryDatedInterpretationDTO
+                if dated
+                else FoundryCurrentInterpretationDTO
                 if envelope is not None
                 else FoundryInterpretationDTO
             ).model_validate(payload)

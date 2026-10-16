@@ -11,6 +11,10 @@ def minimum_coverage(day, count, unclassified, *, same_day, contract=None, sched
     window; no minimum visit duration or almost-full-day threshold is inferred.
     """
     protections = getattr(contract, "time_protections", None)
+    from backend.app.policies.daily_visit_constraints import hard_exact_count
+
+    if hard_exact_count(contract, day) == 0:
+        return "exempt", "explicit_zero_sightseeing_count", (f"daily_visit_constraint:{day}",)
     relevant = [p for p in protections or () if not p.dates or day in p.dates]
     refs = tuple(p.model_dump_json() for p in relevant)
     if any(p.status == "fixed" and p.full_day is True for p in relevant):

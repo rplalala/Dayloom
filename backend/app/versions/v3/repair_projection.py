@@ -47,6 +47,10 @@ An empty edits array means no supported arrangement improvement was found.
 Arrangement constraints identify only previous failed combinations; other legal times remain
 available. Opportunity states are preparation hints, never full feasibility or admission proof.
 Hard targets and applicable minimum coverage precede optional soft pace optimization.
+Source-bound daily_visit_constraints count all primary visit occurrences, not distinct IDs.
+Respect them on source AND destination dates for every edit. A satisfied hard date/count
+cannot be traded away for another day's improvement. Default quantity references yield to
+explicit hard daily counts. Zero sightseeing is not a full-day no-activity/no-travel rule.
 A checked intermediate arrangement may have equal or greater aggregate soft pace deductions;
 the application retains its best publishable result separately. Use feedback.tried_operations
 to avoid equivalent failed proposals and cycles. Preserve comparable evidence and hard progress.

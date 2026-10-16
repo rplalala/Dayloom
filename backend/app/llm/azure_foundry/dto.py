@@ -286,6 +286,19 @@ class FoundryCurrentInterpretationDTO(FoundryInterpretationDTO):
     transport_constraint: FoundryTransportConstraintDTO | None
 
 
+class FoundryDailyVisitConstraintDTO(FoundryTransportDTO):
+    date: str
+    mode: Literal["exact", "minimum"]
+    count: int
+    strength: Literal["hard", "soft"]
+    requirement_refs: list[str]
+    source_refs: list[FoundrySourceQuoteDTO]
+
+
+class FoundryDatedInterpretationDTO(FoundryCurrentInterpretationDTO):
+    daily_visit_constraints: list[FoundryDailyVisitConstraintDTO]
+
+
 class FoundryDateTimeDTO(FoundryTransportDTO):
     """Transport datetime split into explicit, independently required components."""
 

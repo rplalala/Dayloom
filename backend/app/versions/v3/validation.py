@@ -162,6 +162,38 @@ def validate_draft(
             evidence_refs=("application:primary_role_policy_1",),
             adopted_evidence={"basis": "semantic_judgment_and_product_policy_not_operating_fact"},
         )
+    from backend.app.policies.daily_visit_constraints import assess_daily_visits, hard_exact_count
+
+    for count in assess_daily_visits(itinerary, contract, semantic_assessments):
+        status = count["status"]
+        add(
+            "daily_visit_count",
+            "CONFIRMED"
+            if status == "FAIL" and count["strength"] == "hard"
+            else "NEEDS_REVIEW"
+            if status == "FAIL"
+            else status,
+            "daily_visit_count",
+            dates=(count["date"],),
+            activity_ids=(*count["activity_ids"], *count["potential_activity_ids"]),
+            requirement_ids=count["requirement_ids"],
+            evidence_refs=count["source_refs"],
+            magnitude=max(
+                0,
+                count["count"] - count["upper"],
+                count["lower"] - count["count"] if count["mode"] == "exact" else 0,
+            )
+            if status != "UNKNOWN"
+            else None,
+            adopted_evidence={
+                "constraint_id": count["constraint_id"],
+                "count": count["count"],
+                "mode": count["mode"],
+                "lower": count["lower"],
+                "upper": count["upper"],
+                "strength": count["strength"],
+            },
+        )
     for row in diagnostics.days:
         count = row.distinct_main_poi_count
         if row.minimum_coverage == "missing":
@@ -177,6 +209,8 @@ def validate_draft(
             continue
         if row.minimum_coverage == "exempt":
             continue
+        if hard_exact_count(contract, row.date) is not None:
+            continue  # The sourced daily count supersedes a default quantity review.
         if row.minimum_coverage == "unknown" and count == 0:
             add("coverage", "UNKNOWN", row.minimum_coverage_reason, dates=(row.date,))
             continue
@@ -484,12 +518,18 @@ def validate_draft(
             evidence_refs=route_refs,
         )
     add("budget", "UNKNOWN", "verified_party_currency_cost_coverage_not_supported")
-    if contract.semantic_requirements:
+    daily_refs = {
+        ref for rule in contract.daily_visit_constraints or () for ref in rule.requirement_refs
+    }
+    open_semantics = [
+        r for r in contract.semantic_requirements if r.requirement_id not in daily_refs
+    ]
+    if open_semantics:
         add(
             "semantic_requirements",
             "UNKNOWN",
             "open_semantics_not_executable_predicates",
-            requirement_ids=tuple(r.requirement_id for r in contract.semantic_requirements),
+            requirement_ids=tuple(r.requirement_id for r in open_semantics),
         )
     from backend.app.versions.v3.soft_pace import measure_pace
 

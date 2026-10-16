@@ -12,6 +12,7 @@ def current_response(payload, request):
     if body.get("text", {}).get("format", {}).get("name") not in {
         "PreferenceDraftV13",
         "PreferenceDraftV14",
+        "PreferenceDraftV15",
     }:
         return payload
     if isinstance(payload, str):
@@ -60,6 +61,8 @@ def current_response(payload, request):
         }
 
     payload = encode(payload)
+    if body.get("text", {}).get("format", {}).get("name") == "PreferenceDraftV15":
+        payload.setdefault("daily_visit_constraints", [])
     if isinstance(payload, dict) and "daily_pace" in payload:
         pace = payload["daily_pace"]
         default = next(

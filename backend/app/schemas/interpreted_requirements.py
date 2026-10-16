@@ -25,7 +25,7 @@ from backend.app.schemas.trip_intent import (
     TravelMode,
 )
 
-CONTRACT_VERSION = "interpreted_requirements_5"
+CONTRACT_VERSION = "interpreted_requirements_6"
 DRAFT_HANDLE_LIMIT = 256
 TemporaryHandle = Annotated[str, StringConstraints(min_length=1, max_length=DRAFT_HANDLE_LIMIT)]
 Strength = Literal["low", "medium", "high", "hard"]
@@ -368,12 +368,28 @@ class DailyPaceDraft(ContractModel):
 
     date: date | None
     profile: Literal["ordinary", "relaxed", "rich", "unresolved"]
-    exact_count: int | None = Field(ge=0, le=100)
+    exact_count: int | None = Field(ge=0)
     source_refs: tuple[SourceQuote, ...] = Field(max_length=8)
 
 
 class DailyPace(DailyPaceDraft):
     source_refs: tuple[SourceReference, ...] = Field(max_length=8)
+
+
+class DailyVisitConstraintDraft(ContractModel):
+    """One sourced count of all primary visit occurrences on a requested date."""
+
+    date: date
+    mode: Literal["exact", "minimum"]
+    count: int = Field(ge=0, strict=True)
+    strength: Literal["hard", "soft"]
+    requirement_refs: tuple[TemporaryHandle, ...] = Field(min_length=1, max_length=24)
+    source_refs: tuple[SourceQuote, ...] = Field(min_length=1, max_length=3)
+
+
+class DailyVisitConstraint(DailyVisitConstraintDraft):
+    constraint_id: str
+    source_refs: tuple[SourceReference, ...] = Field(min_length=1, max_length=3)
 
 
 class TransportConstraintDraft(ContractModel):
@@ -399,12 +415,15 @@ class InterpretationDraft(ContractModel):
 
     _diagnostic_call_id: str | None = PrivateAttr(default=None)
     transport_constraint: TransportConstraintDraft | None = None
+    daily_visit_constraints: tuple[DailyVisitConstraintDraft, ...] | None = None
 
     @model_serializer(mode="wrap")
     def serialize_transport_constraint(self, handler):
         result = handler(self)
         if self.transport_constraint is None:
             result.pop("transport_constraint", None)
+        if self.daily_visit_constraints is None:
+            result.pop("daily_visit_constraints", None)
         return result
 
     # None is historical/unassessed. Current model entry requires an explicit assessment.
@@ -480,15 +499,21 @@ class InterpretationDraft(ContractModel):
 
 class InterpretedTripRequirements(ContractModel):
     contract_version: Literal[
-        "interpreted_requirements_3", "interpreted_requirements_4", "interpreted_requirements_5"
+        "interpreted_requirements_3",
+        "interpreted_requirements_4",
+        "interpreted_requirements_5",
+        "interpreted_requirements_6",
     ] = CONTRACT_VERSION
     transport_constraint: TransportConstraint | None = None
+    daily_visit_constraints: tuple[DailyVisitConstraint, ...] | None = None
 
     @model_serializer(mode="wrap")
     def serialize_transport_constraint(self, handler):
         result = handler(self)
         if self.transport_constraint is None:
             result.pop("transport_constraint", None)
+        if self.daily_visit_constraints is None:
+            result.pop("daily_visit_constraints", None)
         return result
 
     request_sha256: str

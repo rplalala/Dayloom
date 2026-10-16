@@ -270,3 +270,28 @@ def indexed_prompt(prompt):
         "offsets. Select first_ref and last_ref from the displayed inventory, in increasing "
         "order (equal is allowed). Request ownership is maintained by the application.\n"
     )
+
+
+def dated_prompt(prompt):
+    return (
+        indexed_prompt(prompt).replace(
+            "preference_prompt_21 / preference_draft_14",
+            "preference_prompt_22 / preference_draft_15",
+        )
+        + """
+Dated total visit counts: daily_visit_constraints is required; [] means assessed without them.
+It counts ALL primary sightseeing visit occurrences on one date, never distinct venue identities.
+Each rule has date, mode=exact|minimum, count, strength=hard|soft, requirement_refs and source_refs.
+Interpret the numeric requirement ONCE as a constraint/goal semantic requirement and link its
+local_key in requirement_refs. Hard rules link hard, favor, party-scoped semantic requirements;
+soft rules link non-hard requirements. Use only explicit sourced dates/counts, expanding a
+clear first-day reference using read-only trip dates. Do not invent quotas from relaxed/rich.
+Use this operator for 'On [date], plan exactly one sightseeing visit', including explicit zero.
+Do not use it for counts of a named venue or a specific category such as museums; preserve those
+existing meanings. Keep independent unsupported guarantees separate, even in the same sentence.
+For rules represented here, leave daily_pace.exact_count null: the application derives its pace
+projection. A generic hard count must not be left solely in soft daily_pace or marked unsupported.
+Zero sightseeing does not forbid food, generic activities or travel. A full day without planned
+activities AND travel remains time_protections, distinct from the visit-count operator.
+"""
+    )
