@@ -205,7 +205,7 @@ def validate_draft(
                     dates=(day.date,),
                 )
             for a in day.activities:
-                if a.activity_kind == "free_time":
+                if a.activity_kind == "free_time" or a.time_use == "free_window":
                     continue  # Rest placeholders may cover fixed rest; visits may not.
                 for fixed in schedule.fixed:
                     if a.start_time.utcoffset() is None:
@@ -216,9 +216,11 @@ def validate_draft(
                     if overlap > 0:
                         add(
                             "semantic_requirements",
-                            "CONFIRMED" if a.activity_kind == "main_poi" else "UNKNOWN",
+                            "CONFIRMED"
+                            if a.activity_kind == "main_poi" or a.time_use == "scheduled"
+                            else "UNKNOWN",
                             "fixed_user_time_overlap"
-                            if a.activity_kind == "main_poi"
+                            if a.activity_kind == "main_poi" or a.time_use == "scheduled"
                             else "activity_time_protection_relationship_unbound",
                             dates=(day.date,),
                             activity_ids=(a.activity_id,),
@@ -256,7 +258,7 @@ def validate_draft(
 
     # Compare every pair, including nested and cross-day intervals. Mixed awareness
     # cannot be compared safely; wall-clock or prose assumptions are not introduced.
-    for left, right in combinations(activities, 2):
+    for left, right in combinations([a for a in activities if a.time_use != "free_window"], 2):
         fields = dict(
             activity_ids=(left.activity_id, right.activity_id),
             dates=tuple(sorted({left.start_time.date(), right.start_time.date()})),
@@ -379,7 +381,11 @@ def validate_draft(
         )
 
     for activity in activities:
-        if not activity.source_place_id or activity.activity_kind in {"transport", "free_time"}:
+        if (
+            not activity.source_place_id
+            or activity.activity_kind in {"transport", "free_time"}
+            or activity.time_use == "free_window"
+        ):
             continue
         from backend.app.evidence.opening_hours import with_context_timezone
 

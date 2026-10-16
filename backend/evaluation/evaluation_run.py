@@ -94,6 +94,21 @@ def _verify(preparation, *, implementation=False):
         readiness = review_readiness(preparation["intake"], occupancy)
         if readiness != preparation["semantic_readiness"] or readiness["status"] != "ready":
             raise ValueError("Prepared semantic review coverage changed")
+    if "population_readiness" in preparation:
+        from .declared_population import PROFILE_ID, population_readiness
+
+        current = population_readiness(
+            preparation["intake"],
+            preparation["context"]["schedule_context"],
+            preparation["context"]["occupancy_reviews"],
+            preparation["context"]["density_reviews"],
+        )
+        if (
+            preparation.get("quality_profile") != PROFILE_ID
+            or current != preparation["population_readiness"]
+            or current["status"] != "ready"
+        ):
+            raise ValueError("Prepared numerical population changed")
     root = Path(preparation["directory"])
     if _read(root / "preparation.json")[0] != preparation:
         raise ValueError("Saved execution preparation changed")
@@ -279,6 +294,7 @@ def _report(
         identity_snapshot_directory=execution / "identity-snapshot",
         generated_at=generated_at,
         opening_judgment=opening_judgment,
+        quality_profile=preparation.get("quality_profile"),
     ).to_dict()
     snapshots = [
         load_snapshot(execution / name) for name in ("identity-snapshot", "evidence-snapshot")
@@ -651,6 +667,7 @@ def prepare_run(
     occupancy_reviews=None,
     route_reviews=None,
     density_reviews=None,
+    quality_profile=None,
 ):
     """Validate original material and freeze an offline, unconsumed execution package."""
     source = Path(manifest).resolve()
@@ -683,10 +700,26 @@ def prepare_run(
     prepare_density_policies(intake, density_reviews)
     for group in intake["inventory"]:
         _validate_spec(group)
+    from .declared_population import (
+        PROFILE_ID,
+        UnreadyPopulation,
+        population_readiness,
+        select_profile,
+    )
+
+    selected_profile = select_profile(intake, quality_profile)
+    population = None
+    if selected_profile == PROFILE_ID:
+        population = population_readiness(
+            intake, schedule_context, occupancy_reviews, density_reviews
+        )
+        if population["status"] != "ready":
+            raise UnreadyPopulation(population)
     implementation = [
         *Path(__file__).parent.glob("*.py"),
         Path(__file__).parents[1] / "model_references.py",
         Path(__file__).parents[1] / "pace_policy.py",
+        Path(__file__).parents[1] / "activity_semantics.py",
         Path(__file__).parents[1] / "app" / "runtime" / "token_counting.py",
     ]
     value = {
@@ -697,6 +730,11 @@ def prepare_run(
         "directory": str(Path(directory).resolve()),
         "intake": intake,
         "semantic_readiness": readiness,
+        **(
+            {"quality_profile": selected_profile, "population_readiness": population}
+            if population is not None
+            else {}
+        ),
         "options": options,
         "prices": prices,
         "identity_plan": build_identity_plan(intake),

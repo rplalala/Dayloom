@@ -1,0 +1,26 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-07",
+  "case_revision": "3",
+  "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+  "requirement_spec_ref": {
+    "path": "p172/review/r/reviewed-final.json",
+    "sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "revision": "3",
+  "reviewer_ref": "/root/case07_r03_reviewer",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-16T12:45:12.676576+11:00",
+  "rationale": "The request expresses one collective sightseeing interest: parks, neighbourhood exploration and exterior architecture, joined as preferred uses of most sightseeing time. Keep its union as one source-linked interest rather than inventing separate category requirements. Few paid visits and lower cost describe admission/spending preferences, not additional thematic venue interests. Solo travel is trip context. This inventory is not a venue relevance judgment or corpus measurement.",
+  "interests": [
+    {
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I am travelling alone on a limited budget. I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits. I am happy to prioritise lower-cost experiences.",
+      "requirement_pointer": "/soft_preferences/0"
+    }
+  ]
+}

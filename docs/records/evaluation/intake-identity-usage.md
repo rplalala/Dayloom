@@ -1,6 +1,6 @@
 # Intake, identity, usage and material workflow history
 
-This record synthesizes evaluator engineering from September 29 through October 15,
+This record synthesizes evaluator engineering from September 29 through October 16,
 2026. Current interfaces and compatibility rules belong to the
 [intake contract](../../contracts/0002-intake-identity-usage.md),
 [artifact contract](../../contracts/0001-evaluation-artifacts.md) and
@@ -1755,3 +1755,326 @@ The [Repair allocation correction](../v0-v3/v3-development.md#offline-round-allo
 retains its separate implementation scope. The researcher accepted both corrections and
 the integrated case-05 dataset with all disclosed limitations on 16 October 2026;
 the [case acceptance](../../../benchmark/case-05/report.md#acceptance) owns the decision.
+
+### Activity semantics design and accepted-case audit (2026-10-15)
+
+The design and read-only audit completed on 15 October; the researcher approved
+the activity contract, separate scoring profile and historical adapter on 16 October.
+[Issue #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
+owns scope and delivery. The [activity contract](../../0003-itinerary-transport.md#activity-semantics-contract-phase-2)
+owns the detailed definitions; this section owns the observed review/compatibility
+results. [#168](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/168)
+and [PR #171](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/171)
+remain the separate completed first-phase workflow engineering.
+
+The audit used worker source `401a873882f79cbe7897aa2f8456abd654fbf60f`, containing
+PR #171 merge `5cdc9ab1ab621b485646d8e63ced730a655340e2`. Only proposed-design
+Markdown changed. Case-04 was read from committed Git objects at published source
+`7b7b0d1fbddcfa1a3a72dc62680927f9a2358774`; no uncommitted main-worktree file was
+used and that commit was not merged into this worker. Acceptance enumeration was
+frozen at **15 October 2026 21:51:50 Australia/Sydney (10:51:50 UTC)** using case
+Issue bodies and their recorded human decisions, not closed state alone.
+
+#### Population and source checks
+
+Full automatic case acceptance was recorded for case-01, case-02, case-03,
+case-04 and case-06. Source owners are [#140/#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/140),
+[#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149),
+[#152](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/152),
+[#153](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/153) and
+[#155](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/155), respectively.
+Case-04's own later full-acceptance/publication record supersedes the coordinator's
+older primary-stage snapshot for population enumeration. Case-05's full acceptance
+remained pending in #154; case-07 remained unaccepted in #156. Cases 08-15 were
+waiting in their setup Issues. Blinded human quality ratings remain deferred.
+
+The read-only audit checked **136 indexed public file hashes**, five input hashes,
+**20 selected final itineraries** and **197 activities**: 166 explicit `main_poi`
+and 31 explicit V0 `transport` records. Every selected output is `itinerary_2`, with
+no `time_use` field and no `generic_activity`, `free_time` or unknown activity kind.
+Every audited activity has positive offset-aware start/end times on its declared
+date. Occurrence IDs are unique, primary records have names, and V0 structured
+transport endpoints exist on the same day without duplicate selected endpoint
+pairs. These are shape/linkage observations, not factual venue/route verification.
+
+Original result SHA-256 values below come from index-to-source bindings; the
+public itinerary values are source-linked subtrees, not newly generated results.
+Case-04 declares recommendation-provenance redactions outside activity claims.
+Public JSON references were expanded for inspection, with hash checks and
+pointer-aware cycle handling. No scorer or original native replay ran.
+
+| Accepted selection | Main visits V0/V1/V2/V3 | V0 transport activities | Indexed files | Recorded generation source |
+| --- | --- | ---: | ---: | --- |
+| case-01, batch revision 3; accepted 14 October | 9 / 8 / 7 / 6 | 6 | 28 | V0-V2 `b3ddccd`; selected V3 `a970002` |
+| case-02, material-r2; accepted 14 October | 9 / 10 / 8 / 6 | 6 | 17 | `8808340`; evaluation source `ab78e0e` |
+| case-03, revision 1; accepted 15 October | 11 / 9 / 11 / 8 | 7 | 36 | `f49503a` |
+| case-04, revision 2; accepted 15 October | 10 / 9 / 8 / 6 | 8 | 20 | `941f498`, recorded by the published case report |
+| case-06, revision 5; accepted 15 October | 8 / 8 / 7 / 8 | 4 | 35 | V0-V2 `f49503a`; selected V3 a2 `2f53f87` |
+
+Case-01's API-only saved profile is `rtpeval_verified_quality_2` and its accepted
+opening supplement uses `rtpeval_access_quality_4`. Case-03/06 save the latter
+profile and hash `c24741e2394f2bcf6fda12824e7ed887cae1f7dab962ccffa2a3af17aa8b9af5`.
+Case-04's published report records verified-quality 2, requirement/schedule rules 4,
+route rules 3 and density rules 2; its condensed public quality view omits the
+native profile hash. Case-02 publishes condensed primary/opening views and native
+report content/source hashes, without an exact native profile/hash field. Its
+private original report remains authoritative; this audit did not open/replay it
+or infer omitted policy metadata. Exact rendered prompts, provider wire-schema
+identifiers and model telemetry were not re-attested from private captures.
+
+Current indexed views and approved pre-status index hashes can differ because
+existing acceptance metadata or the PR #171 presentation refresh is already
+recorded. Neither version was rewritten here. Exact current input/result bindings:
+
+| Case | Accepted input SHA-256 |
+| --- | --- |
+| case-01 | `81fd4a0cec27396d38e759cbcc8ca51e95a5507922ac32cc27c1eff75708de88` |
+| case-02 | `afd045d47b93bef9cc3743bcd2512805bc5b85cf35d1e0b97d23a740e53c9c1b` |
+| case-03 | `ffc662f061f98e2b7ab138d05e9e0ba0ced53468017c57a8cafd1ad9d57150e2` |
+| case-04 | `06ea61ff07fed40a3abef8c7bbbc42676f99d7d28db4805efd5f627afa4be4b7` |
+| case-06 | `fdd5b2c9c0f80ca220dbed91108058b619c5bd9232363c928bd231f8b976796a` |
+
+| Case / version | Original selected result SHA-256 |
+| --- | --- |
+| case-01 / V0 | `940b97ce8c61cfd6c318994f6244b6d41379f033d5f798db2d02919ce2430db9` |
+| case-01 / V1 | `7d8084c576d303468e5687c5102eec26d481bc47a64555cbe3d8b32c44eb990d` |
+| case-01 / V2 | `11c37727556182fd2edd021d521bd14e03cfbf26490127c305e48a2c242e3a3e` |
+| case-01 / V3 | `c976a430328c7f05161bcc686491a99937fd6a868daffc943a7a5de71112f828` |
+| case-02 / V0 | `db5322218217c978bc759f45fca37ca9dd65674af0aecfcd1dd4f1685ed37ca9` |
+| case-02 / V1 | `f71568373a199880b63b1f4fd50c71191152c7ca22e95c80907ecf6052f14848` |
+| case-02 / V2 | `43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897` |
+| case-02 / V3 | `a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb` |
+| case-03 / V0 | `e4ece948cb27e790ba8bf495ac98eebe484cdb0e0e506dad1d518a000ba84407` |
+| case-03 / V1 | `2684f4c8dc76c51362d99975b42a80ed8a0621a39ea22096dc15967b815e4e8f` |
+| case-03 / V2 | `0f289c8561dbfb11465fed38c75c684fbf4cd8b5904837fd2cab24c92232a204` |
+| case-03 / V3 | `6d6b1281d3fac651f5b290ed51776e09ded5414dff595b4c038a1381b069b569` |
+| case-04 / V0 | `539d12725d3a98966cf05f726969a3a830ccc6f7900d0c04a3c73f61cdd0aad4` |
+| case-04 / V1 | `f018e695651ef51d6e106f63ee2ac1ee1f432cd6d5cc60796cd1211dca1f12ff` |
+| case-04 / V2 | `2b1161d9cfd459ea5310f68700db8e92142f41d142bfdb9269d88a022bf12056` |
+| case-04 / V3 | `ccc8fcc81fc9aa3027d3ffd3de8d49091568465389d5cd3977faaf86f3e021a4` |
+| case-06 / V0 | `326246140a2ca791d6bd73433a606c80cc1eccce354e85ea9a2d36fc814c5942` |
+| case-06 / V1 | `8e61f4d5aceb0188c5252353c5ddb8cda353ec822b9919fd793592e71d398fc6` |
+| case-06 / V2 | `0c22b9a3be6d5a09d7ac1a9794363df39f5e7a05c066c10ad0930ce19c6ac962` |
+| case-06 / V3 | `23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e` |
+
+#### Reuse and refresh disposition
+
+| Case | Historical accepted selection | Role/time-use encoding compatibility | Optional new-profile evaluation / new-writer dataset |
+| --- | --- | --- | --- |
+| case-01 | Reuse unchanged, including the separately retained primary/opening and V3 selections. | Explicit visits/transport permit a policy-labelled legacy scheduled view; no generic intent must be guessed. Preserve V3's different generation source. | Reuse generation is a candidate for revised evaluation. New reports/bindings are required if a new profile is selected. A strict new-writer batch requires new generation. |
+| case-02 | Reuse unchanged, retaining the selected V1 a2 and the recorded V3 coverage limitation. | The same explicit-role compatibility holds. Public condensed reports do not establish every private policy/evidence binding. | Reuse generation is possible in principle; inspect native bindings before authorizing revised evaluation. Missing public provenance/profile metadata is not a reason by itself to regenerate. |
+| case-03 | Reuse unchanged at revision 1. | Explicit selected-final roles and intervals support the same legacy view; unscheduled references remain separate. | New-profile scoring would be a new evaluation, not a compatibility refresh. Regenerate only for a separately chosen new-writer dataset. |
+| case-04 | Reuse the fully accepted published revision 2 unchanged. | All 33 nontransport activities are explicit visits; eight V0 journeys are structured. Source/redaction scope was checked from the pinned public tree. | Generation reuse is eligible for consideration. Native private bindings were not independently restored here; do not promise direct snapshot import or score equality. |
+| case-06 | Reuse unchanged at revision 5, with original V0-V2 and authorized V3 a2. | Explicit visits/transport support the same legacy view. V3 a2 must not be replaced by the original failed V3 attempt. | Reuse generation is a candidate for revised evaluation; original accepted reports remain immutable. A new-writer cohort is a separate decision. |
+
+The compatibility conclusion is deliberately narrow: **none of these five cases
+needs a generation rerun solely to recover the missing role/time-use meaning that
+blocks case-07**. At the 15 October design audit, a policy-labelled legacy adapter
+was feasible in principle for these explicit records but was not yet implemented.
+No output can be described as having actually emitted `itinerary_3` or `time_use`.
+
+Adopting a candidate-population score profile can change totals even when an
+itinerary's role/occupancy meaning is unchanged. Reuse of generation therefore
+must not be confused with reuse of an old score or approval to calculate a new
+one. Current evidence/import paths require source/version compatibility; this
+shape audit does not establish a zero-call corrected-primary path. Private archive
+integrity/restoration and factual applicability were not revalidated in this task.
+
+If a future study explicitly requires a common new generation schema/prompt/code
+baseline, all 20 historical outputs predate that writer and a separate complete
+new batch may be needed. That is a dataset design choice, not an automatic repair
+requirement. Retain the old accepted batch and every real attempt; do not choose
+replacements for having higher scores. Case-05 is outside this accepted population;
+its compatibility cannot be inferred from another worker's partial handoff.
+
+#### Case-07 actual review and remaining uncertainty
+
+After the phase-1 delivery, the researcher separately authorized actual fresh-context
+agent review. Seven exact submitted-final sources were reviewed using the complete
+request and claim-only itinerary context. The actual actor was
+`/root/case07_activity_review`, requested `gpt-6.1-sol / high`; independent runtime
+model proof, complete transcript and tokens/billing remain unavailable. The review
+completed at `2026-10-15T20:16:37.094360+11:00`. Agent review is not human review.
+The frozen occupancy excerpt was found to contain only its anchor; a separately
+hashed full-rule addendum was supplied before completion, without changing frozen
+inputs, exposing scores or steering a verdict.
+
+| Version / activity | Actual role | Actual occupancy |
+| --- | --- | --- |
+| V1 `paris-20261015-ile-de-la-cite-stroll` | transition | unresolved |
+| V2 `day1-outdoor` | unresolved | unresolved_role |
+| V2 `day2-neighbourhood` | transition | uncommitted |
+| V2 `day2-outdoor` | unresolved | unresolved_role |
+| V2 `day3-outdoor` | unresolved | unresolved_role |
+| V2 `day3-street-walk` | transition | unresolved |
+| V3 `day3-neighborhood-walk` | transition | uncommitted |
+
+Source/provenance validation, native finalization and fresh offline preparation
+passed. Missing-review counts are zero; five activities remain reviewed-unresolved.
+No revised score was computed. Original scores remain V0=90 and V1-V3 unavailable.
+The three unspecified park/wandering blocks and two unclear time-use decisions
+cannot receive a lossless new declaration from the saved text. Their conditional
+new-writer examples in the contract are not adopted historical edits.
+
+Raw role review SHA-256 is
+`b2144b20525ec2f89988d88f9a95f1cbac7792a39b2403780d4e51d8581ddf32`;
+occupancy review is
+`29c833092da8134680401ff259e1cbde642f812afbd93f1267a2ffbc3959dc02`;
+assistance statement is
+`f12dc723d1441c40f27aebfa930c26f3e36563391e26ba1cf83bbdb6255468bb`.
+The new unexecuted preparation digest is
+`9f65bd174565853fceabb46504de0c4d4420b0061864f46d1ec90c70c336c600`.
+Old/new identity plans have the same 27 request keys and 28 reference IDs, but
+intake hashes differ and the native old-snapshot guard returns
+`Snapshot plan mismatch`. No snapshot was imported, relabelled or rebound.
+
+Local retained evidence identifiers are `benchmark/scratch/case-07/r171/` for
+actual review/preparation and `benchmark/scratch/case-07/d172/` for this audit's
+Issue snapshots, pinned public case-04 tree, expanded source/hash inventory,
+static linkage checks and preservation manifest. They are not published navigation
+or alternative current specifications. Complete original accepted/private evidence
+remains in its original owners; this task does not authorize cleanup or archival.
+
+#### Decision and verification boundary
+
+The approved design separates explicit activity/time-use declarations, the
+candidate-population score profile and source-labelled historical adaptation.
+The 15 October audit itself authorized no implementation or data refresh; subsequent
+16 October approval covers implementation and offline engineering validation only.
+
+The engineering audit uses only saved JSON/Markdown and committed Git objects.
+It performs no Planner generation, semantic-review dispatch, factual acquisition,
+scoring, score replay or new paid/provider call. The earlier actual review is a
+separate authorized event. All **5,684 protected original files** retained their
+sizes and SHA-256 hashes across the documentation task; all 23 pinned case-04
+files also match their committed Git objects. The 16 added links passed tracked
+target/heading or known Issue/PR checks, and `git diff --check` passed.
+PR #171's scoped regression and unresolved full-suite limits
+are carried forward; no full-green claim is made. This is not a formal benchmark
+comparison or final research conclusion.
+
+The audit selected the case worker as the design and implementation owner. It did
+not itself accept case-07 or authorize execution. The subsequent implementation
+and researcher acceptance are recorded below and in the case report; the audit's
+historical evidence and unresolved original-input results remain unchanged.
+
+### Activity semantics implementation and offline validation (2026-10-16)
+
+The researcher approved Issue #172's activity contract, separately versioned
+scoring profile and source-labelled historical adapter in the existing
+`codex/case-71112` worktree. The fixed review base is
+`cd03f028e1600f6ca65d6f3635ad59522514c416`. The accepted contract and implementation
+boundaries belong to [activity semantics](../../0003-itinerary-transport.md#activity-semantics-contract-phase-2);
+the accepted-case selections and case-07 source identities remain in the audit above.
+
+The implementation carries `itinerary_3` role/time use through provider DTOs,
+prompts, mapping, normalization, presentation, schedules, permissioned V3 Repair
+and independent evaluation. The normal preparation/report path selects
+`rtpeval_declared_population_1` for new-wire batches and freezes source-linked
+candidate populations before acquisition. Historical defaults remain available;
+legacy-derived meanings are identified as policy derivations rather than emitted
+fields. Unresolved membership blocks this profile, while missing factual evidence
+keeps UNKNOWN candidates. No real case was rescored to demonstrate this behavior.
+
+Local implementation/test history:
+
+| Commit | Scope |
+| --- | --- |
+| `624f89d` | Activity declarations, source-labelled readers, finite-population profile and synthetic boundary tests. |
+| `51c1d27` | Review correction: omit free windows from V3 occupancy validation; retain the Product field allowlist; add N/A controls. |
+| `e5a8dae` | Audit the pure shared grammar explicitly in the evaluator import-isolation guard. |
+| `8d769a3` | Migrate the synthetic SDK-capture fixture to the current provider wire. |
+| `e8f185f` | Exclude free windows from scheduled summaries and supporting activities from new-wire required-primary fulfillment. |
+
+Tests followed red/green cycles at public DTO/schema, mapping, schedule/Repair,
+normal preparation/report CLI and legacy-reader seams. Independent Standards and
+Spec reviews ran after implementation commits. Spec found one P1: V3's validator
+still treated free-window intervals as occupied. Its synthetic reproduction passed
+after correction. Output-summary controls later reproduced two declaration mismatches
+before their correction. Both review axes rechecked the final code and retained
+zero unresolved findings.
+
+The worker's focused DTO/profile/execution gate passed 311 synthetic tests;
+the presentation/Repair and output-summary gates each passed 59, and seven
+candidate-policy controls covered UNKNOWN retention, verified N/A and wholly N/A
+output. These overlapping gates are not additive. Frontend validation passed 101
+tests / 13 files, production build and lint; backend/tool Ruff passed.
+
+The worker broad run was segmented: 2,007 passes / one skip preceded an unchanged
+20-second help timeout; the other segment produced 2,291 passes / 15 skips and
+an unchanged 60-second documented-workflow timeout. Isolated rechecks passed all
+11 help tests and the complete documented workflow. This established affected
+coverage but not a final-source uninterrupted full gate at that checkpoint.
+Sixteen environment skips (two symlink privileges, five alternate-volume roots,
+nine opt-in PostgreSQL checks) remained unverified. Restricted-sandbox uv startup
+failures were distinguished from host passes; no test timeout, credentials,
+system permissions or project configuration were changed.
+
+Worker preservation checks retained 5,684 original file hashes and read the
+audited 20 outputs / 197 activities without mutation. Case-04 came from pinned
+committed Git objects, excluding main's uncommitted content. The current-main
+validation below is separate and supersedes the worker full-suite limitation
+only for the integrated tree; original logs and results retain their scope.
+
+At this worker implementation checkpoint, the new-writer flow had synthetic
+offline coverage and historical snapshot/receipt reuse was not established.
+The five reviewed-unresolved historical case-07 activities were not retroactively
+declared: original V0=90 and unavailable V1-V3 totals remained unchanged. This
+implementation stage performed no actual generation, case-score replay, revised
+evaluation, semantic-review dispatch or paid/provider call. The subsequently
+accepted new-input revision and its limitations belong to the
+[case-07 acceptance](../../../benchmark/case-07/report.md#acceptance);
+case-11/12 remain unstarted.
+
+#### Local main integration and accepted case-07
+
+On 16 October the researcher accepted case-07 execution revision 3 / input
+revision 2 with the limits in its case report and authorized local integration.
+The target main worktree was clean at
+`73686a071fa4fda5b5c68b4b451a38f8b973e467`. The engineering change is the selective
+net implementation tree through `2b6a80b437e30dd14826db92f447d52627820e24`;
+the case material uses the corrected final tree through `0f1321c`.
+Worker history containing the superseded public raw model packet was not merged.
+Main's existing Repair deadline corrections retain identical bytes. The CLI
+resolution keeps main's ASCII-safe GBK output and the new population-readiness
+diagnostic; a strict-GBK test verifies rejection before HTTP client construction
+or output-directory creation.
+
+The main integration's focused gate passed 860 tests. A complete backend run then
+passed **4324 tests, with 16 skipped**, in 3868.44 seconds;
+the application-source fingerprints before and after that run are identical.
+One pytest cache-directory permission warning did not affect test outcomes.
+An earlier long-root run encountered a synthetic opening failure when its raw
+snapshot path reached 260 characters. The isolated test failed with that root
+and passed on the same source with a short root. Only that owned partial run was
+stopped; both probe results remain saved. The successful complete run used a
+short root. Afterward Ruff reformatted one output-summary comprehension;
+AST equality passed and 55 affected tests passed on the formatted tree.
+This sequence supplies full behavioral coverage plus the separate formatting
+gate, rather than claiming an uninterrupted run on the final formatted bytes.
+The current frontend gate passed 101 tests / 13 files, production build and lint.
+Its sandbox attempt failed at Vite filesystem realpath before test execution;
+the unchanged host run passed. Environment-dependent skips remain unverified.
+External sockets and real-case private reads were guarded during synthetic tests;
+intentional guard probes made no actual project-provider call. No timeout or
+project configuration was changed.
+
+Current-main non-scoring checks reproduce six saved native reports, preserve the
+declared population in a fresh unexecuted preparation, and read 28 selected
+outputs / 267 activities, including 24 legacy outputs. Preparation fingerprints
+are newly bound to the consumer; the original preparations, scores and receipts
+were not rewritten or replayed. Twenty prior fingerprint differences arise only
+from checkout line endings; the actual evaluator text difference is the retained
+GBK-safe CLI. Preservation verifies 965 protected tracked main files, 45 other-case
+private archive files, 9,105 original worker private files, 3,537 frozen selected
+files and 21 final archive files identical in worker and main. Both closed primary
+receipts (177 historical / 225 selected files) and all 37 indexed public materials
+pass hash/source-equivalence checks. Raw model packets remain private; selected
+judgments are unchanged.
+
+Integration checks and acceptance metadata are retained adjacent to the immutable
+archive in `benchmark/scratch/case-07/integration-20261016/`; synthetic test logs
+and XML are in `.scratch/case07-integration-20261016/`. These are local evidence
+identifiers. They do not create a published navigation dependency. Git delivery
+and Issue closure remain separate; no generation, actual case scoring or paid
+project call occurred, and case-11/12 remain unstarted.

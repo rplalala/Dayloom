@@ -1,0 +1,667 @@
+{
+  "schema_version": "case07_all_attempt_resources_1",
+  "generation_attempts": [
+    {
+      "cohort": "current",
+      "attempt_id": "case-07-r03-v0-01",
+      "version": "v0",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 59.20299999997951,
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 19349,
+        "output_tokens": 7904,
+        "total_tokens": 27253,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 19349,
+        "output_tokens": 7904,
+        "total_tokens": 27253,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "0.006370475",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 2
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/usage.json",
+          "sha256": "4320fddf972cd9bdcd20e6081d5f46da8c19a2d0606382d420393177d74d8acf",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/cost-report.json",
+          "sha256": "d1f7e2ec37989730ae23b8112a80befff578fe8419c9843614711a7e206d65c8",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/producer-completion.json",
+          "sha256": "ca3c904e9241f03fd2367bc473b930cd5691299d2e7d171e41b0fb922d301ae9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "current",
+      "attempt_id": "case-07-r03-v1-01",
+      "version": "v1",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 125.90600000007544,
+        "model_calls": 4,
+        "http_sends": 59,
+        "input_tokens": 49665,
+        "output_tokens": 11111,
+        "total_tokens": 60776,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 4,
+        "http_sends": 59,
+        "input_tokens": 49665,
+        "output_tokens": 11111,
+        "total_tokens": 60776,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "1.641992155",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 4,
+        "google": 54,
+        "open_meteo": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/usage.json",
+          "sha256": "e59db23ea55c756750b3994518cbdd80328de0da768088cd49057ae087da68c8",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/cost-report.json",
+          "sha256": "058ddc9b329bd6922fb6990ea2c96cfc877d8b27ea6f0bc739a513e68d7df4e0",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/producer-completion.json",
+          "sha256": "e747082abeda8226989c7d6b3efe3bfad39c84afc88161c1168c1ebb31cccc43",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "current",
+      "attempt_id": "case-07-r03-v2-01",
+      "version": "v2",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 169.03099999995902,
+        "model_calls": 10,
+        "http_sends": 99,
+        "input_tokens": 66667,
+        "output_tokens": 14773,
+        "total_tokens": 81440,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 11,
+        "embedding_total_tokens": 11,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 10,
+        "http_sends": 99,
+        "input_tokens": 66667,
+        "output_tokens": 14773,
+        "total_tokens": 81440,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 11,
+        "embedding_total_tokens": 11
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.33514519",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 10,
+        "google": 85,
+        "openai": 1,
+        "open_meteo": 1,
+        "official_website": 3
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/usage.json",
+          "sha256": "5f41f7f6bb78cae3ebd672184dbe9ddb04deaf739bc3b6ea649565ff09802e08",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/cost-report.json",
+          "sha256": "0414bcd3bc5840ce6b1c9436e8bb2c7bdfdcea46d5f04bbfcb99a1813aea9a6b",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/producer-completion.json",
+          "sha256": "98254f5a982369ff5a14a70e3d99a76d0fbb468331e7cbdebe1c32fce53aece3",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "current",
+      "attempt_id": "case-07-r03-v3-01",
+      "version": "v3",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 126.34299999999348,
+        "model_calls": 5,
+        "http_sends": 76,
+        "input_tokens": 49283,
+        "output_tokens": 10699,
+        "total_tokens": 59982,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 12,
+        "embedding_total_tokens": 12,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 5,
+        "http_sends": 76,
+        "input_tokens": 49283,
+        "output_tokens": 10699,
+        "total_tokens": 59982,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 12,
+        "embedding_total_tokens": 12
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.00930739",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 4,
+        "google": 70,
+        "openai": 1,
+        "open_meteo": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/usage.json",
+          "sha256": "69081919f2ca74fd250d6797b1f72fb9d6b07873a2bbf795bd0329b26b6ed117",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/cost-report.json",
+          "sha256": "a42225326ae8c82adc945726dc80fa1c6542599fa584784fec0cb0bdf1ed532d",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/producer-completion.json",
+          "sha256": "adf97ad8776314182f90ffc3aacf1b7500a9643c113f49279b22dca3991cff9f",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "historical",
+      "attempt_id": "case-07-v0-01",
+      "version": "v0",
+      "status": "failed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 27.68700000003446,
+        "model_calls": 1,
+        "http_sends": 1,
+        "input_tokens": 9403,
+        "output_tokens": 2875,
+        "total_tokens": 12278,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 1,
+        "http_sends": 1,
+        "input_tokens": 9403,
+        "output_tokens": 2875,
+        "total_tokens": 12278,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "0.00154974",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/work/primary-20261015-01/captures/v0/usage.json",
+          "sha256": "8598dfa43b4761cad1990beb0ec70748bfcfba7e47fca3c01c3da51aff26d886",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/primary-20261015-01/captures/v0/cost-report.json",
+          "sha256": "66e45c04ea55c9291b564e8a87323ac1becae97cc20947751d6e350a78aee48c",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/primary-20261015-01/captures/v0/producer-completion.json",
+          "sha256": "951d47e7e68451a62e07412004b2f152b782ede8ea07379714cba745f4ab7d95",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "historical",
+      "attempt_id": "case-07-post166-v0-02",
+      "version": "v0",
+      "status": "completed",
+      "order": 2,
+      "prior_attempt_id": "case-07-v0-01",
+      "selected_by_cohort_first_dispatch": false,
+      "metrics": {
+        "elapsed_seconds": 61.71899999992456,
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 19318,
+        "output_tokens": 8328,
+        "total_tokens": 27646,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 2,
+        "http_sends": 2,
+        "input_tokens": 19318,
+        "output_tokens": 8328,
+        "total_tokens": 27646,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "0.005181695",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 2
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v0/usage.json",
+          "sha256": "74240184fd7d4542963653b993d2a2f6c53842e6a2808a8d44f508f559f1e468",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v0/cost-report.json",
+          "sha256": "ed9c67448b386fe000c5769e1e080215594bb584b1fe3026003f86a82ecd4e96",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v0/producer-completion.json",
+          "sha256": "a6c920154dfde00235efe1e008bf258050ba0d2c470bacd2dca3726603372b30",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "historical",
+      "attempt_id": "case-07-post166-v1-01",
+      "version": "v1",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 129.34299999999348,
+        "model_calls": 5,
+        "http_sends": 82,
+        "input_tokens": 51631,
+        "output_tokens": 12313,
+        "total_tokens": 63944,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 5,
+        "http_sends": 82,
+        "input_tokens": 51631,
+        "output_tokens": 12313,
+        "total_tokens": 63944,
+        "embedding_calls": 0,
+        "embedding_input_tokens": 0,
+        "embedding_total_tokens": 0
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "2.08250993",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 5,
+        "google": 76,
+        "open_meteo": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v1/usage.json",
+          "sha256": "7993e1a030d18e1c8612ffbe628144f5cc2d8338d4d07156b6dc1167ae77bb11",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v1/cost-report.json",
+          "sha256": "cc41f15338932f5c9980af6c2314e501d2cfa1a4ce54d4b512a192a0cc086bb2",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v1/producer-completion.json",
+          "sha256": "4dfc22fae05df45e6e5c95f8583bf427f89cc98479727c049bcff0aa2969f0e6",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "historical",
+      "attempt_id": "case-07-post166-v2-01",
+      "version": "v2",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 122.26500000001397,
+        "model_calls": 6,
+        "http_sends": 75,
+        "input_tokens": 51100,
+        "output_tokens": 11738,
+        "total_tokens": 62838,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 6,
+        "http_sends": 75,
+        "input_tokens": 51100,
+        "output_tokens": 11738,
+        "total_tokens": 62838,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "1.92189031",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 5,
+        "google": 68,
+        "openai": 1,
+        "open_meteo": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v2/usage.json",
+          "sha256": "afb82d2095f673103ff1d1c37ad4fbe5273a69bf80dc30bde79fe45ef6dd778a",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v2/cost-report.json",
+          "sha256": "bc74e263d621187fc306c500142586a55e089b6d36abcaa1f5a73f112f2150ca",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v2/producer-completion.json",
+          "sha256": "610d31f1912b9ed43a6046397cccf2f548aabb928fee0d8cc613b670f94d6538",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "historical",
+      "attempt_id": "case-07-post166-v3-01",
+      "version": "v3",
+      "status": "completed",
+      "order": 1,
+      "prior_attempt_id": null,
+      "selected_by_cohort_first_dispatch": true,
+      "metrics": {
+        "elapsed_seconds": 129.0470000000205,
+        "model_calls": 6,
+        "http_sends": 75,
+        "input_tokens": 51524,
+        "output_tokens": 12476,
+        "total_tokens": 64000,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2,
+        "cache_hits": 0
+      },
+      "observed_subtotals": {
+        "model_calls": 6,
+        "http_sends": 75,
+        "input_tokens": 51524,
+        "output_tokens": 12476,
+        "total_tokens": 64000,
+        "embedding_calls": 1,
+        "embedding_input_tokens": 2,
+        "embedding_total_tokens": 2
+      },
+      "timing_scope": "selected_invocation_through_cleanup",
+      "repair": {
+        "model_calls": 0,
+        "http_sends": 0,
+        "total_tokens": 0,
+        "observed_token_subtotal": 0,
+        "scope": "subset_counted_once"
+      },
+      "reference_usd": "1.92231231",
+      "actual_usd": null,
+      "unpriced_event_count": 0,
+      "provider_sends": {
+        "azure_foundry": 5,
+        "google": 68,
+        "openai": 1,
+        "open_meteo": 1
+      },
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v3/usage.json",
+          "sha256": "4fc87390dd1138ea3f3670dae6902b0ce268f3a4467a72048bacba94810035db",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v3/cost-report.json",
+          "sha256": "e5b5775868ae54564af536282e2428fa7d3d40362e8dedea97e6f316bb7091a7",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/work/post166-prepare-20261015-01/material/captures/v3/producer-completion.json",
+          "sha256": "f6e496683b42d25fec0be25cef564e9cd471d5b2f1c73e141d8079a05f305a55",
+          "json_pointer": ""
+        }
+      ]
+    }
+  ],
+  "primary_executions": [
+    {
+      "cohort": "historical",
+      "namespace": "oracle",
+      "model_calls": 2,
+      "google_sends": 53,
+      "model_sends": 2,
+      "input_tokens": 14854,
+      "output_tokens": 1581,
+      "total_tokens": 16435,
+      "reference_usd": "1.1286471",
+      "retries": 0,
+      "timing": {
+        "finished_at": "2026-10-15T02:59:34.555903+00:00",
+        "started_at": "2026-10-15T02:59:04.825112+00:00"
+      },
+      "receipt_sha256": "00f8986303dab36b4e0f0fcbee0a0f065c4c76849a0a6c028a16ea49b769d711",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p166/e/execution/report.json",
+          "sha256": "fb28be88d5e259481c20ff107dba6df25330ae0d13a8af9b0c5c280c4fe61c1d",
+          "json_pointer": "/usage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p166/e/execution/usage.json",
+          "sha256": "9f8bdeede2a25602ecf628b736c20f894291c026603354b99d5dd8a506965f99",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p166/e/execution/receipt.json",
+          "sha256": "00f8986303dab36b4e0f0fcbee0a0f065c4c76849a0a6c028a16ea49b769d711",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "cohort": "current",
+      "namespace": "oracle",
+      "model_calls": 2,
+      "google_sends": 69,
+      "model_sends": 2,
+      "input_tokens": 30532,
+      "output_tokens": 2206,
+      "total_tokens": 32738,
+      "reference_usd": "1.38191935",
+      "retries": 0,
+      "timing": {
+        "finished_at": "2026-10-16T02:31:52.695950+00:00",
+        "started_at": "2026-10-16T02:31:15.787247+00:00"
+      },
+      "receipt_sha256": "42c52a93c52c77a292db155814ff1f763dbebc30b73890b05b5206147f01f1c9",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/usage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/usage.json",
+          "sha256": "e63f3ae7c207b6c2d39af34ec65022f7eecd8df696bd8bbda12e808e203fbb1c",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/receipt.json",
+          "sha256": "42c52a93c52c77a292db155814ff1f763dbebc30b73890b05b5206147f01f1c9",
+          "json_pointer": ""
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "generation_reference_usd": "11.926259195",
+    "primary_reference_usd": "2.51056645",
+    "case_reference_usd": "14.436825645",
+    "case_allowance_usd": "40",
+    "remaining_reference_usd": "25.563174355",
+    "generation_model_calls": 41,
+    "generation_total_tokens": 460157,
+    "generation_http_sends": 471
+  },
+  "interpretation": [
+    "Historical and revised inputs have separate source cohorts; continuations do not replace the failed first dispatch.",
+    "Failed elapsed time remains a separate failure cohort. Guard elapsed and native invocation elapsed are different boundaries.",
+    "Repair is a subset counted once. Model calls include embedding invocations; HTTP sends are transport entries, not invoices.",
+    "Reference costs use saved dated price bindings; actual account invoices and external Codex tokens/billing are unavailable.",
+    "This post-primary stage made zero project API calls, generation invocations and scorer invocations."
+  ]
+}

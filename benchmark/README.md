@@ -124,6 +124,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
+| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs, unavailable paired scoring and unverified affordability](case-07/report.md#acceptance) |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -353,7 +354,9 @@ entries, rather than live files beside the compressed archive.
 
 Dates and durations are inclusive. Accepted inputs retain their consumed bytes and
 dates; their selected reports are indexed [above](#accepted-selections). Case-05
-uses the approved 2026-10-16 through 2026-10-20 interval. Before executing a pending
+uses the approved 2026-10-16 through 2026-10-20 interval; case-07's accepted
+[input revision 2](case-07/requirements/input-r02.json) uses 2026-10-22 through 2026-10-24.
+Before executing a pending
 input, revalidate its stored dates against the actual application reference date.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |

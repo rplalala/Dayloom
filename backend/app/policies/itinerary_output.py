@@ -4,6 +4,7 @@ from dataclasses import replace
 
 from pydantic import BaseModel, ConfigDict
 
+from backend.app.policies.visit_multiplicity import is_primary_visit
 from backend.app.schemas.itinerary_projection import V1Itinerary
 
 
@@ -15,16 +16,18 @@ def normalize_activity_order(itinerary):
         ordered = sorted(enumerate(day.activities), key=lambda item: item[1].start_time)
         for new_index, (old_index, _) in enumerate(ordered):
             prefix = f"days[{day_index}].activities"
-            paths[f"{prefix}[{old_index}].estimated_cost"] = (
-                f"{prefix}[{new_index}].estimated_cost"
-            )
+            paths[f"{prefix}[{old_index}].estimated_cost"] = f"{prefix}[{new_index}].estimated_cost"
         days.append(day.model_copy(update={"activities": [a for _, a in ordered]}))
     result = itinerary.model_copy(update={"days": days})
     if isinstance(result, V1Itinerary):
-        result.set_cost_projections(tuple(
-            replace(item, field_path=paths.get(item.field_path, item.field_path))
-            for item in itinerary.cost_projections
-        ))
+        result.set_cost_projections(
+            tuple(
+                replace(item, field_path=paths.get(item.field_path, item.field_path))
+                for item in itinerary.cost_projections
+            )
+        )
+    if result.output_version == "itinerary_3":
+        type(result).model_validate(result.model_dump())
     return result
 
 
@@ -42,7 +45,14 @@ class OutputRoleSummary(BaseModel):
 
 def output_role_summary(itinerary, supply):
     activities = [a for day in itinerary.days for a in day.activities]
-    scheduled = {a.source_place_id for a in activities if a.source_place_id}
+    scheduled = {
+        a.source_place_id for a in activities if a.source_place_id and a.time_use != "free_window"
+    }
+    required_visits = (
+        {a.source_place_id for a in activities if a.source_place_id and is_primary_visit(a)}
+        if itinerary.output_version == "itinerary_3"
+        else scheduled
+    )
     references = {
         r.source_place_id for r in itinerary.reference_recommendations if r.source_place_id
     }
@@ -50,7 +60,9 @@ def output_role_summary(itinerary, supply):
         scheduled_place_ids=tuple(sorted(scheduled)),
         reference_place_ids=tuple(sorted(references)),
         unused_candidate_ids=tuple(sorted(set(supply.selected_place_ids) - scheduled - references)),
-        unscheduled_required_ids=tuple(sorted(set(supply.required_canonical_ids) - scheduled)),
+        unscheduled_required_ids=tuple(
+            sorted(set(supply.required_canonical_ids) - required_visits)
+        ),
         unlinked_activity_ids=tuple(a.activity_id for a in activities if not a.source_place_id),
         supply_not_scheduled_ids=tuple(sorted(set(supply.selected_place_ids) - scheduled)),
         references_outside_supply_ids=tuple(sorted(references - set(supply.selected_place_ids))),
@@ -61,7 +73,7 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
     """Validate V0 output or restore supplied V1-V3 source facts at acceptance.
 
     Missing scheduled REQUIRED visits are observable in OutputRoleSummary, not repaired.
-    Historical domain results keep defaults; real model outputs require itinerary_2.
+    Historical domain results keep defaults; real model outputs require itinerary_3.
     """
     validated = type(itinerary).model_validate(itinerary.model_dump())
     activities = [a for d in validated.days for a in d.activities]
@@ -85,7 +97,7 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
         if activity.source_place_id is not None and activity.source_place_id not in ledger:
             raise ValueError("Activity identity is outside the supplied candidate ledger")
         if (
-            validated.output_version == "itinerary_2"
+            validated.output_version in ("itinerary_2", "itinerary_3")
             and activity.place_name is not None
             and activity.source_place_id is None
         ):

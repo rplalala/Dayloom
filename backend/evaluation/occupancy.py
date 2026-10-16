@@ -381,6 +381,13 @@ def prepare_occupancy(projection, obligations, timezone=None, reviews=()):
             commitments.append(_activity_unit(activity, "primary_visit", timezone))
         elif role == "transport":
             continue  # Only the version-selected claims below establish transport occupancy.
+        elif (
+            role == "transition"
+            and not decision
+            and projection.get("wire_version") == "itinerary_3"
+        ):
+            if activity["original"]["time_use"] == "scheduled":
+                commitments.append(_activity_unit(activity, "fixed_generic", timezone))
         elif role == "transition" and decision and decision["occupancy"] == "committed":
             commitments.append(_activity_unit(activity, "fixed_generic", timezone))
         elif role == "transition" and decision and decision["occupancy"] == "uncommitted":

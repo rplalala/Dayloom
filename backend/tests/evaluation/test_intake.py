@@ -871,6 +871,9 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
     # #87 isolates credential/HTTP access in the formal execution boundary.
     # Token counting is a pure offline helper, not a planner or evidence client.
     execution_imports = {
+        "projection": {"backend.activity_semantics"},  # Pure declaration grammar only.
+        "declared_population": {"backend.activity_semantics"},
+        "activity_semantics": {"typing"},
         "daily_density": {"backend.pace_policy"},  # Numeric rules only; no planner state.
         "evaluation_run": {"httpx"},
         "opening_run": {"httpx"},  # #90 isolates one incremental model attempt here.
@@ -886,7 +889,7 @@ def test_no_planner_import_or_network_on_intake(batch, monkeypatch):
         "suite_research": {"base64", "copy"},  # Source-bound offline research retention.
         "suite_tracks": {"base64"},  # Frozen artifact inventory only.
     }
-    for path in Path("backend/evaluation").glob("*.py"):
+    for path in [*Path("backend/evaluation").glob("*.py"), Path("backend/activity_semantics.py")]:
         if path.stem in controlled:
             continue
         tree = ast.parse(path.read_text(encoding="utf-8"))

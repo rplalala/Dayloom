@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta
 
+from backend.app.policies.itinerary_schedule import primary_journey_allowed
 from backend.app.policies.route_options import route_option
 from backend.app.schemas.itinerary import Transfer
 from backend.app.versions.v3.repair_models import TransitionBinding
@@ -40,6 +41,8 @@ async def resolve_transfers(
     for day in proposed.days:
         seq = ordered_activities(day, schedule)
         for left, right in zip(seq, seq[1:], strict=False):
+            if not primary_journey_allowed(left, right):
+                continue
             if not left.source_place_id or not right.source_place_id or not modes:
                 continue
             pair = (left.activity_id, right.activity_id)
@@ -180,6 +183,8 @@ def present_transfers(
     transfers = []
     for b in bindings:
         left, right = items[b.from_activity_id], items[b.to_activity_id]
+        if not primary_journey_allowed(left, right):
+            continue
         rows = route_rows(
             left.source_place_id,
             right.source_place_id,

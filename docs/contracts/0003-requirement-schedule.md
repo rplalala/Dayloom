@@ -278,7 +278,12 @@ Fresh primary acquisition additionally checks [post-generation review coverage](
 Missing independent work is a preparation blocker, while a completed unresolved
 review preserves the uncertainty below. This gate changes no scoring rule.
 
-Automatic occupancy decisions are limited to established primary visits, selected
+For `itinerary_3`, explicit `scheduled` non-primary activities are commitments and
+`free_window` activities are uncommitted availability, even when named or movable.
+Sourced protections remain separate blockers; declarations do not satisfy obligations.
+Independent supplied review decisions retain their separate source-bound path.
+
+Legacy automatic occupancy decisions are limited to established primary visits, selected
 transport claims and clearly uncommitted placeholders. Named unresolved primary
 visits remain commitments even when their canonical identity is unknown. Generic
 locationless placeholders can be uncommitted under the accepted free-time rule;

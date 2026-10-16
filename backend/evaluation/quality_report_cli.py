@@ -15,6 +15,7 @@ def main(argv=None):
     parser.add_argument("manifest")
     parser.add_argument("identity_report")
     parser.add_argument("snapshot_directory")
+    parser.add_argument("--quality-profile", choices=["rtpeval_declared_population_1"])
     parser.add_argument("--context", help="Reviewed IANA time context JSON")
     parser.add_argument("--occupancy-reviews", help="Independent occupancy review JSON")
     parser.add_argument("--route-reviews", help="Source-linked route policy review JSON")
@@ -57,6 +58,7 @@ def main(argv=None):
             args.snapshot_directory,
             **files,
             generated_at=generated_at,
+            quality_profile=args.quality_profile,
         ).to_dict()
         result["preparation_file_sha256"] = hashes
     except MaterialError as exc:

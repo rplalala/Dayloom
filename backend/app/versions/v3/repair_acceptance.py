@@ -161,9 +161,9 @@ def apply_patch(
                 or (day != edit.date and edit.operation != "move")
             ):
                 raise ValueError("Unauthorized operation")
-            if previous.activity_kind == "free_time" and not is_primary_visit(
-                previous, context.semantic_assessments if context else ()
-            ):
+            if (
+                previous.activity_kind == "free_time" or previous.time_use == "free_window"
+            ) and not is_primary_visit(previous, context.semantic_assessments if context else ()):
                 raise ValueError("Placeholders may only be adjusted by the application")
             if edit.operation == "move" and (
                 day != permission.source_date
@@ -223,6 +223,7 @@ def apply_patch(
             values = dict(
                 activity_id=aid,
                 activity_kind="main_poi",
+                **({"time_use": "scheduled"} if result.output_version == "itinerary_3" else {}),
                 title=p.name,
                 place_name=p.name,
                 source_place_id=p.place_id,

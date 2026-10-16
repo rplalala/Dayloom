@@ -16,15 +16,34 @@ Fatal material errors: unreadable/ambiguous JSON (including duplicate object key
 
 A declared unavailable usage envelope is valid and disables only resource measurements. Missing optional V3 draft/final-primary projections disable paired analysis; never reconstruct them from the selected final. A malformed optional projection records its own unavailable reason without replacing the selected final.
 
-Use a versioned evaluation wire reader rather than running every product validator. itinerary_1 (including historically absent output_version) and itinerary_2 are explicitly recognized; original absence remains recorded. Missing historically optional roles become unknown in the derived view; missing optional transfer/reference arrays become empty with an absent-field marker. Preserve additional result fields without exposing them to quality readers. Unknown major versions require adapter support, not guessing.
+Use a versioned evaluation wire reader rather than running every product validator.
+`itinerary_1` (including historically absent output_version), `itinerary_2` and
+`itinerary_3` are recognized; original absence remains recorded. Historical missing
+roles become unknown in the derived view; optional transfer/reference arrays retain
+absent-field markers. The [current activity contract](../0003-itinerary-transport.md#activity-semantics-contract-phase-2)
+requires explicit legal role/time-use declarations and attributable intervals in new
+output. New structured journeys select a unique consecutive primary pair. Preserve
+additional result fields without exposing them to quality readers. Unknown major
+versions require adapter support, not guessing.
 
-Representable content issues remain diagnostic observations: date gaps, empty activities, unsorted records, overlap, output-versus-request date/destination discrepancy, unknown roles, invalid/missing time values, uncertain timezone, unknown place association and bad Transfer links. Do not silently repair, reject for low quality or use current live-request date limits. Retain source records even when dependent metrics cannot judge them. Original request hashes and producer-attested linkage establish which Input was run; a content discrepancy alone does not prove a wrong-file submission.
+Representable quality issues remain diagnostic observations: date gaps, empty activities,
+unsorted records, overlap, output-versus-request date/destination discrepancy and unknown
+place association. Historical wires also retain unknown roles, invalid/missing times,
+uncertain timezone and bad Transfer links as uncertainty; new-wire declaration failures
+require material correction. Do not repair low quality or use current live-request date
+limits. Original source linkage establishes which Input was run; a content discrepancy
+alone does not prove a wrong-file submission.
 
 A source reference is (batch_id, group_id, run_id, artifact_sha256, JSON pointer). Derived record IDs use this tuple and projection-contract version, not canonical place ID. Preserve original array positions, declared day, original activity ID and raw values. Sorting makes a separate view; it never changes source pointers. Same activity IDs in draft/final or two runs do not imply correspondence.
 
 Quality view exposes itinerary fields, reviewed requirements and later independent records only. Planner requirements, supply, RAG origins, validation findings, cost projections, route diagnostics and Repair records remain outside it. Preserve Transfer mode, endpoint/time/duration claims as claims; validation_state, unknowns, evidence_refs, mode_source and calculation_basis cannot decide quality. Mechanism readers access their own data channel. Human rendering must strip private source/version/provider identifiers while retaining meaningful itinerary text and uncertainty.
 
 ## Post-generation review readiness
+
+New `itinerary_3` declarations establish non-primary role and scheduled/free-window
+membership without a routine semantic model call. Legacy rules below remain supported.
+The separate [numerical-population gate](../0003-itinerary-transport.md#selection-and-verification-boundaries)
+freezes membership for the new profile; completed review coverage alone does not pass it.
 
 Structural intake acceptance and independent review coverage are separate. After
 collection of qualified selected results, `semantic-readiness.json` records an
@@ -138,12 +157,17 @@ separate identity review. It cannot establish semantic role contradictions or fa
 identity. Legacy endpoint parsing applies only without a structured transport declaration;
 this revision adds no general semantic model or new LLM invocation.
 
-Existing exact placeholder titles without place claims can be transition-like;
+For `itinerary_3`, explicit non-primary kinds remain transition-like even with a
+venue name, and the source array fixes intended primary sequence. Overlap does not
+erase a directed candidate. For legacy wires, existing exact placeholder titles without place claims can be transition-like;
 other generic locationless activities need independent role review. Named unresolved
 POIs stay visits. Nearby is unscheduled. Unknown/inconsistent roles retain review and applicability counts.
 Neither candidate membership nor costs establish independent role/identity.
 
-Preserve delivered day membership. For a day with comparable valid timestamps, order visit candidates by start, then end, then original pointer for display stability. Equal/overlapping times remain conflicts/ambiguities, not corrected chronology. Invalid or incomparable clocks cannot establish adjacency by arbitrary lexical sorting; emit an adjacency-unresolved record with involved sources.
+Preserve delivered day membership. Legacy readers order comparable visit candidates
+by start, end and original pointer; equal/overlapping times remain chronology ambiguity.
+New readers preserve submitted normalized array sequence and retain overlap as a quality
+issue. Invalid legacy clocks cannot establish adjacency through arbitrary lexical sorting.
 
 Candidate legs connect consecutive primary visits within a day. Nearby, transition placeholders and transport records do not become POI endpoints. Protected intervals remain separate blockers. Possible intervening unresolved-role records prevent declaring a clean complete adjacency list for that span; preserve the candidate and uncertainty instead of skipping them. Canonical same-place N/A is decided later using independent identity, not equality of claimed IDs.
 

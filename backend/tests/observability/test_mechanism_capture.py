@@ -120,7 +120,7 @@ def test_real_adapter_submission_preserves_messages_options_and_result(monkeypat
 
     rows = []
     FakeChatOpenAI.response = FoundryPrimaryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         destination="Kyoto",
         start_date="2026-10-01",
         end_date="2026-10-01",

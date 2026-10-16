@@ -280,6 +280,7 @@ def primary_output():
         activities.append(
             {
                 "activity_kind": "main_poi",
+                "time_use": "scheduled",
                 "activity_id": f"generated-visit-{i + 1}",
                 "title": f"Visit {name}",
                 "place_name": name,
@@ -296,7 +297,7 @@ def primary_output():
             }
         )
     return {
-        "output_version": "itinerary_2",
+        "output_version": "itinerary_3",
         "destination": "Seoul",
         "start_date": DAY,
         "end_date": DAY,

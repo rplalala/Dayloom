@@ -1,0 +1,1968 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "partial",
+  "queries": [
+    {
+      "query_id": "rag_1",
+      "text": "neighbourhood exploration",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ],
+      "version": "rag_query_plan_1"
+    },
+    {
+      "query_id": "rag_2",
+      "text": "parks",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ],
+      "version": "rag_query_plan_1"
+    },
+    {
+      "query_id": "rag_3",
+      "text": "viewing architecture from outside",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 60,
+  "unique_entities": 54,
+  "resolution_attempts": 30,
+  "details_sends": 26,
+  "fallback_sends": 4,
+  "embedding_sends": 1,
+  "retrieval_queries": 3,
+  "cache_hits": 0,
+  "entities": [
+    {
+      "entity_id": "fsq:foursquare:55e0815b498e6907013d146f",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJyUvuNg1u5kcRIJBRQqwbjBU"
+    },
+    {
+      "entity_id": "google:ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+      "status": "google_observation",
+      "canonical_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+    },
+    {
+      "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJW7ySGCdu5kcRldwk22iNR0o"
+    },
+    {
+      "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJXfonYfBu5kcRkTNLzc_By-U"
+    },
+    {
+      "entity_id": "fsq:foursquare:4adcda09f964a520113421e3",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJh9M-FMZt5kcRkZSVdmDta_I"
+    },
+    {
+      "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "status": "google_observation",
+      "canonical_id": "ChIJvcVRUwBx5kcRod72V2bB-EI"
+    },
+    {
+      "entity_id": "google:ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJwxEz76Nt5kcRIl3qWIRI-Bc"
+    },
+    {
+      "entity_id": "fsq:foursquare:4adcda0af964a520243421e3",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJg9SxLQBv5kcRgPh_TvhuLyA",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+    },
+    {
+      "entity_id": "google:ChIJHbrByclt5kcRn-ZGU8KjU_g",
+      "status": "google_observation",
+      "canonical_id": "ChIJHbrByclt5kcRn-ZGU8KjU_g"
+    },
+    {
+      "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+    },
+    {
+      "entity_id": "google:ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJbe5YOk9u5kcR7nIUjn_yLM4"
+    },
+    {
+      "entity_id": "google:ChIJez2ACVtv5kcR2cbi5PU5mzs",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJez2ACVtv5kcR2cbi5PU5mzs"
+    },
+    {
+      "entity_id": "google:ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g"
+    },
+    {
+      "entity_id": "google:ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJDyx4bNhu5kcRqJ3RkAPGMEk"
+    },
+    {
+      "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+    },
+    {
+      "entity_id": "google:ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+      "status": "google_observation",
+      "canonical_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA"
+    },
+    {
+      "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY"
+    },
+    {
+      "entity_id": "google:ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJv-rX7Ndv5kcR8HH74UZfYtQ"
+    },
+    {
+      "entity_id": "google:ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "status": "google_observation",
+      "canonical_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+    },
+    {
+      "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+    },
+    {
+      "entity_id": "fsq:foursquare:4cc12b69873c236abc55b723",
+      "status": "fallback_budget"
+    },
+    {
+      "entity_id": "google:ChIJ442GNENu5kcRGYUrvgqHw88",
+      "status": "google_observation",
+      "canonical_id": "ChIJ442GNENu5kcRGYUrvgqHw88"
+    },
+    {
+      "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJyWdN5SNu5kcRsskNxWnDf58"
+    },
+    {
+      "entity_id": "google:ChIJe2jeNttx5kcRi_mJsGHdkQc",
+      "status": "google_observation",
+      "canonical_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc"
+    },
+    {
+      "entity_id": "fsq:foursquare:561615eb498e5067e20a0949",
+      "status": "fallback_budget"
+    },
+    {
+      "entity_id": "google:ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+    },
+    {
+      "entity_id": "google:ChIJm9JEK-dv5kcRRAj5aYQEao0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJm9JEK-dv5kcRRAj5aYQEao0"
+    },
+    {
+      "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+    },
+    {
+      "entity_id": "google:ChIJCQ3V1j1u5kcR486q7s3KIH4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJCQ3V1j1u5kcR486q7s3KIH4"
+    },
+    {
+      "entity_id": "fsq:foursquare:5b4a1d732d2fd900394ef758",
+      "status": "fallback_budget"
+    },
+    {
+      "entity_id": "google:ChIJEU7r8_lx5kcRgylm7D8Avm4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJEU7r8_lx5kcRgylm7D8Avm4"
+    },
+    {
+      "entity_id": "google:ChIJ04VKlPVu5kcRJJV7esEZzgM",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ04VKlPVu5kcRJJV7esEZzgM"
+    },
+    {
+      "entity_id": "google:ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJrSTZSgBv5kcRXuTtWnlhL-c"
+    },
+    {
+      "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+    },
+    {
+      "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ"
+    },
+    {
+      "entity_id": "google:ChIJjVT2MNlv5kcR4QtneAsLSdU",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJ5-zMpTFu5kcRlbu1UHIhv74",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJUYOIjNxx5kcRwltj8d7CBUM",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJay0kYAdv5kcRM5SPWzrjySc",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJFTliNe5t5kcRUdt432VIHE8",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJp_d8DBxu5kcReDCE8PaUhh4",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJVdC_TS9u5kcRtWVzi5v9Tt0",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJcXSM2Glu5kcRwoDxIV6hws4",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJaxFEvxhu5kcRreArmm3a5nA",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJF4z0gwZu5kcRmxOUEU2R8Iw",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJy8XaeSBu5kcRUhsslpi92M4",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJJTs3CD5u5kcRq7LzXUCd2zc",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "fsq:foursquare:565dbb5c498e1def09f122ff",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJ12qSMc5v5kcRgtubv0mh5N8",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "status": "google_observation",
+      "canonical_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA"
+    },
+    {
+      "entity_id": "google:ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+      "status": "google_observation",
+      "canonical_id": "ChIJ5bx0qiVu5kcRs_dMpI5ttiY"
+    },
+    {
+      "entity_id": "google:ChIJTy1QeeBx5kcR8XjKs4iKNjE",
+      "status": "entity_budget"
+    }
+  ],
+  "origins": {
+    "ChIJ442GNENu5kcRGYUrvgqHw88": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ442GNENu5kcRGYUrvgqHw88",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.2901665645539948,
+        "distance_km": 3.287780193936104,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "2495dc63e9a14f9acf20a4220e221e2e4894915f9bc8a3ebe185d92d9d25729a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJ442GNENu5kcRGYUrvgqHw88"
+      }
+    ],
+    "ChIJ5bx0qiVu5kcRs_dMpI5ttiY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.288366054101712,
+        "distance_km": 1.2933495482785637,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "77570b985670e9f2aef87e261da8f5e5296d01caf097734210477aa899475d78",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJ5bx0qiVu5kcRs_dMpI5ttiY"
+      }
+    ],
+    "ChIJHbrByclt5kcRn-ZGU8KjU_g": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJHbrByclt5kcRn-ZGU8KjU_g",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.3640270612223766,
+        "distance_km": 4.893303051208554,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "b0ce2ca46b536abf963120819527d845d1c35ceaa4fa0b07af09c267cae67513",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJHbrByclt5kcRn-ZGU8KjU_g"
+      }
+    ],
+    "ChIJQdQyeiZu5kcRUfQHfB-OCLA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.2961107017927991,
+        "distance_km": 1.199819569777698,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "74b697bb75e3921ffa51adeb5a2e3e5304a9a0524a01d9efb7e0505ae598df57",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJQdQyeiZu5kcRUfQHfB-OCLA"
+      }
+    ],
+    "ChIJc8mX0udx5kcRWKcjTwDr5QA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 19,
+        "cosine": 0.26695212519739764,
+        "distance_km": 1.316787762888319,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8dd0296e4b7012c722e28096140a9139db868e090187e2d997526618a41fbfb0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+      }
+    ],
+    "ChIJe2jeNttx5kcRi_mJsGHdkQc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJe2jeNttx5kcRi_mJsGHdkQc",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.32212563288960716,
+        "distance_km": 1.5745073940220358,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "22774e5fe5ea9df5c570b715e5086686fa80ddc61d589b56e92657a24ea2e54c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJe2jeNttx5kcRi_mJsGHdkQc"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJe2jeNttx5kcRi_mJsGHdkQc",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.2695606625603859,
+        "distance_km": 1.5745073940220358,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "22774e5fe5ea9df5c570b715e5086686fa80ddc61d589b56e92657a24ea2e54c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJe2jeNttx5kcRi_mJsGHdkQc"
+      }
+    ],
+    "ChIJh9M-FMZt5kcRkZSVdmDta_I": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:4adcda09f964a520113421e3",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.37926564340200775,
+        "distance_km": 3.3443932213139247,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "fdd4f3dab1d6999ae3185fa409f95b27e3cf60471911a99f0fd9852636e17600",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJh9M-FMZt5kcRkZSVdmDta_I"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:4adcda09f964a520113421e3",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.2684604045521495,
+        "distance_km": 3.3443932213139247,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "fdd4f3dab1d6999ae3185fa409f95b27e3cf60471911a99f0fd9852636e17600",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJh9M-FMZt5kcRkZSVdmDta_I"
+      }
+    ],
+    "ChIJjx37cOxv5kcRPWQuEW5ntdk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJjx37cOxv5kcRPWQuEW5ntdk",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.2948587781359242,
+        "distance_km": 4.497691447706055,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1643cb5ab002e11d3ede984563bb712d56deb7afac9e60abc799f33b8ef8a9d1",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJjx37cOxv5kcRPWQuEW5ntdk"
+      }
+    ],
+    "ChIJvcVRUwBx5kcRod72V2bB-EI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.3308546249530395,
+        "distance_km": 0.5055997825229493,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+      }
+    ],
+    "ChIJwxT3mL5v5kcRAsTd3v0lJOY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.4011639415524104,
+        "distance_km": 3.940525091813906,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f19625ebd9848c0b11fbbcaeae890394794e1b65ceceb0f5aa484b2fda6e08cc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+      }
+    ],
+    "ChIJyUvuNg1u5kcRIJBRQqwbjBU": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:55e0815b498e6907013d146f",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.30313066821511625,
+        "distance_km": 2.0889656117527453,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f873912af2aecd8db2d0030feca09fe629102f7ab24cb2f332183b69f6e523d0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJyUvuNg1u5kcRIJBRQqwbjBU"
+      }
+    ],
+    "ChIJW7ySGCdu5kcRldwk22iNR0o": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.3411741744072254,
+        "distance_km": 1.0116455285484631,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "fb7b89f8d7b1f08a11f624335427cedcd4d44a35a7dfa9b6804f68b3402fe097",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJW7ySGCdu5kcRldwk22iNR0o"
+      }
+    ],
+    "ChIJXfonYfBu5kcRkTNLzc_By-U": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.29098336154321713,
+        "distance_km": 5.029749702219437,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "0d87ba6f1c9f19ed43f169a7f6269b76978c91aa141fc7a54f182eebf43c113e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJXfonYfBu5kcRkTNLzc_By-U"
+      }
+    ],
+    "ChIJwxEz76Nt5kcRIl3qWIRI-Bc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.2860736335384314,
+        "distance_km": 4.05478199914653,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "984ca49464cdbf0b5084f3d6f7638d18479a32a9aaec3c845beeb90709ead753",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJwxEz76Nt5kcRIl3qWIRI-Bc"
+      }
+    ],
+    "ChIJ6UrOzQNu5kcRRp5vRIClzzg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.2844708222781631,
+        "distance_km": 0.7526134285032243,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+      }
+    ],
+    "ChIJ9UoWtyZu5kcRWuoIyUV70T8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.3124788124133253,
+        "distance_km": 0.9895758923482929,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "fe02f32aa3bd23c3073da351e08202df8d02b2a53ed12700fea0fea5ee733dee",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+      }
+    ],
+    "ChIJbe5YOk9u5kcR7nIUjn_yLM4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.28346876600570936,
+        "distance_km": 3.042582295110033,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1b6c2295f3b6278a34062a97d833d34300a64549ad09364eeaa024f376d138f8",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJbe5YOk9u5kcR7nIUjn_yLM4"
+      }
+    ],
+    "ChIJez2ACVtv5kcR2cbi5PU5mzs": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJez2ACVtv5kcR2cbi5PU5mzs",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.3556142449378993,
+        "distance_km": 3.362517290567089,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6e57796c6c97062fad5acf89edeeb8f04e09c471d242a70423f7c68780087f34",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJez2ACVtv5kcR2cbi5PU5mzs"
+      }
+    ],
+    "ChIJt5KhKwBv5kcR7K4PKbzbC_g": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.3000913321808584,
+        "distance_km": 1.3308269427049952,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d363b85a4f4628341fe31852274da4e61239e4fb17cb0b2e44f616c7de7604da",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJt5KhKwBv5kcR7K4PKbzbC_g"
+      }
+    ],
+    "ChIJDyx4bNhu5kcRqJ3RkAPGMEk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.28083577384522274,
+        "distance_km": 7.6923511528733535,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "28ff3f17facb792fdd4554c25589fdb46f3e8ded2349e8b385bc5b688b49ca55",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJDyx4bNhu5kcRqJ3RkAPGMEk"
+      }
+    ],
+    "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.34223520755768067,
+        "distance_km": 0.5613539908359859,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+      }
+    ],
+    "ChIJmw6mpBhu5kcRzLhZUymiyhY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.2792912555163356,
+        "distance_km": 0.5825620178402131,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "4525d57a756c6f2ff87fe1b3ccb5670b3f3ea1f40fb20c84cfe1e77e787eec1f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJmw6mpBhu5kcRzLhZUymiyhY"
+      }
+    ],
+    "ChIJv-rX7Ndv5kcR8HH74UZfYtQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.3330965339925769,
+        "distance_km": 2.7874632176530976,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "eea103972dd774d37407c05e149b0738c232cc5bdd6c10d438852f9ae298d1da",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJv-rX7Ndv5kcR8HH74UZfYtQ"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.27157977775516406,
+        "distance_km": 2.7874632176530976,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "eea103972dd774d37407c05e149b0738c232cc5bdd6c10d438852f9ae298d1da",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJv-rX7Ndv5kcR8HH74UZfYtQ"
+      }
+    ],
+    "ChIJlX4qu0Ru5kcRBhpAY0NEloo": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.27816216479765443,
+        "distance_km": 3.2295974063307655,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "59bf7cafb4214c94763cdbce7dabc509f3f070060fe9cc6fe091f8cfaac35a88",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+      }
+    ],
+    "ChIJyWdN5SNu5kcRsskNxWnDf58": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.2742583588207751,
+        "distance_km": 1.5685779204557917,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "5cbe7a537fd1ff9d2dd4055e4be969ccd906a850375168a608f63928491f5b03",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJyWdN5SNu5kcRsskNxWnDf58"
+      }
+    ],
+    "ChIJzVOtXQJu5kcRvhYWG1VSfjE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.2708117204420738,
+        "distance_km": 0.5521883521978328,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "ab862f9d71beaf8a499a661269ae83e4d520ce3d20a664abcec1006c3e8e984d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+      }
+    ],
+    "ChIJm9JEK-dv5kcRRAj5aYQEao0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJm9JEK-dv5kcRRAj5aYQEao0",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.32034112932331205,
+        "distance_km": 3.477168475441799,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d548a9c25e1c32667d0f9758653af6148fcebedab67734748c1e2d72e460bddb",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJm9JEK-dv5kcRRAj5aYQEao0"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJm9JEK-dv5kcRRAj5aYQEao0",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.2714820180556772,
+        "distance_km": 3.477168475441799,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d548a9c25e1c32667d0f9758653af6148fcebedab67734748c1e2d72e460bddb",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJm9JEK-dv5kcRRAj5aYQEao0"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJm9JEK-dv5kcRRAj5aYQEao0",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.26581619585656,
+        "distance_km": 3.477168475441799,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d548a9c25e1c32667d0f9758653af6148fcebedab67734748c1e2d72e460bddb",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJm9JEK-dv5kcRRAj5aYQEao0"
+      }
+    ],
+    "ChIJ0dzuSNBv5kcRa6BHUVdFm0k": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.28132301195585785,
+        "distance_km": 2.9906770155805646,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "4ff15377dfe41adac904481b8c317b55ddbac385354f17625e2e5536b47ae2ac",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+      }
+    ],
+    "ChIJCQ3V1j1u5kcR486q7s3KIH4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJCQ3V1j1u5kcR486q7s3KIH4",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.26932537325318173,
+        "distance_km": 1.6158168323352504,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "511ff2f47791832da70fca6e59e85914d107b9b5af61ef016932a89e0c570ef9",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJCQ3V1j1u5kcR486q7s3KIH4"
+      }
+    ],
+    "ChIJEU7r8_lx5kcRgylm7D8Avm4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJEU7r8_lx5kcRgylm7D8Avm4",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.2813151143413666,
+        "distance_km": 1.3896064084823716,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8c0784db5339276e80c6220c878e0d860f51699bd83d543967405fcafb6cbfdc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJEU7r8_lx5kcRgylm7D8Avm4"
+      },
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJEU7r8_lx5kcRgylm7D8Avm4",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.30862664035717546,
+        "distance_km": 1.3896064084823716,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8c0784db5339276e80c6220c878e0d860f51699bd83d543967405fcafb6cbfdc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJEU7r8_lx5kcRgylm7D8Avm4"
+      }
+    ],
+    "ChIJ04VKlPVu5kcRJJV7esEZzgM": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ04VKlPVu5kcRJJV7esEZzgM",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.2693158388137836,
+        "distance_km": 4.482564002753048,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7beaa26b3fd8d5bf434fd498d91448b9271db14d596f5a388d83fd9db0c8763a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ04VKlPVu5kcRJJV7esEZzgM"
+      }
+    ],
+    "ChIJrSTZSgBv5kcRXuTtWnlhL-c": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+        "query": {
+          "query_id": "rag_3",
+          "text": "viewing architecture from outside",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_3"
+          ],
+          "requirement_refs": [
+            "semantic_4"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.2779487636150424,
+        "distance_km": 2.3825645509242293,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1d6a9d5ba1aeed0a253fec42eae210d9e639603bec22cacf6763fa4fd2fe9d45",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJrSTZSgBv5kcRXuTtWnlhL-c"
+      }
+    ],
+    "ChIJQ48wCRRu5kcRv6UbLjz_4xo": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+        "query": {
+          "query_id": "rag_1",
+          "text": "neighbourhood exploration",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.26868659035127274,
+        "distance_km": 1.6181322970372638,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "cf5a737176d434d2bf5b86cd512c215aae0f6582e929b988e958baa00efdbdc2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+      }
+    ],
+    "ChIJDxKAR-pv5kcRJznFaRy78QQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+        "query": {
+          "query_id": "rag_2",
+          "text": "parks",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_3"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.30630557574663064,
+        "distance_km": 2.0110560152154218,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "24c1e6ed0decf3661a2bc2b161eda01d0e3a336fe9ae6262fdef0621a63730f7",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJDxKAR-pv5kcRJznFaRy78QQ"
+      }
+    ]
+  },
+  "stops": [
+    "fallback_budget",
+    "fallback_budget",
+    "fallback_budget"
+  ],
+  "phase_seconds": {
+    "embedding": 2.224116600002162,
+    "retrieval": 2.76166919991374,
+    "resolution": 11.182005799957551
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": 48.857547499999995,
+    "longitude": 2.3513764999999998,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.05615259998012334
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.036944500054232776
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.01781039999332279
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 2.2240670999744907
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-d92ba4500dba4b47946ea10ab9932eb5.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 2.6688413999509066,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 2.6681915000081062
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.0006171000422909856
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.049846299923956394,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.04711819998919964
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.00267580000218004
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.04217779997270554,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.04138089995831251
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.000761799979954958
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "10d640450156402db37773e599588e0b",
+      "status_code": 200,
+      "request_id": "req_4f264fc7018d4d8c94b50a4222d0f86a"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 11,
+    "total_tokens": 11
+  },
+  "elapsed_seconds": 16.439457900007255,
+  "new_canonical_ids": [
+    "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+    "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+    "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+    "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+    "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+    "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+    "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+    "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+    "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+    "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+    "ChIJW7ySGCdu5kcRldwk22iNR0o",
+    "ChIJXfonYfBu5kcRkTNLzc_By-U",
+    "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+    "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+    "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+    "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+    "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+    "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+    "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+    "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+    "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+    "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+    "ChIJyWdN5SNu5kcRsskNxWnDf58",
+    "ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+  ],
+  "mixed_source_ids": [
+    "ChIJ442GNENu5kcRGYUrvgqHw88",
+    "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+    "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+    "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+    "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+    "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+    "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+    "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+    "ChIJvcVRUwBx5kcRod72V2bB-EI",
+    "ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+  ],
+  "google_overlap_entities": 9,
+  "origin_associations": {
+    "ChIJ442GNENu5kcRGYUrvgqHw88": {
+      "intent_ids": [
+        "default_0",
+        "discovery_3",
+        "landmark_5"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJ5bx0qiVu5kcRs_dMpI5ttiY": {
+      "intent_ids": [
+        "discovery_2",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    },
+    "ChIJHbrByclt5kcRn-ZGU8KjU_g": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    },
+    "ChIJQdQyeiZu5kcRUfQHfB-OCLA": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJc8mX0udx5kcRWKcjTwDr5QA": {
+      "intent_ids": [
+        "discovery_3",
+        "landmark_8"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJe2jeNttx5kcRi_mJsGHdkQc": {
+      "intent_ids": [
+        "default_0",
+        "discovery_2",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_3",
+        "semantic_4"
+      ]
+    },
+    "ChIJh9M-FMZt5kcRkZSVdmDta_I": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2",
+        "semantic_3"
+      ]
+    },
+    "ChIJjx37cOxv5kcRPWQuEW5ntdk": {
+      "intent_ids": [
+        "default_0",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJvcVRUwBx5kcRod72V2bB-EI": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJwxT3mL5v5kcRAsTd3v0lJOY": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    },
+    "ChIJyUvuNg1u5kcRIJBRQqwbjBU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJW7ySGCdu5kcRldwk22iNR0o": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJXfonYfBu5kcRkTNLzc_By-U": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJwxEz76Nt5kcRIl3qWIRI-Bc": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJ6UrOzQNu5kcRRp5vRIClzzg": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJ9UoWtyZu5kcRWuoIyUV70T8": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJbe5YOk9u5kcR7nIUjn_yLM4": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJez2ACVtv5kcR2cbi5PU5mzs": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    },
+    "ChIJt5KhKwBv5kcR7K4PKbzbC_g": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJDyx4bNhu5kcRqJ3RkAPGMEk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    },
+    "ChIJmw6mpBhu5kcRzLhZUymiyhY": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJv-rX7Ndv5kcR8HH74UZfYtQ": {
+      "intent_ids": [
+        "discovery_2",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_3",
+        "semantic_4"
+      ]
+    },
+    "ChIJlX4qu0Ru5kcRBhpAY0NEloo": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJyWdN5SNu5kcRsskNxWnDf58": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJzVOtXQJu5kcRvhYWG1VSfjE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJm9JEK-dv5kcRRAj5aYQEao0": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_2",
+        "semantic_3",
+        "semantic_4"
+      ]
+    },
+    "ChIJ0dzuSNBv5kcRa6BHUVdFm0k": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJCQ3V1j1u5kcR486q7s3KIH4": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJEU7r8_lx5kcRgylm7D8Avm4": {
+      "intent_ids": [
+        "discovery_2",
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_3",
+        "semantic_4"
+      ]
+    },
+    "ChIJ04VKlPVu5kcRJJV7esEZzgM": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJrSTZSgBv5kcRXuTtWnlhL-c": {
+      "intent_ids": [
+        "discovery_3"
+      ],
+      "requirement_refs": [
+        "semantic_4"
+      ]
+    },
+    "ChIJQ48wCRRu5kcRv6UbLjz_4xo": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJDxKAR-pv5kcRJznFaRy78QQ": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_3"
+      ]
+    }
+  },
+  "admission": {
+    "ChIJ442GNENu5kcRGYUrvgqHw88": "capacity",
+    "ChIJ5bx0qiVu5kcRs_dMpI5ttiY": "capacity",
+    "ChIJHbrByclt5kcRn-ZGU8KjU_g": "capacity",
+    "ChIJQdQyeiZu5kcRUfQHfB-OCLA": "admitted",
+    "ChIJc8mX0udx5kcRWKcjTwDr5QA": "admitted",
+    "ChIJe2jeNttx5kcRi_mJsGHdkQc": "capacity",
+    "ChIJh9M-FMZt5kcRkZSVdmDta_I": "capacity",
+    "ChIJjx37cOxv5kcRPWQuEW5ntdk": "admitted",
+    "ChIJvcVRUwBx5kcRod72V2bB-EI": "admitted",
+    "ChIJwxT3mL5v5kcRAsTd3v0lJOY": "capacity",
+    "ChIJyUvuNg1u5kcRIJBRQqwbjBU": "ineligible",
+    "ChIJW7ySGCdu5kcRldwk22iNR0o": "admitted",
+    "ChIJXfonYfBu5kcRkTNLzc_By-U": "admitted",
+    "ChIJwxEz76Nt5kcRIl3qWIRI-Bc": "capacity",
+    "ChIJ6UrOzQNu5kcRRp5vRIClzzg": "admitted",
+    "ChIJ9UoWtyZu5kcRWuoIyUV70T8": "admitted",
+    "ChIJbe5YOk9u5kcR7nIUjn_yLM4": "capacity",
+    "ChIJez2ACVtv5kcR2cbi5PU5mzs": "capacity",
+    "ChIJt5KhKwBv5kcR7K4PKbzbC_g": "capacity",
+    "ChIJDyx4bNhu5kcRqJ3RkAPGMEk": "capacity",
+    "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w": "admitted",
+    "ChIJmw6mpBhu5kcRzLhZUymiyhY": "admitted",
+    "ChIJv-rX7Ndv5kcR8HH74UZfYtQ": "capacity",
+    "ChIJlX4qu0Ru5kcRBhpAY0NEloo": "admitted",
+    "ChIJyWdN5SNu5kcRsskNxWnDf58": "admitted",
+    "ChIJzVOtXQJu5kcRvhYWG1VSfjE": "ineligible",
+    "ChIJm9JEK-dv5kcRRAj5aYQEao0": "capacity",
+    "ChIJ0dzuSNBv5kcRa6BHUVdFm0k": "admitted",
+    "ChIJCQ3V1j1u5kcR486q7s3KIH4": "ineligible",
+    "ChIJEU7r8_lx5kcRgylm7D8Avm4": "capacity",
+    "ChIJ04VKlPVu5kcRJJV7esEZzgM": "capacity",
+    "ChIJrSTZSgBv5kcRXuTtWnlhL-c": "capacity",
+    "ChIJQ48wCRRu5kcRv6UbLjz_4xo": "admitted",
+    "ChIJDxKAR-pv5kcRJznFaRy78QQ": "admitted"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+      "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+      "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+      "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+      "ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "ChIJXfonYfBu5kcRkTNLzc_By-U",
+      "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+      "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+      "ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "ChIJyWdN5SNu5kcRsskNxWnDf58"
+    ],
+    "enriched": [
+      "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+      "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+      "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+      "ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "ChIJXfonYfBu5kcRkTNLzc_By-U",
+      "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+      "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+      "ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "ChIJyWdN5SNu5kcRsskNxWnDf58"
+    ],
+    "supplied": [
+      "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "ChIJvcVRUwBx5kcRod72V2bB-EI"
+    ],
+    "scheduled": [
+      "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+    ],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {
+    "ChIJ04VKlPVu5kcRJJV7esEZzgM": "capacity",
+    "ChIJ0dzuSNBv5kcRa6BHUVdFm0k": "not_selected_by_supply",
+    "ChIJ442GNENu5kcRGYUrvgqHw88": "capacity",
+    "ChIJ5bx0qiVu5kcRs_dMpI5ttiY": "capacity",
+    "ChIJ6UrOzQNu5kcRRp5vRIClzzg": "scheduled",
+    "ChIJ9UoWtyZu5kcRWuoIyUV70T8": "not_selected_by_supply",
+    "ChIJCQ3V1j1u5kcR486q7s3KIH4": "ineligible",
+    "ChIJDxKAR-pv5kcRJznFaRy78QQ": "not_selected_by_supply",
+    "ChIJDyx4bNhu5kcRqJ3RkAPGMEk": "capacity",
+    "ChIJEU7r8_lx5kcRgylm7D8Avm4": "capacity",
+    "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w": "supplied_not_scheduled",
+    "ChIJHbrByclt5kcRn-ZGU8KjU_g": "capacity",
+    "ChIJQ48wCRRu5kcRv6UbLjz_4xo": "not_selected_by_supply",
+    "ChIJQdQyeiZu5kcRUfQHfB-OCLA": "enrichment_capacity_not_attempted",
+    "ChIJW7ySGCdu5kcRldwk22iNR0o": "not_selected_by_supply",
+    "ChIJXfonYfBu5kcRkTNLzc_By-U": "not_selected_by_supply",
+    "ChIJbe5YOk9u5kcR7nIUjn_yLM4": "capacity",
+    "ChIJc8mX0udx5kcRWKcjTwDr5QA": "not_selected_by_supply",
+    "ChIJe2jeNttx5kcRi_mJsGHdkQc": "capacity",
+    "ChIJez2ACVtv5kcR2cbi5PU5mzs": "capacity",
+    "ChIJh9M-FMZt5kcRkZSVdmDta_I": "capacity",
+    "ChIJjx37cOxv5kcRPWQuEW5ntdk": "scheduled",
+    "ChIJlX4qu0Ru5kcRBhpAY0NEloo": "not_selected_by_supply",
+    "ChIJm9JEK-dv5kcRRAj5aYQEao0": "capacity",
+    "ChIJmw6mpBhu5kcRzLhZUymiyhY": "not_selected_by_supply",
+    "ChIJrSTZSgBv5kcRXuTtWnlhL-c": "capacity",
+    "ChIJt5KhKwBv5kcR7K4PKbzbC_g": "capacity",
+    "ChIJv-rX7Ndv5kcR8HH74UZfYtQ": "capacity",
+    "ChIJvcVRUwBx5kcRod72V2bB-EI": "supplied_not_scheduled",
+    "ChIJwxEz76Nt5kcRIl3qWIRI-Bc": "capacity",
+    "ChIJwxT3mL5v5kcRAsTd3v0lJOY": "capacity",
+    "ChIJyUvuNg1u5kcRIJBRQqwbjBU": "ineligible",
+    "ChIJyWdN5SNu5kcRsskNxWnDf58": "not_selected_by_supply",
+    "ChIJzVOtXQJu5kcRvhYWG1VSfjE": "ineligible"
+  }
+}

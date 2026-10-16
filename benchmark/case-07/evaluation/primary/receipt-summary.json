@@ -1,0 +1,7 @@
+{
+  "preparation_digest": "dd946731ffd6f924accef7ae5f2fa4add660dd625d2ae8c05064efad3dbc5a8e",
+  "native_report_sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+  "native_receipt_sha256": "42c52a93c52c77a292db155814ff1f763dbebc30b73890b05b5206147f01f1c9",
+  "closed_file_count": 225,
+  "verification": "Closed byte-inventory verification only; no scoring replay in this stage."
+}

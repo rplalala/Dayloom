@@ -213,7 +213,9 @@ def consume_windows(original, proposed, scope, schedule, places, evidence, polic
                 updated.append(a)
                 continue
             w = windows[root]
-            if not w.start <= a.start_time < a.end_time <= w.end or a.activity_kind != "free_time":
+            if not w.start <= a.start_time < a.end_time <= w.end or (
+                a.activity_kind != "free_time" and a.time_use != "free_window"
+            ):
                 raise ValueError("Placeholder exceeds original authorization")
             cuts = [
                 (max(left, a.start_time), min(right, a.end_time))

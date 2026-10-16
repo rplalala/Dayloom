@@ -168,6 +168,14 @@ Quality reports use exact shared-mask arithmetic; uncertainty must not disappear
 a denominator or treating unavailable dimensions as zero. Fees/access and absent facts are
 not certified by structural schema acceptance.
 
+The [phase-2 activity semantics contract](0003-itinerary-transport.md#activity-semantics-contract-phase-2)
+separates declared planned occupancy from optional availability and implements an
+independently versioned `rtpeval_declared_population_1` profile for numerical totals
+under uncertain applicability. New-wire normal preparation freezes its candidate
+population before acquisition; historical defaults and denominator rules remain readable. The
+[accepted-case impact audit](records/evaluation/intake-identity-usage.md#activity-semantics-design-and-accepted-case-audit-2026-10-15)
+records exact source selections, reuse limits and the case-07 supplementary review.
+
 Anonymous review is separate from automatic scoring. The researcher prepares source-linked
 display material, holds the hidden mapping and imports revision-aware answers. The renderer
 uses IANA time-zone selection and HH:mm, with confirmed clearing scoped to the active package

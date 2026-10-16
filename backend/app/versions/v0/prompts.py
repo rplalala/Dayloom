@@ -2,6 +2,7 @@
 
 from datetime import date
 
+from backend.activity_semantics import GENERATION_ACTIVITY_CONTRACT
 from backend.app.policies.generation_policy import FIRST_GENERATION_POLICY
 from backend.app.schemas.request import PlanningRequest, TravelRequirements
 
@@ -43,7 +44,7 @@ between different trip days, or to an unspecified hotel. Transport is not a main
 visit and must not be counted toward the daily main-visit target. Use these transport
 activities rather than authoring application-owned transfers or route diagnostics.
 
-Output contract: itinerary_2. Produce a coherent timed primary sightseeing/experience itinerary
+Output contract: itinerary_3. Produce a coherent timed primary sightseeing/experience itinerary
 and zero to three reference_recommendations for the WHOLE trip. References are optional,
 unscheduled suggestions, not bookings, committed costs or REQUIRED visit satisfaction.
 Keep primary activity times required. References have no visit times or costs. Return []
@@ -70,6 +71,8 @@ or walking times. References remain model-knowledge suggestions, not live nearby
 """.strip()
     + "\n\n"
     + FIRST_GENERATION_POLICY
+    + "\n\n"
+    + GENERATION_ACTIVITY_CONTRACT
 )
 
 

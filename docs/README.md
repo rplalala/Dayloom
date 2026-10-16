@@ -57,6 +57,17 @@ before primary acquisition, without changing Planner generation or score policie
 the [engineering acceptance](records/evaluation/intake-identity-usage.md#post-generation-review-readiness-2026-10-15)
 records the saved-case checks and synthetic-control limits.
 
+[Phase-2 activity semantics](0003-itinerary-transport.md#activity-semantics-contract-phase-2)
+implements explicit roles/time use and a separately versioned numerical-population
+profile approved on 2026-10-16. Its [accepted-case impact audit](records/evaluation/intake-identity-usage.md#activity-semantics-design-and-accepted-case-audit-2026-10-15)
+records the five selections accepted at the audit cutoff and case-07's actual
+supplementary review. The approved implementation and the subsequently accepted
+[case-07 revision](../benchmark/case-07/report.md#acceptance) are integrated into
+the local main worktree under
+[Issue #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172).
+Historical results retain their original contracts and scores; this integration
+does not refresh accepted datasets.
+
 ## Other responsibilities
 
 - [Benchmark workflow and case material](../benchmark/README.md): per-case sequence,

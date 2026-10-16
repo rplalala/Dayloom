@@ -78,6 +78,7 @@ def present_product(result, evidence, introductions=None):
                 activities=[
                     ProductActivity(
                         activity_id=a.activity_id,
+                        time_use=a.time_use,
                         title=a.title,
                         place_name=a.place_name,
                         location=a.location,

@@ -1,0 +1,35 @@
+{
+  "format": "case_itinerary_delta_1",
+  "base": {
+    "path": "generation/v3/itinerary.json",
+    "pointer": "",
+    "expanded_semantic_sha256": "b28b1c4fd2ffaae03db367c59bd5cc6e40f8f8b8714a1cbacb7baccdde3eb193"
+  },
+  "replace_top_level": {
+    "route_diagnostics": [
+      {
+        "$case_material_ref": {
+          "path": "generation/v3/itinerary.json",
+          "pointer": "/route_diagnostics/0",
+          "expanded_semantic_sha256": "74c413b49338dfe70365f1f1b6693b729b27b03894e1833b0d9d1ed944f76b68"
+        }
+      },
+      {
+        "$case_material_ref": {
+          "path": "generation/v3/itinerary.json",
+          "pointer": "/route_diagnostics/2",
+          "expanded_semantic_sha256": "e77f0dd556b912a49a49c635292d5d22bc671474fdfde627ff3c2e4f9acac720"
+        }
+      },
+      {
+        "$case_material_ref": {
+          "path": "generation/v3/itinerary.json",
+          "pointer": "/route_diagnostics/3",
+          "expanded_semantic_sha256": "98b6f532b7b18208e38cfec3731d5d262e2033b6d44e676f911b213d29d514a8"
+        }
+      }
+    ],
+    "reference_recommendations": []
+  },
+  "expanded_semantic_sha256": "45637789833aa73f7adbd6b7d0d5a407e05829db5c2f24b3f311b1e55b675231"
+}

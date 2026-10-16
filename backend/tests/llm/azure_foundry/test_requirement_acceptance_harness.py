@@ -95,7 +95,7 @@ def itinerary(engine="v0"):
         "destination": "Sydney",
         "start_date": "2026-09-12",
         "end_date": "2026-09-13",
-        "output_version": "itinerary_2",
+        "output_version": "itinerary_3",
         "reference_recommendations": [],
         "days": [
             {"date": "2026-09-12", "activities": []},

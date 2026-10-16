@@ -15,6 +15,7 @@ def main(argv=None, *, http_client=None):
     commands = parser.add_subparsers(dest="command", required=True)
     prepare = commands.add_parser("prepare", help="Offline source, context and limit validation")
     prepare.add_argument("manifest")
+    prepare.add_argument("--quality-profile", choices=["rtpeval_declared_population_1"])
     for option in ("directory", "options", "prices"):
         prepare.add_argument("--" + option, required=True)
     for option in ("context", "occupancy-reviews", "route-reviews", "density-reviews"):
@@ -61,6 +62,7 @@ def main(argv=None, *, http_client=None):
                 args.directory,
                 options=_read(Path(args.options))[0],
                 prices=_read(Path(args.prices))[0],
+                quality_profile=args.quality_profile,
                 **context,
             )
             result = {
@@ -134,6 +136,11 @@ def main(argv=None, *, http_client=None):
         if isinstance(exc, MissingSemanticReviews):
             result["processing_status"] = "needs_semantic_review"
             result["semantic_readiness"] = exc.report
+        from .declared_population import UnreadyPopulation
+
+        if isinstance(exc, UnreadyPopulation):
+            result["processing_status"] = "needs_population_resolution"
+            result["population_readiness"] = exc.report
     print(json.dumps(result, ensure_ascii=True, indent=2, allow_nan=False))
     return (
         0

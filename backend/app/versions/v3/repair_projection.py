@@ -157,6 +157,7 @@ def build_repair_input(
                 "activity_id",
                 "source_place_id",
                 "activity_kind",
+                "time_use",
                 "start_time",
                 "end_time",
                 "title",

@@ -81,7 +81,8 @@ Details: [requirements](docs/0002-requirements-evidence.md),
 
 ### Itinerary, transport and Repair
 
-- The shared output is `itinerary_2`. Primary visits and optional unscheduled Nearby
+- Current generation uses `itinerary_3` with explicit roles and scheduled/free-window
+  time use; historical `itinerary_1/2` remain readable. Primary visits and optional unscheduled Nearby
   references stay separate. References do not satisfy required visits or count as
   scheduled activities or planned costs.
 - V1-V3 acceptance restores the authorized source's name and complete formatted
@@ -209,29 +210,28 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint: the October 15 shared requirement boundary correction
-for [#165](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/165) completed
-a full backend run with **4196 passed, 17 failed and 16 skipped in 6126.73 seconds**.
-That run overlapped review corrections and is not a final-revision green gate.
-Seven historical mock-wire failures, six calendar-dependent CLI checks and three
-CLI startup timeouts were corrected and passed affected regressions. The remaining
-mock-provider classification anomaly did not reproduce against the final static source;
-its original underlying exception is not established. Final affected checks include
-422 Azure/provider/evaluator tests, six additional source-boundary cases, all corrected
-fixture files and the three timeout scenarios. The full suite was not repeated after
-correction; skipped coverage remains unverified. Independent Standards/Spec reviews
-have no open findings. Backend/scripts Ruff lint, all 43 changed Python format checks
-and tracked document links pass. The pre-existing global format failures remain outside
-this task. All 478 checked original/public evidence files retain their hashes, and
-case-01/02 current intake and available historical replays pass without acquisition.
-The [shared boundary correction record](docs/records/v0-v3/semantic-reference-correction.md#october-15-shared-requirement-boundary-correction)
-owns exact results, corrections and compatibility limits. Earlier acceptance retains
-its original scope in the [Repair integration record](docs/records/v0-v3/v3-development.md#bounded-repair-search-and-selected-result-integration-2026-10-13)
-and [CLI acceptance record](docs/records/evaluation/intake-identity-usage.md).
-Historical packets retain their original implementation for exact replay.
-The latest recorded frontend gate is **98 passed**, with TypeScript, build and lint
-passing; this backend task does not rerun or imply new frontend validation.
-Actual failure/correction/retest sequences belong in the linked acceptance records.
+Latest offline checkpoint: the 16 October local main-worktree integration of
+[activity semantics #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
+and accepted case-07 passed **4324 backend tests, with 16 skipped**, against
+unchanged application source throughout the complete run. A subsequent Ruff-only
+layout correction preserved the Python AST and passed 55 affected tests.
+Frontend validation passed **101 tests across 13 files**, TypeScript/Vite build and
+lint. Backend/tool Ruff and changed-Python format checks pass. The initial Windows
+long-temporary-path failure was isolated on identical source and resolved by a
+short test root; original failure evidence is retained. Skipped environment coverage
+remains unverified. No test timeout, credential, system permission or project
+configuration was changed.
+
+Current-main read-only compatibility covers 28 saved outputs / 267 activities,
+six non-scoring native analysis reports and a fresh unexecuted preparation with
+the same declared population. Protected originals, earlier accepted cases and both
+case-07 primary receipts retain their hashes. Historical primary/pair scoring was
+not replayed. The [activity implementation and integration record](docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
+owns the test sequence, preservation evidence and review results. Earlier
+[#165 boundary correction](docs/records/v0-v3/semantic-reference-correction.md#october-15-shared-requirement-boundary-correction)
+and [case-05 integration](benchmark/case-05/report.md#acceptance) retain their
+original scope. Frozen historical packets retain their own implementation for
+exact replay; this checkpoint does not refresh their data.
 
 Remaining limitations:
 
@@ -316,6 +316,12 @@ verification. Original inputs, selected results and private archives remain unch
 [Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
 including UNKNOWN and producer-runtime replay limits. Blinded human assessment
 remains deferred. Git publication remains separately authorized; case-15 stays paused.
+Case-07 execution revision 3 / input revision 2 was separately accepted on
+16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs, no new paired
+quality score and unverified whole-trip EUR 650 affordability. Its
+[acceptance record](benchmark/case-07/report.md#acceptance) owns the selected
+materials and limitations. Issue #172's prospective activity contract and these
+sanitized materials are integrated locally; historical results remain unchanged.
 Subsequent runs report primary scores and pause before further diagnostics.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)

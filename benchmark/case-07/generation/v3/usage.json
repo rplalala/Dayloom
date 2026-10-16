@@ -1,0 +1,7 @@
+{
+  "$case_material_ref": {
+    "path": "analysis/resources/all-attempts.json",
+    "pointer": "/generation_attempts/3",
+    "expanded_semantic_sha256": "ebe6817967884de5de0d7ffcd437b95b96e5e5d565919faa68bb382cc9570c43"
+  }
+}

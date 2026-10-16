@@ -33,6 +33,7 @@ class ProductNearby(ProductModel):
 
 class ProductActivity(ProductModel):
     activity_id: str
+    time_use: Literal["scheduled", "free_window"] | None = None
     title: str
     place_name: str | None
     location: str | None

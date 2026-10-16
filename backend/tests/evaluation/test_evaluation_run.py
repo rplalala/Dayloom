@@ -471,6 +471,56 @@ def test_missing_activity_review_remains_blocked_with_gbk_stdout(batch, monkeypa
         output.close()
 
 
+def test_population_resolution_remains_blocked_with_gbk_stdout(batch, monkeypatch):
+    from backend.evaluation import evaluation_run_cli
+    from backend.evaluation.declared_population import UnreadyPopulation
+
+    _, _, write, _, root = batch
+    manifest = write()
+    (root / "options.json").write_text(json.dumps(options()), encoding="utf-8")
+    (root / "prices.json").write_text(json.dumps(run_prices()), encoding="utf-8")
+    directory = root / "unready-population"
+    readiness = {
+        "status": "needs_population_resolution",
+        "diagnostics": [{"claim": "Montju\u00efc interval", "reason": "activity_date_unresolved"}],
+    }
+
+    def unready(*args, **kwargs):
+        raise UnreadyPopulation(readiness)
+
+    def forbidden_client(*args, **kwargs):
+        pytest.fail("Unresolved population must stop before HTTP client construction")
+
+    buffer = io.BytesIO()
+    output = io.TextIOWrapper(buffer, encoding="gbk", errors="strict")
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(sys, "stdout", output)
+            patch.setattr(evaluation_run_cli, "prepare_run", unready)
+            patch.setattr(httpx, "AsyncClient", forbidden_client)
+            code = evaluation_run_cli.main(
+                [
+                    "prepare",
+                    str(manifest),
+                    "--directory",
+                    str(directory),
+                    "--options",
+                    str(root / "options.json"),
+                    "--prices",
+                    str(root / "prices.json"),
+                    "--quality-profile",
+                    "rtpeval_declared_population_1",
+                ]
+            )
+            output.flush()
+        emitted = json.loads(buffer.getvalue().decode("gbk"))
+        assert code == 2 and emitted["processing_status"] == "needs_population_resolution"
+        assert emitted["population_readiness"] == readiness
+        assert not directory.exists()
+    finally:
+        output.close()
+
+
 def test_cli_requests_each_owned_identity_once_and_replays_exact_material(
     batch, capsys, monkeypatch
 ):

@@ -7,6 +7,8 @@ def is_primary_visit(activity, assessments=()):
     Transport endpoints remain transit uses, and unlinked placeholders/references
     cannot acquire a canonical visit merely from their title.
     """
+    if activity.time_use is not None:
+        return activity.activity_kind == "main_poi"
     return activity.activity_kind == "main_poi" or (
         activity.activity_kind != "transport"
         and any(

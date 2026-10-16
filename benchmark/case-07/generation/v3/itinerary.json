@@ -1,0 +1,455 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [
+    {
+      "from_activity_id": "paris-20261022-square-saint-jacques",
+      "to_activity_id": "paris-20261022-notre-dame",
+      "origin_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "destination_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T09:45:00+02:00",
+      "arrival_time": "2026-10-22T09:54:34+02:00",
+      "provider_duration_seconds": 574.0,
+      "distance_meters": 696,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "paris-20261023-eiffel-exterior",
+      "to_activity_id": "paris-20261023-arc-exterior",
+      "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T10:45:00+02:00",
+      "arrival_time": "2026-10-23T11:19:15+02:00",
+      "provider_duration_seconds": 2055.0,
+      "distance_meters": 2350,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "paris-20261024-louvre-exterior",
+      "to_activity_id": "paris-20261024-place-des-vosges",
+      "origin_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "destination_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T10:45:00+02:00",
+      "arrival_time": "2026-10-24T11:18:22+02:00",
+      "provider_duration_seconds": 2002.0,
+      "distance_meters": 2438,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "paris-20261022-square-saint-jacques",
+      "to_activity_id": "paris-20261022-notre-dame",
+      "origin": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "destination": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "departure": "2026-10-22T09:45:00+02:00",
+      "next_start": "2026-10-22T10:15:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 574,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:26:00.581003+00:00",
+              "retrieved_at": "2026-10-16T02:26:02.061578+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+                "destination_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 574,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:26:00.581003Z",
+                "retrieved_at": "2026-10-16T02:26:02.061578Z",
+                "origin_index": 2,
+                "destination_index": 3,
+                "distance_meters": 696,
+                "duration_seconds": 574,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "paris-20261022-notre-dame",
+      "to_activity_id": "paris-20261022-neighbourhood-stroll",
+      "origin": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "destination": null,
+      "departure": "2026-10-22T11:00:00+02:00",
+      "next_start": "2026-10-22T11:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": null,
+      "result": "UNKNOWN",
+      "reason": "not_evaluable_location_or_time",
+      "mode_results": []
+    },
+    {
+      "from_activity_id": "paris-20261023-eiffel-exterior",
+      "to_activity_id": "paris-20261023-arc-exterior",
+      "origin": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "departure": "2026-10-23T10:45:00+02:00",
+      "next_start": "2026-10-23T12:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2055,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:25:58.915541+00:00",
+              "retrieved_at": "2026-10-16T02:26:00.578972+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+                "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2055,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:25:58.915541Z",
+                "retrieved_at": "2026-10-16T02:26:00.578972Z",
+                "origin_index": 0,
+                "destination_index": 4,
+                "distance_meters": 2350,
+                "duration_seconds": 2055,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "paris-20261024-louvre-exterior",
+      "to_activity_id": "paris-20261024-place-des-vosges",
+      "origin": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "destination": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "departure": "2026-10-24T10:45:00+02:00",
+      "next_start": "2026-10-24T12:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2002,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:25:58.915541+00:00",
+              "retrieved_at": "2026-10-16T02:26:00.578972+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+                "destination_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2002,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:25:58.915541Z",
+                "retrieved_at": "2026-10-16T02:26:00.578972Z",
+                "origin_index": 2,
+                "destination_index": 1,
+                "distance_meters": 2438,
+                "duration_seconds": 2002,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "paris-20261024-place-des-vosges",
+      "to_activity_id": "paris-20261024-neighbourhood-stroll",
+      "origin": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "destination": null,
+      "departure": "2026-10-24T13:00:00+02:00",
+      "next_start": "2026-10-24T13:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": null,
+      "result": "UNKNOWN",
+      "reason": "not_evaluable_location_or_time",
+      "mode_results": []
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Compose - Hôtel de Ville",
+      "source_place_id": "ChIJM-MmbR5u5kcRYfCWNoZ6YOc",
+      "reason": "Restaurant near Square of Saint-Jacques Tower (approximately 55 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "8 Rue Saint-Martin, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-82ce63de-ad2e-436f-8d2a-6801cddbca7c:1"
+    },
+    {
+      "place_name": "La Rosace",
+      "source_place_id": "ChIJVaUr0uNx5kcRjFcIsbm5wcA",
+      "reason": "Restaurant near Notre-Dame Cathedral of Paris (approximately 50 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "8 Rue du Cloitre Notre Dame, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-0f66849b-e78f-4897-bf1c-e0bc063945a8:0"
+    },
+    {
+      "place_name": "Jules Verne",
+      "source_place_id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+      "reason": "Restaurant near Eiffel Tower (approximately 0 m straight-line).",
+      "associated_day": "2026-10-23",
+      "area": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-4fe53eae-9700-4f0b-b6bd-1c38cfbe4bf8:0"
+    }
+  ],
+  "destination": "Paris, France",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261022-square-saint-jacques",
+          "title": "Relaxed visit to the Square of Saint-Jacques Tower",
+          "place_name": "Square of Saint-Jacques Tower",
+          "source_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "location": "39 Rue de Rivoli, 75004 Paris, France",
+          "start_time": "2026-10-22T09:00:00+02:00",
+          "end_time": "2026-10-22T09:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Outdoor park visit; the supplied opening-hours evidence for this date lists 08:00–19:00."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261022-notre-dame",
+          "title": "View Notre-Dame Cathedral from outside",
+          "place_name": "Notre-Dame Cathedral of Paris",
+          "source_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "location": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+          "start_time": "2026-10-22T10:15:00+02:00",
+          "end_time": "2026-10-22T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture viewing only; no interior visit is planned."
+        },
+        {
+          "activity_kind": "generic_activity",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261022-neighbourhood-stroll",
+          "title": "Unhurried neighbourhood street exploration",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-22T11:30:00+02:00",
+          "end_time": "2026-10-22T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "A flexible, low-cost outdoor stroll; no specific venue is assigned."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261023-eiffel-exterior",
+          "title": "View the Eiffel Tower from outside",
+          "place_name": "Eiffel Tower",
+          "source_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "location": "Av. Gustave Eiffel, 75007 Paris, France",
+          "start_time": "2026-10-23T10:00:00+02:00",
+          "end_time": "2026-10-23T10:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior viewing only; no tower entry is planned. Supplied hours are a regular weekly baseline, not confirmation of date-specific hours."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261023-arc-exterior",
+          "title": "View the Arc de Triomphe from outside",
+          "place_name": "Arc de Triomphe",
+          "source_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "location": "Pl. Charles de Gaulle, 75008 Paris, France",
+          "start_time": "2026-10-23T12:00:00+02:00",
+          "end_time": "2026-10-23T12:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture viewing only; no monument entry is planned."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261024-louvre-exterior",
+          "title": "View the Louvre from outside",
+          "place_name": "Louvre Museum",
+          "source_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "location": "75001 Paris, France",
+          "start_time": "2026-10-24T10:00:00+02:00",
+          "end_time": "2026-10-24T10:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture viewing only; no museum entry is planned. Supplied hours are a regular weekly baseline, not confirmation of date-specific hours."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261024-place-des-vosges",
+          "title": "Relaxed visit to Place des Vosges",
+          "place_name": "Place des Vosges",
+          "source_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "location": "Pl. des Vosges, 75004 Paris, France",
+          "start_time": "2026-10-24T12:00:00+02:00",
+          "end_time": "2026-10-24T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Outdoor park visit. Date-specific opening hours are unknown in the supplied evidence; light drizzle is forecast."
+        },
+        {
+          "activity_kind": "generic_activity",
+          "time_use": "scheduled",
+          "activity_id": "paris-20261024-neighbourhood-stroll",
+          "title": "Unhurried neighbourhood street exploration",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T13:30:00+02:00",
+          "end_time": "2026-10-24T14:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "A flexible, low-cost outdoor stroll; no specific venue is assigned. Light drizzle is forecast."
+        }
+      ]
+    }
+  ]
+}

@@ -181,6 +181,11 @@ def _rebuild(context, descriptor, kind):
             directory,
             **values,
             generated_at=saved["generated_at"],
+            quality_profile=(
+                saved["rules_profile_id"]
+                if saved.get("rules_profile_id") == "rtpeval_declared_population_1"
+                else None
+            ),
         ).to_dict()
     _require(
         rebuilt["status"] == "complete",

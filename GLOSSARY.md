@@ -1,6 +1,14 @@
 # Reliable Trip Plan Agent terminology
 
-These terms distinguish V3 Repair exploration from the itinerary selected for delivery.
+These terms distinguish planning declarations, Repair exploration and selected delivery.
+
+## Activity time use
+
+**Scheduled** assigns an activity to its submitted interval, even when movable or
+unbooked. **Free window** describes discretionary availability with no adopted
+activity commitment. These are planning declarations, separate from primary-visit
+role, fixed-time requirements and verified facts. The detailed legal combinations
+belong to the [activity contract](docs/0003-itinerary-transport.md#activity-semantics-contract-phase-2).
 
 ## Repair
 

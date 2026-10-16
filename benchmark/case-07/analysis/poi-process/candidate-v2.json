@@ -1,0 +1,3557 @@
+{
+  "schema_version": "rtpeval_candidate_capture_1",
+  "version": "v2",
+  "run_id": "case-07-r03-v2-01",
+  "stages": {
+    "discovered": {
+      "status": "partial",
+      "reasons": [
+        "saved_rag_discovery_partial"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ04VKlPVu5kcRJJV7esEZzgM",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.2693158388137836,
+              "distance_km": 4.482564002753048,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7beaa26b3fd8d5bf434fd498d91448b9271db14d596f5a388d83fd9db0c8763a",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ04VKlPVu5kcRJJV7esEZzgM"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.28132301195585785,
+              "distance_km": 2.9906770155805646,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4ff15377dfe41adac904481b8c317b55ddbac385354f17625e2e5536b47ae2ac",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ28laW9p65kcRLkyGSRGcV04",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJ442GNENu5kcRGYUrvgqHw88",
+            "expanded_semantic_sha256": "dc6acddc2543f41860a8679ee512efc7e1d6481933ca9b2a46a521bf2a4f5fb7"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.288366054101712,
+              "distance_km": 1.2933495482785637,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "77570b985670e9f2aef87e261da8f5e5296d01caf097734210477aa899475d78",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJ5bx0qiVu5kcRs_dMpI5ttiY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.2844708222781631,
+              "distance_km": 0.7526134285032243,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ6XHvERZy5kcRcARsBv9AehU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3124788124133253,
+              "distance_km": 0.9895758923482929,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fe02f32aa3bd23c3073da351e08202df8d02b2a53ed12700fea0fea5ee733dee",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCQ3V1j1u5kcR486q7s3KIH4",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.26932537325318173,
+              "distance_km": 1.6158168323352504,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "511ff2f47791832da70fca6e59e85914d107b9b5af61ef016932a89e0c570ef9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCQ3V1j1u5kcR486q7s3KIH4"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.30630557574663064,
+              "distance_km": 2.0110560152154218,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "24c1e6ed0decf3661a2bc2b161eda01d0e3a336fe9ae6262fdef0621a63730f7",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDxKAR-pv5kcRJznFaRy78QQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.28083577384522274,
+              "distance_km": 7.6923511528733535,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "28ff3f17facb792fdd4554c25589fdb46f3e8ded2349e8b385bc5b688b49ca55",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDyx4bNhu5kcRqJ3RkAPGMEk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "generation/v2/rag-origins.json",
+              "pointer": "/origins/ChIJEU7r8_lx5kcRgylm7D8Avm4",
+              "expanded_semantic_sha256": "3fbcd9fc7b5ebbd44e3f89188c95bbdade3e63172a16b112c6dd58b77818cc1d"
+            }
+          }
+        },
+        {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Musée d’Orsay in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.34223520755768067,
+              "distance_km": 0.5613539908359859,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJHbrByclt5kcRn-ZGU8KjU_g",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3640270612223766,
+              "distance_km": 4.893303051208554,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b0ce2ca46b536abf963120819527d845d1c35ceaa4fa0b07af09c267cae67513",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJHbrByclt5kcRn-ZGU8KjU_g"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 7
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.26868659035127274,
+              "distance_km": 1.6181322970372638,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "cf5a737176d434d2bf5b86cd512c215aae0f6582e929b988e958baa00efdbdc2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.2961107017927991,
+              "distance_km": 1.199819569777698,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "74b697bb75e3921ffa51adeb5a2e3e5304a9a0524a01d9efb7e0505ae598df57",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJQdQyeiZu5kcRUfQHfB-OCLA"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.3411741744072254,
+              "distance_km": 1.0116455285484631,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fb7b89f8d7b1f08a11f624335427cedcd4d44a35a7dfa9b6804f68b3402fe097",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJW7ySGCdu5kcRldwk22iNR0o"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJX26tvBJy5kcRawOftfeom5k",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.29098336154321713,
+              "distance_km": 5.029749702219437,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0d87ba6f1c9f19ed43f169a7f6269b76978c91aa141fc7a54f182eebf43c113e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJXfonYfBu5kcRkTNLzc_By-U"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.28346876600570936,
+              "distance_km": 3.042582295110033,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1b6c2295f3b6278a34062a97d833d34300a64549ad09364eeaa024f376d138f8",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJbe5YOk9u5kcR7nIUjn_yLM4"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Panthéon in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.26695212519739764,
+              "distance_km": 1.316787762888319,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8dd0296e4b7012c722e28096140a9139db868e090187e2d997526618a41fbfb0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "expanded_semantic_sha256": "06491a218da607c48c360eb2e0c35458e84d36d36619a87c63bb98b9134213b3"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJez2ACVtv5kcR2cbi5PU5mzs",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.3556142449378993,
+              "distance_km": 3.362517290567089,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "6e57796c6c97062fad5acf89edeeb8f04e09c471d242a70423f7c68780087f34",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJez2ACVtv5kcR2cbi5PU5mzs"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJh9M-FMZt5kcRkZSVdmDta_I",
+            "expanded_semantic_sha256": "3631254b852c8ce9f2c72e467a2f98f084c1ce87fa794e0e14c2a60982785e8c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "expanded_semantic_sha256": "913a6242efa237097a65dc779558f55d32c83ef3ce1bb29541d88efa7d6c1ce7"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.27816216479765443,
+              "distance_km": 3.2295974063307655,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "59bf7cafb4214c94763cdbce7dabc509f3f070060fe9cc6fe091f8cfaac35a88",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJm9JEK-dv5kcRRAj5aYQEao0",
+            "expanded_semantic_sha256": "74b919f07c7aed3c8779b2c1293d6a4b411f35d4a921005905e9409a847785c8"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.2792912555163356,
+              "distance_km": 0.5825620178402131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4525d57a756c6f2ff87fe1b3ccb5670b3f3ea1f40fb20c84cfe1e77e787eec1f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJmw6mpBhu5kcRzLhZUymiyhY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJn6TYegFy5kcRg_-xruXtHZY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnayProZt5kcRFAPzPZHgRG4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnb13j6B65kcRSxozoc04yHc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.2779487636150424,
+              "distance_km": 2.3825645509242293,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d6a9d5ba1aeed0a253fec42eae210d9e639603bec22cacf6763fa4fd2fe9d45",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJrSTZSgBv5kcRXuTtWnlhL-c"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.3000913321808584,
+              "distance_km": 1.3308269427049952,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d363b85a4f4628341fe31852274da4e61239e4fb17cb0b2e44f616c7de7604da",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJt5KhKwBv5kcR7K4PKbzbC_g"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJtw1d4ett5kcRj07k-_vrf9s",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJufChV9Bv5kcRT02XBr8yAOs",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "generation/v2/rag-origins.json",
+              "pointer": "/origins/ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+              "expanded_semantic_sha256": "7e9f1e107b8db2ac3b5eaaf1365735b7fd64d97380c2402ee959b0db0283c3a1"
+            }
+          }
+        },
+        {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.3308546249530395,
+              "distance_km": 0.5055997825229493,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.2860736335384314,
+              "distance_km": 4.05478199914653,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "984ca49464cdbf0b5084f3d6f7638d18479a32a9aaec3c845beeb90709ead753",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJwxEz76Nt5kcRIl3qWIRI-Bc"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.4011639415524104,
+              "distance_km": 3.940525091813906,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "f19625ebd9848c0b11fbbcaeae890394794e1b65ceceb0f5aa484b2fda6e08cc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:55e0815b498e6907013d146f",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.30313066821511625,
+              "distance_km": 2.0889656117527453,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "f873912af2aecd8db2d0030feca09fe629102f7ab24cb2f332183b69f6e523d0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJyUvuNg1u5kcRIJBRQqwbjBU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.2742583588207751,
+              "distance_km": 1.5685779204557917,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "5cbe7a537fd1ff9d2dd4055e4be969ccd906a850375168a608f63928491f5b03",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJyWdN5SNu5kcRsskNxWnDf58"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJz35dQONv5kcRtSVtSJLDOsA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.2708117204420738,
+              "distance_km": 0.5521883521978328,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ab862f9d71beaf8a499a661269ae83e4d520ce3d20a664abcec1006c3e8e984d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+            }
+          ]
+        }
+      ]
+    },
+    "admitted": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.28132301195585785,
+              "distance_km": 2.9906770155805646,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4ff15377dfe41adac904481b8c317b55ddbac385354f17625e2e5536b47ae2ac",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.2844708222781631,
+              "distance_km": 0.7526134285032243,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3124788124133253,
+              "distance_km": 0.9895758923482929,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fe02f32aa3bd23c3073da351e08202df8d02b2a53ed12700fea0fea5ee733dee",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.30630557574663064,
+              "distance_km": 2.0110560152154218,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "24c1e6ed0decf3661a2bc2b161eda01d0e3a336fe9ae6262fdef0621a63730f7",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDxKAR-pv5kcRJznFaRy78QQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Musée d’Orsay in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.34223520755768067,
+              "distance_km": 0.5613539908359859,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 7
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.26868659035127274,
+              "distance_km": 1.6181322970372638,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "cf5a737176d434d2bf5b86cd512c215aae0f6582e929b988e958baa00efdbdc2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.2961107017927991,
+              "distance_km": 1.199819569777698,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "74b697bb75e3921ffa51adeb5a2e3e5304a9a0524a01d9efb7e0505ae598df57",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJQdQyeiZu5kcRUfQHfB-OCLA"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.3411741744072254,
+              "distance_km": 1.0116455285484631,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fb7b89f8d7b1f08a11f624335427cedcd4d44a35a7dfa9b6804f68b3402fe097",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJW7ySGCdu5kcRldwk22iNR0o"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.29098336154321713,
+              "distance_km": 5.029749702219437,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0d87ba6f1c9f19ed43f169a7f6269b76978c91aa141fc7a54f182eebf43c113e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJXfonYfBu5kcRkTNLzc_By-U"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Panthéon in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.26695212519739764,
+              "distance_km": 1.316787762888319,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8dd0296e4b7012c722e28096140a9139db868e090187e2d997526618a41fbfb0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "expanded_semantic_sha256": "913a6242efa237097a65dc779558f55d32c83ef3ce1bb29541d88efa7d6c1ce7"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.27816216479765443,
+              "distance_km": 3.2295974063307655,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "59bf7cafb4214c94763cdbce7dabc509f3f070060fe9cc6fe091f8cfaac35a88",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.2792912555163356,
+              "distance_km": 0.5825620178402131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4525d57a756c6f2ff87fe1b3ccb5670b3f3ea1f40fb20c84cfe1e77e787eec1f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJmw6mpBhu5kcRzLhZUymiyhY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJn6TYegFy5kcRg_-xruXtHZY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJufChV9Bv5kcRT02XBr8yAOs",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.3308546249530395,
+              "distance_km": 0.5055997825229493,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.2742583588207751,
+              "distance_km": 1.5685779204557917,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "5cbe7a537fd1ff9d2dd4055e4be969ccd906a850375168a608f63928491f5b03",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJyWdN5SNu5kcRsskNxWnDf58"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJz35dQONv5kcRtSVtSJLDOsA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "enriched": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.28132301195585785,
+              "distance_km": 2.9906770155805646,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4ff15377dfe41adac904481b8c317b55ddbac385354f17625e2e5536b47ae2ac",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.2844708222781631,
+              "distance_km": 0.7526134285032243,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3124788124133253,
+              "distance_km": 0.9895758923482929,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fe02f32aa3bd23c3073da351e08202df8d02b2a53ed12700fea0fea5ee733dee",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.30630557574663064,
+              "distance_km": 2.0110560152154218,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "24c1e6ed0decf3661a2bc2b161eda01d0e3a336fe9ae6262fdef0621a63730f7",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDxKAR-pv5kcRJznFaRy78QQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Musée d’Orsay in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.34223520755768067,
+              "distance_km": 0.5613539908359859,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 7
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.26868659035127274,
+              "distance_km": 1.6181322970372638,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "cf5a737176d434d2bf5b86cd512c215aae0f6582e929b988e958baa00efdbdc2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.3411741744072254,
+              "distance_km": 1.0116455285484631,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fb7b89f8d7b1f08a11f624335427cedcd4d44a35a7dfa9b6804f68b3402fe097",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJW7ySGCdu5kcRldwk22iNR0o"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.29098336154321713,
+              "distance_km": 5.029749702219437,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0d87ba6f1c9f19ed43f169a7f6269b76978c91aa141fc7a54f182eebf43c113e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJXfonYfBu5kcRkTNLzc_By-U"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Panthéon in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.26695212519739764,
+              "distance_km": 1.316787762888319,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8dd0296e4b7012c722e28096140a9139db868e090187e2d997526618a41fbfb0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "expanded_semantic_sha256": "913a6242efa237097a65dc779558f55d32c83ef3ce1bb29541d88efa7d6c1ce7"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.27816216479765443,
+              "distance_km": 3.2295974063307655,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "59bf7cafb4214c94763cdbce7dabc509f3f070060fe9cc6fe091f8cfaac35a88",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.2792912555163356,
+              "distance_km": 0.5825620178402131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4525d57a756c6f2ff87fe1b3ccb5670b3f3ea1f40fb20c84cfe1e77e787eec1f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJmw6mpBhu5kcRzLhZUymiyhY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.3308546249530395,
+              "distance_km": 0.5055997825229493,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.2742583588207751,
+              "distance_km": 1.5685779204557917,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "5cbe7a537fd1ff9d2dd4055e4be969ccd906a850375168a608f63928491f5b03",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJyWdN5SNu5kcRsskNxWnDf58"
+            }
+          ]
+        }
+      ]
+    },
+    "supplied": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.2844708222781631,
+              "distance_km": 0.7526134285032243,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.34223520755768067,
+              "distance_km": 0.5613539908359859,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 7
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "analysis/poi-process/opportunities.json",
+            "pointer": "/runs/1/places/ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "expanded_semantic_sha256": "913a6242efa237097a65dc779558f55d32c83ef3ce1bb29541d88efa7d6c1ce7"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.3308546249530395,
+              "distance_km": 0.5055997825229493,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "pre_rag_google_ids": {
+    "$case_material_ref": {
+      "path": "analysis/poi-process/opportunities.json",
+      "pointer": "/runs/1/pre_rag_google_ids",
+      "expanded_semantic_sha256": "9d6f7be988330b8847bb2c0a3be354fb12e0ebd8a3f67f31d46ed5dfd594e279"
+    }
+  },
+  "omissions": {
+    "$case_material_ref": {
+      "path": "analysis/poi-process/opportunities.json",
+      "pointer": "/runs/1/omissions",
+      "expanded_semantic_sha256": "2391191d8819cdb3719f91aad0cce3c01258c0b6074bff75b2c016c42d293d3c"
+    }
+  },
+  "rag": {
+    "$case_material_ref": {
+      "path": "generation/v2/rag-origins.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "b4c70f2a858c11cf68c746c5db65279a5120d079c503a85e07157218d1ae3564"
+    }
+  },
+  "outcome": "completed",
+  "failure_type": null,
+  "result_semantic_sha256": null,
+  "import_provenance": {
+    "source_kind": "retrospective_saved_trace_import",
+    "original_native_sidecar_present": false,
+    "input_sources": [
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0002_google_places_search_text.json",
+        "sha256": "ea10b34c19d0a0a7d42979b731f14b65e33dd69a0d3c0d603c2445e3182541d9",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0003_google_places_search_text.json",
+        "sha256": "42986ff574af8140b65b7f8014f37fded01ca12c80f38941515106ad8b672d46",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0004_google_places_search_text.json",
+        "sha256": "61a1852fc44e8efd0a9283c76efd1a5d01c84390ab6c3654aabf3aafad574f9b",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0005_google_places_search_text.json",
+        "sha256": "26420dca4ecf3f154c6c7741296042f38605911673ce1dcc820b001fd1c1d398",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0006_google_places_search_text.json",
+        "sha256": "c1cabdd3f73074cc4521a00ec2fa0aca6df2ea268b8d7968bee2ffe54d14fdce",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0007_google_places_search_text.json",
+        "sha256": "8b16ae8b4fbbf1bba22352f0e920f4b3e5930fab346b67cca0950774ffc29226",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0008_google_places_search_text.json",
+        "sha256": "22267364619bc9d8745e4e1f05468296370b0d8d852cb6b90f25d0a97fad8aca",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/tools/0009_google_places_search_text.json",
+        "sha256": "75ac2747e52bdec3fe6730fa37fb25c8334ddfa22cd61c0c480d13486c6a2295",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      {
+        "path": "p172/g/v2/result.json",
+        "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+        "media_type": "application/json",
+        "availability": "available"
+      }
+    ],
+    "events_path": "p172/g/v2/evidence/trace/20261016T021934Z_c814f6f0-082a-44ee-81de-5b2fd29cf293/events.jsonl",
+    "events_sha256": "cb4034359b74c067af51e0a32ff46eff6704c6822b1191c31e49b24f709ead05",
+    "declared_at": "2026-10-16T03:39:03.815006+00:00",
+    "method": "Match ordered candidate intent events to ordered search tool responses after destination lookup; verify response counts, merged census, exact saved admitted/details-qualified/supplied inventories. Never reconstruct missing stages from final itineraries.",
+    "limitations": "The opt-in native sidecar was not enabled in the executed package. This is a disclosed retrospective import; partial RAG discovery remains partial."
+  }
+}
