@@ -62,8 +62,8 @@ implements explicit roles/time use and a separately versioned numerical-populati
 profile approved on 2026-10-16. Its [accepted-case impact audit](records/evaluation/intake-identity-usage.md#activity-semantics-design-and-accepted-case-audit-2026-10-15)
 records the five selections accepted at the audit cutoff and case-07's actual
 supplementary review. The approved implementation and the subsequently accepted
-[case-07 revision](../benchmark/case-07/report.md#acceptance) are integrated into
-the local main worktree under
+[case-07 revision](../benchmark/case-07/report.md#acceptance) are delivered through
+[PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) under
 [Issue #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172).
 Historical results retain their original contracts and scores; this integration
 does not refresh accepted datasets.

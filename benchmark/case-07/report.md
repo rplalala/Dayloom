@@ -153,17 +153,24 @@ deleted by that closeout. The closeout did not change application behavior or
 previously accepted case data; the separately authorized main integration adopts
 Issue #172's prospective contract while preserving those historical materials.
 
-The initial local main integration passed 4324 backend tests (16 environment
-skips), followed by an AST-preserving formatting correction and 55 affected tests.
-Independent review found two prospective prompt/Repair boundary defects; their
-separate corrections passed 1231 related tests and both review rechecks. The full
-suite was not repeated after those corrections. Frontend validation passed 101
-tests, build and lint. Current-main
-readers accepted 28 saved outputs / 267 activities, and six non-scoring reports
-matched their saved semantic hashes. A fresh unexecuted preparation retained the
-same declared population. Originals, the exact private archive and both receipts
-passed preservation checks. This verifies compatibility without recomputing a
-historical primary or paired quality score.
+The reviewed correction gate passed **1,231 affected backend tests**. The earlier
+integration full suite passed **4,324 tests / 16 environment skips** before the two
+review corrections. An additional corrected-code full run was stopped at the
+researcher's request because of its duration; it remains incomplete and does not
+establish a full-suite pass. Runtime fingerprints were identical before and after
+that interrupted run. Frontend validation passed 101 tests, production build
+and lint; backend/tool Ruff and 45 changed Python format checks passed. Independent
+Standards and Spec reviews finished with zero unresolved findings after the two
+prompt/Repair corrections. The [engineering record](../../docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
+owns the initial failures, corrections and retest sequence.
+
+Saved-material readers accepted 28 outputs / 267 activities, and six non-scoring
+reports matched their saved semantic hashes. A fresh unexecuted preparation
+retained the same declared population. Original private bytes, the exact final
+archive and both receipts passed preservation checks. Unrelated fixed-baseline
+Git objects are unchanged in the isolated publication tree; another session's
+scenario-selection changes were excluded. No historical primary or paired quality
+score was recomputed.
 
 ## Acceptance
 
@@ -172,8 +179,9 @@ selected V0–V3 results and reports, and the disclosed limitations on 16 Octobe
 2026 Australia/Sydney. This includes partial V2 discovery, 108 relevance UNKNOWNs,
 absence of a new paired quality score and unverified EUR 650 affordability. The
 decision preserves historical results and supplies no blinded human quality ratings.
-Additional evidence acquisition or scoring requires separate authorization. Local
-main integration and its checks are authorized; push and PR merge remain deferred.
+Additional evidence acquisition or scoring requires separate authorization.
+[PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) owns Git delivery of this accepted selection and the prospective
+Issue #172 implementation; it preserves the selected producer revision and history.
 
 ## Actual AI assistance
 

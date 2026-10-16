@@ -225,7 +225,7 @@ The independent evaluator's implemented/deferred metric boundary remains in
 
 ## Activity semantics contract (phase 2)
 
-Status: **Accepted on 2026-10-16; integrated into the local main worktree under Issue #172.**
+Status: **Accepted on 2026-10-16; implemented under Issue #172 and delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174).**
 [Issue #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
 owns implementation and the accepted-case impact audit. Historical `itinerary_1/2`
 and evaluator policies remain authoritative for existing material. The

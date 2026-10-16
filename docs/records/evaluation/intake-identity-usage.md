@@ -2071,7 +2071,8 @@ behavioral red gate; their logs remain diagnostic evidence rather than product
 failures. The corrected tree passed 1,231 tests across all policies, V0–V3, Azure
 DTOs, schemas and the affected evaluation/presentation interfaces, with identical
 before/after source fingerprints. Ruff and all 45 changed Python format checks
-passed. The full suite was not repeated after this bounded correction.
+passed. The additional full-suite attempt and its remaining coverage limit are
+recorded below.
 `/root/case07_main_standards` and `/root/case07_main_spec` independently rechecked
 the committed correction and finished with zero unresolved findings. Neither
 review supplied venue judgments. The accepted selected outputs already have valid
@@ -2090,9 +2091,30 @@ receipts (177 historical / 225 selected files) and all 37 indexed public materia
 pass hash/source-equivalence checks. Raw model packets remain private; selected
 judgments are unchanged.
 
+[PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) delivers the implementation and accepted case-07 material.
+The researcher stopped the additional corrected-code full regression on 16 October
+after 3816.42 seconds because of its duration. The owned process
+tree exited; the partial log and cancellation record are retained. It is incomplete,
+not a full-suite pass. Its unchanged runtime-source digest is
+`e6266f4cd058f18808518487cd2e58f5b0747aa5ac0ebbb8e567a58b3623d504`, equal to the successful **1,231-test correction gate**.
+The earlier **4,324-pass / 16-skip** full run predates those two corrections and is
+not substituted for complete corrected-code coverage. Delivery reuses the affected
+gate, frontend/build/lint results and independent reviews, with this explicit
+coverage limitation. Skipped environments and the pytest cache permission warning
+retain their stated limits. No replacement full regression was started.
+
+During the run, another session committed a twelve-case selection adjustment in
+the shared main worktree. Only its unrelated benchmark/doc paths changed; runtime,
+test and dependency/configuration Git objects remain identical to the PR code,
+and no backend test references the changed selection paths. Publication uses a
+separate worktree pinned to the PR head, excluding those commits. Protected tracked
+files are compared as fixed-base Git objects across different checkout line endings;
+private originals, archives and receipts retain exact byte/hash checks. The final
+documentation update changes delivery state and verification evidence only.
+
 Integration checks and acceptance metadata are retained adjacent to the immutable
 archive in `benchmark/scratch/case-07/integration-20261016/`; synthetic test logs
 and XML are in `.scratch/case07-integration-20261016/`. These are local evidence
-identifiers. They do not create a published navigation dependency. Git delivery
-and Issue closure remain separate; no generation, actual case scoring or paid
-project call occurred, and case-11/12 remain unstarted.
+identifiers. They do not create a published navigation dependency. [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174)
+owns the authorized Git delivery and linked Issue closure. This delivery performs
+no generation, actual case scoring or paid project call; case-11/12 remain unstarted.

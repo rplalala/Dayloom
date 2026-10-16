@@ -129,7 +129,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
-| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs, unavailable paired scoring and unverified affordability](case-07/report.md#acceptance) |
+| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs, unavailable paired scoring and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
