@@ -1781,6 +1781,9 @@ verifies current readers, semantic readiness and identical opening eligibility/e
 Historical primary implementation fingerprints remain enforced. The integration adds
 no provider sends, generation rerun or rescoring and preserves other accepted case data.
 The original diagnostic and regression evidence remains private; the migrated case
-archive retains all original source bindings. Final researcher acceptance remains pending.
+archive retains all original source bindings. The researcher accepted the integrated
+case-05 dataset and both corrections with all disclosed limitations on 16 October 2026;
+its [acceptance scope](../../../benchmark/case-05/report.md#acceptance) remains separate
+from deferred blinded human assessment.
 The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
 has separate implementation and validation scope.

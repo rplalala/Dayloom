@@ -1752,4 +1752,6 @@ scope and preservation checks. Separate Standards and Spec reviews cover the mer
 code and corrections. Original evidence and other accepted case data are preserved;
 no generation, scoring or provider call was repeated. The full backend suite was not run.
 The [Repair allocation correction](../v0-v3/v3-development.md#offline-round-allocation-diagnosis-2026-10-15)
-retains its separate implementation scope. Joint researcher acceptance remains pending.
+retains its separate implementation scope. The researcher accepted both corrections and
+the integrated case-05 dataset with all disclosed limitations on 16 October 2026;
+the [case acceptance](../../../benchmark/case-05/report.md#acceptance) owns the decision.
