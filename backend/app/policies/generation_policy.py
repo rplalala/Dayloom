@@ -38,9 +38,7 @@ early days and leave later dates empty. Respect explicit slow pace, rest prefere
 long-duration REQUIRED visits, evidence availability and supported date boundaries.
 Do not invent places or facts to meet the target. Do not inflate counts with repeat
 visits, transport, free time, generic activities or unscheduled Nearby references.
-Provide activity_kind explicitly for every activity: main_poi for a primary venue
-visit, generic_activity for a non-specific activity,
-free_time for unallocated/rest time, or unknown when the role cannot be assigned.
+Use the explicit activity declarations and time-use combinations in the generation contract.
 These are model-declared roles, not evidence-backed factual verification. Place type
 alone does not determine role. A REQUIRED cafe can be a main visit. Keep a coherent
 draft and state material limitations when the target cannot reasonably be met;

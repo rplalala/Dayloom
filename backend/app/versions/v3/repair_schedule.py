@@ -11,6 +11,7 @@ from backend.app.policies.itinerary_schedule import (
 from backend.app.policies.itinerary_schedule import (
     available_intervals,
     ordered_activities,
+    primary_journey_allowed,
     subtract,
 )
 from backend.app.policies.itinerary_schedule import (
@@ -85,6 +86,7 @@ def retained_transfers(original, proposed, schedule):
         for d in proposed.days
         for ordered in [ordered_activities(d, schedule)]
         for a, b in zip(ordered, ordered[1:], strict=False)
+        if primary_journey_allowed(a, b)
     }
     return tuple(
         t
@@ -158,6 +160,8 @@ def consume_windows(original, proposed, scope, schedule, places, evidence, polic
     for day in proposed.days:
         ordered = ordered_activities(day, schedule)
         for left, right in zip(ordered, ordered[1:], strict=False):
+            if not primary_journey_allowed(left, right):
+                continue
             if left == old.get(left.activity_id) and right == old.get(right.activity_id):
                 continue
             if not left.source_place_id or not right.source_place_id:
