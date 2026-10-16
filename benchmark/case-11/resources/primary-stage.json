@@ -1,0 +1,64 @@
+{
+  "actual_billing": null,
+  "api_reference_allowance_usd": "40",
+  "attempts": [
+    {
+      "actual_billing": null,
+      "metrics": {
+        "cache_hits": 0,
+        "elapsed_seconds": 65.34399999999732,
+        "http_sends": 2,
+        "model_calls": 2,
+        "total_tokens": 27772
+      },
+      "outcome": "completed",
+      "reference_usd": "0.006291725",
+      "run_id": "case-11-r01-v0",
+      "source_hashes": {
+        "cost-report.json": "7c5794868a71a387fcb69c560a9cfd66746545b371d3ea86b3d414cfd24cd60d",
+        "manifest.json": "6cc622d1756f74c0eee20bca5d364e1912d209d5f1432df1e14677e043672644",
+        "producer-completion.json": "2327539ea180940358d998e8c0ee20365fe9e88f3f72742cee1deccc2e8a8dc1",
+        "provenance.json": "7c3e8d4cf61faf85691a1a64c00019ea7d6e773ac3611301fca0378e75a7b7cb",
+        "result.json": "932cd7a04d9c2a88d334852542410e59ab01724d19631f1da5545004d07cfb96",
+        "usage.json": "3c3f13bf56c150ebb1ca179b98b49517aae3d369267e443ab576101f0cc7ab63"
+      },
+      "unpriced_events": 0,
+      "version": "v0"
+    },
+    {
+      "actual_billing": null,
+      "metrics": {
+        "cache_hits": 0,
+        "elapsed_seconds": 112.64099999999598,
+        "http_sends": 64,
+        "model_calls": 4,
+        "total_tokens": 67817
+      },
+      "outcome": "completed",
+      "reference_usd": "1.982172725",
+      "run_id": "case-11-r01-v1",
+      "source_hashes": {
+        "cost-report.json": "7d994f852be1c3712773e32bb3679db99bb867a452b070429083cb51596589d6",
+        "manifest.json": "c39d4b0326e468f955ae1725f00efd0edf0653791ad7b59d5cf1d5e36b045c62",
+        "producer-completion.json": "a06631a476167ac6f5a9a00cf639f8e5ffddcd1cf6b7e498048e2d8a8212bba5",
+        "provenance.json": "3c6df06a1a80e0f440eb4303cea7f3917f9798d5566f2fe1f46db4c0419deaa7",
+        "result.json": "7a59f29bc190c6b6b16bd356137e7b80911341bbe9971c74280bf93c5bbca690",
+        "usage.json": "885b2fd618d4bdb75df170ce60047bfa8c5d64452f0cebe67b83d1de8d6acf70"
+      },
+      "unpriced_events": 0,
+      "version": "v1"
+    }
+  ],
+  "case_id": "case-11",
+  "consumed_reference_usd": "1.988464450",
+  "external_codex_usage": "Unavailable; external agent usage is separate from the instrumented API estimate.",
+  "not_started": [
+    "v2 generation",
+    "v3 generation",
+    "independent primary evaluation"
+  ],
+  "retries": 0,
+  "revision": "1",
+  "scope": "Current authorized primary-stage attempts only; no post-primary process analysis",
+  "unspent_reference_usd": "38.011535550"
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "case11_public_material_index_1",
+  "case_id": "case-11",
+  "execution_revision": "1",
+  "status": "blocked_before_primary_evaluation",
+  "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+  "canonical_original_input": "../inputs/case-11.json",
+  "original_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+  "entries": [
+    {
+      "path": "requirements/reviewed.json",
+      "sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "publication_kind": "exact_bytes",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/requirements-reviewed.json",
+      "source_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "json_pointer": ""
+    },
+    {
+      "path": "requirements/route-reviews.json",
+      "sha256": "775e0dbe30cfee57a71b8256d40f61b7d84faa5dcf64a7692ba42de44bce06d3",
+      "publication_kind": "json_with_lf_publication",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/route-reviews.json",
+      "source_sha256": "047c6e15dee01fd959963ed533cd5b91a5008db2147ea436acbc90f88afdeab4",
+      "json_pointer": ""
+    },
+    {
+      "path": "requirements/density-reviews.json",
+      "sha256": "a29a4350717e27f4803a6e5f8d78c6c753594696738ddfec1ed44cabd057aba0",
+      "publication_kind": "json_with_lf_publication",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/density-reviews.json",
+      "source_sha256": "f4071c90e7ea1bf6f38f58733ae5f9a0e9ef144ee5dabffb65e9c70ce80c7783",
+      "json_pointer": ""
+    },
+    {
+      "path": "requirements/schedule-context.json",
+      "sha256": "41079e401b1a435aaaf826cf2f36e3fe3f58533424a4d2658c6e09b93bdec741",
+      "publication_kind": "json_with_lf_publication",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/schedule-context.json",
+      "source_sha256": "efa88a02c9594abfd561455c7d1527112d7ddcffdd9e54539c374ff306e32d01",
+      "json_pointer": ""
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "e3aedce478b3aca92fb3f8bbe7b64c8d8e36ae3319c48c7ca9f8d8de8bebc69c",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/material/captures/v0/result.json",
+      "source_sha256": "932cd7a04d9c2a88d334852542410e59ab01724d19631f1da5545004d07cfb96",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "0e1ecb393b16e6cc5dcd64b2f20dc22fef7f3eea339925ab0dc91cb83e1c0f14",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/material/captures/v1/result.json",
+      "source_sha256": "7a59f29bc190c6b6b16bd356137e7b80911341bbe9971c74280bf93c5bbca690",
+      "json_pointer": "/itinerary"
+    },
+    {
+      "path": "resources/primary-stage.json",
+      "sha256": "344cf7014f52dcf8f646bc6f72271ffe30a4199a1ac4cc3d41db22bc0ab1eb08",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/resource-ledger.json",
+      "source_sha256": "7f0e7da95749b503170b09bbe020a5d48a529999d143596d8eaedaaf2238e238",
+      "json_pointer": ""
+    },
+    {
+      "path": "evaluation/population-v1.json",
+      "sha256": "3a558a38834fed690f0f0aacdfc7aba359d53018578c90bbab2e17d99a8e67ce",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/handoffs/population-v1.json",
+      "source_sha256": "1c3ad2ed5399651a492810805f7ba5f9b9c0e6c776e6b67aa676f6279ee5bcbb",
+      "json_pointer": ""
+    },
+    {
+      "path": "interests/source-review.json",
+      "sha256": "ea57979f771cf34eba164d7f459ffdcbcbce10ed6bae09b728256d682872b5e2",
+      "publication_kind": "derived_source_review_view",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/source-only-interest-review.json",
+      "source_sha256": "a997b4488ddd05ad37746913c3693aa29abdb72a49a1e8943bdb60914fff76ec",
+      "json_pointer": ""
+    },
+    {
+      "path": "evaluation/temporal-v1.json",
+      "sha256": "87377dd7ed28918545b189faa387592f0fe4ba5954f2de553c736b8a9e6a365d",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/handoffs/locked-temporal-probe-v1.json",
+      "source_sha256": "87377dd7ed28918545b189faa387592f0fe4ba5954f2de553c736b8a9e6a365d",
+      "json_pointer": ""
+    }
+  ],
+  "private_source_root": "benchmark/scratch/case-11/work/r01",
+  "source_path_semantics": "Private source logical paths identify retained evidence, not public navigation dependencies. Selected JSON subtrees and LF publication preserve parsed values; the derived interest reader view is explicitly labelled. Native source bytes remain unchanged.",
+  "acceptance": "Unaccepted; no four-version material or primary quality score exists."
+}
