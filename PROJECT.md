@@ -305,20 +305,22 @@ human reports without changing primary scores. The
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
 records common workflow adoption; [parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
-owns case-03–15 dispatch, budgets and worker integration under the
+owns active case-03–12 dispatch, budgets and worker integration under the
 [parallel workflow](benchmark/README.md#parallel-sessions-and-integration).
 The coordinator stays in the main worktree; five workers own disjoint case queues.
 [Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns case-01 workflow acceptance. The active set has 15 requests following the
-user-approved 14 October 2026 selection revision; the benchmark index owns the
-coverage and old-to-new mapping. The [accepted selection index](benchmark/README.md#accepted-selections)
+owns case-01 workflow acceptance. The active set has 12 requests in four groups of three, following the
+user-approved 16 October 2026 selection revision. Case-01–07 remain unchanged;
+former case-14 becomes case-12 and former 12/13/15 are retired unexecuted. The
+benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
 locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
 on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
 verification. Original inputs, selected results and private archives remain unchanged.
 [Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
 including UNKNOWN and producer-runtime replay limits. Blinded human assessment
-remains deferred. Git publication remains separately authorized; case-15 stays paused.
+remains deferred. Git publication remains separately authorized; the retired former
+case-15 remains unexecuted.
 Case-07 execution revision 3 / input revision 2 was separately accepted on
 16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs, no new paired
 quality score and unverified whole-trip EUR 650 affordability. Its

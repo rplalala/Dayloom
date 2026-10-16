@@ -73,7 +73,7 @@ does not refresh accepted datasets.
 - [Benchmark workflow and case material](../benchmark/README.md): per-case sequence,
   responsibilities and user intervention, optional studies, public itinerary views and case reports
   and selected materials, ignored private execution storage and compact long-term archives,
-  scenario index and date updates. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
+  twelve-case selection, four-group classification, historical ID mapping and date updates. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
   owns final benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
   owns shared execution/child-Issue rules; [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
   tracks workflow/layout adoption and case-01 end-to-end acceptance. The

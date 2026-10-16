@@ -1,8 +1,8 @@
 {
   "input_version": "planning_request_2",
   "destination": "London, United Kingdom",
-  "start_date": "2026-10-15",
-  "end_date": "2026-10-18",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-25",
   "traveler_count": 1,
   "budget": {
     "amount": 1300,

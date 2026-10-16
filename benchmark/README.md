@@ -1,6 +1,6 @@
 # Benchmark workflow and case material
 
-This directory contains 15 English travel-planning requests. Pending inputs remain
+The active set contains 12 English travel-planning requests in four groups of three. Pending inputs remain
 working drafts; directory placement does not freeze the set. Each public case
 directory contains a reader-facing report and selected source-linked materials
 without duplicate copies. Raw capture,
@@ -48,7 +48,8 @@ reader-facing workflow, responsibility map, optional-study boundary, scenario in
 date rules and directory convention. Case Issues hold live scope, budgets, attempts
 and acceptance decisions rather than duplicate the common rules.
 [Parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
-owns case-03 through case-15 and their native case children.
+owns active case-03 through case-12 and their native case children, including the
+[historical ID mapping](#selection-revision).
 
 ### Parallel sessions and integration
 
@@ -61,17 +62,21 @@ independent workers may run concurrently within centrally approved limits.
 
 | Worker | Assigned queue |
 | --- | --- |
-| A | 03, 09, 13 |
-| B | 04, 14 |
-| C | 05, 15 |
+| A | 03, 09 |
+| B | 04, 12 (former 14; Issue #163) |
+| C | 05 |
 | D | 06, 08, 10 |
-| E | 07, 11, 12 |
+| E | 07, 11 |
+
+These are ownership queues, not active-process or live-run assignments. Retired
+worker worktrees need fresh qualified setup before future execution. Former
+case-12/13/15 are historical selections, not further queue work.
 
 Workers own their assigned `inputs/case-XX.json`, public `case-XX/` and ignored
 `scratch/case-XX/` paths and case Issues. Input changes still need their applicable
 approval. The coordinator owns shared workflow/index documents, application code,
 runtime configuration, dependency files, overall Issues and integration. Proposed
-shared fixes return to the coordinator for scoped work. Accepted case-01/02 inputs,
+shared fixes return to the coordinator for scoped work. Existing case-01–07 inputs,
 results and private archives remain unchanged.
 
 Before a worker is ready, rebuild its own `.venv` from the pinned `uv.lock`, including
@@ -259,7 +264,8 @@ benchmark/
   inputs/
     case-01.json
     ...
-    case-15.json
+    case-12.json
+  history/2026-10-16-selection/    # retired original inputs, not active cases
   <case-id>/
     report.md                     # reader-facing observations and material links
     itinerary.md                  # daily schedules, POI origins and draft/final changes
@@ -352,103 +358,132 @@ entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
-Dates and durations are inclusive. Accepted inputs retain their consumed bytes and
-dates; their selected reports are indexed [above](#accepted-selections). Case-05
-uses the approved 2026-10-16 through 2026-10-20 interval; case-07's accepted
-[input revision 2](case-07/requirements/input-r02.json) uses 2026-10-22 through 2026-10-24.
-Before executing a pending
-input, revalidate its stored dates against the actual application reference date.
+The active selection has four groups of three. Each case belongs to one group by
+its primary planning demand; the groups do not imply matched difficulty or
+experimental pairs. Group A includes ordinary mixed interests, not only empty
+preferences. Group C constrains visits to named places; group D constrains the
+itinerary's available modes, time or daily visit capacity.
+
+| Group | Cases | Primary demand |
+| --- | --- | --- |
+| A. General sightseeing | 01, 02, 03 | Basic requests and balanced first-visit sightseeing |
+| B. Contextual preferences | 05, 06, 07 | Relaxed depth, family needs and lower-cost experience preferences |
+| C. Place obligations | 08, 09, 10 | Required/excluded places, dated visits and deliberate repeated visits |
+| D. Itinerary boundaries | 04, 11, 12 | Allowed transport modes, protected intervals and dated count/rest-day rules |
+
+Case-01–07 retain their existing input bytes, selected revisions, results, scores,
+reports, receipts, original dates and acceptance limitations. Historical accepted
+dates need not satisfy today's moving window. Five pending inputs use the dates
+below; the new case-12 is the former Sydney case-14.
+
+Dates and durations are inclusive. Selected reports are indexed
+[above](#accepted-selections). Case-05 uses the approved 2026-10-16 through
+2026-10-20 interval; case-07's accepted
+[input revision 2](case-07/requirements/input-r02.json) uses 2026-10-22 through
+2026-10-24. Before executing a pending input, revalidate its stored dates against
+the actual application reference date.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |
-| [01](case-01/report.md) | Basic request | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
-| [02](case-02/report.md) | Basic request | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
-| [03](inputs/case-03.json) | Travel preferences | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
-| [04](inputs/case-04.json) | Explicit constraints | Singapore | 2 | 2 | SGD 800 | A fairly full garden/city weekend using only walking and public transport; checks an explicit transport restriction on a short trip. |
-| [05](inputs/case-05.json) | Travel preferences | Barcelona | 5 | 1 | EUR 1,300 | Solo architecture and art travel at a relaxed pace; checks depth and time at places rather than many daily stops. |
-| [06](inputs/case-06.json) | Travel preferences | Sydney | 4 | 3 | AUD 2,200 | Two adults and a child prefer science, nature, breaks and driving; checks family preferences and soft transport intent. |
-| [07](inputs/case-07.json) | Travel preferences | Paris | 3 | 1 | EUR 650 | Lower-cost parks, neighborhoods and exterior architecture, with a few paid visits; checks cost-conscious selection without inventing a numeric quota. |
-| [08](inputs/case-08.json) | Explicit constraints | Barcelona | 3 | 2 | EUR 1,000 | Exactly one Sagrada Familia visit and no Park Guell visit; checks required and excluded places together. |
-| [09](inputs/case-09.json) | Explicit constraints | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
-| [10](inputs/case-10.json) | Explicit constraints | London | 4 | 1 | GBP 1,300 | Exactly two British Museum visits on different dates; checks deliberate repetition within a shorter trip. |
-| [11](inputs/case-11.json) | Explicit constraints | Paris | 4 | 2 | EUR 1,500 | Day-two 14:00-16:00 meeting with no activities or travel; checks a protected local-time interval. |
-| [12](inputs/case-12.json) | Explicit constraints | Singapore | 3 | 2 | SGD 1,100 | Exactly one museum visit on day two, with a flexible 10:00 start and 90-minute duration; checks hard dates versus soft timing. |
-| [13](inputs/case-13.json) | Travel preferences | Tokyo | 5 | 2 | JPY 220,000 | Modern art/design as the main focus, with gardens and neighborhoods as complements; checks interest priority at a fairly full pace. |
-| [14](inputs/case-14.json) | Explicit constraints | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
-| [15](inputs/case-15.json) | Explicit constraints | Barcelona | 7 | 4 | EUR 4,200 | Different group interests, one required landmark and a protected day-two afternoon; checks combined preferences and constraints. |
+| [01](case-01/report.md) | A. General sightseeing | Sydney | 3 | 1 | AUD 900 | Empty preferences for a solo traveler; checks ordinary destination planning from structured fields alone. |
+| [02](case-02/report.md) | A. General sightseeing | London | 3 | 2 | GBP 1,200 | Empty preferences for two travelers in a different destination; adds geographic and group-size variation to basic requests. |
+| [03](inputs/case-03.json) | A. General sightseeing | Tokyo | 4 | 2 | JPY 160,000 | First-time visit with traditional culture and modern neighborhoods; checks balanced introductory sightseeing at a moderate pace. |
+| [04](inputs/case-04.json) | D. Itinerary boundaries | Singapore | 2 | 2 | SGD 800 | A fairly full garden/city weekend using only walking and public transport; checks an explicit transport restriction on a short trip. |
+| [05](inputs/case-05.json) | B. Contextual preferences | Barcelona | 5 | 1 | EUR 1,300 | Solo architecture and art travel at a relaxed pace; checks depth and time at places rather than many daily stops. |
+| [06](inputs/case-06.json) | B. Contextual preferences | Sydney | 4 | 3 | AUD 2,200 | Two adults and a child prefer science, nature, breaks and driving; checks family preferences and soft transport intent. |
+| [07](inputs/case-07.json) | B. Contextual preferences | Paris | 3 | 1 | EUR 650 | Lower-cost parks, neighborhoods and exterior architecture, with a few paid visits; checks cost-conscious selection without inventing a numeric quota. |
+| [08](inputs/case-08.json) | C. Place obligations | Barcelona | 3 | 2 | EUR 1,000 | Exactly one Sagrada Familia visit and no Park Guell visit; checks required and excluded places together. |
+| [09](inputs/case-09.json) | C. Place obligations | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
+| [10](inputs/case-10.json) | C. Place obligations | London | 4 | 1 | GBP 1,300 | Exactly two British Museum visits on different dates; checks deliberate repetition within a shorter trip. |
+| [11](inputs/case-11.json) | D. Itinerary boundaries | Paris | 4 | 2 | EUR 1,500 | Day-two 14:00-16:00 meeting with no activities or travel; checks a protected local-time interval. |
+| [12](inputs/case-12.json) | D. Itinerary boundaries | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
 
-The current set contains two basic requests, five cases with soft preferences only
-and eight cases with explicit constraints. Six trips last two or three days, seven
-last four or five days, and two last seven days. Sydney, Tokyo and Barcelona have
-three cases each; London, Paris and Singapore have two each. Selection emphasizes
-distinct supported interests and constraints. The cases are not matched
-experimental pairs, and scenario budgets are not verified local travel prices.
+Five trips last two or three days, six last four or five days, and one lasts seven
+days. Sydney has three cases; Tokyo, Barcelona, London and Paris have two each;
+Singapore has one. Budgets describe whole-group trip inputs, not verified local
+travel prices or affordability.
 
 ### Selection revision
 
-The user approved the reduction from 20 to 15 on 14 October 2026. Accepted 01/02
-retain all input, result and archive bytes. Current 03-15 correspond, in order, to
-previous 03, 05, 06, 09, 11, 12, 14, 15, 16, 17, 18, 19 and 20. Previous 04, 07,
-08, 10 and 13 were retired because their general sightseeing, exclusions,
-walking/breaks and required-visit coverage overlaps retained cases. The
-[earlier draft](https://github.com/rplalala/Reliable-Trip-Plan-Agent/tree/8808340ceae7f6bd5688eccf4f4b461a98934b2b/benchmark/inputs)
-remains historical; current documents and new case work use the new IDs.
+On 16 October 2026 Australia/Sydney, the user approved reducing the active set from
+15 to 12 while preserving case-01–07. Cases 08–11 retain their identities; former
+14 becomes new 12. All five pending inputs move seven days later, preserving
+durations, weekdays, request meaning, party sizes, budgets and destination-local
+clock times. Selection follows request coverage, not observed scores.
 
-Three retained requests changed beyond renumbering: current 04 makes walking and
-public transport an exclusive restriction; current 10 shortens seven days to four
-and GBP 2,200 to GBP 1,300 while keeping its two-date museum requirement; current
-13 shortens seven days to five and JPY 300,000 to JPY 220,000 while keeping its
-main/secondary interests. No execution or version behavior changes are implied.
+| Previous 15-case ID | Current disposition | Issue and retained source |
+| --- | --- | --- |
+| 01–07 | Unchanged | Existing accepted case records and source bindings |
+| 08–11 | Same IDs; pending dates revised | #157, #158, #159, #160 |
+| 12: Singapore museum | Retired unexecuted | [#161](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/161); [original input](history/2026-10-16-selection/case-12.json) |
+| 13: Tokyo art/design | Retired unexecuted | [#162](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/162); [original input](history/2026-10-16-selection/case-13.json) |
+| 14: Sydney count/rest day | New case-12 | [#163](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/163); [previous input](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/73686a071fa4fda5b5c68b4b451a38f8b973e467/benchmark/inputs/case-14.json) |
+| 15: Barcelona mixed group | Retired unexecuted | [#164](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/164); [original input](history/2026-10-16-selection/case-15.json) |
+
+The retired originals retain their exact bytes outside the active `inputs/`
+directory. Old Singapore case-12 and new Sydney case-12 have distinct source
+histories and Issues; #161 is never reassigned to Sydney. Native historical Issue
+links remain traceable even after retirement.
+
+Retirement reduces specialized coverage: former 12 isolated hard dates versus soft
+start/duration preferences; former 13 isolated primary/secondary interests; former
+15 combined within-group interest differences, a required landmark and a protected
+interval. Retained cases cover the principal visit/date/count, preference and
+itinerary-boundary mechanisms, without claiming equivalent coverage of every
+retired combination.
+
+The earlier 20-to-15 selection was approved on 14 October 2026 and preserved
+accepted 01/02. Its complete predecessor mapping and three substantive request
+revisions remain in the [published 15-case index](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/6b11572c1c2331b61f263727dd7901ba8353752c/benchmark/README.md#selection-revision).
 
 ## Date update rules
 
-The planner's shared [date policy](../backend/app/policies/trip_dates.py) uses the
-application's configured time zone. On each execution date, the complete requested
-range must fall between that day's date and 13 days later, inclusive, and trips
-must last at most ten inclusive days. For reference date 2026-10-14, the allowed
-window is 2026-10-14 through 2026-10-27.
+The shared [date policy](../backend/app/policies/trip_dates.py) requires the entire
+trip to fall between the actual execution reference date and 13 days later,
+inclusive, with at most ten inclusive days. At reference date **2026-10-16**, the
+window is **2026-10-16 through 2026-10-29**.
 
-1. Choose dates for the planned execution period and validate them against the
-   actual application reference date. A later execution can invalidate an earlier
-   assignment even when its JSON still passes schema validation.
-2. Preserve each trip's duration and the relationships below. Update both the
-   structured dates and every explicit date in `additional_preferences` together.
-3. A common shift by a multiple of seven days preserves the initial weekdays.
-   With another shift, assign case-04 a Saturday-to-Sunday interval separately;
-   do not turn its weekend request into a weekday trip.
-4. Keep local clock times and their destination-local meaning unchanged. Recheck
-   official opening information for required places on the new dates, especially
-   fixed-time visits. Date updates must not silently change interests, budgets,
-   party sizes, visit counts or exclusions.
-5. Before execution, review and record the resulting input revision. All compared
-   versions must receive the same original request for each case. Once a request
-   has been used, retain its exact bytes with the run material; later edits form a
-   new revision rather than altering earlier evidence.
+| Pending case | Travel dates | Explicit dated requirement |
+| --- | --- | --- |
+| 08 | 2026-10-22–2026-10-24 | One required visit and one exclusion; dates otherwise flexible |
+| 09 | 2026-10-22–2026-10-26 | Ueno Park on day two, 2026-10-23; the one Tokyo National Museum visit has a flexible date |
+| 10 | 2026-10-22–2026-10-25 | Exactly two British Museum visits on different dates |
+| 11 | 2026-10-22–2026-10-25 | Day two, 2026-10-23, 14:00–16:00 Paris local time: no activities or travel |
+| 12, former 14 | 2026-10-22–2026-10-28 | Exactly one sightseeing visit on 2026-10-22; no activities or travel on day four, 2026-10-25 |
 
-| Case | Relationship to preserve |
-| --- | --- |
-| 04 | Two consecutive days: Saturday and Sunday. |
-| 09 | Ueno Park on day two, exactly once; Tokyo National Museum exactly once on a suitable date within the trip. |
-| 10 | Exactly two British Museum visits on different dates within the four-day trip. |
-| 11 | Day two: no planned activities or travel from 14:00 to 16:00, Paris local time. |
-| 12 | Day two: exactly one museum visit during the trip. About 10:00, Singapore local time, and about 90 minutes are flexible preferences. |
-| 14 | Day one: explicit pace/count target of exactly one sightseeing visit; day four: no planned activities or travel. |
-| 15 | Day two: no planned activities or travel from 15:00 to 18:00, Barcelona local time. |
+These future trips can be generated before their start date. The dates currently
+pass the window for execution reference dates 2026-10-16 through 2026-10-22;
+recheck at every actual dispatch. This selection/date update authorizes no live
+execution, semantic-review dispatch, new paid call or rescoring.
+
+1. Preserve the consumed bytes and original dates of accepted cases. A future
+   request change creates a new revision rather than replacing old evidence.
+2. Revalidate pending inputs against the actual configured-zone application date;
+   do not backdate the runtime. Update structured dates and every explicit prose
+   date together, preserving day-relative relationships and local clock times.
+3. Retain duration and weekdays with a seven-day shift. Accepted case-04 keeps its
+   original Saturday-to-Sunday interval. Do not change interests, visit counts,
+   exclusions, budgets or traveler counts as a side effect of a date update.
+4. Before execution, review the input revision, actual source/runtime and official
+   opening information for required places. An offline date/schema check does not
+   establish opening, route, ticket or affordability feasibility. All compared
+   versions receive the same case request.
 
 ## Offline checks
 
-After edits, parse all 15 files as UTF-8 JSON and validate each using
-`PlanningRequest.model_validate_json`. Separately validate pending inputs using
-`create_trip_date_window` and `validate_requested_trip_dates` with an explicit
-execution reference date. Accepted inputs retain their consumed bytes and original
-date bindings; a later moving window does not invalidate that historical evidence.
-Schema validation alone does not enforce the moving date window.
+Parse exactly `case-01.json` through `case-12.json` in `inputs/` as UTF-8 JSON and
+validate every input with `PlanningRequest.model_validate_json`. Check each pending
+case with `create_trip_date_window` and `validate_requested_trip_dates` using an
+explicit execution reference date. Accepted dates and retired historical inputs
+are exempt from today's new-run window, not from source-integrity checks.
 
-Check that the filenames cover case-01 through case-15 exactly once, the index
-agrees with destination, duration, traveler count and budget, and the dated
-preferences retain the relationships above. Also check that local index links
-resolve. These checks are offline and do not invoke the planner or establish
-itinerary feasibility, ticket availability or evaluation results.
+Verify four disjoint groups of three, the origin/retirement mapping and Issue
+identities, scenario fields and all local index links. Case-01–07 must match their
+pre-change bytes; retired 12/13/15 must match the retained originals. The five new
+pending requests must equal their prior counterparts after only the authorized
+seven-day date shift and former-14 renaming. Retain existing acceptance and
+regression limitations; this revision changes no runtime code or scoring policy
+and does not establish a full-backend regression gate.
 
 ## Accepted case bundles
 

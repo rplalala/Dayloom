@@ -1,9 +1,9 @@
 {
   "input_version": "planning_request_2",
-  "destination": "Singapore",
-  "start_date": "2026-10-15",
-  "end_date": "2026-10-17",
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-28",
   "traveler_count": 2,
-  "budget": {"amount": 1100, "currency": "SGD"},
-  "additional_preferences": "We are two adults. Include exactly one visit to the National Museum of Singapore during the trip, and schedule it on 2026-10-16. If practical, we would prefer to start that visit around 10:00, Singapore local time, and spend about 90 minutes there, but both the start time and duration are flexible. We are flexible about the other sightseeing choices and their timing."
+  "budget": {"amount": 3200, "currency": "AUD"},
+  "additional_preferences": "We are two adults who enjoy nature and harbour views and prefer a relaxed pace overall. On 2026-10-22, plan exactly one sightseeing visit. Leave 2026-10-25 completely free of planned activities and travel as a rest day. We are flexible about the sightseeing choices on the other dates."
 }
