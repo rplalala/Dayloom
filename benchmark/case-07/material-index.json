@@ -3,7 +3,7 @@
   "case_id": "case-07",
   "input_revision": "2",
   "execution_revision": "3",
-  "status": "human_accepted_local_integration",
+  "status": "human_accepted",
   "source_revision": "2b6a80b437e30dd14826db92f447d52627820e24",
   "canonical_original_input": "../inputs/case-07.json",
   "selected_input": "requirements/input-r02.json",
@@ -735,7 +735,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "63147c3f29568f6edf9edc0bb57733117f66e0d5481a52aaabc2bd1fee15de9b",
+      "sha256": "eb1c28b448eebe36fe7791287bca2c63fda439b24c707e752aa7ae11393cb33c",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -799,5 +799,13 @@
     "historical_scores_recomputed": false,
     "standards_open_findings": 0,
     "spec_open_findings": 0
+  },
+  "git_delivery": {
+    "pull_request": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174",
+    "reviewed_code_revision": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "runtime_sha256": "e6266f4cd058f18808518487cd2e58f5b0747aa5ac0ebbb8e567a58b3623d504",
+    "affected_backend_tests_passed": 1231,
+    "additional_full_regression": "researcher_stopped_incomplete",
+    "historical_scores_recomputed": false
   }
 }

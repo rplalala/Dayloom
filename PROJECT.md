@@ -210,22 +210,21 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint: the 16 October local main-worktree integration of
+Latest offline checkpoint: the 16 October delivery of
 [activity semantics #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
-and accepted case-07 passed **4324 backend tests, with 16 skipped**, against
-unchanged application source throughout the complete run. A subsequent Ruff-only
-layout correction preserved the Python AST and passed 55 affected tests. Independent
-review then identified two prompt/Repair boundary defects; separate corrections
-passed **1231 related tests**, including all V0–V3. The full suite was not repeated
-after those corrections. Both review axes have zero unresolved findings.
-Frontend validation passed **101 tests across 13 files**, TypeScript/Vite build and
-lint. Backend/tool Ruff and changed-Python format checks pass. The initial Windows
-long-temporary-path failure was isolated on identical source and resolved by a
-short test root; original failure evidence is retained. Skipped environment coverage
-remains unverified. No test timeout, credential, system permission or project
-configuration was changed.
+and accepted case-07 through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) passed **1,231 affected backend tests**
+on the reviewed corrected application source. The earlier integration full suite
+passed **4,324 tests / 16 environment skips** before the two reviewed corrections.
+The additional corrected-code full run was stopped at the researcher's request
+because of its duration; it is incomplete and is not a full-suite pass. Both independent
+Standards and Spec axes have zero unresolved findings. Frontend validation passed
+**101 tests / 13 files**, TypeScript/Vite build and lint; backend/tool Ruff and
+all 45 changed Python format checks pass. The skipped environments remain
+unverified. Earlier Windows long-root and sandbox filesystem failures were
+isolated and rechecked without changing timeouts, credentials, permissions or
+project configuration. The detailed sequence belongs in the integration record.
 
-Current-main read-only compatibility covers 28 saved outputs / 267 activities,
+Saved-material read-only compatibility covers 28 saved outputs / 267 activities,
 six non-scoring native analysis reports and a fresh unexecuted preparation with
 the same declared population. Protected originals, earlier accepted cases and both
 case-07 primary receipts retain their hashes. Historical primary/pair scoring was
@@ -324,7 +323,7 @@ Case-07 execution revision 3 / input revision 2 was separately accepted on
 quality score and unverified whole-trip EUR 650 affordability. Its
 [acceptance record](benchmark/case-07/report.md#acceptance) owns the selected
 materials and limitations. Issue #172's prospective activity contract and these
-sanitized materials are integrated locally; historical results remain unchanged.
+sanitized materials are delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174); historical results remain unchanged.
 Subsequent runs report primary scores and pause before further diagnostics.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
