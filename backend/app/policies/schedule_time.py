@@ -68,10 +68,13 @@ def local_datetime(day, clock, zone_name):
 
 
 def elapsed_seconds(start, end):
+    validate_endpoint(start, None)
+    validate_endpoint(end, None)
     return (end.astimezone(UTC) - start.astimezone(UTC)).total_seconds()
 
 
 def elapsed_add(value, seconds, zone_name=None):
+    validate_endpoint(value, None)
     instant = value.astimezone(UTC) + timedelta(seconds=seconds)
     local = instant.astimezone(_zone(zone_name) if zone_name else value.tzinfo)
     return local.astimezone(timezone(local.utcoffset()))

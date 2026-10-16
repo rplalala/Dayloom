@@ -117,3 +117,13 @@ def test_non_dst_zone_and_transition_crossing_interval_keep_real_elapsed_time():
     start = local_datetime("2026-10-25", "01:30:00", "Europe/Paris")
     end = local_datetime("2026-10-25", "03:30:00", "Europe/Paris")
     assert elapsed_seconds(start, end) == 10800
+
+
+def test_elapsed_helpers_do_not_interpret_naive_clocks_in_the_host_timezone():
+    from backend.app.policies.schedule_time import elapsed_add, elapsed_seconds
+
+    naive = datetime(2026, 10, 25, 10)
+    with pytest.raises(ValueError, match="timezone_offset_missing"):
+        elapsed_add(naive, 600)
+    with pytest.raises(ValueError, match="timezone_offset_missing"):
+        elapsed_seconds(naive, naive)
