@@ -409,14 +409,25 @@ class AzureFoundryStructuredLLMClient:
 
         options = {"method": "json_schema", "strict": True}
         references = None
+        time_projection = None
+        transport_schema = binding.transport_schema
         if response_schema is V1Itinerary:
+            from backend.app.llm.azure_foundry.civil_time import (
+                TIME_WIRE_VERSION,
+                ToolsTimeProjection,
+                primary_transport_schema,
+            )
+
+            transport_schema = primary_transport_schema(system_prompt)
+            if TIME_WIRE_VERSION in system_prompt:
+                time_projection = ToolsTimeProjection.primary(user_prompt)
             references, user_prompt = primary_references(user_prompt)
         elif response_schema is ExperienceProfileDraft:
             references, user_prompt = profile_references(user_prompt)
-        wire_schema = binding.transport_schema
+        wire_schema = transport_schema
         if references is not None:
             system_prompt += "\n" + INSTRUCTION
-            wire_schema = references.constrain_schema(binding.transport_schema.model_json_schema())
+            wire_schema = references.constrain_schema(transport_schema.model_json_schema())
         if _generation_config is not None:
             if response_schema is not V1Itinerary:
                 raise ValueError("Primary generation limits apply only to V1/V2 main output")
@@ -441,6 +452,8 @@ class AzureFoundryStructuredLLMClient:
                     if isinstance(raw_result, BaseModel)
                     else raw_result
                 )
+            if time_projection is not None:
+                raw_result = time_projection.primary_result(raw_result)
             transport_result = binding.transport_schema.model_validate(raw_result)
             domain_result = binding.to_domain(transport_result)
         except (FoundryMappingError, ValidationError, ValueError) as exc:
@@ -519,16 +532,25 @@ class AzureFoundryStructuredLLMClient:
         self, *, system_prompt, user_prompt, output_tokens=None, usage_callback=None
     ):
         """Per-invocation V3 options and additive usage capture; primary stays unchanged."""
+        from backend.app.llm.azure_foundry.civil_time import (
+            FoundryCivilPatchDTO,
+            ToolsTimeProjection,
+        )
         from backend.app.versions.v3.repair_budget import configured_policy
         from backend.app.versions.v3.repair_models import RepairPatch
         from backend.app.versions.v3.repair_projection import FoundryRepairPatchDTO
 
         if output_tokens is None:
             output_tokens = configured_policy().input.output_tokens
+        time_projection = ToolsTimeProjection.repair(json.loads(user_prompt))
         references, user_prompt = repair_references(user_prompt)
         system_prompt += "\n" + INSTRUCTION
         model = self._chat_model.with_structured_output(
-            references.constrain_schema(FoundryRepairPatchDTO.model_json_schema()),
+            references.constrain_schema(
+                (
+                    FoundryCivilPatchDTO if time_projection else FoundryRepairPatchDTO
+                ).model_json_schema()
+            ),
             method="json_schema",
             strict=True,
             max_output_tokens=output_tokens,
@@ -545,11 +567,12 @@ class AzureFoundryStructuredLLMClient:
                     else {}
                 ),
             )
-            dto = FoundryRepairPatchDTO.model_validate(
-                references.decode(
-                    raw.model_dump(mode="json") if isinstance(raw, BaseModel) else raw
-                )
+            restored = references.decode(
+                raw.model_dump(mode="json") if isinstance(raw, BaseModel) else raw
             )
+            if time_projection:
+                restored = time_projection.repair_result(restored)
+            dto = FoundryRepairPatchDTO.model_validate(restored)
             return RepairPatch.model_validate(dto.model_dump())
         except (ValidationError, ValueError) as exc:
             raise StructuredOutputError("Invalid Repair patch") from exc

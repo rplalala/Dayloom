@@ -93,6 +93,9 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
             "V1-V3 model transport activities are not allowed; use application transfers"
         )
     ledger = {p.place_id: p for p in places if p.place_id in supplied_ids}
+    from backend.app.policies.schedule_time import ScheduleTimeContext, validate_endpoint
+
+    time_context = ScheduleTimeContext([p for p in places if p.place_id in supplied_ids])
     for activity in activities:
         if activity.source_place_id is not None and activity.source_place_id not in ledger:
             raise ValueError("Activity identity is outside the supplied candidate ledger")
@@ -104,6 +107,9 @@ def validate_output_sources(itinerary, *, places=None, supplied_ids=()):
             raise ValueError(
                 "Named V1 activity requires a supplied identity; generic activities use null"
             )
+        zone = time_context.zone_for(activity.source_place_id)
+        for endpoint in (activity.start_time, activity.end_time):
+            validate_endpoint(endpoint, zone, activity_id=activity.activity_id)
     # Copy keeps V1's private cost projection diagnostics intact; validate public fields.
     days = [
         day.model_copy(

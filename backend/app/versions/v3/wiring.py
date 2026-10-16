@@ -497,6 +497,7 @@ class V3PostPrimary:
             default_source="USER_EXPLICIT"
             if state["transport_mode"].is_explicit
             else "APPLICATION_DEFAULT_WALK",
+            places=final_context.places,
         )
         from backend.app.policies.itinerary_schedule import ordered_activities
         from backend.app.services.initial_routes import leg_diagnostic, permitted_modes

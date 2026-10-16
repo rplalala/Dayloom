@@ -63,6 +63,10 @@ TRANSIT call. The application chooses and verifies authorized per-leg options, n
 durations or distances. Leave unsupported targets unresolved. Do not edit transfers directly.
 Do not add transport activities or disguise transport as another activity role. Propose visit
 arrangements only; the application owns transport selection and transfer times.
+tools_civil_time_1. For edits return local ISO timestamps without UTC offsets. The application
+derives the offset separately for each endpoint using schedule_time_context IANA evidence.
+Only supply an explicit valid offset to select a repeated local clock. Do not invent a zone,
+reuse a trip-wide offset, or schedule a nonexistent spring clock. Durations are elapsed seconds.
 """
 
 
@@ -340,14 +344,24 @@ def build_repair_input(
 
         payload["affected_day_replan"] = arrangement_context(original, scope, context)
     payload["proposal_strategy"] = proposal_strategy
+    payload["schedule_time_context"] = {
+        "version": "tools_civil_time_1",
+        "places": [
+            {"place_id": p.place_id, "timezone_id": p.timezone_id, "source_ref": p.source_ref}
+            for p in spatial_places.values()
+            if p.place_id in input_ids
+        ],
+    }
     for candidate in payload["candidate_catalog"]:
         if len(json.dumps(candidate, ensure_ascii=True)) > policy.input.candidate_characters:
             raise ValueError("repair_candidate_projection_overflow")
     user = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
     references, wire_user = repair_references(user)
     wire_payload = json.loads(wire_user)
+    from backend.app.llm.azure_foundry.civil_time import FoundryCivilPatchDTO
+
     schema = json.dumps(
-        references.constrain_schema(FoundryRepairPatchDTO.model_json_schema()),
+        references.constrain_schema(FoundryCivilPatchDTO.model_json_schema()),
         ensure_ascii=True,
         sort_keys=True,
     )
