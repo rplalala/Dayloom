@@ -153,9 +153,12 @@ deleted by that closeout. The closeout did not change application behavior or
 previously accepted case data; the separately authorized main integration adopts
 Issue #172's prospective contract while preserving those historical materials.
 
-The local main integration also passed 4324 backend tests (16 environment
-skips), followed by an AST-preserving formatting correction and 55
-affected tests; frontend validation passed 101 tests, build and lint. Current-main
+The initial local main integration passed 4324 backend tests (16 environment
+skips), followed by an AST-preserving formatting correction and 55 affected tests.
+Independent review found two prospective prompt/Repair boundary defects; their
+separate corrections passed 1231 related tests and both review rechecks. The full
+suite was not repeated after those corrections. Frontend validation passed 101
+tests, build and lint. Current-main
 readers accepted 28 saved outputs / 267 activities, and six non-scoring reports
 matched their saved semantic hashes. A fresh unexecuted preparation retained the
 same declared population. Originals, the exact private archive and both receipts
@@ -187,6 +190,7 @@ from the `gpt-6-luna` calls recorded inside the Planner and evaluator.
 | Revised execution through primary | `/root/case07_r03_live` | Frozen approved package; produced the four selected outputs and saved primary score |
 | Independent candidate relevance | `/root/case07_r03_relevance` | Blind 121-ID packet and 17 independent venue records; supplied the 13 relevant / 108 UNKNOWN judgments |
 | Independent engineering review | `/root/case07_closeout_standards`, `/root/case07_closeout_spec` | Committed material against fixed base `2b6a80b`; Standards identified and verified removal of the private identity-model packet/response from the public view; both axes finished with zero remaining findings |
+| Main integration engineering review | `/root/case07_main_standards`, `/root/case07_main_spec` | Committed integration from base `73686a0`; Spec identified two prompt/Repair P2s, separately corrected in `1f1b200`; both axes rechecked with zero remaining findings and supplied no venue judgments |
 | Contract implementation, orchestration and closeout | Parent Codex session `/root` | Saved code and evidence; prepared bindings, structural/resource analysis, offline validation and reader presentation |
 
 The selected semantic author/reviewer and relevance reviewer were requested as

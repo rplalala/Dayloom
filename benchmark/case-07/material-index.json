@@ -735,7 +735,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "7d6e7272aff0153b314e9ec405fe5498172c8184e679c29f9afc9356d64a2ddd",
+      "sha256": "63147c3f29568f6edf9edc0bb57733117f66e0d5481a52aaabc2bd1fee15de9b",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -789,5 +789,15 @@
     "historical_scores": "unchanged",
     "push": "not_authorized",
     "pr_merge": "not_authorized"
+  },
+  "main_integration": {
+    "base_revision": "73686a071fa4fda5b5c68b4b451a38f8b973e467",
+    "integration_commit": "eae2f9a9001478b1d7d26832e422d21c45012eae",
+    "correction_commit": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "reviewed_code_revision": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "producer_source_revision_unchanged": true,
+    "historical_scores_recomputed": false,
+    "standards_open_findings": 0,
+    "spec_open_findings": 0
   }
 }

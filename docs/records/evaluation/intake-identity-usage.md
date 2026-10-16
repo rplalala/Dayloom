@@ -2050,8 +2050,8 @@ and passed on the same source with a short root. Only that owned partial run was
 stopped; both probe results remain saved. The successful complete run used a
 short root. Afterward Ruff reformatted one output-summary comprehension;
 AST equality passed and 55 affected tests passed on the formatted tree.
-This sequence supplies full behavioral coverage plus the separate formatting
-gate, rather than claiming an uninterrupted run on the final formatted bytes.
+These initial integration gates precede the two review corrections below;
+they do not establish an uninterrupted full pass on the final corrected code.
 The current frontend gate passed 101 tests / 13 files, production build and lint.
 Its sandbox attempt failed at Vite filesystem realpath before test execution;
 the unchanged host run passed. Environment-dependent skips remain unverified.
@@ -2059,13 +2059,31 @@ External sockets and real-case private reads were guarded during synthetic tests
 intentional guard probes made no actual project-provider call. No timeout or
 project configuration was changed.
 
+Independent main-integration review covered `73686a0...eae2f9a`. Standards found
+no violation; Spec found two P2s: the shared first-generation policy still allowed
+superseded unknown/rest declarations, and Repair window consumption could reserve
+journeys with new-wire non-primary endpoints. Correction `1f1b200` removes the
+conflicting declaration list and applies the existing primary-journey rule to
+both newly created and retained reservations. Prompt assembly and window/retention
+controls reproduced four behavioral failures before correction, with six controls
+passing. Preliminary fixture-policy/scope errors were corrected before that
+behavioral red gate; their logs remain diagnostic evidence rather than product
+failures. The corrected tree passed 1,231 tests across all policies, V0–V3, Azure
+DTOs, schemas and the affected evaluation/presentation interfaces, with identical
+before/after source fingerprints. Ruff and all 45 changed Python format checks
+passed. The full suite was not repeated after this bounded correction.
+`/root/case07_main_standards` and `/root/case07_main_spec` independently rechecked
+the committed correction and finished with zero unresolved findings. Neither
+review supplied venue judgments. The accepted selected outputs already have valid
+declarations and no model Repair; their source, results and scores remain unchanged.
+
 Current-main non-scoring checks reproduce six saved native reports, preserve the
 declared population in a fresh unexecuted preparation, and read 28 selected
 outputs / 267 activities, including 24 legacy outputs. Preparation fingerprints
 are newly bound to the consumer; the original preparations, scores and receipts
 were not rewritten or replayed. Twenty prior fingerprint differences arise only
 from checkout line endings; the actual evaluator text difference is the retained
-GBK-safe CLI. Preservation verifies 965 protected tracked main files, 45 other-case
+GBK-safe CLI. Preservation verifies 964 protected tracked main files, 45 other-case
 private archive files, 9,105 original worker private files, 3,537 frozen selected
 files and 21 final archive files identical in worker and main. Both closed primary
 receipts (177 historical / 225 selected files) and all 37 indexed public materials

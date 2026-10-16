@@ -214,7 +214,10 @@ Latest offline checkpoint: the 16 October local main-worktree integration of
 [activity semantics #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
 and accepted case-07 passed **4324 backend tests, with 16 skipped**, against
 unchanged application source throughout the complete run. A subsequent Ruff-only
-layout correction preserved the Python AST and passed 55 affected tests.
+layout correction preserved the Python AST and passed 55 affected tests. Independent
+review then identified two prompt/Repair boundary defects; separate corrections
+passed **1231 related tests**, including all V0–V3. The full suite was not repeated
+after those corrections. Both review axes have zero unresolved findings.
 Frontend validation passed **101 tests across 13 files**, TypeScript/Vite build and
 lint. Backend/tool Ruff and changed-Python format checks pass. The initial Windows
 long-temporary-path failure was isolated on identical source and resolved by a
