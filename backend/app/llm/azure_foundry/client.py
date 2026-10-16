@@ -493,6 +493,27 @@ class AzureFoundryStructuredLLMClient:
         )
         return LandmarkNominationDraft.model_validate(raw)
 
+    @staged("named_place_binding")
+    async def generate_named_place_binding_structured(
+        self, *, system_prompt, user_prompt, output_tokens, usage_callback=None
+    ):
+        from backend.app.schemas.named_place_binding import NamedBindingBatch
+
+        model = self._chat_model.with_structured_output(
+            NamedBindingBatch,
+            method="json_schema",
+            strict=True,
+            max_output_tokens=output_tokens,
+        )
+        from backend.app.observability.mechanism_observation import model_submitted
+
+        model_submitted()
+        raw = await model.ainvoke(
+            [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)],
+            **({"config": {"callbacks": [usage_callback]}} if usage_callback else {}),
+        )
+        return NamedBindingBatch.model_validate(raw)
+
     @staged("repair_model")
     async def generate_repair_structured(
         self, *, system_prompt, user_prompt, output_tokens=None, usage_callback=None
