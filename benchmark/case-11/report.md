@@ -32,7 +32,7 @@ No application implementation or runtime configuration changed.
 | Independent source-only interests | [Art and architecture judgments](interests/source-review.json) |
 | Independent source policies | [Transport](requirements/route-reviews.json), [density](requirements/density-reviews.json), [destination time](requirements/schedule-context.json) |
 | Selected submitted itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json) |
-| Native V1 population gate and temporal probes | [Preparation diagnostics](evaluation/population-v1.json), [locked-environment probes](evaluation/temporal-v1.json) |
+| Native V1 population gate and temporal evidence | [Preparation diagnostics](evaluation/population-v1.json), [locked-environment probes](evaluation/temporal-v1.json), [model-to-output origin](evaluation/timezone-origin-v1.json) |
 | Attempt consumption and source hashes | [Primary-stage resource ledger](resources/primary-stage.json) |
 | Source and publication bindings | [Material index](material-index.json) |
 
@@ -92,6 +92,83 @@ No qualified four-version manifest, executable primary package or evaluation rec
 exists. The three time-UNKNOWN preparation records are not a zero score, a completed
 primary UNKNOWN inventory, or evidence that the meeting obligation passed or failed.
 
+### Origin and application acceptance gap
+
+The 17 October offline diagnosis locates the error in the original model output,
+with a separate application acceptance gap. All 209 files in the V1 evidence index
+retain their captured artifact hashes. The primary event
+`06398975a5bc4278b0b7af602ce26bec` binds credential-filtered logical request/response
+identifiers `evidence/wire/0060-request.json` and
+`evidence/wire/0060-response.json`; these identify private evidence, not public links.
+The captured response file SHA-256 is
+`32220c72846aa8774a2f8a3d9cbdf23494dc443dd6d6f5d75b27d32bb21933f8`.
+Observed HTTP-body hashes refer to a distinct pre-filter representation; the
+artifact-file hashes verify the saved filtered JSON wrappers.
+
+The model itself returned the October 25 activity components
+`date=2026-10-25`, `time=10:00:00`, `utc_offset=+02:00`, and the same wrong offset
+for the other five activity endpoints that day. Replaying the actual
+`FoundryPrimaryItineraryDTO` and `map_foundry_v1_itinerary` over that saved response
+preserved all eight activity start/end pairs exactly. The captured accepted
+primary-generation trace and final itinerary contain those same times. There is
+no evidence of an offset introduced or rewritten by DTO mapping or serialization.
+
+The primary trace contained no transfers. Replaying real `route_option` with the
+saved normalized Routes bundle, submitted activities and unchanged policy
+reproduced both October 25 WALK transfers exactly: departure inherits the preceding
+activity's end; arrival adds 597 or 139 seconds, with zero reserve. Program-owned
+transport therefore propagates the model's bad offset rather than independently
+creating it. No provider/client was constructed for these replays.
+
+The actual model request already included `Europe/Paris` in all fourteen supplied
+place timezone fields and in weather evidence. The system prompt required numeric
+UTC-offset components but did not explicitly describe the DST transition or
+provide per-date offsets. Wrong/missing IANA identity is ruled out for this case;
+the effect of stronger prompting has not been tested and is not a demonstrated
+standalone cure. The application schema requires aware endpoints and matching
+civil dates, and the trip-date guard accepts this captured output; neither checks
+that a supplied offset agrees with the identified IANA zone. Independent evaluation
+correctly detects that conflict later.
+
+A deterministic offline probe fails on the original three activities and remains
+failing after reducing to the first interval. Synthetic in-memory controls with
+the correct +01:00 offset, the preceding day, or no zone context normalize known.
+The controls are not adopted source edits. Existing mapping, V1 itinerary adapter,
+evaluator time and initial mixed-route tests passed: **81 tests in 4.55 seconds**.
+These passing baseline tests do not establish a fix; application behavior is unchanged.
+
+### Proposed minimum correction and verification
+
+The proposal is not implemented. Keep the DTO and its exact-value mapping unchanged.
+At the shared tools output-acceptance boundary in
+[the output policy](../../backend/app/policies/itinerary_output.py), check each
+known venue's supplied IANA zone against both submitted activity endpoints before
+transfer construction. Reject a known offset/local-clock inconsistency with an
+explicit source-linked diagnostic. Preserve unresolved zone evidence rather than
+inventing a fixed offset or silently choosing between conflicting zones. Do not
+rewrite timestamps, retry generation, or import evaluator scoring/evidence into
+the Planner. The V0 `places=None` branch remains unchanged.
+
+Add a short instruction to [the tools prompt](../../backend/app/versions/v1/prompts.py)
+to derive each endpoint's offset from the supplied IANA zone and actual date,
+including DST; a trip-wide constant is not sufficient. This adds no provider call,
+new transport mode, response schema, evaluator rule or budget increase. The prompt instruction addresses the missing DST guidance; deterministic
+acceptance prevents silent propagation even when the model still errs. This minimum does not guarantee that a future model run
+will succeed.
+
+Validation should cover the saved bad-offset pattern at the real DTO-to-acceptance
+seam; valid Paris October 22–24 +02:00 and October 25 daytime +01:00; both valid
+explicit offsets in an autumn fold; nonexistent spring local time; an interval
+crossing a transition with different valid endpoint offsets; an ordinary non-DST
+zone; missing/conflicting zone evidence; and unchanged input/output bytes. Mocked
+graph tests must show no extra post-response Routes/Nearby sends or retry after a
+rejection. V1/V2/V3 share initial acceptance, and V3 validation/final delivery also
+call the output policy, so their wiring, Repair failure/retention behavior and valid
+final acceptance need affected regression coverage. V0's independent branch and
+historical evaluator/readers remain compatibility controls. The old captured V1
+must still be rejected by the independent gate; it cannot become a corrected run
+through a code or report change. A new live revision remains a separate decision.
+
 ## Resources
 
 | Selected generation | Native elapsed seconds | Model calls | Tokens | HTTP sends | Reference USD |
@@ -117,7 +194,7 @@ billing are not observable. No missing bill or external-agent cost is treated as
 
 | Work | Actual performer and available configuration |
 | --- | --- |
-| Orchestration, preparation, source checks, resource reconciliation and local presentation | Current parent Codex chat; exact parent model/effort not independently exposed |
+| Orchestration, preparation, source checks, offline origin diagnosis/replays, resource reconciliation and local presentation | Current parent Codex chat; exact parent model/effort not independently exposed |
 | Source-only requirements author | `/root/case11_requirements_author`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
 | Independent requirements review | `/root/case11_requirements_reviewer`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
 | Source-only interest judgments | `/root/case11_interests`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |

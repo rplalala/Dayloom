@@ -86,6 +86,14 @@
       "source_logical_path": "benchmark/scratch/case-11/work/r01/handoffs/locked-temporal-probe-v1.json",
       "source_sha256": "87377dd7ed28918545b189faa387592f0fe4ba5954f2de553c736b8a9e6a365d",
       "json_pointer": ""
+    },
+    {
+      "path": "evaluation/timezone-origin-v1.json",
+      "sha256": "ed9d362f0b67255815b87a76b01298d2e02b8d97f3d71bd5bb01d3ef83ad5cab",
+      "publication_kind": "selected_json_subtree",
+      "source_logical_path": "benchmark/scratch/case-11/work/r01/diagnosis/timezone-origin.json",
+      "source_sha256": "ed9d362f0b67255815b87a76b01298d2e02b8d97f3d71bd5bb01d3ef83ad5cab",
+      "json_pointer": ""
     }
   ],
   "private_source_root": "benchmark/scratch/case-11/work/r01",
