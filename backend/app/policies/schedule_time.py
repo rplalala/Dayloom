@@ -82,7 +82,11 @@ class ScheduleTimeContext:
         self.zones = {}
         for place in places:
             pid = place.place_id if hasattr(place, "place_id") else place["place_id"]
-            zone = place.timezone_id if hasattr(place, "timezone_id") else place.get("timezone_id")
+            zone = (
+                place.get("timezone_id")
+                if isinstance(place, dict)
+                else getattr(place, "timezone_id", None)
+            )
             self.zones.setdefault(pid, set()).add(zone)
         known = {z for zs in self.zones.values() for z in zs if z}
         if default_zone:
