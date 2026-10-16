@@ -108,20 +108,22 @@ are accounted for. Worker worktrees can be archived only after needed ignored
 material is preserved and verified. Git publication and human acceptance retain
 their separate authorization and completion meanings.
 
-Git publication does not accept a case or authorize Issue closure. The human user
-accepted the [initial case-01 dataset](case-01/report.md#acceptance) on 14 October 2026
-Australia/Sydney. Its selected V0-V3 outputs, independent primary/opening/pair results,
-process reports and verified private archive retain authentic source identities and
-dates. Separate Repair engineering diagnostics do not contribute to case scores.
-The case report owns the exact accepted selection and limitations; Issue publication
-and closure remain separate from that acceptance.
+### Accepted selections
 
-The [case-02 London report](case-02/report.md) presents its selected schedules,
-independent scores, candidate/Repair observations and all-attempt resources.
-The user accepted the selected case-02 results and stated limitations on
-14 October 2026 Australia/Sydney; [#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149)
-tracks its acceptance and archive status. Case reports state their own evidence basis
-and limitations; the common workflow below applies across cases.
+Automatic case acceptance applies only to the exact selection and limitations in
+its linked report. Decision dates use Australia/Sydney. Original inputs, selected
+outputs and verified private evidence remain unchanged; Git publication and Issue
+closure require their own authorization. Separate Repair engineering diagnostics do
+not contribute to case scores. Blinded human assessment is deferred.
+
+| Case | Researcher acceptance date | Accepted selection and limitations |
+| --- | --- | --- |
+| 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
+| 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
+| 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
+| 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
+| 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
+| 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -349,12 +351,10 @@ entries, rather than live files beside the compressed archive.
 
 ## Scenario index
 
-Dates and durations are inclusive. Accepted case-01 and case-02 inputs retain their
-original dates: 2026-10-13 through 2026-10-15 for Sydney and 2026-10-15 through
-2026-10-17 for London. Pending cases 03-15 use 2026-10-14 as the
-policy reference date and start on 2026-10-15, except case-04, which starts on
-Saturday 2026-10-17 and ends on Sunday 2026-10-18. Revalidate pending dates against
-the actual application reference date before execution.
+Dates and durations are inclusive. Accepted inputs retain their consumed bytes and
+dates; their selected reports are indexed [above](#accepted-selections). Case-05
+uses the approved 2026-10-16 through 2026-10-20 interval. Before executing a pending
+input, revalidate its stored dates against the actual application reference date.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |

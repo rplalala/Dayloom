@@ -1,0 +1,238 @@
+{
+  "schema_version": "case05_v3_pair_view_2",
+  "execution_revision": "3",
+  "source_run_id": "case-05-r03-v3-attempt-01",
+  "processing_status": "complete",
+  "execution_mode": "offline_reuse",
+  "stages": {
+    "draft": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 24,
+          "numerator": 23
+        },
+        "reason": null,
+        "score_0_100": 95.83333333333333,
+        "total_included_dimensions": 4,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 600,
+          "numerator": 479
+        },
+        "reason": null,
+        "score_0_100": 79.83333333333333
+      },
+      "density_penalty": 16.0,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "denominator": 6,
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "denominator": 7,
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 1
+          },
+          "denominator": 6,
+          "verified_score_0_100": 83.33333333333333
+        },
+        "requirements": {
+          "state": "N/A",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 0,
+            "UNKNOWN": 0
+          },
+          "denominator": 0,
+          "verified_score_0_100": null
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "denominator": 1,
+          "verified_score_0_100": 100.0
+        }
+      }
+    },
+    "final_primary": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 40,
+          "numerator": 39
+        },
+        "reason": null,
+        "score_0_100": 97.5,
+        "total_included_dimensions": 4,
+        "unavailable_dimensions": []
+      },
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 40,
+          "numerator": 39
+        },
+        "reason": null,
+        "score_0_100": 97.5
+      },
+      "density_penalty": 0.0,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "denominator": 10,
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 15,
+            "UNKNOWN": 0
+          },
+          "denominator": 15,
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 1
+          },
+          "denominator": 10,
+          "verified_score_0_100": 90.0
+        },
+        "requirements": {
+          "state": "N/A",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 0,
+            "UNKNOWN": 0
+          },
+          "denominator": 0,
+          "verified_score_0_100": null
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "denominator": 5,
+          "verified_score_0_100": 100.0
+        }
+      }
+    }
+  },
+  "score_deltas": {
+    "auxiliary_total": {
+      "exact_fraction": {
+        "denominator": 60,
+        "numerator": 1
+      },
+      "percentage_points": 1.6666666666666667
+    },
+    "overall_total": {
+      "exact_fraction": {
+        "denominator": 300,
+        "numerator": 53
+      },
+      "percentage_points": 17.666666666666668
+    },
+    "daily_density_penalty": -16.0
+  },
+  "visit_changes": {
+    "added_count": 4,
+    "confirmed_venue_loss_count": 0,
+    "primary_role_loss_count": 0,
+    "removed_count": 0,
+    "replaced_count": 0,
+    "unresolved_after": [],
+    "unresolved_before": []
+  },
+  "correspondence": {
+    "coverage": {
+      "after": {
+        "established_count": 10,
+        "occurrence_count": 10,
+        "unresolved_count": 0
+      },
+      "before": {
+        "established_count": 6,
+        "occurrence_count": 6,
+        "unresolved_count": 0
+      }
+    },
+    "unresolved": {
+      "after": [],
+      "before": []
+    },
+    "review_request_count": 0
+  },
+  "continuity_transitions": {
+    "conflicts": {},
+    "grounding": {
+      "added": 4,
+      "unchanged": 6
+    },
+    "opening": {
+      "added": 4,
+      "unchanged": 6
+    },
+    "protection_conflicts": {},
+    "requirements": {},
+    "routes": {
+      "unchanged": 1,
+      "structural_leg_added": 4
+    }
+  },
+  "verification": {
+    "started_at": "2026-10-15T22:28:06.488554+00:00",
+    "finished_at": "2026-10-15T22:29:30.830203+00:00",
+    "primary_replay": "exact",
+    "primary_report_sha256": "fc905d3ae1ecf80d24d74d26d5e92f2737cf975533aaef25d54faa5a05b2160d",
+    "primary_receipt_sha256": "c05a2f6d721a18e4fcbd05fde10d53dd9847986c787193f61857224669667e25",
+    "pair_replay": "exact_via_native_export",
+    "pair_report_sha256": "da0eeeacc85ce94c49ccaf2c429c9f6a30b7d9d42c5dbbf8f45d98e54ef136e8",
+    "pair_receipt_sha256": "433445acb994f8a6165f48e00137a7b230fae8d487c748cbd1527d726afe4364",
+    "portable_handoff_sha256": "fb60ca942d0d057a9222a303a26e0c0dee603f464cd4ce5a1b49350289123c58",
+    "portable_handoff_closed_receipt": "verified",
+    "network": "denied",
+    "http_client_construction": "denied",
+    "current_provider_sends": 0
+  },
+  "actual_google_sends": 0,
+  "actual_model_sends": 0,
+  "automatic_retries": 0,
+  "current_reference_usd": "0",
+  "primary_v3_score_unchanged": 100,
+  "opening_basis": "API-only saved evidence; primary model-supported missing-hours assessment not imported."
+}

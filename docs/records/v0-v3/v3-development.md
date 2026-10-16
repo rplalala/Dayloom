@@ -1657,6 +1657,7 @@ All 370 frozen preparation files remained unchanged. These are engineering smoke
 observations with synthetic environment evidence. The rejected local call did not establish
 successful editing; real provider routes, full-pipeline controlled acceptance and general
 Repair quality remain unproved.
+
 Original local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-c`, with
 separate `live-local-overlap`, `live-cross-date-search` and `live-isolated-replan`
 request/response bytes, receipts, native results, execution summary and parent assessment.
@@ -1718,3 +1719,71 @@ case-01 acceptance. No further call was made after consuming the one-send allowa
 Local evidence identifier: `D:/Workspace/Capstone/case01-140/phase-d-local-retime`, with
 frozen fixture/handoff, offline SDK probes, original HTTP bytes, receipt, native result,
 command log and independent parent assessment.
+
+### Offline round allocation diagnosis (2026-10-15)
+
+Status: Integrated into MAIN through `5e4fe61` and reviewed correction `d7dd30a`.
+Original implementation commits `04cc66a` and `a290868` remain in the merge history;
+runtime configuration values remain unchanged. The original
+diagnosis at source `0f365304` found that case-05 revision 2 retained its original
+draft after a rejected empty first patch and a skipped replan.
+The second round recorded 318.469 seconds of stage time and 39.657 seconds of local
+time remaining. After the 20-second recheck reserve, its 19.657-second model allowance
+was below the configured 30-second minimum. The protection check therefore correctly
+prevented a send, while the local skip terminated the stage despite substantial global
+time remaining. Its aggregate REJECTED status reflects the earlier model attempt;
+the reason records the later skip. No Repair improvement was selected.
+
+A network-blocked synthetic probe invokes the real stage, preparation, input builder
+and acceptance path with an injected clock and local model/route substitutes. After
+an empty first patch costing 11 simulated seconds, it injects 30.5 seconds of local
+input-building work in round two. This is a controlled cost, not a measurement of
+case-05 CPU time. All four pre-correction diagnostic comparisons passed:
+
+| Controlled condition | Local model sends | Outcome |
+| --- | ---: | --- |
+| Original 60-second round reference, injected local work | 1 | Second round skipped; stage still has 318.5 seconds |
+| Only round reference changed to 120 seconds | 2 | Authorized synthetic overlap repair accepted |
+| Original reference, no injected local work | 2 | Same synthetic repair accepted |
+| Genuinely insufficient whole-stage allowance | 0 | Stage skipped before model work |
+
+The old allocation divided remaining stage time across projected affordable rounds and
+used that average as a hard cutoff. Local input construction could then consume the
+model/recheck allowance after the I/O preparation deadline. The correction retains that
+average only for optional preparation; a separate hard deadline bounds each round by
+its configured cap and the stage deadline. The standalone round uses the same cap.
+Input construction and model projection are timed, and available time is checked again
+before charging/invoking the model. Late results with insufficient recheck allowance are
+rejected, and terminal time shortages preserve the best retained result without another
+send. Current semantics belong to the
+[configuration reference](../../../config/README.md#counting-timing-and-invariants).
+
+The integrated implementation keeps model timeout before patch parsing terminal with
+`model_failed_no_retry`; timeout during parsed-patch revalidation ends the stage with
+`repair_timeout`. Both accepted and rejected final checks enforce the hard deadline.
+Component-owned deadlines propagate a terminal result while retaining component audits,
+obtained evidence and the best result from earlier rounds. Ordinary no-improvement
+rejections can still continue under the existing policy.
+
+Integration merge `5e4fe61` retains both branch histories, including the original
+implementation and review correction. A further Spec finding reproduced continued
+model sends after rejected final revalidation or a caught component deadline; correction
+`d7dd30a` closes both paths. The final integrated V3 suite passes **507 tests**, including
+**18 timing cases**, with unchanged budgets and safety reserves. Another **460 selected
+evaluation/CLI tests** pass. Migrated source-bound replay and validation scope are recorded in the current
+[case-05 report](../../../benchmark/case-05/report.md). Standards and Spec review
+corrections are checked independently. The full backend suite was not run.
+
+Case-05 revision 3 exercises the soft-reference/hard-window distinction with real
+provider observations already captured in its one authorized attempt. Its historical
+primary and Repair research replay exactly with archived producer code; MAIN separately
+verifies current readers, semantic readiness and identical opening eligibility/evidence.
+Historical primary implementation fingerprints remain enforced. The integration adds
+no provider sends, generation rerun or rescoring and preserves other accepted case data.
+The original diagnostic and regression evidence remains private; the migrated case
+archive retains all original source bindings. The researcher accepted the integrated
+case-05 dataset and both corrections with all disclosed limitations on 16 October 2026;
+its [acceptance scope](../../../benchmark/case-05/report.md#acceptance) remains separate
+from deferred blinded human assessment.
+The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
+has separate implementation and validation scope.

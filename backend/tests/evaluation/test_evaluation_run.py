@@ -2,6 +2,7 @@
 
 import asyncio
 import hashlib
+import io
 import json
 import subprocess
 import sys
@@ -377,6 +378,97 @@ def test_actual_cli_prepares_executes_and_replays(batch, capsys, monkeypatch):
     assert main(["replay", str(directory)]) == 0
     assert json.loads(capsys.readouterr().out)["processing_status"] == "complete"
     asyncio.run(client.aclose())
+
+
+def test_completed_cli_report_survives_gbk_stdout(batch, monkeypatch):
+    from backend.evaluation.evaluation_run import prepare_run, verify_receipt
+    from backend.evaluation.evaluation_run_cli import main
+
+    _, _, write, _, root = batch
+    directory = root / "evaluation"
+    preparation = prepare_run(write(), directory, options=options(), prices=run_prices())
+    monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
+
+    def respond(request):
+        response = mock_provider(request)
+        if request.url.host == "model.example.test":
+            raw = response.json()
+            content = raw["output"][0]["content"][0]
+            wire = json.loads(content["text"])
+            for row in wire["decisions"].values():
+                row["rationale"] = "Independent match at Montju\u00efc."
+            content["text"] = json.dumps(wire)
+            return httpx.Response(200, json=raw)
+        return response
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(respond))
+    buffer = io.BytesIO()
+    output = io.TextIOWrapper(buffer, encoding="gbk", errors="strict")
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(sys, "stdout", output)
+            exit_code = main(
+                ["execute", str(directory), "--approved-sha256", preparation["content_sha256"]],
+                http_client=client,
+            )
+            output.flush()
+        emitted = json.loads(buffer.getvalue().decode("gbk"))
+        saved = json.loads((directory / "execution" / "report.json").read_bytes())
+        assert exit_code == 0 and emitted == saved
+        assert emitted["processing_status"] == "complete"
+        assert "Montju\u00efc" in json.dumps(emitted, ensure_ascii=False)
+        verify_receipt(directory / "execution", preparation["content_sha256"])
+    finally:
+        output.close()
+        asyncio.run(client.aclose())
+
+
+def test_missing_activity_review_remains_blocked_with_gbk_stdout(batch, monkeypatch):
+    from backend.evaluation.evaluation_run_cli import main
+
+    _, results, write, _, root = batch
+    activity = results["v1"]["itinerary"]["days"][0]["activities"][0]
+    activity.update(
+        activity_kind="generic_activity",
+        title="Montju\u00efc pause",
+        place_name=None,
+        notes="Independent role and occupancy decisions are missing.",
+    )
+    manifest = write("v1")
+    (root / "options.json").write_text(json.dumps(options()), encoding="utf-8")
+    (root / "prices.json").write_text(json.dumps(run_prices()), encoding="utf-8")
+    directory = root / "blocked"
+
+    def forbidden_client(*args, **kwargs):
+        pytest.fail("Missing reviews must stop before HTTP client construction")
+
+    buffer = io.BytesIO()
+    output = io.TextIOWrapper(buffer, encoding="gbk", errors="strict")
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(sys, "stdout", output)
+            patch.setattr(httpx, "AsyncClient", forbidden_client)
+            code = main(
+                [
+                    "prepare",
+                    str(manifest),
+                    "--directory",
+                    str(directory),
+                    "--options",
+                    str(root / "options.json"),
+                    "--prices",
+                    str(root / "prices.json"),
+                ]
+            )
+            output.flush()
+        emitted = json.loads(buffer.getvalue().decode("gbk"))
+        assert code == 2 and emitted["processing_status"] == "needs_semantic_review"
+        assert emitted["semantic_readiness"]["status"] == "needs_semantic_review"
+        assert "Montju\u00efc" in json.dumps(emitted, ensure_ascii=False)
+        assert not directory.exists()
+    finally:
+        output.close()
 
 
 def test_cli_requests_each_owned_identity_once_and_replays_exact_material(

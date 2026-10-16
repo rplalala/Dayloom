@@ -364,4 +364,5 @@ def test_replan_cancellation_propagates_and_deadline_does_not_allow_extra_send()
     assert result.final == original
     assert result.counters["model"] == model.calls == 2
     assert result.rounds[-1].strategy == "replan"
-    assert result.reason == "insufficient_stage_time"
+    assert result.reason == result.rounds[-1].result.reason == "phase_deadline"
+    assert result.rounds[-1].result.timing["round_remaining_seconds"] == 0

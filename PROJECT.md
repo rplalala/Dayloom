@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-15.
+Current source of truth. Updated 2026-10-16.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -308,16 +308,15 @@ The coordinator stays in the main worktree; five workers own disjoint case queue
 [Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
 owns case-01 workflow acceptance. The active set has 15 requests following the
 user-approved 14 October 2026 selection revision; the benchmark index owns the
-coverage and old-to-new mapping. The human user accepted
-[case-01](benchmark/case-01/report.md#acceptance) and
-[case-02](benchmark/case-02/report.md#acceptance-and-material) on 14 October 2026,
-including their selected V0-V3 results, independent reports and stated limitations.
-Their original inputs, results and verified private archives remain unchanged.
-Case trackers [#127](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/127)
-and [#149](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/149) own those
-acceptance scopes. Git publication and Issue closure follow their own authorization.
+coverage and old-to-new mapping. The [accepted selection index](benchmark/README.md#accepted-selections)
+locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
+input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
+on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
+verification. Original inputs, selected results and private archives remain unchanged.
+[Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
+including UNKNOWN and producer-runtime replay limits. Blinded human assessment
+remains deferred. Git publication remains separately authorized; case-15 stays paused.
 Subsequent runs report primary scores and pause before further diagnostics.
-Blinded human assessment remains deferred.
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)

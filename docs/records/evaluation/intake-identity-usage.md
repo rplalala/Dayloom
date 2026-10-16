@@ -1724,3 +1724,34 @@ rescoring or case-11/12 dispatch occurred. Case-07 retains its original results 
 unavailable totals. Actual supplementary reviews and any revised evaluation package
 require separate authorization and fresh source-bound preparation; evidence reuse
 and four numeric totals are not promised.
+
+### Legacy stdout encoding correction (2026-10-15)
+
+Case-05 revision 2 at source `0f365304` saved its complete primary report and receipt,
+then exited 1 when `evaluation_run_cli` printed an unescaped Unicode report to GBK
+stdout. The traceback identifies U+00EF in accented venue text. Native score completion
+and the later presentation failure remain separate observations. The report SHA-256 is
+`895c847c6d4f72342d325efd9bfdbc3fde9c2fdda971563095270c4f53a657bc`.
+
+Implementation commit `c8e8a61` changes this CLI's stdout serialization to
+ASCII-escaped JSON. Decoded Unicode content, native file serialization, scoring and
+exit-code rules are unchanged. A mocked full CLI execution with strict GBK stdout
+first reproduced the error, then verified Unicode round-trip and native receipt validity.
+No global console encoding change is required.
+
+The correction is integrated into MAIN through merge `5e4fe61`, preserving the existing
+semantic-readiness gate. An additional strict-GBK test confirms that missing activity
+reviews still produce `needs_semantic_review`, exit 2 and no HTTP client or execution
+artifacts. All 460 selected evaluation/CLI tests pass, including complete and blocked CLI paths. Case-05 revision 3's
+already captured primary exits normally, and its immutable report/receipt replay exactly
+with archived producer code. Current MAIN retains the historical implementation-fingerprint
+check; it does not relabel old material as current-code execution.
+
+The [case-05 report](../../../benchmark/case-05/report.md) records integrated test/replay
+scope and preservation checks. Separate Standards and Spec reviews cover the merged
+code and corrections. Original evidence and other accepted case data are preserved;
+no generation, scoring or provider call was repeated. The full backend suite was not run.
+The [Repair allocation correction](../v0-v3/v3-development.md#offline-round-allocation-diagnosis-2026-10-15)
+retains its separate implementation scope. The researcher accepted both corrections and
+the integrated case-05 dataset with all disclosed limitations on 16 October 2026;
+the [case acceptance](../../../benchmark/case-05/report.md#acceptance) owns the decision.

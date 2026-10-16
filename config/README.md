@@ -56,11 +56,20 @@ unsupported in Repair; their zero allowance is not an enable switch.
 Stage deadline = min(entry request deadline minus `reference_discovery.deadline_seconds`,
 stage start plus stage_seconds). Nearby is reserved from its existing authoritative key, not a
 second hard-coded ten seconds. Affordable rounds are bounded by remaining rounds and floor of
-remaining time / round_reference_seconds. Round allocation is min(round_seconds, remaining time /
-affordable rounds). Preparation is capped by preparation_seconds and reserves minimum_model_seconds
-plus recheck_reserve_seconds. Model timeout is min(model_seconds, remaining round time minus
-recheck_reserve_seconds); insufficient minimum allocation skips the call. Post-proposal I/O ends
-before finalization_reserve_seconds. Unused time remains available within the same stage cap.
+remaining time / round_reference_seconds. Their average allocation defines a soft reference
+window for optional preparation. The hard round deadline is independently bounded by stage
+deadline and round start plus round_seconds, including standalone rounds. Preparation I/O is
+capped by preparation_seconds and leaves minimum_model_seconds plus recheck_reserve_seconds
+inside the soft window. Cached reuse and bounded local input work may continue inside the hard
+window. Local work is timed and checked after candidate preparation, route preparation, input
+building and model-input projection; synchronous work is checked when it returns, not preempted.
+Model timeout is min(model_seconds, hard round time remaining minus recheck_reserve_seconds),
+recomputed immediately before charging and invoking the model. Insufficient minimum allocation
+skips without a model charge or call. A late response with less than the recheck reserve is
+rejected. Post-proposal I/O ends before finalization_reserve_seconds inside the hard deadline;
+the complete synchronous revalidation is checked again before adoption. Hard timeout stops
+the stage without another model send and preserves the best retained result. Unused time
+remains within the same stage cap.
 Minimum model plus recheck must fit round reference, which must fit round cap, which must fit stage
 cap. Model minimum must fit model maximum. Request exhaustion/cancellation stops new acquisition;
 owned resource cleanup still runs. Later failure preserves the latest accepted itinerary.
@@ -197,7 +206,7 @@ a local documentation coverage test detects a missing path or stale value.
 | `v3_repair.timing.preparation_seconds` | `45` | number; >= 0, <= 45 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
 | `v3_repair.timing.recheck_reserve_seconds` | `20` | number; > 0 | Round time retained after model wait for route acquisition and application revalidation. Zero is invalid. |
 | `v3_repair.timing.minimum_model_seconds` | `30` | number; > 0 | Minimum available model allocation required to start a call. Zero is invalid. |
-| `v3_repair.timing.round_reference_seconds` | `60` | number; > 0 | Divisor used to estimate affordable remaining rounds; not a promise of completing that many. Zero is invalid. |
+| `v3_repair.timing.round_reference_seconds` | `60` | number; > 0 | Divisor used to estimate affordable remaining rounds and their soft preparation window. It does not shorten the hard model/recheck deadline or promise that many rounds. Zero is invalid. |
 | `v3_repair.timing.finalization_reserve_seconds` | `1` | number; > 0 | Time withheld from post-proposal I/O for local finalization. Must be smaller than recheck reserve. Zero is invalid. |
 | `v3_repair.input.input_tokens` | `252000` | integer; >= 1, <= 252000 | Per-model-call total system/user/schema/framing engineering ceiling; overflow preserves latest adopted itinerary. Zero is invalid. This application ceiling does not certify provider context capacity. |
 | `v3_repair.input.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-model-call strict output limit forwarded without mutating primary client defaults. Zero is invalid. |
