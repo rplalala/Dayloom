@@ -1,7 +1,7 @@
 {
   "schema_version": "case_material_index_1",
   "case_id": "case-05",
-  "acceptance": "main integration and offline validation complete; explicit researcher acceptance pending",
+  "acceptance": "accepted by the human researcher on 2026-10-16 Australia/Sydney; automatic case acceptance with disclosed limitations; blinded human review deferred",
   "execution_revision": "3",
   "input_revision": "2",
   "format": "Public views and exact itinerary subtrees; original closed native bundles and raw evidence remain private. $case_material_ref paths are relative to the containing file; expand pointer and verify canonical semantic SHA256. Public artifact reference hashes use LF publication bytes; interest requirement references resolve from the case root. Native originals retain their original bytes and hashes.",
@@ -226,6 +226,16 @@
     },
     "new_business_api_calls": 0,
     "new_business_api_cost_usd": 0,
-    "researcher_acceptance": "pending"
+    "researcher_acceptance": "accepted"
+  },
+  "acceptance_decision": {
+    "date": "2026-10-16",
+    "timezone": "Australia/Sydney",
+    "decider": "human researcher",
+    "accepted_selection_checkpoint": "83c703936a1785fcacea31fa9c5cbae10bd44d5e",
+    "scope": "Execution revision 3 / input revision 2, selected data/reports, integrated CLI GBK and Repair timing corrections, and all disclosed limitations",
+    "source_data_changed": false,
+    "blinded_human_assessment": "deferred",
+    "decision_ref": "report.md#acceptance"
   }
 }
