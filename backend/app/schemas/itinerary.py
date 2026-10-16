@@ -12,6 +12,7 @@ from pydantic import (
     model_validator,
 )
 
+from backend.activity_semantics import TimeUse, read_activity_claim
 from backend.app.schemas.request import Money
 
 ActivityKind = Literal["main_poi", "generic_activity", "transport", "free_time", "unknown"]
@@ -33,6 +34,7 @@ class Activity(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     activity_kind: ActivityKind = "unknown"
+    time_use: TimeUse | None = None
     activity_id: str = Field(min_length=1)
     title: str = Field(min_length=1)
     place_name: str | None = Field(default=None, min_length=1)
@@ -51,6 +53,8 @@ class Activity(BaseModel):
         result = handler(self)
         if self.transport is None:
             result.pop("transport", None)
+        if self.time_use is None:
+            result.pop("time_use", None)
         return result
 
     @model_validator(mode="after")
@@ -115,7 +119,7 @@ class Itinerary(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     # Missing version marks historical input, not newly generated wire output.
-    output_version: Literal["itinerary_1", "itinerary_2"] = "itinerary_1"
+    output_version: Literal["itinerary_1", "itinerary_2", "itinerary_3"] = "itinerary_1"
     transfers: list[Transfer] = Field(default_factory=list)
     route_diagnostics: list[dict] = Field(default_factory=list)
     reference_recommendations: list[ReferenceRecommendation] = Field(
@@ -144,6 +148,31 @@ class Itinerary(BaseModel):
         activity_ids = [activity.activity_id for day in self.days for activity in day.activities]
         if len(activity_ids) != len(set(activity_ids)):
             raise ValueError("activity_id values must be unique within an itinerary")
+
+        if self.output_version == "itinerary_3":
+            for day in self.days:
+                visits = [a.activity_id for a in day.activities if a.activity_kind == "main_poi"]
+                pairs = set(zip(visits, visits[1:], strict=False))
+                selected = set()
+                for activity in day.activities:
+                    read_activity_claim(activity.model_dump(), self.output_version)
+                    if any(t.utcoffset() is None for t in (activity.start_time, activity.end_time)):
+                        raise ValueError("itinerary_3 requires offset-aware activity times")
+                    if (
+                        activity.start_time.date() != day.date
+                        or activity.end_time.date() != day.date
+                    ):
+                        raise ValueError("Activity times must belong to their declared day")
+                    if activity.activity_kind == "main_poi" and not activity.place_name:
+                        raise ValueError("Primary visits require an explicit place_name")
+                    if activity.activity_kind == "transport":
+                        declaration = activity.transport
+                        if declaration is None:
+                            raise ValueError("itinerary_3 transport requires structured endpoints")
+                        pair = (declaration.from_activity_id, declaration.to_activity_id)
+                        if pair not in pairs or pair in selected:
+                            raise ValueError("Transport endpoints must select one consecutive pair")
+                        selected.add(pair)
 
         references = self.reference_recommendations
         if any(

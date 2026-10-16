@@ -66,6 +66,7 @@ def build_quality_report(
     identity_snapshot_directory=None,
     density_reviews=None,
     opening_judgment=None,
+    quality_profile=None,
     generated_at,
 ):
     """Compose existing offline scorers without accepting caller-authored metric summaries."""
@@ -104,6 +105,42 @@ def build_quality_report(
         )
         base.update(batch_id=prepared["batch_id"], batch_revision=prepared["revision"])
         density_policies = prepare_density_policies(prepared, _value(density_reviews))
+        from .declared_population import (
+            PROFILE_ID,
+            candidate_metrics,
+            population_readiness,
+            select_profile,
+        )
+
+        selected_profile = select_profile(prepared, quality_profile)
+        population = None
+        if selected_profile == PROFILE_ID:
+            profile = {
+                **base["rules_profile"],
+                "profile_id": PROFILE_ID,
+                "population": "frozen source-linked candidates minus verified N/A",
+                "uncertain_applicability": "retained UNKNOWN candidate",
+                "population_readiness": "required before acquisition",
+                "projection_policy": "declared_or_source_labelled_legacy_1",
+            }
+            base.update(
+                rules_profile=profile,
+                rules_profile_id=PROFILE_ID,
+                rules_profile_hash=canonical_digest(profile),
+            )
+            population = population_readiness(
+                prepared,
+                _value(schedule_context),
+                _value(occupancy_reviews),
+                _value(density_reviews),
+            )
+            base["population_readiness"] = population
+            if population["status"] != "ready":
+                status = "needs_population_resolution"
+                base["diagnostics"] = population["diagnostics"]
+                base["status"] = status
+                base["content_hash"] = quality_content_hash(base)
+                return QualityReportResult(status, freeze(base))
         if not identity_ready(prepared, identity):
             status = "identity_replay_required"
             raise MaterialError(
@@ -190,6 +227,13 @@ def build_quality_report(
                         "opening": indexed["opening"][key]["opening"],
                         "routes": indexed["routes"][key]["routes"],
                     }
+                    if population is not None:
+                        row = next(
+                            r
+                            for r in population["rows"]
+                            if r["group_id"] == group["group_id"] and r["version"] == version
+                        )
+                        metrics = candidate_metrics(metrics, row["inventory"])
                     dimensions = {
                         name: _dimension(
                             raw,
@@ -215,6 +259,14 @@ def build_quality_report(
                         "component_source_hashes": {
                             name: indexed[name][key]["source_hashes"] for name in components
                         },
+                        **(
+                            {
+                                "candidate_inventory": row["inventory"],
+                                "activity_claims": row["activity_claims"],
+                            }
+                            if population is not None
+                            else {}
+                        ),
                     }
                 mask = _totals(versions)
                 for version in versions.values():

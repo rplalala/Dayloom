@@ -16,6 +16,7 @@ export interface TravelRequirements {
 }
 
 export interface Activity {
+  time_use?: "scheduled" | "free_window" | null;
   introduction?: string | null;
   nearby?: Nearby[];
   activity_id: string;
@@ -64,7 +65,7 @@ export interface Transfer {
 
 export interface Itinerary {
   transfers?: Transfer[];
-  output_version?: "itinerary_1" | "itinerary_2";
+  output_version?: "itinerary_1" | "itinerary_2" | "itinerary_3";
   reference_recommendations?: ReferenceRecommendation[];
   destination: string;
   start_date: string;

@@ -114,23 +114,31 @@ def build_schedule(itinerary, contract, places=(), *, primary_generated=False):
                 )
             )
         for activity_index, activity in enumerate(day.activities):
-            if activity.activity_kind != "free_time":
+            explicit_free = (
+                itinerary.output_version == "itinerary_3" and activity.time_use == "free_window"
+            )
+            if not explicit_free and activity.activity_kind != "free_time":
                 continue
             reason = "generated_locationless_placeholder"
             if not primary_generated or protections is None:
                 reason = "time_provenance_unassessed"
             elif str(day.date) in unresolved:
                 reason = "scoped_time_requirement_unresolved"
-            elif activity.source_place_id or activity.location or activity.place_name:
+            elif not explicit_free and (
+                activity.source_place_id or activity.location or activity.place_name
+            ):
                 reason = "location_commitment"
-            elif activity.estimated_cost is not None or (
-                (
-                    projection := cost_links.get(
-                        f"days[{day_index}].activities[{activity_index}].estimated_cost"
+            elif not explicit_free and (
+                activity.estimated_cost is not None
+                or (
+                    (
+                        projection := cost_links.get(
+                            f"days[{day_index}].activities[{activity_index}].estimated_cost"
+                        )
                     )
+                    is not None
+                    and projection.projection not in {"explicit_null", "invalid_set_null"}
                 )
-                is not None
-                and projection.projection not in {"explicit_null", "invalid_set_null"}
             ):
                 reason = "cost_obligation"
             elif activity.start_time.utcoffset() is None:
@@ -167,7 +175,15 @@ def build_schedule(itinerary, contract, places=(), *, primary_generated=False):
 def ordered_activities(day, schedule=None):
     elastic = schedule.lineage if schedule else {}
     return sorted(
-        (a for a in day.activities if a.activity_id not in elastic), key=lambda a: a.start_time
+        (a for a in day.activities if a.activity_id not in elastic and a.time_use != "free_window"),
+        key=lambda a: a.start_time,
+    )
+
+
+def primary_journey_allowed(left, right):
+    """New-wire non-primary activities are barriers, never primary journey endpoints."""
+    return all(a.time_use is None for a in (left, right)) or all(
+        a.activity_kind == "main_poi" for a in (left, right)
     )
 
 

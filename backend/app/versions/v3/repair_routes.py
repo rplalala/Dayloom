@@ -3,6 +3,7 @@
 from backend.app.evidence.normalization import normalize_routes
 from backend.app.integrations.google.routes import ROUTE_MATRIX_FIELD_MASK
 from backend.app.integrations.models import LatLng, RouteMatrixRequest, RouteWaypoint
+from backend.app.policies.itinerary_schedule import primary_journey_allowed
 from backend.app.policies.route_options import route_rows, transfer_time_check
 from backend.app.services.evidence_acquisition import V1EvidenceAcquisitionService
 from backend.app.versions.v3.repair_models import TransitionBinding
@@ -17,6 +18,8 @@ def bind_transitions(itinerary, mode, routing_preference=None, schedule=None):
     for day in itinerary.days:
         ordered = ordered_activities(day, schedule)
         for left, right in zip(ordered, ordered[1:], strict=False):
+            if not primary_journey_allowed(left, right):
+                continue
             if (
                 left.source_place_id
                 and right.source_place_id

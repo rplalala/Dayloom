@@ -1,0 +1,261 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Square René-Viviani",
+      "source_place_id": null,
+      "reason": "A small garden on Île de la Cité that could complement the planned neighbourhood stroll and exterior views around Notre-Dame.",
+      "associated_day": "2026-10-22",
+      "area": "Île de la Cité, near Notre-Dame",
+      "uncertainty": "Optional model-knowledge suggestion; proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Paris, France",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-tuileries",
+          "title": "Explore the Tuileries Garden",
+          "place_name": "Jardin des Tuileries",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-22T09:00:00+02:00",
+          "end_time": "2026-10-22T10:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Outdoor garden visit; a good fit for a low-cost, unhurried start."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1-walk-tuileries-louvre",
+          "title": "Walk to the Louvre exterior",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-22T10:30:00+02:00",
+          "end_time": "2026-10-22T10:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Jardin des Tuileries to the Louvre exterior. Duration and route are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-tuileries",
+            "to_activity_id": "day1-louvre-exterior"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-louvre-exterior",
+          "title": "View the Louvre from outside",
+          "place_name": "Louvre Palace",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-22T10:45:00+02:00",
+          "end_time": "2026-10-22T11:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Focus on the palace architecture and exterior views; no museum admission is included."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1-walk-louvre-ile",
+          "title": "Walk toward Île de la Cité",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-22T11:30:00+02:00",
+          "end_time": "2026-10-22T12:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Louvre area to Île de la Cité. Duration and route are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-louvre-exterior",
+            "to_activity_id": "day1-ile-cite"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-ile-cite",
+          "title": "Explore Île de la Cité and view Notre-Dame from outside",
+          "place_name": "Île de la Cité",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-22T12:00:00+02:00",
+          "end_time": "2026-10-22T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Neighbourhood stroll with exterior architectural views, including Notre-Dame Cathedral. No interior access is planned."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-montmartre",
+          "title": "Explore Montmartre",
+          "place_name": "Montmartre",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-23T09:00:00+02:00",
+          "end_time": "2026-10-23T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Spend time walking the neighbourhood and taking in its streets and architecture."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2-walk-sacre-coeur",
+          "title": "Walk to the Sacré-Cœur exterior",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-23T11:00:00+02:00",
+          "end_time": "2026-10-23T11:15:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Montmartre streets to the Sacré-Cœur exterior. Duration and route are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-montmartre",
+            "to_activity_id": "day2-sacre-coeur"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-sacre-coeur",
+          "title": "View the Sacré-Cœur Basilica from outside",
+          "place_name": "Sacré-Cœur Basilica",
+          "source_place_id": null,
+          "location": "Montmartre, Paris",
+          "start_time": "2026-10-23T11:15:00+02:00",
+          "end_time": "2026-10-23T12:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture and views from the surrounding area; no interior visit is planned."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2-transit-monmartre-monceau",
+          "title": "Travel to Parc Monceau",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-23T12:00:00+02:00",
+          "end_time": "2026-10-23T12:35:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Montmartre/Sacré-Cœur area to Parc Monceau, with public transit suggested. Duration and route are model estimates, not live-verified; no line or timetable is specified.",
+          "transport": {
+            "mode": "TRANSIT",
+            "from_activity_id": "day2-sacre-coeur",
+            "to_activity_id": "day2-parc-monceau"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-parc-monceau",
+          "title": "Relax and stroll in Parc Monceau",
+          "place_name": "Parc Monceau",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-23T12:35:00+02:00",
+          "end_time": "2026-10-23T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Outdoor park visit, keeping the day weighted toward free experiences."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-luxembourg-garden",
+          "title": "Stroll through the Luxembourg Garden",
+          "place_name": "Jardin du Luxembourg",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-24T09:00:00+02:00",
+          "end_time": "2026-10-24T10:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Outdoor garden time at a relaxed pace."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day3-walk-saint-germain",
+          "title": "Walk toward Saint-Germain-des-Prés",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T10:30:00+02:00",
+          "end_time": "2026-10-24T10:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Jardin du Luxembourg to Saint-Germain-des-Prés. Duration and route are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-luxembourg-garden",
+            "to_activity_id": "day3-saint-germain"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-saint-germain",
+          "title": "Explore Saint-Germain-des-Prés",
+          "place_name": "Saint-Germain-des-Prés",
+          "source_place_id": null,
+          "location": "Paris",
+          "start_time": "2026-10-24T10:45:00+02:00",
+          "end_time": "2026-10-24T12:15:00+02:00",
+          "estimated_cost": null,
+          "notes": "Neighbourhood exploration with time to appreciate the streets and exterior architecture."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day3-transit-saint-germain-sainte-chapelle",
+          "title": "Travel to Sainte-Chapelle",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T12:15:00+02:00",
+          "end_time": "2026-10-24T12:35:00+02:00",
+          "estimated_cost": null,
+          "notes": "Route: Saint-Germain-des-Prés to Sainte-Chapelle, with walking suggested. Duration and route are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-saint-germain",
+            "to_activity_id": "day3-sainte-chapelle"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-sainte-chapelle",
+          "title": "Visit Sainte-Chapelle",
+          "place_name": "Sainte-Chapelle",
+          "source_place_id": null,
+          "location": "Île de la Cité, Paris",
+          "start_time": "2026-10-24T12:35:00+02:00",
+          "end_time": "2026-10-24T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "The trip's one planned paid visit, selected to keep most sightseeing outdoors and low-cost. Admission price, opening hours, and availability have not been checked."
+        }
+      ]
+    }
+  ]
+}

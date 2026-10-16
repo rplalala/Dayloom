@@ -1,0 +1,4355 @@
+{
+  "schema_version": "rtpeval_research_opportunities_report_1",
+  "processing_status": "completed",
+  "track": "opportunities",
+  "applicability": "applicable",
+  "population_digest": "b3633f27cda4e00e8cc20a14301e07293ef3e73ec18de9506182efd790b66c5d",
+  "measurement_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "planned_slots": 2,
+    "captured_slots": 2,
+    "stages": {
+      "discovered": {
+        "complete": 1,
+        "partial": 1,
+        "unavailable": 0
+      },
+      "admitted": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "enriched": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "supplied": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "scheduled": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      }
+    }
+  },
+  "review_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "independent_association_slots": 2,
+    "relevance_review": "not_performed"
+  },
+  "diagnostics": [],
+  "identity_unit": "canonical_place_id",
+  "population_id": "case07-selected-r03",
+  "population_revision": "3",
+  "profile_id": "case07-retained-first-dispatch-r03",
+  "profile_revision": "3",
+  "runs": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "version": "v1",
+      "repetition_id": "r03",
+      "attempt_id": "case-07-r03-v1-01",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+            "ChIJ16iAVchv5kcR2iUDThaRlkE",
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+            "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+            "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+            "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+            "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+            "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJI7UujsRv5kcRATZ9iNLc85I",
+            "ChIJI7jEef5x5kcRkWRFsJD96So",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "ChIJNUTIphpu5kcR4h07VuxFIHc",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+            "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+            "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJVUrgmz5u5kcRWPSN-T8a730",
+            "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+            "ChIJY8922uBv5kcRJESw9l2dlLc",
+            "ChIJ_QwlZC9u5kcRi6OALXVubvc",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+            "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+            "ChIJm_jukgRv5kcRRIINaxFOqrw",
+            "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+            "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+            "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+            "ChIJp5mKpxdu5kcRB2-y70IXpww",
+            "ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+            "ChIJrZP7V9hx5kcRQlLc0kYQo44",
+            "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+            "ChIJszgj1CRu5kcR4ppUJCp67M8",
+            "ChIJu_io1h1u5kcRV737GjvtdwE",
+            "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+            "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+            "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+            "ChIJzZnx1Llv5kcR4KljDMqTxig",
+            "ChIJzc_-btdx5kcRKmpibTCAzrk"
+          ],
+          "observed_count": 63,
+          "complete_count": 63,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "analysis/poi-process/opportunities.json",
+                "pointer": "/runs/0/stages/discovered/canonical_ids",
+                "expanded_semantic_sha256": "b31a6139215e29917da9118c401eb529d879b2c0594619dd92c8dc65abaddf67"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+            "ChIJ16iAVchv5kcR2iUDThaRlkE",
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+            "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+            "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+            "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJI7UujsRv5kcRATZ9iNLc85I",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "ChIJNUTIphpu5kcR4h07VuxFIHc",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+            "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJVUrgmz5u5kcRWPSN-T8a730",
+            "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+            "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+            "ChIJm_jukgRv5kcRRIINaxFOqrw",
+            "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+            "ChIJp5mKpxdu5kcRB2-y70IXpww",
+            "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+            "ChIJu_io1h1u5kcRV737GjvtdwE",
+            "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+            "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+            "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+            "ChIJzc_-btdx5kcRKmpibTCAzrk"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "analysis/poi-process/opportunities.json",
+                "pointer": "/runs/0/stages/admitted/canonical_ids",
+                "expanded_semantic_sha256": "0a08cfc4805e9f49798c5bf8d7f17a5ad311e231eb012082692d9080c30aa6a7"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJI7UujsRv5kcRATZ9iNLc85I",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+            "ChIJp5mKpxdu5kcRB2-y70IXpww",
+            "ChIJu_io1h1u5kcRV737GjvtdwE",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJzc_-btdx5kcRKmpibTCAzrk"
+          ],
+          "observed_count": 24,
+          "complete_count": 24,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJAZwm1jZu5kcRjoWAeauOELU",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "ChIJGxZyXh5u5kcRLmPA07LoheA",
+              "ChIJI7UujsRv5kcRATZ9iNLc85I",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+              "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJR3122B9u5kcRajG2bEZLypA",
+              "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+              "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+              "ChIJp5mKpxdu5kcRB2-y70IXpww",
+              "ChIJu_io1h1u5kcRV737GjvtdwE",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+              "ChIJzc_-btdx5kcRKmpibTCAzrk"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ],
+            "rag_only": [],
+            "mixed": []
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+        ],
+        "observed_count": 8,
+        "complete_count": 8,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v1/descriptive/identity_checks",
+            "expanded_semantic_sha256": "4b21975800eb22c8e7adebf1d2ca101b17593e636abcb40b33bc4fea8744d78a"
+          }
+        },
+        "identity_source_digest": "666dafa1ba9f734c53e73d12a13282af682b767b307928d564621705a17a74a0",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "p172/q/manifest.json",
+            "sha256": "04ff80d0951ae1b793f7144b5cb5dbf33923b79f3091161af184858cbe94faea",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "p172/e/execution/identity-evidence.json",
+            "sha256": "a88060f10ef9231b6c1ff16506f26acd1372ead75b40fb51399ffa82c63b278b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "p172/e/execution/model-result.json",
+            "sha256": "7545d7336e2fe424b14f4667fa74be50bafe8501522ffd543c9742135da3f64c",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      },
+      "places": {
+        "ChIJ05AX-wJu5kcR-2CTIOumOiw": {
+          "canonical_place_id": "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ16iAVchv5kcR2iUDThaRlkE": {
+          "canonical_place_id": "ChIJ16iAVchv5kcR2iUDThaRlkE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ442GNENu5kcRGYUrvgqHw88": {
+          "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Sacré-Cœur Basilica in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4xutfT5u5kcRaJn2NkiOhPU": {
+          "canonical_place_id": "ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4zpdo99x5kcRn-0vKiMMPhU": {
+          "canonical_place_id": "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ7ayOGeNx5kcReHHR9KTXiz0": {
+          "canonical_place_id": "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ8TdmKgJu5kcRw_UDYIVAoXU": {
+          "canonical_place_id": "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ97YVkixv5kcR8UNDwqtkGlw": {
+          "canonical_place_id": "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAQAAMCxu5kcRx--_4QnbGcI": {
+          "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAQquYc1v5kcRLKslDuENAxg": {
+          "canonical_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Place de la Concorde in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAZwm1jZu5kcRjoWAeauOELU": {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJC0I3-eZv5kcRHaMcXnrRLsk": {
+          "canonical_place_id": "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJFZAIBJVx5kcRVzImVeaKQQU": {
+          "canonical_place_id": "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJG0s2Fedx5kcRY6Su2Sva7K8": {
+          "canonical_place_id": "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJG5Qwtitu5kcR2CNEsYy9cdA": {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJGxZyXh5u5kcRLmPA07LoheA": {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJI7UujsRv5kcRATZ9iNLc85I": {
+          "canonical_place_id": "ChIJI7UujsRv5kcRATZ9iNLc85I",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJI7jEef5x5kcRkWRFsJD96So": {
+          "canonical_place_id": "ChIJI7jEef5x5kcRkWRFsJD96So",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLU7jZClu5kcR4PcOOO6p3I0": {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLxPh9d1x5kcRf7M1U0pu1gU": {
+          "canonical_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJNUTIphpu5kcR4h07VuxFIHc": {
+          "canonical_place_id": "ChIJNUTIphpu5kcR4h07VuxFIHc",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJOYNm1DBu5kcRZwdtKBzyq6k": {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQ9vMHipw5kcRWHC2ESjYaGQ": {
+          "canonical_place_id": "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQQtKZyJu5kcRhXhHvOUt3To": {
+          "canonical_place_id": "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJR1buQh5u5kcROogxFI7WlfM": {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJR3122B9u5kcRaCck3PlB9DM": {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJR3122B9u5kcRajG2bEZLypA": {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJSUOPztFv5kcRnEbSPYG-9fM": {
+          "canonical_place_id": "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJS_QOawJu5kcRL-iAHfi0WtY": {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJTdiHcqxv5kcRVgEUqDEcnbY": {
+          "canonical_place_id": "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJU8BNx-5x5kcRNSC_roNvBRs": {
+          "canonical_place_id": "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJUeiI4P9x5kcRqEwHl6V32GQ": {
+          "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJV-oEDbZv5kcRciSi_eVZIgE": {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJVUrgmz5u5kcRWPSN-T8a730": {
+          "canonical_place_id": "ChIJVUrgmz5u5kcRWPSN-T8a730",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJX2c7lCtv5kcRxhdJCBIRGGU": {
+          "canonical_place_id": "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJY8922uBv5kcRJESw9l2dlLc": {
+          "canonical_place_id": "ChIJY8922uBv5kcRJESw9l2dlLc",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ_QwlZC9u5kcRi6OALXVubvc": {
+          "canonical_place_id": "ChIJ_QwlZC9u5kcRi6OALXVubvc",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJa6TNcOFx5kcRDd2mI71KoRY": {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJc8mX0udx5kcRWKcjTwDr5QA": {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Panthéon in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJcVyG4w1u5kcR-2YrTtl8cww": {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJdbbQwbZx5kcRs7Qu5nPw18g": {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJe2jeNttx5kcRi_mJsGHdkQc": {
+          "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJjx37cOxv5kcRPWQuEW5ntdk": {
+          "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJk8ku6wJu5kcR8r1QrGOSNe0": {
+          "canonical_place_id": "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJm_jukgRv5kcRRIINaxFOqrw": {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJneWSEjNw5kcRrpbgsvMnPIs": {
+          "canonical_place_id": "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJo6qq6i5u5kcRCpYBp4rQP9w": {
+          "canonical_place_id": "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJo6zwhgRu5kcRVrG7m4gi1oA": {
+          "canonical_place_id": "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp5mKpxdu5kcRB2-y70IXpww": {
+          "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJr3SOmOdv5kcRJUwZDs3C3mA": {
+          "canonical_place_id": "ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJrZP7V9hx5kcRQlLc0kYQo44": {
+          "canonical_place_id": "ChIJrZP7V9hx5kcRQlLc0kYQo44",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJscrTJQBv5kcRPMX6Mj9Vg5E": {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJszgj1CRu5kcR4ppUJCp67M8": {
+          "canonical_place_id": "ChIJszgj1CRu5kcR4ppUJCp67M8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJu_io1h1u5kcRV737GjvtdwE": {
+          "canonical_place_id": "ChIJu_io1h1u5kcRV737GjvtdwE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJv-rX7Ndv5kcRJ0IdTc55HnY": {
+          "canonical_place_id": "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJv6ffXBtu5kcRvkMvpw_2wbU": {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwSNtTBlu5kcR7bTZgmDKu5w": {
+          "canonical_place_id": "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJw_cV8Btu5kcRWM7vwSaK4pI": {
+          "canonical_place_id": "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJydDIqRxu5kcRqB6W-MQwcYU": {
+          "canonical_place_id": "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJzZnx1Llv5kcR4KljDMqTxig": {
+          "canonical_place_id": "ChIJzZnx1Llv5kcR4KljDMqTxig",
+          "google_origins": [
+            {
+              "intent_id": "default_2",
+              "source_query": "museums and cultural attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJzc_-btdx5kcRKmpibTCAzrk": {
+          "canonical_place_id": "ChIJzc_-btdx5kcRKmpibTCAzrk",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJI7jEef5x5kcRkWRFsJD96So",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJY8922uBv5kcRJESw9l2dlLc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ_QwlZC9u5kcRi6OALXVubvc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJrZP7V9hx5kcRQlLc0kYQo44",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJszgj1CRu5kcR4ppUJCp67M8",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJzZnx1Llv5kcR4KljDMqTxig",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ16iAVchv5kcR2iUDThaRlkE",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJNUTIphpu5kcR4h07VuxFIHc",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJVUrgmz5u5kcRWPSN-T8a730",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJI7UujsRv5kcRATZ9iNLc85I",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJu_io1h1u5kcRV737GjvtdwE",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJzc_-btdx5kcRKmpibTCAzrk",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        }
+      ],
+      "incremental_rag_ids": [],
+      "diagnostics": [],
+      "pre_rag_google_ids": {
+        "$case_material_ref": {
+          "path": "analysis/poi-process/opportunities.json",
+          "pointer": "/runs/0/stages/discovered/canonical_ids",
+          "expanded_semantic_sha256": "b31a6139215e29917da9118c401eb529d879b2c0594619dd92c8dc65abaddf67"
+        }
+      },
+      "incremental_rag_status": "complete",
+      "rag_provenance": null,
+      "observation": {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v1",
+        "repetition_id": "r03",
+        "attempt_id": "case-07-r03-v1-01",
+        "run_id": "case-07-r03-v1-01",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "result_sha256": "3de7ffdd730584e881b25c4b94fe89c50f3468ea131a6e79b534a360fe30c784",
+        "capture_ref": {
+          "path": "c03/m/candidate-v1.json",
+          "sha256": "d64d24720bf4c4b4558307794b6c2307f2f0aeafdea308b566e0b401fda9f81c",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "p172/q/manifest.json",
+            "sha256": "04ff80d0951ae1b793f7144b5cb5dbf33923b79f3091161af184858cbe94faea",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "p172/e/execution/identity-evidence.json",
+            "sha256": "a88060f10ef9231b6c1ff16506f26acd1372ead75b40fb51399ffa82c63b278b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "p172/e/execution/model-result.json",
+            "sha256": "7545d7336e2fe424b14f4667fa74be50bafe8501522ffd543c9742135da3f64c",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      }
+    },
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "version": "v2",
+      "repetition_id": "r03",
+      "attempt_id": "case-07-r03-v2-01",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "canonical_ids": [
+            "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+            "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+            "ChIJ28laW9p65kcRLkyGSRGcV04",
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+            "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+            "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+            "ChIJ6XHvERZy5kcRcARsBv9AehU",
+            "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+            "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+            "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+            "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+            "ChIJDwZjvgNu5kcR92V2clFCGMk",
+            "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+            "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+            "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+            "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+            "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+            "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+            "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+            "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJW7ySGCdu5kcRldwk22iNR0o",
+            "ChIJX26tvBJy5kcRawOftfeom5k",
+            "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+            "ChIJXfonYfBu5kcRkTNLzc_By-U",
+            "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+            "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+            "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+            "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+            "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+            "ChIJm_jukgRv5kcRRIINaxFOqrw",
+            "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+            "ChIJn6TYegFy5kcRg_-xruXtHZY",
+            "ChIJnayProZt5kcRFAPzPZHgRG4",
+            "ChIJnb13j6B65kcRSxozoc04yHc",
+            "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+            "ChIJp5mKpxdu5kcRB2-y70IXpww",
+            "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+            "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+            "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+            "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+            "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+            "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+            "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+            "ChIJtw1d4ett5kcRj07k-_vrf9s",
+            "ChIJufChV9Bv5kcRT02XBr8yAOs",
+            "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJvcVRUwBx5kcRod72V2bB-EI",
+            "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+            "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+            "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+            "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+            "ChIJyWdN5SNu5kcRsskNxWnDf58",
+            "ChIJz35dQONv5kcRtSVtSJLDOsA",
+            "ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+          ],
+          "observed_count": 83,
+          "complete_count": null,
+          "reasons": [
+            "saved_rag_discovery_partial"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ28laW9p65kcRLkyGSRGcV04",
+              "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+              "ChIJ6XHvERZy5kcRcARsBv9AehU",
+              "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+              "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJAZwm1jZu5kcRjoWAeauOELU",
+              "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+              "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+              "ChIJDwZjvgNu5kcR92V2clFCGMk",
+              "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "ChIJGxZyXh5u5kcRLmPA07LoheA",
+              "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+              "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+              "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+              "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJR3122B9u5kcRajG2bEZLypA",
+              "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJX26tvBJy5kcRawOftfeom5k",
+              "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+              "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+              "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+              "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+              "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+              "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+              "ChIJm_jukgRv5kcRRIINaxFOqrw",
+              "ChIJn6TYegFy5kcRg_-xruXtHZY",
+              "ChIJnayProZt5kcRFAPzPZHgRG4",
+              "ChIJnb13j6B65kcRSxozoc04yHc",
+              "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+              "ChIJp5mKpxdu5kcRB2-y70IXpww",
+              "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+              "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+              "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+              "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+              "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+              "ChIJtw1d4ett5kcRj07k-_vrf9s",
+              "ChIJufChV9Bv5kcRT02XBr8yAOs",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+              "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+              "ChIJz35dQONv5kcRtSVtSJLDOsA"
+            ],
+            "rag_only": [
+              "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+              "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+              "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+              "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+              "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+              "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+              "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+              "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+              "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+              "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+              "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+              "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+              "ChIJyWdN5SNu5kcRsskNxWnDf58",
+              "ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+            ],
+            "mixed": [
+              "ChIJ442GNENu5kcRGYUrvgqHw88",
+              "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+              "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+              "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+              "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+            ]
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+            "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+            "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+            "ChIJDwZjvgNu5kcR92V2clFCGMk",
+            "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+            "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+            "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+            "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJW7ySGCdu5kcRldwk22iNR0o",
+            "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+            "ChIJXfonYfBu5kcRkTNLzc_By-U",
+            "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+            "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+            "ChIJm_jukgRv5kcRRIINaxFOqrw",
+            "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+            "ChIJn6TYegFy5kcRg_-xruXtHZY",
+            "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+            "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+            "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+            "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+            "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+            "ChIJufChV9Bv5kcRT02XBr8yAOs",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJvcVRUwBx5kcRod72V2bB-EI",
+            "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+            "ChIJyWdN5SNu5kcRsskNxWnDf58",
+            "ChIJz35dQONv5kcRtSVtSJLDOsA"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJAZwm1jZu5kcRjoWAeauOELU",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+              "ChIJDwZjvgNu5kcR92V2clFCGMk",
+              "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "ChIJGxZyXh5u5kcRLmPA07LoheA",
+              "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+              "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJR3122B9u5kcRajG2bEZLypA",
+              "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+              "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+              "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+              "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+              "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+              "ChIJm_jukgRv5kcRRIINaxFOqrw",
+              "ChIJn6TYegFy5kcRg_-xruXtHZY",
+              "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+              "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+              "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+              "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+              "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+              "ChIJufChV9Bv5kcRT02XBr8yAOs",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+              "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+              "ChIJz35dQONv5kcRtSVtSJLDOsA"
+            ],
+            "rag_only": [
+              "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "ChIJyWdN5SNu5kcRsskNxWnDf58"
+            ],
+            "mixed": [
+              "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJvcVRUwBx5kcRod72V2bB-EI"
+            ]
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+            "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+            "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJAZwm1jZu5kcRjoWAeauOELU",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+            "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "ChIJGxZyXh5u5kcRLmPA07LoheA",
+            "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+            "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+            "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJW7ySGCdu5kcRldwk22iNR0o",
+            "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+            "ChIJXfonYfBu5kcRkTNLzc_By-U",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+            "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+            "ChIJm_jukgRv5kcRRIINaxFOqrw",
+            "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+            "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+            "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJvcVRUwBx5kcRod72V2bB-EI",
+            "ChIJyWdN5SNu5kcRsskNxWnDf58"
+          ],
+          "observed_count": 35,
+          "complete_count": 35,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJAZwm1jZu5kcRjoWAeauOELU",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "ChIJGxZyXh5u5kcRLmPA07LoheA",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+              "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJR3122B9u5kcRajG2bEZLypA",
+              "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+              "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+              "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+              "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+              "ChIJm_jukgRv5kcRRIINaxFOqrw",
+              "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+              "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [
+              "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "ChIJyWdN5SNu5kcRsskNxWnDf58"
+            ],
+            "mixed": [
+              "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJvcVRUwBx5kcRod72V2bB-EI"
+            ]
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR3122B9u5kcRajG2bEZLypA",
+            "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+            "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+            "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJvcVRUwBx5kcRod72V2bB-EI"
+          ],
+          "observed_count": 12,
+          "complete_count": 12,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR3122B9u5kcRajG2bEZLypA",
+              "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+              "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+              "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [
+              "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            ],
+            "mixed": [
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJvcVRUwBx5kcRod72V2bB-EI"
+            ]
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+        ],
+        "observed_count": 7,
+        "complete_count": 7,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v2/descriptive/identity_checks",
+            "expanded_semantic_sha256": "bca3707b8a1c3005908b20258322ff121ce9776dcd693d2e387c78fd96f0a93c"
+          }
+        },
+        "identity_source_digest": "666dafa1ba9f734c53e73d12a13282af682b767b307928d564621705a17a74a0",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "p172/q/manifest.json",
+            "sha256": "04ff80d0951ae1b793f7144b5cb5dbf33923b79f3091161af184858cbe94faea",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "p172/e/execution/identity-evidence.json",
+            "sha256": "a88060f10ef9231b6c1ff16506f26acd1372ead75b40fb51399ffa82c63b278b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "p172/e/execution/model-result.json",
+            "sha256": "7545d7336e2fe424b14f4667fa74be50bafe8501522ffd543c9742135da3f64c",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      },
+      "places": {
+        "ChIJ04VKlPVu5kcRJJV7esEZzgM": {
+          "canonical_place_id": "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ04VKlPVu5kcRJJV7esEZzgM",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.2693158388137836,
+              "distance_km": 4.482564002753048,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7beaa26b3fd8d5bf434fd498d91448b9271db14d596f5a388d83fd9db0c8763a",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ04VKlPVu5kcRJJV7esEZzgM"
+            }
+          ]
+        },
+        "ChIJ0dzuSNBv5kcRa6BHUVdFm0k": {
+          "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.28132301195585785,
+              "distance_km": 2.9906770155805646,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4ff15377dfe41adac904481b8c317b55ddbac385354f17625e2e5536b47ae2ac",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ0dzuSNBv5kcRa6BHUVdFm0k"
+            }
+          ]
+        },
+        "ChIJ28laW9p65kcRLkyGSRGcV04": {
+          "canonical_place_id": "ChIJ28laW9p65kcRLkyGSRGcV04",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ442GNENu5kcRGYUrvgqHw88": {
+          "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Sacré-Cœur Basilica in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ442GNENu5kcRGYUrvgqHw88",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.2901665645539948,
+              "distance_km": 3.287780193936104,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2495dc63e9a14f9acf20a4220e221e2e4894915f9bc8a3ebe185d92d9d25729a",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJ442GNENu5kcRGYUrvgqHw88"
+            }
+          ]
+        },
+        "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY": {
+          "canonical_place_id": "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5bx0qiVu5kcRs_dMpI5ttiY": {
+          "canonical_place_id": "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.288366054101712,
+              "distance_km": 1.2933495482785637,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "77570b985670e9f2aef87e261da8f5e5296d01caf097734210477aa899475d78",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJ5bx0qiVu5kcRs_dMpI5ttiY"
+            }
+          ]
+        },
+        "ChIJ6UrOzQNu5kcRRp5vRIClzzg": {
+          "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.2844708222781631,
+              "distance_km": 0.7526134285032243,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9158b931fb249ba49eafc827998ff553afa251f0cec8a7a4b708a88868e03b01",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ6UrOzQNu5kcRRp5vRIClzzg"
+            }
+          ]
+        },
+        "ChIJ6XHvERZy5kcRcARsBv9AehU": {
+          "canonical_place_id": "ChIJ6XHvERZy5kcRcARsBv9AehU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ914FVoZx5kcRhsGw3XGXUxc": {
+          "canonical_place_id": "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ9UoWtyZu5kcRWuoIyUV70T8": {
+          "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3124788124133253,
+              "distance_km": 0.9895758923482929,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fe02f32aa3bd23c3073da351e08202df8d02b2a53ed12700fea0fea5ee733dee",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ9UoWtyZu5kcRWuoIyUV70T8"
+            }
+          ]
+        },
+        "ChIJAQAAMCxu5kcRx--_4QnbGcI": {
+          "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
+          "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAZwm1jZu5kcRjoWAeauOELU": {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJB0gcnCBw5kcRHoIAPcTEApc": {
+          "canonical_place_id": "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJCQ3V1j1u5kcR486q7s3KIH4": {
+          "canonical_place_id": "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCQ3V1j1u5kcR486q7s3KIH4",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.26932537325318173,
+              "distance_km": 1.6158168323352504,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "511ff2f47791832da70fca6e59e85914d107b9b5af61ef016932a89e0c570ef9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCQ3V1j1u5kcR486q7s3KIH4"
+            }
+          ]
+        },
+        "ChIJCaWkW_tv5kcR6VmJ4cSbVdE": {
+          "canonical_place_id": "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
+          "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDc7AIRxy5kcRfYYaDb3GSLc": {
+          "canonical_place_id": "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDwZjvgNu5kcR92V2clFCGMk": {
+          "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJDxKAR-pv5kcRJznFaRy78QQ": {
+          "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDxKAR-pv5kcRJznFaRy78QQ",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.30630557574663064,
+              "distance_km": 2.0110560152154218,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "24c1e6ed0decf3661a2bc2b161eda01d0e3a336fe9ae6262fdef0621a63730f7",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDxKAR-pv5kcRJznFaRy78QQ"
+            }
+          ]
+        },
+        "ChIJDyx4bNhu5kcRqJ3RkAPGMEk": {
+          "canonical_place_id": "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.28083577384522274,
+              "distance_km": 7.6923511528733535,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "28ff3f17facb792fdd4554c25589fdb46f3e8ded2349e8b385bc5b688b49ca55",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJDyx4bNhu5kcRqJ3RkAPGMEk"
+            }
+          ]
+        },
+        "ChIJEU7r8_lx5kcRgylm7D8Avm4": {
+          "canonical_place_id": "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJEU7r8_lx5kcRgylm7D8Avm4",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.30862664035717546,
+              "distance_km": 1.3896064084823716,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8c0784db5339276e80c6220c878e0d860f51699bd83d543967405fcafb6cbfdc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJEU7r8_lx5kcRgylm7D8Avm4"
+            },
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJEU7r8_lx5kcRgylm7D8Avm4",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.2813151143413666,
+              "distance_km": 1.3896064084823716,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8c0784db5339276e80c6220c878e0d860f51699bd83d543967405fcafb6cbfdc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJEU7r8_lx5kcRgylm7D8Avm4"
+            }
+          ]
+        },
+        "ChIJG5Qwtitu5kcR2CNEsYy9cdA": {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Musée d’Orsay in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJGxZyXh5u5kcRLmPA07LoheA": {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJH66KEgJl5kcRfFN_gYbOnQA": {
+          "canonical_place_id": "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w": {
+          "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.34223520755768067,
+              "distance_km": 0.5613539908359859,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1db378af4fcdb7fce1c67192718b37f09e28a0b25e46c54401078ff0db56d6fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJH7Gfw-Nx5kcRoV_z8n0b7_w"
+            }
+          ]
+        },
+        "ChIJHbrByclt5kcRn-ZGU8KjU_g": {
+          "canonical_place_id": "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJHbrByclt5kcRn-ZGU8KjU_g",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.3640270612223766,
+              "distance_km": 4.893303051208554,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b0ce2ca46b536abf963120819527d845d1c35ceaa4fa0b07af09c267cae67513",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJHbrByclt5kcRn-ZGU8KjU_g"
+            }
+          ]
+        },
+        "ChIJKZKprAFy5kcREOvlZ8mwHiM": {
+          "canonical_place_id": "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLU7jZClu5kcR4PcOOO6p3I0": {
+          "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 4,
+              "actual_result_count": 7
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJN4tOxqNx5kcRsa159MJv2Q0": {
+          "canonical_place_id": "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJOYNm1DBu5kcRZwdtKBzyq6k": {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPWSND8Vv5kcRw77bqL6uyOk": {
+          "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQ48wCRRu5kcRv6UbLjz_4xo": {
+          "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.26868659035127274,
+              "distance_km": 1.6181322970372638,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "cf5a737176d434d2bf5b86cd512c215aae0f6582e929b988e958baa00efdbdc2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQ48wCRRu5kcRv6UbLjz_4xo"
+            }
+          ]
+        },
+        "ChIJQdQyeiZu5kcRUfQHfB-OCLA": {
+          "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.2961107017927991,
+              "distance_km": 1.199819569777698,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "74b697bb75e3921ffa51adeb5a2e3e5304a9a0524a01d9efb7e0505ae598df57",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJQdQyeiZu5kcRUfQHfB-OCLA"
+            }
+          ]
+        },
+        "ChIJR1buQh5u5kcROogxFI7WlfM": {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJR3122B9u5kcRaCck3PlB9DM": {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJR3122B9u5kcRajG2bEZLypA": {
+          "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJS_QOawJu5kcRL-iAHfi0WtY": {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJUeiI4P9x5kcRqEwHl6V32GQ": {
+          "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJV-oEDbZv5kcRciSi_eVZIgE": {
+          "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 9,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJW7ySGCdu5kcRldwk22iNR0o": {
+          "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJW7ySGCdu5kcRldwk22iNR0o",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.3411741744072254,
+              "distance_km": 1.0116455285484631,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "fb7b89f8d7b1f08a11f624335427cedcd4d44a35a7dfa9b6804f68b3402fe097",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJW7ySGCdu5kcRldwk22iNR0o"
+            }
+          ]
+        },
+        "ChIJX26tvBJy5kcRawOftfeom5k": {
+          "canonical_place_id": "ChIJX26tvBJy5kcRawOftfeom5k",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJX6sTTtZn1o4RL3zF2XdEgh8": {
+          "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJXfonYfBu5kcRkTNLzc_By-U": {
+          "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJXfonYfBu5kcRkTNLzc_By-U",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.29098336154321713,
+              "distance_km": 5.029749702219437,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0d87ba6f1c9f19ed43f169a7f6269b76978c91aa141fc7a54f182eebf43c113e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJXfonYfBu5kcRkTNLzc_By-U"
+            }
+          ]
+        },
+        "ChIJa-wm0fBx5kcRTj1XkfsieqY": {
+          "canonical_place_id": "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJa6TNcOFx5kcRDd2mI71KoRY": {
+          "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJbe5YOk9u5kcR7nIUjn_yLM4": {
+          "canonical_place_id": "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.28346876600570936,
+              "distance_km": 3.042582295110033,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1b6c2295f3b6278a34062a97d833d34300a64549ad09364eeaa024f376d138f8",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJbe5YOk9u5kcR7nIUjn_yLM4"
+            }
+          ]
+        },
+        "ChIJc8mX0udx5kcRWKcjTwDr5QA": {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Panthéon in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 1
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.26695212519739764,
+              "distance_km": 1.316787762888319,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8dd0296e4b7012c722e28096140a9139db868e090187e2d997526618a41fbfb0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+            }
+          ]
+        },
+        "ChIJcVyG4w1u5kcR-2YrTtl8cww": {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJdbbQwbZx5kcRs7Qu5nPw18g": {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJe2jeNttx5kcRi_mJsGHdkQc": {
+          "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 3,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "generation/v2/rag-origins.json",
+              "pointer": "/origins/ChIJe2jeNttx5kcRi_mJsGHdkQc",
+              "expanded_semantic_sha256": "d5c1d614fcd2c4e0d4ffe535546ef955af33fea67bc0675c4243aee60b302459"
+            }
+          }
+        },
+        "ChIJez2ACVtv5kcR2cbi5PU5mzs": {
+          "canonical_place_id": "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJez2ACVtv5kcR2cbi5PU5mzs",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.3556142449378993,
+              "distance_km": 3.362517290567089,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "6e57796c6c97062fad5acf89edeeb8f04e09c471d242a70423f7c68780087f34",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJez2ACVtv5kcR2cbi5PU5mzs"
+            }
+          ]
+        },
+        "ChIJh9M-FMZt5kcRkZSVdmDta_I": {
+          "canonical_place_id": "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "generation/v2/rag-origins.json",
+              "pointer": "/origins/ChIJh9M-FMZt5kcRkZSVdmDta_I",
+              "expanded_semantic_sha256": "fd603949105e9ecbed1e126d4be77fef930696588f50a32dffccc51fc6e6188b"
+            }
+          }
+        },
+        "ChIJheWXPrxy5kcRtbzSi_O_dCk": {
+          "canonical_place_id": "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 10,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJjx37cOxv5kcRPWQuEW5ntdk": {
+          "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.2948587781359242,
+              "distance_km": 4.497691447706055,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1643cb5ab002e11d3ede984563bb712d56deb7afac9e60abc799f33b8ef8a9d1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            }
+          ]
+        },
+        "ChIJlX4qu0Ru5kcRBhpAY0NEloo": {
+          "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.27816216479765443,
+              "distance_km": 3.2295974063307655,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "59bf7cafb4214c94763cdbce7dabc509f3f070060fe9cc6fe091f8cfaac35a88",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJlX4qu0Ru5kcRBhpAY0NEloo"
+            }
+          ]
+        },
+        "ChIJm9JEK-dv5kcRRAj5aYQEao0": {
+          "canonical_place_id": "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "generation/v2/rag-origins.json",
+              "pointer": "/origins/ChIJm9JEK-dv5kcRRAj5aYQEao0",
+              "expanded_semantic_sha256": "74472b92312ddd04335d3f2c477460990e563cbe4d586254ebb4915fa097554e"
+            }
+          }
+        },
+        "ChIJm_jukgRv5kcRRIINaxFOqrw": {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 15,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJmw6mpBhu5kcRzLhZUymiyhY": {
+          "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJmw6mpBhu5kcRzLhZUymiyhY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.2792912555163356,
+              "distance_km": 0.5825620178402131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4525d57a756c6f2ff87fe1b3ccb5670b3f3ea1f40fb20c84cfe1e77e787eec1f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJmw6mpBhu5kcRzLhZUymiyhY"
+            }
+          ]
+        },
+        "ChIJn6TYegFy5kcRg_-xruXtHZY": {
+          "canonical_place_id": "ChIJn6TYegFy5kcRg_-xruXtHZY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 16,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJnayProZt5kcRFAPzPZHgRG4": {
+          "canonical_place_id": "ChIJnayProZt5kcRFAPzPZHgRG4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJnb13j6B65kcRSxozoc04yHc": {
+          "canonical_place_id": "ChIJnb13j6B65kcRSxozoc04yHc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 14,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 13,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJoxY3R-Nv5kcRWsRDGBoNIOk": {
+          "canonical_place_id": "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp5mKpxdu5kcRB2-y70IXpww": {
+          "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 5,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJrSTZSgBv5kcRXuTtWnlhL-c": {
+          "canonical_place_id": "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.2779487636150424,
+              "distance_km": 2.3825645509242293,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d6a9d5ba1aeed0a253fec42eae210d9e639603bec22cacf6763fa4fd2fe9d45",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJrSTZSgBv5kcRXuTtWnlhL-c"
+            }
+          ]
+        },
+        "ChIJsZKjKA1u5kcRCmybBWIUz2w": {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 1,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJsZKjKA1u5kcRaVDKu3gWoMI": {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 18,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJsZrZbCJu5kcRyTMjLMJ1sCk": {
+          "canonical_place_id": "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJscrTJQBv5kcRPMX6Mj9Vg5E": {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Palais Garnier in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 3
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJt5KhKwBv5kcR7K4PKbzbC_g": {
+          "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.3000913321808584,
+              "distance_km": 1.3308269427049952,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d363b85a4f4628341fe31852274da4e61239e4fb17cb0b2e44f616c7de7604da",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJt5KhKwBv5kcR7K4PKbzbC_g"
+            }
+          ]
+        },
+        "ChIJtSsE0xxu5kcR5cukgQHu7oQ": {
+          "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 8,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJtw1d4ett5kcRj07k-_vrf9s": {
+          "canonical_place_id": "ChIJtw1d4ett5kcRj07k-_vrf9s",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 12,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJufChV9Bv5kcRT02XBr8yAOs": {
+          "canonical_place_id": "ChIJufChV9Bv5kcRT02XBr8yAOs",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 11,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJv-rX7Ndv5kcR8HH74UZfYtQ": {
+          "canonical_place_id": "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.27157977775516406,
+              "distance_km": 2.7874632176530976,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "eea103972dd774d37407c05e149b0738c232cc5bdd6c10d438852f9ae298d1da",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJv-rX7Ndv5kcR8HH74UZfYtQ"
+            },
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.3330965339925769,
+              "distance_km": 2.7874632176530976,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "eea103972dd774d37407c05e149b0738c232cc5bdd6c10d438852f9ae298d1da",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJv-rX7Ndv5kcR8HH74UZfYtQ"
+            }
+          ]
+        },
+        "ChIJv6ffXBtu5kcRvkMvpw_2wbU": {
+          "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Paris, France",
+              "provider_rank": 19,
+              "actual_result_count": 20
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 17,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJvcVRUwBx5kcRod72V2bB-EI": {
+          "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 7,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "query": {
+                "query_id": "rag_3",
+                "text": "viewing architecture from outside",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_3"
+                ],
+                "requirement_refs": [
+                  "semantic_4"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.3308546249530395,
+              "distance_km": 0.5055997825229493,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ea9b220d1e90d43f5b4be9ae25ce46867230818785fd6358f55e4e79061a89f0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            }
+          ]
+        },
+        "ChIJwxEz76Nt5kcRIl3qWIRI-Bc": {
+          "canonical_place_id": "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.2860736335384314,
+              "distance_km": 4.05478199914653,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "984ca49464cdbf0b5084f3d6f7638d18479a32a9aaec3c845beeb90709ead753",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJwxEz76Nt5kcRIl3qWIRI-Bc"
+            }
+          ]
+        },
+        "ChIJwxT3mL5v5kcRAsTd3v0lJOY": {
+          "canonical_place_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "parks in Paris, France",
+              "provider_rank": 0,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+              "query": {
+                "query_id": "rag_2",
+                "text": "parks",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_2"
+                ],
+                "requirement_refs": [
+                  "semantic_3"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.4011639415524104,
+              "distance_km": 3.940525091813906,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "f19625ebd9848c0b11fbbcaeae890394794e1b65ceceb0f5aa484b2fda6e08cc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+            }
+          ]
+        },
+        "ChIJxeWKLPtx5kcRM-HN21cJ3_g": {
+          "canonical_place_id": "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "neighbourhood exploration in Paris, France",
+              "provider_rank": 6,
+              "actual_result_count": 7
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJyUvuNg1u5kcRIJBRQqwbjBU": {
+          "canonical_place_id": "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:55e0815b498e6907013d146f",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.30313066821511625,
+              "distance_km": 2.0889656117527453,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "f873912af2aecd8db2d0030feca09fe629102f7ab24cb2f332183b69f6e523d0",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJyUvuNg1u5kcRIJBRQqwbjBU"
+            }
+          ]
+        },
+        "ChIJyWdN5SNu5kcRsskNxWnDf58": {
+          "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJyWdN5SNu5kcRsskNxWnDf58",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.2742583588207751,
+              "distance_km": 1.5685779204557917,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "5cbe7a537fd1ff9d2dd4055e4be969ccd906a850375168a608f63928491f5b03",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJyWdN5SNu5kcRsskNxWnDf58"
+            }
+          ]
+        },
+        "ChIJz35dQONv5kcRtSVtSJLDOsA": {
+          "canonical_place_id": "ChIJz35dQONv5kcRtSVtSJLDOsA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_3",
+              "source_query": "viewing architecture from outside in Paris, France",
+              "provider_rank": 2,
+              "actual_result_count": 20
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJzVOtXQJu5kcRvhYWG1VSfjE": {
+          "canonical_place_id": "ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "neighbourhood exploration",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.2708117204420738,
+              "distance_km": 0.5521883521978328,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "ab862f9d71beaf8a499a661269ae83e4d520ce3d20a664abcec1006c3e8e984d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+            }
+          ]
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ28laW9p65kcRLkyGSRGcV04",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ6XHvERZy5kcRcARsBv9AehU",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJX26tvBJy5kcRawOftfeom5k",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJnayProZt5kcRFAPzPZHgRG4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJnb13j6B65kcRSxozoc04yHc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJtw1d4ett5kcRj07k-_vrf9s",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJn6TYegFy5kcRg_-xruXtHZY",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJufChV9Bv5kcRT02XBr8yAOs",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJz35dQONv5kcRtSVtSJLDOsA",
+          "stage": "enriched",
+          "reason": "not_enriched_before_saved_target_stop"
+        },
+        {
+          "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        },
+        {
+          "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "stage": "supplied",
+          "reason": "not_in_saved_supply_selection"
+        }
+      ],
+      "incremental_rag_ids": [
+        "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+        "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+        "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+        "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+        "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+        "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+        "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+        "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+        "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+        "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+        "ChIJW7ySGCdu5kcRldwk22iNR0o",
+        "ChIJXfonYfBu5kcRkTNLzc_By-U",
+        "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+        "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+        "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+        "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+        "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+        "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+        "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+        "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+        "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+        "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+        "ChIJyWdN5SNu5kcRsskNxWnDf58",
+        "ChIJzVOtXQJu5kcRvhYWG1VSfjE"
+      ],
+      "diagnostics": [],
+      "pre_rag_google_ids": [
+        "ChIJ28laW9p65kcRLkyGSRGcV04",
+        "ChIJ442GNENu5kcRGYUrvgqHw88",
+        "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+        "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+        "ChIJ6XHvERZy5kcRcARsBv9AehU",
+        "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+        "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+        "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+        "ChIJAZwm1jZu5kcRjoWAeauOELU",
+        "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+        "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+        "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+        "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+        "ChIJDwZjvgNu5kcR92V2clFCGMk",
+        "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+        "ChIJGxZyXh5u5kcRLmPA07LoheA",
+        "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+        "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+        "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+        "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+        "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+        "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+        "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+        "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+        "ChIJR1buQh5u5kcROogxFI7WlfM",
+        "ChIJR3122B9u5kcRaCck3PlB9DM",
+        "ChIJR3122B9u5kcRajG2bEZLypA",
+        "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+        "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+        "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+        "ChIJX26tvBJy5kcRawOftfeom5k",
+        "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+        "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+        "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+        "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+        "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+        "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+        "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+        "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+        "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+        "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+        "ChIJm_jukgRv5kcRRIINaxFOqrw",
+        "ChIJn6TYegFy5kcRg_-xruXtHZY",
+        "ChIJnayProZt5kcRFAPzPZHgRG4",
+        "ChIJnb13j6B65kcRSxozoc04yHc",
+        "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+        "ChIJp5mKpxdu5kcRB2-y70IXpww",
+        "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+        "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+        "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+        "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+        "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+        "ChIJtw1d4ett5kcRj07k-_vrf9s",
+        "ChIJufChV9Bv5kcRT02XBr8yAOs",
+        "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+        "ChIJvcVRUwBx5kcRod72V2bB-EI",
+        "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+        "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+        "ChIJz35dQONv5kcRtSVtSJLDOsA"
+      ],
+      "incremental_rag_status": "partial",
+      "rag_provenance": {
+        "$case_material_ref": {
+          "path": "generation/v2/rag-origins.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "b4c70f2a858c11cf68c746c5db65279a5120d079c503a85e07157218d1ae3564"
+        }
+      },
+      "observation": {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v2",
+        "repetition_id": "r03",
+        "attempt_id": "case-07-r03-v2-01",
+        "run_id": "case-07-r03-v2-01",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "result_sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+        "capture_ref": {
+          "path": "c03/m/candidate-v2.json",
+          "sha256": "ef55ddd2c20132f5dbd34b906f633a883845306e2bfe778f5c462e49cc0893eb",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "p172/q/manifest.json",
+            "sha256": "04ff80d0951ae1b793f7144b5cb5dbf33923b79f3091161af184858cbe94faea",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "p172/e/execution/identity-evidence.json",
+            "sha256": "a88060f10ef9231b6c1ff16506f26acd1372ead75b40fb51399ffa82c63b278b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "p172/e/execution/model-result.json",
+            "sha256": "7545d7336e2fe424b14f4667fa74be50bafe8501522ffd543c9742135da3f64c",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      }
+    }
+  ],
+  "cross_version": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "repetition_id": "r03",
+      "discovered": {
+        "status": "unavailable",
+        "v2_added_ids": null,
+        "v1_only_ids": null
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+          "ChIJDwZjvgNu5kcR92V2clFCGMk",
+          "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+          "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+          "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+          "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "ChIJn6TYegFy5kcRg_-xruXtHZY",
+          "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+          "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+          "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+          "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "ChIJufChV9Bv5kcRT02XBr8yAOs",
+          "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+          "ChIJyWdN5SNu5kcRsskNxWnDf58",
+          "ChIJz35dQONv5kcRtSVtSJLDOsA"
+        ],
+        "v1_only_ids": [
+          "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+          "ChIJ16iAVchv5kcR2iUDThaRlkE",
+          "ChIJ442GNENu5kcRGYUrvgqHw88",
+          "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+          "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+          "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+          "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+          "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+          "ChIJI7UujsRv5kcRATZ9iNLc85I",
+          "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+          "ChIJNUTIphpu5kcR4h07VuxFIHc",
+          "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+          "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+          "ChIJVUrgmz5u5kcRWPSN-T8a730",
+          "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+          "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+          "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+          "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+          "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "ChIJu_io1h1u5kcRV737GjvtdwE",
+          "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+          "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+          "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+          "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+          "ChIJzc_-btdx5kcRKmpibTCAzrk"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+          "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+          "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+          "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+          "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+          "ChIJW7ySGCdu5kcRldwk22iNR0o",
+          "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "ChIJXfonYfBu5kcRkTNLzc_By-U",
+          "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+          "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+          "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+          "ChIJm_jukgRv5kcRRIINaxFOqrw",
+          "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+          "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+          "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+          "ChIJvcVRUwBx5kcRod72V2bB-EI",
+          "ChIJyWdN5SNu5kcRsskNxWnDf58"
+        ],
+        "v1_only_ids": [
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJI7UujsRv5kcRATZ9iNLc85I",
+          "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+          "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+          "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+          "ChIJp5mKpxdu5kcRB2-y70IXpww",
+          "ChIJu_io1h1u5kcRV737GjvtdwE",
+          "ChIJzc_-btdx5kcRKmpibTCAzrk"
+        ]
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+          "ChIJR3122B9u5kcRajG2bEZLypA",
+          "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+          "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "ChIJvcVRUwBx5kcRod72V2bB-EI"
+        ],
+        "v1_only_ids": [
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+          "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+          "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "ChIJc8mX0udx5kcRWKcjTwDr5QA"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+        ],
+        "v1_only_ids": [
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "ChIJc8mX0udx5kcRWKcjTwDr5QA"
+        ]
+      }
+    }
+  ],
+  "source_digest": "400d8d5b222a090b2a726a102cb53ee3e9c2c6dfc2ddb4689211e506c6eefde3",
+  "semantic_sha256": "5930f4bb3994ceb7b2f3a49463d2753cad8f94b16651e9214f72a535e3ed8488"
+}

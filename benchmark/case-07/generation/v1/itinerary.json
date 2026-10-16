@@ -1,0 +1,608 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [
+    {
+      "from_activity_id": "day1-notre-dame",
+      "to_activity_id": "day1-saint-jacques-square",
+      "origin_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "destination_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T10:30:00+02:00",
+      "arrival_time": "2026-10-22T10:39:46+02:00",
+      "provider_duration_seconds": 586.0,
+      "distance_meters": 696,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day1-saint-jacques-square",
+      "to_activity_id": "day1-sainte-chapelle",
+      "origin_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "destination_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T12:30:00+02:00",
+      "arrival_time": "2026-10-22T12:38:59+02:00",
+      "provider_duration_seconds": 539.0,
+      "distance_meters": 648,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-eiffel-tower",
+      "to_activity_id": "day2-concorde",
+      "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T10:30:00+02:00",
+      "arrival_time": "2026-10-23T11:05:28+02:00",
+      "provider_duration_seconds": 2128.0,
+      "distance_meters": 2595,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-concorde",
+      "to_activity_id": "day2-arc-triomphe",
+      "origin_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T12:15:00+02:00",
+      "arrival_time": "2026-10-23T12:47:46+02:00",
+      "provider_duration_seconds": 1966.0,
+      "distance_meters": 2256,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day3-place-des-vosges",
+      "to_activity_id": "day3-pantheon",
+      "origin_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "destination_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T11:30:00+02:00",
+      "arrival_time": "2026-10-24T12:00:09+02:00",
+      "provider_duration_seconds": 1809.0,
+      "distance_meters": 2040,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-notre-dame",
+      "to_activity_id": "day1-saint-jacques-square",
+      "origin": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "destination": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "departure": "2026-10-22T10:30:00+02:00",
+      "next_start": "2026-10-22T11:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 586,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:16:39.222307+00:00",
+              "retrieved_at": "2026-10-16T02:16:40.920643+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+                "destination_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 586,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:16:39.222307Z",
+                "retrieved_at": "2026-10-16T02:16:40.920643Z",
+                "origin_index": 2,
+                "destination_index": 11,
+                "distance_meters": 696,
+                "duration_seconds": 586,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day1-saint-jacques-square",
+      "to_activity_id": "day1-sainte-chapelle",
+      "origin": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "destination": "ChIJR3122B9u5kcRaCck3PlB9DM",
+      "departure": "2026-10-22T12:30:00+02:00",
+      "next_start": "2026-10-22T13:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 539,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:16:42.551685+00:00",
+              "retrieved_at": "2026-10-16T02:16:43.294607+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+                "destination_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 539,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:16:42.551685Z",
+                "retrieved_at": "2026-10-16T02:16:43.294607Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 648,
+                "duration_seconds": 539,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-eiffel-tower",
+      "to_activity_id": "day2-concorde",
+      "origin": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "departure": "2026-10-23T10:30:00+02:00",
+      "next_start": "2026-10-23T11:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2128,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:16:39.222307+00:00",
+              "retrieved_at": "2026-10-16T02:16:40.920643+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+                "destination_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2128,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:16:39.222307Z",
+                "retrieved_at": "2026-10-16T02:16:40.920643Z",
+                "origin_index": 0,
+                "destination_index": 4,
+                "distance_meters": 2595,
+                "duration_seconds": 2128,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-concorde",
+      "to_activity_id": "day2-arc-triomphe",
+      "origin": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "destination": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "departure": "2026-10-23T12:15:00+02:00",
+      "next_start": "2026-10-23T13:15:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1966,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:16:39.222307+00:00",
+              "retrieved_at": "2026-10-16T02:16:40.920643+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+                "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1966,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:16:39.222307Z",
+                "retrieved_at": "2026-10-16T02:16:40.920643Z",
+                "origin_index": 4,
+                "destination_index": 3,
+                "distance_meters": 2256,
+                "duration_seconds": 1966,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-place-des-vosges",
+      "to_activity_id": "day3-pantheon",
+      "origin": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "destination": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "departure": "2026-10-24T11:30:00+02:00",
+      "next_start": "2026-10-24T12:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1809,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:16:40.956176+00:00",
+              "retrieved_at": "2026-10-16T02:16:42.426962+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+                "destination_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1809,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:16:40.956176Z",
+                "retrieved_at": "2026-10-16T02:16:42.426962Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 2040,
+                "duration_seconds": 1809,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "La Rosace",
+      "source_place_id": "ChIJVaUr0uNx5kcRjFcIsbm5wcA",
+      "reason": "Restaurant near Notre-Dame Cathedral of Paris (approximately 50 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "8 Rue du Cloitre Notre Dame, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-bb2db1a9-1b45-45a7-82ca-46e321a61e39:0"
+    },
+    {
+      "place_name": "Compose - Hôtel de Ville",
+      "source_place_id": "ChIJM-MmbR5u5kcRYfCWNoZ6YOc",
+      "reason": "Restaurant near Square of Saint-Jacques Tower (approximately 55 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "8 Rue Saint-Martin, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-b178a458-9c89-4719-a5fc-a2397f660963:1"
+    },
+    {
+      "place_name": "Boulevard du palais",
+      "source_place_id": "ChIJEQMRBwBx5kcRJgxauC38SZE",
+      "reason": "Cafe near Sainte-Chapelle (approximately 78 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "Cité - Palais de Justice, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-0cad983f-5a96-4b45-977b-2797683c0ef9:0"
+    }
+  ],
+  "destination": "Paris, France",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-notre-dame",
+          "title": "Notre-Dame Cathedral of Paris — exterior architecture viewing",
+          "place_name": "Notre-Dame Cathedral of Paris",
+          "source_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "location": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+          "start_time": "2026-10-22T09:30:00+02:00",
+          "end_time": "2026-10-22T10:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior-focused visit; no interior visit planned. Price and admission details were not supplied."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-saint-jacques-square",
+          "title": "Square of Saint-Jacques Tower",
+          "place_name": "Square of Saint-Jacques Tower",
+          "source_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "location": "39 Rue de Rivoli, 75004 Paris, France",
+          "start_time": "2026-10-22T11:00:00+02:00",
+          "end_time": "2026-10-22T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-sainte-chapelle",
+          "title": "Sainte-Chapelle — exterior architecture viewing",
+          "place_name": "Sainte-Chapelle",
+          "source_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "location": "10 Bd du Palais, 75001 Paris, France",
+          "start_time": "2026-10-22T13:00:00+02:00",
+          "end_time": "2026-10-22T13:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior-focused visit; no interior entry planned. Price and admission details were not supplied."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-eiffel-tower",
+          "title": "Eiffel Tower — exterior viewing",
+          "place_name": "Eiffel Tower",
+          "source_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "location": "Av. Gustave Eiffel, 75007 Paris, France",
+          "start_time": "2026-10-23T09:30:00+02:00",
+          "end_time": "2026-10-23T10:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior-focused visit; no tower entry or ascent planned. Price and admission details were not supplied."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-concorde",
+          "title": "Place de la Concorde",
+          "place_name": "Place de la Concorde",
+          "source_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "location": "75008 Paris, France",
+          "start_time": "2026-10-23T11:30:00+02:00",
+          "end_time": "2026-10-23T12:15:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-arc-triomphe",
+          "title": "Arc de Triomphe — exterior viewing",
+          "place_name": "Arc de Triomphe",
+          "source_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "location": "Pl. Charles de Gaulle, 75008 Paris, France",
+          "start_time": "2026-10-23T13:15:00+02:00",
+          "end_time": "2026-10-23T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior-focused visit; no monument entry planned. Price and admission details were not supplied."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-place-des-vosges",
+          "title": "Place des Vosges",
+          "place_name": "Place des Vosges",
+          "source_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "location": "Pl. des Vosges, 75004 Paris, France",
+          "start_time": "2026-10-24T09:30:00+02:00",
+          "end_time": "2026-10-24T11:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Date-specific opening hours are unknown; this daytime visit is planned without verified hours. Light drizzle is forecast."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-pantheon",
+          "title": "Panthéon — exterior architecture viewing",
+          "place_name": "Panthéon",
+          "source_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+          "location": "Pl. du Panthéon, 75005 Paris, France",
+          "start_time": "2026-10-24T12:30:00+02:00",
+          "end_time": "2026-10-24T13:15:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior-focused visit; no interior entry planned. Price and admission details were not supplied."
+        },
+        {
+          "activity_kind": "generic_activity",
+          "time_use": "scheduled",
+          "activity_id": "day3-neighborhood-stroll",
+          "title": "Unhurried neighborhood stroll and exterior architecture viewing",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T14:00:00+02:00",
+          "end_time": "2026-10-24T16:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Keep the route flexible for the forecast light drizzle."
+        }
+      ]
+    }
+  ]
+}

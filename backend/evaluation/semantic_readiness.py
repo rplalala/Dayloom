@@ -50,7 +50,9 @@ def review_readiness(intake, occupancy_reviews=None):
                         else "reviewed"
                     )
                 elif source["record_id"] in pending or (
-                    role == "transition" and classify(activity["original"], None)[0] == "unresolved"
+                    role == "transition"
+                    and classify(activity["original"], None, projection["wire_version"])[0]
+                    == "unresolved"
                 ):
                     occupancy_status = "missing"
                 else:

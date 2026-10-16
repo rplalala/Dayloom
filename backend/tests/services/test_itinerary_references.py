@@ -172,6 +172,35 @@ def test_required_reference_is_not_scheduled_and_outside_supply_is_separate():
     assert summary.unused_candidate_ids == ("unused",)
 
 
+@pytest.mark.parametrize(
+    ("kind", "time_use", "scheduled", "missing"),
+    [
+        ("generic_activity", "free_window", (), ("park",)),
+        ("generic_activity", "scheduled", ("park",), ("park",)),
+        ("main_poi", "scheduled", ("park",), ()),
+    ],
+)
+def test_declared_output_roles_distinguish_suggestions_and_required_visits(
+    kind, time_use, scheduled, missing
+):
+    data = itinerary().model_dump()
+    data["output_version"] = "itinerary_3"
+    activity = data["days"][0]["activities"][0]
+    activity.update(
+        activity_kind=kind, time_use=time_use, source_place_id="park", place_name="Park"
+    )
+    data["days"][0]["activities"] = [activity]
+    result = Itinerary.model_validate(data)
+
+    summary = output_role_summary(
+        result, SimpleNamespace(selected_place_ids=("park",), required_canonical_ids=("park",))
+    )
+
+    assert summary.scheduled_place_ids == scheduled
+    assert summary.unscheduled_required_ids == missing
+    assert summary.supply_not_scheduled_ids == (() if scheduled else ("park",))
+
+
 def test_new_wire_requires_fields_and_rejects_authoritative_source_ref():
     data = make_dto().model_dump()
     del data["reference_recommendations"]

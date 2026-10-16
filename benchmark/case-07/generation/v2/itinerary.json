@@ -1,0 +1,495 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [
+    {
+      "from_activity_id": "day1-jardin-anne-frank",
+      "to_activity_id": "day1-le-marais",
+      "origin_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+      "destination_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T11:00:00+02:00",
+      "arrival_time": "2026-10-22T11:07:18+02:00",
+      "provider_duration_seconds": 438.0,
+      "distance_meters": 533,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day1-le-marais",
+      "to_activity_id": "day1-notre-dame",
+      "origin_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "destination_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T13:30:00+02:00",
+      "arrival_time": "2026-10-22T13:48:18+02:00",
+      "provider_duration_seconds": 1098.0,
+      "distance_meters": 1299,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day2-eiffel-tower",
+      "to_activity_id": "day2-arc-de-triomphe",
+      "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T11:00:00+02:00",
+      "arrival_time": "2026-10-23T11:34:15+02:00",
+      "provider_duration_seconds": 2055.0,
+      "distance_meters": 2350,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day3-point-zero",
+      "to_activity_id": "day3-louvre-exterior",
+      "origin_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+      "destination_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T10:20:00+02:00",
+      "arrival_time": "2026-10-24T10:41:06+02:00",
+      "provider_duration_seconds": 1266.0,
+      "distance_meters": 1549,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "day1-jardin-anne-frank",
+      "to_activity_id": "day1-le-marais",
+      "origin": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+      "destination": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "departure": "2026-10-22T11:00:00+02:00",
+      "next_start": "2026-10-22T11:20:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 438,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:21:29.383252+00:00",
+              "retrieved_at": "2026-10-16T02:21:29.779625+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+                "destination_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 438,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:21:29.383252Z",
+                "retrieved_at": "2026-10-16T02:21:29.779625Z",
+                "origin_index": 1,
+                "destination_index": 1,
+                "distance_meters": 533,
+                "duration_seconds": 438,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day1-le-marais",
+      "to_activity_id": "day1-notre-dame",
+      "origin": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "destination": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "departure": "2026-10-22T13:30:00+02:00",
+      "next_start": "2026-10-22T14:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1098,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:21:27.230131+00:00",
+              "retrieved_at": "2026-10-16T02:21:28.703420+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+                "destination_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1098,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:21:27.230131Z",
+                "retrieved_at": "2026-10-16T02:21:28.703420Z",
+                "origin_index": 1,
+                "destination_index": 4,
+                "distance_meters": 1299,
+                "duration_seconds": 1098,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day2-eiffel-tower",
+      "to_activity_id": "day2-arc-de-triomphe",
+      "origin": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "destination": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "departure": "2026-10-23T11:00:00+02:00",
+      "next_start": "2026-10-23T12:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2055,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:21:27.230131+00:00",
+              "retrieved_at": "2026-10-16T02:21:28.703420+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+                "destination_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2055,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:21:27.230131Z",
+                "retrieved_at": "2026-10-16T02:21:28.703420Z",
+                "origin_index": 0,
+                "destination_index": 5,
+                "distance_meters": 2350,
+                "duration_seconds": 2055,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-point-zero",
+      "to_activity_id": "day3-louvre-exterior",
+      "origin": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+      "destination": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "departure": "2026-10-24T10:20:00+02:00",
+      "next_start": "2026-10-24T11:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1266,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T02:21:28.708039+00:00",
+              "retrieved_at": "2026-10-16T02:21:29.380733+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+                "destination_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1266,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T02:21:28.708039Z",
+                "retrieved_at": "2026-10-16T02:21:29.380733Z",
+                "origin_index": 3,
+                "destination_index": 3,
+                "distance_meters": 1549,
+                "duration_seconds": 1266,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Le Hangar",
+      "source_place_id": "ChIJayJFZBtu5kcRhpPQgYbF1SA",
+      "reason": "Restaurant near Jardin Anne Frank (approximately 52 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "12 Imp. Berthaud, 75003 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-60abcab6-5cb0-45d3-90d2-7ff8175af87a:1"
+    },
+    {
+      "place_name": "La Rosace",
+      "source_place_id": "ChIJVaUr0uNx5kcRjFcIsbm5wcA",
+      "reason": "Restaurant near Notre-Dame Cathedral of Paris (approximately 50 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "8 Rue du Cloitre Notre Dame, 75004 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-fb2dcd7a-c492-4855-92f0-efcadedf8635:0"
+    },
+    {
+      "place_name": "Jules Verne",
+      "source_place_id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+      "reason": "Restaurant near Eiffel Tower (approximately 0 m straight-line).",
+      "associated_day": "2026-10-23",
+      "area": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-3f566850-2cdc-454c-a742-528fd0d836ab:0"
+    }
+  ],
+  "destination": "Paris, France",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-jardin-anne-frank",
+          "title": "Visit Jardin Anne Frank",
+          "place_name": "Jardin Anne Frank",
+          "source_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+          "location": "14 Imp. Berthaud, 75003 Paris, France",
+          "start_time": "2026-10-22T10:00:00+02:00",
+          "end_time": "2026-10-22T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A green-space visit. The supplied weekly-hours baseline lists 10:00–19:00; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-le-marais",
+          "title": "Explore Le Marais",
+          "place_name": "Le Marais",
+          "source_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+          "location": "Le Marais, Paris, France",
+          "start_time": "2026-10-22T11:20:00+02:00",
+          "end_time": "2026-10-22T13:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Neighborhood exploration; current operational status and date-specific hours are unavailable in the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-notre-dame",
+          "title": "View Notre-Dame Cathedral from outside",
+          "place_name": "Notre-Dame Cathedral of Paris",
+          "source_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "location": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+          "start_time": "2026-10-22T14:00:00+02:00",
+          "end_time": "2026-10-22T15:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Planned as an exterior architecture visit, not an interior admission. Supplied hours are a general baseline; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-eiffel-tower",
+          "title": "View the Eiffel Tower from outside",
+          "place_name": "Eiffel Tower",
+          "source_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "location": "Av. Gustave Eiffel, 75007 Paris, France",
+          "start_time": "2026-10-23T10:00:00+02:00",
+          "end_time": "2026-10-23T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior viewing only; no paid entry is planned. The supplied opening-hours pattern is a general baseline, and date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-arc-de-triomphe",
+          "title": "View the Arc de Triomphe from outside",
+          "place_name": "Arc de Triomphe",
+          "source_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "location": "Pl. Charles de Gaulle, 75008 Paris, France",
+          "start_time": "2026-10-23T12:00:00+02:00",
+          "end_time": "2026-10-23T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture visit; no monument entry is planned. The supplied opening-hours pattern is a general baseline, and date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-point-zero",
+          "title": "See Point Zéro des Routes de France",
+          "place_name": "Point Zéro des Routes de France",
+          "source_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+          "location": "Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+          "start_time": "2026-10-24T10:00:00+02:00",
+          "end_time": "2026-10-24T10:20:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-louvre-exterior",
+          "title": "View the Louvre Museum from outside",
+          "place_name": "Louvre Museum",
+          "source_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+          "location": "75001 Paris, France",
+          "start_time": "2026-10-24T11:00:00+02:00",
+          "end_time": "2026-10-24T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Exterior architecture visit only; no museum admission is planned. Supplied hours are a general weekly baseline, with date-specific exceptions unknown."
+        }
+      ]
+    }
+  ]
+}

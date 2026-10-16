@@ -59,6 +59,8 @@ function ActivityCard({ activity }: { activity: Activity }) {
       </div>
       <div className="activity-content">
         <h4>{activity.title}</h4>
+        {activity.time_use === "free_window" && <p>Free window — optional suggestions</p>}
+        {activity.time_use === "scheduled" && <p>Planned activity</p>}
         {activity.place_name && <p className="activity-place">{activity.place_name}</p>}
         {activity.location && <p>{activity.location}</p>}
         {activity.introduction && <p>{activity.introduction}</p>}

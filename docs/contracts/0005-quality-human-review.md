@@ -40,7 +40,14 @@ optional trusted `expected_plan` and required offset-aware `generated_at`. It re
 immutable `QualityReportResult`; `to_dict()` exports `rtpeval_quality_report_2`.
 No provider client, planner graph or extra dependency is constructed.
 
-Source-bound `opening_judgment` selects `rtpeval_access_quality_4`: opening PASS
+The [declared-population contract](../0003-itinerary-transport.md#numerical-scoring-policy-and-limits)
+owns `rtpeval_declared_population_1`, selected automatically for new-wire batches or
+explicitly with `quality_profile`/`--quality-profile` for eligible legacy sources.
+It adds a frozen, source-linked inventory and preparation gate; its separately bound
+reports must not replace historical scores or inherit their receipts. Source-linked
+legacy-derived semantics remain distinguishable from actually emitted declarations.
+
+Under historical default profiles, source-bound `opening_judgment` selects `rtpeval_access_quality_4`: opening PASS
 can use API schedules or the [missing-hours access assessment](0004-opening-routes.md#missing-hours-access-judgment).
 Arithmetic, populations and denominators remain unchanged. Model-supported PASS is a
 policy judgment, not verified hours. Ordinary viewing at public landmarks may be inferred;

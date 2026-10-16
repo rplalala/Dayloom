@@ -78,7 +78,10 @@ def operation_scope(draft, report, *, mode=None, context=None, policy=None):
         selected = []
         if f.check == "overlap" and f.status == "CONFIRMED":
             for aid in f.activity_ids:
-                if activities[aid][1].activity_kind != "free_time":
+                if (
+                    activities[aid][1].activity_kind != "free_time"
+                    and activities[aid][1].time_use != "free_window"
+                ):
                     permissions[aid].add("retime")
                 dates.add(activities[aid][0])
         elif f.reason in {

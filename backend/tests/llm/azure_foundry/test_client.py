@@ -85,6 +85,7 @@ def make_activity(
 ) -> FoundryV0ActivityDTO:
     return FoundryV0ActivityDTO(
         activity_kind="main_poi",
+        time_use="scheduled",
         source_place_id=None,
         activity_id="activity-1",
         title="Visit Fushimi Inari Shrine",
@@ -148,8 +149,21 @@ def test_client_uses_itinerary_dto_and_returns_domain_model(
     raw = make_activity().model_dump()
     if declaration is not None:
         raw.update(activity_kind="transport", place_name=None, transport=declaration)
+    activities = [FoundryV0ActivityDTO.model_validate(raw)]
+    if declaration is not None:
+        for aid, start, end in (("a", "07:00:00", "08:00:00"), ("b", "12:00:00", "13:00:00")):
+            visit = make_activity()
+            activities.append(
+                visit.model_copy(
+                    update={
+                        "activity_id": aid,
+                        "start_time": visit.start_time.model_copy(update={"time": start}),
+                        "end_time": visit.end_time.model_copy(update={"time": end}),
+                    }
+                )
+            )
     FakeChatOpenAI.response = FoundryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         reference_recommendations=[],
         destination="Kyoto",
         start_date="2026-10-01",
@@ -157,7 +171,7 @@ def test_client_uses_itinerary_dto_and_returns_domain_model(
         days=[
             FoundryItineraryDayDTO(
                 date="2026-10-01",
-                activities=[FoundryV0ActivityDTO.model_validate(raw)],
+                activities=activities,
             )
         ],
     )
@@ -182,7 +196,7 @@ def test_client_v1_projects_range_cost_in_one_call_without_changing_v0_binding(
         update={"estimated_cost": FoundryMoneyDTO(amount="1.00-10.00", currency="SGD")}
     )
     FakeChatOpenAI.response = FoundryPrimaryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         destination="Kyoto",
         start_date="2026-10-01",
         end_date="2026-10-01",
@@ -257,7 +271,7 @@ def test_client_fails_without_retry_after_mapping_error(
         )
     )
     FakeChatOpenAI.response = FoundryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         reference_recommendations=[],
         destination="Kyoto",
         start_date="2026-10-01",

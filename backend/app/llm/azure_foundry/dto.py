@@ -297,7 +297,8 @@ class FoundryDateTimeDTO(FoundryTransportDTO):
 class FoundryActivityDTO(FoundryTransportDTO):
     """Transport representation of one itinerary activity."""
 
-    activity_kind: Literal["main_poi", "generic_activity", "transport", "free_time", "unknown"]
+    activity_kind: Literal["main_poi", "generic_activity", "transport", "free_time"]
+    time_use: Literal["scheduled", "free_window"]
     activity_id: str
     title: str
     source_place_id: str | None
@@ -344,7 +345,7 @@ class FoundryReferenceRecommendationDTO(FoundryTransportDTO):
 class FoundryPrimaryActivityDTO(FoundryActivityDTO):
     """Tool-backed generation leaves transport records to the application."""
 
-    activity_kind: Literal["main_poi", "generic_activity", "free_time", "unknown"]
+    activity_kind: Literal["main_poi", "generic_activity", "free_time"]
 
 
 class FoundryPrimaryItineraryDayDTO(FoundryTransportDTO):
@@ -355,7 +356,7 @@ class FoundryPrimaryItineraryDayDTO(FoundryTransportDTO):
 class FoundryPrimaryItineraryDTO(FoundryTransportDTO):
     """V1 model output contains only the primary itinerary."""
 
-    output_version: Literal["itinerary_2"]
+    output_version: Literal["itinerary_3"]
     destination: str
     start_date: str
     end_date: str

@@ -1,0 +1,658 @@
+[
+  {
+    "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Basilique du Sacré-Cœur de Montmartre"
+        },
+        "formattedAddress": "35 Rue du Chevalier de la Barre, 75018 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "7e5789e81a3fd310b6ef86e80dd1e87f4626dcd218acca37f1005c8b7878856a",
+        "raw_sha256": "4ad83779e6f875846f24029c1cecccab201f63bf834054316a9e3836c56cc24d",
+        "retrieved_at": "2026-10-16T02:31:21.971146+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Le Marais"
+        },
+        "formattedAddress": "Le Marais, Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "6fb4a28326a72ef3d669e95dc193bb1f9c6aacefe9a94f7383254dc1e4140139",
+        "raw_sha256": "f52be2f387d27bfb42ab1f2445145c6f4dbcf430c96d67f36ef0556774edebaf",
+        "retrieved_at": "2026-10-16T02:31:21.254234+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "b04718a1e683d3ce8eb878561310a81f05c737d172bfdf7099b710fce05bfcbe",
+        "raw_sha256": "a377d08fbc55125da460ae3aa852f244310e2b3fcf4fc563d244f6903a59c159",
+        "retrieved_at": "2026-10-16T02:31:24.138638+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+        "displayName": {
+          "languageCode": "fr",
+          "text": "Point Zéro des Routes de France"
+        },
+        "formattedAddress": "Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "09bfb6326402d34dc530dde320680baeec3259ef5466b4236980a0c05dbddcc4",
+        "raw_sha256": "3b4b6ec66217973d0f6e9bc696fa65fd5dbcce9642692b2d2b0eadcf8459b1d4",
+        "retrieved_at": "2026-10-16T02:31:17.235574+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "e30db091ad3e68b6b34ca5b1450c3cc285cc49f120da9bb290c9bd2511e1f4d3",
+        "raw_sha256": "970d0f50be76e4ac8f20b39c4a63fb35c7be95b4f09035f5310dad746c6e901e",
+        "retrieved_at": "2026-10-16T02:31:25.628351+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Tuileries Garden"
+        },
+        "formattedAddress": "75001 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "39f8eadcf633eb56c550c6123504acdf884749f481249793c75b8e92a69f1704",
+        "raw_sha256": "5cfe6539dc24ed61d0fd6efab20dc1642f2282bdcefbd9cfd6a6c8c21e405030",
+        "retrieved_at": "2026-10-16T02:31:19.400196+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "62ec4f4dc8db31b2afc2e8928647983575e6230e7e0b4db5b7424f1c69da8161",
+        "raw_sha256": "e4826021500e04787642e7f9d4da06be6ebe3b67a44592fba7d79df7b4e1c070",
+        "retrieved_at": "2026-10-16T02:31:20.718208+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Place de la Concorde"
+        },
+        "formattedAddress": "75008 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "3528037ab529bc1f01d9a3a5bee26d536afc655c4c0752648b21ead2822181e4",
+        "raw_sha256": "8367785b82b43a8371fbf107ef50558a249e316be4863a59885d7110cc02e856",
+        "retrieved_at": "2026-10-16T02:31:19.067176+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "a6cc639d01f21e3ac3d7f803be3212bc4ca0f011006f733604054e05ee0ef117",
+        "raw_sha256": "8fe6378099f33ee6236f4f58bc953d4edd7ef527fcb1066e4585dd0999c2eda0",
+        "retrieved_at": "2026-10-16T02:31:23.988041+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Notre-Dame Cathedral of Paris"
+        },
+        "formattedAddress": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "8dfc4092da650d9988db1e3194f44a9625f8f782872905527a51f5794ac32caa",
+        "raw_sha256": "7dedd60067d5a286ff9e9b7f914eb0a412d1b4f14b0c5043c8e8ac28893f7639",
+        "retrieved_at": "2026-10-16T02:31:22.881008+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "9b6a61b823cf01d28db6399bea980aa0eec2f6f2e78644977c3ef38866c891b7",
+        "raw_sha256": "8e6f91ef2fa3d7ce2449fbffb8d3a3a58c65275cb28e700c33cc983d318b7a1d",
+        "retrieved_at": "2026-10-16T02:31:23.427610+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Panthéon"
+        },
+        "formattedAddress": "Pl. du Panthéon, 75005 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "9ef04516faff358415bb6b4663acdba9a7be5436bf9f30996f0293c8b431a32c",
+        "raw_sha256": "2e561c30e484699aa2d1840fff5325ada9d9e781ec69a92af10343b23bbfe23d",
+        "retrieved_at": "2026-10-16T02:31:23.596860+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "ce9aee1cd52627d0492b15d55ddcdc7f9cd88e4ffa5dbc07a5ca5a84a715bbf2",
+        "raw_sha256": "603861ced6b4bc1f7ec678cf26498f06b40f5cfba998af9176dbb153dcd022ea",
+        "retrieved_at": "2026-10-16T02:31:25.146323+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Louvre Museum"
+        },
+        "formattedAddress": "75001 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "04f1b1775a6bcf9a6d226999fa6b1d394a71821f7f4aa1a117035aae6a2066fc",
+        "raw_sha256": "f5c185fa3d7c2520dc24febd8d5b6cbbe150ff29cf6c6fd4fd85457d974b441c",
+        "retrieved_at": "2026-10-16T02:31:16.844958+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "62ec4f4dc8db31b2afc2e8928647983575e6230e7e0b4db5b7424f1c69da8161",
+        "raw_sha256": "e4826021500e04787642e7f9d4da06be6ebe3b67a44592fba7d79df7b4e1c070",
+        "retrieved_at": "2026-10-16T02:31:20.718208+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "6c85653141e1a1c02350906b5bf69b91d955086a86353c1e6766722652abaefc",
+        "raw_sha256": "c368d32877e3e7bfb519c2613877b99b2993eec594e33f372a4f7caa7cc1f962",
+        "retrieved_at": "2026-10-16T02:31:20.896648+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Jardin du Luxembourg"
+        },
+        "formattedAddress": "75006 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "47fb2b7822b08bd898350a42ae157296040023a21f0c4648d2ea9866684436b6",
+        "raw_sha256": "306f8f55e5784c39885d1014daa2cb4bbde048d41adf0b097f9ac37428b0436c",
+        "retrieved_at": "2026-10-16T02:31:19.733413+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Arc de Triomphe"
+        },
+        "formattedAddress": "Pl. Charles de Gaulle, 75008 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "285760037f21000a7d261f205091f91062a9deb83d6e844768ea6b7d282a9030",
+        "raw_sha256": "c808d349ab7d5cb0427e521caa085b1c6d338514c6b1aba41e8fbb455dd9e290",
+        "retrieved_at": "2026-10-16T02:31:18.000624+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "b380ca3411a3a10ffa109c40d66dbf524394777042e55eab87040fee9da137cc",
+        "raw_sha256": "cdf3daac310f067cec2a5c55064998a896f02b0f8749275b952fee39368a35cd",
+        "retrieved_at": "2026-10-16T02:31:24.314887+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Eiffel Tower"
+        },
+        "formattedAddress": "Av. Gustave Eiffel, 75007 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "2c5aa6432afdda1dfca09f3c3edf4388158ba1787a8de35fb17c38c8ffbce404",
+        "raw_sha256": "74dc9e5ec8eec509b0dd5235e04962d667d45df15d204693f474f71a86065434",
+        "retrieved_at": "2026-10-16T02:31:18.184339+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "98814a414580796900294d717d3e5647cd0cb8d237a8e92368fb5438046a1a15",
+        "raw_sha256": "44bd605ca390e5556a225c24160974073779da7d8ec1f22478479528ea715f58",
+        "retrieved_at": "2026-10-16T02:31:23.272148+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Louvre Pyramid"
+        },
+        "formattedAddress": "75001 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "62ec4f4dc8db31b2afc2e8928647983575e6230e7e0b4db5b7424f1c69da8161",
+        "raw_sha256": "e4826021500e04787642e7f9d4da06be6ebe3b67a44592fba7d79df7b4e1c070",
+        "retrieved_at": "2026-10-16T02:31:20.718208+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Square of Saint-Jacques Tower"
+        },
+        "formattedAddress": "39 Rue de Rivoli, 75004 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "02318ff4c18e20cb0f01ac4084e2d3aecc4fcf647e0cc8823b89f2cb62a55ec8",
+        "raw_sha256": "6422a5a54fa71bdb9308e3964657a33dd97a159f0840ce7f46b581fb5640f0c7",
+        "retrieved_at": "2026-10-16T02:31:16.453186+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "c57e629532ede624436b158193e7d40fcff8f2711ca4f0d95e2575946eb4c5e2",
+        "raw_sha256": "d76a982a1dbfc889154ef391e4c892bea872cf148d85ab3c2fc26ffeb0d45de5",
+        "retrieved_at": "2026-10-16T02:31:24.780824+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Sainte-Chapelle"
+        },
+        "formattedAddress": "10 Bd du Palais, 75001 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "1bddc4e193d09872e55ccddf9ca218b06d9e71d68986172180d3d0bc7584a4af",
+        "raw_sha256": "f624afe9529d2dad69c4044173a1f90be3286bbb952326bbce641c3149e374dd",
+        "retrieved_at": "2026-10-16T02:31:17.629479+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "48887e95af2c18b24888ab6ad451c617965b382c863fd702d9d8461188d04cd3",
+        "raw_sha256": "ae7916adc8c212e6d51b8bab50bb014efbbc24c5de2da6c8a80fb25cd4fa9ded",
+        "retrieved_at": "2026-10-16T02:31:19.910551+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "8835211cebe22360b09986e589e8153b249772b3b30a161042f3ce0444899501",
+        "raw_sha256": "f624afe9529d2dad69c4044173a1f90be3286bbb952326bbce641c3149e374dd",
+        "retrieved_at": "2026-10-16T02:31:22.463784+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Place des Vosges"
+        },
+        "formattedAddress": "Pl. des Vosges, 75004 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "2da9c78b3074ba53ddf295ffbe1a0e7864b6cecf5876e3d32839a7f11538863e",
+        "raw_sha256": "cce36568908dfadcaa9855d228eee0104282057c12cec83f1719f669369ce58d",
+        "retrieved_at": "2026-10-16T02:31:18.581906+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "e7fbac502582b1389fc8fd78806662a9f87b86c471c5d1b3eb959481b93c1d0f",
+        "raw_sha256": "39c8bf00945a172020f454879560253370495d8992e2d67faef9860469111adf",
+        "retrieved_at": "2026-10-16T02:31:25.802326+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Jardin Anne Frank"
+        },
+        "formattedAddress": "14 Imp. Berthaud, 75003 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "55b1905a4d2eba9b4055c065a1ea40d62de041d3dc92bc568c55fef1207c1ed8",
+        "raw_sha256": "f5ebee024ddc7cd8afb462c9be1bdfccffed057a63260e17f8dd2ced5e6e45b4",
+        "retrieved_at": "2026-10-16T02:31:20.294713+00:00"
+      },
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "80a55a5accec9823454725984d6a11262c506cab4b9ce77ed6bb1b8c6eacbaa3",
+        "raw_sha256": "eff042df0166b025e91201c89b0321bc142851b50783ec69593338e2624fdb14",
+        "retrieved_at": "2026-10-16T02:31:22.123131+00:00"
+      }
+    ]
+  },
+  {
+    "canonical_place_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+    "source_kind": "independent_google_places",
+    "facts": [
+      {
+        "id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+        "displayName": {
+          "languageCode": "en",
+          "text": "Parc Monceau"
+        },
+        "formattedAddress": "75008 Paris, France"
+      }
+    ],
+    "provenance": [
+      {
+        "snapshot_ref": {
+          "path": "p172/e/execution/identity-snapshot/manifest.json",
+          "sha256": "48cb6147f1a279f8336bcaddba92ce2fbc2aef592e643b7834abfa567aaa8299",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_snapshot_1"
+        },
+        "request_key": "3394b4d628a1f982a80241d96c77b8f70334efb726c4a9b77d66726539bea143",
+        "raw_sha256": "0f1a9f09290517d1f6fc84c7d34a214b7cf45760d81ede7eb3c017201f8be059",
+        "retrieved_at": "2026-10-16T02:31:18.900504+00:00"
+      }
+    ]
+  }
+]

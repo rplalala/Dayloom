@@ -16,6 +16,13 @@ const suggestion: ReferenceRecommendation = {
   reason: "An extra place to consider", associated_day: null, area: null, uncertainty: null,
 };
 
+it("distinguishes discretionary availability from an occupied movable activity", () => {
+  const plan = structuredClone(base);
+  plan.days[0].activities[0].time_use = "free_window";
+  render(<ItineraryView itinerary={plan} />);
+  expect(screen.getByText("Free window — optional suggestions")).toBeInTheDocument();
+});
+
 it("shows soft preference gaps without labeling the itinerary incomplete", () => {
   render(<ItineraryView itinerary={base} policyCompletion="complete" preferenceCoverage={[{
     preference: "Museums", target: 2, scheduled: 1, remaining: 1, status: "gap",

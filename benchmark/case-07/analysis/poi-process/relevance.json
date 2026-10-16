@@ -1,0 +1,3335 @@
+{
+  "schema_version": "rtpeval_research_relevance_report_1",
+  "processing_status": "completed",
+  "track": "relevance",
+  "applicability": "applicable",
+  "identity_unit": "canonical_place_id",
+  "corpus_study_selected": false,
+  "population_id": "case07-selected-r03",
+  "population_revision": "3",
+  "profile_id": "case07-retained-first-dispatch-r03",
+  "profile_revision": "3",
+  "population_digest": "b3633f27cda4e00e8cc20a14301e07293ef3e73ec18de9506182efd790b66c5d",
+  "measurement_coverage": {
+    "opportunities": {
+      "unit": "planned_v1_v2_slots",
+      "planned_slots": 2,
+      "captured_slots": 2,
+      "stages": {
+        "discovered": {
+          "complete": 1,
+          "partial": 1,
+          "unavailable": 0
+        },
+        "admitted": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "enriched": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "supplied": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "scheduled": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        }
+      }
+    },
+    "corpus": {
+      "unit": "original_requests",
+      "planned_cases": 1,
+      "complete": 0,
+      "partial": 0,
+      "unavailable": 1
+    }
+  },
+  "review_coverage": {
+    "unit": "original_requests",
+    "planned_cases": 1,
+    "interest_inventory_cases": 1,
+    "relevance_review_cases": 1,
+    "relevance_review_records": 121
+  },
+  "diagnostics": [],
+  "runs": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "version": "v1",
+      "repetition_id": "r03",
+      "attempt_id": "case-07-r03-v1-01",
+      "completion_status": "completed",
+      "relevance_status": "applicable",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 11,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ442GNENu5kcRGYUrvgqHw88",
+              "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 63,
+            "inventoried_subjects": 63,
+            "fraction": 1.0,
+            "relevant_subjects": 11,
+            "negative_subjects": 0,
+            "unknown_subjects": 52,
+            "absent_review_subjects": 0,
+            "expected_judgments": 63,
+            "supplied_judgments": 63,
+            "unknown_judgments": 52,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "admitted": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 11,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ442GNENu5kcRGYUrvgqHw88",
+              "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 48,
+            "inventoried_subjects": 48,
+            "fraction": 1.0,
+            "relevant_subjects": 11,
+            "negative_subjects": 0,
+            "unknown_subjects": 37,
+            "absent_review_subjects": 0,
+            "expected_judgments": 48,
+            "supplied_judgments": 48,
+            "unknown_judgments": 37,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "enriched": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 8,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 24,
+            "inventoried_subjects": 24,
+            "fraction": 1.0,
+            "relevant_subjects": 8,
+            "negative_subjects": 0,
+            "unknown_subjects": 16,
+            "absent_review_subjects": 0,
+            "expected_judgments": 24,
+            "supplied_judgments": 24,
+            "unknown_judgments": 16,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "supplied": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+          ],
+          "observed_count": 7,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 12,
+            "inventoried_subjects": 12,
+            "fraction": 1.0,
+            "relevant_subjects": 7,
+            "negative_subjects": 0,
+            "unknown_subjects": 5,
+            "absent_review_subjects": 0,
+            "expected_judgments": 12,
+            "supplied_judgments": 12,
+            "unknown_judgments": 5,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "scheduled": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJAQquYc1v5kcRLKslDuENAxg",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+          ],
+          "observed_count": 7,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ],
+            "rag_only": [],
+            "mixed": []
+          },
+          "review_coverage": {
+            "judged_subjects": 8,
+            "inventoried_subjects": 8,
+            "fraction": 1.0,
+            "relevant_subjects": 7,
+            "negative_subjects": 0,
+            "unknown_subjects": 1,
+            "absent_review_subjects": 0,
+            "expected_judgments": 8,
+            "supplied_judgments": 8,
+            "unknown_judgments": 1,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        }
+      },
+      "end_to_end": {
+        "status": "partial",
+        "canonical_ids": [
+          "ChIJAQquYc1v5kcRLKslDuENAxg",
+          "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "ChIJR1buQh5u5kcROogxFI7WlfM",
+          "ChIJR3122B9u5kcRaCck3PlB9DM",
+          "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+          "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+        ],
+        "observed_count": 7,
+        "complete_count": null,
+        "reasons": [
+          "incomplete_relevance_or_chain"
+        ]
+      },
+      "interest_inventory": {
+        "$case_material_ref": {
+          "path": "interests/inventory.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "0a09090bc26624a32b5fce29a456152a78322b1da70f9cb131a18cb012b2c116"
+        }
+      },
+      "per_interest": [
+        {
+          "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "$case_material_ref": {
+              "path": "analysis/poi-process/relevance.json",
+              "pointer": "/runs/0/stages",
+              "expanded_semantic_sha256": "171c3c25a89c9051422d99d31d2a680f7bddd7b7e6fabc06dc066072ddbe2931"
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [
+              "ChIJAQquYc1v5kcRLKslDuENAxg",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ],
+            "observed_count": 7,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        }
+      ],
+      "conversions": {
+        "discovered_to_admitted": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_enriched": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "enriched_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "supplied_to_scheduled": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "version": "v2",
+      "repetition_id": "r03",
+      "attempt_id": "case-07-r03-v2-01",
+      "completion_status": "completed",
+      "relevance_status": "applicable",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "stage_status": "partial",
+          "canonical_ids": [
+            "ChIJ442GNENu5kcRGYUrvgqHw88",
+            "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+            "ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+          ],
+          "observed_count": 12,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJ442GNENu5kcRGYUrvgqHw88",
+              "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJwxT3mL5v5kcRAsTd3v0lJOY"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 83,
+            "inventoried_subjects": 83,
+            "fraction": 1.0,
+            "relevant_subjects": 12,
+            "negative_subjects": 0,
+            "unknown_subjects": 71,
+            "absent_review_subjects": 0,
+            "expected_judgments": 83,
+            "supplied_judgments": 83,
+            "unknown_judgments": 71,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "saved_rag_discovery_partial",
+            "unknown_relevance_judgments"
+          ]
+        },
+        "admitted": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 8,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 48,
+            "inventoried_subjects": 48,
+            "fraction": 1.0,
+            "relevant_subjects": 8,
+            "negative_subjects": 0,
+            "unknown_subjects": 40,
+            "absent_review_subjects": 0,
+            "expected_judgments": 48,
+            "supplied_judgments": 48,
+            "unknown_judgments": 40,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "enriched": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJR1buQh5u5kcROogxFI7WlfM",
+            "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 6,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJR1buQh5u5kcROogxFI7WlfM",
+              "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 35,
+            "inventoried_subjects": 35,
+            "fraction": 1.0,
+            "relevant_subjects": 6,
+            "negative_subjects": 0,
+            "unknown_subjects": 29,
+            "absent_review_subjects": 0,
+            "expected_judgments": 35,
+            "supplied_judgments": 35,
+            "unknown_judgments": 29,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "supplied": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 4,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 12,
+            "inventoried_subjects": 12,
+            "fraction": 1.0,
+            "relevant_subjects": 4,
+            "negative_subjects": 0,
+            "unknown_subjects": 8,
+            "absent_review_subjects": 0,
+            "expected_judgments": 12,
+            "supplied_judgments": 12,
+            "unknown_judgments": 8,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        },
+        "scheduled": {
+          "status": "partial",
+          "stage_status": "complete",
+          "canonical_ids": [
+            "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+            "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+          ],
+          "observed_count": 4,
+          "complete_count": null,
+          "origin_partitions": {
+            "google_only": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "rag_only": [],
+            "mixed": [
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk"
+            ]
+          },
+          "review_coverage": {
+            "judged_subjects": 7,
+            "inventoried_subjects": 7,
+            "fraction": 1.0,
+            "relevant_subjects": 4,
+            "negative_subjects": 0,
+            "unknown_subjects": 3,
+            "absent_review_subjects": 0,
+            "expected_judgments": 7,
+            "supplied_judgments": 7,
+            "unknown_judgments": 3,
+            "missing_judgments": 0
+          },
+          "reasons": [
+            "unknown_relevance_judgments"
+          ]
+        }
+      },
+      "end_to_end": {
+        "status": "partial",
+        "canonical_ids": [
+          "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+          "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+          "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+          "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+        ],
+        "observed_count": 4,
+        "complete_count": null,
+        "reasons": [
+          "incomplete_relevance_or_chain"
+        ]
+      },
+      "interest_inventory": {
+        "$case_material_ref": {
+          "path": "interests/inventory.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "0a09090bc26624a32b5fce29a456152a78322b1da70f9cb131a18cb012b2c116"
+        }
+      },
+      "per_interest": [
+        {
+          "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+          "source_pointer": "/additional_preferences",
+          "stages": {
+            "$case_material_ref": {
+              "path": "analysis/poi-process/relevance.json",
+              "pointer": "/runs/1/stages",
+              "expanded_semantic_sha256": "a135bf5a65937be349451720ed8102e1c93c92ce252b13b5afd177eb803cb889"
+            }
+          },
+          "end_to_end": {
+            "status": "partial",
+            "canonical_ids": [
+              "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+              "ChIJv6ffXBtu5kcRvkMvpw_2wbU"
+            ],
+            "observed_count": 4,
+            "complete_count": null,
+            "reasons": [
+              "incomplete_relevance_or_chain"
+            ]
+          },
+          "conversions": {
+            "discovered_to_admitted": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_enriched": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "enriched_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "supplied_to_scheduled": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            },
+            "admitted_to_supplied": {
+              "status": "unavailable",
+              "numerator": null,
+              "denominator": null,
+              "fraction": null,
+              "reasons": [
+                "incomplete_chain"
+              ]
+            }
+          }
+        }
+      ],
+      "conversions": {
+        "discovered_to_admitted": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_enriched": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "enriched_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "supplied_to_scheduled": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        },
+        "admitted_to_supplied": {
+          "status": "unavailable",
+          "numerator": null,
+          "denominator": null,
+          "fraction": null,
+          "reasons": [
+            "incomplete_chain"
+          ]
+        }
+      }
+    }
+  ],
+  "opportunity_semantic_sha256": "ec830683f8a95295df705af22836e3a1978db93e49befea08743f2539c2ce506",
+  "interest_inventory_bindings": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "value": {
+        "$case_material_ref": {
+          "path": "interests/inventory.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "0a09090bc26624a32b5fce29a456152a78322b1da70f9cb131a18cb012b2c116"
+        }
+      }
+    }
+  ],
+  "independent_reviews": [
+    {
+      "review_id": "case-07-r03-relevance-ChIJ04VKlPVu5kcRJJV7esEZzgM",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ04VKlPVu5kcRJJV7esEZzgM",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ05AX-wJu5kcR-2CTIOumOiw",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ16iAVchv5kcR2iUDThaRlkE",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ16iAVchv5kcR2iUDThaRlkE",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ28laW9p65kcRLkyGSRGcV04",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ28laW9p65kcRLkyGSRGcV04",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ442GNENu5kcRGYUrvgqHw88",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJ442GNENu5kcRGYUrvgqHw88.json",
+          "sha256": "115570a49da3c16db101881fe53817ca0bae14efd92611ec0e9b7575780a0157",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied Google display name identifies a basilica, Basilique du Sacré-Cœur de Montmartre, at a Paris street address. The explicit basilica identity supports association with viewing architecture from outside; no style, visibility or access detail is asserted."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ5Tq8mTpv5kcRkIsPjyVYFRY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ5bx0qiVu5kcRs_dMpI5ttiY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ6UrOzQNu5kcRRp5vRIClzzg",
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJ6UrOzQNu5kcRRp5vRIClzzg.json",
+          "sha256": "4bf5d3962e47d9a7cfbf6b387b058504e430319052a86e0dc07132a87eb9a1ce",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name is Le Marais and the address is Le Marais, Paris, France. These identify a locality-like name but contain no explicit neighbourhood category or description of the place. I retain uncertainty about its thematic association rather than supply a remembered neighbourhood description."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ6XHvERZy5kcRcARsBv9AehU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ6XHvERZy5kcRcARsBv9AehU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ914FVoZx5kcRhsGw3XGXUxc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ914FVoZx5kcRhsGw3XGXUxc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ97YVkixv5kcR8UNDwqtkGlw",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ9UoWtyZu5kcRWuoIyUV70T8",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJAQAAMCxu5kcRx--_4QnbGcI",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJAQAAMCxu5kcRx--_4QnbGcI.json",
+          "sha256": "082cdcbec5d152dce4d93e2fe2378c37439bd42be3f0315b8e885c6b173d36a4",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied Google display name Tuileries Garden explicitly identifies a garden in Paris. This supports the park/garden component of the collective interest without asserting any particular facilities or access conditions."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJAQquYc1v5kcRLKslDuENAxg",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJAQquYc1v5kcRLKslDuENAxg.json",
+          "sha256": "7ade39cb2cb1e230818a0cf1bb64c5b9a67e026061a7363a50de2af982be7bbf",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Place de la Concorde identifies a named square in Paris through the ordinary French category word Place. A named urban square is thematically associated with neighbourhood exploration. No surrounding monument or landscape facts are assumed."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJATr1n-Fx5kcRjQb6q6cdQDY.json",
+          "sha256": "6c61248af187627b4ba6c02eba1db41ea6c44cce3f093f9c62ea97e0f9b4a3c5",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Notre-Dame Cathedral of Paris explicitly identifies a cathedral, and the address places it on Parvis Notre-Dame. The cathedral identity supports architecture as an exterior sightseeing subject, without asserting current access or viewing conditions."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJAZwm1jZu5kcRjoWAeauOELU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJB0gcnCBw5kcRHoIAPcTEApc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJB0gcnCBw5kcRHoIAPcTEApc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJCQ3V1j1u5kcR486q7s3KIH4",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJCQ3V1j1u5kcR486q7s3KIH4",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJCaWkW_tv5kcR6VmJ4cSbVdE",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJD3uTd9hx5kcR1IQvGfr8dbk.json",
+          "sha256": "178496f26884ae1ef49d0c0fe9873992d87b65352c43e848d2349dc6409d0c71",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Louvre Museum identifies a museum and gives a Paris postal address. It supplies no exterior architectural or grounds description. A museum institution name alone does not establish the requested outdoor/exterior thematic relationship sufficiently; no remembered building facts are added."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJDc7AIRxy5kcRfYYaDb3GSLc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJDwZjvgNu5kcR92V2clFCGMk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJDxKAR-pv5kcRJznFaRy78QQ",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJDxKAR-pv5kcRJznFaRy78QQ",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJDyx4bNhu5kcRqJ3RkAPGMEk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJEU7r8_lx5kcRgylm7D8Avm4",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJEU7r8_lx5kcRgylm7D8Avm4",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJFZAIBJVx5kcRVzImVeaKQQU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJGxZyXh5u5kcRLmPA07LoheA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJH66KEgJl5kcRfFN_gYbOnQA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJH66KEgJl5kcRfFN_gYbOnQA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJH7Gfw-Nx5kcRoV_z8n0b7_w",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJHbrByclt5kcRn-ZGU8KjU_g",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJHbrByclt5kcRn-ZGU8KjU_g",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJI7UujsRv5kcRATZ9iNLc85I",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJI7UujsRv5kcRATZ9iNLc85I",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJI7jEef5x5kcRkWRFsJD96So",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJI7jEef5x5kcRkWRFsJD96So",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJKZKprAFy5kcREOvlZ8mwHiM",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJKZKprAFy5kcREOvlZ8mwHiM",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJLU7jZClu5kcR4PcOOO6p3I0.json",
+          "sha256": "bf58a3f77ee276598f0bb355af8d248f501a77b3c743a4be4ad07d1252bcb285",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Eiffel Tower explicitly identifies a tower at Av. Gustave Eiffel in Paris. This structural identity supports the architecture component as an exterior subject; construction details and current exterior visibility are not inferred."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJN4tOxqNx5kcRsa159MJv2Q0",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJN4tOxqNx5kcRsa159MJv2Q0",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJNUTIphpu5kcR4h07VuxFIHc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJNUTIphpu5kcR4h07VuxFIHc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJPWSND8Vv5kcRw77bqL6uyOk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJPWSND8Vv5kcRw77bqL6uyOk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQ48wCRRu5kcRv6UbLjz_4xo",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJQQtKZyJu5kcRhXhHvOUt3To",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJQdQyeiZu5kcRUfQHfB-OCLA.json",
+          "sha256": "b9a34d92f8ca44c029ea2dfeebdeba16ef08f67840158de5d840e774ba78c128",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Louvre Pyramid identifies a pyramid structure in Paris. That explicit structural identity supports viewing architecture from outside, without assuming material, dimensions, access or any museum visit."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJR1buQh5u5kcROogxFI7WlfM",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJR1buQh5u5kcROogxFI7WlfM.json",
+          "sha256": "63f9ed9b29c3820b5c2fe338d4b5f2a3d9ac76db69cd7e821512665e61a692aa",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Square of Saint-Jacques Tower explicitly identifies a square associated with a tower at 39 Rue de Rivoli, Paris. The named square supports neighbourhood exploration and the tower identity supports an architectural association; no garden or public-access facts are invented."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJR3122B9u5kcRaCck3PlB9DM",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJR3122B9u5kcRaCck3PlB9DM.json",
+          "sha256": "bf4809bb21798079ec310fa8ffc9eb057ea330df5596a70f184a02f7c2971219",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Sainte-Chapelle identifies a chapel through the French word Chapelle and gives a Paris street address. This architectural type supports association with exterior architectural sightseeing. No interior features, ticketing or exterior sightline is asserted."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJR3122B9u5kcRajG2bEZLypA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJSUOPztFv5kcRnEbSPYG-9fM",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJS_QOawJu5kcRL-iAHfi0WtY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJS_QOawJu5kcRL-iAHfi0WtY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJU8BNx-5x5kcRNSC_roNvBRs",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJUeiI4P9x5kcRqEwHl6V32GQ.json",
+          "sha256": "1ced553ca71a07ebe7b7d90731352d7ac8f9595a481ca7e0e78942af0313a27f",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Place des Vosges and matching Pl. des Vosges address identify a named urban square in Paris. The ordinary meaning of Place supports neighbourhood exploration. No remembered arcades, gardens or other surrounding features are used."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJV-oEDbZv5kcRciSi_eVZIgE",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJVUrgmz5u5kcRWPSN-T8a730",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJVUrgmz5u5kcRWPSN-T8a730",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJX26tvBJy5kcRawOftfeom5k",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJX26tvBJy5kcRawOftfeom5k",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJX6sTTtZn1o4RL3zF2XdEgh8",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJXfonYfBu5kcRkTNLzc_By-U",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJXfonYfBu5kcRkTNLzc_By-U",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJY8922uBv5kcRJESw9l2dlLc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJY8922uBv5kcRJESw9l2dlLc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJ_QwlZC9u5kcRi6OALXVubvc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ_QwlZC9u5kcRi6OALXVubvc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJa-wm0fBx5kcRTj1XkfsieqY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJa-wm0fBx5kcRTj1XkfsieqY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJa6TNcOFx5kcRDd2mI71KoRY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJa6TNcOFx5kcRDd2mI71KoRY.json",
+          "sha256": "525a5f7616df56ac505de5213b41acc2d2334cb324486b3fcd264c6727c8360e",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Point Zéro des Routes de France and Parvis Notre-Dame address locate a road-reference point on a forecourt. They do not describe a park, neighbourhood experience or architectural structure sufficiently to establish its thematic relevance. Its location alone is not a known positive or negative."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJbe5YOk9u5kcR7nIUjn_yLM4",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJc8mX0udx5kcRWKcjTwDr5QA.json",
+          "sha256": "d4a36c4434baf1b4361724754691096f14ed9a479c5ab72197d17e81374eb053",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied name Panthéon and Pl. du Panthéon address identify the venue, but provide no explicit physical description of this named subject or its exterior. I do not substitute remembered monument facts for supplied evidence, so the thematic relationship remains unknown."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJcVyG4w1u5kcR-2YrTtl8cww",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJe2jeNttx5kcRi_mJsGHdkQc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJe2jeNttx5kcRi_mJsGHdkQc.json",
+          "sha256": "cee9c89fcc46b25ccbe60bd55db1bb50eec2db443f889ee8f8b1d758698cfeab",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Jardin du Luxembourg explicitly denotes a garden through the ordinary French word Jardin and locates it in Paris. This supports the park/garden component without asserting its size, facilities or access conditions."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJez2ACVtv5kcR2cbi5PU5mzs",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJez2ACVtv5kcR2cbi5PU5mzs",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJh9M-FMZt5kcRkZSVdmDta_I",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJh9M-FMZt5kcRkZSVdmDta_I",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJheWXPrxy5kcRtbzSi_O_dCk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJheWXPrxy5kcRtbzSi_O_dCk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJjx37cOxv5kcRPWQuEW5ntdk.json",
+          "sha256": "ae2c141a1766e8cdae9cdb1e777086e11d329d094849498ddedd8caff9346155",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Arc de Triomphe explicitly denotes an arch and the address locates it at Pl. Charles de Gaulle in Paris. The architectural structure identity supports exterior architecture as a theme; no current viewing or admission conditions are asserted."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJlX4qu0Ru5kcRBhpAY0NEloo",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJm9JEK-dv5kcRRAj5aYQEao0",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJm9JEK-dv5kcRRAj5aYQEao0",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJm_jukgRv5kcRRIINaxFOqrw",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJmw6mpBhu5kcRzLhZUymiyhY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJmw6mpBhu5kcRzLhZUymiyhY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJn6TYegFy5kcRg_-xruXtHZY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJn6TYegFy5kcRg_-xruXtHZY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJnayProZt5kcRFAPzPZHgRG4",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJnayProZt5kcRFAPzPZHgRG4",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJnb13j6B65kcRSxozoc04yHc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJnb13j6B65kcRSxozoc04yHc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJneWSEjNw5kcRrpbgsvMnPIs",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJo6zwhgRu5kcRVrG7m4gi1oA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJoxY3R-Nv5kcRWsRDGBoNIOk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJp5mKpxdu5kcRB2-y70IXpww",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJrSTZSgBv5kcRXuTtWnlhL-c",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJrZP7V9hx5kcRQlLc0kYQo44",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJrZP7V9hx5kcRQlLc0kYQo44",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJsZKjKA1u5kcRCmybBWIUz2w",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJsZKjKA1u5kcRCmybBWIUz2w",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJsZKjKA1u5kcRaVDKu3gWoMI",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJsZrZbCJu5kcRyTMjLMJ1sCk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJszgj1CRu5kcR4ppUJCp67M8",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJszgj1CRu5kcR4ppUJCp67M8",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJtSsE0xxu5kcR5cukgQHu7oQ",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJtw1d4ett5kcRj07k-_vrf9s",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJtw1d4ett5kcRj07k-_vrf9s",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJu_io1h1u5kcRV737GjvtdwE",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJu_io1h1u5kcRV737GjvtdwE",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJufChV9Bv5kcRT02XBr8yAOs",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJufChV9Bv5kcRT02XBr8yAOs",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJv-rX7Ndv5kcR8HH74UZfYtQ",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJv6ffXBtu5kcRvkMvpw_2wbU.json",
+          "sha256": "16549d3ae848073e615871200156ca327f784a44dac8c6374e0e13b310959882",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Jardin Anne Frank explicitly identifies a garden through the ordinary French word Jardin, with a Paris street address. This supports the park/garden part of the collective interest, without assuming opening, admission or garden features."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJwxEz76Nt5kcRIl3qWIRI-Bc",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJwxT3mL5v5kcRAsTd3v0lJOY",
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "c03/review/evidence/ChIJwxT3mL5v5kcRAsTd3v0lJOY.json",
+          "sha256": "4b36bfd1ccb177bb4947c1d0fc2c2ae87b8dfe2790caa275621ad6a7e22e89b6",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "The supplied display name Parc Monceau explicitly identifies a park through the ordinary French word Parc and locates it in Paris. This directly supports the park component of the interest without implying any particular activities or access conditions."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJxeWKLPtx5kcRM-HN21cJ3_g",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJyUvuNg1u5kcRIJBRQqwbjBU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJyWdN5SNu5kcRsskNxWnDf58",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJydDIqRxu5kcRqB6W-MQwcYU",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJz35dQONv5kcRtSVtSJLDOsA",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJz35dQONv5kcRtSVtSJLDOsA",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJzVOtXQJu5kcRvhYWG1VSfjE",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJzZnx1Llv5kcR4KljDMqTxig",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJzZnx1Llv5kcR4KljDMqTxig",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    },
+    {
+      "review_id": "case-07-r03-relevance-ChIJzc_-btdx5kcRKmpibTCAzrk",
+      "case_id": "case-07",
+      "case_revision": "3",
+      "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "interest_inventory_sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+      "requirement_spec_sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+      "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJzc_-btdx5kcRKmpibTCAzrk",
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "revision": "3",
+      "reviewer_ref": "/root/case07_r03_relevance",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+      "rationale": "No independent venue facts were supplied for this canonical subject. Its opaque place ID does not establish a park, a neighbourhood exploration location or an exterior architectural subject. The collective interest relationship remains unknown; missing facts are not evidence of non-relevance."
+    }
+  ],
+  "comparisons": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "repetition_id": "r03",
+      "end_to_end": {
+        "status": "unavailable",
+        "delta": null,
+        "v1_count": null,
+        "v2_count": null,
+        "gained_ids": [],
+        "lost_ids": [],
+        "retained_ids": [],
+        "reasons": [
+          "incomplete_or_incompatible_pair"
+        ]
+      },
+      "stages": {
+        "discovered": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "admitted": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "enriched": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "supplied": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        },
+        "scheduled": {
+          "status": "unavailable",
+          "delta": null,
+          "v1_count": null,
+          "v2_count": null,
+          "gained_ids": [],
+          "lost_ids": [],
+          "retained_ids": [],
+          "reasons": [
+            "incomplete_or_incompatible_pair"
+          ]
+        }
+      },
+      "per_interest": [
+        {
+          "interest_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+          "end_to_end": {
+            "status": "unavailable",
+            "delta": null,
+            "v1_count": null,
+            "v2_count": null,
+            "gained_ids": [],
+            "lost_ids": [],
+            "retained_ids": [],
+            "reasons": [
+              "incomplete_or_incompatible_pair"
+            ]
+          },
+          "stages": {
+            "discovered": {
+              "status": "unavailable",
+              "delta": null,
+              "v1_count": null,
+              "v2_count": null,
+              "gained_ids": [],
+              "lost_ids": [],
+              "retained_ids": [],
+              "reasons": [
+                "incomplete_or_incompatible_pair"
+              ]
+            },
+            "admitted": {
+              "status": "unavailable",
+              "delta": null,
+              "v1_count": null,
+              "v2_count": null,
+              "gained_ids": [],
+              "lost_ids": [],
+              "retained_ids": [],
+              "reasons": [
+                "incomplete_or_incompatible_pair"
+              ]
+            },
+            "enriched": {
+              "status": "unavailable",
+              "delta": null,
+              "v1_count": null,
+              "v2_count": null,
+              "gained_ids": [],
+              "lost_ids": [],
+              "retained_ids": [],
+              "reasons": [
+                "incomplete_or_incompatible_pair"
+              ]
+            },
+            "supplied": {
+              "status": "unavailable",
+              "delta": null,
+              "v1_count": null,
+              "v2_count": null,
+              "gained_ids": [],
+              "lost_ids": [],
+              "retained_ids": [],
+              "reasons": [
+                "incomplete_or_incompatible_pair"
+              ]
+            },
+            "scheduled": {
+              "status": "unavailable",
+              "delta": null,
+              "v1_count": null,
+              "v2_count": null,
+              "gained_ids": [],
+              "lost_ids": [],
+              "retained_ids": [],
+              "reasons": [
+                "incomplete_or_incompatible_pair"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "case_id": "case-07",
+      "case_revision": "3",
+      "status": "unavailable",
+      "eligible_entity_count": null,
+      "observed_subtotal": null,
+      "stratum_id": null,
+      "reasons": [
+        "missing_independent_coverage"
+      ]
+    }
+  ],
+  "coverage_profile": null,
+  "coverage_summary": {
+    "interpretation": "Descriptive eligible-entity/geographic proxy; repeated slots are not independent samples. No citywide recall or unique-venue coverage claim.",
+    "available_pairs": 0,
+    "omitted_pairs": 1,
+    "unstratified_pairs": 1,
+    "strata": []
+  },
+  "source_digest": "95d0889cfa5cd74532ca18d82dac02c1c5befaaa0329331e929f2af9304d893c",
+  "semantic_sha256": "7c03ec5a9cca610471fa36f8668da1b3bb477402d7780c9a71d298e909453f11"
+}

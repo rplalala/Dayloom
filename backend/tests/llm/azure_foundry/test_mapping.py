@@ -41,6 +41,7 @@ def make_activity(
 ) -> FoundryV0ActivityDTO:
     return FoundryV0ActivityDTO(
         activity_kind="main_poi",
+        time_use="scheduled",
         source_place_id=None,
         activity_id="activity-1",
         title="Visit Fushimi Inari Shrine",
@@ -55,8 +56,23 @@ def make_activity(
 
 
 def make_itinerary(*, activity: FoundryV0ActivityDTO | None = None) -> FoundryItineraryDTO:
+    activities = [activity or make_activity()]
+    if activity and activity.activity_kind == "transport":
+        for aid, start, end in (
+            ("origin", "07:00:00", "08:00:00"),
+            ("destination", "12:00:00", "13:00:00"),
+        ):
+            activities.append(
+                make_activity().model_copy(
+                    update={
+                        "activity_id": aid,
+                        "start_time": make_datetime(time_value=start),
+                        "end_time": make_datetime(time_value=end),
+                    }
+                )
+            )
     return FoundryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         reference_recommendations=[],
         destination="Kyoto",
         start_date="2026-10-01",
@@ -64,7 +80,7 @@ def make_itinerary(*, activity: FoundryV0ActivityDTO | None = None) -> FoundryIt
         days=[
             FoundryItineraryDayDTO(
                 date="2026-10-01",
-                activities=[activity or make_activity()],
+                activities=activities,
             )
         ],
     )

@@ -1,0 +1,21 @@
+{
+  "actor_ref": "/root/case07_r03_relevance",
+  "execution_id": "/root/case07_r03_relevance",
+  "execution_id_basis": "Actual assigned canonical agent task identifier; separate platform execution UUID unavailable.",
+  "observed_start_at": "2026-10-16T14:39:55.2541458+11:00",
+  "observed_start_basis": "First retained offset-aware local clock observation after initial instruction reads; exact launch time unavailable.",
+  "observed_end_at": "2026-10-16T14:43:09.990228+11:00",
+  "reviewed_at": "2026-10-16T14:43:09.783356+11:00",
+  "requested_configuration": {
+    "runtime": "Codex",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "context": "fresh, no inherited turns"
+  },
+  "attested_configuration": {
+    "model": null,
+    "reasoning_effort": null,
+    "runtime_telemetry": "unavailable",
+    "available_context": "Only the received task plus supplied developer/user environment instructions; no parent conversational history supplied."
+  }
+}

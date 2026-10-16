@@ -1,0 +1,79 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-07-requirements-r03",
+  "revision": "3",
+  "group_id": "case-07",
+  "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case07_r03_reviewer",
+    "reviewed_at": "2026-10-16T12:45:12.676576+11:00"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [
+    {
+      "preference_id": "case-07-preference-outdoor-and-exterior-sightseeing",
+      "description": "Prefer to spend most sightseeing time collectively in parks, exploring neighbourhoods, and viewing architecture from outside. The collective preference does not impose a separate majority or a required visit in each category.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits.",
+          "occurrence": 0,
+          "offset_start": 43,
+          "offset_end": 204
+        }
+      ]
+    },
+    {
+      "preference_id": "case-07-preference-few-paid-visits",
+      "description": "Prefer a small number of paid visits. This is a qualitative preference without a specified numeric cap, paid/free visit ratio, or daily allocation.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "with a small number of paid visits",
+          "occurrence": 0,
+          "offset_start": 169,
+          "offset_end": 203
+        }
+      ]
+    },
+    {
+      "preference_id": "case-07-preference-lower-cost",
+      "description": "Prioritise lower-cost experiences in the context of the stated limited budget. The structured budget remains in the original Input; this preference does not establish factual affordability of any proposed itinerary.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I am travelling alone on a limited budget.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 42
+        },
+        {
+          "field_path": "additional_preferences",
+          "quote": "I am happy to prioritise lower-cost experiences.",
+          "occurrence": 0,
+          "offset_start": 205,
+          "offset_end": 253
+        }
+      ]
+    }
+  ],
+  "unresolved_items": [
+    {
+      "item_id": "case-07-unresolved-qualitative-preference-boundaries",
+      "description": "The request does not specify a numerical threshold or measurement rule for most sightseeing time, or an exact count for a small number of paid visits. Preserve these as qualitative preferences; no hard quota is derived.",
+      "reason": "Subjective comparative wording leaves quantitative boundaries unspecified. It does not express a named-place obligation, an exact daily visit count, a transport restriction, or a relaxed/rich pace requirement.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits.",
+          "occurrence": 0,
+          "offset_start": 43,
+          "offset_end": 204
+        }
+      ],
+      "classification": "soft_preference"
+    }
+  ]
+}

@@ -28,7 +28,7 @@ def _itinerary(
     start_date: str = "2026-09-18",
 ) -> FoundryPrimaryItineraryDTO:
     return FoundryPrimaryItineraryDTO(
-        output_version="itinerary_2",
+        output_version="itinerary_3",
         destination="Singapore",
         start_date=start_date,
         end_date="2026-09-18",
@@ -38,6 +38,7 @@ def _itinerary(
                 activities=[
                     FoundryPrimaryActivityDTO(
                         activity_kind="main_poi",
+                        time_use="scheduled",
                         source_place_id=None,
                         activity_id=f"activity-{index}",
                         title=f"Visit place {index}",

@@ -23,7 +23,7 @@ def test_primary_wire_restores_selected_place_without_rewriting_notes(monkeypatc
     activity.pop("transport")
     activity.update(source_place_id="p01", notes=pid)
     FakeChatOpenAI.response = {
-        "output_version": "itinerary_2",
+        "output_version": "itinerary_3",
         "destination": "Kyoto",
         "start_date": "2026-10-01",
         "end_date": "2026-10-01",
@@ -159,7 +159,7 @@ def test_invalid_primary_reference_is_terminal_without_retry(monkeypatch, return
     activity.pop("transport")
     activity["source_place_id"] = returned_id
     FakeChatOpenAI.response = {
-        "output_version": "itinerary_2",
+        "output_version": "itinerary_3",
         "destination": "Kyoto",
         "start_date": "2026-10-01",
         "end_date": "2026-10-01",
@@ -188,7 +188,7 @@ def test_short_reference_schema_and_restore_cross_real_sdk_mock_transport():
     activity = make_activity().model_dump(mode="json", exclude={"transport"})
     activity["source_place_id"] = "p01"
     output = {
-        "output_version": "itinerary_2",
+        "output_version": "itinerary_3",
         "destination": "Kyoto",
         "start_date": "2026-10-01",
         "end_date": "2026-10-01",

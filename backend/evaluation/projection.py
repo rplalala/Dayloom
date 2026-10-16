@@ -2,6 +2,8 @@
 
 from datetime import date, datetime
 
+from backend.activity_semantics import read_activity_claim
+
 from ._claims import (
     claim_evidence,
     movement_claim,
@@ -13,6 +15,7 @@ from .records import require, source, text
 ACTIVITY_FIELDS = (
     "activity_id",
     "activity_kind",
+    "time_use",
     "title",
     "place_name",
     "source_place_id",
@@ -91,9 +94,13 @@ def mode_claim(raw, review):
     return declared[0] if all(mode in (None, declared[0]) for mode in declared) else None
 
 
-def classify(raw, review):
+def classify(raw, review, wire="itinerary_2"):
     if review and "role" in review:
         return review["role"], "independently_reviewed", "reviewed_role"
+    if wire == "itinerary_3":
+        claim = read_activity_claim(raw, wire)
+        role = {"main_poi": "primary_visit", "transport": "transport"}.get(claim.kind, "transition")
+        return role, "declared_consistent", "declared_itinerary_3"
     role = raw.get("activity_kind", "unknown")
     place = text(raw.get("place_name")) or text(raw.get("source_place_id"))
     title = raw["title"].strip().casefold()
@@ -116,7 +123,7 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
     require(version in ("v0", "v1", "v2", "v3"), prefix, "Unknown planner version")
     wire = itinerary.get("output_version", "itinerary_1")
     require(
-        wire in ("itinerary_1", "itinerary_2"),
+        wire in ("itinerary_1", "itinerary_2", "itinerary_3"),
         prefix,
         "Unknown itinerary version",
         "unsupported_wire_version",
@@ -162,7 +169,38 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
                 require(
                     not review.get("multi_poi"), ap, "Reviewed multi-POI block", "multi_poi_block"
                 )
-            role, status, reason = classify(raw, review)
+            if wire == "itinerary_3":
+                read_activity_claim(raw, wire)
+                span = interval(raw.get("start_time"), raw.get("end_time"))
+                require(
+                    span is not None
+                    and all(t.utcoffset() is not None for t in span)
+                    and all(t.date() == day_date for t in span),
+                    ap,
+                    "New-wire times require positive offset-aware declared-day intervals",
+                )
+                require(
+                    raw.get("activity_kind") != "transport" or version == "v0",
+                    ap,
+                    "Only V0 declares transport activities",
+                )
+                require(
+                    raw.get("activity_kind") != "main_poi" or text(raw.get("place_name")),
+                    ap,
+                    "Primary visits require an explicit place name",
+                )
+                if raw["activity_kind"] == "transport":
+                    declaration = raw.get("transport")
+                    require(
+                        isinstance(declaration, dict)
+                        and set(declaration) == {"mode", "from_activity_id", "to_activity_id"}
+                        and declaration["mode"] in (*MODES, None)
+                        and text(declaration["from_activity_id"])
+                        and text(declaration["to_activity_id"]),
+                        ap,
+                        "New-wire transport requires structured directed endpoints",
+                    )
+            role, status, reason = classify(raw, review, wire)
             movement = movement_claim(raw["title"])
             rec = {
                 "source": source(context, ap),
@@ -200,13 +238,17 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
         try:
             if any(span is None for span in spans):
                 raise ValueError("Invalid visit time")
-            ordered = sorted(
-                visits,
-                key=lambda r: (
-                    clock(r["original"]["start_time"]),
-                    clock(r["original"]["end_time"]),
-                    r["source"]["pointer"],
-                ),
+            ordered = (
+                visits
+                if wire == "itinerary_3"
+                else sorted(
+                    visits,
+                    key=lambda r: (
+                        clock(r["original"]["start_time"]),
+                        clock(r["original"]["end_time"]),
+                        r["source"]["pointer"],
+                    ),
+                )
             )
         except (TypeError, ValueError):
             report(
@@ -217,8 +259,11 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
         overlapping_ids = set()
         for index, left in enumerate(ordered):
             for right in ordered[index + 1 :]:
-                if clock(right["original"]["start_time"]) >= clock(left["original"]["end_time"]):
-                    break
+                if not (
+                    clock(right["original"]["start_time"]) < clock(left["original"]["end_time"])
+                    and clock(left["original"]["start_time"]) < clock(right["original"]["end_time"])
+                ):
+                    continue
                 overlapping_ids.update(
                     (left["original"]["activity_id"], right["original"]["activity_id"])
                 )
@@ -241,13 +286,22 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
                 "adjacency_status": "unresolved"
                 if uncertain_roles
                 or (
-                    left["original"]["activity_id"] in overlapping_ids
-                    or right["original"]["activity_id"] in overlapping_ids
+                    wire != "itinerary_3"
+                    and (
+                        left["original"]["activity_id"] in overlapping_ids
+                        or right["original"]["activity_id"] in overlapping_ids
+                    )
                 )
                 else "ordered_candidates",
             }
             legs.append(leg)
     transfers = itinerary.get("transfers", [])
+    if wire == "itinerary_3":
+        require(
+            isinstance(transfers, list) and all(isinstance(t, dict) for t in transfers),
+            prefix + "/transfers",
+            "New-wire transfers must be an object array",
+        )
     if not isinstance(transfers, list):
         report(
             "invalid_transfer_collection",
@@ -331,9 +385,12 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
             matches = [
                 leg
                 for leg in candidates
-                if leg["adjacency_status"] != "unresolved"
+                if (wire == "itinerary_3" or leg["adjacency_status"] != "unresolved")
                 and (leg["from_activity_id"], leg["to_activity_id"]) == pair
-                and contains(leg["gap_start"], leg["gap_end"], claim["start"], claim["end"])
+                and (
+                    wire == "itinerary_3"
+                    or contains(leg["gap_start"], leg["gap_end"], claim["start"], claim["end"])
+                )
             ]
         else:
             endpoints = transport_endpoints(raw)
@@ -372,6 +429,12 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
                 "Endpoint/position association requires independent review",
             )
     for leg in legs:
+        if wire == "itinerary_3":
+            require(
+                len(leg["claims"]) <= 1,
+                prefix,
+                "New-wire journeys require a unique selected declaration",
+            )
         leg["journey"] = reconcile(leg["claims"])
         if leg["journey"]["agreement"] == "conflicting":
             report(
@@ -380,9 +443,17 @@ def project(itinerary, context, prefix="/itinerary", reviews=(), *, version):
                 "No claim takes precedence",
             )
     require(consumed == set(review_map), prefix, "Review points to no activity in this projection")
+    if wire == "itinerary_3":
+        require(
+            not any(c["association_status"] != "unique" for c in claims),
+            prefix,
+            "New-wire journeys must identify consecutive primary occurrences",
+        )
     return {
         "context": context,
-        "policy_version": "structural_claims_directed_occurrences_5",
+        "policy_version": "declared_activity_claims_1"
+        if wire == "itinerary_3"
+        else "structural_claims_directed_occurrences_5",
         "projection": prefix,
         "wire_version": wire,
         "planner_version": version,

@@ -1,0 +1,12 @@
+{
+  "format": "case_itinerary_delta_1",
+  "base": {
+    "path": "generation/v3/itinerary.json",
+    "pointer": "",
+    "expanded_semantic_sha256": "b28b1c4fd2ffaae03db367c59bd5cc6e40f8f8b8714a1cbacb7baccdde3eb193"
+  },
+  "replace_top_level": {
+    "reference_recommendations": []
+  },
+  "expanded_semantic_sha256": "2e5a715d2cfff87c58529ae2781ccb24e178c3567917458ab41586c7829bc898"
+}

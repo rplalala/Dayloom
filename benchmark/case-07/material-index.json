@@ -1,0 +1,811 @@
+{
+  "schema_version": "case07_public_material_index_1",
+  "case_id": "case-07",
+  "input_revision": "2",
+  "execution_revision": "3",
+  "status": "human_accepted",
+  "source_revision": "2b6a80b437e30dd14826db92f447d52627820e24",
+  "canonical_original_input": "../inputs/case-07.json",
+  "selected_input": "requirements/input-r02.json",
+  "publication_format": {
+    "reference": "$case_material_ref paths are relative to this case directory. Resolve the JSON Pointer, recursively expand, and verify SHA-256 of UTF-8 canonical JSON (sorted keys, compact separators, ensure_ascii=False).",
+    "delta": "case_itinerary_delta_1 replaces only specified top-level keys on the fully expanded base; verify the expanded semantic hash.",
+    "source_identifiers": "Original logical paths identify private archive entries; they are not public navigation links. Raw native inventories and receipts retain their exact original bytes.",
+    "projections": "Selected fields and sanitized projections are explicitly marked; they are reader views, not native closed replay bundles.",
+    "line_endings": "Published text uses LF so Git checkout preserves publication byte hashes. The date-revised input is canonical JSON; its original captured byte SHA remains in the source mapping."
+  },
+  "original_manifest": {
+    "path": "benchmark/scratch/case-07/p172/l/completed-manifest.json",
+    "sha256": "c6ae300dce755e5f602fc12c328b1fdb420837ec9899fb0d57c54048f60bc1e5",
+    "bound_files": 3537
+  },
+  "entries": [
+    {
+      "path": "requirements/input-r02.json",
+      "sha256": "f187bf6a13e94f0d988f7d8864508cbfc870ebda2fe9951332491d4d941db5cb",
+      "publication_kind": "canonical_json",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/m/input.json",
+          "sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "json_pointer": ""
+        }
+      ],
+      "expanded_semantic_sha256": "dcdcefc9a023023f7f2de14b3f821f0f643af2dabca83637d58b86708e1313f1"
+    },
+    {
+      "path": "requirements/reviewed.json",
+      "sha256": "4e9a9d274082823480f23aba3df4933618ff4d23e8ed269d67d7914b9f3ec250",
+      "expanded_semantic_sha256": "314271f4531ebc827e25deae6fdbe6c783ee88c6e0127598442c99463b8e7d32",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/review/r/reviewed-final.json",
+          "sha256": "ab490fa65b218e86f571df16f907115d306ee1cf13bd0af497a13d6623ad711c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "interests/inventory.json",
+      "sha256": "f85723153eaff8dfd2397fa6de23719a770e7b93127a1b3e9f8d32c73604b95f",
+      "expanded_semantic_sha256": "0a09090bc26624a32b5fce29a456152a78322b1da70f9cb131a18cb012b2c116",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/m/interests.json",
+          "sha256": "7a633b3a8d5155bab4cccdf78a6d8c2d16740d1d9efe6440f5bb9250957005f9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/current-generation.json",
+      "sha256": "9a424c3a0f7e9b738907e0e2700298652daa12706c7c0d70dfc25917c804ba88",
+      "expanded_semantic_sha256": "a486231fcc930434d89e3c36b35d29650c8725486e21ea8411a3f208ed58e077",
+      "publication_kind": "selected_top_level_fields",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/schema_version"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/track"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/population_completion"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/generation_scope"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/measurement_coverage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/review_coverage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/population_digest"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/semantic_sha256"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/source_digest"
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/historical-generation.json",
+      "sha256": "3992532296e573797d72a66b3c65f85a4d8c85ebd2dbc3bff80aa5ec51fbdab8",
+      "expanded_semantic_sha256": "98055b122051a12607f6d16bb6816f70ebbbdbcf616ff0569300b567e29471bf",
+      "publication_kind": "selected_top_level_fields",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/schema_version"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/track"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/population_completion"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/generation_scope"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/measurement_coverage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/review_coverage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/population_digest"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/semantic_sha256"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/source_digest"
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/all-attempts.json",
+      "sha256": "8be4d291c7fbee5b3dfaff10f8309c8edb85f4ed1f3986e4957df09dd6d782b3",
+      "expanded_semantic_sha256": "8b13e2d54a971ff1db63d0cbd59df3256c4fcb33755c5b9206bff277ccb5efdb",
+      "publication_kind": "derived_accounting_from_saved_ledgers",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-tradeoffs/tradeoffs.json",
+          "sha256": "b9d6a0faea5dd4eecf6bdd172ff12bdf62b5f10e31d9c8907343ab2074192242",
+          "json_pointer": "/all_attempts"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/historical-resources/tradeoffs.json",
+          "sha256": "ebba17fbbe7ea622aae288e158febd14c9bdc21463b74adbd787bd7c4356232b",
+          "json_pointer": "/all_attempts"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/l/final-handoff.json",
+          "sha256": "ad69c4834edd2fd2e5cbe3c7de299c7d10d53a93d0b34771732ac6dde2286276",
+          "json_pointer": "/resources"
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "9058cef187071eeb7d801d135f319f2d5dcb4b5a2b8cf79b24e85fa018c6657b",
+      "expanded_semantic_sha256": "1b2f6ecc5f3f3709ed077cada6f1314bbf99d464cdad0c3449d3cc5755cb8f62",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/result.json",
+          "sha256": "16d9c12a2662def5b0a1889049f29eb946cc0248cde1d62610badbd38f27d86a",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/usage.json",
+      "sha256": "f55b7db9ceceea9dbfbb693ca7ece9f29afaa3aeff4ffeff428fd02bdbfa1793",
+      "expanded_semantic_sha256": "b1ed981c27e75d68503836d137b8ef653d1ba330e49591a124346d9e7c17c940",
+      "publication_kind": "resource_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/usage.json",
+          "sha256": "4320fddf972cd9bdcd20e6081d5f46da8c19a2d0606382d420393177d74d8acf",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/cost-report.json",
+          "sha256": "d1f7e2ec37989730ae23b8112a80befff578fe8419c9843614711a7e206d65c8",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/provenance.json",
+      "sha256": "5700f81b4e2181cbec4ae498ca226c7c615c3d13be0bfe17b4ee9b45c85fa6c1",
+      "expanded_semantic_sha256": "1aa17f78ab55aa0697ad981a981a478edfe11db6d5ca7f1674ee6f09a58dd779",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/provenance.json",
+          "sha256": "5700f81b4e2181cbec4ae498ca226c7c615c3d13be0bfe17b4ee9b45c85fa6c1",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "90d12d36affc04b0667cbc125853421780c37580bba63e90ae22b8fb422a595f",
+      "expanded_semantic_sha256": "f01e2795247a9cae3898fa9570a41e74c0f4e6861f049900a8915504ab61cc49",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/result.json",
+          "sha256": "3de7ffdd730584e881b25c4b94fe89c50f3468ea131a6e79b534a360fe30c784",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/usage.json",
+      "sha256": "c2d945eab56e3db3c9b2f020f2f8f63a54ab40fb6113ab5149c3d4035af8494a",
+      "expanded_semantic_sha256": "6434f19a8088896802b4717ef92eb666c2f1b2828c71aa552f3b02695bd32185",
+      "publication_kind": "resource_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/usage.json",
+          "sha256": "e59db23ea55c756750b3994518cbdd80328de0da768088cd49057ae087da68c8",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/cost-report.json",
+          "sha256": "058ddc9b329bd6922fb6990ea2c96cfc877d8b27ea6f0bc739a513e68d7df4e0",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "867f21ff72f6e83c87a8dcf83460e9221cfdc530cb098cf52364eca03a907217",
+      "expanded_semantic_sha256": "e5c6a45e82eac2b89357131dd924fea266334d15b166dfdcacf78b98fa56b69a",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/provenance.json",
+          "sha256": "867f21ff72f6e83c87a8dcf83460e9221cfdc530cb098cf52364eca03a907217",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "e06a707ffaeeba929a6a72c6466fc247400bc6096e06129875f97b0050d24658",
+      "expanded_semantic_sha256": "969244f0979e9962d428df03d93d92be39b349eba22309dc2734a04e332d9b25",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/result.json",
+          "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/usage.json",
+      "sha256": "8e961f6ab60aed4f291a0b53d9e082575e9946f898e87cdabd68929e28609743",
+      "expanded_semantic_sha256": "ef8652cff7144c3c23a98cc7993eb722c05f6f3ba2e6cef306a5aa4b12a39bc3",
+      "publication_kind": "resource_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/usage.json",
+          "sha256": "5f41f7f6bb78cae3ebd672184dbe9ddb04deaf739bc3b6ea649565ff09802e08",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/cost-report.json",
+          "sha256": "0414bcd3bc5840ce6b1c9436e8bb2c7bdfdcea46d5f04bbfcb99a1813aea9a6b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "12a06cdee6bbdfba9dcb1bf1ed68bf83c4a4cccfec97bebbaca25c8f1160910a",
+      "expanded_semantic_sha256": "ff51f8ce5c7b6f93fe0bc6c24a9ba37aed730a1263059f2601a86fd028a72e46",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/provenance.json",
+          "sha256": "12a06cdee6bbdfba9dcb1bf1ed68bf83c4a4cccfec97bebbaca25c8f1160910a",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/rag-origins.json",
+      "sha256": "e864da1c115ae303145fd72790f629ba091606c5f91602bc09b799d9c9fc2f2e",
+      "expanded_semantic_sha256": "b4c70f2a858c11cf68c746c5db65279a5120d079c503a85e07157218d1ae3564",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/result.json",
+          "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "ed8dad617c9137a19519b34d35d6e858b872cd594e167e374591544ac7c06e5e",
+      "expanded_semantic_sha256": "b28b1c4fd2ffaae03db367c59bd5cc6e40f8f8b8714a1cbacb7baccdde3eb193",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/result.json",
+          "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/usage.json",
+      "sha256": "0a4c7fdc051beb0ce9ed699c663eadff1e742d888cb706eac267079e093e675c",
+      "expanded_semantic_sha256": "ebe6817967884de5de0d7ffcd437b95b96e5e5d565919faa68bb382cc9570c43",
+      "publication_kind": "resource_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/usage.json",
+          "sha256": "69081919f2ca74fd250d6797b1f72fb9d6b07873a2bbf795bd0329b26b6ed117",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/cost-report.json",
+          "sha256": "a42225326ae8c82adc945726dc80fa1c6542599fa584784fec0cb0bdf1ed532d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "e0091c15ff1ca67aba8a8c0a48d7bf108b62269cf7d5eab97dd5ff2336923bc3",
+      "expanded_semantic_sha256": "e1756fffc961e97c998a74742eef2737af47db6df1bcf46a59d08b1d4ddb1f45",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/provenance.json",
+          "sha256": "e0091c15ff1ca67aba8a8c0a48d7bf108b62269cf7d5eab97dd5ff2336923bc3",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/rag-origins.json",
+      "sha256": "05828c1a121bb5c50aafa37f536bfff611770f8a611b67a1e6b146552fd059f2",
+      "expanded_semantic_sha256": "362228abe76d92a94fe5256d7bdbd649aaf8fdee71bf58290109f5ec16119866",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/result.json",
+          "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/draft-delta.json",
+      "sha256": "01506aa651d1a3c0eeda1bc1cd2d7b09d10c5be299c9b8e677981e05ab0faf5a",
+      "expanded_semantic_sha256": "068b7956eea15dabb4ad23f695eaa274a0998873822ce9cf347f5cbfdeb1a43a",
+      "publication_kind": "lossless_delta",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/result.json",
+          "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "json_pointer": "/v3/draft"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/final-primary-delta.json",
+      "sha256": "82e7156788edc60841fec2587df758c0458c85c98a70eb1b4b9f22c4cdca792c",
+      "expanded_semantic_sha256": "a0bda36491476a15a3bca7dcab0503252399858f24a4f9f0dd6724e92ce71f21",
+      "publication_kind": "lossless_delta",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/result.json",
+          "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "json_pointer": "/v3/final_primary"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/primary/report.json",
+      "sha256": "e1612e1858603d2f960ac16137e29a104d9b3f2fd358acd56086a1fcda868a97",
+      "expanded_semantic_sha256": "6b0382044da3c7c06f046236cf09247c81e630069fcfd5ae5d9b8c52d28c5e56",
+      "publication_kind": "selected_top_level_fields_with_omissions",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/schema_version"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/preparation_sha256"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/processing_status"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/acquisition_status"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/evidence_status"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/quality"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/reports"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/unknowns"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/acquisition_failures"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/not_evaluated"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/report.json",
+          "sha256": "3fbe64817e9ef595b393bc750dbb91685e045f24282a9af84d51c35936c45001",
+          "json_pointer": "/opening_assessment"
+        }
+      ],
+      "omitted_json_pointers": [
+        "/reports/identity/identity_versioned_replay/model_result"
+      ]
+    },
+    {
+      "path": "evaluation/primary/receipt-summary.json",
+      "sha256": "c6963b0ecb2a5866681dcad839c0fc9117685a2d2b0a1da44e3c30ef831d73d2",
+      "expanded_semantic_sha256": "2ce0a33784b1f93da640b200a2aee30c59bddaf99eab5b1f6b080555c10f3bce",
+      "publication_kind": "receipt_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/e/execution/receipt.json",
+          "sha256": "42c52a93c52c77a292db155814ff1f763dbebc30b73890b05b5206147f01f1c9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "ffe1d7c01430a2e189b4f7a5a928ab91b09c1cd4cedddac21a7dbc4b6fd90293",
+      "expanded_semantic_sha256": "248fc376570f35507378387aaa5fcaf9f3c398dc042ec41cdb5fd0aa4eb4baa3",
+      "publication_kind": "native_report_without_repeated_source_bindings",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-opportunities/opportunities.json",
+          "sha256": "455a37a4effa3c1c210df4aa5ba6faa1e37acae91a29530d44ad50931d7499f4",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "6a1e6dc2ce079fe1baa323190f78fc455dd08c1eef5aab46ad0efff73a9c2fdd",
+      "expanded_semantic_sha256": "46ad9d125431fd20e02539023600c03c7801fb468c09a124e6c5308809fb1c06",
+      "publication_kind": "native_report_without_repeated_source_bindings",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-relevance/relevance.json",
+          "sha256": "903050495c788bdbf1bf035ebf56a3c3d78dd4f6b9fe901aacc85c1c9c6dd62e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/candidate-v1.json",
+      "sha256": "a548157320d8cb0ef234f959103f28f4764472e274614828652914417ab03fbd",
+      "expanded_semantic_sha256": "f0206bfbf716c7c440d7006736167126f634cf596206abeb60971a6bbef98560",
+      "publication_kind": "retrospective_saved_trace_import",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/m/candidate-v1.json",
+          "sha256": "d64d24720bf4c4b4558307794b6c2307f2f0aeafdea308b566e0b401fda9f81c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/candidate-v2.json",
+      "sha256": "5da837c0f1549d2d569b4864833f2b3ee8b5c72881fd64ecddcef76fa97eea48",
+      "expanded_semantic_sha256": "d0af0f7ec05f806d1aa4ef7965403ac9c0ca2d8a3a7b049ca991a4eee4f65996",
+      "publication_kind": "retrospective_saved_trace_import",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/m/candidate-v2.json",
+          "sha256": "ef55ddd2c20132f5dbd34b906f633a883845306e2bfe778f5c462e49cc0893eb",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/reviews.json",
+      "sha256": "13f73aacd3b2e073e12d46dab0e8ffe81b8347d3eadd12558bbe81d7d861f31e",
+      "expanded_semantic_sha256": "2acb6bef86418070420c5aa38d56eaa79482ec165d0416ad3437390191d2751f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/reviews.json",
+          "sha256": "612582f96dcfffeb5dc9e6347165b05d748217d56f3607be7792699479c4dd77",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/independent-venues.json",
+      "sha256": "47223ec5b5dd20a9dcce37f94b10dc4b1606489ad9ae71e6790a4c8dc755c3ad",
+      "expanded_semantic_sha256": "40933c49c917be9d64e061ec56f6df0287dafa49c785bbefa0cb577a9bfbd0c2",
+      "publication_kind": "normalized_independent_venue_facts",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJ442GNENu5kcRGYUrvgqHw88.json",
+          "sha256": "115570a49da3c16db101881fe53817ca0bae14efd92611ec0e9b7575780a0157",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJ6UrOzQNu5kcRRp5vRIClzzg.json",
+          "sha256": "4bf5d3962e47d9a7cfbf6b387b058504e430319052a86e0dc07132a87eb9a1ce",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJa6TNcOFx5kcRDd2mI71KoRY.json",
+          "sha256": "525a5f7616df56ac505de5213b41acc2d2334cb324486b3fcd264c6727c8360e",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJAQAAMCxu5kcRx--_4QnbGcI.json",
+          "sha256": "082cdcbec5d152dce4d93e2fe2378c37439bd42be3f0315b8e885c6b173d36a4",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJAQquYc1v5kcRLKslDuENAxg.json",
+          "sha256": "7ade39cb2cb1e230818a0cf1bb64c5b9a67e026061a7363a50de2af982be7bbf",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJATr1n-Fx5kcRjQb6q6cdQDY.json",
+          "sha256": "6c61248af187627b4ba6c02eba1db41ea6c44cce3f093f9c62ea97e0f9b4a3c5",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJc8mX0udx5kcRWKcjTwDr5QA.json",
+          "sha256": "d4a36c4434baf1b4361724754691096f14ed9a479c5ab72197d17e81374eb053",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJD3uTd9hx5kcR1IQvGfr8dbk.json",
+          "sha256": "178496f26884ae1ef49d0c0fe9873992d87b65352c43e848d2349dc6409d0c71",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJe2jeNttx5kcRi_mJsGHdkQc.json",
+          "sha256": "cee9c89fcc46b25ccbe60bd55db1bb50eec2db443f889ee8f8b1d758698cfeab",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJjx37cOxv5kcRPWQuEW5ntdk.json",
+          "sha256": "ae2c141a1766e8cdae9cdb1e777086e11d329d094849498ddedd8caff9346155",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJLU7jZClu5kcR4PcOOO6p3I0.json",
+          "sha256": "bf58a3f77ee276598f0bb355af8d248f501a77b3c743a4be4ad07d1252bcb285",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJQdQyeiZu5kcRUfQHfB-OCLA.json",
+          "sha256": "b9a34d92f8ca44c029ea2dfeebdeba16ef08f67840158de5d840e774ba78c128",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJR1buQh5u5kcROogxFI7WlfM.json",
+          "sha256": "63f9ed9b29c3820b5c2fe338d4b5f2a3d9ac76db69cd7e821512665e61a692aa",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJR3122B9u5kcRaCck3PlB9DM.json",
+          "sha256": "bf4809bb21798079ec310fa8ffc9eb057ea330df5596a70f184a02f7c2971219",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJUeiI4P9x5kcRqEwHl6V32GQ.json",
+          "sha256": "1ced553ca71a07ebe7b7d90731352d7ac8f9595a481ca7e0e78942af0313a27f",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJv6ffXBtu5kcRvkMvpw_2wbU.json",
+          "sha256": "16549d3ae848073e615871200156ca327f784a44dac8c6374e0e13b310959882",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/evidence/ChIJwxT3mL5v5kcRAsTd3v0lJOY.json",
+          "sha256": "4b36bfd1ccb177bb4947c1d0fc2c2ae87b8dfe2790caa275621ad6a7e22e89b6",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "interests/relevance-review-execution.json",
+      "sha256": "57cf6a1e69eea32a175c6db2272594aef1912688491907b3fd1f9a8894c47c76",
+      "expanded_semantic_sha256": "b7c50f5d8a96f07fb4aaa03ff74a3641a02e735c7d4c9379a0adbf206e44a1f7",
+      "publication_kind": "assistance_metadata_projection",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/review/r/execution.json",
+          "sha256": "ec1e01bb1e79c24680d28b03c0ee07fb25a6b0ca5659fefe1d2a0674e6f1097c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "b3bb7c67ad4d14bca2041ae0078f235db523076d33c1145dc147ab88967e84b5",
+      "expanded_semantic_sha256": "4ac7fccdf066c290a70c6226968afaeb3054017dc8035bd124121d68140cd51f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/repair/mechanism.json",
+          "sha256": "4b100e749692c8d2a21d559cdd9509a45e3dc9ae431ae8bfbb24d9a70b2ec4c5",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/observations.json",
+      "sha256": "693dcfee61907cc9d4e2d9582e945df7d7bb7d6f8150c9585b72f3689bf3d397",
+      "expanded_semantic_sha256": "6f7f979efcc7d5525b4ded9f80fa0c00bb5b1889f02e3c9264f65753bef31857",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/repair/observations.json",
+          "sha256": "5d182815e460365ccfb9ffc1d94d4d4a635a37df47f1dbd416262930a8c4a12e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/research.json",
+      "sha256": "75a9a30abb6f4aa5c7fa896e933b100cf2227bbe22fbe0f274a64cea02e2e538",
+      "expanded_semantic_sha256": "5d175efa36b767d474480e6e1d0b8cb78dcb849e0602d179ff0ce010f807a4f8",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-repair/repair.json",
+          "sha256": "30e8f7e7e79623685762a3c1f5a386b26bb8284bb8a4e7621d6727e8894cc90b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "report.md",
+      "sha256": "eb1c28b448eebe36fe7791287bca2c63fda439b24c707e752aa7ae11393cb33c",
+      "publication_kind": "reader_explanation",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/l/final-handoff.json",
+          "sha256": "ad69c4834edd2fd2e5cbe3c7de299c7d10d53a93d0b34771732ac6dde2286276",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/c03/reports/final-relevance/relevance.json",
+          "sha256": "903050495c788bdbf1bf035ebf56a3c3d78dd4f6b9fe901aacc85c1c9c6dd62e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "aacd943986727491a93bdd7ae4689b734b1d69301afd4abf83745f28906cf74b",
+      "publication_kind": "reader_explanation",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v0/result.json",
+          "sha256": "16d9c12a2662def5b0a1889049f29eb946cc0248cde1d62610badbd38f27d86a",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v1/result.json",
+          "sha256": "3de7ffdd730584e881b25c4b94fe89c50f3468ea131a6e79b534a360fe30c784",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v2/result.json",
+          "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-07/p172/g/v3/result.json",
+          "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "json_pointer": ""
+        }
+      ]
+    }
+  ],
+  "human_acceptance": {
+    "date": "2026-10-16",
+    "timezone": "Australia/Sydney",
+    "recorded_at": "2026-10-16T04:31:50.707271+00:00",
+    "execution_revision": "3",
+    "input_revision": "2",
+    "source": "Explicit human decision in the case-07 conversation; includes all report limitations.",
+    "blinded_human_review": "deferred",
+    "historical_scores": "unchanged",
+    "push": "not_authorized",
+    "pr_merge": "not_authorized"
+  },
+  "main_integration": {
+    "base_revision": "73686a071fa4fda5b5c68b4b451a38f8b973e467",
+    "integration_commit": "eae2f9a9001478b1d7d26832e422d21c45012eae",
+    "correction_commit": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "reviewed_code_revision": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "producer_source_revision_unchanged": true,
+    "historical_scores_recomputed": false,
+    "standards_open_findings": 0,
+    "spec_open_findings": 0
+  },
+  "git_delivery": {
+    "pull_request": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174",
+    "reviewed_code_revision": "1f1b200140166f3a3cd743b6281de38c729444a1",
+    "runtime_sha256": "e6266f4cd058f18808518487cd2e58f5b0747aa5ac0ebbb8e567a58b3623d504",
+    "affected_backend_tests_passed": 1231,
+    "additional_full_regression": "researcher_stopped_incomplete",
+    "historical_scores_recomputed": false
+  }
+}

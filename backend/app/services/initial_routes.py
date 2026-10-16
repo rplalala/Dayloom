@@ -12,6 +12,7 @@ from backend.app.policies.itinerary_schedule import (
     available_intervals,
     build_schedule,
     ordered_activities,
+    primary_journey_allowed,
 )
 from backend.app.policies.route_options import route_option, route_rows, transfer_time_check
 from backend.app.runtime.budget import ToolBudgetExceededError, ToolBudgetKey
@@ -285,6 +286,8 @@ class InitialRoutes:
             for day in itinerary.days:
                 ordered = ordered_activities(day, schedule)
                 for left, right in zip(ordered, ordered[1:], strict=False):
+                    if not primary_journey_allowed(left, right):
+                        continue
                     modes = permitted_modes(mode)
                     if (
                         not left.source_place_id

@@ -1,7 +1,7 @@
 # Itinerary, transport and presentation contracts
 
 Status: Implemented shared output contract, consolidated 2026-10-03;
-V0 structured declarations added 2026-10-05.
+V0 structured declarations added 2026-10-05; explicit activity/time-use wire added 2026-10-16.
 
 ## Scheduled activities and references
 
@@ -9,7 +9,7 @@ Output role accounting separates scheduled identities, unlinked activities, unus
 independently acquired references and unarranged REQUIRED identities. Policy completion and
 goal progress are diagnostic observations, distinct from real-world feasibility.
 
-`itinerary_2` separates dated/timed primary activities from optional unscheduled Nearby
+`itinerary_3` separates dated/timed primary activities from optional unscheduled Nearby
 references. References have no scheduled occupancy, planned cost or booking implication;
 they do not fulfill a required visit or increase primary-visit counts. Empty reference
 output is valid. V0's optional references are model knowledge with no fabricated provider
@@ -58,7 +58,7 @@ visits; missing/unknown or disallowed declarations fail output acceptance withou
 | V1-V3 | Application-owned `transfers` for real adjacencies | Applicable provider facts plus separately represented reserves |
 
 V0 estimates only same-day transport between adjacent different venues; it invents no
-unspecified hotel or cross-day journey. V0 transport activities can carry `transport: {mode, from_activity_id, to_activity_id}`.
+unspecified hotel or cross-day journey. Current V0 transport activities require `transport: {mode, from_activity_id, to_activity_id}`.
 Mode is `WALK`, `TRANSIT`, `DRIVE` or null; endpoints are nonempty activity IDs.
 The new V0 provider schema requires the nullable field on every activity. Its prompt
 requires an object on transport activities and null elsewhere, directed between
@@ -69,9 +69,9 @@ Shared Activity accepts historical missing/null declarations and omits them on o
 preserving the old activity wire shape. A present object survives nested PlanningResult
 serialization; a declaration on a non-transport activity fails structural validation.
 V1-V3 provider DTOs do not gain the field. V0 keeps its tool-free generation path and
-does not validate/repair endpoint feasibility or create application-owned transfers.
-Independent evaluation retains invalid associations and unknown modes, with separate
-review precedence; see the [intake contract](contracts/0002-intake-identity-usage.md#claims)
+checks declared endpoint structure without verifying travel feasibility or creating application-owned transfers.
+Historical evaluation retains invalid associations and unknown modes with separate
+review precedence; new-wire associations must identify one consecutive primary pair; see the [intake contract](contracts/0002-intake-identity-usage.md#claims)
 and [development acceptance](records/evaluation/intake-identity-usage.md#v0-structured-transport-2026-10-05).
 
 V1-V3 primary model DTOs forbid declared transport activities. A violation fails generation
@@ -118,7 +118,9 @@ The ordinary first-generation objective is full requested-date coverage with nor
 distinct main visits per full day. Explicit rest/pace, long required visits and available
 evidence take precedence; the target cannot justify filler, fabricated places or repeats.
 Current model activities declare their role; historical missing roles default to unknown.
-Semantic eligibility controls canonical primary qualification independently of model relabeling.
+New-wire non-primary declarations cannot be promoted by a venue eligibility assessment.
+Canonical qualification of a declared visit remains separate from its role; legacy
+activity qualification keeps its original semantic policy.
 
 [GenerationDiagnostics](../backend/app/schemas/generation_diagnostics.py) is application-owned
 and optional for historical results. It is computed after version output/date/identity checks,
@@ -220,3 +222,203 @@ Activity costs alone cannot certify a whole-trip budget when accommodation/trans
 other in-scope amounts are unobserved. No planner whole-budget factual validator is claimed.
 The independent evaluator's implemented/deferred metric boundary remains in
 [evaluation architecture](0006-independent-evaluation.md) and its contracts.
+
+## Activity semantics contract (phase 2)
+
+Status: **Accepted on 2026-10-16; implemented under Issue #172 and delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174).**
+[Issue #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
+owns implementation and the accepted-case impact audit. Historical `itinerary_1/2`
+and evaluator policies remain authoritative for existing material. The
+[impact record](records/evaluation/intake-identity-usage.md#activity-semantics-design-and-accepted-case-audit-2026-10-15)
+identifies the audited selections, actual supplementary review and evidence limits.
+
+### Planning meaning and wire
+
+Current generation uses the `itinerary_3` wire, with the existing activity identifiers and
+source ownership, an explicit activity kind and a required `time_use` field.
+Provider DTOs require these declarations; legacy domain readers retain absent fields.
+
+| Term | Meaning |
+| --- | --- |
+| Primary visit | A selected principal sightseeing/experience occurrence, declared as `main_poi`; factual identity is checked independently. |
+| Non-primary activity | A meal, rest, walk or other supporting activity declared as `generic_activity`; it can occupy planned time without increasing the main-visit count. |
+| Scheduled time use | `time_use=scheduled`: the submitted plan assigns the activity to its start/end interval. It need not be booked, mandatory for the traveller or impossible to reschedule. |
+| Free window | `time_use=free_window`: the interval is available for discretionary use; no activity commitment is adopted for occupancy. A suggestion inside it is not a scheduled primary visit. |
+| Fixed-time constraint | An independently interpreted user requirement/reservation-time claim; separate from whether an activity occupies the submitted plan. |
+
+Changing tomorrow's plan is different from evaluating today's submitted plan.
+A movable 11:00-12:00 walk can be scheduled and occupy that hour. Calling a walk
+relaxed or unstructured is not a declaration of a free window. Booking status,
+pace and time use must not be inferred from each other.
+
+| `activity_kind` | Legal `time_use` | Identity and counting |
+| --- | --- | --- |
+| `main_poi` | `scheduled` | One declared primary occurrence on its explicit date; preserve the place claim and independently assess identity. |
+| `generic_activity` | `scheduled` or `free_window` | Explicitly non-primary; the time-use choice controls whether it occupies the plan. A venue name alone does not promote a supporting activity to a visit. |
+| `free_time` | `free_window` | An unassigned interval. A specifically scheduled rest/meal uses `generic_activity` instead. |
+| `transport` | `scheduled`, V0 only | One declared journey with directed occurrence endpoints; duration remains a model estimate. |
+
+`unknown` remains readable in historical wires but is not a valid kind for a
+newly accepted `itinerary_3` generation. Missing/null `time_use` is not defaulted.
+Named optional principal visits belong in unscheduled references rather than
+being counted as scheduled visits. A generic free-window suggestion must not
+claim a completed booking, confirmed admission or a required visit's fulfillment.
+An original hard required visit is still checked independently; changing its
+output label does not remove that obligation or prove fulfillment.
+
+A primary park visit must be declared as such and carry its actual proposed
+place name; V0 may use a name without an external ID. V1-V3 retain authorized
+supplied-identity ownership. An unspecified green space is not turned into a
+named park by normalization, nearby context or a reviewer. Named non-primary
+meal/rest locations remain legal without becoming main visits.
+
+Retain valid explicit dates, offsets and positive intervals, unique occurrence
+IDs and declared day membership. For a free window, clocks bound availability;
+for scheduled use they bound planned occupancy. The normalized activity array
+is the submitted intended sequence. The evaluator preserves that sequence rather
+than inventing a different journey when times conflict. Overlap and infeasible
+travel remain quality failures/UNKNOWN; structural acceptance must not erase them.
+
+Each directed consecutive primary-occurrence pair identifies one potential
+journey. A repeated physical venue with a different occurrence ID is still a
+different occurrence. V0 must supply unambiguous structured endpoints and at most
+one selected journey declaration per pair. V1-V3 keep application-owned selected
+transfers; unused alternatives stay diagnostic. Missing transfers remain missing,
+not invented occupied intervals. Null V0 mode remains distinguishable from an
+invalid association and subject to existing hard-mode acceptance restrictions.
+
+### Writer, reader and Repair alignment
+
+| Interface | Implemented boundary |
+| --- | --- |
+| Provider DTOs and prompts | Require the new wire/kind/time-use declaration in V0 and the shared V1-V3 primary output; distinguish scheduled-but-movable activities from free windows. Do not introduce factual verification or tools into V0. |
+| Internal schema and mapping | Preserve `time_use` through `FoundryActivityDTO`, `map_foundry_activity`, `Activity` and nested serialization; validate legal combinations without silently filling, deleting or relabelling content. |
+| Output acceptance | Keep source-owned V1-V3 names/addresses and raw captures. Sorting preserves the time-use value with its original activity. Invalid declarations return a bounded contract failure, without a new automatic retry. |
+| Schedule and V3 Repair | Build occupied and available intervals from explicit time use, separately applying sourced protection constraints. Preserve the field on retained, copied, retimed and serialized activities; model changes require existing permissions. A retime changes the interval, not the activity's semantics by default. |
+| Evaluation intake/projection | Read original declarations as plan claims. Preserve source pointers and time-use provenance; do not import Planner schedule/validation conclusions as independent truth. |
+| API/presentation and saved material | Carry the declaration through allowlisted output/readers; explain suggested availability versus an arranged activity without displaying internal scoring identifiers. Retain the original wire version. |
+
+The pure activity-claim reader handles legacy wires and `itinerary_3`, returning
+normalized declarations and provenance. Projection retains exact source linkage
+and diagnostics. This is the test seam for both adapters. The reader performs no provider
+access, scoring or semantic-prose guessing. Sharing a grammar does not authorize
+sharing Planner truth judgments: independent evaluation reconstructs its view
+from submitted bytes and its own versioned policies.
+
+The new writer must not select an interpretation merely to improve a score.
+Independent review remains available for conflicting supplied claims, legacy
+ambiguity and genuinely uncertain meaning. Explicit structured roles retain the
+precedence established by #53; a title regex is not a semantic adjudicator.
+
+### Numerical scoring policy and limits
+
+The researcher approved two separately versioned changes:
+
+1. **Declaration contract:** the new role/time-use wire makes intended populations
+   readable. On its own it fixes this activity ambiguity, but cannot promise that
+   every other applicability/transport/requirement uncertainty becomes numerical.
+2. **Candidate-population scoring profile:** `rtpeval_declared_population_1`
+   retains a finite inventory under missing factual evidence. This changes applicability accounting;
+   it is not an implementation-only correction or a retrospective old-policy fix.
+
+For this profile, establish a finite source-linked candidate inventory
+before acquisition: one parent check per executable reviewed obligation (retaining
+its component results), one grounding
+and opening candidate per declared primary occurrence, one non-overlap unit per
+declared scheduled activity/selected logical journey, and one route candidate
+per directed consecutive primary pair. Protections retain their separate
+blocking/obligation meaning and do not create extra occupancy units. Explicit
+dates/roles determine daily occurrence counts; retain the existing density table.
+
+Keep candidate membership, factual outcome and verified inapplicability separate.
+An identity failure, unavailable hours, unsupported route observation or uncertain
+physical same-place association cannot erase its candidate. A definitely
+inapplicable check may be labelled N/A with a recorded reason. Applicability that
+is itself uncertain remains an UNKNOWN candidate rather than an unknown-sized
+population. Thus `N = candidate_count - verified_NA_count` is known, and the
+verified fraction is `100 * PASS / N` when N is positive. FAIL and UNKNOWN stay
+distinct in the report, alongside verification coverage and unknown rate. A zero
+verified fraction with zero coverage is not proof of zero real-world compliance.
+
+Preserve explicitly versioned common-mask weighting and density subtraction.
+The new profile's point value concerns retained candidate checks, not a claim
+that all actual-world applicability is known. Do not compare it directly with
+old totals as if only serialization changed. Confirmed N/A exclusions may change
+the denominator; the complete candidate inventory and reasons remain visible.
+
+An offline numerical-population readiness result is distinct from review
+coverage. It establishes role/date membership, occupancy membership, unique
+selected journey associations, reviewed requirement completeness and density
+policy before a promised numerical run. Missing declarations, unresolved legacy
+roles/occupancy, ambiguous journey selection or incomplete executable obligations
+cannot be resolved by this score formula. Return an actionable `needs_population_resolution` preparation status
+for that requested profile; retain the existing ability to report genuine
+unavailable totals under historical policies. Do not change the phase-1 meaning
+of a completed unresolved review into missing work.
+
+The numerical guarantee is conditional on a source-valid, population-ready group,
+a complete independent acquisition receipt (which may contain unavailable facts),
+an established density deduction and at least one scored dimension. All-N/A groups
+remain N/A. Unparseable material, abandoned acquisition, ambiguous membership and
+empty score masks are explicit exceptions, not arbitrary zero/100 scores.
+No new failure-submission score is proposed.
+
+### Historical compatibility and case-07 examples
+
+Keep `itinerary_1/2`, their projection/score policies and their original prepared
+packages readable. New-generation declarations and historical derived semantics
+must have different provenance. An adapter may derive scheduled occupancy for an
+explicit historical primary visit or selected transport under its original
+policy; it must not claim that the model emitted a missing field. Preserve source
+bytes, original pointers/hashes and any source-to-derived mapping. A new projection
+or scoring-policy identifier creates new report bindings, never a relabelled receipt.
+
+Historical generic/free-time cases require existing source-bound decisions or
+explicit uncertainty. Do not insert new time-use defaults into case-07. The five
+remaining cases below are design alternatives only, not adopted corrections:
+
+| Original source | Meaning a future generator must choose explicitly |
+| --- | --- |
+| V1 15 October, 11:00-12:15, Ile de la Cite exploration | A planned 75-minute non-primary walk (`scheduled`), or optional exploration inside a `free_window`; unstructured walking alone selects neither. |
+| V2 15 October, 14:45-17:00, park/wandering | A particular selected main park visit, a planned non-primary outdoor activity, or discretionary availability; do not invent a park from the Eiffel Tower stop. |
+| V2 16 October, 14:15-16:30, green-space/wandering | The same explicit alternatives, without treating the preceding Arc de Triomphe as a park locator. |
+| V2 17 October, 10:00-12:00, park/wandering | The same explicit alternatives; the later Pantheon visit does not determine the morning's role. |
+| V2 17 October, 15:00-16:30, relaxed architecture walk | A scheduled non-primary 90-minute walk or a free window; relaxed pace is independent of time use. |
+
+Additional prospective controls are a movable scheduled walk, a fixed generic
+appointment/rest, an unassigned free window and an explicit named primary visit.
+`main_poi + free_window`, `free_time + scheduled`, unknown kinds, missing time use
+and contradictory selected journeys are structural negative controls. A declared
+visit with unavailable independent opening evidence remains an UNKNOWN check in
+a known population; it is neither automatically PASS nor deleted.
+
+### Selection and verification boundaries
+
+New-wire batches automatically select `rtpeval_declared_population_1` in normal
+`evaluation-run prepare` and quality reporting. Historical batches retain their
+original default profile; opting in uses `--quality-profile rtpeval_declared_population_1`.
+Preparation freezes the candidate inventory, review/source hashes and profile in
+its content digest. Execution/replay verifies that population binding, and reports
+carry the inventory and separately labelled legacy-derived claims. No old receipt
+or snapshot is relabelled. The numerical readiness gate requires established daily
+density policy and executable obligation structure before paid acquisition.
+`activity_claims` describes source declarations and their original-policy derivation;
+the retained role review and candidate inventory separately identify adopted membership.
+It must not be read as a claim that legacy models emitted a missing field.
+
+Non-primary scheduled activities remain route-planning barriers. The application
+never adopts them as new-format primary journey endpoints; an absent selected
+transfer remains missing, while independent route checks retain their consecutive
+primary-pair candidate. Free windows are omitted from occupied adjacency. Repair
+preserves declarations during retiming, copying and window fragmentation and assigns
+scheduled time use to authorized new/replaced main visits.
+Output-role summaries exclude free windows from scheduled identities. A new-wire
+required primary visit is fulfilled only by a declared main visit; a scheduled
+supporting activity at the same venue does not fulfill it.
+
+Offline verification covers DTO/mapping/normalization/CLI seams, schedule and
+permissioned Repair preservation, legal/illegal combinations, directed/duplicate/
+missing transport, overlap and invalid dates, UNKNOWN versus N/A accounting,
+density/common-mask arithmetic, historical readers and immutable sources. Tests use
+synthetic material; they do not adopt corrections to case-07 or refresh any accepted
+result. Live execution and data changes remain separate authorizations.

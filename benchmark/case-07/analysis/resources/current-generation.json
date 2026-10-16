@@ -1,0 +1,1245 @@
+{
+  "schema_version": "rtpeval_research_tradeoffs_report_1",
+  "track": "tradeoffs",
+  "population_completion": {
+    "schema_version": "rtpeval_research_population_report_1",
+    "processing_status": "completed",
+    "track": "population",
+    "applicability": "applicable",
+    "population": {
+      "population_id": "case07-selected-r03",
+      "revision": "3",
+      "unique_requests": 1,
+      "planned_slots": 4
+    },
+    "selection_profile": {
+      "schema_version": "rtpeval_research_profile_1",
+      "profile_id": "case07-retained-first-dispatch-r03",
+      "revision": "3",
+      "population_id": "case07-selected-r03",
+      "population_revision": "3",
+      "source_revision": "2b6a80b437e30dd14826db92f447d52627820e24",
+      "completion_policy_ref": "selected_workflow_1",
+      "declared_at": "2026-10-16T03:39:03.815006+00:00",
+      "timing_basis": "retrospective",
+      "first_attempt_rule": "first_dispatched",
+      "retry_rule": {
+        "selection": "none",
+        "scope": "slot"
+      },
+      "completion_mapping": {
+        "completed": "completed",
+        "failed": "failed",
+        "cancelled": "cancelled",
+        "incomplete": "incomplete",
+        "not_started": "unstarted",
+        "pending": "unknown_pending",
+        "required_mechanism_failed": "failed",
+        "clarification_required": "clarification_required"
+      },
+      "configurations": {
+        "v0": {
+          "path": "p172/g/v0/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "media_type": "application/json",
+          "availability": "available"
+        },
+        "v1": {
+          "path": "p172/g/v1/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "media_type": "application/json",
+          "availability": "available"
+        },
+        "v2": {
+          "path": "p172/g/v2/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "media_type": "application/json",
+          "availability": "available"
+        },
+        "v3": {
+          "path": "p172/g/v3/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      },
+      "selection_basis": "Exact already frozen r03 selection; no replacement or selection by quality. This research envelope was prepared after execution."
+    },
+    "measurement_coverage": {
+      "census_slots": 4,
+      "planned_slots": 4,
+      "missing_census_slots": 0,
+      "completion_declarations": 4,
+      "census_records": 4
+    },
+    "review_coverage": {
+      "applicability": "not_applicable"
+    },
+    "summary": {
+      "planned_completion": {
+        "numerator": 4,
+        "denominator": 4,
+        "unit": "planned_slots",
+        "confirmed_fraction": 1.0,
+        "fraction": 1.0,
+        "lower_bound": 1.0,
+        "upper_bound": 1.0,
+        "unresolved": 0,
+        "availability": "available"
+      },
+      "conditional_completion": {
+        "numerator": 4,
+        "denominator": 4,
+        "unit": "dispatched_first_attempts",
+        "confirmed_fraction": 1.0,
+        "fraction": 1.0,
+        "lower_bound": 1.0,
+        "upper_bound": 1.0,
+        "unresolved": 0,
+        "availability": "available",
+        "unknown_dispatch_slots": 0,
+        "denominator_lower_bound": 4,
+        "denominator_upper_bound": 4
+      },
+      "status_counts": {
+        "completed": 4,
+        "clarification_required": 0,
+        "failed": 0,
+        "cancelled": 0,
+        "incomplete": 0,
+        "unstarted": 0,
+        "unknown_pending": 0
+      },
+      "reason_counts": {
+        "original_dispatch": 4
+      },
+      "attempt_census": {
+        "records": 4,
+        "dispatched": 4,
+        "retry_dispatches": 0
+      }
+    },
+    "by_version": {
+      "v0": {
+        "planned_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "planned_slots",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available"
+        },
+        "conditional_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "dispatched_first_attempts",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available",
+          "unknown_dispatch_slots": 0,
+          "denominator_lower_bound": 1,
+          "denominator_upper_bound": 1
+        },
+        "status_counts": {
+          "completed": 1,
+          "clarification_required": 0,
+          "failed": 0,
+          "cancelled": 0,
+          "incomplete": 0,
+          "unstarted": 0,
+          "unknown_pending": 0
+        },
+        "reason_counts": {
+          "original_dispatch": 1
+        },
+        "attempt_census": {
+          "records": 1,
+          "dispatched": 1,
+          "retry_dispatches": 0
+        }
+      },
+      "v1": {
+        "planned_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "planned_slots",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available"
+        },
+        "conditional_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "dispatched_first_attempts",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available",
+          "unknown_dispatch_slots": 0,
+          "denominator_lower_bound": 1,
+          "denominator_upper_bound": 1
+        },
+        "status_counts": {
+          "completed": 1,
+          "clarification_required": 0,
+          "failed": 0,
+          "cancelled": 0,
+          "incomplete": 0,
+          "unstarted": 0,
+          "unknown_pending": 0
+        },
+        "reason_counts": {
+          "original_dispatch": 1
+        },
+        "attempt_census": {
+          "records": 1,
+          "dispatched": 1,
+          "retry_dispatches": 0
+        }
+      },
+      "v2": {
+        "planned_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "planned_slots",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available"
+        },
+        "conditional_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "dispatched_first_attempts",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available",
+          "unknown_dispatch_slots": 0,
+          "denominator_lower_bound": 1,
+          "denominator_upper_bound": 1
+        },
+        "status_counts": {
+          "completed": 1,
+          "clarification_required": 0,
+          "failed": 0,
+          "cancelled": 0,
+          "incomplete": 0,
+          "unstarted": 0,
+          "unknown_pending": 0
+        },
+        "reason_counts": {
+          "original_dispatch": 1
+        },
+        "attempt_census": {
+          "records": 1,
+          "dispatched": 1,
+          "retry_dispatches": 0
+        }
+      },
+      "v3": {
+        "planned_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "planned_slots",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available"
+        },
+        "conditional_completion": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "dispatched_first_attempts",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available",
+          "unknown_dispatch_slots": 0,
+          "denominator_lower_bound": 1,
+          "denominator_upper_bound": 1
+        },
+        "status_counts": {
+          "completed": 1,
+          "clarification_required": 0,
+          "failed": 0,
+          "cancelled": 0,
+          "incomplete": 0,
+          "unstarted": 0,
+          "unknown_pending": 0
+        },
+        "reason_counts": {
+          "original_dispatch": 1
+        },
+        "attempt_census": {
+          "records": 1,
+          "dispatched": 1,
+          "retry_dispatches": 0
+        }
+      }
+    },
+    "by_repetition": [
+      {
+        "repetition_id": "r03",
+        "planned_completion": {
+          "numerator": 4,
+          "denominator": 4,
+          "unit": "planned_slots",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available"
+        },
+        "conditional_completion": {
+          "numerator": 4,
+          "denominator": 4,
+          "unit": "dispatched_first_attempts",
+          "confirmed_fraction": 1.0,
+          "fraction": 1.0,
+          "lower_bound": 1.0,
+          "upper_bound": 1.0,
+          "unresolved": 0,
+          "availability": "available",
+          "unknown_dispatch_slots": 0,
+          "denominator_lower_bound": 4,
+          "denominator_upper_bound": 4
+        },
+        "status_counts": {
+          "completed": 4,
+          "clarification_required": 0,
+          "failed": 0,
+          "cancelled": 0,
+          "incomplete": 0,
+          "unstarted": 0,
+          "unknown_pending": 0
+        },
+        "reason_counts": {
+          "original_dispatch": 4
+        },
+        "attempt_census": {
+          "records": 4,
+          "dispatched": 4,
+          "retry_dispatches": 0
+        }
+      }
+    ],
+    "by_version_repetition": [
+      {
+        "version": "v0",
+        "repetition_id": "r03",
+        "summary": {
+          "planned_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "planned_slots",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available"
+          },
+          "conditional_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "dispatched_first_attempts",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available",
+            "unknown_dispatch_slots": 0,
+            "denominator_lower_bound": 1,
+            "denominator_upper_bound": 1
+          },
+          "status_counts": {
+            "completed": 1,
+            "clarification_required": 0,
+            "failed": 0,
+            "cancelled": 0,
+            "incomplete": 0,
+            "unstarted": 0,
+            "unknown_pending": 0
+          },
+          "reason_counts": {
+            "original_dispatch": 1
+          },
+          "attempt_census": {
+            "records": 1,
+            "dispatched": 1,
+            "retry_dispatches": 0
+          }
+        }
+      },
+      {
+        "version": "v1",
+        "repetition_id": "r03",
+        "summary": {
+          "planned_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "planned_slots",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available"
+          },
+          "conditional_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "dispatched_first_attempts",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available",
+            "unknown_dispatch_slots": 0,
+            "denominator_lower_bound": 1,
+            "denominator_upper_bound": 1
+          },
+          "status_counts": {
+            "completed": 1,
+            "clarification_required": 0,
+            "failed": 0,
+            "cancelled": 0,
+            "incomplete": 0,
+            "unstarted": 0,
+            "unknown_pending": 0
+          },
+          "reason_counts": {
+            "original_dispatch": 1
+          },
+          "attempt_census": {
+            "records": 1,
+            "dispatched": 1,
+            "retry_dispatches": 0
+          }
+        }
+      },
+      {
+        "version": "v2",
+        "repetition_id": "r03",
+        "summary": {
+          "planned_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "planned_slots",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available"
+          },
+          "conditional_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "dispatched_first_attempts",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available",
+            "unknown_dispatch_slots": 0,
+            "denominator_lower_bound": 1,
+            "denominator_upper_bound": 1
+          },
+          "status_counts": {
+            "completed": 1,
+            "clarification_required": 0,
+            "failed": 0,
+            "cancelled": 0,
+            "incomplete": 0,
+            "unstarted": 0,
+            "unknown_pending": 0
+          },
+          "reason_counts": {
+            "original_dispatch": 1
+          },
+          "attempt_census": {
+            "records": 1,
+            "dispatched": 1,
+            "retry_dispatches": 0
+          }
+        }
+      },
+      {
+        "version": "v3",
+        "repetition_id": "r03",
+        "summary": {
+          "planned_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "planned_slots",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available"
+          },
+          "conditional_completion": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "dispatched_first_attempts",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available",
+            "unknown_dispatch_slots": 0,
+            "denominator_lower_bound": 1,
+            "denominator_upper_bound": 1
+          },
+          "status_counts": {
+            "completed": 1,
+            "clarification_required": 0,
+            "failed": 0,
+            "cancelled": 0,
+            "incomplete": 0,
+            "unstarted": 0,
+            "unknown_pending": 0
+          },
+          "reason_counts": {
+            "original_dispatch": 1
+          },
+          "attempt_census": {
+            "records": 1,
+            "dispatched": 1,
+            "retry_dispatches": 0
+          }
+        }
+      }
+    ],
+    "by_request": [
+      {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "repetition_ids": [
+          "r03"
+        ],
+        "input_ref": {
+          "path": "p172/m/input.json",
+          "sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "planning_request_2"
+        },
+        "metadata": {
+          "input_revision": "2",
+          "execution_revision": "3",
+          "scope": "Selected approved date-only revision; earlier consumed attempts are accounted in separate source cohorts."
+        },
+        "planned_versions": [
+          "v0",
+          "v1",
+          "v2",
+          "v3"
+        ],
+        "summary": {
+          "planned_completion": {
+            "numerator": 4,
+            "denominator": 4,
+            "unit": "planned_slots",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available"
+          },
+          "conditional_completion": {
+            "numerator": 4,
+            "denominator": 4,
+            "unit": "dispatched_first_attempts",
+            "confirmed_fraction": 1.0,
+            "fraction": 1.0,
+            "lower_bound": 1.0,
+            "upper_bound": 1.0,
+            "unresolved": 0,
+            "availability": "available",
+            "unknown_dispatch_slots": 0,
+            "denominator_lower_bound": 4,
+            "denominator_upper_bound": 4
+          },
+          "status_counts": {
+            "completed": 4,
+            "clarification_required": 0,
+            "failed": 0,
+            "cancelled": 0,
+            "incomplete": 0,
+            "unstarted": 0,
+            "unknown_pending": 0
+          },
+          "reason_counts": {
+            "original_dispatch": 4
+          },
+          "attempt_census": {
+            "records": 4,
+            "dispatched": 4,
+            "retry_dispatches": 0
+          }
+        }
+      }
+    ],
+    "quality_candidate_material": {
+      "completed_selected_attempts": 4,
+      "with_result_refs": 4,
+      "missing_result_refs": 0,
+      "non_completed_or_unresolved_slots": 0,
+      "native_qualification": "not_performed"
+    },
+    "all_four": {
+      "rows": [
+        {
+          "case_id": "case-07",
+          "case_revision": "3",
+          "repetition_id": "r03",
+          "status": "completed"
+        }
+      ],
+      "excluded_not_all_four": 0,
+      "completion": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "request_repetitions",
+        "confirmed_fraction": 1.0,
+        "fraction": 1.0,
+        "lower_bound": 1.0,
+        "upper_bound": 1.0,
+        "unresolved": 0,
+        "availability": "available"
+      }
+    },
+    "slots": [
+      {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v0",
+        "repetition_id": "r03",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "status": "completed",
+        "reason_type": "original_dispatch",
+        "primary_attempt": {
+          "group_id": "case-07",
+          "run_id": "case-07-r03-v0-01",
+          "version": "v0",
+          "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "dispatched": true,
+          "dispatched_at": "2026-10-16T02:12:05.948097+00:00",
+          "execution_metadata": {
+            "dispatch_mode": "awaited_single_invocation"
+          },
+          "case_id": "case-07",
+          "case_revision": "3",
+          "repetition_id": "r03",
+          "attempt_id": "case-07-r03-v0-01",
+          "reason_type": "original_dispatch",
+          "order": 1,
+          "prior_attempt_id": null,
+          "producer_metadata_ref": {
+            "path": "p172/g/v0/planner-dispatch.json",
+            "sha256": "e731f1be354e19410632a419b97090fedf5e9062fa6710e246133abaf8ea0b8b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_planner_dispatch_1"
+          },
+          "completion_ref": {
+            "path": "p172/g/v0/producer-completion.json",
+            "sha256": "ca3c904e9241f03fd2367bc473b930cd5691299d2e7d171e41b0fb922d301ae9",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "result_ref": {
+            "path": "p172/g/v0/result.json",
+            "sha256": "16d9c12a2662def5b0a1889049f29eb946cc0248cde1d62610badbd38f27d86a",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "usage_ref": {
+            "path": "p172/g/v0/usage.json",
+            "sha256": "4320fddf972cd9bdcd20e6081d5f46da8c19a2d0606382d420393177d74d8acf",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_usage_1"
+          },
+          "provenance_ref": {
+            "path": "p172/q/sources/g/v0/producer-declaration-0-v0.json",
+            "sha256": "d52a22efe0dac3287825be92d3bd254ad39e070fddd78b0424cecfabf54828d6",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "generation_provenance_ref": {
+            "path": "p172/g/v0/provenance.json",
+            "sha256": "5700f81b4e2181cbec4ae498ca226c7c615c3d13be0bfe17b4ee9b45c85fa6c1",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "status": "completed",
+          "producer_completion": {
+            "declared_by": "rtpeval.generate/selected_workflow_1",
+            "declared_at": "2026-10-16T02:13:05.500326+00:00",
+            "policy_ref": "selected_workflow_1",
+            "producer_policy_ref": "selected_workflow_1",
+            "workflow_status": "completed",
+            "required_mechanisms": {
+              "generation": "completed"
+            },
+            "observations": [],
+            "failure_type": null,
+            "operator_selection_ref": {
+              "path": "../../generation-selection-7ef52b3f13b24cbcb7828529ab5ef0f5.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            },
+            "operator_config_ref": {
+              "path": "../../selection.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            }
+          }
+        },
+        "attempts": [
+          {
+            "$case_material_ref": {
+              "path": "analysis/resources/current-generation.json",
+              "pointer": "/population_completion/slots/0/primary_attempt",
+              "expanded_semantic_sha256": "0f3e1d1034c37badd906cb55a575dfc616f689628ffdb35ca342e4ec757e0d82"
+            }
+          }
+        ],
+        "retry_outcome": null
+      },
+      {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v1",
+        "repetition_id": "r03",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "status": "completed",
+        "reason_type": "original_dispatch",
+        "primary_attempt": {
+          "group_id": "case-07",
+          "run_id": "case-07-r03-v1-01",
+          "version": "v1",
+          "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "dispatched": true,
+          "dispatched_at": "2026-10-16T02:15:18.224539+00:00",
+          "execution_metadata": {
+            "dispatch_mode": "awaited_single_invocation"
+          },
+          "case_id": "case-07",
+          "case_revision": "3",
+          "repetition_id": "r03",
+          "attempt_id": "case-07-r03-v1-01",
+          "reason_type": "original_dispatch",
+          "order": 1,
+          "prior_attempt_id": null,
+          "producer_metadata_ref": {
+            "path": "p172/g/v1/planner-dispatch.json",
+            "sha256": "c53b8f24aee3f7ff02983f34378ba009297044997cbc7f7d9811d1816fb0c0ff",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_planner_dispatch_1"
+          },
+          "completion_ref": {
+            "path": "p172/g/v1/producer-completion.json",
+            "sha256": "e747082abeda8226989c7d6b3efe3bfad39c84afc88161c1168c1ebb31cccc43",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "result_ref": {
+            "path": "p172/g/v1/result.json",
+            "sha256": "3de7ffdd730584e881b25c4b94fe89c50f3468ea131a6e79b534a360fe30c784",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "usage_ref": {
+            "path": "p172/g/v1/usage.json",
+            "sha256": "e59db23ea55c756750b3994518cbdd80328de0da768088cd49057ae087da68c8",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_usage_1"
+          },
+          "provenance_ref": {
+            "path": "p172/q/sources/g/v1/producer-declaration-0-v1.json",
+            "sha256": "7e189a82a0a1d8924fa0520b8091445e9a5a43544da5affc484b95c6a8971880",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "generation_provenance_ref": {
+            "path": "p172/g/v1/provenance.json",
+            "sha256": "867f21ff72f6e83c87a8dcf83460e9221cfdc530cb098cf52364eca03a907217",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "status": "completed",
+          "producer_completion": {
+            "declared_by": "rtpeval.generate/selected_workflow_1",
+            "declared_at": "2026-10-16T02:17:58.153581+00:00",
+            "policy_ref": "selected_workflow_1",
+            "producer_policy_ref": "selected_workflow_1",
+            "workflow_status": "completed",
+            "required_mechanisms": {
+              "generation": "completed"
+            },
+            "observations": [],
+            "failure_type": null,
+            "operator_selection_ref": {
+              "path": "../../generation-selection-336ef643a27a46f6b825fbe182d77a7c.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            },
+            "operator_config_ref": {
+              "path": "../../selection.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            }
+          }
+        },
+        "attempts": [
+          {
+            "$case_material_ref": {
+              "path": "analysis/resources/current-generation.json",
+              "pointer": "/population_completion/slots/1/primary_attempt",
+              "expanded_semantic_sha256": "38fd2d64bd348e20e11f8a39724029550c4e312d8146c03975503763f5bf5394"
+            }
+          }
+        ],
+        "retry_outcome": null
+      },
+      {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v2",
+        "repetition_id": "r03",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "status": "completed",
+        "reason_type": "original_dispatch",
+        "primary_attempt": {
+          "group_id": "case-07",
+          "run_id": "case-07-r03-v2-01",
+          "version": "v2",
+          "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "dispatched": true,
+          "dispatched_at": "2026-10-16T02:19:34.822580+00:00",
+          "execution_metadata": {
+            "dispatch_mode": "awaited_single_invocation"
+          },
+          "case_id": "case-07",
+          "case_revision": "3",
+          "repetition_id": "r03",
+          "attempt_id": "case-07-r03-v2-01",
+          "reason_type": "original_dispatch",
+          "order": 1,
+          "prior_attempt_id": null,
+          "producer_metadata_ref": {
+            "path": "p172/g/v2/planner-dispatch.json",
+            "sha256": "dc6db702b3e3b8274831ea6e485d4e8ffe54db1bde1206050290581ec0f1db1e",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_planner_dispatch_1"
+          },
+          "completion_ref": {
+            "path": "p172/g/v2/producer-completion.json",
+            "sha256": "98254f5a982369ff5a14a70e3d99a76d0fbb468331e7cbdebe1c32fce53aece3",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "result_ref": {
+            "path": "p172/g/v2/result.json",
+            "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "usage_ref": {
+            "path": "p172/g/v2/usage.json",
+            "sha256": "5f41f7f6bb78cae3ebd672184dbe9ddb04deaf739bc3b6ea649565ff09802e08",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_usage_1"
+          },
+          "provenance_ref": {
+            "path": "p172/q/sources/g/v2/producer-declaration-0-v2.json",
+            "sha256": "08c57359210ad184c98ee1d8c76a44a6e1140f1dc8912ca20ab9791e7711564a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "generation_provenance_ref": {
+            "path": "p172/g/v2/provenance.json",
+            "sha256": "12a06cdee6bbdfba9dcb1bf1ed68bf83c4a4cccfec97bebbaca25c8f1160910a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "status": "completed",
+          "producer_completion": {
+            "declared_by": "rtpeval.generate/selected_workflow_1",
+            "declared_at": "2026-10-16T02:22:30.282736+00:00",
+            "policy_ref": "selected_workflow_1",
+            "producer_policy_ref": "selected_workflow_1",
+            "workflow_status": "completed",
+            "required_mechanisms": {
+              "generation": "completed",
+              "retrieval": "completed"
+            },
+            "observations": [
+              {
+                "mechanism": "retrieval",
+                "status": "partial"
+              }
+            ],
+            "failure_type": null,
+            "operator_selection_ref": {
+              "path": "../../generation-selection-11ba792bc626445a837863a1c562daee.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            },
+            "operator_config_ref": {
+              "path": "../../selection.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            }
+          }
+        },
+        "attempts": [
+          {
+            "$case_material_ref": {
+              "path": "analysis/resources/current-generation.json",
+              "pointer": "/population_completion/slots/2/primary_attempt",
+              "expanded_semantic_sha256": "98d319d4ddfee6b4733ad80f864ae69344312a3fd98898db8be2a72c4d6dcec8"
+            }
+          }
+        ],
+        "retry_outcome": null
+      },
+      {
+        "case_id": "case-07",
+        "case_revision": "3",
+        "version": "v3",
+        "repetition_id": "r03",
+        "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "status": "completed",
+        "reason_type": "original_dispatch",
+        "primary_attempt": {
+          "group_id": "case-07",
+          "run_id": "case-07-r03-v3-01",
+          "version": "v3",
+          "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "dispatched": true,
+          "dispatched_at": "2026-10-16T02:24:36.017119+00:00",
+          "execution_metadata": {
+            "dispatch_mode": "awaited_single_invocation"
+          },
+          "case_id": "case-07",
+          "case_revision": "3",
+          "repetition_id": "r03",
+          "attempt_id": "case-07-r03-v3-01",
+          "reason_type": "original_dispatch",
+          "order": 1,
+          "prior_attempt_id": null,
+          "producer_metadata_ref": {
+            "path": "p172/g/v3/planner-dispatch.json",
+            "sha256": "68ce8a2d50b7cf5e3a6f0ece93876310e3c516fa942836a81029c0d47fea7070",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_planner_dispatch_1"
+          },
+          "completion_ref": {
+            "path": "p172/g/v3/producer-completion.json",
+            "sha256": "adf97ad8776314182f90ffc3aacf1b7500a9643c113f49279b22dca3991cff9f",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "result_ref": {
+            "path": "p172/g/v3/result.json",
+            "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+            "media_type": "application/json",
+            "availability": "available"
+          },
+          "usage_ref": {
+            "path": "p172/g/v3/usage.json",
+            "sha256": "69081919f2ca74fd250d6797b1f72fb9d6b07873a2bbf795bd0329b26b6ed117",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_usage_1"
+          },
+          "provenance_ref": {
+            "path": "p172/q/sources/g/v3/producer-declaration-0-v3.json",
+            "sha256": "212c4d3ccfb32ad12f0e1609c8a5d10e153afc9b049e907082bf78361678ba6e",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "generation_provenance_ref": {
+            "path": "p172/g/v3/provenance.json",
+            "sha256": "e0091c15ff1ca67aba8a8c0a48d7bf108b62269cf7d5eab97dd5ff2336923bc3",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_provenance_1"
+          },
+          "status": "completed",
+          "producer_completion": {
+            "declared_by": "rtpeval.generate/selected_workflow_1",
+            "declared_at": "2026-10-16T02:26:45.707518+00:00",
+            "policy_ref": "selected_workflow_1",
+            "producer_policy_ref": "selected_workflow_1",
+            "workflow_status": "completed",
+            "required_mechanisms": {
+              "generation": "completed",
+              "retrieval": "completed",
+              "validation": "completed",
+              "repair": "not_applicable"
+            },
+            "observations": [
+              {
+                "mechanism": "retrieval",
+                "status": "partial"
+              },
+              {
+                "mechanism": "repair",
+                "status": "not_applicable",
+                "reason": "no_authorized_targets"
+              }
+            ],
+            "failure_type": null,
+            "operator_selection_ref": {
+              "path": "../../generation-selection-f32dcc8f93e4411c9a4ae7cf3d7eb5e3.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            },
+            "operator_config_ref": {
+              "path": "../../selection.json",
+              "sha256": "0d87c30ffb61507c0ccd00b91d3e88f0962dcfbfcea826a49e16fc6196660d60",
+              "media_type": "application/json",
+              "availability": "available"
+            }
+          }
+        },
+        "attempts": [
+          {
+            "$case_material_ref": {
+              "path": "analysis/resources/current-generation.json",
+              "pointer": "/population_completion/slots/3/primary_attempt",
+              "expanded_semantic_sha256": "9a7116c12a5cbcd433d41863ce08ff6f9bcb5473017c577464ac8a49765c7349"
+            }
+          }
+        ],
+        "retry_outcome": null
+      }
+    ],
+    "source_bindings": [
+      {
+        "path": "c03/m/census-qualified.json",
+        "sha256": "a83a105fc7b4c4e62fb8a1f5fda5298052778686dab8a2fa1614b87fb4e6c874",
+        "schema_version": "rtpeval_research_census_1"
+      },
+      {
+        "path": "c03/m/population.json",
+        "sha256": "61193ef4dba37f8ef48c96c7ae8673332a069b24ce73a07d8ef0339e4a1d1888",
+        "schema_version": "rtpeval_research_population_1"
+      },
+      {
+        "path": "c03/m/profile.json",
+        "sha256": "85543530eb14269bed4811690a1b7a324af6d74a3aa44d563f9247ccb580a7d8",
+        "schema_version": "rtpeval_research_profile_1"
+      },
+      {
+        "path": "p172/g/v0/planner-dispatch.json",
+        "sha256": "e731f1be354e19410632a419b97090fedf5e9062fa6710e246133abaf8ea0b8b",
+        "schema_version": "rtpeval_planner_dispatch_1"
+      },
+      {
+        "path": "p172/g/v0/producer-completion.json",
+        "sha256": "ca3c904e9241f03fd2367bc473b930cd5691299d2e7d171e41b0fb922d301ae9",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v0/result.json",
+        "sha256": "16d9c12a2662def5b0a1889049f29eb946cc0248cde1d62610badbd38f27d86a",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v0/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v0/usage.json",
+        "sha256": "4320fddf972cd9bdcd20e6081d5f46da8c19a2d0606382d420393177d74d8acf",
+        "schema_version": "rtpeval_usage_1"
+      },
+      {
+        "path": "p172/g/v1/planner-dispatch.json",
+        "sha256": "c53b8f24aee3f7ff02983f34378ba009297044997cbc7f7d9811d1816fb0c0ff",
+        "schema_version": "rtpeval_planner_dispatch_1"
+      },
+      {
+        "path": "p172/g/v1/producer-completion.json",
+        "sha256": "e747082abeda8226989c7d6b3efe3bfad39c84afc88161c1168c1ebb31cccc43",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v1/result.json",
+        "sha256": "3de7ffdd730584e881b25c4b94fe89c50f3468ea131a6e79b534a360fe30c784",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v1/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v1/usage.json",
+        "sha256": "e59db23ea55c756750b3994518cbdd80328de0da768088cd49057ae087da68c8",
+        "schema_version": "rtpeval_usage_1"
+      },
+      {
+        "path": "p172/g/v2/planner-dispatch.json",
+        "sha256": "dc6db702b3e3b8274831ea6e485d4e8ffe54db1bde1206050290581ec0f1db1e",
+        "schema_version": "rtpeval_planner_dispatch_1"
+      },
+      {
+        "path": "p172/g/v2/producer-completion.json",
+        "sha256": "98254f5a982369ff5a14a70e3d99a76d0fbb468331e7cbdebe1c32fce53aece3",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v2/result.json",
+        "sha256": "384270008eb22ee29de9247bf679cdbe1700b96717716187a1b8b09f18ebc754",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v2/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v2/usage.json",
+        "sha256": "5f41f7f6bb78cae3ebd672184dbe9ddb04deaf739bc3b6ea649565ff09802e08",
+        "schema_version": "rtpeval_usage_1"
+      },
+      {
+        "path": "p172/g/v3/planner-dispatch.json",
+        "sha256": "68ce8a2d50b7cf5e3a6f0ece93876310e3c516fa942836a81029c0d47fea7070",
+        "schema_version": "rtpeval_planner_dispatch_1"
+      },
+      {
+        "path": "p172/g/v3/producer-completion.json",
+        "sha256": "adf97ad8776314182f90ffc3aacf1b7500a9643c113f49279b22dca3991cff9f",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v3/result.json",
+        "sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v3/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "schema_version": null
+      },
+      {
+        "path": "p172/g/v3/usage.json",
+        "sha256": "69081919f2ca74fd250d6797b1f72fb9d6b07873a2bbf795bd0329b26b6ed117",
+        "schema_version": "rtpeval_usage_1"
+      },
+      {
+        "path": "p172/m/input.json",
+        "sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+        "schema_version": "planning_request_2"
+      },
+      {
+        "path": "p172/q/sources/g/v0/producer-declaration-0-v0.json",
+        "sha256": "d52a22efe0dac3287825be92d3bd254ad39e070fddd78b0424cecfabf54828d6",
+        "schema_version": "rtpeval_provenance_1"
+      },
+      {
+        "path": "p172/q/sources/g/v1/producer-declaration-0-v1.json",
+        "sha256": "7e189a82a0a1d8924fa0520b8091445e9a5a43544da5affc484b95c6a8971880",
+        "schema_version": "rtpeval_provenance_1"
+      },
+      {
+        "path": "p172/q/sources/g/v2/producer-declaration-0-v2.json",
+        "sha256": "08c57359210ad184c98ee1d8c76a44a6e1140f1dc8912ca20ab9791e7711564a",
+        "schema_version": "rtpeval_provenance_1"
+      },
+      {
+        "path": "p172/q/sources/g/v3/producer-declaration-0-v3.json",
+        "sha256": "212c4d3ccfb32ad12f0e1609c8a5d10e153afc9b049e907082bf78361678ba6e",
+        "schema_version": "rtpeval_provenance_1"
+      },
+      {
+        "path": "research-r03-complete.json",
+        "sha256": "f2aaa965b049dc18295dfb51af6928cabdabf1780c0973fc024cfbc5b2cb50b9",
+        "schema_version": "rtpeval_research_declaration_1"
+      }
+    ],
+    "population_digest": "b3633f27cda4e00e8cc20a14301e07293ef3e73ec18de9506182efd790b66c5d",
+    "source_digest": "ae139633faea4054ea68cb25b7513beb92744a98232c20f97866f71849b66515",
+    "diagnostics": [],
+    "quality_qualification": "unchanged_native_four_version_intake",
+    "semantic_sha256": "9d22a84f78ef118ad2ab1bb12d24319ce648e5b446032fdd671e37417778283c"
+  },
+  "generation_scope": "planner_only; repair_is_a_subset; evaluator_and_frozen_simulation_excluded",
+  "measurement_coverage": {
+    "planned_slots": 4,
+    "dispatched_attempts": 4,
+    "missing_usage_attempts": 0,
+    "unknown_or_pending_slots": 0
+  },
+  "review_coverage": {
+    "native_quality_groups": 0,
+    "reviewer_execution": "not_performed"
+  },
+  "population_digest": "b3633f27cda4e00e8cc20a14301e07293ef3e73ec18de9506182efd790b66c5d",
+  "semantic_sha256": "6b7c944836254d3eaffb5893d2dbd596e0a10a16bf19dcad798841aa418c8d91",
+  "source_digest": "bcd3357778988a6bc1b7b4ffc040084154668c7b2512976866f402c6a025a12e"
+}

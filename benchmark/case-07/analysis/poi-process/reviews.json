@@ -1,0 +1,10 @@
+{
+  "schema_version": "rtpeval_research_relevance_reviews_1",
+  "records": {
+    "$case_material_ref": {
+      "path": "analysis/poi-process/relevance.json",
+      "pointer": "/independent_reviews",
+      "expanded_semantic_sha256": "ef937129a8fdeb2da5444ed7d67995bfce4c1fae7b692dc808cfc77896284d1f"
+    }
+  }
+}
