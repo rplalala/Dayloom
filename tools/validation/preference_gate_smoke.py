@@ -158,15 +158,26 @@ def capture_wire(row):
     if len(messages) != 1:
         raise ValueError("Expected exactly one captured structured response")
     payload = json.loads(messages[0]["text"])
-    if row.get("model_metadata", {}).get("schema_version") == "preference_draft_13":
+    version = row.get("model_metadata", {}).get("schema_version")
+    if version in {"preference_draft_13", "preference_draft_14"}:
         from backend.app.llm.azure_foundry.dto import FoundryCurrentInterpretationDTO
-        from backend.app.llm.azure_foundry.requirement_wire import SourceSpans, restore_current
+        from backend.app.llm.azure_foundry.requirement_wire import (
+            IndexedSourceSpans,
+            SourceSpans,
+            restore_current,
+        )
         from backend.app.schemas.request import PlanningRequest
 
         original = PlanningRequest.model_validate(row["input"])
         prompt = shared.preference_prompt(original, date.fromisoformat(row["reference_date"]))
-        spans = SourceSpans(prompt, original.additional_preferences)
-        dto = FoundryCurrentInterpretationDTO.model_validate(restore_current(payload, spans))
+        indexed = version == "preference_draft_14"
+        spans = (IndexedSourceSpans if indexed else SourceSpans)(
+            prompt, original.additional_preferences
+        )
+        binding = row["model_metadata"].get("source_request_sha256") if indexed else None
+        dto = FoundryCurrentInterpretationDTO.model_validate(
+            restore_current(payload, spans, request_sha256=binding)
+        )
     else:
         dto = FoundryInterpretationDTO.model_validate(payload)
     row["strict_parsed_dto"] = dto.model_dump(mode="json")

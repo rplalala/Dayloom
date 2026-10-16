@@ -40,7 +40,7 @@ from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.model_references import INSTRUCTION
 
 
-def requirement_wire_format(*, current=False):
+def requirement_wire_format(*, current=False, indexed=False):
     """Static DTO schema using the documented Azure Responses subset."""
     schema = (
         FoundryCurrentInterpretationDTO if current else FoundryInterpretationDTO
@@ -48,7 +48,7 @@ def requirement_wire_format(*, current=False):
     if current:
         from backend.app.llm.azure_foundry.requirement_wire import current_schema
 
-        schema = current_schema(schema)
+        schema = current_schema(schema, indexed=indexed)
 
     def enums(node):
         if isinstance(node, dict):
@@ -64,7 +64,11 @@ def requirement_wire_format(*, current=False):
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "PreferenceDraftV13" if current else "PreferenceDraftV10",
+            "name": "PreferenceDraftV14"
+            if indexed
+            else "PreferenceDraftV13"
+            if current
+            else "PreferenceDraftV10",
             "strict": True,
             "schema": schema,
         },
@@ -141,7 +145,7 @@ class AzureFoundryStructuredLLMClient:
             "deployment": deployment,
             "api": "responses/v1",
             "max_retries": 0,
-            "contract": "preference_draft_13",
+            "contract": "preference_draft_14",
         }
         transport_options = {}
         if http_client is not None:
@@ -201,8 +205,10 @@ class AzureFoundryStructuredLLMClient:
     @staged("requirements")
     async def _interpret(self, system_prompt, user_prompt):
         from backend.app.llm.azure_foundry.requirement_wire import (
+            IndexedSourceSpans,
             SourceSpans,
             current_prompt,
+            indexed_prompt,
             planning_envelope,
             restore_current,
         )
@@ -213,24 +219,44 @@ class AzureFoundryStructuredLLMClient:
             # Frozen response readers select the historical contract explicitly.
             envelope = None
         spans = None
+        indexed = (
+            envelope is not None
+            and self._requirement_config.get("contract", "preference_draft_14")
+            == "preference_draft_14"
+        )
+        source_request_sha256 = None
         if envelope is not None:
-            spans = SourceSpans(user_prompt, envelope["additional_preferences"])
+            span_type = IndexedSourceSpans if indexed else SourceSpans
+            spans = span_type(user_prompt, envelope["additional_preferences"])
+            if indexed:
+                source_request_sha256 = spans.request_sha256
             user_prompt = json.dumps({**envelope, "source_spans": spans.inventory()})
-            system_prompt = current_prompt(system_prompt)
-        wire = requirement_wire_format(current=envelope is not None)
+            system_prompt = (
+                indexed_prompt(system_prompt) if indexed else current_prompt(system_prompt)
+            )
+        wire = requirement_wire_format(current=envelope is not None, indexed=indexed)
         base = {
             "request_id": digest(user_prompt),
             "prompt_hash": digest(system_prompt),
             "schema_hash": digest(wire),
             "config_hash": digest(self._requirement_config),
-            "prompt_version": "preference_prompt_20"
+            "prompt_version": "preference_prompt_21"
+            if indexed
+            else "preference_prompt_20"
             if envelope is not None
             else "preference_prompt_19",
-            "schema_version": "preference_draft_13"
+            "schema_version": "preference_draft_14"
+            if indexed
+            else "preference_draft_13"
             if envelope is not None
             else "preference_draft_12",
             "config": self._requirement_config,
         }
+        if indexed:
+            base.update(
+                source_request_sha256=source_request_sha256,
+                source_mapping_sha256=spans.mapping_sha256,
+            )
         self.last_call_metadata = {"call_id": call_id, **base, "secondary_errors": []}
         diagnostics = normalize(secrets=self._capture_secrets)
 
@@ -320,7 +346,7 @@ class AzureFoundryStructuredLLMClient:
                 raise
             stage = "transport_dto"
             if envelope is not None:
-                payload = restore_current(payload, spans)
+                payload = restore_current(payload, spans, request_sha256=source_request_sha256)
             dto = (
                 FoundryCurrentInterpretationDTO
                 if envelope is not None

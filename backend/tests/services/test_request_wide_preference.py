@@ -121,7 +121,7 @@ def test_prompt_and_capture_version_wiring():
         in PREFERENCE_INTERPRETATION_SYSTEM_PROMPT
     )
     assert "missing personal attribution" in PREFERENCE_INTERPRETATION_SYSTEM_PROMPT
-    assert "preference_prompt_20" in inspect.getsource(boundary_identity)
+    assert "preference_prompt_21" in inspect.getsource(boundary_identity)
     assert "preference_prompt_19" in inspect.getsource(AzureFoundryStructuredLLMClient._interpret)
 
 

@@ -48,6 +48,58 @@ def test_required_trip_default_passes_complete_service():
     assert result.daily_pace[0].date is None
 
 
+def test_compact_source_selections_restore_through_complete_interpretation():
+    from backend.tests.versions.v1.test_interpreted_requirements import draft_for
+
+    text = "Café 😊. Café 😊."
+
+    def answer(prompt):
+        spans = prompt["source_spans"]
+        assert spans[8] == {"id": 8, "text": "C"}
+        data = draft_for(text).model_dump(mode="json")
+        data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+        data["semantic_requirements"][0]["source_refs"] = [{"first_ref": 8, "last_ref": 14}]
+        return data
+
+    result = run_wire(answer, text, contract="preference_draft_14")
+    ref = result.semantic_requirements[0].source_refs[0]
+    assert (ref.quote, ref.occurrence, ref.start, ref.end) == ("Café 😊.", 1, 8, 15)
+
+
+@pytest.mark.parametrize("first,last", [(True, 5), (0, False), (-1, 5), (8, 2), (0, 999), ("0", 5)])
+def test_compact_invalid_selections_fail_without_correction(first, last):
+    from backend.tests.versions.v1.test_interpreted_requirements import draft_for
+
+    data = draft_for("I like parks.").model_dump(mode="json")
+    data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+    data["semantic_requirements"][0]["source_refs"] = [{"first_ref": first, "last_ref": last}]
+    with pytest.raises(RequirementBoundaryError) as error:
+        run_wire(data, contract="preference_draft_14")
+    assert error.value.code == "invalid_source_span"
+    assert error.value.errors[0]["loc"] == ("semantic_requirements", 0, "source_refs", 0)
+
+
+def test_compact_mapping_cannot_restore_against_a_foreign_request_binding():
+    from backend.app.llm.azure_foundry.requirement_wire import IndexedSourceSpans, restore_current
+
+    spans = IndexedSourceSpans("request A", "I like parks.")
+    other = IndexedSourceSpans("request B", "I like parks.")
+    with pytest.raises(RequirementBoundaryError, match="source_request_mismatch"):
+        restore_current(wire_empty(), spans, request_sha256=other.request_sha256)
+
+
+def test_compact_schema_has_integer_endpoints_without_large_enumerations():
+    from backend.app.llm.azure_foundry.client import requirement_wire_format
+    from backend.tests.llm.azure_foundry.test_dto import assert_foundry_schema_contract
+
+    schema = requirement_wire_format(current=True, indexed=True)["json_schema"]["schema"]
+    assert_foundry_schema_contract(schema)
+    assert schema["$defs"]["FoundrySourceQuoteDTO"]["properties"] == {
+        "first_ref": {"type": "integer"},
+        "last_ref": {"type": "integer"},
+    }
+
+
 @pytest.mark.parametrize("pace", [[], None, {"date_overrides": []}])
 def test_new_wire_rejects_missing_default_with_field_path(pace):
     data = wire_empty()
