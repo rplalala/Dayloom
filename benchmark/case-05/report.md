@@ -36,6 +36,8 @@ The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#pair
 owns the execution limits and provenance. Original evidence and historical reports
 remain retained; this current view replaces the earlier paired presentation.
 
+Candidate stage records are complete. Independent relevance covers 183 judgments over 61 venues and three interests: **7 relevant and 176 UNKNOWN**, with only 14 venues represented by retained independent observations. Missing descriptions remain unknown; these results do not support complete relevant counts, corpus recall or a general V1/V2 ranking. Complete [daily itineraries](itinerary.md), [candidate process](analysis/poi-process/report.md), [Repair observations](analysis/repair/report.md) and [resources](analysis/resources/report.md) remain available.
+
 ## Material and verification
 
 The [material index](material-index.json) binds public files to original private source hashes and exact JSON subtrees or explicit projections. Reviewed [requirements](requirements/reviewed-requirements.json), [interests](interests/interests.json), shared [runtime policy](generation/runtime-policy.json), schedules, usage and provenance are retained without provider/model raw responses or private transcripts. Public views are not closed native acquisition bundles.

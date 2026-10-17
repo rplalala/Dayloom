@@ -146,9 +146,10 @@ scores, original activities and factual API-hours coverage are unchanged.
 
 The paired overall change is **+55.714286 percentage points**.
 The 17 October 2026 refresh used no model calls, zero Google sends
-and zero retries, for **USD 0** reference cost. Native source, model-response
-and receipt replay passed offline. Model-supported access is not certified opening
-hours, and the paired mask remains separate from the historical primary mask.
+and zero retries, for **USD 0** reference cost. Native source and paired-report
+replay passed offline. Model-response and access-receipt replay are not applicable
+because no assessment was needed. The paired mask remains separate from the
+historical primary mask.
 Removed visits and denominator changes do not prove repair of their old facts.
 No eligible access gap was present, so no model assessment was needed; missing
 route observations remain UNKNOWN.

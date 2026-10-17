@@ -194,7 +194,7 @@ The [lossless draft delta](generation/v3/draft.json) reconstructs the exact orig
 
 Draft daily counts were 3/3/3; final counts are 2/2/2. No model edit, addition or cross-date move was used in this selected real run. Routes were recomputed after deletion. Final-only Nearby references are presentation additions outside Repair and primary visits.
 
-The [independent pair](evaluation/v3-pair/pair-report.json) scores the draft at 77.5 and final at 91.6667, a 14.1667 percentage-point change under the paired evidence/profile. Opening remains partial: three draft UNKNOWN and two final UNKNOWN. The separately accepted four-final opening supplement raises the selected V3 final score to 100 under its model overlay; it does not alter this pair's saved evidence or draft/final scores.
+The [independent pair](evaluation/v3-pair/pair-report.json) scores the original draft at 85.833333 and final-primary at 100, a 14.166667 percentage-point change. Both stages use the same source-bound missing-hours access policy; neither retains an opening UNKNOWN. Original schedules, factual API-hours coverage and the separately accepted four-final primary scores are unchanged.
 
 ## Scheduled RAG matches
 

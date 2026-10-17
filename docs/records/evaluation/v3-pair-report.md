@@ -135,12 +135,11 @@ was not a provider retry. Its file SHA-256 is
 `aa6b0f48e0583b53a54e48e96d0787b7c9735d299353300a5426febb4828d402`.
 Native model responses, HTTP journals, usage, receipts, original source closures and
 review/authorization observations remain private, indexed by each case's material index.
-All eight archives passed fresh-root SHA/length, packet/HTTP receipt and native pair
-replay with zero network attempts and zero old temporary-evidence-root reads; cases
-03/05/07/09 also reproduced their current native same-run research view. Case-07's
-first restoration hit the Windows path-length limit; a short fresh root passed with
-the same archive bytes. The public reference checker also validated case-specific
-delta formats; an initial compaction cycle was removed before final projection checks.
+All eight archives passed fresh-root SHA/length checks and native pair replay;
+the seven cases with model calls also passed packet/HTTP receipt reconstruction.
+These checks made zero network attempts and zero old temporary-evidence-root reads; cases
+03/05/07/09 also reproduced their current native same-run research view. Windows
+restorations require a short fresh root to stay within the local path-length limit. Public reference checks include case-specific delta formats.
 Historical four-final and mechanism subtrees retain their original values and sources.
 
 Public-interface TDD and affected checks passed 114 tests, then an overlapping
@@ -148,10 +147,8 @@ Public-interface TDD and affected checks passed 114 tests, then an overlapping
 null/list access packets raised an uncaught exception. Three public regressions first
 reproduced the defect; type validation corrected it, and 79 affected tests passed.
 Both reviewers rechecked with zero remaining findings. Changed Python Ruff/format and
-diff checks passed. An offline operator price file initially lacked its schema tag;
-correction preceded preparation/execution and made no service request. An existing
-reviewed-edit provenance replay defect was also reproduced and corrected without
-resuming case-09's stopped historical package. No full backend regression was run.
+diff checks passed. An existing reviewed-edit provenance replay defect was also
+reproduced and corrected without resuming case-09's stopped historical package. No full backend regression was run.
 
 `/root/pair_access_standards` and `/root/pair_access_spec` independently reviewed code;
 `/root/paired_access_execute` used `gpt-6.1-sol / medium` for frozen execution only.
