@@ -233,7 +233,7 @@ original source artifacts and historical reports. The density table remains
 
 ### Version-specific identity evaluation
 
-Fresh Primary preparations use `versioned_api_identity_5`, approved under
+Fresh Primary preparations use `versioned_api_identity_6`, approved under
 [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182). Requirement
 subjects and submitted visits have distinct responsibilities. One independent semantic
 subject judgment supplies the same target to all submitted versions; each version's
@@ -255,7 +255,7 @@ and retrieval provenance, complete raw count and candidates. Truncation, a full 
 any pagination field, malformed candidates or conflicting facts for one ID leave no
 usable candidates. Invalid batch/reference linkage remains a material error.
 
-The single `requirement_subject_correspondence_1` batch may select only a supplied
+The single `requirement_subject_correspondence_2` batch may select only a supplied
 candidate owned by its case. The schema requires every reference exactly once; import
 also rejects foreign candidates, incomplete/duplicate decisions, empty or unsupported
 citations and conflicting address-presence assessments. Names may differ through
@@ -271,8 +271,17 @@ is `not_supplied`. Other locations remain `explicit_constraint`, requiring a sup
 typed component/street or complete Google-supported address equivalence at the supplied
 precision. Unverified compound qualifiers remain unresolved; they are not discarded.
 Typed malformed/conflicting evidence cannot be overridden by formatted text. Destination
-tokens must match locality/administrative and country evidence, or exact address tokens
-when typed components are absent. No case-specific venue aliases or accent stripping exist.
+tokens must match typed city/administrative and country evidence, or exact address tokens
+when typed components are absent. Policy 2 also treats `postal_town` as city evidence.
+It augments the existing city/administrative destination evidence and must overlap any
+supplied `locality` aliases. A postal-town/locality conflict cannot be overridden by an
+administrative match; consistent administrative-area destinations remain supported.
+Country qualifiers use the supplied typed long/short values. Duplicate
+conflicting components, wrong cities/countries and missing geographic support leave the
+target unresolved; formatted text cannot override them. Explicit location constraints
+use typed components or complete address equivalence; an untyped formatted token cannot
+bypass postal-town evidence. This extension affects common subjects only. No case-specific
+venue aliases or accent stripping exist.
 
 A supported target projects to the existing four version-owned source/reference IDs,
 with `evidence_reference_id` linking their common acquisition reference and
@@ -320,14 +329,24 @@ reconstructs eligibility, validates the selected operation's sole captured send 
 recomputes the full identity report. Common subjects have an exact packet/source binding;
 no response is rebound across subject revisions. Fresh V0 packets exclude subjects.
 The complete replay capsule contains both distinct materials and their provenance.
+The unchanged preparation-3 envelope freezes `subject_policy`: fresh packages select
+`requirement_subject_correspondence_2` / packet 2 / identity policy 6. Previously prepared
+policy-1 packages select packet 1 / identity policy 5 and retain the former geographic
+checks, exact packet bytes and recorded verdicts. An unsupported or missing selector is
+rejected before execution; changing a selector cannot rebind a saved response. Opening
+and route consumers honor the selected identity policy. No new send or budget allowance
+is introduced by the postal-town extension.
 
 Offline callers explicitly select `common_subjects=True`, or CLI `--common-subjects`
-with `--prepare-subjects` / `--subject-result`. `--prepare` then prepares V0 visits only.
+with `--prepare-subjects` / `--subject-result`. Explicit
+`--subject-policy requirement_subject_correspondence_1` selects the earlier common strategy;
+Python callers use `policy_version` for subject packets/imports and `subject_policy` for
+the versioned resolver. `--prepare` then prepares V0 visits only.
 These commands send nothing. The default low-level resolver/packet API and CLI without
 that flag retain policy 4 / `v0_identity_correspondence_3` for existing offline callers:
 version-owned targets, V0-only target correspondence, literal V1-V3 target names and
 whole-address comparisons, including target FAIL components. Preparations 1/2 retain
-their original stage inventory and policies. Policies 1-4 and saved responses remain
+their original stage inventory and policies. Policies 1-5 and saved responses remain
 replayable under their declared bindings; exact archived execution replay may require
 the retained producer implementation. New policies produce separate reports and do not
 replace historical inputs, failures or scores. Score arithmetic and Planner V0-V3 behavior

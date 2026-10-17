@@ -2173,6 +2173,10 @@ city/country location was compared with an entire street address. A target-level
 FAIL then contaminated an exclusion requirement despite no confirmed excluded visit.
 Changing the name alone or dropping the location alone did not resolve both defects;
 this diagnosis justified separate semantic correspondence and geographic-purpose handling.
+The subsequent case-10 handoff identified another independent blocker: London was typed
+`postal_town`, which the former destination checker ignored even after name correspondence.
+That supplied diagnosis was reproduced through a minimal source-bound fixture without
+rewriting the original user name, null location or candidate city type.
 
 [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182) owns the approved
 generic correction. Review base was `57ead849f8a0c783c3b645fc1787f34e13ed0b49`;
@@ -2180,6 +2184,14 @@ implementation `87dab1b` introduced independently sourced common subjects, prosp
 identity/preparation/schedule policies, explicit stage pricing and preserved visit checks.
 The current [identity contract](../../contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation)
 owns the detailed rules. Historical policies and responses remain distinct.
+
+The postal-town extension starts from `de60002` and is implemented in `8676164`, with
+administrative-destination review correction `cc959ba`. It adds
+subject policy 2 / packet 2 / identity policy 6, selected by the existing preparation-3
+`subject_policy` field. Explicit policy 1 retains its fixed-base packet digest and old
+UNKNOWN result; native mocked execution and replay verify both selectors independently.
+Default visit/legacy geographic helpers remain unchanged unless the new subject policy
+opts in. Conflicting postal-town/locality or country evidence remains unresolved.
 
 Initial regressions failed before implementation. The first broad evaluator run had
 1,339 passed, one environment skip and seven failures in incremental opening: its parent
@@ -2192,13 +2204,35 @@ count checks; 86 focused tests passed. Generic Unicode/abbreviation packet cases
 native three-stage mocked execution/replay exercise the broader protocol without claiming
 that synthetic model responses establish real-world semantic accuracy.
 
-The final combined evaluator, installed CLI, suite and pair compatibility gate passed
+The initial combined evaluator, installed CLI, suite and pair compatibility gate passed
 **1,615 tests with one Windows symlink-privilege skip** in 1,054.79 seconds. The strengthened
 typed-locality/district/postcode fixture also passed the 38-test subject gate. These gates
 overlap; their counts are not additive. Global backend/tool Ruff, all 15 affected Python
 format checks, whitespace and 324 tracked local document targets/anchors passed. Standards
 and Spec rechecks each have zero unresolved findings; Spec independently reran both review
 regressions. Current contracts replace obsolete stage/target rules in their topic owners.
+
+Postal-town validation first reproduced the original all-version UNKNOWN, then passed
+the focused subject gate. These tests cover the supplied British Museum
+name/candidate, null location, postal-town/country aliases, conflicting/missing facts,
+semantic uncertainty, explicit location precision, exact-two/distinct-date PASS and real
+count/date FAILs across V0-V3. The fixtures use the handoff's venue fields with synthetic
+source/itinerary/transport data; they are not the original case-10 snapshot or a real model
+judgment. The extension's evaluator and installed evaluate/tools CLI gate passed
+**1,473 tests with one Windows symlink-privilege skip** in 466.51 seconds on `8676164`.
+Both independent review axes identified the same P2: postal-town support accidentally
+removed valid administrative destinations. A public subject-path regression reproduced
+the rejection of a consistent region-level destination. Correction `cc959ba` retains both
+administrative levels while rejecting postal-town/locality conflicts. The corrected
+**210-test affected gate passed** in 55.49 seconds, including 29 postal regressions and
+native execution/replay under both subject policies. The earlier broad gate predates this
+correction; it is not a complete broad run on the corrected tree. Backend/tool Ruff,
+all 13 affected Python format checks, whitespace and 247 tracked local document links
+passed. Independent correction rechecks leave zero unresolved findings on each axis;
+Spec independently reran all 29 postal regressions and Standards reran the four
+administrative-destination controls. Standards first encountered an unwritable sandbox
+temporary directory during setup; using an owned scratch directory passed without
+changing source or project configuration.
 
 Original request SHA-256 remains
 `769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.

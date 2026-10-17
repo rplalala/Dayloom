@@ -1133,7 +1133,7 @@ remains UNKNOWN. Original outputs and grounding failures are retained. Requireme
 use version-owned references projected from common independent subjects in fresh Primary;
 historical target FAIL components retain their original semantics. Unresolved dates/roles
 remain part of requirement judgment.
-Fresh Primary reports use `versioned_api_identity_5` with common independent subjects
+Fresh Primary reports use `versioned_api_identity_6` with common independent subjects
 and V0 visit-only packets. Offline use is explicit:
 
 ```powershell
@@ -1143,6 +1143,10 @@ and V0 visit-only packets. Offline use is explicit:
 ```
 
 These commands prepare/import material offline and never send a provider request.
+The current subject policy is `requirement_subject_correspondence_2`, including typed
+`postal_town` city evidence. Use `--subject-policy requirement_subject_correspondence_1`
+explicitly to reproduce the preceding common strategy. Preparation-3 packages retain
+their frozen `subject_policy`; old packets and scores are not upgraded implicitly.
 Unresolved common subjects remain UNKNOWN; actual requirement violations still fail.
 Without `--common-subjects`, existing offline callers retain `versioned_api_identity_4`;
 those historical-compatible V0 packets use

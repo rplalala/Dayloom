@@ -170,10 +170,12 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
-Fresh Primary identity uses `versioned_api_identity_5`, independent
-`requirement_subject_correspondence_1` and `v0_visit_correspondence_1`; requirement rules 6
+Fresh Primary identity uses `versioned_api_identity_6`, independent
+`requirement_subject_correspondence_2` and `v0_visit_correspondence_1`; requirement rules 6
 conjoin target uncertainty with conservative checks, preserving proven violations. Existing offline callers retain explicit
-policy-4 compatibility. Historical requirement/schedule rules select version 5 for a reviewed
+policy-4 compatibility; the first common-subject policy remains explicitly replayable.
+Common-subject destination checks accept typed `postal_town` with consistent city/country
+evidence. Historical requirement/schedule rules select version 5 for a reviewed
 `daily_visit_count`, otherwise version 4 for `transport_modes` or version 3 without either.
 Route rules select version 3 with `transport_modes` and retain version 2 without it.
 Opening retains
