@@ -11,19 +11,28 @@ covers 15–17 October. Original generation and four-final primary results are p
 
 The [case Issue](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/156)
 owns acceptance. The current follow-up refreshes the same-run paired view;
-generation and primary scores are preserved. Case-11/12 remain unstarted. No human study or corpus study was selected.
+generation and primary scores are preserved. No human study or corpus study was selected.
 These are case observations, not formal version-level research conclusions.
 
 | Material | Reader view |
 | --- | --- |
-| Full saved schedules, transfers, Nearby references and origins | [Itineraries](itinerary.md) |
-| Source paths, exact hashes, extraction pointers and publication format | [Material index](material-index.json) |
-| Independent requirements / interests | [Reviewed specification](requirements/reviewed.json), [interest inventory](interests/inventory.json) |
-| Selected outputs | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
-| Primary results and closed-inventory identity | [Saved checks and totals](evaluation/primary/report.json), [receipt summary](evaluation/primary/receipt-summary.json) |
-| Candidate pipeline and independent thematic judgments | [Opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [individual reviews](analysis/poi-process/reviews.json) |
-| V3 mechanism and actual edits | [Mechanism](analysis/repair/mechanism.json), [structural observations](analysis/repair/observations.json), [native summary](analysis/repair/research.json) |
-| Every consumed attempt, including failures | [All-attempt resource ledger](analysis/resources/all-attempts.json) |
+| Original request | [case 07](../inputs/case-07.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [inventory](interests/inventory.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Supporting request context | [input r02](requirements/input-r02.json) |
+| Independent review records | [relevance review execution](interests/relevance-review-execution.json) |
+| Recorded RAG origins | [rag origins](generation/v2/rag-origins.json), [rag origins](generation/v3/rag-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [receipt summary](evaluation/primary/receipt-summary.json), [report](evaluation/primary/report.json) |
+| Same-run V3 pairing | [report](evaluation/v3-pair/report.json) |
+| Candidate process and relevance | [candidate v1](analysis/poi-process/candidate-v1.json), [candidate v2](analysis/poi-process/candidate-v2.json), [independent venues](analysis/poi-process/independent-venues.json), [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [reviews](analysis/poi-process/reviews.json) |
+| Repair and complete stages | [draft delta](analysis/repair/draft-delta.json), [final primary delta](analysis/repair/final-primary-delta.json), [mechanism](analysis/repair/mechanism.json), [observations](analysis/repair/observations.json), [research](analysis/repair/research.json) |
+| All-attempt resources | [all attempts](analysis/resources/all-attempts.json), [current generation](analysis/resources/current-generation.json), [historical generation](analysis/resources/historical-generation.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 ## Primary scoring
 
@@ -107,8 +116,8 @@ The saved V3 reason is `no_authorized_targets`: the original internal review had
 and final-primary days, activities and transfers are identical. The only
 draft-to-final-primary difference is route diagnostics; the final published
 itinerary then adds Nearby references. Both differences are retained in the
-lossless [draft delta](generation/v3/draft-delta.json) and
-[final-primary delta](generation/v3/final-primary-delta.json).
+lossless [draft delta](analysis/repair/draft-delta.json) and
+[final-primary delta](analysis/repair/final-primary-delta.json).
 
 The [same-run paired report](evaluation/v3-pair/report.json) applies the same source-bound missing-hours
 access policy to the original V3 draft and final-primary stages. Saved Google

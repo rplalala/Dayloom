@@ -1,0 +1,160 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-08",
+  "case_revision": "r01",
+  "input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+  "input_ref": {
+    "path": "benchmark/scratch/case-08/work/r01/source/input.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+    "availability": "available",
+    "media_type": "application/json",
+    "schema_version": "planning_request_2"
+  },
+  "requirement_spec_ref": {
+    "path": "benchmark/scratch/case-08/work/r01/requirements/reviewed-final.json",
+    "sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+    "availability": "available",
+    "media_type": "application/json",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "revision": "1",
+  "reviewer_ref": "codex-agent:/root/case08_interests",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-16T21:57:20.139863+00:00",
+  "rationale": "Independent original-input judgment was locked before reading the separately reviewed RequirementSpec. Architecture and history are descriptive soft thematic interests without invented quotas. Sagrada Família is an explicitly exact-one required named-place visit and a positive interest. Park Güell is a whole-trip exclusion, retained separately rather than treated as a positive interest. Later binding only maps native stable IDs, requirement pointers and the exact-byte reference; it does not alter these judgments.",
+  "interests": [
+    {
+      "independent_interest_id": "case-08-architecture",
+      "classification": "soft_thematic_interest",
+      "theme": "architecture",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "interested in architecture and history",
+          "occurrence": 0,
+          "offset_start": 18,
+          "offset_end": 56
+        }
+      ],
+      "quota": null,
+      "rationale": "The request explicitly expresses interest in architecture. This is a thematic preference; it states no count, exclusive focus, required specific architecture venue, fixed date or visit duration.",
+      "interest_id": "architecture-interest",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "independent_interest_id": "case-08-history",
+      "classification": "soft_thematic_interest",
+      "theme": "history",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "interested in architecture and history",
+          "occurrence": 0,
+          "offset_start": 18,
+          "offset_end": 56
+        }
+      ],
+      "quota": null,
+      "rationale": "The request explicitly expresses interest in history. This is a separate thematic preference; it states no count, exclusive focus, fixed date or visit duration. A venue may qualify for both themes; no distinct-venue requirement is invented.",
+      "interest_id": "history-interest",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "independent_interest_id": "case-08-sagrada-familia",
+      "classification": "hard_named_place_required_visit",
+      "place_name": "Sagrada Família",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Include exactly one visit to Sagrada Família during the trip.",
+          "occurrence": 0,
+          "offset_start": 58,
+          "offset_end": 119
+        }
+      ],
+      "count": {
+        "mode": "exact",
+        "value": 1
+      },
+      "scope": "whole_trip",
+      "rationale": "Include is an affirmative visit obligation and exactly one explicitly fixes the whole-trip occurrence count at one. No date, duration, admission type or additional named venue is inferred.",
+      "interest_id": "sagrada-familia-exactly-once",
+      "requirement_pointer": "/obligations/0"
+    }
+  ],
+  "hard_exclusions": [
+    {
+      "place_name": "Park Güell",
+      "classification": "hard_named_place_excluded_visit",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Do not include a visit to Park Güell.",
+          "occurrence": 0,
+          "offset_start": 120,
+          "offset_end": 157
+        }
+      ],
+      "scope": "whole_trip",
+      "rationale": "An explicit negative visit instruction is a hard exclusion across the requested trip; it is not a positive venue-interest target."
+    }
+  ],
+  "other_sightseeing_flexibility": {
+    "source_refs": [
+      {
+        "field_path": "additional_preferences",
+        "quote": "We are flexible about the other sightseeing choices.",
+        "occurrence": 0,
+        "offset_start": 158,
+        "offset_end": 210
+      }
+    ],
+    "rationale": "Flexibility applies to other sightseeing choices. It does not cancel the exact-one requirement, exclusion, or expressed thematic interests."
+  },
+  "not_invented": [
+    "per-theme visit count",
+    "trip-focus quota",
+    "distinct venue quota across themes",
+    "specific sightseeing dates",
+    "visit duration",
+    "admission or entry type",
+    "additional named places"
+  ],
+  "independent_judgment_ref": {
+    "path": "benchmark/scratch/case-08/work/r01/interests/independent-draft.json",
+    "sha256": "d033dc6830a7bffdd2e8245da9af6376dedd787635b079a81d70870f2a2eec17",
+    "availability": "available",
+    "media_type": "application/json",
+    "schema_version": "case08_independent_interest_draft_1"
+  },
+  "native_binding": {
+    "bound_at": "2026-10-16T22:01:01.173873+00:00",
+    "judgment_changed": false,
+    "binding_only_fields": [
+      "interest_id",
+      "requirement_pointer",
+      "requirement_spec_ref"
+    ],
+    "binding_root": "repository root",
+    "case_revision": "r01",
+    "batch_revision": "1",
+    "rationale": "The separately reviewed requirements express the same independently locked source semantics; only native identity/pointer/ref linkage is applied."
+  },
+  "execution_provenance": {
+    "actor_ref": "codex-agent:/root/case08_interests",
+    "dispatch_model": "gpt-6.1-sol",
+    "dispatch_reasoning_effort": "high",
+    "runtime_model_verification": "unavailable",
+    "tokens": "unavailable",
+    "billing": "unavailable",
+    "metadata_path": "benchmark/scratch/case-08/work/r01/interests/execution-metadata.json",
+    "transcript_path": "benchmark/scratch/case-08/work/r01/interests/transcript.json"
+  },
+  "context_exposure_limitation": "Reading PROJECT.md as directed by AGENTS.md unintentionally exposed its embedded historical Sydney development summary and score table. That content was not used in case-08 judgments. No Planner interpretation, generated case-08 output, candidate/stage/rank material, or other agent judgment was read."
+}

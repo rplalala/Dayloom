@@ -176,4 +176,4 @@ These suggestions have no scheduled time allocation. Availability, prices and ac
 
 ## V3 actual draft/final changes
 
-The saved draft and final primary schedule have identical days, activities and transfers. Final-primary adds route diagnostics; the published final itinerary additionally adds Nearby recommendations. The [lossless draft delta](generation/v3/draft-delta.json) and [final-primary delta](generation/v3/final-primary-delta.json) retain both differences. No model Repair ran: `no_authorized_targets`.
+The saved draft and final primary schedule have identical days, activities and transfers. Final-primary adds route diagnostics; the published final itinerary additionally adds Nearby recommendations. The [lossless draft delta](analysis/repair/draft-delta.json) and [final-primary delta](analysis/repair/final-primary-delta.json) retain both differences. No model Repair ran: `no_authorized_targets`.

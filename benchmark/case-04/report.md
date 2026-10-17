@@ -7,10 +7,29 @@ live processes have ended. The researcher accepted the Primary results and,
 after the offline candidate/relevance, same-run Repair/pair and resource analysis,
 the [complete automatic case and its limitations](#acceptance) on 15 October 2026.
 Local main-worktree integration is complete; blinded human review is deferred
-and case-14 is waiting.
+and the case retains its accepted selection.
 [Issue #153](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/153)
 owns the live state under
 [batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151).
+
+| Material | Reader view |
+| --- | --- |
+| Original request | [case 04](../inputs/case-04.json) |
+| Reviewed requirements | [requirements](requirements/requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Independent review records | [relevance](interests/relevance.json) |
+| Recorded RAG origins | [rag origins](generation/rag-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [quality](evaluation/primary/quality.json) |
+| Same-run V3 pairing | [provenance](evaluation/v3-pair/provenance.json), [summary](evaluation/v3-pair/summary.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json) |
+| Repair and complete stages | [changes](analysis/repair/changes.json), [draft](analysis/repair/draft.json) |
+| All-attempt resources | [resources](analysis/resources/resources.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 ## Request and selected sources
 

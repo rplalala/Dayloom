@@ -1,0 +1,779 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "complete",
+  "origins": {
+    "ChIJ2dGMjMMEdkgRqVqkuXQkj7c": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.31623947620391846,
+        "distance_km": 0.7538055884515119,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "07e9d07758ae1e84c9f1d1fbaab3caf71ae15994a150468272bb983f8d74459f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJ2dGMjMMEdkgRqVqkuXQkj7c"
+      }
+    ],
+    "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.3219606876373291,
+        "distance_km": 3.3895988501494707,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "5a5a959fa2215f494f8e895e1a4ea82bd27f7f55124c71a4ca7b13b52131d210",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g"
+      }
+    ],
+    "ChIJDbhTs1ADdkgR-2MjTkoJXXg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.3314419984817505,
+        "distance_km": 2.857032729782069,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6f0b99409daf0cd6c86c7326ec9e7596ea53ed07b287627bc5722a8a4015090a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJDbhTs1ADdkgR-2MjTkoJXXg"
+      }
+    ],
+    "ChIJSdtli0MDdkgRLW9aCBpCeJ4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.32430386543273926,
+        "distance_km": 3.620900615444453,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f3dce65ed088c78edf24fc6cc32902c73e96eb578c4d13adab095d5c54161ab2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJSdtli0MDdkgRLW9aCBpCeJ4"
+      }
+    ],
+    "ChIJVX1-GtIEdkgR1n_gGjHQZpI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 19,
+        "cosine": 0.31287000515669616,
+        "distance_km": 0.4061194904610135,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "dc0c62b2bbdfda5524ff671895f45c8f750fe9fff1a5a2fc7f5a1e4f288efe2a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJVX1-GtIEdkgR1n_gGjHQZpI"
+      }
+    ],
+    "ChIJc2nSALkEdkgRkuoJJBfzkUI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJc2nSALkEdkgRkuoJJBfzkUI",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.343424172111528,
+        "distance_km": 0.7050167200082691,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8070e6c9afde2f0b8d6e6605caa3faa6a71d11507266230b91494fda2bfcfe1b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJc2nSALkEdkgRkuoJJBfzkUI"
+      }
+    ],
+    "ChIJk9LIC8cEdkgR2TkO-raMEDk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJk9LIC8cEdkgR2TkO-raMEDk",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.3246210016197266,
+        "distance_km": 0.7773096073066911,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "480775077368acf8597988e6d9ccd8eb197dbb164942b050a25fcefbbc67e640",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJk9LIC8cEdkgR2TkO-raMEDk"
+      }
+    ],
+    "ChIJxRO7WVEDdkgRrGM1fCYoHqY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.32041046978266463,
+        "distance_km": 2.7668805174877558,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f839edd2061bc1d84e28b90c829e7548184e0a43111b74ebcdc69cacc4a184bc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJxRO7WVEDdkgRrGM1fCYoHqY"
+      }
+    ],
+    "ChIJnzLnCMcEdkgRioLEm8rT_aA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJnzLnCMcEdkgRioLEm8rT_aA",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.34540881785206956,
+        "distance_km": 0.82387283136862,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "2e56144468e32b61912930aeb3a9f8daa7ae67284e249b998f6071cdbe1b8758",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJnzLnCMcEdkgRioLEm8rT_aA"
+      }
+    ],
+    "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.33885041839775987,
+        "distance_km": 2.893010242955938,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "969b2c5643b29f4a3028a7ddb62f0fa08559300df61f5171bef59fe08fe20999",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJDz0Q3FMDdkgRdUsGfj-UW7Q"
+      }
+    ],
+    "ChIJgZ24Us4adkgRpDNAwNPO_SY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJgZ24Us4adkgRpDNAwNPO_SY",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.32637844524512083,
+        "distance_km": 2.5643691650754703,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "5cb76060b2ef9c1558e975d192a9c2dbf244c82a4198776632409ee17f92e60a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJgZ24Us4adkgRpDNAwNPO_SY"
+      }
+    ],
+    "ChIJrZIzFyUFdkgRQlxXXtD9UF4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.32497987151145935,
+        "distance_km": 1.690204866953297,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6bda2e850b2fdce86521fa7c691f4b27baffca6bd592d930028eba7cd7bf7963",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJrZIzFyUFdkgRQlxXXtD9UF4"
+      }
+    ],
+    "ChIJ_c6npyobdkgRwkGJb16SWVA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ_c6npyobdkgRwkGJb16SWVA",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.32305654883384705,
+        "distance_km": 4.071664309445083,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6f5e8adbdc5b58038186a7487207d097d95e8eaf1b3c461dba55a4f50a8499f3",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ_c6npyobdkgRwkGJb16SWVA"
+      }
+    ],
+    "ChIJ-9AX1k0DdkgRBucVmbfb4z0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.32252522438464104,
+        "distance_km": 3.3474834888756027,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "bad3dcb8363e0f7a458b29bf334603c235af0cb2c605de16289d4ac822acd54f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ-9AX1k0DdkgRBucVmbfb4z0"
+      }
+    ],
+    "ChIJO44XSkkDdkgRQMdr9sHhn2M": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJO44XSkkDdkgRQMdr9sHhn2M",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.3169068396091461,
+        "distance_km": 3.6009897906121426,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "5351ccda83d3d353a7084ae6ab23fb70a2ba2dadad52c44cd6fbb33844efd8a1",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJO44XSkkDdkgRQMdr9sHhn2M"
+      }
+    ],
+    "ChIJ03GSCloDdkgRe_s-p2vyvQA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ03GSCloDdkgRe_s-p2vyvQA",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.3166871666908264,
+        "distance_km": 2.867370433658691,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "674b7c5e45929465e6f19b7397060517daffe233eabb80f6c48b7c7f244898c3",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ03GSCloDdkgRe_s-p2vyvQA"
+      }
+    ],
+    "ChIJn9qAmqgFdkgRa9_4irRlNJw": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJn9qAmqgFdkgRa9_4irRlNJw",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.3162898013764507,
+        "distance_km": 0.09708752454532198,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "da3380805281cd9c619d3631a4f64034edc71ed678e0bf6e3f0b5aba2ac1bbef",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJn9qAmqgFdkgRa9_4irRlNJw"
+      }
+    ],
+    "ChIJxRitKU0DdkgRazPYpNTm0Q4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJxRitKU0DdkgRazPYpNTm0Q4",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.31541266257612177,
+        "distance_km": 3.554034143644176,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "628e021068fe3465540cfb1d3e44ac1423edb44329e6c5356b124c26f551fe6b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJxRitKU0DdkgRazPYpNTm0Q4"
+      }
+    ],
+    "ChIJkeddM88adkgR80g3pdkn0vw": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJkeddM88adkgR80g3pdkn0vw",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.31444494042128734,
+        "distance_km": 2.80270845050211,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "0e293e88bdf35e9b428857fb9a535354791887198fa97a6127fcb44e4a709366",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJkeddM88adkgR80g3pdkn0vw"
+      }
+    ],
+    "ChIJ7w-V58oNdkgRhz8svCpc5ok": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ7w-V58oNdkgRhz8svCpc5ok",
+        "query": {
+          "query_id": "rag_default_1",
+          "text": "top attractions",
+          "origin": "system_default",
+          "intent_ids": [],
+          "requirement_refs": [],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.3095775062097611,
+        "distance_km": 4.176197813704082,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7cb96a9d500d9c308b24a9712b6a09b5d413bafd0e6cd68dd905ffa6d86c7596",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ7w-V58oNdkgRhz8svCpc5ok"
+      }
+    ]
+  },
+  "new_canonical_ids": [
+    "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+    "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+    "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+    "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+    "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+    "ChIJ_c6npyobdkgRwkGJb16SWVA",
+    "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+    "ChIJkeddM88adkgR80g3pdkn0vw",
+    "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+    "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+    "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+    "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+  ],
+  "mixed_source_ids": [
+    "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+    "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+    "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+    "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+    "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+    "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+    "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+    "ChIJxRO7WVEDdkgRrGM1fCYoHqY"
+  ],
+  "origin_associations": {
+    "ChIJ2dGMjMMEdkgRqVqkuXQkj7c": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJDbhTs1ADdkgR-2MjTkoJXXg": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJSdtli0MDdkgRLW9aCBpCeJ4": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJVX1-GtIEdkgR1n_gGjHQZpI": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJc2nSALkEdkgRkuoJJBfzkUI": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJk9LIC8cEdkgR2TkO-raMEDk": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJxRO7WVEDdkgRrGM1fCYoHqY": {
+      "intent_ids": [
+        "default_0"
+      ],
+      "requirement_refs": []
+    },
+    "ChIJnzLnCMcEdkgRioLEm8rT_aA": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJgZ24Us4adkgRpDNAwNPO_SY": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJrZIzFyUFdkgRQlxXXtD9UF4": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJ_c6npyobdkgRwkGJb16SWVA": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJ-9AX1k0DdkgRBucVmbfb4z0": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJO44XSkkDdkgRQMdr9sHhn2M": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJ03GSCloDdkgRe_s-p2vyvQA": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJn9qAmqgFdkgRa9_4irRlNJw": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJxRitKU0DdkgRazPYpNTm0Q4": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJkeddM88adkgR80g3pdkn0vw": {
+      "intent_ids": [],
+      "requirement_refs": []
+    },
+    "ChIJ7w-V58oNdkgRhz8svCpc5ok": {
+      "intent_ids": [],
+      "requirement_refs": []
+    }
+  },
+  "canonical_outcomes": {
+    "ChIJ-9AX1k0DdkgRBucVmbfb4z0": "not_selected_by_supply",
+    "ChIJ03GSCloDdkgRe_s-p2vyvQA": "not_selected_by_supply",
+    "ChIJ2dGMjMMEdkgRqVqkuXQkj7c": "enrichment_capacity_not_attempted",
+    "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g": "scheduled",
+    "ChIJ7w-V58oNdkgRhz8svCpc5ok": "not_selected_by_supply",
+    "ChIJDbhTs1ADdkgR-2MjTkoJXXg": "not_selected_by_supply",
+    "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q": "not_selected_by_supply",
+    "ChIJO44XSkkDdkgRQMdr9sHhn2M": "not_selected_by_supply",
+    "ChIJSdtli0MDdkgRLW9aCBpCeJ4": "scheduled",
+    "ChIJVX1-GtIEdkgR1n_gGjHQZpI": "not_selected_by_supply",
+    "ChIJ_c6npyobdkgRwkGJb16SWVA": "not_selected_by_supply",
+    "ChIJc2nSALkEdkgRkuoJJBfzkUI": "supplied_not_scheduled",
+    "ChIJgZ24Us4adkgRpDNAwNPO_SY": "not_selected_by_supply",
+    "ChIJk9LIC8cEdkgR2TkO-raMEDk": "not_selected_by_supply",
+    "ChIJkeddM88adkgR80g3pdkn0vw": "not_selected_by_supply",
+    "ChIJn9qAmqgFdkgRa9_4irRlNJw": "supplied_not_scheduled",
+    "ChIJnzLnCMcEdkgRioLEm8rT_aA": "not_selected_by_supply",
+    "ChIJrZIzFyUFdkgRQlxXXtD9UF4": "not_selected_by_supply",
+    "ChIJxRO7WVEDdkgRrGM1fCYoHqY": "enrichment_capacity_not_attempted",
+    "ChIJxRitKU0DdkgRazPYpNTm0Q4": "not_selected_by_supply"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+      "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+      "ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+      "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+      "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+      "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+      "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+      "ChIJ_c6npyobdkgRwkGJb16SWVA",
+      "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+      "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+      "ChIJkeddM88adkgR80g3pdkn0vw",
+      "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+      "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+      "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+      "ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+      "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+    ],
+    "enriched": [
+      "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+      "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+      "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+      "ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+      "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+      "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+      "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+      "ChIJ_c6npyobdkgRwkGJb16SWVA",
+      "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+      "ChIJk9LIC8cEdkgR2TkO-raMEDk",
+      "ChIJkeddM88adkgR80g3pdkn0vw",
+      "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+      "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+      "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+      "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+    ],
+    "supplied": [
+      "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "ChIJn9qAmqgFdkgRa9_4irRlNJw"
+    ],
+    "scheduled": [
+      "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "ChIJSdtli0MDdkgRLW9aCBpCeJ4"
+    ],
+    "nearby_only": []
+  },
+  "entities": [
+    {
+      "entity_id": "google:ChIJnzLnCMcEdkgRioLEm8rT_aA",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJnzLnCMcEdkgRioLEm8rT_aA"
+    },
+    {
+      "entity_id": "google:ChIJc2nSALkEdkgRkuoJJBfzkUI",
+      "status": "google_observation",
+      "canonical_id": "ChIJc2nSALkEdkgRkuoJJBfzkUI"
+    },
+    {
+      "entity_id": "google:ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q"
+    },
+    {
+      "entity_id": "google:ChIJDbhTs1ADdkgR-2MjTkoJXXg",
+      "status": "google_observation",
+      "canonical_id": "ChIJDbhTs1ADdkgR-2MjTkoJXXg"
+    },
+    {
+      "entity_id": "google:ChIJgZ24Us4adkgRpDNAwNPO_SY",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJgZ24Us4adkgRpDNAwNPO_SY"
+    },
+    {
+      "entity_id": "google:ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJrZIzFyUFdkgRQlxXXtD9UF4"
+    },
+    {
+      "entity_id": "google:ChIJk9LIC8cEdkgR2TkO-raMEDk",
+      "status": "google_observation",
+      "canonical_id": "ChIJk9LIC8cEdkgR2TkO-raMEDk"
+    },
+    {
+      "entity_id": "google:ChIJSdtli0MDdkgRLW9aCBpCeJ4",
+      "status": "google_observation",
+      "canonical_id": "ChIJSdtli0MDdkgRLW9aCBpCeJ4"
+    },
+    {
+      "entity_id": "google:ChIJ_c6npyobdkgRwkGJb16SWVA",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ_c6npyobdkgRwkGJb16SWVA"
+    },
+    {
+      "entity_id": "google:ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ-9AX1k0DdkgRBucVmbfb4z0"
+    },
+    {
+      "entity_id": "google:ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g",
+      "status": "google_observation",
+      "canonical_id": "ChIJ3TgfM0kDdkgRZ2TV4d1Jv6g"
+    },
+    {
+      "entity_id": "google:ChIJxRO7WVEDdkgRrGM1fCYoHqY",
+      "status": "google_observation",
+      "canonical_id": "ChIJxRO7WVEDdkgRrGM1fCYoHqY"
+    },
+    {
+      "entity_id": "google:ChIJO44XSkkDdkgRQMdr9sHhn2M",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJO44XSkkDdkgRQMdr9sHhn2M"
+    },
+    {
+      "entity_id": "google:ChIJ03GSCloDdkgRe_s-p2vyvQA",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ03GSCloDdkgRe_s-p2vyvQA"
+    },
+    {
+      "entity_id": "google:ChIJn9qAmqgFdkgRa9_4irRlNJw",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJn9qAmqgFdkgRa9_4irRlNJw"
+    },
+    {
+      "entity_id": "google:ChIJ2dGMjMMEdkgRqVqkuXQkj7c",
+      "status": "google_observation",
+      "canonical_id": "ChIJ2dGMjMMEdkgRqVqkuXQkj7c"
+    },
+    {
+      "entity_id": "google:ChIJxRitKU0DdkgRazPYpNTm0Q4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+    },
+    {
+      "entity_id": "google:ChIJkeddM88adkgR80g3pdkn0vw",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJkeddM88adkgR80g3pdkn0vw"
+    },
+    {
+      "entity_id": "google:ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+      "status": "google_observation",
+      "canonical_id": "ChIJVX1-GtIEdkgR1n_gGjHQZpI"
+    },
+    {
+      "entity_id": "google:ChIJ7w-V58oNdkgRhz8svCpc5ok",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ7w-V58oNdkgRhz8svCpc5ok"
+    }
+  ]
+}

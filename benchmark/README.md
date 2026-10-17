@@ -132,6 +132,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
 | 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged; #157/#182 completed; blinded review deferred |
 | 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); main-worktree integration and private-evidence migration complete |
+| 10 | 2026-10-17 | [London revision 2, exact-two British Museum visits on distinct dates, retained time/access uncertainty, relevance UNKNOWNs and unverified affordability](case-10/report.md#acceptance-status) |
 | 11 | 2026-10-17 | [Paris execution revision 2, protected interval, genuine no-Repair, completed same-run pair, 14 relevance UNKNOWNs and unverified affordability](case-11/report.md#acceptance); automatically accepted and integrated into the main worktree with verified private archive migration; blinded review deferred |
 | 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190) merged; #163/#184 completed; main synchronized and private-evidence migration verified; blinded review deferred |
 
@@ -287,18 +288,19 @@ benchmark/
     material-index.json           # canonical paths, hashes and original sources
     requirements/
     interests/
-    generation/                   # itineraries, usage, provenance, shared policy
+    generation/                   # selected final V0-V3 and their metadata only
       v0/
       v1/
       v2/
-      v3/                         # final itinerary and lossless draft difference
+      v3/                         # selected final itinerary, usage and provenance
     evaluation/
       primary/
       v3-pair/
     analysis/
       poi-process/
-      repair/
+      repair/                     # V3 draft/final-primary, lossless differences, mechanism
       resources/
+      history/                    # retained earlier public observations and failures
   scratch/
     <case-id>/                     # ignored private storage
       work/                        # active execution/preparation and temporary files
@@ -325,9 +327,23 @@ configuration and identical RAG-origin inventories once, and use references for
 repeated output content. Public material
 must exclude credentials, private transcripts and raw provider/model responses.
 
+`generation/` contains exactly one selected final itinerary for each version, its
+usage/provenance and applicable shared runtime policy or origin metadata. Current
+materials use canonical category paths directly, such as `generation/v0/`,
+`requirements/` and `evaluation/primary/`, without an `r02/` or other revision
+directory. Revision IDs remain in provenance, run metadata and historical evidence;
+native schemas and original execution paths need not match across cases. V3
+draft/final-primary stages and validation traces belong in `analysis/repair/`, not
+additional generation selections.
+Earlier published generation observations and failures belong in `analysis/history/`.
+Superseded requirement contexts and scoring reports also belong there rather than
+beside the final material in current categories. Their source bytes and historical
+evaluation policies remain preserved.
+
 In the public material view, repeated large JSON objects use `$case_material_ref`
 with a relative file path, JSON Pointer and expanded semantic hash. The material index
-defines this publication format. Expand references to recover the original JSON
+defines the path base (containing file or case directory) and publication format.
+Expand references to recover the original JSON
 values; these views are not closed native acquisition/replay bundles. A V3 draft
 may use a lossless delta from its final itinerary when their common content would
 otherwise be copied. Preserve every actual difference, including recommendations.
@@ -336,6 +352,25 @@ Maintain one reader-facing report per case by rewriting the applicable sections;
 routine tasks do not create another report. Common rules remain in this README
 and contracts. The case Issue owns live acceptance and pending decisions. Public
 navigation and shared material references resolve within tracked sources.
+
+Publication completeness and researcher acceptance are separate facts. Preserve the
+original step-10 decision, its exact selection and hashes when correcting reader
+materials. The current index records the preceding publication revision and any
+relocated reader paths; a frozen historical index resolves at its own recorded Git
+revision. Updating navigation or extracting saved evidence does not rescore results
+or extend the accepted selection.
+
+Before declaring a public case complete, check required categories independently of
+the existing index: original input, reviewed requirements, explicit interest inventory
+(including a valid empty inventory), four selected final itineraries and their
+usage/provenance/runtime policy, primary and paired scoring, captured candidate
+stages/origins/omissions and relevance applicability, complete V3 stage reconstruction,
+Repair observations, and all-attempt resource accounting. Verify index coverage in
+both directions, reader navigation, file hashes, declared reference/delta semantics
+and original source/subtree bindings. A hash check of already indexed files cannot
+detect an omitted category. Retain genuine empty/no-Repair/partial observations;
+unavailable evidence stays explicitly unavailable rather than being reconstructed
+from assumptions. Native execution/replay closures remain private.
 
 When human review is authorized, private `human/packages/`, `private/`, `answers/`
 and `reports/` retain anonymous presentation, researcher mappings, real responses

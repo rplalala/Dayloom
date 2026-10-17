@@ -1,0 +1,41 @@
+{
+  "schema_version": "case08_current_candidate_view_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "interest_inventory": {
+    "$case_material_ref": {
+      "path": "../../interests/inventory.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "90ce2d81fe3df8624608c33abcfdb5402b5daace6d2b8890e22fe54c4b09a8d7"
+    }
+  },
+  "evidence_status": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/candidates.json",
+      "pointer": "/evidence_status",
+      "expanded_semantic_sha256": "e3db67692bcffe55218a65c50e3686a0f7a7940960adfc734ffd88bf8b695e9a"
+    }
+  },
+  "versions": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/candidates.json",
+      "pointer": "/versions",
+      "expanded_semantic_sha256": "f7315d5869f6d379dbf34ae1cde503b7546e594456836794991ee4fd01125752"
+    }
+  },
+  "cross_version": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/candidates.json",
+      "pointer": "/cross_version",
+      "expanded_semantic_sha256": "d466e669d1f1282bcb052fefda730a956f4023c8b7cbefdcf1d48b48ef07257b"
+    }
+  },
+  "relevance": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/candidates.json",
+      "pointer": "/relevance",
+      "expanded_semantic_sha256": "06a5829c4c36dbb3e3518cf331edb84da2d5994d3d069c4c791d7565517f5348"
+    }
+  },
+  "scope": "Saved candidate stages and independent judgments; current scoring and acceptance are separate reader categories."
+}

@@ -5,7 +5,7 @@ Times and fields remain submitted values. Recorded discovery origins are produce
 observations; independent relevance is reported separately. Full notes and Nearby
 references remain in each itinerary JSON; Nearby-only references are not scheduled visits.
 
-V3 [draft](generation/r02/v3/draft.json) and [final-primary](generation/r02/v3/final-primary.json)
+V3 [draft](analysis/repair/draft.json) and [final-primary](analysis/repair/final-primary.json)
 are identical: no Repair round, added/removed/replaced visit or retiming occurred.
 The selected final itinerary also carries post-primary Nearby recommendations; these
 remain distinct from Repair changes. The completed common-policy pair scores
@@ -13,7 +13,7 @@ remain distinct from Repair changes. The completed common-policy pair scores
 
 ## V0
 
-[Selected itinerary](generation/r02/v0/itinerary.json)
+[Selected itinerary](generation/v0/itinerary.json)
 
 ### 2026-10-22
 
@@ -49,7 +49,7 @@ remain distinct from Repair changes. The completed common-policy pair scores
 
 ## V1
 
-[Selected itinerary](generation/r02/v1/itinerary.json)
+[Selected itinerary](generation/v1/itinerary.json)
 
 ### 2026-10-22
 
@@ -87,7 +87,7 @@ remain distinct from Repair changes. The completed common-policy pair scores
 
 ## V2
 
-[Selected itinerary](generation/r02/v2/itinerary.json)
+[Selected itinerary](generation/v2/itinerary.json)
 
 ### 2026-10-22
 
@@ -119,7 +119,7 @@ remain distinct from Repair changes. The completed common-policy pair scores
 
 ## V3
 
-[Selected itinerary](generation/r02/v3/itinerary.json)
+[Selected itinerary](generation/v3/itinerary.json)
 
 ### 2026-10-22
 

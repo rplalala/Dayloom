@@ -35,7 +35,7 @@
       "pointer": "/route_diagnostics",
       "before": {
         "$case_material_ref": {
-          "path": "generation/v3/draft-delta.json",
+          "path": "analysis/repair/draft-delta.json",
           "pointer": "/replace_top_level/route_diagnostics",
           "expanded_semantic_sha256": "d83f36612fadece7ad1d4ab71884c042078fdb6d8493643dc443661cdab5d22e"
         }

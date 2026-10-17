@@ -2,7 +2,7 @@
 
 Final selected schedules for the accepted revision 5 primary material. Times retain their original Sydney offsets. Source text, unknown costs and uncertainties are preserved in the linked JSON values.
 
-V3 draft and final_primary are identical. The delivered final adds three unscheduled Nearby references; the [lossless draft delta](generation/v3/draft-delta.json) removes only those references. They are not visits, requirements or planned costs.
+V3 draft and final_primary are identical. The delivered final adds three unscheduled Nearby references; the [lossless draft delta](analysis/repair/draft-delta.json) removes only those references. They are not visits, requirements or planned costs.
 
 ## V0
 

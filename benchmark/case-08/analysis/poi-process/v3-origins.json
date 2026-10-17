@@ -1,0 +1,17 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "empty",
+  "origins": {},
+  "new_canonical_ids": [],
+  "mixed_source_ids": [],
+  "origin_associations": {},
+  "canonical_outcomes": {},
+  "fate": {
+    "admitted": [],
+    "enriched": [],
+    "supplied": [],
+    "scheduled": [],
+    "nearby_only": []
+  },
+  "entities": []
+}

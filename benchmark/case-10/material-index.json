@@ -199,8 +199,8 @@
       "publication_kind": "exact_json_subtree"
     },
     {
-      "path": "generation/v3/draft-difference.json",
-      "sha256": "10e33379952b694624b55beb69c7bfb4b28262d0b42daa8ff03ce2a8fa78b290",
+      "path": "analysis/repair/draft-difference.json",
+      "sha256": "af380dfad5286184b0f22aa38158b44a17df03096428ab4e412eff6dfdf6c86d",
       "semantic_sha256": "906e39bd51261e97d908b58b0d72323c54c59a33d2d96ce8e0accc05224c4a15",
       "source": {
         "archive_logical_path": "private/r02/captures/v3/result.json",
@@ -210,8 +210,8 @@
       "publication_kind": "lossless_patch"
     },
     {
-      "path": "generation/v3/final_primary-difference.json",
-      "sha256": "98da00d2563276545361973e5cb6188290cebea9774dbe4ee90a088ca043adf8",
+      "path": "analysis/repair/final_primary-difference.json",
+      "sha256": "ecc0b4b02beeed97a177ed69bf4ce7d33a4b8aee93f1541329624412d5587636",
       "semantic_sha256": "21ea077dfbc88ad30f43c443191f3b7e52c0201bc9b0f1fbbf0185b7d5677f48",
       "source": {
         "archive_logical_path": "private/r02/captures/v3/result.json",
@@ -255,14 +255,14 @@
     },
     {
       "path": "analysis/poi-process/opportunities.json",
-      "sha256": "a47e69311216eefbcbd7dd19c19865876f475f5b1f527814aa77abdab0780651",
-      "semantic_sha256": "3826634f709b394d122d079c5cb1804841911f000f2185ec699a0a5e51b58263",
-      "source": {
-        "archive_logical_path": "private/r02/steps7-9/handoff.json",
-        "sha256": "95ea8174c30ab8c9147dbab83a47cc6fae8c3f72e6ab4c35046b0b0fd1c1ac8b",
-        "json_pointer": "/opportunities"
-      },
-      "publication_kind": "exact_json_subtree"
+      "sha256": "d868381250a1b4d8d80e24757db51d5898eecd6d254ee16e289deb5aa39c5d1d",
+      "bytes": 216951,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "private/r02/steps7-9/reports/final-opportunities-r02/opportunities.json",
+        "sha256": "0f40760a4f3dac6e06244cf429eecd79b5d88d3132e92de27e0d3f92905eb0df",
+        "json_pointer": ""
+      }
     },
     {
       "path": "analysis/poi-process/relevance.json",
@@ -296,6 +296,74 @@
         "json_pointer": ""
       },
       "publication_kind": "derived_selected_summary"
+    },
+    {
+      "path": "analysis/history/opportunities.json",
+      "sha256": "a47e69311216eefbcbd7dd19c19865876f475f5b1f527814aa77abdab0780651",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-10/analysis/poi-process/opportunities.json",
+        "sha256": "a47e69311216eefbcbd7dd19c19865876f475f5b1f527814aa77abdab0780651",
+        "json_pointer": ""
+      },
+      "representation": "unchanged_historical_publication"
+    },
+    {
+      "path": "interests/relevance-reviews.json",
+      "sha256": "da4527d0a03e070467488387e86a5f4a7a9c83b65fbc1ad0068f55dd3d45dc03",
+      "bytes": 231022,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "private/r02/steps7-9/relevance-review/labels.json",
+        "sha256": "da4527d0a03e070467488387e86a5f4a7a9c83b65fbc1ad0068f55dd3d45dc03",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "a99bf2abddc0fea1aaa966640f7bb588052dd0c0da55ad315fc6896c98e1b6f4",
+      "bytes": 199104,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "private/r02/steps7-9/material/mechanism-report.json",
+        "sha256": "fb8d9f4a000d2382a7a4f20e990e340d4fadfb0e0ee5bae802521bf74d6d8030",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/poi-process/v3-origins.json",
+      "sha256": "ad8d73f4de67e188e7742850f8601c4dd37eec179a2a328ab713015d6ba67d67",
+      "bytes": 28147,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "private/r02/captures/v3/result.json",
+        "sha256": "3f79cd0e540ec98ae38b3f293a7606212e637a35bfa9495924e130b39c25069f",
+        "json_pointer": "/v3/original_rag_discovery"
+      },
+      "transformation": "Saved canonical identity/origin/fate fields only; no provider payload or Planner relevance judgment."
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "4d502e2e8a655750ef37e4a746485d54e93c8b84cb992d9d795453dddd3095bc",
+      "bytes": 15107,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-10/itinerary.md",
+        "sha256": "2f9616963a8cc17753f5c067ab7cceee51ba7023a4bdd79ff32fa22f06e06a73",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "report.md",
+      "sha256": "e66f15a04b2387b4e06362abe36bfb0fcc5e5221f4a0be92628406e503c223fc",
+      "bytes": 9436,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-10/report.md",
+        "sha256": "22a2b07e3824aa94db8d28bc92f569ac5c4896f7fd376c2b3a39ee4c9d7e9526",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
     }
   ],
   "semantic_hash_encoding": "SHA-256 of UTF-8 JSON with sorted keys, compact separators and ensure_ascii=False.",
@@ -308,5 +376,108 @@
   "publication_newlines": "UTF-8/LF; original private byte hashes remain unchanged.",
   "acceptance_date": "2026-10-17",
   "acceptance_timezone": "Australia/Sydney",
-  "issue_url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/159"
+  "issue_url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/159",
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "362a265a7daa8d3b3bcb12e62c0185bbb9106bc100ededbc961a9d2cbb9c447e",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-10.json"
+      ],
+      "requirements": [
+        "requirements/reviewed.json"
+      ],
+      "interests": [
+        "interests/reviewed.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [],
+      "interest_reviews": [
+        "interests/relevance-reviews.json"
+      ],
+      "origin_captures": [],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/summary.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/summary.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/opportunities.json",
+        "analysis/poi-process/relevance.json",
+        "analysis/poi-process/v3-origins.json"
+      ],
+      "repair": [
+        "analysis/repair/draft-difference.json",
+        "analysis/repair/final_primary-difference.json",
+        "analysis/repair/mechanism.json",
+        "analysis/repair/summary.json"
+      ],
+      "resources": [
+        "analysis/resources/summary.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/draft-difference.json": "analysis/repair/draft-difference.json",
+      "generation/v3/final_primary-difference.json": "analysis/repair/final_primary-difference.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
+  }
 }

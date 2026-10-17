@@ -426,7 +426,7 @@
       ]
     },
     {
-      "path": "generation/v3/draft-delta.json",
+      "path": "analysis/repair/draft-delta.json",
       "sha256": "01506aa651d1a3c0eeda1bc1cd2d7b09d10c5be299c9b8e677981e05ab0faf5a",
       "expanded_semantic_sha256": "068b7956eea15dabb4ad23f695eaa274a0998873822ce9cf347f5cbfdeb1a43a",
       "publication_kind": "lossless_delta",
@@ -439,7 +439,7 @@
       ]
     },
     {
-      "path": "generation/v3/final-primary-delta.json",
+      "path": "analysis/repair/final-primary-delta.json",
       "sha256": "82e7156788edc60841fec2587df758c0458c85c98a70eb1b4b9f22c4cdca792c",
       "expanded_semantic_sha256": "a0bda36491476a15a3bca7dcab0503252399858f24a4f9f0dd6724e92ce71f21",
       "publication_kind": "lossless_delta",
@@ -716,7 +716,7 @@
     },
     {
       "path": "analysis/repair/observations.json",
-      "sha256": "5fb3a85c9d51ada0c6973cfca2c65ef5d36043ed18938034d436facf392507a6",
+      "sha256": "7642842faf1ccdf92fe18d8dbbdba12e47340f1b127c76edaec968c94425337e",
       "expanded_semantic_sha256": "0f73ea0e648dd82c9163c207f98264df6d2555b0bf0199336ed45eaebf082d2d",
       "publication_kind": "section_derived_reader_view",
       "sources": [
@@ -805,7 +805,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "8e2cd6028757ac75f39041792c20b2cec7ea442d687c2b6e0daccd86f133ef3a",
+      "sha256": "64b564eb18b49f2d9dcf59f333fd6eaa7668933816af4fc79ae989b22e7b5213",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -822,7 +822,7 @@
     },
     {
       "path": "itinerary.md",
-      "sha256": "aacd943986727491a93bdd7ae4689b734b1d69301afd4abf83745f28906cf74b",
+      "sha256": "c09c63eedf60e719b04be8c634c7570b9cbf899adb8c3220e7cfbd2c3422609d",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -971,5 +971,120 @@
     },
     "preparation_sha256": "601cfd37d4dbf4ca6790bfe365419860845ef682d4bc375f4f477dc7067f1516",
     "packet_sha256": "8477b84e14a2dbb227b8c3614e0eb1a5f712ff77c34cf7b3009ba14edaaf4b33"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "6742cb5c4630bbc69a5f4882dbabdde360b26977c7ea08fbc26899afb2f58efe",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-07.json"
+      ],
+      "requirements": [
+        "requirements/reviewed.json"
+      ],
+      "interests": [
+        "interests/inventory.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [
+        "requirements/input-r02.json"
+      ],
+      "interest_reviews": [
+        "interests/relevance-review-execution.json"
+      ],
+      "origin_captures": [
+        "generation/v2/rag-origins.json",
+        "generation/v3/rag-origins.json"
+      ],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/receipt-summary.json",
+        "evaluation/primary/report.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/report.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/candidate-v1.json",
+        "analysis/poi-process/candidate-v2.json",
+        "analysis/poi-process/independent-venues.json",
+        "analysis/poi-process/opportunities.json",
+        "analysis/poi-process/relevance.json",
+        "analysis/poi-process/reviews.json"
+      ],
+      "repair": [
+        "analysis/repair/draft-delta.json",
+        "analysis/repair/final-primary-delta.json",
+        "analysis/repair/mechanism.json",
+        "analysis/repair/observations.json",
+        "analysis/repair/research.json"
+      ],
+      "resources": [
+        "analysis/resources/all-attempts.json",
+        "analysis/resources/current-generation.json",
+        "analysis/resources/historical-generation.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/draft-delta.json": "analysis/repair/draft-delta.json",
+      "generation/v3/final-primary-delta.json": "analysis/repair/final-primary-delta.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "case_directory",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
   }
 }

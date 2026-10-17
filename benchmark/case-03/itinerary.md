@@ -309,7 +309,7 @@ Application-owned transfers:
 
 ## Same-run V3 draft to final
 
-The [lossless draft material](generation/v3/draft.json) references shared final content. Expansion recovers every original field, including transfers and unscheduled recommendations. Two deterministic adopted deletions reduce daily primary counts from 3/3/2/2 to 2/2/2/2. Eight retained activities are unchanged.
+The [lossless draft material](analysis/repair/draft.json) references shared final content. Expansion recovers every original field, including transfers and unscheduled recommendations. Two deterministic adopted deletions reduce daily primary counts from 3/3/2/2 to 2/2/2/2. Eight retained activities are unchanged.
 
 - Removed **Ueno Park** on 2026-10-15, 2026-10-15T10:00:00+09:00 → 2026-10-15T11:15:00+09:00; 4 Uenokoen, Taito City, Tokyo 110-0007, Japan. Original notes: Not stated.
 - Removed **Meiji Jingu** on 2026-10-16, 2026-10-16T09:30:00+09:00 → 2026-10-16T11:15:00+09:00; 1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan. Original notes: Opening hours for this date were not verified.

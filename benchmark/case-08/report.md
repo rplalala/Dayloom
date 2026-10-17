@@ -10,19 +10,25 @@ All four selected generations use source `19a4f4d97e4c8cb5e441ebc3239e7ef5111b86
 
 | Material | Reader view |
 | --- | --- |
-| Reviewed original-request obligations | [Requirements](requirements/reviewed.json) |
-| Selected schedules and usage | [V0](generation/r02/v0/itinerary.json), [V1](generation/r02/v1/itinerary.json), [V2](generation/r02/v2/itinerary.json), [V3](generation/r02/v3/itinerary.json); adjacent usage summaries |
-| Current workflow | [Accepted steps 1-10 checklist](analysis/acceptance.json); blinded review deferred |
-| Same-run V3 pair | [Summary](evaluation/pair/summary.json), [complete native report](evaluation/pair/report.json) |
-| Corrected Primary | [Summary](evaluation/primary-corrected-r01/summary.json), [complete saved quality subtree](evaluation/primary-corrected-r01/report.json) |
-| Historical Primary | [Summary](evaluation/primary/summary.json), [complete saved quality subtree](evaluation/primary/report.json) |
-| Candidate process and relevance | [Candidates](analysis/offline-r01/candidates.json), [independent decisions](analysis/offline-r01/relevance.json) |
-| Repair structure and earlier checklist | [Repair](analysis/offline-r01/repair.json), [historical offline checklist](analysis/offline-r01/acceptance.json) |
-| Original r01 observations | [Unevaluated V0](generation/v0/itinerary.json), [V1 failure](generation/v1/failure.json) |
-| Current publication bindings | [Material index](material-index.json) |
-| Frozen pre-correction index | [Historical source index](evaluation/primary/source-material-index.json) |
+| Original request | [case 08](../inputs/case-08.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [inventory](interests/inventory.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [report](evaluation/primary/report.json), [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [report](evaluation/pair/report.json), [summary](evaluation/pair/summary.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [v3 origins](analysis/poi-process/v3-origins.json) |
+| Repair and complete stages | [mechanism](analysis/repair/mechanism.json), [repair](analysis/repair/repair.json), [stages](analysis/repair/stages.json) |
+| All-attempt resources | [accounting](analysis/resources/accounting.json), [price books](analysis/resources/price-books.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
+| Original step-10 approval | [Unchanged approval record](analysis/acceptance.json) |
+| Historical scoring | [Historical Primary](analysis/history/primary/summary.json), [complete historical findings](analysis/history/primary/report.json), [frozen source index](analysis/history/primary/source-material-index.json) |
+| Earlier stage observations | [Candidate snapshot](analysis/history/offline-r01/candidates.json), [Repair snapshot](analysis/history/offline-r01/repair.json), [r01 V0](analysis/history/r01/v0/itinerary.json), [r01 V1 failure](analysis/history/r01/v1/failure.json) |
 
-The current index distinguishes publication byte hashes, original source hashes and native JSON pointers. The historical source index retains its original bytes and earlier costs/status; its relative paths refer to the case directory. It is not the current acceptance authority. All four offline analysis JSON files are saved stage snapshots. Their historical pending-work descriptions are not current requirements: paired-policy compatibility is integrated through PR #187, and the current pair/checklist below supersede their unperformed-pair and open-archive status. The historical checklist has only a local temporary-root spelling removed from its publication view.
+The current index binds publication hashes, original source hashes and extraction pointers. The frozen historical index retains its original bytes and resolves at its recorded Git revision; current relocation mappings identify reader equivalents. Earlier snapshots retain their original stage status in analysis/history/. The current candidate and Repair views bind the completed pair and original independent labels. Public-material omissions were corrected from saved evidence on 18 October 2026; the original step-10 decision and selected scores are unchanged.
 
 ## Primary results
 
@@ -72,7 +78,7 @@ Six Planner invocations comprise r01 V0 and failed V1 plus the four selected r02
 
 Saved all-attempt usage records 28 model calls including embeddings, 314 HTTP sends including model transports, and 260,272 tokens. Repair is a generation subset and is not added again. These are dated retail/proxy references, not invoices. Account totals and external Codex tokens/billing remain unavailable. Unused allowance does not authorize another invocation.
 
-Public schedules preserve the selected `/itinerary` subtrees; each complete Primary file preserves its own saved `/quality` subtree. The complete quality files contain structured findings and raw-observation path/hash references, not the corresponding raw bodies or model request/response envelopes. Raw provider/model payloads, private prompts, author/reviewer transcripts, original receipts, preparations and full V3 lineage remain in ignored storage. Public presentation is not a standalone native execution bundle.
+Public schedules preserve the selected `/itinerary` subtrees; each complete Primary file preserves its own saved `/quality` subtree. The complete quality files contain structured findings and raw-observation path/hash references, not the corresponding raw bodies or model request/response envelopes. Raw provider/model payloads, private prompts, author/reviewer transcripts, original receipts, preparations and original native V3 lineage remain in ignored storage; complete public stage differences are linked above. Public presentation is not a standalone native execution bundle.
 
 Retained private storage identifiers are `benchmark/scratch/case-08/work/r01/`, `benchmark/scratch/case-08/work/r02/`, `benchmark/scratch/case-08/next-r01/primary/` and `benchmark/scratch/case-08/acceptance-r02/`. These identify evidence rather than published navigation dependencies. Absolute historical preparation bindings remain unchanged.
 

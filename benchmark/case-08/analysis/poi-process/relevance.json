@@ -1,0 +1,7 @@
+{
+  "$case_material_ref": {
+    "path": "../history/offline-r01/relevance.json",
+    "pointer": "",
+    "expanded_semantic_sha256": "19ea8369b14387b31ee265099aad84677b311456fca69e505803a01ec51f0cac"
+  }
+}

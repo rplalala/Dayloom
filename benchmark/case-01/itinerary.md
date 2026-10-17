@@ -184,7 +184,7 @@ All times below are Australia/Sydney; recorded route estimates remain separate f
 
 ## V3 draft versus final
 
-The [lossless draft delta](generation/v3/draft.json) reconstructs the exact original draft from the selected final itinerary. Repair accepted three deterministic `system_delete` rounds; all six surviving activity records are unchanged.
+The [lossless draft delta](analysis/repair/draft.json) reconstructs the exact original draft from the selected final itinerary. Repair accepted three deterministic `system_delete` rounds; all six surviving activity records are unchanged.
 
 | Date | Deleted draft activity | Original local time | Final count |
 | --- | --- | --- | ---: |

@@ -1,0 +1,197 @@
+{
+  "output_version": "itinerary_2",
+  "transfers": [
+    {
+      "from_activity_id": "visit-gothic-quarter",
+      "to_activity_id": "visit-santa-maria-del-mar",
+      "origin_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-19T12:30:00+02:00",
+      "arrival_time": "2026-10-19T12:38:11+02:00",
+      "provider_duration_seconds": 491.0,
+      "distance_meters": 609,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "visit-gothic-quarter",
+      "to_activity_id": "visit-santa-maria-del-mar",
+      "origin": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "destination": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+      "departure": "2026-10-19T12:30:00+02:00",
+      "next_start": "2026-10-19T14:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 491,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-15T20:36:48.105513+00:00",
+              "retrieved_at": "2026-10-15T20:36:49.606250+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 491,
+                "fallback_info": null,
+                "requested_at": "2026-10-15T20:36:48.105513Z",
+                "retrieved_at": "2026-10-15T20:36:49.606250Z",
+                "origin_index": 2,
+                "destination_index": 15,
+                "distance_meters": 609,
+                "duration_seconds": 491,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-16",
+  "end_date": "2026-10-20",
+  "days": [
+    {
+      "date": "2026-10-16",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-park-guell",
+          "title": "Explore Park Güell",
+          "place_name": "Park Güell",
+          "source_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+          "location": "Gràcia, 08024 Barcelona, Spain",
+          "start_time": "2026-10-16T10:00:00+02:00",
+          "end_time": "2026-10-16T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "A spacious first visit, with time to explore at an unhurried pace. Current date-window hours list 09:30–19:30; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-casa-batllo",
+          "title": "Visit Casa Batlló",
+          "place_name": "Casa Batlló",
+          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-17T10:30:00+02:00",
+          "end_time": "2026-10-17T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Allow time for an in-depth architectural visit. Current date-window hours list 08:30–22:30; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-macba",
+          "title": "Explore Museu d’Art Contemporani de Barcelona",
+          "place_name": "Museu d’Art Contemporani de Barcelona",
+          "source_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+          "location": "Plaça dels Àngels, 1, Ciutat Vella, 08001 Barcelona, Spain",
+          "start_time": "2026-10-18T11:00:00+02:00",
+          "end_time": "2026-10-18T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A single, unhurried indoor art visit. Current date-window hours list 10:00–15:00; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-gothic-quarter",
+          "title": "Wander the Gothic Quarter",
+          "place_name": "Gothic Quarter",
+          "source_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+          "location": "Gothic Quarter, Ciutat Vella, Barcelona, Spain",
+          "start_time": "2026-10-19T10:30:00+02:00",
+          "end_time": "2026-10-19T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "Take time to explore the historic neighbourhood on foot. Verified opening hours and current operational status were unavailable."
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-santa-maria-del-mar",
+          "title": "Visit Basílica de Santa Maria del Mar",
+          "place_name": "Basílica de Santa Maria del Mar",
+          "source_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+          "location": "Plaça de Santa Maria, 1, Ciutat Vella, 08003 Barcelona, Spain",
+          "start_time": "2026-10-19T14:00:00+02:00",
+          "end_time": "2026-10-19T15:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "A separate architectural visit in the old city. Current date-window hours list 10:00–18:00; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "visit-history-of-catalonia",
+          "title": "Explore the Museum of the History of Catalonia",
+          "place_name": "Museum of the History of Catalonia",
+          "source_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+          "location": "Pça. de Pau Vila, 3, Ciutat Vella, 08039 Barcelona, Spain",
+          "start_time": "2026-10-20T10:30:00+02:00",
+          "end_time": "2026-10-20T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A relaxed indoor history visit. Current date-window hours list 10:00–19:00; date-specific exceptions are unknown."
+        }
+      ]
+    }
+  ]
+}

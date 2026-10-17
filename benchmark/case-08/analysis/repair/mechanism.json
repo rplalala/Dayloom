@@ -1,0 +1,833 @@
+{
+  "schema_version": "rtpeval_mechanism_capture_1",
+  "group_id": "case-08",
+  "run_id": "case-08-r02-v3",
+  "version": "v3",
+  "input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+  "result_sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+  "outcome": "completed",
+  "collection_status": "available",
+  "coverage": {
+    "model_submission": "instrumented_default_adapter_only",
+    "rule_selection": "actual_v3_opening_only",
+    "provider_receipt_or_attention": "not_observed"
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "catalog": [],
+  "prepared_calls": [
+    {
+      "call_id": "call:1",
+      "stage": "primary",
+      "round_index": null,
+      "representation": [
+        {
+          "place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        }
+      ],
+      "submitted": true,
+      "outcome": "returned"
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrence_id": "call:1",
+      "reason": "model_input_submission",
+      "stage": "primary",
+      "round_index": null,
+      "source_refs": [],
+      "claim_links": [],
+      "representation": [
+        {
+          "place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJYUFLSe2ipBIRD04uni940kA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJQQSrd_qipBIRQ2xzarVkqn8"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "unknown_date_status",
+              "source_refs": [
+                "google_places:ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "general_baseline": "Places current operational status only",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJAVoetfeipBIR1a1z3FTGCoY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJJ2JbaneipBIRpVQ6RTJSwLA"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        },
+        {
+          "place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+          "operational_days": [
+            {
+              "date": "2026-10-22",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-23",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            },
+            {
+              "date": "2026-10-24",
+              "status": "general_baseline",
+              "source_refs": [
+                "google_places:ChIJ4eD9ztyipBIR_g1BtyluWPM"
+              ],
+              "general_baseline": "Places opening-hours pattern; date-specific exception unknown",
+              "unresolved_reason": null
+            }
+          ],
+          "accepted_effective_facts": [],
+          "need_statuses": [],
+          "unresolved_conflict_source_refs": [],
+          "tasks": []
+        }
+      ]
+    }
+  ]
+}
