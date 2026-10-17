@@ -229,7 +229,8 @@ def planner_supply_projection(selection, contract):
             *[s.model_dump(exclude={"source_refs"}) for s in contract.subjects],
         ],
         "daily_visit_constraints": [
-            r.model_dump(exclude={"source_refs"}) for r in contract.daily_visit_constraints or ()
+            r.model_dump(mode="json", exclude={"source_refs"})
+            for r in contract.daily_visit_constraints or ()
         ],
         "review_evidence_relations": {
             pid: [r.model_dump() for r in result.profile_relations[pid]]

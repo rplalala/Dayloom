@@ -1,6 +1,7 @@
 """Offline integration tests for the explicit V1-A graph."""
 
 import asyncio
+import json
 from datetime import date
 from uuid import UUID
 
@@ -185,6 +186,37 @@ def test_v1_full_offline_run_uses_normalized_evidence_and_fixed_masks() -> None:
     assert "currentOpeningHours" not in generation_prompt
     assert '"rating"' not in generation_prompt
     assert "<official_current_evidence>" not in generation_prompt
+
+
+def test_dated_visit_count_reaches_primary_generation_as_json():
+    from backend.app.schemas.itinerary_projection import V1Itinerary
+    from backend.tests.services.test_daily_visit_constraints import TEXT, counted_draft
+
+    llm = FakeStructuredLLMClient([counted_draft(), make_itinerary()])
+    result = asyncio.run(
+        run_v1(
+            make_request(TEXT),
+            llm,
+            FakePlacesProvider(),
+            FakeWeatherProvider(),
+            FakeRoutesProvider(),
+            reference_date=date(2026, 9, 11),
+        )
+    )
+
+    generation = next(call for call in llm.calls if call.response_schema is V1Itinerary)
+    supply = json.loads(generation.user_prompt.split("Planning candidate supply contract:\n", 1)[1])
+    assert supply["daily_visit_constraints"] == [
+        {
+            "constraint_id": "daily_visit_1",
+            "date": "2026-09-12",
+            "mode": "exact",
+            "count": 1,
+            "strength": "hard",
+            "requirement_refs": ["semantic_1"],
+        }
+    ]
+    assert result.system_version is SystemVersion.V1
 
 
 def test_shared_generation_rejects_model_transport_before_transfer_binding():
