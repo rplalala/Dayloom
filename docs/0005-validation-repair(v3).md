@@ -64,6 +64,9 @@ interval, so preservation instructions do not require timestamp subtraction by t
 The model proposes edits and target dispositions; it cannot author provider evidence or
 expand its own operation scope. Invalid structured
 output fails before adoption; partial malformed JSON is not salvaged as an itinerary.
+`scope.permissions` governs existing-activity edits. Dated `addition_candidates` provide
+independent add authority even when that permission list is empty. `operation_guidance`
+links this distinction to the current objective, candidate authorizations and transport.
 
 ### Dated-count protection
 
@@ -219,16 +222,21 @@ available interval, respect fixed occupancy and both adjacent visits, and preser
 stage-original daily added traffic limit of 90 itinerary minutes. DRIVE reserves count.
 No comparable original route means no invented baseline credit.
 
-Preparation rotates active addition opportunities by target, using a nearest real anchor
-and directed options rather than fetching the whole pool in three modes. This provisional
-anchor/time is explicitly not insertion feasibility. Retime/delete and other actual changed
-chains obtain necessary routes after legal patch construction. Final binding checks every
+Preparation rotates active authorized addition opportunities, including soft-pace and
+dated-count shortfalls, using a nearest real anchor and directed options rather than
+fetching the whole pool in three modes. Options link target/date, candidate and anchor
+identities, directed endpoints, mode, provider duration, reserve, combined occupancy,
+source and temporal applicability. Basic DRIVE/WALK estimates are distinguished from
+reference-departure-only evidence; neither establishes final insertion feasibility.
+Conditional compensation receives routes only when its parent edit creates the dependency.
+Retime/delete and other actual changed chains obtain necessary routes after legal patch
+construction. Final binding checks every
 changed real adjacency, including both sides, with its actual departure. TRANSIT remains
 exact-time-sensitive; basic DRIVE and WALK retain their provider-estimate evidence basis.
 
 ## Joint repair and component atomicity
 
-`repair_input_2` uses projection revision `mixed_transport_components_1`: canonical catalog,
+`repair_input_2` uses projection revision `qualified_opportunities_feedback_1`: canonical catalog,
 separate operation authorizations, protected/current context, compact target worksheet,
 transport options, adopted transfers, constraints and bounded feedback. A strict model result
 contains edits and target dispositions. Model explanations are not evidence. The application
@@ -327,7 +335,14 @@ Residual repetition/coverage remains explicit incomplete output. Confirmed exclu
 unexecutable-visit removal retains its separately authorized partial-removal policy.
 
 Already assessed candidates may be reused after the semantic preparation budget is exhausted;
-new ADD/REPLACE candidates require shared qualification before authorization. Budgets are
+new ADD/REPLACE candidates require shared qualification before authorization. Before provisional
+sufficiency or novelty can stop acquisition, pending assessments are settled in bounded batches.
+Final selected, eligible identities determine opportunity sufficiency and exploration progress;
+semantically rejected or unassessed identities cannot consume the exploration reference.
+When filtering removes an apparent opportunity, preparation continues within the same processed
+identity sets, capacity, acquisition/semantic counters and deadlines. `qualification_audit`
+records rejected roles, counts and remaining acquisition reasons. Missing ordinary operating,
+access or cost facts retain their existing UNKNOWN/selectability rules. Budgets are
 request-wide, not reset per round. Terminal semantic model/contract failures remain failures,
 not a successful generic Repair fallback. Final Nearby occurs once only after normal finalization,
 with no continuation after terminal failure, cancellation or an exhausted request deadline.
@@ -335,8 +350,8 @@ Implementation: [pending groups](../backend/app/versions/v3/repair_pending.py).
 
 ## Accepted bounded search redesign
 
-The October 13 implementation replaces material-repeat early stops and per-date
-pace non-regression with bounded exploration and separate final retention.
+Repair uses bounded exploration and separate final retention rather than per-date
+pace non-regression or a blanket prohibition on reusing unchanged materials.
 The [glossary](../GLOSSARY.md) distinguishes exploration from final selection.
 [Specification #139](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/139)
 owns implementation scope and live progress.
@@ -395,10 +410,23 @@ Missing required evidence blocks adoption instead of becoming a plausible model 
 
 Unchanged evidence alone does not stop exploration. Rejection feedback identifies
 attributable conflicts and supports a different authorized proposal using the same
-materials. Deduplicate semantic proposals against their base itinerary, permissions
-and relevant evidence; differences in timestamps or explanation text are not progress.
+materials. Model-input proposals are deduplicated using their base itinerary, edits and
+effective decision material, including permissions, time context and directed evidence;
+unpresented POIs and observational metadata do not invalidate that key. System-proposed
+operations retain their application-side evidence dependencies. Explanation text is not progress.
 Skip a previously failed equivalent proposal without declaring other operations exhausted.
 Detect repeated exploration states so equal/worse transitions cannot create a cycle.
+
+An empty proposal permits the first local-to-replan strategy transition. After a strategy
+returns empty edits, another send from the same effective material requires a real material
+change. Preparation first tries bounded candidate/evidence replenishment. If the material
+still matches that strategy's prior empty input, stop before charging/sending another model
+call with `no_new_material_after_empty_proposal`, retaining the best publishable itinerary.
+`empty_proposal_guard` records the material fingerprint, strategy, discovery outcomes and
+whether an empty reply was recorded or an unchanged send was stopped. Model explanations
+cannot create verified restrictions. Different nonempty proposals remain eligible within
+the shared limits. [Issue #184](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/184)
+owns this correction's scope and delivery state.
 
 Assess quantity applicability, minimum coverage, deletion authority and route feasibility
 separately. A `not_assessable` quantity diagnostic is not an unconditional ban on reducing
@@ -413,9 +441,10 @@ The [shared limits](#target-priority-and-stage-accounting) apply across every st
 Stop when applicable authorized goals are complete, shared limits prevent further work,
 required evidence is unavailable or the bounded authorized strategies are exhausted.
 Preserve existing terminal failure/cancellation semantics; there are no hidden retries.
-Do not equate one rejected proposal, unchanged materials or a skipped duplicate with
-all strategies exhausted. Record each proposal's base state, strategy, check outcomes,
-exploration transition, best-result promotion, actual calls and final stop reason.
+Do not equate one rejected proposal, unchanged materials alone or a skipped duplicate with
+all strategies exhausted; repeated empty inputs have the bounded guard above. Record each
+proposal's base state, strategy, check outcomes, exploration transition, best-result promotion,
+actual calls and final stop reason.
 Residual soft deductions mean partial/no improvement, not a successful zero target.
 
 `search_version=1` distinguishes new search records from the historical adopted-state chain.

@@ -1866,3 +1866,53 @@ the related documentation uncommitted. The full backend suite was not run. No
 provider execution, case-12 rerun, replay or rescoring occurred; saved outputs,
 historical Repair statuses, Primary scores and the cumulative execution budget
 remain unchanged. These checks establish offline behavior, not a new live result.
+
+## Repair opportunity preparation and empty-proposal correction (2026-10-17)
+
+[Issue #184](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/184) covers
+three generic V3 defects observed in the retained case-12 r06 result. Rounds 2–6
+returned empty edits with identical effective decision material; 26 and 28 October
+retained one main visit each. Transport preparation admitted only coverage targets,
+so soft-pace additions received no structured options despite reusable directed
+DRIVE evidence. Candidate preparation could stop on a provisional new identity
+before final semantic filtering removed it. Unpresented rejected identities also
+changed the old global proposal key without changing the model's decision material.
+The private evidence identifier is
+`benchmark/scratch/case-12/work/run-r06/captures/v3/result.json`; it is preserved
+original evidence, not a published dependency or a counterfactual feasibility proof.
+
+Implementation `7d1fe3c`, followed by review correction `421a83d`, was reviewed
+against local base `a0adc4e`. It presents bounded, evidence-scoped transport for
+active authorized additions, settles semantic qualification before stopping candidate
+preparation, and prevents another unchanged empty-input send for the same strategy.
+Independent add authority remains distinct from existing-activity edit permissions.
+The [current contract](../../0005-validation-repair%28v3%29.md#feedback-deduplication-and-applicability)
+owns the behavior; historical result fields and scores were not rewritten.
+
+The initial broad V3 gate passed 579 checks and failed 11. Corrections restricted
+pre-proposal routes to active targets, retained semantic batching, and updated tests
+that assumed repeated empty sends through the sixth round. Distinct nonempty sixth
+proposals, system-attempt accounting, cached route reuse and stopped-round trace
+markers remain covered. A new unpresented-identity fixture initially replaced the
+original semantic baseline; preserving those original assessments corrected the
+fixture and the selected gate passed 712 checks.
+
+Independent review then reproduced a remaining early-stop defect: two newly acquired
+but semantically rejected identities still consumed the exploration reference, hiding
+a later valid candidate. It also identified an audit field written after result-model
+construction. Both received failing regressions before correction. Final validation
+passed **713 network-blocked tests**: all V3 tests plus time protection, POI semantics,
+semantic projection, generation diagnostics, independent daily density and short-reference
+adapter tests. V3 Ruff, changed-file formatting and whitespace checks passed. Offline
+o200k sizing of a small synthetic transport input measured 5,568 local / 5,821 replan
+tokens against the unchanged 252,000-token input ceiling, with zero provider sends;
+this is not a worst-case capacity or live throughput measurement.
+
+Standards review found no actionable standards violations. Spec review's one confirmed
+defect and the separate audit observation were corrected and independently rechecked.
+At this checkpoint, implementation/tests are committed through `421a83d`, with only
+the coherent contract/evidence update uncommitted. V0–V2, Primary policy, six proposal
+sends, the 420-second stage limit and acquisition ceilings remain unchanged. No case-12
+rerun, native replay/rescore or paid project-provider call occurred. Full backend
+regression and live repair quality remain unverified; case-12 stays paused after its
+existing Primary handoff, with its USD 55 cumulative allowance and historical usage intact.
