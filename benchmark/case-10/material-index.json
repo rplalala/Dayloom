@@ -2,7 +2,7 @@
   "schema_version": "case_public_material_index_1",
   "case_id": "case-10",
   "case_revision": "2",
-  "status": "offline_review_complete_researcher_acceptance_pending",
+  "status": "automatically_accepted_blinded_review_deferred",
   "original_input": {
     "path": "../inputs/case-10.json",
     "sha256": "c5652474d19d73107c060dd8481caab184c071b1e6ec99c654cfe87043780570"
@@ -304,7 +304,9 @@
     "private": "Original benchmark/scratch/case-10 root",
     "public": "Original benchmark/case-10 root"
   },
-  "researcher_accepted": false,
+  "researcher_accepted": true,
   "case_closed": false,
-  "publication_newlines": "UTF-8/LF; original private byte hashes remain unchanged."
+  "publication_newlines": "UTF-8/LF; original private byte hashes remain unchanged.",
+  "acceptance_date": "2026-10-17",
+  "acceptance_timezone": "Australia/Sydney"
 }
