@@ -264,7 +264,7 @@ Dependent deduplication/compensation can remain unpublished until its whole grou
 Only the narrowly authorized removal exceptions permit partial deletion without compensation.
 
 Local proposals and affected-day replanning share at most six actual Repair model sends,
-including failed sends, under one 360-second stage deadline shortened by the remaining
+including failed sends, under one 420-second stage deadline shortened by the remaining
 request deadline. The default model-round ceiling permits six sends; a lower configured
 ceiling can stop earlier. System deletion
 has a separate default ceiling of 12 attempts; zero disables that strategy. It does not

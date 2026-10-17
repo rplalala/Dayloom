@@ -6,6 +6,8 @@ Revision r03 stopped on **17 October 2026 Australia/Sydney** before Primary.
 V0-V2 completed; V3 generated an initial itinerary but failed during subsequent
 Repair candidate semantic preparation. No qualified V3 final exists. Primary was
 not prepared or executed, no attempt was retried, and case acceptance is pending.
+The subsequent timeout/accounting correction is implemented and tested offline;
+case-12 has not been rerun with that correction.
 
 The unchanged [original request](../inputs/case-12.json) covers Sydney,
 22-28 October 2026, two adults, AUD 3,200 for the group, nature and harbour views,
@@ -91,6 +93,40 @@ unknown cost, producing a secondary TypeError after the native failure. Its orig
 cost and trace files are intact. A separate reconciliation note records the native
 exit 1 and the wrapper failure without fabricating a completion timestamp. Neither
 shared code nor the frozen wrapper was changed during this attempt.
+
+## Offline timeout and accounting correction
+
+The 17 October correction starts from `ff6458561363d9380efc57132a3085210bdf0d5d`.
+Commit `174581a` expands Repair time allocation and records the effective semantic
+timeout, limiting deadline and remaining allowances. The current values and their
+interaction with model/recheck reserves are defined in the
+[configuration reference](../../config/README.md#counting-timing-and-invariants).
+The per-call semantic limit, request deadline, acquisition/call ceilings and hard
+requirements remain unchanged. Terminal semantic failure still stops execution.
+This addresses the likely local allocation bottleneck; the historical selected
+deadline remains unavailable and no provider-latency conclusion follows.
+
+Commit `4848c7c` adds the tested
+[generation receipt helper](../../tools/validation/generation_receipt.py).
+It retains the native exit/completion and failure metadata when a cost total is
+null, missing or malformed; unknown totals remain null and observed subtotals stay
+separate. An unselected local next-execution template uses this helper. The r03
+executor, manifest-bound files and start-only receipt are unchanged; no historical
+wrapper completion time has been manufactured. A future execution requires a new
+source/configuration-bound manifest and the applicable execution authorization.
+
+The offline regression scope contains 917 tests across V0-V3, runtime configuration,
+semantic services/capture, observability, receipt/cost accounting and the mocked
+Foundry semantic boundary. The initial broad run passed 914 tests; three assertions
+still expected the old timing values. After updating those expectations and using a
+floating-point tolerance, all 90 tests in the affected modules passed. Controlled
+stage tests reproduce the short legacy window and permit 22/44-second semantic work
+under the revised policy, while retaining the 45-second semantic ceiling and hard
+deadline checks. Ruff lint/format and diff checks pass. No generation, Primary,
+provider request or paid retry was performed during this correction.
+Separate read-only Standards and Spec reviews of `ff645856...4848c7c` found no
+actionable issues; neither review is a source-only requirement judgment or a
+substitute for a new case execution.
 
 ## All-attempt resources
 
