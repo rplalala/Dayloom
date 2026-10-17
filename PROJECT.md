@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-16.
+Current source of truth. Updated 2026-10-17.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -62,9 +62,14 @@ Details: [shared architecture](docs/0001-system-architecture.md),
   skip that model call. Application-owned requirements retain exact source and
   subject provenance. Unsupported hard conditions and unresolved required identities
   preserve clarification boundaries.
-- Current interpretation uses request-bound source selections and a required pace
+- Current interpretation uses compact request-bound integer source selections and a required pace
   default. Whole-trip hard transport mode sets constrain V0 acceptance and V1-V3
   acquisition, selection and Repair; unsupported hard semantics still require clarification.
+- Explicit dated totals count primary visit occurrences and protect each hard obligation
+  throughout V3 Repair; zero sightseeing remains distinct from a full rest day. Independent
+  evaluation has its own reviewed count operator and prospective rules version.
+- User-named places bind to acquired candidates through sourced semantic correspondence
+  and unique application adoption; provider-standard names need not match user wording exactly.
 - Ordinary positive POI interests use soft targets of one distinct qualifying POI,
   or two for an explicitly sourced trip focus. Explicit counts, dates, exclusions
   and exclusive restrictions take priority. Broad enjoyment does not invent quotas.
@@ -80,6 +85,11 @@ Details: [requirements](docs/0002-requirements-evidence.md),
 [V2 retrieval](docs/0004-retrieval-persistence%28v2v3%29.md).
 
 ### Itinerary, transport and Repair
+
+Tools versions derive new local timestamps from sourced IANA zones per endpoint and date,
+reject conflicting explicit offsets and ambiguous/nonexistent clocks, and use elapsed UTC
+arithmetic for transfers. V0 retains its independent time generation. See the
+[civil-time contract](docs/0003-itinerary-transport.md#civil-time-and-iana-acceptance).
 
 - Current generation uses `itinerary_3` with explicit roles and scheduled/free-window
   time use; historical `itinerary_1/2` remain readable. Primary visits and optional unscheduled Nearby
@@ -161,8 +171,9 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Current identity policies are `versioned_api_identity_4` and
-`v0_identity_correspondence_3`. Requirement/schedule and route rules select versions
-4/3 for the new `transport_modes` operator and retain 3/2 for inputs without it.
+`v0_identity_correspondence_3`. Requirement/schedule rules select version 5 for a reviewed
+`daily_visit_count`, otherwise version 4 for `transport_modes` or version 3 without either.
+Route rules select version 3 with `transport_modes` and retain version 2 without it.
 Opening retains
 API-only rules 2 and selects rules 4 with validated policy-2 access judgments. Verified physical
 associations can support occurrence matching,

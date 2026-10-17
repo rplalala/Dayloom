@@ -1,6 +1,7 @@
 # POI semantics and quantity-review acceptance
 
-September 2026. Status: approved engineering closeout, not a version freeze or benchmark.
+September 2026 closeout with separately authorized October corrections. This is engineering
+evidence, not a version freeze or benchmark.
 Current rules belong to [requirements/evidence](../../0002-requirements-evidence.md) and
 [validation/repair](../../0005-validation-repair(v3).md). This record separates semantic
 interpretation, captured pilot results, Product propagation and the later review-policy change.
@@ -114,3 +115,76 @@ remained deferred. UNKNOWN access/hours/suitability/cost remained UNKNOWN; indoo
 was labelled a related alternative, not actual mountain climbing. Quantity success does
 not establish richness, feasibility, stable interpretation or a controlled comparison
 with the earlier regenerated D output.
+
+## Shared case-derived reliability corrections — 2026-10-17
+
+[Issue #175](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/175) owns four
+shared corrections against `b73c8eed09fafb6d54bee8684c5b2e7766515357`, with children
+[#176](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/176),
+[#177](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/177),
+[#178](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/178) and
+[#179](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/179). The researcher
+authorized main-directory implementation, local commits and offline verification;
+case continuation remained with the individual case chats.
+
+The originating observations were literal-name rejection for Sagrada Família / the
+provider's basilica name and British Museum / The British Museum (one shared defect),
+model-corrupted long source endpoints in case-10, the Paris DST offset propagated in
+case-11, and an unsupported dated total count in case-12. These causes come from the
+case diagnoses supplied with the approval; this correction did not repeat the original
+executions. Existing source validation correctly rejected the corrupt IDs. The identity
+policy's exact-name limitation, missing IANA acceptance check and missing count operator
+were separate implementation gaps. V0-V2's apparently correct case-12 output was not
+evidence that its hard total had been executable.
+
+The implementation commits are `2835f66` (compact source selections), `ed42a49`
+(named correspondence), `c14fede` (civil time) and `7a76632` (dated counts and independent
+evaluation), with compatibility corrections `cbf7d7a` / `132a8f8`, lossless serialization
+`4b10569` and review corrections `2180b5c` / `cfb3cb0`. Detailed current rules belong
+to [requirements](../../0002-requirements-evidence.md),
+[civil time](../../0003-itinerary-transport.md#civil-time-and-iana-acceptance),
+[Repair protection](../../0005-validation-repair%28v3%29.md#dated-count-protection) and
+the [independent operator](../../contracts/0003-requirement-schedule.md#dated-total-visits).
+
+Red/green checks exposed omitted structured generation counts and known non-main objects
+being counted, then verified both fixes. Broader regression found missing-zone duck-typed
+evidence compatibility and obsolete timezone-test assumptions. A new naive-duration check
+also showed host-zone interpretation before its correction. The initial integrated subset
+reported 1,920 passes and four timezone expectation failures; the corrected related gate
+passed 83 tests. Count/source/evaluator checks passed 140 tests; the native mocked
+execution/replay subset passed 82. These overlapping gates are not additive.
+
+Review against `b73c8ee` found no hard Standards breach, two maintenance suggestions,
+and five actionable Spec gaps: hard minimums conflicted with soft pace and default
+overfull targets, day windows assumed one fixed offset, transfer-window cuts retained an
+obsolete offset, and final transport omitted new-place timezone evidence. New regressions
+reproduced the faulty boundaries; one test scope first needed its required permissions
+field. The corrections give dated hard counts and feasible pace ownership of quantity
+targets, map both civil boundaries, map derived reservations through UTC/IANA and carry
+the merged final evidence. Minimum counts retain their open upper bound. The maintenance
+corrections centralize wire-version selection and type the daily assessment. The V3/time
+gate passed 579 tests; current/historical source and capture wiring passed 65. The final
+minimum/overfull correction passed 127 related tests, including actual totals of six and
+seven under a hard minimum of six with all quantity reviews enabled.
+
+Real cached o200k counts measured lossless JSON syntax only. For synthetic ASCII inputs
+of 400 / 4,000 / 24,000 characters, current system/user/schema totals changed from
+16,561 / 63,211 / 325,711 to 14,960 / 47,210 / 229,710 tokens. The schema stayed at
+5,127 tokens. These omit the remaining trip envelope and provider framing, are not billed
+usage, and do not prove semantic accuracy or universal input fit. No limit increase,
+per-name budget or automatic retry was introduced.
+
+An initial complete-suite attempt was stopped before completion to apply the review
+corrections. Its observed Windows junction failure reproduced in the sandbox and passed
+outside it on identical source. Credentials, system permissions and project configuration
+were unchanged. The final complete backend run on `cfb3cb0` passed 4,421 tests with
+16 skips and one warning in 1,954.26 seconds. The skips were two host symlink-privilege
+checks, five alternate-volume checks and nine opt-in isolated PostgreSQL checks. Ruff
+lint and format checks passed for all 61 changed Python files. Final Standards and Spec
+rechecks had no outstanding findings. All 189 local links in the seven updated documents
+resolved to tracked files and valid Markdown anchors.
+
+Provider/model tests use offline fixtures and doubles; they verify contract behavior,
+not real-model correspondence accuracy or case acceptance. Original case inputs, failed
+attempts, provider captures and scores were not rewritten, and no paid call or case rerun
+was part of this correction.

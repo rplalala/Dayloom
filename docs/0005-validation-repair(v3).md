@@ -27,6 +27,7 @@ target is distinct from the later operation permission. Its supported boundaries
 | Finding family | Current scope |
 | --- | --- |
 | Named/semantic and primary policy | Source-bound named inclusion/count/date obligations, supported semantic count/date goals and primary-role/exception policy; arbitrary open text remains unassessed. See [shared semantics](0002-requirements-evidence.md#semantic-qualification-and-multiplicity). |
+| Dated total visits | Source-linked all-primary occurrence bounds; a hard proven mismatch is CONFIRMED, an uncertain role/date is UNKNOWN. See [dated-count protection](#dated-count-protection). |
 | Overlap, repetition and coverage | Supported schedule conflicts, unauthorized canonical repeats and minimum coverage; optional quantity/overfull review remains separate. See [counting](0003-itinerary-transport.md#generation-diagnostics-and-counting-contract). |
 | Opening | Complete visit containment in adopted structured intervals, with selected-hours provenance and outside-hours magnitude; this is not admission or ticket verification. |
 | Route | Actual directed transition bindings and applicable evidence; missing mode/departure/binding remains UNKNOWN. |
@@ -63,6 +64,34 @@ interval, so preservation instructions do not require timestamp subtraction by t
 The model proposes edits and target dispositions; it cannot author provider evidence or
 expand its own operation scope. Invalid structured
 output fails before adoption; partial malformed JSON is not salvaged as an itinerary.
+
+### Dated-count protection
+
+The [daily visit contract](0002-requirements-evidence.md#dated-total-primary-visit-counts)
+owns numeric meaning and counting. `daily_visit_count` findings identify each obligation,
+date, target and observed bounds. A proven shortfall can authorize dated additions; a
+proven surplus can authorize deletions subject to existing named/count protections.
+Candidate selection and operation permissions remain application-owned. Hard dated counts
+and their feasible pace projection replace default quantity targets on that date; an
+ordinary overfull target cannot require fewer visits than a hard minimum. Zero totals
+exempt minimum sightseeing coverage without clearing full-day protections.
+
+For a hard minimum, the pace objective considers only counts at or above that sourced
+floor. It retains the existing curve's differences within this legal domain and subtracts
+its best attainable penalty as the baseline. For example, ordinary minimum three targets
+three rather than two; four remains legal with a larger soft penalty. This does not invent
+an exact or maximum count. `hard_daily_count_feasible_pace_1` records the projection and
+baseline. It changes Planner optimization only; independent density scoring retains its
+separately reviewed policy. Counting and role/date uncertainty use the same dated-count
+assessment as the hard finding.
+
+Every complete local patch, affected-day replan and adoption comparison checks each hard
+daily obligation. PASS cannot become violated or uncertain; UNKNOWN cannot become a
+proven failure; an existing failure cannot worsen or become uncertain. Both source and
+destination dates of moves are protected. Conditional edit preparation may offer an
+atomic replacement, but cannot waive the final check. Lower aggregate soft-pace deductions
+never compensate a hard regression. Final selection repeats ordinary source/time and
+requirement validation; original findings and rejected proposals remain evidence.
 
 ## Components, adoption and fallback
 

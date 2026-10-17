@@ -41,6 +41,31 @@ Cost-projection diagnostic paths follow the same activities
 through the permutation. Raw model captures stay unchanged. This output-source boundary,
 rather than standalone schema construction, owns normalization.
 
+## Civil time and IANA acceptance
+
+The tools-only `tools_civil_time_1` provider projection receives sourced IANA context and
+local date/clock endpoints. Ordinary generated endpoints return `utc_offset=null`; the
+application resolves each endpoint using that zone and its actual date. It does not reuse
+a trip-wide offset across a DST boundary. New V3 patches use the same application-owned
+context. V0 retains its independent model-authored offsets.
+
+Local clocks in a DST gap are rejected. A repeated clock requires an explicit valid
+offset to select its instant; the application never chooses a fold. Missing or conflicting
+zone evidence cannot be replaced by a guessed destination zone. A missing venue zone may
+use the single consistent supplied context zone. Explicit offsets, including historical
+tool responses, are preserved and checked against known IANA evidence at both activity
+endpoints. A known conflict fails acceptance before Routes/Nearby propagation, without
+rewriting the response or retrying. Missing historical zone evidence remains unassessed.
+
+The accepted domain values use fixed offsets. Chronology and elapsed route arithmetic
+operate through UTC, then return to the applicable sourced zone, including across a
+transition. DTO/source captures preserve the original local fields and explicit offsets;
+saved failed outputs are not converted into successful observations by reading them.
+Calendar days, fixed protections and blank-day policy windows map their two civil endpoints
+separately, so a DST day can span 23 or 25 elapsed hours. An ambiguous protected clock stays
+unresolved. Repair transfer reservations and derived free-window fragments use the same
+elapsed-time mapping. Final transport formatting includes newly adopted Repair place evidence.
+
 ## Transport ownership
 
 A source-linked hard `allowed_modes` set constrains V0 declarations and all V1-V3
