@@ -2,7 +2,7 @@
   "schema_version": "case_public_material_index_1",
   "case_id": "case-08",
   "execution_revision": "r02",
-  "status": "steps_1_9_complete_pending_researcher_acceptance",
+  "status": "automatically_accepted_blinded_review_deferred",
   "publication_source_revision": "2c48c8910cfc3819bc18cebab33fe1ccf809fcc0",
   "delivery_base": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
   "original_input": {
@@ -303,7 +303,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "16f64a9c4dd3f15a5e173e3d7990d3415190528eda0f00f842bafa23a31a39c1",
+      "sha256": "110c0111c6c960c68d032ff981a62272aeb8fd1f6eca93bf84b5c754a2fbe3d7",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/report.md",
         "sha256": "574e88951c8015a922223263653c8059b2b49b4ca64a09228a915ad079748400"
@@ -344,7 +344,7 @@
     },
     {
       "path": "analysis/acceptance.json",
-      "sha256": "eb371ceea2e169fad86e21aacc8b0c24e2c7966dd5c40131d80f4379df0fecea",
+      "sha256": "49a182dab7ff76151124ce72aae89c4742962b555f197c3443c8ef19bcad4bbf",
       "source": {
         "storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
         "sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb"
@@ -360,7 +360,6 @@
     "external_codex_billing": null
   },
   "remaining_work": [
-    "Researcher step-10 decision on the exact selected material and limitations",
     "Separately authorized Git publication/integration and Issue handling",
     "Deferred step-11 blinded human review"
   ],
@@ -388,5 +387,7 @@
     "closeout_sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb",
     "status": "restored_bytes_and_native_pair_verified",
     "original_absolute_bindings": "retained unchanged; originals remain required for their original preparation layout"
-  }
+  },
+  "acceptance_date": "2026-10-17",
+  "acceptance_timezone": "Australia/Sydney"
 }

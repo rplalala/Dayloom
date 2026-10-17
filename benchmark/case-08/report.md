@@ -2,7 +2,7 @@
 
 ## Selection and status
 
-**Steps 1-9 complete; step 10 awaits the researcher's acceptance decision.** The selected r02 V0-V3 outputs, historical Primary and separately authorized corrected Primary are retained. Same-run V3 pairing, independent continuity, all-attempt reconciliation and retained-evidence archive verification are complete. Blinded human review is deferred separately. [Issue #157](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157) owns case lifecycle; this local preparation does not close it or [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182).
+**Automatically accepted on 2026-10-17 (Australia/Sydney); blinded human review deferred.** The researcher completed step 10 by accepting the exact selected material and disclosed limitations presented at `75ade00`. The selected r02 V0-V3 outputs, historical Primary and separately authorized corrected Primary are retained. Same-run V3 pairing, independent continuity, all-attempt reconciliation and retained-evidence archive verification are complete. Case lifecycle is tracked in [Issue #157](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157); shared evaluator corrections are tracked in [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182).
 
 The unchanged [original request](../inputs/case-08.json) covers Barcelona, 22-24 October 2026, two adults and EUR 1,000 for the whole trip. It requires exactly one Sagrada Família visit, excludes Park Güell and expresses architecture/history interests. Input SHA-256 is `769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
 
@@ -12,7 +12,7 @@ All four selected generations use source `19a4f4d97e4c8cb5e441ebc3239e7ef5111b86
 | --- | --- |
 | Reviewed original-request obligations | [Requirements](requirements/reviewed.json) |
 | Selected schedules and usage | [V0](generation/r02/v0/itinerary.json), [V1](generation/r02/v1/itinerary.json), [V2](generation/r02/v2/itinerary.json), [V3](generation/r02/v3/itinerary.json); adjacent usage summaries |
-| Current workflow | [Steps 1-10 checklist](analysis/acceptance.json); step 10 pending researcher decision |
+| Current workflow | [Accepted steps 1-10 checklist](analysis/acceptance.json); blinded review deferred |
 | Same-run V3 pair | [Summary](evaluation/pair/summary.json), [complete native report](evaluation/pair/report.json) |
 | Corrected Primary | [Summary](evaluation/primary-corrected-r01/summary.json), [complete saved quality subtree](evaluation/primary-corrected-r01/report.json) |
 | Historical Primary | [Summary](evaluation/primary/summary.json), [complete saved quality subtree](evaluation/primary/report.json) |
@@ -82,7 +82,7 @@ Both original Primaries replay exactly under their own frozen evaluator implemen
 
 The external-network guard initially interfered with Python SSL imports and Windows asyncio loopback IPC before native execution began. Its local harness was corrected without repository code changes. Exactly one native pair execution started and completed; no consumed package was retried, and no provider/model request was sent.
 
-## Step 10 acceptance decision
+## Acceptance
 
 | Item | Current disposition |
 | --- | --- |
@@ -91,18 +91,19 @@ The external-network guard initially interfered with Python SSL imports and Wind
 | Candidate, relevance and Repair structural reports | Complete within disclosed evidence limits |
 | Independent common-policy V3 pair and continuity | Complete through source-labelled offline reuse; exact native replay |
 | Retained-evidence archive and native restored pair | Verified; original absolute Primary dependencies retained unchanged |
-| Researcher final case acceptance and publication | Pending |
+| Researcher automatic case acceptance (step 10) | Accepted on 2026-10-17 with the retained limitations |
+| Git publication and Issue closure | Not performed; separate authorization required |
 | Blinded human review | Deferred separately |
 
 The generic target corrections are integrated through [PR #185](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/185); the paired policy/material compatibility extension is integrated through [PR #187](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/187). Those fixes need no further case-specific code merge. The current case pair uses those integrated contracts; code integration alone never establishes case acceptance.
 
 The former USD 3.10 paid-pair planning reservation was unused. Actual selected pairing has zero current model/Google sends and zero incremental project-provider reference cost; inherited Primary consumption is not charged again.
 
-Step 10 asks the researcher to accept the exact r02 outputs, corrected Primary, current pair, process reports and retained limitations in the [checklist](analysis/acceptance.json). Genuine V0 FAIL, V1 UNKNOWN, partial relevance, unverified affordability/thematic fulfillment and billing gaps remain observations, not unfinished attempts to force PASS. Step 11 human review is deferred. No researcher decision, publication, merge or Issue closure is inferred from completion of steps 1-9. The public view is accompanied by verified private dependencies; it is not a standalone native execution bundle.
+The researcher accepted the exact r02 outputs, corrected Primary, current pair, process reports and retained limitations in the [checklist](analysis/acceptance.json) on 2026-10-17. The checklist binds the reviewed material revision and report/selected-summary hashes. Genuine V0 FAIL, V1 UNKNOWN, partial relevance, unverified affordability/thematic fulfillment and billing gaps remain accepted limitations. Step 11 human review stays deferred. Acceptance does not authorize publication, merge, Issue closure or additional execution. The public view is accompanied by verified private dependencies; it is not a standalone native execution bundle.
 
 ## Assistance and history
 
-The researcher approved input, stage scope, budgets and the corrected Primary, but has not yet accepted the final case. Parent Codex `/root` coordinated material, accounting, evidence binding and presentation. It prepared the offline package and completed steps 8-9 using saved files, native import, zero-send pair execution, replay and export. No new independent reviewer or external model was dispatched, and no generation or Primary invocation was added. Paired scoring and deterministic replay are separate from the preserved Primary score histories.
+The researcher approved input, stage scope, budgets and the corrected Primary, and accepted the selected case with its retained limitations on 2026-10-17. Parent Codex `/root` coordinated material, accounting, evidence binding and presentation. It prepared the offline package and completed steps 8-9 using saved files, native import, zero-send pair execution, replay and export. No new independent reviewer or external model was dispatched, and no generation or Primary invocation was added. Paired scoring and deterministic replay are separate from the preserved Primary score histories.
 
 Independent `/root/case08_author`, `/root/case08_requirement_reviewer` and `/root/case08_interests` were dispatched as `gpt-6.1-sol / high`. Their original r01 source-only decisions were reused unchanged for r02. The interest actor's incidental exposure to a historical Sydney summary in PROJECT.md is retained as a limitation; its record says that it did not inform the decisions. The actual relevance reviewer `/root/case08_relevance_review` received only the original input and frozen source-only packet. It inherited parent configuration with no model/effort override; no semantic retry was selected. A Unicode display correction changed neither packet nor judgments.
 

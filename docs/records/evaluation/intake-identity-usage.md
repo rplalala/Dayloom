@@ -2282,7 +2282,8 @@ or rescoring them. Original failures, provider evidence, usage and both score hi
 remain retained. Subsequent case steps 8-9 completed source-labelled native pairing,
 continuity, frozen Primary replays and restored archive/native-pair verification with
 zero new provider/model sends. The case report owns the current evidence and limitations.
-Step 10 awaits the researcher's final decision; publication and Issue closure remain separate.
+The researcher accepted case-08 step 10 on 2026-10-17 with those limitations; blinded
+human review remains deferred. Publication and Issue closure remain separate.
 
 #### Shared evaluator delivery preparation (2026-10-17)
 

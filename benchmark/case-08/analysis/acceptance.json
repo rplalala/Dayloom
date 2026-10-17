@@ -2,7 +2,7 @@
   "schema_version": "case_automatic_acceptance_checklist_1",
   "case_id": "case-08",
   "execution_revision": "r02",
-  "status": "steps_1_9_complete_pending_researcher_acceptance",
+  "status": "automatically_accepted_blinded_review_deferred",
   "selected_primary": "../evaluation/primary-corrected-r01/summary.json",
   "selected_pair": "../evaluation/pair/summary.json",
   "steps": [
@@ -54,7 +54,7 @@
     {
       "step": 10,
       "work": "Researcher decision on exact selected material and disclosed limitations",
-      "status": "pending_researcher_decision"
+      "status": "accepted_with_disclosed_limitations"
     }
   ],
   "closeout": {
@@ -92,11 +92,33 @@
   ],
   "deferred": "Step 11 consolidated blinded human review",
   "not_performed": [
-    "researcher final acceptance",
     "push",
     "PR creation",
     "main integration",
     "Issue closure"
   ],
-  "automatic_acceptance_owner": "researcher"
+  "automatic_acceptance_owner": "researcher",
+  "acceptance": {
+    "step": 10,
+    "decision": "accepted_with_disclosed_limitations",
+    "decided_by": "researcher",
+    "decision_date": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_source": "Explicit researcher approval in the current conversation. Accept the presented exact material and retained limitations; defer blinded review. Update status and prepare the final local package only.",
+    "reviewed_material_revision": "75ade00f259dd69b79fcafa23dfbc012e70bf15c",
+    "reviewed_report_sha256": "16f64a9c4dd3f15a5e173e3d7990d3415190528eda0f00f842bafa23a31a39c1",
+    "original_input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+    "selected_primary": {
+      "path": "../evaluation/primary-corrected-r01/summary.json",
+      "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f"
+    },
+    "selected_pair": {
+      "path": "../evaluation/pair/summary.json",
+      "sha256": "d0dfac5d91a8cb5b8736511c1f6120c80cf110de4dac9ff9e672b78d3fb79d29"
+    },
+    "retained_limitations": "All retained_limitations in this checklist remain accepted without alteration.",
+    "blinded_review": "deferred",
+    "publication_and_issue_operations": "not_authorized",
+    "new_execution": "not_authorized"
+  }
 }

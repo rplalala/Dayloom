@@ -130,6 +130,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
+| 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; blinded review deferred, Git delivery pending |
 | 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); main-worktree integration and private-evidence migration complete |
 | 11 | 2026-10-17 | [Paris execution revision 2, protected interval, genuine no-Repair, completed same-run pair, 14 relevance UNKNOWNs and unverified affordability](case-11/report.md#acceptance); automatically accepted and integrated into the main worktree with verified private archive migration; blinded review deferred |
 
@@ -387,7 +388,7 @@ itinerary's available modes, time or daily visit capacity.
 Case-01–07 retain their existing input bytes, selected revisions, results, scores,
 reports, receipts, original dates and acceptance limitations. Historical accepted
 dates need not satisfy today's moving window. The five inputs revised on 16 October
-use the dates below; cases 09 and 11 are now accepted, while 08/10/12 remain unexecuted.
+use the dates below. Current acceptance states and selected revisions are listed above.
 The new case-12 is the former Sydney case-14.
 
 Dates and durations are inclusive. Selected reports are indexed
