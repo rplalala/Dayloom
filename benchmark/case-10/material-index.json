@@ -305,8 +305,8 @@
     "public": "Original benchmark/case-10 root"
   },
   "researcher_accepted": true,
-  "case_closed": false,
   "publication_newlines": "UTF-8/LF; original private byte hashes remain unchanged.",
   "acceptance_date": "2026-10-17",
-  "acceptance_timezone": "Australia/Sydney"
+  "acceptance_timezone": "Australia/Sydney",
+  "issue_url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/159"
 }
