@@ -138,7 +138,25 @@ def observe_generation(
         for r in rows
         if r.minimum_coverage == "missing"
     )
+    from backend.app.policies.daily_visit_constraints import assess_daily_visits
+
+    daily_counts = (
+        assess_daily_visits(itinerary, contract, semantic_assessments) if contract else ()
+    )
+    issues += tuple(
+        {
+            "reason": "daily_visit_count_unmet",
+            "date": str(r.date),
+            "requirement_ids": r.requirement_ids,
+            "status": r.status,
+        }
+        for r in daily_counts
+        if r.strength == "hard" and r.status != "PASS"
+    )
     return GenerationDiagnostics(
+        daily_visit_counts=daily_counts
+        if contract and contract.daily_visit_constraints is not None
+        else None,
         goal_progress=goal_progress(itinerary, contract, semantic_assessments)
         if contract and canonical
         else (),
@@ -148,7 +166,11 @@ def observe_generation(
         if semantic_rows
         and contract
         and contract.contract_version
-        in ("interpreted_requirements_4", "interpreted_requirements_5")
+        in (
+            "interpreted_requirements_4",
+            "interpreted_requirements_5",
+            "interpreted_requirements_6",
+        )
         and contract.visit_requirements is not None
         else "unassessed",
         policy_issues=issues,

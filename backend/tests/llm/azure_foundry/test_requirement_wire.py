@@ -16,13 +16,22 @@ from backend.app.services.preference_interpretation import (
 from backend.tests.request_fixtures import make_request
 
 
-def run_wire(answer, text="I like parks.", *, contract="preference_draft_13"):
+def run_wire(
+    answer,
+    text="I like parks.",
+    *,
+    contract="preference_draft_13",
+    observe_prompt=None,
+    observe_metadata=None,
+):
     class SavedChat:
         def bind(self, **kwargs):
             self.schema = kwargs
             return self
 
         async def ainvoke(self, messages):
+            if observe_prompt:
+                observe_prompt(messages[-1].content)
             prompt = json.loads(messages[-1].content)
             payload = answer(prompt) if callable(answer) else answer
             return AIMessage(content=json.dumps(payload), response_metadata={"status": "completed"})
@@ -32,7 +41,10 @@ def run_wire(answer, text="I like parks.", *, contract="preference_draft_13"):
     client._capture_secrets = ()
     client._requirement_config = {"contract": contract}
     client.requirement_capture = None
-    return asyncio.run(interpret_preferences(make_request(text), date(2026, 9, 11), client))
+    result = asyncio.run(interpret_preferences(make_request(text), date(2026, 9, 11), client))
+    if observe_metadata:
+        observe_metadata(client.last_call_metadata)
+    return result
 
 
 def wire_empty():
@@ -46,6 +58,102 @@ def test_required_trip_default_passes_complete_service():
     result = run_wire(wire_empty())
     assert result.daily_pace[0].profile == "ordinary"
     assert result.daily_pace[0].date is None
+
+
+def test_dated_count_wire_restores_sources_before_hard_capability_acceptance():
+    from backend.tests.services.test_daily_visit_constraints import TEXT, counted_draft
+
+    def answer(prompt):
+        data = counted_draft().model_dump(mode="json")
+        data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+        selection = [{"first_ref": 0, "last_ref": len(prompt["source_spans"]) - 1}]
+        data["semantic_requirements"][0]["source_refs"] = selection
+        data["daily_visit_constraints"][0]["source_refs"] = selection
+        return data
+
+    result = run_wire(answer, TEXT, contract="preference_draft_15")
+    assert result.contract_version == "interpreted_requirements_6"
+    rule = result.daily_visit_constraints[0]
+    assert rule.source_refs[0].quote == TEXT
+    assert rule.requirement_refs == ("semantic_1",)
+
+
+def test_dated_wire_requires_an_assessed_count_list_and_supported_schema():
+    from backend.app.llm.azure_foundry.client import requirement_wire_format
+    from backend.tests.llm.azure_foundry.test_dto import assert_foundry_schema_contract
+
+    schema = requirement_wire_format(current=True, indexed=True, dated=True)["json_schema"][
+        "schema"
+    ]
+    assert_foundry_schema_contract(schema)
+    assert "daily_visit_constraints" in schema["required"]
+    with pytest.raises(RequirementBoundaryError):
+        run_wire(wire_empty(), contract="preference_draft_15")
+
+
+def test_current_large_source_inventory_is_compact_without_rewriting_original_text():
+    data = wire_empty()
+    data["daily_visit_constraints"] = []
+    original = "Café 😊.\n" * 400
+    captured = []
+    run_wire(data, original, contract="preference_draft_15", observe_prompt=captured.append)
+    prompt = captured[0]
+    assert '"source_spans":[' in prompt
+    assert '"text":"é"' in prompt
+    assert json.loads(prompt)["additional_preferences"] == original
+    assert len(json.loads(prompt)["source_spans"]) == len(original)
+
+
+def test_compact_source_selections_restore_through_complete_interpretation():
+    from backend.tests.versions.v1.test_interpreted_requirements import draft_for
+
+    text = "Café 😊. Café 😊."
+
+    def answer(prompt):
+        spans = prompt["source_spans"]
+        assert spans[8] == {"id": 8, "text": "C"}
+        data = draft_for(text).model_dump(mode="json")
+        data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+        data["semantic_requirements"][0]["source_refs"] = [{"first_ref": 8, "last_ref": 14}]
+        return data
+
+    result = run_wire(answer, text, contract="preference_draft_14")
+    ref = result.semantic_requirements[0].source_refs[0]
+    assert (ref.quote, ref.occurrence, ref.start, ref.end) == ("Café 😊.", 1, 8, 15)
+
+
+@pytest.mark.parametrize("first,last", [(True, 5), (0, False), (-1, 5), (8, 2), (0, 999), ("0", 5)])
+def test_compact_invalid_selections_fail_without_correction(first, last):
+    from backend.tests.versions.v1.test_interpreted_requirements import draft_for
+
+    data = draft_for("I like parks.").model_dump(mode="json")
+    data.update(transport_constraint=None, daily_pace=wire_empty()["daily_pace"])
+    data["semantic_requirements"][0]["source_refs"] = [{"first_ref": first, "last_ref": last}]
+    with pytest.raises(RequirementBoundaryError) as error:
+        run_wire(data, contract="preference_draft_14")
+    assert error.value.code == "invalid_source_span"
+    assert error.value.errors[0]["loc"] == ("semantic_requirements", 0, "source_refs", 0)
+
+
+def test_compact_mapping_cannot_restore_against_a_foreign_request_binding():
+    from backend.app.llm.azure_foundry.requirement_wire import IndexedSourceSpans, restore_current
+
+    spans = IndexedSourceSpans("request A", "I like parks.")
+    other = IndexedSourceSpans("request B", "I like parks.")
+    with pytest.raises(RequirementBoundaryError, match="source_request_mismatch"):
+        restore_current(wire_empty(), spans, request_sha256=other.request_sha256)
+
+
+def test_compact_schema_has_integer_endpoints_without_large_enumerations():
+    from backend.app.llm.azure_foundry.client import requirement_wire_format
+    from backend.tests.llm.azure_foundry.test_dto import assert_foundry_schema_contract
+
+    schema = requirement_wire_format(current=True, indexed=True)["json_schema"]["schema"]
+    assert_foundry_schema_contract(schema)
+    assert schema["$defs"]["FoundrySourceQuoteDTO"]["properties"] == {
+        "first_ref": {"type": "integer"},
+        "last_ref": {"type": "integer"},
+    }
 
 
 @pytest.mark.parametrize("pace", [[], None, {"date_overrides": []}])

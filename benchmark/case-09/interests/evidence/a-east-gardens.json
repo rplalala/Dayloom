@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+  "unresolved_subject_id": null,
+  "source_url": "https://kikuyou.or.jp/higashigyoen/en.html",
+  "source_reference": "turn9view6 lines 20-23; turn9view5 lines 68-82",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The official palace cultural association identifies the East Gardens as occupying the main quarters of former Edo Castle; the Agency lists guardhouses, castle remains and a teahouse there.",
+  "limitations": "Garden visit relevance only; no access or opening-date decision.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

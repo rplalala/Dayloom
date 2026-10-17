@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_reviewed_description",
+  "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+  "unresolved_subject_id": null,
+  "source_url": "https://www.gallerycomplex.com/info/index.html",
+  "source_reference": "turn44search3; turn33search9; turn42view1",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run indexed official-source description independently read and paraphrased; full-page body not relied upon",
+  "factual_paraphrase": "The gallery describes support for contemporary artistic culture through exhibitions, workshops and art programs; a documented exhibition includes interdisciplinary practices involving light, time and spatial storytelling.",
+  "limitations": "The selected award-page open failed decoding. Official about and artist descriptions were independently reviewed through indexed content; individual trip-date exhibitions were not assessed.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

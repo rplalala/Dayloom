@@ -365,9 +365,9 @@
   },
   "offline_followup": {
     "google_sends": 0,
-    "model_provider_sends": 0,
-    "current_reference_usd": "0",
-    "paired_sources": "Inherited primary evidence, charged once in the primary bucket"
+    "model_provider_sends": 1,
+    "current_reference_usd": "0.0009298",
+    "paired_sources": "Original observations inherited without repeated charge; fresh paired access model usage charged once."
   },
   "known_generation_reference_usd": "7.158778495",
   "known_generation_tokens": 234163,
@@ -379,5 +379,23 @@
     "One original failed attempt has one incomplete model HTTP send, unavailable provider tokens and two unpriced events.",
     "Account invoices and external Codex tokens/bills unavailable. Reference prices exclude quotas, credits, discounts and tax.",
     "Repair is a subset; inherited paired usage is not charged again; oracle usage is not assigned to Planner versions."
-  ]
+  ],
+  "paired_access_refresh": {
+    "scope": "Independent same-run paired access assessment; excluded from Planner attempt/model counters",
+    "model_sends": 1,
+    "google_sends": 0,
+    "retries": 0,
+    "input_tokens": 4599,
+    "output_tokens": 710,
+    "total_tokens": 5309,
+    "reference_usd": "0.0009298",
+    "actual_invoice": null,
+    "source": {
+      "logical_path": "reassessment/access-final/execution/report.json",
+      "sha256": "421b62cd1907fd600e33d7ded898884c26af76b36088098f621e8c3070b6ec54",
+      "json_pointer": "/usage"
+    }
+  },
+  "known_case_reference_subtotal_including_paired_refresh": "8.506203145",
+  "known_case_tokens_including_paired_refresh": 266642
 }

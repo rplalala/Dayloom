@@ -12,7 +12,10 @@ def affected_activity_ids(itinerary, finding):
         a.activity_id
         for d in itinerary.days
         for a in d.activities
-        if (finding.check in {"overfull", "soft_pace"} and d.date in finding.dates)
+        if (
+            finding.check in {"overfull", "soft_pace", "daily_visit_count"}
+            and d.date in finding.dates
+        )
         or (
             finding.reason == "excluded_identity_scheduled"
             and a.source_place_id in finding.place_ids
@@ -82,7 +85,7 @@ def localize_scope(
     )
     direct = set()
     for f in findings:
-        if f.check in {"coverage", "soft_pace"}:
+        if f.check in {"coverage", "soft_pace", "daily_visit_count"}:
             direct.update(f.dates)
         elif f.reason in {
             "required_identity_omitted",
@@ -171,7 +174,11 @@ def main_visits(itinerary, pid, assessments=()):
     ]
 
 
-def protect_visits(original, proposed, context):
+def protect_visits(original, proposed, context, *, protect_daily=True):
+    if protect_daily:
+        from backend.app.policies.daily_visit_constraints import protect_daily_visits
+
+        protect_daily_visits(original, proposed, context.contract, context.semantic_assessments)
     for pid, count, dates, uncertain in visit_rules(context):
         before = main_visits(original, pid, context.semantic_assessments)
         after = main_visits(proposed, pid, context.semantic_assessments)
@@ -385,7 +392,7 @@ def dispensable_visit(itinerary, activity_id, context):
     for day in trial.days:
         day.activities = [a for a in day.activities if a.activity_id != activity_id]
     try:
-        protect_visits(itinerary, trial, context)
+        protect_visits(itinerary, trial, context, protect_daily=False)
     except ValueError:
         return False
     return True

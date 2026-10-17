@@ -33,12 +33,7 @@ class SourceSpans:
         start, end = self.spans[first][0], self.spans[last][1]
         if start >= end:
             invalid("invalid_source_span", path)
-        quote = self.text[start:end]
-        occurrence, position = 0, self.text.find(quote)
-        while position != start:
-            position = self.text.find(quote, position + 1)
-            occurrence += 1
-        return {"quote": quote, "occurrence": occurrence}
+        return _source_quote(self.text, start, end)
 
     def restore(self, node, path=()):
         if isinstance(node, list):
@@ -59,6 +54,43 @@ class SourceSpans:
         return result
 
 
+class IndexedSourceSpans(SourceSpans):
+    """Compact local selections, bound to the producing request outside model text."""
+
+    def __init__(self, prompt, text):
+        self.text = text
+        self.request_sha256 = sha256(prompt.encode("utf-8")).hexdigest()
+        self.spans = {i: (i, i + 1) for i in range(len(text))}
+
+    @property
+    def mapping_sha256(self):
+        return sha256(
+            json.dumps(
+                {"request_sha256": self.request_sha256, "text": self.text},
+                sort_keys=True,
+            ).encode("utf-8")
+        ).hexdigest()
+
+    def source(self, value, path):
+        if not isinstance(value, dict) or set(value) != {"first_ref", "last_ref"}:
+            invalid("invalid_source_span", path)
+        first, last = value["first_ref"], value["last_ref"]
+        if type(first) is not int or type(last) is not int:
+            invalid("invalid_source_span", path)
+        if not 0 <= first <= last < len(self.text):
+            invalid("invalid_source_span", path)
+        return _source_quote(self.text, first, last + 1)
+
+
+def _source_quote(text, start, end):
+    quote = text[start:end]
+    occurrence, position = 0, text.find(quote)
+    while position != start:
+        position = text.find(quote, position + 1)
+        occurrence += 1
+    return {"quote": quote, "occurrence": occurrence}
+
+
 def planning_envelope(prompt):
     """Only the application planning envelope selects the current wire version."""
     try:
@@ -76,12 +108,16 @@ def invalid(code, path):
     )
 
 
-def current_schema(schema):
+def current_schema(schema, *, indexed=False):
     schema = copy.deepcopy(schema)
+    first, last = ("first_ref", "last_ref") if indexed else ("first_id", "last_id")
     selection = {
         "type": "object",
-        "properties": {"first_id": {"type": "string"}, "last_id": {"type": "string"}},
-        "required": ["first_id", "last_id"],
+        "properties": {
+            first: {"type": "integer" if indexed else "string"},
+            last: {"type": "integer" if indexed else "string"},
+        },
+        "required": [first, last],
         "additionalProperties": False,
     }
     schema["$defs"]["FoundrySourceQuoteDTO"] = selection
@@ -91,7 +127,7 @@ def current_schema(schema):
             if "description" in node:
                 node["description"] = node["description"].replace(
                     "Exact original quote/zero-based occurrence pairs.",
-                    "Original source_spans first_id/last_id pairs.",
+                    f"Original source_spans {first}/{last} pairs.",
                 )
             for field, value in node.get("properties", {}).items():
                 if field in SOURCE_TEXT_FIELDS:
@@ -119,7 +155,9 @@ def current_schema(schema):
     return schema
 
 
-def restore_current(payload, spans):
+def restore_current(payload, spans, *, request_sha256=None):
+    if isinstance(spans, IndexedSourceSpans) and request_sha256 != spans.request_sha256:
+        invalid("source_request_mismatch", ("source_spans",))
     value = copy.deepcopy(payload)
     pace = value.get("daily_pace") if isinstance(value, dict) else None
     if (
@@ -213,4 +251,47 @@ def current_prompt(prompt):
         "scope_text and date_source_text fields use the same selection object or schema-permitted "
         "null. Endpoints are inclusive; all original text between them is retained, including "
         "whitespace. IDs belong to this request only. Select the smallest sufficient interval.\n"
+    )
+
+
+def indexed_prompt(prompt):
+    """Keep the frozen long-ID prompt separately selectable for exact replay."""
+    projected = current_prompt(prompt)
+    return (
+        projected.replace(
+            "preference_prompt_20 / preference_draft_13",
+            "preference_prompt_21 / preference_draft_14",
+        )
+        .replace("first_id", "first_ref")
+        .replace("last_id", "last_ref")
+        .replace('"<first-source-id>"', "0")
+        .replace('"<last-source-id>"', "12")
+        + "\nSource endpoints are integer inventory references, not copied hashes or calculated "
+        "offsets. Select first_ref and last_ref from the displayed inventory, in increasing "
+        "order (equal is allowed). Request ownership is maintained by the application.\n"
+    )
+
+
+def dated_prompt(prompt):
+    return (
+        indexed_prompt(prompt).replace(
+            "preference_prompt_21 / preference_draft_14",
+            "preference_prompt_22 / preference_draft_15",
+        )
+        + """
+Dated total visit counts: daily_visit_constraints is required; [] means assessed without them.
+It counts ALL primary sightseeing visit occurrences on one date, never distinct venue identities.
+Each rule has date, mode=exact|minimum, count, strength=hard|soft, requirement_refs and source_refs.
+Interpret the numeric requirement ONCE as a constraint/goal semantic requirement and link its
+local_key in requirement_refs. Hard rules link hard, favor, party-scoped semantic requirements;
+soft rules link non-hard requirements. Use only explicit sourced dates/counts, expanding a
+clear first-day reference using read-only trip dates. Do not invent quotas from relaxed/rich.
+Use this operator for 'On [date], plan exactly one sightseeing visit', including explicit zero.
+Do not use it for counts of a named venue or a specific category such as museums; preserve those
+existing meanings. Keep independent unsupported guarantees separate, even in the same sentence.
+For rules represented here, leave daily_pace.exact_count null: the application derives its pace
+projection. A generic hard count must not be left solely in soft daily_pace or marked unsupported.
+Zero sightseeing does not forbid food, generic activities or travel. A full day without planned
+activities AND travel remains time_protections, distinct from the visit-count operator.
+"""
     )

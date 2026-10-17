@@ -150,13 +150,31 @@ and transfers. The delivered itinerary adds only three unscheduled Nearby refere
 the lossless draft delta preserves that distinction. Internal validation findings are
 retained as producer observations, separate from independent quality judgments.
 
-Native paired diagnostics reused the primary's closed independent observations with
-explicit zero-send/zero-cost limits. Both original V3 stages are available, and their
-paired primary-score difference is exactly zero. This API-only diagnostic gives
-90.625 to each stage with the same three opening UNKNOWNs; it does not import the
-primary's model-supported missing-hours judgments. These separate pair scores do not
-replace the accepted V3 primary score of 100. Paired source charges are inherited,
-not billed again.
+The [same-run paired report](evaluation/v3-pair/report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
+
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 100 | 100 | 0 | 8 / 0 / 0 | 0 |
+| Final primary | 100 | 100 | 0 | 8 / 0 / 0 | 0 |
+
+The paired overall change is **+0 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.0009298** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+Both stages retain exactly the same activities and transfers. Zero paired change
+and no authorized Repair targets do not establish a Repair benefit. The selected a2
+pair is reported directly; the original first-attempt research census still includes
+the earlier failed a1 and is not rebound to a2.
 
 The independent V2 and V3 final primary scores differ by +5 points, entirely from
 mean density deductions of 5 versus 0; their common-dimension auxiliary scores are
@@ -182,8 +200,9 @@ remain null; the known subtotal is not presented as a complete total.
 Primary evaluation used 65 Google sends and two model sends, with 24,240 input and
 2,930 output tokens. Reference cost is USD 1.34649485 (Google 1.342; models
 0.00449485). Known generation plus primary consumption is **261,333 tokens and
-USD 8.505273345**. The offline follow-up adds zero provider sends and zero current
-reference cost. Repair is counted as a subset; paired inherited usage is counted
+USD 8.505273345**. The paired refresh adds one model send, 5,309 tokens and
+USD 0.000929800, giving a known subtotal of **266,642 tokens / USD 8.506203145**.
+Repair is counted as a subset; paired inherited usage is counted
 once; oracle consumption is not assigned to a Planner version.
 
 Actual account invoices and external Codex token/billing data are unavailable.

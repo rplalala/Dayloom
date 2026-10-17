@@ -1,8 +1,7 @@
 """Shared provider applicability and adopted transfer construction; no Repair authority."""
 
-from datetime import timedelta
-
 from backend.app.policies.itinerary_schedule import available_intervals
+from backend.app.policies.schedule_time import elapsed_add, elapsed_seconds
 from backend.app.schemas.itinerary import Transfer
 
 
@@ -78,7 +77,17 @@ def route_rows(origin, destination, mode, routing_preference, departure, evidenc
     return [] if obstacle else rows
 
 
-def route_option(left, right, mode, evidence, policy, schedule=None, routing_preference=None):
+def route_option(
+    left,
+    right,
+    mode,
+    evidence,
+    policy,
+    schedule=None,
+    routing_preference=None,
+    *,
+    time_context=None,
+):
     """An option is tied to one continuous interval, never a sum of free fragments."""
     preference = (routing_preference or "TRAFFIC_UNAWARE") if mode == "DRIVE" else None
     reserve = policy.drive_reserve_minutes * 60 if mode == "DRIVE" else 0
@@ -98,7 +107,7 @@ def route_option(left, right, mode, evidence, policy, schedule=None, routing_pre
             if mode == "TRANSIT"
             else policy.drive_max_minutes
         )
-        if seconds > limit * 60 or seconds + reserve > (end - start).total_seconds():
+        if seconds > limit * 60 or seconds + reserve > elapsed_seconds(start, end):
             continue
         if mode == "WALK" and (distance is None or distance > policy.walk_route_max_km * 1000):
             continue
@@ -114,7 +123,11 @@ def route_option(left, right, mode, evidence, policy, schedule=None, routing_pre
             if mode == "TRANSIT"
             else "APPLICATION_CAR_FALLBACK",
             departure_time=start,
-            arrival_time=start + timedelta(seconds=seconds + reserve),
+            arrival_time=elapsed_add(
+                start,
+                seconds + reserve,
+                time_context.zone_for(right.source_place_id) if time_context else None,
+            ),
             provider_duration_seconds=seconds,
             distance_meters=distance,
             reserve_seconds=reserve,
@@ -138,7 +151,7 @@ def transfer_time_check(left, right, rows, schedule, departure, reserve=0):
     try:
         minutes = next(
             (
-                (end - departure).total_seconds() / 60
+                elapsed_seconds(departure, end) / 60
                 for start, end in available_intervals(left, right, schedule)
                 if start <= departure < end
             ),

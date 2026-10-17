@@ -103,16 +103,31 @@ Zero confirmed well-known judgments does not mean no venue is well known; the pa
 
 V3 has two authorized soft-pace targets, two deterministic `system_delete` attempts, two accepted rounds/components and zero Repair model attempts. It removed first-day Ueno Park and second-day Meiji Jingu. Daily counts change from 3/3/2/2 to 2/2/2/2. Eight retained activity records are unchanged; no new/replaced venue or retained-activity retiming is recorded. Native adopted lineage establishes all ten before/eight after occurrences without extra correspondence review.
 
-The pair uses matching, source-labelled primary/V3 provider observations with zero new sends or spend, and no supplemental access model judgment. Original observation origins/times are retained; incompatible or missing observations remain UNKNOWN.
+The [same-run paired report](evaluation/v3-pair/pair-report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
 
-| Same-run stage | Grounding | Non-overlap | Opening | Routes | Density deduction | Overall |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Draft | 100 | 100 | 60 | 66.6667 | 5 | 76.6667 |
-| Final primary | 100 | 100 | 62.5 | 100 | 0 | 90.625 |
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 86.666667 | 91.666667 | 5 | 10 / 0 / 0 | 2 |
+| Final primary | 100 | 100 | 0 | 8 / 0 / 0 | 0 |
 
-The exact final-minus-draft overall change is 67/480, or +13.9583 percentage points; the density deduction falls by five. Opening changes from 6 PASS/4 UNKNOWN to 5 PASS/3 UNKNOWN; routes from 4 PASS/2 UNKNOWN to 4 PASS. Eight continued grounding/opening judgments and four continued route judgments are unchanged. Two visits and two structural legs are removed. No continued FAIL-to-PASS resolution is established: deletion and denominator changes do not prove factual failure repair.
+The paired overall change is **+13.333333 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.0011873** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+Removed visits and denominator changes do not prove repair of their old facts.
 
-Pair final 90.625 differs from the original primary 100 because the pair omits the primary model-supported access assessment. The independent V3-minus-V2 final-score difference of +7.5 is entirely the density-deduction difference and is separate from this same-run attribution. Internal accepted targets are not independent quality evidence.
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+Ten draft visits become eight final visits. No continued FAIL-to-PASS resolution
+is established by the two deletions. The independent V3-minus-V2 final difference
+remains +7.5 points through density; it is a separate comparison.
 
 ## Resources and execution limitations
 
@@ -123,8 +138,8 @@ Pair final 90.625 differs from the original primary 100 because the pair omits t
 | V2 generation | 1 | 103 | 7 | 70,263 | 2.680752535 |
 | V3 generation | 1 | 104 | 7 | 68,178 | 2.747931315 |
 | Primary evaluation | 1 | 90 | 2 | 38,332 | 1.787429350 |
-| Pair reuse and analyses | 0 paid dispatches | 0 | 0 | 0 provider tokens | 0 new provider reference spend |
-| Total observed | 5 paid dispatches | 394 | 23 | 265,193 | 9.775856835 |
+| Paired access refresh | 1 | 1 | 1 | 6,835 | 0.0011873 |
+| Total observed | 6 paid dispatches | 395 | 24 | 272,028 | 9.777044135 |
 
 Generation's 21 model calls include two embedding calls (15 tokens, already included). Primary uses 88 Google sends and two Foundry model sends. No retry or unpriced instrumented event is present. Repair's observed provider/model event subset is empty and is not added to V3 consumption. Paired inherited usage is informational and is not counted again. External Codex assistance has unavailable token/billing telemetry and is outside these provider totals.
 

@@ -13,7 +13,6 @@ from pydantic import BaseModel, ValidationError
 
 from backend.app.evidence.experience_models import ExperienceProfileDraft
 from backend.app.llm.azure_foundry.dto import (
-    FoundryCurrentInterpretationDTO,
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
     FoundryItineraryDTO,
@@ -25,6 +24,10 @@ from backend.app.llm.azure_foundry.mapping import (
     map_foundry_itinerary,
 )
 from backend.app.llm.azure_foundry.provider_diagnostics import failure_category, normalize
+from backend.app.llm.azure_foundry.requirement_profiles import (
+    CURRENT_REQUIREMENT_PROFILE,
+    requirement_profile,
+)
 from backend.app.llm.client import StructuredModelT, StructuredOutputError
 from backend.app.llm.reference_transport import (
     primary_references,
@@ -40,15 +43,25 @@ from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.model_references import INSTRUCTION
 
 
-def requirement_wire_format(*, current=False):
+def requirement_wire_format(*, current=False, indexed=False, dated=False, profile=None):
     """Static DTO schema using the documented Azure Responses subset."""
-    schema = (
-        FoundryCurrentInterpretationDTO if current else FoundryInterpretationDTO
-    ).model_json_schema()
-    if current:
-        from backend.app.llm.azure_foundry.requirement_wire import current_schema
+    profile = profile or requirement_profile(
+        "preference_draft_15"
+        if dated
+        else "preference_draft_14"
+        if indexed
+        else "preference_draft_13"
+        if current
+        else "preference_draft_12"
+    )
+    schema = profile.dto.model_json_schema()
+    if profile.source_type is not None:
+        from backend.app.llm.azure_foundry.requirement_wire import (
+            IndexedSourceSpans,
+            current_schema,
+        )
 
-        schema = current_schema(schema)
+        schema = current_schema(schema, indexed=profile.source_type is IndexedSourceSpans)
 
     def enums(node):
         if isinstance(node, dict):
@@ -64,7 +77,7 @@ def requirement_wire_format(*, current=False):
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "PreferenceDraftV13" if current else "PreferenceDraftV10",
+            "name": profile.schema_name,
             "strict": True,
             "schema": schema,
         },
@@ -141,7 +154,7 @@ class AzureFoundryStructuredLLMClient:
             "deployment": deployment,
             "api": "responses/v1",
             "max_retries": 0,
-            "contract": "preference_draft_13",
+            "contract": CURRENT_REQUIREMENT_PROFILE,
         }
         transport_options = {}
         if http_client is not None:
@@ -201,8 +214,7 @@ class AzureFoundryStructuredLLMClient:
     @staged("requirements")
     async def _interpret(self, system_prompt, user_prompt):
         from backend.app.llm.azure_foundry.requirement_wire import (
-            SourceSpans,
-            current_prompt,
+            IndexedSourceSpans,
             planning_envelope,
             restore_current,
         )
@@ -213,24 +225,39 @@ class AzureFoundryStructuredLLMClient:
             # Frozen response readers select the historical contract explicitly.
             envelope = None
         spans = None
+        profile = requirement_profile(
+            self._requirement_config.get("contract", CURRENT_REQUIREMENT_PROFILE)
+            if envelope is not None
+            else "preference_draft_12"
+        )
+        indexed = profile.source_type is IndexedSourceSpans
+        source_request_sha256 = None
         if envelope is not None:
-            spans = SourceSpans(user_prompt, envelope["additional_preferences"])
-            user_prompt = json.dumps({**envelope, "source_spans": spans.inventory()})
-            system_prompt = current_prompt(system_prompt)
-        wire = requirement_wire_format(current=envelope is not None)
+            spans = profile.source_type(user_prompt, envelope["additional_preferences"])
+            if indexed:
+                source_request_sha256 = spans.request_sha256
+            source_payload = {**envelope, "source_spans": spans.inventory()}
+            user_prompt = (
+                json.dumps(source_payload, ensure_ascii=False, separators=(",", ":"))
+                if profile.compact_json
+                else json.dumps(source_payload)
+            )
+            system_prompt = profile.project_prompt(system_prompt)
+        wire = requirement_wire_format(profile=profile)
         base = {
             "request_id": digest(user_prompt),
             "prompt_hash": digest(system_prompt),
             "schema_hash": digest(wire),
             "config_hash": digest(self._requirement_config),
-            "prompt_version": "preference_prompt_20"
-            if envelope is not None
-            else "preference_prompt_19",
-            "schema_version": "preference_draft_13"
-            if envelope is not None
-            else "preference_draft_12",
+            "prompt_version": profile.prompt_version,
+            "schema_version": profile.schema_version,
             "config": self._requirement_config,
         }
+        if indexed:
+            base.update(
+                source_request_sha256=source_request_sha256,
+                source_mapping_sha256=spans.mapping_sha256,
+            )
         self.last_call_metadata = {"call_id": call_id, **base, "secondary_errors": []}
         diagnostics = normalize(secrets=self._capture_secrets)
 
@@ -320,12 +347,8 @@ class AzureFoundryStructuredLLMClient:
                 raise
             stage = "transport_dto"
             if envelope is not None:
-                payload = restore_current(payload, spans)
-            dto = (
-                FoundryCurrentInterpretationDTO
-                if envelope is not None
-                else FoundryInterpretationDTO
-            ).model_validate(payload)
+                payload = restore_current(payload, spans, request_sha256=source_request_sha256)
+            dto = profile.dto.model_validate(payload)
             stage = "draft_domain"
             draft = _FOUNDRY_BINDINGS[InterpretationDraft].to_domain(dto)
             draft._diagnostic_call_id = call_id
@@ -383,14 +406,25 @@ class AzureFoundryStructuredLLMClient:
 
         options = {"method": "json_schema", "strict": True}
         references = None
+        time_projection = None
+        transport_schema = binding.transport_schema
         if response_schema is V1Itinerary:
+            from backend.app.llm.azure_foundry.civil_time import (
+                TIME_WIRE_VERSION,
+                ToolsTimeProjection,
+                primary_transport_schema,
+            )
+
+            transport_schema = primary_transport_schema(system_prompt)
+            if TIME_WIRE_VERSION in system_prompt:
+                time_projection = ToolsTimeProjection.primary(user_prompt)
             references, user_prompt = primary_references(user_prompt)
         elif response_schema is ExperienceProfileDraft:
             references, user_prompt = profile_references(user_prompt)
-        wire_schema = binding.transport_schema
+        wire_schema = transport_schema
         if references is not None:
             system_prompt += "\n" + INSTRUCTION
-            wire_schema = references.constrain_schema(binding.transport_schema.model_json_schema())
+            wire_schema = references.constrain_schema(transport_schema.model_json_schema())
         if _generation_config is not None:
             if response_schema is not V1Itinerary:
                 raise ValueError("Primary generation limits apply only to V1/V2 main output")
@@ -415,6 +449,8 @@ class AzureFoundryStructuredLLMClient:
                     if isinstance(raw_result, BaseModel)
                     else raw_result
                 )
+            if time_projection is not None:
+                raw_result = time_projection.primary_result(raw_result)
             transport_result = binding.transport_schema.model_validate(raw_result)
             domain_result = binding.to_domain(transport_result)
         except (FoundryMappingError, ValidationError, ValueError) as exc:
@@ -467,21 +503,51 @@ class AzureFoundryStructuredLLMClient:
         )
         return LandmarkNominationDraft.model_validate(raw)
 
+    @staged("named_place_binding")
+    async def generate_named_place_binding_structured(
+        self, *, system_prompt, user_prompt, output_tokens, usage_callback=None
+    ):
+        from backend.app.schemas.named_place_binding import NamedBindingBatch
+
+        model = self._chat_model.with_structured_output(
+            NamedBindingBatch,
+            method="json_schema",
+            strict=True,
+            max_output_tokens=output_tokens,
+        )
+        from backend.app.observability.mechanism_observation import model_submitted
+
+        model_submitted()
+        raw = await model.ainvoke(
+            [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)],
+            **({"config": {"callbacks": [usage_callback]}} if usage_callback else {}),
+        )
+        return NamedBindingBatch.model_validate(raw)
+
     @staged("repair_model")
     async def generate_repair_structured(
         self, *, system_prompt, user_prompt, output_tokens=None, usage_callback=None
     ):
         """Per-invocation V3 options and additive usage capture; primary stays unchanged."""
+        from backend.app.llm.azure_foundry.civil_time import (
+            FoundryCivilPatchDTO,
+            ToolsTimeProjection,
+        )
         from backend.app.versions.v3.repair_budget import configured_policy
         from backend.app.versions.v3.repair_models import RepairPatch
         from backend.app.versions.v3.repair_projection import FoundryRepairPatchDTO
 
         if output_tokens is None:
             output_tokens = configured_policy().input.output_tokens
+        time_projection = ToolsTimeProjection.repair(json.loads(user_prompt))
         references, user_prompt = repair_references(user_prompt)
         system_prompt += "\n" + INSTRUCTION
         model = self._chat_model.with_structured_output(
-            references.constrain_schema(FoundryRepairPatchDTO.model_json_schema()),
+            references.constrain_schema(
+                (
+                    FoundryCivilPatchDTO if time_projection else FoundryRepairPatchDTO
+                ).model_json_schema()
+            ),
             method="json_schema",
             strict=True,
             max_output_tokens=output_tokens,
@@ -498,11 +564,12 @@ class AzureFoundryStructuredLLMClient:
                     else {}
                 ),
             )
-            dto = FoundryRepairPatchDTO.model_validate(
-                references.decode(
-                    raw.model_dump(mode="json") if isinstance(raw, BaseModel) else raw
-                )
+            restored = references.decode(
+                raw.model_dump(mode="json") if isinstance(raw, BaseModel) else raw
             )
+            if time_projection:
+                restored = time_projection.repair_result(restored)
+            dto = FoundryRepairPatchDTO.model_validate(restored)
             return RepairPatch.model_validate(dto.model_dump())
         except (ValidationError, ValueError) as exc:
             raise StructuredOutputError("Invalid Repair patch") from exc

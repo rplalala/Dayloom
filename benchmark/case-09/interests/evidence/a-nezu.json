@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+  "unresolved_subject_id": null,
+  "source_url": "https://www.nezu-muse.or.jp/en/about/index.html",
+  "source_reference": "turn21view3 lines 23-30,35-46",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The museum preserves pre-modern Japanese and East Asian art, including painting, calligraphy, Buddhist sculpture, craft and tea-ceremony utensils.",
+  "limitations": "Kengo Kuma contemporary architecture is not treated as a modern-art collection.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

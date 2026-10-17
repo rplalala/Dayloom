@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+  "unresolved_subject_id": null,
+  "source_url": "https://policies.env.go.jp/national-garden/shinjukugyoen/english/intro/garden/",
+  "source_reference": "turn37view1 lines 110-123",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The ministry describes a Japanese strolling garden with teahouses and a pond area preserving the character of an Edo-period daimyo garden.",
+  "limitations": "The full park combines garden styles; relevance rests on the explicitly identified traditional garden features.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

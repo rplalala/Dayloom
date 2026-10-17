@@ -38,7 +38,11 @@ def named_visit_issues(itinerary, contract, resolutions, assessments=()):
     """Expose sourced count/date obligations in shared output, including V1/V2."""
     if (
         contract.contract_version
-        not in ("interpreted_requirements_4", "interpreted_requirements_5")
+        not in (
+            "interpreted_requirements_4",
+            "interpreted_requirements_5",
+            "interpreted_requirements_6",
+        )
         or contract.visit_requirements is None
     ):
         return ()
@@ -91,7 +95,11 @@ def excess_visits(items, contract, resolutions, place_id):
     """None means unassessed intent; an explicit minimum is not an upper bound."""
     if (
         contract.contract_version
-        not in ("interpreted_requirements_4", "interpreted_requirements_5")
+        not in (
+            "interpreted_requirements_4",
+            "interpreted_requirements_5",
+            "interpreted_requirements_6",
+        )
         or contract.visit_requirements is None
     ):
         return None

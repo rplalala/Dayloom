@@ -1,6 +1,6 @@
 # Reviewed requirements and schedule metrics
 
-Current Ticket 05 contract, implemented and offline validated. Updated 2026-10-04.
+Current Ticket 05 contract, implemented and offline validated. Updated 2026-10-17.
 This file owns RequirementSpec authoring/wire, obligation semantics, time/occupancy preparation,
 non-overlap units and descriptive schedule measurements. It consumes accepted immutable intake
 and independent identity; it calls no planner, model, provider or database. Optional V3 stages
@@ -67,13 +67,15 @@ operator is returned for specification correction instead of silently executing 
 
 | Kind | Executable fields |
 | --- | --- |
+| `daily_visit_count` | `date`; `scope=primary_visits`; `count={mode:minimum\|exact,value:nonnegative integer}`. All primary occurrences on the date; no venue subject. |
 | `transport_modes` | `scope=whole_trip`; nonempty unique `allowed_modes` drawn from `WALK`, `TRANSIT`, `DRIVE`. No venue subject or invented mode claim. |
 | `required_visit` | `subject_ref`; `count={mode:minimum\|exact,value:positive integer}`; optional `distinct_dates` boolean (omission means no extra distinct-date constraint); `date_obligations` array of `{date,count_mode:minimum\|exact,count:positive integer}` (omission means none). |
 | `excluded_visit` | `subject_ref`; `scope=whole_trip\|specified_dates`; `dates` is required and nonempty for specified dates, absent for whole-trip scope. |
 | `protected_time` | `date`; `interval={kind:full_day}` or `{kind:clock,start:HH:MM[:SS],end:HH:MM[:SS]}`; explicit `scope=primary_visits\|scheduled_commitments`. Clock endpoints are same-day, strictly increasing; `24:00` is allowed only as the end. |
 | `fixed_visit_time` | `subject_ref`, `date`, `match=single_visit\|at_least_one` and nonempty `conditions`; the multiple-visit mode also requires `repeat_permission_refs` as defined below. |
 
-Booleans are not integers. Counts must be finite positive integers; dates are ISO
+Booleans are not integers. Named-visit counts must be positive; total daily counts also
+permit zero. Dates are ISO
 calendar dates within inclusive Input trip dates. Duplicate date entries for one
 obligation, invalid references, nonpositive durations and unsupported resolved scope
 values are material diagnostics. Full-day protection expands to local midnight to
@@ -88,7 +90,8 @@ but excludes that obligation and source-equivalent reviewed policies from route 
 preventing the same mode violation from being counted in both dimensions.
 Unsupported/unresolved obligations retain their original meaning and incomplete/UNKNOWN
 status until explicitly resolved. Inputs without this new kind retain rules 3 and
-their historical report hashes; stored specifications/reports are never upgraded in place.
+their historical report hashes unless a separately reviewed daily total selects rules 5;
+stored specifications/reports are never upgraded in place.
 
 For an explicit named-place visit obligation without stated repeat/count meaning,
 upstream preparation writes `count={mode:exact,value:1}` for the requested trip and
@@ -130,6 +133,30 @@ declared days with contradictory potentially in-trip timestamps. Do not choose w
 date helps PASS. Invalid/missing clocks need not erase a consistent declared calendar
 count; precise fixed-time/occupancy checks still require valid temporal interpretation.
 These are structural scheduled-visit counts, not proof of actual attendance.
+
+### Dated total visits
+
+An independently reviewed `daily_visit_count` represents an explicit total for one date,
+such as exactly one sightseeing visit. It uses original Input sources and no fabricated
+venue subject. It does not replace a named-venue count, category preference or full rest
+day. Intake/preparation validate date scope, strict nonnegative count, supported selector
+and mechanically contradictory daily totals/full-day protections. A resolved operator
+enters the declared requirement population; unsupported obligations still block numerical
+preparation until resolved.
+
+The independent scorer counts source-distinct primary occurrences using its own role/date
+projection. Repeated visits to one venue count separately. Supporting meals, transport,
+free windows and Nearby suggestions are excluded. Venue identity is unnecessary for an
+all-primary total; uncertain role or inconsistent date contributes a potential occurrence.
+The ordinary lower/upper count rules below determine the check. Zero visits does not
+forbid supporting activities or travel; `protected_time` keeps its separate commitment scope.
+
+Reports containing this kind select `rtpeval_requirement_schedule_rules_5`, recording the
+independent occurrence policy in the rules hash. Native preparation, scoring and replay
+use the same reviewed operator; no Planner counting or verdict function is imported.
+Specifications without it keep their prior rules 3/4 selection and report hashes. Applying
+the new capability to a previously unsupported clause requires a new reviewed specification
+and execution revision, preserving historical material and results.
 
 ## Count bounds and completeness
 

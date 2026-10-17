@@ -53,6 +53,63 @@ route_case = native_pairs.route_case
 prepared_scenario = native_pairs.prepared_scenario
 
 
+def test_native_paired_access_replays_through_installed_research(
+    installed_cli, pair_case, batch, tmp_path
+):
+    from backend.evaluation.opening_judgment import prepare_packet
+    from backend.evaluation.v3_correspondence import read_v3_result_sources
+    from backend.evaluation.v3_pair_report import build_v3_pair_report
+    from backend.tests.evaluation.test_opening_judgment import material
+    from backend.tests.evaluation.test_pair_opening import missing_hours
+
+    prepare_namespaced_usage(batch)
+    case = pair_case(details_payload=missing_hours)
+    root = batch[-1]
+    descriptor = native_descriptor(root, case, "pair")
+    density = json.loads((root / descriptor["density_reviews_ref"]["path"]).read_bytes())
+    packet = prepare_packet(
+        case[0],
+        case[1],
+        case[2],
+        case[3],
+        model="fixture-model",
+        paired=True,
+        pair_only=True,
+        expected_plan=case[6],
+    )
+    access = material(packet)
+    report = build_v3_pair_report(
+        case[0],
+        case[1],
+        case[2],
+        case[3],
+        route_reviews=case[4],
+        coordinate_evidence=case[5],
+        expected_plan=case[6],
+        density_reviews=density,
+        opening_judgment=access,
+        generated_at=native_pairs.STAMP,
+        result_sources=read_v3_result_sources(case[0], root / "manifest.json"),
+    ).to_dict()
+    assert report["status"] == "complete"
+    descriptor["report_ref"] = save(root, "pair-assisted-report.json", report)
+    descriptor["opening_judgment_ref"] = save(root, "pair-access.json", access)
+    declaration = declare_native(root, batch[0], pairs=[descriptor])
+    result = installed_cli(
+        "research",
+        "report",
+        declaration,
+        "--track",
+        "repair",
+        "--directory",
+        tmp_path / "assisted-research",
+        evaluation_offline=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    derived = json.loads((tmp_path / "assisted-research/repair.json").read_bytes())
+    assert derived["same_run"]["summary"]["unchanged"] == 1
+
+
 def test_real_native_unchanged_pairs_and_finals_keep_separate_masks(
     installed_cli, pair_case, batch, tmp_path
 ):

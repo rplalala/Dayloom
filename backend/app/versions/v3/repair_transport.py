@@ -1,9 +1,10 @@
 """Application-owned per-leg options; provider facts and policy reserves stay separate."""
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from backend.app.policies.itinerary_schedule import primary_journey_allowed
 from backend.app.policies.route_options import route_option
+from backend.app.policies.schedule_time import ScheduleTimeContext, elapsed_add, elapsed_seconds
 from backend.app.schemas.itinerary import Transfer
 from backend.app.versions.v3.repair_models import TransitionBinding
 from backend.app.versions.v3.repair_routes import acquire_transitions, route_rows
@@ -29,6 +30,7 @@ async def resolve_transfers(
 ):
     """Change only affected legs; reuse every allowed mode before acquiring alternatives."""
     modes = allowed_modes(scope)
+    time_context = ScheduleTimeContext(places.values() if isinstance(places, dict) else places)
     old = {a.activity_id: a for d in original.days for a in d.activities}
     old_pairs = {
         (a.activity_id, b.activity_id)
@@ -70,6 +72,7 @@ async def resolve_transfers(
                             budget.policy.spatial,
                             schedule,
                             scope.routing_preference if len(modes) == 1 else None,
+                            time_context=time_context,
                         )
                     )
                 ),
@@ -110,6 +113,7 @@ async def resolve_transfers(
                         budget.policy.spatial,
                         schedule,
                         scope.routing_preference if len(modes) == 1 else None,
+                        time_context=time_context,
                     )
                     if option:
                         break
@@ -128,7 +132,11 @@ async def resolve_transfers(
                 if rows and len({r["duration_seconds"] for r in rows}) == 1:
                     row = rows[0]
                     reserve = budget.policy.spatial.drive_reserve_minutes * 60
-                    arrival = left.end_time + timedelta(seconds=row["duration_seconds"] + reserve)
+                    arrival = elapsed_add(
+                        left.end_time,
+                        row["duration_seconds"] + reserve,
+                        time_context.zone_for(right.source_place_id),
+                    )
                     option = Transfer(
                         from_activity_id=left.activity_id,
                         to_activity_id=right.activity_id,
@@ -170,10 +178,18 @@ def saved_transfer(itinerary, left, right):
 
 
 def present_transfers(
-    itinerary, bindings, evidence, schedule=None, default_source="APPLICATION_DEFAULT_WALK"
+    itinerary,
+    bindings,
+    evidence,
+    schedule=None,
+    default_source="APPLICATION_DEFAULT_WALK",
+    *,
+    places=(),
 ):
     """Final output uses the same bindings and checks as formal route validation."""
     from backend.app.versions.v3.repair_routes import check_transitions
+
+    time_context = ScheduleTimeContext(places)
 
     checks = {
         tuple(r["activity_ids"]): r
@@ -213,10 +229,10 @@ def present_transfers(
         )
         reserve = b.application_reserve_seconds
         if reservation:
-            reserve = (
-                datetime.fromisoformat(reservation["end"])
-                - datetime.fromisoformat(reservation["start"])
-            ).total_seconds()
+            reserve = elapsed_seconds(
+                datetime.fromisoformat(reservation["start"]),
+                datetime.fromisoformat(reservation["end"]),
+            )
         transfers.append(
             Transfer(
                 from_activity_id=left.activity_id,
@@ -226,8 +242,11 @@ def present_transfers(
                 mode=b.travel_mode,
                 mode_source=source,
                 departure_time=b.departure_time,
-                arrival_time=b.departure_time
-                + timedelta(seconds=seconds + b.application_reserve_seconds)
+                arrival_time=elapsed_add(
+                    b.departure_time,
+                    seconds + b.application_reserve_seconds,
+                    time_context.zone_for(right.source_place_id),
+                )
                 if seconds is not None
                 else None,
                 provider_duration_seconds=seconds,

@@ -14,49 +14,77 @@
       }
     },
     "pair_rule_scope": {
-      "profile_id": "rtpeval_v3_pair_rules_2",
-      "scope": "selected same-run V3 draft and final_primary",
-      "mask": "pair union; exclude only two established zero denominators",
-      "delta": "after minus before; exact fractions; unavailable remains null",
-      "correspondence": "validated adopted sources before unique fallback and review",
-      "quality": "independent checks; deletion and replacement do not repair old facts",
-      "daily_density": {
-        "profile_id": "rtpeval_daily_density_2",
-        "penalties_by_count_0_to_5": {
-          "ordinary": [
-            100,
-            40,
-            0,
-            10,
-            50,
-            80
-          ],
-          "relaxed": [
-            100,
-            20,
-            0,
-            40,
-            70,
-            90
-          ],
-          "rich": [
-            100,
-            60,
-            0,
-            0,
-            30,
-            70
-          ]
-        },
-        "count_6_or_more": 100,
-        "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
-        "population": "source-distinct primary visit occurrences on every requested date",
-        "mean": "equal requested-date weight; exact arithmetic; empty dates included",
-        "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
-        "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable"
+      "$case_material_ref": {
+        "path": "../../evaluation/v3-pair/report.json",
+        "pointer": "/rules_profile",
+        "expanded_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559"
       }
     },
-    "nearby_reference_additions": 3
+    "nearby_reference_additions": 3,
+    "paired_stages": {
+      "draft": {
+        "overall": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "reason": null
+        },
+        "auxiliary": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "total_included_dimensions": 4,
+          "reason": null,
+          "unavailable_dimensions": []
+        },
+        "density_penalty": 0.0,
+        "opening_counts": {
+          "PASS": 8,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        },
+        "route_counts": {
+          "PASS": 4,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "final_primary": {
+        "overall": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "reason": null
+        },
+        "auxiliary": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "total_included_dimensions": 4,
+          "reason": null,
+          "unavailable_dimensions": []
+        },
+        "density_penalty": 0.0,
+        "opening_counts": {
+          "PASS": 8,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        },
+        "route_counts": {
+          "PASS": 4,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        }
+      }
+    }
   },
   "independent_final_difference_v3_minus_v2": {
     "overall_total": {

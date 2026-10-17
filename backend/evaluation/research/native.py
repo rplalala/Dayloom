@@ -131,7 +131,7 @@ def selected_groups(context, descriptor):
 
 
 def _rebuild(context, descriptor, kind):
-    options = COMMON + (PAIR if kind == "pair" else ("opening_judgment",))
+    options = COMMON + (PAIR if kind == "pair" else ()) + ("opening_judgment",)
     allowed = {
         "manifest_ref",
         "report_ref",
@@ -198,6 +198,9 @@ def _rebuild(context, descriptor, kind):
             {
                 CLI_NAMES.get(name, name): (descriptor.get(name + "_ref") or {}).get("sha256")
                 for name in options
+                if kind != "pair"
+                or name != "opening_judgment"
+                or descriptor.get("opening_judgment_ref")
             }
         )
         _require(metadata == expected, "Native CLI preparation file hashes mismatch")

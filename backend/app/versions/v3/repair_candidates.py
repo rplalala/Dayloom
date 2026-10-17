@@ -93,7 +93,11 @@ def candidate_targets(original, context, scope):
     for finding in report.findings:
         if finding.finding_id not in scope.target_ids:
             continue
-        if finding.check not in {"coverage", "soft_pace"} and finding.reason not in {
+        if finding.check not in {
+            "coverage",
+            "soft_pace",
+            "daily_visit_count",
+        } and finding.reason not in {
             "required_identity_omitted",
             "required_visit_obligation_unmet",
             "experience_goal_count_unmet",

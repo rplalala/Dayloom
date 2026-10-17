@@ -47,6 +47,16 @@ def main(argv=None, *, http_client=None):
         "replay-opening", help="Offline full report replay including opening model assessment"
     )
     opening_replay.add_argument("directory")
+    pair_opening = commands.add_parser(
+        "prepare-pair-opening", help="Offline V3-only paired access preparation"
+    )
+    pair_opening.add_argument("manifest")
+    pair_opening.add_argument("identity_report")
+    pair_opening.add_argument("snapshot_directory")
+    for option in ("directory", "options", "prices"):
+        pair_opening.add_argument("--" + option, required=True)
+    for option in ("context", "expected-plan"):
+        pair_opening.add_argument("--" + option)
     args = parser.parse_args(argv)
     try:
         if args.command == "prepare":
@@ -88,6 +98,25 @@ def main(argv=None, *, http_client=None):
                     http_client=http_client,
                 )
             )
+        elif args.command == "prepare-pair-opening":
+            from .paired_opening import prepare_pair_opening
+
+            preparation = prepare_pair_opening(
+                args.manifest,
+                args.identity_report,
+                args.snapshot_directory,
+                args.directory,
+                options=_read(Path(args.options))[0],
+                prices=_read(Path(args.prices))[0],
+                schedule_context=_read(Path(args.context))[0] if args.context else None,
+                expected_plan=_read(Path(args.expected_plan))[0] if args.expected_plan else None,
+            )
+            result = {
+                "status": "prepared",
+                "directory": preparation["directory"],
+                "preparation_sha256": preparation["content_sha256"],
+                "eligible_count": len(preparation["packet"]["cases"]),
+            }
         elif args.command == "prepare-opening":
             from .opening_run import prepare_opening_run
 

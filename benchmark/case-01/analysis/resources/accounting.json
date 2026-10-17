@@ -119,7 +119,8 @@
   "case_execution_reference_cost": {
     "selected_result_usd": "6.810687000",
     "rejected_attempts_usd": "1.643382200",
-    "total_usd": "8.454069200"
+    "total_usd": "8.454960000",
+    "paired_access_refresh_usd": "0.0008908"
   },
   "separate_engineering_diagnostics": {
     "estimated_usd": "0.003531110",
@@ -130,6 +131,22 @@
   "codex_actor_bill": null,
   "basis": "Frozen dated retail/reference prices; Azure Foundry rates are an OpenAI proxy. Controlled input conservatively uses cache-write .125/M except reported cached .01/M, output .50/M. Unknown billing is not zero.",
   "deduplication": "Count each selected generation/evaluation acquisition once. Saved paired evidence is not charged again. Repair calls already in generation and separate engineering diagnostics are not added to selected-result cost.",
-  "scope": "Initial case-01 selected outputs and their required acquisition costs, with rejected case attempts accounted separately. Other historical operational evidence remains private.",
-  "private_archive_identifier": "benchmark/scratch/case-01/archive"
+  "scope": "Original selected generation/primary and rejected-attempt cohorts, plus the separately bound paired access refresh; engineering diagnostics remain separate.",
+  "private_archive_identifier": "benchmark/scratch/case-01/archive",
+  "paired_access_refresh": {
+    "scope": "Independent same-run paired access assessment; excluded from Planner attempt/model counters",
+    "model_sends": 1,
+    "google_sends": 0,
+    "retries": 0,
+    "input_tokens": 4375,
+    "output_tokens": 688,
+    "total_tokens": 5063,
+    "reference_usd": "0.0008908",
+    "actual_invoice": null,
+    "source": {
+      "logical_path": "reassessment/access-final/execution/report.json",
+      "sha256": "841222e706f5e7a73e78454c346c3106d44000856febab28cd9c70b1c9e28fd6",
+      "json_pointer": "/usage"
+    }
+  }
 }

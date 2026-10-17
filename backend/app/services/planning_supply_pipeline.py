@@ -228,6 +228,9 @@ def planner_supply_projection(selection, contract):
             {"subject_id": "party", "label": "Travel party"},
             *[s.model_dump(exclude={"source_refs"}) for s in contract.subjects],
         ],
+        "daily_visit_constraints": [
+            r.model_dump(exclude={"source_refs"}) for r in contract.daily_visit_constraints or ()
+        ],
         "review_evidence_relations": {
             pid: [r.model_dump() for r in result.profile_relations[pid]]
             for pid in result.selected_place_ids
@@ -235,6 +238,9 @@ def planner_supply_projection(selection, contract):
         "instructions": (
             "Use each canonical identity once unless a sourced visit requirement explicitly "
             "authorizes revisits. Exact counts and distinct dates must be respected. "
+            "Dated daily_visit_constraints count all scheduled primary occurrences, including "
+            "separate authorized visits to one place. Hard exact totals override default "
+            "coverage and soft pace. Supporting meals, transport and references do not count. "
             "Satisfy one-off category goals, then prefer other unrepresented suitable experiences; "
             "continuing preferences are not quotas or a requirement for every visit. "
             "Use soft_coverage for distinct final scheduled coverage, not candidate counts. "

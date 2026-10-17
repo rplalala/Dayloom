@@ -252,7 +252,7 @@ def test_saved_draft_identifies_the_prompt_revision(tmp_path, monkeypatch):
     run_case(request, output, capture_requirements=True, reference_date="2026-09-26")
     records = [json.loads(p.read_text()) for p in (output / "requirements").glob("*.json")]
     draft = next(r for r in records if r["validation_stage"] == "draft_validated")
-    assert draft["prompt_version"] == "preference_prompt_20"
+    assert draft["prompt_version"] == "preference_prompt_22"
 
 
 def test_case_logging_does_not_leave_a_handler_bound_to_closed_output(tmp_path, monkeypatch):

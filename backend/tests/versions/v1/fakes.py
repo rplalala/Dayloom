@@ -261,6 +261,9 @@ class RevisedFakeLLM:
     async def generate_poi_semantics_structured(self, **kwargs):
         return await self.delegate.generate_poi_semantics_structured(**kwargs)
 
+    async def generate_named_place_binding_structured(self, **kwargs):
+        return await self.delegate.generate_named_place_binding_structured(**kwargs)
+
     async def generate_structured(self, *, response_schema, user_prompt, system_prompt):
 
         return await self.delegate.generate_structured(

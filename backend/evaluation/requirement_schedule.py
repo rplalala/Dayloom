@@ -268,6 +268,19 @@ def _requirement_checks(group, projection, identity_index, timezone):
             )
         elif kind == "transport_modes":
             components.append(_transport_component(projection, obligation))
+        elif kind == "daily_visit_count":
+            confirmed, possible = [], []
+            for item in occurrences:
+                consistent = item["interval"].date_consistent
+                if consistent and item["activity"]["declared_day"] != obligation["date"]:
+                    continue
+                (confirmed if item["primary"] and consistent else possible).append(item)
+            count = obligation["count"]
+            components.append(
+                _count_matches(
+                    confirmed, possible, count["mode"], count["value"], "daily_primary_count"
+                )
+            )
         elif kind == "required_visit":
             confirmed, possible = _matches(
                 occurrences, subjects.get(obligation["subject_ref"]), days
@@ -520,6 +533,7 @@ def score_requirement_schedule(
         "results": [],
         "diagnostics": [],
     }
+    rules = RULES
     if any(
         o["kind"] == "transport_modes"
         for g in prepared.get("inventory", [])
@@ -529,6 +543,17 @@ def score_requirement_schedule(
             **RULES,
             "version": "rtpeval_requirement_schedule_rules_4",
             "transport_modes": "source_bound_whole_trip_claims_1",
+        }
+        base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
+    if any(
+        o["kind"] == "daily_visit_count"
+        for g in prepared.get("inventory", [])
+        for o in g["requirement_spec"]["obligations"]
+    ):
+        rules = {
+            **rules,
+            "version": "rtpeval_requirement_schedule_rules_5",
+            "daily_visit_count": "source_distinct_primary_occurrences_with_date_role_bounds_1",
         }
         base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
     try:

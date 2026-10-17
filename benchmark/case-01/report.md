@@ -52,8 +52,8 @@ The case follows the [common acceptance workflow](../README.md#per-case-executio
 | V2 | `b3ddccd5b462367d35eff12f8aa9cfe10f840557` | `case01-v2-20261012T232752Z` |
 | V3 | `a970002b2373a0c9059040781fdba267cc01df91` | `case01-v3-repair140-followup-20261013T064153Z` |
 
-Independent primary and pair scoring use source `a970002`; the opening assessment
-uses `815fcae`. The dataset contains source-bound outputs from the recorded revisions,
+Original primary/pair scoring used source `a970002`; the historical opening assessment
+used `815fcae`. The current paired refresh uses `45f8c33`. The dataset contains source-bound outputs from the recorded revisions,
 with compatible inputs/evaluation contracts; it is not a single-revision generation
 experiment. Original dates, source hashes, run IDs and native receipts are unchanged.
 
@@ -96,8 +96,7 @@ fills eligible access gaps; it provides no new official hours or factual evidenc
 Other dimensions and pace deductions are unchanged. V0 retains the confirmed
 museum opening FAIL, one unresolved identity, one opening gap and two route gaps.
 V3's 100 is a score under this profile and accepted model overlay, not complete
-official evidence or a general performance guarantee. The pair retains its own
-saved evidence/profile and does not inherit this four-final overlay.
+official evidence or a general performance guarantee. The paired analysis applies the same access policy using its own fresh, source-bound material.
 
 The selected assessment used one model send, 10,665 input and 1,728 output tokens,
 zero retries and zero additional Google/RAG sends. Network-denied native replay
@@ -132,22 +131,27 @@ activity records are unchanged; no addition, replacement, retiming or cross-date
 was accepted. No local or replan model call was used. Final routes were recomputed;
 three final-only Nearby suggestions are outside primary visits and Repair effects.
 
-The native source-labelled pair imported saved observations without new provider calls.
-Identity acquisition has 30 available and one unavailable request observation; evidence
-has 22 available and one unavailable. Missing compatible observations remain UNKNOWN;
-inherited usage is not charged again. Exact zero-network replay passed.
+The [same-run paired report](evaluation/v3-pair/pair-report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
 
-| Same-run stage | Overall / 100 | Auxiliary / 100 | Pace deduction | Opening P / F / U | Routes P / F / U |
-| --- | ---: | ---: | ---: | --- | --- |
-| Draft | 77.5 | 87.5 | 10 | 6 / 0 / 3 | 5 / 0 / 1 |
-| Final primary | 91.6667 | 91.6667 | 0 | 4 / 0 / 2 | 3 / 0 / 0 |
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 85.833333 | 95.833333 | 10 | 9 / 0 / 0 | 1 |
+| Final primary | 100 | 100 | 0 | 6 / 0 / 0 | 0 |
 
-The overall paired change is 14.1667 percentage points. There are three removed visits,
-zero added/replaced visits and zero confirmed venue losses under native correspondence.
-Protected commitments and protection conflicts are empty for this request; they do not
-establish protected-activity test coverage. V2/V3 independent finals share three canonical
-visits, with three V3-only and four V2-only visits. That comparison is descriptive and
-separate from the same-run Repair lineage.
+The paired overall change is **+14.166667 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.0008908** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+Removed visits and denominator changes do not prove repair of their old facts.
+
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
 
 The final round returned `ACCEPTED_COMPLETE` with `authorized_targets_complete`:
 all three daily soft-pace targets reached zero. The stage ended normally after
@@ -168,7 +172,9 @@ meeting its targets. No model retime or replan was required for this case.
 Rejected case acquisition attempts add USD 1.643382200: an unqualified V3
 retrieval attempt (USD 1.641240025) and an invalid opening response
 (USD 0.002142175). Selected and rejected case acquisition together total
-**USD 8.454069200**. Saved paired observations are not charged again.
+**USD 8.454069200** for those generation/primary cohorts. The paired refresh adds
+USD 0.0008908, giving a known case reference subtotal of USD 8.454960000.
+Saved provider observations are not charged again.
 
 Separate synthetic Repair engineering diagnostics consumed USD 0.003531110;
 they are excluded from selected-result cost and case scores. Their observations

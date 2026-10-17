@@ -1,0 +1,1290 @@
+{
+  "schema_version": "case_public_material_index_1",
+  "case_id": "case-09",
+  "case_revision": "1",
+  "batch_id": "case-09-batch",
+  "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+  "status": "automatically_accepted_blinded_review_deferred",
+  "notice": "Public selected itinerary projections and source bindings. Native execution, original raw evidence and reviewer records remain private; these files are not a native execution or replay bundle.",
+  "original_input": {
+    "path": "../inputs/case-09.json",
+    "sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee"
+  },
+  "reviewed_requirements": {
+    "path": "requirements/reviewed.json",
+    "sha256": "abfc49396f63d501eaf02aca262fdcba901f9e63f5bfcfc738c1aa17ae4c8733",
+    "native_requirement_spec_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc"
+  },
+  "versions": {
+    "v0": {
+      "run_id": "case-09-v0-r1",
+      "selected_result_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+      "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "itinerary_projection": {
+        "path": "generation/v0/itinerary.json",
+        "sha256": "86a8a2acfd10948d836c191b03b1122b8bda93bfa4e133c8ccca332baffef261"
+      },
+      "observed_tokens": 27478,
+      "observed_model_calls": 2,
+      "observed_http_sends": 2,
+      "estimated_reference_usd": "0.00453104",
+      "unpriced_event_count": 0,
+      "actual_account_billing": "unavailable"
+    },
+    "v1": {
+      "run_id": "case-09-v1-r1",
+      "selected_result_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+      "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "itinerary_projection": {
+        "path": "generation/v1/itinerary.json",
+        "sha256": "c14e24d853c3c186563bba12e6e145172b78959238bdb195bd3c3a46e72d9d08"
+      },
+      "observed_tokens": 76770,
+      "observed_model_calls": 4,
+      "observed_http_sends": 69,
+      "estimated_reference_usd": "2.395026625",
+      "unpriced_event_count": 0,
+      "actual_account_billing": "unavailable"
+    },
+    "v2": {
+      "run_id": "case-09-v2-r1",
+      "selected_result_sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+      "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "itinerary_projection": {
+        "path": "generation/v2/itinerary.json",
+        "sha256": "36d662cd4dfef68dbc49646b7406f2539b3fd6d332c04e80c113fd4f8d08bc03"
+      },
+      "observed_tokens": 83799,
+      "observed_model_calls": 6,
+      "observed_http_sends": 90,
+      "estimated_reference_usd": "2.800815285",
+      "unpriced_event_count": 0,
+      "actual_account_billing": "unavailable"
+    },
+    "v3": {
+      "run_id": "case-09-v3-r1",
+      "selected_result_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+      "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "itinerary_projection": {
+        "path": "generation/v3/itinerary.json",
+        "sha256": "4f4d565bab224d756159958da10a7d77332a15b0b8398914679ca62d91432490"
+      },
+      "observed_tokens": 85485,
+      "observed_model_calls": 6,
+      "observed_http_sends": 103,
+      "estimated_reference_usd": "3.0734936",
+      "unpriced_event_count": 0,
+      "actual_account_billing": "unavailable"
+    }
+  },
+  "private_evidence_root_identifier": "benchmark/scratch/case-09/work/",
+  "primary_summary": {
+    "path": "evaluation/primary/summary.json",
+    "sha256": "8a6c99b1e7c613d6370a95e0f451c267d57dd85c8b994ea0e13f81475982594a",
+    "native_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+    "preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2"
+  },
+  "public_serialization": "UTF-8 JSON with LF line endings. Native original byte hashes and public projection hashes are distinct; selected native originals remain unchanged.",
+  "public_material_format": {
+    "shared_values": "$case_material_ref expands a relative public JSON file and JSON Pointer; verify expanded_semantic_sha256 using canonical JSON (UTF8, sorted keys, compact separators, ensure_ascii false).",
+    "native_refs": "Original path/hash fields inside native reports are immutable private archive identifiers, not public navigation or executable replay bundles. Public projections are mapped below.",
+    "v3_stages": "Expand base and apply listed RFC6902 operations; verify expanded stage hash."
+  },
+  "analysis_materials": [
+    {
+      "path": "generation/v0/usage.json",
+      "sha256": "da82fec3bc8b624d4c2f77a1e25968aba855ef5c368325934eb74a8b2c824499",
+      "expanded_semantic_sha256": "9ff83175cd1da101ab437b563511f2ffbad30852a4ad4aa9a7d476aceff83091",
+      "native_source": {
+        "logical_path": "material/captures/v0/usage.json",
+        "sha256": "da82fec3bc8b624d4c2f77a1e25968aba855ef5c368325934eb74a8b2c824499",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v0/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "native_source": {
+        "logical_path": "material/captures/v0/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v0/provenance.json",
+      "sha256": "a9ab025a5cc6a62600d2848d4adb970a0edf53d90aeee7c32ede8cdd937b796f",
+      "expanded_semantic_sha256": "c971ac5a9e058f9596598ca52ecf10c2989b46423092faa385ef8f30148cffa8",
+      "native_source": {
+        "logical_path": "material/captures/v0/provenance.json",
+        "sha256": "a9ab025a5cc6a62600d2848d4adb970a0edf53d90aeee7c32ede8cdd937b796f",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v1/usage.json",
+      "sha256": "b44185c29ea556fc1c076878884cbd1a8b734133722dd4aadef4f2990754bd82",
+      "expanded_semantic_sha256": "889f5b9060b6d8cbb6c823f543abf8652371c404b96cac4cbf355c63e96f94cf",
+      "native_source": {
+        "logical_path": "material/captures/v1/usage.json",
+        "sha256": "b44185c29ea556fc1c076878884cbd1a8b734133722dd4aadef4f2990754bd82",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v1/runtime-policy.json",
+      "sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "native_source": {
+        "logical_path": "material/captures/v1/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "4c7808da1304ceceb67166b53d410b97a68f97397f5cbd847193bc1b7067fa55",
+      "expanded_semantic_sha256": "9e8593c05aeb430f9a88708b69acf9ef4c0f9a83403b59b2c51fc5d20f5ec9f6",
+      "native_source": {
+        "logical_path": "material/captures/v1/provenance.json",
+        "sha256": "4c7808da1304ceceb67166b53d410b97a68f97397f5cbd847193bc1b7067fa55",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/usage.json",
+      "sha256": "bbda78825a2760d3620bd7427e62f48a3d0068f94687b78a91bf5d331d5b21d3",
+      "expanded_semantic_sha256": "b87983ea1eb5cd0fe5f4548bb28aa86d202acf436f8a91d475d3e30042f800fc",
+      "native_source": {
+        "logical_path": "material/captures/v2/usage.json",
+        "sha256": "bbda78825a2760d3620bd7427e62f48a3d0068f94687b78a91bf5d331d5b21d3",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/runtime-policy.json",
+      "sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "native_source": {
+        "logical_path": "material/captures/v2/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "0c8eb3c1b11b4c9bdb53ab4f7b23eb912e74fc368fe7774f7b912bb72fc554d1",
+      "expanded_semantic_sha256": "b4124cf7a1793daf78cefcef511ce004c6975d5faeb644340c5534c7cfffd46c",
+      "native_source": {
+        "logical_path": "material/captures/v2/provenance.json",
+        "sha256": "0c8eb3c1b11b4c9bdb53ab4f7b23eb912e74fc368fe7774f7b912bb72fc554d1",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/rag-discovery.json",
+      "sha256": "794846ebcf2d25de15c540558ef6b516a7a50ce2620f75874bc2345eb36f7c36",
+      "expanded_semantic_sha256": "14fc9118cf497efd51ae91c585528794378ccb55160b2064616db995fd93c171",
+      "native_source": {
+        "logical_path": "material/captures/v2/result.json",
+        "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+        "json_pointer": "/rag_discovery"
+      }
+    },
+    {
+      "path": "generation/v3/usage.json",
+      "sha256": "be4ef89825e9a3665ba303d04f6680875373a6ac33fef99593cf0a51cae5fa4d",
+      "expanded_semantic_sha256": "bfa5ada9975e416af644782ba60def80ea2726fef0a1e0197bc1f24fe84a5657",
+      "native_source": {
+        "logical_path": "material/captures/v3/usage.json",
+        "sha256": "be4ef89825e9a3665ba303d04f6680875373a6ac33fef99593cf0a51cae5fa4d",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v3/runtime-policy.json",
+      "sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "native_source": {
+        "logical_path": "material/captures/v3/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "f92f29fb63125491faf7c1b39ead42726d2792c4598ec7f17fe07dad83a70839",
+      "expanded_semantic_sha256": "5a2e562c28af35f2fa876f132125953381fb0a638a233e4bb62f6ecaef9188a7",
+      "native_source": {
+        "logical_path": "material/captures/v3/provenance.json",
+        "sha256": "f92f29fb63125491faf7c1b39ead42726d2792c4598ec7f17fe07dad83a70839",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v3/rag-discovery.json",
+      "sha256": "93355d2b27abe1b031368ad67b24dc27b5e50f0c0deeaa8e8c21321c5888e860",
+      "expanded_semantic_sha256": "0bb5fb91138028682e31a4e8cd5b3bd3bc3bae83d83cf3ff228b763a4c11b992",
+      "native_source": {
+        "logical_path": "material/captures/v3/result.json",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+        "json_pointer": "/rag_discovery"
+      }
+    },
+    {
+      "path": "evaluation/primary/report.json",
+      "sha256": "d355e392f1beaeb43932b0ab68b854f7acec9ff6504ad841171de7b0248b524c",
+      "expanded_semantic_sha256": "88622523c7e39a3b100004df512f0b0e8f9a84d76cfc94f85519b8591056286f",
+      "native_source": {
+        "logical_path": "analysis/native/quality.json",
+        "sha256": "15015958670f0a107112e5bfc6be9f844fead0e28b6451847e898699ad20f513",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "evaluation/v3-pair/report.json",
+      "sha256": "cb7aa85f3f363f2b1af2f583a0523702e9fad15ab73301b91e0e9e0c4ac7c3d4",
+      "expanded_semantic_sha256": "9f46e50fb9aef2c7101f82b3ecccc78073160794b946f879af6bfc6fe0c95c28",
+      "bytes": 639329,
+      "representation": "sanitized_section_derived_reader_view",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/groups/0/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/6/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/7/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/8/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/9/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/10/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/6/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/7/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/8/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/9/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/4/evidence_reference",
+        "/groups/0/continuity/opening/0/before/evidence_reference",
+        "/groups/0/continuity/opening/0/after/evidence_reference",
+        "/groups/0/continuity/opening/1/before/evidence_reference",
+        "/groups/0/continuity/opening/2/before/evidence_reference",
+        "/groups/0/continuity/opening/2/after/evidence_reference",
+        "/groups/0/continuity/opening/3/before/evidence_reference",
+        "/groups/0/continuity/opening/3/after/evidence_reference",
+        "/groups/0/continuity/opening/4/before/evidence_reference",
+        "/groups/0/continuity/opening/4/after/evidence_reference",
+        "/groups/0/continuity/opening/5/before/evidence_reference",
+        "/groups/0/continuity/opening/5/after/evidence_reference",
+        "/groups/0/continuity/opening/6/before/evidence_reference",
+        "/groups/0/continuity/opening/6/after/evidence_reference",
+        "/groups/0/continuity/opening/7/before/evidence_reference",
+        "/groups/0/continuity/opening/7/after/evidence_reference",
+        "/groups/0/continuity/opening/8/before/evidence_reference",
+        "/groups/0/continuity/opening/8/after/evidence_reference",
+        "/groups/0/continuity/opening/9/before/evidence_reference",
+        "/groups/0/continuity/opening/9/after/evidence_reference",
+        "/groups/0/continuity/opening/10/before/evidence_reference",
+        "/groups/0/continuity/opening/10/after/evidence_reference",
+        "/groups/0/continuity/routes/0/before/evidence_reference",
+        "/groups/0/continuity/routes/0/after/evidence_reference",
+        "/groups/0/continuity/routes/1/before/evidence_reference",
+        "/groups/0/continuity/routes/1/after/evidence_reference",
+        "/groups/0/continuity/routes/2/before/evidence_reference",
+        "/groups/0/continuity/routes/3/before/evidence_reference",
+        "/groups/0/continuity/routes/3/after/evidence_reference",
+        "/groups/0/continuity/routes/4/before/evidence_reference",
+        "/groups/0/continuity/routes/4/after/evidence_reference",
+        "/groups/0/continuity/routes/5/before/evidence_reference",
+        "/groups/0/continuity/routes/5/after/evidence_reference"
+      ]
+    },
+    {
+      "path": "analysis/resources/population.json",
+      "sha256": "d5482fa8dbc942c0cdb8d2944b6e6589b4783cfd5d533973a48161af668b109a",
+      "expanded_semantic_sha256": "9b5046e2494a3c4b535b3bd05950eec56e4ab7045ce7e112239c0ccc1796dfe1",
+      "native_source": {
+        "logical_path": "analysis/reports/final/population/population.json",
+        "sha256": "53b4ff4d37faa0d60beb2ce54b5ca715d740d781d708a2ed92bb473b01e66643",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "fcb2efdfb2df6f8051b62754a9e3aa4f45075faf5062bb7fc031c229c00e7f7a",
+      "expanded_semantic_sha256": "c8861454740477e95a285ca033088aa1483ec8456a675fb597574d2d96198420",
+      "native_source": {
+        "logical_path": "analysis/reports/final/opportunities/opportunities.json",
+        "sha256": "3eedb3f4b825774140b941024d24755e0305a5d5406f7e5336fafbca3ced83f0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "c8b53ea5b26da266db886cfc8f93a1c1762b4a7a6420056c9ee3e6aac9834da4",
+      "expanded_semantic_sha256": "5a1d2775151b4686402694a8e36736f4a0da382c3b1d84deea31740e869abb56",
+      "native_source": {
+        "logical_path": "analysis/reports/final/relevance/relevance.json",
+        "sha256": "5caf0f6185be58b8478d3bd0dda83965ee30ed8240f3c7aea134dd8dee9aa3a4",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/repair/report.json",
+      "sha256": "70d6cbbbed700ecb04c28a268e6ae022b395f075377b8617a6e6155460ac67f1",
+      "expanded_semantic_sha256": "60078911d7c85b8a8512658bb9259d2d137263e5e5bfdf4e747e8494767ba2ec",
+      "bytes": 369654,
+      "representation": "sanitized_section_derived_reader_view",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "reassessment/research-current/repair.json",
+          "sha256": "ea792dc1ac084dd93e63c57b23833b7f45738b09390ad53dac13f4c1f9d0d45d",
+          "json_pointer": "/same_run"
+        }
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "native_source": {
+            "logical_path": "analysis/reports/final/repair/repair.json",
+            "sha256": "6b9b8dd3d8fb086c9b478216bd22e85746ec181b04200fb9fe4f438b899fe61f",
+            "json_pointer": ""
+          }
+        }
+      },
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/6/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/7/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/8/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/9/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/10/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/4/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/5/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/6/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/7/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/8/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/9/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/4/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/0/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/0/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/1/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/2/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/2/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/3/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/3/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/4/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/4/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/5/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/5/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/6/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/6/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/7/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/7/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/8/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/8/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/9/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/9/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/10/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/10/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/0/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/0/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/1/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/1/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/2/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/3/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/3/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/4/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/4/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/5/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/5/after/evidence_reference"
+      ]
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "5ddbec245cec90b9e70247c11f81cf2ee4317dd52c8c74a1663e37dff403c2d9",
+      "expanded_semantic_sha256": "ed45607f5a22cadd5d37e63a2a21fcb3cf13c9d151b3c02d67569d5c546fda69",
+      "native_source": {
+        "logical_path": "analysis/native/mechanism.json",
+        "sha256": "0a3c86799f2db857ed5c5a8d1b56de761ae47e9b7244670b1d91c7fb186c971a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/resources/tradeoffs.json",
+      "sha256": "f4f56ecc2843cf83a87519cb74bf659cd4f5b3ec847fc7e0c4a52dc04e441228",
+      "expanded_semantic_sha256": "4691ee2a05222f09db1004ef5da8c7c2da70afb252009a0fca36accad4e20670",
+      "native_source": {
+        "logical_path": "analysis/reports/final/tradeoffs/tradeoffs.json",
+        "sha256": "f6f812cdd2a44870bfbca915888900927a46f6949652eb43a21a2b8a5be9050a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/inventory.json",
+      "sha256": "958b16985beaa20bb25af8b9220eee3dc471a1871339f2f590d47f4025b85d51",
+      "expanded_semantic_sha256": "d1af700b137a504e958ceca087658ad4f1ecf9236e54d54da51e4a382555d98f",
+      "native_source": {
+        "logical_path": "analysis/interests.json",
+        "sha256": "7a17b9baff8f9a69c85fe36cd773de2009c08fa12f12e189556bb2e4952df18d",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/relevance-reviews.json",
+      "sha256": "19d809b6f3d83e4e750dfe437728620b6b9eb1848deb7d80a08e00ce7a156cf1",
+      "expanded_semantic_sha256": "09e321caa8fb46fb5c93a01c2d1569f1d683318d0196859e5601a95e856fa20b",
+      "native_source": {
+        "logical_path": "analysis/relevance-cross/reviews.json",
+        "sha256": "bd68d15b495c13d78a18fc07b74938cc3fa9c4226ffc56765347a062974e8a1a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/cross-review.json",
+      "sha256": "fe8e069b1d85ae69e3dfe257be73014d951a1dc3d3094049b4b0be9959653bac",
+      "expanded_semantic_sha256": "a4a94cb606d9d928b40e43be8adde90029da2c938a981f9bd8c6d127d0118dfa",
+      "native_source": {
+        "logical_path": "analysis/relevance-cross/inventory.json",
+        "sha256": "881d4026aea5f5ea53c18fec9765478d80a1984059cf53bfa5319d4b4d11962a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-ambient.json",
+      "sha256": "75e1c7dbc72939b2d9942191d99bece913d0d14662175100bfd34801c5e09f87",
+      "expanded_semantic_sha256": "c5698212f98a51582a9b8ec4b0c21331b947963d928c33bf62370b6e0f4982ca",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/ambient.json",
+        "sha256": "8bb92e90bee5be10310d4c152b80e8729598660b2ab5cd55da2f09a5c73af477",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-aoyama-square.json",
+      "sha256": "0f27b9b2735f0d49f6f20286ace4893976375cd7abf8f16336a2b56f62a92139",
+      "expanded_semantic_sha256": "aab6b65496bcbe828e888d9004efd59ef5e9a0532d7c41d6bb3474e6cc29a909",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/aoyama-square.json",
+        "sha256": "89be5da3c727611e2c25398d076b42bc3f89e7ab8074ab19ccb898ea687c9a76",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-artcomplex.json",
+      "sha256": "4632844311ffc36674e35156d2d7c3734874f4bca770fb6c185cafce95970b77",
+      "expanded_semantic_sha256": "d694d848f4b723b643a005d177571faf8bc32dae8e3db9854f58f6f755036432",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/artcomplex.json",
+        "sha256": "20e991b29a01373b83ec4f7d58d77cf22a465bf4cbeb990ca5fac8dd1a564d86",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-case-tokyo.json",
+      "sha256": "81a369826255f04f5f03231d000169fa27c990cff69f945091eb9b222e200272",
+      "expanded_semantic_sha256": "109a9d8c6f4ff0ef3ae31bac95d6468a1eafe9cceb8a496c095d137f81295f1b",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/case-tokyo.json",
+        "sha256": "00a8bcd2151502076e1c2bca15e54bbba598d1d67a828e41d2be3436a2ef909d",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-creative-museum.json",
+      "sha256": "1ab7f50a44a87f0b2a76e4dfb094ba4fd8ef0150012ebb8016c8ca27d147529a",
+      "expanded_semantic_sha256": "1b3b89f299673f0994c44e1fad867f02161c4c5290a2e0628bc96f97e850c94d",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/creative-museum.json",
+        "sha256": "42c642f778cc04aba4e8d3cca470e9722441364b82d4f090b2ac4995902d8ac1",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-east-gardens.json",
+      "sha256": "cf042005fb07df219e9c4a3146433ac95d18e96a258dd97666439895492e2e82",
+      "expanded_semantic_sha256": "e4cbb07346a5208016a2ff76bb0505dbc237831b43ce377f3ba1a69ad8332801",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/east-gardens.json",
+        "sha256": "2ef1e35d80793cafcc6efccf0f7b7c8f05c976983400b841afc59d6b4703eb21",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-folk-crafts.json",
+      "sha256": "06a960b28934027f1fa65d17a1651729c4e5df10e949dfb838aeb8344243a343",
+      "expanded_semantic_sha256": "349cd16a0023f06c456da9a33e19844ba5606f4ff23c6a8b0e5501c047ca79b8",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/folk-crafts.json",
+        "sha256": "3075e6c548c5d315c270c073858a6b15e19412ef9c0aba683c012f70655b1cd2",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-godzilla-head.json",
+      "sha256": "cdaa31673fb2b0cbc474a57fc01a1c853bb488da5485d60a9710f257fc0a8072",
+      "expanded_semantic_sha256": "e74e724788c9d274a1fa8cbd8c2156910c22c1c91cda6eb477b0d8df55d4611b",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/godzilla-head.json",
+        "sha256": "a44aad03bddea7e0dc3b133c4489a92a1a1301404ed3e9f415615757d0016ac0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-golden-gai.json",
+      "sha256": "c71e009fb894d0e1a8b8d447030460faaf650b9dc0b6780e57371815e7ee3b98",
+      "expanded_semantic_sha256": "d931314baf57569f58abeb8c620a537be78227a46235b8d45c46348e81df22ff",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/golden-gai.json",
+        "sha256": "35f3d22207d4cb22ee9f6546100afe3fa55a97caec9838bc28c4df9d7df58da1",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-hamarikyu.json",
+      "sha256": "a82b3302fdd0d99a2dc0d4ab6220043002e7ecfe10c233a6f9ce5c190c572c72",
+      "expanded_semantic_sha256": "cdd3c848ceb21751a8bf6a2977a23686ab97cde117bfc7efc4ab9876d6e96ebe",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/hamarikyu.json",
+        "sha256": "e6f9808827385769680d7e3863292be8836292ea9000153c5b4a0a4bad21a61a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-imperial-palace.json",
+      "sha256": "aeb3014a1cece64b044d12520ae8b120e72fbec260f4141aa37e5fffcf4110f6",
+      "expanded_semantic_sha256": "23feb848e6b9e9b278f0227ac1cc78aab04bf7e31090def6463b8919e5af1334",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/imperial-palace.json",
+        "sha256": "3e45e8ac81b8f9f182b4a10aeef64e74e1eae40c637a1fe537b7eb9fc23a71ef",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-japanime.json",
+      "sha256": "25c6ff86b7a3ccbfc6715d8dc814dfa772ee425891410b98e32760804c3b092e",
+      "expanded_semantic_sha256": "5427d8c11708ce69782486cd7b164943d25b51c06a3777632a524c9165d2c1ac",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/japanime.json",
+        "sha256": "e13e7fcd0d42459bbf2acbb67891d4e91d0506f6325456769dd064f8a4190b14",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-kokyo-gaien.json",
+      "sha256": "fc7f11315372bb5387330a1f9626b00566c570695dba0edc0533107d584ec3b8",
+      "expanded_semantic_sha256": "f4d4c566d6d38671a681c1f5e2824840c3204e97f2063313cdd42cbc148ee732",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/kokyo-gaien.json",
+        "sha256": "798e89294f4ece5d9c84621c2d1f8fa1e1bc144eb1a17992a1917c6638bd2f73",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-maple-waterfall.json",
+      "sha256": "2b2b8a0577200633f08071007200f33073aacfca05d918d5d6916eff36963b5c",
+      "expanded_semantic_sha256": "8fe7f2afb759c27ba616863c246486c9dc0c937c731931a06a733a4a7cde963e",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/maple-waterfall.json",
+        "sha256": "32ab76d0be3a8dd3b5c2a8c794451c3fd4526d16a1fda54409d00c443ee06404",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-matsuoka.json",
+      "sha256": "29531cc3f463354dc741b28777da9086f0e193ba50d42533dfb0eb5c69b49d66",
+      "expanded_semantic_sha256": "5b9d76b8bd385b5b088feea7fb1f8eb0f4cb95a605072267152763bcecdbbd25",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/matsuoka.json",
+        "sha256": "88f815cbae0809551dae3894d4e2bba1e7aeb47daebefd4344e3daaa922c1595",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-meguro-art.json",
+      "sha256": "3bc6b50e582363f873c4041db1a6fed99da4d3b459a77c6e961cd0e45f92c40b",
+      "expanded_semantic_sha256": "d13c9bc8cfb842bc46d70647c9f4a11af7f1c11fd31121ee22f4175edc4bfeb7",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/meguro-art.json",
+        "sha256": "872b4d9fd1ee101206df3cfdb17ddaf209d35cec65ccec606f7bd8e7ab415d6d",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-meiji-jingu.json",
+      "sha256": "c8eb8f29e943eaf7bb837dc4ef24d39c954e811273fdebe2e27fe562244c5ad2",
+      "expanded_semantic_sha256": "a4723e563a4d362ac9639d1aebedd47b24b81accf0b8ad6c8be4c052e71b3b6f",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/meiji-jingu.json",
+        "sha256": "c52fa4472a41227adf9ad9347de9971a206015e4c397a313cbb5a888bfbab8b7",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-mon-takanawa.json",
+      "sha256": "3a8fac28aedb441ffe7ca65fd1aa7738f12825737c545f86efa654d68e61afcf",
+      "expanded_semantic_sha256": "12a20aca960a7665c357c6ea75203d3e829fbade4b2abde57379f7290659d7d2",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/mon-takanawa.json",
+        "sha256": "7a70b7184936a683ba83364c79c6f47e21e0f8bd701fa9e191b6689654b79f4b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-mori.json",
+      "sha256": "bc6f0c7bae7abb70665248a624883daf61a57263e236ec88691bd628b11bd0fa",
+      "expanded_semantic_sha256": "dd2b80c5e28a2c3d924fd28dc31de67ebbe20908b05c2ce256c49cb1116e5443",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/mori.json",
+        "sha256": "0e1e25f9cebcdff1c1c9bdc18c20b2b809b285c798dab01323024acf28136b51",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-mot.json",
+      "sha256": "d0f51d933279fffce498e7ae45f701783e14bcc2ae5b2bfc6d0a57c0be270f54",
+      "expanded_semantic_sha256": "f5fbe9f95308efe754672ddca55f3fb0affb384851f358c6927939ce8e257bb2",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/mot.json",
+        "sha256": "71d58c9bb34209b37c8f26cf9a2b94291765c5ca8dbf88ce4d139e1348f7735b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-myth-of-tomorrow.json",
+      "sha256": "fbeac7e08ac95002c0a0bb4c2bba97cf7c53c60fafd20bced50527db860de3fe",
+      "expanded_semantic_sha256": "d40c5bd61831b906bdee76e6e4bd286207dea8456c664b44cd3668374721bb72",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/myth-of-tomorrow.json",
+        "sha256": "93a9b5faae7675dea8be76cacc8c13b08b803fe2ce50479765fd001dc95f190e",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-nezu.json",
+      "sha256": "4e382c5985520a180c9b015a8ebd4e7b3829ddef1bf3436923160769e7e2d360",
+      "expanded_semantic_sha256": "267b2e1f6df4318270025fc61ed956b9928058342d6c4093f1b25f7eae4f3faa",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/nezu.json",
+        "sha256": "f9397b6e719f2cd81755ac123e46dfd7ba401c7e3586f2b751efcd2ed6351b52",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-omoide-yokocho.json",
+      "sha256": "b373fc13c7923ed5905abe8abfb5c778493b00fe4d3fdbe572af183a160e60ae",
+      "expanded_semantic_sha256": "15a0ab5427f3996c7275da66a3fdd7232d9b50321c6d43b116019d5f71403cfb",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/omoide-yokocho.json",
+        "sha256": "1256d85e2cbf074e175fe1fc381ba74c372e127edbc32cfd0ff83565c0d0f83f",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-seikado.json",
+      "sha256": "ddaf77f6fac2791a215109749ed8f69f44c2305fcea61d48586b2d0ecab01e63",
+      "expanded_semantic_sha256": "c12696d4cfb26c8c49aa9fc06fec73b0d6c1ddd3f29a758df4dca1130f878526",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/seikado.json",
+        "sha256": "ae6486db2928e8cf675a387aed8d2ee357faac3a0c094d59f7574e2e3540fc72",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-sensoji.json",
+      "sha256": "aeb31d5bb6fbb35afc7fd51cd71277a77d46ed3f04c7c0ae971fa78be20c5e2f",
+      "expanded_semantic_sha256": "f6f296e850cb0c69ec531f2d31429fc60d7ec102b9b59cef8f9740d13f0a9825",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/sensoji.json",
+        "sha256": "c58303a24ee8988d152b462f0e171432025fdcf756ee370bcbce66483ac019b0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-shibuya-crossing.json",
+      "sha256": "ef644772fda562f0ffd0e236471a74dcd315319a97544e4cba581c34656595e7",
+      "expanded_semantic_sha256": "c172b94686d7a79582b6f76acdc4e5ae3b649e098839cac48a8062c1d9017ad9",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/shibuya-crossing.json",
+        "sha256": "1f1754b33aad48320e3b82cc79ac36485546414aad7e64be7d5ef8e17f3fb70b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-shibuya-sky.json",
+      "sha256": "7182051489ce248ad168fc5c8fecaa22e983546e7cbc8966a86401b010f75fc4",
+      "expanded_semantic_sha256": "8abad4b6d0e84db722febd621d06de0860fdd7288ad995c2a72666155e113c21",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/shibuya-sky.json",
+        "sha256": "8ed7c754ec3b9cae647a593e164f2594dd9dc5e2bdbefe3aad2d5302a78b47de",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-shinjuku-gyoen.json",
+      "sha256": "3dfaebd3a25233b7725578abda8074b8bb76d00c34c9de4c446bfa05aad3d3d4",
+      "expanded_semantic_sha256": "3ca031453c7c635c38cc35339fe05deb2c5ee70876f47eead0c3f8185f10492c",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/shinjuku-gyoen.json",
+        "sha256": "37ad138ff9b101818210f939ec266ceaf2d60988f52e7a8d339855aca2129903",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-snake-mound.json",
+      "sha256": "6b6ad6696043cb1b6bc04ab2d8931264f31da3291fd8fa2d0ec32f92219581f7",
+      "expanded_semantic_sha256": "fd3a8947b8e64840606961ff97f79d1a4fdd912b6477da31a6b2edd56b9d7edb",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/snake-mound.json",
+        "sha256": "88608691095907ac00ccda1fd46e2c9d295413ef1e88fbe4bd325efc43c9a84c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-suntory-art.json",
+      "sha256": "5e2af4e48729661a41c04a38eeb18b20bdd512910e64cd06581b7479d35d7719",
+      "expanded_semantic_sha256": "42336a35f686a4525291736ec7a0cdf43eb940f7f59d6913ac400bc2c33d8bda",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/suntory-art.json",
+        "sha256": "de4240eec7891a70352f5bbcf579e3a8982a01289a9937061df1e216627c8fa0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-tokyo-cultuart.json",
+      "sha256": "6cd0d3f38c6f0ebf6c898cee4b52ad1e89cc6aa50c1546f783b196b73ac46613",
+      "expanded_semantic_sha256": "64204eacf5f178408e0d958e4b6eed11be29e286d87b48896d9789e4ffe74ecc",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/tokyo-cultuart.json",
+        "sha256": "83032a93ea6b865814752c11982e5ad93e7706d5922299d0d3c09a1cec6ddca7",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-tokyo-word-monument.json",
+      "sha256": "b40ba11b3c65e0a41872a5dc521603114e71835f899b1d544853336bbcb8e99f",
+      "expanded_semantic_sha256": "98bd60b554483ab9fd00a8540f077137b374322e70bc31cec08d36440d35733d",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/tokyo-word-monument.json",
+        "sha256": "496c8dac7d979940babb14a1b6f07e16d68b9ae93cfcd8529df3309bf423e0cf",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-trick-art.json",
+      "sha256": "718c2b81ee3f770f852fc1051857b887e1c716ea9c5bb0dc94f5c9d3ba9ead28",
+      "expanded_semantic_sha256": "b80ed3debbfaa1e6df0e5dd50ea1a3bc73e949f6312d81a8952e4ff6b7267d5c",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/trick-art.json",
+        "sha256": "a3a2b395d3e310b8ae591271ef19f5d8d2ac595e4675e838fe15cc320d488ada",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/a-tsukiji.json",
+      "sha256": "7e94a9978c81ea69ff8cf3d85a27f239796f769f3934fdc459cc93a2ef240646",
+      "expanded_semantic_sha256": "d8459df7035647abb31ac55035afcec4532cc17232ee024cf61e13f692ee90fe",
+      "native_source": {
+        "logical_path": "analysis/relevance-a/evidence/tsukiji.json",
+        "sha256": "12c6801de4ed27bfe3f7e8e04266cc8d4554d7cede2c5f6a66e8938c69b4561c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-01.json",
+      "sha256": "7be0911719f8122ed0fbcd1cd2ce1d02105c448d4a1682c822cd8cdef2f22742",
+      "expanded_semantic_sha256": "85dbbf471d89e49e1238a96c808c61711e3c42dab8c078c63be96205875b4cb1",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-01.json",
+        "sha256": "11c05b5c86b7850b32affe1cc80140dc3807ba343b5c56700ed2aef9fd0a6355",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-02.json",
+      "sha256": "d548cdaf93346cc766801b5137d16b2fdfa096bec4b585a69f8fc4c856654037",
+      "expanded_semantic_sha256": "522a7eff6cf060c8e3e94467f024affc3b4f8c5aeed5c8e4822e7213ad61ca9b",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-02.json",
+        "sha256": "b33ce17cfd7090d45845822a0e135f1e4dd78ae0aeccd58634ef51128770bdda",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-03.json",
+      "sha256": "9b5b0e33983f76ef0050b9debdfc0ba2a35aa20095cd3a15a4866bae82a5a9ba",
+      "expanded_semantic_sha256": "4662c9b155c3ce592441449bc6720219fe071aaff1b2cf6b54d1a11485363b5b",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-03.json",
+        "sha256": "7290f17c697c2881611dfa4d1b52aa68d1dfa7442073fdecc1332906bd64eeaf",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-04.json",
+      "sha256": "ce6f2bda5153b71513f3a1cb85e8c5deb4657c000e8fe5e39ca4aa3cb4c75975",
+      "expanded_semantic_sha256": "f15eaca31bbe182e1a5c694d628025da773a72727bc336899ce71574d3fc1b8c",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-04.json",
+        "sha256": "cdd7aab857a29976d09f80131950dfee9dabe4a645889e377ce126a83fecc959",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-05.json",
+      "sha256": "4106919fc111b37c4caa093b5c3d8bc8685fb0acf8444ed4f1bc84530176944d",
+      "expanded_semantic_sha256": "8d1a3b436dc12b6a78f3b39fe0a7b91427c266cddc4772cc5229aeef6f0a3c28",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-05.json",
+        "sha256": "e3c65428a7f840947749b041f66c24c56e355acdcd7f90cdce42b1c953243aae",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-06.json",
+      "sha256": "5be201330e3a8928ecfece099000b75c853ebab39a09f2094c574d27181f1ddd",
+      "expanded_semantic_sha256": "c2f14445c7065bc127b5b85236bf9049157426ec5855f38d56e1dbcd9422c402",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-06.json",
+        "sha256": "883baefa74a01975b001f72864f8b3c1cce084cce5af5f5c7ab364781b6cf2da",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-07.json",
+      "sha256": "9f0dab91fa2e3d9e1c4fba6c4c911ae97267d60d8e06855bde1a7f2221bf8631",
+      "expanded_semantic_sha256": "b13c44921e318f8de55cb2686c883b23e7309454205628c0dd19d94f74015e31",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-07.json",
+        "sha256": "8c34be7a1634d3341a8331c6433b73268c90608d7b99ae76f13c895b5c16cb23",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-08.json",
+      "sha256": "2126942ded6f17eedd445ca11bc3777d46da062013e3a0c4e7b5a16f46ffb66f",
+      "expanded_semantic_sha256": "18d669d243e26b914c2ebad84fc02a63c896b89e4db4c10be18fcb334aaceeb0",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-08.json",
+        "sha256": "4b9b997ade5eee7627588b57d79bd63cfe3e992e23eeb3685648790fcb615692",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-09.json",
+      "sha256": "e8313987caa5cea7fe7fa51e2030446fee79df0ec99a0eaf50da247cfda6345a",
+      "expanded_semantic_sha256": "50ee5c5b255a60c1a6618666593268a44962a686d8156771d62b24f1a1564c71",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-09.json",
+        "sha256": "34c24fd277f01613c2091fa441e99283d3b56ced4cff824ad108deebc6a69781",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-10.json",
+      "sha256": "60c92aa3f42becdcc84df884dd86995b7d68446b063ab0ce5f0da0707ada582e",
+      "expanded_semantic_sha256": "c2fa626441a03200eb31c34a2c0a057575b4e8437380e7e35f957c614196f66a",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-10.json",
+        "sha256": "44956a57dd7c5c264b05a8c35bf8e6d1f615848098784f4ee28d861fcacdf3e7",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-11.json",
+      "sha256": "35db3f852ae950c0ddf67b304dfdd9b1ecf687bc4fce980c2d41bad1dd9c456c",
+      "expanded_semantic_sha256": "45a4598dbff6c4d329015fb2975528ac0f1753d3f78a4aacdd58f98ed599cf20",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-11.json",
+        "sha256": "ae60a7379def422fbcb3fdca8999ce5e42153fac201f25540b176f76234feb95",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-12.json",
+      "sha256": "9a76b8126dadd6f8a788254347e61db097b58ca635d11de1fd5cf8a50f300ad1",
+      "expanded_semantic_sha256": "614507cc416699342612e5f0bfd20e8532a04a9423946bf71d28ca9cff5cf733",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-12.json",
+        "sha256": "d98a1b3259b1d579b4aec96e100b6b003b5a8130c0c1bdd3cfcc02d9bc3db390",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-13.json",
+      "sha256": "f63bcae8c2391c9b24e3857332990b5ae54cfee07ea99eaabcd7b8735850d3c4",
+      "expanded_semantic_sha256": "0287b380e455d317b1edc593f04b5491c0701475f98ecfeb842410a8c78b2852",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-13.json",
+        "sha256": "df62df8476deeb5daf818dc214bc22e822619ed2efdaeaf412426181dd4a1da1",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-14.json",
+      "sha256": "1f27398d3b491456fdf173b2fc0d537dbb22e55d28a3741d825e5acdace1451e",
+      "expanded_semantic_sha256": "b64dd157678c337676a9154218123152b849ae19c184cfe39f12d368f1b15738",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-14.json",
+        "sha256": "36615fa3e5b504b6071747ffc3b997a2c02ae8eeba5b82aacb51030f67771a6f",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-15.json",
+      "sha256": "c28ec62b0b1df46ad8cbb3d99076a547d2c7a3d3f6b5985f37d61457ae6f40b4",
+      "expanded_semantic_sha256": "24674c9e960a598891e71ee7d09fdf6294ba862881e67513b7b098911741acfb",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-15.json",
+        "sha256": "be90e991e6a847977905cd054ac595c5257f85ca3ef6819652a944d35fe98e7a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-16.json",
+      "sha256": "4871284fb6cf5ea99e9142edb6921ad95d5d0b41477730a0732743d8e541b1c4",
+      "expanded_semantic_sha256": "23122296d74077909fc81418c16617f5c5880f46e92f45dc2b6b68d2aa1588e3",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-16.json",
+        "sha256": "7aba76c1d3aa20f3c5252214eada5159a4ac877d3a3493b49ee86395eb2a2000",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-17.json",
+      "sha256": "1d90c9597e094924a6eb23fd643d147f02e89ca7d79dde3585c6a769bec62445",
+      "expanded_semantic_sha256": "91f963197c351477423ccaf931b3974fe622ea14f604bb4177ae28d9488961c3",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-17.json",
+        "sha256": "7c77172028e00974fc7488552c2ae3cddbcc5c33dbb07d7094e0308a68e5d7f4",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-18.json",
+      "sha256": "39a3cfae453eed571691b1b40fec9f0386d27a488fcbf40982ce25def0bb89af",
+      "expanded_semantic_sha256": "31adf35efb6cfb5b1cdc445b30dd367621794a19f27b91c0837d2c0f808a4672",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-18.json",
+        "sha256": "235dd813e2b65b48097c60dc592ecc6bb5462dc46679634d26afdf4386543a13",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-19.json",
+      "sha256": "5dc9a60c3fef1108e65ecc6eb0268bfb2046e226327c7bab7fbb174e37fd8c73",
+      "expanded_semantic_sha256": "6c1a413e06c03ed6fb503293e812c709dae866377f6a35702feb6366708eb8cd",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-19.json",
+        "sha256": "e9b44fd921b2d1d5d28e61b828e23c615b9b356d57827c4b57ae2186fce0b9d1",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-20.json",
+      "sha256": "97c62735cb9967ac49e86bd2276c7ea22aa5e48a111b9aeadff1548835b1cdca",
+      "expanded_semantic_sha256": "de4bfa1fb7da344f5f9fac29797f85023292aa0b19f45f77093dd7b5494644f3",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-20.json",
+        "sha256": "8fa788dadb492b07e9b04713a6643a47397461467a419e21b174d1d538d81f76",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-21.json",
+      "sha256": "188df503d152d040e4bc30bffe71ed9a7916e5c508604527b6806c14bcbad0b5",
+      "expanded_semantic_sha256": "186b2471a542b4ce0c66b998780d6c1fa1433e30007a7b9f02a9ad7b5d3c702e",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-21.json",
+        "sha256": "aaf908156ad765f23d8e090349614d5d0845c926364e10dc941d790a977bf57e",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-22.json",
+      "sha256": "03f25b94049078e95e15294715d90e629dcdf32d505cba8b959e10e13ed22f2a",
+      "expanded_semantic_sha256": "8370a73e52e082344050127ab8faaee8ebb959579253d8392d6c51e1027656a1",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-22.json",
+        "sha256": "af34cecd253a328f977b93efd60f34e15ae70020b54b9c4120877c161a367aff",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-23.json",
+      "sha256": "c8f1f16a0b8eb3487a0d02240c26619977959f05939f9c7047e3ef2f182bfdfb",
+      "expanded_semantic_sha256": "cf201491f232841c026cf840b6fbb9b18354dfa0ed53736e82ab52c496297dd7",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-23.json",
+        "sha256": "8d81c0a6fba6c44d57cf49febe13823264b8cb2cff5b680b7fa4a49b1d45aae2",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-24.json",
+      "sha256": "185a73b49a01bcf29813e13f55c704a39143f1ebabd390ff976929a40379592c",
+      "expanded_semantic_sha256": "1ab3e218f5e98d85feded0bbff3e54edc530893df7e1f46886e6e2f464b9bd8f",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-24.json",
+        "sha256": "f6638425c4fe466321712cd7607be51be0e701f09b247bde8eea4ca8cc4f3fda",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-25.json",
+      "sha256": "2f77a7917a387fd680d8ca207d4c673fa0317c287ab1ba3309eadf89ad6792e4",
+      "expanded_semantic_sha256": "c9d663c90ab6fa7d8bb4b3246e06cfc65008b2ad255983a482ccf12a24c45d0c",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-25.json",
+        "sha256": "223f979693c80a99b8324e6ae8ff3ab2569b3983cceebb6fcde2f1292980cc85",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-26.json",
+      "sha256": "fc34469287d2c2c027e6ae5d51621ecc230a763f6b992ac3b720ccf5bc75879c",
+      "expanded_semantic_sha256": "187b5ff176c1ad55928e18ffee1b2aa988313bc15b51b3f5c42180f744c7c455",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-26.json",
+        "sha256": "932962bedf702bae16a1135cf6463564232d3957a6d41b35533576fc751208e5",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-27.json",
+      "sha256": "a7941197b7080293342d7e66c2c62ead6b6f44e6b2275ac6139af59e3b4e8210",
+      "expanded_semantic_sha256": "f3554be0ba48612336957739319eca5c0e5c3dee005728f7e0377189c5ab8ac2",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-27.json",
+        "sha256": "cb91cee5c2313f131e1683c9441b9cb2d462a4b2c3f545312fd71bb5d0cd4e97",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-28.json",
+      "sha256": "89209e1133a5e7219cf42e4981ccef2596798b1c1fede14f3b4e2bfc85e9ef46",
+      "expanded_semantic_sha256": "ecc81d696284fd66fd0bd03270cbfeb735d72837732d9e669cba1b308f62ff05",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-28.json",
+        "sha256": "51abaf8e597aa4a925ca68b4e460bc3c30293d811ae76e0185c40e48dcfcfee2",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-29.json",
+      "sha256": "790c0bbba44cd0711919f6e69fcd93967fbff07149909b845e399fa321b57ffd",
+      "expanded_semantic_sha256": "da2dc6f9e2e5c904c6c6e3972ffa1c2309e8a457548546f20fad3a860f0d4384",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-29.json",
+        "sha256": "653f461d32a94660e81e4bcf172249c2dccc66198e1bcb11f31839cdf30632f6",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-30.json",
+      "sha256": "eeb6cfd10573e00bff9466262ce9cc11b787830958fa5abfb94ead365364945f",
+      "expanded_semantic_sha256": "998fea93c5a998753efbe78d28bafd67b4de4cb27c19de6593a5071a0b4e6eb6",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-30.json",
+        "sha256": "8a674903a2811f7b1d8bf28315fdb76d9f421c68918181894ecfd94d9487ff81",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-31.json",
+      "sha256": "c40f5120209c5c64fb1d92992a77e7dfe9fafe7fb2397365bd2e3c7d64c2aef9",
+      "expanded_semantic_sha256": "bf10b5d00bebd96a3ebceabcf336692f77648c34d581b9072b58d35484374f0f",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-31.json",
+        "sha256": "112984b993aac20307dc8293198c4542e68772006e232017cb3883363f53f09e",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-32.json",
+      "sha256": "b9f76060412e977d90553bc765cc9555feee8da046668cd270f2a521176b9652",
+      "expanded_semantic_sha256": "156f300ad2267ebd95b8d46a9c7136cb0ef28cc3130c8e57f11edf1fb839cbf0",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-32.json",
+        "sha256": "c05f445cb534e1b1c6ce97bf707b981951a8b572e3513ff87bac19b55cb79b7b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-33.json",
+      "sha256": "e35a057ec2b5d30fead9effb3dc7b15d843c20399e114a70ca5bb19340a4473f",
+      "expanded_semantic_sha256": "3c912a6af1772e8bc649512164467c952543341248aa8aae3d5501fed661621f",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-33.json",
+        "sha256": "a10e8a38bd48f4c37f53f128de6a5047b0f0fb0545acb0f3e879eb15d85446b0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/evidence/b-venue-34.json",
+      "sha256": "96f1fc5cec828d42ae33f5e2144b96300f0d741aa3a115d3b2509445b25811a6",
+      "expanded_semantic_sha256": "e0d3d6a2875778c7ff1084894c20dada32d0978ee3ce52dc5114462ab92be8cc",
+      "native_source": {
+        "logical_path": "analysis/relevance-b/evidence/venue-34.json",
+        "sha256": "7daf7e373aadab04da0fe07bef277016b364c0e539d6e78b2985fd0c14cd6ae9",
+        "json_pointer": ""
+      }
+    }
+  ],
+  "analysis_scope": {
+    "new_service_sends": 0,
+    "new_reference_usd": "0",
+    "original_primary_unchanged": true,
+    "paired_acquisition_status": "stopped_once_correspondence_provenance_check",
+    "independent_offline_pair_report": "complete_exact_source_replay",
+    "native_pair_acquisition_export": "not_available_for_stopped_acquisition",
+    "human_review": "deferred",
+    "researcher_acceptance": "accepted"
+  },
+  "itinerary_view": {
+    "path": "itinerary.md",
+    "sha256": "59a7d005b925f4c313860c9dcc079d799b1310646c7a6d79e3d2286b52584d26"
+  },
+  "v3_stages": {
+    "path": "generation/v3/stages.json",
+    "sha256": "9a53a87918e033c172bfdd21f34f4ee19f9800576eb699f5050d235e12893b92"
+  },
+  "private_archive": {
+    "identifier": "benchmark/scratch/case-09/archive/",
+    "manifest_sha256": "aef8c5d89ea94bcb4c66933c3ee8514fd9ba5bf7ae47014673dc388d022fd9f1",
+    "blobs_zip_sha256": "ce8427654c00011199bdb051fd8db85a2ec80f577840610b43e2f4a2c960918c",
+    "verification_sha256": "7c37e650d0ce3f84596c9c379e329938111bbee399910d50b776ed0d39447ef9",
+    "retained_logical_files": 7044,
+    "unique_blobs": 910,
+    "zip_bytes": 5516974,
+    "native_research_tracks_exact_replayed": 5,
+    "public_native_projection_equivalence": 93,
+    "researcher_acceptance_at_archive_creation": "pending"
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-09-v3-r1",
+    "report": "evaluation/v3-pair/report.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.0019503",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 8515,
+      "input_tokens_details": {
+        "cache_write_tokens": 8512,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1772,
+      "output_tokens_details": {
+        "reasoning_tokens": 926
+      },
+      "total_tokens": 10287
+    },
+    "model_material_sha256": "cd2c076865c77510498a030946d86e5f09238f76131c1b0f7665f13a79975642",
+    "original_primary_and_generation": "Unchanged; accepted with the refreshed paired view on 2026-10-17.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-09/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "bb4ee20aa30ec2795698eeb1a76c57f530eefc38666cb5c7fac4ae07b19f969d",
+    "archive_counts": {
+      "logical_files": 2575,
+      "unique_blobs": 603
+    },
+    "preparation_sha256": "289053a71ce12a98350e7d3696d7d1773bedb9fdbc8b313fc210a334036abfa8",
+    "packet_sha256": "d881ffedc9cdb2e4c05a97eed0c1d4d757fd9ea9022ccc985614afe348df87d3"
+  },
+  "automatic_acceptance": {
+    "status": "accepted",
+    "on": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_by": "human_researcher",
+    "decision_basis": "Explicit acceptance of this batch input, results and disclosed limitations in the current chat.",
+    "record": "report.md#acceptance",
+    "case_revision": "1",
+    "batch_id": "case-09-batch",
+    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+    "selected_results": {
+      "v0": {
+        "run_id": "case-09-v0-r1",
+        "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8"
+      },
+      "v1": {
+        "run_id": "case-09-v1-r1",
+        "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7"
+      },
+      "v2": {
+        "run_id": "case-09-v2-r1",
+        "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3"
+      },
+      "v3": {
+        "run_id": "case-09-v3-r1",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+      }
+    },
+    "native_requirements_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+    "primary_preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
+    "native_primary_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+    "native_current_pair_sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+    "human_review": "deferred",
+    "main_worktree_integration": "complete",
+    "new_service_sends": 0,
+    "new_reference_usd": "0",
+    "delivery_tracking_issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158"
+  }
+}

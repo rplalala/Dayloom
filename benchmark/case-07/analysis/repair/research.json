@@ -13,29 +13,104 @@
         "version": "v3",
         "attempt_id": "case-07-r03-v3-01",
         "run_id": "case-07-r03-v3-01",
-        "classification": "unavailable",
-        "reason": "native_pair_or_score_unavailable",
-        "native": null,
-        "native_profile": null,
-        "native_report_sha256": null,
-        "continuity": null,
+        "classification": "unchanged",
+        "reason": null,
+        "native": {
+          "$case_material_ref": {
+            "path": "evaluation/v3-pair/report.json",
+            "pointer": "/groups/0",
+            "expanded_semantic_sha256": "d53928e164969cd6a663d5dd8d2bde5ae5eae747b2134d1794dbc60ebb61730d"
+          }
+        },
+        "native_profile": {
+          "$case_material_ref": {
+            "path": "evaluation/v3-pair/report.json",
+            "pointer": "/rules_profile",
+            "expanded_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559"
+          }
+        },
+        "native_report_sha256": "c79de5cbe1d1d0f8fe1ab8fc42c9ef5b26938f44ac02a5eac486fc4a22d4d39f",
+        "continuity": {
+          "unit": "native_continuity_checks",
+          "transitions": {
+            "unchanged": 15
+          },
+          "residual_failures": 0,
+          "unresolved_before": 0,
+          "unresolved_after": 0
+        },
         "repair_attempted": false,
         "mechanism": {
-          "$case_material_ref": {
-            "path": "analysis/repair/mechanism.json",
-            "pointer": "/runs/3",
-            "expanded_semantic_sha256": "e9e1f5e915812059e8f98609530bfb15c937cd2112dcbe1a4f2d9f7e6cc13a2b"
+          "group_id": "case-07",
+          "run_id": "case-07-r03-v3-01",
+          "version": "v3",
+          "input_sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+          "result_sha256": "6fcac05175e23b8c014acb65468c2860f426ffdae15760574b0710e8863fb3aa",
+          "coverage": "available",
+          "diagnostics": [],
+          "triggered": false,
+          "initial_improvement_targets": [],
+          "authorized_targets": [],
+          "model_attempts": 0,
+          "accepted_rounds": 0,
+          "accepted_run": false,
+          "rounds": [],
+          "internal_progress": [],
+          "related_targets": [],
+          "evaluated_components": 0,
+          "accepted_components": 0,
+          "pending_components": 0,
+          "unevaluated_components": 0,
+          "cumulative_counters_snapshot": {},
+          "cumulative_usage_observation": {},
+          "trace_observations": [],
+          "trace_coverage": "unavailable",
+          "trace_diagnostics": [],
+          "usage": {
+            "status": "available",
+            "diagnostics": [],
+            "report": {
+              "run_id": "case-07-r03-v3-01",
+              "outcome": "completed",
+              "namespace": "planner",
+              "timing_scope": "selected_invocation_through_cleanup",
+              "metrics": {
+                "elapsed_seconds": 126.34299999999348,
+                "total_tokens": 59982,
+                "model_calls": 5,
+                "http_sends": 76,
+                "cache_hits": 0
+              },
+              "observed_token_subtotal": 59982,
+              "observed_model_calls": 5,
+              "observed_http_sends": 76,
+              "cache_lookup_hits": 4,
+              "observed_tool_http_sends": 71,
+              "token_observed_calls": 5,
+              "token_missing_calls": 0,
+              "adapter_coverage": "declared_default_adapters",
+              "repair_model_calls": 0,
+              "repair_token_observed_subtotal": null,
+              "failed_http_responses": 0,
+              "incomplete_http_sends": 0,
+              "missing_fields": []
+            }
+          },
+          "independent_outcomes": {
+            "status": "unavailable",
+            "records": [],
+            "diagnostics": []
           }
         }
       }
     ],
     "summary": {
       "expected_slots": 1,
-      "comparable": 0,
+      "comparable": 1,
       "improved": 0,
-      "unchanged": 0,
+      "unchanged": 1,
       "worse": 0,
-      "unavailable": 1
+      "unavailable": 0
     },
     "conditional_attempted_repair": {
       "rows": [],
@@ -83,7 +158,7 @@
     "applicability": "not_declared"
   },
   "measurement_coverage": {
-    "native_pairs": 0,
+    "native_pairs": 1,
     "native_final_groups": 0
   },
   "review_coverage": {
@@ -91,11 +166,57 @@
   },
   "population_digest": "b3633f27cda4e00e8cc20a14301e07293ef3e73ec18de9506182efd790b66c5d",
   "selection_profile": {
-    "$case_material_ref": {
-      "path": "analysis/resources/current-generation.json",
-      "pointer": "/population_completion/selection_profile",
-      "expanded_semantic_sha256": "35708e9ba5ce99e70d7f1b4437216ee1ff0408370b166b1c568cc644f8757fbd"
-    }
+    "schema_version": "rtpeval_research_profile_1",
+    "profile_id": "case07-retained-first-dispatch-r03",
+    "revision": "3",
+    "population_id": "case07-selected-r03",
+    "population_revision": "3",
+    "source_revision": "2b6a80b437e30dd14826db92f447d52627820e24",
+    "completion_policy_ref": "selected_workflow_1",
+    "declared_at": "2026-10-16T03:39:03.815006+00:00",
+    "timing_basis": "retrospective",
+    "first_attempt_rule": "first_dispatched",
+    "retry_rule": {
+      "selection": "none",
+      "scope": "slot"
+    },
+    "completion_mapping": {
+      "completed": "completed",
+      "failed": "failed",
+      "cancelled": "cancelled",
+      "incomplete": "incomplete",
+      "not_started": "unstarted",
+      "pending": "unknown_pending",
+      "required_mechanism_failed": "failed",
+      "clarification_required": "clarification_required"
+    },
+    "configurations": {
+      "v0": {
+        "path": "p172/g/v0/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      "v1": {
+        "path": "p172/g/v1/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      "v2": {
+        "path": "p172/g/v2/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "media_type": "application/json",
+        "availability": "available"
+      },
+      "v3": {
+        "path": "p172/g/v3/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "media_type": "application/json",
+        "availability": "available"
+      }
+    },
+    "selection_basis": "Exact already frozen r03 selection; no replacement or selection by quality. This research envelope was prepared after execution."
   },
   "source_bindings": [
     {
@@ -309,8 +430,17 @@
       "schema_version": "rtpeval_research_declaration_1"
     }
   ],
-  "source_digest": "2631586573c19b41a547208f2af66ba77f0c174b30858e04aadae21ce388385d",
+  "source_digest": "86ea98ff8867b7990c6385675b6c77d172f904dc1a61c3fcf7368283c1de03b0",
   "diagnostics": [],
   "interpretation": "Descriptive independent outcomes; populations remain separate.",
-  "semantic_sha256": "0c928fbff11c29e9965c1188e6cc0a4d3d62a06f65b138cda5fc6e014b4ec371"
+  "semantic_sha256": "b1f6ccac1c6a76c6f3506d2004027e0ccf00ece3652d971b1beda7a7de50b22d",
+  "paired_refresh_sources": {
+    "same_run": {
+      "logical_path": "reassessment/research-current/repair.json",
+      "sha256": "73edcbabbbbd7e90efbb743576b5c84c7e3bd502c1c316b5a25f93924452a20e",
+      "json_pointer": "/same_run"
+    },
+    "four_final": "Original source-bound four-final projection retained without rescoring.",
+    "mechanism": "Original public mechanism subtree retained byte-for-value; current outcome fields come from the current native pair."
+  }
 }

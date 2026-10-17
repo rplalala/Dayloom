@@ -226,15 +226,68 @@
     {
       "material": "evaluation/v3-pair/pair-report.json",
       "path": "evaluation/v3-pair/pair-report.json",
-      "representation": "exact_json_value_with_shared_references",
-      "expanded_semantic_sha256": "84976766a9d2e69a1cc6a0477826772625eff30b87d265ed0fc886bc6b09cd39",
-      "original_source": {
-        "storage": "issue140_local_evidence",
-        "path": "phase-b/pair/execution/pair-report.json",
-        "sha256": "84976766a9d2e69a1cc6a0477826772625eff30b87d265ed0fc886bc6b09cd39"
-      },
-      "sha256": "9fd6e436e7e6605cc0d47dc4a5879a5c5a20e681ea4788b29069e83ec74877e7",
-      "bytes": 456948
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "a030ffe6cbe792161e93cd49f91629d3047f96de01f689396bcd55fc62cdba70",
+      "sha256": "d0507f759530925bdcd10700c25ad581aa7f23dc626b36ef7251820d312bf6b8",
+      "bytes": 453511,
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "48a753a6ad63902ba642e6ad0cca2fb5a9b041372405c12e7334ba5f8e7a992b",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/groups/0/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/6/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/7/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/8/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/continuity/opening/0/before/evidence_reference",
+        "/groups/0/continuity/opening/0/after/evidence_reference",
+        "/groups/0/continuity/opening/1/before/evidence_reference",
+        "/groups/0/continuity/opening/2/before/evidence_reference",
+        "/groups/0/continuity/opening/2/after/evidence_reference",
+        "/groups/0/continuity/opening/3/before/evidence_reference",
+        "/groups/0/continuity/opening/3/after/evidence_reference",
+        "/groups/0/continuity/opening/4/before/evidence_reference",
+        "/groups/0/continuity/opening/5/before/evidence_reference",
+        "/groups/0/continuity/opening/5/after/evidence_reference",
+        "/groups/0/continuity/opening/6/before/evidence_reference",
+        "/groups/0/continuity/opening/7/before/evidence_reference",
+        "/groups/0/continuity/opening/7/after/evidence_reference",
+        "/groups/0/continuity/opening/8/before/evidence_reference",
+        "/groups/0/continuity/opening/8/after/evidence_reference",
+        "/groups/0/continuity/routes/0/before/evidence_reference",
+        "/groups/0/continuity/routes/1/before/evidence_reference",
+        "/groups/0/continuity/routes/1/after/evidence_reference",
+        "/groups/0/continuity/routes/2/before/evidence_reference",
+        "/groups/0/continuity/routes/3/before/evidence_reference",
+        "/groups/0/continuity/routes/3/after/evidence_reference",
+        "/groups/0/continuity/routes/4/before/evidence_reference",
+        "/groups/0/continuity/routes/5/before/evidence_reference",
+        "/groups/0/continuity/routes/5/after/evidence_reference"
+      ]
     },
     {
       "material": "analysis/poi-process/opportunities.json",
@@ -260,15 +313,27 @@
     {
       "material": "analysis/repair/repair.json",
       "path": "analysis/repair/repair.json",
-      "representation": "derived_source_bound_publication_view",
-      "expanded_semantic_sha256": "d1f464f64a3c21380cd28fcb3cc646d1335e877e8842477a970fead6fd4e7321",
-      "original_source": {
-        "storage": "issue140_local_evidence",
-        "path": "phase-b/repair-lineage-analysis.json",
-        "sha256": "1e5df7471f0a21ca3696aa59df1ce3868b4511d7bbe763630f0aafccb668a104"
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "346ddbe8f095a1967d17fbccae60983c66ff53d8aac43b071e12fc9a8a9aee95",
+      "sha256": "5b98bbfa33f83be7939e2e0ebf46cba0234886e39bc591e86d2e9253eff98593",
+      "bytes": 14849,
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "48a753a6ad63902ba642e6ad0cca2fb5a9b041372405c12e7334ba5f8e7a992b",
+          "json_pointer": ""
+        }
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "original_source": {
+            "storage": "issue140_local_evidence",
+            "path": "phase-b/repair-lineage-analysis.json",
+            "sha256": "1e5df7471f0a21ca3696aa59df1ce3868b4511d7bbe763630f0aafccb668a104"
+          }
+        }
       },
-      "sha256": "dacc325c37511f488e5b02157d4b0a445e95921c2a0af4a14042a364416d7aad",
-      "bytes": 13015
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources."
     },
     {
       "material": "analysis/resources/population.json",
@@ -306,8 +371,8 @@
     {
       "material": "analysis/resources/accounting.json",
       "path": "analysis/resources/accounting.json",
-      "representation": "derived_source_bound_publication_view",
-      "expanded_semantic_sha256": "32dab0af60314879a116c13a8279eff18c3c5ff27934961dabc927d52c5a0cb0",
+      "representation": "section_derived_reader_view",
+      "expanded_semantic_sha256": "71d32327fe484c906d747f02fb3690dc80cc5db5b38e6a7af49c2240614e81ef",
       "original_source": {
         "storage": "issue140_local_evidence",
         "path": "stage-a-completed.json",
@@ -330,8 +395,21 @@
           "sha256": "5c7ea15c4ef6dd1ad2773726d3725b5f93dc9c9046f0300be01f65e24a3b8730"
         }
       ],
-      "sha256": "a5e6e93a5627bb253f7ff25d236ac375ada1fc1b6ff3e2e2cdd0d5c337320bb9",
-      "bytes": 5042
+      "sha256": "f936f05051d7918e040ab427b0bcd728aa5450a3a2920028d44ca661b86b0eb7",
+      "bytes": 5624,
+      "sources": [
+        {
+          "storage": "issue140_local_evidence",
+          "path": "stage-a-completed.json",
+          "sha256": "bc454371747e398cee66fd41237d77d9c3cecba1a2499359b50e7df467287922"
+        },
+        {
+          "logical_path": "reassessment/access-final/execution/report.json",
+          "sha256": "841222e706f5e7a73e78454c346c3106d44000856febab28cd9c70b1c9e28fd6",
+          "json_pointer": "/usage"
+        }
+      ],
+      "transformation": "Original generation/primary cohorts unchanged; current paired oracle phase and applicable known subtotal refreshed."
     },
     {
       "material": "generation/rag-origins.json",
@@ -408,13 +486,13 @@
   "reader_documents": [
     {
       "path": "report.md",
-      "sha256": "af9705928e2bfd676ae9eb3d2bdb7d11d64f7eac70a8b225f13e1d1d1f0b8746",
-      "bytes": 14331
+      "sha256": "94d200aaed786307c5aa7e573a5f90cc9980174848bf1e1797532a0b4588ba68",
+      "bytes": 14838
     },
     {
       "path": "itinerary.md",
-      "sha256": "02364d8b9af26a2c6c80b47d8d6d1b4460e6e0d1ff44f13fdd397c453b74ba2f",
-      "bytes": 13211
+      "sha256": "54bc40936eb2a6205eb354ee6d216aca62ea6db4d155c260b1e73dc48219637e",
+      "bytes": 13159
     }
   ],
   "dataset_role": "initial",
@@ -426,5 +504,46 @@
     "approved_material_index_sha256": "ec6d913cb96ee5c611f93864b2170c914ffc0d8e7b8f996d77de1909a1e17c94",
     "scope": "Selected original input, V0-V3 outputs, independent primary/opening/pair results, process analyses and stated limitations; current presentation is the initial dataset.",
     "blinded_human_assessment": "deferred"
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case01-v3-repair140-followup-20261013T064153Z",
+    "report": "evaluation/v3-pair/pair-report.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.0008908",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 4375,
+      "input_tokens_details": {
+        "cache_write_tokens": 4372,
+        "cached_tokens": 0
+      },
+      "output_tokens": 688,
+      "output_tokens_details": {
+        "reasoning_tokens": 305
+      },
+      "total_tokens": 5063
+    },
+    "model_material_sha256": "82c7a844a2942287a70735b7dd301ee46b2e0bde8076020a782e44d506bf0549",
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "48a753a6ad63902ba642e6ad0cca2fb5a9b041372405c12e7334ba5f8e7a992b",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-01/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "02640f3b41eebca72dab4f9050ae8f229bb4bbbe06091157674b2567e1d42c41",
+    "archive_counts": {
+      "logical_files": 1038,
+      "unique_blobs": 499
+    },
+    "preparation_sha256": "8e2aa69ccb45ff0166309381bdd10d44d22e856856fe30e9421774f1918fb12e",
+    "packet_sha256": "3a13b121137bd107078dc5ffa90de541c733e1e3df6e1a5f14440b9014b3f0fb"
   }
 }

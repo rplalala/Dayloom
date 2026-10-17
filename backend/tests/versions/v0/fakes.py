@@ -28,6 +28,31 @@ class FakeStructuredLLMClient:
         self.calls: list[StructuredCall] = []
         self.semantic_calls = []
 
+    async def generate_named_place_binding_structured(self, **kwargs):
+        """Explicit correspondence fixture; production never falls back to lexical rules."""
+        import json
+
+        payload = json.loads(kwargs["user_prompt"])
+        return {
+            "decisions": [
+                {
+                    "requirement_ref": r["requirement_ref"],
+                    "candidates": [
+                        {
+                            "candidate_ref": c["candidate_ref"],
+                            "relation": "same_place"
+                            if c["place"]["name"].casefold() == r["place_text"].casefold()
+                            else "different_place",
+                            "evidence_refs": [c["evidence_ref"]],
+                            "reason": "Synthetic graph fixture correspondence",
+                        }
+                        for c in r["candidates"]
+                    ],
+                }
+                for r in payload["requirements"]
+            ]
+        }
+
     async def generate_poi_semantics_structured(self, **kwargs):
         """Explicit synthetic role evidence for graph tests, never a production fallback."""
         import json

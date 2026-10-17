@@ -9,7 +9,11 @@ from backend.app.llm.azure_foundry.requirement_wire import SOURCE_TEXT_FIELDS
 def current_response(payload, request):
     """Only transform mocked current-wire responses; never modify saved evidence."""
     body = json.loads(request.content)
-    if body.get("text", {}).get("format", {}).get("name") != "PreferenceDraftV13":
+    if body.get("text", {}).get("format", {}).get("name") not in {
+        "PreferenceDraftV13",
+        "PreferenceDraftV14",
+        "PreferenceDraftV15",
+    }:
         return payload
     if isinstance(payload, str):
         try:
@@ -21,6 +25,11 @@ def current_response(payload, request):
     prompt = json.loads(content if isinstance(content, str) else content[0]["text"])
     text = prompt["additional_preferences"]
     inventory = prompt["source_spans"]
+    first_key, last_key = (
+        ("first_ref", "last_ref")
+        if inventory and type(inventory[0]["id"]) is int
+        else ("first_id", "last_id")
+    )
     # Derive intervals independently from the supplied inventory's original token text.
     spans, offset = [], 0
     for row in inventory:
@@ -33,9 +42,9 @@ def current_response(payload, request):
         for _ in range(occurrence + 1):
             start = text.find(quote, start + 1)
             if start < 0:
-                return {"first_id": "invalid-fixture-source", "last_id": "invalid-fixture-source"}
+                return {first_key: -1, last_key: -1}
         chosen = [row for row in spans if row[1] > start and row[0] < start + len(quote)]
-        return {"first_id": chosen[0][2], "last_id": chosen[-1][2]}
+        return {first_key: chosen[0][2], last_key: chosen[-1][2]}
 
     def encode(node):
         if isinstance(node, list):
@@ -52,6 +61,8 @@ def current_response(payload, request):
         }
 
     payload = encode(payload)
+    if body.get("text", {}).get("format", {}).get("name") == "PreferenceDraftV15":
+        payload.setdefault("daily_visit_constraints", [])
     if isinstance(payload, dict) and "daily_pace" in payload:
         pace = payload["daily_pace"]
         default = next(
