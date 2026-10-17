@@ -1,0 +1,67 @@
+{
+  "same_run": {
+    "processing_status": "complete",
+    "draft": {
+      "score": 93.0,
+      "primary_occurrences": 10,
+      "density_penalty": 5.0,
+      "FAIL": 0,
+      "UNKNOWN": 1
+    },
+    "final_primary": {
+      "score": 97.5,
+      "primary_occurrences": 8,
+      "density_penalty": 0.0,
+      "FAIL": 0,
+      "UNKNOWN": 1
+    },
+    "score_delta_percentage_points": 4.5,
+    "removed_activity_ids": [
+      "national-gallery",
+      "york-watergate"
+    ],
+    "visit_changes": {
+      "replaced_count": 0,
+      "confirmed_venue_loss_count": 0,
+      "primary_role_loss_count": 0,
+      "removed_count": 2,
+      "added_count": 0,
+      "unresolved_before": [],
+      "unresolved_after": []
+    },
+    "continuity": {
+      "unit": "native_continuity_checks",
+      "transitions": {
+        "removed": 4,
+        "structural_leg_added": 2,
+        "structural_leg_removed": 4,
+        "unchanged": 19
+      },
+      "residual_failures": 0,
+      "unresolved_before": 0,
+      "unresolved_after": 0
+    },
+    "repair_mechanism": {
+      "triggered": true,
+      "deterministic_attempts": 2,
+      "accepted_components": 2,
+      "repair_model_calls": 0,
+      "removed_occurrences": 2
+    },
+    "conditional_model_attempted_subset": "Native conditional_attempted_repair selects model attempts; its empty subset does not mean deterministic Repair was absent.",
+    "remaining_unknown": "Westminster Abbey missing applicable admission/opening evidence; same condition before and after.",
+    "opening_model_pass_limitation": "Reasoned public access is not certified API opening hours.",
+    "source_bindings": {
+      "archive_logical_path": "private/r02/steps7-9/pair/source-bindings.json",
+      "sha256": "1c0bc4f67c297c568457ce9af5420bc9e972bb5e81367238036b08f839606ca4"
+    },
+    "native_report": {
+      "archive_logical_path": "private/r02/steps7-9/pair/pair-report.json",
+      "sha256": "c0f455e8ec9dbbbf008eb1dadc53517ae6d8e1e420c9cfdfaf9180734b78f4e8"
+    }
+  },
+  "v2_final_score": 90.68181818181819,
+  "v3_final_score": 97.5,
+  "four_final_difference_percentage_points": 6.818181818181813,
+  "interpretation": "Four-final differences are descriptive; the V3 draft is the same V3 invocation, not an independent V2 run."
+}

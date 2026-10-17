@@ -1,0 +1,295 @@
+{
+  "status": "completed_preserved",
+  "versions": {
+    "v0": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 600,
+          "numerator": 401
+        },
+        "reason": null,
+        "score_0_100": 66.83333333333333
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 75,
+          "numerator": 52
+        },
+        "reason": null,
+        "score_0_100": 69.33333333333333,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "density_penalty": 2.5,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 0,
+            "UNKNOWN": 14
+          },
+          "verified_score_0_100": 0.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 3
+          },
+          "verified_score_0_100": 66.66666666666667
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 80.0
+        }
+      },
+      "metric_FAIL": 0,
+      "metric_UNKNOWN": 18
+    },
+    "v1": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 120,
+          "numerator": 97
+        },
+        "reason": null,
+        "score_0_100": 80.83333333333333
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 60,
+          "numerator": 59
+        },
+        "reason": null,
+        "score_0_100": 98.33333333333333,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "density_penalty": 17.5,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 20,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 11,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 91.66666666666667
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "metric_FAIL": 0,
+      "metric_UNKNOWN": 1
+    },
+    "v2": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 440,
+          "numerator": 399
+        },
+        "reason": null,
+        "score_0_100": 90.68181818181819
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 55,
+          "numerator": 54
+        },
+        "reason": null,
+        "score_0_100": 98.18181818181819,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "density_penalty": 7.5,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 11,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 18,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 90.9090909090909
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "metric_FAIL": 0,
+      "metric_UNKNOWN": 1
+    },
+    "v3": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 40,
+          "numerator": 39
+        },
+        "reason": null,
+        "score_0_100": 97.5
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 40,
+          "numerator": 39
+        },
+        "reason": null,
+        "score_0_100": 97.5,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "density_penalty": 0.0,
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 87.5
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "metric_FAIL": 0,
+      "metric_UNKNOWN": 1
+    }
+  },
+  "unknown_reason_counts": {
+    "possible_commitment_overlap": 14,
+    "timezone_offset_conflict": 6,
+    "hours_missing": 4,
+    "llm_access_reasonableness_unknown": 4,
+    "continuous_interval_unavailable": 1
+  },
+  "all_four_museum_obligations": "PASS; count and distinct-date bounds 2-2",
+  "report_sha256": "349305e98fa74f2f9ec2a6a38cf93fd4452e6efcd7f42ba3e6f4283f5a7dc7c7",
+  "receipt_sha256": "cce1514c082111a491e8f9b90d411927ffcbf1d395ed049894ce5516b4cd867c"
+}

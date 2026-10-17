@@ -1,0 +1,32 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-10",
+  "case_revision": "2",
+  "revision": "1",
+  "input_sha256": "c5652474d19d73107c060dd8481caab184c071b1e6ec99c654cfe87043780570",
+  "reviewer_ref": "/root/case10_source_context_reviewer",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-16T22:04:05.524408Z",
+  "rationale": "Independent review of the complete original request confirms three separate soft interests for the rest of the itinerary: historic neighbourhoods, parks and art. Historic neighbourhoods remains a neighbourhood theme rather than all historical attractions; parks does not imply all gardens, nature or outdoor venues; art remains broad without an unstated medium, period or venue type. British Museum is the named hard subject of exactly two visits on different dates, not a generic museum interest. No thematic count, daily quota or allocation is stated. Each native source_text preserves the entire exact value at /additional_preferences; the distinct stable IDs and requirement pointers preserve the three separately reviewed themes. RequirementSpec revision 2 resolves the original combined-preference identity mismatch without changing source meaning.",
+  "interests": [
+    {
+      "interest_id": "historic-neighbourhoods",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I would like to explore British Museum over two separate visits. Include exactly two visits to British Museum during the trip, on two different dates. For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "parks",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I would like to explore British Museum over two separate visits. Include exactly two visits to British Museum during the trip, on two different dates. For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "interest_id": "art",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I would like to explore British Museum over two separate visits. Include exactly two visits to British Museum during the trip, on two different dates. For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+      "requirement_pointer": "/soft_preferences/2"
+    }
+  ],
+  "reviewed_requirements": "../requirements/reviewed.json"
+}

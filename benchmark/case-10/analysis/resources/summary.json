@@ -1,0 +1,673 @@
+{
+  "cumulative_usage": {
+    "model_calls": 31,
+    "embedding_calls": 2,
+    "google_sends": 361,
+    "tokens": {
+      "input_tokens": 304543,
+      "output_tokens": 61991,
+      "total_tokens": 366534
+    },
+    "conservative_reference_usd": "9.718364512",
+    "remaining_reference_usd": "30.281635488",
+    "generation_attempts": 8,
+    "primary_attempts": 2,
+    "automatic_retries": 0,
+    "actual_account_billing": null,
+    "external_codex_tokens": null,
+    "external_codex_billing": null,
+    "paired_access_attempts": 1
+  },
+  "generation_cohorts": [
+    {
+      "phase": "r01",
+      "measurement_coverage": {
+        "planned_slots": 4,
+        "dispatched_attempts": 4,
+        "missing_usage_attempts": 0,
+        "unknown_or_pending_slots": 0
+      },
+      "cost_consumption": [
+        {
+          "version": "v0",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "0.002042994",
+          "estimated_total": "0.002042994",
+          "estimated_observed_subtotal": "0.002042994",
+          "best_available_known_run_total_subtotal": "0.002042994",
+          "best_available_total": "0.002042994",
+          "best_available_observed_subtotal": "0.002042994"
+        },
+        {
+          "version": "v1",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "0.257576788",
+          "estimated_total": "0.257576788",
+          "estimated_observed_subtotal": "0.257576788",
+          "best_available_known_run_total_subtotal": "0.257576788",
+          "best_available_total": "0.257576788",
+          "best_available_observed_subtotal": "0.257576788"
+        },
+        {
+          "version": "v2",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "0.257505388",
+          "estimated_total": "0.257505388",
+          "estimated_observed_subtotal": "0.257505388",
+          "best_available_known_run_total_subtotal": "0.257505388",
+          "best_available_total": "0.257505388",
+          "best_available_observed_subtotal": "0.257505388"
+        },
+        {
+          "version": "v3",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "0.001136028",
+          "estimated_total": "0.001136028",
+          "estimated_observed_subtotal": "0.001136028",
+          "best_available_known_run_total_subtotal": "0.001136028",
+          "best_available_total": "0.001136028",
+          "best_available_observed_subtotal": "0.001136028"
+        }
+      ],
+      "resource_summary": {
+        "v0": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 15742,
+              "observed_subtotal": 15742,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 1685,
+              "observed_subtotal": 1685,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 17427,
+              "observed_subtotal": 17427,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v1": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 10,
+              "observed_subtotal": 10,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 15965,
+              "observed_subtotal": 15965,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 2268,
+              "observed_subtotal": 2268,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 18233,
+              "observed_subtotal": 18233,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v2": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 10,
+              "observed_subtotal": 10,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 15965,
+              "observed_subtotal": 15965,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 2149,
+              "observed_subtotal": 2149,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 18114,
+              "observed_subtotal": 18114,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v3": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 15742,
+              "observed_subtotal": 15742,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 1578,
+              "observed_subtotal": 1578,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 17320,
+              "observed_subtotal": 17320,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        }
+      },
+      "paired_comparisons": [
+        {
+          "baseline": "v1",
+          "candidate": "v2",
+          "eligible": 1,
+          "completed": 0,
+          "excluded": 1,
+          "native_quality_pairs": 0
+        },
+        {
+          "baseline": "v2",
+          "candidate": "v3",
+          "eligible": 1,
+          "completed": 0,
+          "excluded": 1,
+          "native_quality_pairs": 0
+        }
+      ]
+    },
+    {
+      "phase": "r02",
+      "measurement_coverage": {
+        "planned_slots": 4,
+        "dispatched_attempts": 4,
+        "missing_usage_attempts": 0,
+        "unknown_or_pending_slots": 0
+      },
+      "cost_consumption": [
+        {
+          "version": "v0",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "0.00624717",
+          "estimated_total": "0.00624717",
+          "estimated_observed_subtotal": "0.00624717",
+          "best_available_known_run_total_subtotal": "0.00624717",
+          "best_available_total": "0.00624717",
+          "best_available_observed_subtotal": "0.00624717"
+        },
+        {
+          "version": "v1",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "1.95318329",
+          "estimated_total": "1.95318329",
+          "estimated_observed_subtotal": "1.95318329",
+          "best_available_known_run_total_subtotal": "1.95318329",
+          "best_available_total": "1.95318329",
+          "best_available_observed_subtotal": "1.95318329"
+        },
+        {
+          "version": "v2",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "2.175342052",
+          "estimated_total": "2.175342052",
+          "estimated_observed_subtotal": "2.175342052",
+          "best_available_known_run_total_subtotal": "2.175342052",
+          "best_available_total": "2.175342052",
+          "best_available_observed_subtotal": "2.175342052"
+        },
+        {
+          "version": "v3",
+          "currency": "USD",
+          "accounting_basis": "saved_conservative_EU_reference",
+          "prices_sha256": "37458ca917932af7739cf1e1adfdd537dde38ba5bcc05bccfeb6a2e99139ccd6",
+          "known_cost_attempts": 1,
+          "actual_known_run_total_subtotal": null,
+          "actual_total": null,
+          "actual_observed_subtotal": null,
+          "estimated_known_run_total_subtotal": "2.192959242",
+          "estimated_total": "2.192959242",
+          "estimated_observed_subtotal": "2.192959242",
+          "best_available_known_run_total_subtotal": "2.192959242",
+          "best_available_total": "2.192959242",
+          "best_available_observed_subtotal": "2.192959242"
+        }
+      ],
+      "resource_summary": {
+        "v0": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 16025,
+              "observed_subtotal": 16025,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 6406,
+              "observed_subtotal": 6406,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 22431,
+              "observed_subtotal": 22431,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v1": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 5,
+              "observed_subtotal": 5,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 64,
+              "observed_subtotal": 64,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 56035,
+              "observed_subtotal": 56035,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 11066,
+              "observed_subtotal": 11066,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 67101,
+              "observed_subtotal": 67101,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 0,
+              "observed_subtotal": 0,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v2": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 7,
+              "observed_subtotal": 7,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 77,
+              "observed_subtotal": 77,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 58951,
+              "observed_subtotal": 58951,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 14826,
+              "observed_subtotal": 14826,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 73777,
+              "observed_subtotal": 73777,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        },
+        "v3": {
+          "dispatched_attempts": 1,
+          "ledger_complete": true,
+          "totals": {
+            "model_calls": {
+              "total": 7,
+              "observed_subtotal": 7,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "http_sends": {
+              "total": 78,
+              "observed_subtotal": 78,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "input_tokens": {
+              "total": 56216,
+              "observed_subtotal": 56216,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "output_tokens": {
+              "total": 11535,
+              "observed_subtotal": 11535,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "total_tokens": {
+              "total": 67751,
+              "observed_subtotal": 67751,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_calls": {
+              "total": 1,
+              "observed_subtotal": 1,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_input_tokens": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            },
+            "embedding_total_tokens": {
+              "total": 2,
+              "observed_subtotal": 2,
+              "known_attempts": 1,
+              "missing_attempts": 0
+            }
+          }
+        }
+      },
+      "paired_comparisons": [
+        {
+          "baseline": "v1",
+          "candidate": "v2",
+          "eligible": 1,
+          "completed": 1,
+          "excluded": 0,
+          "native_quality_pairs": 1
+        },
+        {
+          "baseline": "v2",
+          "candidate": "v3",
+          "eligible": 1,
+          "completed": 1,
+          "excluded": 0,
+          "native_quality_pairs": 1
+        }
+      ]
+    }
+  ],
+  "cost_reconciliation": {
+    "r01": "0.518261198",
+    "r02": "6.327731754",
+    "two_primaries": "2.87114975",
+    "sum_prior": "9.717142702",
+    "matches_immutable_ledger": true
+  },
+  "paired_access_usage": {
+    "model_calls": 1,
+    "embedding_calls": 0,
+    "google_sends": 0,
+    "http_sends": 1,
+    "automatic_retries": 0,
+    "tokens": {
+      "input_tokens": 4518,
+      "output_tokens": 907,
+      "total_tokens": 5425
+    },
+    "conservative_reference_usd": "0.00122181",
+    "incremental_cap_usd": "0.05",
+    "unpriced_events": 0,
+    "actual_account_billing": null,
+    "child_observation": {
+      "archive_logical_path": "private/r02/steps7-9/pair-access/control/child-observation.json",
+      "sha256": "0945711365279080c778e6c25e41cfae234892a3b73b607c3ab91886ce4f4f38"
+    }
+  },
+  "billing_limitation": "Observed sends/tokens are authentic; USD figures are frozen conservative references. Account invoices and external Codex tokens/billing are unavailable."
+}

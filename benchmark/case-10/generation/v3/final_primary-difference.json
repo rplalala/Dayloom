@@ -1,0 +1,13 @@
+{
+  "format": "case_itinerary_root_field_patch_1",
+  "base_path": "itinerary.json",
+  "base_semantic_sha256": "e4bad58dc719cf3b739b461841a8fbe653d9608af475bed7b7ddc4170c32709d",
+  "expanded_semantic_sha256": "95fa0f2bd7c54ec361f79b77cd62b17e8a9c6d93402b1bc22558e6f421b06487",
+  "operations": [
+    {
+      "op": "replace",
+      "path": "/reference_recommendations",
+      "value": []
+    }
+  ]
+}

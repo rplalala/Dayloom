@@ -1,0 +1,106 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-10-requirements-r01",
+  "revision": "2",
+  "group_id": "case-10",
+  "input_sha256": "c5652474d19d73107c060dd8481caab184c071b1e6ec99c654cfe87043780570",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case10_requirements_reviewer",
+    "reviewed_at": "2026-10-16T22:02:58Z"
+  },
+  "subjects": [
+    {
+      "subject_id": "british-museum",
+      "wording": "British Museum",
+      "place_name": "British Museum",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I would like to explore British Museum over two separate visits.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 64
+        },
+        {
+          "field_path": "additional_preferences",
+          "quote": "Include exactly two visits to British Museum during the trip, on two different dates.",
+          "occurrence": 0,
+          "offset_start": 65,
+          "offset_end": 150
+        }
+      ]
+    }
+  ],
+  "obligations": [
+    {
+      "obligation_id": "british-museum-two-distinct-date-visits",
+      "kind": "required_visit",
+      "subject_ref": "british-museum",
+      "resolution": "resolved",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I would like to explore British Museum over two separate visits.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 64
+        },
+        {
+          "field_path": "additional_preferences",
+          "quote": "Include exactly two visits to British Museum during the trip, on two different dates.",
+          "occurrence": 0,
+          "offset_start": 65,
+          "offset_end": 150
+        }
+      ],
+      "count": {
+        "mode": "exact",
+        "value": 2
+      },
+      "distinct_dates": true
+    }
+  ],
+  "soft_preferences": [
+    {
+      "preference_id": "historic-neighbourhoods",
+      "description": "For the rest of the itinerary, prefer historic neighbourhoods, without imposing counts or particular venues.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+          "occurrence": 0,
+          "offset_start": 151,
+          "offset_end": 229
+        }
+      ]
+    },
+    {
+      "preference_id": "parks",
+      "description": "For the rest of the itinerary, prefer parks, without imposing counts or particular venues.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+          "occurrence": 0,
+          "offset_start": 151,
+          "offset_end": 229
+        }
+      ]
+    },
+    {
+      "preference_id": "art",
+      "description": "For the rest of the itinerary, prefer art, without imposing counts or particular venues.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "For the rest of the itinerary, I enjoy historic neighbourhoods, parks and art.",
+          "occurrence": 0,
+          "offset_start": 151,
+          "offset_end": 229
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}
