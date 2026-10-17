@@ -1,12 +1,15 @@
 """Public validation and repair behavior for the soft pace objective."""
 
 import asyncio
+from datetime import timedelta
 from time import monotonic
 
 import pytest
 
+from backend.app.policies.itinerary_schedule import build_schedule
 from backend.app.schemas.interpreted_requirements import InterpretedTripRequirements
 from backend.app.versions.v3.models import ValidationPolicy
+from backend.app.versions.v3.repair_acceptance import assess
 from backend.app.versions.v3.repair_service import run_repair_stage
 from backend.app.versions.v3.validation import validate_draft
 from backend.app.versions.v3.wiring import operation_scope
@@ -36,6 +39,169 @@ def three_visits():
             activity("three", "c", "15:00", "16:00"),
         ]
     )
+
+
+def protected_pace_contract(**changes):
+    data = pace_contract().model_dump()
+    protection = {
+        "dates": (DAY,),
+        "full_day": True,
+        "start_time": None,
+        "end_time": None,
+        "status": "fixed",
+        "reason": None,
+        "source_refs": [{"quote": "Rest all day", "start": 8, "end": 20, "occurrence": 0}],
+    }
+    protection.update(changes)
+    data["time_protections"] = [protection]
+    return InterpretedTripRequirements.model_validate(data)
+
+
+@pytest.mark.parametrize("dates", [(DAY,), ()])
+def test_fixed_full_day_rest_has_zero_pace_penalty_and_no_repair_scope(dates):
+    req = protected_pace_contract(dates=dates)
+    ctx = context(
+        req, policy=ValidationPolicy(review_targets={"soft_pace", "coverage", "overfull"})
+    )
+    original = draft([])
+    report = assess(original, ctx)
+    pace = next(f for f in report.findings if f.check == "soft_pace")
+    assert pace.status == "PASS" and pace.magnitude == 0
+    assert pace.adopted_evidence["count"] == 0
+    assert pace.adopted_evidence["zero_counts"] == (0,)
+    assert pace.adopted_evidence["time_protection_projection"]["protections"] == [
+        p.model_dump(mode="json") for p in req.time_protections
+    ]
+    assert req.daily_pace[0].exact_count is None
+    assert not report.improvement_targets
+    assert operation_scope(original, report, context=ctx) is None
+    assert not original.days[0].activities
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        None,
+        {"dates": (DAY + timedelta(days=1),)},
+        {"full_day": False, "start_time": "12:00", "end_time": "14:00"},
+        {"status": "unresolved", "reason": "Protection scope is not executable"},
+    ],
+    ids=["ordinary-blank", "other-date", "partial-day", "unresolved"],
+)
+def test_blank_day_without_fixed_full_day_protection_keeps_pace_target(changes):
+    req = (
+        pace_contract().model_copy(update={"time_protections": ()})
+        if changes is None
+        else protected_pace_contract(**changes)
+    )
+    ctx = context(req, policy=ValidationPolicy(review_targets={"soft_pace", "coverage"}))
+    original = draft([])
+    report = assess(original, ctx)
+    pace = next(f for f in report.findings if f.check == "soft_pace")
+    assert pace.magnitude == 100 and pace.status == "NEEDS_REVIEW"
+    assert pace.adopted_evidence["zero_counts"] == (2,)
+    assert "time_protection_projection" not in pace.adopted_evidence
+    assert pace.finding_id in {t.finding_id for t in report.improvement_targets}
+    scope = operation_scope(original, report, context=ctx)
+    assert scope is not None and DAY in scope.add_dates
+    if changes is None:
+        assert report.diagnostics.days[0].minimum_coverage == "missing"
+
+
+@pytest.mark.parametrize("kind", ["main_poi", "generic_activity"])
+def test_full_day_pace_projection_preserves_actual_counts_and_hard_time_conflicts(kind):
+    ctx = context(protected_pace_contract(), policy=ValidationPolicy(review_targets={"soft_pace"}))
+    original = draft([activity(activity_kind=kind, time_use="scheduled")])
+    ctx = ctx.model_copy(update={"schedule": build_schedule(original, ctx.contract, ctx.places)})
+    report = assess(original, ctx)
+    assert any(
+        f.reason == "fixed_user_time_overlap" and f.status == "CONFIRMED" for f in report.findings
+    )
+    pace = next(f for f in report.findings if f.check == "soft_pace")
+    assert pace.adopted_evidence["count"] == (1 if kind == "main_poi" else 0)
+    assert pace.magnitude == (100 if kind == "main_poi" else 0)
+    assert pace.adopted_evidence["zero_counts"] == (0,)
+
+
+def test_full_day_projection_does_not_turn_unknown_activity_roles_into_zero_visits():
+    ctx = context(protected_pace_contract(), policy=ValidationPolicy(review_targets={"soft_pace"}))
+    report = assess(draft([activity(activity_kind="unknown")]), ctx)
+    pace = next(f for f in report.findings if f.check == "soft_pace")
+    assert pace.status == "UNKNOWN" and pace.magnitude is None
+    assert pace.finding_id not in {t.finding_id for t in report.improvement_targets}
+
+
+@pytest.mark.parametrize("first_count", [0, 1, 2])
+def test_rest_day_projection_keeps_first_day_exact_one_and_ordinary_blank_day(first_count):
+    from backend.tests.versions.v3.test_daily_visit_counts import counted_context
+    from backend.tests.versions.v3.test_repair_search import scenario
+
+    original, ctx, _ = scenario((first_count, 0, 0))
+    req = counted_context(1).contract
+    req = req.model_copy(
+        update={
+            "requirements": req.requirements.model_copy(update={"end_date": original.end_date}),
+            "time_protections": protected_pace_contract(
+                dates=(DAY + timedelta(days=1),)
+            ).time_protections,
+        }
+    )
+    report = assess(original, ctx.model_copy(update={"contract": req}))
+    daily = next(f for f in report.findings if f.check == "daily_visit_count")
+    assert daily.status == ("PASS" if first_count == 1 else "CONFIRMED")
+    pace = {f.dates[0]: f for f in report.findings if f.check == "soft_pace"}
+    assert [pace[DAY + timedelta(days=i)].magnitude for i in range(3)] == [
+        0 if first_count == 1 else 100,
+        0,
+        100,
+    ]
+    targets = {t.finding_id for t in report.improvement_targets}
+    assert pace[DAY + timedelta(days=1)].finding_id not in targets
+    assert pace[DAY + timedelta(days=2)].finding_id in targets
+
+
+def test_repair_can_complete_other_pace_goals_while_preserving_exact_one_and_rest_day():
+    from backend.tests.versions.v3.test_daily_visit_counts import counted_context
+    from backend.tests.versions.v3.test_repair_search import scenario
+
+    original, ctx, _ = scenario((1, 3, 0))
+    req = counted_context(1).contract
+    req = req.model_copy(
+        update={
+            "requirements": req.requirements.model_copy(update={"end_date": original.end_date}),
+            "time_protections": protected_pace_contract(
+                dates=(DAY + timedelta(days=2),)
+            ).time_protections,
+        }
+    )
+    ctx = ctx.model_copy(
+        update={"contract": req, "schedule": build_schedule(original, req, ctx.places)}
+    )
+    report = assess(original, ctx)
+    scope = operation_scope(original, report, context=ctx)
+    assert scope is not None
+    assert all(
+        f.dates == (DAY + timedelta(days=1),)
+        for f in report.findings
+        if f.finding_id in scope.target_ids
+    )
+    assert DAY + timedelta(days=2) not in scope.direct_add_dates
+    result = asyncio.run(
+        run_repair_stage(
+            original,
+            ctx,
+            scope,
+            model=Model(),
+            routes_provider=Routes(),
+            request_deadline=monotonic() + 600,
+        )
+    )
+    assert result.status == "ACCEPTED_COMPLETE", result.reason
+    assert [len(d.activities) for d in result.final.days] == [1, 2, 0]
+    assert result.soft_pace["target_state"] == "reached"
+    assert all(p.outcome == "resolved" for p in result.target_progress)
+    assert not result.adopted_report.improvement_targets
+    assert [len(d.activities) for d in original.days] == [1, 3, 0]
 
 
 def test_relaxed_three_visit_draft_has_soft_repair_target_not_violation():

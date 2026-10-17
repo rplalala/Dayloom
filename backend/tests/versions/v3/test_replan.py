@@ -162,7 +162,8 @@ def test_unsupported_new_route_cannot_adopt_linked_replan():
 
 
 def test_six_shared_sends_include_real_replan_and_do_not_reset_budget():
-    model = StrategyModel([[], [], [], [], [], linked_patch()])
+    unauthorized = [edit(activity_id="d0_2", start="09:30", end="10:30")]
+    model = StrategyModel([unauthorized] * 5 + [linked_patch()])
     result, _ = run(model, settings=policy())
     assert result.status == "ACCEPTED_COMPLETE"
     assert result.counters["model"] == model.calls == 6
@@ -341,7 +342,8 @@ def test_new_replan_identity_without_semantic_admission_is_not_publishable():
     assert result.final == original
     assert not semantics.ledger["fresh"].main_eligible
     assert result.rounds[-1].strategy == "replan"
-    assert "not a presented" in result.rounds[-1].result.reason
+    assert result.reason == "no_new_material_after_empty_proposal"
+    assert model.calls == 2 and not result.rounds[-1].result.model_attempted
 
 
 def test_replan_cancellation_propagates_and_deadline_does_not_allow_extra_send():

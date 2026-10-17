@@ -1,0 +1,49 @@
+{
+  "schema_version": "rtpeval_mechanism_report_1",
+  "preparation_sha256": "dfb64485750349bbbe9e4288af3dd7543dcf6405100189b1fa5d12338312842d",
+  "batch_id": "case-12-primary-20261017-r07",
+  "optional_diagnostics": [],
+  "revision": "7",
+  "runs": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/be90f2fc8b7a68a4fe723f2cbd15a0273538e47bb197459aee395d5fbd903555",
+      "expanded_semantic_sha256": "be90f2fc8b7a68a4fe723f2cbd15a0273538e47bb197459aee395d5fbd903555"
+    }
+  },
+  "interpretation": "Internal acceptance/progress is not independently verified resolution.",
+  "fractions": {
+    "run_acceptance": {
+      "numerator": 1,
+      "denominator": 1,
+      "observed_numerator": 1,
+      "observed_denominator": 1,
+      "unit": "triggered_run",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    },
+    "round_acceptance": {
+      "numerator": 3,
+      "denominator": 3,
+      "observed_numerator": 3,
+      "observed_denominator": 3,
+      "unit": "model_attempted_round",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    },
+    "component_acceptance": {
+      "numerator": 6,
+      "denominator": 6,
+      "observed_numerator": 6,
+      "observed_denominator": 6,
+      "unit": "evaluated_component",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    }
+  },
+  "status": "complete",
+  "content_hash": "da0413c67098694c4a08015fb6ca8ba3d53241d3f68f2947893e32c6c4f16f15"
+}

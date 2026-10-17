@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from backend.app.llm.azure_foundry.dto import (
     FoundryDateTimeDTO,
@@ -17,7 +17,7 @@ from backend.app.policies.schedule_time import (
     local_datetime,
     validate_endpoint,
 )
-from backend.app.versions.v3.repair_models import Operation
+from backend.app.versions.v3.repair_models import REPAIR_REASON_CHARACTERS, Operation
 
 TIME_WIRE_VERSION = "tools_civil_time_1"
 
@@ -57,7 +57,9 @@ class FoundryCivilDispositionDTO(BaseModel):
     disposition: Literal[
         "proposed", "unresolved", "needs_evidence", "competing_candidate", "not_attempted"
     ]
-    reason: str
+    reason: str = Field(
+        description=f"A brief explanation of at most {REPAIR_REASON_CHARACTERS} characters"
+    )
 
 
 class FoundryCivilPatchDTO(BaseModel):

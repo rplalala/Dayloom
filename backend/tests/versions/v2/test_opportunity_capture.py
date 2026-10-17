@@ -20,7 +20,14 @@ def stable(value):
         return {
             key: stable(item)
             for key, item in value.items()
-            if key not in ("elapsed_seconds", "cpu_seconds", "phase_seconds", "call_id")
+            if key
+            not in (
+                "elapsed_seconds",
+                "cpu_seconds",
+                "phase_seconds",
+                "call_id",
+                "remaining_seconds",
+            )
         }
     if isinstance(value, list):
         return [stable(item) for item in value]

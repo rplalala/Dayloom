@@ -248,12 +248,8 @@ def test_system_attempts_leave_all_six_model_sends_available_and_do_not_repeat()
 
     original, ctx, scope, config = repeated()
     model = SequenceModel(
-        [
-            [],
-            [],
-            [],
-            [],
-            [],
+        [[edit("retime", "a2", day=1, start="09:00", end="10:00")]] * 5
+        + [
             [edit("delete", "a2", day=1), edit("add", pid="d", day=1, start="09:00", end="10:00")],
         ]
     )

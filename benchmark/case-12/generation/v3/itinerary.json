@@ -1,0 +1,28 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/337f55cac96da5fbf0108755a8a22109cdd331fffe4be7a39bb2d5c314fb3edf",
+      "expanded_semantic_sha256": "337f55cac96da5fbf0108755a8a22109cdd331fffe4be7a39bb2d5c314fb3edf"
+    }
+  },
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/479dde8ec27100b5164b006ca9cdd2d522765b3fccfc5fd3791dea4dcc9c1cc0",
+      "expanded_semantic_sha256": "479dde8ec27100b5164b006ca9cdd2d522765b3fccfc5fd3791dea4dcc9c1cc0"
+    }
+  },
+  "reference_recommendations": [],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-28",
+  "days": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/175b9a86c9e598dc50dca3c1f340d73339c9a58c9d3ca62933db665959109bc5",
+      "expanded_semantic_sha256": "175b9a86c9e598dc50dca3c1f340d73339c9a58c9d3ca62933db665959109bc5"
+    }
+  }
+}

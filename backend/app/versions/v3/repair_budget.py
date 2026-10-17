@@ -54,6 +54,7 @@ class RepairBudget:
             }
         ) | {
             "model": self.policy.max_model_calls,
+            "reason_compression": self.policy.reason_compression.max_calls,
             "deterministic_attempts": self.policy.max_deletion_attempts,
         }
         self.clock = clock

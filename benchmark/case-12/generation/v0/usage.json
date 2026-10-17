@@ -1,0 +1,169 @@
+{
+  "model_calls": [
+    {
+      "event_id": "01a148e0-8f93-7310-a20e-1593683ac885",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 15.46799999999348,
+      "input_tokens": 12530,
+      "output_tokens": 1585,
+      "total_tokens": 14115,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 12527,
+      "reasoning_tokens": 978,
+      "usage_details": {
+        "input_tokens": 12530,
+        "output_tokens": 1585,
+        "total_tokens": 14115,
+        "input_token_details": {
+          "cache_creation": 12527,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 978
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a148e0-cbfe-7d61-abaa-93887649d4b2",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 24.0,
+      "input_tokens": 4023,
+      "output_tokens": 3747,
+      "total_tokens": 7770,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 4020,
+      "reasoning_tokens": 1634,
+      "usage_details": {
+        "input_tokens": 4023,
+        "output_tokens": 3747,
+        "total_tokens": 7770,
+        "input_token_details": {
+          "cache_creation": 4020,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 1634
+        }
+      },
+      "total_status": "reported"
+    }
+  ],
+  "provider_events": [
+    {
+      "event_id": "f7424849d5474b80a27bcd9d6efdca44",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a148e0-8f93-7310-a20e-1593683ac885",
+      "model_provider": "langchain",
+      "elapsed_seconds": 14.89100000000326,
+      "status_code": 200
+    },
+    {
+      "event_id": "168eb3e12d884fe4afc2b5161290d622",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a148e0-cbfe-7d61-abaa-93887649d4b2",
+      "model_provider": "langchain",
+      "elapsed_seconds": 23.906000000002678,
+      "status_code": 200
+    }
+  ],
+  "cache_events": [],
+  "stage_summaries": [
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 15.46799999999348,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 15.46799999999348,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 15.46799999999348,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 24.0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "planner",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 40.8119999999908,
+      "scope": "inclusive_not_additive"
+    }
+  ],
+  "repair_summary": {
+    "observed_rounds": 0,
+    "model_event_ids": [],
+    "provider_event_ids": []
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "timing": {
+    "scope": "selected_invocation_through_cleanup",
+    "started_at": "2026-10-17T08:00:37.459940+00:00",
+    "finished_at": "2026-10-17T08:01:18.270556+00:00",
+    "elapsed_seconds": 40.8119999999908,
+    "status": "measured"
+  },
+  "outcome": "completed",
+  "schema_version": "rtpeval_usage_1",
+  "group_id": "case-12",
+  "run_id": "case-12-v0-20261017-r07",
+  "version": "v0",
+  "namespace": "planner",
+  "result_sha256": "da3ac570fbcf939fcf32611a5e150a0d2e183a50057f25b76379da11f4b85240",
+  "collection_status": "available",
+  "coverage": {
+    "scope": "instrumented_adapters_only",
+    "adapter_coverage": "default_adapters",
+    "unobserved_injected_clients": "not_inferred",
+    "http_sends": "transport_entry_not_billing",
+    "model_calls": "provider_invocations_not_internal_reasoning"
+  }
+}

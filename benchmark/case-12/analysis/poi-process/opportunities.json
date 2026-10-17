@@ -1,0 +1,145 @@
+{
+  "schema_version": "rtpeval_research_opportunities_report_1",
+  "processing_status": "completed",
+  "track": "opportunities",
+  "applicability": "applicable",
+  "population_digest": "b4a28e3dc236eeb749a11461ac944071b2a9a4d39ee1e76205e3d99738eb8774",
+  "measurement_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "planned_slots": 2,
+    "captured_slots": 2,
+    "stages": {
+      "discovered": {
+        "complete": 1,
+        "partial": 1,
+        "unavailable": 0
+      },
+      "admitted": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "enriched": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "supplied": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "scheduled": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      }
+    }
+  },
+  "review_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "independent_association_slots": 2,
+    "relevance_review": "not_performed"
+  },
+  "diagnostics": [],
+  "identity_unit": "canonical_place_id",
+  "population_id": "case12-retained-r07",
+  "population_revision": "1",
+  "profile_id": "case12-retrospective-r07",
+  "profile_revision": "1",
+  "runs": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/d6553cc0f5fa8d7c84ba6a22b6678837f83035068678e842a742b92a45e1f058",
+      "expanded_semantic_sha256": "d6553cc0f5fa8d7c84ba6a22b6678837f83035068678e842a742b92a45e1f058"
+    }
+  },
+  "cross_version": [
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "repetition_id": "r07",
+      "discovered": {
+        "status": "unavailable",
+        "v2_added_ids": null,
+        "v1_only_ids": null
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+        ],
+        "v1_only_ids": [
+          "ChIJC_S-IkKxEmsRVp-YfEjrUdY",
+          "ChIJhb_gD_KuEmsRvB3fJIJmoNY",
+          "ChIJpRij3C3HEmsRhPx7e8Lskko",
+          "ChIJx5OOkhOuEmsR3S-z27E229c"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ8YjpZpyvEmsRr4Q59vK0b1s",
+          "ChIJKaeYMj-uEmsRAgZ4clX6UO8",
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJSytgJF2uEmsRC6q8BDZh5qA",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "ChIJZ6DWeEOuEmsRYO_x-Wh9AQ8",
+          "ChIJaauHdjquEmsRl1v0I7_e62A",
+          "ChIJdTGLUyKuEmsRAADy-Wh9AQ8",
+          "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "ChIJp2L1hySuEmsRfKR3EG9fO3I",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+        ],
+        "v1_only_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "ChIJvyZ8WvCvEmsRTqM2KE94_aw"
+        ]
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJLaRY2DuuEmsRkgiW8LMz2Hs",
+          "ChIJUdIgnCSuEmsRLzoJwyTgSW0",
+          "ChIJUeoNaTquEmsRX5K4sQses2M",
+          "ChIJlwsH0RWuEmsR3Cg3WEDw76I",
+          "ChIJu284rCWuEmsR0XGjjcQ0YOI"
+        ],
+        "v1_only_ids": [
+          "ChIJDflB7BWuEmsRYPbx-Wh9AQ8",
+          "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "ChIJK70U2mquEmsRcBQFGlUT4lM",
+          "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "ChIJt9trB0euEmsR8NbepO14j3M"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJx4FyRJytEmsReOktxgkYwyA"
+        ],
+        "v1_only_ids": [
+          "ChIJYV-J-ziuEmsRIMyoFaMedU4"
+        ]
+      }
+    }
+  ],
+  "source_bindings": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/b1cc0be10fcf10d4c100dd9ca13c5cffba341063590df191f7c976bcc5795c2e",
+      "expanded_semantic_sha256": "b1cc0be10fcf10d4c100dd9ca13c5cffba341063590df191f7c976bcc5795c2e"
+    }
+  },
+  "source_digest": "b1cc0be10fcf10d4c100dd9ca13c5cffba341063590df191f7c976bcc5795c2e",
+  "semantic_sha256": "5c4badf47c86ed1ad3c6003889725f6ffa0f9c11ad9a73d3fec20073c12ce312"
+}

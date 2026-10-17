@@ -1,0 +1,11 @@
+{
+  "schema_version": "case12_public_venue_evidence_1",
+  "venues": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/ed36b6a8d45224f55bd1d14b51bc4f38868fa6072f8dbb5cf8b75a3de82f237a",
+      "expanded_semantic_sha256": "ed36b6a8d45224f55bd1d14b51bc4f38868fa6072f8dbb5cf8b75a3de82f237a"
+    }
+  },
+  "scope": "Normalized factual/source metadata only. Original request/response bytes remain in the private archive; no raw editorial or model response is published."
+}

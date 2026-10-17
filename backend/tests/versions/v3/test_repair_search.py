@@ -170,7 +170,8 @@ def test_sixth_eligible_proposal_and_equivalent_failure_suppression():
             return value
 
     original, ctx = overlap_draft(), context()
-    model = Explanations([[], [], [], [], [], [edit()]])
+    unchanged = [edit("10:30", "11:30")]
+    model = Explanations([unchanged] * 5 + [[edit()]])
     result = asyncio.run(
         run_repair_stage(
             original,
@@ -183,8 +184,8 @@ def test_sixth_eligible_proposal_and_equivalent_failure_suppression():
     )
     assert model.calls == result.counters["model"] == 6
     assert result.status == "ACCEPTED_COMPLETE"
-    assert result.rounds[1].result.reason == "equivalent_proposal_suppressed"
-    assert not result.rounds[1].result.components
+    assert result.rounds[2].result.reason == "equivalent_proposal_suppressed"
+    assert not result.rounds[2].result.components
     assert model.inputs[1]["feedback"]["previous_status"] == "REJECTED"
     assert model.inputs[5]["feedback"]["tried_operations"]
 
@@ -251,7 +252,7 @@ def test_deadline_after_exploration_keeps_best_and_counts_failed_send():
     assert result.final == result.rounds[0].adopted
     assert result.rounds[1].exploration_transition and not result.rounds[1].best_promoted
     assert model.calls == result.counters["model"] == 3
-    assert result.timing["stage_deadline"] == 460
+    assert result.timing["stage_deadline"] == 520
     assert result.reason == "model_failed_no_retry"
     assert result.rounds[-1].result.reason == "repair_timeout"
     assert result.counters["final_main_visits"] == 9

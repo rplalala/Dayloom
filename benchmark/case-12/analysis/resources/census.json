@@ -1,0 +1,477 @@
+{
+  "schema_version": "case12_public_all_attempt_census_1",
+  "planned_revision_slots": 28,
+  "dispatched_attempts": 26,
+  "rows": [
+    {
+      "case_id": "case-12",
+      "case_revision": "01",
+      "version": "v0",
+      "repetition_id": "r01",
+      "attempt_id": "case-12-v0-20261017-r01",
+      "run_id": "case-12-v0-20261017-r01",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r01/captures/v0/usage.json",
+        "sha256": "a3ebe2a9489b92227d2288efa4b73cf5af4962618ddeb2574168de7c195ad874",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "01",
+      "version": "v1",
+      "repetition_id": "r01",
+      "attempt_id": "case-12-v1-20261017-r01",
+      "run_id": "case-12-v1-20261017-r01",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r01/captures/v1/usage.json",
+        "sha256": "821525c87c586243f2182112c2a68ecc6161b6192d9b0f16a7a518c45c2367d3",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "01",
+      "version": "v2",
+      "repetition_id": "r01",
+      "attempt_id": "case-12-v2-20261017-r01",
+      "run_id": "case-12-v2-20261017-r01",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r01/captures/v2/usage.json",
+        "sha256": "843c76280064bb57aeca2bf85d743f67fabbbba0628759757095406c998a93c3",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "01",
+      "version": "v3",
+      "repetition_id": "r01",
+      "attempt_id": "case-12-v3-20261017-r01",
+      "run_id": "case-12-v3-20261017-r01",
+      "status": "failed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r01/captures/v3/usage.json",
+        "sha256": "9b1aa2b1e6694d509860ff8c114b13d6cb48cfb8fb2062696af3749e7157655b",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "02",
+      "version": "v0",
+      "repetition_id": "r02",
+      "attempt_id": "case-12-v0-20261017-r02",
+      "run_id": "case-12-v0-20261017-r02",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r02/captures/v0/usage.json",
+        "sha256": "6b1b28bad5b1c3e951a39e4be97f5be877ed2a383a1282f6f4e3f8370aa732cd",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "02",
+      "version": "v1",
+      "repetition_id": "r02",
+      "attempt_id": "case-12-v1-20261017-r02",
+      "run_id": "case-12-v1-20261017-r02",
+      "status": "failed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r02/captures/v1/usage.json",
+        "sha256": "7c49572b01ddd05edef00d2bbf4a91e121107121c221e0113eeafaff602dcdc3",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "02",
+      "version": "v2",
+      "repetition_id": "r02",
+      "attempt_id": "case-12-r02-v2-undispatched",
+      "run_id": "case-12-r02-v2-undispatched",
+      "status": "unstarted",
+      "dispatched": false,
+      "usage_ref": null
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "02",
+      "version": "v3",
+      "repetition_id": "r02",
+      "attempt_id": "case-12-r02-v3-undispatched",
+      "run_id": "case-12-r02-v3-undispatched",
+      "status": "unstarted",
+      "dispatched": false,
+      "usage_ref": null
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "03",
+      "version": "v0",
+      "repetition_id": "r03",
+      "attempt_id": "case-12-v0-20261017-r03",
+      "run_id": "case-12-v0-20261017-r03",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r03/captures/v0/usage.json",
+        "sha256": "3473b3420736ee5828697a5caedada647056d7f9fa4f41aa74fc88ef19978767",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "03",
+      "version": "v1",
+      "repetition_id": "r03",
+      "attempt_id": "case-12-v1-20261017-r03",
+      "run_id": "case-12-v1-20261017-r03",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r03/captures/v1/usage.json",
+        "sha256": "cf6ae17c67e4dfb7741b272792b51f59998cc8d9838652eccbc99e4cc49d7085",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "03",
+      "version": "v2",
+      "repetition_id": "r03",
+      "attempt_id": "case-12-v2-20261017-r03",
+      "run_id": "case-12-v2-20261017-r03",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r03/captures/v2/usage.json",
+        "sha256": "d8f2fb7eb42696d4081f67fed04cdd0def539b1e0f8c82bbb91c9a3267f01d93",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "03",
+      "version": "v3",
+      "repetition_id": "r03",
+      "attempt_id": "case-12-v3-20261017-r03",
+      "run_id": "case-12-v3-20261017-r03",
+      "status": "failed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r03/captures/v3/usage.json",
+        "sha256": "c2d27b70999a4e4d2208cf98c1acf3851d73e08c0d7d71d2eaec9f4e8e85b5cf",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "04",
+      "version": "v0",
+      "repetition_id": "r04",
+      "attempt_id": "case-12-v0-20261017-r04",
+      "run_id": "case-12-v0-20261017-r04",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r04/captures/v0/usage.json",
+        "sha256": "33b4a6788a19ff90afc867f60a66b8b69031763e5890f2a2dd61cccc10283c55",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "04",
+      "version": "v1",
+      "repetition_id": "r04",
+      "attempt_id": "case-12-v1-20261017-r04",
+      "run_id": "case-12-v1-20261017-r04",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r04/captures/v1/usage.json",
+        "sha256": "0729cbafef4c5c7ca3db33aaa7b0e61729627c436906781f8ef63dbebcccad3a",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "04",
+      "version": "v2",
+      "repetition_id": "r04",
+      "attempt_id": "case-12-v2-20261017-r04",
+      "run_id": "case-12-v2-20261017-r04",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r04/captures/v2/usage.json",
+        "sha256": "385ce7879b0609cc202ca697239394076f1b3329b07fcd4993b0d8ec4d38f21e",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "04",
+      "version": "v3",
+      "repetition_id": "r04",
+      "attempt_id": "case-12-v3-20261017-r04",
+      "run_id": "case-12-v3-20261017-r04",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r04/captures/v3/usage.json",
+        "sha256": "d0420fc80d915a4c2d32d8aa92d744c588d4ab9ddfd68057bfcaaa09c7bf7d92",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "05",
+      "version": "v0",
+      "repetition_id": "r05",
+      "attempt_id": "case-12-v0-20261017-r05",
+      "run_id": "case-12-v0-20261017-r05",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r05/captures/v0/usage.json",
+        "sha256": "bb9fd70ac68c96c772c9211a56f09c4d56c90db930be6a0c2d2ffc5f4396c923",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "05",
+      "version": "v1",
+      "repetition_id": "r05",
+      "attempt_id": "case-12-v1-20261017-r05",
+      "run_id": "case-12-v1-20261017-r05",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r05/captures/v1/usage.json",
+        "sha256": "d7208891ac0421806c5c695a4e8fe9ee10a26b125672091c3a63e7430a30c52c",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "05",
+      "version": "v2",
+      "repetition_id": "r05",
+      "attempt_id": "case-12-v2-20261017-r05",
+      "run_id": "case-12-v2-20261017-r05",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r05/captures/v2/usage.json",
+        "sha256": "472042d6e130145e0ad2c599a1c20e55febf5af7c3914d3bda4cc8e3d6fd2e86",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "05",
+      "version": "v3",
+      "repetition_id": "r05",
+      "attempt_id": "case-12-v3-20261017-r05",
+      "run_id": "case-12-v3-20261017-r05",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r05/captures/v3/usage.json",
+        "sha256": "f85b83c42a5fec6b276aa449d2544138880e744e471638b97534d0baeb5ba240",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "06",
+      "version": "v0",
+      "repetition_id": "r06",
+      "attempt_id": "case-12-v0-20261017-r06",
+      "run_id": "case-12-v0-20261017-r06",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r06/captures/v0/usage.json",
+        "sha256": "3c2e86c95566b0990d89bc98d8cd4f779809bdb81e317f73c5f0befe7aeeca84",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "06",
+      "version": "v1",
+      "repetition_id": "r06",
+      "attempt_id": "case-12-v1-20261017-r06",
+      "run_id": "case-12-v1-20261017-r06",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r06/captures/v1/usage.json",
+        "sha256": "85bd4294faeb57e9619dfdcd82bd2f99c4368e5537dfe2c97ba7ec535b89f883",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "06",
+      "version": "v2",
+      "repetition_id": "r06",
+      "attempt_id": "case-12-v2-20261017-r06",
+      "run_id": "case-12-v2-20261017-r06",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r06/captures/v2/usage.json",
+        "sha256": "988710198c5f2c20f2d619c4adca4b15d95e7a001045397335d704d7afa30852",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "06",
+      "version": "v3",
+      "repetition_id": "r06",
+      "attempt_id": "case-12-v3-20261017-r06",
+      "run_id": "case-12-v3-20261017-r06",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r06/captures/v3/usage.json",
+        "sha256": "c005b95b20e8583a6ba98cc4608a8143adee6c4edaca6fa59b5f314877ff0acb",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "version": "v0",
+      "repetition_id": "r07",
+      "attempt_id": "case-12-v0-20261017-r07",
+      "run_id": "case-12-v0-20261017-r07",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r07/captures/v0/usage.json",
+        "sha256": "366795b940d5c5a0c286fa782b3a31531256e5ce7cac410b66fdc37d709f09e6",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "version": "v1",
+      "repetition_id": "r07",
+      "attempt_id": "case-12-v1-20261017-r07",
+      "run_id": "case-12-v1-20261017-r07",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r07/captures/v1/usage.json",
+        "sha256": "03582fb0299021595b76f9f6eb11927d8e45f8af57cfb1a66c07c43585b911b1",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "version": "v2",
+      "repetition_id": "r07",
+      "attempt_id": "case-12-v2-20261017-r07",
+      "run_id": "case-12-v2-20261017-r07",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r07/captures/v2/usage.json",
+        "sha256": "f8a04114a848f2dba008ce90e14785f43cf66444dea9eff3f873c7ee6241969d",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "version": "v3",
+      "repetition_id": "r07",
+      "attempt_id": "case-12-v3-20261017-r07",
+      "run_id": "case-12-v3-20261017-r07",
+      "status": "completed",
+      "dispatched": true,
+      "usage_ref": {
+        "path": "run-r07/captures/v3/usage.json",
+        "sha256": "f5b203c6e8295ea0f648c9c98a128903f9ce36d636e0d7d6a0ad36220796c1a9",
+        "availability": "available",
+        "media_type": "application/json",
+        "schema_version": "rtpeval_usage_1"
+      }
+    }
+  ],
+  "native_workflow_status_counts": {
+    "completed": 23,
+    "failed": 3,
+    "unstarted": 2
+  },
+  "interpretation": "Retrospective revision-specific accounting; no general completion-rate or version-quality conclusion."
+}

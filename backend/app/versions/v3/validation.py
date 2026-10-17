@@ -560,6 +560,11 @@ def validate_draft(
                     if row.get("hard_count_projection")
                     else {}
                 ),
+                **(
+                    {"time_protection_projection": row["time_protection_projection"]}
+                    if row.get("time_protection_projection")
+                    else {}
+                ),
                 "is_failure_constraint": False,
             },
         )

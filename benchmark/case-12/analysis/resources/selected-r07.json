@@ -1,0 +1,54 @@
+{
+  "schema_version": "rtpeval_research_tradeoffs_report_1",
+  "track": "tradeoffs",
+  "processing_status": "completed",
+  "applicability": "applicable",
+  "profile_ids": {
+    "selection": "case12-retrospective-r07",
+    "selection_revision": "1"
+  },
+  "population_digest": "b4a28e3dc236eeb749a11461ac944071b2a9a4d39ee1e76205e3d99738eb8774",
+  "measurement_coverage": {
+    "planned_slots": 4,
+    "dispatched_attempts": 4,
+    "missing_usage_attempts": 0,
+    "unknown_or_pending_slots": 0
+  },
+  "review_coverage": {
+    "native_quality_groups": 1,
+    "reviewer_execution": "not_performed"
+  },
+  "diagnostics": [],
+  "interpretation": "descriptive_observations_only",
+  "generation_scope": "planner_only; repair_is_a_subset; evaluator_and_frozen_simulation_excluded",
+  "population_completion": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/f5a861b3f45376094d9b51a82b6a3ec79276fd8c44294ed93273fbd8bf9df6bd",
+      "expanded_semantic_sha256": "f5a861b3f45376094d9b51a82b6a3ec79276fd8c44294ed93273fbd8bf9df6bd"
+    }
+  },
+  "all_attempts": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/a62a17bfbd02f28a48c709d94fc7a92e4d12eafb13f1b6eff452d8fbc63c2f00",
+      "expanded_semantic_sha256": "a62a17bfbd02f28a48c709d94fc7a92e4d12eafb13f1b6eff452d8fbc63c2f00"
+    }
+  },
+  "paired_comparisons": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/ee3a5aba35199b412cdfb007a2ed4eb340d04aeb56e5aa2d9ac13c3f2ad983d6",
+      "expanded_semantic_sha256": "ee3a5aba35199b412cdfb007a2ed4eb340d04aeb56e5aa2d9ac13c3f2ad983d6"
+    }
+  },
+  "source_bindings": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/2ca65408932ec344d5a6c758736156a423eefddb8afc1ead5054c998cabf08a8",
+      "expanded_semantic_sha256": "2ca65408932ec344d5a6c758736156a423eefddb8afc1ead5054c998cabf08a8"
+    }
+  },
+  "source_digest": "2ca65408932ec344d5a6c758736156a423eefddb8afc1ead5054c998cabf08a8",
+  "semantic_sha256": "99b816c8e417ad1ea5d09e282651f8b2dd148c43c345a59d42ddf802f4087dea"
+}

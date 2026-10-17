@@ -509,7 +509,8 @@ def test_cross_phase_rag_cache_failures_and_initial_report_are_preserved(failure
         )
         assert result.v3.repair.counters.get("retrieval", 0) == 0
     else:
-        assert result.v3.repair.counters.get("cache_hits", 0) == 0
+        # Structured soft-pace transport preparation may reuse a primary route.
+        assert result.v3.repair.counters.get("cache_hits", 0) == 1
         assert result.v3.repair.counters.get("embedding", 0) == 0
         assert result.v3.repair.counters.get("retrieval", 0) == 0
         phases = [r["phase"] for r in result.request_resources["operations"]]
@@ -744,7 +745,8 @@ def test_v3_outcome_trace_truncation_retains_individual_artifact_markers():
 
     assert tracer.events["v3_finalized"]["truncated"]
     assert "v3_repair_patch" in tracer.events["v3_finalized"]["artifact_events"]
-    assert tracer.events["v3_repair_patch"]["artifact_status"] == "recorded"
+    assert tracer.events["v3_repair_patch"]["artifact_status"] == "not_executed"
+    assert result.v3.repair.reason == "no_new_material_after_empty_proposal"
     assert tracer.events["v3_repair_proposal"]["artifact_status"] == "not_constructed"
     assert tracer.events["v3_repair_material_feedback"]["truncated"]
 

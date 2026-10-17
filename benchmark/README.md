@@ -133,6 +133,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; blinded review deferred, Git delivery pending |
 | 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); main-worktree integration and private-evidence migration complete |
 | 11 | 2026-10-17 | [Paris execution revision 2, protected interval, genuine no-Repair, completed same-run pair, 14 relevance UNKNOWNs and unverified affordability](case-11/report.md#acceptance); automatically accepted and integrated into the main worktree with verified private archive migration; blinded review deferred |
+| 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); main-worktree integration and private-evidence migration pending |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -389,7 +390,8 @@ Case-01–07 retain their existing input bytes, selected revisions, results, sco
 reports, receipts, original dates and acceptance limitations. Historical accepted
 dates need not satisfy today's moving window. The five inputs revised on 16 October
 use the dates below. Current acceptance states and selected revisions are listed above.
-The new case-12 is the former Sydney case-14.
+Case-12 r07 is [automatically accepted](case-12/report.md#acceptance), with
+main-worktree integration pending. It is the former Sydney case-14.
 
 Dates and durations are inclusive. Selected reports are indexed
 [above](#accepted-selections). Case-05 uses the approved 2026-10-16 through
@@ -411,7 +413,7 @@ the actual application reference date.
 | [09](inputs/case-09.json) | C. Place obligations | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
 | [10](inputs/case-10.json) | C. Place obligations | London | 4 | 1 | GBP 1,300 | Exactly two British Museum visits on different dates; checks deliberate repetition within a shorter trip. |
 | [11](inputs/case-11.json) | D. Itinerary boundaries | Paris | 4 | 2 | EUR 1,500 | Day-two 14:00-16:00 meeting with no activities or travel; checks a protected local-time interval. |
-| [12](inputs/case-12.json) | D. Itinerary boundaries | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
+| [12](case-12/report.md) | D. Itinerary boundaries | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
 
 Five trips last two or three days, six last four or five days, and one lasts seven
 days. Sydney has three cases; Tokyo, Barcelona, London and Paris have two each;

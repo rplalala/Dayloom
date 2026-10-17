@@ -1,0 +1,10 @@
+{
+  "configuration": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/10cf06f6715dbdd4a4f3e7de0e5e5afd3a530feca1f16795cd07c1e112ce758a",
+      "expanded_semantic_sha256": "10cf06f6715dbdd4a4f3e7de0e5e5afd3a530feca1f16795cd07c1e112ce758a"
+    }
+  },
+  "sha256": "10cf06f6715dbdd4a4f3e7de0e5e5afd3a530feca1f16795cd07c1e112ce758a"
+}

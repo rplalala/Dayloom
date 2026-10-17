@@ -1,0 +1,160 @@
+{
+  "batch_id": "case-12-primary-20261017-r07",
+  "batch_revision": "7",
+  "components": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/ed554802b3f1b7f51de18ee3cd72f4afad783ee901ef54539af85d6aa49ca66c",
+      "expanded_semantic_sha256": "ed554802b3f1b7f51de18ee3cd72f4afad783ee901ef54539af85d6aa49ca66c"
+    }
+  },
+  "content_hash": "44a0aaf62cd53a5330a078b4f011d93c2f83eea313b8c9adad77c73d35bf336c",
+  "diagnostics": [],
+  "generated_at": "2026-10-17T08:12:51.201035+00:00",
+  "groups": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/492de59958055e37886386aa06ecbed194c58bac674f770b814d463cb071e833",
+      "expanded_semantic_sha256": "492de59958055e37886386aa06ecbed194c58bac674f770b814d463cb071e833"
+    }
+  },
+  "population_readiness": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/f42cb8b4024f1e10b74aaa27e11ca8604f0942968a9badce7637b7a7ae4ed635",
+      "expanded_semantic_sha256": "f42cb8b4024f1e10b74aaa27e11ca8604f0942968a9badce7637b7a7ae4ed635"
+    }
+  },
+  "rules_profile": {
+    "daily_density": {
+      "count_6_or_more": 100,
+      "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
+      "mean": "equal requested-date weight; exact arithmetic; empty dates included",
+      "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
+      "penalties_by_count_0_to_5": {
+        "ordinary": [
+          100,
+          40,
+          0,
+          10,
+          50,
+          80
+        ],
+        "relaxed": [
+          100,
+          20,
+          0,
+          40,
+          70,
+          90
+        ],
+        "rich": [
+          100,
+          60,
+          0,
+          0,
+          30,
+          70
+        ]
+      },
+      "population": "source-distinct primary visit occurrences on every requested date",
+      "profile_id": "rtpeval_daily_density_2",
+      "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable"
+    },
+    "dimensions": [
+      "requirements",
+      "grounding",
+      "non_overlap",
+      "opening",
+      "routes"
+    ],
+    "empty_mask": "total unavailable",
+    "exclude": "all four established denominators equal zero",
+    "factual_hours_coverage": "separate_from_model_assessment",
+    "included_no_checks": "raw N/A; contribution zero",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness",
+    "population": "frozen source-linked candidates minus verified N/A",
+    "population_readiness": "required before acquisition",
+    "profile_id": "rtpeval_declared_population_1",
+    "projection_policy": "declared_or_source_labelled_legacy_1",
+    "public_landmark_intent": "ordinary_sightseeing_unless_restricted_activity",
+    "scope": "final projections only; no optional track contributions",
+    "total": "unrounded rational mean over the group common mask",
+    "uncertain_applicability": "retained UNKNOWN candidate",
+    "unresolved_denominator": "include; dimension and affected total unavailable",
+    "verified_fraction": "PASS / (PASS + FAIL + UNKNOWN)"
+  },
+  "rules_profile_hash": "3120e8916f1df65c4439997e9c757e60b795efb24a4de9932eba58cf205aefc6",
+  "rules_profile_id": "rtpeval_declared_population_1",
+  "schema_version": "rtpeval_quality_report_2",
+  "source_hashes": {
+    "artifacts": {
+      "manifest": "0f6de69ca41c9113173560387fe0d811fd446d81de181317bc6ab164c64428f5"
+    },
+    "identity_audit": null,
+    "identity_evidence": "58edbeba2c1dec712dcfd5a1b03213451c3ebb40fbf1d9cc2c0961e6e3d8dda3",
+    "identity_references": "e7ba0f9537612ef780fc66554e31b4d4edd457f0d6be179a9509d3069ca04916",
+    "identity_report": "855b1a6d5693d8ad589c9dfbafdec814f550b58c93079e2890addbe70c5fb1a3",
+    "identity_review": null,
+    "intake": "9d97030fed85b48ed6d45fd2e4bf2fa7057198d3ffdac727f863270d0fad97a6",
+    "preparation": {
+      "coordinate_evidence": null,
+      "density_reviews": "734171913d465352b5175890463af7595bcaf52588018b7b6f03063a4789b39f",
+      "expected_plan": "c5d4824b3ba8156746a414ac9c8bc55df7c38bb04eea10a45ca16dd22719e289",
+      "occupancy_reviews": null,
+      "route_reviews": "bdf0321b9fd18795fec3ab03b64465011289c6056e2811172d64609afb0cc32f",
+      "schedule_context": "1a156f1da554906a75f8f9798643867e1bdcf69deb946ffec9e4c1fce8610335"
+    },
+    "snapshot_manifest": "39e436f4e0d3d93ae65b11f54c16cf1583f307a3fdc8812011132ae9411ca177",
+    "snapshot_plan": "c5d4824b3ba8156746a414ac9c8bc55df7c38bb04eea10a45ca16dd22719e289"
+  },
+  "stage_availability": {
+    "human": {
+      "report_status": "not_integrated"
+    },
+    "mechanism": {
+      "report_status": "not_integrated"
+    },
+    "resource": {
+      "report_status": "not_integrated"
+    },
+    "source_runs": [
+      {
+        "group_id": "case-12",
+        "optional_projections": {},
+        "paired_available": false,
+        "usage_available": true,
+        "usage_hash": "366795b940d5c5a0c286fa782b3a31531256e5ce7cac410b66fdc37d709f09e6",
+        "version": "v0"
+      },
+      {
+        "group_id": "case-12",
+        "optional_projections": {},
+        "paired_available": false,
+        "usage_available": true,
+        "usage_hash": "03582fb0299021595b76f9f6eb11927d8e45f8af57cfb1a66c07c43585b911b1",
+        "version": "v1"
+      },
+      {
+        "group_id": "case-12",
+        "optional_projections": {},
+        "paired_available": false,
+        "usage_available": true,
+        "usage_hash": "f8a04114a848f2dba008ce90e14785f43cf66444dea9eff3f873c7ee6241969d",
+        "version": "v2"
+      },
+      {
+        "group_id": "case-12",
+        "optional_projections": {
+          "draft": true,
+          "final_primary": true
+        },
+        "paired_available": true,
+        "usage_available": true,
+        "usage_hash": "f5b203c6e8295ea0f648c9c98a128903f9ce36d636e0d7d6a0ad36220796c1a9",
+        "version": "v3"
+      }
+    ]
+  },
+  "status": "complete"
+}
