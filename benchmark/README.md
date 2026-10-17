@@ -130,6 +130,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
+| 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); current-worktree package awaiting integration |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -263,7 +264,8 @@ assessment requires covered execution authorization; ordinary offline report imp
 does not call a service. Section-derived Repair views identify current same-run
 sources separately from preserved historical four-final sources. The
 [17 October refresh](../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
-covers cases 01–07 and 09; case-09 still awaits final researcher acceptance.
+covers cases 01–07 and 09; case-09's [automatic acceptance](case-09/report.md#acceptance)
+retains the refreshed pair and disclosed limitations, with blinded review deferred.
 
 ## Layout
 
@@ -383,8 +385,9 @@ itinerary's available modes, time or daily visit capacity.
 
 Case-01–07 retain their existing input bytes, selected revisions, results, scores,
 reports, receipts, original dates and acceptance limitations. Historical accepted
-dates need not satisfy today's moving window. Five pending inputs use the dates
-below; the new case-12 is the former Sydney case-14.
+dates need not satisfy today's moving window. The five inputs revised on 16 October
+use the dates below; case-09 is now accepted, while 08/10/11/12 remain unexecuted.
+The new case-12 is the former Sydney case-14.
 
 Dates and durations are inclusive. Selected reports are indexed
 [above](#accepted-selections). Case-05 uses the approved 2026-10-16 through

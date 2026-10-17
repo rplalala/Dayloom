@@ -10,8 +10,9 @@ preserve these boundaries.
 Batch `case-09-batch`, revision `1`, contains one first-dispatched generation per
 version, produced on source `b73c8eed09fafb6d54bee8684c5b2e7766515357`. Primary evaluation
 and the authorized analyses completed on **17 October 2026,
-Australia/Sydney**. Native material admission passed; **researcher acceptance is
-pending**. Work is paused before that decision. The [material index](material-index.json)
+Australia/Sydney**. Native material admission passed; **automatic case acceptance was
+explicitly confirmed on 17 October 2026**. [Acceptance](#acceptance) binds the selected
+material and disclosed limitations; blinded human review is deferred. The [material index](material-index.json)
 owns source hashes, publication mappings and shared-value expansion rules.
 [Daily itineraries and recorded POI origins](itinerary.md) present all four selected
 schedules and the actual V3 draft/final change.
@@ -221,9 +222,9 @@ with shared objects expanded through the material index, rather than an executab
 native acquisition bundle.
 
 All submitted activity cost fields remain unspecified, so whole-trip affordability
-is unverified. Researcher automatic-case acceptance and blinded human review remain
-pending. Earlier raw evidence and historical acceptance decisions are preserved; their current
-paired presentations follow the shared authorized refresh.
+is unverified. Original raw evidence and historical reports are preserved; the current
+paired presentation follows the shared authorized refresh. Archived status fields
+describe their acquisition checkpoints; the acceptance decision below owns the current state.
 
 ## AI assistance and human decisions
 
@@ -254,4 +255,34 @@ configured `gpt-6-luna` deployment; retrieval uses the existing embedding space.
 The researcher authorized the exact input, execution scope and reference allowances.
 The researcher subsequently authorized steps 7-9 with zero new service fees and the
 stated review/page limits. Agent review and automated checks do not constitute human
-itinerary review or case acceptance. No final acceptance decision has been recorded.
+itinerary ratings.
+
+## Acceptance
+
+**Accepted by the human researcher on 17 October 2026, Australia/Sydney.** The explicit
+decision covers batch `case-09-batch`, revision `1`: the unchanged 22–26 October request,
+independently reviewed requirements/interests and activity context, selected first-dispatched
+runs `case-09-v0-r1` through `case-09-v3-r1`, admitted material, primary evaluation,
+candidate/relevance, Repair, updated same-run pair and all-attempt resource reports.
+The [material index](material-index.json) binds the exact input, selected results,
+primary preparation/report and refreshed native pair hashes.
+
+Primary totals remain **86 / 98 / 92 / 98**. The accepted current V3 pair is
+**92.848485 → 98**, with one Tokyo Dome City access UNKNOWN in each stage. Acceptance
+retains V0's one opening and three provider-route FAILs, V1/V3's unresolved access,
+V2's mean density deduction of 8, partial V2 discovery, 39 relevance UNKNOWNs,
+unverified whole-trip affordability and unavailable actual billing/external telemetry.
+Model-supported access remains distinct from API-verified hours; paired differences
+and deleted checks do not establish causal Repair success.
+
+The pre-decision offline check verified the original 7,044-file archive and freshly
+replayed the current packet/HTTP evidence, native pair and same-run Repair view with
+zero network attempts. Public/native checks covered 102 publication hashes, 923 shared
+reference expansions and 23 unchanged original input/generation/requirements/primary files.
+These checks found no interpretation-invalidating defect. No full backend regression
+was run for this documentation-only decision.
+
+This completes automatic case acceptance. Blinded human review is deferred. The
+accepted package and private evidence remain in the current worktree; main-worktree
+integration and Git publication await a separate instruction. Recording this decision
+adds no service calls, retries or reference cost and starts no further case.

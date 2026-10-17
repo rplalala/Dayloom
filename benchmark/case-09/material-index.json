@@ -4,7 +4,7 @@
   "case_revision": "1",
   "batch_id": "case-09-batch",
   "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
-  "status": "offline_analysis_complete_awaiting_researcher_acceptance",
+  "status": "automatically_accepted_blinded_review_deferred",
   "notice": "Public selected itinerary projections and source bindings. Native execution, original raw evidence and reviewer records remain private; these files are not a native execution or replay bundle.",
   "original_input": {
     "path": "../inputs/case-09.json",
@@ -1186,7 +1186,7 @@
     "independent_offline_pair_report": "complete_exact_source_replay",
     "native_pair_acquisition_export": "not_available_for_stopped_acquisition",
     "human_review": "deferred",
-    "researcher_acceptance": "pending"
+    "researcher_acceptance": "accepted"
   },
   "itinerary_view": {
     "path": "itinerary.md",
@@ -1206,7 +1206,7 @@
     "zip_bytes": 5516974,
     "native_research_tracks_exact_replayed": 5,
     "public_native_projection_equivalence": 93,
-    "researcher_acceptance": "pending"
+    "researcher_acceptance_at_archive_creation": "pending"
   },
   "paired_evaluation_refresh": {
     "on": "2026-10-17",
@@ -1232,7 +1232,7 @@
       "total_tokens": 10287
     },
     "model_material_sha256": "cd2c076865c77510498a030946d86e5f09238f76131c1b0f7665f13a79975642",
-    "original_primary_and_generation": "Unchanged; final researcher acceptance remains pending.",
+    "original_primary_and_generation": "Unchanged; accepted with the refreshed paired view on 2026-10-17.",
     "native_sources": {
       "pair": {
         "logical_path": "reassessment/current-pair.json",
@@ -1248,5 +1248,43 @@
     },
     "preparation_sha256": "289053a71ce12a98350e7d3696d7d1773bedb9fdbc8b313fc210a334036abfa8",
     "packet_sha256": "d881ffedc9cdb2e4c05a97eed0c1d4d757fd9ea9022ccc985614afe348df87d3"
+  },
+  "automatic_acceptance": {
+    "status": "accepted",
+    "on": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_by": "human_researcher",
+    "decision_basis": "Explicit acceptance of this batch input, results and disclosed limitations in the current chat.",
+    "record": "report.md#acceptance",
+    "case_revision": "1",
+    "batch_id": "case-09-batch",
+    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+    "selected_results": {
+      "v0": {
+        "run_id": "case-09-v0-r1",
+        "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8"
+      },
+      "v1": {
+        "run_id": "case-09-v1-r1",
+        "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7"
+      },
+      "v2": {
+        "run_id": "case-09-v2-r1",
+        "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3"
+      },
+      "v3": {
+        "run_id": "case-09-v3-r1",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+      }
+    },
+    "native_requirements_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+    "primary_preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
+    "native_primary_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+    "native_current_pair_sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+    "human_review": "deferred",
+    "main_worktree_integration": "pending",
+    "git_publication": "pending",
+    "new_service_sends": 0,
+    "new_reference_usd": "0"
   }
 }

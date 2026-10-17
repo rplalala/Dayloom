@@ -153,6 +153,8 @@ reproduced and corrected without resuming case-09's stopped historical package. 
 `/root/pair_access_standards` and `/root/pair_access_spec` independently reviewed code;
 `/root/paired_access_execute` used `gpt-6.1-sol / medium` for frozen execution only.
 The parent owns source binding, native offline replay, sanitized projections and
-documentation. Agent review does not constitute human quality ratings. Case-09 remains
-pending final researcher acceptance. Work stays in the current worktree; main-worktree
+documentation. Agent review does not constitute human quality ratings. The researcher
+explicitly [accepted case-09](../../../benchmark/case-09/report.md#acceptance) on
+17 October 2026 with the refreshed pair and disclosed limitations; blinded review is
+deferred. Work stays in the current worktree; main-worktree
 integration and Git publication await a separate instruction.
