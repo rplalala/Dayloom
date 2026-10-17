@@ -2,165 +2,188 @@
 
 ## Status and request
 
-Attempt r01 ran on **17 October 2026 Australia/Sydney**, using application source
-`b73c8eed09fafb6d54bee8684c5b2e7766515357`. V0-V2 completed. V3 stopped at the shared
-hard-requirement boundary before generating an itinerary. No V3 draft, validation
-or Repair result exists. Automatic case acceptance remains pending; this attempt
-does not supply a qualified four-final batch or independent primary scores.
+Revision r02 is **blocked before the four-version Primary handoff** on 17 October
+2026 Australia/Sydney. V0 completed; V1 failed while constructing its generation
+prompt. V2, V3 and Primary were not started. No r02 V3 draft, Repair or final
+exists. Automatic case acceptance remains pending.
 
-The [original request](../inputs/case-12.json) is a seven-day Sydney trip,
-22-28 October 2026, for two adults with a whole-group budget of AUD 3,200. It
-requests nature and harbour views at a relaxed pace, exactly one sightseeing
-visit on 22 October, and no planned activities or travel on 25 October. Its
-SHA-256 is `954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1`.
+The [original request](../inputs/case-12.json) remains unchanged: Sydney,
+22-28 October 2026, two adults, whole-group budget AUD 3,200, nature and harbour
+views, relaxed pace, exactly one sightseeing visit on 22 October, and no planned
+activities or travel on 25 October. Input SHA-256:
+`954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1`.
 The scenario retains former case-14's identity under
 [Issue #163](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/163).
 
-## Reviewed meaning and actual interpretation
+The researcher authorized synchronization and one new sequential V0-V3 selection
+followed by one Primary, with a **cumulative USD 40 reference allowance including
+r01**, zero retries, and a stop on another shared implementation blocker. Branch
+`codex/case-12-r02` preserves the original case commit and merges `origin/main`
+at `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`. The actual execution source is
+merge commit `ba464335ea7765996b98e819bb31f9ed329ccf31`, incorporating
+[PR #180](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/180) and
+[PR #181](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/181).
+No shared application code or input was changed in this case worktree.
 
-Independent source-only authoring and review retained the first-day exact count
-as a hard obligation. The native subject-specific visit operators cannot express
-a total daily count without a named venue, so the reviewed specification records
-that obligation as unsupported rather than inventing a place or weakening the
-count. The rest day uses `protected_time`, `full_day`, and
-`scope=scheduled_commitments`, covering planned activities and travel. Independently
-reviewed density uses a relaxed default, exact one on 22 October, and exact zero
-on 25 October. Density does not replace either hard obligation. Transport mode
-choice is unrestricted; this does not waive the rest-day travel prohibition.
+## Reviewed obligations and observed interpretation
 
-The four separately captured Planner interpretation responses all contain
-`daily_pace.exact_count=1` for 22 October and fixed full-day protection for
-25 October. None contains a zero-count density override for the rest day. V3's
-response additionally creates the following sourced semantic goal:
+A new source-only author and a distinct reviewer produced RequirementSpec revision
+`"2"`. Its hard obligations are:
 
-```json
-{
-  "requirement_id": "semantic_3",
-  "normalized_text": "Plan exactly one sightseeing visit on 2026-10-22.",
-  "strength": "hard",
-  "scope": "selected_poi_set",
-  "experience_goal": {"frequency": "exact", "count": 1, "target": "category"}
-}
+| Date | Native obligation | Meaning |
+| --- | --- | --- |
+| 2026-10-22 | `daily_visit_count`, `scope=primary_visits`, exact 1 | Total primary visit occurrences, without an invented venue. |
+| 2026-10-25 | `protected_time`, full day, `scope=scheduled_commitments` | No planned activities or travel throughout the local day. |
+
+Nature, harbour views, relaxed pace and other-date choice flexibility remain soft
+preferences without invented quotas. Reviewed density uses a relaxed default,
+exact one on 22 October and exact zero on 25 October. Density does not replace
+the hard obligations; zero primary visits alone does not prohibit travel.
+Transport modes are unrestricted outside the rest-day prohibition. The schedule
+context uses `Australia/Sydney`.
+
+Current native spec, schedule and density validators accepted these materials
+offline. Both actual r02 interpretations passed the shared hard-requirement
+boundary. V1's exact saved response, restored with the request-bound indexed
+source mapping, contains the correct hard daily total and fixed full-day rest
+protection. Its count requirement has registered predicate
+`daily_primary_visit_count`, version `1`, and disposition `enforce`.
+
+V0 contains one primary visit on 22 October and no activities or transfers on
+25 October. Its product count diagnostic is PASS with lower/upper bounds 1/1.
+These are submitted-role/product observations, not independent factual scores.
+Its primary counts over 22-28 October are **1, 2, 1, 0, 1, 1, 1**.
+
+## V1 prompt-construction blocker
+
+The original V1 `failure.json` records only `error_type=TypeError`, without a full
+traceback. Its trace reaches `generation_started` and
+`opening_hours_planning_views_created`, then `run_failed`. Only interpretation,
+landmark nomination and POI semantics model calls occurred; the primary itinerary
+model request was not sent. No V1 itinerary result exists.
+
+The affected boundary is the
+[candidate supply projection](../../backend/app/services/planning_supply_pipeline.py)
+and its [V1 graph JSON serialization](../../backend/app/versions/v1/graph.py).
+The new `daily_visit_constraints` projection calls
+`model_dump(exclude={"source_refs"})`, leaving a Python `date`. The graph then
+calls `json.dumps(planner_supply_projection(...))`.
+
+A separate zero-network minimal reproduction restored the actual V1 captured
+interpretation through unchanged current readers, retained its dated constraint,
+supplied empty unrelated candidate data, and invoked the same projection/JSON
+boundary. It deterministically raised:
+
+```text
+TypeError: Object of type date is not JSON serializable
 ```
 
-This is a selected-field view of the restored canonical interpretation, not a
-new model response. The unchanged wire, DTO and canonicalization readers restored
-each original captured response offline. V0-V2 have no hard semantic item requiring
-clarification in their respective responses. V3's `semantic_3` has
-`capability=semantic_only`, no registered predicate, and `disposition=clarify`.
-The shared
-[hard-requirement boundary](../../backend/app/policies/interpreted_requirements.py)
-therefore raises `ClarificationRequired` with code
-`unsupported_hard_requirements` and stage `hard_requirements`.
+Two in-memory controls serialized successfully: omitting the daily constraint
+projection, and retaining it with `model_dump(mode="json", ...)`. No shared file
+was patched. This reproduction and the online trace locate the new serialization
+blocker; the detailed local exception is not presented as a recovered full online
+traceback. Full online graph replay was not attempted. The prospective correction
+belongs to the shared implementation, with regression coverage at the actual
+prompt-serialization caller, rather than a case workaround.
 
-All versions use this shared boundary. The different observed outcomes arise
-from their separately generated interpretation responses; they do not establish
-a V3-specific input rule. The original first-day request is clear. The stop
-reflects unsupported execution capability, not missing personal intent.
+The failed attempt was retained without retry. V2/V3 use the shared tools path,
+but their behavior was not observed in r02. Primary was not prepared or executed
+because a qualified four-final selection is absent.
 
-## Generation observations and consumption
+## Attempts and resources
 
-Each version was dispatched once through installed `rtpeval generate`, with exact
-source/input/configuration bindings, native usage capture, and private HTTP/trace
-evidence. V1/V2 also retained passive candidate captures. No attempt was retried
-or replaced. Counts below use submitted `activity_kind=main_poi`; they are not
-independently verified venue visits or factual feasibility judgments.
+Native usage and costs include failed invocations. Reference rates were rechecked
+on 17 October against official
+[model](https://developers.openai.com/api/docs/models/gpt-6-luna),
+[embedding](https://developers.openai.com/api/docs/models/text-embedding-3-small),
+[tool](https://developers.openai.com/api/docs/pricing), and
+[Google](https://developers.google.com/maps/billing-and-pricing/pricing) sources.
+OpenAI rates are an explicit Foundry proxy. Account invoices and external Codex
+usage/billing are unavailable; no discounts, free quotas or tax are assumed.
 
-| Date | V0 main POIs | V1 main POIs | V2 main POIs |
-| --- | ---: | ---: | ---: |
-| 2026-10-22 | 1 | 1 | 1 |
-| 2026-10-23 | 2 | 1 | 2 |
-| 2026-10-24 | 2 | 1 | 1 |
-| 2026-10-25 | 0 | 0 | 0 |
-| 2026-10-26 | 2 | 1 | 1 |
-| 2026-10-27 | 1 | 1 | 2 |
-| 2026-10-28 | 1 | 1 | 2 |
-
-The three completed outputs contain no activities or transfers on 25 October.
-V3 has no output to count. Its successful interpretation HTTP response was followed
-by the application capability stop; this is not a provider connection failure or
-a successful no-Repair outcome. The producer completion envelope records failed
-required mechanisms, while the trace shows retrieval initialization, generation,
-validation and Repair were not entered.
-
-| Version | Outcome | Invocation seconds | Model calls, including embeddings | HTTP sends | Observed tokens | Reference USD |
+| Revision/version | Outcome | Native invocation seconds | Model calls, including embeddings | HTTP sends | Observed tokens | Reference USD |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| V0 | Completed | 62.063 | 2 | 2 | 26,275 | 0.004371665 |
-| V1 | Completed | 119.766 | 4 | 68 | 84,990 | 2.364824325 |
-| V2 | Completed | 145.922 | 6 | 98 | 85,629 | 2.972827120 |
-| V3 | Clarification before generation | 26.938 | 1 | 1 | 18,758 | 0.001643150 |
-| Total | Three outputs; one stopped attempt | 354.689 | 13 | 169 | 215,652 | 5.343666260 |
+| r01 V0 | Completed | 62.063 | 2 | 2 | 26,275 | 0.004371665 |
+| r01 V1 | Completed | 119.766 | 4 | 68 | 84,990 | 2.364824325 |
+| r01 V2 | Completed | 145.922 | 6 | 98 | 85,629 | 2.972827120 |
+| r01 V3 | Clarification before generation | 26.938 | 1 | 1 | 18,758 | 0.001643150 |
+| r02 V0 | Completed | 47.344 | 2 | 2 | 23,269 | 0.003886710 |
+| r02 V1 | Prompt construction failed | 69.422 | 3 | 64 | 22,438 | 2.259815495 |
+| Total | All six invocations | 471.455 | 18 | 235 | 261,359 | 7.607368465 |
 
-Usage covers all four invocations, including the stopped V3 attempt. No failed
-HTTP response, incomplete send or unpriced event was recorded. V3's missing result
-hash reflects its absent result. Actual invoices and external Codex usage/billing
-are unavailable. Costs are dated retail/proxy estimates, not actual bills. The
-17 October reference check confirmed the saved rates against official
-[model pricing](https://developers.openai.com/api/docs/models/gpt-6-luna),
-[embedding pricing](https://developers.openai.com/api/docs/models/text-embedding-3-small),
-[tool pricing](https://developers.openai.com/api/docs/pricing), and
-[Google global pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
-OpenAI model rates are an explicit Foundry proxy; no free-quota, account-discount
-or tax adjustment is assumed.
+The r02 increment is **USD 2.263702205**; the remaining cumulative allowance is
+**USD 32.392631535**. No failed HTTP response, incomplete send or unpriced event
+was recorded. V1's absent result hash does not erase its observed consumption.
+No evaluator or paired-access consumption occurred. The r02 reservations were
+generation USD 24.25 and Primary USD 10, within the post-r01 allowance; generation
+has no native USD hard stop. Runtime request/token/time ceilings were unchanged
+and costs were checked between versions.
 
-## Independent evaluation boundary
+Actual wrapper times on 17 October Australia/Sydney were V0 14:34:18-14:35:12
+and V1 14:35:21-14:36:38. Native durations above exclude the wrapper's additional
+startup/finalization overhead.
 
-The native registration remains blocked because V3 has no completed result.
-Four-final qualification, primary preparation/execution and case acceptance were
-not completed. The independent evaluator's USD 10 reference reservation remains
-unused; actual generation reference consumption is USD 5.343666260 of the USD 30
-generation allowance.
+## Checks, assistance and retained evidence
 
-A separate source-obligation precheck, with no selected itinerary population or
-provider calls, returned `needs_population_resolution` and
-`executable_obligation_population_unresolved`. The current
-[declared-population policy](../../backend/evaluation/declared_population.py)
-blocks new-format numerical scoring before acquisition while a reviewed hard
-obligation remains unsupported. Thus completing generation alone would not resolve
-the independent evaluation boundary.
+The r02 preflight passed input/date admission, worktree-local Python 3.12.14,
+imports/CLI, locked dependencies, both pinned tokenizers and query-only TripWorld
+compatibility. The initial database probe lacked environment loading; loading the
+existing files corrected the local probe without changing credentials or config.
+Git metadata access needed sandbox escalation. Related source-wire, daily-count,
+V3 and independent requirement tests passed **131 tests in 18.35 seconds**.
+These preceded the live failure and do not cover the newly reproduced prompt
+serialization seam or establish a full-suite pass.
 
-## Assistance, evidence and checks
+Parent `/root` performed synchronization, preflight, orchestration, saved-evidence
+diagnosis and documentation. Its exact runtime model and external billing are not
+exposed. Actual external assistance for r02:
 
-The human researcher selected observation of the existing implementation before
-deciding whether to change it. The parent Codex agent `/root` performed preflight,
-orchestration, saved-source diagnosis and documentation; its exact model identity
-and token billing are not exposed by the execution surface. External assistance:
+| Actor | Configured model/effort | Work |
+| --- | --- | --- |
+| `/root/case12_r02_author` | `gpt-6.1-sol/high`, fresh context | Original-request-only author draft. |
+| `/root/case12_r02_reviewer` | `gpt-6.1-sol/high`, distinct fresh context | Independent review, schedule, density and transport material. |
+| `/root/case12_r02_execution` | `gpt-6.1-sol/medium`, fresh context | Frozen V0 then V1 commands; stopped on failure. |
 
-| Actual actor | Work and admitted result |
-| --- | --- |
-| `/root/case12_author`, `gpt-6.1-sol/high` | Original-request-only requirements draft. |
-| `/root/case12_interests`, `gpt-6.1-sol/high` | Independent original-request interest draft identifying nature and harbour views, without invented quotas. Native research-inventory attachment remains deferred. |
-| `/root/case12_reviewer`, `gpt-6.1-sol/high` | Nonselected review operation: incidental exposure to project-home historical scores/mechanism observations; excluded from admitted source-only review. No output file was created. |
-| `/root/case12_source_reviewer`, `gpt-6.1-sol/high` | Admitted distinct source-only review and schedule/density/transport policies; corrected the draft revision's wire type from integer to string without changing meaning. |
-| `/root/case12_execution`, `gpt-6.1-sol/medium` | Prepared execution only: sequential native invocations and actual resource/outcome reporting. |
+Configuration is recorded from actual parent orchestration requests; child-side
+model telemetry is unavailable. Requirements actors saw only allowlisted original
+input, draft/provenance and contract/schema material. Notes disclose adjacent
+code, truncated reads and a narrowly expanded pace-enum inspection. They did not
+see Planner outputs, interpretations, scores or mechanisms. Actual actor IDs,
+times, drafts, reviewed bytes and authentic available message excerpts are retained;
+separate execution UUIDs and complete internal/tool transcripts are unavailable.
+Agent review is not human review. The r01 independent interest draft remains
+applicable to the unchanged input; no later inventory/relevance study ran.
 
-The admitted reviewer saw generic schema/CLI/score-field names and policy/history
-headings during a README search, but no numeric result, submitted itinerary,
-Planner interpretation or case-specific outcome. This exposure is disclosed in
-its notes. Available authentic agent-to-parent message excerpts, actor/configuration,
-times, source hashes, original draft and reviewed final are retained. Complete
-internal/tool transcripts are unavailable; agent review is not human review.
-
-Private evidence is retained under the logical root
-`benchmark/scratch/case-12/work/run-r01/`: source-only review records, immutable
-original request/configuration, `captures/v0` through `captures/v3`, native
-registration staging, all-attempt usage/costs, the stopped V3 failure, and exact
-saved-response diagnosis. These private identifiers are not public dependencies
-or an admitted portable evaluation bundle. No consumed capture was overwritten.
+Private roots are logical evidence identifiers, not public dependencies:
+`benchmark/scratch/case-12/work/run-r01/` and `run-r02/`. They retain all successful
+and failed captures, source-only reviews, commands and execution receipts,
+usage/prices/costs, candidate captures where executed, wire/trace evidence, and
+the r02 reproduction/control outputs. The r01 preservation index covers 2,067
+existing files. No raw r01 evidence or consumed capture was overwritten, and no
+old-baseline output was inserted into r02.
 
 | Evidence | SHA-256 |
 | --- | --- |
-| V0 saved result | `9a13b2df4fd0ec431be476a3890a5e137c65d094bbe1c05247633e41dd9c8cec` |
-| V1 saved result | `db3498543c90dac66e33c5909d8f75c437eb2a912af657c5f3470fa6f4ffd59f` |
-| V2 saved result | `015e512e344b51aa053a5bc22a59f6fe33a0ea623bcd54b939bd86f21855a187` |
-| V3 saved interpretation response | `c1b4d52c40a3a689b0f800febc2d91fc0fb3917dc9218acecf510b7107080f8c` |
-| Reviewed requirements | `68de20cd7b50e1482d79e6a7191b746326a5de27105cfb75d5c40f6bc28c771a` |
+| r02 V0 saved result | `35034b7a2f6f94379dcdab246aad61aca9b3552f8c0beebdb2297592c0492423` |
+| r02 V1 saved interpretation response | `d915708ee1685da96a6389392bdf008d13e9d062fd7f0c43c3114d2f9ccc66cc` |
+| r02 reviewed requirements | `6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9` |
+| r02 frozen generation command manifest | `eae226655fcbe2ba3c247eb092d0df7597a961f06a1ad7d2e09dc4e671af1a58` |
 
-Offline startup checks passed current-date/schema/input hashes, the worktree-local
-Python/import/CLI paths, locked dependencies, both checksum-pinned tokenizers and
-query-only corpus compatibility. Related tests passed 105 plus four protection
-cases. Sandbox/cache/temp-directory access failures were isolated and rechecked
-outside the sandbox or in a fresh owned temporary directory; no credentials,
-system permissions or application configuration were changed. The original input,
-runtime configuration and prior accepted cases remain unchanged. These scoped
-checks are not a new full-suite pass.
+## Historical context
+
+On the same Sydney date, r01 used source
+`b73c8eed09fafb6d54bee8684c5b2e7766515357`. V0-V2 completed with first-day primary
+counts 1/1/1 and no activities or transfers on the rest day. V3's separate
+interpretation added hard `semantic_3`, which the then-current shared gate could
+not enforce and stopped as `unsupported_hard_requirements` before generation.
+The independent r01 spec retained the generic daily count as unsupported, and a
+source-only population precheck blocked numerical preparation. Those records
+remain unchanged; r02 uses the new operator prospectively. r01 passed 109 scoped
+offline tests.
+
+r01 used separately operated author, interest, source-review and execution agents.
+An initial reviewer exposed to historical project outcomes was excluded; its
+replacement disclosed only generic schema/policy headings without case results.
+Available message excerpts, actor/configuration records, source hashes and the
+excluded-operation disclosure remain in r01. Neither revision supplies independent
+Primary scores, a real V3 Repair observation or an accepted case.
