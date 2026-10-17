@@ -1,0 +1,441 @@
+{
+  "schema_version": "case_offline_acceptance_checklist_1",
+  "case_id": "case-08",
+  "input_revision": "r01",
+  "execution_revision": "r02",
+  "generated_at": "2026-10-17T07:06:13.861186+00:00",
+  "report_source_revision": "b789039330bc76b2e5fb9480268266798eadef18",
+  "original_request": {
+    "storage_identifier": "benchmark/inputs/case-08.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+  },
+  "derivation": "Saved source projection with one authentic independent source-only relevance review; integration performs no identity/quality rebuild, native scoring replay, or project-provider/model call.",
+  "private_source_note": "Storage identifiers are retained local evidence locations, not published navigation dependencies.",
+  "processing_status": "complete",
+  "case_acceptance": "pending_researcher_decision_and_remaining_work",
+  "reports": {
+    "candidates": {
+      "storage_identifier": "benchmark/case-08/analysis/offline-r01/candidates.json",
+      "sha256": "4878633b13213975934f94be456cb3984a7c190888bc5901367a441ae4c145eb"
+    },
+    "repair": {
+      "storage_identifier": "benchmark/case-08/analysis/offline-r01/repair.json",
+      "sha256": "dda9951b5ffecb47f931f268e70dba7b768828b4c2e2b16fe7c208a77416555e"
+    },
+    "relevance": {
+      "storage_identifier": "benchmark/case-08/analysis/offline-r01/relevance.json",
+      "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509"
+    }
+  },
+  "attempt_census": {
+    "timing_basis": "retrospective",
+    "original_requests": 1,
+    "execution_cohorts": [
+      "r01",
+      "r02"
+    ],
+    "planner_invocations": 6,
+    "primary_invocations": 2,
+    "records": [
+      {
+        "execution_cohort": "r01",
+        "version": "v0",
+        "run_id": "case-08-r01-v0",
+        "selected": false,
+        "dispatched_at": "2026-10-16T22:01:32.073051+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "completed",
+        "required_mechanisms": {
+          "generation": "completed"
+        },
+        "failure_type": null,
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v0/planner-dispatch.json",
+          "sha256": "b0308b045ab2eb395d5d8190ec77f6db4cea0d6866434dbcd35f81b0c9ceaba9"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v0/producer-completion.json",
+          "sha256": "dda11545b0895ebc3701009e0d6d5e53577706c134c3fc11dfb5d168368f5c99"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      {
+        "execution_cohort": "r01",
+        "version": "v1",
+        "run_id": "case-08-r01-v1",
+        "selected": false,
+        "dispatched_at": "2026-10-16T22:03:20.325553+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "failed",
+        "required_mechanisms": {
+          "generation": "failed"
+        },
+        "failure_type": "ClarificationRequired",
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v1/planner-dispatch.json",
+          "sha256": "468708853b9367e1ac0858e90e71f2e3a885bffdbffd5ce4c6f665ea74b48631"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v1/producer-completion.json",
+          "sha256": "21acaa8aac68329ea1cee68bc4713992037eb44cf8a40f5572f795ae9d497fea"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      {
+        "execution_cohort": "r02",
+        "version": "v0",
+        "run_id": "case-08-r02-v0",
+        "selected": true,
+        "dispatched_at": "2026-10-17T03:34:41.951336+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "completed",
+        "required_mechanisms": {
+          "generation": "completed"
+        },
+        "failure_type": null,
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/planner-dispatch.json",
+          "sha256": "429365c8a848422f4706cfdf4b855f83aae6d90d6c80fb6093c610be3ecf0d1e"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/producer-completion.json",
+          "sha256": "5daba6de10888b767fd01c4361393df825ab14a9aa8a7e0eb7aa57fddb481c15"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      {
+        "execution_cohort": "r02",
+        "version": "v1",
+        "run_id": "case-08-r02-v1",
+        "selected": true,
+        "dispatched_at": "2026-10-17T03:44:57.869832+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "completed",
+        "required_mechanisms": {
+          "generation": "completed"
+        },
+        "failure_type": null,
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/planner-dispatch.json",
+          "sha256": "2fc6567aeed7fb67739ffd434ae8dec846774c0039fbc7f7b0804b969e6f1fe4"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/producer-completion.json",
+          "sha256": "d03fb0ef22100f2247a47ac4136793c5d3c7b5a0a48135d5014ebf4474f3b901"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      {
+        "execution_cohort": "r02",
+        "version": "v2",
+        "run_id": "case-08-r02-v2",
+        "selected": true,
+        "dispatched_at": "2026-10-17T03:47:27.657390+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "completed",
+        "required_mechanisms": {
+          "generation": "completed",
+          "retrieval": "completed"
+        },
+        "failure_type": null,
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/planner-dispatch.json",
+          "sha256": "85488027f504ca9cbf6256781310234058733f2c5c0bcb1538259554a5257ce1"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/producer-completion.json",
+          "sha256": "ce81b2fede7a93496d8aafed66ba42ee9033e81a5575f1f7713d82a61fb26afa"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      },
+      {
+        "execution_cohort": "r02",
+        "version": "v3",
+        "run_id": "case-08-r02-v3",
+        "selected": true,
+        "dispatched_at": "2026-10-17T03:49:55.831817+00:00",
+        "planner_dispatches": 1,
+        "workflow_status": "completed",
+        "required_mechanisms": {
+          "generation": "completed",
+          "retrieval": "completed",
+          "validation": "completed",
+          "repair": "completed"
+        },
+        "failure_type": null,
+        "dispatch_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/planner-dispatch.json",
+          "sha256": "783ee8cda71882fce51da503b7ade22b50032c2bda473a9eec0841cf9c51b611"
+        },
+        "completion_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/producer-completion.json",
+          "sha256": "1bc91d4ffb7ead68f518fb019c9c18c677d0b6df04039dbb78f00c691ec3beff"
+        },
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+      }
+    ],
+    "selection_rule": "r01 V0 and failed V1 remain the authentic original first dispatches. r02 is the explicitly authorized new execution cohort, not a replacement of r01 history. Only its four finals are selected.",
+    "r01_v2_v3": "No dispatched rows are invented from absent captures; r01 stopped at V1 clarification.",
+    "native_research_declaration": "not_produced; descriptive saved-source census only; no native adapter or scoring replay invoked"
+  },
+  "resources": {
+    "rows": [
+      {
+        "scope": "r01-v0",
+        "model_calls": 2,
+        "http_sends": 2,
+        "observed_tokens": 24254,
+        "reference_usd": "0.00387304",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v0/cost-report.json",
+          "sha256": "25421d0df930e54ce0a3c1d7743d089f890c874208cf1ec971fcbbe17b95f7bb"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v0/usage.json",
+          "sha256": "f5c68189f4d06ca63a6a0902871c172b1e493feedca208b50796f59a81c88f1e"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "r01-v1",
+        "model_calls": 2,
+        "http_sends": 10,
+        "observed_tokens": 16971,
+        "reference_usd": "0.25733153",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v1/cost-report.json",
+          "sha256": "4a2706fd31261abc3b74c86558539b681670f2008f81790a88bcfb229149ece6"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v1/usage.json",
+          "sha256": "9a2a3bc9e1a0a22986f027f8d1ee04b28f3db0ad0469598b0f2e8f42162deaad"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "r02-v0",
+        "model_calls": 2,
+        "http_sends": 2,
+        "observed_tokens": 19958,
+        "reference_usd": "0.002585585",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/cost-report.json",
+          "sha256": "f34c06d6c473d8e05061b3252766a41f318a407e744b1bbb7ee8d6cbeabe49ef"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/usage.json",
+          "sha256": "d8d593ad16c4cfea2437c814fbcf8b3243454b97f755449cc1ce4a8a98f9798e"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "r02-v1",
+        "model_calls": 5,
+        "http_sends": 61,
+        "observed_tokens": 55521,
+        "reference_usd": "1.67334208",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/cost-report.json",
+          "sha256": "22488c41e0ba6016104d22513a8d6017122e47dadc684415eba6a7c19579cc55"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/usage.json",
+          "sha256": "dfed99678b0b75f60bf4a325af209c65ef93b7049288aa992a1899f31b0a1279"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "r02-v2",
+        "model_calls": 6,
+        "http_sends": 52,
+        "observed_tokens": 54629,
+        "reference_usd": "1.45998923",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/cost-report.json",
+          "sha256": "a9bc114307722f2dc389303212b921fceb487a9c3a90e9c937a0f0b9fd606ca3"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/usage.json",
+          "sha256": "6cff1d014f48b04065e5f2cebfaaeb2054f1a2c7df1018b76c26ca69e229b6e1"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "r02-v3",
+        "model_calls": 6,
+        "http_sends": 52,
+        "observed_tokens": 54166,
+        "reference_usd": "1.33072707",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/cost-report.json",
+          "sha256": "7b53fee299b5c3c00803394392d8d3cd4b139b36ed2eddfa65592ac3969f0b15"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/usage.json",
+          "sha256": "2c632e4eda14ed3765fa7094b75b603e82c078c6a4d9d521d891d63303a3a8fa"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "historical-primary",
+        "model_calls": 2,
+        "http_sends": 67,
+        "observed_tokens": 17435,
+        "reference_usd": "1.3448141",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/primary/execution/report.json",
+          "sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+          "pointer": "/usage/cost"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/work/r02/primary/execution/report.json",
+          "sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+          "pointer": "/usage/raw"
+        },
+        "unpriced_event_count": 0
+      },
+      {
+        "scope": "corrected-primary",
+        "model_calls": 3,
+        "http_sends": 68,
+        "observed_tokens": 17338,
+        "reference_usd": "1.344929025",
+        "cost_source": {
+          "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+          "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+          "pointer": "/usage/cost"
+        },
+        "usage_source": {
+          "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+          "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+          "pointer": "/usage/raw"
+        },
+        "unpriced_event_count": 0
+      }
+    ],
+    "model_calls": 28,
+    "http_sends": 314,
+    "observed_tokens": 260272,
+    "cumulative_reference_usd": "7.417591660",
+    "cumulative_ceiling_usd": "30",
+    "remaining_reference_usd": "22.582408340",
+    "this_stage_project_provider_sends": 0,
+    "this_stage_model_sends": 0,
+    "this_stage_reference_usd": "0",
+    "external_codex_billing": null,
+    "actual_account_billing": null,
+    "interpretation": "Saved dated retail/proxy estimates, not account invoices; HTTP includes model transports; embeddings are included among model calls; Repair is a generation subset, never added again."
+  },
+  "checks": [
+    {
+      "item": "Original input, r01 failure, selected schedules and both historical/corrected scores",
+      "status": "PASS",
+      "detail": "Exact source bytes preserved."
+    },
+    {
+      "item": "Candidate stage memberships, origins, omissions and saved independent final associations",
+      "status": "PASS",
+      "detail": "V1/V2 complete captured stages and source-bound descriptive set conversions."
+    },
+    {
+      "item": "Independent relevance judgments and interest conversions",
+      "status": "REVIEW_COMPLETE_EVIDENCE_PARTIAL",
+      "detail": "96 source-only independent judgments: relevant 4, not_relevant 14, unknown 78. No missing judgments; exact thematic counts/conversions remain unavailable."
+    },
+    {
+      "item": "V3 authentic edit and V2/V3 structural comparison",
+      "status": "PASS",
+      "detail": "One system deletion; six retained activities unchanged; loss and native coverage flags retained."
+    },
+    {
+      "item": "Independent same-run V3 pair and continuity",
+      "status": "NOT_PERFORMED",
+      "detail": "No pair calls or scoring. Generic pair-policy compatibility and fresh approval remain required."
+    },
+    {
+      "item": "All-attempt reference accounting",
+      "status": "PASS",
+      "detail": "Six generation invocations and two Primary invocations reconcile to unchanged cumulative reference spend."
+    },
+    {
+      "item": "Portable private archive and native research bundle",
+      "status": "BYTE_RESTORE_VERIFIED_NATIVE_PENDING",
+      "detail": "3,297 logical immutable evidence files restored from 812 blobs; 430 receipts and four itinerary/two quality projections match. Final archive closure, current mutable views, native research descriptors and runtime-compatible native replay remain pending; originals retained."
+    },
+    {
+      "item": "Affordability, actual invoices and complete thematic fulfillment",
+      "status": "UNKNOWN",
+      "detail": "Not established by the current saved material and scope."
+    },
+    {
+      "item": "Researcher case acceptance, publication and main integration",
+      "status": "PENDING",
+      "detail": "Not performed or inferred from report completion."
+    }
+  ],
+  "preservation": {
+    "protected_files": 3279,
+    "mismatches": 0,
+    "baseline_sha256": "770a7ddfb96fe108a5b5947c821aa6fe14909fc43cfdb3353b0c8c776241b24f",
+    "primary_receipts_retained": true
+  },
+  "assistance": {
+    "actor": "/root",
+    "work": "Bind authentic independent reviewer output, validate native interest/label readers and citations, derive stage lower counts and verify archived immutable bytes. No identity/quality/pair score rebuilt.",
+    "new_independent_reviewer_dispatches": 1,
+    "new_provider_or_model_calls": 0,
+    "runtime_model_proof": "unavailable",
+    "new_semantic_labels": "96 actual independent judgments; original reviewed requirements/interests and scores unchanged.",
+    "independent_relevance_review": {
+      "actor": "/root/case08_relevance_review",
+      "configuration": "inherited parent configuration; no override supplied",
+      "read_scope": "Only unchanged original input and frozen source-only packet; no schedules, ranks, scores, Planner interpretations or other judgments.",
+      "review_dispatches": 1,
+      "review_retries": 0,
+      "project_provider_calls": 0,
+      "runtime_model_proof": "unavailable",
+      "tokens": "unavailable",
+      "billing": "unavailable; not zero",
+      "display_incident": "The first local print of the packet failed with UnicodeEncodeError in the terminal encoding. Subsequent local displays of that same packet used ASCII-escaped JSON; no new evidence, reviewer dispatch, semantic-review retry, or additional source was introduced."
+    }
+  },
+  "paid_execution_paused": true,
+  "review_continuation": {
+    "source_revision": "b789039330bc76b2e5fb9480268266798eadef18",
+    "reviewed_at": "2026-10-17T07:29:03.776826+00:00",
+    "evidence_status": "unresolved"
+  },
+  "updated_at": "2026-10-17T07:36:24.218416+00:00",
+  "archive_probe": {
+    "status": "PASS",
+    "logical_files": 3297,
+    "unique_blobs": 812,
+    "logical_bytes": 58097582,
+    "unique_bytes": 31015708,
+    "compressed_bytes": 3732364,
+    "manifest_sha256": "784bf595fefb0a031ba56822481da34f8c809a086c2cddf25fff8f9a4605f9e3",
+    "archive_sha256": "2c6e7424ff17496e11e90392cf8c24bcc6a363f7b2d422ba3963c5c6573d9841",
+    "restored_receipt_files_verified": 430,
+    "restored_public_itinerary_projections": 4,
+    "restored_public_quality_projections": 2,
+    "native_scoring_or_replay": false,
+    "provider_model_or_pair_calls": 0,
+    "originals_removed_or_relocated": false,
+    "temporary_restoration_removed": true,
+    "original_absolute_bindings_preserved": true,
+    "portable_native_replay_status": "UNVERIFIED: original absolute preparation paths and declared runtimes remain binding; no native replay/scoring invoked.",
+    "archive_closeout": "NOT_COMPLETE: immutable evidence probe only. Final paired/native dependencies, current mutable views and runtime-compatible native validation remain pending.",
+    "initial_failure": "Temporary worktree prefix made the longest path 278 characters; archive remained complete and original bytes unchanged.",
+    "correction": "Restore below a shorter authorized temporary root; no credential, permission, project or system configuration change. The original absolute spelling remains in the private source snapshot.",
+    "recheck": "Every restored file hash, 430 receipt files, four itinerary and two quality projections passed; both temporary trees removed.",
+    "verification_source": {
+      "storage_identifier": "benchmark/scratch/case-08/acceptance-r02/archive-probe-verification.json",
+      "sha256": "4d4f20d1ad80cef996dda1648df7b29cf4eb6fa71c075fe71724cd65c845467d"
+    }
+  },
+  "next_scope_proposal": {
+    "storage_identifier": "benchmark/scratch/case-08/acceptance-r02/continuation-scope.json",
+    "sha256": "dcbfaf0a8b0127905c50004ab62e8b7ed97b842f65dc7954622359d24c016a06"
+  },
+  "next_scope_boundary": "Separate approval required for generic paired policy/material compatibility; no evaluator code changed. Any future paid pair needs fresh exact preparation and separate limits approval."
+}

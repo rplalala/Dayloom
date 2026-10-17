@@ -1,0 +1,126 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-08-original-request-requirements",
+  "revision": "r01-reviewed-1",
+  "group_id": "case-08",
+  "input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case08_requirement_reviewer",
+    "reviewed_at": "2026-10-16T22:00:02.870872+00:00"
+  },
+  "subjects": [
+    {
+      "subject_id": "sagrada-familia",
+      "wording": "Sagrada Família",
+      "place_name": "Sagrada Família",
+      "location": "Barcelona, Spain",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Sagrada Família",
+          "occurrence": 0,
+          "offset_start": 87,
+          "offset_end": 102
+        }
+      ]
+    },
+    {
+      "subject_id": "park-guell",
+      "wording": "Park Güell",
+      "place_name": "Park Güell",
+      "location": "Barcelona, Spain",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Park Güell",
+          "occurrence": 0,
+          "offset_start": 146,
+          "offset_end": 156
+        }
+      ]
+    }
+  ],
+  "obligations": [
+    {
+      "obligation_id": "sagrada-familia-exactly-once",
+      "kind": "required_visit",
+      "subject_ref": "sagrada-familia",
+      "resolution": "resolved",
+      "count": {
+        "mode": "exact",
+        "value": 1
+      },
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Include exactly one visit to Sagrada Família during the trip.",
+          "occurrence": 0,
+          "offset_start": 58,
+          "offset_end": 119
+        }
+      ]
+    },
+    {
+      "obligation_id": "park-guell-excluded",
+      "kind": "excluded_visit",
+      "subject_ref": "park-guell",
+      "resolution": "resolved",
+      "scope": "whole_trip",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Do not include a visit to Park Güell.",
+          "occurrence": 0,
+          "offset_start": 120,
+          "offset_end": 157
+        }
+      ]
+    }
+  ],
+  "soft_preferences": [
+    {
+      "preference_id": "architecture-interest",
+      "kind": "poi_interest",
+      "wording": "architecture",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are two adults interested in architecture and history.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 57
+        }
+      ]
+    },
+    {
+      "preference_id": "history-interest",
+      "kind": "poi_interest",
+      "wording": "history",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are two adults interested in architecture and history.",
+          "occurrence": 0,
+          "offset_start": 0,
+          "offset_end": 57
+        }
+      ]
+    },
+    {
+      "preference_id": "other-sightseeing-flexibility",
+      "kind": "choice_flexibility",
+      "wording": "We are flexible about the other sightseeing choices.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are flexible about the other sightseeing choices.",
+          "occurrence": 0,
+          "offset_start": 158,
+          "offset_end": 210
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}

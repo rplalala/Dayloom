@@ -1,0 +1,168 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Palau de la Música Catalana",
+      "source_place_id": null,
+      "reason": "An additional architectural landmark to consider alongside the planned historic center and El Born visits on this day.",
+      "associated_day": "2026-10-22",
+      "area": "El Born and the Gothic Quarter",
+      "uncertainty": "Model-knowledge suggestion; proximity and availability are estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-cathedral",
+          "title": "Visit Barcelona Cathedral",
+          "place_name": "Barcelona Cathedral",
+          "source_place_id": null,
+          "location": "Gothic Quarter, Barcelona",
+          "start_time": "2026-10-22T09:30:00+02:00",
+          "end_time": "2026-10-22T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Explore the cathedral and its architectural and historical setting."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1-walk-to-picasso",
+          "title": "Walk to the Picasso Museum",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-22T11:00:00+02:00",
+          "end_time": "2026-10-22T11:20:00+02:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 20 minutes on foot via the Gothic Quarter and El Born; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-cathedral",
+            "to_activity_id": "day1-picasso-museum"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-picasso-museum",
+          "title": "Visit the Picasso Museum",
+          "place_name": "Picasso Museum",
+          "source_place_id": null,
+          "location": "El Born, Barcelona",
+          "start_time": "2026-10-22T11:20:00+02:00",
+          "end_time": "2026-10-22T13:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "A museum visit focused on Picasso and the city's cultural history."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-sagrada-familia",
+          "title": "Visit Sagrada Família",
+          "place_name": "Sagrada Família",
+          "source_place_id": null,
+          "location": "Eixample, Barcelona",
+          "start_time": "2026-10-23T09:30:00+02:00",
+          "end_time": "2026-10-23T11:30:00+02:00",
+          "estimated_cost": null,
+          "notes": "The trip's single planned visit to this landmark; consider its architecture and history."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2-walk-to-sant-pau",
+          "title": "Walk to Sant Pau Art Nouveau Site",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-23T11:30:00+02:00",
+          "end_time": "2026-10-23T11:50:00+02:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 20 minutes on foot along Avinguda de Gaudí; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-sagrada-familia",
+            "to_activity_id": "day2-sant-pau"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-sant-pau",
+          "title": "Explore the Sant Pau Art Nouveau Site",
+          "place_name": "Sant Pau Art Nouveau Site",
+          "source_place_id": null,
+          "location": "Eixample, Barcelona",
+          "start_time": "2026-10-23T11:50:00+02:00",
+          "end_time": "2026-10-23T13:20:00+02:00",
+          "estimated_cost": null,
+          "notes": "Explore the historic hospital complex and its Modernisme architecture."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-casa-batllo",
+          "title": "Visit Casa Batlló",
+          "place_name": "Casa Batlló",
+          "source_place_id": null,
+          "location": "Passeig de Gràcia, Barcelona",
+          "start_time": "2026-10-24T09:30:00+02:00",
+          "end_time": "2026-10-24T11:00:00+02:00",
+          "estimated_cost": null,
+          "notes": "Focus on the building's distinctive Modernisme design."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day3-walk-to-casa-mila",
+          "title": "Walk to Casa Milà",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T11:00:00+02:00",
+          "end_time": "2026-10-24T11:15:00+02:00",
+          "estimated_cost": null,
+          "notes": "Model estimate: about 15 minutes on foot along Passeig de Gràcia; route and duration are not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-casa-batllo",
+            "to_activity_id": "day3-casa-mila"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-casa-mila",
+          "title": "Visit Casa Milà (La Pedrera)",
+          "place_name": "Casa Milà (La Pedrera)",
+          "source_place_id": null,
+          "location": "Passeig de Gràcia, Barcelona",
+          "start_time": "2026-10-24T11:15:00+02:00",
+          "end_time": "2026-10-24T12:45:00+02:00",
+          "estimated_cost": null,
+          "notes": "Explore another notable example of Barcelona's Modernisme architecture."
+        }
+      ]
+    }
+  ]
+}

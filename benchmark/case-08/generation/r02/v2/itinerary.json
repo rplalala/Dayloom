@@ -1,0 +1,495 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [
+    {
+      "from_activity_id": "visit-sagrada-familia",
+      "to_activity_id": "visit-casa-batllo",
+      "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T11:30:00+02:00",
+      "arrival_time": "2026-10-22T11:55:29+02:00",
+      "provider_duration_seconds": 1529.0,
+      "distance_meters": 1849,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "visit-barcelona-cathedral",
+      "to_activity_id": "visit-temple-daugust",
+      "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T11:15:00+02:00",
+      "arrival_time": "2026-10-23T11:17:59+02:00",
+      "provider_duration_seconds": 179.0,
+      "distance_meters": 215,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "visit-temple-daugust",
+      "to_activity_id": "visit-muhba-casa-padellas",
+      "origin_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "destination_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T12:15:00+02:00",
+      "arrival_time": "2026-10-23T12:16:36+02:00",
+      "provider_duration_seconds": 96.0,
+      "distance_meters": 128,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "visit-montjuic-castle",
+      "to_activity_id": "visit-poble-espanyol",
+      "origin_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "destination_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T12:30:00+02:00",
+      "arrival_time": "2026-10-24T13:09:40+02:00",
+      "provider_duration_seconds": 2380.0,
+      "distance_meters": 2926,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "from_activity_id": "visit-sagrada-familia",
+      "to_activity_id": "visit-casa-batllo",
+      "origin": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "departure": "2026-10-22T11:30:00+02:00",
+      "next_start": "2026-10-22T12:30:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1529,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-17T03:48:26.965618+00:00",
+              "retrieved_at": "2026-10-17T03:48:27.610088+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "destination_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1529,
+                "fallback_info": null,
+                "requested_at": "2026-10-17T03:48:26.965618Z",
+                "retrieved_at": "2026-10-17T03:48:27.610088Z",
+                "origin_index": 0,
+                "destination_index": 1,
+                "distance_meters": 1849,
+                "duration_seconds": 1529,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "visit-barcelona-cathedral",
+      "to_activity_id": "visit-temple-daugust",
+      "origin": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "destination": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "departure": "2026-10-23T11:15:00+02:00",
+      "next_start": "2026-10-23T11:45:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 179,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-17T03:48:29.018550+00:00",
+              "retrieved_at": "2026-10-17T03:48:29.408267+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 179,
+                "fallback_info": null,
+                "requested_at": "2026-10-17T03:48:29.018550Z",
+                "retrieved_at": "2026-10-17T03:48:29.408267Z",
+                "origin_index": 0,
+                "destination_index": 8,
+                "distance_meters": 215,
+                "duration_seconds": 179,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "visit-temple-daugust",
+      "to_activity_id": "visit-muhba-casa-padellas",
+      "origin": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "destination": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "departure": "2026-10-23T12:15:00+02:00",
+      "next_start": "2026-10-23T13:15:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 96,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-17T03:48:27.610088+00:00",
+              "retrieved_at": "2026-10-17T03:48:29.015423+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "destination_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 96,
+                "fallback_info": null,
+                "requested_at": "2026-10-17T03:48:27.610088Z",
+                "retrieved_at": "2026-10-17T03:48:29.015423Z",
+                "origin_index": 3,
+                "destination_index": 9,
+                "distance_meters": 128,
+                "duration_seconds": 96,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "visit-montjuic-castle",
+      "to_activity_id": "visit-poble-espanyol",
+      "origin": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "destination": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "departure": "2026-10-24T12:30:00+02:00",
+      "next_start": "2026-10-24T14:00:00+02:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2380,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-17T03:48:26.965618+00:00",
+              "retrieved_at": "2026-10-17T03:48:27.610088+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "destination_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2380,
+                "fallback_info": null,
+                "requested_at": "2026-10-17T03:48:26.965618Z",
+                "retrieved_at": "2026-10-17T03:48:27.610088Z",
+                "origin_index": 4,
+                "destination_index": 7,
+                "distance_meters": 2926,
+                "duration_seconds": 2380,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "reference_recommendations": [
+    {
+      "place_name": "Sagrada família",
+      "source_place_id": "ChIJHdkZGACjpBIRi_R46Pnc-JU",
+      "reason": "Museum near Basilica of the Sagrada Familia (approximately 0 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-9dc86e5f-48b6-40e5-b8e2-c23d888fd1aa:0"
+    },
+    {
+      "place_name": "Casa Amatller",
+      "source_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "reason": "Museum near Casa Batlló (approximately 17 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-01365427-dc69-4bcb-8731-599099c57fed:0"
+    },
+    {
+      "place_name": "Kottoya - Omakase & Sushi",
+      "source_place_id": "ChIJnY8RfpGjpBIRkYYQGKAoyD8",
+      "reason": "Restaurant near Casa Padellàs (Barcelona History Museum MUHBA) (approximately 29 m straight-line).",
+      "associated_day": "2026-10-23",
+      "area": "Carrer del Veguer, 13, Ciutat Vella, 08002 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-b2464456-b034-404f-b28c-cf7cd1da0eda:9"
+    }
+  ],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-sagrada-familia",
+          "title": "Visit the Basilica of the Sagrada Familia",
+          "place_name": "Basilica of the Sagrada Familia",
+          "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+          "location": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+          "start_time": "2026-10-22T09:30:00+02:00",
+          "end_time": "2026-10-22T11:30:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-casa-batllo",
+          "title": "Explore Casa Batlló",
+          "place_name": "Casa Batlló",
+          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-22T12:30:00+02:00",
+          "end_time": "2026-10-22T14:00:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-barcelona-cathedral",
+          "title": "Visit the Cathedral of Barcelona",
+          "place_name": "Cathedral of Barcelona",
+          "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "location": "Pla de la Seu, s/n, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-23T10:00:00+02:00",
+          "end_time": "2026-10-23T11:15:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-temple-daugust",
+          "title": "See the Temple d'August",
+          "place_name": "Temple d'August",
+          "source_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+          "location": "Carrer del Paradís, 10, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-23T11:45:00+02:00",
+          "end_time": "2026-10-23T12:15:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-muhba-casa-padellas",
+          "title": "Explore Casa Padellàs (Barcelona History Museum MUHBA)",
+          "place_name": "Casa Padellàs (Barcelona History Museum MUHBA)",
+          "source_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "location": "Pl. del Rei, s/n, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-23T13:15:00+02:00",
+          "end_time": "2026-10-23T15:00:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-montjuic-castle",
+          "title": "Visit Montjuïc Castle",
+          "place_name": "Montjuïc Castle",
+          "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "location": "Ctra. de Montjuïc, 66, Sants-Montjuïc, 08038 Barcelona, Spain",
+          "start_time": "2026-10-24T10:30:00+02:00",
+          "end_time": "2026-10-24T12:30:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "visit-poble-espanyol",
+          "title": "Explore Poble Espanyol",
+          "place_name": "Poble Espanyol",
+          "source_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+          "location": "Av. de Francesc Ferrer i Guàrdia, 13, Sants-Montjuïc, 08038 Barcelona, Spain",
+          "start_time": "2026-10-24T14:00:00+02:00",
+          "end_time": "2026-10-24T16:00:00+02:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    }
+  ]
+}

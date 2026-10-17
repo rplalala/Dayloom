@@ -1,0 +1,28 @@
+{
+  "schema_version": "case_generation_failure_summary_1",
+  "run_id": "case-08-r01-v1",
+  "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+  "input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+  "native_failure": {
+    "error_type": "ClarificationRequired",
+    "detail": {
+      "status": "clarification_required",
+      "code": "unresolved_named_identity",
+      "requirement_ids": [
+        "named_1"
+      ],
+      "stage": "hard_requirements"
+    }
+  },
+  "requested_place": "Sagrada Fam\u00edlia",
+  "provider_names_observed": [
+    "Basilica of the Sagrada Familia"
+  ],
+  "native_resolution_status": "no_exact_candidate_match",
+  "explanation": "The Planner resolver compares normalized provider display names exactly. NFKC, casefold and whitespace normalization do not equate the requested Sagrada Fam\u00edlia with the returned Basilica of the Sagrada Familia. The required identity therefore remains unresolved and candidate acquisition raises before main itinerary generation. This is a Planner identity boundary observation, not an independent evaluator grounding result.",
+  "diagnostic_provider_calls": 0,
+  "original_failure_sha256": "a27f6f35d7e21017eb0e8ca938047b76803a8b2ce88d17d23fb025205350ff65",
+  "original_diagnostic_sha256": "9f7e0f63126ec3def114a628a782a27cb5c99b4e3c4c4c1981a5501162ab264d",
+  "saved_search_receipt_sha256": "dedcb557a2e7e840343f994c26eb0c8e930b6d110d724561ec3780cc1cdbe8d8",
+  "output_available": false
+}

@@ -1,0 +1,1295 @@
+{
+  "schema_version": "case_independent_relevance_handoff_1",
+  "case_id": "case-08",
+  "input_revision": "r01",
+  "execution_revision": "r02",
+  "reviewed_at": "2026-10-17T07:29:03.776826+00:00",
+  "report_source_revision": "b789039330bc76b2e5fb9480268266798eadef18",
+  "reviewer_ref": "/root/case08_relevance_review",
+  "reviewer_kind": "external_model",
+  "review_status": "complete",
+  "evidence_status": "unresolved",
+  "record_count": 96,
+  "missing_judgments": 0,
+  "verdict_counts": {
+    "unknown": 78,
+    "not_relevant": 14,
+    "relevant": 4
+  },
+  "by_interest": {
+    "architecture-interest": {
+      "relevant": 1,
+      "not_relevant": 0,
+      "unknown": 31
+    },
+    "history-interest": {
+      "relevant": 2,
+      "not_relevant": 0,
+      "unknown": 30
+    },
+    "sagrada-familia-exactly-once": {
+      "relevant": 1,
+      "not_relevant": 14,
+      "unknown": 17
+    }
+  },
+  "review_coverage": {
+    "numerator": 96,
+    "denominator": 96,
+    "unit": "interest_venue_pairs"
+  },
+  "decidable_coverage": {
+    "numerator": 18,
+    "denominator": 96,
+    "unit": "interest_venue_pairs"
+  },
+  "records": [
+    {
+      "review_id": "case08-source-only-01-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+      "verdict": "unknown",
+      "rationale": "The name Casa de la Seda and its address identify a place, but supply no architectural design, building features, architect, or architecture-focused visitor content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "c2b42d4f065133db5b7d52d694940804ce52cbd014720e769f353ee034b14062",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-01-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+      "verdict": "unknown",
+      "rationale": "Casa de la Seda is a proper name. No supplied field describes its age, historical role, collections, or historical interpretation.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "c2b42d4f065133db5b7d52d694940804ce52cbd014720e769f353ee034b14062",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-01-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Casa de la Seda, at Carrer de Sant Pere Més Alt, 1, Ciutat Vella, 08003 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "c2b42d4f065133db5b7d52d694940804ce52cbd014720e769f353ee034b14062",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-02-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-02-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-02-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-03-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+      "verdict": "unknown",
+      "rationale": "La Pedrera - Casa Milà is identified by name and address. No supplied field states an architect, style, design features, or architectural visitor content; recognizing the name from memory would add evidence.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d377570983dd8d36d88f29fbb6cc40a7a0608be27f97bdd1831742f833f6613b",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-03-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+      "verdict": "unknown",
+      "rationale": "The name La Pedrera - Casa Milà establishes identity, but the packet supplies no dates, historical events, significance, or history-focused content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d377570983dd8d36d88f29fbb6cc40a7a0608be27f97bdd1831742f833f6613b",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-03-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is La Pedrera - Casa Milà, at Pg. de Gràcia, 92, Eixample, 08008 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d377570983dd8d36d88f29fbb6cc40a7a0608be27f97bdd1831742f833f6613b",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-04-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "verdict": "unknown",
+      "rationale": "The name Temple d'August identifies a named temple, but gives no architectural features or interpretive content. The word temple alone does not establish architectural sightseeing relevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "8964af3336da9675db6754cd72cbf02e09701a028f5cfe64eaf882a229505513",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-04-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "verdict": "unknown",
+      "rationale": "Temple d'August is only a supplied name here. It does not establish a historical period, surviving remains, association with a historical person, or history-focused visitor content without additional facts.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "8964af3336da9675db6754cd72cbf02e09701a028f5cfe64eaf882a229505513",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-04-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Temple d'August, at Carrer del Paradís, 10, Ciutat Vella, 08002 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "8964af3336da9675db6754cd72cbf02e09701a028f5cfe64eaf882a229505513",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-05-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-05-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-05-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-06-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-06-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-06-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-07-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-07-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-07-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-08-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-08-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-08-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-09-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-09-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-09-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-10-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+      "verdict": "unknown",
+      "rationale": "Mercat de la Boqueria identifies a market. Its name, operating status, and location do not describe architectural merit, design features, or architectural interpretation.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "03ebe22f335e3c42a20de84bbf52df6aec2764c42c1c60a7e85b1487998c1b54",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-10-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+      "verdict": "unknown",
+      "rationale": "The market name and location do not supply its age, historical role, or historical interpretation. A market can have historical relevance, but that relevance is not established by these fields.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "03ebe22f335e3c42a20de84bbf52df6aec2764c42c1c60a7e85b1487998c1b54",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-10-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Mercat de la Boqueria, at La Rambla, 91, Ciutat Vella, 08001 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "03ebe22f335e3c42a20de84bbf52df6aec2764c42c1c60a7e85b1487998c1b54",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-11-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+      "verdict": "unknown",
+      "rationale": "Museum of the History of Catalonia explicitly identifies a historical topic, but says nothing about the architecture of the premises or architecture-focused exhibits.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "453dbb3d3299e18bc77837cb6ede440bfa3927961f1628970f0d14af778019fc",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-11-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+      "verdict": "relevant",
+      "rationale": "The supplied name explicitly identifies a Museum of the History of Catalonia. This is a direct statement of a history-museum topic and supports the broad history interest; no particular period, collection, or building history is inferred.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "453dbb3d3299e18bc77837cb6ede440bfa3927961f1628970f0d14af778019fc",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-11-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Museum of the History of Catalonia, at Pça. de Pau Vila, 3, Ciutat Vella, 08039 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "453dbb3d3299e18bc77837cb6ede440bfa3927961f1628970f0d14af778019fc",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-12-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-12-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-12-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-13-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-13-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-13-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-14-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "verdict": "unknown",
+      "rationale": "Poble Espanyol and its address are identity information. The packet does not describe buildings, architectural displays, construction features, or architecture-focused activities.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "7b8c6c5cfd6ad71e540a9273d2470bd5dac1b59d3882f19ea9f14d170420220a",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-14-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "verdict": "unknown",
+      "rationale": "Poble Espanyol is a name without supplied historical description, dates, historical associations, or history-focused content. Its historical relevance cannot be established from these fields.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "7b8c6c5cfd6ad71e540a9273d2470bd5dac1b59d3882f19ea9f14d170420220a",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-14-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Poble Espanyol, at Av. de Francesc Ferrer i Guàrdia, 13, Sants-Montjuïc, 08038 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "7b8c6c5cfd6ad71e540a9273d2470bd5dac1b59d3882f19ea9f14d170420220a",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-15-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "verdict": "unknown",
+      "rationale": "Montjuïc Castle names a castle, but the supplied fields do not describe its fabric, design, architectural significance, or visitor interpretation. A building-type word alone is insufficient.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b35f47e9827539e9e5ef97b41f92f1023dc60fe9838895748ecc7959a90db695",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-15-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "verdict": "unknown",
+      "rationale": "The castle name does not establish its date, authenticity, historical role, or historical interpretation. Inferring these from the familiar name or the word castle would exceed the supplied facts.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b35f47e9827539e9e5ef97b41f92f1023dc60fe9838895748ecc7959a90db695",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-15-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Montjuïc Castle, at Ctra. de Montjuïc, 66, Sants-Montjuïc, 08038 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b35f47e9827539e9e5ef97b41f92f1023dc60fe9838895748ecc7959a90db695",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-16-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+      "verdict": "unknown",
+      "rationale": "Palau de la Música Catalana is supplied as a name, without an architectural description, architect, style, design features, or architecture-focused visitor content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "75466a4c59bc69a54a87c25b10020dacf8323c7cd4589e84dc523f95263ada87",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-16-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+      "verdict": "unknown",
+      "rationale": "No field supplies the age, historical role, or history-focused interpretation of Palau de la Música Catalana. The venue name and address establish identity only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "75466a4c59bc69a54a87c25b10020dacf8323c7cd4589e84dc523f95263ada87",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-16-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Palau de la Música Catalana, at C/ Palau de la Música, 4-6, Ciutat Vella, 08003 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "75466a4c59bc69a54a87c25b10020dacf8323c7cd4589e84dc523f95263ada87",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-17-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+      "verdict": "relevant",
+      "rationale": "The supplied name Casa de l'Arquitectura de Barcelona explicitly foregrounds architecture as the subject. That direct thematic wording supports the broad architecture interest, without inferring architectural merit of the building, an exhibition, admission, or a historical period.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b9b3c2a556bce9e34e3514bc58203a5f14288c9609625e64e9614f96bc4d64f6",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-17-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+      "verdict": "unknown",
+      "rationale": "Casa de l'Arquitectura de Barcelona explicitly names architecture, but supplies no historical period, past events, collection, or history-focused interpretation. Architecture wording alone does not establish history relevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b9b3c2a556bce9e34e3514bc58203a5f14288c9609625e64e9614f96bc4d64f6",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-17-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Casa de l'Arquitectura de Barcelona, at Carrer del Rosselló, 87, Eixample, 08029 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "b9b3c2a556bce9e34e3514bc58203a5f14288c9609625e64e9614f96bc4d64f6",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-18-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-18-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-18-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-19-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "verdict": "unknown",
+      "rationale": "Casa Batlló is identified by name and address. No supplied fact states an architect, style, building design, or architecture-focused content; the name alone cannot establish those properties.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "40fc5e681fd2570671f4360044a17d54f01283b10c3c97218fe240df61d14752",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-19-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "verdict": "unknown",
+      "rationale": "The supplied Casa Batlló identity fields contain no date, historical association, historical significance, or history-focused visitor content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "40fc5e681fd2570671f4360044a17d54f01283b10c3c97218fe240df61d14752",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-19-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Casa Batlló, at Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "40fc5e681fd2570671f4360044a17d54f01283b10c3c97218fe240df61d14752",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-20-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-20-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-20-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-21-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-21-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-21-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-22-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "verdict": "unknown",
+      "rationale": "The name Casa Padellàs (Barcelona History Museum MUHBA) explicitly identifies a history museum, but supplies no architectural description or architecture-focused content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "5110ef96d02c2025adebb85bf8c0c1dcb71f59c0c2324996f69f88b3752265fc",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-22-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "verdict": "relevant",
+      "rationale": "The supplied name explicitly includes Barcelona History Museum MUHBA. This directly states a history-museum topic and supports the broad history interest; no particular exhibits, era, or history of the building are inferred.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "5110ef96d02c2025adebb85bf8c0c1dcb71f59c0c2324996f69f88b3752265fc",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-22-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Casa Padellàs (Barcelona History Museum MUHBA), at Pl. del Rei, s/n, Ciutat Vella, 08002 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "5110ef96d02c2025adebb85bf8c0c1dcb71f59c0c2324996f69f88b3752265fc",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-23-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-23-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-23-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-24-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-24-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-24-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-25-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "verdict": "unknown",
+      "rationale": "Cathedral of Barcelona identifies a cathedral, but no supplied field describes architecture, style, design, or architectural interpretation. A religious building category alone does not establish the requested thematic relevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "116a298d29589063fb89e241882bab8b23e81c2beffb144d5304e7c6a40261be",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-25-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "verdict": "unknown",
+      "rationale": "The cathedral name does not supply its age, historical events, historical significance, or history-focused interpretation. Those facts cannot be supplied from recognition or assumptions about cathedrals.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "116a298d29589063fb89e241882bab8b23e81c2beffb144d5304e7c6a40261be",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-25-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Cathedral of Barcelona, at Pla de la Seu, s/n, Ciutat Vella, 08002 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "116a298d29589063fb89e241882bab8b23e81c2beffb144d5304e7c6a40261be",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-26-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "verdict": "unknown",
+      "rationale": "Gothic Quarter is supplied as a neighborhood name. The name alone does not establish surviving Gothic architecture, particular building features, or architecture-focused visitor content.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "032be50d6f7cbfd305c4e99fed9dc69ab5642e46c5788f4e147c531bcc6b8929",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-26-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "verdict": "unknown",
+      "rationale": "Gothic Quarter and Ciutat Vella are geographic identity labels in these fields. No historical chronology, surviving heritage, historical events, or historical interpretation is described.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "032be50d6f7cbfd305c4e99fed9dc69ab5642e46c5788f4e147c531bcc6b8929",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-26-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Gothic Quarter, at Gothic Quarter, Ciutat Vella, Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "032be50d6f7cbfd305c4e99fed9dc69ab5642e46c5788f4e147c531bcc6b8929",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-27-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "verdict": "unknown",
+      "rationale": "Basilica of the Sagrada Familia establishes the requested named-place identity. The supplied fields do not describe its architecture, architect, style, or architectural visitor content; satisfying the named-place interest does not automatically establish architecture relevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "37d6b0bdc90af3f57c6547b8ce740ab70e849e36389de9bf58b05ea6b2e4fe7a",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-27-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "verdict": "unknown",
+      "rationale": "Basilica of the Sagrada Familia establishes identity, but contains no supplied dates, historical associations, historical significance, or history-focused visitor content. The named-place requirement is separate from the history theme.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "37d6b0bdc90af3f57c6547b8ce740ab70e849e36389de9bf58b05ea6b2e4fe7a",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-27-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "verdict": "relevant",
+      "rationale": "The supplied display name Basilica of the Sagrada Familia directly corresponds to the requested Sagrada Família, with the canonical ID and Barcelona address linking that name to this subject. This is a named-place identity judgment only; it does not establish any actual visit or exactly-once compliance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "37d6b0bdc90af3f57c6547b8ce740ab70e849e36389de9bf58b05ea6b2e4fe7a",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-28-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-28-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-28-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-29-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-29-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-29-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-30-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+      "verdict": "unknown",
+      "rationale": "Park Güell is named and located, but the supplied fields do not describe architecture, designed structures, an architect, or architecture-focused visitor content. The input prohibition does not decide thematic relevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d0050753dd8cc0e6f79c71c456fed87fcfa4403d6c314141eb4555fb206bbf4d",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-30-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+      "verdict": "unknown",
+      "rationale": "The park name and location contain no historical description, dates, events, or history-focused interpretation. Its prohibition in the request is a separate visit constraint, not evidence of thematic irrelevance.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d0050753dd8cc0e6f79c71c456fed87fcfa4403d6c314141eb4555fb206bbf4d",
+          "fields": [
+            "displayName.text",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-30-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+      "verdict": "not_relevant",
+      "rationale": "The supplied identity is Park Güell, at Gràcia, 08024 Barcelona, Spain, with this canonical ID. These fields identify a separately named place rather than the requested Sagrada Família; no Sagrada Família identity or alias is supplied for this subject. This verdict concerns named-place correspondence only.",
+      "citations": [
+        {
+          "source_id": "source-1",
+          "record_key": "d0050753dd8cc0e6f79c71c456fed87fcfa4403d6c314141eb4555fb206bbf4d",
+          "fields": [
+            "displayName.text",
+            "id",
+            "formattedAddress"
+          ]
+        }
+      ]
+    },
+    {
+      "review_id": "case08-source-only-31-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-31-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-31-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-32-1",
+      "interest_id": "architecture-interest",
+      "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, building features, and architecture-focused content are unknown; the identifier itself provides no thematic evidence.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-32-2",
+      "interest_id": "history-interest",
+      "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+      "verdict": "unknown",
+      "rationale": "No independent observations are supplied for this canonical place ID. Its identity, historical role, chronology, and history-focused content are unknown; missing evidence is not evidence of irrelevance.",
+      "citations": []
+    },
+    {
+      "review_id": "case08-source-only-32-3",
+      "interest_id": "sagrada-familia-exactly-once",
+      "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+      "verdict": "unknown",
+      "rationale": "No independent name, address, or other identity observations are supplied for this canonical place ID. Correspondence or non-correspondence to the requested Sagrada Família cannot be established from an opaque identifier.",
+      "citations": []
+    }
+  ],
+  "sources": {
+    "frozen_packet": {
+      "storage_identifier": "benchmark/scratch/case-08/next-r01/candidate-review-packet.json",
+      "sha256": "ad36050e06b2487ac848eaa5f3b07a8037bb156e4d4775be668192d3dee318d1"
+    },
+    "authentic_review": {
+      "storage_identifier": "benchmark/scratch/case-08/acceptance-r02/relevance-review.json",
+      "sha256": "0fb5b1d99067ffd467b4577201cc8501bd0bd2cf8b9236bc6b8186ac45940cd2"
+    },
+    "execution_metadata": {
+      "storage_identifier": "benchmark/scratch/case-08/acceptance-r02/relevance-execution.json",
+      "sha256": "e6b434c77871876a7d5151e6a17828b8908a4807f0abf3db486b1fb2e86e0c8e"
+    },
+    "native_bound_labels": {
+      "storage_identifier": "benchmark/scratch/case-08/acceptance-r02/native-relevance/reviews.json",
+      "sha256": "617018fd1ebd80ca66fc42277a72c8ce32bac5e7eb01ef56955d4e1fb789f1d8"
+    },
+    "interest_inventory": {
+      "storage_identifier": "benchmark/scratch/case-08/work/r02/interests/inventory.json",
+      "sha256": "a180755ba236c1c043bb8635e6b3cf417cca0d7350b3cb82e0bfa145de2e61d8"
+    },
+    "independent_snapshots": {
+      "source-1": {
+        "path": "benchmark\\scratch\\case-08\\work\\r02\\primary\\execution\\identity-snapshot\\manifest.json",
+        "sha256": "0762dc6a4ac166a747c2d541889520f7ea2cdcde885f667872dbe1ddc917927b",
+        "source_kind": "independent_google_places"
+      },
+      "source-2": {
+        "path": "benchmark\\scratch\\case-08\\work\\r02\\primary\\execution\\evidence-snapshot\\manifest.json",
+        "sha256": "326fe5a70cf1a290ae8ee3e9e85551624dd03e1f4e4f83dbeb4f21ee81f28378",
+        "source_kind": "independent_google_places"
+      }
+    }
+  },
+  "native_validation": {
+    "interest_and_relevance_readers": "PASS",
+    "validated_records": 96,
+    "validated_citations": 45,
+    "population_identity_or_quality_replay": false
+  },
+  "actual_assistance": {
+    "actor": "/root/case08_relevance_review",
+    "configuration": "inherited parent configuration; no override supplied",
+    "read_scope": "Only unchanged original input and frozen source-only packet; no schedules, ranks, scores, Planner interpretations or other judgments.",
+    "review_dispatches": 1,
+    "review_retries": 0,
+    "project_provider_calls": 0,
+    "runtime_model_proof": "unavailable",
+    "tokens": "unavailable",
+    "billing": "unavailable; not zero",
+    "display_incident": "The first local print of the packet failed with UnicodeEncodeError in the terminal encoding. Subsequent local displays of that same packet used ASCII-escaped JSON; no new evidence, reviewer dispatch, semantic-review retry, or additional source was introduced."
+  },
+  "limitations": [
+    "Known themes use only explicit names indicating architecture or history-museum subject; no architectural style or historical narrative is inferred.",
+    "All 17 venues without independent observations remain unknown for every interest.",
+    "Named-place relevance is identity correspondence, not exact visit count or final requirement validation.",
+    "Unknown judgments remain evidence limits; they do not authorize enrichment or new calls.",
+    "Private storage identifiers are evidence provenance, not published executable dependencies."
+  ]
+}

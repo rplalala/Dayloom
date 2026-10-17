@@ -1,0 +1,326 @@
+{
+  "schema_version": "case_material_index_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "status": "primary_handoff_paused",
+  "source_revision": "19a4f4d97e4c8cb5e441ebc3239e7ef5111b86bd",
+  "origin_main": "cc779bb2ece7b312ab3d985cebdd5d6b64b209c3",
+  "original_input": {
+    "path": "../inputs/case-08.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+  },
+  "reviewed_requirements": {
+    "path": "requirements/reviewed.json",
+    "sha256": "1c57fc906028ac46616ad5c85e7d53c58283afc50524b142455094d1ec650efc",
+    "native_source_sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+    "transformation": "Exact parsed independently reviewed specification; UTF-8/LF public serialization. Native source bytes and their separate SHA-256 remain unchanged."
+  },
+  "review_reuse": "Exact original r01 source-only decisions, actors, times and transcripts retained; current native validation passed. Separate r02 batch context binding is mechanical, not a new independent review.",
+  "generation": {
+    "v0": {
+      "run_id": "case-08-r02-v0",
+      "status": "completed",
+      "planner_dispatches": 1,
+      "itinerary": {
+        "path": "generation/r02/v0/itinerary.json",
+        "sha256": "e44bf613ef485b9df23e1f0b7e06cc01ce3dc9f577e8e4d2457de7fd12272a60",
+        "source_pointer": "/itinerary",
+        "native_result_sha256": "be57fd2ebe39525b504fa4a67bb11f77fcc3f1b2af4651303e815c882cc06212"
+      },
+      "usage_summary": {
+        "path": "generation/r02/v0/usage.json",
+        "sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363",
+        "native_source_sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363"
+      },
+      "native_usage_sha256": "d8d593ad16c4cfea2437c814fbcf8b3243454b97f755449cc1ce4a8a98f9798e",
+      "native_provenance_sha256": "d4fc9b588cbe052b63c78e4614490d444e9a87cdf750b9b42fe732333e1c5e01",
+      "native_completion_sha256": "5daba6de10888b767fd01c4361393df825ab14a9aa8a7e0eb7aa57fddb481c15",
+      "native_evidence_index_sha256": "39030d6716f6dbc8cfae025b911bfc12fbe5607f5e72324946e30a550c822036",
+      "reference_cost_usd": "0.002585585",
+      "process_elapsed_seconds": 37.859,
+      "metrics": {
+        "elapsed_seconds": 31.264999999999418,
+        "total_tokens": 19958,
+        "model_calls": 2,
+        "http_sends": 2,
+        "cache_hits": 0
+      },
+      "indexed_hashes_verified": 18,
+      "unpriced_event_count": 0,
+      "token_missing_calls": 0
+    },
+    "v1": {
+      "run_id": "case-08-r02-v1",
+      "status": "completed",
+      "planner_dispatches": 1,
+      "itinerary": {
+        "path": "generation/r02/v1/itinerary.json",
+        "sha256": "9a0550c92d8b66491000356dea326a1c8a4ea96da8c2de6e479f07672082b544",
+        "source_pointer": "/itinerary",
+        "native_result_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15"
+      },
+      "usage_summary": {
+        "path": "generation/r02/v1/usage.json",
+        "sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339",
+        "native_source_sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339"
+      },
+      "native_usage_sha256": "dfed99678b0b75f60bf4a325af209c65ef93b7049288aa992a1899f31b0a1279",
+      "native_provenance_sha256": "3c0bc953890f2ee1aabacb4328f047cbe8b4956c5f9c428da9ecff29cc91884c",
+      "native_completion_sha256": "d03fb0ef22100f2247a47ac4136793c5d3c7b5a0a48135d5014ebf4474f3b901",
+      "native_evidence_index_sha256": "2246db7ab20920927b747096652ebffd52a121e6277c627ba6a13255835231f3",
+      "reference_cost_usd": "1.67334208",
+      "process_elapsed_seconds": 110.828,
+      "metrics": {
+        "elapsed_seconds": 102.0460000000021,
+        "total_tokens": 55521,
+        "model_calls": 5,
+        "http_sends": 61,
+        "cache_hits": 1
+      },
+      "indexed_hashes_verified": 201,
+      "unpriced_event_count": 0,
+      "token_missing_calls": 0,
+      "candidate_capture_sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046"
+    },
+    "v2": {
+      "run_id": "case-08-r02-v2",
+      "status": "completed",
+      "planner_dispatches": 1,
+      "itinerary": {
+        "path": "generation/r02/v2/itinerary.json",
+        "sha256": "491817761a0865380b7daa5d0ecf64b7c8c2b95a6a072eadea16f75a75546a5b",
+        "source_pointer": "/itinerary",
+        "native_result_sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337"
+      },
+      "usage_summary": {
+        "path": "generation/r02/v2/usage.json",
+        "sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a",
+        "native_source_sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a"
+      },
+      "native_usage_sha256": "6cff1d014f48b04065e5f2cebfaaeb2054f1a2c7df1018b76c26ca69e229b6e1",
+      "native_provenance_sha256": "2fc6ae05015a3f2c237743bbe6bc6b71a1c86013c3d4a2426febccca61b95e93",
+      "native_completion_sha256": "ce81b2fede7a93496d8aafed66ba42ee9033e81a5575f1f7713d82a61fb26afa",
+      "native_evidence_index_sha256": "6829a172dfe15edf88e895b08677e5249f501e4a9583db9265aa04f3c9df1cf1",
+      "reference_cost_usd": "1.45998923",
+      "process_elapsed_seconds": 92.968,
+      "metrics": {
+        "elapsed_seconds": 85.0,
+        "total_tokens": 54629,
+        "model_calls": 6,
+        "http_sends": 52,
+        "cache_hits": 1
+      },
+      "indexed_hashes_verified": 174,
+      "unpriced_event_count": 0,
+      "token_missing_calls": 0,
+      "candidate_capture_sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c",
+      "retrieval_status": "empty"
+    },
+    "v3": {
+      "run_id": "case-08-r02-v3",
+      "status": "completed",
+      "planner_dispatches": 1,
+      "itinerary": {
+        "path": "generation/r02/v3/itinerary.json",
+        "sha256": "141d49c1b833375e14a47a5bdb5092fb3fb8064a85f15d28ccb84f6bf7701ae8",
+        "source_pointer": "/itinerary",
+        "native_result_sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90"
+      },
+      "usage_summary": {
+        "path": "generation/r02/v3/usage.json",
+        "sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f",
+        "native_source_sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f"
+      },
+      "native_usage_sha256": "2c632e4eda14ed3765fa7094b75b603e82c078c6a4d9d521d891d63303a3a8fa",
+      "native_provenance_sha256": "30c94d83dee24d5eff0fb85a612ec636d54dcfb9f17da0d45e0b4d7f68d884b8",
+      "native_completion_sha256": "1bc91d4ffb7ead68f518fb019c9c18c677d0b6df04039dbb78f00c691ec3beff",
+      "native_evidence_index_sha256": "64cd9bb2f731b829c153e97fd61f2237ca230f9c7cb638b7ce55e28cde6e23b1",
+      "reference_cost_usd": "1.33072707",
+      "process_elapsed_seconds": 95.297,
+      "metrics": {
+        "elapsed_seconds": 82.57800000000134,
+        "total_tokens": 54166,
+        "model_calls": 6,
+        "http_sends": 52,
+        "cache_hits": 0
+      },
+      "indexed_hashes_verified": 172,
+      "unpriced_event_count": 0,
+      "token_missing_calls": 0,
+      "retrieval_status": "empty"
+    }
+  },
+  "primary": {
+    "status": "completed",
+    "processing_status": "complete",
+    "acquisition_status": "complete",
+    "evidence_status": "unresolved",
+    "quality_report": {
+      "path": "evaluation/primary/report.json",
+      "sha256": "3e45555ee28d8d567a826363a024aede07b912529e3a5de722d1a7050216d52b",
+      "native_report_sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+      "source_pointer": "/quality"
+    },
+    "summary": {
+      "path": "evaluation/primary/summary.json",
+      "sha256": "f93bad77dbe10f0cbbaa1eb1c13e4ee18ba24fd77e6291833695e79783b9dd42"
+    },
+    "preparation_sha256": "01bf4f603330173b0d6a9722129d39b0149cc152e74ffac7d7366d77c05302c3",
+    "native_usage_sha256": "1068b6827b68b3ee132fb7fa584f8f033a3b14cbbcc4d6ff235d04cea92ad86e",
+    "native_receipt_sha256": "ed8f04c135f2b44d563cccce1210180c89e8c54dafe1cc6b5164a5b51106ecad",
+    "receipt_file_hashes_verified": 213,
+    "offline_replay_exact": true,
+    "google_sends": 65,
+    "model_sends": 2,
+    "reference_cost_usd": "1.3448141",
+    "unpriced_event_count": 0,
+    "opening_assessment": {
+      "eligible_count": 3,
+      "packet_sha256": "701825b5282221b2886dde71d4a32bd11886c2ca12b3e73b3df161f17828e67c",
+      "reason": null,
+      "status": "complete"
+    }
+  },
+  "reference_cost_summary": {
+    "currency": "USD",
+    "cumulative_ceiling": "30.00",
+    "r01_reference_usd": "0.26120457",
+    "r02_generation_reference_usd": "4.466643965",
+    "r02_primary_reference_usd": "1.3448141",
+    "cumulative_reference_usd": "6.072662635",
+    "remaining_reference_usd": "23.927337365",
+    "actual_account_total": null,
+    "external_codex_billing": null,
+    "meaning": "Observed dated retail/proxy estimates, not invoices. Unused balance grants no new invocation or budget transfer."
+  },
+  "preservation": {
+    "r01_original_files_verified": 191,
+    "r01_inventory_sha256": "7fc954d5784d01cc208bfe8cb79fe3c0d61e2ddf1772943cece9373fd7d4f19f",
+    "original_input_unchanged": true,
+    "r02_fresh_selection_only": true,
+    "four_versions_same_source": true,
+    "v3_same_run_draft_repair_final_retained": true,
+    "approval_refusals": "V0 and V1 pre-process refusals retained; subsequent direct current-chat approval preceded each first actual invocation. Neither refusal created provider sends.",
+    "private_storage_identifiers": [
+      "benchmark/scratch/case-08/work/r01/",
+      "benchmark/scratch/case-08/work/r02/"
+    ],
+    "storage_note": "Ignored native evidence retained in place; identifiers are not public navigation dependencies."
+  },
+  "historical_r01": {
+    "source_index_git_commit": "8d15764e05ef2d693e778622e760141ae33aa8b8",
+    "source_index_sha256": "60f83f063d3f90ff1e2c5006c16873098310cd0e65c0e13e40718e3bee2dee26",
+    "record": {
+      "schema_version": "case_material_index_1",
+      "case_id": "case-08",
+      "execution_revision": "r01",
+      "status": "stopped_before_primary",
+      "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+      "original_input": {
+        "path": "../inputs/case-08.json",
+        "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+      },
+      "reviewed_requirements": {
+        "path": "requirements/reviewed.json",
+        "sha256": "1c57fc906028ac46616ad5c85e7d53c58283afc50524b142455094d1ec650efc",
+        "native_source_sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+        "transformation": "Exact parsed independently reviewed specification; UTF-8/LF public serialization. Native source bytes and their separate SHA-256 remain unchanged."
+      },
+      "v0_presentation": {
+        "path": "generation/v0/itinerary.json",
+        "sha256": "1bc20ef61c4f4eb4ad78edd7a9ae143d7fd8441bcd72016d7b1c79c5f17992c8",
+        "source_result_sha256": "1eab752a4d3b36a46f5127a0ed03cfa1e264646071dd1e072a5470bc2290633c",
+        "source_pointer": "/itinerary",
+        "transformation": "Exact parsed itinerary subtree, serialized as standalone JSON; no schedule-field changes."
+      },
+      "v1_failure_summary": {
+        "path": "generation/v1/failure.json",
+        "sha256": "27061ca2efe08994e05496b4309d44d6cbd516801e9070f0f36f184aad8dd24e"
+      },
+      "attempts": {
+        "v0": {
+          "run_id": "case-08-r01-v0",
+          "status": "completed",
+          "planner_dispatches": 1,
+          "process_elapsed_seconds": 54.875,
+          "native_elapsed_seconds": 45.78100000000268,
+          "model_calls": 2,
+          "http_sends": 2,
+          "observed_tokens": 24254,
+          "reference_cost_usd": "0.00387304",
+          "actual_account_cost_usd": null,
+          "unpriced_event_count": 0,
+          "token_missing_calls": 0,
+          "result_sha256": "1eab752a4d3b36a46f5127a0ed03cfa1e264646071dd1e072a5470bc2290633c",
+          "usage_sha256": "f5c68189f4d06ca63a6a0902871c172b1e493feedca208b50796f59a81c88f1e",
+          "evidence_index_sha256": "6e73cbdccbd316d581f11065150de891919552b4c704969778461c40447260a1",
+          "manifest_sha256": "b06509d3e3ce4dcf24b9d8b7982db615adf5a79660dd02720ffb91d6e800a603",
+          "completion_sha256": "dda11545b0895ebc3701009e0d6d5e53577706c134c3fc11dfb5d168368f5c99"
+        },
+        "v1": {
+          "run_id": "case-08-r01-v1",
+          "status": "failed",
+          "planner_dispatches": 1,
+          "process_elapsed_seconds": 31.969,
+          "native_elapsed_seconds": 26.06300000000192,
+          "model_calls": 2,
+          "http_sends": 10,
+          "observed_tokens": 16971,
+          "reference_cost_usd": "0.25733153",
+          "actual_account_cost_usd": null,
+          "unpriced_event_count": 0,
+          "token_missing_calls": 0,
+          "result_sha256": null,
+          "usage_sha256": "9a2a3bc9e1a0a22986f027f8d1ee04b28f3db0ad0469598b0f2e8f42162deaad",
+          "evidence_index_sha256": "ea5600229daeb316302f0a7845d327b70e57b79376dc75ffebc4c782a80a5e95",
+          "manifest_sha256": "4b239a4fc5297038ba7f6a8c5584fbdbb22f0204eaeacf6322ffe3f2bdc7dfbb",
+          "completion_sha256": "21acaa8aac68329ea1cee68bc4713992037eb44cf8a40f5572f795ae9d497fea"
+        },
+        "v2": {
+          "run_id": "case-08-r01-v2",
+          "status": "unstarted",
+          "planner_dispatches": 0,
+          "observed_model_calls": 0,
+          "observed_http_sends": 0,
+          "reference_cost_usd": null,
+          "reason": "Stopped after first V1 clarification-required failure."
+        },
+        "v3": {
+          "run_id": "case-08-r01-v3",
+          "status": "unstarted",
+          "planner_dispatches": 0,
+          "observed_model_calls": 0,
+          "observed_http_sends": 0,
+          "reference_cost_usd": null,
+          "reason": "Stopped after first V1 clarification-required failure."
+        }
+      },
+      "reference_cost_summary": {
+        "currency": "USD",
+        "approved_allowance": "30.00",
+        "observed_reference_total": "0.26120457",
+        "unconsumed_reference_allowance": "29.73879543",
+        "actual_account_total": null,
+        "external_codex_billing": null,
+        "meaning": "Saved retail/proxy estimates, not invoices. No authorization to transfer unused stage allowances or retry."
+      },
+      "primary_evaluation": {
+        "status": "unstarted",
+        "provider_sends": 0,
+        "scores": null,
+        "qualified_four_version_batch": false
+      },
+      "private_storage_identifier": "benchmark/scratch/case-08/work/r01/ (ignored native evidence; storage identifier, not a public dependency)",
+      "preservation": "Both original dispatched attempts and source-only agent records remain unchanged. No compact closeout archive or primary replay exists.",
+      "public_serialization": "UTF-8, LF line endings. Public artifact digests bind these repository bytes; native-source digests bind original private bytes."
+    }
+  },
+  "pending": [
+    "Steps 7-9",
+    "paired access execution",
+    "final case acceptance",
+    "blinded human review",
+    "Git publication"
+  ],
+  "public_serialization": "UTF-8/LF; public digests bind these bytes, native digests bind original private bytes."
+}

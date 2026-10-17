@@ -1,0 +1,444 @@
+{
+  "schema_version": "case_offline_repair_structure_1",
+  "case_id": "case-08",
+  "input_revision": "r01",
+  "execution_revision": "r02",
+  "generated_at": "2026-10-17T07:06:13.861186+00:00",
+  "report_source_revision": "c6d4abc9f0d602e09cd61871a55d3ab931b3bc63",
+  "original_request": {
+    "storage_identifier": "benchmark/inputs/case-08.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+  },
+  "derivation": "Descriptive projection of saved material; no evaluation, identity rebuilding, replay, native research adapter, model or provider invocation.",
+  "private_source_note": "Storage identifiers are retained local evidence locations, not published navigation dependencies.",
+  "processing_status": "complete",
+  "independent_pair_status": "not_performed",
+  "sources": {
+    "v3": {
+      "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/result.json",
+      "sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90"
+    },
+    "v2": {
+      "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+      "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337"
+    },
+    "mechanism": {
+      "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/mechanism.json",
+      "sha256": "992725dc5fcb91d8167d8d4e07e188dd837a852d9b9f628784144b947b1a82b4"
+    }
+  },
+  "saved_repair": {
+    "status": "ACCEPTED_COMPLETE",
+    "reason": "authorized_targets_complete",
+    "model_attempted": false,
+    "usage_status": "not_called",
+    "model_calls": 0,
+    "round_count": 1,
+    "strategy": "system_delete",
+    "selected_round_index": 1,
+    "base_state": "8dfffc9b0a57b51ee5b824c16feff05596ba18127ab8c24f733adfca74755f93",
+    "best_state": "f4b2a64d6a3ad222c57338a60f9cdea0c939cea543e3c117b1561e62c7ee63a0",
+    "best_promoted": true,
+    "effective_patch": {
+      "edits": [
+        {
+          "operation": "delete",
+          "activity_id": "day1-cathedral",
+          "date": "2026-10-22",
+          "place_id": null,
+          "start_time": null,
+          "end_time": null
+        }
+      ],
+      "target_dispositions": []
+    },
+    "target_links": {
+      "finding_23": "finding_23"
+    },
+    "target_progress": [
+      {
+        "finding_id": "finding_23",
+        "check": "soft_pace",
+        "outcome": "resolved",
+        "before": 10.0,
+        "after": 0.0
+      }
+    ],
+    "components": [
+      {
+        "component_id": "component_1",
+        "status": "accepted",
+        "edit_indices": [
+          0
+        ]
+      }
+    ],
+    "scope_allow_coverage_regression": false,
+    "main_visits_lost": [
+      "day1-cathedral"
+    ],
+    "coverage_regressions": [
+      "2026-10-22"
+    ],
+    "saved_soft_pace": {
+      "objective": "zero_soft_pace_deductions",
+      "is_failure_constraint": false,
+      "comparable": {
+        "dates": [
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24"
+        ],
+        "before_total": 10.0,
+        "after_total": 0.0
+      },
+      "before": {
+        "mean_penalty": 3.3333333333333335,
+        "days": [
+          {
+            "date": "2026-10-22",
+            "penalty": 10.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-23",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-24",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          }
+        ]
+      },
+      "after": {
+        "mean_penalty": 0.0,
+        "days": [
+          {
+            "date": "2026-10-22",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-23",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          },
+          {
+            "date": "2026-10-24",
+            "penalty": 0.0,
+            "reason": "soft_pace_objective"
+          }
+        ]
+      },
+      "target_state": "reached"
+    },
+    "interpretation": "Planner-native observations only. ACCEPTED_COMPLETE and saved pace progress do not establish independent paired resolution, no regression, or retained thematic coverage."
+  },
+  "same_run_structure": {
+    "draft_activity_count": 7,
+    "final_activity_count": 6,
+    "per_day": [
+      {
+        "date": "2026-10-22",
+        "draft_primary_visits": 3,
+        "final_primary_visits": 2
+      },
+      {
+        "date": "2026-10-23",
+        "draft_primary_visits": 2,
+        "final_primary_visits": 2
+      },
+      {
+        "date": "2026-10-24",
+        "draft_primary_visits": 2,
+        "final_primary_visits": 2
+      }
+    ],
+    "deleted": [
+      {
+        "date": "2026-10-22",
+        "activity_id": "day1-cathedral",
+        "place_name": "Cathedral of Barcelona",
+        "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "start_time": "2026-10-22T09:45:00+02:00",
+        "end_time": "2026-10-22T11:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      }
+    ],
+    "added": [],
+    "retained_unchanged": [
+      {
+        "date": "2026-10-22",
+        "activity_id": "day1-muhba",
+        "place_name": "Casa Padellàs (Barcelona History Museum MUHBA)",
+        "source_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "start_time": "2026-10-22T12:15:00+02:00",
+        "end_time": "2026-10-22T14:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-22",
+        "activity_id": "day1-temple",
+        "place_name": "Temple d'August",
+        "source_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "start_time": "2026-10-22T11:20:00+02:00",
+        "end_time": "2026-10-22T12:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "day2-casa-batllo",
+        "place_name": "Casa Batlló",
+        "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "start_time": "2026-10-23T12:15:00+02:00",
+        "end_time": "2026-10-23T14:15:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "day2-sagrada",
+        "place_name": "Basilica of the Sagrada Familia",
+        "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "start_time": "2026-10-23T09:30:00+02:00",
+        "end_time": "2026-10-23T11:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "day3-boqueria",
+        "place_name": "Mercat de la Boqueria",
+        "source_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "start_time": "2026-10-24T09:30:00+02:00",
+        "end_time": "2026-10-24T10:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "day3-montjuic-castle",
+        "place_name": "Montjuïc Castle",
+        "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "start_time": "2026-10-24T11:45:00+02:00",
+        "end_time": "2026-10-24T13:45:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      }
+    ],
+    "retained_changed": [],
+    "draft_transfer_edges": [
+      [
+        "day1-cathedral",
+        "day1-temple"
+      ],
+      [
+        "day1-temple",
+        "day1-muhba"
+      ],
+      [
+        "day2-sagrada",
+        "day2-casa-batllo"
+      ],
+      [
+        "day3-boqueria",
+        "day3-montjuic-castle"
+      ]
+    ],
+    "final_transfer_edges": [
+      [
+        "day1-temple",
+        "day1-muhba"
+      ],
+      [
+        "day2-sagrada",
+        "day2-casa-batllo"
+      ],
+      [
+        "day3-boqueria",
+        "day3-montjuic-castle"
+      ]
+    ],
+    "draft_round_original_exact": true,
+    "adopted_round_repair_final_exact": true,
+    "days_equal_across_adopted_final_primary_published": true,
+    "projection_differences": {
+      "repair_final_route_diagnostics": 4,
+      "published_route_diagnostics": 3,
+      "repair_final_nearby_references": 0,
+      "published_nearby_references": 3,
+      "explanation": "Published final removes the obsolete deleted-edge route diagnostic and adds post-primary Nearby references; scheduled activity days match exactly. Nearby is excluded from visit counts."
+    }
+  },
+  "v2_v3_finals": {
+    "v2_activity_count": 7,
+    "v3_activity_count": 6,
+    "retained_ids": [
+      "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "ChIJYUFLSe2ipBIRD04uni940kA",
+      "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+      "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+    ],
+    "v3_only_ids": [
+      "ChIJAVoetfeipBIR1a1z3FTGCoY"
+    ],
+    "v2_only_ids": [
+      "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+      "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+    ],
+    "v2_occurrences": [
+      {
+        "date": "2026-10-22",
+        "activity_id": "visit-sagrada-familia",
+        "place_name": "Basilica of the Sagrada Familia",
+        "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "start_time": "2026-10-22T09:30:00+02:00",
+        "end_time": "2026-10-22T11:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-22",
+        "activity_id": "visit-casa-batllo",
+        "place_name": "Casa Batlló",
+        "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "start_time": "2026-10-22T12:30:00+02:00",
+        "end_time": "2026-10-22T14:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "visit-barcelona-cathedral",
+        "place_name": "Cathedral of Barcelona",
+        "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "start_time": "2026-10-23T10:00:00+02:00",
+        "end_time": "2026-10-23T11:15:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "visit-temple-daugust",
+        "place_name": "Temple d'August",
+        "source_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "start_time": "2026-10-23T11:45:00+02:00",
+        "end_time": "2026-10-23T12:15:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "visit-muhba-casa-padellas",
+        "place_name": "Casa Padellàs (Barcelona History Museum MUHBA)",
+        "source_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "start_time": "2026-10-23T13:15:00+02:00",
+        "end_time": "2026-10-23T15:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "visit-montjuic-castle",
+        "place_name": "Montjuïc Castle",
+        "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "start_time": "2026-10-24T10:30:00+02:00",
+        "end_time": "2026-10-24T12:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "visit-poble-espanyol",
+        "place_name": "Poble Espanyol",
+        "source_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "start_time": "2026-10-24T14:00:00+02:00",
+        "end_time": "2026-10-24T16:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      }
+    ],
+    "v3_occurrences": [
+      {
+        "date": "2026-10-22",
+        "activity_id": "day1-temple",
+        "place_name": "Temple d'August",
+        "source_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "start_time": "2026-10-22T11:20:00+02:00",
+        "end_time": "2026-10-22T12:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-22",
+        "activity_id": "day1-muhba",
+        "place_name": "Casa Padellàs (Barcelona History Museum MUHBA)",
+        "source_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "start_time": "2026-10-22T12:15:00+02:00",
+        "end_time": "2026-10-22T14:00:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "day2-sagrada",
+        "place_name": "Basilica of the Sagrada Familia",
+        "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "start_time": "2026-10-23T09:30:00+02:00",
+        "end_time": "2026-10-23T11:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-23",
+        "activity_id": "day2-casa-batllo",
+        "place_name": "Casa Batlló",
+        "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "start_time": "2026-10-23T12:15:00+02:00",
+        "end_time": "2026-10-23T14:15:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "day3-boqueria",
+        "place_name": "Mercat de la Boqueria",
+        "source_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "start_time": "2026-10-24T09:30:00+02:00",
+        "end_time": "2026-10-24T10:30:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      },
+      {
+        "date": "2026-10-24",
+        "activity_id": "day3-montjuic-castle",
+        "place_name": "Montjuïc Castle",
+        "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "start_time": "2026-10-24T11:45:00+02:00",
+        "end_time": "2026-10-24T13:45:00+02:00",
+        "activity_kind": "main_poi",
+        "time_use": "scheduled"
+      }
+    ],
+    "interpretation": "Independent generation schedules; V3 draft is not the V2 result. Membership and dates describe observed differences only."
+  },
+  "independent_evaluation": {
+    "saved_final_primary": {
+      "storage_identifier": "benchmark/case-08/evaluation/primary-corrected-r01/summary.json",
+      "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f"
+    },
+    "draft_score": null,
+    "paired_score_delta": null,
+    "condition_resolution": "UNKNOWN",
+    "regressions": "UNKNOWN",
+    "thematic_retention": "UNKNOWN",
+    "pair_calls": 0,
+    "reason": "No independent common-policy draft/final pair was acquired or scored. Native paired-policy compatibility remains pending separately approved generic work."
+  }
+}
