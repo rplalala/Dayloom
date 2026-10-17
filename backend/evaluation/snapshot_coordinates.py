@@ -82,6 +82,11 @@ def prepare_snapshot_coordinates(intake, identity_report, snapshot_directory):
         refs = {r["reference_id"]: r for r in plan["references"]}
         selected = {}
         for adopted in identity["records"]:
+            if adopted["kind"] == "requirement_subject" and "subject_evidence" in identity.get(
+                "identity_versioned_replay", {}
+            ):
+                # Common targets own separate independent evidence, not route endpoints.
+                continue
             pid = associated_place_id(adopted)
             if pid is None:
                 continue

@@ -18,6 +18,7 @@ from .snapshot import (
 )
 
 VERSION = "rtpeval_pair_acquisition_preparation_1"
+COMMON_VERSION = "rtpeval_pair_acquisition_preparation_2"
 CONTEXT_FILES = {
     "schedule_context": "context",
     "occupancy_reviews": "occupancy_reviews",
@@ -101,11 +102,11 @@ def selection_checked(intake, selection):
         raise ValueError("Selected V3 run/stage/input/RequirementSpec binding mismatch")
 
 
-def unresolved_identity(intake):
+def unresolved_identity(intake, subject_source=None):
     from .identity import EVIDENCE_VERSION
-    from .identity_program import resolve_versioned_identities
+    from .paired_subjects import resolve_pair_identity
 
-    return resolve_versioned_identities(
+    return resolve_pair_identity(
         intake,
         {
             "schema_version": EVIDENCE_VERSION,
@@ -113,7 +114,8 @@ def unresolved_identity(intake):
             "batch_revision": intake["revision"],
             "records": [],
         },
-    ).to_dict()
+        subject_source,
+    )
 
 
 def available(intake):
@@ -255,6 +257,7 @@ def prepare(
     files,
     identity_snapshot=None,
     snapshot=None,
+    subject_primary_run=None,
 ):
     root, source = fresh(directory), Path(manifest).resolve()
     for path in (identity_snapshot, snapshot):
@@ -268,14 +271,21 @@ def prepare(
     if prices["currency"] != "USD":
         raise ValueError("Paired spend ceiling requires USD prices")
     validate_context(intake, context)
+    subject_source = None
+    if subject_primary_run is not None:
+        from .paired_subjects import load_primary_subjects
+
+        if root.is_relative_to(Path(subject_primary_run).resolve()):
+            raise ValueError("Paired destination must be outside subject source")
+        subject_source = load_primary_subjects(subject_primary_run, intake)
     identity_plan = build_identity_plan(intake, paired=True)
-    identity = unresolved_identity(intake)
+    identity = unresolved_identity(intake, subject_source)
     cached = {}
     if identity_snapshot:
         frozen = load_snapshot(identity_snapshot, expected_plan=identity_plan)
-        from .identity_program import resolve_versioned_identities
+        from .paired_subjects import resolve_pair_identity
 
-        identity = resolve_versioned_identities(intake, identity_evidence(frozen)).to_dict()
+        identity = resolve_pair_identity(intake, identity_evidence(frozen), subject_source)
         cached["identity"] = str(Path(identity_snapshot).resolve())
     route_preparation = routes(intake, identity, context, identity_snapshot)
     evidence_plan = route_preparation["evidence_plan"]
@@ -376,7 +386,7 @@ def prepare(
         Path(__file__).parents[1] / "pace_policy.py",
     ]
     value = {
-        "schema_version": VERSION,
+        "schema_version": COMMON_VERSION if subject_source is not None else VERSION,
         "status": "prepared",
         "scope": "selected_v3_paired_evidence",
         "prepared_at": stamp,
@@ -403,6 +413,19 @@ def prepare(
         **({"execution_mode": "offline_reuse", "max_current_google_sends": 0} if imported else {}),
     }
     root.mkdir(parents=True, exist_ok=False)
+    if subject_source is not None:
+        from .paired_subjects import load_primary_subjects
+
+        shutil.copytree(subject_primary_run, root / "material/subjects")
+        if load_primary_subjects(root / "material/subjects", intake) != subject_source:
+            raise ValueError("Copied common-subject source differs")
+        for name, digest in subject_source["source_files"].items():
+            pins[str(Path(subject_primary_run).resolve() / name)] = digest
+        value.update(
+            identity_policy=subject_source["identity_policy"],
+            subject_policy=subject_source["subject_policy"],
+            subject_source=subject_source,
+        )
     for name in native_names:
         target = root / "material/native" / name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -435,7 +458,7 @@ def verify(directory):
     root = Path(directory).resolve()
     value = _read(root / "preparation.json")[0]
     if (
-        value.get("schema_version") != VERSION
+        value.get("schema_version") not in (VERSION, COMMON_VERSION)
         or value.get("directory") != str(root)
         or canonical_digest({k: v for k, v in value.items() if k != "content_sha256"})
         != value.get("content_sha256")
@@ -469,6 +492,19 @@ def verify(directory):
     if load_batch(root / value["native_manifest"]).to_dict() != value["intake"]:
         raise ValueError("Copied paired sources changed")
     selection_checked(value["intake"], value["selection"])
+    subject_source = None
+    if value["schema_version"] == COMMON_VERSION:
+        from .paired_subjects import load_primary_subjects
+
+        subject_source = load_primary_subjects(root / "material/subjects", value["intake"])
+        if (
+            value.get("subject_source") != subject_source
+            or value.get("identity_policy") != subject_source["identity_policy"]
+            or value.get("subject_policy") != subject_source["subject_policy"]
+        ):
+            raise ValueError("Paired frozen common-subject policy/material differs")
+    elif any(k in value for k in ("subject_source", "identity_policy", "subject_policy")):
+        raise ValueError("Legacy paired preparation cannot carry common-subject material")
     imported = value.get("execution_mode") == "offline_reuse"
     options_checked(value["options"], allow_zero=imported)
     validate_context(value["intake"], value["context"])
@@ -476,14 +512,16 @@ def verify(directory):
     identity_plan = build_identity_plan(value["intake"], paired=True)
     if value["identity_plan"] != identity_plan:
         raise ValueError("Prepared paired identity plan differs from native sources")
-    identity = unresolved_identity(value["intake"])
+    identity = unresolved_identity(value["intake"], subject_source)
     cache = root / "material/cache/identity" if "identity" in value["cached_snapshots"] else None
     if cache:
-        from .identity_program import resolve_versioned_identities
+        from .paired_subjects import resolve_pair_identity
 
-        identity = resolve_versioned_identities(
-            value["intake"], identity_evidence(load_snapshot(cache, expected_plan=identity_plan))
-        ).to_dict()
+        identity = resolve_pair_identity(
+            value["intake"],
+            identity_evidence(load_snapshot(cache, expected_plan=identity_plan)),
+            subject_source,
+        )
     route_preparation = routes(value["intake"], identity, value["context"], cache)
     plan = route_preparation["evidence_plan"]
     if plan != value["evidence_plan"] or route_preparation != value["route_preparation"]:
@@ -715,7 +753,7 @@ def verify_journal(preparation, execution, inventory, usage):
 
 
 def replay(directory):
-    from .identity_program import resolve_versioned_identities
+    from .paired_subjects import resolve_pair_identity
 
     preparation = verify(directory)
     execution = Path(directory).resolve() / "execution"
@@ -740,7 +778,9 @@ def replay(directory):
                 execution / "identity-snapshot", expected_plan=preparation["identity_plan"]
             )
         )
-        identity = resolve_versioned_identities(preparation["intake"], evidence).to_dict()
+        identity = resolve_pair_identity(
+            preparation["intake"], evidence, preparation.get("subject_source")
+        )
         if evidence != _read(execution / "identity-evidence.json")[0]:
             raise ValueError("Paired identity evidence replay differs")
         route_preparation = routes(
@@ -754,7 +794,10 @@ def replay(directory):
             raise ValueError("Paired evidence inventory replay differs")
         load_snapshot(execution / "evidence-snapshot", expected_plan=plan)
     else:
-        identity, plan = unresolved_identity(preparation["intake"]), preparation["evidence_plan"]
+        identity, plan = (
+            unresolved_identity(preparation["intake"], preparation.get("subject_source")),
+            preparation["evidence_plan"],
+        )
         if inventory["phases"] or usage["provider_events"]:
             raise ValueError("Unavailable pair must not dispatch")
     if identity != _read(execution / "identity-report.json")[0]:

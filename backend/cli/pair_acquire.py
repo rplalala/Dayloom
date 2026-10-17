@@ -18,6 +18,11 @@ def main(argv=None, *, http_client=None):
     imported.add_argument("--primary-run", action="append", default=[])
     imported.add_argument("--generation", action="append", default=[])
     imported.add_argument("--directory", required=True)
+    for command in (prepare, imported):
+        command.add_argument(
+            "--subject-primary-run",
+            help="Closed preparation-3 Primary supplying common subjects; no model fallback",
+        )
     for name in ("directory", "selection", "options", "prices"):
         prepare.add_argument("--" + name, required=True)
     for name in (
@@ -60,6 +65,7 @@ def main(argv=None, *, http_client=None):
                 args.directory,
                 primary_runs=args.primary_run,
                 generations=args.generation,
+                subject_primary_run=args.subject_primary_run,
                 context={
                     name: _read(Path(getattr(args, option)))[0] if getattr(args, option) else None
                     for name, option in paired_run.CONTEXT_FILES.items()
@@ -91,6 +97,7 @@ def main(argv=None, *, http_client=None):
                 },
                 identity_snapshot=args.identity_snapshot,
                 snapshot=args.snapshot,
+                subject_primary_run=args.subject_primary_run,
             )
         elif args.command == "execute":
             paired_run.preflight(args.directory, args.approved_sha256)

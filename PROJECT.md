@@ -175,7 +175,10 @@ Fresh Primary identity uses `versioned_api_identity_6`, independent
 conjoin target uncertainty with conservative checks, preserving proven violations. Existing offline callers retain explicit
 policy-4 compatibility; the first common-subject policy remains explicitly replayable.
 Common-subject destination checks accept typed `postal_town` with consistent city/country
-evidence. Historical requirement/schedule rules select version 5 for a reviewed
+evidence. Paired acquisition explicitly opts into policy 6 / subject policy 2 with
+`--subject-primary-run`, reusing exact closed Primary target material without rescoring
+Primary or sending a new subject-model request; legacy preparations retain policy 4.
+Historical requirement/schedule rules select version 5 for a reviewed
 `daily_visit_count`, otherwise version 4 for `transport_modes` or version 3 without either.
 Route rules select version 3 with `transport_modes` and retain version 2 without it.
 Opening retains

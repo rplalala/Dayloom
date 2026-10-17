@@ -173,12 +173,15 @@ def resolve_versioned_identities(
     common_subjects=False,
     subject_result=None,
     subject_policy=None,
+    subject_evidence=None,
 ):
     """V0 model results never decide targets or visits of another version."""
     prepared = _intake_dict(intake)
     if sum((historical, previous, exact_addresses, common_subjects)) > 1:
         raise ValueError("Choose one historical identity policy")
-    if (subject_result is not None or subject_policy is not None) and not common_subjects:
+    if (
+        subject_result is not None or subject_policy is not None or subject_evidence is not None
+    ) and not common_subjects:
         raise ValueError("Common subject results require their declared policy")
     targets, subject_provenance = {}, None
     if common_subjects:
@@ -189,7 +192,10 @@ def resolve_versioned_identities(
         if subject_policy is None:
             subject_policy = SUBJECT_POLICY
         targets, subject_provenance = resolve_subjects(
-            prepared, evidence, subject_result, policy_version=subject_policy
+            prepared,
+            subject_evidence if subject_evidence is not None else evidence,
+            subject_result,
+            policy_version=subject_policy,
         )
         common_policy = (
             PREVIOUS_COMMON_POLICY_VERSION
@@ -204,6 +210,13 @@ def resolve_versioned_identities(
         refs = versioned_references(prepared)
         observed = versioned_observations(prepared, evidence, refs)
     bindings = subject_bindings(prepared)
+    subject_observations = (
+        _observation_index(
+            subject_evidence, identity_references(prepared), prepared, allow_incomplete=True
+        )
+        if subject_evidence is not None
+        else {}
+    )
     v0_refs = [
         r
         for r in refs
@@ -239,6 +252,8 @@ def resolve_versioned_identities(
         candidate_comparisons = []
         target = targets.get(ref.get("evidence_reference_id"))
         if target is not None:
+            if subject_evidence is not None:
+                observation = subject_observations.get(ref["evidence_reference_id"])
             canonical, reason = target["canonical_place_id"], target["reason"]
             verdict = "PASS" if canonical else "UNKNOWN"
         else:
@@ -368,6 +383,11 @@ def resolve_versioned_identities(
                     "evidence": evidence,
                     "model_result": model_result,
                     **({"subject_result": subject_result} if common_subjects else {}),
+                    **(
+                        {"subject_evidence": subject_evidence}
+                        if subject_evidence is not None
+                        else {}
+                    ),
                 },
             }
         ),
@@ -412,6 +432,7 @@ def verify_versioned_report(intake, report):
                     else None
                 ),
                 subject_result=replay.get("subject_result"),
+                subject_evidence=replay.get("subject_evidence"),
             ).to_dict()
             == report
         )

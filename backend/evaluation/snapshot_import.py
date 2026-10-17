@@ -224,7 +224,14 @@ def _derive(root, plan, sources, intake):
 
 
 def import_snapshot(
-    plan, directory, *, intake, primary_runs=(), generations=(), selected_provenances=None
+    plan,
+    directory,
+    *,
+    intake,
+    primary_runs=(),
+    generations=(),
+    selected_provenances=None,
+    subject_primary_run=None,
 ):
     """Import matching provider observations into a fresh zero-send paired snapshot."""
     from .evaluation_run import replay_run
@@ -243,7 +250,12 @@ def import_snapshot(
         if root.is_relative_to(path):
             raise ValueError("Import destination must be outside source")
         if kind == "primary_evaluation":
-            replay_run(path)
+            if subject_primary_run is not None and path == Path(subject_primary_run).resolve():
+                from .paired_subjects import load_primary_subjects
+
+                load_primary_subjects(path, intake)
+            else:
+                replay_run(path)
     root.mkdir(parents=True, exist_ok=False)
     sources = []
     for index, (kind, path) in enumerate(paths):
@@ -341,11 +353,13 @@ def load_imported_snapshot(directory, expected_plan=None):
     return value
 
 
-def import_pair(manifest, directory, *, context, primary_runs=(), generations=()):
+def import_pair(
+    manifest, directory, *, context, primary_runs=(), generations=(), subject_primary_run=None
+):
     """Prepare both phases for cached native paired reporting, without network access."""
-    from .identity_program import resolve_versioned_identities
     from .intake import load_batch
     from .paired_run import fresh, routes, save, validate_context, write_receipt
+    from .paired_subjects import load_primary_subjects, resolve_pair_identity
     from .snapshot import build_identity_plan, identity_evidence
 
     root = fresh(directory)
@@ -353,6 +367,11 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
     if intake["status"] != "accepted":
         raise ValueError("Qualified import manifest required")
     validate_context(intake, context)
+    subject_source = (
+        load_primary_subjects(subject_primary_run, intake)
+        if subject_primary_run is not None
+        else None
+    )
     native_manifest, _ = _read(Path(manifest))
     selected_provenances = {}
     for group in native_manifest["groups"]:
@@ -370,8 +389,9 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
         primary_runs=primary_runs,
         generations=generations,
         selected_provenances=selected_provenances,
+        subject_primary_run=subject_primary_run,
     )
-    identity = resolve_versioned_identities(intake, identity_evidence(identity_snapshot)).to_dict()
+    identity = resolve_pair_identity(intake, identity_evidence(identity_snapshot), subject_source)
     route = routes(intake, identity, context, root / "identity-snapshot")
     import_snapshot(
         route["evidence_plan"],
@@ -380,6 +400,7 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
         primary_runs=primary_runs,
         generations=generations,
         selected_provenances=selected_provenances,
+        subject_primary_run=subject_primary_run,
     )
     if load_batch(manifest).to_dict() != intake:
         raise ValueError("Original paired source changed during import")
@@ -393,6 +414,13 @@ def import_pair(manifest, directory, *, context, primary_runs=(), generations=()
         "identity_snapshot": "identity-snapshot",
         "snapshot": "evidence-snapshot",
     }
+    if subject_source is not None:
+        save(root, "subject-source.json", subject_source)
+        value.update(
+            identity_policy=subject_source["identity_policy"],
+            subject_policy=subject_source["subject_policy"],
+            subject_source="subject-source.json",
+        )
     save(root, "handoff.json", value)
     write_receipt(root, _hash(value))
     return value
