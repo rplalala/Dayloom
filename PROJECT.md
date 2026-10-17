@@ -231,10 +231,13 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint (18 October 2026): local integration of accepted
+Latest offline checkpoint (18 October 2026): merged delivery of accepted
 [case-12 r07](benchmark/case-12/report.md#main-worktree-integration) preserves the
 original shared Repair corrections and includes remote main `7408df9` (case-08
-closeout, PR #189). The initial full backend run completed with **4,608 passed,
+closeout, PR #189). [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190)
+merged as `8bedb15`; local main is synchronized, private migration is verified and
+Issues #163/#184 are completed. Blinded human review remains deferred. The initial
+full backend run completed with **4,608 passed,
 16 skipped and seven failures**. Three junction-fixture failures passed unchanged
 outside the sandbox. Four deadline-telemetry parity comparisons received a test-only
 normalization correction; both affected modules then passed **24 tests**. No failures

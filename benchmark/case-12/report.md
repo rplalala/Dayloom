@@ -454,9 +454,16 @@ the worker and its original private evidence remain retained.
 Private receiving evidence and reproduction instructions are historical identifiers
 under `benchmark/scratch/case-12/integration/`. This integration added no project
 provider calls, generation, Primary, rescoring or human answers. Reference accounting
-is unchanged. The integrated source and public material are published on
-`codex/case12-r07-delivery` and proposed in [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190).
-Remote-main merge remains pending; local integration and private migration are complete.
+is unchanged. [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190)
+merged on 18 October 2026 (Australia/Sydney) with merge commit
+`8bedb1523dec3bab4df0e48bc8d72669368dea40`, preserving the original commits. Local
+main is synchronized; private migration is complete and verified. Issues
+[#163](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/163) and
+[#184](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/184) are closed as
+completed. Post-merge checks matched all 45 indexed public hashes and 50 original
+source bindings, retained private-package hashes and case-08's unchanged public tree.
+The merge tree equals the reviewed PR head's tree; that head and `7408df9` remain ancestors.
+Blinded human review remains deferred.
 
 ## Historical context
 
