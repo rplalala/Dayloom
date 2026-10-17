@@ -3,7 +3,25 @@
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, model_serializer
+
+
+class DailyVisitAssessment(BaseModel):
+    """One source-bound occurrence assessment, shared by Planner diagnostics and Repair."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    constraint_id: str
+    date: date
+    count: int = Field(ge=0)
+    mode: Literal["exact", "minimum"]
+    strength: Literal["hard", "soft"]
+    lower: int = Field(ge=0)
+    upper: int = Field(ge=0)
+    status: Literal["PASS", "FAIL", "UNKNOWN"]
+    activity_ids: tuple[str, ...]
+    potential_activity_ids: tuple[str, ...]
+    requirement_ids: tuple[str, ...]
+    source_refs: tuple[str, ...]
 
 
 class DayGenerationDiagnostics(BaseModel):
@@ -28,6 +46,15 @@ class DayGenerationDiagnostics(BaseModel):
 
 
 class GenerationDiagnostics(BaseModel):
+    daily_visit_counts: tuple[DailyVisitAssessment, ...] | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_assessed_counts(self, handler):
+        result = handler(self)
+        if self.daily_visit_counts is None:
+            result.pop("daily_visit_counts", None)
+        return result
+
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"
     policy_issues: tuple[dict, ...] = ()
     goal_progress: tuple[dict, ...] = ()

@@ -104,6 +104,7 @@ def validate_canonical_requirements(contract, request: PlanningRequest):
         value.time_protections or (),
         value.visit_requirements or (),
         value.daily_pace or (),
+        value.daily_visit_constraints or (),
     ):
         for item in group:
             for ref in item.source_refs:
@@ -165,6 +166,9 @@ def validate_canonical_requirements(contract, request: PlanningRequest):
                     ),
                 )
     _operational_sources(value, text)
+    from backend.app.policies.daily_visit_constraints import validate_daily_contract
+
+    validate_daily_contract(value, request)
     restriction = value.transport_constraint
     if restriction is not None:
         semantics = {r.requirement_id: r for r in value.semantic_requirements}
@@ -403,7 +407,30 @@ def canonicalize_requirements(
             and not set(draft.transport_constraint.requirement_refs) <= aliases.keys()
         ):
             raise RequirementBoundaryError("invalid_transport_constraint_link")
+        from backend.app.policies.daily_visit_constraints import (
+            canonical_daily_constraints,
+            derived_pace,
+        )
+
+        daily = canonical_daily_constraints(draft, aliases, text, _sources)
+        pace = (
+            None
+            if draft.daily_pace is None
+            else tuple(
+                DailyPace(
+                    **p.model_dump(exclude={"source_refs"}),
+                    source_refs=_sources(p.source_refs, text),
+                )
+                for p in draft.daily_pace
+            )
+        )
+        if daily is not None:
+            pace = derived_pace(pace, daily)
         result = InterpretedTripRequirements(
+            contract_version="interpreted_requirements_6"
+            if daily is not None
+            else "interpreted_requirements_5",
+            daily_visit_constraints=daily,
             transport_constraint=None
             if draft.transport_constraint is None
             else TransportConstraint(
@@ -416,15 +443,7 @@ def canonicalize_requirements(
                 ),
                 source_refs=_sources(draft.transport_constraint.source_refs, text),
             ),
-            daily_pace=None
-            if draft.daily_pace is None
-            else tuple(
-                DailyPace(
-                    **p.model_dump(exclude={"source_refs"}),
-                    source_refs=_sources(p.source_refs, text),
-                )
-                for p in draft.daily_pace
-            ),
+            daily_pace=pace,
             visit_requirements=visits,
             time_protections=protections,
             request_sha256=hashlib.sha256(text.encode()).hexdigest(),
@@ -456,6 +475,10 @@ def assess_requirements(contract: InterpretedTripRequirements) -> tuple[Requirem
         if restriction and set(restriction.allowed_modes) & {"WALK", "TRANSIT", "DRIVE"}
         else set()
     )
+    daily = {
+        ref for rule in contract.daily_visit_constraints or () for ref in rule.requirement_refs
+    }
+    supported |= daily
     return tuple(
         RequirementAssessment(
             requirement_id=r.requirement_id,
@@ -464,13 +487,17 @@ def assess_requirements(contract: InterpretedTripRequirements) -> tuple[Requirem
             else "evidence_assessment"
             if r.requirement_id in linked
             else "semantic_only",
-            predicate_id="allowed_transport_modes" if r.requirement_id in supported else None,
+            predicate_id="daily_primary_visit_count"
+            if r.requirement_id in daily
+            else "allowed_transport_modes"
+            if r.requirement_id in supported
+            else None,
             predicate_version="1" if r.requirement_id in supported else None,
             evaluation_scope=r.scope,
             evidence_state="not_acquired",
             check_result="unknown",
             disposition="enforce"
-            if r.requirement_id in supported
+            if r.requirement_id in supported and r.strength == "hard"
             else "clarify"
             if r.strength == "hard"
             else "advise",

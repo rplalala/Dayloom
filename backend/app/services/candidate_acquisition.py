@@ -15,7 +15,6 @@ from backend.app.policies.poi_funnel import (
     GENERIC_SEARCH_TERMS,
     NamedPlaceResolution,
     merge_search_observations,
-    resolve_named_place_intents,
 )
 from backend.app.policies.poi_selection import (
     POISelectionResult,
@@ -99,6 +98,7 @@ class CandidateAcquisition:
 
     def __init__(self, acquisition, llm, tracer, llm_identity):
         self.acquisition = acquisition
+        self.llm = llm
         self.tracer = tracer
         from backend.app.runtime.config_models import LandmarkNominationConfig
         from backend.app.services.landmark_discovery import LandmarkDiscovery
@@ -140,7 +140,6 @@ class CandidateAcquisition:
         assessments = assess_requirements(contract)
         require_resolved_hard(assessments)
         capacities = supply.capacities(r, window)
-        names = []
         intents = []
         # The old identity resolver only interprets identities, not user preference text.
         # Exclusions use OPTIONAL for lookup only; the canonical requirement stays EXCLUDED.
@@ -158,7 +157,6 @@ class CandidateAcquisition:
                 else NamedPlaceInclusion.OPTIONAL,
                 source_text=n.source_refs[0].quote,
             )
-            names.append(named)
             intents.append(
                 PlaceSearchIntent(
                     intent_id=n.requirement_id,
@@ -218,12 +216,22 @@ class CandidateAcquisition:
         capture = getattr(acq, "candidate_capture", None)
         if capture is not None:
             capture.pre_google(merged.places)
-        resolutions = resolve_named_place_intents(
-            names,
-            intents,
+        from backend.app.services.named_place_binding import (
+            NamedPlaceBinding,
+            NamedPlaceBindingError,
+        )
+
+        binding = NamedPlaceBinding(
+            self.llm,
+            config=acq.runtime_config.main_generation if acq.runtime_config else None,
+            tracer=self.tracer,
+            deadline=getattr(acq, "request_deadline", None),
+        )
+        resolutions = await binding.resolve(
+            contract,
             merged.places,
-            failed_search_intent_ids=frozenset(failures),
-            budget_not_attempted_intent_ids=frozenset(
+            failures=frozenset(failures),
+            not_attempted=frozenset(
                 e.intent_id for e in executions if e.status == "budget_not_attempted"
             ),
         )
@@ -235,9 +243,17 @@ class CandidateAcquisition:
                 n.requirement_id,
             ),
         )
+        by_requirement = {b.search_intent_id: b for b in resolutions}
+        resolutions = tuple(by_requirement[n.requirement_id] for n in ordered_names)
         for n, resolution in zip(ordered_names, resolutions, strict=True):
             if resolution.resolved_place_id is None and n.inclusion != "OPTIONAL":
-                raise ClarificationRequired("unresolved_named_identity", (n.requirement_id,))
+                if resolution.status in {"search_failed", "search_not_issued_budget"}:
+                    raise NamedPlaceBindingError(f"named_place_{resolution.status}")
+                raise ClarificationRequired(
+                    "unresolved_named_identity",
+                    (n.requirement_id,),
+                    conflicts=({"requirement_id": n.requirement_id, "reason": resolution.status},),
+                )
             if resolution.resolved_place_id:
                 if n.inclusion == "REQUIRED":
                     required.add(resolution.resolved_place_id)

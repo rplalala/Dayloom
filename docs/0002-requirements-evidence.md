@@ -1,6 +1,6 @@
 # Requirements, candidate supply and evidence
 
-Status: Implemented shared contracts, updated 2026-10-15.
+Status: Implemented shared contracts, updated 2026-10-17.
 
 ## Request and interpretation
 
@@ -26,12 +26,12 @@ remain different outcomes. Unsupported hard conditions are not silently softened
 
 The interpretation call returns `daily_pace`: one null-date default and unique
 requested-date overrides, with `ordinary`, `relaxed`, `rich` or
-`unresolved` profile, optional explicitly requested exact daily count and original
-source quotes. Canonicalization verifies quote spans and date scope. Relaxed/rich
-style does not invent an exact count. Empty preferences supply ordinary style locally;
-historical absent/null metadata stays unassessed. `PreferenceDraftV13` and
-`preference_prompt_20` identify the current wire/prompt. Only V3 Repair uses this
-metadata as an optimization target; initial generation gains no zero-penalty constraint.
+`unresolved` profile and original source quotes. Explicit dated total counts belong to
+the [daily visit contract](#dated-total-primary-visit-counts); their pace count is derived
+by the application. Relaxed/rich style creates no numerical quota. Empty preferences
+supply ordinary style locally; historical absent/null metadata stays unassessed.
+Only V3 Repair uses pace metadata as an optimization target; initial generation gains
+no zero-penalty objective. Hard dated totals also constrain initial generation.
 
 ## Evidence ownership
 
@@ -64,26 +64,35 @@ quote occurrences. Safety blocks precede rewrite, clarification and continuation
 Missing assessment, inconsistent disposition and invalid source references are system
 contract failures, not evidence that the user wrote an invalid request.
 
-Current planning envelopes select `preference_draft_13` and canonical
-`interpreted_requirements_5`. The provider receives request-bound IDs for original
+Current planning envelopes select `PreferenceDraftV15` / `preference_draft_15`,
+`preference_prompt_22` and canonical `interpreted_requirements_6`. The provider receives
+request-local integer references for original
 single-codepoint spans, including whitespace. Every original substring boundary is
 representable, including short scopes within unbroken text. Each source selects inclusive
-`first_id`/`last_id` endpoints;
+`first_ref`/`last_ref` endpoints;
 the program restores the exact contiguous original text, occurrence and Unicode
 offsets before existing provenance validation. This covers semantic, focus, subject,
-issue, operational, pace and transport sources, including source-text fields. Unknown,
-reversed and foreign-request IDs fail with a field path. Selection does not certify
-the model's semantic interpretation. No fuzzy matching or retry is added. The inventory
+issue, operational, pace, daily-count and transport sources, including source-text fields.
+Booleans, nonintegers, out-of-range and reversed selections fail with a field path.
+The application binds restoration and captured mapping hashes to the originating request;
+the model does not copy a request hash. Endpoints have one integer schema rather than
+repeated per-field inventories or large enums. Selection does not certify the model's
+semantic interpretation. No guessed endpoint correction or retry is added. The inventory
 grows with preference length; fresh live preparation must account for the actual expanded
-request. Required prompt projection replacements are checked before any model send;
+request. Current JSON uses UTF-8 and compact separators without modifying string values;
+historical profiles retain their original serialization. One version bundle selects DTO,
+prompt, source reader and capture labels together. Required prompt projection replacements
+are checked before any model send;
 instruction drift is a configuration failure.
 
 The new pace wire has a required `trip_default` object and `date_overrides` array.
 The mapper requires a null default date and non-null override dates; canonical checks
 enforce unique in-trip dates and sources for expressed styles/counts. An ordinary
 unsourced default has no exact count. Relaxed/rich styles create no numerical quota.
-Historical quote/occurrence DTOs, list/null pace and canonical versions 3/4 retain
-their existing read paths; malformed historical empty pace remains invalid.
+Historical quote/occurrence DTOs, long-ID selections (`preference_draft_13`), integer
+selections before dated counts (`preference_draft_14`), list/null pace and canonical
+versions 3-5 retain explicitly selectable read paths. Malformed historical empty pace
+remains invalid; reading old material does not reinterpret it under the current policy.
 
 Native generation `failure.json` retains the exception type and allowlisted
 category/status, code, stage, field paths or requirement IDs from the boundary cause.
@@ -102,7 +111,8 @@ source links. Canonicalization rewrites duplicate links without duplicate reward
 subjects are not silently party-wide. Named counts/dates belong to named visit obligations;
 category goals use semantic assessment. Unsupported hard semantics require clarification;
 ordinary rich/varied/enjoyable wishes stay soft without invented quotas or luxury budgets.
-The supported exception is a whole-party, whole-trip `transport_constraint`: a nonempty
+Supported executable forms include dated total counts below and a whole-party,
+whole-trip `transport_constraint`: a nonempty
 unique `allowed_modes` set linked to hard transport constraint requirements and their
 exact canonical sources. Its narrow registered predicate authorizes enforcement;
 it does not establish route feasibility. Single-mode `transport_preference` remains
@@ -125,6 +135,35 @@ safety decisions and malformed output remain distinct. Product retains the form 
 stale feedback on edit, renders quotations as text and does not echo sensitive safety quotes.
 Developer contract failures use HTTP 502 versus clarification 422; CLI failure and
 clarification have distinct exit outcomes. Default telemetry excludes raw preference quotes.
+
+## Dated total primary visit counts
+
+`daily_visit_constraints` records explicit dates, `mode=exact|minimum`, a nonnegative
+integer `count`, `strength=hard|soft`, linked semantic requirement IDs and exact original
+sources. An empty current list means assessed without such requirements; historical
+absence stays absent. This selector applies to all primary sightseeing/experience
+occurrences on one requested date, independently of named-venue or category counts.
+The model interprets the meaning once; the application validates date scope, source and
+party/strength linkage, then derives any exact-count pace projection. A separate unbound
+pace count is rejected. Contradictory hard totals or a positive hard total on a fully
+protected day require clarification. Other unsupported hard conditions still require it.
+
+Separate visits to the same venue count separately. Transport, supporting meals/activities,
+free windows and Nearby suggestions do not count. Known non-main objects are excluded;
+unresolved role or date contributes a potential occurrence rather than a guessed zero.
+`daily_visit_counts` diagnostics retain lower/upper bounds and PASS/FAIL/UNKNOWN per
+source-linked obligation. V0 uses its declared-role observations without acquiring tools;
+tools versions also use their existing semantic ledger. This is scheduled occurrence
+counting, not evidence of attendance. Generation receives the structured rules; V3 adds
+[findings and guarded Repair](0005-validation-repair%28v3%29.md#dated-count-protection).
+
+Hard dated counts and their feasible pace projection own the date's quantity objectives,
+superseding default quantity review. A hard minimum remains a lower bound, not a maximum.
+Explicit zero exempts minimum sightseeing coverage but allows supporting activities and
+travel. A full rest day remains a separate time protection against planned commitments.
+Independent evaluation uses its
+own [dated-count operator](contracts/0003-requirement-schedule.md#dated-total-visits),
+reviewed meaning and occurrence classification; it does not consume Planner verdicts.
 
 ## Semantic qualification and multiplicity
 
@@ -259,10 +298,28 @@ Ordinary discovery then leaves up to four opportunities for unresolved nominatio
 unused opportunities return to ordinary work. Supplementary sends are part of the existing
 twelve candidate-search sends, never an additional pool. Cache hits consume no sends.
 
-Existing exact normalized provider display-name matching resolves names against acquired
-results. Ambiguous names, aliases and unmatched names remain unresolved; first hits and
-nearby/parent attractions are not substitutes. Identity is reconciled again after RAG
-source expansion, clearing metadata if a later same-name, different-ID result is ambiguous.
+User-named requirements use a dedicated semantic correspondence boundary after their
+directed searches and before identity-dependent admission. Application requirement IDs
+and query provenance associate candidates with each original request. The model receives
+the user's qualifiers, destination, names, addresses, coordinates, place types and
+available search evidence; exact display-name equality is not required. It judges each
+candidate as the same place, a different place or unresolved. Translation, abbreviations
+and provider-standard names need no lexical alias patch.
+
+The application validates complete coverage, unique references and same-candidate evidence
+ownership. It adopts a Place ID only for one supported correspondence without an unresolved
+competitor. A single result or top rank is insufficient by itself. Branches, namesakes,
+parent sites, entrances and shops retain ambiguity when evidence cannot distinguish them.
+Required/excluded/count/date obligations then use that ID. Empty search or insufficient
+identity evidence stays unresolved; unavailable search, malformed model output and resource
+exhaustion remain system failures rather than claims that the user was ambiguous.
+
+[Named binding](../backend/app/services/named_place_binding.py) batches using the existing
+model input/output sizing and request deadline, with captured local references, mapping
+hashes and usage. It adds no per-name budget or automatic correction loop. Semantic
+judgments still require real-model validation separately from offline contract tests.
+Optional landmark nominations retain their independent exact normalized-name policy and
+post-RAG reconciliation; evaluator identity also remains independent.
 
 Resolved candidates retain model origin and earliest rank through merge, Details,
 qualification, selection input and generation projection. They do not become user REQUIRED

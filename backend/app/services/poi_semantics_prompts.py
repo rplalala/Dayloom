@@ -1,9 +1,9 @@
 """Bounded semantic role judgment, independent from route/opening validation."""
 
-POI_SEMANTICS_PROMPT_VERSION = "poi_semantics_prompt_5"
+POI_SEMANTICS_PROMPT_VERSION = "poi_semantics_prompt_6"
 
 POI_SEMANTICS_PROMPT = """
-poi_semantics_prompt_5.
+poi_semantics_prompt_6.
 poi_semantics_1. The application owns canonical IDs and provenance. Return only the supplied
 short candidate_ref and source_ref values; never reconstruct external IDs or URLs.
 Short references are batch-local and must not be inferred from response order.
@@ -58,4 +58,6 @@ Examples:
 - Conflicting or insufficient evidence of actual visit object: unresolved.
 The application determines counts, authorization and schedule acceptance. Your result cannot
 declare a whole itinerary validated or create a new user requirement.
+Dated daily_visit_constraints concern the whole schedule, not an individual POI's qualities.
+Do not claim a candidate satisfies a dated total or use that total as primary-exception permission.
 """

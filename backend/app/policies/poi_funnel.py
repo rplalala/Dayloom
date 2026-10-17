@@ -150,6 +150,9 @@ class NamedPlaceResolutionStatus(StrEnum):
     AMBIGUOUS_EXACT_NAME = "ambiguous_exact_name"
     SEARCH_NOT_ISSUED_BUDGET = "search_not_issued_budget"
     SEARCH_FAILED = "search_failed"
+    INSUFFICIENT_EVIDENCE = "insufficient_evidence"
+    AMBIGUOUS_CANDIDATES = "ambiguous_candidates"
+    EMPTY_SEARCH = "empty_search"
 
 
 @dataclass(frozen=True)
@@ -161,6 +164,9 @@ class NamedPlaceResolution:
     status: NamedPlaceResolutionStatus
     matching_place_ids: tuple[str, ...]
     resolved_place_id: str | None
+    considered_place_ids: tuple[str, ...] = ()
+    evidence_refs: tuple[str, ...] = ()
+    method: str = "exact_name_legacy"
 
 
 def resolve_named_place_intents(

@@ -91,6 +91,42 @@ def test_v1_graph_has_explicit_non_agentic_topology() -> None:
     }
 
 
+def test_offset_rejection_stops_before_post_generation_routes_and_nearby():
+    from backend.app.schemas.itinerary_projection import V1Itinerary
+    from backend.app.versions.v1.graph import V1StageError
+
+    routes = FakeRoutesProvider()
+
+    class ParisPlaces(FakePlacesProvider):
+        async def get_place_details(self, request):
+            result = await super().get_place_details(request)
+            return result.model_copy(update={"time_zone": "Europe/Paris"})
+
+    class Model(FakeStructuredLLMClient):
+        async def generate_structured(self, **kwargs):
+            if kwargs["response_schema"] is V1Itinerary:
+                self.before_routes = len(routes.requests)
+                self.before_searches = len(places.search_requests)
+            return await super().generate_structured(**kwargs)
+
+    places = ParisPlaces()
+    model = Model([make_extraction(), make_itinerary()])
+    with pytest.raises(V1StageError):
+        asyncio.run(
+            run_v1(
+                make_request(additional_preferences="Plan two days in Sydney."),
+                model,
+                places,
+                FakeWeatherProvider(),
+                routes,
+                reference_date=date(2026, 9, 11),
+            )
+        )
+    assert len(routes.requests) == model.before_routes
+    assert len(places.search_requests) == model.before_searches
+    assert len(model.calls) == 2
+
+
 def test_v1_full_offline_run_uses_normalized_evidence_and_fixed_masks() -> None:
     llm, places, weather, routes, tracer, _ = _dependencies()
 

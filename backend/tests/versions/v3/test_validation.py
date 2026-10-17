@@ -237,13 +237,12 @@ def test_all_nested_overlaps_are_confirmed_without_mutating_order():
     assert itinerary.model_dump_json() == before
 
 
-def test_touching_windows_do_not_overlap_and_mixed_offsets_stay_unknown():
+def test_touching_windows_do_not_overlap_and_naive_endpoints_are_rejected():
     assert not findings(run([activity(), activity("two", "b", "11:00", "12:00")]), "overlap")
     naive = activity(
         "two", "b", start_time=datetime(2026, 9, 26, 10), end_time=datetime(2026, 9, 26, 11)
     )
-    # Existing primary normalization rejects mixed awareness within one day.
-    with pytest.raises(TypeError, match="offset-naive"):
+    with pytest.raises(ValueError, match="timezone_offset_missing"):
         run([activity(), naive])
 
 
@@ -343,6 +342,10 @@ def test_inapplicable_or_incomplete_hours_stay_unknown(changes):
 
 @pytest.mark.parametrize("timezone", [None, "Invalid/Zone"])
 def test_missing_timezone_does_not_confirm_hours(timezone):
+    if timezone == "Invalid/Zone":
+        with pytest.raises(ValueError, match="timezone_invalid"):
+            run(places=(place(timezone_id=timezone),), effective_places=(effective(closure=True),))
+        return
     result = run(
         places=(place(timezone_id=timezone), place("b"), place("c")),
         effective_places=(effective(closure=True),),
@@ -530,10 +533,8 @@ def test_cross_day_overlap_and_mixed_awareness():
     second = itinerary.days[1].activities[0]
     second.start_time = second.start_time.replace(tzinfo=None)
     second.end_time = second.end_time.replace(tzinfo=None)
-    assert (
-        findings(run(itinerary=itinerary, requirements=requirements), "overlap")[0].status
-        == "UNKNOWN"
-    )
+    with pytest.raises(ValueError, match="timezone_offset_missing"):
+        run(itinerary=itinerary, requirements=requirements)
 
 
 def test_shared_date_and_schema_checks_remain_preconditions():
@@ -548,12 +549,12 @@ def test_shared_date_and_schema_checks_remain_preconditions():
         run(itinerary=itinerary)
 
 
-def test_timezone_conversion_and_unparsed_places_hours():
-    result = run(
-        [activity(start_time=f"{DAY}T19:00:00+10:00", end_time=f"{DAY}T20:00:00+10:00")],
-        effective_places=(effective(),),
-    )
-    assert findings(result, "opening")[0].reason == "adopted_hours_only"
+def test_timezone_conflict_is_rejected_and_unparsed_places_hours_remain_unknown():
+    with pytest.raises(ValueError, match="timezone_offset_conflict"):
+        run(
+            [activity(start_time=f"{DAY}T19:00:00+10:00", end_time=f"{DAY}T20:00:00+10:00")],
+            effective_places=(effective(),),
+        )
     p = place(
         opening_hours={
             "applicability": "regular",

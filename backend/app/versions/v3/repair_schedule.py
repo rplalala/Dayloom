@@ -1,6 +1,6 @@
 """Repair-only time authorization over the shared occupancy view."""
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from backend.app.policies.itinerary_schedule import (
     ScheduleState as ScheduleState,
@@ -20,6 +20,7 @@ from backend.app.policies.itinerary_schedule import (
 from backend.app.policies.itinerary_schedule import (
     build_schedule as build_schedule,
 )
+from backend.app.policies.schedule_time import ScheduleTimeContext, elapsed_add, elapsed_seconds
 
 
 def window_projection(itinerary, schedule, roots):
@@ -151,6 +152,7 @@ def consume_windows(original, proposed, scope, schedule, places, evidence, polic
     result = proposed.model_copy(deep=True)
     lineage = dict(schedule.lineage)
     transfers, audit = [], []
+    time_context = ScheduleTimeContext(places.values() if isinstance(places, dict) else places)
     occupied = [
         (a.start_time, a.end_time)
         for d in proposed.days
@@ -182,12 +184,12 @@ def consume_windows(original, proposed, scope, schedule, places, evidence, polic
                 basis, refs = transfer.calculation_basis, transfer.evidence_refs
             if minutes is None:
                 minutes, basis = policy.fallback_reserve_minutes, "policy_reserve_route_unknown"
-            duration = timedelta(minutes=minutes)
+            seconds = minutes * 60
             interval = next(
                 (
-                    (a, a + duration)
+                    (a, elapsed_add(a, seconds, time_context.zone_for(right.source_place_id)))
                     for a, b in available_intervals(left, right, schedule)
-                    if b - a >= duration
+                    if elapsed_seconds(a, b) >= seconds
                     and (
                         basis != "time_applicable"
                         or a == (transfer.departure_time if transfer else left.end_time)

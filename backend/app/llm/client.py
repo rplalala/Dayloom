@@ -41,3 +41,11 @@ class POISemanticLLMClient(Protocol):
     ) -> BaseModel:
         """One short-reference wire batch; the caller owns resolution and retry limits."""
         ...
+
+
+class NamedPlaceBindingLLMClient(Protocol):
+    async def generate_named_place_binding_structured(
+        self, *, system_prompt: str, user_prompt: str, output_tokens: int, usage_callback=None
+    ) -> BaseModel:
+        """Evidence-bound named correspondence; caller owns admission and cancellation."""
+        ...
