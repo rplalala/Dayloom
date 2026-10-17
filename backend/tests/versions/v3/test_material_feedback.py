@@ -110,6 +110,49 @@ def test_semantically_rejected_new_option_does_not_stop_replenishment(role):
     assert any(r.reason == "semantic_role_not_main" for r in prep.decisions)
 
 
+def test_rejected_discoveries_do_not_consume_final_exploration_opportunities():
+    from backend.tests.services.test_poi_semantics import Model as SemanticModel
+    from backend.tests.services.test_poi_semantics import service
+
+    def reject_restaurants(rows):
+        for row in rows:
+            if row["visit_object"].startswith("restaurant"):
+                row["role"] = "non_main"
+
+    semantic = service(SemanticModel(reject_restaurants))
+    ctx, original = discovery_context(), draft()
+    scope, budget = addition_scope(original, ctx), RepairBudget(monotonic() + 600)
+    first = asyncio.run(
+        prepare_candidates(
+            ctx,
+            scope,
+            budget,
+            original=original,
+            semantic_service=semantic,
+        )
+    )
+    budget.presentation_history = [
+        {"signature": a.opportunity_signature} for a in first.authorizations
+    ]
+    budget.feedback_kind = "no_op_patch"
+    provider = CandidateSearch(ids=("restaurant1", "restaurant2", "fresh"))
+    prep = asyncio.run(
+        prepare_candidates(
+            ctx,
+            scope,
+            budget,
+            original=original,
+            provider=provider,
+            intent_ids=("discovery_1",),
+            semantic_service=semantic,
+        )
+    )
+    assert "fresh" in {r.place_id for r in prep.authorizations}
+    assert not {"restaurant1", "restaurant2"} & {r.place_id for r in prep.authorizations}
+    assert budget.used["details"] == budget.used["canonical"] == 3
+    assert provider.searches == 1
+
+
 def test_repeated_empty_replan_stops_before_another_send_and_keeps_authority_explicit():
     original, ctx = draft(), context()
     model = SequenceModel([[], [], [], [], [], []])
@@ -118,6 +161,7 @@ def test_repeated_empty_replan_stops_before_another_send_and_keeps_authority_exp
     assert result.reason == "no_new_material_after_empty_proposal"
     assert result.final == original
     assert not result.rounds[-1].result.model_attempted
+    assert result.rounds[0].result.empty_proposal_guard["action"] == "empty_proposal_recorded"
     assert result.rounds[-1].result.empty_proposal_guard["action"] == "stop_unchanged_input"
     assert model.inputs[1]["scope"]["permissions"] == []
     assert model.inputs[1]["addition_candidates"]

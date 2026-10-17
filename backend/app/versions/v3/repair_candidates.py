@@ -733,10 +733,11 @@ async def prepare_candidates(
             return stop("no_authorized_insertion_window")
         if not (material_reasons() if preparing_old else reasons):
             return stop("preparation_reference_met")
+        selected = select_ids()
         if feedback_adjustment and any(
             r.opportunity_signature not in presented
             for r in eligible.values()
-            if r.place_id in select_ids()
+            if r.place_id in selected
         ):
             return stop("novel_existing_opportunity_available")
         if budget.io_deadline <= budget.clock() or budget.remaining() <= 0:
@@ -761,14 +762,15 @@ async def prepare_candidates(
             if reason not in budget.stops:
                 budget.stops.append(reason)
             return False
-        fresh = newly_qualified - baseline_ids
+        fresh = (newly_qualified & selected) - baseline_ids
         # Stop as soon as the reserved opportunity and preparation target are served.
         option_ids = {r.place_id for r in eligible.values()}
         if (
             not preparing_old
             and len(fresh) >= reserve
             and (
-                not insufficient(list(eligible.values())) or len(scheduled | option_ids) >= capacity
+                not insufficient([r for r in eligible.values() if r.place_id in selected])
+                or len(scheduled | option_ids) >= capacity
             )
         ):
             return stop("bounded_exploration_complete")

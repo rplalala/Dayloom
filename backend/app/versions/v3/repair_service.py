@@ -165,6 +165,11 @@ async def run_repair_once(
         from backend.app.versions.v3.repair_targets import related_progress
 
         compression_audit, compression_state = audit(reason_compression)
+        if attempted and patch is not None and not patch.edits and fingerprint is not None:
+            empty_guard["action"] = "empty_proposal_recorded"
+            budget.empty_proposal_inputs = getattr(budget, "empty_proposal_inputs", set()) | {
+                (fingerprint, proposal_strategy)
+            }
         record = RepairResult(
             reason_compression=(
                 compression_audit
@@ -288,11 +293,6 @@ async def run_repair_once(
                 "outcome": status,
                 "reason": reason,
                 "edits": [e.model_dump(mode="json") for e in effective_patch.edits],
-            }
-        if attempted and patch is not None and not patch.edits and fingerprint is not None:
-            empty_guard["action"] = "empty_proposal_recorded"
-            budget.empty_proposal_inputs = getattr(budget, "empty_proposal_inputs", set()) | {
-                (fingerprint, proposal_strategy)
             }
         if tracer is not None:
             # Separate compact artifacts survive truncation of the full V3 outcome.
