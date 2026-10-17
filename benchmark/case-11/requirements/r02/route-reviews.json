@@ -1,0 +1,22 @@
+{
+  "batch_id": "case-11-r02",
+  "groups": [
+    {
+      "group_id": "case-11",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "policies": [],
+      "reason": "The complete original request states no required, excluded, or exclusively allowed transport mode and no exact stated mode. The dated prohibition on any activities or travel is a scheduled-commitments time protection, not a transport-mode restriction. Moderate pace does not mandate WALK, TRANSIT, or DRIVE.",
+      "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+      "reviewer_ref": "/root/case11_source_policies",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible."
+        }
+      ],
+      "status": "unrestricted"
+    }
+  ],
+  "revision": "2",
+  "schema_version": "rtpeval_route_reviews_1"
+}

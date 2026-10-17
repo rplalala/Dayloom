@@ -1,0 +1,30 @@
+{
+  "assessment": "The institution's primary material explicitly treats the architecture of its Palais d'Antin setting and its own architecture interpretation visits. This supports architecture even though its main programme is science. The supplied address conflates the historic palace and a temporary site; this judgment concerns the named institution and its documented architectural subject, without inferring access or a scheduled visit.",
+  "canonical_place_id": "ChIJhwoMudpv5kcR1OtUTfh4A8k",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment.",
+  "observed_at": "2026-10-17T04:02:39.9450732+00:00",
+  "observed_date": "2026-10-17",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The institution describes a documented exploration of its architectural history, based on its architecture-tour guide and an art historian.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "Art et Science : la rencontre (S1E3) — Palais de la découverte",
+      "url": "https://www.palais-decouverte.fr/explorer-nos-contenus/les-esprits-du-palais/art-et-science-la-rencontre-s1e3"
+    },
+    {
+      "factual_paraphrase": "The institution explains how classical ornament, monumental staircases and the Palais d'Antin interior were temporarily covered by modern museum installations and later revealed.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "La naissance du Palais de la découverte",
+      "url": "https://www.palais-decouverte.fr/fr/qui-sommes-nous/le-palais-toute-une-histoire/les-fondateurs-du-palais/jean-perrin/la-naissance-du-palais-de-la-decouverte"
+    }
+  ],
+  "subject_address": "17 Av. du Général Eisenhower, 186 rue St Charles 75015, 75008 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "subject_name": "Palais de la découverte",
+  "unresolved_subject_id": null,
+  "verdict": "relevant"
+}

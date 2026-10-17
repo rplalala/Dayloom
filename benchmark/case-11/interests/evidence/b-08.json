@@ -1,0 +1,23 @@
+{
+  "assessment": "The operator describes publicly visitable studios devoted to visual arts, with works in progress and encounters with resident artists. This is direct contemporary-art engagement.",
+  "canonical_place_id": "ChIJZX-BcR9u5kcR2xLSVBwfbs8",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment.",
+  "observed_at": "2026-10-17T04:02:39.9347283+00:00",
+  "observed_date": "2026-10-17",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "Thirty resident visual artists occupy six floors of studios that visitors can enter to discover work in progress and meet artists.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "Les ateliers — 59 Rivoli",
+      "url": "https://59rivoli.org/les-ateliers/"
+    }
+  ],
+  "subject_address": "59 Rue de Rivoli, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "subject_name": "59 Rivoli",
+  "unresolved_subject_id": null,
+  "verdict": "relevant"
+}

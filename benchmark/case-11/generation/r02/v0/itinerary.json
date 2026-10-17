@@ -1,0 +1,217 @@
+{
+  "days": [
+    {
+      "activities": [
+        {
+          "activity_id": "d1-louvre",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-22T12:30:00+02:00",
+          "estimated_cost": null,
+          "location": "Louvre area, Paris",
+          "notes": "Allow time to focus on a selection of the collections rather than trying to see everything.",
+          "place_name": "Musée du Louvre",
+          "source_place_id": null,
+          "start_time": "2026-10-22T10:00:00+02:00",
+          "time_use": "scheduled",
+          "title": "Explore the Louvre's art collections"
+        },
+        {
+          "activity_id": "d1-walk-palais-royal",
+          "activity_kind": "transport",
+          "end_time": "2026-10-22T12:45:00+02:00",
+          "estimated_cost": null,
+          "location": null,
+          "notes": "Model estimate: roughly 15 minutes on foot; route and duration are not live-verified.",
+          "place_name": null,
+          "source_place_id": null,
+          "start_time": "2026-10-22T12:30:00+02:00",
+          "time_use": "scheduled",
+          "title": "Walk to Palais-Royal",
+          "transport": {
+            "from_activity_id": "d1-louvre",
+            "mode": "WALK",
+            "to_activity_id": "d1-palais-royal"
+          }
+        },
+        {
+          "activity_id": "d1-palais-royal",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-22T14:00:00+02:00",
+          "estimated_cost": null,
+          "location": "Palais-Royal, Paris",
+          "notes": "A relaxed look at the palace architecture and arcades.",
+          "place_name": "Palais-Royal",
+          "source_place_id": null,
+          "start_time": "2026-10-22T12:45:00+02:00",
+          "time_use": "scheduled",
+          "title": "See the Palais-Royal and its historic arcades"
+        }
+      ],
+      "date": "2026-10-22"
+    },
+    {
+      "activities": [
+        {
+          "activity_id": "d2-sainte-chapelle",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-23T11:00:00+02:00",
+          "estimated_cost": null,
+          "location": "Île de la Cité, Paris",
+          "notes": "Focus on the Gothic architecture and stained glass.",
+          "place_name": "Sainte-Chapelle",
+          "source_place_id": null,
+          "start_time": "2026-10-23T09:30:00+02:00",
+          "time_use": "scheduled",
+          "title": "Visit Sainte-Chapelle"
+        },
+        {
+          "activity_id": "d2-walk-conciergerie",
+          "activity_kind": "transport",
+          "end_time": "2026-10-23T11:15:00+02:00",
+          "estimated_cost": null,
+          "location": null,
+          "notes": "Model estimate: roughly 15 minutes on foot; route and duration are not live-verified.",
+          "place_name": null,
+          "source_place_id": null,
+          "start_time": "2026-10-23T11:00:00+02:00",
+          "time_use": "scheduled",
+          "title": "Walk to the Conciergerie",
+          "transport": {
+            "from_activity_id": "d2-sainte-chapelle",
+            "mode": "WALK",
+            "to_activity_id": "d2-conciergerie"
+          }
+        },
+        {
+          "activity_id": "d2-conciergerie",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-23T13:00:00+02:00",
+          "estimated_cost": null,
+          "location": "Île de la Cité, Paris",
+          "notes": "A historic palace with notable medieval architecture.",
+          "place_name": "Conciergerie",
+          "source_place_id": null,
+          "start_time": "2026-10-23T11:15:00+02:00",
+          "time_use": "scheduled",
+          "title": "Explore the Conciergerie"
+        }
+      ],
+      "date": "2026-10-23"
+    },
+    {
+      "activities": [
+        {
+          "activity_id": "d3-sacre-coeur",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-24T11:30:00+02:00",
+          "estimated_cost": null,
+          "location": "Montmartre, Paris",
+          "notes": "Take time to appreciate the architecture and the Montmartre setting.",
+          "place_name": "Basilica of Sacré-Cœur",
+          "source_place_id": null,
+          "start_time": "2026-10-24T10:00:00+02:00",
+          "time_use": "scheduled",
+          "title": "Visit the Basilica of Sacré-Cœur"
+        },
+        {
+          "activity_id": "d3-walk-montmartre-museum",
+          "activity_kind": "transport",
+          "end_time": "2026-10-24T12:00:00+02:00",
+          "estimated_cost": null,
+          "location": null,
+          "notes": "Model estimate: roughly 30 minutes on foot; route and duration are not live-verified.",
+          "place_name": null,
+          "source_place_id": null,
+          "start_time": "2026-10-24T11:30:00+02:00",
+          "time_use": "scheduled",
+          "title": "Walk to the Musée de Montmartre",
+          "transport": {
+            "from_activity_id": "d3-sacre-coeur",
+            "mode": "WALK",
+            "to_activity_id": "d3-montmartre-museum"
+          }
+        },
+        {
+          "activity_id": "d3-montmartre-museum",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-24T14:00:00+02:00",
+          "estimated_cost": null,
+          "location": "Montmartre, Paris",
+          "notes": "An art-focused visit in the Montmartre neighborhood.",
+          "place_name": "Musée de Montmartre",
+          "source_place_id": null,
+          "start_time": "2026-10-24T12:00:00+02:00",
+          "time_use": "scheduled",
+          "title": "Visit the Musée de Montmartre"
+        }
+      ],
+      "date": "2026-10-24"
+    },
+    {
+      "activities": [
+        {
+          "activity_id": "d4-orsay",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-25T12:30:00+01:00",
+          "estimated_cost": null,
+          "location": "Left Bank, Paris",
+          "notes": "Allow time for a considered visit to selected galleries and the former station's architecture.",
+          "place_name": "Musée d'Orsay",
+          "source_place_id": null,
+          "start_time": "2026-10-25T10:00:00+01:00",
+          "time_use": "scheduled",
+          "title": "Explore the Musée d'Orsay"
+        },
+        {
+          "activity_id": "d4-transit-eiffel",
+          "activity_kind": "transport",
+          "end_time": "2026-10-25T13:00:00+01:00",
+          "estimated_cost": null,
+          "location": null,
+          "notes": "Model estimate: roughly 30 minutes by public transit; route and duration are not live-verified.",
+          "place_name": null,
+          "source_place_id": null,
+          "start_time": "2026-10-25T12:30:00+01:00",
+          "time_use": "scheduled",
+          "title": "Travel to the Eiffel Tower area",
+          "transport": {
+            "from_activity_id": "d4-orsay",
+            "mode": "TRANSIT",
+            "to_activity_id": "d4-eiffel-exterior"
+          }
+        },
+        {
+          "activity_id": "d4-eiffel-exterior",
+          "activity_kind": "main_poi",
+          "end_time": "2026-10-25T14:30:00+01:00",
+          "estimated_cost": null,
+          "location": "Champ de Mars, Paris",
+          "notes": "A relaxed exterior visit focused on the landmark's architecture and its setting.",
+          "place_name": "Eiffel Tower",
+          "source_place_id": null,
+          "start_time": "2026-10-25T13:00:00+01:00",
+          "time_use": "scheduled",
+          "title": "See the Eiffel Tower and surrounding grounds"
+        }
+      ],
+      "date": "2026-10-25"
+    }
+  ],
+  "destination": "Paris, France",
+  "end_date": "2026-10-25",
+  "output_version": "itinerary_3",
+  "reference_recommendations": [
+    {
+      "area": "Louvre and Palais-Royal",
+      "associated_day": "2026-10-22",
+      "place_name": "Café Verlet",
+      "reason": "An optional historic café suggestion for a break near the Louvre and Palais-Royal area planned for October 22.",
+      "source_place_id": null,
+      "source_ref": null,
+      "uncertainty": "Proximity is a model estimate, and availability has not been checked."
+    }
+  ],
+  "route_diagnostics": [],
+  "start_date": "2026-10-22",
+  "transfers": []
+}

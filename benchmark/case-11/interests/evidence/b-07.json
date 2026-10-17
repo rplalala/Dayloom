@@ -1,0 +1,23 @@
+{
+  "assessment": "The museum's own permanent-exhibition description identifies works of art and dedicated drawing, photography and print displays. This directly supports the art interest.",
+  "canonical_place_id": "ChIJY8922uBv5kcRJESw9l2dlLc",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment.",
+  "observed_at": "2026-10-17T04:02:39.9337449+00:00",
+  "observed_date": "2026-10-17",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The permanent display presents about 3,500 works from Africa, Asia, Oceania and the Americas, including spaces for drawings, photographs and prints.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "Exposition permanente — musée du quai Branly – Jacques Chirac",
+      "url": "https://m.quaibranly.fr/fr/expositions-evenements/au-musee/expositions/details-de-levenement/e/exposition-permanente"
+    }
+  ],
+  "subject_address": "37 Quai Jacques Chirac, 75007 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "subject_name": "Musée du quai Branly - Jacques Chirac",
+  "unresolved_subject_id": null,
+  "verdict": "relevant"
+}

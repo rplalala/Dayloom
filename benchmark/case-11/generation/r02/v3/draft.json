@@ -1,0 +1,28 @@
+{
+  "days": {
+    "$case_material_ref": {
+      "expanded_semantic_sha256": "7997463771bdf89a3d0c0d88edfb85072616a89833ea1b001f062d00eac3f47b",
+      "path": "itinerary.json",
+      "pointer": "/days"
+    }
+  },
+  "destination": "Paris, France",
+  "end_date": "2026-10-25",
+  "output_version": "itinerary_3",
+  "reference_recommendations": [],
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "expanded_semantic_sha256": "666056a9164de4fa009613c6919fc4f71f597954af1e27da15786ea4dbcbc67f",
+      "path": "itinerary.json",
+      "pointer": "/route_diagnostics"
+    }
+  },
+  "start_date": "2026-10-22",
+  "transfers": {
+    "$case_material_ref": {
+      "expanded_semantic_sha256": "10f6dd71ed8f7b7c624364262daf286928e62503fed45e3a705be8dff88a2388",
+      "path": "itinerary.json",
+      "pointer": "/transfers"
+    }
+  }
+}

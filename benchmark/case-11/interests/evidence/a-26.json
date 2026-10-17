@@ -1,0 +1,19 @@
+{
+  "canonical_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "independently_reviewed_description": "The museum describes medieval artistic creation in its collections, including architectural sculpture, stained glass, goldsmith work and the Lady and the Unicorn tapestries.",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The museum describes medieval artistic creation in its collections, including architectural sculpture, stained glass, goldsmith work and the Lady and the Unicorn tapestries.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result and/or opened page",
+      "title": "Musée de Cluny reopening press kit",
+      "url": "https://www.musee-moyenage.fr/media/documents-pdf/dossiers-de-presse/press-kit-reopening.pdf"
+    }
+  ],
+  "subject_name_for_identity_only": "Musée de Cluny",
+  "unresolved_subject_id": null
+}

@@ -1,0 +1,11 @@
+{
+  "canonical_place_id": "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+  "evidence_limits": "No usable official description was located in bounded lookup.",
+  "independently_reviewed_description": "Targeted searches found third-party restaurant listings but no independently verified official venue description suitable for this judgment. Some listings mention music, but their source ownership was not verified.",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "source_kind": "independent_official",
+  "sources": [],
+  "subject_name_for_identity_only": "Les Baux de Paris",
+  "unresolved_subject_id": null
+}

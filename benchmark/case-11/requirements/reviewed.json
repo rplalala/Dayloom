@@ -1,0 +1,75 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-11-requirements",
+  "revision": "1",
+  "group_id": "case-11",
+  "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case11_requirements_reviewer",
+    "reviewed_at": "2026-10-16T21:59:09.889762+00:00"
+  },
+  "subjects": [],
+  "obligations": [
+    {
+      "obligation_id": "case-11-protected-meeting-time",
+      "kind": "protected_time",
+      "resolution": "resolved",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting.",
+          "occurrence": 0
+        },
+        {
+          "field_path": "additional_preferences",
+          "quote": "Do not schedule any activities or travel during that interval.",
+          "occurrence": 0
+        }
+      ],
+      "date": "2026-10-23",
+      "interval": {
+        "kind": "clock",
+        "start": "14:00",
+        "end": "16:00"
+      },
+      "scope": "scheduled_commitments"
+    }
+  ],
+  "soft_preferences": [
+    {
+      "preference_id": "case-11-art-and-architecture",
+      "description": "Prefer activities involving art and architecture.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "enjoy art and architecture",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "case-11-moderate-pace",
+      "description": "Prefer a moderate pace.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "prefer a moderate pace",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "case-11-flexible-remaining-time",
+      "description": "Scheduling outside the protected meeting interval is flexible.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "The rest of our time is flexible.",
+          "occurrence": 0
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}

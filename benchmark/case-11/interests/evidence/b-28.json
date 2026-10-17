@@ -1,0 +1,23 @@
+{
+  "assessment": "The Louvre explicitly describes the inverted pyramid as a technical architectural feat and provides its construction geometry and location. This directly supports architecture.",
+  "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment.",
+  "observed_at": "2026-10-17T04:02:39.9613733+00:00",
+  "observed_date": "2026-10-17",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The Louvre describes an inverted pyramid in the underground Carrousel entrance, made of 84 diamond-shaped and 28 triangular glass panes, as a technical feat.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "A pyramid for a symbol — Louvre",
+      "url": "https://www.louvre.fr/en/explore/the-palace/a-pyramid-for-a-symbol"
+    }
+  ],
+  "subject_address": "75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "subject_name": "Pyramide du Louvre inversée",
+  "unresolved_subject_id": null,
+  "verdict": "relevant"
+}
