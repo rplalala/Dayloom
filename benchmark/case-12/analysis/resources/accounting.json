@@ -1,0 +1,29 @@
+{
+  "schema_version": "case12_acceptance_accounting_1",
+  "historical_cost_sources_ref": {
+    "path": "acceptance-prep-r07/resource-cost-sources.json",
+    "sha256": "0d83b4412f404f83611efb78cad63bfcfc8fbc936c1c68f639fbd756765f46cb",
+    "availability": "available",
+    "media_type": "application/json"
+  },
+  "previous_priced_subtotal_usd": "53.598392460",
+  "historical_unknown_reservation_usd": "0.01",
+  "previous_accounted_usd": "53.608392460",
+  "new_stages": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/f0e980a3bc5df3174ad4b064f87f6e47b0f2c486b1367c7cf9085b1ab81c21f6",
+      "expanded_semantic_sha256": "f0e980a3bc5df3174ad4b064f87f6e47b0f2c486b1367c7cf9085b1ab81c21f6"
+    }
+  },
+  "new_reference_cost_usd": "1.735415700",
+  "cumulative_priced_subtotal_usd": "55.333808160",
+  "cumulative_accounted_usd": "55.343808160",
+  "cumulative_cap_usd": "62",
+  "remaining_usd": "6.656191840",
+  "stage_cap_usd": "2.08",
+  "unused_stage_allowance_usd": "0.344584300",
+  "actual_account_billing": null,
+  "external_codex_billing": null,
+  "scope": "Planner and original Primary history plus separately instrumented independent fact/relevance/paired-access work; imported source use is not charged twice."
+}

@@ -1,0 +1,138 @@
+{
+  "model_calls": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/c169f7cb6a82428d152c587f428372ad0dcdfa6ce255731b0a1b1ef0fa2f5c50",
+      "expanded_semantic_sha256": "c169f7cb6a82428d152c587f428372ad0dcdfa6ce255731b0a1b1ef0fa2f5c50"
+    }
+  },
+  "provider_events": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/0c9d6a55366db43236a871a02b82b911d6fc1e37ed1879c3e8110433ea280f0e",
+      "expanded_semantic_sha256": "0c9d6a55366db43236a871a02b82b911d6fc1e37ed1879c3e8110433ea280f0e"
+    }
+  },
+  "cache_events": [
+    {
+      "event_id": "88bad4953af14453a1012fafa727e1f0",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "ee65b70504d54044b3beda8438794f1a",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "5cc304ed575148ffa03c15eabca87896",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "674ebd2568bc48549f56de75c4aa71a3",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "a7f911c5fc4c49aa892e84fda0dccbf0",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "715c99312ff74f559568ec6a60969b76",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "999c11b89eea43e98cd7d51452293dd1",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "d53a0016792145b6b49b42425a35c2c3",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "10075e5bd1cc47d9b0c753a7fbc07689",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "4b131f3a160541f4a31fe001daa37522",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    }
+  ],
+  "stage_summaries": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/08154b042b29c94211d3195fce5f0efb664b42e054da104c7e68dda30a162363",
+      "expanded_semantic_sha256": "08154b042b29c94211d3195fce5f0efb664b42e054da104c7e68dda30a162363"
+    }
+  },
+  "repair_summary": {
+    "observed_rounds": 3,
+    "model_event_ids": [
+      "01a148e8-717b-7f41-8ae0-657e75025f79",
+      "01a148e8-a2ef-7ea2-96cd-f1541b89e4ec",
+      "01a148e8-ec8b-7c31-b114-fd6c4a88c60f"
+    ],
+    "provider_event_ids": [
+      "54148f4c15ba4651bd69c6380ba9a19e",
+      "d10c30b2c0d2421f9f3f7b87a85548b2",
+      "693bb92c79e14aaea4c87344cc1c0380",
+      "09fbf0606f7341ce8cdcc04d89a3d36f",
+      "1c9ae2b19277495fb8e024ac6cc44cc0",
+      "493c992d843548679fe22ee1d1f748e8",
+      "4f221636af964615900b96c77e06b9f6",
+      "68695fb79c8a4e2bb31867740d8e23b6",
+      "83d83e4c90f74f98ab01b1c3bb1dfdc6",
+      "810552a775e64ebe811e83721babe1d0",
+      "33e67f73bfd8407e9dea6b85bc20858f",
+      "4d435a56e4264a99b702a6d9ae15e353",
+      "21b7a656467b4a34a7e5e5ac662ee05c",
+      "5cf2edb490e94b2f9caa23214a1210d3",
+      "27fed81192834c7aba4e1bdb476020f3",
+      "d576edc288694df0a0e3dbc4af5f4d3f",
+      "ca9d7ef217fa4ed09f5e42bbc9c8de1d",
+      "b60bced27c634c5499ee455360ee3a4e",
+      "0896d1069bff41f9a43a69a9a4cb8c0e"
+    ]
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "timing": {
+    "scope": "selected_invocation_through_cleanup",
+    "started_at": "2026-10-17T08:07:20.355290+00:00",
+    "finished_at": "2026-10-17T08:10:10.923256+00:00",
+    "elapsed_seconds": 170.5,
+    "status": "measured"
+  },
+  "outcome": "completed",
+  "schema_version": "rtpeval_usage_1",
+  "group_id": "case-12",
+  "run_id": "case-12-v3-20261017-r07",
+  "version": "v3",
+  "namespace": "planner",
+  "result_sha256": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+  "collection_status": "available",
+  "coverage": {
+    "scope": "instrumented_adapters_only",
+    "adapter_coverage": "default_adapters",
+    "unobserved_injected_clients": "not_inferred",
+    "http_sends": "transport_entry_not_billing",
+    "model_calls": "provider_invocations_not_internal_reasoning"
+  }
+}

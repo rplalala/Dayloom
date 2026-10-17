@@ -1,0 +1,10 @@
+{
+  "schema_version": "case12_public_relevance_reviews_1",
+  "records": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/3235f65cd2fcd37d0268277f2fc56553f66f6d89d32fcc1541712e1c281d6027",
+      "expanded_semantic_sha256": "3235f65cd2fcd37d0268277f2fc56553f66f6d89d32fcc1541712e1c281d6027"
+    }
+  }
+}

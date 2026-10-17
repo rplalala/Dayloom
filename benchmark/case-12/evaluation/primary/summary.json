@@ -1,0 +1,10 @@
+{
+  "schema_version": "rtpeval_execution_report_1",
+  "processing_status": "complete",
+  "acquisition_status": "complete",
+  "evidence_status": "decidable",
+  "unknowns": [],
+  "acquisition_failures": [],
+  "generated_at": "2026-10-17T08:12:51.201035+00:00",
+  "preparation_sha256": "d306f408473c22998965089813167cf009ada17c7e6f49e2688d1f98f9c95e12"
+}

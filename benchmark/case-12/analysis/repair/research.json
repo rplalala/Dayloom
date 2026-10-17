@@ -1,0 +1,95 @@
+{
+  "schema_version": "rtpeval_research_repair_report_1",
+  "processing_status": "completed",
+  "track": "repair",
+  "applicability": "applicable",
+  "same_run": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/846b81c43c7ccd96d888805caf24fc24904998592b9cba79955d9678d78a05ba",
+      "expanded_semantic_sha256": "846b81c43c7ccd96d888805caf24fc24904998592b9cba79955d9678d78a05ba"
+    }
+  },
+  "four_final": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/3e99461070aefc1fa4bcc79b4de571c2be4187239924fc54b84992d21df8feb9",
+      "expanded_semantic_sha256": "3e99461070aefc1fa4bcc79b4de571c2be4187239924fc54b84992d21df8feb9"
+    }
+  },
+  "controlled": {
+    "applicability": "not_declared"
+  },
+  "measurement_coverage": {
+    "native_pairs": 1,
+    "native_final_groups": 1
+  },
+  "review_coverage": {
+    "native_independent_reports": 2
+  },
+  "population_digest": "b4a28e3dc236eeb749a11461ac944071b2a9a4d39ee1e76205e3d99738eb8774",
+  "selection_profile": {
+    "schema_version": "rtpeval_research_profile_1",
+    "profile_id": "case12-retrospective-r07",
+    "revision": "1",
+    "population_id": "case12-retained-r07",
+    "population_revision": "1",
+    "source_revision": "3a7276284c428b9dce3bc59e643117cdc9bc8307",
+    "completion_policy_ref": "selected_workflow_1",
+    "declared_at": "2026-10-17T09:55:44.741989+00:00",
+    "timing_basis": "retrospective",
+    "first_attempt_rule": "first_dispatched",
+    "retry_rule": {
+      "selection": "none",
+      "scope": "slot"
+    },
+    "completion_mapping": {
+      "completed": "completed",
+      "failed": "failed",
+      "cancelled": "cancelled",
+      "incomplete": "incomplete",
+      "not_started": "unstarted",
+      "pending": "unknown_pending",
+      "required_mechanism_failed": "failed",
+      "clarification_required": "clarification_required"
+    },
+    "configurations": {
+      "v0": {
+        "path": "run-r07/captures/v0/runtime-policy.json",
+        "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "availability": "available",
+        "media_type": "application/json"
+      },
+      "v1": {
+        "path": "run-r07/captures/v1/runtime-policy.json",
+        "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "availability": "available",
+        "media_type": "application/json"
+      },
+      "v2": {
+        "path": "run-r07/captures/v2/runtime-policy.json",
+        "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "availability": "available",
+        "media_type": "application/json"
+      },
+      "v3": {
+        "path": "run-r07/captures/v3/runtime-policy.json",
+        "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "availability": "available",
+        "media_type": "application/json"
+      }
+    },
+    "selection_basis": "Retrospective material assembly of the retained approved revision; no claim that r07 was the first attempt for this original request, and no pooled cross-revision quality comparison."
+  },
+  "source_bindings": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/329dcff19196ef3e76f0830be7c27ab4e51fe3639533a1bade26a2677f44429c",
+      "expanded_semantic_sha256": "329dcff19196ef3e76f0830be7c27ab4e51fe3639533a1bade26a2677f44429c"
+    }
+  },
+  "source_digest": "329dcff19196ef3e76f0830be7c27ab4e51fe3639533a1bade26a2677f44429c",
+  "diagnostics": [],
+  "interpretation": "Descriptive independent outcomes; populations remain separate.",
+  "semantic_sha256": "6a1624e40bdec794eaf827d1634eb42f40fd8d610b5dd9e6795b0247c50992a2"
+}

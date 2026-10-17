@@ -1,0 +1,18 @@
+{
+  "group_id": "case-12",
+  "run_id": "case-12-v2-20261017-r07",
+  "version": "v2",
+  "input_sha256": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+  "result_sha256": "299f5cfea2b9492aab9cf6f5bec4b2c8a93cabd5195bd3c863531dde7da497af",
+  "source_revision": "3a7276284c428b9dce3bc59e643117cdc9bc8307",
+  "declared_by": "rtpeval.generate/selected_workflow_1",
+  "declared_at": "2026-10-17T08:10:12.989847+00:00",
+  "rationale": "Selected Planner workflow observation; qualification is separate from quality.",
+  "schema_version": "case12_public_provenance_1",
+  "original_provenance_sha256": "b51aa761df635a38d497c2988623ee8953140875258c0906406c443249503c4e",
+  "original_native_schema": "rtpeval_provenance_1",
+  "itinerary": "generation/v2/itinerary.json",
+  "usage": "generation/v2/usage.json",
+  "runtime_policy": "generation/runtime-policy.json",
+  "scope": "Source-bound publication projection; native qualification and closed dependencies remain private."
+}

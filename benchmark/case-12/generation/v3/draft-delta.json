@@ -1,0 +1,13 @@
+{
+  "schema_version": "case_itinerary_delta_1",
+  "base_path": "generation/v3/itinerary.json",
+  "replace": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/16d078d96fce31031f8090e82c80e7be36157fe9d522ec51e6d71239820a100b",
+      "expanded_semantic_sha256": "16d078d96fce31031f8090e82c80e7be36157fe9d522ec51e6d71239820a100b"
+    }
+  },
+  "expanded_semantic_sha256": "1d474687bca4022ac0e7278011e1e5302739b4140019da04d3a826894162fac7",
+  "scope": "Replace only the listed top-level keys on the fully expanded final itinerary."
+}

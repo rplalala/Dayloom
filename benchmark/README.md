@@ -386,8 +386,9 @@ itinerary's available modes, time or daily visit capacity.
 Case-01–07 retain their existing input bytes, selected revisions, results, scores,
 reports, receipts, original dates and acceptance limitations. Historical accepted
 dates need not satisfy today's moving window. The five inputs revised on 16 October
-use the dates below; case-09 is now accepted, while 08/10/11/12 remain unexecuted.
-The new case-12 is the former Sydney case-14.
+use the dates below; case-09 is now accepted, while 08/10/11 remain unexecuted.
+Case-12 r07 has completed automatic processing and is ready for
+[joint acceptance](case-12/report.md#acceptance). It is the former Sydney case-14.
 
 Dates and durations are inclusive. Selected reports are indexed
 [above](#accepted-selections). Case-05 uses the approved 2026-10-16 through
@@ -409,7 +410,7 @@ the actual application reference date.
 | [09](inputs/case-09.json) | C. Place obligations | Tokyo | 5 | 3 | JPY 300,000 | Ueno Park exactly once on day two and Tokyo National Museum exactly once on a flexible date; checks different date scopes for two required places. |
 | [10](inputs/case-10.json) | C. Place obligations | London | 4 | 1 | GBP 1,300 | Exactly two British Museum visits on different dates; checks deliberate repetition within a shorter trip. |
 | [11](inputs/case-11.json) | D. Itinerary boundaries | Paris | 4 | 2 | EUR 1,500 | Day-two 14:00-16:00 meeting with no activities or travel; checks a protected local-time interval. |
-| [12](inputs/case-12.json) | D. Itinerary boundaries | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
+| [12](case-12/report.md) | D. Itinerary boundaries | Sydney | 7 | 2 | AUD 3,200 | Exactly one sightseeing visit on day one and no activities or travel on day four; checks dated count and whole-day protection. |
 
 Five trips last two or three days, six last four or five days, and one lasts seven
 days. Sydney has three cases; Tokyo, Barcelona, London and Paris have two each;

@@ -1,0 +1,122 @@
+{
+  "batch_id": "case-12-primary-20261017-r07",
+  "batch_revision": "7",
+  "components": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/687273d12b64b21c9dae1fcfd8aac84daf56de7861ff4d01035a3db41e8aa78b",
+      "expanded_semantic_sha256": "687273d12b64b21c9dae1fcfd8aac84daf56de7861ff4d01035a3db41e8aa78b"
+    }
+  },
+  "content_hash": "9db41a13dc1803a33edd8966cd5ad6379c7215c34fe5cc8b7e86542705668c71",
+  "correspondence_preparation": {
+    "batch_id": "case-12-primary-20261017-r07",
+    "batch_revision": "7",
+    "diagnostics": [],
+    "rules_version": "rtpeval_v3_correspondence_rules_1",
+    "schema_version": "rtpeval_v3_edit_provenance_1",
+    "source_hashes": {
+      "correspondence_reviews": null,
+      "identity": "ac5ec619f6490d40406ca58454793b527634afd72c9935215c38d4f545fe9c99",
+      "intake": "9d97030fed85b48ed6d45fd2e4bf2fa7057198d3ffdac727f863270d0fad97a6",
+      "result_sources": "f2ac149858867df955c88b6d8b3156b9fe0b065ef7a630e9cae9aaa3da4c90e2"
+    },
+    "status": "complete"
+  },
+  "diagnostics": [],
+  "evidence_provenance": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/59190bd9bb168a7430dd2cc3f0e5bf9d8aada0a6ace3412865a5c7febb64aafb",
+      "expanded_semantic_sha256": "59190bd9bb168a7430dd2cc3f0e5bf9d8aada0a6ace3412865a5c7febb64aafb"
+    }
+  },
+  "generated_at": "2026-10-17T09:59:32.736631+00:00",
+  "groups": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/a9e501d8e2e2361d6ed8d0fb9eaab4ad63dfbcf20faebfeeea81384f341eb1ff",
+      "expanded_semantic_sha256": "a9e501d8e2e2361d6ed8d0fb9eaab4ad63dfbcf20faebfeeea81384f341eb1ff"
+    }
+  },
+  "preparation_file_sha256": {
+    "context": "0f6e7e589a8ca4555f53ac5833ccfd0c77fb826578a5f1e9772d79f24668e324",
+    "coordinates": null,
+    "correspondence_reviews": null,
+    "density_reviews": "bf31a1ac41d8aabaab750b13c43c4a9f4ccbb43819fe315117929ae6fc0031db",
+    "edit_provenance": "ead92b11c36b9220770a7cbce75a4935eade34ff32c93eaa3b3bd62a6cd98a1e",
+    "expected_plan": "386bd10ea130ef3ef591bd2d97695a46ba2044e3f8e72a4c20649a0ec34c4828",
+    "identity": "ac5ec619f6490d40406ca58454793b527634afd72c9935215c38d4f545fe9c99",
+    "occupancy_reviews": null,
+    "opening_judgment": "c3e17ee481ace730e6bb8233a8105d2aaf826f20e0ec852d6857dbf2c7cbd010",
+    "route_reviews": "5de58ec70333534b852822ec7de007d8d05af0cfb12a5bf67925dc07dc1aff25"
+  },
+  "rules_profile": {
+    "correspondence": "validated adopted sources before unique fallback and review",
+    "daily_density": {
+      "count_6_or_more": 100,
+      "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
+      "mean": "equal requested-date weight; exact arithmetic; empty dates included",
+      "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
+      "penalties_by_count_0_to_5": {
+        "ordinary": [
+          100,
+          40,
+          0,
+          10,
+          50,
+          80
+        ],
+        "relaxed": [
+          100,
+          20,
+          0,
+          40,
+          70,
+          90
+        ],
+        "rich": [
+          100,
+          60,
+          0,
+          0,
+          30,
+          70
+        ]
+      },
+      "population": "source-distinct primary visit occurrences on every requested date",
+      "profile_id": "rtpeval_daily_density_2",
+      "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable"
+    },
+    "delta": "after minus before; exact fractions; unavailable remains null",
+    "identical_contexts": "one_judgment_with_bound_stage_sources",
+    "mask": "pair union; exclude only two established zero denominators",
+    "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
+    "profile_id": "rtpeval_v3_pair_rules_2",
+    "quality": "independent checks; deletion and replacement do not repair old facts",
+    "scope": "selected same-run V3 draft and final_primary"
+  },
+  "rules_profile_hash": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559",
+  "schema_version": "rtpeval_v3_pair_report_2",
+  "snapshot_hashes": {
+    "manifest": "89c348b32a2a90f1aeb2838c80ec578872d0b1799c9f1d8d1e6007e2d43c0c3f",
+    "plan": "386bd10ea130ef3ef591bd2d97695a46ba2044e3f8e72a4c20649a0ec34c4828"
+  },
+  "source_hashes": {
+    "artifacts": {
+      "manifest": "0f6de69ca41c9113173560387fe0d811fd446d81de181317bc6ab164c64428f5"
+    },
+    "identity_report": "ac5ec619f6490d40406ca58454793b527634afd72c9935215c38d4f545fe9c99",
+    "intake": "9d97030fed85b48ed6d45fd2e4bf2fa7057198d3ffdac727f863270d0fad97a6",
+    "preparation": {
+      "coordinate_evidence": null,
+      "density_reviews": "734171913d465352b5175890463af7595bcaf52588018b7b6f03063a4789b39f",
+      "expected_plan": "386bd10ea130ef3ef591bd2d97695a46ba2044e3f8e72a4c20649a0ec34c4828",
+      "occupancy_reviews": null,
+      "opening_judgment": "c3e17ee481ace730e6bb8233a8105d2aaf826f20e0ec852d6857dbf2c7cbd010",
+      "route_reviews": "bdf0321b9fd18795fec3ab03b64465011289c6056e2811172d64609afb0cc32f",
+      "schedule_context": "1a156f1da554906a75f8f9798643867e1bdcf69deb946ffec9e4c1fce8610335"
+    }
+  },
+  "status": "complete"
+}

@@ -1,0 +1,44 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Olympic Park",
+      "source_place_id": "ChIJc07ZkCWvEmsR1Slly91ppTw",
+      "reason": "Park near Sydney Harbour Bridge (approximately 248 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "Olympic Dr before, Alfred St, Milsons Point NSW 2061, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-fe9ddbdc-8ff6-4f46-991b-dcc3be82564b:0"
+    },
+    {
+      "place_name": "Western Foyers",
+      "source_place_id": "ChIJoVOojGauEmsRKrmCjyzBbbI",
+      "reason": "Restaurant near Sydney Opera House (approximately 66 m straight-line).",
+      "associated_day": "2026-10-23",
+      "area": "Shop 14/2 Circular Quay E, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-7f514f77-416d-482c-9409-69ce8a436bcf:0"
+    },
+    {
+      "place_name": "Madame Tussauds Sydney",
+      "source_place_id": "ChIJuUFiBzmuEmsRB5kohGRewMg",
+      "reason": "Museum near SEA LIFE Sydney Aquarium (approximately 33 m straight-line).",
+      "associated_day": "2026-10-24",
+      "area": "1-5 Wheat Rd, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-caff7563-451d-40ee-9689-fb92eace83e4:0"
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-28",
+  "days": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/489ad8ec5f1105ea18df36eee3190d6d42f3daaf254e4fc9516fd2a09bb679ea",
+      "expanded_semantic_sha256": "489ad8ec5f1105ea18df36eee3190d6d42f3daaf254e4fc9516fd2a09bb679ea"
+    }
+  }
+}
