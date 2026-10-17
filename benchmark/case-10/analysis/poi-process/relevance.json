@@ -1,0 +1,36 @@
+{
+  "tasks_used": 1,
+  "maximum_tasks": 1,
+  "reviewer": "/root/case10_relevance",
+  "configured_model": "gpt-6.1-sol",
+  "configured_reasoning_effort": "high",
+  "reviewer_kind": "external_model",
+  "human_review": false,
+  "venues": 55,
+  "interests": 3,
+  "judgments": 165,
+  "counts": {
+    "relevant": 3,
+    "not_relevant": 109,
+    "unknown": 53
+  },
+  "by_interest": {
+    "historic-neighbourhoods": {
+      "relevant": 0,
+      "not_relevant": 44,
+      "unknown": 11
+    },
+    "parks": {
+      "relevant": 1,
+      "not_relevant": 43,
+      "unknown": 11
+    },
+    "art": {
+      "relevant": 2,
+      "not_relevant": 22,
+      "unknown": 31
+    }
+  },
+  "evidence_origin": "Existing unranked raw Google facts acquired during generation, plus independently acquired Primary facts where available. Independent judgments do not convert generation evidence into fresh independent acquisition.",
+  "full_theme_conversion_rates": "unavailable due to unknown relevance; no London-wide recall claim"
+}

@@ -1,0 +1,257 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Grant Museum of Zoology",
+      "source_place_id": null,
+      "reason": "An optional additional museum to consider near the Bloomsbury area planned for the British Museum visits, offering a different subject from the itinerary's art and history.",
+      "associated_day": "2026-10-22",
+      "area": "Bloomsbury",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Queen's House",
+      "source_place_id": null,
+      "reason": "An optional art and architecture stop to consider in the Greenwich area visited on the final day.",
+      "associated_day": "2026-10-25",
+      "area": "Greenwich",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "London, United Kingdom",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-25",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-british-museum",
+          "title": "British Museum — first visit",
+          "place_name": "British Museum",
+          "source_place_id": null,
+          "location": "Bloomsbury, London",
+          "start_time": "2026-10-22T10:00:00+01:00",
+          "end_time": "2026-10-22T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "First of exactly two planned visits; use this session for selected galleries and leave the second visit for a different day."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day1-transport-to-fitzrovia",
+          "title": "Walk to Fitzrovia",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-22T13:00:00+01:00",
+          "end_time": "2026-10-22T13:25:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route: British Museum to Fitzrovia. Duration and route are model estimates, not live-verified facts.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day1-british-museum",
+            "to_activity_id": "day1-fitzrovia"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day1-fitzrovia",
+          "title": "Explore Fitzrovia",
+          "place_name": "Fitzrovia",
+          "source_place_id": null,
+          "location": "Central London",
+          "start_time": "2026-10-22T13:25:00+01:00",
+          "end_time": "2026-10-22T15:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "A relaxed neighbourhood stroll among Fitzrovia's historic streets."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-national-gallery",
+          "title": "National Gallery",
+          "place_name": "National Gallery",
+          "source_place_id": null,
+          "location": "Trafalgar Square, London",
+          "start_time": "2026-10-23T10:00:00+01:00",
+          "end_time": "2026-10-23T12:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Art visit; select a manageable group of galleries rather than trying to cover everything."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2-transport-to-st-james-park",
+          "title": "Walk to St James's Park",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-23T12:15:00+01:00",
+          "end_time": "2026-10-23T12:35:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route: National Gallery to St James's Park. Duration and route are model estimates, not live-verified facts.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-national-gallery",
+            "to_activity_id": "day2-st-james-park"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-st-james-park",
+          "title": "St James's Park",
+          "place_name": "St James's Park",
+          "source_place_id": null,
+          "location": "Westminster, London",
+          "start_time": "2026-10-23T12:35:00+01:00",
+          "end_time": "2026-10-23T13:35:00+01:00",
+          "estimated_cost": null,
+          "notes": "A leisurely park visit between the gallery and Westminster."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day2-transport-to-westminster-abbey",
+          "title": "Walk to Westminster Abbey",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-23T13:35:00+01:00",
+          "end_time": "2026-10-23T13:55:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route: St James's Park to Westminster Abbey. Duration and route are model estimates, not live-verified facts.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day2-st-james-park",
+            "to_activity_id": "day2-westminster-abbey"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day2-westminster-abbey",
+          "title": "Westminster Abbey",
+          "place_name": "Westminster Abbey",
+          "source_place_id": null,
+          "location": "Westminster, London",
+          "start_time": "2026-10-23T13:55:00+01:00",
+          "end_time": "2026-10-23T15:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "Historic landmark visit; timings are a planning outline, not a claim about current access or opening arrangements."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-british-museum",
+          "title": "British Museum — second visit",
+          "place_name": "British Museum",
+          "source_place_id": null,
+          "location": "Bloomsbury, London",
+          "start_time": "2026-10-24T10:00:00+01:00",
+          "end_time": "2026-10-24T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Second and final planned visit, on a different date from the first."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day3-transport-to-covent-garden",
+          "title": "Walk to Covent Garden",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-24T13:00:00+01:00",
+          "end_time": "2026-10-24T13:25:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route: British Museum to Covent Garden. Duration and route are model estimates, not live-verified facts.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day3-british-museum",
+            "to_activity_id": "day3-covent-garden"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-covent-garden",
+          "title": "Explore Covent Garden",
+          "place_name": "Covent Garden",
+          "source_place_id": null,
+          "location": "Central London",
+          "start_time": "2026-10-24T13:25:00+01:00",
+          "end_time": "2026-10-24T15:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Explore the historic district at an easy pace."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day4-greenwich-centre",
+          "title": "Explore historic Greenwich",
+          "place_name": "Greenwich",
+          "source_place_id": null,
+          "location": "Greenwich, London",
+          "start_time": "2026-10-25T10:00:00+01:00",
+          "end_time": "2026-10-25T11:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "A relaxed exploration of Greenwich's historic centre."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "day4-transport-to-greenwich-park",
+          "title": "Walk to Greenwich Park",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-25T11:30:00+01:00",
+          "end_time": "2026-10-25T11:45:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route: Greenwich historic centre to Greenwich Park. Duration and route are model estimates, not live-verified facts.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "day4-greenwich-centre",
+            "to_activity_id": "day4-greenwich-park"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day4-greenwich-park",
+          "title": "Greenwich Park",
+          "place_name": "Greenwich Park",
+          "source_place_id": null,
+          "location": "Greenwich, London",
+          "start_time": "2026-10-25T11:45:00+01:00",
+          "end_time": "2026-10-25T13:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Enjoy the park and its historic landscape at a relaxed pace."
+        }
+      ]
+    }
+  ]
+}
