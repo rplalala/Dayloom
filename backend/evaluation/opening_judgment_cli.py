@@ -21,6 +21,7 @@ def main(argv=None):
         command.add_argument("--context")
         command.add_argument("--expected-plan")
         command.add_argument("--paired", action="store_true")
+        command.add_argument("--pair-only", action="store_true")
         command.add_argument("--output", required=True)
         if name == "prepare":
             command.add_argument("--model", required=True)
@@ -41,6 +42,7 @@ def main(argv=None):
                 model=args.model,
                 paired=args.paired,
                 expected_plan=expected,
+                pair_only=args.pair_only,
             )
         else:
             value = score_opening(

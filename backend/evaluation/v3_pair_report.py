@@ -234,6 +234,7 @@ def build_v3_pair_report(
     correspondence_reviews=None,
     edit_provenance=None,
     density_reviews=None,
+    opening_judgment=None,
     generated_at,
 ):
     """Replay optional V3 pairs; missing stages never acquire synthetic after results."""
@@ -255,6 +256,19 @@ def build_v3_pair_report(
             "Offset-aware timestamp required",
         )
         require(prepared.get("status") == "accepted", "intake", "Accepted intake required")
+        if opening_judgment is not None:
+            material = _value(opening_judgment)
+            require(
+                material.get("packet", {}).get("pair_only") is True,
+                "opening_judgment",
+                "V3-only paired access material required",
+            )
+            profile = {
+                **RULES,
+                "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
+                "identical_contexts": "one_judgment_with_bound_stage_sources",
+            }
+            base.update(rules_profile=profile, rules_profile_hash=canonical_digest(profile))
         if not identity_ready(prepared, identity):
             status = "identity_replay_required"
             raise MaterialError(status, "identity", "Current linked identity report required")
@@ -287,6 +301,7 @@ def build_v3_pair_report(
                     schedule_context,
                     paired=True,
                     expected_plan=expected_plan,
+                    opening_judgment=opening_judgment,
                 ).to_dict(),
                 "routes": score_routes(
                     intake,
@@ -452,6 +467,10 @@ def build_v3_pair_report(
                 }.items()
             },
         }
+        if opening_judgment is not None:
+            base["source_hashes"]["preparation"]["opening_judgment"] = canonical_digest(
+                _value(opening_judgment)
+            )
         status = "complete"
     except (MaterialError, ValueError, KeyError, TypeError, OSError) as exc:
         base["groups"] = []

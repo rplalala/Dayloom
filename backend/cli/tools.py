@@ -48,6 +48,31 @@ TASKS = {
     "pair": Task(
         "V3 paired diagnostics and explicit acquisition; prepare/replay/export are offline.",
         children={
+            "access": Task(
+                "Paired missing-hours access; prepare/replay offline, execute one model attempt.",
+                children={
+                    name: _leaf(
+                        "backend.evaluation.evaluation_run_cli", detail, native, http_client=True
+                    )
+                    for name, native, detail in (
+                        (
+                            "prepare",
+                            "prepare-pair-opening",
+                            "Offline V3-only paired access packet and limits.",
+                        ),
+                        (
+                            "execute",
+                            "execute-opening",
+                            "One approved model attempt; Google sends prohibited.",
+                        ),
+                        (
+                            "replay",
+                            "replay-opening",
+                            "Offline exact paired access HTTP receipt replay.",
+                        ),
+                    )
+                },
+            ),
             "prepare": _leaf(
                 "backend.evaluation.v3_pair_cli",
                 "Offline source-linked edit provenance preparation.",

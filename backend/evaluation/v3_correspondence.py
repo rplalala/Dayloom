@@ -695,7 +695,9 @@ def prepare_v3_correspondence(
             },
         )
         if edit_provenance is not None:
-            replayed = prepare_v3_correspondence(intake, identity_report, result_sources).to_dict()
+            replayed = prepare_v3_correspondence(
+                intake, identity_report, result_sources, correspondence_reviews
+            ).to_dict()
             require(
                 _value(edit_provenance) == replayed,
                 "edit_provenance",
