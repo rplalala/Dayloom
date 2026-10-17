@@ -612,7 +612,14 @@
     "bytes": 7822,
     "representation": "sanitized_derived_offline_acceptance_summary",
     "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
-    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection."
+    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection.",
+    "original_source": {
+      "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-06/analysis/compatibility/post-fix.json",
+      "sha256": "33fb85ee7558f0427d2da5821ebaf967edc7a93009e82d0f92dff502ab1ba386",
+      "json_pointer": ""
+    },
+    "source_binding_kind": "retained_public_derivation",
+    "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
   },
   "paired_evaluation_refresh": {
     "on": "2026-10-17",

@@ -11,7 +11,7 @@ Batch `case-09-batch`, revision `1`, contains one first-dispatched generation pe
 version, produced on source `b73c8eed09fafb6d54bee8684c5b2e7766515357`. Primary evaluation
 and the authorized analyses completed on **17 October 2026,
 Australia/Sydney**. Native material admission passed; **automatic case acceptance was
-explicitly confirmed on 17 October 2026**. [Acceptance](.#acceptance) binds the selected
+explicitly confirmed on 17 October 2026**. [Acceptance](#acceptance) binds the selected
 material and disclosed limitations; blinded human review is deferred. The [material index](material-index.json)
 owns source hashes, publication mappings and shared-value expansion rules.
 [Daily itineraries and recorded POI origins](itinerary.md) present all four selected

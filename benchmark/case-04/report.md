@@ -5,7 +5,7 @@ by one Primary evaluation on 15 October 2026. All native invocations exited 0.
 Primary processing and acquisition are complete, evidence is decidable, and all
 live processes have ended. The researcher accepted the Primary results and,
 after the offline candidate/relevance, same-run Repair/pair and resource analysis,
-the [complete automatic case and its limitations](.#acceptance) on 15 October 2026.
+the [complete automatic case and its limitations](#acceptance) on 15 October 2026.
 Local main-worktree integration is complete; blinded human review is deferred
 and the case retains its accepted selection.
 [Issue #153](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/153)

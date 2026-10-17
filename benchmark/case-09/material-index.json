@@ -13,7 +13,12 @@
   "reviewed_requirements": {
     "path": "requirements/reviewed.json",
     "sha256": "abfc49396f63d501eaf02aca262fdcba901f9e63f5bfcfc738c1aa17ae4c8733",
-    "native_requirement_spec_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc"
+    "native_requirement_spec_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+    "original_source": {
+      "logical_path": "work/material/semantics/reviewed-final.json",
+      "sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+      "json_pointer": ""
+    }
   },
   "versions": {
     "v0": {
@@ -22,7 +27,12 @@
       "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
       "itinerary_projection": {
         "path": "generation/v0/itinerary.json",
-        "sha256": "86a8a2acfd10948d836c191b03b1122b8bda93bfa4e133c8ccca332baffef261"
+        "sha256": "86a8a2acfd10948d836c191b03b1122b8bda93bfa4e133c8ccca332baffef261",
+        "original_source": {
+          "logical_path": "work/material/captures/v0/result.json",
+          "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+          "json_pointer": "/itinerary"
+        }
       },
       "observed_tokens": 27478,
       "observed_model_calls": 2,
@@ -37,7 +47,12 @@
       "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
       "itinerary_projection": {
         "path": "generation/v1/itinerary.json",
-        "sha256": "c14e24d853c3c186563bba12e6e145172b78959238bdb195bd3c3a46e72d9d08"
+        "sha256": "c14e24d853c3c186563bba12e6e145172b78959238bdb195bd3c3a46e72d9d08",
+        "original_source": {
+          "logical_path": "work/material/captures/v1/result.json",
+          "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+          "json_pointer": "/itinerary"
+        }
       },
       "observed_tokens": 76770,
       "observed_model_calls": 4,
@@ -52,7 +67,12 @@
       "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
       "itinerary_projection": {
         "path": "generation/v2/itinerary.json",
-        "sha256": "36d662cd4dfef68dbc49646b7406f2539b3fd6d332c04e80c113fd4f8d08bc03"
+        "sha256": "36d662cd4dfef68dbc49646b7406f2539b3fd6d332c04e80c113fd4f8d08bc03",
+        "original_source": {
+          "logical_path": "work/material/captures/v2/result.json",
+          "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+          "json_pointer": "/itinerary"
+        }
       },
       "observed_tokens": 83799,
       "observed_model_calls": 6,
@@ -67,7 +87,12 @@
       "selected_input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
       "itinerary_projection": {
         "path": "generation/v3/itinerary.json",
-        "sha256": "4f4d565bab224d756159958da10a7d77332a15b0b8398914679ca62d91432490"
+        "sha256": "4f4d565bab224d756159958da10a7d77332a15b0b8398914679ca62d91432490",
+        "original_source": {
+          "logical_path": "work/material/captures/v3/result.json",
+          "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+          "json_pointer": "/itinerary"
+        }
       },
       "observed_tokens": 85485,
       "observed_model_calls": 6,
@@ -82,7 +107,13 @@
     "path": "evaluation/primary/summary.json",
     "sha256": "8a6c99b1e7c613d6370a95e0f451c267d57dd85c8b994ea0e13f81475982594a",
     "native_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
-    "preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2"
+    "preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
+    "original_source": {
+      "logical_path": "work/primary/execution/report.json",
+      "sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+      "json_pointer": ""
+    },
+    "transformation": "Saved Primary status, scores and counts from the complete native report; not an exact whole-report projection."
   },
   "public_serialization": "UTF-8 JSON with LF line endings. Native original byte hashes and public projection hashes are distinct; selected native originals remain unchanged.",
   "public_material_format": {
@@ -1179,8 +1210,8 @@
     },
     {
       "path": "report.md",
-      "sha256": "2561d3ceeebbdfbb53ba41dcc5c3e622abe852d1a1aa2dabfb6a357505e1f129",
-      "bytes": 21639,
+      "sha256": "6efb95342689fff1139e708753189770a81fa7b004003859595bf526bd09a72b",
+      "bytes": 21638,
       "representation": "reader_document",
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-09/report.md",
@@ -1202,11 +1233,36 @@
   },
   "itinerary_view": {
     "path": "itinerary.md",
-    "sha256": "e0b6e966b02dc3ef003c85be52432c111a83ade4cb3421d224c6888bf423906d"
+    "sha256": "e0b6e966b02dc3ef003c85be52432c111a83ade4cb3421d224c6888bf423906d",
+    "original_source": {
+      "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-09/itinerary.md",
+      "sha256": "59a7d005b925f4c313860c9dcc079d799b1310646c7a6d79e3d2286b52584d26",
+      "json_pointer": ""
+    },
+    "source_binding_kind": "retained_public_derivation",
+    "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
   },
   "v3_stages": {
     "path": "analysis/repair/stages.json",
-    "sha256": "f4304d9a5250ce37e73ca26ee73416b0aca452c93fdcac8a71c63ea7794b0e0a"
+    "sha256": "f4304d9a5250ce37e73ca26ee73416b0aca452c93fdcac8a71c63ea7794b0e0a",
+    "sources": [
+      {
+        "logical_path": "work/material/captures/v3/result.json",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+        "json_pointer": "/itinerary"
+      },
+      {
+        "logical_path": "work/material/captures/v3/result.json",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+        "json_pointer": "/v3/draft"
+      },
+      {
+        "logical_path": "work/material/captures/v3/result.json",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+        "json_pointer": "/v3/final_primary"
+      }
+    ],
+    "transformation": "Lossless ordered patches from the saved delivered final to each complete saved V3 stage."
   },
   "private_archive": {
     "identifier": "benchmark/scratch/case-09/archive/",

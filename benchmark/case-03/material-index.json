@@ -904,12 +904,26 @@
     {
       "path": "report.md",
       "sha256": "2f34a3dd73444d5a210670e0a5191c25980ff4fd67f9c0c271774175cb139698",
-      "bytes": 20763
+      "bytes": 20763,
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-03/report.md",
+        "sha256": "a5a38d78156214cc61a9880c642ea90e3f375464f01a7f69ab622a69b8655b80",
+        "json_pointer": ""
+      },
+      "source_binding_kind": "retained_public_derivation",
+      "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
     },
     {
       "path": "itinerary.md",
-      "sha256": "c71413e9698bac7bd87554f29df3177f6b8fcff1c267eb1a15c5526f912dc6b1",
-      "bytes": 29873
+      "sha256": "97ba526822cc53995d464914ab0be68cb6abddecd415f204a3466b14c68e3c7b",
+      "bytes": 29872,
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-03/itinerary.md",
+        "sha256": "2d8eb261d7c7eef95de083ce4a6c9ca3b5c37203167b650e76d6e2bb71f0f821",
+        "json_pointer": ""
+      },
+      "source_binding_kind": "retained_public_derivation",
+      "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
     }
   ],
   "researcher_acceptance": {
@@ -929,7 +943,14 @@
     "bytes": 7822,
     "representation": "sanitized_derived_offline_acceptance_summary",
     "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
-    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection."
+    "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection.",
+    "original_source": {
+      "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-03/analysis/compatibility/post-fix.json",
+      "sha256": "9d9b1766b5ecf3f24868e0ad4969a34c41d4126f3d8a467da666df0260d01dcc",
+      "json_pointer": ""
+    },
+    "source_binding_kind": "retained_public_derivation",
+    "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
   },
   "paired_evaluation_refresh": {
     "on": "2026-10-17",

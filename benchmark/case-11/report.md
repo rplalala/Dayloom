@@ -8,7 +8,7 @@ acquisition completed; all four totals are available. Candidate POI, independent
 relevance, same-run paired access, Repair process and resource reports are complete.
 The same-run no-Repair observation is verified. The researcher explicitly accepted
 the current r02 selection and disclosed limitations on **17 October 2026,
-Australia/Sydney**. [Automatic acceptance](.#acceptance) defines the exact scope;
+Australia/Sydney**. [Automatic acceptance](#acceptance) defines the exact scope;
 execution is paused, with blinded human review deferred. Git delivery is separately
 authorized; the accepted native selection remains unchanged.
 
@@ -339,17 +339,17 @@ pre-decision index SHA-256
 `00cca4d1f46cc66203e12835189cf7c9367c3d2588a1f73924ce2d5bc125c1ed`.
 r01 remains historical failure evidence and resource history, not a selected result.
 
-The accepted [Primary results](.#primary-results) remain **100 / 97.5 / 80 / 100**;
+The accepted [Primary results](#primary-results) remain **100 / 97.5 / 80 / 100**;
 requirements each have one PASS, zero FAIL and zero UNKNOWN. The accepted current
 V3 pair is **100 → 100**, with no attempted Repair. The
-[candidate analysis](.#candidate-poi-process-and-independent-relevance) retains
+[candidate analysis](#candidate-poi-process-and-independent-relevance) retains
 14 UNKNOWN relevance labels and unavailable complete relevance counts/full-chain
 conversion rates. Independent version differences do not establish causal RAG or
 Repair improvement, and no attempted-Repair success rate is available.
 
 Model-supported access is distinct from API-verified opening hours. All submitted
 activity cost fields are unspecified, so the EUR 1,500 whole-trip affordability is
-unverified. The [resource ledger](.#resources) retains USD **9.554197440** of the
+unverified. The [resource ledger](#resources) retains USD **9.554197440** of the
 cumulative USD 40 reference allowance, including earlier attempts; actual invoices
 and external Codex consumption remain unavailable. These are accepted evidence
 limits, not additional quality passes or replacement judgments.

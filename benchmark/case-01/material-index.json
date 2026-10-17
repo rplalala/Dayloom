@@ -308,7 +308,14 @@
       "representation": "derived_source_bound_publication_view",
       "expanded_semantic_sha256": "939802f9cf7d03cea40e7f5b058b7f226fa6348d47bc1a8945bd23f2d5e62734",
       "sha256": "b1f741d388d437f17f6a24ee1e7f61cbff9d19bee1b5d0a6690524e124a6140f",
-      "bytes": 416
+      "bytes": 416,
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-01/analysis/poi-process/relevance.json",
+        "sha256": "b1f741d388d437f17f6a24ee1e7f61cbff9d19bee1b5d0a6690524e124a6140f",
+        "json_pointer": ""
+      },
+      "source_binding_kind": "retained_public_derivation",
+      "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
     },
     {
       "material": "analysis/repair/repair.json",
@@ -487,12 +494,26 @@
     {
       "path": "report.md",
       "sha256": "6353791d68ad4c9095f4d7847cfe7dacfb3e0ab32c061140b0f5eb8726f5a478",
-      "bytes": 15065
+      "bytes": 15065,
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-01/report.md",
+        "sha256": "94d200aaed786307c5aa7e573a5f90cc9980174848bf1e1797532a0b4588ba68",
+        "json_pointer": ""
+      },
+      "source_binding_kind": "retained_public_derivation",
+      "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
     },
     {
       "path": "itinerary.md",
       "sha256": "02bb0b11aa86285b18c8e333dd6c5982cbc074a91437292d49136862553ca0d5",
-      "bytes": 13161
+      "bytes": 13161,
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-01/itinerary.md",
+        "sha256": "54bc40936eb2a6205eb354ee6d216aca62ea6db4d155c260b1e73dc48219637e",
+        "json_pointer": ""
+      },
+      "source_binding_kind": "retained_public_derivation",
+      "transformation": "Existing reader derivation retained from the preceding public revision; this binding does not claim a newly established native extraction."
     }
   ],
   "dataset_role": "initial",
