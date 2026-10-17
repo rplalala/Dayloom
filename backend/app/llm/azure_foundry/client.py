@@ -239,7 +239,12 @@ class AzureFoundryStructuredLLMClient:
             spans = span_type(user_prompt, envelope["additional_preferences"])
             if indexed:
                 source_request_sha256 = spans.request_sha256
-            user_prompt = json.dumps({**envelope, "source_spans": spans.inventory()})
+            source_payload = {**envelope, "source_spans": spans.inventory()}
+            user_prompt = (
+                json.dumps(source_payload, ensure_ascii=False, separators=(",", ":"))
+                if dated
+                else json.dumps(source_payload)
+            )
             system_prompt = (
                 dated_prompt(system_prompt)
                 if dated

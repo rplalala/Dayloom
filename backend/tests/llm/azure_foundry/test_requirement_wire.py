@@ -16,13 +16,15 @@ from backend.app.services.preference_interpretation import (
 from backend.tests.request_fixtures import make_request
 
 
-def run_wire(answer, text="I like parks.", *, contract="preference_draft_13"):
+def run_wire(answer, text="I like parks.", *, contract="preference_draft_13", observe_prompt=None):
     class SavedChat:
         def bind(self, **kwargs):
             self.schema = kwargs
             return self
 
         async def ainvoke(self, messages):
+            if observe_prompt:
+                observe_prompt(messages[-1].content)
             prompt = json.loads(messages[-1].content)
             payload = answer(prompt) if callable(answer) else answer
             return AIMessage(content=json.dumps(payload), response_metadata={"status": "completed"})
@@ -77,6 +79,19 @@ def test_dated_wire_requires_an_assessed_count_list_and_supported_schema():
     assert "daily_visit_constraints" in schema["required"]
     with pytest.raises(RequirementBoundaryError):
         run_wire(wire_empty(), contract="preference_draft_15")
+
+
+def test_current_large_source_inventory_is_compact_without_rewriting_original_text():
+    data = wire_empty()
+    data["daily_visit_constraints"] = []
+    original = "Café 😊.\n" * 400
+    captured = []
+    run_wire(data, original, contract="preference_draft_15", observe_prompt=captured.append)
+    prompt = captured[0]
+    assert '"source_spans":[' in prompt
+    assert '"text":"é"' in prompt
+    assert json.loads(prompt)["additional_preferences"] == original
+    assert len(json.loads(prompt)["source_spans"]) == len(original)
 
 
 def test_compact_source_selections_restore_through_complete_interpretation():
