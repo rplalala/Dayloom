@@ -29,13 +29,15 @@ unimplemented measurable obligation is retained as unsupported rather than silen
 and preserves original wording. Identity preparation uses `place_name` or `wording`, plus
 optional reviewed `location`; absent usable wording stays unavailable, not a guessed name.
 Subject IDs/wording are independent of planner IDs.
-Current identity policy shares these semantics and independent acquisition evidence,
-but supplies one target identity per submitted version. Requirement checks select their
-own version's target, compare adopted target/visit IDs and then evaluate counts, dates
-and time conditions. V0 model target results cannot satisfy V1-V3 obligations or the
-reverse. Target FAIL is retained as a failing component; unresolved identities retain
-possible occurrences and UNKNOWN bounds. No name-only fulfillment fallback is used.
-Explicit historical report replay retains its former shared-target semantics.
+The [identity contract](0002-intake-identity-usage.md#version-specific-identity-evaluation)
+owns independent common subject resolution and geographic-purpose handling. Fresh Primary
+projects one source-only target to the existing version-owned references; each version's
+verified visit occurrences remain independent. Rules 6 conjoin unresolved-target
+uncertainty with conservative count/date checks: normally UNKNOWN, while independently
+proven impossibility still yields FAIL. A target mismatch is not proof that the itinerary
+violated an exclusion. Resolved targets use normal count/date/time rules, including real
+FAILs. Historical policies retain their former version-specific target judgments and
+failing target components. No name-only fulfillment fallback is used.
 Each explicit clause retains a supported obligation or a source-linked unresolved/unsupported
 item and reason. Reviewed empty obligations are valid; omission of review/material is not.
 Changing meaning creates a new revision and requires dependent replay.
@@ -165,7 +167,9 @@ bound `U=L+potential_matches`. Under `versioned_api_identity_3`, a verified phys
 `place_association` establishes occurrence matches and nonmatches against the
 requirement target's version-owned adopted canonical identity. Original claim grounding
 remains separate: an occurrence's grounding FAIL does not erase its verified venue,
-and a requirement target FAIL still contributes its failing component. The complete
+and historical requirement target FAILs retain their failing component. Common-subject rules 6
+conjoin identity uncertainty after conservative count/date checks, as defined in
+[subject ownership](#requirementspec-ownership-and-source-linkage). The complete
 identity report must pass source-bound replay before associations are consumed.
 Occurrence source identity prevents repeated imports from counting twice.
 Same-venue visits at different source occurrences remain distinct. An unresolved

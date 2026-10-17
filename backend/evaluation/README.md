@@ -862,8 +862,8 @@ opts eligible saved sources into a separately bound evaluation. See the
 [activity and numerical contract](../../docs/0003-itinerary-transport.md#selection-and-verification-boundaries).
 Selecting a profile does not authorize execution, historical rescoring or evidence reuse.
 
-`evaluation_run_cli` composes native intake, fresh Google Search/Details, V0-only model
-correspondence, snapshot coordinates, hours and directed routes, eligible missing-hours
+`evaluation_run_cli` composes native intake, fresh Google Search/Details, common
+requirement-subject correspondence, V0 visit correspondence, snapshot coordinates, hours and directed routes, eligible missing-hours
 access assessment, requirements/schedule, daily density and one final quality calculation.
 It consumes the selected originals without
 generating or repairing itineraries. Its scope is the four final projections; optional
@@ -898,20 +898,24 @@ the Responses request and checked against the captured HTTP journal during repla
 Invalid values fail during offline preparation. The separately fixed-medium opening
 workflow does not admit this identity-only option.
 
-Fresh preparations use `rtpeval_execution_preparation_2` and normalize optional
-`assess_missing_hours` to `true`. The package binds at most two model sends: one V0
-identity call and one conditional medium-effort `opening_access` call, sharing the
-configured deployment, total deadline and reference USD allowance. The price book
-must cover both operations when needed. Set `assess_missing_hours=false` explicitly
-for an API-only scope; it binds one model send. The prepare summary exposes this
-choice and the model ceiling. This flag requires a JSON boolean.
+Fresh preparations use `rtpeval_execution_preparation_3`. Named requirements receive
+one independent common-subject correspondence batch before the V0 visit-only batch;
+conditional missing-hours assessment remains the final model stage. There are at most
+three sends; absent named subjects and empty V0 primary visits each skip their respective
+stage and lower the ceiling by one. Each stage has a distinct priced operation
+and shares the configured total deadline and reference USD allowance. No additional
+Google plan or retry is introduced. `assess_missing_hours=false` skips opening assessment
+and lowers the ceiling by one; this option requires a JSON boolean. Subject pricing must
+cover `requirement_subject`; missing prices block preparation. The
+[identity contract](../../docs/contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation)
+owns source binding, uncertainty, location purpose and historical compatibility.
 
 After evidence acquisition, `opening-packet.json` records source-bound eligibility.
 Eligible assessment completes before `report.json` is composed; no eligible visits
 skips the call. `opening_assessment` records complete/skipped/disabled status, while
 the report retains separate factual and model-supported access coverage. An assessment
 failure or exhausted allowance saves a stopped report and usage/receipt without an
-initial quality score or silent API-only fallback. Replay checks eligibility and both
+initial quality score or silent API-only fallback. Replay checks eligibility and all selected
 captured model responses before recomputing the one final score. Version-1 packages
 retain their original API-only semantics; exact historical policy replay needs its
 retained implementation. Full contract: [missing-hours assessment](../../docs/contracts/0004-opening-routes.md#missing-hours-access-judgment).
@@ -1103,7 +1107,8 @@ An acquisition caller separately uses `build_identity_plan`, injected async
 The formal client above supplies the injected transport; these individual planning and
 identity commands remain offline. The caller owns credentials, authorization and explicit
 send ceilings. Identity uses the
-[version-specific policy](../../docs/contracts/0002-intake-identity-usage.md#version-specific-identity-requirement).
+[version-specific policy](../../docs/contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation).
+Without `--common-subjects`, the standalone commands above retain compatibility policy 4.
 V1-V3 final/optional visits and their requirement targets use program rules over independent
 API facts, with literal name equality and full address equivalence explained by same-observation
 Google component pairs. Unexplained address differences are FAIL; no model fallback is used.
@@ -1125,9 +1130,22 @@ original date, time, order, mode and reserved duration. V0
 requires validated candidate correspondence; V1-V3 require the independently verified
 original submitted ID, without evaluator LLM or searched replacement. Untrusted association
 remains UNKNOWN. Original outputs and grounding failures are retained. Requirement targets
-still use their own version's adopted canonical identity; target FAIL components and
-unresolved dates/roles remain part of requirement judgment.
-Current reports use `versioned_api_identity_4`; V0 packets use
+use version-owned references projected from common independent subjects in fresh Primary;
+historical target FAIL components retain their original semantics. Unresolved dates/roles
+remain part of requirement judgment.
+Fresh Primary reports use `versioned_api_identity_5` with common independent subjects
+and V0 visit-only packets. Offline use is explicit:
+
+```powershell
+.venv/Scripts/python.exe -m backend.evaluation.identity_cli manifest.json identity-evidence.json --common-subjects --prepare-subjects --model YOUR_JUDGMENT_MODEL
+.venv/Scripts/python.exe -m backend.evaluation.identity_cli manifest.json identity-evidence.json --common-subjects --prepare --model YOUR_JUDGMENT_MODEL
+.venv/Scripts/python.exe -m backend.evaluation.identity_cli manifest.json identity-evidence.json --common-subjects --subject-result subject-model-result.json --model-result visit-model-result.json
+```
+
+These commands prepare/import material offline and never send a provider request.
+Unresolved common subjects remain UNKNOWN; actual requirement violations still fail.
+Without `--common-subjects`, existing offline callers retain `versioned_api_identity_4`;
+those historical-compatible V0 packets use
 `v0_identity_correspondence_3`: citation paths are schema enums
 shared with import. Address-presence schema alternatives bind short reference IDs;
 every absent/null/blank address requires `not_supplied` and forbids `claim.location` citations.

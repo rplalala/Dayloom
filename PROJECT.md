@@ -160,7 +160,7 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 
 | Capability | Current behavior | Detailed owner |
 | --- | --- | --- |
-| Intake and identity | Original claims, source hashes and version-owned targets; V0 model correspondence, V1-V3 independent API/program checks without evaluator-model fallback | [Intake/identity/usage](docs/contracts/0002-intake-identity-usage.md) |
+| Intake and identity | Original claims, source hashes and common independently resolved requirement targets; V0 visit correspondence and unchanged V1-V3 API/program visit grounding | [Intake/identity/usage](docs/contracts/0002-intake-identity-usage.md) |
 | Evidence and accounting | Frozen Search/Details/Matrix snapshots, failure receipts, source-linked coordinates, source-labelled offline paired imports, actual usage and explicit retail estimates when billing is unavailable | [Artifacts](docs/contracts/0001-evaluation-artifacts.md), [usage](docs/contracts/0002-intake-identity-usage.md#offline-cost-accounting) |
 | Requirements and schedule | Explicit counts/dates/exclusions/fixed times; verified occurrence associations with separate grounding; V0 declared transport occupancy and V1-V3 transfers | [Requirements/schedule](docs/contracts/0003-requirement-schedule.md) |
 | Opening | Current/regular API schedules take priority; missing-hours LLM assessment can infer ordinary public-landmark viewing, while explicit restricted activities and museum admission need access evidence; factual coverage stays separate | [Opening/routes](docs/contracts/0004-opening-routes.md#opening) |
@@ -170,16 +170,21 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 | Additional evaluation tracks | Blinded review, V3 paired reports, controlled Repair and mechanism reports are implemented; their execution and research populations require their own scope | [Evaluation design](docs/0006-independent-evaluation.md), [artifacts](docs/contracts/0001-evaluation-artifacts.md) |
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
-Current identity policies are `versioned_api_identity_4` and
-`v0_identity_correspondence_3`. Requirement/schedule rules select version 5 for a reviewed
+Fresh Primary identity uses `versioned_api_identity_5`, independent
+`requirement_subject_correspondence_1` and `v0_visit_correspondence_1`; requirement rules 6
+conjoin target uncertainty with conservative checks, preserving proven violations. Existing offline callers retain explicit
+policy-4 compatibility. Historical requirement/schedule rules select version 5 for a reviewed
 `daily_visit_count`, otherwise version 4 for `transport_modes` or version 3 without either.
 Route rules select version 3 with `transport_modes` and retain version 2 without it.
 Opening retains
 API-only rules 2 and selects rules 4 with validated policy-2 access judgments. Verified physical
 associations can support occurrence matching,
-opening and route checks while original grounding FAILs remain visible. Requirement
-targets belong to their own version. Historical reports retain their original policies,
+opening and route checks while original grounding FAILs remain visible. Common requirement
+targets project to version-owned references while visit associations remain independent. Historical reports retain their original policies,
 code and source bindings; a rule change produces a separate recalculation.
+
+The [common-subject correction acceptance](docs/records/evaluation/intake-identity-usage.md#common-requirement-subjects-and-geographic-purpose-2026-10-17)
+records offline validation, independent review corrections and unchanged case-08 evidence.
 
 The supplemented Sydney development case recorded on 2026-10-09 uses the original
 V0-V2 and the source-protected V3 without changing submitted outputs. Fresh
@@ -250,7 +255,7 @@ Remaining limitations:
 
 - Missing opening/access facts, unsupported route-provider scopes and unresolved
   identity/time/role evidence remain visible. A complete process can contain UNKNOWN.
-- V0 semantic correspondence is fallible. V1-V3 retain literal names and binary
+- Common subject and V0 visit correspondence are fallible. V1-V3 visit checks retain literal names and binary
   address equivalence; unexplained address differences fail. Google-supported aliases
   do not waive identity/provenance requirements.
 - Undated business status does not establish future closure dates. Optional public/exterior

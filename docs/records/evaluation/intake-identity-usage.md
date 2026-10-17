@@ -2164,3 +2164,47 @@ The preparation content digest is
 `51b0c2dcaaa5b2a060b73345fb9df137300307a07c15c7bf8de079f9c7cc4451`.
 These private identifiers are not published navigation dependencies or an
 authorization to execute the prepared package.
+
+### Common requirement subjects and geographic purpose (2026-10-17)
+
+Case-08 r02 exposed two evaluator defects on unchanged outputs: literal subject-name
+matching rejected an independently acquired provider-standard name, and a reviewed
+city/country location was compared with an entire street address. A target-level address
+FAIL then contaminated an exclusion requirement despite no confirmed excluded visit.
+Changing the name alone or dropping the location alone did not resolve both defects;
+this diagnosis justified separate semantic correspondence and geographic-purpose handling.
+
+[#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182) owns the approved
+generic correction. Review base was `57ead849f8a0c783c3b645fc1787f34e13ed0b49`;
+implementation `87dab1b` introduced independently sourced common subjects, prospective
+identity/preparation/schedule policies, explicit stage pricing and preserved visit checks.
+The current [identity contract](../../contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation)
+owns the detailed rules. Historical policies and responses remain distinct.
+
+Initial regressions failed before implementation. The first broad evaluator run had
+1,339 passed, one environment skip and seven failures in incremental opening: its parent
+reader still reconstructed the old V0 packet. Correcting that reader produced 84 passing
+focused tests. Independent Standards and Spec review each found one P2 boundary issue:
+empty V0 visits must skip their stage, and unresolved targets must not mask independently
+proven impossible counts. Both regressions reproduced before correction. Separate commit
+`ded42bd` corrected stage eligibility/inventory and conjoined uncertainty after conservative
+count checks; 86 focused tests passed. Generic Unicode/abbreviation packet cases and a
+native three-stage mocked execution/replay exercise the broader protocol without claiming
+that synthetic model responses establish real-world semantic accuracy.
+
+The final combined evaluator, installed CLI, suite and pair compatibility gate passed
+**1,615 tests with one Windows symlink-privilege skip** in 1,054.79 seconds. The strengthened
+typed-locality/district/postcode fixture also passed the 38-test subject gate. These gates
+overlap; their counts are not additive. Global backend/tool Ruff, all 15 affected Python
+format checks, whitespace and 324 tracked local document targets/anchors passed. Standards
+and Spec rechecks each have zero unresolved findings; Spec independently reran both review
+regressions. Current contracts replace obsolete stage/target rules in their topic owners.
+
+Original request SHA-256 remains
+`769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
+All 191 r01 preservation hashes and 213 r02 Primary receipt entries were rechecked with
+zero mismatches. Original input, failure records, selected outputs, provider responses,
+usage and tracked case presentation bytes were not rewritten. The r02 V3 score remains
+80 under its executed policy; no corrected case score is claimed. New case/provider execution
+sends, incremental provider charges and actual case reruns were zero; Codex review billing
+is unavailable. Integration/publication and any fresh scoring remain separate actions.

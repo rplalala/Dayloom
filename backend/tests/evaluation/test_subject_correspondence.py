@@ -100,7 +100,15 @@ def test_common_resolution_is_projected_to_all_versions_and_replays(batch):
         batch, bound=False, location="Example City, Country", destination="Example City, Country"
     )
     subject = next(r for r in identity_references(intake) if r["kind"] == "requirement_subject")
-    observed = evidence(intake, [search(subject, "The Municipal Museum of Art")])
+    record = search(
+        subject, "The Municipal Museum of Art", address="Old District, 08000 Example City"
+    )
+    record["search"]["candidates"][0]["address_components"] = [
+        {"longText": "Example City", "types": ["locality", "political"]},
+        {"longText": "Country", "types": ["country", "political"]},
+        {"longText": "Old District", "types": ["sublocality_level_1", "sublocality", "political"]},
+    ]
+    observed = evidence(intake, [record])
     report = resolve_versioned_identities(
         intake, observed, common_subjects=True, subject_result=subject_material(intake, observed)
     ).to_dict()
