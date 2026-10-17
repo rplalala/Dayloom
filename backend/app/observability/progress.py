@@ -32,6 +32,7 @@ MESSAGES = {
     "repair_round": "Adjusting your itinerary",
     "repair_preparation": "Adjusting your itinerary",
     "repair_model": "Adjusting your itinerary",
+    "repair_reason_compression": "Adjusting your itinerary",
     "revalidation": "Checking the updated itinerary",
     "nearby": "Finding nearby suggestions",
 }

@@ -222,6 +222,17 @@ transport options, adopted transfers, constraints and bounded feedback. A strict
 contains edits and target dispositions. Model explanations are not evidence. The application
 selects allowed per-leg modes and reserves; the model cannot write provider facts.
 
+Target-disposition reasons are limited to 240 Unicode characters. When reason length is the
+only structural error, the service may request one batch compression of all overlong reasons
+in that response. The application replaces only those explanations after checking their
+references and lengths; edits, target identities, dispositions and shorter reasons remain
+unchanged. The original patch and compression response are retained in the bounded audit.
+Compression aims to preserve meaning and uncertainty; structural checks do not prove semantic
+equivalence. No hard truncation, partial patch salvage or repeated compression is permitted.
+Compression failure stops further proposals while retaining the best publishable result.
+The [configuration reference](../config/README.md#counting-timing-and-invariants) owns the
+separate call/token allowance, shared deadlines and usage accounting.
+
 `repair_components.py` partitions a maximum of 50 parsed edits using concrete dependencies:
 activity, source identity obligation, affected dates/adjacency/elastic roots/daily burden,
 protected cost association, parent compensation and shared target. Same-date edits are
@@ -263,10 +274,11 @@ not proof that deletion is safe. Deferred targets cannot drive current acquisiti
 Dependent deduplication/compensation can remain unpublished until its whole group is accepted.
 Only the narrowly authorized removal exceptions permit partial deletion without compensation.
 
-Local proposals and affected-day replanning share at most six actual Repair model sends,
+Local proposals and affected-day replanning share at most six actual proposal model sends,
 including failed sends, under one 420-second stage deadline shortened by the remaining
 request deadline. The default model-round ceiling permits six sends; a lower configured
-ceiling can stop earlier. System deletion
+ceiling can stop earlier. The separate single explanation-compression allowance does not
+create another proposal round or extend the stage deadline. System deletion
 has a separate default ceiling of 12 attempts; zero disables that strategy. It does not
 consume model rounds or sends, and remains available when model sending is disabled.
 All strategies share acquisition counters, evidence cache, actual-send/failure history and time.

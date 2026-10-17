@@ -4,6 +4,9 @@ import asyncio
 import copy
 import json
 
+import pytest
+
+from backend.app.llm.client import StructuredOutputError
 from backend.app.schemas.itinerary_projection import V1Itinerary
 from backend.tests.llm.azure_foundry.test_client import FakeChatOpenAI, make_activity, make_client
 
@@ -80,3 +83,50 @@ def test_civil_wire_schema_is_foundry_compatible():
 
     assert_foundry_schema_contract(FoundryCivilItineraryDTO.model_json_schema())
     assert_foundry_schema_contract(FoundryCivilPatchDTO.model_json_schema())
+
+
+def test_overlong_repair_reason_preserves_the_mapped_patch_for_caller_owned_compression(
+    monkeypatch,
+):
+    reason = "Route support is unavailable. " * 9
+    raw = {
+        "edits": [],
+        "target_dispositions": [
+            {"target_id": "t01", "disposition": "unresolved", "reason": reason}
+        ],
+    }
+    FakeChatOpenAI.response = raw
+    client = make_client(monkeypatch)
+    payload = {
+        "schedule_time_context": {"version": "tools_civil_time_1", "places": []},
+        "target_worksheet": [{"target_id": "canonical-target"}],
+    }
+    with pytest.raises(StructuredOutputError) as caught:
+        asyncio.run(
+            client.generate_repair_structured(
+                system_prompt="Repair", user_prompt=json.dumps(payload)
+            )
+        )
+    assert caught.value.candidate["target_dispositions"] == [
+        {"target_id": "canonical-target", "disposition": "unresolved", "reason": reason}
+    ]
+    assert FakeChatOpenAI.structured_output_count == 1
+    assert raw["target_dispositions"][0]["reason"] == reason
+
+
+def test_reason_compression_uses_a_compatible_text_only_schema_and_per_call_options(monkeypatch):
+    from backend.tests.llm.azure_foundry.test_dto import assert_foundry_schema_contract
+
+    raw = {"reasons": [{"reason_ref": "r01", "reason": "No supported route."}]}
+    FakeChatOpenAI.response = raw
+    client = make_client(monkeypatch)
+    result = asyncio.run(
+        client.compress_repair_reasons_structured(
+            system_prompt="Compress", user_prompt='{"reasons": []}', output_tokens=8192
+        )
+    )
+    assert result.model_dump() == raw
+    assert_foundry_schema_contract(FakeChatOpenAI.schema)
+    assert FakeChatOpenAI.structured_kwargs["max_output_tokens"] == 8192
+    assert FakeChatOpenAI.init_kwargs["max_retries"] == 0
+    assert FakeChatOpenAI.structured_output_count == 1

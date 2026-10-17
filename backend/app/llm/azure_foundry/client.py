@@ -524,6 +524,27 @@ class AzureFoundryStructuredLLMClient:
         )
         return NamedBindingBatch.model_validate(raw)
 
+    @staged("repair_reason_compression")
+    async def compress_repair_reasons_structured(
+        self, *, system_prompt, user_prompt, output_tokens, usage_callback=None
+    ):
+        """One text-only batch. The Repair service owns all budgets and validation."""
+        from backend.app.observability.mechanism_observation import model_submitted
+        from backend.app.versions.v3.repair_reason_compression import ReasonCompressionDTO
+
+        model = self._chat_model.with_structured_output(
+            ReasonCompressionDTO.model_json_schema(),
+            method="json_schema",
+            strict=True,
+            max_output_tokens=output_tokens,
+        )
+        model_submitted()
+        raw = await model.ainvoke(
+            [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)],
+            **({"config": {"callbacks": [usage_callback]}} if usage_callback is not None else {}),
+        )
+        return ReasonCompressionDTO.model_validate(raw)
+
     @staged("repair_model")
     async def generate_repair_structured(
         self, *, system_prompt, user_prompt, output_tokens=None, usage_callback=None
@@ -536,6 +557,7 @@ class AzureFoundryStructuredLLMClient:
         from backend.app.versions.v3.repair_budget import configured_policy
         from backend.app.versions.v3.repair_models import RepairPatch
         from backend.app.versions.v3.repair_projection import FoundryRepairPatchDTO
+        from backend.app.versions.v3.repair_reason_compression import validate_repair_patch
 
         if output_tokens is None:
             output_tokens = configured_policy().input.output_tokens
@@ -569,7 +591,7 @@ class AzureFoundryStructuredLLMClient:
             )
             if time_projection:
                 restored = time_projection.repair_result(restored)
-            dto = FoundryRepairPatchDTO.model_validate(restored)
+            dto = validate_repair_patch(restored, FoundryRepairPatchDTO)
             return RepairPatch.model_validate(dto.model_dump())
         except (ValidationError, ValueError) as exc:
             raise StructuredOutputError("Invalid Repair patch") from exc

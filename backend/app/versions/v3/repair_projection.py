@@ -62,7 +62,8 @@ pending_dependency_groups are unpublished proposals. Their edits will be combine
 new edits and rechecked against the publishable input, never silently adopted. Complete their
 coverage compensation within authorized dates. A new edit to an existing pending activity
 supersedes that pending edit and must still obey the original operation permissions.
-Use target_worksheet and report a brief target disposition; explanations are not facts.
+Use target_worksheet and report a target disposition with a reason of at most 240 characters;
+explanations are not facts.
 WALK is a soft preference, then TRANSIT, then DRIVE. Existing usable DRIVE does not require a
 TRANSIT call. The application chooses and verifies authorized per-leg options, never you invent
 durations or distances. Leave unsupported targets unresolved. Do not edit transfers directly.

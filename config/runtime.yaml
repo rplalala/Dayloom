@@ -143,6 +143,11 @@ v3_repair:
   max_rounds: 6 # Model round ceiling; shared stage deadline may stop earlier.
   max_model_calls: 6 # Shared local/replan sends; zero disables only model attempts.
   max_deletion_attempts: 12 # Separate finite system proposals; zero disables enumeration.
+  reason_compression:
+    max_calls: 1 # Stage-wide explanation-only batch, separate from proposal sends.
+    input_tokens: 32000 # System/user/schema plus the shared Repair framing reserve.
+    output_tokens: 8192
+    timeout_seconds: 30 # Also bounded by round/stage/request time and recheck reserve.
   quantity_review_enabled: true # CLI may explicitly disable this review policy.
   overfull_review_enabled: false # Independent from shortage review.
   daily_main_min: 2 # Application coverage reference, not an unconditional quota.

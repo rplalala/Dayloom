@@ -101,12 +101,15 @@ class RepairEdit(ValidationModel):
     end_time: datetime | None
 
 
+REPAIR_REASON_CHARACTERS = 240
+
+
 class TargetDisposition(ValidationModel):
     target_id: str
     disposition: Literal[
         "proposed", "unresolved", "needs_evidence", "competing_candidate", "not_attempted"
     ]
-    reason: str = Field(max_length=240)
+    reason: str = Field(max_length=REPAIR_REASON_CHARACTERS)
 
 
 class RepairPatch(ValidationModel):
@@ -259,6 +262,7 @@ class RepairResult(ValidationModel):
     comparison: RepairComparison | None = None
     usage: dict = Field(default_factory=dict)
     usage_status: str = "not_reported"
+    reason_compression: dict = Field(default_factory=dict)
     timing: dict = Field(default_factory=dict)
     spatial: dict = Field(default_factory=dict)
     rounds: tuple["RepairRoundRecord", ...] = ()
