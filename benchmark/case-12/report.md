@@ -3,9 +3,10 @@
 ## Current status
 
 Revision **r07** completed V0-V3 once sequentially and one independent Primary on
-**17 October 2026 Australia/Sydney**. Work is paused at the primary-score handoff.
-Candidate-process studies, paired Repair evaluation, blinded review and case
-acceptance remain pending.
+**17 October 2026 Australia/Sydney**. Subsequent offline preparation inventoried
+candidate stages, imported compatible paired observations and reconciled resources.
+Independent relevance and paired access judgments, completed mechanism reports,
+blinded review and case acceptance remain pending. No further paid execution is authorized.
 
 The unchanged [original request](../inputs/case-12.json) covers Sydney,
 22-28 October 2026, two adults, AUD 3,200 for the group, nature and harbour views,
@@ -43,7 +44,8 @@ UNKNOWN. Density uses a relaxed default with exact one and zero on those dates.
 Transport is unrestricted outside the separate rest-day travel prohibition;
 the zone is `Australia/Sydney`. Nature, harbour views and flexibility remain soft
 preferences without invented quotas. Original source-only interest meaning remains
-applicable; relevance and candidate-process studies have not run. Affordability and
+applicable; independent relevance is pending and captured candidate stages are
+inventoried below. Affordability and
 these soft preferences are not certified by the two hard obligation scores.
 
 ## Primary scores and limits
@@ -93,7 +95,7 @@ are **180/0**, with means **25.714286/0**; no adopted improvement targets remain
 The first-day and rest-day protections remain intact. Two candidate-semantic calls
 and three proposal calls are included in V3's nine model events, including its
 embedding. No explanation-compression send occurred. These are native operational
-observations; candidate/paired mechanism studies remain deferred.
+observations; completed independent candidate/paired mechanism reports remain pending.
 
 The V3 result is complete at **9,203,113 bytes** and its physical trace is complete,
 untruncated at **9,724,182 bytes**. Its evidence index reports collection available
@@ -173,6 +175,142 @@ covered their sum and Primary. Generation has no native dollar hard stop; frozen
 runtime ceilings and actual-cost checks between versions bounded continuation.
 Primary enforced its native USD 3 cap. Exact cumulative billing remains unknown.
 
+## Offline acceptance preparation
+
+Preparation uses the exact r07 selection and existing reviewed contexts. Private
+derived material is under `benchmark/scratch/case-12/work/acceptance-prep-r07/`;
+original generation, Primary reports and receipts remain unchanged. This stage
+made zero provider/model sends and generated no replacement itinerary or new
+Primary/paired score report. Native paired identity and edit-lineage preparation
+are distinct from completed independent paired scoring.
+
+### Candidate process and independent relevance
+
+Counts use unique canonical places per captured stage. The native capture reader
+validated provenance and stage lineage; scheduled memberships use the saved
+independent Primary associations, excluding Nearby-only references.
+
+| Stage | V1 observed | V2 observed | V2 Google-only / RAG-only / mixed |
+| --- | ---: | ---: | --- |
+| Discovered | 59 | 69, partial | 50 / 10 / 9 |
+| Admitted | 59 | 64 | 46 / 9 / 9 |
+| Enriched | 32 | 42 | 29 / 9 / 4 |
+| Supplied | 16 | 16 | 9 / 4 / 3 |
+| Scheduled | 6 | 6 | 5 / 0 / 1 |
+
+Other stage counts are complete observations within their captured scope. V2's
+partial discovery has no exhaustive total: RAG returned 20 entities, with 11
+resolved, eight matched to Google observations and one non-unique fallback. There
+are ten observed RAG-only introductions. V1 records 27 unprocessed enrichment
+and 16 unselected supply omissions; V2 records five admission-capacity, 22
+unprocessed enrichment and 26 unselected supply omissions. Scheduled sets retain
+five common places, with one V1-only and one V2-only place. These independent
+generation differences do not establish causal RAG benefit.
+
+The review queue contains **69 canonical places and one unresolved entity**.
+The existing source-only interest author identified nature and harbour views;
+full separate coverage would require 138 canonical interest judgments and two
+unresolved-subject judgments. Only 15 canonical places currently have independent
+Primary venue observations, whose identity/hours fields may still be insufficient
+for relevance. Planner/query/RAG semantic labels cannot fill that evidence gap.
+
+Native relevance admission also needs a reviewed inventory representation: the
+unchanged RequirementSpec combines both interests in `case-12-nature-harbour-views`
+at `/soft_preferences/0`, while the source-only author separates them. Native
+interest IDs must match the reviewed spec. The proposed representation is one
+source-linked compound native interest, with both source dimensions and their
+individual judgments retained separately. An independent reviewer must confirm
+its meaning before admission; it must not imply two required visits or infer one
+interest from the other. The original/spec bytes and Primary bindings stay intact.
+
+Still missing: that native inventory binding, independent venue relevance labels,
+the source-bound research population/profile/census and final native opportunity/
+relevance reports. Any newly assembled profile must disclose retrospective r07
+selection and retain r01-r06 in all-attempt accounting. Corpus measurement is outside
+this preparation.
+
+### Same-run Repair pairing
+
+Native source-labelled import matched **33/33 identity requests** (20 searches,
+13 Details) and **18/18 evidence requests** (13 Details, five route matrices).
+All matched observations originate in the independently acquired r07 Primary;
+their original bytes/times and inherited accounting remain explicit. Both import
+ledgers record zero current sends, retries and matrix elements. V3 draft identities
+resolve 5/5 and final-primary identities 11/11. Native edit provenance establishes
+five retained occurrences and six additions, without unresolved lineage.
+
+The fresh paired acquisition preparation enforces `offline_reuse`, zero Google
+sends and USD 0 current acquisition. Its digest is
+`411cf02f3628ab2bd0aceecf58dcd28054e19a354967d452962cfa2bbb594f52`.
+No compatible observation is missing at the request level; missing hours remain
+a separate factual limitation rather than a reason to repeat Google acquisition.
+
+The unexecuted paired access packet contains **three unique contexts covering five
+stage occurrences**: Harbour Bridge and Opera House each share an unchanged
+draft/final context; Darling Harbour appears only in final-primary. Existing
+Primary model judgments are not rebound. Prepared input including the native
+safety margin is 5,721 tokens, below its 64,000 ceiling. The one-call preparation
+digest is `c17965ccb871cc49b043b2d42e3c130bed7b3421d9d8f1bdd6af8f1342c8ce98`.
+Still missing: a fresh pair-only access judgment, the native paired report/export,
+continuity/mechanism reporting and the final-versus-paired Repair view. Both hard
+date protections and the ordinary blank day belong in that view. The semantic
+refill and empty-proposal branches remain live-untriggered; this does not authorize
+another generation or controlled Repair experiment.
+
+### Resources and archive readiness
+
+Reconciliation reads 26 original Planner cost reports and four original Primary
+reports, reproducing USD 53.598392460 priced and USD 53.608392460 accounted with
+the historical reservation. The two unpriced r03 records still represent one
+incomplete request. All **17,230 prior files** pass unchanged-hash verification.
+
+An inventory of r01-r07 contains **20,776 logical files / 689,107,446 bytes**,
+or **2,786 unique byte sequences / 239,149,198 uncompressed bytes**. These are
+pre-retention inventory figures, excluding separate offline correction aids and
+the new preparation tree; they are not a compressed-size or final-retention claim.
+No archive was created and no file was deleted. Remaining work is dependency and
+retention classification, final report/material binding, a sanitized itinerary and
+public material index, compact archive/restore tooling and fresh restored-root
+verification. Preserve native absolute preparation bindings and disclose unsupported
+relocated execution rather than rewriting them. Actual invoices, complete external
+agent billing/transcripts and historical missing usage remain unavailable.
+
+### Proposed independent evaluation allowance
+
+This is an unexecuted proposal within the existing USD 62 cumulative ceiling.
+It excludes generation, another Primary, controlled Repair and human review.
+
+| Work | Maximum new calls | Proposed reference cap, USD |
+| --- | --- | ---: |
+| Independent venue facts, only where saved observations are insufficient | 69 Google Details; no Search/Routes/retries | 2.00 |
+| Independent source-bound relevance and inventory representation | Three isolated model batches, at most 24 subjects each; no retries | 0.06 |
+| Native V3 pair-only missing-hours access | One model call; zero Google/retries | 0.02 |
+| Offline paired reporting, mechanism/resources and archive verification | Zero provider/model calls | 0 |
+| **Aggregate** | **At most 69 Google and four model calls** | **2.08** |
+
+For relevance, propose `gpt-6-luna`, medium reasoning, at most 64,000 input and
+8,192 output tokens per batch, USD 0.02 per call, 90 seconds per request and
+300 seconds across the three batches. Freeze source-only packets without Planner
+labels, stage membership or scores; unsupported venue facts remain UNKNOWN.
+Venue acquisition has a 15-second request/600-second stage limit. Its exact mask,
+compatible prices, request inventory and capture wrapper must be frozen before
+dispatch. At the saved USD 0.020 Details reference, 69 sends cost USD 1.38; the
+USD 2 ceiling is a reservation, not a claim that any expanded mask has that price.
+Keep the non-unique RAG entity unresolved rather than adding resolution searches.
+
+Paired access retains its native medium reasoning, 64,000/8,192 token ceilings,
+90-second request/120-second stage limit and one-send guard. The saved conservative
+model bound is USD 0.012096 per call, below USD 0.02. These calculations use the
+already frozen reference prices, not a fresh price lookup or actual account bill;
+revalidate date/mask/model compatibility before future paid execution. External
+Codex orchestration billing remains outside observable native accounting.
+
+Reserving the entire proposed USD 2.08 would raise accounted consumption to at most
+**USD 55.688392460**, leaving **USD 6.311607540**. Current consumption and balance
+remain unchanged at USD 53.608392460 and USD 8.391607540. No budget increase is
+needed for this proposal. Any failed admission, incompatible price, exceeded cap
+or timeout stops that stage with authentic partial evidence and no automatic retry.
+
 ## Checks, assistance and preservation
 
 r07 preflight passed input/date admission, worktree-local Python/imports/CLI,
@@ -202,8 +340,8 @@ aids. Failed/completed originals, commands, bindings, captures, usage/cost repor
 and receipts remain retained. V1/V2 passive candidate captures and the genuine V3
 same-run draft/final remain available for separately authorized studies. No old
 final was inserted into r07. Source-review exposure limits and the excluded r01
-reviewer remain in history. No candidate/paired study, final acceptance or Git
-publication occurred. Unused allowance grants no further execution authority.
+reviewer remain in history. The offline preparation above adds no final acceptance
+or Git publication. Unused allowance grants no further execution authority.
 
 | r07 evidence | SHA-256 |
 | --- | --- |
