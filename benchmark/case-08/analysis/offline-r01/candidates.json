@@ -1,0 +1,3026 @@
+{
+  "schema_version": "case_offline_candidates_1",
+  "case_id": "case-08",
+  "input_revision": "r01",
+  "execution_revision": "r02",
+  "generated_at": "2026-10-17T07:06:13.861186+00:00",
+  "report_source_revision": "b789039330bc76b2e5fb9480268266798eadef18",
+  "original_request": {
+    "storage_identifier": "benchmark/inputs/case-08.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+  },
+  "derivation": "Saved source projection with one authentic independent source-only relevance review; integration performs no identity/quality rebuild, native scoring replay, or project-provider/model call.",
+  "private_source_note": "Storage identifiers are retained local evidence locations, not published navigation dependencies.",
+  "processing_status": "complete",
+  "evidence_status": "unresolved",
+  "interest_inventory": {
+    "storage_identifier": "benchmark/scratch/case-08/work/r02/interests/inventory.json",
+    "sha256": "a180755ba236c1c043bb8635e6b3cf417cca0d7350b3cb82e0bfa145de2e61d8"
+  },
+  "review_packet": {
+    "storage_identifier": "benchmark/scratch/case-08/next-r01/candidate-review-packet.json",
+    "sha256": "ad36050e06b2487ac848eaa5f3b07a8037bb156e4d4775be668192d3dee318d1"
+  },
+  "input_interests": [
+    {
+      "interest_id": "architecture-interest",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "history-interest",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "interest_id": "sagrada-familia-exactly-once",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices.",
+      "requirement_pointer": "/obligations/0"
+    }
+  ],
+  "versions": {
+    "v1": {
+      "run_id": "case-08-r02-v1",
+      "capture": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/candidate-opportunities.json",
+        "sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046"
+      },
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "count": 32,
+          "canonical_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJH-lBhlOjpBIRofaF08GIb74",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+            "ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+              "ChIJ160fSTajpBIRZlKRfkwTn1U",
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+              "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+              "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+              "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJBTfBbwCjpBIRK-jjm940utc",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJH-lBhlOjpBIRofaF08GIb74",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+              "ChIJVVWFHXKYpBIRZIK90VwJl38",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+              "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJc0WMe_GipBIR_EfbMXL48cY",
+              "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+              "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+              "ChIJq0HUUq6ipBIRWM6qGqALmok",
+              "ChIJs8XnVfaipBIRjdDYccZAW0g",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/candidate-opportunities.json",
+            "sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046",
+            "pointer": "/stages/discovered"
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "count": 31,
+          "canonical_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJH-lBhlOjpBIRofaF08GIb74",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+              "ChIJ160fSTajpBIRZlKRfkwTn1U",
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+              "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+              "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+              "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJBTfBbwCjpBIRK-jjm940utc",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJH-lBhlOjpBIRofaF08GIb74",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+              "ChIJVVWFHXKYpBIRZIK90VwJl38",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+              "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJc0WMe_GipBIR_EfbMXL48cY",
+              "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+              "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+              "ChIJs8XnVfaipBIRjdDYccZAW0g",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/candidate-opportunities.json",
+            "sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046",
+            "pointer": "/stages/admitted"
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "count": 24,
+          "canonical_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+              "ChIJ160fSTajpBIRZlKRfkwTn1U",
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJBTfBbwCjpBIRK-jjm940utc",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+              "ChIJVVWFHXKYpBIRZIK90VwJl38",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+              "ChIJc0WMe_GipBIR_EfbMXL48cY",
+              "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+              "ChIJs8XnVfaipBIRjdDYccZAW0g",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/candidate-opportunities.json",
+            "sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046",
+            "pointer": "/stages/enriched"
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "count": 12,
+          "canonical_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJBTfBbwCjpBIRK-jjm940utc",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/candidate-opportunities.json",
+            "sha256": "ec532426a0183a1b0b96219bf75712b9995b06e3d768dc2c07a5bb5d72bd7046",
+            "pointer": "/stages/supplied"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "from": "discovered",
+          "to": "admitted",
+          "retained_count": 31,
+          "removed_ids": [
+            "ChIJq0HUUq6ipBIRWM6qGqALmok"
+          ],
+          "fraction": {
+            "numerator": 31,
+            "denominator": 32,
+            "unit": "canonical_places"
+          }
+        },
+        {
+          "from": "admitted",
+          "to": "enriched",
+          "retained_count": 24,
+          "removed_ids": [
+            "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+            "ChIJH-lBhlOjpBIRofaF08GIb74",
+            "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJoYA0MqKipBIRRwJG2R8H8s4"
+          ],
+          "fraction": {
+            "numerator": 24,
+            "denominator": 31,
+            "unit": "canonical_places"
+          }
+        },
+        {
+          "from": "enriched",
+          "to": "supplied",
+          "retained_count": 12,
+          "removed_ids": [
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "fraction": {
+            "numerator": 12,
+            "denominator": 24,
+            "unit": "canonical_places"
+          }
+        }
+      ],
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "omission_counts": {
+        "admitted:ineligible_or_excluded": 1,
+        "enriched:unprocessed_new_success_target": 7,
+        "supplied:not_selected": 12
+      },
+      "scheduled": {
+        "status": "complete",
+        "occurrence_count": 10,
+        "count": 10,
+        "canonical_ids": [
+          "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+          "ChIJ204RAfmipBIRgmi5nW7YHaE",
+          "ChIJAVoetfeipBIR1a1z3FTGCoY",
+          "ChIJBTfBbwCjpBIRK-jjm940utc",
+          "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+          "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+          "ChIJYUFLSe2ipBIRD04uni940kA",
+          "ChIJgQYekPiipBIRr6fNOMV-5bc",
+          "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+        ],
+        "saved_associations": [
+          {
+            "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "activity_id": "barcelona-20261022-sagrada-familia",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/14"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/0/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+            "activity_id": "barcelona-20261022-casa-batllo",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/15"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/0/activities/1"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "activity_id": "barcelona-20261022-casa-arquitectura",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/16"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/0/activities/2"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "activity_id": "barcelona-20261023-gothic-quarter",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/17"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/1/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "activity_id": "barcelona-20261023-temple-august",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/18"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/1/activities/1"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "activity_id": "barcelona-20261023-casa-seda",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/19"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/1/activities/2"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "activity_id": "barcelona-20261023-boqueria",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/20"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/1/activities/3"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "activity_id": "barcelona-20261024-palau-musica",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/21"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/2/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "activity_id": "barcelona-20261024-history-catalonia",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/22"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/2/activities/1"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "activity_id": "barcelona-20261024-montjuic-castle",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/23"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+              "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+              "pointer": "/itinerary/days/2/activities/2"
+            }
+          }
+        ],
+        "supplied_to_scheduled": {
+          "numerator": 10,
+          "denominator": 12,
+          "unit": "canonical_places"
+        },
+        "supplied_unscheduled_ids": [
+          "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+          "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+        ],
+        "nearby_references_excluded": true
+      },
+      "rag": {
+        "applicable": false,
+        "status": "not_applicable",
+        "unique_entities": null,
+        "new_canonical_ids": [],
+        "embedding_sends": 0,
+        "interpretation": "V1 has no RAG mechanism."
+      }
+    },
+    "v2": {
+      "run_id": "case-08-r02-v2",
+      "capture": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/candidate-opportunities.json",
+        "sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c"
+      },
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "count": 16,
+          "canonical_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJq0HUUq6ipBIRWM6qGqALmok",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/candidate-opportunities.json",
+            "sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c",
+            "pointer": "/stages/discovered"
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "count": 15,
+          "canonical_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/candidate-opportunities.json",
+            "sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c",
+            "pointer": "/stages/admitted"
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "count": 15,
+          "canonical_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+              "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+              "ChIJte9wnIOjpBIRpxcPjvLO30E"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/candidate-opportunities.json",
+            "sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c",
+            "pointer": "/stages/enriched"
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "count": 12,
+          "canonical_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+              "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "ChIJAVoetfeipBIR1a1z3FTGCoY",
+              "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+              "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+              "ChIJN7FiCkGipBIR1PJn6ohejww",
+              "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+              "ChIJYUFLSe2ipBIRD04uni940kA",
+              "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+              "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "ChIJgQYekPiipBIRr6fNOMV-5bc",
+              "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+            ],
+            "rag_only": [],
+            "mixed": [],
+            "no_origin": []
+          },
+          "source": {
+            "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/candidate-opportunities.json",
+            "sha256": "dad287be4561f070ea6cd60b93294d5f6ced2697fe08e86a516d0917ed18ae3c",
+            "pointer": "/stages/supplied"
+          }
+        }
+      },
+      "transitions": [
+        {
+          "from": "discovered",
+          "to": "admitted",
+          "retained_count": 15,
+          "removed_ids": [
+            "ChIJq0HUUq6ipBIRWM6qGqALmok"
+          ],
+          "fraction": {
+            "numerator": 15,
+            "denominator": 16,
+            "unit": "canonical_places"
+          }
+        },
+        {
+          "from": "admitted",
+          "to": "enriched",
+          "retained_count": 15,
+          "removed_ids": [],
+          "fraction": {
+            "numerator": 15,
+            "denominator": 15,
+            "unit": "canonical_places"
+          }
+        },
+        {
+          "from": "enriched",
+          "to": "supplied",
+          "retained_count": 12,
+          "removed_ids": [
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "fraction": {
+            "numerator": 12,
+            "denominator": 15,
+            "unit": "canonical_places"
+          }
+        }
+      ],
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "omission_counts": {
+        "admitted:ineligible_or_excluded": 1,
+        "supplied:not_selected": 3
+      },
+      "scheduled": {
+        "status": "complete",
+        "occurrence_count": 7,
+        "count": 7,
+        "canonical_ids": [
+          "ChIJ204RAfmipBIRgmi5nW7YHaE",
+          "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+          "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "ChIJYUFLSe2ipBIRD04uni940kA",
+          "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+          "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+        ],
+        "saved_associations": [
+          {
+            "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "activity_id": "visit-sagrada-familia",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/24"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/0/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+            "activity_id": "visit-casa-batllo",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/25"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/0/activities/1"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "activity_id": "visit-barcelona-cathedral",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/26"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/1/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "activity_id": "visit-temple-daugust",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/27"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/1/activities/1"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "activity_id": "visit-muhba-casa-padellas",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/28"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/1/activities/2"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "activity_id": "visit-montjuic-castle",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/29"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/2/activities/0"
+            }
+          },
+          {
+            "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "activity_id": "visit-poble-espanyol",
+            "grounding_verdict": "PASS",
+            "source": {
+              "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+              "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+              "pointer": "/reports/identity/records/30"
+            },
+            "result_source": {
+              "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+              "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+              "pointer": "/itinerary/days/2/activities/1"
+            }
+          }
+        ],
+        "supplied_to_scheduled": {
+          "numerator": 7,
+          "denominator": 12,
+          "unit": "canonical_places"
+        },
+        "supplied_unscheduled_ids": [
+          "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+          "ChIJAVoetfeipBIR1a1z3FTGCoY",
+          "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+          "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+          "ChIJgQYekPiipBIRr6fNOMV-5bc"
+        ],
+        "nearby_references_excluded": true
+      },
+      "rag": {
+        "applicable": true,
+        "status": "empty",
+        "unique_entities": 0,
+        "new_canonical_ids": [],
+        "embedding_sends": 1,
+        "interpretation": "Saved zero returned entities does not establish corpus-wide absence or recall."
+      }
+    }
+  },
+  "cross_version": {
+    "discovered": {
+      "unit": "canonical_places",
+      "v2_minus_v1_count": -16,
+      "gained_ids": [],
+      "lost_ids": [
+        "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+        "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+        "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "ChIJH-lBhlOjpBIRofaF08GIb74",
+        "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+        "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+        "ChIJs8XnVfaipBIRjdDYccZAW0g"
+      ],
+      "retained_ids": [
+        "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "ChIJYUFLSe2ipBIRD04uni940kA",
+        "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "ChIJq0HUUq6ipBIRWM6qGqALmok",
+        "ChIJte9wnIOjpBIRpxcPjvLO30E"
+      ],
+      "interpretation": "Observed independent-generation set difference; not a causal RAG effect."
+    },
+    "admitted": {
+      "unit": "canonical_places",
+      "v2_minus_v1_count": -16,
+      "gained_ids": [],
+      "lost_ids": [
+        "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+        "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+        "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "ChIJH-lBhlOjpBIRofaF08GIb74",
+        "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+        "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+        "ChIJs8XnVfaipBIRjdDYccZAW0g"
+      ],
+      "retained_ids": [
+        "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "ChIJYUFLSe2ipBIRD04uni940kA",
+        "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "ChIJte9wnIOjpBIRpxcPjvLO30E"
+      ],
+      "interpretation": "Observed independent-generation set difference; not a causal RAG effect."
+    },
+    "enriched": {
+      "unit": "canonical_places",
+      "v2_minus_v1_count": -9,
+      "gained_ids": [
+        "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+      ],
+      "lost_ids": [
+        "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "ChIJs8XnVfaipBIRjdDYccZAW0g"
+      ],
+      "retained_ids": [
+        "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "ChIJYUFLSe2ipBIRD04uni940kA",
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "ChIJte9wnIOjpBIRpxcPjvLO30E"
+      ],
+      "interpretation": "Observed independent-generation set difference; not a causal RAG effect."
+    },
+    "supplied": {
+      "unit": "canonical_places",
+      "v2_minus_v1_count": 0,
+      "gained_ids": [
+        "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "lost_ids": [
+        "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+      ],
+      "retained_ids": [
+        "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "ChIJYUFLSe2ipBIRD04uni940kA",
+        "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "interpretation": "Observed independent-generation set difference; not a causal RAG effect."
+    },
+    "scheduled": {
+      "unit": "canonical_places",
+      "v2_minus_v1_count": -3,
+      "gained_ids": [
+        "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "lost_ids": [
+        "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "ChIJgQYekPiipBIRr6fNOMV-5bc"
+      ],
+      "retained_ids": [
+        "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "ChIJYUFLSe2ipBIRD04uni940kA",
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "interpretation": "Observed independent-generation set difference; not a causal RAG effect."
+    }
+  },
+  "relevance": {
+    "status": "review_complete_evidence_partial",
+    "canonical_venue_count": 32,
+    "interest_count": 3,
+    "venues_with_saved_independent_observations": 15,
+    "venues_without_saved_independent_observations": 17,
+    "expected_judgments": 96,
+    "supplied_independent_judgments": 96,
+    "missing_judgments": 0,
+    "unknown_pair_count": 78,
+    "review_coverage": {
+      "numerator": 96,
+      "denominator": 96,
+      "unit": "interest_venue_pairs"
+    },
+    "known_relevant_count": 4,
+    "known_not_relevant_count": null,
+    "end_to_end_relevant_count": null,
+    "relevant_conversion_fractions": null,
+    "v2_minus_v1_relevance_delta": null,
+    "rows": [
+      {
+        "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-01-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-01-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-01-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-02-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-02-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ160fSTajpBIRZlKRfkwTn1U",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-02-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-03-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-03-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-03-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-04-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-04-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-04-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-05-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-05-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-05-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-06-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-06-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-06-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-07-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-07-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-07-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-08-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-08-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-08-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-09-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-09-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-09-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-10-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-10-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJAVoetfeipBIR1a1z3FTGCoY",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-10-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-11-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "interest_id": "history-interest",
+        "verdict": "relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-11-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-11-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-12-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-12-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-12-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-13-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-13-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJH-lBhlOjpBIRofaF08GIb74",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-13-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-14-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-14-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-14-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-15-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-15-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-15-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-16-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-16-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-16-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "interest_id": "architecture-interest",
+        "verdict": "relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-17-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-17-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-17-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-18-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-18-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJVVWFHXKYpBIRZIK90VwJl38",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-18-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-19-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-19-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-19-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-20-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-20-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-20-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-21-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-21-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-21-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-22-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "interest_id": "history-interest",
+        "verdict": "relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-22-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-22-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-23-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-23-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-23-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-24-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-24-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-24-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-25-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-25-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-25-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-26-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-26-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-26-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-27-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-27-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-27-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-28-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-28-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-28-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-29-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-29-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-29-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-30-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-30-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "not_relevant",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-30-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-31-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-31-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJs8XnVfaipBIRjdDYccZAW0g",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-31-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+        "interest_id": "architecture-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-32-1",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+        "interest_id": "history-interest",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-32-2",
+        "reviewer_ref": "/root/case08_relevance_review"
+      },
+      {
+        "canonical_place_id": "ChIJte9wnIOjpBIRpxcPjvLO30E",
+        "interest_id": "sagrada-familia-exactly-once",
+        "verdict": "unknown",
+        "independent_review_status": "complete",
+        "review_id": "case08-source-only-32-3",
+        "reviewer_ref": "/root/case08_relevance_review"
+      }
+    ],
+    "interpretation": "96 authentic source-only independent judgments are complete; 78 remain unknown. Four distinct relevant venue IDs are an observed lower count, not a complete total. Four positive and fourteen negative verdicts are interest/venue pairs. Missing and reviewed-unknown judgments are distinct.",
+    "named_requirement": {
+      "source": {
+        "storage_identifier": "benchmark/case-08/evaluation/primary-corrected-r01/summary.json",
+        "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f",
+        "pointer": "/requirement_checks"
+      },
+      "status": "Both named obligations PASS in V0-V3; saved exact-one validation is retained separately and is not repackaged as general relevance labels."
+    },
+    "new_reviewer_dispatches": 1,
+    "corpus_study": "not_selected",
+    "independent_review": {
+      "storage_identifier": "benchmark/case-08/analysis/offline-r01/relevance.json",
+      "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509"
+    },
+    "verdict_counts": {
+      "unknown": 78,
+      "not_relevant": 14,
+      "relevant": 4
+    },
+    "decidable_coverage": {
+      "numerator": 18,
+      "denominator": 96,
+      "unit": "interest_venue_pairs"
+    },
+    "stage_relevance": {
+      "v1": {
+        "discovered": {
+          "overall_observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 4,
+          "unknown_union_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJH-lBhlOjpBIRofaF08GIb74",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+            "ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 2,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "admitted": {
+          "overall_observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 4,
+          "unknown_union_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJH-lBhlOjpBIRofaF08GIb74",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 2,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJ3fHTIFiipBIRpKXCn_E_oJY",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAUw4wK-ipBIRYL5PIklnhfA",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJH-lBhlOjpBIRofaF08GIb74",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJafFSqb-ipBIRlIqEp_xVvtE",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJoYA0MqKipBIRRwJG2R8H8s4",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "enriched": {
+          "overall_observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 3,
+          "unknown_union_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ160fSTajpBIRZlKRfkwTn1U",
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJVVWFHXKYpBIRZIK90VwJl38",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+            "ChIJc0WMe_GipBIR_EfbMXL48cY",
+            "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+            "ChIJs8XnVfaipBIRjdDYccZAW0g",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJBTfBbwCjpBIRK-jjm940utc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ160fSTajpBIRZlKRfkwTn1U",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ3dwkx_mipBIRVToWjtwJKbQ",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJVVWFHXKYpBIRZIK90VwJl38",
+                "ChIJ_SRKiu6ipBIRDahdz5YvICc",
+                "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o",
+                "ChIJs8XnVfaipBIRjdDYccZAW0g",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "supplied": {
+          "overall_observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 3,
+          "unknown_union_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJBTfBbwCjpBIRK-jjm940utc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJo4J2AqyjpBIRFXjpIRqc36o"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "scheduled": {
+          "overall_observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 3,
+          "unknown_union_ids": [
+            "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJBTfBbwCjpBIRK-jjm940utc",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJBTfBbwCjpBIRK-jjm940utc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [],
+              "complete_count": 1
+            }
+          }
+        },
+        "end_to_end": {
+          "observed_relevant_ids": [
+            "ChIJBTfBbwCjpBIRK-jjm940utc",
+            "ChIJSSVbBsijpBIRLR1pB7P5Trs",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "complete_count": null,
+          "complete_relevant_conversions": null
+        }
+      },
+      "v2": {
+        "discovered": {
+          "overall_observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 2,
+          "unknown_union_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [],
+              "observed_lower_count": 0,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "admitted": {
+          "overall_observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 2,
+          "unknown_union_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [],
+              "observed_lower_count": 0,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "enriched": {
+          "overall_observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 2,
+          "unknown_union_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+            "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc",
+            "ChIJte9wnIOjpBIRpxcPjvLO30E"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [],
+              "observed_lower_count": 0,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ2_JG9uiipBIRW4wnYN6H-wo",
+                "ChIJ4eD9ztyipBIR_g1BtyluWPM",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJte9wnIOjpBIRpxcPjvLO30E"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "supplied": {
+          "overall_observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 2,
+          "unknown_union_ids": [
+            "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJAVoetfeipBIR1a1z3FTGCoY",
+            "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "ChIJgQYekPiipBIRr6fNOMV-5bc"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [],
+              "observed_lower_count": 0,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJAVoetfeipBIR1a1z3FTGCoY",
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJgQYekPiipBIRr6fNOMV-5bc",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJGUgrYPGipBIRS9ZgHK_C7B4"
+              ],
+              "complete_count": null
+            }
+          }
+        },
+        "scheduled": {
+          "overall_observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "overall_observed_lower_count": 2,
+          "unknown_union_ids": [
+            "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+            "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "ChIJYUFLSe2ipBIRD04uni940kA",
+            "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+          ],
+          "complete_count": null,
+          "by_interest": {
+            "architecture-interest": {
+              "observed_relevant_ids": [],
+              "observed_lower_count": 0,
+              "unknown_ids": [
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "history-interest": {
+              "observed_relevant_ids": [
+                "ChIJc0WMe_GipBIRJiU_pUq_bRc"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [
+                "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "ChIJJ2JbaneipBIRpVQ6RTJSwLA",
+                "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "ChIJYUFLSe2ipBIRD04uni940kA",
+                "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "complete_count": null
+            },
+            "sagrada-familia-exactly-once": {
+              "observed_relevant_ids": [
+                "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+              ],
+              "observed_lower_count": 1,
+              "unknown_ids": [],
+              "complete_count": 1
+            }
+          }
+        },
+        "end_to_end": {
+          "observed_relevant_ids": [
+            "ChIJc0WMe_GipBIRJiU_pUq_bRc",
+            "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+          ],
+          "complete_count": null,
+          "complete_relevant_conversions": null
+        }
+      }
+    }
+  },
+  "review_continuation": {
+    "reviewed_at": "2026-10-17T07:29:03.776826+00:00",
+    "source_revision": "b789039330bc76b2e5fb9480268266798eadef18",
+    "historical_missing_review_report_commit": "b789039330bc76b2e5fb9480268266798eadef18"
+  },
+  "updated_at": "2026-10-17T07:36:24.216415+00:00"
+}

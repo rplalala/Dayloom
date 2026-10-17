@@ -1,0 +1,26 @@
+{
+  "run_id": "case-08-r02-v2",
+  "outcome": "completed",
+  "namespace": "planner",
+  "timing_scope": "selected_invocation_through_cleanup",
+  "metrics": {
+    "elapsed_seconds": 85.0,
+    "total_tokens": 54629,
+    "model_calls": 6,
+    "http_sends": 52,
+    "cache_hits": 1
+  },
+  "observed_token_subtotal": 54629,
+  "observed_model_calls": 6,
+  "observed_http_sends": 52,
+  "cache_lookup_hits": 0,
+  "observed_tool_http_sends": 46,
+  "token_observed_calls": 6,
+  "token_missing_calls": 0,
+  "adapter_coverage": "declared_default_adapters",
+  "repair_model_calls": 0,
+  "repair_token_observed_subtotal": null,
+  "failed_http_responses": 0,
+  "incomplete_http_sends": 0,
+  "missing_fields": []
+}

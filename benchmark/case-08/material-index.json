@@ -1,0 +1,393 @@
+{
+  "schema_version": "case_public_material_index_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "status": "automatically_accepted_blinded_review_deferred",
+  "publication_source_revision": "2c48c8910cfc3819bc18cebab33fe1ccf809fcc0",
+  "delivery_base": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
+  "original_input": {
+    "path": "../inputs/case-08.json",
+    "sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a"
+  },
+  "generation_source_revision": "19a4f4d97e4c8cb5e441ebc3239e7ef5111b86bd",
+  "selected_evaluator_revision": "d3cab596d9ba81ae9b72c4ec4d8cc4ec79b39a6c",
+  "selected_primary": "evaluation/primary-corrected-r01/summary.json",
+  "historical_primary": "evaluation/primary/summary.json",
+  "historical_index": {
+    "path": "evaluation/primary/source-material-index.json",
+    "sha256": "b4b40c613a3d97c4a56b5cee26eb0a8fdf3fe8857d8a67e1ebf7c9f47b711786",
+    "reference_resolution_root": "case_directory",
+    "meaning": "Exact frozen pre-correction index; historical status/costs, not current acceptance."
+  },
+  "versions": {
+    "v0": {
+      "run_id": "case-08-r02-v0",
+      "itinerary": "generation/r02/v0/itinerary.json",
+      "result_sha256": "be57fd2ebe39525b504fa4a67bb11f77fcc3f1b2af4651303e815c882cc06212",
+      "corrected_overall_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667
+      }
+    },
+    "v1": {
+      "run_id": "case-08-r02-v1",
+      "itinerary": "generation/r02/v1/itinerary.json",
+      "result_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+      "corrected_overall_total": {
+        "exact_fraction": {
+          "denominator": 75,
+          "numerator": 56
+        },
+        "reason": null,
+        "score_0_100": 74.66666666666667
+      }
+    },
+    "v2": {
+      "run_id": "case-08-r02-v2",
+      "itinerary": "generation/r02/v2/itinerary.json",
+      "result_sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+      "corrected_overall_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667
+      }
+    },
+    "v3": {
+      "run_id": "case-08-r02-v3",
+      "itinerary": "generation/r02/v3/itinerary.json",
+      "result_sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+      "corrected_overall_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0
+      }
+    }
+  },
+  "materials": [
+    {
+      "path": "analysis/offline-r01/acceptance.json",
+      "sha256": "e248340d02b8b77ebcd3a9c0d33b1962b538de17023fd4c985e066f46afca669",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/acceptance.json",
+        "sha256": "c88ad243faa04b9d1f5d0c83869aab04896594d6c11e4d156cf9fcc28eb12726"
+      },
+      "publication_kind": "derived_local_path_redaction",
+      "transformation": "Only archive_probe.correction replaces the local temporary-root spelling. Original verdicts, metrics and stage scope are unchanged."
+    },
+    {
+      "path": "analysis/offline-r01/candidates.json",
+      "sha256": "4878633b13213975934f94be456cb3984a7c190888bc5901367a441ae4c145eb",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/candidates.json",
+        "sha256": "4878633b13213975934f94be456cb3984a7c190888bc5901367a441ae4c145eb"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "analysis/offline-r01/relevance.json",
+      "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/relevance.json",
+        "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "analysis/offline-r01/repair.json",
+      "sha256": "dda9951b5ffecb47f931f268e70dba7b768828b4c2e2b16fe7c208a77416555e",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/repair.json",
+        "sha256": "dda9951b5ffecb47f931f268e70dba7b768828b4c2e2b16fe7c208a77416555e"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "evaluation/primary/report.json",
+      "sha256": "3e45555ee28d8d567a826363a024aede07b912529e3a5de722d1a7050216d52b",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/evaluation/primary/report.json",
+        "sha256": "3e45555ee28d8d567a826363a024aede07b912529e3a5de722d1a7050216d52b"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/primary/execution/report.json",
+        "sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+        "json_pointer": "/quality"
+      }
+    },
+    {
+      "path": "evaluation/primary/source-material-index.json",
+      "sha256": "b4b40c613a3d97c4a56b5cee26eb0a8fdf3fe8857d8a67e1ebf7c9f47b711786",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/material-index.json",
+        "sha256": "b4b40c613a3d97c4a56b5cee26eb0a8fdf3fe8857d8a67e1ebf7c9f47b711786"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "evaluation/primary/summary.json",
+      "sha256": "f93bad77dbe10f0cbbaa1eb1c13e4ee18ba24fd77e6291833695e79783b9dd42",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/evaluation/primary/summary.json",
+        "sha256": "f93bad77dbe10f0cbbaa1eb1c13e4ee18ba24fd77e6291833695e79783b9dd42"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "evaluation/primary-corrected-r01/report.json",
+      "sha256": "c936907b47844a282a06285070c750d6dc381dac568369c9969f471e18f7e3df",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/evaluation/primary-corrected-r01/report.json",
+        "sha256": "c936907b47844a282a06285070c750d6dc381dac568369c9969f471e18f7e3df"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+        "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+        "json_pointer": "/quality"
+      }
+    },
+    {
+      "path": "evaluation/primary-corrected-r01/summary.json",
+      "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/evaluation/primary-corrected-r01/summary.json",
+        "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "generation/r02/v0/itinerary.json",
+      "sha256": "e44bf613ef485b9df23e1f0b7e06cc01ce3dc9f577e8e4d2457de7fd12272a60",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v0/itinerary.json",
+        "sha256": "e44bf613ef485b9df23e1f0b7e06cc01ce3dc9f577e8e4d2457de7fd12272a60"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/result.json",
+        "sha256": "be57fd2ebe39525b504fa4a67bb11f77fcc3f1b2af4651303e815c882cc06212",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "path": "generation/r02/v0/usage.json",
+      "sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v0/usage.json",
+        "sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v0/usage-summary.json",
+        "sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v1/itinerary.json",
+      "sha256": "9a0550c92d8b66491000356dea326a1c8a4ea96da8c2de6e479f07672082b544",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v1/itinerary.json",
+        "sha256": "9a0550c92d8b66491000356dea326a1c8a4ea96da8c2de6e479f07672082b544"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/result.json",
+        "sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "path": "generation/r02/v1/usage.json",
+      "sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v1/usage.json",
+        "sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v1/usage-summary.json",
+        "sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v2/itinerary.json",
+      "sha256": "491817761a0865380b7daa5d0ecf64b7c8c2b95a6a072eadea16f75a75546a5b",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v2/itinerary.json",
+        "sha256": "491817761a0865380b7daa5d0ecf64b7c8c2b95a6a072eadea16f75a75546a5b"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/result.json",
+        "sha256": "24c0ca7ddf8feaa78eb6411168a3e6f28a557c04b0be34701af8cc09574fe337",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "path": "generation/r02/v2/usage.json",
+      "sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v2/usage.json",
+        "sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v2/usage-summary.json",
+        "sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v3/itinerary.json",
+      "sha256": "141d49c1b833375e14a47a5bdb5092fb3fb8064a85f15d28ccb84f6bf7701ae8",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v3/itinerary.json",
+        "sha256": "141d49c1b833375e14a47a5bdb5092fb3fb8064a85f15d28ccb84f6bf7701ae8"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/result.json",
+        "sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "path": "generation/r02/v3/usage.json",
+      "sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/r02/v3/usage.json",
+        "sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/captures/v3/usage-summary.json",
+        "sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "1bc20ef61c4f4eb4ad78edd7a9ae143d7fd8441bcd72016d7b1c79c5f17992c8",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/v0/itinerary.json",
+        "sha256": "1bc20ef61c4f4eb4ad78edd7a9ae143d7fd8441bcd72016d7b1c79c5f17992c8"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r01/captures/v0/result.json",
+        "sha256": "1eab752a4d3b36a46f5127a0ed03cfa1e264646071dd1e072a5470bc2290633c",
+        "json_pointer": "/itinerary"
+      }
+    },
+    {
+      "path": "generation/v1/failure.json",
+      "sha256": "27061ca2efe08994e05496b4309d44d6cbd516801e9070f0f36f184aad8dd24e",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/v1/failure.json",
+        "sha256": "27061ca2efe08994e05496b4309d44d6cbd516801e9070f0f36f184aad8dd24e"
+      },
+      "publication_kind": "exact_source_copy"
+    },
+    {
+      "path": "report.md",
+      "sha256": "110c0111c6c960c68d032ff981a62272aeb8fd1f6eca93bf84b5c754a2fbe3d7",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/report.md",
+        "sha256": "574e88951c8015a922223263653c8059b2b49b4ca64a09228a915ad079748400"
+      },
+      "publication_kind": "current_status_narrative"
+    },
+    {
+      "path": "requirements/reviewed.json",
+      "sha256": "1c57fc906028ac46616ad5c85e7d53c58283afc50524b142455094d1ec650efc",
+      "source": {
+        "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/requirements/reviewed.json",
+        "sha256": "1c57fc906028ac46616ad5c85e7d53c58283afc50524b142455094d1ec650efc"
+      },
+      "publication_kind": "exact_source_copy",
+      "native_source": {
+        "storage_identifier": "benchmark/scratch/case-08/work/r02/requirements/reviewed-final.json",
+        "sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "evaluation/pair/report.json",
+      "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09:continuation/pair-export/execution/pair-report.json",
+        "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1"
+      },
+      "publication_kind": "exact_native_report"
+    },
+    {
+      "path": "evaluation/pair/summary.json",
+      "sha256": "d0dfac5d91a8cb5b8736511c1f6120c80cf110de4dac9ff9e672b78d3fb79d29",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09:continuation/pair-export/execution/pair-report.json",
+        "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1"
+      },
+      "publication_kind": "derived_native_summary"
+    },
+    {
+      "path": "analysis/acceptance.json",
+      "sha256": "49a182dab7ff76151124ce72aae89c4742962b555f197c3443c8ef19bcad4bbf",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
+        "sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb"
+      },
+      "publication_kind": "current_acceptance_checklist"
+    }
+  ],
+  "accounting": {
+    "cumulative_reference_usd": "7.417591660",
+    "remaining_reference_usd": "22.582408340",
+    "ceiling_reference_usd": "30",
+    "actual_account_billing": null,
+    "external_codex_billing": null
+  },
+  "remaining_work": [
+    "Separately authorized Git publication/integration and Issue handling",
+    "Deferred step-11 blinded human review"
+  ],
+  "native_dependency_boundary": "Private source identifiers and raw observation path/hash references are retained for evidence lineage. This public view is not a standalone native intake/execution/replay bundle. Original preparation paths and runtime policies remain unchanged.",
+  "delivery_limits": {
+    "new_model_calls": 0,
+    "google_requests": 0,
+    "new_generation_runs": 0,
+    "new_primary_runs": 0,
+    "native_pair_executions": 1,
+    "native_pair_replay": "exact",
+    "historical_primary_native_replays": "exact under each frozen implementation",
+    "incremental_reference_usd": "0",
+    "issue_mutations": 0,
+    "publication_authorized": false
+  },
+  "selected_pair": "evaluation/pair/summary.json",
+  "acceptance_checklist": "analysis/acceptance.json",
+  "pair_implementation_revision": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
+  "private_archive": {
+    "storage_identifier": "archive:case08-steps08-09",
+    "manifest_sha256": "0a7e3686423988e3e16260f3be8be77393d071eb6e0734ea96d7d1460f6b4762",
+    "archive_sha256": "607e30f8e57ecb1dc64b46f53c2ed787f197894c6b6b8181ec763287734c6463",
+    "closeout_storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
+    "closeout_sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb",
+    "status": "restored_bytes_and_native_pair_verified",
+    "original_absolute_bindings": "retained unchanged; originals remain required for their original preparation layout"
+  },
+  "acceptance_date": "2026-10-17",
+  "acceptance_timezone": "Australia/Sydney"
+}

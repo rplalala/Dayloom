@@ -1,0 +1,813 @@
+{
+  "schema_version": "case_primary_handoff_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "source_revision": "19a4f4d97e4c8cb5e441ebc3239e7ef5111b86bd",
+  "processing_status": "complete",
+  "acquisition_status": "complete",
+  "evidence_status": "unresolved",
+  "scores": {
+    "v0": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 1,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 83.33333333333333
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 3,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "daily_density_mean_penalty_0_100": 0.0,
+      "daily_density_penalties": [
+        0,
+        0,
+        0
+      ]
+    },
+    "v1": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 150,
+          "numerator": 79
+        },
+        "reason": null,
+        "score_0_100": 52.666666666666664
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 25,
+          "numerator": 19
+        },
+        "reason": null,
+        "score_0_100": 76.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 17,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 2
+          },
+          "verified_score_0_100": 80.0
+        },
+        "requirements": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 1,
+            "PASS": 0,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 0.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "daily_density_mean_penalty_0_100": 23.333333333333332,
+      "daily_density_penalties": [
+        10,
+        50,
+        10
+      ]
+    },
+    "v2": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 23
+        },
+        "reason": null,
+        "score_0_100": 76.66666666666667
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 5,
+          "numerator": 4
+        },
+        "reason": null,
+        "score_0_100": 80.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 11,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 1,
+            "PASS": 0,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 0.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "daily_density_mean_penalty_0_100": 3.3333333333333335,
+      "daily_density_penalties": [
+        0,
+        10,
+        0
+      ]
+    },
+    "v3": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 5,
+          "numerator": 4
+        },
+        "reason": null,
+        "score_0_100": 80.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 5,
+          "numerator": 4
+        },
+        "reason": null,
+        "score_0_100": 80.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 1,
+            "PASS": 0,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 0.0
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 3,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0
+        }
+      },
+      "daily_density_mean_penalty_0_100": 0.0,
+      "daily_density_penalties": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "requirement_checks": {
+    "v0": [
+      {
+        "obligation_id": "sagrada-familia-exactly-once",
+        "state": "PASS",
+        "components": [
+          {
+            "kind": "count",
+            "state": "PASS",
+            "bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "target": 1
+          }
+        ]
+      },
+      {
+        "obligation_id": "park-guell-excluded",
+        "state": "PASS",
+        "components": [
+          {
+            "kind": "exclusion",
+            "state": "PASS",
+            "bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "target": null
+          }
+        ]
+      }
+    ],
+    "v1": [
+      {
+        "obligation_id": "sagrada-familia-exactly-once",
+        "state": "UNKNOWN",
+        "components": [
+          {
+            "kind": "count",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 10
+            },
+            "target": 1
+          }
+        ]
+      },
+      {
+        "obligation_id": "park-guell-excluded",
+        "state": "FAIL",
+        "components": [
+          {
+            "kind": "exclusion",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 10
+            },
+            "target": null
+          },
+          {
+            "kind": "subject_identity",
+            "state": "FAIL",
+            "bounds": null,
+            "target": null
+          }
+        ]
+      }
+    ],
+    "v2": [
+      {
+        "obligation_id": "sagrada-familia-exactly-once",
+        "state": "UNKNOWN",
+        "components": [
+          {
+            "kind": "count",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 7
+            },
+            "target": 1
+          }
+        ]
+      },
+      {
+        "obligation_id": "park-guell-excluded",
+        "state": "FAIL",
+        "components": [
+          {
+            "kind": "exclusion",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 7
+            },
+            "target": null
+          },
+          {
+            "kind": "subject_identity",
+            "state": "FAIL",
+            "bounds": null,
+            "target": null
+          }
+        ]
+      }
+    ],
+    "v3": [
+      {
+        "obligation_id": "sagrada-familia-exactly-once",
+        "state": "UNKNOWN",
+        "components": [
+          {
+            "kind": "count",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 6
+            },
+            "target": 1
+          }
+        ]
+      },
+      {
+        "obligation_id": "park-guell-excluded",
+        "state": "FAIL",
+        "components": [
+          {
+            "kind": "exclusion",
+            "state": "UNKNOWN",
+            "bounds": {
+              "lower": 0,
+              "upper": 6
+            },
+            "target": null
+          },
+          {
+            "kind": "subject_identity",
+            "state": "FAIL",
+            "bounds": null,
+            "target": null
+          }
+        ]
+      }
+    ]
+  },
+  "independent_subject_identity": [
+    {
+      "version": "v0",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Sagrada Família"
+      },
+      "canonical_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "candidate_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "grounding_verdict": "PASS",
+      "reason": "model_match"
+    },
+    {
+      "version": "v1",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Sagrada Família"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "grounding_verdict": "UNKNOWN",
+      "reason": "subject_search_no_match"
+    },
+    {
+      "version": "v2",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Sagrada Família"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "grounding_verdict": "UNKNOWN",
+      "reason": "subject_search_no_match"
+    },
+    {
+      "version": "v3",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Sagrada Família"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "grounding_verdict": "UNKNOWN",
+      "reason": "subject_search_no_match"
+    },
+    {
+      "version": "v0",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Park Güell"
+      },
+      "canonical_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+      "candidate_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "grounding_verdict": "PASS",
+      "reason": "model_match"
+    },
+    {
+      "version": "v1",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Park Güell"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "grounding_verdict": "FAIL",
+      "reason": "api_address_mismatch"
+    },
+    {
+      "version": "v2",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Park Güell"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "grounding_verdict": "FAIL",
+      "reason": "api_address_mismatch"
+    },
+    {
+      "version": "v3",
+      "kind": "requirement_subject",
+      "original_claim": {
+        "destination": "Barcelona, Spain",
+        "location": "Barcelona, Spain",
+        "place_name": "Park Güell"
+      },
+      "canonical_place_id": null,
+      "candidate_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "grounding_verdict": "FAIL",
+      "reason": "api_address_mismatch"
+    }
+  ],
+  "opening_assessment": {
+    "eligible_count": 3,
+    "packet_sha256": "701825b5282221b2886dde71d4a32bd11886c2ca12b3e73b3df161f17828e67c",
+    "reason": null,
+    "status": "complete"
+  },
+  "unknown_inventory": [
+    {
+      "stage": "identity",
+      "group_id": "case-08",
+      "version": "v1",
+      "source": {
+        "batch_id": "case-08-r02",
+        "group_id": "case-08",
+        "requirement_spec_sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+        "subject_id": "sagrada-familia",
+        "version": "v1"
+      },
+      "reasons": [
+        "subject_search_no_match"
+      ],
+      "check": {}
+    },
+    {
+      "stage": "identity",
+      "group_id": "case-08",
+      "version": "v2",
+      "source": {
+        "batch_id": "case-08-r02",
+        "group_id": "case-08",
+        "requirement_spec_sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+        "subject_id": "sagrada-familia",
+        "version": "v2"
+      },
+      "reasons": [
+        "subject_search_no_match"
+      ],
+      "check": {}
+    },
+    {
+      "stage": "identity",
+      "group_id": "case-08",
+      "version": "v3",
+      "source": {
+        "batch_id": "case-08-r02",
+        "group_id": "case-08",
+        "requirement_spec_sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
+        "subject_id": "sagrada-familia",
+        "version": "v3"
+      },
+      "reasons": [
+        "subject_search_no_match"
+      ],
+      "check": {}
+    },
+    {
+      "stage": "requirement_schedule",
+      "group_id": "case-08",
+      "version": "v1",
+      "source": [
+        {
+          "field_path": "additional_preferences",
+          "occurrence": 0,
+          "offset_end": 119,
+          "offset_start": 58,
+          "quote": "Include exactly one visit to Sagrada Família during the trip."
+        }
+      ],
+      "reasons": [
+        "count"
+      ],
+      "check": {
+        "check_id": "f01f253227f9ece6e3df5f21db3fd9cf531b4e3576418fdb67a320e4c951870d",
+        "obligation_id": "sagrada-familia-exactly-once",
+        "kind": "required_visit",
+        "state": "UNKNOWN"
+      }
+    },
+    {
+      "stage": "requirement_schedule",
+      "group_id": "case-08",
+      "version": "v2",
+      "source": [
+        {
+          "field_path": "additional_preferences",
+          "occurrence": 0,
+          "offset_end": 119,
+          "offset_start": 58,
+          "quote": "Include exactly one visit to Sagrada Família during the trip."
+        }
+      ],
+      "reasons": [
+        "count"
+      ],
+      "check": {
+        "check_id": "548809a616a78dbd0550498db873bdda5c6a1b743a4b3e0f1ade114226bdd527",
+        "obligation_id": "sagrada-familia-exactly-once",
+        "kind": "required_visit",
+        "state": "UNKNOWN"
+      }
+    },
+    {
+      "stage": "requirement_schedule",
+      "group_id": "case-08",
+      "version": "v3",
+      "source": [
+        {
+          "field_path": "additional_preferences",
+          "occurrence": 0,
+          "offset_end": 119,
+          "offset_start": 58,
+          "quote": "Include exactly one visit to Sagrada Família during the trip."
+        }
+      ],
+      "reasons": [
+        "count"
+      ],
+      "check": {
+        "check_id": "fcfa02a9fdc2934dfebbb0387d7c96750b336bef80bf21859f7249cd4710006e",
+        "obligation_id": "sagrada-familia-exactly-once",
+        "kind": "required_visit",
+        "state": "UNKNOWN"
+      }
+    },
+    {
+      "stage": "opening",
+      "group_id": "case-08",
+      "version": "v1",
+      "source": {
+        "artifact_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+        "batch_id": "case-08-r02",
+        "group_id": "case-08",
+        "pointer": "/itinerary/days/1/activities/2",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "28972bd84e3ecb1017822a380675ced73b540852382ea80f3cbb3b6c82e0c8ea",
+        "run_id": "case-08-r02-v1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "check": {
+        "reference_id": "28972bd84e3ecb1017822a380675ced73b540852382ea80f3cbb3b6c82e0c8ea",
+        "activity_id": "barcelona-20261023-casa-seda",
+        "canonical_place_id": "ChIJ-dHbcvqipBIRr0ScbUEmoew",
+        "state": "UNKNOWN",
+        "reasons": [
+          "hours_missing",
+          "llm_access_reasonableness_unknown"
+        ],
+        "source": {
+          "artifact_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+          "batch_id": "case-08-r02",
+          "group_id": "case-08",
+          "pointer": "/itinerary/days/1/activities/2",
+          "projection_version": "rtpeval_projection_1",
+          "record_id": "28972bd84e3ecb1017822a380675ced73b540852382ea80f3cbb3b6c82e0c8ea",
+          "run_id": "case-08-r02-v1"
+        }
+      }
+    },
+    {
+      "stage": "opening",
+      "group_id": "case-08",
+      "version": "v1",
+      "source": {
+        "artifact_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+        "batch_id": "case-08-r02",
+        "group_id": "case-08",
+        "pointer": "/itinerary/days/2/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "918e73ffbaefdaae2a224f7a341f97dd8a7ac771287c4add25b9ed15ad6f6f6a",
+        "run_id": "case-08-r02-v1"
+      },
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "check": {
+        "reference_id": "918e73ffbaefdaae2a224f7a341f97dd8a7ac771287c4add25b9ed15ad6f6f6a",
+        "activity_id": "barcelona-20261024-palau-musica",
+        "canonical_place_id": "ChIJQQSrd_qipBIRQ2xzarVkqn8",
+        "state": "UNKNOWN",
+        "reasons": [
+          "hours_missing",
+          "llm_access_reasonableness_unknown"
+        ],
+        "source": {
+          "artifact_sha256": "9f979f49c2f9271d7703681a72a5644b796faa2ea3f935d0be0780b7b633fd15",
+          "batch_id": "case-08-r02",
+          "group_id": "case-08",
+          "pointer": "/itinerary/days/2/activities/0",
+          "projection_version": "rtpeval_projection_1",
+          "record_id": "918e73ffbaefdaae2a224f7a341f97dd8a7ac771287c4add25b9ed15ad6f6f6a",
+          "run_id": "case-08-r02-v1"
+        }
+      }
+    }
+  ],
+  "not_evaluated": [
+    {
+      "projection": "draft",
+      "reason": "outside_four_final_scope",
+      "version": "v3"
+    },
+    {
+      "projection": "final_primary",
+      "reason": "outside_four_final_scope",
+      "version": "v3"
+    },
+    {
+      "reason": "outside_four_final_scope",
+      "track": "human"
+    },
+    {
+      "reason": "outside_four_final_scope",
+      "track": "controlled_repair"
+    }
+  ],
+  "provider_usage": {
+    "google_sends": 65,
+    "model_sends": 2,
+    "retries": 0,
+    "reference_cost_usd": "1.3448141",
+    "unpriced_event_count": 0,
+    "actual_account_billing": null
+  },
+  "cumulative_reference_usd": "6.072662635",
+  "remaining_reference_usd": "23.927337365",
+  "native_report_sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+  "native_receipt_sha256": "ed8f04c135f2b44d563cccce1210180c89e8c54dafe1cc6b5164a5b51106ecad",
+  "native_preparation_sha256": "01bf4f603330173b0d6a9722129d39b0149cc152e74ffac7d7366d77c05302c3",
+  "offline_replay": "exact report equality; zero provider calls",
+  "planner_observation": "V1-V3 sourced semantic correspondence accepted the Sagrada Familia Place ID and scheduled it once; Park Guell ID was absent from primary visits. This does not override independent subject-identity outcomes.",
+  "limitations": [
+    "No causal version ranking from one independent generation per version.",
+    "V1-V3 required Sagrada Familia remains UNKNOWN in independent subject resolution; Park Guell exclusion FAIL includes api_address_mismatch on the requirement subject, not a confirmed scheduled Park Guell visit.",
+    "Actual provider invoices and external Codex billing unavailable.",
+    "Steps 7-9, paired paid access, final case acceptance and blinded review remain unstarted."
+  ]
+}

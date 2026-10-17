@@ -2271,14 +2271,19 @@ tracked document targets/anchors passed. The six original shared commits, includ
 patch-ID exception `de60002`, are already in the base and are not reapplied. No benchmark
 path changes, saved-case rerun, external model/Google call or Issue mutation is included.
 
-Original request SHA-256 remains
+At the original target-correction checkpoint, all 191 r01 preservation hashes and
+213 r02 Primary receipt entries matched; V3's historical score remained 80 under its
+executed policy. Original request SHA-256 remains
 `769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
-All 191 r01 preservation hashes and 213 r02 Primary receipt entries were rechecked with
-zero mismatches. Original input, failure records, selected outputs, provider responses,
-usage and tracked case presentation bytes were not rewritten. The r02 V3 score remains
-80 under its executed policy; no corrected case score is claimed. New case/provider execution
-sends, incremental provider charges and actual case reruns were zero; Codex review billing
-is unavailable. Integration/publication and any fresh scoring remain separate actions.
+The separately authorized corrected Primary and current case material are recorded in the
+[case-08 report](../../../benchmark/case-08/report.md). Offline case-material preparation
+from main `3152685` selects saved outputs and validates their bindings without rerunning
+or rescoring them. Original failures, provider evidence, usage and both score histories
+remain retained. Subsequent case steps 8-9 completed source-labelled native pairing,
+continuity, frozen Primary replays and restored archive/native-pair verification with
+zero new provider/model sends. The case report owns the current evidence and limitations.
+The researcher accepted case-08 step 10 on 2026-10-17 with those limitations; blinded
+human review remains deferred. Publication and Issue closure remain separate.
 
 #### Shared evaluator delivery preparation (2026-10-17)
 

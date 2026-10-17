@@ -1,0 +1,124 @@
+{
+  "schema_version": "case_automatic_acceptance_checklist_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "status": "automatically_accepted_blinded_review_deferred",
+  "selected_primary": "../evaluation/primary-corrected-r01/summary.json",
+  "selected_pair": "../evaluation/pair/summary.json",
+  "steps": [
+    {
+      "step": 1,
+      "work": "Original input meaning, dates and selection",
+      "status": "complete"
+    },
+    {
+      "step": 2,
+      "work": "Independent source-only RequirementSpec authoring and review",
+      "status": "complete"
+    },
+    {
+      "step": 3,
+      "work": "Original-input interests",
+      "status": "complete"
+    },
+    {
+      "step": 4,
+      "work": "Bound configuration, capture and budgets",
+      "status": "complete"
+    },
+    {
+      "step": 5,
+      "work": "Selected sequential V0-V3 generation and authentic failure retention",
+      "status": "complete"
+    },
+    {
+      "step": 6,
+      "work": "Independent final Primary with corrected run separately retained",
+      "status": "complete"
+    },
+    {
+      "step": 7,
+      "work": "Candidate stage reporting and independent relevance review; missing facts remain UNKNOWN",
+      "status": "complete_with_disclosed_unknowns"
+    },
+    {
+      "step": 8,
+      "work": "Same-run V3 native pair, independent continuity and structural Repair analysis",
+      "status": "complete"
+    },
+    {
+      "step": 9,
+      "work": "All-attempt accounting, frozen native replays and verified private archive restoration",
+      "status": "complete"
+    },
+    {
+      "step": 10,
+      "work": "Researcher decision on exact selected material and disclosed limitations",
+      "status": "accepted_with_disclosed_limitations"
+    }
+  ],
+  "closeout": {
+    "storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
+    "sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb",
+    "protected_source_hashes": 3308,
+    "primary_receipt_entries": 430,
+    "pair_receipt_entries": 453,
+    "archive_logical_files": 7367,
+    "archive_unique_blobs": 1314,
+    "restored_native_pair_exact": true,
+    "original_case_evidence_reads_during_restored_replay": 0,
+    "temporary_restoration_removed": true,
+    "originals_removed_or_relocated": false
+  },
+  "resources": {
+    "planner_invocations_total": 6,
+    "primary_invocations_total": 2,
+    "new_pair_executions": 1,
+    "current_external_provider_sends": 0,
+    "current_model_sends": 0,
+    "current_reference_cost_usd": "0",
+    "cumulative_reference_usd": "7.417591660",
+    "remaining_reference_usd": "22.582408340",
+    "cumulative_ceiling_usd": "30",
+    "actual_account_and_external_codex_billing": null
+  },
+  "retained_limitations": [
+    "V0 has one grounding FAIL: Sant Pau submitted Eixample while matched venue is in Horta-Guinardo.",
+    "V1 has one opening UNKNOWN: Casa de la Seda.",
+    "Independent relevance has 4 relevant, 14 not relevant and 78 UNKNOWN judgments; qualitative thematic fulfillment remains unverified.",
+    "Repair deletes an independently valid Cathedral visit to reduce the density deduction; native coverage/loss flags remain retained. No overall Repair-success or causal version conclusion is claimed.",
+    "Affordability, human preference fulfillment, actual invoices and external Codex billing remain unavailable.",
+    "Original absolute Primary preparation bindings are unchanged; source worktrees remain retained. The paired export is portable and was independently rebuilt from restored archive files."
+  ],
+  "deferred": "Step 11 consolidated blinded human review",
+  "not_performed": [
+    "push",
+    "PR creation",
+    "main integration",
+    "Issue closure"
+  ],
+  "automatic_acceptance_owner": "researcher",
+  "acceptance": {
+    "step": 10,
+    "decision": "accepted_with_disclosed_limitations",
+    "decided_by": "researcher",
+    "decision_date": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_source": "Explicit researcher approval in the current conversation. Accept the presented exact material and retained limitations; defer blinded review. Update status and prepare the final local package only.",
+    "reviewed_material_revision": "75ade00f259dd69b79fcafa23dfbc012e70bf15c",
+    "reviewed_report_sha256": "16f64a9c4dd3f15a5e173e3d7990d3415190528eda0f00f842bafa23a31a39c1",
+    "original_input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+    "selected_primary": {
+      "path": "../evaluation/primary-corrected-r01/summary.json",
+      "sha256": "be352cca4e406e22fdb0ba225b16a691d275b2103d5974b99386079112f42a2f"
+    },
+    "selected_pair": {
+      "path": "../evaluation/pair/summary.json",
+      "sha256": "d0dfac5d91a8cb5b8736511c1f6120c80cf110de4dac9ff9e672b78d3fb79d29"
+    },
+    "retained_limitations": "All retained_limitations in this checklist remain accepted without alteration.",
+    "blinded_review": "deferred",
+    "publication_and_issue_operations": "not_authorized",
+    "new_execution": "not_authorized"
+  }
+}
