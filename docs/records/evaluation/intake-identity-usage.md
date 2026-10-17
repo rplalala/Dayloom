@@ -2259,8 +2259,10 @@ source-reuse tests. A legacy opening preparation can retain an already bound com
 identity: its exact identity bytes and native packet still validate, while fresh common-policy
 preparations declare version 2. No historical preparation is silently upgraded.
 
-Main-based preparation starts at PR #185 merge `7b4d3f3` and copies the paired
-implementation as `35a2805` with source attribution. All ten changed code/test files
+Shared paired delivery [PR #187](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/187)
+merged source-attributed `35a2805` and `8e6356b` into main at `3152685`, based on
+PR #185 merge `7b4d3f3`. Issue #182 was completed on 2026-10-17 under separate
+researcher authorization. All ten changed code/test files
 match the independently reviewed `5f93f27` exactly, so its Standards/Spec evidence is
 reused without a fresh model review. Shared documentation from `2c48c89` excludes the
 case report and updated case-score/preservation material; the main time-gate and earlier
@@ -2282,8 +2284,12 @@ or rescoring them. Original failures, provider evidence, usage and both score hi
 remain retained. Subsequent case steps 8-9 completed source-labelled native pairing,
 continuity, frozen Primary replays and restored archive/native-pair verification with
 zero new provider/model sends. The case report owns the current evidence and limitations.
-The researcher accepted case-08 step 10 on 2026-10-17 with those limitations; blinded
-human review remains deferred. Publication and Issue closure remain separate.
+The researcher accepted case-08 step 10 on 2026-10-17 with those limitations.
+[PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged its three
+case-material commits into main at `3fbb2ef`; #157 was completed on 2026-10-17.
+Blinded human review stays deferred. The private archive, original worktrees, absolute
+preparation bindings and genuine FAIL/UNKNOWN remain retained. Status closeout reuses
+existing verification without a model/Google request, case rerun or native replay.
 
 #### Shared evaluator delivery preparation (2026-10-17)
 
