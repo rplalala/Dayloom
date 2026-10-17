@@ -392,6 +392,10 @@ snapshot is required. Otherwise require a verified `paired=True` evidence snapsh
 and current identity replay, with the same original input and RequirementSpec.
 The explicit [paired acquisition workflow](0001-evaluation-artifacts.md#paired-evidence-acquisition)
 prepares, acquires, replays and exports this material independently of primary scoring.
+Its explicit common-subject source mode preserves identity policy 6 / subject policy 2
+through fresh acquisition, cached execution, imports and replay. Legacy preparation
+retains policy 4. Reused common targets do not determine paired visit associations or
+replace independent draft/final evidence.
 
 Suite pairing is explicit per case through `tracks.pair`. An omitted pair is
 `not_requested`; an explicit empty or incomplete optional declaration retains
@@ -426,6 +430,11 @@ digest and a fresh one-use directory. Per-run limits do not authorize a batch bu
 operators must enforce the approved aggregate call/cost ceiling. `pair report` accepts
 `--opening-judgment`; suite pairs accept `opening_judgment` and research descriptors accept
 `opening_judgment_ref`. These imports never invoke a model.
+For common-subject identities, paired opening preparation 2 additionally freezes the
+identity/subject policies and digests of the source subject evidence and result.
+Replay checks these against the saved identity and exact opening packet; historical
+preparation 1 keeps its original binding. This provenance does not reuse a Primary
+opening response or authorize a new subject-model call.
 The reviewed-coordinate and saved identity-snapshot paths retain Ticket 07 semantics.
 Foreign/stale supplied sources, preparation/reviews or corrupt snapshots fail atomically;
 they do not silently shrink the cohort or become itinerary FAIL.

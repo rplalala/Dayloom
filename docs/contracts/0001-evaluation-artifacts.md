@@ -90,7 +90,19 @@ send/spend limits. Credentials/model settings are forbidden in these options.
 The price snapshot must support the native Google request identities and execution
 date. Human preference and personal-intent clarification remain external work.
 
-`rtpeval_pair_acquisition_preparation_1` freezes exact original source and
+`rtpeval_pair_acquisition_preparation_1` retains compatibility identity policy 4.
+Explicit `--subject-primary-run` selects preparation 2, identity policy 6 and
+subject policy 2. Its completed preparation-3 Primary must have the exact native
+intake, including original inputs, reviewed RequirementSpecs and selected outputs.
+Closed provider receipts and the original subject packet/model HTTP capture are
+validated without rebuilding Primary quality scores. Only the common target
+observations and their original judgment are reused, with unchanged IDs and bytes;
+paired visit evidence and stage associations remain independent. The source inventory,
+policies and subject material are frozen and copied into `material/subjects`.
+Missing, foreign, conflicting or stale material is rejected; there is no fresh
+subject-model fallback or automatic policy upgrade for legacy preparations.
+
+Both preparation versions freeze exact original source and
 implementation hashes, closed copied material inventory, selection, intake,
 reviews, limits, prices and native `paired=True` identity/evidence plans under a
 canonical `content_sha256`. Identity requests are exact before execution.
@@ -119,7 +131,11 @@ acquisition. Per-request reuse uses the explicit import contract below.
 `pair acquire import` builds fresh `rtpeval_imported_snapshot_1` identity and
 evidence snapshots for the accepted batch and reviewed paired context. It sends
 no requests. Primary sources must replay successfully and retain closed execution
-receipts; saved generation sources must bind the selected V3 run, original input,
+receipts. The explicitly selected `--subject-primary-run` instead validates its closed
+provider facts and original subject-model receipt without rebuilding Primary quality;
+the exact source-bound common targets remain separate from imported observations.
+Use the same flag again when preparing the paired acquisition from those snapshots.
+Saved generation sources must bind the selected V3 run, original input,
 result, usage, provenance, runtime configuration and hashed evidence index.
 When native finalization qualifies a producer declaration, the import retains its
 exact bytes and selected hash alongside the generation's original provenance.

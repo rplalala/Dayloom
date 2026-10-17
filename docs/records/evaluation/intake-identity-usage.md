@@ -2234,6 +2234,43 @@ administrative-destination controls. Standards first encountered an unwritable s
 temporary directory during setup; using an owned scratch directory passed without
 changing source or project configuration.
 
+The downstream paired workflow initially still selected identity policy 4, so it could
+not preserve a corrected Primary's common targets. Local implementation `5f93f27`,
+reviewed from `8de3cb6`, adds explicit source-bound preparation 2 / identity policy 6 /
+subject policy 2 through fresh and cached acquisition, imports and replay. Closed Primary
+facts and the original subject-model receipt validate the common targets without rebuilding
+Primary quality; their observations remain separate from independently associated paired
+visits. Paired opening preparation 2 freezes this provenance. Legacy preparations retain
+their policies; no case alias, response rebinding or new subject-model fallback is added.
+
+The paired-policy tracer first reproduced the policy-4 fallback. The evaluator and related
+pair, suite, Repair, evaluate and tools CLI gate then passed **1,612 tests with one Windows
+symlink-privilege skip** in 837.82 seconds. The final 18-test source-reuse gate passed in
+59.10 seconds after adding common-policy opening execution/replay coverage; these counts
+overlap. It covers exact source/packet/response/receipt bindings, zero-send import/export,
+postal-town projection and geographic conflicts, material drift, a confirmed required-visit
+deletion and one mocked opening send. Synthetic judgments do not establish semantic
+accuracy on real venues. An overlapping format edit triggered the source-drift guard;
+serial validation passed without relaxing it. An owned temporary root avoided the host's
+default pytest-directory permission error without configuration changes.
+Ruff, all 10 affected Python format checks and whitespace passed. Independent Standards
+and Spec reviews each found zero actionable issues; Spec independently reran all 18
+source-reuse tests. A legacy opening preparation can retain an already bound common-policy
+identity: its exact identity bytes and native packet still validate, while fresh common-policy
+preparations declare version 2. No historical preparation is silently upgraded.
+
+Main-based preparation starts at PR #185 merge `7b4d3f3` and copies the paired
+implementation as `35a2805` with source attribution. All ten changed code/test files
+match the independently reviewed `5f93f27` exactly, so its Standards/Spec evidence is
+reused without a fresh model review. Shared documentation from `2c48c89` excludes the
+case report and updated case-score/preservation material; the main time-gate and earlier
+integration record remain intact. The new fourteen-module pairing/subject/time-gate and
+installed CLI gate passed **321 tests without skips** in 429.59 seconds. This is an affected
+composition gate, not a new full-backend run. Ruff, ten Python format checks and 285
+tracked document targets/anchors passed. The six original shared commits, including the
+patch-ID exception `de60002`, are already in the base and are not reapplied. No benchmark
+path changes, saved-case rerun, external model/Google call or Issue mutation is included.
+
 Original request SHA-256 remains
 `769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
 All 191 r01 preservation hashes and 213 r02 Primary receipt entries were rechecked with

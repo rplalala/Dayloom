@@ -1602,6 +1602,18 @@ For offline reuse, provide the completed primary operation and, optionally, the
 selected V3 generation capture. The [import contract](../../docs/contracts/0001-evaluation-artifacts.md#source-labelled-offline-imports)
 defines request matching, source validation, original times and inherited accounting.
 
+To retain current common-subject policy, add
+`--subject-primary-run artifacts/primary` to **both** `import` and `prepare` below.
+The explicitly selected completed preparation-3 Primary must match the exact native
+intake and use `requirement_subject_correspondence_2` / `versioned_api_identity_6`.
+Its closed facts and original subject-model HTTP receipt are verified without
+rebuilding its quality scores. Preparation 2 freezes and copies that source; fresh,
+cached and replayed paired identities reuse its original target observations and
+judgment while resolving paired visits independently. Drift is rejected before
+dispatch, with no new subject-model fallback. Omitting the flag retains preparation
+1 / compatibility identity policy 4; supplying a Primary for factual import alone
+does not select common-subject policy.
+
 ```powershell
 uv run rtpeval pair acquire import manifest.json --directory artifacts/pair-import --primary-run artifacts/primary --generation generation/v3 --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json
 uv run rtpeval pair acquire prepare manifest.json --directory artifacts/pair-report --selection selection.json --options pair-options.json --prices oracle-prices.json --context schedule-context.json --route-reviews route-reviews.json --density-reviews density-reviews.json --identity-snapshot artifacts/pair-import/identity-snapshot --snapshot artifacts/pair-import/evidence-snapshot
@@ -1666,7 +1678,9 @@ uv run rtpeval pair acquire export artifacts/fresh-pair --directory artifacts/fr
 
 Prepare, replay and export are offline. Execute reads `GOOGLE_MAPS_API_KEY` only
 after local preflight and only for uncached phases. No model credential or model
-send is used. The native paired reporter requires the manifest's primary reference
+send is used. Fresh acquisition also accepts `--subject-primary-run` with the same
+binding rules as offline reuse. The native paired reporter requires the manifest's
+primary reference
 inventory as well as V3 draft/final occurrences; V0 identity needing a model remains
 UNKNOWN. This workflow supplies paired diagnostics, not primary V0 evaluation.
 
