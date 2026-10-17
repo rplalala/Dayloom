@@ -187,6 +187,10 @@ Ticket 10's offline preparation/report uses validated existing activity/adopted-
 lineage before content fallback and residual review. It preserves valid paired aggregate
 scores despite unresolved local correspondence, while venue identity and quality remain
 independent of producer decisions. Its two-stage mask is separate from the four-final mask.
+Both stages use the same source-bound missing-hours access policy; exact unchanged
+contexts share one judgment. Historical primary assessments retain their own packet
+bindings. The [paired contract](contracts/0005-quality-human-review.md#v3-pairs)
+owns eligibility, execution and import details.
 See the [development acceptance](records/evaluation/v3-pair-report.md).
 Controlled Repair is the isolated Ticket 11 execution boundary. Ticket 12 reads selected
 saved sources and optionally captured actual observations. Internal acceptance, independent

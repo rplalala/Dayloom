@@ -94,11 +94,19 @@
     },
     {
       "path": "evaluation/v3-pair/pair-report.json",
-      "sha256": "defa69f9182898678c69984b04a94458ee2766b6323ee0be3e11b402cee5b55a",
-      "source_logical_path": "work/pair-reviewed-r1/execution/pair-report.json",
-      "source_sha256": "9f3c235db8fbd9d3f1782ad8eb16f91ba8712d63ad7252141f4e43c6b6ea71cb",
+      "sha256": "a6d39690c8a39bd4e9b9f33fe5b5d11be746cd4a9acf1a35df2a17a4ca2e362f",
       "json_pointer": "",
-      "transformation": "Extract native paired scores, aggregate dimensions, density, deltas and edit counts; omit duplicate component evidence"
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "bytes": 13810,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "5c46ba5cf395d6dcca90332a829c118737cac4d5f9cd221d1d50ccbac8edd3a4",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "94cb1fb909e4383faa4c64c6bc8c4a1847b4d7d66a6e1e81da276275886fdcbf",
+          "json_pointer": ""
+        }
+      ]
     },
     {
       "path": "analysis/poi-process/selected-process.json",
@@ -110,11 +118,11 @@
     },
     {
       "path": "analysis/resources/accounting.json",
-      "sha256": "1cdaa49bfe9c21b8ebbed7d58af8c636bee9d68538d31b51bd9c40652fa84b65",
+      "sha256": "028b6ff1f25e8dbf7c53a80bf0a482cf55a6b2f256c71f903ba6b54fb1b336d9",
       "source_logical_path": "work/process-native/tradeoffs.json",
       "source_sha256": "c758bf8755fa0a0932c3ede222f306fa3e4d9caa610636b962dcce7249a41f80",
       "json_pointer": "",
-      "transformation": "Extract all-attempt metrics and reference costs; add separately bound evaluator stage estimates without allocating them to Planner versions",
+      "transformation": "Original generation/primary cohorts unchanged; current paired oracle phase and applicable known subtotal refreshed.",
       "additional_sources": [
         {
           "logical_path": "work/primary-resume/execution/report.json",
@@ -123,6 +131,14 @@
         {
           "logical_path": "work/opening-reviewed-r1/execution/report.json",
           "sha256": "fd612bb6c281e6fc610a9b4e5673c6ed5038a4ba1a1a8a9d92d433d0d2e7c447"
+        }
+      ],
+      "representation": "section_derived_reader_view",
+      "sources": [
+        {
+          "logical_path": "reassessment/access-final/execution/report.json",
+          "sha256": "f066de148afae7aa18131b7fb09e5d379e104c2d9c5903d94b16600453a7e59a",
+          "json_pointer": "/usage"
         }
       ]
     },
@@ -136,18 +152,32 @@
     },
     {
       "path": "analysis/repair/repair-summary.json",
-      "sha256": "fe0310b79ac74c7223c3275b625f73de82da090e6ede826e4958d9a7ec786c78",
-      "source_logical_path": "work/pair-reviewed-r1/execution/pair-report.json",
-      "source_sha256": "9f3c235db8fbd9d3f1782ad8eb16f91ba8712d63ad7252141f4e43c6b6ea71cb",
+      "sha256": "b5c6fe04d7bcff7804b301949b5075a20fd7cd4dcd49268f73765eb5d8b5e02a",
       "json_pointer": "",
-      "transformation": "Extract native pair counts/totals and same-run producer Repair observations from original V3 result; producer observations are not independent verdicts",
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
       "additional_sources": [
         {
           "logical_path": "work/captures/v3/result.json",
           "sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
           "json_pointer": "/v3/repair"
         }
-      ]
+      ],
+      "bytes": 2836,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "3585804428e7b6215a7c0ca1cd3d91b77a48356f742b51eed2e8c98e3d321f60",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "94cb1fb909e4383faa4c64c6bc8c4a1847b4d7d66a6e1e81da276275886fdcbf",
+          "json_pointer": ""
+        }
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "source_logical_path": "work/pair-reviewed-r1/execution/pair-report.json",
+          "source_sha256": "9f3c235db8fbd9d3f1782ad8eb16f91ba8712d63ad7252141f4e43c6b6ea71cb"
+        }
+      }
     },
     {
       "path": "generation/poi-origins.json",
@@ -405,5 +435,46 @@
       "compressed_bytes": 3330822
     },
     "original_logical_paths": "private_native_bindings and material source paths identify archive manifest entries"
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-02-r1-v3-a1",
+    "report": "evaluation/v3-pair/pair-report.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.00105055",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 4165,
+      "input_tokens_details": {
+        "cache_write_tokens": 4162,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1060,
+      "output_tokens_details": {
+        "reasoning_tokens": 708
+      },
+      "total_tokens": 5225
+    },
+    "model_material_sha256": "658c4bab4a9e9f14d451718e1bcd4e88139bbe5bb4aba53f49a12db5f0d80b98",
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "94cb1fb909e4383faa4c64c6bc8c4a1847b4d7d66a6e1e81da276275886fdcbf",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-02/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "eec02fdbcaba249ad230241381227ce6983f83c07252f9a0f0707d85b7dbe6d2",
+    "archive_counts": {
+      "logical_files": 1031,
+      "unique_blobs": 489
+    },
+    "preparation_sha256": "cea3524cfcffa655997491ff0c826457399f81bc35c664cedc65778cc2a7aba7",
+    "packet_sha256": "81d1b521d7a4e6a0f446e22a4d1be50ffd961585f7e7ae97394ba65492024d99"
   }
 }

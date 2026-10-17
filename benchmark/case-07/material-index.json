@@ -195,8 +195,8 @@
     },
     {
       "path": "analysis/resources/all-attempts.json",
-      "sha256": "8be4d291c7fbee5b3dfaff10f8309c8edb85f4ed1f3986e4957df09dd6d782b3",
-      "expanded_semantic_sha256": "8b13e2d54a971ff1db63d0cbd59df3256c4fcb33755c5b9206bff277ccb5efdb",
+      "sha256": "0fc3fc29c6f7edc2df7c8399cdf9c8ce05db6649138e63049a8997d06079d0a5",
+      "expanded_semantic_sha256": "7b376f9c0bd95ae73c73d9098f014ba6c539ea49134560a37ea0cc3241f1c3b6",
       "publication_kind": "derived_accounting_from_saved_ledgers",
       "sources": [
         {
@@ -213,8 +213,15 @@
           "logical_path": "benchmark/scratch/case-07/p172/l/final-handoff.json",
           "sha256": "ad69c4834edd2fd2e5cbe3c7de299c7d10d53a93d0b34771732ac6dde2286276",
           "json_pointer": "/resources"
+        },
+        {
+          "logical_path": "reassessment/access-final/execution/report.json",
+          "sha256": "d4e8aae11ed8ec7a90c1a2f512969a69884e30d2183274c6a3dad35cf6a1b078",
+          "json_pointer": "/usage"
         }
-      ]
+      ],
+      "representation": "section_derived_reader_view",
+      "transformation": "Original generation/primary cohorts unchanged; current paired oracle phase and applicable known subtotal refreshed."
     },
     {
       "path": "generation/v0/itinerary.json",
@@ -709,33 +716,96 @@
     },
     {
       "path": "analysis/repair/observations.json",
-      "sha256": "693dcfee61907cc9d4e2d9582e945df7d7bb7d6f8150c9585b72f3689bf3d397",
-      "expanded_semantic_sha256": "6f7f979efcc7d5525b4ded9f80fa0c00bb5b1889f02e3c9264f65753bef31857",
-      "publication_kind": "exact_json_subtree",
+      "sha256": "5fb3a85c9d51ada0c6973cfca2c65ef5d36043ed18938034d436facf392507a6",
+      "expanded_semantic_sha256": "0f73ea0e648dd82c9163c207f98264df6d2555b0bf0199336ed45eaebf082d2d",
+      "publication_kind": "section_derived_reader_view",
       "sources": [
         {
           "logical_path": "benchmark/scratch/case-07/c03/reports/repair/observations.json",
           "sha256": "5d182815e460365ccfb9ffc1d94d4d4a635a37df47f1dbd416262930a8c4a12e",
           "json_pointer": ""
+        },
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "86a52dc55888e134d6c5ad4f54504f1088c39499daf83cfc472f9dfe23250d90",
+          "json_pointer": "/groups/0"
         }
-      ]
+      ],
+      "transformation": "Original structural findings and primary finals preserved; current pair_quality and incremental access counts refreshed."
     },
     {
       "path": "analysis/repair/research.json",
-      "sha256": "75a9a30abb6f4aa5c7fa896e933b100cf2227bbe22fbe0f274a64cea02e2e538",
-      "expanded_semantic_sha256": "5d175efa36b767d474480e6e1d0b8cb78dcb849e0602d179ff0ce010f807a4f8",
+      "sha256": "9b96afb71ee0903e79f23b214928cd021a27b6ce3aa062b893cfdc8d85c67d0f",
+      "expanded_semantic_sha256": "8f28a0f9579959bc050c3629966796aaeeccfa8719dd6c18597be7602acde042",
       "publication_kind": "exact_json_subtree",
+      "bytes": 15774,
+      "representation": "sanitized_section_derived_reader_view",
       "sources": [
         {
-          "logical_path": "benchmark/scratch/case-07/c03/reports/final-repair/repair.json",
-          "sha256": "30e8f7e7e79623685762a3c1f5a386b26bb8284bb8a4e7621d6727e8894cc90b",
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "86a52dc55888e134d6c5ad4f54504f1088c39499daf83cfc472f9dfe23250d90",
           "json_pointer": ""
+        },
+        {
+          "logical_path": "reassessment/research-current/repair.json",
+          "sha256": "73edcbabbbbd7e90efbb743576b5c84c7e3bd502c1c316b5a25f93924452a20e",
+          "json_pointer": "/same_run"
         }
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "sources": [
+            {
+              "logical_path": "benchmark/scratch/case-07/c03/reports/final-repair/repair.json",
+              "sha256": "30e8f7e7e79623685762a3c1f5a386b26bb8284bb8a4e7621d6727e8894cc90b",
+              "json_pointer": ""
+            }
+          ]
+        }
+      },
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/same_run/rows/0/native/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/0/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/0/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/1/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/1/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/2/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/2/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/3/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/3/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/4/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/4/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/5/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/opening/5/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/0/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/0/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/1/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/1/after/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/2/before/evidence_reference",
+        "/same_run/rows/0/native/continuity/routes/2/after/evidence_reference"
       ]
     },
     {
       "path": "report.md",
-      "sha256": "eb1c28b448eebe36fe7791287bca2c63fda439b24c707e752aa7ae11393cb33c",
+      "sha256": "8e2cd6028757ac75f39041792c20b2cec7ea442d687c2b6e0daccd86f133ef3a",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -776,6 +846,59 @@
           "json_pointer": ""
         }
       ]
+    },
+    {
+      "path": "evaluation/v3-pair/report.json",
+      "sha256": "b278828997d9023b6e0dcdb064aaaad6b0a99d7210b5e248d869f4b84b33bc94",
+      "bytes": 378095,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "30cb3b086619418ed98da3025d62cfbff45a3b5cd7d08c870e09b69163804e2d",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "86a52dc55888e134d6c5ad4f54504f1088c39499daf83cfc472f9dfe23250d90",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/groups/0/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/continuity/opening/0/before/evidence_reference",
+        "/groups/0/continuity/opening/0/after/evidence_reference",
+        "/groups/0/continuity/opening/1/before/evidence_reference",
+        "/groups/0/continuity/opening/1/after/evidence_reference",
+        "/groups/0/continuity/opening/2/before/evidence_reference",
+        "/groups/0/continuity/opening/2/after/evidence_reference",
+        "/groups/0/continuity/opening/3/before/evidence_reference",
+        "/groups/0/continuity/opening/3/after/evidence_reference",
+        "/groups/0/continuity/opening/4/before/evidence_reference",
+        "/groups/0/continuity/opening/4/after/evidence_reference",
+        "/groups/0/continuity/opening/5/before/evidence_reference",
+        "/groups/0/continuity/opening/5/after/evidence_reference",
+        "/groups/0/continuity/routes/0/before/evidence_reference",
+        "/groups/0/continuity/routes/0/after/evidence_reference",
+        "/groups/0/continuity/routes/1/before/evidence_reference",
+        "/groups/0/continuity/routes/1/after/evidence_reference",
+        "/groups/0/continuity/routes/2/before/evidence_reference",
+        "/groups/0/continuity/routes/2/after/evidence_reference"
+      ]
     }
   ],
   "human_acceptance": {
@@ -807,5 +930,46 @@
     "affected_backend_tests_passed": 1231,
     "additional_full_regression": "researcher_stopped_incomplete",
     "historical_scores_recomputed": false
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-07-r03-v3-01",
+    "report": "evaluation/v3-pair/report.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.0004733",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 2171,
+      "input_tokens_details": {
+        "cache_write_tokens": 2168,
+        "cached_tokens": 0
+      },
+      "output_tokens": 404,
+      "output_tokens_details": {
+        "reasoning_tokens": 225
+      },
+      "total_tokens": 2575
+    },
+    "model_material_sha256": "25f63fa1b052c001a4bb9af21f83480a2908197b404dfa8b5202debbc483bd5d",
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "86a52dc55888e134d6c5ad4f54504f1088c39499daf83cfc472f9dfe23250d90",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-07/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "23d946b60c88b2cb1796e72148ccf2a0e179a36c559ed0a7518925b2511700ad",
+    "archive_counts": {
+      "logical_files": 2727,
+      "unique_blobs": 807
+    },
+    "preparation_sha256": "601cfd37d4dbf4ca6790bfe365419860845ef682d4bc375f4f477dc7067f1516",
+    "packet_sha256": "8477b84e14a2dbb227b8c3614e0eb1a5f712ff77c34cf7b3009ba14edaaf4b33"
   }
 }

@@ -1,0 +1,576 @@
+{
+  "schema_version": "case_public_primary_summary_1",
+  "notice": "Reader-facing projection of the native four-final report. Original receipts, raw acquisition evidence, model judgments and exact replay material remain private.",
+  "case_id": "case-09",
+  "case_revision": "1",
+  "batch_id": "case-09-batch",
+  "scope": "selected_V0_V3_finals",
+  "case_status": "primary_complete_awaiting_user_continuation_not_accepted",
+  "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+  "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+  "preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
+  "native_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+  "native_receipt_sha256": "d88c9405cf660cf343d5df90f1f8c38e59e9048571d987ecc786fbea9e81c639",
+  "processing_status": "complete",
+  "acquisition_status": "complete",
+  "evidence_status": "unresolved",
+  "quality_profile": "rtpeval_declared_population_1",
+  "opening_assessment": {
+    "eligible_count": 14,
+    "packet_sha256": "16b9b8f8949fdb351da0dde57e17e2a0d319eef22c7a3e51823874adf2696fa8",
+    "reason": null,
+    "status": "complete"
+  },
+  "versions": {
+    "v0": {
+      "run_id": "case-09-v0-r1",
+      "selected_result_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 43
+        },
+        "reason": null,
+        "score_0_100": 86.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 43
+        },
+        "reason": null,
+        "score_0_100": 86.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 10
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 15,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 15
+        },
+        "opening": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 1,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 90.0,
+          "denominator": 10
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 2
+        },
+        "routes": {
+          "state": "FAIL",
+          "counts": {
+            "FAIL": 3,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 40.0,
+          "denominator": 5
+        }
+      },
+      "mean_density_deduction": 0.0,
+      "daily_primary_counts": [
+        {
+          "date": "2026-10-22",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-23",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-24",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-25",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-26",
+          "count": 2,
+          "deduction": 0
+        }
+      ]
+    },
+    "v1": {
+      "run_id": "case-09-v1-r1",
+      "selected_result_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 49
+        },
+        "reason": null,
+        "score_0_100": 98.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 49
+        },
+        "reason": null,
+        "score_0_100": 98.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 10
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 15,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 15
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 90.0,
+          "denominator": 10
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 2
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 5
+        }
+      },
+      "mean_density_deduction": 0.0,
+      "daily_primary_counts": [
+        {
+          "date": "2026-10-22",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-23",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-24",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-25",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-26",
+          "count": 2,
+          "deduction": 0
+        }
+      ]
+    },
+    "v2": {
+      "run_id": "case-09-v2-r1",
+      "selected_result_sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 25,
+          "numerator": 23
+        },
+        "reason": null,
+        "score_0_100": 92.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 9
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 13,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 13
+        },
+        "opening": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 9
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 2
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 4
+        }
+      },
+      "mean_density_deduction": 8.0,
+      "daily_primary_counts": [
+        {
+          "date": "2026-10-22",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-23",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-24",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-25",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-26",
+          "count": 1,
+          "deduction": 40
+        }
+      ]
+    },
+    "v3": {
+      "run_id": "case-09-v3-r1",
+      "selected_result_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 49
+        },
+        "reason": null,
+        "score_0_100": 98.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 50,
+          "numerator": 49
+        },
+        "reason": null,
+        "score_0_100": 98.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "dimensions": {
+        "grounding": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 10,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 10
+        },
+        "non_overlap": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 15,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 15
+        },
+        "opening": {
+          "state": "UNKNOWN",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 1
+          },
+          "verified_score_0_100": 90.0,
+          "denominator": 10
+        },
+        "requirements": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 2
+        },
+        "routes": {
+          "state": "PASS",
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "verified_score_0_100": 100.0,
+          "denominator": 5
+        }
+      },
+      "mean_density_deduction": 0.0,
+      "daily_primary_counts": [
+        {
+          "date": "2026-10-22",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-23",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-24",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-25",
+          "count": 2,
+          "deduction": 0
+        },
+        {
+          "date": "2026-10-26",
+          "count": 2,
+          "deduction": 0
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "version": "v0",
+      "dimension": "opening",
+      "state": "FAIL",
+      "date": "2026-10-26",
+      "activity_id": "imperial-palace-east-gardens",
+      "place_name": "Imperial Palace East Gardens",
+      "from_place": null,
+      "to_place": null,
+      "mode": null,
+      "reason": null,
+      "reasons": [],
+      "explanation": "A positive-duration portion of the visit is confirmed closed.",
+      "source": {
+        "artifact_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+        "batch_id": "case-09-batch",
+        "group_id": "case-09",
+        "pointer": "/itinerary/days/4/activities/0",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "7a6d18e7ca7c7ba4498b65920107e9171f4bafa3464e80d9dbad309c73ed2c3b",
+        "run_id": "case-09-v0-r1"
+      },
+      "leg_id": null
+    },
+    {
+      "version": "v1",
+      "dimension": "opening",
+      "state": "UNKNOWN",
+      "date": "2026-10-26",
+      "activity_id": "2026-10-26-tokyo-dome-city",
+      "place_name": "Tokyo Dome City",
+      "from_place": null,
+      "to_place": null,
+      "mode": null,
+      "reason": null,
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "explanation": "Tokyo Dome City is a mixed entertainment complex, not a public-landmark default case. \u201cVisit\u201d does not specify outdoor public-area sightseeing versus access to indoor or ticketed attractions, and the supplied evidence does not resolve that access. The interval is 2026-10-26, 13:00\u201315:00 JST, a reasonable daytime window, but access remains uncertain.",
+      "source": {
+        "artifact_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+        "batch_id": "case-09-batch",
+        "group_id": "case-09",
+        "pointer": "/itinerary/days/4/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "c83df33c0a0079d5c2249e0c4a247c8f8636f27bfd94c6af01943179887106fa",
+        "run_id": "case-09-v1-r1"
+      },
+      "leg_id": null
+    },
+    {
+      "version": "v3",
+      "dimension": "opening",
+      "state": "UNKNOWN",
+      "date": "2026-10-26",
+      "activity_id": "tokyo-dome-city-20261026",
+      "place_name": "Tokyo Dome City",
+      "from_place": null,
+      "to_place": null,
+      "mode": null,
+      "reason": null,
+      "reasons": [
+        "hours_missing",
+        "llm_access_reasonableness_unknown"
+      ],
+      "explanation": "Tokyo Dome City is a mixed entertainment complex, not a public-landmark default case. \u201cExplore\u201d does not resolve whether the activity is outdoor public-area sightseeing or access to indoor or ticketed attractions, and the supplied evidence does not establish which applies. The interval is 2026-10-26, 12:30\u201314:30 JST, a reasonable daytime window, but access remains uncertain.",
+      "source": {
+        "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+        "batch_id": "case-09-batch",
+        "group_id": "case-09",
+        "pointer": "/itinerary/days/4/activities/1",
+        "projection_version": "rtpeval_projection_1",
+        "record_id": "e9cbbfa20839a089d94ca7fd9e5c63d4dbe8d172c0139923a3854e805b30c8e9",
+        "run_id": "case-09-v3-r1"
+      },
+      "leg_id": null
+    },
+    {
+      "version": "v0",
+      "dimension": "routes",
+      "state": "FAIL",
+      "date": "2026-10-22",
+      "activity_id": null,
+      "place_name": null,
+      "from_place": "Meiji Jingu",
+      "to_place": "Mori Art Museum",
+      "mode": "TRANSIT",
+      "reason": "no_route",
+      "reasons": [],
+      "explanation": null,
+      "source": null,
+      "leg_id": "77f0c730f5214c706941d0e4d38d92e6e6a012e328cb6a7cf86037468129160e"
+    },
+    {
+      "version": "v0",
+      "dimension": "routes",
+      "state": "FAIL",
+      "date": "2026-10-24",
+      "activity_id": null,
+      "place_name": null,
+      "from_place": "Senso-ji",
+      "to_place": "Nezu Museum",
+      "mode": "TRANSIT",
+      "reason": "no_route",
+      "reasons": [],
+      "explanation": null,
+      "source": null,
+      "leg_id": "0ac759eedf20c209f7c98618d61c144b7f2d4e6432132e25dee2a2d4cf9c50f4"
+    },
+    {
+      "version": "v0",
+      "dimension": "routes",
+      "state": "FAIL",
+      "date": "2026-10-26",
+      "activity_id": null,
+      "place_name": null,
+      "from_place": "Imperial Palace East Gardens",
+      "to_place": "Kiyosumi Garden",
+      "mode": "TRANSIT",
+      "reason": "no_route",
+      "reasons": [],
+      "explanation": null,
+      "source": null,
+      "leg_id": "4ca51ae8aeb1f32829cb8048c135ab64e69960d390e7850bdeb71a569eefa8a1"
+    }
+  ],
+  "resources": {
+    "actual_google_sends": 77,
+    "actual_model_sends": 2,
+    "observed_tokens": 41833,
+    "reference_usd": "1.646084475",
+    "unpriced_event_count": 0,
+    "actual_account_billing": "unavailable",
+    "retries": 0
+  },
+  "offline_replay": {
+    "status": "complete",
+    "exact_report_equality": true,
+    "provider_sends": 0
+  }
+}
