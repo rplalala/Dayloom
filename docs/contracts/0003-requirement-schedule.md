@@ -278,6 +278,9 @@ Aware endpoints can establish instant relations without localization when their
 declared date context is consistent; local-clock requirements need a supported
 destination zone. Clock/date mismatch, zone conflict or unsupported overnight activity
 leaves dependent checks UNKNOWN. Date coverage can still use explicit declared days.
+The [numerical population gate](../0003-itinerary-transport.md#numerical-scoring-policy-and-limits)
+keeps known date membership separate from an offset-conflicted instant; its
+non-blocking time observations neither repair the interval nor resolve its checks.
 
 Offline time context uses `schema_version=rtpeval_schedule_context_1`, `batch_id`,
 `revision`, and `groups`. Each group has `group_id`, exact `input_sha256`,

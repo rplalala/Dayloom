@@ -2118,3 +2118,49 @@ and XML are in `.scratch/case07-integration-20261016/`. These are local evidence
 identifiers. They do not create a published navigation dependency. [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174)
 owns the authorized Git delivery and linked Issue closure. This delivery performs
 no generation, actual case scoring or paid project call; case-11/12 remain unstarted.
+
+#### Known-date offset preparation correction (2026-10-17)
+
+Case-10 revision 2 generated four final outputs on `cc779bb2`; source intake and
+role/occupancy readiness passed. Primary preparation nevertheless rejected three
+V0 activities on 25 October because their model-authored `+01:00` conflicted with
+reviewed `Europe/London`. Their dates, candidate membership and 14 occupancy units
+were established. The gate had conflated an unknown instant with an unknown
+population. The raw model error and correct time normalization remain unchanged.
+
+Local implementation `17641af` retains these candidates and source-linked time
+uncertainty under the [population contract](../../0003-itinerary-transport.md#numerical-scoring-policy-and-limits).
+Independent Standards review passed. Spec review found one P2: historical explicit
+opt-in could also admit reversed or zero-length intervals because normalization
+reported the offset conflict before interval order. Both public-prepare controls
+failed before separate correction `c6875d1`, which requires a positive submitted
+interval without repairing timestamps. Both review axes then passed with no
+unresolved findings. Generation code, scoring formula, historical defaults and
+selected outputs were not changed.
+
+The initial population regression failed before implementation. The first full
+evaluator gate passed 1,327 tests with one environment skip; the review correction
+passed 123 affected tests. The final corrected-code gate passed **1,329 tests / one
+skip** in 281.40 seconds, with external sockets blocked and synthetic transports.
+The skipped symlink-creation check remains unverified on this Windows host.
+Ruff and formatting passed. An initial suite attempt was interrupted after the
+sandbox default temporary root failed to create pytest subdirectories; an isolated
+probe reproduced that setup failure, and the unchanged code passed using an
+explicit writable temporary root. No permissions or project configuration changed.
+
+A fresh, unexecuted Primary preparation passes native source/implementation
+integrity and semantic/population readiness. Its five candidate inventories equal
+the original blocked preparation; all three offset conflicts remain time UNKNOWN.
+All 226 protected result/raw-response/manifest hashes are unchanged. Original r01
+failures, r02 finals and the blocked preparation diagnostic remain retained. The
+preparation keeps the reviewed exact-two/distinct-date obligation, IANA zone,
+transport/density context and existing execution limits. No generation, Primary,
+project model/Google request, rescoring or case acceptance occurred in this fix.
+
+Local evidence identifiers are
+`benchmark/scratch/case-10/r02/offline-gate-fix/` and
+`benchmark/scratch/case-10/r02/primary-prepared-gate-fix-r01/`.
+The preparation content digest is
+`51b0c2dcaaa5b2a060b73345fb9df137300307a07c15c7bf8de079f9c7cc4451`.
+These private identifiers are not published navigation dependencies or an
+authorization to execute the prepared package.

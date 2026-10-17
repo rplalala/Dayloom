@@ -853,7 +853,10 @@ and their CLIs remain at the package root. A CLI is not necessarily a smoke util
 New `itinerary_3` batches automatically select `rtpeval_declared_population_1`.
 Preparation freezes finite candidate populations and returns
 `needs_population_resolution` before acquisition if role/occupancy/date/journey,
-executable requirement or density membership remains unresolved. Historical batches
+executable requirement or density membership remains unresolved.
+Known-date offset conflicts remain source-linked time UNKNOWN under the
+[population contract](../../docs/0003-itinerary-transport.md#numerical-scoring-policy-and-limits);
+they do not by themselves make candidate membership unresolved. Historical batches
 keep their original default; explicit `--quality-profile rtpeval_declared_population_1`
 opts eligible saved sources into a separately bound evaluation. See the
 [activity and numerical contract](../../docs/0003-itinerary-transport.md#selection-and-verification-boundaries).

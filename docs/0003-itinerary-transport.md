@@ -381,6 +381,18 @@ for that requested profile; retain the existing ability to report genuine
 unavailable totals under historical policies. Do not change the phase-1 meaning
 of a completed unresolved review into missing work.
 
+A complete parseable, positive submitted interval whose only time error is
+`timezone_offset_conflict` does not block this inventory when its declared date
+and both endpoints still belong to the same requested date under the reviewed zone.
+Keep the original source-linked candidates and record the interval in preparation's non-blocking
+`time_uncertainties`; the instant remains UNKNOWN. This is not permission to
+correct offsets, remove the reviewed zone, infer opening access or award verified
+credit. Missing/unparseable dates, conflicting date membership and other interval
+errors retain their existing blockers, as do unresolved roles, occupancy and
+selected journey associations. `date_consistent` alone is insufficient to admit
+missing timestamps. Scoring units, weighting, density deductions and historical
+reports are unchanged; fresh preparations bind the corrected implementation.
+
 The numerical guarantee is conditional on a source-valid, population-ready group,
 a complete independent acquisition receipt (which may contain unavailable facts),
 an established density deduction and at least one scored dimension. All-N/A groups
