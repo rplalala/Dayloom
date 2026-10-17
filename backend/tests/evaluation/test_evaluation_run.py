@@ -1,6 +1,7 @@
 """Formal evaluation entry points use immutable synthetic inputs and mocked HTTP."""
 
 import asyncio
+import copy
 import hashlib
 import io
 import json
@@ -168,6 +169,10 @@ def run_prices():
             "per": "1000000",
         }
     )
+    subject_row = copy.deepcopy(book["rows"][-1])
+    subject_row["price_id"] = "requirement-subject"
+    subject_row["match"]["operation"] = "requirement_subject"
+    book["rows"].append(subject_row)
     return book
 
 
@@ -186,7 +191,11 @@ def mock_provider(request):
     if request.url.host == "model.example.test":
         wire = json.loads(request.content)
         cases = json.loads(wire["input"])["cases"]
-        assert {c["version"] for c in cases} == {"v0"}
+        if wire["text"]["format"]["name"] == "RequirementSubjects":
+            assert all("version" not in c for c in cases)
+        else:
+            assert {c["version"] for c in cases} == {"v0"}
+            assert all(c["kind"] == "primary_visit" for c in cases)
         rows = [
             {
                 "reference_id": c["reference_id"],
@@ -318,10 +327,9 @@ def test_execute_and_replay_complete_native_flow_without_regenerating(batch, dat
             )
 
     report = asyncio.run(execute())
-    assert report["reports"]["requirement_schedule"]["rules_version"] == (
-        "rtpeval_requirement_schedule_rules_5"
-        if dated_total
-        else "rtpeval_requirement_schedule_rules_3"
+    assert (
+        report["reports"]["requirement_schedule"]["rules_version"]
+        == "rtpeval_requirement_schedule_rules_6"
     )
     assert report["processing_status"] == "complete"
     assert report["acquisition_status"] == "complete"
@@ -333,13 +341,13 @@ def test_execute_and_replay_complete_native_flow_without_regenerating(batch, dat
     }
     assert all("request" not in event for event in report["usage"]["raw"]["provider_events"])
     assert report["usage"]["actual_google_sends"] == 5
-    assert report["usage"]["actual_model_sends"] == 1
+    assert report["usage"]["actual_model_sends"] == (1 if dated_total else 2)
     assert len(report["quality"]["groups"][0]["versions"]) == 4
     assert report[
         "unknowns"
     ]  # Missing declared API IDs are FAIL; unavailable routes remain UNKNOWN.
     assert replay_run(root / "evaluation") == report
-    assert len(calls) == 6
+    assert len(calls) == (6 if dated_total else 7)
     assert all(p.read_bytes() == raw for p, raw in originals.items())
     cli = subprocess.run(
         [

@@ -52,9 +52,14 @@ def prepare(batch, capsys, **overrides):
     return directory, digest
 
 
+@pytest.mark.parametrize("named_subject", [False, True])
 def test_primary_assesses_missing_hours_before_emitting_one_final_report(
-    batch, capsys, monkeypatch
+    batch, capsys, monkeypatch, named_subject
 ):
+    if named_subject:
+        from backend.tests.evaluation.test_requirement_identity_versions import requirement_batch
+
+        requirement_batch(batch, bound=False)
     monkeypatch.setenv("GOOGLE_MAPS_API_KEY", "synthetic-google")
     monkeypatch.setenv("AZURE_OPENAI_API_KEY", "synthetic-model")
     directory, digest = prepare(batch, capsys)
@@ -95,11 +100,11 @@ def test_primary_assesses_missing_hours_before_emitting_one_final_report(
         value["primary_metrics"]["opening"]["counts"]["PASS"] == 2
         for value in report["quality"]["groups"][0]["versions"].values()
     )
-    assert report["usage"]["actual_model_sends"] == 2
+    assert report["usage"]["actual_model_sends"] == (3 if named_subject else 2)
     assert {call["operation"] for call in report["usage"]["raw"]["model_calls"]} == {
         "identity",
         "opening_access",
-    }
+    } | ({"requirement_subject"} if named_subject else set())
     before = len(calls)
     monkeypatch.setattr(socket.socket, "connect", lambda *args: pytest.fail("replay used network"))
     assert main(["replay", str(directory)]) == 0

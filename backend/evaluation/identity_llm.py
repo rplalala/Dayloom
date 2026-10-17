@@ -150,7 +150,7 @@ def judgment_schema(*, historical=True):
     }
 
 
-def _cases(prepared, evidence, *, v0_only=False, legacy_v0=False):
+def _cases(prepared, evidence, *, v0_only=False, legacy_v0=False, visits_only=False):
     refs = identity_references(prepared)
     observed = _observation_index(evidence, refs, prepared) if not v0_only or legacy_v0 else {}
     if v0_only:
@@ -160,6 +160,8 @@ def _cases(prepared, evidence, *, v0_only=False, legacy_v0=False):
             refs = versioned_references(prepared)
             observed = versioned_observations(prepared, evidence, refs)
         refs = [r for r in refs if r["version"] == "v0"]
+    if visits_only:
+        refs = [r for r in refs if r["kind"] == "primary_visit"]
     cases = []
     for ref in refs:
         detail, search = _evidence_candidates(
@@ -234,12 +236,16 @@ def _correspondence_schema(packet, *, complete_coverage=True):
     return schema
 
 
-def prepare_identity_judgment(intake, evidence, *, model, historical=False, legacy_v0=False):
+def prepare_identity_judgment(
+    intake, evidence, *, model, historical=False, legacy_v0=False, visits_only=False
+):
     """Freeze a complete model request without executing a model or provider."""
     if not text(model):
         raise ValueError("An explicit judgment model is required")
     prepared = _intake_dict(intake)
-    refs, _, cases = _cases(prepared, evidence, v0_only=not historical, legacy_v0=legacy_v0)
+    refs, _, cases = _cases(
+        prepared, evidence, v0_only=not historical, legacy_v0=legacy_v0, visits_only=visits_only
+    )
     if not refs:
         raise ValueError("No applicable identity references")
     packet = _packet(cases)
@@ -266,7 +272,7 @@ def prepare_identity_judgment(intake, evidence, *, model, historical=False, lega
             }
         },
     }
-    if not historical and not legacy_v0:
+    if not historical and not legacy_v0 and not visits_only:
         request["instructions"] += (
             "\nV0 requirement_subject cases represent the original user-requested venue, "
             "not a planner visit. Resolve them only against their own independent candidates. "
@@ -283,6 +289,10 @@ def prepare_identity_judgment(intake, evidence, *, model, historical=False, lega
             "never omit it or substitute another case. Do not return a decisions array."
         )
     policy = LEGACY_V0_POLICY_VERSION if legacy_v0 else V0_POLICY_VERSION
+    if visits_only:
+        if historical or legacy_v0:
+            raise ValueError("Visit-only packets require the common-subject policy")
+        policy = "v0_visit_correspondence_1"
     scope = {} if historical else {"association_policy_version": policy}
     return IdentityJudgmentPacket(
         freeze(
@@ -302,7 +312,17 @@ def prepare_identity_judgment(intake, evidence, *, model, historical=False, lega
     )
 
 
-def _decisions(intake, evidence, cases, material, *, historical=True, legacy_v0=False):
+def _decisions(
+    intake,
+    evidence,
+    cases,
+    material,
+    *,
+    historical=True,
+    legacy_v0=False,
+    visits_only=False,
+    subject_only=False,
+):
     if material is None:
         return {}, None
     from .identity_binding import RESULT_VERSION as BOUND_RESULT_VERSION
@@ -315,20 +335,32 @@ def _decisions(intake, evidence, cases, material, *, historical=True, legacy_v0=
         raise ValueError("Invalid identity model result envelope")
     saved = material["packet"]
     model = saved["request"]["model"]
-    expected = prepare_identity_judgment(
-        intake, evidence, model=model, historical=historical, legacy_v0=legacy_v0
-    ).to_dict()
+    if subject_only:
+        from .subject_correspondence import prepare_subject_judgment
+
+        expected = prepare_subject_judgment(intake, evidence, model=model).to_dict()
+    else:
+        expected = prepare_identity_judgment(
+            intake,
+            evidence,
+            model=model,
+            historical=historical,
+            legacy_v0=legacy_v0,
+            visits_only=visits_only,
+        ).to_dict()
     response_cases, mapping = cases, None
     if material["schema_version"] == BOUND_RESULT_VERSION:
-        if historical or legacy_v0:
+        if historical or legacy_v0 or subject_only:
             raise ValueError("Bound judgments require current V0 policy")
         source = material["binding_source"]
         original = prepare_identity_judgment(
-            source["intake"], source["evidence"], model=model
+            source["intake"], source["evidence"], model=model, visits_only=visits_only
         ).to_dict()
         if saved != original:
             raise ValueError("Identity model original packet/source mismatch")
-        _, _, response_cases = _cases(source["intake"], source["evidence"], v0_only=True)
+        _, _, response_cases = _cases(
+            source["intake"], source["evidence"], v0_only=True, visits_only=visits_only
+        )
         mapping = reference_mapping(source["intake"], response_cases, intake, cases)
     elif saved != expected:
         raise ValueError("Identity model packet/source mismatch")
@@ -477,11 +509,7 @@ def _decisions(intake, evidence, cases, material, *, historical=True, legacy_v0=
         decisions[row["reference_id"]] = row
     return decisions, {
         **(
-            {
-                "association_policy_version": LEGACY_V0_POLICY_VERSION
-                if legacy_v0
-                else V0_POLICY_VERSION
-            }
+            {"association_policy_version": expected["association_policy_version"]}
             if not historical
             else {}
         ),
@@ -501,12 +529,22 @@ def _decisions(intake, evidence, cases, material, *, historical=True, legacy_v0=
     }
 
 
-def resolve_llm_identities(intake, evidence, *, model_result=None, v0_only=False, legacy_v0=False):
+def resolve_llm_identities(
+    intake, evidence, *, model_result=None, v0_only=False, legacy_v0=False, visits_only=False
+):
     """Keep missing judgments unresolved; no human or automatic-name fallback."""
     prepared = _intake_dict(intake)
-    refs, observed, cases = _cases(prepared, evidence, v0_only=v0_only, legacy_v0=legacy_v0)
+    refs, observed, cases = _cases(
+        prepared, evidence, v0_only=v0_only, legacy_v0=legacy_v0, visits_only=visits_only
+    )
     decisions, provenance = _decisions(
-        prepared, evidence, cases, model_result, historical=not v0_only, legacy_v0=legacy_v0
+        prepared,
+        evidence,
+        cases,
+        model_result,
+        historical=not v0_only,
+        legacy_v0=legacy_v0,
+        visits_only=visits_only,
     )
     subjects = [r for r in refs if r["kind"] == "requirement_subject"]
     records = []

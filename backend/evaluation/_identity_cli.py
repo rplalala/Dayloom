@@ -7,6 +7,17 @@ from .identity_program import resolve_versioned_identities
 
 def add_identity_options(parser):
     parser.add_argument(
+        "--common-subjects",
+        action="store_true",
+        help="Use common independent requirement targets and V0 visit-only judgments",
+    )
+    parser.add_argument(
+        "--prepare-subjects",
+        action="store_true",
+        help="Prepare the common-subject packet offline; requires --common-subjects",
+    )
+    parser.add_argument("--subject-result", help="Saved common-subject model result")
+    parser.add_argument(
         "--prepare",
         action="store_true",
         help="Print a V0 visit/requirement-target packet; send nothing",
@@ -34,6 +45,42 @@ def add_identity_options(parser):
 
 def identity_command(intake, evidence, args, read, *, audit=None, legacy=None):
     """Choose one explicit policy and reject contradictory command options."""
+    if (args.prepare_subjects or args.subject_result) and not args.common_subjects:
+        raise ValueError("Subject options require --common-subjects")
+    if args.common_subjects:
+        if (
+            args.legacy
+            or args.historical_llm
+            or args.historical_program
+            or args.historical_association
+            or args.reviews
+            or audit is not None
+        ):
+            raise ValueError("Common subjects cannot use historical identity policies")
+        if args.prepare_subjects:
+            if args.prepare or args.model_result or args.subject_result:
+                raise ValueError("Subject preparation cannot import results or prepare visits")
+            from .subject_correspondence import prepare_subject_judgment
+
+            packet = prepare_subject_judgment(intake, evidence, model=args.model)
+            return (
+                packet.to_dict() if packet else {"status": "skipped", "reason": "no_named_subjects"}
+            )
+        if args.prepare:
+            if args.model_result or args.subject_result:
+                raise ValueError("Packet preparation cannot import results")
+            return prepare_identity_judgment(
+                intake, evidence, model=args.model, visits_only=True
+            ).to_dict()
+        if args.model:
+            raise ValueError("--model requires packet preparation")
+        return resolve_versioned_identities(
+            intake,
+            evidence,
+            model_result=read(args.model_result),
+            common_subjects=True,
+            subject_result=read(args.subject_result),
+        ).to_dict()
     if args.legacy:
         if (
             args.prepare

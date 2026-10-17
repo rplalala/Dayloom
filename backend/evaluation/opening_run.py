@@ -7,6 +7,7 @@ from pathlib import Path
 import httpx
 
 from .cost_report import build_cost_report, validate_prices
+from .evaluation_run import VERSION as PRIMARY_VERSION
 from .evaluation_run import _now, _options, _report, _save, _verify, verify_receipt
 from .evaluation_transport import EvaluationTransport, check_tokenizer, model_usage, usage_event
 from .identity_program import resolve_versioned_identities
@@ -32,8 +33,21 @@ def _parent(directory):
     evidence = identity_evidence(
         load_snapshot(execution / "identity-snapshot", expected_plan=preparation["identity_plan"])
     )
+    common_subjects = preparation["schema_version"] == PRIMARY_VERSION
+    subject_material = None
+    if common_subjects:
+        from .primary_subjects import replay_subjects
+
+        journal = [_read(p)[0] for p in (execution / "http").glob("*.json")]
+        subject_material = replay_subjects(
+            preparation, execution, evidence, journal, _read(execution / "usage.json")[0]
+        )
     identity = resolve_versioned_identities(
-        preparation["intake"], evidence, model_result=_read(execution / "model-result.json")[0]
+        preparation["intake"],
+        evidence,
+        model_result=_read(execution / "model-result.json")[0],
+        common_subjects=common_subjects,
+        subject_result=subject_material,
     ).to_dict()
     require(
         identity == _read(execution / "identity-report.json")[0],

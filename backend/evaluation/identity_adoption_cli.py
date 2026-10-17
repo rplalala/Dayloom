@@ -37,7 +37,7 @@ def main(argv=None):
         print(json.dumps({"status": "needs_evidence_correction", "diagnostic": diagnostic}))
         return 2
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
-    return 0 if args.prepare or result["status"] == "complete" else 3
+    return 0 if args.prepare or args.prepare_subjects or result["status"] == "complete" else 3
 
 
 if __name__ == "__main__":

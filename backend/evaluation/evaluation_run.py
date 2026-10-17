@@ -14,7 +14,8 @@ from .intake import _read, load_batch
 from .records import canonical_digest
 from .snapshot import TransportFailure, _bytes, build_identity_plan
 
-VERSION = "rtpeval_execution_preparation_2"
+VERSION = "rtpeval_execution_preparation_3"
+PREVIOUS_VERSION = "rtpeval_execution_preparation_2"
 LEGACY_VERSION = "rtpeval_execution_preparation_1"
 
 
@@ -75,7 +76,11 @@ def _options(options, *, allow_no_google=False):
 
 
 def _verify(preparation, *, implementation=False):
-    if preparation.get("schema_version") not in (VERSION, LEGACY_VERSION) or canonical_digest(
+    if preparation.get("schema_version") not in (
+        VERSION,
+        PREVIOUS_VERSION,
+        LEGACY_VERSION,
+    ) or canonical_digest(
         {k: v for k, v in preparation.items() if k != "content_sha256"}
     ) != preparation.get("content_sha256"):
         raise ValueError("Evaluation preparation digest mismatch")
@@ -426,7 +431,17 @@ async def execute_run(
             )
             evidence = identity_evidence(snapshot)
             _save(execution, "identity-evidence.json", evidence)
-            packet = prepare_identity_judgment(intake, evidence, model=options["model"]).to_dict()
+            common_subjects = preparation["schema_version"] == VERSION
+            subject_material = None
+            if common_subjects:
+                from .primary_subjects import assess_subjects
+
+                subject_material = await assess_subjects(
+                    preparation, execution, evidence, transport
+                )
+            packet = prepare_identity_judgment(
+                intake, evidence, model=options["model"], visits_only=common_subjects
+            ).to_dict()
             _save(execution, "model-packet.json", packet)
             response, event = await transport.model(
                 packet, reasoning_effort=options.get("reasoning_effort", "low")
@@ -442,7 +457,11 @@ async def execute_run(
             }
             _save(execution, "model-result.json", material)
             identity = resolve_versioned_identities(
-                intake, evidence, model_result=material
+                intake,
+                evidence,
+                model_result=material,
+                common_subjects=common_subjects,
+                subject_result=subject_material,
             ).to_dict()
             _save(execution, "identity-report.json", identity)
             routes = prepare_routes(
@@ -476,7 +495,7 @@ async def execute_run(
                 ),
             )
             opening_stage, opening_material = None, None
-            if preparation["schema_version"] == VERSION:
+            if preparation["schema_version"] in (VERSION, PREVIOUS_VERSION):
                 opening_stage, opening_material = await assess_primary_opening(
                     preparation, execution, identity, plan, transport
                 )
@@ -610,8 +629,18 @@ def replay_run(directory):
         identity_calls[0],
         reasoning_effort=preparation["options"].get("reasoning_effort", "low"),
     )
+    common_subjects = preparation["schema_version"] == VERSION
+    subject_material = None
+    if common_subjects:
+        from .primary_subjects import replay_subjects
+
+        subject_material = replay_subjects(preparation, execution, evidence, journal, usage)
     identity = resolve_versioned_identities(
-        preparation["intake"], evidence, model_result=material
+        preparation["intake"],
+        evidence,
+        model_result=material,
+        common_subjects=common_subjects,
+        subject_result=subject_material,
     ).to_dict()
     if identity != _read(execution / "identity-report.json")[0]:
         raise ValueError("Identity report replay differs")
@@ -628,7 +657,7 @@ def replay_run(directory):
     ):
         raise ValueError("Route preparation replay differs")
     opening_stage, opening_material = None, None
-    if preparation["schema_version"] == VERSION:
+    if preparation["schema_version"] in (VERSION, PREVIOUS_VERSION):
         from .primary_opening import replay_primary_opening
 
         opening_stage, opening_material = replay_primary_opening(
@@ -636,7 +665,7 @@ def replay_run(directory):
         )
         if opening_stage != _read(execution / "opening-assessment.json")[0]:
             raise ValueError("Opening assessment stage replay differs")
-    expected_models = 1 + int(opening_material is not None)
+    expected_models = 1 + int(opening_material is not None) + int(subject_material is not None)
     if (
         len(usage["model_calls"]) != expected_models
         or sum(e["provider"] == "azure_foundry" for e in journal) != expected_models
@@ -684,6 +713,30 @@ def prepare_run(
     validate_prices(prices)
     if prices["currency"] != "USD":
         raise ValueError("Execution reference allowance is denominated in USD")
+    from .identity import identity_references
+    from .subject_correspondence import POLICY_VERSION as SUBJECT_POLICY_VERSION
+
+    has_subjects = any(r["kind"] == "requirement_subject" for r in identity_references(intake))
+    if has_subjects:
+        from .cost_report import estimate
+
+        event = {
+            "provider": "azure_foundry",
+            "operation": "requirement_subject",
+            "outcome": "completed",
+            "model": options["model"],
+            "input_tokens": options["max_input_tokens"],
+            "output_tokens": options["max_output_tokens"],
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": options["max_input_tokens"],
+        }
+        estimate_usd, _, reason = estimate(
+            event, "model", {"timing": {"started_at": _now()}}, prices
+        )
+        if estimate_usd is None:
+            raise ValueError("Subject stage price unavailable: " + reason)
+        if estimate_usd > Decimal(options["max_cost_usd"]):
+            raise ValueError("Subject stage reservation exceeds execution reference allowance")
     from ._route_inputs import route_reviews as read_route_reviews
     from ._schedule_preparation import _occupancy_reviews, _validate_spec
     from .daily_density import prepare_density_policies
@@ -748,7 +801,8 @@ def prepare_run(
             str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest() for p in implementation
         },
         "scope": "four_final_automatic_quality",
-        "max_model_sends": 2 if options.get("assess_missing_hours", True) else 1,
+        "subject_policy": SUBJECT_POLICY_VERSION,
+        "max_model_sends": 1 + int(options.get("assess_missing_hours", True)) + int(has_subjects),
         "max_retries": 0,
     }
     value["content_sha256"] = canonical_digest(value)
