@@ -2,7 +2,7 @@
   "schema_version": "case_public_material_index_1",
   "case_id": "case-08",
   "execution_revision": "r02",
-  "status": "offline_material_prepared_acceptance_pending",
+  "status": "steps_1_9_complete_pending_researcher_acceptance",
   "publication_source_revision": "2c48c8910cfc3819bc18cebab33fe1ccf809fcc0",
   "delivery_base": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
   "original_input": {
@@ -303,7 +303,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "c35453f25b9d9e9f9abc727deb13087c430585eec9b27215fff0f407af3de65e",
+      "sha256": "16f64a9c4dd3f15a5e173e3d7990d3415190528eda0f00f842bafa23a31a39c1",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/report.md",
         "sha256": "574e88951c8015a922223263653c8059b2b49b4ca64a09228a915ad079748400"
@@ -323,6 +323,33 @@
         "sha256": "9985e2ffc5f0b5789d1dc9ae2ce38b3e151432d37b1101914e77c9f38a8db509",
         "json_pointer": ""
       }
+    },
+    {
+      "path": "evaluation/pair/report.json",
+      "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09:continuation/pair-export/execution/pair-report.json",
+        "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1"
+      },
+      "publication_kind": "exact_native_report"
+    },
+    {
+      "path": "evaluation/pair/summary.json",
+      "sha256": "d0dfac5d91a8cb5b8736511c1f6120c80cf110de4dac9ff9e672b78d3fb79d29",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09:continuation/pair-export/execution/pair-report.json",
+        "sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1"
+      },
+      "publication_kind": "derived_native_summary"
+    },
+    {
+      "path": "analysis/acceptance.json",
+      "sha256": "eb371ceea2e169fad86e21aacc8b0c24e2c7966dd5c40131d80f4379df0fecea",
+      "source": {
+        "storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
+        "sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb"
+      },
+      "publication_kind": "current_acceptance_checklist"
     }
   ],
   "accounting": {
@@ -333,18 +360,33 @@
     "external_codex_billing": null
   },
   "remaining_work": [
-    "Independent same-run V3 pair/continuity; exact preparation and separate execution authorization required.",
-    "Final native archive closure and portable runtime/source verification.",
-    "Researcher final case acceptance and publication.",
-    "Blinded human review deferred separately."
+    "Researcher step-10 decision on the exact selected material and limitations",
+    "Separately authorized Git publication/integration and Issue handling",
+    "Deferred step-11 blinded human review"
   ],
   "native_dependency_boundary": "Private source identifiers and raw observation path/hash references are retained for evidence lineage. This public view is not a standalone native intake/execution/replay bundle. Original preparation paths and runtime policies remain unchanged.",
   "delivery_limits": {
     "new_model_calls": 0,
     "google_requests": 0,
-    "generation_reruns": 0,
-    "rescoring_or_native_replay": 0,
+    "new_generation_runs": 0,
+    "new_primary_runs": 0,
+    "native_pair_executions": 1,
+    "native_pair_replay": "exact",
+    "historical_primary_native_replays": "exact under each frozen implementation",
+    "incremental_reference_usd": "0",
     "issue_mutations": 0,
     "publication_authorized": false
+  },
+  "selected_pair": "evaluation/pair/summary.json",
+  "acceptance_checklist": "analysis/acceptance.json",
+  "pair_implementation_revision": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
+  "private_archive": {
+    "storage_identifier": "archive:case08-steps08-09",
+    "manifest_sha256": "0a7e3686423988e3e16260f3be8be77393d071eb6e0734ea96d7d1460f6b4762",
+    "archive_sha256": "607e30f8e57ecb1dc64b46f53c2ed787f197894c6b6b8181ec763287734c6463",
+    "closeout_storage_identifier": "archive:case08-steps08-09-closeout:closeout.json",
+    "closeout_sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb",
+    "status": "restored_bytes_and_native_pair_verified",
+    "original_absolute_bindings": "retained unchanged; originals remain required for their original preparation layout"
   }
 }

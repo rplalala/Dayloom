@@ -1,0 +1,832 @@
+{
+  "schema_version": "case_same_run_pair_summary_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "pair_status": "available",
+  "processing_status": "complete",
+  "implementation_revision": "315268587d5fccd6270f4c6c05aabeba9bd6445e",
+  "run_id": "case-08-r02-v3",
+  "original_input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
+  "source_result_sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+  "native_report_sha256": "77ebc1937091fa4d581c250e8508079e27bb84e794ab97fed70c78f92dd3e1b1",
+  "preparation_sha256": "bfc3967e9bb00d09a1ef0cc17531da3f2668f2ba2f3a57f8dfc0c7b08c0407e1",
+  "source_kind": "source_labelled_offline_import",
+  "source_primary": "corrected-primary-r01",
+  "identity_policy": "versioned_api_identity_6",
+  "subject_policy": "requirement_subject_correspondence_2",
+  "identity_observations": 34,
+  "fact_observations": 25,
+  "eligible_missing_hours_cases": 0,
+  "opening_access_model_calls": 0,
+  "current_google_sends": 0,
+  "current_model_sends": 0,
+  "current_reference_cost_usd": "0",
+  "inherited_accounting": "Already included in corrected Primary; not charged twice.",
+  "stages": {
+    "draft": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 30,
+          "numerator": 29
+        },
+        "reason": null,
+        "score_0_100": 96.66666666666667
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 3,
+              "upper": 3
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 3,
+            "penalty_0_100": 10,
+            "penalty_bounds": {
+              "lower": 10,
+              "upper": 10
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 3,
+          "numerator": 10
+        },
+        "mean_penalty_0_100": 3.3333333333333335,
+        "mean_penalty_bounds": {
+          "lower": 3.3333333333333335,
+          "upper": 3.3333333333333335
+        },
+        "requested_day_count": 3,
+        "review": {
+          "rationale": "The complete original request states no daily pace or exact daily visit count. Flexibility concerns other sightseeing choices, not a relaxed pace. Exactly one Sagrada Familia visit is a whole-trip named-place count and does not specify a daily total. Adopt the ordinary default with no exact-count exception and no dated overrides.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T22:00:02.870872+00:00",
+          "reviewer_ref": "/root/case08_requirement_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "denominator": 7,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "confirmed_violation_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "verified_fraction": {
+              "denominator": 7,
+              "numerator": 7
+            }
+          },
+          "known_unit_count": 7,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 11,
+            "UNKNOWN": 0
+          },
+          "denominator": 11,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 11,
+              "numerator": 11
+            },
+            "confirmed_violation_rate": {
+              "denominator": 11,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 11,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 11,
+              "numerator": 11
+            },
+            "verified_fraction": {
+              "denominator": 11,
+              "numerator": 11
+            }
+          },
+          "known_unit_count": 11,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 7,
+            "UNKNOWN": 0
+          },
+          "denominator": 7,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "confirmed_violation_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "verified_fraction": {
+              "denominator": 7,
+              "numerator": 7
+            }
+          },
+          "known_unit_count": 7,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "denominator": 4,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "confirmed_violation_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "verified_fraction": {
+              "denominator": 4,
+              "numerator": 4
+            }
+          },
+          "known_unit_count": 4,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      }
+    },
+    "final_primary": {
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0
+      },
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 210,
+                  "offset_start": 0,
+                  "quote": "We are two adults interested in architecture and history. Include exactly one visit to Sagrada Família during the trip. Do not include a visit to Park Güell. We are flexible about the other sightseeing choices."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "mean_penalty_0_100": 0.0,
+        "mean_penalty_bounds": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "requested_day_count": 3,
+        "review": {
+          "rationale": "The complete original request states no daily pace or exact daily visit count. Flexibility concerns other sightseeing choices, not a relaxed pace. Exactly one Sagrada Familia visit is a whole-trip named-place count and does not specify a daily total. Adopt the ordinary default with no exact-count exception and no dated overrides.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T22:00:02.870872+00:00",
+          "reviewer_ref": "/root/case08_requirement_reviewer"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "denominator": 6,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "confirmed_violation_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "verified_fraction": {
+              "denominator": 6,
+              "numerator": 6
+            }
+          },
+          "known_unit_count": 6,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "denominator": 9,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 9,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 9,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "denominator": 6,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "confirmed_violation_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "verified_fraction": {
+              "denominator": 6,
+              "numerator": 6
+            }
+          },
+          "known_unit_count": 6,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 3,
+            "UNKNOWN": 0
+          },
+          "denominator": 3,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 3,
+              "numerator": 3
+            },
+            "confirmed_violation_rate": {
+              "denominator": 3,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 3,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 3,
+              "numerator": 3
+            },
+            "verified_fraction": {
+              "denominator": 3,
+              "numerator": 3
+            }
+          },
+          "known_unit_count": 3,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      }
+    }
+  },
+  "overall_delta": {
+    "exact_fraction": {
+      "denominator": 30,
+      "numerator": 1
+    },
+    "percentage_points": 3.3333333333333335
+  },
+  "continuity_transition_counts": {
+    "conflicts": {},
+    "grounding": {
+      "removed": 1,
+      "unchanged": 6
+    },
+    "opening": {
+      "removed": 1,
+      "unchanged": 6
+    },
+    "protection_conflicts": {},
+    "requirements": {
+      "unchanged": 2
+    },
+    "routes": {
+      "structural_leg_removed": 1,
+      "unchanged": 3
+    }
+  },
+  "visit_changes": {
+    "added_count": 0,
+    "confirmed_venue_loss_count": 0,
+    "primary_role_loss_count": 0,
+    "removed_count": 1,
+    "replaced_count": 0,
+    "unresolved_after": [],
+    "unresolved_before": []
+  },
+  "removed_activity": {
+    "activity_id": "day1-cathedral",
+    "place_name": "Cathedral of Barcelona",
+    "grounding_before": "PASS",
+    "opening_before": "PASS",
+    "interpretation": "Removal, not resolution of an old factual failure."
+  },
+  "qualitative_thematic_retention": "UNKNOWN",
+  "overall_repair_success_classification": "not_provided",
+  "interpretation": "The observed score change is the daily density deduction. Native continuity retains removal and unchanged checks; it establishes no causal version ranking or human preference result."
+}

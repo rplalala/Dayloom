@@ -2279,8 +2279,10 @@ The separately authorized corrected Primary and current case material are record
 [case-08 report](../../../benchmark/case-08/report.md). Offline case-material preparation
 from main `3152685` selects saved outputs and validates their bindings without rerunning
 or rescoring them. Original failures, provider evidence, usage and both score histories
-remain retained. Independent pairing, final archive closure and researcher acceptance
-remain outstanding; publication and Issue closure require their own authorization.
+remain retained. Subsequent case steps 8-9 completed source-labelled native pairing,
+continuity, frozen Primary replays and restored archive/native-pair verification with
+zero new provider/model sends. The case report owns the current evidence and limitations.
+Step 10 awaits the researcher's final decision; publication and Issue closure remain separate.
 
 #### Shared evaluator delivery preparation (2026-10-17)
 
