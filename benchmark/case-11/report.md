@@ -9,7 +9,8 @@ relevance, same-run paired access, Repair process and resource reports are compl
 The same-run no-Repair observation is verified. The researcher explicitly accepted
 the current r02 selection and disclosed limitations on **17 October 2026,
 Australia/Sydney**. [Automatic acceptance](#acceptance) defines the exact scope;
-execution is paused, with blinded human review and remote publication deferred.
+execution is paused, with blinded human review deferred. Git delivery is separately
+authorized; the accepted native selection remains unchanged.
 
 The [original request](../inputs/case-11.json) is unchanged: Paris, 22–25 October
 2026, two adults, EUR 1,500 for the group and trip, art and architecture interests,
@@ -17,7 +18,7 @@ and moderate pace. On 23 October, 14:00–16:00 Paris local time must contain no
 activities or travel. Input SHA-256 is
 `60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487`.
 [Issue #160](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/160)
-is the case tracker; its remote state was not changed.
+owns case acceptance and delivery state.
 
 All four new runs use source `bc985c273afcf48c5f1d4da59be532c22d403efd`, which
 merges actual `origin/main` at `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3` while
@@ -120,7 +121,7 @@ Unknown upstream labels keep complete relevance counts, full-chain conversion
 rates and end-to-end signed differences unavailable. The observed end-to-end lower
 counts are nine and six. Independently scheduled relevant venues are fully judged:
 V2 retains six V1 venues, adds none and omits Musée des Archives Nationales, Place
-des Vosges and Musée de Cluny. This is a descriptive selected-output difference,
+des Vosges and Panthéon. This is a descriptive selected-output difference,
 not evidence that RAG caused a particular outcome.
 
 ## Repair observations and paired access
@@ -299,6 +300,12 @@ restoration trees were removed. Private storage decreased from approximately
 168.4 MB to 10.4 MB, including archive metadata and verification tools. Environment
 files remain outside the archive, with their original hashes unchanged. No other
 case or shared runtime data was cleaned.
+
+All nine archive files were migrated byte-for-byte into the main worktree on
+17 October 2026, Australia/Sydney. A second fresh-root restoration there reproduced
+the same native reports and all eight cost operations, with network and original
+working-evidence reads denied. Source and destination hashes matched before worker
+cleanup; environment and retrieval metadata already present in main also matched.
 
 Original absolute preparation bindings are unchanged. Relocated legacy directory-bound
 CLI replay is not claimed: that interface requires the original roots and matching

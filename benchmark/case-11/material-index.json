@@ -55,6 +55,22 @@
     "v2": "generation/r02/v2/itinerary.json",
     "v3": "generation/r02/v3/itinerary.json"
   },
+  "delivery": {
+    "accepted_material_and_native_reports": "unchanged",
+    "case_branch": "codex/case-11-r02",
+    "date": "2026-10-17",
+    "delivery_branch": "codex/case11-delivery",
+    "fresh_main_worktree_restoration_native_replay": "exact",
+    "generation_reruns": 0,
+    "human_review": "deferred_not_conducted",
+    "main_worktree_integrated": true,
+    "private_archive_migrated_files": 9,
+    "provider_sends": 0,
+    "publication_authorized": true,
+    "source_destination_archive_hashes": "identical",
+    "timezone": "Australia/Sydney",
+    "tracker": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/160"
+  },
   "entries": [
     {
       "json_pointer": "",
