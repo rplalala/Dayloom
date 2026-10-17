@@ -195,6 +195,17 @@ class BudgetSummary:
             "usage_status": status,
             **select(value, ("elapsed_seconds", "engineering_tokens", "round_index")),
         }
+        if name == "semantics":
+            call = stage["calls"][identity]
+            call.update(select(value, ("timeout_seconds",)))
+            deadline_keys = ("call", "total", "caller", "request")
+            if value.get("limiting_deadline") in deadline_keys:
+                call["limiting_deadline"] = value["limiting_deadline"]
+            remaining = select(value.get("remaining_seconds"), deadline_keys)
+            if remaining:
+                call["remaining_seconds"] = remaining
+            if value.get("error_type") == "TimeoutError":
+                call["error_type"] = "TimeoutError"
         statuses = {r["usage_status"] for r in stage["calls"].values()}
         stage["usage_status"] = (
             "reported"

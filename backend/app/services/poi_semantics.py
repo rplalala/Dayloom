@@ -150,11 +150,17 @@ class POISemanticsService:
                     raise SemanticPreparationLimit("poi_semantics_input_overflow")
                 if self.calls >= self.config.max_calls:
                     raise SemanticPreparationLimit("poi_semantics_call_budget_exhausted")
-                remaining = min(
-                    self.config.call_timeout_seconds,
-                    self.config.total_seconds - self.elapsed,
-                    *[d - self.clock() for d in (deadline, self.deadline) if d is not None],
-                )
+                now = self.clock()
+                allowances = {
+                    "call": self.config.call_timeout_seconds,
+                    "total": self.config.total_seconds - self.elapsed,
+                }
+                if deadline is not None:
+                    allowances["caller"] = deadline - now
+                if self.deadline is not None:
+                    allowances["request"] = self.deadline - now
+                limiting_deadline = min(allowances, key=allowances.get)
+                remaining = allowances[limiting_deadline]
                 if remaining <= 0:
                     raise SemanticPreparationLimit("poi_semantics_deadline")
             except SemanticPreparationLimit as exc:
@@ -186,6 +192,9 @@ class POISemanticsService:
                 "call": self.calls + 1,
                 "input_sha256": hashlib.sha256(payload.encode()).hexdigest(),
                 "status": "started",
+                "timeout_seconds": remaining,
+                "limiting_deadline": limiting_deadline,
+                "remaining_seconds": allowances,
             }
             self.records.append(record)
             self.calls += 1
@@ -204,6 +213,9 @@ class POISemanticsService:
                     "correction_of",
                     "wire_version",
                     "mapping_sha256",
+                    "timeout_seconds",
+                    "limiting_deadline",
+                    "remaining_seconds",
                 )
             }
             try:

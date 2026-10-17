@@ -53,6 +53,14 @@ Identity, source, scope, REQUIRED/EXCLUDED, zero hidden retries and UNKNOWN sema
 invariants, not configurable bypass switches. Reviews/Profile and Official Web additions remain
 unsupported in Repair; their zero allowance is not an enable switch.
 
+Repair defaults allow 420 seconds per stage, 150 per hard round, a 120-second
+round reference and up to 60 seconds of preparation. With a full 420 seconds remaining,
+the initial reference allocation is 140 seconds across three affordable rounds;
+the six-call ceiling remains unchanged. Preparation leaves 30 seconds for model startup
+and 20 for rechecking. Semantic calls retain their separate 45-second per-call and
+120-second cumulative allowances. The 600-second development request deadline can
+shorten the stage, so these settings do not guarantee six complete rounds.
+
 Stage deadline = min(entry request deadline minus `reference_discovery.deadline_seconds`,
 stage start plus stage_seconds). Nearby is reserved from its existing authoritative key, not a
 second hard-coded ten seconds. Affordable rounds are bounded by remaining rounds and floor of
@@ -200,13 +208,13 @@ a local documentation coverage test detects a missing path or stale value.
 | `v3_repair.quantity_review_enabled` | `true` | boolean; schema-validated | Default coverage review-target activation; CLI can explicitly disable it. It never turns NEEDS_REVIEW into CONFIRMED. |
 | `v3_repair.alternatives_per_gap` | `2` | integer; >= 1 | Distinct alternatives per authorized quantity gap as a preparation reference. Fewer options may still be used. Zero is invalid. |
 | `v3_repair.exploration_positions` | `2` | integer; >= 0, <= 2 | Reusable exploration positions within the same input union across the stage, not extra candidates or per-date quotas. Zero removes reserved presentation opportunities. Zero removes the corresponding tolerance. |
-| `v3_repair.timing.stage_seconds` | `360` | number; > 0, <= 360 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
-| `v3_repair.timing.round_seconds` | `120` | number; > 0, <= 120 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
+| `v3_repair.timing.stage_seconds` | `420` | number; > 0, <= 420 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
+| `v3_repair.timing.round_seconds` | `150` | number; > 0, <= 150 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
 | `v3_repair.timing.model_seconds` | `70` | number; > 0, <= 70 | Maximum model wait per call; dynamically shortened by remaining round time minus recheck reserve. Zero is invalid. |
-| `v3_repair.timing.preparation_seconds` | `45` | number; >= 0, <= 45 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
+| `v3_repair.timing.preparation_seconds` | `60` | number; >= 0, <= 60 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
 | `v3_repair.timing.recheck_reserve_seconds` | `20` | number; > 0 | Round time retained after model wait for route acquisition and application revalidation. Zero is invalid. |
 | `v3_repair.timing.minimum_model_seconds` | `30` | number; > 0 | Minimum available model allocation required to start a call. Zero is invalid. |
-| `v3_repair.timing.round_reference_seconds` | `60` | number; > 0 | Divisor used to estimate affordable remaining rounds and their soft preparation window. It does not shorten the hard model/recheck deadline or promise that many rounds. Zero is invalid. |
+| `v3_repair.timing.round_reference_seconds` | `120` | number; > 0 | Divisor used to estimate affordable remaining rounds and their soft preparation window. It does not shorten the hard model/recheck deadline or promise that many rounds. Zero is invalid. |
 | `v3_repair.timing.finalization_reserve_seconds` | `1` | number; > 0 | Time withheld from post-proposal I/O for local finalization. Must be smaller than recheck reserve. Zero is invalid. |
 | `v3_repair.input.input_tokens` | `252000` | integer; >= 1, <= 252000 | Per-model-call total system/user/schema/framing engineering ceiling; overflow preserves latest adopted itinerary. Zero is invalid. This application ceiling does not certify provider context capacity. |
 | `v3_repair.input.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-model-call strict output limit forwarded without mutating primary client defaults. Zero is invalid. |
@@ -502,6 +510,13 @@ Omission is a configuration error, not a switch to legacy classification. Old re
 are still readable independently of runtime configuration; no historical files are migrated.
 The immutable effective snapshot and its hash are captured once; each request's semantic ledger
 also reports its policy hash, input hashes, cache hits and per-call reported usage.
+Each sent semantic call records `timeout_seconds`, `limiting_deadline` and
+`remaining_seconds` for the call, cumulative total, caller phase and request limits
+that apply. These values describe the allowance selected before sending, not provider
+latency or proof of completed billing. Input/outcome captures and trace events retain
+them; the bounded budget summary retains allowlisted timing fields even on failure.
+Missing usage remains missing. A model timeout remains terminal and cannot qualify an
+unassessed candidate or trigger an automatic retry.
 
 
 POI semantic reference correction (2026-09-27): at most one correction per invalid-reference

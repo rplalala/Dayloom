@@ -307,10 +307,10 @@ class RepairAcquisitionConfig(_RepairConfigModel):
 
 
 class RepairTimingConfig(_RepairConfigModel):
-    stage_seconds: float = Field(gt=0, le=360)
-    round_seconds: float = Field(gt=0, le=120)
+    stage_seconds: float = Field(gt=0, le=420)
+    round_seconds: float = Field(gt=0, le=150)
     model_seconds: float = Field(gt=0, le=70)
-    preparation_seconds: float = Field(ge=0, le=45)
+    preparation_seconds: float = Field(ge=0, le=60)
     recheck_reserve_seconds: float = Field(gt=0)
     minimum_model_seconds: float = Field(gt=0)
     round_reference_seconds: float = Field(gt=0)

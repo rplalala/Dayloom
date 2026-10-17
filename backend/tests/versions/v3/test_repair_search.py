@@ -251,7 +251,7 @@ def test_deadline_after_exploration_keeps_best_and_counts_failed_send():
     assert result.final == result.rounds[0].adopted
     assert result.rounds[1].exploration_transition and not result.rounds[1].best_promoted
     assert model.calls == result.counters["model"] == 3
-    assert result.timing["stage_deadline"] == 460
+    assert result.timing["stage_deadline"] == 520
     assert result.reason == "model_failed_no_retry"
     assert result.rounds[-1].result.reason == "repair_timeout"
     assert result.counters["final_main_visits"] == 9

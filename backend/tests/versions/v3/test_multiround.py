@@ -223,7 +223,9 @@ def test_runtime_spatial_value_changes_actual_policy_result():
     [
         {"max_rounds": 7},
         {"acquisition": {"canonical": 31}},
-        {"timing": {"stage_seconds": 361}},
+        {"timing": {"stage_seconds": 421}},
+        {"timing": {"round_seconds": 151}},
+        {"timing": {"preparation_seconds": 61}},
         {"max_rounds": True},
         {"max_model_calls": -1},
         {"timing": {"model_seconds": 0}},
@@ -279,9 +281,9 @@ def test_budget_settings_control_sends_and_nearby_reserve_without_round_reset():
     async def scenario():
         p = policy(acquisition={"routes": 1, "elements": 1, "post_proposal_route_reserve": 0})
         budget = RepairBudget(500, clock=lambda: 100, policy=p, nearby_reserve=7)
-        assert budget.deadline == 460
-        shorter = policy(timing={"stage_seconds": 120})
-        assert RepairBudget(500, clock=lambda: 100, policy=shorter).deadline == 220
+        assert budget.deadline == 493
+        shorter = policy(timing={"stage_seconds": 150})
+        assert RepairBudget(500, clock=lambda: 100, policy=shorter).deadline == 250
         sends = []
 
         async def send():

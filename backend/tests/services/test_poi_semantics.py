@@ -64,6 +64,56 @@ def test_batch_cache_and_total_calls():
 
 
 @pytest.mark.parametrize(
+    "elapsed,caller,request_deadline,expected,source",
+    [
+        (0, None, None, 45, "call"),
+        (110, None, None, 10, "total"),
+        (0, 113.5, 200, 13.5, "caller"),
+        (0, 200, 107, 7, "request"),
+    ],
+)
+@pytest.mark.parametrize("fails", [False, True])
+def test_call_outcomes_capture_effective_timeout_and_each_remaining_allowance(
+    elapsed, caller, request_deadline, expected, source, fails
+):
+    class ObservedModel(Model):
+        def capture_poi_semantics(self, stage, payload):
+            captured.append((stage, payload))
+
+        async def generate_poi_semantics_structured(self, **kwargs):
+            if fails:
+                self.calls += 1
+                raise TimeoutError("Controlled model timeout")
+            return await super().generate_poi_semantics_structured(**kwargs)
+
+    captured = []
+    svc = service(ObservedModel())
+    svc.clock = lambda: 100.0
+    svc.deadline, svc.elapsed = request_deadline, elapsed
+    if fails:
+        with pytest.raises(SemanticAssessmentError) as error:
+            asyncio.run(svc.prepare([place()], contract(), deadline=caller))
+        assert isinstance(error.value.__cause__, TimeoutError)
+        assert svc.failed and not svc.ledger
+    else:
+        assert asyncio.run(svc.prepare([place()], contract(), deadline=caller))
+    outcome = captured[-1][1]
+    assert outcome["timeout_seconds"] == expected
+    assert outcome["limiting_deadline"] == source
+    assert outcome["remaining_seconds"] == {
+        "call": 45,
+        "total": 120 - elapsed,
+        **({"caller": caller - 100} if caller is not None else {}),
+        **({"request": request_deadline - 100} if request_deadline is not None else {}),
+    }
+    assert outcome["status"] == ("failed" if fails else "accepted")
+    if fails:
+        assert outcome["error_type"] == "TimeoutError" and outcome["usage"] == {}
+    assert captured[0][1]["timeout_seconds"] == expected
+    assert svc.calls == 1
+
+
+@pytest.mark.parametrize(
     "mutate,expected_calls",
     [
         (lambda rows: rows.pop(), 1),  # Empty output fails the domain schema.

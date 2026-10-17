@@ -140,7 +140,7 @@ transport:
 
 # V3-only development policy. Acquisition totals are shared across all rounds.
 v3_repair:
-  max_rounds: 6 # Model round ceiling; shared 360-second deadline may stop earlier.
+  max_rounds: 6 # Model round ceiling; shared stage deadline may stop earlier.
   max_model_calls: 6 # Shared local/replan sends; zero disables only model attempts.
   max_deletion_attempts: 12 # Separate finite system proposals; zero disables enumeration.
   quantity_review_enabled: true # CLI may explicitly disable this review policy.
@@ -153,13 +153,13 @@ v3_repair:
   alternatives_per_gap: 2 # Preparation reference, not an acceptance requirement.
   exploration_positions: 2 # Stage-wide reusable positions within the same ID union.
   timing:
-    stage_seconds: 360
-    round_seconds: 120
+    stage_seconds: 420
+    round_seconds: 150
     model_seconds: 70
-    preparation_seconds: 45 # Upper bound; model startup and recheck reserves take precedence.
+    preparation_seconds: 60 # Upper bound; model startup and recheck reserves take precedence.
     recheck_reserve_seconds: 20
     minimum_model_seconds: 30
-    round_reference_seconds: 60
+    round_reference_seconds: 120
     finalization_reserve_seconds: 1
     # Nearby reservation uses reference_discovery.deadline_seconds above.
   input:

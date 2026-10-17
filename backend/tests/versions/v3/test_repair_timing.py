@@ -1,7 +1,7 @@
 """Repair time allocation through real stage execution and controlled local-work cost."""
 
 import asyncio
-from contextlib import contextmanager
+from contextlib import asynccontextmanager, contextmanager
 
 import pytest
 
@@ -15,6 +15,87 @@ from backend.tests.versions.v3.test_repair import (
     overlap_draft,
     scope_for,
 )
+
+
+def test_approved_timing_policy_retains_model_and_recheck_reserves():
+    from backend.app.runtime.config_loader import load_runtime_config
+
+    runtime = load_runtime_config()
+    timing = runtime.v3_repair.timing
+    assert (timing.stage_seconds, timing.round_seconds) == (420, 150)
+    assert (timing.round_reference_seconds, timing.preparation_seconds) == (120, 60)
+    assert (timing.model_seconds, timing.minimum_model_seconds) == (70, 30)
+    assert timing.recheck_reserve_seconds == 20
+    assert runtime.development_timeout_seconds == 600
+    assert runtime.poi_semantics.call_timeout_seconds == 45
+    assert runtime.poi_semantics.total_seconds == 120
+
+
+@pytest.mark.parametrize("legacy,model_elapsed", [(True, 22), (False, 22), (False, 44)])
+def test_semantic_preparation_window_through_real_repair_stage(monkeypatch, legacy, model_elapsed):
+    from backend.app.services import poi_semantics
+    from backend.tests.services.test_poi_semantics import Model as SemanticModel
+    from backend.tests.services.test_poi_semantics import service
+    from backend.tests.versions.v3.test_multiround import policy
+
+    now = [100.0]
+
+    @asynccontextmanager
+    async def controlled_timeout(seconds):
+        deadline = now[0] + seconds
+        yield
+        if now[0] > deadline:
+            raise TimeoutError("Controlled deadline elapsed")
+
+    count_input = poi_semantics.semantic_input_tokens
+
+    def local_input_work(*args):
+        tokens = count_input(*args)
+        now[0] += 8
+        return tokens
+
+    class TimedSemanticModel(SemanticModel):
+        async def generate_poi_semantics_structured(self, **kwargs):
+            now[0] += model_elapsed
+            return await super().generate_poi_semantics_structured(**kwargs)
+
+    monkeypatch.setattr(asyncio, "timeout", controlled_timeout)
+    monkeypatch.setattr(poi_semantics, "semantic_input_tokens", local_input_work)
+    semantic_service = service(TimedSemanticModel())
+    semantic_service.clock = lambda: now[0]
+    timing = (
+        dict(
+            stage_seconds=360, round_seconds=120, round_reference_seconds=60, preparation_seconds=45
+        )
+        if legacy
+        else {}
+    )
+    original, ctx = overlap_draft(), context()
+    model = Model()
+    call = repair_service.run_repair_stage(
+        original,
+        ctx,
+        scope_for(original, ctx),
+        model=model,
+        routes_provider=Routes(),
+        request_deadline=1000,
+        clock=lambda: now[0],
+        policy=policy(timing=timing),
+        semantic_service=semantic_service,
+    )
+    if legacy:
+        with pytest.raises(poi_semantics.SemanticAssessmentError):
+            asyncio.run(call)
+        assert model.calls == 0 and not semantic_service.ledger
+        assert semantic_service.records[0]["timeout_seconds"] == 2
+        assert semantic_service.records[0]["limiting_deadline"] == "caller"
+    else:
+        result = asyncio.run(call)
+        assert result.status == "ACCEPTED_COMPLETE", result.reason
+        assert model.calls == 1
+        assert semantic_service.records[0]["timeout_seconds"] == 45
+        assert semantic_service.records[0]["limiting_deadline"] == "call"
+        assert result.rounds[0].result.timing["model_timeout_seconds"] <= 70
 
 
 def stage_with_local_cost(monkeypatch, build_cost, responses=None):
@@ -52,7 +133,7 @@ def stage_with_local_cost(monkeypatch, build_cost, responses=None):
     return result, model
 
 
-@pytest.mark.parametrize("build_cost,remaining", [(30.5, 318.5), (70, 279)])
+@pytest.mark.parametrize("build_cost,remaining", [(30.5, 378.5), (70, 339)])
 def test_local_input_work_can_use_stage_time_beyond_the_reference_window(
     monkeypatch, build_cost, remaining
 ):
@@ -65,13 +146,13 @@ def test_local_input_work_can_use_stage_time_beyond_the_reference_window(
     assert timing["input_build_elapsed_seconds"] == pytest.approx(build_cost)
     assert timing["preparation_elapsed_seconds"] == pytest.approx(build_cost)
     assert timing["round_reference_deadline"] < timing["round_deadline"]
-    assert timing["round_deadline"] == timing["round_started"] + 120
+    assert timing["round_deadline"] == timing["round_started"] + 150
     assert 30 <= timing["model_timeout_seconds"] <= 70
-    assert result.effective_policy["timing"]["stage_seconds"] == 360
-    assert result.effective_policy["timing"]["round_reference_seconds"] == 60
+    assert result.effective_policy["timing"]["stage_seconds"] == 420
+    assert result.effective_policy["timing"]["round_reference_seconds"] == 120
 
 
-@pytest.mark.parametrize("build_cost", [70.1, 121])
+@pytest.mark.parametrize("build_cost", [100.1, 151])
 def test_local_input_work_cannot_spend_the_hard_model_or_recheck_allowance(monkeypatch, build_cost):
     result, model = stage_with_local_cost(monkeypatch, build_cost)
     assert result.status == "REJECTED" and model.calls == 1
@@ -84,7 +165,7 @@ def test_local_input_work_cannot_spend_the_hard_model_or_recheck_allowance(monke
 
 
 def test_later_local_time_shortage_preserves_the_best_retained_result(monkeypatch):
-    result, model = stage_with_local_cost(monkeypatch, 70.1, [[edit("10:50", "11:50")], [edit()]])
+    result, model = stage_with_local_cost(monkeypatch, 100.1, [[edit("10:50", "11:50")], [edit()]])
     assert result.status == "ACCEPTED_PARTIAL" and model.calls == 1
     assert result.selected_round_index == 1
     assert result.final == result.rounds[0].adopted != result.original
@@ -122,7 +203,7 @@ def test_short_request_preserves_nearby_and_exact_minimum_model_and_recheck_time
 
 @pytest.mark.parametrize(
     "elapsed,reason",
-    [(101, "insufficient_time_for_rechecks"), (121, "phase_deadline")],
+    [(131, "insufficient_time_for_rechecks"), (151, "phase_deadline")],
 )
 def test_single_round_rejects_late_model_results_without_spending_recheck_reserve(elapsed, reason):
     now = [100.0]
@@ -160,7 +241,7 @@ def test_local_projection_work_rechecks_time_before_charging_or_calling_the_mode
     @contextmanager
     def slow_projection(*args, **kwargs):
         with projection(*args, **kwargs):
-            now[0] += 71
+            now[0] += 101
             yield
 
     monkeypatch.setattr(mechanism_observation, "model_projection", slow_projection)
@@ -180,7 +261,7 @@ def test_local_projection_work_rechecks_time_before_charging_or_calling_the_mode
     assert result.status == "SKIPPED" and not result.model_attempted
     assert model.calls == result.counters.get("model", 0) == 0
     assert result.reason == "insufficient_time_for_model_and_rechecks"
-    assert result.timing["preparation_elapsed_seconds"] == 71
+    assert result.timing["preparation_elapsed_seconds"] == 101
     assert result.final == original
 
 
@@ -197,7 +278,7 @@ def test_final_synchronous_revalidation_stops_after_the_hard_deadline(
     def slow_final_spatial(*args, **kwargs):
         value = spatial(*args, **kwargs)
         if "check_rearrangements" not in kwargs:
-            now[0] += 121
+            now[0] += 151
         return value
 
     monkeypatch.setattr(repair_spatial, "check_addition_layout", slow_final_spatial)
@@ -276,7 +357,7 @@ def test_component_deadline_stops_the_stage_and_preserves_the_best_result(
         nonlocal calls
         calls += 1
         if calls == (2 if retain_partial else 1):
-            now[0] += 119.1
+            now[0] += 149.1
             raise TimeoutError("component_deadline")
         return await resolve(*args, **kwargs)
 
