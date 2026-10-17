@@ -7,7 +7,8 @@ Revision **r07** completed V0-V3 once sequentially and one independent Primary o
 same-run Repair and all-attempt resource reports are complete. The selected outputs
 and original Primary scores remain unchanged. The researcher granted **automatic
 acceptance to r07 on 17 October 2026 (Australia/Sydney)** with the stated limitations.
-Main-worktree integration is pending; blinded human review remains deferred.
+Local main-worktree integration and private-evidence migration completed on
+**18 October 2026 (Australia/Sydney)**; blinded human review remains deferred.
 
 The unchanged [original request](../inputs/case-12.json) covers Sydney,
 22-28 October 2026, two adults, AUD 3,200 for the group, nature and harbour views,
@@ -415,33 +416,45 @@ refill and empty-proposal guards were not exercised live. This decision does not
 certify affordability, complete preference fulfillment or general version superiority.
 Step 11, real blinded human review, remains deferred.
 
-### Main-worktree handoff
+### Main-worktree integration
 
-The worker branch is `codex/case-12-r02`. Its generation source is `3a727628`; completed
-independent material is committed at `5a08e45`. Original implementation and review-fix
-commits remain separate in history. The integration baseline inspected on acceptance
-is main `315268587d5fccd6270f4c6c05aabeba9bd6445e`, with common ancestor
-`cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`.
+Local merge `d6f3e8e` integrates worker head `6babb0d` into main baseline
+`3fbb2ef`, preserving the original implementation, correction and acceptance commits.
+The README resolution retains main's existing cases and workflow. Subsequent merge
+`b41e8c7` includes remote main `7408df9201965386b755af07ca43a35bae00fc46`
+(PR #189), whose five documentation changes preserve case-08's completed acceptance,
+PR #188 delivery and completed Issues #157/#182. No shared fix was applied twice.
 
-Both branches changed only one common path, `benchmark/README.md`; integrate its
-case-12 status and accepted-selection entry while preserving main's other cases and
-current workflow. Shared application/configuration changes and their validation
-records require coordinator integration alongside the case material. Do not overwrite
-main with the worker's older tree or rewrite the original correction commits.
+The full initial backend run completed with **4,608 passed, 16 skipped and seven
+failures**. Three failures were sandbox-denied Windows junction fixtures; the
+unchanged tests passed outside the sandbox (one plus two). Four passive-capture
+parity failures compared newly recorded live deadline balances. The test-only
+normalizer now excludes `remaining_seconds`, retaining exact itinerary and provider/
+model-call comparisons; both affected modules pass **24 tests**. All failures are
+resolved; the corrected full suite was not repeated. Ruff and formatting pass for
+38 changed Python files. Both independent Standards and Spec reviews, including
+the committed test correction, report zero actionable findings. Skipped environments
+remain unverified; frontend code was unchanged and was not retested.
 
-The private archive and its restoration tools are separate from Git. Transfer the
-complete `benchmark/scratch/case-12/archive/` package, verify its recorded checksums,
-and repeat supported offline source-reader checks in a fresh restored directory at
-the integrated source. Preserve absolute preparation bindings and consumed status;
-do not rerun their paid execute commands. Keep the worker's private source root until
-migration, source compatibility and replay verification are complete. The original
-pre-acceptance verification record remains unchanged; acceptance metadata is bound
-separately in the local delivery package.
+The complete private archive and delivery package were copied byte-for-byte to
+`benchmark/scratch/case-12/` in the main worktree. Receiving checks verify every
+retained file, public view and source binding. Current main rebuilds opportunities
+and relevance exactly, but correctly rejects historical Repair rebuilding at the
+strict opening-packet implementation fingerprint: newer evaluator files differ
+from its recorded producer. This is not a current-main replay pass.
 
-Local delivery material identifies the exact commits, changed paths, source hashes,
-private package checksums and outstanding integration checks. No push, PR, merge,
-private-evidence migration or working-copy cleanup has occurred in this acceptance
-update. Integration and later human assessment remain separate work.
+The exact committed producer source at `6babb0d` is retained separately. Its isolated
+source readers rebuild all ten saved reports exactly with network connections and
+both original working-evidence roots blocked. Original native bytes, scores,
+preparations and consumed execution bindings are unchanged. The original and
+receiving verification results remain separate; acceptance/integration metadata is
+bound to unchanged indexed content. The temporary receiving restoration was removed;
+the worker and its original private evidence remain retained.
+
+Private receiving evidence and reproduction instructions are historical identifiers
+under `benchmark/scratch/case-12/integration/`. This integration added no project
+provider calls, generation, Primary, rescoring or human answers. Reference accounting
+is unchanged. Git publication remains separate from this completed local integration.
 
 ## Historical context
 

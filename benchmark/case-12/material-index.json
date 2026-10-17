@@ -629,7 +629,7 @@
     "logical_files": 25261,
     "unique_blobs": 2911,
     "compressed_bytes": 24806386,
-    "working_copies": "retained pending private-evidence migration and verification before cleanup"
+    "working_copies": "original worker retained; verified main private package available"
   },
   "acceptance": {
     "date": "2026-10-17",
@@ -638,7 +638,19 @@
     "selected_revision": "r07",
     "limitations": "Retained as stated in report.md#acceptance",
     "human_review": "deferred",
-    "main_worktree_integration": "pending",
-    "private_evidence_migration": "pending"
+    "main_worktree_integration": "complete_locally",
+    "private_evidence_migration": "complete_and_verified",
+    "integration_date": "2026-10-18"
+  },
+  "integration": {
+    "date": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "main_case_merge": "d6f3e8e6f97c77bdff6c15515393ec35f8af8773",
+    "remote_main_merge": "b41e8c7",
+    "required_remote_ancestor": "7408df9201965386b755af07ca43a35bae00fc46",
+    "native_reconstruction": "Exact saved-producer replay; current-main Repair fingerprint rejection retained and disclosed in report.md.",
+    "provider_calls": 0,
+    "human_review": "deferred",
+    "publication": "not pushed"
   }
 }
