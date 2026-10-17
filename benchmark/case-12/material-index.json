@@ -1,7 +1,7 @@
 {
   "schema_version": "case12_public_material_index_1",
   "case_id": "case-12",
-  "status": "pending_joint_automatic_acceptance",
+  "status": "accepted_automatic",
   "selected_revision": "r07",
   "generation_source_revision": "3a7276284c428b9dce3bc59e643117cdc9bc8307",
   "evaluation_preparation_head": "27da4724a38c128aaac79228a4f7e640244feb3f",
@@ -629,6 +629,16 @@
     "logical_files": 25261,
     "unique_blobs": 2911,
     "compressed_bytes": 24806386,
-    "working_copies": "retained pending joint acceptance and cleanup"
+    "working_copies": "retained pending private-evidence migration and verification before cleanup"
+  },
+  "acceptance": {
+    "date": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_by": "researcher",
+    "selected_revision": "r07",
+    "limitations": "Retained as stated in report.md#acceptance",
+    "human_review": "deferred",
+    "main_worktree_integration": "pending",
+    "private_evidence_migration": "pending"
   }
 }

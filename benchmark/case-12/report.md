@@ -5,9 +5,9 @@
 Revision **r07** completed V0-V3 once sequentially and one independent Primary on
 **17 October 2026 Australia/Sydney**. The authorized candidate, independent relevance,
 same-run Repair and all-attempt resource reports are complete. The selected outputs
-and original Primary scores remain unchanged. Public materials are prepared for joint
-automatic acceptance; the researcher has not yet accepted this case. Blinded human
-review remains deferred.
+and original Primary scores remain unchanged. The researcher granted **automatic
+acceptance to r07 on 17 October 2026 (Australia/Sydney)** with the stated limitations.
+Main-worktree integration is pending; blinded human review remains deferred.
 
 The unchanged [original request](../inputs/case-12.json) covers Sydney,
 22-28 October 2026, two adults, AUD 3,200 for the group, nature and harbour views,
@@ -335,8 +335,8 @@ All-attempt consumption and the selected r07 comparison remain separate.
 The private archive at `benchmark/scratch/case-12/archive/` retains **25,261 logical
 files / 1,089,419,538 bytes**, with **2,911 unique byte sequences** stored once in a
 **24,806,386-byte ZIP**. Ten compiled-cache files and 1,304 synthetic pytest-tree
-files are explicitly excluded; original working evidence remains retained pending
-joint acceptance and later cleanup.
+files are explicitly excluded; original working evidence remains retained until
+private-evidence migration and its verification permit later cleanup.
 
 Fresh restoration verified every retained file, **45 public indexed files and 50
 original-source bindings**, lossless shared references/draft reconstruction, four
@@ -384,9 +384,9 @@ aids. Failed/completed originals, commands, bindings, captures, usage/cost repor
 and receipts remain retained. V1/V2 passive candidate captures and the genuine V3
 same-run draft/final bind the completed process reports. No old final was inserted
 into r07. Source-review exposure limits and the excluded r01
-reviewer remain in history. The continuation above adds no researcher acceptance
-or Git publication. All authorized paid stages are complete; unused allowance does
-not authorize more calls.
+reviewer remain in history. The researcher's separate acceptance decision is recorded
+below. All authorized paid stages are complete; unused allowance does not authorize
+more calls.
 
 | r07 evidence | SHA-256 |
 | --- | --- |
@@ -401,17 +401,47 @@ not authorize more calls.
 
 ## Acceptance
 
-**Pending researcher decision.** The proposed selection is the unchanged original
-request, reused reviewed RequirementSpec revision 2, the exact r07 V0-V3 outputs
+**Accepted on 17 October 2026 (Australia/Sydney).** The researcher explicitly accepted
+case-12 r07 and its disclosed limitations. The accepted selection is the unchanged
+original request, reused reviewed RequirementSpec revision 2, the exact r07 V0-V3 outputs
 and original Primary, current same-run paired evidence, source-bound mechanism/
 resource reports and verified private archive. The material index identifies the
 public views and their original sources.
 
-Automatic processing is complete with the disclosed partial RAG/relevance evidence,
-model-supported access, transport/cost uncertainty and historical accounting limits.
-The researcher decides joint automatic acceptance under the
-[case workflow](../README.md#workflow-and-responsibilities). Blinded human review
-and working-copy cleanup follow their respective later stages.
+Steps 1-10 of the [case workflow](../README.md#workflow-and-responsibilities) are complete.
+Acceptance retains partial RAG discovery, relevance UNKNOWNs, model-supported access,
+unverified transport availability/cost and historical accounting limits. The semantic
+refill and empty-proposal guards were not exercised live. This decision does not
+certify affordability, complete preference fulfillment or general version superiority.
+Step 11, real blinded human review, remains deferred.
+
+### Main-worktree handoff
+
+The worker branch is `codex/case-12-r02`. Its generation source is `3a727628`; completed
+independent material is committed at `5a08e45`. Original implementation and review-fix
+commits remain separate in history. The integration baseline inspected on acceptance
+is main `315268587d5fccd6270f4c6c05aabeba9bd6445e`, with common ancestor
+`cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`.
+
+Both branches changed only one common path, `benchmark/README.md`; integrate its
+case-12 status and accepted-selection entry while preserving main's other cases and
+current workflow. Shared application/configuration changes and their validation
+records require coordinator integration alongside the case material. Do not overwrite
+main with the worker's older tree or rewrite the original correction commits.
+
+The private archive and its restoration tools are separate from Git. Transfer the
+complete `benchmark/scratch/case-12/archive/` package, verify its recorded checksums,
+and repeat supported offline source-reader checks in a fresh restored directory at
+the integrated source. Preserve absolute preparation bindings and consumed status;
+do not rerun their paid execute commands. Keep the worker's private source root until
+migration, source compatibility and replay verification are complete. The original
+pre-acceptance verification record remains unchanged; acceptance metadata is bound
+separately in the local delivery package.
+
+Local delivery material identifies the exact commits, changed paths, source hashes,
+private package checksums and outstanding integration checks. No push, PR, merge,
+private-evidence migration or working-copy cleanup has occurred in this acceptance
+update. Integration and later human assessment remain separate work.
 
 ## Historical context
 
@@ -460,8 +490,8 @@ Earlier source-only authors, reviewers and the interest actor were configured as
 reviewers inherited the parent configuration, whose exact runtime is unavailable.
 Actual identities, times, hashes, excluded-review disclosure and available authentic
 messages remain in the private roots and Git history. The r01-r03 revisions supply
-no independent Primary scores. r04-r07 retain separate Primary selections;
-case acceptance remains pending.
+no independent Primary scores. r04-r07 retain separate Primary selections; r07 is
+the accepted automatic selection, while r04-r06 remain historical evidence.
 
 r04 used `189dfa51c8a86e79a3b6f911caceac8f943d9583` and completed all four versions
 and one Primary. Its retained scores are V0 94.285714, V1/V2 65.714286 and V3
