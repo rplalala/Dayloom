@@ -1,0 +1,1049 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "partial",
+  "queries": [
+    {
+      "query_id": "rag_1",
+      "text": "traditional culture and modern art experiences in Tokyo",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 20,
+  "unique_entities": 20,
+  "resolution_attempts": 18,
+  "details_sends": 17,
+  "fallback_sends": 2,
+  "embedding_sends": 1,
+  "retrieval_queries": 1,
+  "cache_hits": 0,
+  "entities": [
+    {
+      "entity_id": "google:ChIJrWQOSKOMGGARINdTU-VzqoM",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJrWQOSKOMGGARINdTU-VzqoM"
+    },
+    {
+      "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+    },
+    {
+      "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ______qJGGARHpd1TBA9uZ8"
+    },
+    {
+      "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+      "status": "google_observation",
+      "canonical_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+    },
+    {
+      "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJHeBCIOyMGGAR7BktETlUP_w"
+    },
+    {
+      "entity_id": "google:ChIJaRti5uOLGGARC_hz-hGQFz4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJaRti5uOLGGARC_hz-hGQFz4"
+    },
+    {
+      "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+    },
+    {
+      "entity_id": "google:ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+      "status": "google_observation",
+      "canonical_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+    },
+    {
+      "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJCaoz7S3zGGARrAnbz14VDcw"
+    },
+    {
+      "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+    },
+    {
+      "entity_id": "fsq:foursquare:59fd4a7a10345b7adc6823c5",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJqYnH4ViLGGARZLMJt16bjLU"
+    },
+    {
+      "entity_id": "google:ChIJD4KER5OMGGARGI6iNtBWYQE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJD4KER5OMGGARGI6iNtBWYQE"
+    },
+    {
+      "entity_id": "fsq:foursquare:5b5d5f05c03635002cce7232",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJ-_gC6_aJGGARubvcJZXmvZk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk"
+    },
+    {
+      "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJsZTc61eLGGARG19EHRBJGjE"
+    },
+    {
+      "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJq89_SiOLGGARNfbenIKLrPU"
+    },
+    {
+      "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJp39ByceLGGARrE8X0wVJIVk"
+    },
+    {
+      "entity_id": "google:ChIJq6radhaLGGAR2-mAGeshrHk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJq6radhaLGGAR2-mAGeshrHk"
+    },
+    {
+      "entity_id": "google:ChIJtxODuv6LGGAR4xf7X3WayX0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJtxODuv6LGGAR4xf7X3WayX0"
+    },
+    {
+      "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ91khboGMGGARBo42MbnQzg8"
+    }
+  ],
+  "origins": {
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.554280953236847,
+        "distance_km": 9.582805354333567,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e73653f4e20cc69a4df3b711fb9a15603e45e67c547920e434e6d935a8f11455",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+      }
+    ],
+    "ChIJb_o7HiiMGGARUKu8uO7fGIQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.533976137638092,
+        "distance_km": 11.972484491766158,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "2c7510f29dd01d4e64109273436af2ea5d1fb8f33beae89e497e9840bed8695f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+      }
+    ],
+    "ChIJrWQOSKOMGGARINdTU-VzqoM": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJrWQOSKOMGGARINdTU-VzqoM",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.5641675499827482,
+        "distance_km": 5.236554871180861,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "5353b3a737b6533097b303793257a8d47d9530e2c9d14ca85500a6f9e749f891",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJrWQOSKOMGGARINdTU-VzqoM"
+      }
+    ],
+    "ChIJj6WgJUOLGGAR9sX0nsLtUWY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.5579999089241028,
+        "distance_km": 5.919548594385647,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "b684fc855e10e6748e4592a099875a3be94b7da901a1d64dd5ea4b0a4630fcba",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+      }
+    ],
+    "ChIJ______qJGGARHpd1TBA9uZ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.5570442080497742,
+        "distance_km": 4.987412675461347,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+      }
+    ],
+    "ChIJHeBCIOyMGGAR7BktETlUP_w": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.5518276691436768,
+        "distance_km": 6.36051515508925,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "4abf1864ab2e6e69da7deca4d4fee582cd4c24c1caf499b3cca1d999d18d230f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJHeBCIOyMGGAR7BktETlUP_w"
+      }
+    ],
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJaRti5uOLGGARC_hz-hGQFz4",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.5448891520500183,
+        "distance_km": 10.742706116260786,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6fb388e13c373ff297a373d0599555ed0e0da158ff3ae212aec86bf8934ad4a1",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJaRti5uOLGGARC_hz-hGQFz4"
+      }
+    ],
+    "ChIJ5ZkFd-iLGGAR-68BpnWljj0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.5362115459189994,
+        "distance_km": 10.192344693410622,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "75b229b22d0508318e07ecb29f249d33d0cc16168cb7180d7c7477611d3ed697",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+      }
+    ],
+    "ChIJCaoz7S3zGGARrAnbz14VDcw": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.5262881517410278,
+        "distance_km": 3.4317197776906077,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+      }
+    ],
+    "ChIJEYFuvD2MGGARJ5YqbNhgqfU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.522383451461792,
+        "distance_km": 10.307369436998124,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "075cf7a261262c8ca4344630d6b23f98ed8b953a37eb0e39d1e3a63a20ce0ddc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+      }
+    ],
+    "ChIJqYnH4ViLGGARZLMJt16bjLU": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:59fd4a7a10345b7adc6823c5",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.5199894905090332,
+        "distance_km": 5.285594517601778,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7687b60e686905e6d2b93606fcd9e614ea791baefe986e9c695b23b908dd11e9",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJqYnH4ViLGGARZLMJt16bjLU"
+      }
+    ],
+    "ChIJD4KER5OMGGARGI6iNtBWYQE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJD4KER5OMGGARGI6iNtBWYQE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.5198825287888936,
+        "distance_km": 6.198494208928015,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "2f13c28c9d6b2abdd56804648a7fa9ce7a5ff7eb648b7c697b2df3c13a7e8620",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJD4KER5OMGGARGI6iNtBWYQE"
+      }
+    ],
+    "ChIJ-_gC6_aJGGARubvcJZXmvZk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ-_gC6_aJGGARubvcJZXmvZk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.5150803923606873,
+        "distance_km": 12.57662789627932,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "0c12dd85d4ee9ff4bd5c60c4d7734907018a82069106a531468617b026f77ab2",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ-_gC6_aJGGARubvcJZXmvZk"
+      }
+    ],
+    "ChIJsZTc61eLGGARG19EHRBJGjE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.5145401818639224,
+        "distance_km": 4.919180688146519,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d423ced5de30e00b38b13b6fd11d3186a632a52bd45abf81cc5551b8d22b40ec",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+      }
+    ],
+    "ChIJq89_SiOLGGARNfbenIKLrPU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.5095711654169071,
+        "distance_km": 6.989748594050662,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8e083d6092b67e5c651f50e87ead0f95febdacdbac70e2c5022dbfdf70a99a5d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJq89_SiOLGGARNfbenIKLrPU"
+      }
+    ],
+    "ChIJp39ByceLGGARrE8X0wVJIVk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.5079648494720459,
+        "distance_km": 10.864838811652398,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "668702379ac45a48a0d3588be687a1d0f4dc448bfbd1826c8ec25b9a4755129f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJp39ByceLGGARrE8X0wVJIVk"
+      }
+    ],
+    "ChIJq6radhaLGGAR2-mAGeshrHk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJq6radhaLGGAR2-mAGeshrHk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.5079524517059326,
+        "distance_km": 6.900991160521121,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "b70fb744468f0415473387c13514036042a66bc20fabfe066eb124504dcb510c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJq6radhaLGGAR2-mAGeshrHk"
+      }
+    ],
+    "ChIJtxODuv6LGGAR4xf7X3WayX0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJtxODuv6LGGAR4xf7X3WayX0",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 19,
+        "cosine": 0.5053623914718628,
+        "distance_km": 10.525252864836666,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "0c340de34b9a084059c46e71d96a7bf330418830d072f39538328d502610c5ff",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJtxODuv6LGGAR4xf7X3WayX0"
+      }
+    ],
+    "ChIJ91khboGMGGARBo42MbnQzg8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "traditional culture and modern art experiences in Tokyo",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.5051895681136598,
+        "distance_km": 7.022705530097316,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+      }
+    ]
+  },
+  "stops": [],
+  "phase_seconds": {
+    "embedding": 2.8658552000051714,
+    "retrieval": 25.30160249999608,
+    "resolution": 7.013939399999799
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.028715499996906146
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.011351999994076323
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.016550200001802295
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 2.8658198000048287
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-f10b8abbbb5c44f98fb83cea0047ffb6.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 25.301405500002147,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 25.300538799994683
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.0008353999946848489
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "3954d0a20ff24c718b9c98c07c1d5b5b",
+      "status_code": 200,
+      "request_id": "req_66600e29e0c04c719fce74a18b27a92d"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 8,
+    "total_tokens": 8
+  },
+  "elapsed_seconds": 35.300023800002236,
+  "new_canonical_ids": [
+    "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+    "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+    "ChIJ91khboGMGGARBo42MbnQzg8",
+    "ChIJCaoz7S3zGGARrAnbz14VDcw",
+    "ChIJD4KER5OMGGARGI6iNtBWYQE",
+    "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+    "ChIJHeBCIOyMGGAR7BktETlUP_w",
+    "ChIJ______qJGGARHpd1TBA9uZ8",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4",
+    "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+    "ChIJp39ByceLGGARrE8X0wVJIVk",
+    "ChIJq6radhaLGGAR2-mAGeshrHk",
+    "ChIJq89_SiOLGGARNfbenIKLrPU",
+    "ChIJqYnH4ViLGGARZLMJt16bjLU",
+    "ChIJrWQOSKOMGGARINdTU-VzqoM",
+    "ChIJsZTc61eLGGARG19EHRBJGjE",
+    "ChIJtxODuv6LGGAR4xf7X3WayX0"
+  ],
+  "mixed_source_ids": [
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+    "ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+  ],
+  "google_overlap_entities": 2,
+  "origin_associations": {
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJb_o7HiiMGGARUKu8uO7fGIQ": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJrWQOSKOMGGARINdTU-VzqoM": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJj6WgJUOLGGAR9sX0nsLtUWY": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ______qJGGARHpd1TBA9uZ8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJHeBCIOyMGGAR7BktETlUP_w": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ5ZkFd-iLGGAR-68BpnWljj0": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJCaoz7S3zGGARrAnbz14VDcw": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJEYFuvD2MGGARJ5YqbNhgqfU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJqYnH4ViLGGARZLMJt16bjLU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJD4KER5OMGGARGI6iNtBWYQE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ-_gC6_aJGGARubvcJZXmvZk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJsZTc61eLGGARG19EHRBJGjE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJq89_SiOLGGARNfbenIKLrPU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJp39ByceLGGARrE8X0wVJIVk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJq6radhaLGGAR2-mAGeshrHk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJtxODuv6LGGAR4xf7X3WayX0": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ91khboGMGGARBo42MbnQzg8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    }
+  },
+  "admission": {
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": "admitted",
+    "ChIJb_o7HiiMGGARUKu8uO7fGIQ": "admitted",
+    "ChIJrWQOSKOMGGARINdTU-VzqoM": "ineligible",
+    "ChIJj6WgJUOLGGAR9sX0nsLtUWY": "admitted",
+    "ChIJ______qJGGARHpd1TBA9uZ8": "admitted",
+    "ChIJHeBCIOyMGGAR7BktETlUP_w": "admitted",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": "ineligible",
+    "ChIJ5ZkFd-iLGGAR-68BpnWljj0": "admitted",
+    "ChIJCaoz7S3zGGARrAnbz14VDcw": "admitted",
+    "ChIJEYFuvD2MGGARJ5YqbNhgqfU": "admitted",
+    "ChIJqYnH4ViLGGARZLMJt16bjLU": "admitted",
+    "ChIJD4KER5OMGGARGI6iNtBWYQE": "admitted",
+    "ChIJ-_gC6_aJGGARubvcJZXmvZk": "admitted",
+    "ChIJsZTc61eLGGARG19EHRBJGjE": "admitted",
+    "ChIJq89_SiOLGGARNfbenIKLrPU": "admitted",
+    "ChIJp39ByceLGGARrE8X0wVJIVk": "admitted",
+    "ChIJq6radhaLGGAR2-mAGeshrHk": "admitted",
+    "ChIJtxODuv6LGGAR4xf7X3WayX0": "admitted",
+    "ChIJ91khboGMGGARBo42MbnQzg8": "admitted"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+      "ChIJ91khboGMGGARBo42MbnQzg8",
+      "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "ChIJD4KER5OMGGARGI6iNtBWYQE",
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+      "ChIJHeBCIOyMGGAR7BktETlUP_w",
+      "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+      "ChIJ______qJGGARHpd1TBA9uZ8",
+      "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+      "ChIJp39ByceLGGARrE8X0wVJIVk",
+      "ChIJq6radhaLGGAR2-mAGeshrHk",
+      "ChIJq89_SiOLGGARNfbenIKLrPU",
+      "ChIJqYnH4ViLGGARZLMJt16bjLU",
+      "ChIJsZTc61eLGGARG19EHRBJGjE",
+      "ChIJtxODuv6LGGAR4xf7X3WayX0"
+    ],
+    "enriched": [
+      "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+      "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+      "ChIJ91khboGMGGARBo42MbnQzg8",
+      "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "ChIJD4KER5OMGGARGI6iNtBWYQE",
+      "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+      "ChIJHeBCIOyMGGAR7BktETlUP_w",
+      "ChIJ______qJGGARHpd1TBA9uZ8",
+      "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+      "ChIJp39ByceLGGARrE8X0wVJIVk",
+      "ChIJq6radhaLGGAR2-mAGeshrHk",
+      "ChIJq89_SiOLGGARNfbenIKLrPU",
+      "ChIJqYnH4ViLGGARZLMJt16bjLU",
+      "ChIJsZTc61eLGGARG19EHRBJGjE",
+      "ChIJtxODuv6LGGAR4xf7X3WayX0"
+    ],
+    "supplied": [
+      "ChIJCaoz7S3zGGARrAnbz14VDcw"
+    ],
+    "scheduled": [
+      "ChIJCaoz7S3zGGARrAnbz14VDcw"
+    ],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {
+    "ChIJ-_gC6_aJGGARubvcJZXmvZk": "not_selected_by_supply",
+    "ChIJ5ZkFd-iLGGAR-68BpnWljj0": "not_selected_by_supply",
+    "ChIJ91khboGMGGARBo42MbnQzg8": "not_selected_by_supply",
+    "ChIJCaoz7S3zGGARrAnbz14VDcw": "scheduled",
+    "ChIJD4KER5OMGGARGI6iNtBWYQE": "not_selected_by_supply",
+    "ChIJEYFuvD2MGGARJ5YqbNhgqfU": "not_selected_by_supply",
+    "ChIJHeBCIOyMGGAR7BktETlUP_w": "not_selected_by_supply",
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": "enrichment_capacity_not_attempted",
+    "ChIJ______qJGGARHpd1TBA9uZ8": "not_selected_by_supply",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": "ineligible",
+    "ChIJb_o7HiiMGGARUKu8uO7fGIQ": "enrichment_capacity_not_attempted",
+    "ChIJj6WgJUOLGGAR9sX0nsLtUWY": "not_selected_by_supply",
+    "ChIJp39ByceLGGARrE8X0wVJIVk": "not_selected_by_supply",
+    "ChIJq6radhaLGGAR2-mAGeshrHk": "not_selected_by_supply",
+    "ChIJq89_SiOLGGARNfbenIKLrPU": "not_selected_by_supply",
+    "ChIJqYnH4ViLGGARZLMJt16bjLU": "not_selected_by_supply",
+    "ChIJrWQOSKOMGGARINdTU-VzqoM": "ineligible",
+    "ChIJsZTc61eLGGARG19EHRBJGjE": "not_selected_by_supply",
+    "ChIJtxODuv6LGGAR4xf7X3WayX0": "not_selected_by_supply"
+  }
+}

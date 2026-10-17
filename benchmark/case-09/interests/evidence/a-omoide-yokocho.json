@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+  "unresolved_subject_id": null,
+  "source_url": "https://shinjuku-omoide.com/history",
+  "source_reference": "turn25view0 lines 26-40",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The traders association traces the alley from postwar stalls to continuing yakitori and offal-grill eateries, with inherited small-shop construction and Showa food-and-social customs.",
+  "limitations": "This is living culinary and neighborhood culture; it is not equated with ancient or formally designated heritage.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

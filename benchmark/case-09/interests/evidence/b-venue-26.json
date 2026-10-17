@@ -1,0 +1,37 @@
+{
+  "schema_version": "rtpeval_independent_venue_evidence_1",
+  "source_kind": "independent_reviewed_description",
+  "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+  "unresolved_subject_id": null,
+  "venue_lookup_name": "WHAT MUSEUM",
+  "source_url": "https://www.gltjp.com/en/directory/item/12789/",
+  "source_reference": "turn32search1",
+  "acquired_at": "2026-10-16T22:39:59+00:00",
+  "acquisition_window": {
+    "started_at": "2026-10-16T22:35:55+00:00",
+    "completed_at": "2026-10-16T22:37:39+00:00"
+  },
+  "acquisition_time_note": "The acquired_at timestamp is the actual time this independent paraphrase was recorded. The web tool did not expose individual response UTC timestamps; the acquisition window bounds the source searches and page opens.",
+  "official_page_attempt": {
+    "url": "https://what.warehouseofart.org/",
+    "source_reference": "turn41view3",
+    "status": "failed",
+    "retried": false
+  },
+  "additional_inspected_descriptions": [
+    {
+      "url": "https://www.gltjp.com/en/directory/item/12789/",
+      "source_reference": "turn32search1",
+      "inspection": "Search-returned description explicitly marked supervised by WHAT MUSEUM; independently reviewed as a description, not represented as a successful official-site fetch."
+    }
+  ],
+  "factual_paraphrase": "The official homepage returned an error. A separately inspected search-returned description supervised by WHAT MUSEUM calls it a collectors' contemporary-art museum in Tennozu, exhibiting works held by the warehouse operator and architectural models.",
+  "limitations": [
+    "The available supervised description does not establish traditional-cultural content; the failed official page cannot resolve the gap.",
+    "Venue-level interest relevance only; no visit feasibility, opening-date guarantee or admission assumption is evaluated."
+  ],
+  "reviewer_ref": "/root/case09_relevance_b",
+  "reviewer_kind": "external_model",
+  "evidence_independence": "Packet names and addresses served only as lookup labels. No Planner judgments, query/rank/similarity signals, generation outputs, opportunity stages or scores were used.",
+  "copyrighted_source_text_quoted": false
+}

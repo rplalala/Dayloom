@@ -1,0 +1,1645 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "partial",
+  "queries": [
+    {
+      "query_id": "rag_1",
+      "text": "modern art",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ],
+      "version": "rag_query_plan_1"
+    },
+    {
+      "query_id": "rag_2",
+      "text": "traditional culture activities",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 40,
+  "unique_entities": 40,
+  "resolution_attempts": 30,
+  "details_sends": 29,
+  "fallback_sends": 2,
+  "embedding_sends": 1,
+  "retrieval_queries": 2,
+  "cache_hits": 0,
+  "entities": [
+    {
+      "entity_id": "google:ChIJaRti5uOLGGARC_hz-hGQFz4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJaRti5uOLGGARC_hz-hGQFz4"
+    },
+    {
+      "entity_id": "google:ChIJlxp9i8qMGGARQEGZLkm1yEk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJlxp9i8qMGGARQEGZLkm1yEk"
+    },
+    {
+      "entity_id": "google:ChIJg9lzn0buGGARH6EGJJqjolU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJg9lzn0buGGARH6EGJJqjolU"
+    },
+    {
+      "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ______qJGGARHpd1TBA9uZ8"
+    },
+    {
+      "entity_id": "google:ChIJS-Vy_-aLGGARUm5S7XdM-IU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJS-Vy_-aLGGARUm5S7XdM-IU"
+    },
+    {
+      "entity_id": "google:ChIJncHReR2TGGAROOdiIy2HZo4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJncHReR2TGGAROOdiIy2HZo4"
+    },
+    {
+      "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJq89_SiOLGGARNfbenIKLrPU"
+    },
+    {
+      "entity_id": "google:ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ3w9KoqiMGGARXgmu3VV0Hwo"
+    },
+    {
+      "entity_id": "google:ChIJv2a4gfaKGGARpAxOunPVW2s",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJv2a4gfaKGGARpAxOunPVW2s"
+    },
+    {
+      "entity_id": "google:ChIJAQBEZx6MGGARC13vKycf2XM",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJAQBEZx6MGGARC13vKycf2XM"
+    },
+    {
+      "entity_id": "google:ChIJWxa6o36LGGARMi9FMRrLnXk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJWxa6o36LGGARMi9FMRrLnXk"
+    },
+    {
+      "entity_id": "google:ChIJNfumrB2MGGARjelgyB96j-E",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJNfumrB2MGGARjelgyB96j-E"
+    },
+    {
+      "entity_id": "google:ChIJNbIBJBmMGGARq67I-_jGGgc",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJNbIBJBmMGGARq67I-_jGGgc"
+    },
+    {
+      "entity_id": "google:ChIJu8dltYOOGGARqNvbup6WlHE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJu8dltYOOGGARqNvbup6WlHE"
+    },
+    {
+      "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJp39ByceLGGARrE8X0wVJIVk"
+    },
+    {
+      "entity_id": "google:ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJXVCDcrmSGGARU7XlyOYMJ8o"
+    },
+    {
+      "entity_id": "google:ChIJ6bhmMdK6woAR7uV6gBViNng",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJn2fJGdWMGGARneZpR_piJjQ",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJn2fJGdWMGGARneZpR_piJjQ"
+    },
+    {
+      "entity_id": "google:ChIJmV0zZfCLGGARhAPwMqjj5rw",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJmV0zZfCLGGARhAPwMqjj5rw"
+    },
+    {
+      "entity_id": "google:ChIJVVVp6njtGGARI5_4uOC7qv8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJVVVp6njtGGARI5_4uOC7qv8"
+    },
+    {
+      "entity_id": "fsq:foursquare:4e746619483b0cf5ec442b22",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJMcSlsnWNGGAR0BaLRnZGof4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJMcSlsnWNGGAR0BaLRnZGof4"
+    },
+    {
+      "entity_id": "google:ChIJ7YQCr6OMGGARmChg6OlYo6c",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ7YQCr6OMGGARmChg6OlYo6c"
+    },
+    {
+      "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+      "status": "google_observation",
+      "canonical_id": "ChIJ91khboGMGGARBo42MbnQzg8"
+    },
+    {
+      "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJsZTc61eLGGARG19EHRBJGjE"
+    },
+    {
+      "entity_id": "google:ChIJIbEHUwBhGGARjqERID4UwZY",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJIbEHUwBhGGARjqERID4UwZY"
+    },
+    {
+      "entity_id": "google:ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+    },
+    {
+      "entity_id": "google:ChIJn_WVUgmJGGAReedYpzGvIU4",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJn_WVUgmJGGAReedYpzGvIU4"
+    },
+    {
+      "entity_id": "google:ChIJdT3M6imMGGARBqMDOwxy0y8",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJdT3M6imMGGARBqMDOwxy0y8"
+    },
+    {
+      "entity_id": "google:ChIJq6oaA4OMGGARWFlJPYwY9ws",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJq6oaA4OMGGARWFlJPYwY9ws"
+    },
+    {
+      "entity_id": "google:ChIJxQf0EiSMGGARVI9obnOHk0U",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJxQf0EiSMGGARVI9obnOHk0U"
+    },
+    {
+      "entity_id": "google:ChIJKWRGC3iNGGARBZ5Hv5rlmfg",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJseohrGmLGGARWx9gVUaRc7Y",
+      "status": "google_observation",
+      "canonical_id": "ChIJseohrGmLGGARWx9gVUaRc7Y"
+    },
+    {
+      "entity_id": "google:ChIJ2_DfrB2MGGARyPga0V7aw18",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+      "status": "google_observation",
+      "canonical_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+    },
+    {
+      "entity_id": "google:ChIJq6raua6MGGARwVoA8Xex2DI",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "fsq:foursquare:5224581b11d276abb49cb1dd",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJDUTl9KiMGGARPJ5OtbNlfDE",
+      "status": "entity_budget"
+    },
+    {
+      "entity_id": "google:ChIJP-vO9nuLGGARGJ2q8uryJUA",
+      "status": "google_observation",
+      "canonical_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA"
+    },
+    {
+      "entity_id": "google:ChIJFUO-WUfzGGARhzhX4px1Jsc",
+      "status": "entity_budget"
+    }
+  ],
+  "origins": {
+    "ChIJ91khboGMGGARBo42MbnQzg8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.26690703630447576,
+        "distance_km": 7.022705530097316,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+      }
+    ],
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.35566092597427756,
+        "distance_km": 9.582805354333567,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e73653f4e20cc69a4df3b711fb9a15603e45e67c547920e434e6d935a8f11455",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+      }
+    ],
+    "ChIJP-vO9nuLGGARGJ2q8uryJUA": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJP-vO9nuLGGARGJ2q8uryJUA",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.3546525624601512,
+        "distance_km": 7.013786053275136,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7318e805c9768e80c5eda17aead2af912803e28b64f984d15fb86f9bd5d77d99",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJP-vO9nuLGGARGJ2q8uryJUA"
+      }
+    ],
+    "ChIJseohrGmLGGARWx9gVUaRc7Y": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJseohrGmLGGARWx9gVUaRc7Y",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.3561672654052225,
+        "distance_km": 6.305903343100576,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e5a92d2f160020df586ffcc246821ac460bbec334643d6a0acf4d310a3f49f4a",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJseohrGmLGGARWx9gVUaRc7Y"
+      }
+    ],
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJaRti5uOLGGARC_hz-hGQFz4",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.3858281970024109,
+        "distance_km": 10.742706116260786,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6fb388e13c373ff297a373d0599555ed0e0da158ff3ae212aec86bf8934ad4a1",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJaRti5uOLGGARC_hz-hGQFz4"
+      }
+    ],
+    "ChIJlxp9i8qMGGARQEGZLkm1yEk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJlxp9i8qMGGARQEGZLkm1yEk",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.323316117426274,
+        "distance_km": 3.9211294258618543,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e3fa6e0b2c4c6318c98f9457726b0d0401645c93d2140d212ebd22717ff7a3d3",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJlxp9i8qMGGARQEGZLkm1yEk"
+      }
+    ],
+    "ChIJg9lzn0buGGARH6EGJJqjolU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJg9lzn0buGGARH6EGJJqjolU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.38107621669769287,
+        "distance_km": 7.040800388006883,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f5404e83f71544a8ad133b97a8befe2426c3e25283a31d614bf6551afb2816bf",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJg9lzn0buGGARH6EGJJqjolU"
+      }
+    ],
+    "ChIJ______qJGGARHpd1TBA9uZ8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.315419714723843,
+        "distance_km": 4.987412675461347,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+      }
+    ],
+    "ChIJS-Vy_-aLGGARUm5S7XdM-IU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJS-Vy_-aLGGARUm5S7XdM-IU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.3791569471359253,
+        "distance_km": 4.880754640642486,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6b78b95c2086372e71a91649b27da96e76b5a66ce82d92934656caefc3f8a542",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJS-Vy_-aLGGARUm5S7XdM-IU"
+      }
+    ],
+    "ChIJncHReR2TGGAROOdiIy2HZo4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJncHReR2TGGAROOdiIy2HZo4",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.29174516846268417,
+        "distance_km": 12.90595741603757,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "82a333a9ae04b1b3d56bc925eb06eb17a1b5f91ee3380e8fbd5d03dd19403651",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJncHReR2TGGAROOdiIy2HZo4"
+      }
+    ],
+    "ChIJq89_SiOLGGARNfbenIKLrPU": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.37636216737998596,
+        "distance_km": 6.989748594050662,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8e083d6092b67e5c651f50e87ead0f95febdacdbac70e2c5022dbfdf70a99a5d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJq89_SiOLGGARNfbenIKLrPU"
+      }
+    ],
+    "ChIJ3w9KoqiMGGARXgmu3VV0Hwo": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.29063575975468636,
+        "distance_km": 4.824420423767474,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "0ced224baef16d809b7930a19a98506df3489fa0b7f4e7b734f7b5e35c6bed73",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ3w9KoqiMGGARXgmu3VV0Hwo"
+      }
+    ],
+    "ChIJv2a4gfaKGGARpAxOunPVW2s": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJv2a4gfaKGGARpAxOunPVW2s",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.3740048408508301,
+        "distance_km": 9.430568729128384,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "85a33c10e5c024fe79f0af5c8ad4f973b1796f7c8d255c0e1475ccc6a19cb281",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJv2a4gfaKGGARpAxOunPVW2s"
+      }
+    ],
+    "ChIJAQBEZx6MGGARC13vKycf2XM": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJAQBEZx6MGGARC13vKycf2XM",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 5,
+        "cosine": 0.2877828903327655,
+        "distance_km": 11.272492304383352,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "521756564a11f58f1babe30103b185658229d8d7ab3bdbffb8bbd1fc4aa3a47d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJAQBEZx6MGGARC13vKycf2XM"
+      }
+    ],
+    "ChIJWxa6o36LGGARMi9FMRrLnXk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJWxa6o36LGGARMi9FMRrLnXk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.37270220355404704,
+        "distance_km": 7.061867567081166,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d1f21293bfe6fcadee59bf56b7294dba9aca0822e8cbf350a566ecb114a2a7df",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJWxa6o36LGGARMi9FMRrLnXk"
+      }
+    ],
+    "ChIJNfumrB2MGGARjelgyB96j-E": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJNfumrB2MGGARjelgyB96j-E",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.2845391800725017,
+        "distance_km": 11.168897040645366,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f6e76e500fff8d855c47a933cc19e5bde49a86ed60c52dee9862f24c4ca66c82",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJNfumrB2MGGARjelgyB96j-E"
+      }
+    ],
+    "ChIJNbIBJBmMGGARq67I-_jGGgc": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJNbIBJBmMGGARq67I-_jGGgc",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.36967230619953306,
+        "distance_km": 10.911438110304509,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "c5b7f497fe0a1868c2247c5bf51a3263ea8174aa277a060f6a5b322f9f999f6c",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJNbIBJBmMGGARq67I-_jGGgc"
+      }
+    ],
+    "ChIJu8dltYOOGGARqNvbup6WlHE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJu8dltYOOGGARqNvbup6WlHE",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.2844714183245398,
+        "distance_km": 12.340825057856907,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "e04cc5787770d63abd7a7e12732de62e92ec85f841f774b64472adaa15fe7b61",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJu8dltYOOGGARqNvbup6WlHE"
+      }
+    ],
+    "ChIJp39ByceLGGARrE8X0wVJIVk": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.3685879111289978,
+        "distance_km": 10.864838811652398,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "668702379ac45a48a0d3588be687a1d0f4dc448bfbd1826c8ec25b9a4755129f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJp39ByceLGGARrE8X0wVJIVk"
+      }
+    ],
+    "ChIJXVCDcrmSGGARU7XlyOYMJ8o": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.2811376238208332,
+        "distance_km": 9.494774782455249,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8a3506556575e213f0fb8999d0571b33cf57009df0fa08f2dcb7ba27e572b2b0",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJXVCDcrmSGGARU7XlyOYMJ8o"
+      }
+    ],
+    "ChIJn2fJGdWMGGARneZpR_piJjQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJn2fJGdWMGGARneZpR_piJjQ",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.2775912251959771,
+        "distance_km": 4.174660049590756,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "c980b99ebde0ce2b188f8d94df147ee3a51eaf5011d65d5ff4a64432d53da0c9",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJn2fJGdWMGGARneZpR_piJjQ"
+      }
+    ],
+    "ChIJmV0zZfCLGGARhAPwMqjj5rw": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJmV0zZfCLGGARhAPwMqjj5rw",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.36595352685174576,
+        "distance_km": 10.117504468958737,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "4eeaeef03b6bbe7d6d502e9aade9d00f2eed1da53c758f695d4ed7790e390d01",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJmV0zZfCLGGARhAPwMqjj5rw"
+      }
+    ],
+    "ChIJVVVp6njtGGARI5_4uOC7qv8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJVVVp6njtGGARI5_4uOC7qv8",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.2687572160733587,
+        "distance_km": 4.747831708921196,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "f303bac071b97203e10906c7af6b484c52db8e2a19fdec501eccd906b79813b4",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJVVVp6njtGGARI5_4uOC7qv8"
+      }
+    ],
+    "ChIJMcSlsnWNGGAR0BaLRnZGof4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJMcSlsnWNGGAR0BaLRnZGof4",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.2684533756049542,
+        "distance_km": 9.282605895848102,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a51d7f75323d33c5b65c5210ffa6791b642afb4874b70102cbdce05e64c82fd5",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJMcSlsnWNGGAR0BaLRnZGof4"
+      }
+    ],
+    "ChIJ7YQCr6OMGGARmChg6OlYo6c": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ7YQCr6OMGGARmChg6OlYo6c",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.3613440179023739,
+        "distance_km": 5.345793813356808,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "6931ffd70cb01b06ad4612a722679024905cc6796f5553c5e3938ffb4eb2473b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ7YQCr6OMGGARmChg6OlYo6c"
+      }
+    ],
+    "ChIJsZTc61eLGGARG19EHRBJGjE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.3609780097882175,
+        "distance_km": 4.919180688146519,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "d423ced5de30e00b38b13b6fd11d3186a632a52bd45abf81cc5551b8d22b40ec",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+      }
+    ],
+    "ChIJIbEHUwBhGGARjqERID4UwZY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJIbEHUwBhGGARjqERID4UwZY",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.26636829777141835,
+        "distance_km": 12.550268056188562,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7877f5809fc77308261d56b7b5f7d1cfba0df0e682b58bb3940f29cda713a888",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJIbEHUwBhGGARjqERID4UwZY"
+      }
+    ],
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ1d8x9UWLGGARlBR79HRq4eg",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.3602392458773116,
+        "distance_km": 5.663140857949786,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "b56d0542f11b87777a1735c7afa46bceb80bc1ae68a58bfb9ca71f9b2271c82b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+      }
+    ],
+    "ChIJn_WVUgmJGGAReedYpzGvIU4": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJn_WVUgmJGGAReedYpzGvIU4",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.26242519841044,
+        "distance_km": 13.507096205691145,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "91ecb6c3ef78b42fcbb7cfa1933f2b76252afd60b9544e90504d152e1c0baa13",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJn_WVUgmJGGAReedYpzGvIU4"
+      }
+    ],
+    "ChIJdT3M6imMGGARBqMDOwxy0y8": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJdT3M6imMGGARBqMDOwxy0y8",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.35708435093351243,
+        "distance_km": 11.944595360170766,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "55da4e1a9486b0588514b77c0a75b27d36e196059bb7fe81022605f534b8510b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJdT3M6imMGGARBqMDOwxy0y8"
+      }
+    ],
+    "ChIJq6oaA4OMGGARWFlJPYwY9ws": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJq6oaA4OMGGARWFlJPYwY9ws",
+        "query": {
+          "query_id": "rag_2",
+          "text": "traditional culture activities",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_2"
+          ],
+          "requirement_refs": [
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.26143768293408365,
+        "distance_km": 4.703549960132229,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "312d416cfde14b3d1da539eeb1dfc627236a9f02fa7ac906fa859cabe8bf096b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJq6oaA4OMGGARWFlJPYwY9ws"
+      }
+    ],
+    "ChIJxQf0EiSMGGARVI9obnOHk0U": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJxQf0EiSMGGARVI9obnOHk0U",
+        "query": {
+          "query_id": "rag_1",
+          "text": "modern art",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.3566824581216307,
+        "distance_km": 11.160425194836776,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a9aa09206c4507e82e535dbebd1033b322dd46a46069ccd51140bd0790740f17",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJxQf0EiSMGGARVI9obnOHk0U"
+      }
+    ]
+  },
+  "stops": [],
+  "phase_seconds": {
+    "embedding": 1.242313800001284,
+    "retrieval": 24.52665259999776,
+    "resolution": 11.032279999999446
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.05961170000227867
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.01139349999721162
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.035265599995909724
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 1.2422494000056759
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-9570ed1f197a4688ae05b9eed7e74ba7.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 23.722745300001407,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 23.722114999996847
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.0006001000001560897
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.8006276000014623,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.7978858999995282
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.002717899995332118
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "1b1a29dcd1d1492aa69b11a1cfa47277",
+      "status_code": 200,
+      "request_id": "req_1261a6b708f54563918aa1d9d303a361"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 5,
+    "total_tokens": 5
+  },
+  "elapsed_seconds": 36.9649270000009,
+  "new_canonical_ids": [
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+    "ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+    "ChIJ7YQCr6OMGGARmChg6OlYo6c",
+    "ChIJAQBEZx6MGGARC13vKycf2XM",
+    "ChIJIbEHUwBhGGARjqERID4UwZY",
+    "ChIJMcSlsnWNGGAR0BaLRnZGof4",
+    "ChIJNbIBJBmMGGARq67I-_jGGgc",
+    "ChIJNfumrB2MGGARjelgyB96j-E",
+    "ChIJS-Vy_-aLGGARUm5S7XdM-IU",
+    "ChIJVVVp6njtGGARI5_4uOC7qv8",
+    "ChIJWxa6o36LGGARMi9FMRrLnXk",
+    "ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+    "ChIJ______qJGGARHpd1TBA9uZ8",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4",
+    "ChIJdT3M6imMGGARBqMDOwxy0y8",
+    "ChIJg9lzn0buGGARH6EGJJqjolU",
+    "ChIJlxp9i8qMGGARQEGZLkm1yEk",
+    "ChIJmV0zZfCLGGARhAPwMqjj5rw",
+    "ChIJn2fJGdWMGGARneZpR_piJjQ",
+    "ChIJn_WVUgmJGGAReedYpzGvIU4",
+    "ChIJncHReR2TGGAROOdiIy2HZo4",
+    "ChIJp39ByceLGGARrE8X0wVJIVk",
+    "ChIJq6oaA4OMGGARWFlJPYwY9ws",
+    "ChIJq89_SiOLGGARNfbenIKLrPU",
+    "ChIJsZTc61eLGGARG19EHRBJGjE",
+    "ChIJu8dltYOOGGARqNvbup6WlHE",
+    "ChIJv2a4gfaKGGARpAxOunPVW2s",
+    "ChIJxQf0EiSMGGARVI9obnOHk0U"
+  ],
+  "mixed_source_ids": [
+    "ChIJ91khboGMGGARBo42MbnQzg8",
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+    "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+    "ChIJseohrGmLGGARWx9gVUaRc7Y"
+  ],
+  "google_overlap_entities": 4,
+  "origin_associations": {
+    "ChIJ91khboGMGGARBo42MbnQzg8": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJP-vO9nuLGGARGJ2q8uryJUA": {
+      "intent_ids": [
+        "discovery_1",
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJseohrGmLGGARWx9gVUaRc7Y": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJlxp9i8qMGGARQEGZLkm1yEk": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJg9lzn0buGGARH6EGJJqjolU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ______qJGGARHpd1TBA9uZ8": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJS-Vy_-aLGGARUm5S7XdM-IU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJncHReR2TGGAROOdiIy2HZo4": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJq89_SiOLGGARNfbenIKLrPU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJ3w9KoqiMGGARXgmu3VV0Hwo": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJv2a4gfaKGGARpAxOunPVW2s": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJAQBEZx6MGGARC13vKycf2XM": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJWxa6o36LGGARMi9FMRrLnXk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJNfumrB2MGGARjelgyB96j-E": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJNbIBJBmMGGARq67I-_jGGgc": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJu8dltYOOGGARqNvbup6WlHE": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJp39ByceLGGARrE8X0wVJIVk": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJXVCDcrmSGGARU7XlyOYMJ8o": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJn2fJGdWMGGARneZpR_piJjQ": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJmV0zZfCLGGARhAPwMqjj5rw": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJVVVp6njtGGARI5_4uOC7qv8": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJMcSlsnWNGGAR0BaLRnZGof4": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJ7YQCr6OMGGARmChg6OlYo6c": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJsZTc61eLGGARG19EHRBJGjE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJIbEHUwBhGGARjqERID4UwZY": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJn_WVUgmJGGAReedYpzGvIU4": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJdT3M6imMGGARBqMDOwxy0y8": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    },
+    "ChIJq6oaA4OMGGARWFlJPYwY9ws": {
+      "intent_ids": [
+        "discovery_2"
+      ],
+      "requirement_refs": [
+        "semantic_2"
+      ]
+    },
+    "ChIJxQf0EiSMGGARVI9obnOHk0U": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1"
+      ]
+    }
+  },
+  "admission": {
+    "ChIJ91khboGMGGARBo42MbnQzg8": "admitted",
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": "capacity",
+    "ChIJP-vO9nuLGGARGJ2q8uryJUA": "capacity",
+    "ChIJseohrGmLGGARWx9gVUaRc7Y": "admitted",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": "ineligible",
+    "ChIJlxp9i8qMGGARQEGZLkm1yEk": "admitted",
+    "ChIJg9lzn0buGGARH6EGJJqjolU": "admitted",
+    "ChIJ______qJGGARHpd1TBA9uZ8": "admitted",
+    "ChIJS-Vy_-aLGGARUm5S7XdM-IU": "ineligible",
+    "ChIJncHReR2TGGAROOdiIy2HZo4": "admitted",
+    "ChIJq89_SiOLGGARNfbenIKLrPU": "capacity",
+    "ChIJ3w9KoqiMGGARXgmu3VV0Hwo": "admitted",
+    "ChIJv2a4gfaKGGARpAxOunPVW2s": "capacity",
+    "ChIJAQBEZx6MGGARC13vKycf2XM": "admitted",
+    "ChIJWxa6o36LGGARMi9FMRrLnXk": "admitted",
+    "ChIJNfumrB2MGGARjelgyB96j-E": "admitted",
+    "ChIJNbIBJBmMGGARq67I-_jGGgc": "capacity",
+    "ChIJu8dltYOOGGARqNvbup6WlHE": "admitted",
+    "ChIJp39ByceLGGARrE8X0wVJIVk": "capacity",
+    "ChIJXVCDcrmSGGARU7XlyOYMJ8o": "admitted",
+    "ChIJn2fJGdWMGGARneZpR_piJjQ": "admitted",
+    "ChIJmV0zZfCLGGARhAPwMqjj5rw": "capacity",
+    "ChIJVVVp6njtGGARI5_4uOC7qv8": "admitted",
+    "ChIJMcSlsnWNGGAR0BaLRnZGof4": "admitted",
+    "ChIJ7YQCr6OMGGARmChg6OlYo6c": "admitted",
+    "ChIJsZTc61eLGGARG19EHRBJGjE": "admitted",
+    "ChIJIbEHUwBhGGARjqERID4UwZY": "admitted",
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg": "admitted",
+    "ChIJn_WVUgmJGGAReedYpzGvIU4": "admitted",
+    "ChIJdT3M6imMGGARBqMDOwxy0y8": "capacity",
+    "ChIJq6oaA4OMGGARWFlJPYwY9ws": "admitted",
+    "ChIJxQf0EiSMGGARVI9obnOHk0U": "admitted"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+      "ChIJ7YQCr6OMGGARmChg6OlYo6c",
+      "ChIJ91khboGMGGARBo42MbnQzg8",
+      "ChIJAQBEZx6MGGARC13vKycf2XM",
+      "ChIJIbEHUwBhGGARjqERID4UwZY",
+      "ChIJMcSlsnWNGGAR0BaLRnZGof4",
+      "ChIJNfumrB2MGGARjelgyB96j-E",
+      "ChIJVVVp6njtGGARI5_4uOC7qv8",
+      "ChIJWxa6o36LGGARMi9FMRrLnXk",
+      "ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+      "ChIJ______qJGGARHpd1TBA9uZ8",
+      "ChIJg9lzn0buGGARH6EGJJqjolU",
+      "ChIJlxp9i8qMGGARQEGZLkm1yEk",
+      "ChIJn2fJGdWMGGARneZpR_piJjQ",
+      "ChIJn_WVUgmJGGAReedYpzGvIU4",
+      "ChIJncHReR2TGGAROOdiIy2HZo4",
+      "ChIJq6oaA4OMGGARWFlJPYwY9ws",
+      "ChIJsZTc61eLGGARG19EHRBJGjE",
+      "ChIJseohrGmLGGARWx9gVUaRc7Y",
+      "ChIJu8dltYOOGGARqNvbup6WlHE",
+      "ChIJxQf0EiSMGGARVI9obnOHk0U"
+    ],
+    "enriched": [
+      "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+      "ChIJ7YQCr6OMGGARmChg6OlYo6c",
+      "ChIJAQBEZx6MGGARC13vKycf2XM",
+      "ChIJIbEHUwBhGGARjqERID4UwZY",
+      "ChIJMcSlsnWNGGAR0BaLRnZGof4",
+      "ChIJNfumrB2MGGARjelgyB96j-E",
+      "ChIJVVVp6njtGGARI5_4uOC7qv8",
+      "ChIJWxa6o36LGGARMi9FMRrLnXk",
+      "ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+      "ChIJ______qJGGARHpd1TBA9uZ8",
+      "ChIJg9lzn0buGGARH6EGJJqjolU",
+      "ChIJlxp9i8qMGGARQEGZLkm1yEk",
+      "ChIJn2fJGdWMGGARneZpR_piJjQ",
+      "ChIJn_WVUgmJGGAReedYpzGvIU4",
+      "ChIJncHReR2TGGAROOdiIy2HZo4",
+      "ChIJq6oaA4OMGGARWFlJPYwY9ws",
+      "ChIJsZTc61eLGGARG19EHRBJGjE",
+      "ChIJu8dltYOOGGARqNvbup6WlHE",
+      "ChIJxQf0EiSMGGARVI9obnOHk0U"
+    ],
+    "supplied": [
+      "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+    ],
+    "scheduled": [],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg": "supplied_not_scheduled",
+    "ChIJ3w9KoqiMGGARXgmu3VV0Hwo": "not_selected_by_supply",
+    "ChIJ7YQCr6OMGGARmChg6OlYo6c": "not_selected_by_supply",
+    "ChIJ91khboGMGGARBo42MbnQzg8": "enrichment_capacity_not_attempted",
+    "ChIJAQBEZx6MGGARC13vKycf2XM": "not_selected_by_supply",
+    "ChIJIbEHUwBhGGARjqERID4UwZY": "not_selected_by_supply",
+    "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": "capacity",
+    "ChIJMcSlsnWNGGAR0BaLRnZGof4": "not_selected_by_supply",
+    "ChIJNbIBJBmMGGARq67I-_jGGgc": "capacity",
+    "ChIJNfumrB2MGGARjelgyB96j-E": "not_selected_by_supply",
+    "ChIJP-vO9nuLGGARGJ2q8uryJUA": "capacity",
+    "ChIJS-Vy_-aLGGARUm5S7XdM-IU": "ineligible",
+    "ChIJVVVp6njtGGARI5_4uOC7qv8": "not_selected_by_supply",
+    "ChIJWxa6o36LGGARMi9FMRrLnXk": "not_selected_by_supply",
+    "ChIJXVCDcrmSGGARU7XlyOYMJ8o": "not_selected_by_supply",
+    "ChIJ______qJGGARHpd1TBA9uZ8": "not_selected_by_supply",
+    "ChIJaRti5uOLGGARC_hz-hGQFz4": "ineligible",
+    "ChIJdT3M6imMGGARBqMDOwxy0y8": "capacity",
+    "ChIJg9lzn0buGGARH6EGJJqjolU": "not_selected_by_supply",
+    "ChIJlxp9i8qMGGARQEGZLkm1yEk": "not_selected_by_supply",
+    "ChIJmV0zZfCLGGARhAPwMqjj5rw": "capacity",
+    "ChIJn2fJGdWMGGARneZpR_piJjQ": "not_selected_by_supply",
+    "ChIJn_WVUgmJGGAReedYpzGvIU4": "not_selected_by_supply",
+    "ChIJncHReR2TGGAROOdiIy2HZo4": "not_selected_by_supply",
+    "ChIJp39ByceLGGARrE8X0wVJIVk": "capacity",
+    "ChIJq6oaA4OMGGARWFlJPYwY9ws": "not_selected_by_supply",
+    "ChIJq89_SiOLGGARNfbenIKLrPU": "capacity",
+    "ChIJsZTc61eLGGARG19EHRBJGjE": "not_selected_by_supply",
+    "ChIJseohrGmLGGARWx9gVUaRc7Y": "enrichment_capacity_not_attempted",
+    "ChIJu8dltYOOGGARqNvbup6WlHE": "not_selected_by_supply",
+    "ChIJv2a4gfaKGGARpAxOunPVW2s": "capacity",
+    "ChIJxQf0EiSMGGARVI9obnOHk0U": "not_selected_by_supply"
+  }
+}
