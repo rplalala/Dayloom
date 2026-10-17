@@ -16,8 +16,8 @@ from backend.tests.versions.v3.test_repair import Model, Routes, context, edit
 from backend.tests.versions.v3.test_validation import DAY, activity, draft
 
 
-def counted_context(count):
-    interpretation = counted_draft(count, day=str(DAY))
+def counted_context(count, *, mode="exact"):
+    interpretation = counted_draft(count, day=str(DAY), mode=mode)
     text = interpretation.semantic_requirements[0].source_refs[0].quote
     request = PlanningRequest(
         destination="Fixture",
@@ -36,6 +36,29 @@ def test_satisfied_one_visit_is_not_a_default_two_visit_repair_target():
     report = assess(draft([activity()]), ctx)
     assert next(f for f in report.findings if f.check == "daily_visit_count").status == "PASS"
     assert not any(f.check == "coverage" and f.status == "NEEDS_REVIEW" for f in report.findings)
+
+
+@pytest.mark.parametrize("count,penalty", [(3, 0), (4, 40)])
+def test_hard_minimum_limits_the_soft_objective_without_becoming_a_maximum(count, penalty):
+    ctx = counted_context(3, mode="minimum")
+    items = [
+        activity(str(i), str(i), f"{9 + i * 2:02}:00", f"{10 + i * 2:02}:00") for i in range(count)
+    ]
+    report = assess(
+        draft(items),
+        ctx.model_copy(
+            update={
+                "original_supply_ids": tuple(str(i) for i in range(count)),
+                "places": tuple(
+                    ctx.places[0].model_copy(update={"place_id": str(i)}) for i in range(count)
+                ),
+            }
+        ),
+    )
+    assert next(f for f in report.findings if f.check == "daily_visit_count").status == "PASS"
+    pace = next(f for f in report.findings if f.check == "soft_pace")
+    assert pace.magnitude == penalty
+    assert pace.adopted_evidence["zero_counts"] == (3,)
 
 
 def test_surplus_visit_can_be_deleted_to_satisfy_exact_one():

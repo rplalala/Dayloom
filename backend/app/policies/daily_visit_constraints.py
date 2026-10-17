@@ -1,6 +1,7 @@
 """Source-bound daily occurrence counts; no parsing of user prose or provider calls."""
 
 from backend.app.policies.visit_multiplicity import is_primary_visit
+from backend.app.schemas.generation_diagnostics import DailyVisitAssessment
 from backend.app.schemas.interpreted_requirements import (
     ClarificationRequired,
     DailyPace,
@@ -162,44 +163,44 @@ def assess_daily_visits(itinerary, contract, assessments=()):
             )
         )
         rows.append(
-            {
-                "constraint_id": rule.constraint_id,
-                "date": rule.date,
-                "count": rule.count,
-                "mode": rule.mode,
-                "strength": rule.strength,
-                "lower": lower,
-                "upper": upper,
-                "status": status,
-                "activity_ids": confirmed,
-                "potential_activity_ids": potential,
-                "requirement_ids": rule.requirement_refs,
-                "source_refs": tuple(s.model_dump_json() for s in rule.source_refs),
-            }
+            DailyVisitAssessment(
+                constraint_id=rule.constraint_id,
+                date=rule.date,
+                count=rule.count,
+                mode=rule.mode,
+                strength=rule.strength,
+                lower=lower,
+                upper=upper,
+                status=status,
+                activity_ids=confirmed,
+                potential_activity_ids=potential,
+                requirement_ids=rule.requirement_refs,
+                source_refs=tuple(s.model_dump_json() for s in rule.source_refs),
+            )
         )
     return tuple(rows)
 
 
 def protect_daily_visits(original, proposed, contract, assessments=()):
-    before = {r["constraint_id"]: r for r in assess_daily_visits(original, contract, assessments)}
+    before = {r.constraint_id: r for r in assess_daily_visits(original, contract, assessments)}
     for after in assess_daily_visits(proposed, contract, assessments):
-        old = before[after["constraint_id"]]
-        if after["strength"] != "hard":
+        old = before[after.constraint_id]
+        if after.strength != "hard":
             continue
-        if old["status"] == "PASS" and after["status"] != "PASS":
+        if old.status == "PASS" and after.status != "PASS":
             raise ValueError("Satisfied daily visit constraint regressed")
-        if old["status"] == "UNKNOWN" and after["status"] == "FAIL":
+        if old.status == "UNKNOWN" and after.status == "FAIL":
             raise ValueError("Uncertain daily visit constraint became violated")
-        if old["status"] == "FAIL":
+        if old.status == "FAIL":
 
             def debt(row):
                 return max(
                     0,
-                    row["lower"] - row["count"] if row["mode"] == "exact" else 0,
-                    row["count"] - row["upper"],
+                    row.lower - row.count if row.mode == "exact" else 0,
+                    row.count - row.upper,
                 )
 
-            if after["status"] == "UNKNOWN" or debt(after) > debt(old):
+            if after.status == "UNKNOWN" or debt(after) > debt(old):
                 raise ValueError("Daily visit constraint worsened or became uncertain")
 
 
@@ -211,4 +212,15 @@ def hard_exact_count(contract, day):
             if r.date == day and r.mode == "exact" and r.strength == "hard"
         ),
         None,
+    )
+
+
+def hard_count_floor(contract, day):
+    return max(
+        (
+            r.count
+            for r in getattr(contract, "daily_visit_constraints", None) or ()
+            if r.date == day and r.strength == "hard"
+        ),
+        default=0,
     )

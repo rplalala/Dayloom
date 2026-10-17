@@ -13,8 +13,6 @@ from pydantic import BaseModel, ValidationError
 
 from backend.app.evidence.experience_models import ExperienceProfileDraft
 from backend.app.llm.azure_foundry.dto import (
-    FoundryCurrentInterpretationDTO,
-    FoundryDatedInterpretationDTO,
     FoundryExperienceProfileDTO,
     FoundryInterpretationDTO,
     FoundryItineraryDTO,
@@ -26,6 +24,10 @@ from backend.app.llm.azure_foundry.mapping import (
     map_foundry_itinerary,
 )
 from backend.app.llm.azure_foundry.provider_diagnostics import failure_category, normalize
+from backend.app.llm.azure_foundry.requirement_profiles import (
+    CURRENT_REQUIREMENT_PROFILE,
+    requirement_profile,
+)
 from backend.app.llm.client import StructuredModelT, StructuredOutputError
 from backend.app.llm.reference_transport import (
     primary_references,
@@ -41,19 +43,25 @@ from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.model_references import INSTRUCTION
 
 
-def requirement_wire_format(*, current=False, indexed=False, dated=False):
+def requirement_wire_format(*, current=False, indexed=False, dated=False, profile=None):
     """Static DTO schema using the documented Azure Responses subset."""
-    schema = (
-        FoundryDatedInterpretationDTO
+    profile = profile or requirement_profile(
+        "preference_draft_15"
         if dated
-        else FoundryCurrentInterpretationDTO
+        else "preference_draft_14"
+        if indexed
+        else "preference_draft_13"
         if current
-        else FoundryInterpretationDTO
-    ).model_json_schema()
-    if current:
-        from backend.app.llm.azure_foundry.requirement_wire import current_schema
+        else "preference_draft_12"
+    )
+    schema = profile.dto.model_json_schema()
+    if profile.source_type is not None:
+        from backend.app.llm.azure_foundry.requirement_wire import (
+            IndexedSourceSpans,
+            current_schema,
+        )
 
-        schema = current_schema(schema, indexed=indexed)
+        schema = current_schema(schema, indexed=profile.source_type is IndexedSourceSpans)
 
     def enums(node):
         if isinstance(node, dict):
@@ -69,13 +77,7 @@ def requirement_wire_format(*, current=False, indexed=False, dated=False):
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "PreferenceDraftV15"
-            if dated
-            else "PreferenceDraftV14"
-            if indexed
-            else "PreferenceDraftV13"
-            if current
-            else "PreferenceDraftV10",
+            "name": profile.schema_name,
             "strict": True,
             "schema": schema,
         },
@@ -152,7 +154,7 @@ class AzureFoundryStructuredLLMClient:
             "deployment": deployment,
             "api": "responses/v1",
             "max_retries": 0,
-            "contract": "preference_draft_15",
+            "contract": CURRENT_REQUIREMENT_PROFILE,
         }
         transport_options = {}
         if http_client is not None:
@@ -213,10 +215,6 @@ class AzureFoundryStructuredLLMClient:
     async def _interpret(self, system_prompt, user_prompt):
         from backend.app.llm.azure_foundry.requirement_wire import (
             IndexedSourceSpans,
-            SourceSpans,
-            current_prompt,
-            dated_prompt,
-            indexed_prompt,
             planning_envelope,
             restore_current,
         )
@@ -227,51 +225,32 @@ class AzureFoundryStructuredLLMClient:
             # Frozen response readers select the historical contract explicitly.
             envelope = None
         spans = None
-        contract_version = self._requirement_config.get("contract", "preference_draft_15")
-        dated = envelope is not None and contract_version == "preference_draft_15"
-        indexed = envelope is not None and contract_version in {
-            "preference_draft_14",
-            "preference_draft_15",
-        }
+        profile = requirement_profile(
+            self._requirement_config.get("contract", CURRENT_REQUIREMENT_PROFILE)
+            if envelope is not None
+            else "preference_draft_12"
+        )
+        indexed = profile.source_type is IndexedSourceSpans
         source_request_sha256 = None
         if envelope is not None:
-            span_type = IndexedSourceSpans if indexed else SourceSpans
-            spans = span_type(user_prompt, envelope["additional_preferences"])
+            spans = profile.source_type(user_prompt, envelope["additional_preferences"])
             if indexed:
                 source_request_sha256 = spans.request_sha256
             source_payload = {**envelope, "source_spans": spans.inventory()}
             user_prompt = (
                 json.dumps(source_payload, ensure_ascii=False, separators=(",", ":"))
-                if dated
+                if profile.compact_json
                 else json.dumps(source_payload)
             )
-            system_prompt = (
-                dated_prompt(system_prompt)
-                if dated
-                else indexed_prompt(system_prompt)
-                if indexed
-                else current_prompt(system_prompt)
-            )
-        wire = requirement_wire_format(current=envelope is not None, indexed=indexed, dated=dated)
+            system_prompt = profile.project_prompt(system_prompt)
+        wire = requirement_wire_format(profile=profile)
         base = {
             "request_id": digest(user_prompt),
             "prompt_hash": digest(system_prompt),
             "schema_hash": digest(wire),
             "config_hash": digest(self._requirement_config),
-            "prompt_version": "preference_prompt_22"
-            if dated
-            else "preference_prompt_21"
-            if indexed
-            else "preference_prompt_20"
-            if envelope is not None
-            else "preference_prompt_19",
-            "schema_version": "preference_draft_15"
-            if dated
-            else "preference_draft_14"
-            if indexed
-            else "preference_draft_13"
-            if envelope is not None
-            else "preference_draft_12",
+            "prompt_version": profile.prompt_version,
+            "schema_version": profile.schema_version,
             "config": self._requirement_config,
         }
         if indexed:
@@ -369,13 +348,7 @@ class AzureFoundryStructuredLLMClient:
             stage = "transport_dto"
             if envelope is not None:
                 payload = restore_current(payload, spans, request_sha256=source_request_sha256)
-            dto = (
-                FoundryDatedInterpretationDTO
-                if dated
-                else FoundryCurrentInterpretationDTO
-                if envelope is not None
-                else FoundryInterpretationDTO
-            ).model_validate(payload)
+            dto = profile.dto.model_validate(payload)
             stage = "draft_domain"
             draft = _FOUNDRY_BINDINGS[InterpretationDraft].to_domain(dto)
             draft._diagnostic_call_id = call_id

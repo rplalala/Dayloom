@@ -413,7 +413,8 @@ class V3PostPrimary:
         self.owner.phase = "repair"
         # Reuse existing intents only when a shortage authorizes additions.
         coverage_target = scope is not None and any(
-            f.check in {"coverage", "soft_pace"} and f.finding_id in scope.target_ids
+            f.check in {"coverage", "soft_pace", "daily_visit_count"}
+            and f.finding_id in scope.target_ids
             for f in original_report.findings
         )
         intent_ids = (
@@ -496,6 +497,7 @@ class V3PostPrimary:
         validate_itinerary_dates(context.contract.requirements, final, context.window)
         final_context = context.model_copy(
             update={
+                "places": tuple(places.values()),
                 "semantic_assessments": repair.selected_semantic_assessments
                 if repair is not None and repair.selected_semantic_assessments is not None
                 else context.semantic_assessments,

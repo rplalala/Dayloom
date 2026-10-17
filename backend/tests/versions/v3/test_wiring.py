@@ -264,7 +264,17 @@ def test_quantity_yaml_default_repairs_sparse_days_without_expanding_permissions
     assert all(final[aid] == activity for aid, activity in original.items())
 
 
-def test_legal_identity_outside_original_supply_reaches_final_and_nearby():
+def test_legal_identity_outside_original_supply_reaches_final_and_nearby(monkeypatch):
+    from backend.app.versions.v3 import repair_transport
+
+    original_present = repair_transport.present_transfers
+    final_time_places = []
+
+    def present(*args, places=(), **kwargs):
+        final_time_places.extend(p.place_id for p in places)
+        return original_present(*args, places=places, **kwargs)
+
+    monkeypatch.setattr(repair_transport, "present_transfers", present)
     result, model, places, _ = asyncio.run(
         execute(Model(primary(False), "add"), places=ManyPlaces(), quantity_review_enabled=True)
     )
@@ -272,6 +282,7 @@ def test_legal_identity_outside_original_supply_reaches_final_and_nearby():
     assert repair.status == "ACCEPTED_PARTIAL", repair.reason
     added = set(repair.final_place_ids) - set(result.planning_supply.selected_place_ids)
     assert len(added) == 1
+    assert added <= set(final_time_places)
     assert added <= set(result.v3.final_identity_ids)
     assert added <= set(result.output_role_summary.scheduled_place_ids)
     assert added <= {a["place_id"] for a in result.nearby_diagnostics["anchors"]}

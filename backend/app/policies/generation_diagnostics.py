@@ -146,12 +146,12 @@ def observe_generation(
     issues += tuple(
         {
             "reason": "daily_visit_count_unmet",
-            "date": str(r["date"]),
-            "requirement_ids": r["requirement_ids"],
-            "status": r["status"],
+            "date": str(r.date),
+            "requirement_ids": r.requirement_ids,
+            "status": r.status,
         }
         for r in daily_counts
-        if r["strength"] == "hard" and r["status"] != "PASS"
+        if r.strength == "hard" and r.status != "PASS"
     )
     return GenerationDiagnostics(
         daily_visit_counts=daily_counts

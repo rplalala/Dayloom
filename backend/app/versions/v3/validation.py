@@ -8,6 +8,7 @@ from backend.app.evidence.models import PlaceEvidence, RouteEvidenceBundle
 from backend.app.policies.generation_diagnostics import observe_generation
 from backend.app.policies.itinerary_output import validate_output_sources
 from backend.app.policies.poi_funnel import NamedPlaceResolution
+from backend.app.policies.schedule_time import elapsed_seconds
 from backend.app.policies.trip_dates import TripDateWindow, validate_itinerary_dates
 from backend.app.policies.visit_multiplicity import is_primary_visit
 from backend.app.schemas.interpreted_requirements import InterpretedTripRequirements
@@ -165,33 +166,33 @@ def validate_draft(
     from backend.app.policies.daily_visit_constraints import assess_daily_visits, hard_exact_count
 
     for count in assess_daily_visits(itinerary, contract, semantic_assessments):
-        status = count["status"]
+        status = count.status
         add(
             "daily_visit_count",
             "CONFIRMED"
-            if status == "FAIL" and count["strength"] == "hard"
+            if status == "FAIL" and count.strength == "hard"
             else "NEEDS_REVIEW"
             if status == "FAIL"
             else status,
             "daily_visit_count",
-            dates=(count["date"],),
-            activity_ids=(*count["activity_ids"], *count["potential_activity_ids"]),
-            requirement_ids=count["requirement_ids"],
-            evidence_refs=count["source_refs"],
+            dates=(count.date,),
+            activity_ids=(*count.activity_ids, *count.potential_activity_ids),
+            requirement_ids=count.requirement_ids,
+            evidence_refs=count.source_refs,
             magnitude=max(
                 0,
-                count["count"] - count["upper"],
-                count["lower"] - count["count"] if count["mode"] == "exact" else 0,
+                count.count - count.upper,
+                count.lower - count.count if count.mode == "exact" else 0,
             )
             if status != "UNKNOWN"
             else None,
             adopted_evidence={
-                "constraint_id": count["constraint_id"],
-                "count": count["count"],
-                "mode": count["mode"],
-                "lower": count["lower"],
-                "upper": count["upper"],
-                "strength": count["strength"],
+                "constraint_id": count.constraint_id,
+                "count": count.count,
+                "mode": count.mode,
+                "lower": count.lower,
+                "upper": count.upper,
+                "strength": count.strength,
             },
         )
     for row in diagnostics.days:
@@ -244,9 +245,9 @@ def validate_draft(
                 for fixed in schedule.fixed:
                     if a.start_time.utcoffset() is None:
                         continue  # Existing overlap checks preserve timezone uncertainty.
-                    overlap = (
-                        min(a.end_time, fixed.end) - max(a.start_time, fixed.start)
-                    ).total_seconds()
+                    overlap = elapsed_seconds(
+                        max(a.start_time, fixed.start), min(a.end_time, fixed.end)
+                    )
                     if overlap > 0:
                         add(
                             "semantic_requirements",
@@ -548,6 +549,11 @@ def validate_draft(
                 "count": row["count"],
                 "zero_counts": row["zero_counts"],
                 "policy": row["policy"],
+                **(
+                    {"hard_count_projection": row["hard_count_projection"]}
+                    if row.get("hard_count_projection")
+                    else {}
+                ),
                 "is_failure_constraint": False,
             },
         )

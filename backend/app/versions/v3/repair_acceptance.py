@@ -395,8 +395,10 @@ def severity(f, itinerary):
             return 0.0
         a, b = (items[i] for i in f.activity_ids)
         try:
+            from backend.app.policies.schedule_time import elapsed_seconds
+
             return max(
-                0, (min(a.end_time, b.end_time) - max(a.start_time, b.start_time)).total_seconds()
+                0, elapsed_seconds(max(a.start_time, b.start_time), min(a.end_time, b.end_time))
             )
         except TypeError:
             return None

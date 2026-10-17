@@ -16,7 +16,14 @@ from backend.app.services.preference_interpretation import (
 from backend.tests.request_fixtures import make_request
 
 
-def run_wire(answer, text="I like parks.", *, contract="preference_draft_13", observe_prompt=None):
+def run_wire(
+    answer,
+    text="I like parks.",
+    *,
+    contract="preference_draft_13",
+    observe_prompt=None,
+    observe_metadata=None,
+):
     class SavedChat:
         def bind(self, **kwargs):
             self.schema = kwargs
@@ -34,7 +41,10 @@ def run_wire(answer, text="I like parks.", *, contract="preference_draft_13", ob
     client._capture_secrets = ()
     client._requirement_config = {"contract": contract}
     client.requirement_capture = None
-    return asyncio.run(interpret_preferences(make_request(text), date(2026, 9, 11), client))
+    result = asyncio.run(interpret_preferences(make_request(text), date(2026, 9, 11), client))
+    if observe_metadata:
+        observe_metadata(client.last_call_metadata)
+    return result
 
 
 def wire_empty():

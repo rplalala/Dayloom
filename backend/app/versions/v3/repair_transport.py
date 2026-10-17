@@ -4,7 +4,7 @@ from datetime import datetime
 
 from backend.app.policies.itinerary_schedule import primary_journey_allowed
 from backend.app.policies.route_options import route_option
-from backend.app.policies.schedule_time import ScheduleTimeContext, elapsed_add
+from backend.app.policies.schedule_time import ScheduleTimeContext, elapsed_add, elapsed_seconds
 from backend.app.schemas.itinerary import Transfer
 from backend.app.versions.v3.repair_models import TransitionBinding
 from backend.app.versions.v3.repair_routes import acquire_transitions, route_rows
@@ -229,10 +229,10 @@ def present_transfers(
         )
         reserve = b.application_reserve_seconds
         if reservation:
-            reserve = (
-                datetime.fromisoformat(reservation["end"])
-                - datetime.fromisoformat(reservation["start"])
-            ).total_seconds()
+            reserve = elapsed_seconds(
+                datetime.fromisoformat(reservation["start"]),
+                datetime.fromisoformat(reservation["end"]),
+            )
         transfers.append(
             Transfer(
                 from_activity_id=left.activity_id,

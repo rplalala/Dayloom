@@ -16,10 +16,12 @@ from backend.tests.versions.v0.fakes import FakeStructuredLLMClient
 TEXT = "On 2026-09-12, plan exactly one sightseeing visit."
 
 
-def counted_draft(count=1, *, day="2026-09-12", strength="hard"):
+def counted_draft(count=1, *, day="2026-09-12", strength="hard", mode="exact"):
     text = TEXT.replace("2026-09-12", day)
     if count != 1:
         text = text.replace("one", str(count))
+    if mode == "minimum":
+        text = text.replace("exactly", "at least")
     data = empty_preference_draft().model_dump()
     data["semantic_requirements"] = [
         {
@@ -36,7 +38,7 @@ def counted_draft(count=1, *, day="2026-09-12", strength="hard"):
     data["daily_visit_constraints"] = [
         {
             "date": day,
-            "mode": "exact",
+            "mode": mode,
             "count": count,
             "strength": strength,
             "requirement_refs": ["daily"],

@@ -5,6 +5,7 @@ import json
 from pydantic import Field
 
 from backend.app.llm.reference_transport import repair_references
+from backend.app.policies.schedule_time import elapsed_seconds
 from backend.app.runtime.token_counting import count_tokens
 from backend.app.versions.v3.repair_models import RepairPatch, TargetDisposition
 from backend.app.versions.v3.repair_obligations import bind_visits
@@ -303,7 +304,7 @@ def build_repair_input(
         "requirements": context.contract.model_dump(mode="json"),
         "editable_activities": [
             a.model_dump(mode="json")
-            | {"duration_seconds": (a.end_time - a.start_time).total_seconds()}
+            | {"duration_seconds": elapsed_seconds(a.start_time, a.end_time)}
             for a in activities
             if a.activity_id in editable
         ],

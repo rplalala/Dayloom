@@ -5,7 +5,6 @@ from datetime import date
 
 import pytest
 
-from backend.app.llm.azure_foundry.client import AzureFoundryStructuredLLMClient
 from backend.app.policies.interpreted_requirements import canonicalize_requirements
 from backend.app.schemas.interpreted_requirements import ClarificationRequired, InterpretationDraft
 from backend.app.schemas.requirement_boundary import RequirementBoundaryError
@@ -111,18 +110,22 @@ def test_request_applicability_does_not_bypass_grounding(invalid):
         canonicalize_requirements(draft, make_request(text))
 
 
-def test_prompt_and_capture_version_wiring():
-    import inspect
-
-    from tools.validation.requirement_acceptance import boundary_identity
+@pytest.mark.parametrize("draft,prompt", [(12, 19), (13, 20), (14, 21), (15, 22)])
+def test_prompt_and_capture_version_wiring(draft, prompt):
+    from backend.tests.llm.azure_foundry.test_requirement_wire import run_wire, wire_empty
 
     assert (
         "Request applicability does not assert personal attributes"
         in PREFERENCE_INTERPRETATION_SYSTEM_PROMPT
     )
     assert "missing personal attribution" in PREFERENCE_INTERPRETATION_SYSTEM_PROMPT
-    assert "preference_prompt_22" in inspect.getsource(boundary_identity)
-    assert "preference_prompt_19" in inspect.getsource(AzureFoundryStructuredLLMClient._interpret)
+    payload = empty_preference_draft().model_dump(mode="json") if draft == 12 else wire_empty()
+    if draft == 15:
+        payload["daily_visit_constraints"] = []
+    captured = []
+    run_wire(payload, contract=f"preference_draft_{draft}", observe_metadata=captured.append)
+    assert captured[0]["prompt_version"] == f"preference_prompt_{prompt}"
+    assert captured[0]["schema_version"] == f"preference_draft_{draft}"
 
 
 def test_mother_hard_and_father_soft_remain_separate():

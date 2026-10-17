@@ -2,6 +2,7 @@
 
 from math import asin, cos, radians, sin, sqrt
 
+from backend.app.policies.schedule_time import elapsed_seconds
 from backend.app.versions.v3.repair_schedule import available_intervals, ordered_activities
 
 
@@ -158,7 +159,7 @@ def check_addition_layout(
             try:
                 gap = max(
                     (
-                        (end - start).total_seconds() / 60
+                        elapsed_seconds(start, end) / 60
                         for start, end in available_intervals(a, b, schedule)
                     ),
                     default=0,

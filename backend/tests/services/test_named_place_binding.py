@@ -61,6 +61,8 @@ class CorrespondenceModel:
     [
         ("Sagrada Família", "Basilica of the Sagrada Familia"),
         ("British Museum", "The British Museum"),
+        ("圣家堂", "Basilica of the Sagrada Familia"),
+        ("BM", "The British Museum"),
     ],
 )
 def test_supported_provider_name_variation_adopts_bound_identity(requested, provider):
@@ -83,6 +85,18 @@ def test_single_search_hit_does_not_override_unresolved_judgment():
     )
     assert result[0].resolved_place_id is None
     assert result[0].status == "insufficient_evidence"
+
+
+@pytest.mark.parametrize("name", ["Museum elsewhere", "Museum entrance", "Museum shop"])
+def test_supported_nonmatch_never_becomes_adoption_because_it_is_the_only_hit(name):
+    from backend.app.services.named_place_binding import NamedPlaceBinding
+
+    contract, places = binding_case("Museum", name)
+    result = asyncio.run(
+        NamedPlaceBinding(CorrespondenceModel("different_place")).resolve(contract, places)
+    )
+    assert result[0].matching_place_ids == ()
+    assert result[0].resolved_place_id is None
 
 
 def test_foreign_candidate_reference_is_a_system_failure_without_retry():
