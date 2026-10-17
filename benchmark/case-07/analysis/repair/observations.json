@@ -899,10 +899,38 @@
     }
   },
   "pair_quality": {
-    "status": "not_executed",
-    "reason": "Current authorization excludes scoring/re-scoring. Native paired report import/replay recomputes quality, so it was not invoked. Structural same-run differences are fully retained."
+    "status": "complete",
+    "report": "evaluation/v3-pair/report.json",
+    "native_content_hash": "c79de5cbe1d1d0f8fe1ab8fc42c9ef5b26938f44ac02a5eac486fc4a22d4d39f",
+    "stages": {
+      "draft": {
+        "score_0_100": 100.0,
+        "exact_fraction": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "reason": null
+      },
+      "final_primary": {
+        "score_0_100": 100.0,
+        "exact_fraction": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "reason": null
+      }
+    },
+    "overall_delta": {
+      "percentage_points": 0.0,
+      "exact_fraction": {
+        "numerator": 0,
+        "denominator": 1
+      }
+    },
+    "source_binding": "Current fresh paired access material over the original selected stages"
   },
   "interpretation": "No model Repair or schedule edit. Differences in separate V2/V3 generations do not establish a causal Repair benefit.",
-  "network_calls": 0,
-  "scoring_calls": 0
+  "paired_access_model_calls": 1,
+  "paired_access_google_calls": 0,
+  "native_pair_replay": "exact"
 }

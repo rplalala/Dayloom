@@ -133,14 +133,33 @@ Marina Barrage and Singapore Botanic Gardens, reducing primary visits from 5/4
 to 3/3. Retained activity fields are unchanged. Fort Canning Park remains, but
 the score alone does not establish that the requested interests were preserved.
 
-Independent offline paired reporting gives the draft a five-dimension score of
-94.285714 and overall score of 44.285714, versus 100/100 for the final. The draft
-has five route PASS and two UNKNOWN checks; the final has four route PASS. The
-UNKNOWN legs through Marina Barrage lack compatible saved observations and
-disappear when their visits are deleted. Their disappearance is not a verified
-route fix. The 55.714286-point overall difference includes a 50-point density
-change. Source-labelled reuse incurred zero new provider sends or reference
-spend; paired evidence remains partial.
+The [same-run paired report](evaluation/v3-pair/summary.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
+
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 44.285714 | 94.285714 | 50 | 9 / 0 / 0 | 2 |
+| Final primary | 100 | 100 | 0 | 6 / 0 / 0 | 0 |
+
+The paired overall change is **+55.714286 percentage points**.
+The 17 October 2026 refresh used no model calls, zero Google sends
+and zero retries, for **USD 0** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+Removed visits and denominator changes do not prove repair of their old facts.
+No eligible access gap was present, so no model assessment was needed; missing
+route observations remain UNKNOWN.
+
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+The two draft route UNKNOWNs through Marina Barrage lack compatible saved
+observations and disappear with deleted visits. Their disappearance is not a verified
+route fix. The overall difference includes a 50-point density change.
 
 ## Observed execution and reference consumption
 

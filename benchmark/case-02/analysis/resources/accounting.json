@@ -506,9 +506,25 @@
   ],
   "primary_reference_usd": "1.272032925",
   "opening_reference_usd": "0.00245605",
-  "pair_current_reference_usd": "0",
-  "known_priced_reference_subtotal_usd": "8.080836750",
+  "pair_current_reference_usd": "0.00105055",
+  "known_priced_reference_subtotal_usd": "8.081887300",
   "failed_v1_main_usage_and_charge": "unknown",
   "actual_invoice_total": null,
-  "external_Codex_usage_and_billing": "unavailable; separate from studied providers"
+  "external_Codex_usage_and_billing": "unavailable; separate from studied providers",
+  "paired_access_refresh": {
+    "scope": "Independent same-run paired access assessment; excluded from Planner attempt/model counters",
+    "model_sends": 1,
+    "google_sends": 0,
+    "retries": 0,
+    "input_tokens": 4165,
+    "output_tokens": 1060,
+    "total_tokens": 5225,
+    "reference_usd": "0.00105055",
+    "actual_invoice": null,
+    "source": {
+      "logical_path": "reassessment/access-final/execution/report.json",
+      "sha256": "f066de148afae7aa18131b7fb09e5d379e104c2d9c5903d94b16600453a7e59a",
+      "json_pointer": "/usage"
+    }
+  }
 }

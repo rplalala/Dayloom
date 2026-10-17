@@ -8,4 +8,4 @@ Independent same-run reporting gives the draft 94.285714 before density and 44.2
 
 See [changes.json](changes.json), [same-run paired summary](../../evaluation/v3-pair/summary.json), [paired evidence provenance](../../evaluation/v3-pair/provenance.json) and the complete [itinerary view](../../itinerary.md). Garden-content loss remains visible alongside density improvements. Independent relevance evidence is too sparse to establish complete interest preservation.
 
-Paired reporting used existing source-labelled observations with zero current sends/spend; its evidence status is partial. No new generation, controlled Repair experiment, Primary rescore or corpus scan was performed.
+The current paired report applies the common missing-hours access policy. There are zero eligible access gaps, so existing source-labelled observations require no new model/Google sends or reference spend; route evidence remains partial. No new generation, controlled Repair experiment, Primary rescore or corpus scan was performed.

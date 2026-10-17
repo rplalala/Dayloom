@@ -129,7 +129,7 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
-| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs, unavailable paired scoring and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
+| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -254,6 +254,16 @@ relevance presentation omits corpus sections unless coverage material or a profi
 is explicitly selected. The final-case handoff remains tracked in #138; no general
 directory-assembly command is implied. Source-labelled paired evidence reuse is
 available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
+
+The [paired contract](../docs/contracts/0005-quality-human-review.md#v3-pairs) owns
+the common missing-hours access policy for both V3 stages. A refresh updates the
+current paired view and its source mappings in place, while preserving original
+generation, primary scores, receipts and historical reports. Eligible model
+assessment requires covered execution authorization; ordinary offline report import
+does not call a service. Section-derived Repair views identify current same-run
+sources separately from preserved historical four-final sources. The
+[17 October refresh](../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+covers cases 01–07 and 09; case-09 still awaits final researcher acceptance.
 
 ## Layout
 

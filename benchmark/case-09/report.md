@@ -1,4 +1,4 @@
-# Case-09: Tokyo evaluation and offline analysis
+# Case-09: Tokyo evaluation and analysis
 
 The selected request covers Tokyo, Japan, **22–26 October 2026**, three adults and a
 JPY 300,000 whole-group trip budget. The [original request](../inputs/case-09.json)
@@ -9,7 +9,7 @@ preserve these boundaries.
 
 Batch `case-09-batch`, revision `1`, contains one first-dispatched generation per
 version, produced on source `b73c8eed09fafb6d54bee8684c5b2e7766515357`. Primary evaluation
-and the authorized offline analyses completed on **17 October 2026,
+and the authorized analyses completed on **17 October 2026,
 Australia/Sydney**. Native material admission passed; **researcher acceptance is
 pending**. Work is paused before that decision. The [material index](material-index.json)
 owns source hashes, publication mappings and shared-value expansion rules.
@@ -60,7 +60,8 @@ certified API opening hours; the two unresolved access judgments remain visible.
 | V2 generation | 1 | 83,799 | 6 | 90 | 2.800815285 |
 | V3 generation | 1 | 85,485 | 6 | 103 | 3.073493600 |
 | Primary evaluation | 1 | 41,833 | 2 | 79 | 1.646084475 |
-| Total | 5 | 315,365 | 20 | 343 | 9.919951025 |
+| Paired access refresh | 1 | 10,287 | 1 | 1 | 0.0019503 |
+| Total | 6 | 325,652 | 21 | 344 | 9.921901325 |
 
 Generation used USD 8.273866550 of its USD 30 reference allowance; primary used
 USD 1.646084475 of USD 10, with 77 Google sends and two model sends. There were no
@@ -148,31 +149,38 @@ primary activities establishes ten unchanged occurrences and one deletion:
 [Lossless stage patches](generation/v3/stages.json) retain every actual difference,
 including transfers and recommendations.
 
-Paired evidence is source-labelled reuse from primary evaluation and the selected
-generation, with **zero new provider/model sends**. It does not copy the primary
-model's missing-hours judgments or Planner judgments. The independent
-[same-run pair report](evaluation/v3-pair/report.json) is complete and exactly
-reproduced by native source replay.
+The [same-run paired report](evaluation/v3-pair/report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
 
-| API-only paired view | Overall / 100 | Auxiliary / 100 | Mean density deduction | Opening UNKNOWN | Route UNKNOWN |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| V3 draft | 83.7576 | 85.7576 | 2 | 6 | 1 |
-| V3 final primary | 88 | 88 | 0 | 6 | 0 |
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 92.848485 | 94.848485 | 2 | 10 / 0 / 1 | 1 |
+| Final primary | 98 | 98 | 0 | 9 / 0 / 1 | 0 |
 
-The observed +4.2424-point change includes removing one activity and one unresolved
-route check, plus eliminating the draft's 24 October density deduction. It does not
-prove that the deleted venue's original condition was resolved. The six unresolved
-opening checks persist in each stage. This API-only paired mask and evidence scope
-differ from primary scoring; **88 does not replace V3's primary 98**.
+The paired overall change is **+5.151515 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.0019503** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+Removed visits and denominator changes do not prove repair of their old facts.
 
-The consumed zero-send paired-acquisition attempt stopped once: its implementation
-stores edit provenance after correspondence review, then checks it against provenance
-rebuilt without that review. The closed failure receipt and exact diagnostic are
-retained; no retry or code change followed. A separate installed offline `pair report`
-used the saved evidence and independent correspondence review without that optional
-prepared-provenance argument. Native research readers reproduced that report exactly.
-The stopped acquisition cannot produce a completed `pair acquire export`; the
-source-bound research report and restored native closure provide the analysis handoff.
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+The ten surviving visits are unchanged. Deleting ART FRONT GALLERY and one
+unresolved route check, plus removing the draft density deduction, contributes to
+the paired difference. Tokyo Dome City remains the one access UNKNOWN in both stages.
+The primary V3 score remains 98.
+
+The original zero-send acquisition stopped on the reviewed edit-provenance replay
+defect; its failure receipt remains unchanged. The corrected tool validates reviewed
+provenance consistently. The current report is a fresh offline reconstruction using
+the original observations and newly bound access material; the stopped package was
+not resumed or retried.
 
 ## Attempt accountability and storage
 
@@ -190,8 +198,9 @@ or rate, enabling a shared-basis native cost comparison. Generation estimates re
 exactly USD 8.273866550. V2-minus-V1 uses 7,029 more tokens, 21 more HTTP sends and
 USD 0.405788660 more reference cost; V3-minus-V2 uses 1,686 more tokens, 13 more HTTP
 sends and USD 0.272678315 more reference cost. These are one-case descriptive
-differences. The whole generation/primary reference total remains **USD 9.919951025**;
-steps 7-9 add **USD 0** in service-reference cost and send no Google/model API requests.
+differences. Generation and primary retain reference **USD 9.919951025**. The
+current paired assessment adds USD 0.0019503; the combined reference total is
+**USD 9.921901325**. Google sends and retries for the refresh are zero.
 External Codex review billing remains unavailable.
 
 The private compact archive is the local identifier
@@ -213,7 +222,8 @@ native acquisition bundle.
 
 All submitted activity cost fields remain unspecified, so whole-trip affordability
 is unverified. Researcher automatic-case acceptance and blinded human review remain
-pending. Earlier cases and their evidence are unchanged.
+pending. Earlier raw evidence and historical acceptance decisions are preserved; their current
+paired presentations follow the shared authorized refresh.
 
 ## AI assistance and human decisions
 
@@ -227,6 +237,8 @@ pending. Earlier cases and their evidence are unchanged.
 | Independent candidate relevance | `/root/case09_relevance_a` and `/root/case09_relevance_b`; disjoint 34-venue identity packets, original request and interest inventory, with independent venue facts; no version, rank, Planner labels or scores |
 | Relevance cross-review | `/root/case09_relevance_cross`; all 136 labels and their saved evidence; no new page opens or service requests |
 | V3 draft roles, occupancy and correspondence | `/root/case09_draft_review`; exact 11 draft and 10 final-primary activities, original input and reviewed requirements; no Planner findings or scores |
+| Paired access refresh | `/root/paired_access_execute`, `gpt-6.1-sol / medium`; seven frozen case packages, execution only; service model `gpt-6-luna / medium` |
+| Tool review | `/root/pair_access_standards` and `/root/pair_access_spec`; committed implementation and separate correction, no semantic case acceptance |
 | Orchestration and presentation | `/root`; preflight, preparation, exact-byte handoff, technical binding, native checks/replay and public projections/reporting |
 
 The six initial independent review tasks and four offline-analysis review tasks were

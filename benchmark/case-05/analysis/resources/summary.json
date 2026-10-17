@@ -388,13 +388,30 @@
   ],
   "generation_reference_usd": "16.044430470",
   "primary_reference_usd": "2.607513575",
-  "all_attempt_reference_usd": "18.651944045",
+  "all_attempt_reference_usd": "18.652342595",
   "selected_r03_reference_usd": "9.105372335",
-  "current_closeout_business_api_sends": 0,
-  "current_closeout_business_api_cost_usd": "0",
+  "current_closeout_business_api_sends": 1,
+  "current_closeout_business_api_cost_usd": "0.00039855",
   "repair_accounting": "Subset included once in V3 generation; inherited paired observations are not new consumption",
   "actual_invoice_usd": null,
   "external_codex_tokens": null,
   "external_codex_billing": null,
-  "automatic_retries": 0
+  "automatic_retries": 0,
+  "paired_access_refresh": {
+    "scope": "Independent same-run paired access assessment; excluded from Planner attempt/model counters",
+    "model_sends": 1,
+    "google_sends": 0,
+    "retries": 0,
+    "input_tokens": 2157,
+    "output_tokens": 258,
+    "total_tokens": 2415,
+    "reference_usd": "0.00039855",
+    "actual_invoice": null,
+    "source": {
+      "logical_path": "reassessment/access-final/execution/report.json",
+      "sha256": "92df251d88856e2b470b0768c6c3f228355a713292821cd8bb3ffae2d5ee01ce",
+      "json_pointer": "/usage"
+    }
+  },
+  "selected_r03_scope": "Generation and primary; the paired refresh is an additional oracle phase."
 }

@@ -84,3 +84,78 @@ Indistinguishable or contradictory legacy observations cannot uniquely reconstru
 history. Partial/lower-bound magnitudes do not establish exact improvement. Removal is
 not resolution; aggregate changes describe observed populations, not causal Repair
 success. Controlled Repair retains its separate study and denominators.
+
+## Paired access refresh 2026-10-17
+
+The researcher authorized refreshing the current V3 before/after views for cases
+01–07 and 09, including accepted cases, with the same missing-hours access policy
+applied to both original stages. The [contract](../../contracts/0005-quality-human-review.md#v3-pairs)
+owns the rule. Implementation `1bf8f50` and separate correction `45f8c33` add V3-only
+source-bound packets, shared identical contexts, one-use execution and exact offline
+import through paired, suite and research interfaces. Generation behavior is unchanged.
+Original outputs, primary scores, raw receipts and historical reports remain retained.
+Current reader sections and source mappings replace their previous paired presentation.
+
+| Case | Draft overall | Final-primary overall | Overall change, percentage points | Opening UNKNOWN, draft/final | New model sends | Reference USD |
+| --- | ---: | ---: | ---: | --- | ---: | ---: |
+| 01 | 85.833333 | 100 | +14.166667 | 0 / 0 | 1 | 0.00089080 |
+| 02 | 80.208333 | 100 | +19.791667 | 1 / 0 | 1 | 0.00105055 |
+| 03 | 86.666667 | 100 | +13.333333 | 0 / 0 | 1 | 0.00118730 |
+| 04 | 44.285714 | 100 | +55.714286 | 0 / 0 | 0 | 0 |
+| 05 | 84 | 100 | +16 | 0 / 0 | 1 | 0.00039855 |
+| 06 | 100 | 100 | 0 | 0 / 0 | 1 | 0.00092980 |
+| 07 | 100 | 100 | 0 | 0 / 0 | 1 | 0.00047330 |
+| 09 | 92.848485 | 98 | +5.151515 | 1 / 1 | 1 | 0.00195030 |
+
+Displayed values are rounded; native reports retain exact fractions. This is one
+same-run diagnostic per selected case, not an independent V2/V3 experiment or a causal
+Repair estimate. Case-02's draft access uncertainty and case-09's Tokyo Dome City
+uncertainty remain unresolved. Case-04 has no eligible access gap; its route UNKNOWNs
+remain. Case-06/07 performed no model Repair and retain exact zero paired change.
+Case-07 now has a computed pair; its former unavailable paired presentation is replaced.
+Case-06's selected a2 pair remains separate from the first-attempt research census,
+which includes failed a1; that census was not rebound. Native research same-run views
+for cases 03/05/07/09 were rebuilt, while historical four-final sections retain their
+original sources. Section-derived reader views identify those sources separately.
+
+The frozen batch covered 38 stage occurrences / 21 distinct access contexts in seven
+`gpt-6-luna / medium` calls. Case-04 used no model. Actual recorded input/output tokens
+are **31,929 / 5,780**, total **37,709**. Google sends and retries are **0**. Reference
+spend is **USD 0.00688060** against the authorized USD 0.25; per-run USD 0.035 ceilings
+sum to USD 0.245. Input/output caps total 73,728 / 114,688 tokens. Prices use the dated
+OpenAI retail proxy for the existing Azure deployment; actual account invoices and
+external Codex token/billing telemetry remain unavailable. All seven call slots are
+consumed; remaining money grants no additional call or retry.
+
+The first automatic approval request was rejected before process creation because
+destination/data authorization was insufficiently explicit. The researcher then
+explicitly authorized the existing Azure endpoint and frozen activity/venue/time/source
+data scope. The unchanged batch made its first actual execution after approval; this
+was not a provider retry. Its file SHA-256 is
+`aa6b0f48e0583b53a54e48e96d0787b7c9735d299353300a5426febb4828d402`.
+Native model responses, HTTP journals, usage, receipts, original source closures and
+review/authorization observations remain private, indexed by each case's material index.
+All eight archives passed fresh-root SHA/length, packet/HTTP receipt and native pair
+replay with zero network attempts and zero old temporary-evidence-root reads; cases
+03/05/07/09 also reproduced their current native same-run research view. Case-07's
+first restoration hit the Windows path-length limit; a short fresh root passed with
+the same archive bytes. The public reference checker also validated case-specific
+delta formats; an initial compaction cycle was removed before final projection checks.
+Historical four-final and mechanism subtrees retain their original values and sources.
+
+Public-interface TDD and affected checks passed 114 tests, then an overlapping
+154-test gate. Independent Standards review found no issue; Spec review found one P2:
+null/list access packets raised an uncaught exception. Three public regressions first
+reproduced the defect; type validation corrected it, and 79 affected tests passed.
+Both reviewers rechecked with zero remaining findings. Changed Python Ruff/format and
+diff checks passed. An offline operator price file initially lacked its schema tag;
+correction preceded preparation/execution and made no service request. An existing
+reviewed-edit provenance replay defect was also reproduced and corrected without
+resuming case-09's stopped historical package. No full backend regression was run.
+
+`/root/pair_access_standards` and `/root/pair_access_spec` independently reviewed code;
+`/root/paired_access_execute` used `gpt-6.1-sol / medium` for frozen execution only.
+The parent owns source binding, native offline replay, sanitized projections and
+documentation. Agent review does not constitute human quality ratings. Case-09 remains
+pending final researcher acceptance. Work stays in the current worktree; main-worktree
+integration and Git publication await a separate instruction.

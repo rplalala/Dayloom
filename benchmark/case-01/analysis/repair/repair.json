@@ -309,5 +309,80 @@
     }
   },
   "independent_pair_ref": "../../evaluation/v3-pair/pair-report.json",
-  "interpretation": "Independent V2/V3 final differences are descriptive. The same-run V3 draft/final establishes three accepted deterministic deletions and completion of authorized soft-pace targets."
+  "interpretation": "Independent V2/V3 final differences are descriptive. The same-run V3 draft/final establishes three accepted deterministic deletions and completion of authorized soft-pace targets.",
+  "paired_evaluation": {
+    "report": "evaluation/v3-pair/pair-report.json",
+    "stages": {
+      "draft": {
+        "overall": {
+          "score_0_100": 85.83333333333333,
+          "exact_fraction": {
+            "numerator": 103,
+            "denominator": 120
+          },
+          "reason": null
+        },
+        "auxiliary": {
+          "score_0_100": 95.83333333333333,
+          "exact_fraction": {
+            "numerator": 23,
+            "denominator": 24
+          },
+          "total_included_dimensions": 4,
+          "reason": null,
+          "unavailable_dimensions": []
+        },
+        "density_penalty": 10.0,
+        "opening_counts": {
+          "PASS": 9,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        },
+        "route_counts": {
+          "PASS": 5,
+          "FAIL": 0,
+          "UNKNOWN": 1
+        }
+      },
+      "final_primary": {
+        "overall": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "reason": null
+        },
+        "auxiliary": {
+          "score_0_100": 100.0,
+          "exact_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "total_included_dimensions": 4,
+          "reason": null,
+          "unavailable_dimensions": []
+        },
+        "density_penalty": 0.0,
+        "opening_counts": {
+          "PASS": 6,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        },
+        "route_counts": {
+          "PASS": 3,
+          "FAIL": 0,
+          "UNKNOWN": 0
+        }
+      }
+    },
+    "overall_delta": {
+      "percentage_points": 14.166666666666666,
+      "exact_fraction": {
+        "numerator": 17,
+        "denominator": 120
+      }
+    },
+    "basis": "Source-bound paired access policy; primary results unchanged."
+  }
 }

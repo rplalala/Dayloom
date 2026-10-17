@@ -650,12 +650,14 @@
   "totals": {
     "generation_reference_usd": "11.926259195",
     "primary_reference_usd": "2.51056645",
-    "case_reference_usd": "14.436825645",
+    "case_reference_usd": "14.437298945",
     "case_allowance_usd": "40",
-    "remaining_reference_usd": "25.563174355",
+    "remaining_reference_usd": "25.562701055",
     "generation_model_calls": 41,
     "generation_total_tokens": 460157,
-    "generation_http_sends": 471
+    "generation_http_sends": 471,
+    "paired_access_refresh_reference_usd": "0.0004733",
+    "remaining_budget_authorizes_calls": false
   },
   "interpretation": [
     "Historical and revised inputs have separate source cohorts; continuations do not replace the failed first dispatch.",
@@ -663,5 +665,21 @@
     "Repair is a subset counted once. Model calls include embedding invocations; HTTP sends are transport entries, not invoices.",
     "Reference costs use saved dated price bindings; actual account invoices and external Codex tokens/billing are unavailable.",
     "This post-primary stage made zero project API calls, generation invocations and scorer invocations."
-  ]
+  ],
+  "paired_access_refresh": {
+    "scope": "Independent same-run paired access assessment; excluded from Planner attempt/model counters",
+    "model_sends": 1,
+    "google_sends": 0,
+    "retries": 0,
+    "input_tokens": 2171,
+    "output_tokens": 404,
+    "total_tokens": 2575,
+    "reference_usd": "0.0004733",
+    "actual_invoice": null,
+    "source": {
+      "logical_path": "reassessment/access-final/execution/report.json",
+      "sha256": "d4e8aae11ed8ec7a90c1a2f512969a69884e30d2183274c6a3dad35cf6a1b078",
+      "json_pointer": "/usage"
+    }
+  }
 }

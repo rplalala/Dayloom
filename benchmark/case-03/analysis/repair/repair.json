@@ -23,17 +23,17 @@
             "$case_material_ref": {
               "path": "../../evaluation/v3-pair/pair-report.json",
               "pointer": "/data/groups/0",
-              "semantic_sha256": "f8ea6d15c2c5130698dedcfd2748e8b5a981f9f012ce517323134224e7e56227"
+              "expanded_semantic_sha256": "4589b6696f5a0bab52baef09155afef57a79725c11e2773462b496583b5e1a1d"
             }
           },
           "native_profile": {
             "$case_material_ref": {
               "path": "../../evaluation/v3-pair/pair-report.json",
               "pointer": "/data/rules_profile",
-              "semantic_sha256": "bb99413379c820402381293e22db9fc5dcf4474cb512d06d2f13a9795c2fb515"
+              "expanded_semantic_sha256": "6761185984e0452c177221ce358df8754655b3baaf8a5f407a3eca491a9ab559"
             }
           },
-          "native_report_sha256": "e5f0da2e304deeded38c47d8b9563a530d00048d48af63bb4d2915671e382b1a",
+          "native_report_sha256": "ee56e0b5f1fa0ea5ba2206e41e9625f8e75682629ca15620f0cea1b2e914dff8",
           "continuity": {
             "unit": "native_continuity_checks",
             "transitions": {
@@ -164,39 +164,106 @@
                       "output_version": "itinerary_2",
                       "transfers": [
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/transfers/0",
-                            "semantic_sha256": "b96f53c45a9d0dcad680365d1bc8524efad03b6ab6d5ac67193fdedc097937d1"
-                          }
+                          "from_activity_id": "day1-sensoji",
+                          "to_activity_id": "day1-skytree",
+                          "origin_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+                          "destination_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+                          "mode": "WALK",
+                          "mode_source": "APPLICATION_DEFAULT_WALK",
+                          "departure_time": "2026-10-15T13:45:00+09:00",
+                          "arrival_time": "2026-10-15T14:09:55+09:00",
+                          "provider_duration_seconds": 1495.0,
+                          "distance_meters": 1713,
+                          "reserve_seconds": 0.0,
+                          "routing_preference": null,
+                          "evidence_refs": [
+                            "google_routes:compute_route_matrix"
+                          ],
+                          "calculation_basis": "walk_provider_estimate",
+                          "validation_state": "PASS",
+                          "unknowns": []
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/draft.json",
-                            "pointer": "/transfers/2",
-                            "semantic_sha256": "077f686ba97523f66f5c0a434197715a6537ea261a765b60b5b728fe621a685a"
-                          }
+                          "from_activity_id": "day2-meiji-jingu",
+                          "to_activity_id": "day2-taro-museum",
+                          "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                          "destination_place_id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+                          "mode": "WALK",
+                          "mode_source": "APPLICATION_DEFAULT_WALK",
+                          "departure_time": "2026-10-16T11:15:00+09:00",
+                          "arrival_time": "2026-10-16T11:53:26+09:00",
+                          "provider_duration_seconds": 2306.0,
+                          "distance_meters": 2754,
+                          "reserve_seconds": 0.0,
+                          "routing_preference": null,
+                          "evidence_refs": [
+                            "google_routes:compute_route_matrix"
+                          ],
+                          "calculation_basis": "walk_provider_estimate",
+                          "validation_state": "PASS",
+                          "unknowns": []
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/transfers/1",
-                            "semantic_sha256": "097db21fe51b2905a0180b02b957d1883b739abc38f0eb35ef5e5cfacb60ec8c"
-                          }
+                          "from_activity_id": "day2-taro-museum",
+                          "to_activity_id": "day2-shibuya-crossing",
+                          "origin_place_id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+                          "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                          "mode": "WALK",
+                          "mode_source": "APPLICATION_DEFAULT_WALK",
+                          "departure_time": "2026-10-16T13:45:00+09:00",
+                          "arrival_time": "2026-10-16T14:07:31+09:00",
+                          "provider_duration_seconds": 1351.0,
+                          "distance_meters": 1607,
+                          "reserve_seconds": 0.0,
+                          "routing_preference": null,
+                          "evidence_refs": [
+                            "google_routes:compute_route_matrix"
+                          ],
+                          "calculation_basis": "walk_provider_estimate",
+                          "validation_state": "PASS",
+                          "unknowns": []
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/transfers/2",
-                            "semantic_sha256": "6715f642260491812001cadf9655fc425ff30c525f6175ac5fe46c4cea499be8"
-                          }
+                          "from_activity_id": "day3-shinjuku-gyoen",
+                          "to_activity_id": "day3-imperial-palace",
+                          "origin_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                          "destination_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+                          "mode": "DRIVE",
+                          "mode_source": "APPLICATION_CAR_FALLBACK",
+                          "departure_time": "2026-10-17T12:00:00+09:00",
+                          "arrival_time": "2026-10-17T12:28:17+09:00",
+                          "provider_duration_seconds": 1097.0,
+                          "distance_meters": 6509,
+                          "reserve_seconds": 600.0,
+                          "routing_preference": "TRAFFIC_UNAWARE",
+                          "evidence_refs": [
+                            "google_routes:compute_route_matrix"
+                          ],
+                          "calculation_basis": "basic_drive_estimate",
+                          "validation_state": "PASS",
+                          "unknowns": [
+                            "Car transport must be arranged; cost and availability not verified."
+                          ]
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/transfers/3",
-                            "semantic_sha256": "18343d8095ab983968ef814ea3baebac55a8d798cdd1944efb10152ec38e8771"
-                          }
+                          "from_activity_id": "day4-tokyo-tower",
+                          "to_activity_id": "day4-mt-atago",
+                          "origin_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+                          "destination_place_id": "ChIJaU-cdJSLGGAR_Kcus8fkTGE",
+                          "mode": "WALK",
+                          "mode_source": "APPLICATION_DEFAULT_WALK",
+                          "departure_time": "2026-10-18T12:00:00+09:00",
+                          "arrival_time": "2026-10-18T12:17:46+09:00",
+                          "provider_duration_seconds": 1066.0,
+                          "distance_meters": 1300,
+                          "reserve_seconds": 0.0,
+                          "routing_preference": null,
+                          "evidence_refs": [
+                            "google_routes:compute_route_matrix"
+                          ],
+                          "calculation_basis": "walk_provider_estimate",
+                          "validation_state": "PASS",
+                          "unknowns": []
                         }
                       ],
                       "route_diagnostics": [
@@ -500,45 +567,154 @@
                       "end_date": "2026-10-18",
                       "days": [
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/days/0",
-                            "semantic_sha256": "97d222771b6bffbdaee15736309feec6d6e20f3259dc745f44b6b01777c2ff88"
-                          }
+                          "date": "2026-10-15",
+                          "activities": [
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day1-sensoji",
+                              "title": "Explore Sensō-ji",
+                              "place_name": "Sensō-ji",
+                              "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+                              "location": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+                              "start_time": "2026-10-15T12:15:00+09:00",
+                              "end_time": "2026-10-15T13:45:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Opening hours for this date were not verified."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day1-skytree",
+                              "title": "Tokyo Skytree",
+                              "place_name": "Tokyo Skytree",
+                              "source_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+                              "location": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+                              "start_time": "2026-10-15T14:30:00+09:00",
+                              "end_time": "2026-10-15T16:30:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "The supplied hours are a current pattern; date-specific exceptions are unknown."
+                            }
+                          ]
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/draft.json",
-                            "pointer": "/days/1",
-                            "semantic_sha256": "03287e423f045c3f72c52018cb5d7a2605ae86080eea63ffc74b3701c3ea23d0"
-                          }
+                          "date": "2026-10-16",
+                          "activities": [
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day2-meiji-jingu",
+                              "title": "Visit Meiji Jingu",
+                              "place_name": "Meiji Jingu",
+                              "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                              "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+                              "start_time": "2026-10-16T09:30:00+09:00",
+                              "end_time": "2026-10-16T11:15:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Opening hours for this date were not verified."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day2-taro-museum",
+                              "title": "Taro Okamoto Memorial Museum",
+                              "place_name": "Taro Okamoto Memorial Museum",
+                              "source_place_id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+                              "location": "6-chōme-1-19 Minamiaoyama, Minato City, Tokyo 107-0062, Japan",
+                              "start_time": "2026-10-16T12:15:00+09:00",
+                              "end_time": "2026-10-16T13:45:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Scheduled within the supplied hours for this date; date-specific exceptions are unknown."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day2-shibuya-crossing",
+                              "title": "See Shibuya Scramble Crossing",
+                              "place_name": "Shibuya Scramble Crossing",
+                              "source_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                              "location": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+                              "start_time": "2026-10-16T14:30:00+09:00",
+                              "end_time": "2026-10-16T15:15:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Opening hours for this date were not verified."
+                            }
+                          ]
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/days/2",
-                            "semantic_sha256": "d8cf06df33f04bcf222c357cb7e1df10953a6dce23427fcb67097cab69517569"
-                          }
+                          "date": "2026-10-17",
+                          "activities": [
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day3-shinjuku-gyoen",
+                              "title": "Stroll through Shinjuku Gyoen National Garden",
+                              "place_name": "Shinjuku Gyoen National Garden",
+                              "source_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                              "location": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
+                              "start_time": "2026-10-17T10:00:00+09:00",
+                              "end_time": "2026-10-17T12:00:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Scheduled within the supplied hours for this date; date-specific exceptions are unknown."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day3-imperial-palace",
+                              "title": "Visit the Imperial Palace",
+                              "place_name": "Imperial Palace",
+                              "source_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+                              "location": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+                              "start_time": "2026-10-17T13:00:00+09:00",
+                              "end_time": "2026-10-17T14:30:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Opening hours and date-specific operating status were not verified."
+                            }
+                          ]
                         },
                         {
-                          "$case_material_ref": {
-                            "path": "../../generation/v3/itinerary.json",
-                            "pointer": "/days/3",
-                            "semantic_sha256": "595c9894234005ca735af3ff49a6547aa7b9d21fc3326aa498ecb7df62de940f"
-                          }
+                          "date": "2026-10-18",
+                          "activities": [
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day4-tokyo-tower",
+                              "title": "Tokyo Tower",
+                              "place_name": "Tokyo Tower",
+                              "source_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+                              "location": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+                              "start_time": "2026-10-18T10:00:00+09:00",
+                              "end_time": "2026-10-18T12:00:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "The supplied hours are a current pattern; date-specific exceptions are unknown."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day4-mt-atago",
+                              "title": "Visit Mt. Atago",
+                              "place_name": "Mt. Atago",
+                              "source_place_id": "ChIJaU-cdJSLGGAR_Kcus8fkTGE",
+                              "location": "1-chōme-5-5 Atago, Minato City, Tokyo 105-0002, Japan",
+                              "start_time": "2026-10-18T13:00:00+09:00",
+                              "end_time": "2026-10-18T14:15:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Scheduled within the supplied hours for this date; date-specific exceptions are unknown."
+                            }
+                          ]
                         }
                       ]
                     },
                     "comparison": {
                       "accepted": true,
                       "reason": "verifiable_arrangement_improvement",
-                      "progress": {
-                        "$case_material_ref": {
-                          "path": "repair.json",
-                          "pointer": "/data/same_run/rows/0/mechanism/rounds/0/internal_progress",
-                          "semantic_sha256": "dce8ed202e13d7264dd483055fe86e99c63828b7debb7aa01758d4ff664f9cd5"
+                      "progress": [
+                        {
+                          "finding_id": "finding_30",
+                          "check": "soft_pace",
+                          "outcome": "resolved",
+                          "before": 10.0,
+                          "after": 0.0
+                        },
+                        {
+                          "finding_id": "finding_31",
+                          "check": "soft_pace",
+                          "outcome": "unresolved",
+                          "before": 10.0,
+                          "after": 10.0
                         }
-                      },
+                      ],
                       "coverage_regressions": [
                         "2026-10-15"
                       ],
@@ -819,11 +995,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -886,11 +1066,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -962,11 +1146,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1029,11 +1217,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1105,11 +1297,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1172,11 +1368,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1248,11 +1448,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1324,11 +1528,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -1351,13 +1559,18 @@
                           "adopted_evidence": {
                             "available_seconds": 2700.0,
                             "application_reserve_seconds": 0.0,
-                            "selected_routes": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics/1/mode_results/0/evidence",
-                                "semantic_sha256": "c7ff146dd850496888f045bf918ae7bad16e98ec3145ef4093b72f52ff9f70af"
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1495,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:44.168048+00:00",
+                                "retrieved_at": "2026-10-14T20:53:44.936753+00:00",
+                                "basis": "walk_provider_estimate"
                               }
-                            }
+                            ]
                           }
                         },
                         {
@@ -1380,13 +1593,18 @@
                           "adopted_evidence": {
                             "available_seconds": 3600.0,
                             "application_reserve_seconds": 0.0,
-                            "selected_routes": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics/2/mode_results/0/evidence",
-                                "semantic_sha256": "8979a69088e91d63e8fcd43dc26dbd564f03165d06c3a39664958bb95431b219"
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 2306,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:44.168048+00:00",
+                                "retrieved_at": "2026-10-14T20:53:44.936753+00:00",
+                                "basis": "walk_provider_estimate"
                               }
-                            }
+                            ]
                           }
                         },
                         {
@@ -1409,13 +1627,18 @@
                           "adopted_evidence": {
                             "available_seconds": 2700.0,
                             "application_reserve_seconds": 0.0,
-                            "selected_routes": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics/3/mode_results/0/evidence",
-                                "semantic_sha256": "858a88f8d6879f3b88c08383e4db75ba969a4f9df9b8b215150a97b175ec58f5"
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1351,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:46.593671+00:00",
+                                "retrieved_at": "2026-10-14T20:53:48.261138+00:00",
+                                "basis": "walk_provider_estimate"
                               }
-                            }
+                            ]
                           }
                         },
                         {
@@ -1438,13 +1661,18 @@
                           "adopted_evidence": {
                             "available_seconds": 3600.0,
                             "application_reserve_seconds": 600.0,
-                            "selected_routes": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics/4/mode_results/2/evidence",
-                                "semantic_sha256": "d7092899b01455155ce3c53a2d91c593b79641bf495617e87872c31853d0b55d"
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1097,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "DRIVE",
+                                "routing_preference": "TRAFFIC_UNAWARE",
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:51.422374+00:00",
+                                "retrieved_at": "2026-10-14T20:53:51.741316+00:00",
+                                "basis": "basic_drive_estimate"
                               }
-                            }
+                            ]
                           }
                         },
                         {
@@ -1467,13 +1695,18 @@
                           "adopted_evidence": {
                             "available_seconds": 3600.0,
                             "application_reserve_seconds": 0.0,
-                            "selected_routes": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics/5/mode_results/0/evidence",
-                                "semantic_sha256": "2fd09c52c0869422a97c58c48a155d064645c20c0f7465ea9d708122651b3358"
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1066,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:44.168048+00:00",
+                                "retrieved_at": "2026-10-14T20:53:44.936753+00:00",
+                                "basis": "walk_provider_estimate"
                               }
-                            }
+                            ]
                           }
                         },
                         {
@@ -1574,11 +1807,18 @@
                               2
                             ],
                             "policy": {
-                              "$case_material_ref": {
-                                "path": "repair.json",
-                                "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence/policy",
-                                "semantic_sha256": "5c072da57fd58084baa55a9ff80ede503db1e518a86d19e5890efd39d301cb77"
-                              }
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
                             },
                             "is_failure_constraint": false
                           }
@@ -1603,11 +1843,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         },
                         {
@@ -1630,11 +1884,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         }
                       ],
@@ -1764,11 +2032,32 @@
                 ],
                 "related_targets": [
                   {
-                    "$case_material_ref": {
-                      "path": "repair.json",
-                      "pointer": "/data/same_run/rows/0/mechanism/rounds/0/related_targets/0",
-                      "semantic_sha256": "a88b98232cbe053062c443c1eee1ec2df6020c64943a65e9ac9da66282ae0a96"
-                    }
+                    "permission": {
+                      "target_id": "related:finding_30:2026-10-15",
+                      "parent_id": "finding_30",
+                      "date": "2026-10-15",
+                      "trigger_activity_ids": [
+                        "day1-ueno-park",
+                        "day1-sensoji",
+                        "day1-skytree"
+                      ],
+                      "minimum_count": 2,
+                      "allow_partial": false,
+                      "reason": "review_compensation",
+                      "removable_place_ids": []
+                    },
+                    "activated_by": [
+                      "day1-ueno-park"
+                    ],
+                    "affected_adjacency": [
+                      [
+                        "day1-sensoji",
+                        "day1-skytree"
+                      ]
+                    ],
+                    "before": 3,
+                    "after": 2,
+                    "status": "resolved"
                   },
                   {
                     "permission": {
@@ -1830,31 +2119,99 @@
                     "status": "accepted",
                     "proposal": {
                       "output_version": "itinerary_2",
-                      "transfers": {
-                        "$case_material_ref": {
-                          "path": "../../generation/v3/itinerary.json",
-                          "pointer": "/transfers",
-                          "semantic_sha256": "bb23c3d800c5d5f21e3403f3de91f7f3bce13076ef0fa3021b24f0ffa81a1469"
+                      "transfers": [
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/transfers/0",
+                            "expanded_semantic_sha256": "b96f53c45a9d0dcad680365d1bc8524efad03b6ab6d5ac67193fdedc097937d1"
+                          }
+                        },
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/transfers/2",
+                            "expanded_semantic_sha256": "097db21fe51b2905a0180b02b957d1883b739abc38f0eb35ef5e5cfacb60ec8c"
+                          }
+                        },
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/transfers/3",
+                            "expanded_semantic_sha256": "6715f642260491812001cadf9655fc425ff30c525f6175ac5fe46c4cea499be8"
+                          }
+                        },
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/transfers/4",
+                            "expanded_semantic_sha256": "18343d8095ab983968ef814ea3baebac55a8d798cdd1944efb10152ec38e8771"
+                          }
                         }
-                      },
+                      ],
                       "route_diagnostics": {
                         "$case_material_ref": {
                           "path": "repair.json",
                           "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/route_diagnostics",
-                          "semantic_sha256": "0f96e5c7330866b3a7b09aa9499a332e1322a5652ddb9b123c42e2746ea9e4f4"
+                          "expanded_semantic_sha256": "0f96e5c7330866b3a7b09aa9499a332e1322a5652ddb9b123c42e2746ea9e4f4"
                         }
                       },
                       "reference_recommendations": [],
                       "destination": "Tokyo, Japan",
                       "start_date": "2026-10-15",
                       "end_date": "2026-10-18",
-                      "days": {
-                        "$case_material_ref": {
-                          "path": "../../generation/v3/itinerary.json",
-                          "pointer": "/days",
-                          "semantic_sha256": "a2756c3a28ba2b35a6a464f089e6e1f5231591fe9d7049b87ce4f5e7b6c6fd60"
+                      "days": [
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/days/0",
+                            "expanded_semantic_sha256": "97d222771b6bffbdaee15736309feec6d6e20f3259dc745f44b6b01777c2ff88"
+                          }
+                        },
+                        {
+                          "date": "2026-10-16",
+                          "activities": [
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day2-taro-museum",
+                              "title": "Taro Okamoto Memorial Museum",
+                              "place_name": "Taro Okamoto Memorial Museum",
+                              "source_place_id": "ChIJJbavS2GLGGARFLUeTte2lt0",
+                              "location": "6-chōme-1-19 Minamiaoyama, Minato City, Tokyo 107-0062, Japan",
+                              "start_time": "2026-10-16T12:15:00+09:00",
+                              "end_time": "2026-10-16T13:45:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Scheduled within the supplied hours for this date; date-specific exceptions are unknown."
+                            },
+                            {
+                              "activity_kind": "main_poi",
+                              "activity_id": "day2-shibuya-crossing",
+                              "title": "See Shibuya Scramble Crossing",
+                              "place_name": "Shibuya Scramble Crossing",
+                              "source_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                              "location": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+                              "start_time": "2026-10-16T14:30:00+09:00",
+                              "end_time": "2026-10-16T15:15:00+09:00",
+                              "estimated_cost": null,
+                              "notes": "Opening hours for this date were not verified."
+                            }
+                          ]
+                        },
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/days/2",
+                            "expanded_semantic_sha256": "d8cf06df33f04bcf222c357cb7e1df10953a6dce23427fcb67097cab69517569"
+                          }
+                        },
+                        {
+                          "$case_material_ref": {
+                            "path": "repair.json",
+                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/proposal/days/3",
+                            "expanded_semantic_sha256": "595c9894234005ca735af3ff49a6547aa7b9d21fc3326aa498ecb7df62de940f"
+                          }
                         }
-                      }
+                      ]
                     },
                     "comparison": {
                       "accepted": true,
@@ -1895,7 +2252,7 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/diagnostics/days/0",
-                              "semantic_sha256": "a10a0198c03e28e2d8e82a2b75ccb937f010db8c66c6b19889cf7f910d364158"
+                              "expanded_semantic_sha256": "a10a0198c03e28e2d8e82a2b75ccb937f010db8c66c6b19889cf7f910d364158"
                             }
                           },
                           {
@@ -1920,14 +2277,14 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/diagnostics/days/2",
-                              "semantic_sha256": "e6ef17affd9931440bd5753c173deffe418c9c5090c4c59a3ef77ba374e21eaf"
+                              "expanded_semantic_sha256": "e6ef17affd9931440bd5753c173deffe418c9c5090c4c59a3ef77ba374e21eaf"
                             }
                           },
                           {
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/diagnostics/days/3",
-                              "semantic_sha256": "5c7e0e3992f97c79a6412359aa24ab7f7eb0fede7ca652533e96eff6156c514d"
+                              "expanded_semantic_sha256": "5c7e0e3992f97c79a6412359aa24ab7f7eb0fede7ca652533e96eff6156c514d"
                             }
                           }
                         ],
@@ -1948,38 +2305,49 @@
                       },
                       "findings": [
                         {
-                          "$case_material_ref": {
-                            "path": "repair.json",
-                            "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/0",
-                            "semantic_sha256": "436028cc37fa221615ec942c48355d636bc0a4dca6c0992cb52e762b0e5826ad"
-                          }
+                          "finding_id": "finding_1",
+                          "check": "coverage",
+                          "status": "UNKNOWN",
+                          "reason": "default_target_observation_without_executable_exception_contract",
+                          "dates": [
+                            "2026-10-15"
+                          ],
+                          "activity_ids": [],
+                          "place_ids": [],
+                          "requirement_ids": [],
+                          "evidence_refs": [
+                            "generation_diagnostics:2026-10-15"
+                          ],
+                          "is_violation": false,
+                          "magnitude": null,
+                          "adopted_evidence": {}
                         },
                         {
                           "$case_material_ref": {
                             "path": "repair.json",
                             "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/1",
-                            "semantic_sha256": "e86b77ba9da4ec69bc878ab3b234438a303e055164b84936cf1356a6f716b81b"
+                            "expanded_semantic_sha256": "e86b77ba9da4ec69bc878ab3b234438a303e055164b84936cf1356a6f716b81b"
                           }
                         },
                         {
                           "$case_material_ref": {
                             "path": "repair.json",
                             "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2",
-                            "semantic_sha256": "a48d0ae5590355cbf04dd74c119aca52514fa4f4763a544b8c54458bf9c0c1d3"
+                            "expanded_semantic_sha256": "a48d0ae5590355cbf04dd74c119aca52514fa4f4763a544b8c54458bf9c0c1d3"
                           }
                         },
                         {
                           "$case_material_ref": {
                             "path": "repair.json",
                             "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/3",
-                            "semantic_sha256": "bbd7591344832728f0b702a13fdd8e1b915f4d8d0e914490eb1c2fb752d98a9b"
+                            "expanded_semantic_sha256": "bbd7591344832728f0b702a13fdd8e1b915f4d8d0e914490eb1c2fb752d98a9b"
                           }
                         },
                         {
                           "$case_material_ref": {
                             "path": "repair.json",
                             "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/4",
-                            "semantic_sha256": "2389bfebc5a8c93e1d8ee527d683038178a6f6e820fae69e49d6bc40e36fb633"
+                            "expanded_semantic_sha256": "2389bfebc5a8c93e1d8ee527d683038178a6f6e820fae69e49d6bc40e36fb633"
                           }
                         },
                         {
@@ -2006,7 +2374,7 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/7/adopted_evidence",
-                              "semantic_sha256": "b3b8fd65232f9951006167b3ec7f63594d533ca415de0536cc4e8a73e3906395"
+                              "expanded_semantic_sha256": "b3b8fd65232f9951006167b3ec7f63594d533ca415de0536cc4e8a73e3906395"
                             }
                           }
                         },
@@ -2031,11 +2399,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2057,11 +2429,24 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/9/adopted_evidence",
-                              "semantic_sha256": "7895c3abbe381cc35f8eb38290079a5c31305d90f60f7c40a200f62ee746d902"
-                            }
+                            "policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "selected_hours": [
+                              {
+                                "date": "2026-10-16",
+                                "place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                                "source_ref": "google_places:ChIJK9EM68qLGGARacmu4KJj5SA",
+                                "retrieved_at": "2026-10-14T20:52:30.959367+00:00",
+                                "timezone": "Asia/Tokyo",
+                                "basis": "unknown",
+                                "reason": "structured_periods_missing",
+                                "intervals": [],
+                                "evidence_refs": [
+                                  "google_places:ChIJK9EM68qLGGARacmu4KJj5SA"
+                                ],
+                                "known": false
+                              }
+                            ]
                           }
                         },
                         {
@@ -2085,11 +2470,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2116,7 +2505,7 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/11/adopted_evidence",
-                              "semantic_sha256": "45c1dfff5aadae2cfaf7450ac3e9895d810f26589dc136fe9ce1f4660d197e9e"
+                              "expanded_semantic_sha256": "45c1dfff5aadae2cfaf7450ac3e9895d810f26589dc136fe9ce1f4660d197e9e"
                             }
                           }
                         },
@@ -2141,11 +2530,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2167,11 +2560,24 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/13/adopted_evidence",
-                              "semantic_sha256": "b010b3deea301b8695330ce35e666cda0522d5e0a9d5190d9330ab198a8c200c"
-                            }
+                            "policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "selected_hours": [
+                              {
+                                "date": "2026-10-17",
+                                "place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+                                "source_ref": "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE",
+                                "retrieved_at": "2026-10-14T20:52:32.342576+00:00",
+                                "timezone": "Asia/Tokyo",
+                                "basis": "unknown",
+                                "reason": "structured_periods_missing",
+                                "intervals": [],
+                                "evidence_refs": [
+                                  "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE"
+                                ],
+                                "known": false
+                              }
+                            ]
                           }
                         },
                         {
@@ -2195,11 +2601,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2226,7 +2636,7 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/15/adopted_evidence",
-                              "semantic_sha256": "9fcb97ee75f61c897ed4dc07718437198a8f7f2e3aa822fab74a3c60123161cb"
+                              "expanded_semantic_sha256": "9fcb97ee75f61c897ed4dc07718437198a8f7f2e3aa822fab74a3c60123161cb"
                             }
                           }
                         },
@@ -2251,11 +2661,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2282,7 +2696,7 @@
                             "$case_material_ref": {
                               "path": "repair.json",
                               "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/17/adopted_evidence",
-                              "semantic_sha256": "d7ea06d2397c1f7f0475a3efe29440eedef923b1ae67d8cca92b25561c6c5a92"
+                              "expanded_semantic_sha256": "d7ea06d2397c1f7f0475a3efe29440eedef923b1ae67d8cca92b25561c6c5a92"
                             }
                           }
                         },
@@ -2307,11 +2721,15 @@
                           "is_violation": false,
                           "magnitude": null,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/2/adopted_evidence",
-                              "semantic_sha256": "73c4fa7919d71744717b5e94223bf4e4c1db9b815088a1a549b1c90bd6bff8a5"
-                            }
+                            "scheduling_policy": "application_default",
+                            "access_mode": "obey_place_hours",
+                            "reported_conditions": [],
+                            "unverified": [
+                              "admission_eligibility",
+                              "reservation_completion",
+                              "ticket_possession",
+                              "special_area_access"
+                            ]
                           }
                         },
                         {
@@ -2332,11 +2750,20 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/19/adopted_evidence",
-                              "semantic_sha256": "b68e81d153a3992466e00164b4abf802ba021b4259163063d7cd149c91406981"
-                            }
+                            "available_seconds": 2700.0,
+                            "application_reserve_seconds": 0.0,
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1495,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:44.168048+00:00",
+                                "retrieved_at": "2026-10-14T20:53:44.936753+00:00",
+                                "basis": "walk_provider_estimate"
+                              }
+                            ]
                           }
                         },
                         {
@@ -2357,11 +2784,20 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/21/adopted_evidence",
-                              "semantic_sha256": "d0724a4a2db9ec6de770cec9617bce840c75532f7da3fea007e3565eaea247d1"
-                            }
+                            "available_seconds": 2700.0,
+                            "application_reserve_seconds": 0.0,
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1351,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:46.593671+00:00",
+                                "retrieved_at": "2026-10-14T20:53:48.261138+00:00",
+                                "basis": "walk_provider_estimate"
+                              }
+                            ]
                           }
                         },
                         {
@@ -2382,11 +2818,20 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/22/adopted_evidence",
-                              "semantic_sha256": "5f32371951c6458b0afdf62fe8acd3af978e1528b12b64688d4b8bfcd875cc3a"
-                            }
+                            "available_seconds": 3600.0,
+                            "application_reserve_seconds": 600.0,
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1097,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "DRIVE",
+                                "routing_preference": "TRAFFIC_UNAWARE",
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:51.422374+00:00",
+                                "retrieved_at": "2026-10-14T20:53:51.741316+00:00",
+                                "basis": "basic_drive_estimate"
+                              }
+                            ]
                           }
                         },
                         {
@@ -2407,11 +2852,20 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/23/adopted_evidence",
-                              "semantic_sha256": "84c1a288499749e25ceae18413499117b9638873224b28a1bf5432212f1f7ca8"
-                            }
+                            "available_seconds": 3600.0,
+                            "application_reserve_seconds": 0.0,
+                            "selected_routes": [
+                              {
+                                "duration_seconds": 1066,
+                                "source_ref": "google_routes:compute_route_matrix",
+                                "travel_mode": "WALK",
+                                "routing_preference": null,
+                                "departure_time": null,
+                                "requested_at": "2026-10-14T20:53:44.168048+00:00",
+                                "retrieved_at": "2026-10-14T20:53:44.936753+00:00",
+                                "basis": "walk_provider_estimate"
+                              }
+                            ]
                           }
                         },
                         {
@@ -2465,11 +2919,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         },
                         {
@@ -2492,11 +2960,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         },
                         {
@@ -2519,11 +3001,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         },
                         {
@@ -2546,11 +3042,25 @@
                           "is_violation": false,
                           "magnitude": 0.0,
                           "adopted_evidence": {
-                            "$case_material_ref": {
-                              "path": "repair.json",
-                              "pointer": "/data/same_run/rows/0/mechanism/rounds/0/components/0/report/findings/26/adopted_evidence",
-                              "semantic_sha256": "188016cd4ae97ed9d94a7684fccb01fb5ad326fa56b67fd74b7542289addf15f"
-                            }
+                            "count": 2,
+                            "zero_counts": [
+                              2
+                            ],
+                            "policy": {
+                              "date": null,
+                              "profile": "ordinary",
+                              "exact_count": null,
+                              "source_refs": [
+                                {
+                                  "quote": "We prefer a moderate pace",
+                                  "occurrence": 0,
+                                  "start": 186,
+                                  "end": 211,
+                                  "match_mode": "exact"
+                                }
+                              ]
+                            },
+                            "is_failure_constraint": false
                           }
                         }
                       ],
@@ -2673,7 +3183,7 @@
               "$case_material_ref": {
                 "path": "repair.json",
                 "pointer": "/data/same_run/rows/0/mechanism/rounds/1/related_targets",
-                "semantic_sha256": "54d4cff16852c8d32a3e4ce28dc8305bfbb64c5b246d9c145c99a763d1bf9acc"
+                "expanded_semantic_sha256": "54d4cff16852c8d32a3e4ce28dc8305bfbb64c5b246d9c145c99a763d1bf9acc"
               }
             },
             "evaluated_components": 2,
@@ -2823,14 +3333,14 @@
             "$case_material_ref": {
               "path": "../../evaluation/primary/quality-report.json",
               "pointer": "/data/groups/0",
-              "semantic_sha256": "b827f71366027f269f16bbfcd380cbd67f8fc35db48693f59272a5b4799908a2"
+              "expanded_semantic_sha256": "b827f71366027f269f16bbfcd380cbd67f8fc35db48693f59272a5b4799908a2"
             }
           },
           "native_profile": {
             "$case_material_ref": {
               "path": "../../evaluation/primary/quality-report.json",
               "pointer": "/data/rules_profile",
-              "semantic_sha256": "c24741e2394f2bcf6fda12824e7ed887cae1f7dab962ccffa2a3af17aa8b9af5"
+              "expanded_semantic_sha256": "c24741e2394f2bcf6fda12824e7ed887cae1f7dab962ccffa2a3af17aa8b9af5"
             }
           },
           "native_report_sha256": "a7b316bbc022a33f5576c295f3898f369ec24873bdacc43e628e08836f32c622",
@@ -2910,9 +3420,18 @@
         }
       }
     },
-    "source_digest": "e07b71b4aefb8c6960f937bddaf17da6117a727825331b56140eaf7cdddf199b",
+    "source_digest": "b02fdbc920a0e7bf13e51b7195bbaabc1a2c24b32fb86b6e49643092cfbfc1da",
     "diagnostics": [],
     "interpretation": "Descriptive independent outcomes; populations remain separate.",
-    "semantic_sha256": "9bf7c147dd4ff412821192a4566aadc919339c9aefc8841b0749f91815e1ec90"
+    "semantic_sha256": "b4aa87c6c7ded792ffe0857c90b3aa44ca53f7a4d743237646c61bc2614c9742",
+    "paired_refresh_sources": {
+      "same_run": {
+        "logical_path": "reassessment/research-current/repair.json",
+        "sha256": "71bc3a4b028af5497852469c05ace4d1024683ebcf5af5ccab75d17988f9a980",
+        "json_pointer": "/same_run"
+      },
+      "four_final": "Original source-bound four-final projection retained without rescoring.",
+      "mechanism": "Original public mechanism subtree retained byte-for-value; current outcome fields come from the current native pair."
+    }
   }
 }
