@@ -84,6 +84,26 @@ def test_dst_duration_uses_elapsed_instants():
     assert result.span.seconds == 3600
 
 
+@pytest.mark.parametrize(
+    ("day", "offset", "status", "reasons"),
+    [
+        ("2026-10-24", "+01:00", "known", ()),
+        ("2026-10-25", "+01:00", "unknown", ("timezone_offset_conflict",)),
+        ("2026-10-25", "+00:00", "known", ()),
+    ],
+)
+def test_london_fall_back_keeps_date_membership_without_repairing_offsets(
+    day, offset, status, reasons
+):
+    start, end = f"{day}T10:00:00{offset}", f"{day}T11:30:00{offset}"
+    interval = normalize_interval(start, end, day, "Europe/London")
+    assert interval.status == status
+    assert interval.reasons == reasons
+    assert interval.date_consistent is True
+    assert interval.original_start == start
+    assert interval.original_end == end
+
+
 def test_cross_date_is_opt_in_and_never_repairs_a_reversed_same_date():
     args = ("2020-01-01T23:30Z", "2020-01-02T00:30Z", "2020-01-01")
     assert normalize_interval(*args).reasons == ("declared_date_mismatch",)
