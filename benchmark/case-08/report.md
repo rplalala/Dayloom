@@ -14,18 +14,18 @@ All four selected generations use source `19a4f4d97e4c8cb5e441ebc3239e7ef5111b86
 | Reviewed requirements | [reviewed](requirements/reviewed.json) |
 | Independent interests | [inventory](interests/inventory.json) |
 | Daily schedules and origins | [itinerary](itinerary.md) |
-| V0 selected generation | [itinerary](generation/r02/v0/itinerary.json), [usage](generation/r02/v0/usage.json), [provenance](generation/r02/v0/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V1 selected generation | [itinerary](generation/r02/v1/itinerary.json), [usage](generation/r02/v1/usage.json), [provenance](generation/r02/v1/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V2 selected generation | [itinerary](generation/r02/v2/itinerary.json), [usage](generation/r02/v2/usage.json), [provenance](generation/r02/v2/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V3 selected generation | [itinerary](generation/r02/v3/itinerary.json), [usage](generation/r02/v3/usage.json), [provenance](generation/r02/v3/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| Primary scoring | [report](evaluation/primary-corrected-r01/report.json), [summary](evaluation/primary-corrected-r01/summary.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [report](evaluation/primary/report.json), [summary](evaluation/primary/summary.json) |
 | Same-run V3 pairing | [report](evaluation/pair/report.json), [summary](evaluation/pair/summary.json) |
 | Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [v3 origins](analysis/poi-process/v3-origins.json) |
 | Repair and complete stages | [mechanism](analysis/repair/mechanism.json), [repair](analysis/repair/repair.json), [stages](analysis/repair/stages.json) |
 | All-attempt resources | [accounting](analysis/resources/accounting.json), [price books](analysis/resources/price-books.json) |
 | Canonical publication hashes and original sources | [Material index](material-index.json) |
 | Original step-10 approval | [Unchanged approval record](analysis/acceptance.json) |
-| Historical scoring | [Historical Primary](evaluation/primary/summary.json), [complete historical findings](evaluation/primary/report.json), [frozen source index](evaluation/primary/source-material-index.json) |
+| Historical scoring | [Historical Primary](analysis/history/primary/summary.json), [complete historical findings](analysis/history/primary/report.json), [frozen source index](analysis/history/primary/source-material-index.json) |
 | Earlier stage observations | [Candidate snapshot](analysis/history/offline-r01/candidates.json), [Repair snapshot](analysis/history/offline-r01/repair.json), [r01 V0](analysis/history/r01/v0/itinerary.json), [r01 V1 failure](analysis/history/r01/v1/failure.json) |
 
 The current index binds publication hashes, original source hashes and extraction pointers. The frozen historical index retains its original bytes and resolves at its recorded Git revision; current relocation mappings identify reader equivalents. Earlier snapshots retain their original stage status in analysis/history/. The current candidate and Repair views bind the completed pair and original independent labels. Public-material omissions were corrected from saved evidence on 18 October 2026; the original step-10 decision and selected scores are unchanged.

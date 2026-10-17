@@ -6,7 +6,7 @@ Origin labels use saved canonical associations in the [candidate process](analys
 
 ## V0
 
-[Selected final itinerary](generation/r02/v0/itinerary.json).
+[Selected final itinerary](generation/v0/itinerary.json).
 
 ### 2026-10-22
 
@@ -40,7 +40,7 @@ Origin labels use saved canonical associations in the [candidate process](analys
 
 ## V1
 
-[Selected final itinerary](generation/r02/v1/itinerary.json).
+[Selected final itinerary](generation/v1/itinerary.json).
 
 ### 2026-10-22
 
@@ -93,7 +93,7 @@ Origin labels use saved canonical associations in the [candidate process](analys
 
 ## V2
 
-[Selected final itinerary](generation/r02/v2/itinerary.json).
+[Selected final itinerary](generation/v2/itinerary.json).
 
 ### 2026-10-22
 
@@ -140,7 +140,7 @@ Origin labels use saved canonical associations in the [candidate process](analys
 
 ## V3
 
-[Selected final itinerary](generation/r02/v3/itinerary.json).
+[Selected final itinerary](generation/v3/itinerary.json).
 
 ### 2026-10-22
 

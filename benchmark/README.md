@@ -328,12 +328,17 @@ repeated output content. Public material
 must exclude credentials, private transcripts and raw provider/model responses.
 
 `generation/` contains exactly one selected final itinerary for each version, its
-usage/provenance and applicable shared runtime policy or origin metadata. Preserve
-legitimate revision directories such as `generation/r02/`; native schemas and
-execution paths need not match across cases. V3 draft/final-primary stages and
-validation traces belong in `analysis/repair/`, not additional generation selections.
+usage/provenance and applicable shared runtime policy or origin metadata. Current
+materials use canonical category paths directly, such as `generation/v0/`,
+`requirements/` and `evaluation/primary/`, without an `r02/` or other revision
+directory. Revision IDs remain in provenance, run metadata and historical evidence;
+native schemas and original execution paths need not match across cases. V3
+draft/final-primary stages and validation traces belong in `analysis/repair/`, not
+additional generation selections.
 Earlier published generation observations and failures belong in `analysis/history/`.
-Their source bytes and historical evaluation policies remain preserved.
+Superseded requirement contexts and scoring reports also belong there rather than
+beside the final material in current categories. Their source bytes and historical
+evaluation policies remain preserved.
 
 In the public material view, repeated large JSON objects use `$case_material_ref`
 with a relative file path, JSON Pointer and expanded semantic hash. The material index

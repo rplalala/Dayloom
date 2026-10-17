@@ -34,16 +34,16 @@ No case-specific application, configuration or input change was made.
 | Reviewed requirements | [reviewed](requirements/reviewed.json) |
 | Independent interests | [inventory](interests/inventory.json) |
 | Daily schedules and origins | [itinerary](itinerary.md) |
-| Supporting request context | [density reviews](requirements/density-reviews.json), [density reviews](requirements/r02/density-reviews.json), [route reviews](requirements/r02/route-reviews.json), [schedule context](requirements/r02/schedule-context.json), [route reviews](requirements/route-reviews.json), [schedule context](requirements/schedule-context.json) |
+| Supporting request context | [density reviews](requirements/density-reviews.json), [route reviews](requirements/route-reviews.json), [schedule context](requirements/schedule-context.json) |
 | Independent review records | [relevance a](interests/relevance-a.json), [relevance b](interests/relevance-b.json), [source review](interests/source-review.json) |
-| V0 selected generation | [itinerary](generation/r02/v0/itinerary.json), [usage](generation/r02/v0/usage-summary.json), [provenance](generation/r02/v0/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V1 selected generation | [itinerary](generation/r02/v1/itinerary.json), [usage](generation/r02/v1/usage-summary.json), [provenance](generation/r02/v1/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V2 selected generation | [itinerary](generation/r02/v2/itinerary.json), [usage](generation/r02/v2/usage-summary.json), [provenance](generation/r02/v2/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
-| V3 selected generation | [itinerary](generation/r02/v3/itinerary.json), [usage](generation/r02/v3/usage-summary.json), [provenance](generation/r02/v3/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage-summary.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage-summary.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage-summary.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage-summary.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
 | Primary scoring | [summary](evaluation/primary/summary.json) |
 | Same-run V3 pairing | [api only](evaluation/v3-pair/api-only.json), [report](evaluation/v3-pair/report.json) |
 | Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [venues](analysis/poi-process/venues.json) |
-| Repair and complete stages | [mechanism](analysis/repair/mechanism.json), [draft](analysis/repair/r02/draft.json), [final primary](analysis/repair/r02/final-primary.json), [repair](analysis/repair/repair.json), [source origins](analysis/repair/source-origins.json) |
+| Repair and complete stages | [draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [mechanism](analysis/repair/mechanism.json), [repair](analysis/repair/repair.json), [source origins](analysis/repair/source-origins.json) |
 | All-attempt resources | [all attempt cost](analysis/resources/all-attempt-cost.json), [population](analysis/resources/population.json), [selected usage](analysis/resources/selected-usage.json), [tradeoffs](analysis/resources/tradeoffs.json), [primary stage](resources/primary-stage.json) |
 | Canonical publication hashes and original sources | [Material index](material-index.json) |
 

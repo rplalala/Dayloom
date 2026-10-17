@@ -132,7 +132,7 @@
       "selected": true,
       "usage": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v0/usage.json",
+          "path": "../../generation/v0/usage.json",
           "pointer": "",
           "expanded_semantic_sha256": "fb3ea528c35360d6972be91ec650cc344dd31f98612c156d97f23efbee3c6ee8"
         }
@@ -173,7 +173,7 @@
       "selected": true,
       "usage": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v1/usage.json",
+          "path": "../../generation/v1/usage.json",
           "pointer": "",
           "expanded_semantic_sha256": "07d1de76368a87b9c1f650402d889e9cd0b25395e141659f7bf71b6be43e6256"
         }
@@ -214,7 +214,7 @@
       "selected": true,
       "usage": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v2/usage.json",
+          "path": "../../generation/v2/usage.json",
           "pointer": "",
           "expanded_semantic_sha256": "6ec671cea049a1bd503f7ea75aee1616a4602259309566cdb0de74a31461de27"
         }
@@ -255,7 +255,7 @@
       "selected": true,
       "usage": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v3/usage.json",
+          "path": "../../generation/v3/usage.json",
           "pointer": "",
           "expanded_semantic_sha256": "80b5ed3a3de8e9cbb369aeae1aeaf22602358dc14109540b3f88e2735ddf39b8"
         }

@@ -6,7 +6,7 @@
     "draft": {
       "base": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v3/itinerary.json",
+          "path": "../../generation/v3/itinerary.json",
           "pointer": "",
           "expanded_semantic_sha256": "aa1f5fdcbe55cd9971f0455c88678d1ee610217eed6c586f28c8d6c217620fae"
         }
@@ -143,7 +143,7 @@
     "final_primary": {
       "base": {
         "$case_material_ref": {
-          "path": "../../generation/r02/v3/itinerary.json",
+          "path": "../../generation/v3/itinerary.json",
           "pointer": "",
           "expanded_semantic_sha256": "aa1f5fdcbe55cd9971f0455c88678d1ee610217eed6c586f28c8d6c217620fae"
         }

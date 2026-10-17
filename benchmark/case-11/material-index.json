@@ -50,10 +50,10 @@
     }
   },
   "current_selection": {
-    "v0": "generation/r02/v0/itinerary.json",
-    "v1": "generation/r02/v1/itinerary.json",
-    "v2": "generation/r02/v2/itinerary.json",
-    "v3": "generation/r02/v3/itinerary.json"
+    "v0": "generation/v0/itinerary.json",
+    "v1": "generation/v1/itinerary.json",
+    "v2": "generation/v2/itinerary.json",
+    "v3": "generation/v3/itinerary.json"
   },
   "delivery": {
     "accepted_material_and_native_reports": "unchanged",
@@ -82,7 +82,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/route-reviews.json",
+      "path": "analysis/history/r01/requirements/route-reviews.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "775e0dbe30cfee57a71b8256d40f61b7d84faa5dcf64a7692ba42de44bce06d3",
       "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/route-reviews.json",
@@ -90,7 +90,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/density-reviews.json",
+      "path": "analysis/history/r01/requirements/density-reviews.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "a29a4350717e27f4803a6e5f8d78c6c753594696738ddfec1ed44cabd057aba0",
       "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/density-reviews.json",
@@ -98,7 +98,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/schedule-context.json",
+      "path": "analysis/history/r01/requirements/schedule-context.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "41079e401b1a435aaaf826cf2f36e3fe3f58533424a4d2658c6e09b93bdec741",
       "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/schedule-context.json",
@@ -154,7 +154,7 @@
     },
     {
       "json_pointer": "/itinerary",
-      "path": "generation/r02/v0/itinerary.json",
+      "path": "generation/v0/itinerary.json",
       "publication_kind": "selected_json_subtree",
       "sha256": "e48afe5dd4c78604d0a42c5db069f70d05dac15e88c9c4ed845ca03a8e9c5742",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/result.json",
@@ -162,7 +162,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v0/usage-summary.json",
+      "path": "generation/v0/usage-summary.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "2179133a9924eca0a44cd8e0fb5eda99e908b97f51054e32edf16f5514241612",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/usage-summary.json",
@@ -170,7 +170,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v0/provenance.json",
+      "path": "generation/v0/provenance.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "abfe100149442469988105f6bed88f8e0fd77c435edab3b038ba35ead8c99881",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/provenance.json",
@@ -178,7 +178,7 @@
     },
     {
       "json_pointer": "/itinerary",
-      "path": "generation/r02/v1/itinerary.json",
+      "path": "generation/v1/itinerary.json",
       "publication_kind": "selected_json_subtree",
       "sha256": "0ae4e3fadd59488ea2024befbdaec5ff9339b068bee1cc3681c68d87404237cf",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/result.json",
@@ -186,7 +186,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v1/usage-summary.json",
+      "path": "generation/v1/usage-summary.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "d5e0134f03ab9e18eaf927312c32bfad53f0eb908e218d877046f002c20f19ec",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/usage-summary.json",
@@ -194,7 +194,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v1/provenance.json",
+      "path": "generation/v1/provenance.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "bae750afe4c95ae775eb030900eb9f1df3531ba60f384ff9ac424b27e8324ca2",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/provenance.json",
@@ -202,7 +202,7 @@
     },
     {
       "json_pointer": "/itinerary",
-      "path": "generation/r02/v2/itinerary.json",
+      "path": "generation/v2/itinerary.json",
       "publication_kind": "selected_json_subtree",
       "sha256": "6d13a385cb5038ad24d4bcac61b389608d4e6f98f7f2fed21596e053c0c7476a",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/result.json",
@@ -210,7 +210,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v2/usage-summary.json",
+      "path": "generation/v2/usage-summary.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "4f97f779fc2ee12d434b1630d4b7f11f2e2c8d5fbe6da4b95d978183cf3ee3cf",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/usage-summary.json",
@@ -218,7 +218,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v2/provenance.json",
+      "path": "generation/v2/provenance.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "586c7d78e3f4695d0b3553d954fb65062e3332ecf4ca44c554aa4b8dbbeeb8cb",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/provenance.json",
@@ -226,7 +226,7 @@
     },
     {
       "json_pointer": "/itinerary",
-      "path": "generation/r02/v3/itinerary.json",
+      "path": "generation/v3/itinerary.json",
       "publication_kind": "selected_json_subtree",
       "sha256": "b95b866df2c90c97ad276c2f4bbb69cade0c8440b3876b8aa178b62e8d6166d6",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
@@ -234,7 +234,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v3/usage-summary.json",
+      "path": "generation/v3/usage-summary.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "63b7e5721fc6a98f8d5c2e099543c4e9152fc810591d8cf759e344e9616592e5",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/usage-summary.json",
@@ -242,7 +242,7 @@
     },
     {
       "json_pointer": "",
-      "path": "generation/r02/v3/provenance.json",
+      "path": "generation/v3/provenance.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "7f5a4bf4ef1ece46184e9cef68325f73d77ef9fcc1927e16a743e6b8854e27ba",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/provenance.json",
@@ -250,7 +250,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/r02/route-reviews.json",
+      "path": "requirements/route-reviews.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "d2e14d4c220dbeddde43feedf7f03d7bca559b49b4d6f8d0afc339101667366c",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/route-reviews.json",
@@ -258,7 +258,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/r02/density-reviews.json",
+      "path": "requirements/density-reviews.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "51f7a094e88a55eb33f5b80ba60b979562fa08e8de6368e61cb36c4845f614bf",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/density-reviews.json",
@@ -266,7 +266,7 @@
     },
     {
       "json_pointer": "",
-      "path": "requirements/r02/schedule-context.json",
+      "path": "requirements/schedule-context.json",
       "publication_kind": "json_with_lf_publication",
       "sha256": "dfc9d495719139eae190e1c8258d3abc96940ec04913ed20037ca8dc069d9d41",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/schedule-context.json",
@@ -1120,16 +1120,16 @@
     {
       "expanded_semantic_sha256": "be762c84b5b56e42408d3effa54987a8f60be2612501c759a0827ae7aa52cd83",
       "json_pointer": "/v3/draft",
-      "path": "analysis/repair/r02/draft.json",
+      "path": "analysis/repair/draft.json",
       "publication_kind": "lossless_json_reference_view",
-      "sha256": "b74b59e2a48f2dc9752580847a2ff398641f17b9de8746068de00a067d968509",
+      "sha256": "e067d40c9011b3ca5bc14fb6f83d12da629b4513abe5866fe94f98647008050b",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
       "source_sha256": "c341c44ced43717bd1e64c489961dab295d7a9c05652b8a672bcad5e8aadbe09"
     },
     {
       "expanded_semantic_sha256": "be762c84b5b56e42408d3effa54987a8f60be2612501c759a0827ae7aa52cd83",
       "json_pointer": "/v3/final_primary",
-      "path": "analysis/repair/r02/final-primary.json",
+      "path": "analysis/repair/final-primary.json",
       "publication_kind": "lossless_json_reference_view",
       "sha256": "f12d42254872588cb4151f1b35e810f1e2269a8988ba8a612a9e6547201ba18a",
       "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
@@ -1153,7 +1153,7 @@
       "source_sha256": "1d80ece5fdd83d43795cd0c1b2f07fa383ac4b4180bf31888dff5e3500d5d609"
     },
     {
-      "path": "generation/r02/runtime-policy.json",
+      "path": "generation/runtime-policy.json",
       "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
       "bytes": 6500,
       "representation": "saved_json_projection",
@@ -1165,8 +1165,8 @@
     },
     {
       "path": "itinerary.md",
-      "sha256": "39deb71de3aee7fec80a9691c33171e7d193e06f3663cecd8e0e940d4ad0c95d",
-      "bytes": 7187,
+      "sha256": "0635552f01c9c0d46dce174e81bbcdc7277f663c4198947fbe55cb06a1693255",
+      "bytes": 7163,
       "representation": "reader_document",
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-11/itinerary.md",
@@ -1177,8 +1177,8 @@
     },
     {
       "path": "report.md",
-      "sha256": "44ab83b2ec03dc69a32b0e629d2a8c69716d63d59b02f39b280937b9bbc71bfd",
-      "bytes": 26511,
+      "sha256": "acc747cd72a3015ff5c77772c1fdafe8f254cfe51d007536b83c7850dbf4875f",
+      "bytes": 26267,
       "representation": "reader_document",
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-11/report.md",
@@ -1227,28 +1227,28 @@
     "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
     "selected_generation": {
       "v0": {
-        "itinerary": "generation/r02/v0/itinerary.json",
-        "usage": "generation/r02/v0/usage-summary.json",
-        "provenance": "generation/r02/v0/provenance.json",
-        "runtime_policy": "generation/r02/runtime-policy.json"
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage-summary.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
       },
       "v1": {
-        "itinerary": "generation/r02/v1/itinerary.json",
-        "usage": "generation/r02/v1/usage-summary.json",
-        "provenance": "generation/r02/v1/provenance.json",
-        "runtime_policy": "generation/r02/runtime-policy.json"
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage-summary.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
       },
       "v2": {
-        "itinerary": "generation/r02/v2/itinerary.json",
-        "usage": "generation/r02/v2/usage-summary.json",
-        "provenance": "generation/r02/v2/provenance.json",
-        "runtime_policy": "generation/r02/runtime-policy.json"
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage-summary.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
       },
       "v3": {
-        "itinerary": "generation/r02/v3/itinerary.json",
-        "usage": "generation/r02/v3/usage-summary.json",
-        "provenance": "generation/r02/v3/provenance.json",
-        "runtime_policy": "generation/r02/runtime-policy.json"
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage-summary.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
       }
     },
     "reader_categories": {
@@ -1266,9 +1266,6 @@
       ],
       "request_context": [
         "requirements/density-reviews.json",
-        "requirements/r02/density-reviews.json",
-        "requirements/r02/route-reviews.json",
-        "requirements/r02/schedule-context.json",
         "requirements/route-reviews.json",
         "requirements/schedule-context.json"
       ],
@@ -1279,22 +1276,22 @@
       ],
       "origin_captures": [],
       "generation": [
-        "generation/r02/v0/itinerary.json",
-        "generation/r02/v0/usage-summary.json",
-        "generation/r02/v0/provenance.json",
-        "generation/r02/runtime-policy.json",
-        "generation/r02/v1/itinerary.json",
-        "generation/r02/v1/usage-summary.json",
-        "generation/r02/v1/provenance.json",
-        "generation/r02/runtime-policy.json",
-        "generation/r02/v2/itinerary.json",
-        "generation/r02/v2/usage-summary.json",
-        "generation/r02/v2/provenance.json",
-        "generation/r02/runtime-policy.json",
-        "generation/r02/v3/itinerary.json",
-        "generation/r02/v3/usage-summary.json",
-        "generation/r02/v3/provenance.json",
-        "generation/r02/runtime-policy.json"
+        "generation/v0/itinerary.json",
+        "generation/v0/usage-summary.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage-summary.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage-summary.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage-summary.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
       ],
       "primary": [
         "evaluation/primary/summary.json"
@@ -1309,9 +1306,9 @@
         "analysis/poi-process/venues.json"
       ],
       "repair": [
+        "analysis/repair/draft.json",
+        "analysis/repair/final-primary.json",
         "analysis/repair/mechanism.json",
-        "analysis/repair/r02/draft.json",
-        "analysis/repair/r02/final-primary.json",
         "analysis/repair/repair.json",
         "analysis/repair/source-origins.json"
       ],
@@ -1324,10 +1321,31 @@
       ]
     },
     "relocated_public_paths": {
-      "generation/r02/v3/draft.json": "analysis/repair/r02/draft.json",
-      "generation/r02/v3/final-primary.json": "analysis/repair/r02/final-primary.json",
+      "generation/r02/v3/draft.json": "analysis/repair/draft.json",
+      "generation/r02/v3/final-primary.json": "analysis/repair/final-primary.json",
       "generation/v0/itinerary.json": "analysis/history/r01/v0/itinerary.json",
-      "generation/v1/itinerary.json": "analysis/history/r01/v1/itinerary.json"
+      "generation/v1/itinerary.json": "analysis/history/r01/v1/itinerary.json",
+      "generation/r02/runtime-policy.json": "generation/runtime-policy.json",
+      "generation/r02/v0/itinerary.json": "generation/v0/itinerary.json",
+      "generation/r02/v0/provenance.json": "generation/v0/provenance.json",
+      "generation/r02/v0/usage-summary.json": "generation/v0/usage-summary.json",
+      "generation/r02/v1/itinerary.json": "generation/v1/itinerary.json",
+      "generation/r02/v1/provenance.json": "generation/v1/provenance.json",
+      "generation/r02/v1/usage-summary.json": "generation/v1/usage-summary.json",
+      "generation/r02/v2/itinerary.json": "generation/v2/itinerary.json",
+      "generation/r02/v2/provenance.json": "generation/v2/provenance.json",
+      "generation/r02/v2/usage-summary.json": "generation/v2/usage-summary.json",
+      "generation/r02/v3/itinerary.json": "generation/v3/itinerary.json",
+      "generation/r02/v3/provenance.json": "generation/v3/provenance.json",
+      "generation/r02/v3/usage-summary.json": "generation/v3/usage-summary.json",
+      "requirements/density-reviews.json": "analysis/history/r01/requirements/density-reviews.json",
+      "requirements/r02/density-reviews.json": "requirements/density-reviews.json",
+      "requirements/route-reviews.json": "analysis/history/r01/requirements/route-reviews.json",
+      "requirements/r02/route-reviews.json": "requirements/route-reviews.json",
+      "requirements/schedule-context.json": "analysis/history/r01/requirements/schedule-context.json",
+      "requirements/r02/schedule-context.json": "requirements/schedule-context.json",
+      "analysis/repair/r02/draft.json": "analysis/repair/draft.json",
+      "analysis/repair/r02/final-primary.json": "analysis/repair/final-primary.json"
     },
     "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
     "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
@@ -1338,6 +1356,7 @@
       "model_calls": 0,
       "google_calls": 0,
       "rescoring": false
-    }
+    },
+    "layout": "Current selected materials use canonical category paths without revision directories; revision IDs remain in source metadata and history."
   }
 }

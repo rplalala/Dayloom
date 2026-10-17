@@ -1,18 +1,12 @@
 {
-  "schema_version": "rtpeval_density_reviews_1",
-  "batch_id": "case-11-r01",
-  "batch_revision": "1",
+  "batch_id": "case-11-r02",
+  "batch_revision": "2",
   "groups": [
     {
-      "group_id": "case-11",
-      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
-      "reviewer_ref": "/root/case11_source_policies",
-      "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
-      "review_origin": "agent",
-      "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+      "days": [],
       "default": {
-        "profile": "ordinary",
         "exact_count": null,
+        "profile": "ordinary",
         "source_refs": [
           {
             "field_path": "additional_preferences",
@@ -20,7 +14,13 @@
           }
         ]
       },
-      "days": []
+      "group_id": "case-11",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "rationale": "The complete original request prefers a moderate pace, mapped to ordinary. It specifies no exact daily primary-visit count. The protected interval on 2026-10-23 is only 14:00-16:00 Paris local time; it neither requests a rest day nor a different pace or visit count for that date. All four inclusive requested dates therefore retain ordinary with exact_count null and no dated overrides. The two adults and traveler_count 2 describe party size, not a sightseeing quota. Art and architecture are interests, not visit counts; the flexible remainder adds no count requirement.",
+      "review_origin": "agent",
+      "reviewed_at": "2026-10-16T21:59:50.038622+00:00",
+      "reviewer_ref": "/root/case11_source_policies"
     }
-  ]
+  ],
+  "schema_version": "rtpeval_density_reviews_1"
 }
