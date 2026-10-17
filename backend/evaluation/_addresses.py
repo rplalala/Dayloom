@@ -127,23 +127,22 @@ def strict_destination_matches(value, candidate, *, postal_town=False):
         return False
     typed = components(candidate, literal=True, hierarchical=True)
     if typed:
+        destinations = set().union(
+            *(
+                typed.get(kind, set())
+                for kind in (
+                    "locality",
+                    "administrative_area_level_1",
+                    "administrative_area_level_2",
+                )
+            )
+        )
         if postal_town and "postal_town" in typed:
             cities = typed["postal_town"]
             locality = typed.get("locality", set())
             if locality and not cities & locality:
                 return False
-            destinations = cities | locality
-        else:
-            destinations = set().union(
-                *(
-                    typed.get(kind, set())
-                    for kind in (
-                        "locality",
-                        "administrative_area_level_1",
-                        "administrative_area_level_2",
-                    )
-                )
-            )
+            destinations |= cities
         qualifiers = set().union(
             *(
                 typed.get(kind, set())

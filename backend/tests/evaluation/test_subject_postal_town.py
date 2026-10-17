@@ -199,6 +199,23 @@ def test_postal_city_is_evidence_not_an_automatic_identity_match(batch, fault):
     } == {"UNKNOWN"}
 
 
+@pytest.mark.parametrize("conflicting_city", [False, True])
+@pytest.mark.parametrize("level", ["administrative_area_level_1", "administrative_area_level_2"])
+def test_postal_town_preserves_administrative_destination_evidence(batch, conflicting_city, level):
+    intake = postal_batch(batch, destination="England, United Kingdom")
+    observed = postal_evidence(intake)
+    parts = observed["records"][0]["search"]["candidates"][0]["address_components"]
+    parts.append({"longText": "England", "types": [level]})
+    if conflicting_city:
+        parts.append({"longText": "Oxford", "types": ["locality"]})
+    report = resolve_versioned_identities(
+        intake, observed, common_subjects=True, subject_result=subject_material(intake, observed)
+    ).to_dict()
+    assert {
+        r["canonical_place_id"] for r in report["records"] if r["kind"] == "requirement_subject"
+    } == ({None} if conflicting_city else {VENUE_ID})
+
+
 @pytest.mark.parametrize("destination", ["London, United Kingdom", "London, GB"])
 def test_consistent_locality_and_postal_town_allow_google_country_aliases(batch, destination):
     intake = postal_batch(batch, destination=destination)
