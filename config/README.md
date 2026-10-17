@@ -45,13 +45,29 @@ not create another attempt. No phase name, round, Top-K change or failed provide
 hidden retries. The success cache and failure ledger survive every round. Zero acquisition
 allowances stop that class of work; other existing materials may still support a model attempt.
 
-At most one model call occurs per round. More rounds can increase model usage even with unchanged
-tool budgets. The 32-ID ceiling is a per-input union, not 32 additional POIs. The independent
+At most one proposal model call occurs per round. An explanation over 240 Unicode characters
+may use one separate batch compression call per entire stage; all overlong reasons from that
+response share the batch. It does not consume or reset the six-proposal allowance. Compression
+cannot change edits, identities or dispositions, and only reason-length validation errors qualify.
+The original patch and returned compression remain in the bounded audit. Missing usage and actual
+fees remain unavailable, while native usage/cost receipts include the separate call once.
+Compression usage is already included in Repair round totals; its separate budget-summary
+stage is a subset, not another charge.
+More rounds can increase model usage even with unchanged tool budgets.
+The 32-ID ceiling is a per-input union, not 32 additional POIs. The independent
 identity ledger can be larger. Original supply and its unused count retain their original meaning.
 No provider call, model explanation or policy pass changes UNKNOWN into a verified fact.
 Identity, source, scope, REQUIRED/EXCLUDED, zero hidden retries and UNKNOWN semantics are contract
 invariants, not configurable bypass switches. Reviews/Profile and Official Web additions remain
 unsupported in Repair; their zero allowance is not an enable switch.
+
+Repair defaults allow 420 seconds per stage, 150 per hard round, a 120-second
+round reference and up to 60 seconds of preparation. With a full 420 seconds remaining,
+the initial reference allocation is 140 seconds across three affordable rounds;
+the six-proposal ceiling remains unchanged. Preparation leaves 30 seconds for model startup
+and 20 for rechecking. Semantic calls retain their separate 45-second per-call and
+120-second cumulative allowances. The 600-second development request deadline can
+shorten the stage, so these settings do not guarantee six complete rounds.
 
 Stage deadline = min(entry request deadline minus `reference_discovery.deadline_seconds`,
 stage start plus stage_seconds). Nearby is reserved from its existing authoritative key, not a
@@ -70,6 +86,12 @@ rejected. Post-proposal I/O ends before finalization_reserve_seconds inside the 
 the complete synchronous revalidation is checked again before adoption. Hard timeout stops
 the stage without another model send and preserves the best retained result. Unused time
 remains within the same stage cap.
+Compression uses at most 30 seconds and 32000 input / 8192 output tokens. Input includes
+its system/user/schema and the shared Repair framing reserve. The timeout is recomputed before
+dispatch from the remaining hard round/stage/request time minus the recheck reserve; no deadline
+is extended. Failed attempts consume the single compression allowance. Failure, invalid or still
+overlong output, insufficient time or exhausted allowance stops Repair with a specific compression
+reason and retains the best result. There is no second compression or hard truncation.
 Minimum model plus recheck must fit round reference, which must fit round cap, which must fit stage
 cap. Model minimum must fit model maximum. Request exhaustion/cancellation stops new acquisition;
 owned resource cleanup still runs. Later failure preserves the latest accepted itinerary.
@@ -195,18 +217,22 @@ a local documentation coverage test detects a missing path or stale value.
 | `main_generation.framing_tokens` | `2048` | integer; >= 2048, <= 2048 | Per-primary-call message framing token reserve. Zero is invalid. |
 | `development_timeout_seconds` | `600` | integer; >= 1, <= 600 | Maximum permitted explicit development CLI request allowance. Presence alone does not enable this timeout; V3 requires an explicit allowance from entry. Zero is invalid. |
 | `v3_repair.max_rounds` | `6` | integer; >= 1, <= 6 | Model rounds per Repair stage, shared across dates/targets. System deletions use their own attempt ceiling. Zero is invalid. |
-| `v3_repair.max_model_calls` | `6` | integer; >= 0, <= 6 | Model sending ceiling per entire stage; zero disables Repair model attempts. Must not exceed max_rounds. Zero disables the allowance. |
+| `v3_repair.max_model_calls` | `6` | integer; >= 0, <= 6 | Proposal model sending ceiling per entire stage; zero disables Repair model proposals. Must not exceed max_rounds. |
 | `v3_repair.max_deletion_attempts` | `12` | integer; >= 0, <= 120 | System deletion attempts per stage, separately bounded from proposal model sends and sharing stage time/provider limits. Zero disables enumeration. |
+| `v3_repair.reason_compression.max_calls` | `1` | integer; >= 0, <= 1 | Separate stage-wide explanation compression attempts; zero disables compression. |
+| `v3_repair.reason_compression.input_tokens` | `32000` | integer; >= 1, <= 32000 | Complete compression system/user/schema/framing input ceiling; overflow stops before dispatch. |
+| `v3_repair.reason_compression.output_tokens` | `8192` | integer; >= 1, <= 8192 | Output ceiling for the single batch. |
+| `v3_repair.reason_compression.timeout_seconds` | `30` | number; > 0, <= 30 | Per-call ceiling, shortened by existing hard deadlines and recheck reserve. |
 | `v3_repair.quantity_review_enabled` | `true` | boolean; schema-validated | Default coverage review-target activation; CLI can explicitly disable it. It never turns NEEDS_REVIEW into CONFIRMED. |
 | `v3_repair.alternatives_per_gap` | `2` | integer; >= 1 | Distinct alternatives per authorized quantity gap as a preparation reference. Fewer options may still be used. Zero is invalid. |
 | `v3_repair.exploration_positions` | `2` | integer; >= 0, <= 2 | Reusable exploration positions within the same input union across the stage, not extra candidates or per-date quotas. Zero removes reserved presentation opportunities. Zero removes the corresponding tolerance. |
-| `v3_repair.timing.stage_seconds` | `360` | number; > 0, <= 360 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
-| `v3_repair.timing.round_seconds` | `120` | number; > 0, <= 120 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
+| `v3_repair.timing.stage_seconds` | `420` | number; > 0, <= 420 | Maximum Repair wall-clock duration, additionally bounded by entry deadline minus Nearby reservation. Zero is invalid. |
+| `v3_repair.timing.round_seconds` | `150` | number; > 0, <= 150 | Maximum wall-clock allocation for one candidate/model/recheck round. Zero is invalid. |
 | `v3_repair.timing.model_seconds` | `70` | number; > 0, <= 70 | Maximum model wait per call; dynamically shortened by remaining round time minus recheck reserve. Zero is invalid. |
-| `v3_repair.timing.preparation_seconds` | `45` | number; >= 0, <= 45 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
+| `v3_repair.timing.preparation_seconds` | `60` | number; >= 0, <= 60 | Maximum optional candidate and pre-proposal route acquisition window per round. Zero disables new preparation work, not cached reuse or the model. Zero removes the corresponding tolerance. |
 | `v3_repair.timing.recheck_reserve_seconds` | `20` | number; > 0 | Round time retained after model wait for route acquisition and application revalidation. Zero is invalid. |
 | `v3_repair.timing.minimum_model_seconds` | `30` | number; > 0 | Minimum available model allocation required to start a call. Zero is invalid. |
-| `v3_repair.timing.round_reference_seconds` | `60` | number; > 0 | Divisor used to estimate affordable remaining rounds and their soft preparation window. It does not shorten the hard model/recheck deadline or promise that many rounds. Zero is invalid. |
+| `v3_repair.timing.round_reference_seconds` | `120` | number; > 0 | Divisor used to estimate affordable remaining rounds and their soft preparation window. It does not shorten the hard model/recheck deadline or promise that many rounds. Zero is invalid. |
 | `v3_repair.timing.finalization_reserve_seconds` | `1` | number; > 0 | Time withheld from post-proposal I/O for local finalization. Must be smaller than recheck reserve. Zero is invalid. |
 | `v3_repair.input.input_tokens` | `252000` | integer; >= 1, <= 252000 | Per-model-call total system/user/schema/framing engineering ceiling; overflow preserves latest adopted itinerary. Zero is invalid. This application ceiling does not certify provider context capacity. |
 | `v3_repair.input.output_tokens` | `16384` | integer; >= 1, <= 16384 | Per-model-call strict output limit forwarded without mutating primary client defaults. Zero is invalid. |
@@ -502,6 +528,13 @@ Omission is a configuration error, not a switch to legacy classification. Old re
 are still readable independently of runtime configuration; no historical files are migrated.
 The immutable effective snapshot and its hash are captured once; each request's semantic ledger
 also reports its policy hash, input hashes, cache hits and per-call reported usage.
+Each sent semantic call records `timeout_seconds`, `limiting_deadline` and
+`remaining_seconds` for the call, cumulative total, caller phase and request limits
+that apply. These values describe the allowance selected before sending, not provider
+latency or proof of completed billing. Input/outcome captures and trace events retain
+them; the bounded budget summary retains allowlisted timing fields even on failure.
+Missing usage remains missing. A model timeout remains terminal and cannot qualify an
+unassessed candidate or trigger an automatic retry.
 
 
 POI semantic reference correction (2026-09-27): at most one correction per invalid-reference

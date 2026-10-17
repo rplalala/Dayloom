@@ -1,0 +1,121 @@
+{
+  "schema_version": "rtpeval_research_relevance_report_1",
+  "processing_status": "completed",
+  "track": "relevance",
+  "applicability": "applicable",
+  "identity_unit": "canonical_place_id",
+  "corpus_study_selected": false,
+  "population_id": "case12-retained-r07",
+  "population_revision": "1",
+  "profile_id": "case12-retrospective-r07",
+  "profile_revision": "1",
+  "population_digest": "b4a28e3dc236eeb749a11461ac944071b2a9a4d39ee1e76205e3d99738eb8774",
+  "measurement_coverage": {
+    "opportunities": {
+      "unit": "planned_v1_v2_slots",
+      "planned_slots": 2,
+      "captured_slots": 2,
+      "stages": {
+        "discovered": {
+          "complete": 1,
+          "partial": 1,
+          "unavailable": 0
+        },
+        "admitted": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "enriched": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "supplied": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        },
+        "scheduled": {
+          "complete": 2,
+          "partial": 0,
+          "unavailable": 0
+        }
+      }
+    },
+    "corpus": {
+      "unit": "original_requests",
+      "planned_cases": 1,
+      "complete": 0,
+      "partial": 0,
+      "unavailable": 1
+    }
+  },
+  "review_coverage": {
+    "unit": "original_requests",
+    "planned_cases": 1,
+    "interest_inventory_cases": 1,
+    "relevance_review_cases": 1,
+    "relevance_review_records": 70
+  },
+  "diagnostics": [],
+  "runs": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/89a66a3d123dcefb4560a103fa274d0425c78dbad1bb04c8ad577f8b0f4588ef",
+      "expanded_semantic_sha256": "89a66a3d123dcefb4560a103fa274d0425c78dbad1bb04c8ad577f8b0f4588ef"
+    }
+  },
+  "opportunity_semantic_sha256": "820d07dc2589f782e4e54a579661aa3b15aed6d816e7c929f873b8c914bcbb6a",
+  "interest_inventory_bindings": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/3fb7b2eecb091bf7e81e3388c5342192d1896db3db82b0c7d40be6f2ffc20719",
+      "expanded_semantic_sha256": "3fb7b2eecb091bf7e81e3388c5342192d1896db3db82b0c7d40be6f2ffc20719"
+    }
+  },
+  "independent_reviews": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/90266eb48a638d9358cb307632087e8a20b836debfe4be64d94a0ac2af49b9ad",
+      "expanded_semantic_sha256": "90266eb48a638d9358cb307632087e8a20b836debfe4be64d94a0ac2af49b9ad"
+    }
+  },
+  "comparisons": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/6ea65a8de9254f5b3c6fad534332ca6b1bc33cd2bb42631a7727167924e4184e",
+      "expanded_semantic_sha256": "6ea65a8de9254f5b3c6fad534332ca6b1bc33cd2bb42631a7727167924e4184e"
+    }
+  },
+  "coverage": [
+    {
+      "case_id": "case-12",
+      "case_revision": "07",
+      "status": "unavailable",
+      "eligible_entity_count": null,
+      "observed_subtotal": null,
+      "stratum_id": null,
+      "reasons": [
+        "missing_independent_coverage"
+      ]
+    }
+  ],
+  "coverage_profile": null,
+  "coverage_summary": {
+    "interpretation": "Descriptive eligible-entity/geographic proxy; repeated slots are not independent samples. No citywide recall or unique-venue coverage claim.",
+    "available_pairs": 0,
+    "omitted_pairs": 1,
+    "unstratified_pairs": 1,
+    "strata": []
+  },
+  "source_bindings": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/4586343633cd17e68e1a4c1742cee914119df94f28bdc0a99cd374d776fd8c5b",
+      "expanded_semantic_sha256": "4586343633cd17e68e1a4c1742cee914119df94f28bdc0a99cd374d776fd8c5b"
+    }
+  },
+  "source_digest": "4586343633cd17e68e1a4c1742cee914119df94f28bdc0a99cd374d776fd8c5b",
+  "semantic_sha256": "6e5bce1bd9262777edcd78007e302973e17a90d95fbb0d43ef658e8908015ebb"
+}

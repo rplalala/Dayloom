@@ -59,6 +59,9 @@ def material_fingerprint(user):
         "adopted_transfers",
         "target_worksheet",
         "arrangement_constraints",
+        "operation_guidance",
+        "schedule_time_context",
+        "affected_day_replan",
     )
     return digest({k: payload.get(k) for k in keys})
 

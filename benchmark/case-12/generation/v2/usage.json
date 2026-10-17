@@ -1,0 +1,179 @@
+{
+  "model_calls": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/48b57b32f4b5347f77c8b8fe9824060eab719a3cf60ec239a625952791ec9453",
+      "expanded_semantic_sha256": "48b57b32f4b5347f77c8b8fe9824060eab719a3cf60ec239a625952791ec9453"
+    }
+  },
+  "provider_events": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/6af61265f6698bff3d36fda54d32acfe231099263702213e266bd4390a23c38e",
+      "expanded_semantic_sha256": "6af61265f6698bff3d36fda54d32acfe231099263702213e266bd4390a23c38e"
+    }
+  },
+  "cache_events": [
+    {
+      "event_id": "4064728646f2436ca696acdf75957970",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "9b3805c3930442c4a91571142244aa19",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "9e5c09e9da3146a5b2f0eafcfa0f92c0",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "fa84c28eda034093a8edfa2ea71348aa",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "dee28f01a02a4d7db2a6390fc17ab815",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "f569bf60827b468182de48bf88e3e463",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "ef9069003548486f8082219a805d9ef8",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "efa3e3f5ec0e4701ab77c3b16409df92",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "49a940d4237644d9a1edeb4cb3b92da1",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "410f408b51b84f4080fd099cee75d680",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    }
+  ],
+  "stage_summaries": [
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 19.859000000011292,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 19.859000000011292,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 19.875,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 3.437000000005355,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "embedding",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 2.7030000000086147,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "retrieval",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 8.062000000005355,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 23.922000000005937,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 11.406000000002678,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 24.984000000011292,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "planner",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 123.71899999999732,
+      "scope": "inclusive_not_additive"
+    }
+  ],
+  "repair_summary": {
+    "observed_rounds": 0,
+    "model_event_ids": [],
+    "provider_event_ids": []
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "timing": {
+    "scope": "selected_invocation_through_cleanup",
+    "started_at": "2026-10-17T08:04:32.829468+00:00",
+    "finished_at": "2026-10-17T08:06:36.605236+00:00",
+    "elapsed_seconds": 123.71899999999732,
+    "status": "measured"
+  },
+  "outcome": "completed",
+  "schema_version": "rtpeval_usage_1",
+  "group_id": "case-12",
+  "run_id": "case-12-v2-20261017-r07",
+  "version": "v2",
+  "namespace": "planner",
+  "result_sha256": "299f5cfea2b9492aab9cf6f5bec4b2c8a93cabd5195bd3c863531dde7da497af",
+  "collection_status": "available",
+  "coverage": {
+    "scope": "instrumented_adapters_only",
+    "adapter_coverage": "default_adapters",
+    "unobserved_injected_clients": "not_inferred",
+    "http_sends": "transport_entry_not_billing",
+    "model_calls": "provider_invocations_not_internal_reasoning"
+  }
+}

@@ -392,7 +392,7 @@ def test_deadline_reserves_nearby_and_rechecks():
     model = Model()
     result = run(model=model, clock=lambda: 100, request_deadline=125)
     assert result.status == "SKIPPED" and model.calls == 0
-    assert RepairBudget(1000, clock=lambda: 100).deadline == 460
+    assert RepairBudget(1000, clock=lambda: 100).deadline == 520
     assert RepairBudget(150, clock=lambda: 100).deadline == 140
 
 

@@ -14,7 +14,7 @@ from backend.app.versions.v3.repair_acceptance import (
 from backend.app.versions.v3.repair_budget import RepairBudget
 from backend.app.versions.v3.repair_candidates import prepare_candidates
 from backend.app.versions.v3.repair_feedback import feedback_kind, learn, material_fingerprint
-from backend.app.versions.v3.repair_models import RepairPatch, RepairResult, TargetProgress
+from backend.app.versions.v3.repair_models import RepairResult, TargetProgress
 from backend.app.versions.v3.repair_projection import build_repair_input
 from backend.app.versions.v3.repair_routes import acquire_transitions, bind_transitions
 
@@ -122,9 +122,12 @@ async def run_repair_once(
     proposed_schedule = context.schedule
     window_adjustments = ()
     usage = {}
+    proposal_usage_reported = False
+    reason_compression = {}
     model_timeout = None
     model_available = None
     fingerprint = None
+    empty_guard = {}
     components = ()
     decision_key = None
     preparation_started = preparation_elapsed = input_build_elapsed = None
@@ -161,11 +164,23 @@ async def run_repair_once(
         audit_proposed, proposed_status = audit(proposed)
         from backend.app.versions.v3.repair_targets import related_progress
 
+        compression_audit, compression_state = audit(reason_compression)
+        if attempted and patch is not None and not patch.edits and fingerprint is not None:
+            empty_guard["action"] = "empty_proposal_recorded"
+            budget.empty_proposal_inputs = getattr(budget, "empty_proposal_inputs", set()) | {
+                (fingerprint, proposal_strategy)
+            }
         record = RepairResult(
+            reason_compression=(
+                compression_audit
+                if compression_audit is not None
+                else {"artifact_status": compression_state}
+            ),
             pending_groups=tuple(getattr(budget, "pending_groups", ())),
             effective_patch=effective_patch,
             components=components,
             material_fingerprint=fingerprint,
+            empty_proposal_guard=empty_guard,
             related_targets=related_progress(
                 snapshot,
                 proposed if proposed is not None else snapshot,
@@ -219,7 +234,16 @@ async def run_repair_once(
             spatial=spatial,
             effective_policy=policy.model_dump(mode="json"),
             usage=usage,
-            usage_status="reported" if usage else "unavailable" if attempted else "not_called",
+            usage_status=(
+                "not_called"
+                if not attempted
+                else "reported"
+                if proposal_usage_reported
+                and (not reason_compression.get("attempted") or reason_compression.get("usage"))
+                else "partial"
+                if usage
+                else "unavailable"
+            ),
             timing={
                 "stage_started": budget.started,
                 "stage_deadline": budget.deadline,
@@ -400,6 +424,16 @@ async def run_repair_once(
                 fingerprint = material_fingerprint(user)
                 input_build_elapsed = budget.clock() - input_build_started
                 preparation_elapsed = budget.clock() - preparation_started
+                empty_guard = dict(
+                    material_fingerprint=fingerprint,
+                    strategy=proposal_strategy,
+                    action="eligible",
+                    discovery_outcomes=list(preparation.discovery_opportunities),
+                )
+                if (fingerprint, proposal_strategy) in getattr(budget, "empty_proposal_inputs", ()):
+                    empty_guard["action"] = "stop_unchanged_input"
+                    budget.stops.append("no_new_material_after_empty_proposal")
+                    return result("SKIPPED", "no_new_material_after_empty_proposal")
                 timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
                 model_available = max(0, timeout)
                 if timeout < timing.minimum_model_seconds:
@@ -427,14 +461,24 @@ async def run_repair_once(
                         budget.charge(model=1)
                         attempted = True
                         async with asyncio.timeout(timeout):
-                            raw = await observed("repair_model")(model.generate_repair_structured)(
-                                system_prompt=system,
-                                user_prompt=user,
-                                output_tokens=policy.input.output_tokens,
-                                usage_callback=callback,
+                            from backend.app.versions.v3.repair_reason_compression import (
+                                RepairReasonOverflow,
                             )
+
+                            try:
+                                raw = await observed("repair_model")(
+                                    model.generate_repair_structured
+                                )(
+                                    system_prompt=system,
+                                    user_prompt=user,
+                                    output_tokens=policy.input.output_tokens,
+                                    usage_callback=callback,
+                                )
+                            except RepairReasonOverflow as exc:
+                                raw = exc.candidate
                 finally:
                     usage = dict(callback.usage_metadata)
+                    proposal_usage_reported = bool(usage)
                 model_returned = True
             if remaining() <= 0:
                 return result("REJECTED" if attempted else "SKIPPED", "phase_deadline")
@@ -442,13 +486,60 @@ async def run_repair_once(
                 return result(
                     "REJECTED" if attempted else "SKIPPED", "insufficient_time_for_rechecks"
                 )
-            patch = RepairPatch.model_validate(raw)
+            from backend.app.versions.v3.repair_reason_compression import (
+                RepairReasonOverflow,
+                compress_repair_reasons,
+                validate_repair_patch,
+            )
+
+            try:
+                patch = validate_repair_patch(raw)
+            except RepairReasonOverflow as exc:
+                if application_proposal is not None or any(
+                    d["target_id"] not in scope.target_ids
+                    for d in exc.candidate["target_dispositions"]
+                ):
+                    raise ValueError("Unauthorized reason compression") from exc
+                try:
+                    patch = await compress_repair_reasons(
+                        exc.candidate,
+                        model=model,
+                        budget=budget,
+                        remaining=remaining,
+                        round_index=round_index,
+                        record=reason_compression,
+                    )
+                finally:
+                    from langchain_core.messages.ai import add_usage
+
+                    for model_name, values in reason_compression.get("usage", {}).items():
+                        usage[model_name] = add_usage(usage.get(model_name), values)
+                    if tracer is not None:
+                        value, state = audit(reason_compression)
+                        tracer.event(
+                            "v3_repair_reason_compression_attempt",
+                            {
+                                "round_index": round_index,
+                                "artifact_status": state,
+                                "value": value,
+                                "metadata": {
+                                    **{
+                                        key: value
+                                        for key, value in reason_compression.items()
+                                        if key not in {"original_patch", "response"}
+                                    },
+                                    "attempts": budget.used["reason_compression"],
+                                },
+                            },
+                        )
             effective_patch = (
                 patch if application_proposal is not None else combine_pending(patch, pending)
             )
             from backend.app.versions.v3.repair_search import proposal_key
 
-            decision_key = proposal_key(effective_patch, snapshot, context, scope, extra)
+            decision_key = proposal_key(
+                effective_patch, snapshot, context, scope, extra, material=fingerprint
+            )
             budget.proposal_history = getattr(budget, "proposal_history", {})
             if decision_key in budget.proposal_history:
                 return result("REJECTED", "equivalent_proposal_suppressed")
@@ -527,9 +618,12 @@ async def run_repair_once(
         return result("REJECTED" if attempted or patch is not None else "SKIPPED", "repair_timeout")
     except Exception as exc:
         from backend.app.schemas.poi_semantics import SemanticAssessmentError
+        from backend.app.versions.v3.repair_reason_compression import ReasonCompressionFailure
 
         if isinstance(exc, SemanticAssessmentError):
             raise
+        if isinstance(exc, ReasonCompressionFailure):
+            return result("REJECTED", str(exc))
         if hasattr(exc, "counts"):
             sizing = exc.counts
         return result(
@@ -828,6 +922,7 @@ async def run_repair_stage(
         stop = (
             result.reason
             if result.reason in {"phase_deadline", "insufficient_time_for_rechecks"}
+            or result.reason.startswith("reason_compression_")
             else "model_failed_no_retry"
             if terminal_failure
             else "repair_timeout"
@@ -884,6 +979,7 @@ async def run_repair_stage(
                     "continuation_reason": stop,
                     "cumulative_counters": dict(budget.used),
                     "usage": result.usage,
+                    "usage_status": result.usage_status,
                 },
             )
         if stop != "feedback_iteration":
@@ -1051,7 +1147,7 @@ async def run_repair_stage(
             "usage_status": "not_called"
             if not any(r.result.model_attempted for r in records)
             else "reported"
-            if all(r.result.usage for r in records if r.result.model_attempted)
+            if all(r.result.usage_status == "reported" for r in records if r.result.model_attempted)
             else "partial_or_unavailable",
             "original": original,
             "final": current,

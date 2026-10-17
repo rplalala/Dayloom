@@ -1,0 +1,27 @@
+{
+  "schema_version": "case12_separate_interest_axes_1",
+  "unit": "one subject per original interest axis",
+  "canonical_subjects": 69,
+  "unresolved_subjects": 1,
+  "records": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/4ba59e459afbdd953dfb813522e181ec501f385dc80ec2932aa1070168471f04",
+      "expanded_semantic_sha256": "4ba59e459afbdd953dfb813522e181ec501f385dc80ec2932aa1070168471f04"
+    }
+  },
+  "summary": {
+    "nature": {
+      "not_relevant": 49,
+      "relevant": 16,
+      "unknown": 5
+    },
+    "harbour_views": {
+      "not_relevant": 38,
+      "relevant": 7,
+      "unknown": 25
+    }
+  },
+  "native_compound_meaning": "nature_or_harbour_views",
+  "source_reviews_sha256": "9541ccec48d7162c8c459c01afe89a3d1ba4b3a15b42bdd333f793e1f7fe475e"
+}

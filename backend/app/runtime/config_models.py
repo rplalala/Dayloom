@@ -307,10 +307,10 @@ class RepairAcquisitionConfig(_RepairConfigModel):
 
 
 class RepairTimingConfig(_RepairConfigModel):
-    stage_seconds: float = Field(gt=0, le=360)
-    round_seconds: float = Field(gt=0, le=120)
+    stage_seconds: float = Field(gt=0, le=420)
+    round_seconds: float = Field(gt=0, le=150)
     model_seconds: float = Field(gt=0, le=70)
-    preparation_seconds: float = Field(ge=0, le=45)
+    preparation_seconds: float = Field(ge=0, le=60)
     recheck_reserve_seconds: float = Field(gt=0)
     minimum_model_seconds: float = Field(gt=0)
     round_reference_seconds: float = Field(gt=0)
@@ -372,6 +372,13 @@ class RepairSpatialConfig(TransportPolicyConfig):
         return self
 
 
+class RepairReasonCompressionConfig(_RepairConfigModel):
+    max_calls: StrictInt = Field(ge=0, le=1)
+    input_tokens: StrictInt = Field(ge=1, le=32000)
+    output_tokens: StrictInt = Field(ge=1, le=8192)
+    timeout_seconds: float = Field(gt=0, le=30)
+
+
 class V3RepairConfig(_RepairConfigModel):
     max_rounds: StrictInt = Field(ge=1, le=6)
     max_model_calls: StrictInt = Field(ge=0, le=6)
@@ -389,6 +396,7 @@ class V3RepairConfig(_RepairConfigModel):
     input: RepairInputConfig
     acquisition: RepairAcquisitionConfig
     spatial: RepairSpatialConfig
+    reason_compression: RepairReasonCompressionConfig
 
     @model_validator(mode="after")
     def consistent(self):
@@ -398,7 +406,7 @@ class V3RepairConfig(_RepairConfigModel):
         ):
             raise ValueError("Invalid Repair coverage/window relationship")
         if self.max_model_calls > self.max_rounds:
-            raise ValueError("At most one model call per round")
+            raise ValueError("At most one proposal model call per round")
         if self.exploration_positions > self.input.identity_capacity:
             raise ValueError("Exploration positions must fit identity capacity")
         return self

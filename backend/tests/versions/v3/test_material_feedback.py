@@ -68,6 +68,168 @@ def test_noop_bounded_discovery_changes_real_input_and_accepts():
     assert result.counters["google"] == result.counters["details"] == 1
 
 
+@pytest.mark.parametrize("role", ["non_main", "unresolved"])
+def test_semantically_rejected_new_option_does_not_stop_replenishment(role):
+    from backend.tests.services.test_poi_semantics import Model as SemanticModel
+    from backend.tests.services.test_poi_semantics import service
+    from backend.tests.versions.v3.test_repair import selection
+
+    def reject_pending(rows):
+        for row in rows:
+            if row["visit_object"] == "pending":
+                row["role"] = role
+
+    semantic = service(SemanticModel(reject_pending))
+    ctx, original = discovery_context(), draft()
+    budget = RepairBudget(monotonic() + 600)
+    scope = addition_scope(original, ctx)
+    first = asyncio.run(
+        prepare_candidates(ctx, scope, budget, original=original, semantic_service=semantic)
+    )
+    budget.presentation_history = [
+        {"signature": a.opportunity_signature} for a in first.authorizations
+    ]
+    budget.feedback_kind = "no_op_patch"
+    provider = CandidateSearch()
+    prep = asyncio.run(
+        prepare_candidates(
+            ctx,
+            scope,
+            budget,
+            original=original,
+            pool=(selection("pending"),),
+            provider=provider,
+            intent_ids=("discovery_1",),
+            semantic_service=semantic,
+        )
+    )
+    assert provider.searches == 1
+    assert "pending" not in {r.place_id for r in prep.authorizations}
+    assert "fresh" in {r.place_id for r in prep.authorizations}
+    assert budget.used["details"] == budget.used["canonical"] == 2
+    assert any(r.reason == "semantic_role_not_main" for r in prep.decisions)
+
+
+def test_rejected_discoveries_do_not_consume_final_exploration_opportunities():
+    from backend.tests.services.test_poi_semantics import Model as SemanticModel
+    from backend.tests.services.test_poi_semantics import service
+
+    def reject_restaurants(rows):
+        for row in rows:
+            if row["visit_object"].startswith("restaurant"):
+                row["role"] = "non_main"
+
+    semantic = service(SemanticModel(reject_restaurants))
+    ctx, original = discovery_context(), draft()
+    scope, budget = addition_scope(original, ctx), RepairBudget(monotonic() + 600)
+    first = asyncio.run(
+        prepare_candidates(
+            ctx,
+            scope,
+            budget,
+            original=original,
+            semantic_service=semantic,
+        )
+    )
+    budget.presentation_history = [
+        {"signature": a.opportunity_signature} for a in first.authorizations
+    ]
+    budget.feedback_kind = "no_op_patch"
+    provider = CandidateSearch(ids=("restaurant1", "restaurant2", "fresh"))
+    prep = asyncio.run(
+        prepare_candidates(
+            ctx,
+            scope,
+            budget,
+            original=original,
+            provider=provider,
+            intent_ids=("discovery_1",),
+            semantic_service=semantic,
+        )
+    )
+    assert "fresh" in {r.place_id for r in prep.authorizations}
+    assert not {"restaurant1", "restaurant2"} & {r.place_id for r in prep.authorizations}
+    assert budget.used["details"] == budget.used["canonical"] == 3
+    assert provider.searches == 1
+
+
+def test_repeated_empty_replan_stops_before_another_send_and_keeps_authority_explicit():
+    original, ctx = draft(), context()
+    model = SequenceModel([[], [], [], [], [], []])
+    result = stage(model, original, ctx, addition_scope(original, ctx))
+    assert model.calls == result.counters["model"] == 2
+    assert result.reason == "no_new_material_after_empty_proposal"
+    assert result.final == original
+    assert not result.rounds[-1].result.model_attempted
+    assert result.rounds[0].result.empty_proposal_guard["action"] == "empty_proposal_recorded"
+    assert result.rounds[-1].result.empty_proposal_guard["action"] == "stop_unchanged_input"
+    assert model.inputs[1]["scope"]["permissions"] == []
+    assert model.inputs[1]["addition_candidates"]
+    assert "independent" in model.inputs[1]["operation_guidance"]["authority_rule"]
+
+
+def test_unpresented_place_and_semantic_changes_do_not_bypass_empty_input_guard():
+    from backend.app.schemas.poi_semantics import POISemanticAssessment
+    from backend.tests.versions.v3.test_repair import Model, overlap_draft, run, scope_for
+    from backend.tests.versions.v3.test_semantic_repair import semantic_rows
+
+    original, ctx = overlap_draft(), context()
+    ctx = ctx.model_copy(update={"semantic_assessments": semantic_rows(ctx)})
+    scope = scope_for(original, ctx)
+    budget = RepairBudget(monotonic() + 600)
+    model = Model([])
+    first = run(original, ctx, scope, model, budget=budget, proposal_strategy="replan")
+    foreign = place("unpresented")
+    ctx = ctx.model_copy(
+        update={
+            "places": (*ctx.places, foreign),
+            "semantic_assessments": (
+                *ctx.semantic_assessments,
+                POISemanticAssessment(
+                    place_id=foreign.place_id,
+                    visit_object="Restaurant",
+                    role="non_main",
+                    categories=[],
+                    reason="Fixture role",
+                    evidence_refs=[foreign.source_ref],
+                    matches=[],
+                    exception_requirement_ids=[],
+                ),
+            ),
+        }
+    )
+    second = run(original, ctx, scope, model, budget=budget, proposal_strategy="replan")
+    assert first.material_fingerprint == second.material_fingerprint
+    assert model.calls == budget.used["model"] == 1
+    assert second.status == "SKIPPED" and second.reason == "no_new_material_after_empty_proposal"
+
+
+def test_semantic_limit_stops_replenishment_without_authorizing_unassessed_candidates():
+    from backend.tests.services.test_poi_semantics import Model as SemanticModel
+    from backend.tests.services.test_poi_semantics import service
+    from backend.tests.versions.v3.test_repair import selection
+
+    semantic = service(SemanticModel(), max_calls=1)
+    ctx = discovery_context(original_supply_ids=("a",), places=(place(),))
+    original, provider = draft(), CandidateSearch()
+    budget = RepairBudget(monotonic() + 600)
+    prep = asyncio.run(
+        prepare_candidates(
+            ctx,
+            addition_scope(original, ctx),
+            budget,
+            original=original,
+            pool=(selection("pending"),),
+            provider=provider,
+            intent_ids=("discovery_1",),
+            semantic_service=semantic,
+        )
+    )
+    assert not prep.authorizations and not prep.input_candidates
+    assert provider.calls == provider.searches == 0
+    assert "semantic_assessment_preparation_limit" in budget.stops
+
+
 @pytest.mark.parametrize("boundary", ["query", "capacity", "deadline"])
 def test_budget_alone_does_not_authorize_discovery(boundary):
     ctx, original, provider = discovery_context(), draft(), CandidateSearch()

@@ -1,0 +1,7 @@
+{
+  "$case_material_ref": {
+    "path": "analysis/resources/selected-r07.json",
+    "pointer": "",
+    "expanded_semantic_sha256": "9e987eb2bdefc43702d2e25fdf17bab9b43b71338555733e0583d063dbff34db"
+  }
+}

@@ -1787,3 +1787,132 @@ its [acceptance scope](../../../benchmark/case-05/report.md#acceptance) remains 
 from deferred blinded human assessment.
 The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
 has separate implementation and validation scope.
+
+## Repair reason-length recovery (2026-10-17)
+
+The retained [case-12 r04 result](../../../benchmark/case-12/report.md) exposed a
+transport/domain mismatch: the last Repair response completed, but one disposition
+reason contained 255 characters against the application's 240-character limit.
+Mapping therefore raised `StructuredOutputError`, producing `model_failed_no_retry`.
+The response contained no edits; correcting its explanation does not establish an
+arrangement improvement or alter the saved score. The private original evidence
+identifier is `benchmark/scratch/case-12/work/run-r04/captures/v3/evidence/wire/0111-response.json`.
+
+Implementation `e4985d0`, reviewed against fixed base `e82b1f6`, adds caller-owned
+batch compression only for explanation-length errors. The transport schema uses a
+length description compatible with the project's Foundry profile; application
+validation still enforces the bound. Hard truncation was rejected because it can
+remove qualifications or causal information. Compression preserves the original
+patch, replaces only the overlong reasons and remains subject to all ordinary edit
+authorization and acceptance checks. Meaning preservation is a model instruction,
+not a property proved by length validation. Current budgets, shared deadlines and
+failure behavior belong to the [configuration reference](../../../config/README.md#counting-timing-and-invariants).
+
+Standards review found no actionable issue. Spec review identified one audit gap:
+adapter validation could discard a returned malformed compression object before the
+service recorded it. A real-adapter regression reproduced the missing response.
+Correction `471f194` returns structured content for service-owned capture followed
+by strict validation; malformed output remains rejected without another call.
+Both review axes rechecked the correction without remaining findings. Synthetic
+price fixtures also use a fixed validity interval rather than expiring with the
+capture date.
+
+The final network-blocked selected suite passed 1,169 tests across all V0-V3 versions,
+LLM clients, runtime configuration, observability and selected usage/cost/receipt
+readers. Regression checks first reproduced the explanation overflow, incomplete
+usage labeling and rejected-output audit gap, then passed with the corrections.
+The full backend suite was not run. Initial broad execution hit sandbox
+temporary-directory permissions; using a unique worktree-local pytest
+base directory resolved those environment errors without project configuration or
+credential changes. Static checks passed. At this documentation update, code was
+committed through `471f194` and only this record was uncommitted. These checks use
+controlled model/provider responses and establish implementation behavior, not live
+compression quality. No provider execution, case-12 rerun or rescoring occurred;
+the original case records and cumulative USD 40 execution limit remain unchanged.
+
+## Full-day rest pace applicability correction (2026-10-17)
+
+The retained [case-12 r05 result](../../../benchmark/case-12/report.md) scored 100
+in Primary while native Repair ended `ACCEPTED_PARTIAL`. Saved-output inspection
+identified one remaining objective: the protected rest date, 25 October, had zero
+visits but received a native pace penalty of 100 under the default relaxed curve.
+Its full-day time protection prevented insertion; all five model proposals left
+the date unchanged, and the final preparation stopped without a model send because
+there was no authorized insertion window. The other five pace targets resolved.
+Primary's independently reviewed zero-count policy correctly assigned no deduction
+to the rest date. This establishes an internal objective-applicability mismatch,
+not an outstanding sightseeing obligation. The private original evidence identifiers
+are `benchmark/scratch/case-12/work/run-r05/captures/v3/result.json` and
+`benchmark/scratch/case-12/work/run-r05/primary-r05/execution/report.json`.
+
+Implementation `b292a10`, reviewed against fixed base `b6fd38c`, corrects V3's
+read-only measurement and finding provenance under the
+[soft pace contract](../../0005-validation-repair%28v3%29.md#soft-pace-objective).
+It does not rewrite the interpreted daily-count contract or force a completion
+status. The initial two regression cases reproduced the erroneous rest-day target;
+both passed after the correction. Thirteen added cases cover dated/all-trip rest,
+ordinary blank days, partial/unresolved/other-date protections, actual visit counts,
+hard time conflicts, role uncertainty, first-day exact-one counts and complete Repair
+convergence while retaining a rest day.
+
+The selected network-blocked suite passed **646 tests**: all V3 tests plus shared
+daily-count interpretation, time protection, generation diagnostics and independent
+daily-density tests. An initial run passed 635 tests with 11 temporary-directory setup
+errors; a fresh worktree-local pytest base directory resolved those sandbox errors
+without configuration changes. Ruff, formatting and whitespace checks passed.
+Independent Standards and Spec review each found zero actionable issues. At this
+record update, implementation and tests were committed through `b292a10`, with only
+the related documentation uncommitted. The full backend suite was not run. No
+provider execution, case-12 rerun, replay or rescoring occurred; saved outputs,
+historical Repair statuses, Primary scores and the cumulative execution budget
+remain unchanged. These checks establish offline behavior, not a new live result.
+
+## Repair opportunity preparation and empty-proposal correction (2026-10-17)
+
+[Issue #184](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/184) covers
+three generic V3 defects observed in the retained case-12 r06 result. Rounds 2–6
+returned empty edits with identical effective decision material; 26 and 28 October
+retained one main visit each. Transport preparation admitted only coverage targets,
+so soft-pace additions received no structured options despite reusable directed
+DRIVE evidence. Candidate preparation could stop on a provisional new identity
+before final semantic filtering removed it. Unpresented rejected identities also
+changed the old global proposal key without changing the model's decision material.
+The private evidence identifier is
+`benchmark/scratch/case-12/work/run-r06/captures/v3/result.json`; it is preserved
+original evidence, not a published dependency or a counterfactual feasibility proof.
+
+Implementation `7d1fe3c`, followed by review correction `421a83d`, was reviewed
+against local base `a0adc4e`. It presents bounded, evidence-scoped transport for
+active authorized additions, settles semantic qualification before stopping candidate
+preparation, and prevents another unchanged empty-input send for the same strategy.
+Independent add authority remains distinct from existing-activity edit permissions.
+The [current contract](../../0005-validation-repair%28v3%29.md#feedback-deduplication-and-applicability)
+owns the behavior; historical result fields and scores were not rewritten.
+
+The initial broad V3 gate passed 579 checks and failed 11. Corrections restricted
+pre-proposal routes to active targets, retained semantic batching, and updated tests
+that assumed repeated empty sends through the sixth round. Distinct nonempty sixth
+proposals, system-attempt accounting, cached route reuse and stopped-round trace
+markers remain covered. A new unpresented-identity fixture initially replaced the
+original semantic baseline; preserving those original assessments corrected the
+fixture and the selected gate passed 712 checks.
+
+Independent review then reproduced a remaining early-stop defect: two newly acquired
+but semantically rejected identities still consumed the exploration reference, hiding
+a later valid candidate. It also identified an audit field written after result-model
+construction. Both received failing regressions before correction. Final validation
+passed **713 network-blocked tests**: all V3 tests plus time protection, POI semantics,
+semantic projection, generation diagnostics, independent daily density and short-reference
+adapter tests. V3 Ruff, changed-file formatting and whitespace checks passed. Offline
+o200k sizing of a small synthetic transport input measured 5,568 local / 5,821 replan
+tokens against the unchanged 252,000-token input ceiling, with zero provider sends;
+this is not a worst-case capacity or live throughput measurement.
+
+Standards review found no actionable standards violations. Spec review's one confirmed
+defect and the separate audit observation were corrected and independently rechecked.
+At this checkpoint, implementation/tests are committed through `421a83d`, with only
+the coherent contract/evidence update uncommitted. V0–V2, Primary policy, six proposal
+sends, the 420-second stage limit and acquisition ceilings remain unchanged. No case-12
+rerun, native replay/rescore or paid project-provider call occurred. Full backend
+regression and live repair quality remain unverified; case-12 stays paused after its
+existing Primary handoff, with its USD 55 cumulative allowance and historical usage intact.

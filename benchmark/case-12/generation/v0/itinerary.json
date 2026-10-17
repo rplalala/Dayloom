@@ -1,0 +1,44 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Museum of Contemporary Art Australia",
+      "source_place_id": null,
+      "reason": "An optional art-focused addition to the Circular Quay and The Rocks day, offering a different kind of experience from the planned harbour-side visits.",
+      "associated_day": "2026-10-23",
+      "area": "Circular Quay",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Opera Bar",
+      "source_place_id": null,
+      "reason": "An optional place to pause for a drink or a bite during the planned Opera House and harbour visit.",
+      "associated_day": "2026-10-23",
+      "area": "Sydney Opera House",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    },
+    {
+      "place_name": "Shelly Beach",
+      "source_place_id": null,
+      "reason": "An optional coastal stop to consider alongside the planned North Head nature outing.",
+      "associated_day": "2026-10-27",
+      "area": "Manly and North Head",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
+      "source_ref": null
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-28",
+  "days": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/e2a37deda204e37ac838589eeb6f8efce16e7f0e445eff8eee49d60da6a56643",
+      "expanded_semantic_sha256": "e2a37deda204e37ac838589eeb6f8efce16e7f0e445eff8eee49d60da6a56643"
+    }
+  }
+}

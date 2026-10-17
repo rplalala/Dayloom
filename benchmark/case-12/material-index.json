@@ -1,0 +1,658 @@
+{
+  "schema_version": "case12_public_material_index_1",
+  "case_id": "case-12",
+  "status": "accepted_automatic",
+  "selected_revision": "r07",
+  "generation_source_revision": "3a7276284c428b9dce3bc59e643117cdc9bc8307",
+  "evaluation_preparation_head": "27da4724a38c128aaac79228a4f7e640244feb3f",
+  "canonical_original_input": "../inputs/case-12.json",
+  "original_input_sha256": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+  "private_archive": "benchmark/scratch/case-12/archive",
+  "publication_format": {
+    "references": "$case_material_ref paths are relative to this case directory. Resolve JSON Pointer, recursively expand, and verify canonical JSON SHA256 (sorted keys, compact separators, ensure_ascii=False).",
+    "delta": "case_itinerary_delta_1 replaces listed top-level keys on expanded base_path; verify its expanded_semantic_sha256.",
+    "source_paths": "Sources.logical_path values identify entries relative to the private case root. They are evidence identifiers, not public navigation dependencies.",
+    "projections": "Allowlisted views exclude raw provider/model responses, private prompts/transcripts and credentials. Public views are not native closed replay bundles; original native schemas/receipts remain in the private archive.",
+    "line_endings": "UTF-8 LF; publication hashes describe LF bytes."
+  },
+  "entries": [
+    {
+      "path": "requirements/reviewed.json",
+      "sha256": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+      "expanded_semantic_sha256": "efcde51c9fd3295399b7429824c71d7206b5d3066676e2a9ca18cc9d05413dfe",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/material-r07/requirements/requirements/review/reviewed-final.json",
+          "sha256": "6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "requirements/actors.json",
+      "sha256": "21af2483b754517575509aae32ffaef743dbbb6a538f90aa724e4a59a6921e1c",
+      "expanded_semantic_sha256": "ba9423c1d8bb33049bac41cb5ef44e480ef98dde8b2db3e7311c80ed569b518d",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/authoring-execution.json",
+          "sha256": "a39179ce4e1623215be837192ff81ad7bf0edf9fc207545d9468e899f192402f",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/review-execution.json",
+          "sha256": "01b0d0da4608dc801db0cfa583b381f968fca9782a292a811211da2567c4e9d3",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "interests/inventory.json",
+      "sha256": "97f3206babcd6ba9b51da2f668e82006b1d0195a98bfc9072c3ed2a06a07219b",
+      "expanded_semantic_sha256": "f43b6a81ac8c61b2cdb109c2205c7adecef21fef02927712ad93463bce7d4e50",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-material/r07/interests.json",
+          "sha256": "d0685b0a8f7379737a4ce69d1f048c45452446ddf1b7f65bd7b1638c62ce284e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "interests/reviews.json",
+      "sha256": "60a04eac18f3be257323718da23c78994a39eaba02fb9843b7dc5c728e428b6b",
+      "expanded_semantic_sha256": "86e33b86f5cd1febca064aa3210706f9b127812b473f403974127cdc6f9c79bb",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-material/r07/relevance-reviews.json",
+          "sha256": "9541ccec48d7162c8c459c01afe89a3d1ba4b3a15b42bdd333f793e1f7fe475e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "interests/venue-evidence.json",
+      "sha256": "9de074a64a966c74f13de6f8bf4c84cfcb263c34063d630e0c678b116b9f4ccc",
+      "expanded_semantic_sha256": "a522c837287ae890550f26df6686453bad0a67ad5984c6abacaaa768558eafc0",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/venue-facts/execution/observations.json",
+          "sha256": "a6e5cf610662b6397fd14662c3b2f8e13d7539c93c9c8b29c9503c4d812f0f29",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/runtime-policy.json",
+      "sha256": "5c42a4cee4ed094fe0f0955e6f38b4529de46015dc109dec4561d71b09b48e86",
+      "expanded_semantic_sha256": "9ddf1f64b5a88f976665b4b10672b7eca9959048d399deba3ff82fab8f0754a4",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v0/runtime-policy.json",
+          "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v1/runtime-policy.json",
+          "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v2/runtime-policy.json",
+          "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v3/runtime-policy.json",
+          "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/itinerary.json",
+      "sha256": "7213955046a228e2fba30fc634fd45af7842e47e3ef072a27ac973d429d4ad50",
+      "expanded_semantic_sha256": "502ee2c27f3314c2eaa6b456d77e2dca73615c0bedbd15382408c306edb5a767",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v0/result.json",
+          "sha256": "da3ac570fbcf939fcf32611a5e150a0d2e183a50057f25b76379da11f4b85240",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/usage.json",
+      "sha256": "366795b940d5c5a0c286fa782b3a31531256e5ce7cac410b66fdc37d709f09e6",
+      "expanded_semantic_sha256": "917784c635883c8aa286f5eb6e6874a042d02739240ba171963491fea7e517b7",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v0/usage.json",
+          "sha256": "366795b940d5c5a0c286fa782b3a31531256e5ce7cac410b66fdc37d709f09e6",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/provenance.json",
+      "sha256": "293cc0263ac66dd9ab3c6311957272b0bf3b8ffb777bae1481698958c08217d1",
+      "expanded_semantic_sha256": "6d8b2e6e84871e99c8f461b901dbe074232179450041f1d0c5825e9f9ff2ffb5",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/material-r07/sources/captures/v0/producer-declaration-0-v0.json",
+          "sha256": "57ac9b896abc753d4026cce2bc4d14128a920d7cb2dc7833741060f6e3a21c13",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "6f84fe1c705107bbaf58f535a15157f4f9f32b1ef66c70afd95164100109421e",
+      "expanded_semantic_sha256": "86860bb4051112385191e70c4bf72add4030f0b3b4d4ad92a68dcd089ff81f2d",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v1/result.json",
+          "sha256": "29016b1916c6ae493ff76e81274b6c9ee00aced9349aa611034498dae14a8191",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/usage.json",
+      "sha256": "14e2791943bf849d9bfd142087ad4f72cf06ed6b08b9c25fce4f46e39cc19a9f",
+      "expanded_semantic_sha256": "d6c1859c9a5daa4da47f84b7d6eb99e76aebb7367cba4d9fb29e2117421ed571",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v1/usage.json",
+          "sha256": "03582fb0299021595b76f9f6eb11927d8e45f8af57cfb1a66c07c43585b911b1",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "7cb3e36cd1ad28e585770edad798e1ac2586eeac5487e3c9a536ee9033fe0d36",
+      "expanded_semantic_sha256": "b25fb827f2094251fa610dfba4d7131082447477f8ff2ac67963ea88d4319733",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/material-r07/sources/captures/v1/producer-declaration-0-v1.json",
+          "sha256": "4eed6f8464e8eda9ede614f16d1a8b0e3d6d9b820cb284397989c01d524e6144",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/v1-capture.json",
+      "sha256": "c2769f48bf968c658ea859de5382b57710631b5e3d43332d8006c827bfb24faa",
+      "expanded_semantic_sha256": "db4fe6b4befc2d918818be96feb6ba45c9183a1fd359cf6ddab432f9333f53db",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v1/opportunity-capture.json",
+          "sha256": "e99cfc9efe37ef5351e370a3866258d66bf204bbf8f9fe021ddd2e8a8449f809",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "e6c9b23ecb070bc200ef8edb4d5f1b0fdd9051aac198fbc76de2e0c8003fb513",
+      "expanded_semantic_sha256": "564704c36ba7f0c9fa9751b7970cee21d2b173fcf88aa6198e8c603990992155",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v2/result.json",
+          "sha256": "299f5cfea2b9492aab9cf6f5bec4b2c8a93cabd5195bd3c863531dde7da497af",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/usage.json",
+      "sha256": "34d042c1153f34f22da1efcc0d77c47c0d734417b443ff27fc46a8d96d4a1a8e",
+      "expanded_semantic_sha256": "682fc4b25743221e58f124d5d968850316c059f469a034a88bc0141b012a20c7",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v2/usage.json",
+          "sha256": "f8a04114a848f2dba008ce90e14785f43cf66444dea9eff3f873c7ee6241969d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "48799b1df4226539b977edf779a7ac63ccfc4364258830f9120565c279e20cf8",
+      "expanded_semantic_sha256": "744d0ce872da76f3c1a8e05e634213f7b5e50d55a13b65ce5c861d5cc7b13390",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/material-r07/sources/captures/v2/producer-declaration-0-v2.json",
+          "sha256": "b51aa761df635a38d497c2988623ee8953140875258c0906406c443249503c4e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/v2-capture.json",
+      "sha256": "12d8ead5e84280fbaaa195838ec97df368f747fde24895d358be51a05dc09095",
+      "expanded_semantic_sha256": "d1a01f767e32922ebad28fbe3c3d487f1ed457556ed7685e39b7fbc198f50ef3",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v2/opportunity-capture.json",
+          "sha256": "72ee240ba937a4974f6df56ffeb40068b22bb6bfe4c5b364a9dda3c95744162a",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/rag-origins.json",
+      "sha256": "293ddd17d1aa10ad5bc8059a3419afac2fc03111d256e240dc9d061b195fc451",
+      "expanded_semantic_sha256": "0b2e473d76b1208bd321938f506fd480efe8fe542de2364e71372c3c4786832b",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v2/result.json",
+          "sha256": "299f5cfea2b9492aab9cf6f5bec4b2c8a93cabd5195bd3c863531dde7da497af",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "36494d12e7b1bbc379dc2f183c3b4e0a626f5aefdc767518c4a61923b56bbf74",
+      "expanded_semantic_sha256": "46a5b066945ac5f4b9faaf095bd44d4826af3d9d456d1af5e8055105e64678b5",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v3/result.json",
+          "sha256": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+          "json_pointer": "/v3/final_primary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/usage.json",
+      "sha256": "67271bb32777c358a1bdade0654c4a3c4a4ab102ccbda9bfe1901ec10166f411",
+      "expanded_semantic_sha256": "2e6c0159751d37e55b71a83b6a22a9a1d7fd8782438f1a29c800d476a62ec859",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v3/usage.json",
+          "sha256": "f5b203c6e8295ea0f648c9c98a128903f9ce36d636e0d7d6a0ad36220796c1a9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "fd5b60267af6de51234497bae04fc19ae0db87372896211c1f28633a54aaf801",
+      "expanded_semantic_sha256": "889ed8e1868d7ff3484833730ba6f2f3ab0682fbdf7b45f73cad240e6fe23c25",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/material-r07/sources/captures/v3/producer-declaration-0-v3.json",
+          "sha256": "103bb22cb210f9fdc136943c04d56300463bc707c4dc4fe9ee58c9660e21a4ab",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/rag-origins.json",
+      "sha256": "9bde5b0ae16113eaf93a2cc04fbe1e43e2a1dff3cc87f121dc598a24488168d3",
+      "expanded_semantic_sha256": "c173ed477b942e26606700370b7f87781307360093f5c9cf3609e508347c54fb",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v3/result.json",
+          "sha256": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/draft-delta.json",
+      "sha256": "f477b46cd37078f01f6978f5b3b777537b4dc2a042158af6abe5cdb9a6323820",
+      "expanded_semantic_sha256": "76274016e332640dfc5d564d120a600e776a21001236f9109696d0a352ee3aa3",
+      "publication_kind": "lossless_delta",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v3/result.json",
+          "sha256": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+          "json_pointer": "/v3/draft"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/primary/report.json",
+      "sha256": "4595daf7b472ed27a26ca42cca0223113df430ea6a623d7582ed7985cc45ed86",
+      "expanded_semantic_sha256": "3d1a87f020c2e9443417e896c6711552dde914747d907139fa26001f1d28c9f1",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/primary-r07/execution/report.json",
+          "sha256": "9ce1bd6aac0d41b08043f63a2d7eedc35ba16727ab9a8d7991df19fa246357b2",
+          "json_pointer": "/quality"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/primary/summary.json",
+      "sha256": "72cb3bc4cf2ea80b84cc01b8ddc86d5d0517a60441480c04125e586e92bfbb6f",
+      "expanded_semantic_sha256": "aa17de68a8208316de9cfd4c6ab5d438f2807e75bc488426f3eb638066fd6deb",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/primary-r07/execution/report.json",
+          "sha256": "9ce1bd6aac0d41b08043f63a2d7eedc35ba16727ab9a8d7991df19fa246357b2",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "evaluation/v3-pair/report.json",
+      "sha256": "3588a863bd6c9a57ba934e05d2c07a8a819e8f4ba0a399615c7585f68ff9b50e",
+      "expanded_semantic_sha256": "fefc40bcb06c5ec9a2c0590bf450ead7037cc7d6727a710a08c32b388719fc3b",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/pair-current-report.json",
+          "sha256": "c37053eb9a946dc48d41921fa7bdac94016b4bd7e7b8872369b0543f2c801f82",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "0505c1df6be38db2dd3d8f46676f3fe51a911f67b800429e503317fcc4acba48",
+      "expanded_semantic_sha256": "95f6292693efe7dbc99b827028d044e3341a027b51b998e68624386c185f630f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-final/opportunities.json",
+          "sha256": "7366058964c220044c6bb54e2da0e400a71b755a7cabc887d5c5167ee43523a8",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "46d4d45d314adce05765f99aff6fb69c7c807e5cc695eef89c964d783ffb9b59",
+      "expanded_semantic_sha256": "e9d9c737703b526d9e4ecb67f6ca8141753a3d1cefa17eebb8fcfdc752ac6271",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-final/relevance.json",
+          "sha256": "e0aa444a028caea1b64a2a0cae82ceffc04f47e521ff5dae580f96b3d1cab8b8",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/research.json",
+      "sha256": "2e786e8db9b000e40303616b544a9fefef680289e8dbf3b84157b4ff8cc47736",
+      "expanded_semantic_sha256": "14a175e9452aac42aa3bd72bd742075ca7fa74db82d0a939ed48260da5e1a46f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-final/repair.json",
+          "sha256": "552c3f9234be31db4a54bfc7633d240c9e6d541cce58e9b66f66f0958c174912",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/selected-r07.json",
+      "sha256": "d5784b9ce41c99fe00a34e45c088ea609521190122c04d4674e1dc9d38af6b4e",
+      "expanded_semantic_sha256": "9e987eb2bdefc43702d2e25fdf17bab9b43b71338555733e0583d063dbff34db",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-final/tradeoffs.json",
+          "sha256": "5063cab13725c46a9d7e74e2ba1b38124a1f31e9e107bec57ff8a925e3d1435b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/interest-axes.json",
+      "sha256": "fd3a8cf2c401ae2c35c9f58e6d2488e298c66064056f8921b816420c8216d927",
+      "expanded_semantic_sha256": "61da061c17d17a4e95a66f70d190355c42e00d555f7d53ae8d22c041b6be5d2f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r07/relevance-axes.json",
+          "sha256": "ca245d1f2b62f2a4f1b45e22387fbe0ebcc081f75bfb3dd67f6542871bbeda1c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/process.json",
+      "sha256": "a0baf2933f2f685221d6505136f68f79ce5e5a9fda6d12c0b125330029f36b59",
+      "expanded_semantic_sha256": "6f0944c15d542dee2ccc9ed5571c7f9c974be14e4a831d955e05f88570df6c69",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-prep-r07/repair-process-material.json",
+          "sha256": "5efb3f3d508fdd283378eccc11c9e13fe4b673e49185fd5daa754b1b3968b04b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "c1e29750a408b815560cc37858cb14641a612ab29a33ffa77b04a4de83922371",
+      "expanded_semantic_sha256": "ec76a903e7251fdef0f474327d1dbd541f289d73a6c446e6b03de7129c5ef27f",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/mechanism.json",
+          "sha256": "fb814675d500f8bc7049f09e004a91e2eec53112d3d9fa6d1778a6921e5ca913",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/accounting.json",
+      "sha256": "2c0aa0c0f4261b3fed206aa0ab9400d7b34703fe76574b3231f2c894468017c9",
+      "expanded_semantic_sha256": "d997b8278e0329fcb4f678e77d4972590ffa41c82ef093b1ec48a97ce302cb8a",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/final-accounting.json",
+          "sha256": "201814fb59cf27441235a050af70d78082403bdafe2b07171e11aaa7e817cbb9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/census.json",
+      "sha256": "86af0c988b2c9e42abef889dffa9cca3dfcb789d84417149219ed1c3a5af22cb",
+      "expanded_semantic_sha256": "6dd09389169f3e615e40a3a6669c8af123c179986c8bd32cf5ab687bf4876626",
+      "publication_kind": "allowlisted_projection",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/all-attempt-census.json",
+          "sha256": "4885dc83baca88f1db89d61211b3ecbe12b94f6b2f6affcbfa1b82e75c4d41a7",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r01.json",
+      "sha256": "564e319bbbcdf1eb3e6ae33b4e26ad7f73fc43eb4cecc34aeed8669b6389ee5c",
+      "expanded_semantic_sha256": "43a81ab5a6697f54536915b29c5545ce7055fd78a277e6ef6fc8b87b5140b269",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r01/tradeoffs.json",
+          "sha256": "b573a073bcd48c482fcaac23ec3cbbe8a3b2aeab66b6870af8d6ebad3f6b3fbc",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r02.json",
+      "sha256": "cf9b32a54e216643e33740021f529b01a0a594ff937e8c48d0ecd1c20f00f2e6",
+      "expanded_semantic_sha256": "88adf897540d6bd19fd788713fd03bde017f9b3607a0c58dcdea108520e8773e",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r02/tradeoffs.json",
+          "sha256": "e67763efe60634b6ff2f2ac10fa72624c6fcfc48a13fdcc98c1605785cd043e9",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r03.json",
+      "sha256": "e3f22a6dc229018bc68e64816fc64d1c05185201a0b628627a988265929d470c",
+      "expanded_semantic_sha256": "495e69475b5edb73a3000f87620de7f395e3d6eb1639b01091c1557c36b142f8",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r03/tradeoffs.json",
+          "sha256": "c2b68049966d372dd79d39d8468164624c6a51c5f8859b468174aa781f351aac",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r04.json",
+      "sha256": "253e914382825e6be9cfe50e0cbd62635458ccd6b2ba969ddca556c961ffd7af",
+      "expanded_semantic_sha256": "ee7ba80558ebf275fd71a679a9c8445f221a56d52107e23738824c0a8d267594",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r04/tradeoffs.json",
+          "sha256": "4a67e4ebc3a526381c007210a868834f4eefd474958dc1189a882f3af6a73101",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r05.json",
+      "sha256": "a0d29aebb1e64b4652c41c1bf7c5be75248d9b1480fdc1c28f209ca8ea922e44",
+      "expanded_semantic_sha256": "bee39e48cf0eea205354a895d5d786eec1ea4329f089e9c1e7128a06e8cfe152",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r05/tradeoffs.json",
+          "sha256": "b70480324005944974467738c5cd0143130e6d2fce2d05059cb82134da2af48d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r06.json",
+      "sha256": "9003cefa35264ec5d8a408405135c9553780f8924e924379fb22f1df191b1997",
+      "expanded_semantic_sha256": "08d6550fdd5c952754517ad7fbf5187fc01486bcd24a7c9ddb8dda804443c282",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-output/r06/tradeoffs.json",
+          "sha256": "055a05ef7aec11195b0292a6b0006a51023ebc2db16452668b1efb00c6cc595d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/r07.json",
+      "sha256": "6b2cf45e0c776007bf82cf094ad417bac2787b29057e5bc731570f8481a0c6b7",
+      "expanded_semantic_sha256": "9e987eb2bdefc43702d2e25fdf17bab9b43b71338555733e0583d063dbff34db",
+      "publication_kind": "exact_json_subtree",
+      "sources": [
+        {
+          "logical_path": "work/acceptance-r07/research-final/tradeoffs.json",
+          "sha256": "5063cab13725c46a9d7e74e2ba1b38124a1f31e9e107bec57ff8a925e3d1435b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "shared/materials.json",
+      "sha256": "928c400ca2f879eb9585660f04a485d8253971daec632800886a61609e0026bf",
+      "publication_kind": "generated_reference_pool",
+      "sources": [],
+      "objects": 916
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "90ac2f4341fdff5ddfbe42dde02da273758dff902df664f86935be2b64f14660",
+      "publication_kind": "reader_view",
+      "sources": [
+        {
+          "logical_path": "work/run-r07/captures/v0/result.json",
+          "sha256": "da3ac570fbcf939fcf32611a5e150a0d2e183a50057f25b76379da11f4b85240",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v1/result.json",
+          "sha256": "29016b1916c6ae493ff76e81274b6c9ee00aced9349aa611034498dae14a8191",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v2/result.json",
+          "sha256": "299f5cfea2b9492aab9cf6f5bec4b2c8a93cabd5195bd3c863531dde7da497af",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "work/run-r07/captures/v3/result.json",
+          "sha256": "4a4bfa560d2e6a3ca6b1cdbde499aac735f70f42efe8606de2c90228f03af849",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "26dd06e77fcb17d46a63e564d86784214b961073f9b6398c654915f2b6ff9602",
+      "publication_kind": "publication_line_ending_policy",
+      "sources": []
+    }
+  ],
+  "private_archive_integrity": {
+    "manifest_sha256": "ab1f77c591b545fb7985b94fc4c329fee7f7f8493808ddf9250990d92e5b5048",
+    "blob_zip_sha256": "affcebab83023155e6aa8af08b2fd906c2af390179dc829f480f4364e5f7cefc",
+    "logical_files": 25261,
+    "unique_blobs": 2911,
+    "compressed_bytes": 24806386,
+    "working_copies": "original worker retained; verified main private package available"
+  },
+  "acceptance": {
+    "date": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_by": "researcher",
+    "selected_revision": "r07",
+    "limitations": "Retained as stated in report.md#acceptance",
+    "human_review": "deferred",
+    "main_worktree_integration": "complete_locally",
+    "private_evidence_migration": "complete_and_verified",
+    "integration_date": "2026-10-18"
+  },
+  "integration": {
+    "date": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "main_case_merge": "d6f3e8e6f97c77bdff6c15515393ec35f8af8773",
+    "remote_main_merge": "b41e8c7",
+    "required_remote_ancestor": "7408df9201965386b755af07ca43a35bae00fc46",
+    "native_reconstruction": "Exact saved-producer replay; current-main Repair fingerprint rejection retained and disclosed in report.md.",
+    "provider_calls": 0,
+    "human_review": "deferred",
+    "publication": "pull_request_open",
+    "pull_request": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190",
+    "delivery_branch": "codex/case12-r07-delivery"
+  }
+}

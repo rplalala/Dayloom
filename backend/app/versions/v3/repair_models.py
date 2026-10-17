@@ -101,12 +101,15 @@ class RepairEdit(ValidationModel):
     end_time: datetime | None
 
 
+REPAIR_REASON_CHARACTERS = 240
+
+
 class TargetDisposition(ValidationModel):
     target_id: str
     disposition: Literal[
         "proposed", "unresolved", "needs_evidence", "competing_candidate", "not_attempted"
     ]
-    reason: str = Field(max_length=240)
+    reason: str = Field(max_length=REPAIR_REASON_CHARACTERS)
 
 
 class RepairPatch(ValidationModel):
@@ -147,6 +150,7 @@ class CandidateDecision(ValidationModel):
 
 
 class CandidatePreparation(ValidationModel):
+    qualification_audit: tuple[dict, ...] = ()
     identity_capacity_summary: dict = Field(default_factory=dict)
     identity_free_operations: tuple[dict, ...] = ()
     target_opportunities: tuple[dict, ...] = ()
@@ -228,6 +232,7 @@ class RepairResult(ValidationModel):
     acquisition_audit: tuple[dict, ...] = ()
     feedback_kind: str = "not_evaluated"
     material_fingerprint: str | None = None
+    empty_proposal_guard: dict = Field(default_factory=dict)
     presentation_history: tuple[dict, ...] = ()
     conflict_records: tuple[dict, ...] = ()
     related_targets: tuple[RelatedTarget, ...] = ()
@@ -259,6 +264,7 @@ class RepairResult(ValidationModel):
     comparison: RepairComparison | None = None
     usage: dict = Field(default_factory=dict)
     usage_status: str = "not_reported"
+    reason_compression: dict = Field(default_factory=dict)
     timing: dict = Field(default_factory=dict)
     spatial: dict = Field(default_factory=dict)
     rounds: tuple["RepairRoundRecord", ...] = ()

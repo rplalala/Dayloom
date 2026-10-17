@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-17.
+Current source of truth. Updated 2026-10-18.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -231,30 +231,27 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint: the 16 October delivery of
-[activity semantics #172](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/172)
-and accepted case-07 through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) passed **1,231 affected backend tests**
-on the reviewed corrected application source. The earlier integration full suite
-passed **4,324 tests / 16 environment skips** before the two reviewed corrections.
-The additional corrected-code full run was stopped at the researcher's request
-because of its duration; it is incomplete and is not a full-suite pass. Both independent
-Standards and Spec axes have zero unresolved findings. Frontend validation passed
-**101 tests / 13 files**, TypeScript/Vite build and lint; backend/tool Ruff and
-all 45 changed Python format checks pass. The skipped environments remain
-unverified. Earlier Windows long-root and sandbox filesystem failures were
-isolated and rechecked without changing timeouts, credentials, permissions or
-project configuration. The detailed sequence belongs in the integration record.
+Latest offline checkpoint (18 October 2026): local integration of accepted
+[case-12 r07](benchmark/case-12/report.md#main-worktree-integration) preserves the
+original shared Repair corrections and includes remote main `7408df9` (case-08
+closeout, PR #189). The initial full backend run completed with **4,608 passed,
+16 skipped and seven failures**. Three junction-fixture failures passed unchanged
+outside the sandbox. Four deadline-telemetry parity comparisons received a test-only
+normalization correction; both affected modules then passed **24 tests**. No failures
+remain unresolved; a second full corrected run was not performed. Ruff and formatting
+pass for all 38 changed Python files. Independent Standards and Spec integration
+reviews and correction rechecks report zero actionable findings. The skipped
+environments remain unverified; frontend code was unchanged and was not retested.
 
-Saved-material read-only compatibility covers 28 saved outputs / 267 activities,
-six non-scoring native analysis reports and a fresh unexecuted preparation with
-the same declared population. Protected originals, earlier accepted cases and both
-case-07 primary receipts retain their hashes. Historical primary/pair scoring was
-not replayed. The [activity implementation and integration record](docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
-owns the test sequence, preservation evidence and review results. Earlier
-[#165 boundary correction](docs/records/v0-v3/semantic-reference-correction.md#october-15-shared-requirement-boundary-correction)
-and [case-05 integration](benchmark/case-05/report.md#acceptance) retain their
-original scope. Frozen historical packets retain their own implementation for
-exact replay; this checkpoint does not refresh their data.
+The migrated case-12 archive passed all retained-byte/public-source checks and ten
+exact native report reconstructions with its original producer source, network and
+original working-data access blocked. Current main independently rebuilds candidate
+opportunities/relevance but rejects historical Repair rebuilding because its opening
+packet binds older evaluator implementation hashes. No fingerprint gate was bypassed
+or accepted output rescored. The case report owns reproduction limits and the actual
+failure/correction/retest sequence. Earlier [activity-semantics integration](docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
+and [case-05 integration](benchmark/case-05/report.md#acceptance) retain their original
+sources and validation limits; earlier evidence was not refreshed by this checkpoint.
 
 Remaining limitations:
 
@@ -278,8 +275,8 @@ Remaining limitations:
   include reasoning tokens. Incomplete responses still stop and preserve their receipts;
   successful processing can retain genuine factual UNKNOWN judgments.
 - Blinded review, V3 paired diagnostics, controlled Repair and mechanism reports exist.
-  The latest real-material acceptance exercised final scoring, not these separate tracks
-  or a formal benchmark.
+  Accepted per-case process/pair reports retain their own evidence limits; controlled
+  studies, real human assessment and final research conclusions need their covered scope.
 
 Detailed engineering history is indexed in [records](docs/records/README.md), including
 [evaluator records](docs/records/evaluation/intake-identity-usage.md),

@@ -72,9 +72,17 @@ def measure_pace(itinerary, contract, diagnostics, assessments=()):
             confirmed, possible = daily_count_bounds(itinerary, row.date, assessments)
             primary = [a for a in activities if a.activity_id in confirmed]
             unknown = bool(possible)
-        penalty, zeros, projection = feasible_pace(
-            len(primary), policy, hard_count_floor(contract, row.date)
-        )
+        protections = [
+            p
+            for p in contract.time_protections or ()
+            if p.status == "fixed" and p.full_day is True and (not p.dates or row.date in p.dates)
+        ]
+        if protections:
+            penalty, zeros, projection = (0 if not primary else 100), (0,), None
+        else:
+            penalty, zeros, projection = feasible_pace(
+                len(primary), policy, hard_count_floor(contract, row.date)
+            )
         if unknown:
             penalty = None
         result.append(
@@ -85,6 +93,17 @@ def measure_pace(itinerary, contract, diagnostics, assessments=()):
                 "zero_counts": zeros,
                 "policy": policy.model_dump(mode="json") if policy else None,
                 **({"hard_count_projection": projection} if projection else {}),
+                **(
+                    {
+                        "time_protection_projection": {
+                            "version": "full_day_protection_pace_1",
+                            "exact_count": 0,
+                            "protections": [p.model_dump(mode="json") for p in protections],
+                        }
+                    }
+                    if protections
+                    else {}
+                ),
                 "activity_ids": tuple(a.activity_id for a in primary),
             }
         )

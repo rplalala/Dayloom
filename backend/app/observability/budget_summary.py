@@ -41,7 +41,7 @@ RAG_KEYS = (
 )
 REPAIR_KEYS = (
     "google fallback embedding retrieval canonical details routes elements preparation_routes "
-    "model cache_hits qualified_reuse duplicate_hits"
+    "model reason_compression cache_hits qualified_reuse duplicate_hits"
 )
 
 
@@ -79,6 +79,7 @@ class BudgetSummary:
                 "landmark_nomination",
                 "rag",
                 "repair",
+                "repair_reason_compression",
                 "nearby",
             )
         }
@@ -86,6 +87,11 @@ class BudgetSummary:
         for name, (section, keys) in LIMITS.items():
             self.stages[name]["limits"] = select(config.get(section), keys.split())
         repair = config.get("v3_repair") or {}
+        self.stages["repair_reason_compression"]["limits"] = select(
+            repair.get("reason_compression"),
+            ("max_calls", "input_tokens", "output_tokens", "timeout_seconds"),
+        )
+        self.stages["repair_reason_compression"]["usage_scope"] = "subset_of_repair_round"
         self.stages["repair"]["limits"] = {
             **select(repair, ("max_rounds", "max_model_calls")),
             **select(
@@ -145,6 +151,14 @@ class BudgetSummary:
                     self.stages[name][key] = payload[key]
         elif event == "poi_semantic_assessment":
             self.call("semantics", payload.get("call_id"), payload)
+        elif event == "v3_repair_reason_compression_attempt":
+            metadata = payload.get("metadata")
+            if isinstance(metadata, dict):
+                name = "repair_reason_compression"
+                self.snapshot(name, metadata, ("attempts",))
+                index = metadata.get("round_index")
+                if metadata.get("attempted") is True and type(index) is int and index > 0:
+                    self.call(name, str(index), metadata)
         elif event == "v3_repair_round":
             index = payload.get("round_index")
             if type(index) is int and index > 0:
@@ -189,12 +203,34 @@ class BudgetSummary:
             self.incomplete = True
             return
         usage, status = reported_usage(value.get("usage"))
+        if status == "reported" and value.get("usage_status") in {
+            "partial",
+            "partial_or_unavailable",
+        }:
+            status = "partial"
         stage["calls"][identity] = {
             "id": identity,
             "usage": usage,
             "usage_status": status,
             **select(value, ("elapsed_seconds", "engineering_tokens", "round_index")),
         }
+        if name in {"semantics", "repair_reason_compression"}:
+            call = stage["calls"][identity]
+            call.update(select(value, ("timeout_seconds",)))
+            deadline_keys = ("call", "total", "caller", "request", "round_stage_request")
+            if value.get("limiting_deadline") in deadline_keys:
+                call["limiting_deadline"] = value["limiting_deadline"]
+            remaining = select(value.get("remaining_seconds"), deadline_keys)
+            if remaining:
+                call["remaining_seconds"] = remaining
+            if value.get("error_type") == "TimeoutError":
+                call["error_type"] = "TimeoutError"
+            if name == "repair_reason_compression" and value.get("status") in {
+                "accepted",
+                "failed",
+                "cancelled",
+            }:
+                call["outcome"] = value["status"]
         statuses = {r["usage_status"] for r in stage["calls"].values()}
         stage["usage_status"] = (
             "reported"

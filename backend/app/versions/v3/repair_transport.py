@@ -283,13 +283,11 @@ async def prepare_options(
 
     places = {c.place.place_id: c.place for c in preparation.ledger}
     queues = {}
-    active_additions = {
-        f.finding_id
-        for f in report.findings
-        if f.finding_id in scope.target_ids and f.check == "coverage"
-    }
+    active_targets = {f.finding_id for f in report.findings if f.finding_id in scope.target_ids}
     for auth in preparation.authorizations:
-        if auth.operation != "add" or auth.target_id not in active_additions:
+        # Conditional compensation is routed after its parent edit creates a real
+        # dependency; active soft-pace/exact-count additions need options now.
+        if auth.operation != "add" or auth.target_id not in active_targets:
             continue
         queues.setdefault((auth.target_id, auth.date), []).append(auth)
     ordered = []
@@ -321,9 +319,10 @@ async def prepare_options(
                 (auth.place_id, anchor.source_place_id),
             ):
                 departure = anchor.end_time
-                if origin == destination or (origin, destination, departure) in seen:
+                option_key = (auth.target_id, auth.date, origin, destination, departure)
+                if origin == destination or option_key in seen:
                     continue
-                seen.add((origin, destination, departure))
+                seen.add(option_key)
                 modes = allowed_modes(scope)
 
                 def usable(
@@ -438,8 +437,10 @@ async def prepare_options(
                         dict(
                             target_id=auth.target_id,
                             date=str(auth.date),
-                            origin=origin,
-                            destination=destination,
+                            place_id=auth.place_id,
+                            activity_id=anchor.activity_id,
+                            origin_place_id=origin,
+                            destination_place_id=destination,
                             mode=mode,
                             reference_departure=departure.isoformat(),
                             duration_seconds=row["duration_seconds"],
@@ -447,6 +448,18 @@ async def prepare_options(
                             reserve_seconds=budget.policy.spatial.drive_reserve_minutes * 60
                             if mode == "DRIVE"
                             else 0,
+                            total_duration_seconds=row["duration_seconds"]
+                            + (
+                                budget.policy.spatial.drive_reserve_minutes * 60
+                                if mode == "DRIVE"
+                                else 0
+                            ),
+                            temporal_applicability="time_independent_estimate"
+                            if row["basis"] in {"walk_provider_estimate", "basic_drive_estimate"}
+                            else "reference_departure_only",
+                            evidence_departure=row["departure_time"],
+                            routing_preference=row["routing_preference"],
+                            feasibility="requires_proposed_adjacency_and_window_recheck",
                             basis=row["basis"],
                             source_ref=row["source_ref"],
                             qualification=(

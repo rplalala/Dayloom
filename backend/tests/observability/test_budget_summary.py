@@ -92,6 +92,33 @@ def test_budget_write_failure_does_not_prevent_final_trace(tmp_path, monkeypatch
     assert final["budget_summary_status"] == "unavailable"
 
 
+def test_semantic_timeout_metadata_survives_failed_trace_finalization(tmp_path):
+    tracer = FileRunTracer(_context(), root=tmp_path, payload_mode=TracePayloadMode.METADATA)
+    tracer.event(
+        "poi_semantic_assessment",
+        dict(
+            call_id="timeout-call",
+            status="failed",
+            error_type="TimeoutError",
+            usage={},
+            timeout_seconds=13.5,
+            limiting_deadline="caller",
+            remaining_seconds={"call": 45, "total": 76.9, "caller": 13.5, "request": 460},
+        ),
+    )
+    tracer.finish(status="failed", requirements=None, tool_usage={}, outcome=None)
+    summary = json.loads((tracer.run_directory / "budget.json").read_text())
+    call = summary["stages"]["semantics"]["calls"][0]
+    assert call["timeout_seconds"] == 13.5 and call["limiting_deadline"] == "caller"
+    assert call["remaining_seconds"] == {
+        "call": 45,
+        "total": 76.9,
+        "caller": 13.5,
+        "request": 460,
+    }
+    assert call["error_type"] == "TimeoutError" and call["usage_status"] == "missing"
+
+
 def test_call_cap_is_explicit_and_secrets_never_enter_budget_file(tmp_path):
     tracer = FileRunTracer(_context(), root=tmp_path, payload_mode=TracePayloadMode.RAW)
     for i in range(40):

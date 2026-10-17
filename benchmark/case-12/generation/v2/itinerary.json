@@ -1,0 +1,44 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [],
+  "route_diagnostics": [],
+  "reference_recommendations": [
+    {
+      "place_name": "Western Foyers",
+      "source_place_id": "ChIJoVOojGauEmsRKrmCjyzBbbI",
+      "reason": "Restaurant near Sydney Opera House (approximately 66 m straight-line).",
+      "associated_day": "2026-10-22",
+      "area": "Shop 14/2 Circular Quay E, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-a0d793da-70c5-479c-8600-3ceab202e959:0"
+    },
+    {
+      "place_name": "The Gallery Café",
+      "source_place_id": "ChIJASPIoDKvEmsRl1FwrxoNJjI",
+      "reason": "Restaurant near Art Gallery of New South Wales (approximately 34 m straight-line).",
+      "associated_day": "2026-10-23",
+      "area": "Art Gallery Rd, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-0aebcf91-f7ee-40df-9c3e-857323ffe9f2:1"
+    },
+    {
+      "place_name": "Botanic Gardens Cafe",
+      "source_place_id": "ChIJQQVQuW6uEmsRdZZsAFcwFUU",
+      "reason": "Cafe near Royal Botanic Garden Sydney (approximately 71 m straight-line).",
+      "associated_day": "2026-10-24",
+      "area": "4A Macquarie St, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-5d95710a-fc7e-48b1-b266-f54d1185efd7:1"
+    }
+  ],
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-28",
+  "days": {
+    "$case_material_ref": {
+      "path": "shared/materials.json",
+      "pointer": "/objects/54f9cdb4ede05f289a9579b2f934e0b9770d9d2179a22eb12859792afa1dc7b0",
+      "expanded_semantic_sha256": "54f9cdb4ede05f289a9579b2f934e0b9770d9d2179a22eb12859792afa1dc7b0"
+    }
+  }
+}

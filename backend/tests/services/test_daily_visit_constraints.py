@@ -1,6 +1,7 @@
 """Dated all-primary counts stay executable and distinct from soft pace/rest days."""
 
 import asyncio
+import json
 from datetime import date
 
 import pytest
@@ -161,7 +162,8 @@ def test_uncertain_role_and_date_cannot_be_counted_as_zero():
     assert confirmed == () and possible == ("one",)
 
 
-def test_first_generation_carries_the_executable_dated_count():
+@pytest.mark.parametrize("count,mode", [(0, "exact"), (1, "exact"), (3, "minimum")])
+def test_first_generation_carries_the_executable_dated_count_as_json(count, mode):
     from backend.app.services.planning_supply_pipeline import planner_supply_projection
     from backend.tests.versions.v3.test_daily_visit_counts import counted_context
 
@@ -172,11 +174,21 @@ def test_first_generation_carries_the_executable_dated_count():
 
     from types import SimpleNamespace
 
-    contract = counted_context(1).contract
+    contract = counted_context(count, mode=mode).contract
     selection = SimpleNamespace(policy_result=EmptySupply(), semantic_assessments=())
     projected = planner_supply_projection(selection, contract)
-    assert projected["daily_visit_constraints"][0]["count"] == 1
-    assert projected["daily_visit_constraints"][0]["requirement_refs"] == ("semantic_1",)
+    serialized = json.loads(json.dumps(projected))
+    assert serialized["daily_visit_constraints"] == [
+        {
+            "constraint_id": "daily_visit_1",
+            "date": "2026-09-26",
+            "mode": mode,
+            "count": count,
+            "strength": "hard",
+            "requirement_refs": ["semantic_1"],
+        }
+    ]
+    assert contract.daily_visit_constraints[0].date == date(2026, 9, 26)
 
 
 @pytest.mark.parametrize("fault", ["foreign_ref", "strength", "date", "bool", "negative"])

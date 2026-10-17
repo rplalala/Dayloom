@@ -3,6 +3,8 @@
 import asyncio
 from time import monotonic
 
+import pytest
+
 from backend.app.integrations.dispatch import mark_provider_send
 from backend.app.versions.v3.repair_budget import RepairBudget
 
@@ -234,7 +236,7 @@ def test_four_round_allocation_uses_one_stage_clock_and_reserves_recheck():
     assert model.calls == 4 and result.status == "ACCEPTED_COMPLETE"
     assert result.rounds[0].result.timing["model_timeout_seconds"] == 70
     assert all(30 <= r.result.timing["model_timeout_seconds"] <= 70 for r in result.rounds)
-    assert result.timing["stage_remaining_seconds"] == 200
+    assert result.timing["stage_remaining_seconds"] == pytest.approx(260)
     assert len({r.result.timing["stage_deadline"] for r in result.rounds}) == 1
 
 

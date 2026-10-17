@@ -1,0 +1,26 @@
+{
+  "case_id": "case-12",
+  "case_revision": "07",
+  "input_sha256": "954cc256063f6118cc0001342be230c437944a77bbe082372008dae912a9b4b1",
+  "revision": "1",
+  "reviewer_ref": "case12-independent-relevance-r07-b1+b2+b3/gpt-6-luna",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-17T09:56:40.875717+00:00",
+  "rationale": "Three isolated actual model responses confirmed one broad native compound interest (nature OR harbour views), retaining separate judgments for both original source dimensions. This is POI opportunity relevance, not proof of itinerary fulfillment, quotas or separate required visits.",
+  "interests": [
+    {
+      "interest_id": "case-12-nature-harbour-views",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults who enjoy nature and harbour views and prefer a relaxed pace overall. On 2026-10-22, plan exactly one sightseeing visit. Leave 2026-10-25 completely free of planned activities and travel as a rest day. We are flexible about the sightseeing choices on the other dates.",
+      "requirement_pointer": "/soft_preferences/0",
+      "meaning": "nature_or_harbour_views",
+      "separate_source_axes": [
+        "nature",
+        "harbour_views"
+      ]
+    }
+  ],
+  "human_review": false,
+  "schema_version": "case12_public_interests_1",
+  "reviewed_requirement_spec_path": "requirements/reviewed.json"
+}
