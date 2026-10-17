@@ -651,8 +651,14 @@
     "native_reconstruction": "Exact saved-producer replay; current-main Repair fingerprint rejection retained and disclosed in report.md.",
     "provider_calls": 0,
     "human_review": "deferred",
-    "publication": "pull_request_open",
+    "publication": "merged",
     "pull_request": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190",
-    "delivery_branch": "codex/case12-r07-delivery"
+    "delivery_branch": "codex/case12-r07-delivery",
+    "publication_merge": "8bedb1523dec3bab4df0e48bc8d72669368dea40",
+    "local_main_sync": "complete",
+    "completed_issues": [
+      163,
+      184
+    ]
   }
 }
