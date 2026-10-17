@@ -86,8 +86,9 @@ records. The frozen primary preparation binds input, selected results, reviews,
 prices, limits and evaluator implementation. Zero-network native replay reproduced
 the saved report exactly. Public itinerary projections match the selected native
 itineraries. Public JSON uses UTF-8/LF; the material index distinguishes public
-projection hashes from immutable native-original hashes. Application code and runtime policy are
-unchanged; no new application regression result is claimed.
+projection hashes from immutable native-original hashes. Original execution/runtime
+bindings remain unchanged; subsequent integrated-code validation is recorded in the
+shared delivery record.
 
 ## Candidate opportunity and independent relevance
 
@@ -279,10 +280,14 @@ The pre-decision offline check verified the original 7,044-file archive and fres
 replayed the current packet/HTTP evidence, native pair and same-run Repair view with
 zero network attempts. Public/native checks covered 102 publication hashes, 923 shared
 reference expansions and 23 unchanged original input/generation/requirements/primary files.
-These checks found no interpretation-invalidating defect. No full backend regression
-was run for this documentation-only decision.
+These checks found no interpretation-invalidating defect. The decision changed only
+acceptance metadata; subsequent integrated-code checks are owned by the
+[shared delivery record](../../docs/records/evaluation/v3-pair-report.md#main-worktree-delivery).
 
 This completes automatic case acceptance. Blinded human review is deferred. The
-accepted package and private evidence remain in the current worktree; main-worktree
-integration and Git publication await a separate instruction. Recording this decision
-adds no service calls, retries or reference cost and starts no further case.
+accepted package and required private evidence are integrated into the main worktree.
+Historical native replay retains its recorded producer implementation and unmodified
+preparation bindings; the shared delivery record distinguishes it from current-code
+compatibility checks. [Issue #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
+tracks Git delivery. Acceptance and integration add no service calls, retries or reference
+cost and start no further case.

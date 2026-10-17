@@ -1282,9 +1282,9 @@
     "native_primary_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
     "native_current_pair_sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
     "human_review": "deferred",
-    "main_worktree_integration": "pending",
-    "git_publication": "pending",
+    "main_worktree_integration": "complete",
     "new_service_sends": 0,
-    "new_reference_usd": "0"
+    "new_reference_usd": "0",
+    "delivery_tracking_issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158"
   }
 }

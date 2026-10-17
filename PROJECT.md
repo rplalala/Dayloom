@@ -327,8 +327,9 @@ and case-09's paired view were separately refreshed under the common access poli
 17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
 owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
 automatically accepted on 17 October 2026 with its updated pair and disclosed limitations;
-blinded review is deferred, and its package remains in the current worktree awaiting
-separate integration/publication instructions. The
+blinded review is deferred. Its accepted package and required private evidence are
+integrated into the main worktree; [delivery #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
+tracks publication and preserved validation limits. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
 locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted

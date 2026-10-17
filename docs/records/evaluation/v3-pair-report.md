@@ -148,7 +148,8 @@ null/list access packets raised an uncaught exception. Three public regressions 
 reproduced the defect; type validation corrected it, and 79 affected tests passed.
 Both reviewers rechecked with zero remaining findings. Changed Python Ruff/format and
 diff checks passed. An existing reviewed-edit provenance replay defect was also
-reproduced and corrected without resuming case-09's stopped historical package. No full backend regression was run.
+reproduced and corrected without resuming case-09's stopped historical package. The pre-integration checks did not
+include a full backend regression.
 
 `/root/pair_access_standards` and `/root/pair_access_spec` independently reviewed code;
 `/root/paired_access_execute` used `gpt-6.1-sol / medium` for frozen execution only.
@@ -156,5 +157,40 @@ The parent owns source binding, native offline replay, sanitized projections and
 documentation. Agent review does not constitute human quality ratings. The researcher
 explicitly [accepted case-09](../../../benchmark/case-09/report.md#acceptance) on
 17 October 2026 with the refreshed pair and disclosed limitations; blinded review is
-deferred. Work stays in the current worktree; main-worktree
-integration and Git publication await a separate instruction.
+deferred.
+
+### Main-worktree delivery
+
+The separately authorized 17 October 2026 integration preserves main revision
+`9d8bf4c` and all seven incoming commits through merge `0236449`. The 163-path merge
+retains the main branch's shared requirement/time/reliability corrections; only
+`PROJECT.md` had edits on both sides and merged automatically. Nine compact archives,
+the case-09 acceptance sidecar and one-use authorization/consumption/Issue records
+were migrated with SHA-256 equality. Shared private producer source ZIPs preserve
+`45f8c33` for refreshed pairs and `b73c8ee` for original case-09 evaluation.
+
+All eight refreshed closures replay exactly under their retained producer, with old
+worktree reads and network access denied; case-09's original five research tracks,
+primary and stopped-attempt receipts also replay under its original producer. Main
+code independently accepts the original intakes and reproduces all eight API-only
+baseline scores/counts. Eligible access contexts are unchanged; updated implementation
+fingerprints make current packet digests different, so historical model responses
+remain bound to their original packets. Direct current-code historical replay is
+correctly rejected as stale; neither fingerprints nor captured material were rewritten.
+Public pair projections match migrated native reports independently of the old worktree.
+
+The integrated release received independent Standards and Spec review with zero
+findings on each axis. Ruff and all 16 changed Python formats pass. The focused
+paired-material gate passes 20 tests. The full offline backend run collected 4,447
+tests and finished in 2,088.08 seconds: **4,428 passed, 3 failed, 16 skipped**, with
+two cache-permission warnings. All three failures were Windows junction creation
+blocked by the sandbox; the exact alias-layout and two dangling-link cases passed
+outside the sandbox on unchanged code (one test, then two tests). No host permission
+or credential changed. There is no unresolved code failure; this does not claim a
+single clean full run. The 16 skips are nine opt-in PostgreSQL tests, five unconfigured
+alternate-volume tests and two host symlink-privilege tests. Focused rechecks overlap
+the full gate and add no separate coverage. No mypy/pyright setup is configured. Git publication and remaining batch coordination are tracked
+by [case-09 #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158) and
+[parent #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151). This
+delivery acquires no new provider evidence, changes no accepted score and starts no
+further case; blinded human review remains deferred.
