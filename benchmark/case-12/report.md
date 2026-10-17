@@ -2,10 +2,11 @@
 
 ## Status and request
 
-Revision r02 is **blocked before the four-version Primary handoff** on 17 October
+Revision r02 **stopped before the four-version Primary handoff** on 17 October
 2026 Australia/Sydney. V0 completed; V1 failed while constructing its generation
 prompt. V2, V3 and Primary were not started. No r02 V3 draft, Repair or final
-exists. Automatic case acceptance remains pending.
+exists. Its prompt serialization blocker is now fixed and verified offline in this
+worktree; no subsequent live revision has run. Primary and case acceptance remain pending.
 
 The [original request](../inputs/case-12.json) remains unchanged: Sydney,
 22-28 October 2026, two adults, whole-group budget AUD 3,200, nature and harbour
@@ -23,7 +24,8 @@ at `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`. The actual execution source is
 merge commit `ba464335ea7765996b98e819bb31f9ed329ccf31`, incorporating
 [PR #180](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/180) and
 [PR #181](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/181).
-No shared application code or input was changed in this case worktree.
+The r02 attempts used the merged application without case modifications. A later
+local correction changes only dated-count prompt serialization; input is unchanged.
 
 ## Reviewed obligations and observed interpretation
 
@@ -78,13 +80,17 @@ boundary. It deterministically raised:
 TypeError: Object of type date is not JSON serializable
 ```
 
-Two in-memory controls serialized successfully: omitting the daily constraint
-projection, and retaining it with `model_dump(mode="json", ...)`. No shared file
-was patched. This reproduction and the online trace locate the new serialization
-blocker; the detailed local exception is not presented as a recovered full online
-traceback. Full online graph replay was not attempted. The prospective correction
-belongs to the shared implementation, with regression coverage at the actual
-prompt-serialization caller, rather than a case workaround.
+Two original in-memory controls serialized successfully: omitting the daily constraint
+projection, and retaining it with `model_dump(mode="json", ...)`. This reproduction
+and the online trace locate the serialization blocker; the detailed local exception
+is not presented as a recovered full online traceback.
+
+The researcher then authorized a local shared correction, to be integrated with
+later case material. Commit `d523dd4f7003348c9bf36890280e3ea737dbb4b7` changes the
+dated-count projection to JSON mode, preserving the domain `date` and source exclusion.
+The regression covers the actual graph caller, not only the helper's field values.
+No generic string fallback, schema, constraint meaning, Repair or evaluator rule changes.
+Full online graph replay was not attempted; r02 captures retain their original source.
 
 The failed attempt was retained without retry. V2/V3 use the shared tools path,
 but their behavior was not observed in r02. Primary was not prepared or executed
@@ -131,11 +137,27 @@ compatibility. The initial database probe lacked environment loading; loading th
 existing files corrected the local probe without changing credentials or config.
 Git metadata access needed sandbox escalation. Related source-wire, daily-count,
 V3 and independent requirement tests passed **131 tests in 18.35 seconds**.
-These preceded the live failure and do not cover the newly reproduced prompt
-serialization seam or establish a full-suite pass.
+Those preflight checks preceded the live failure and did not cover the missing
+serialization seam. Corrective verification subsequently exercised it:
+
+- The new mocked V1 graph regression failed with the same date-serialization
+  TypeError before the fix and passed after it.
+- Complete projection JSON round trips cover exact zero, exact one and minimum
+  three, preserving the ISO date, hard strength and requirement links. Existing
+  graph tests retain coverage for requests without dated totals.
+- Affected projection services and V1-V3 regressions passed 642 tests initially;
+  18 fixture setup errors came from a missing parent for the operator-selected
+  temporary directory. Creating that directory and rerunning just those 18 passed
+  all of them. All 660 selected tests passed across the two runs; no application
+  or environment configuration was changed to resolve setup.
+- Ruff lint/format checks passed for all three changed Python files. Restoring
+  the actual failed V1 response through current readers and serializing its fixed
+  projection also passed, with zero provider calls.
+- Independent Standards and Spec reviews of `0f08e83...d523dd4` found no actionable
+  issues. This is scoped offline verification, not a full-repository or live pass.
 
 Parent `/root` performed synchronization, preflight, orchestration, saved-evidence
-diagnosis and documentation. Its exact runtime model and external billing are not
+diagnosis, the later correction/tests and documentation. Its runtime model and billing are not
 exposed. Actual external assistance for r02:
 
 | Actor | Configured model/effort | Work |
@@ -143,6 +165,8 @@ exposed. Actual external assistance for r02:
 | `/root/case12_r02_author` | `gpt-6.1-sol/high`, fresh context | Original-request-only author draft. |
 | `/root/case12_r02_reviewer` | `gpt-6.1-sol/high`, distinct fresh context | Independent review, schedule, density and transport material. |
 | `/root/case12_r02_execution` | `gpt-6.1-sol/medium`, fresh context | Frozen V0 then V1 commands; stopped on failure. |
+| `/root/serialization_standards_review` | Inherited parent; exact runtime unavailable | Read-only Standards review of committed correction/tests. |
+| `/root/serialization_spec_review` | Inherited parent; exact runtime unavailable | Separate read-only review against the approved correction scope. |
 
 Configuration is recorded from actual parent orchestration requests; child-side
 model telemetry is unavailable. Requirements actors saw only allowlisted original
@@ -161,6 +185,8 @@ usage/prices/costs, candidate captures where executed, wire/trace evidence, and
 the r02 reproduction/control outputs. The r01 preservation index covers 2,067
 existing files. No raw r01 evidence or consumed capture was overwritten, and no
 old-baseline output was inserted into r02.
+Local corrective replay/check material is retained separately under
+`benchmark/scratch/case-12/work/serialization-fix/`.
 
 | Evidence | SHA-256 |
 | --- | --- |
