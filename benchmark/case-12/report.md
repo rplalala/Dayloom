@@ -2,7 +2,7 @@
 
 ## Current status
 
-Revision **r05** completed V0-V3 once sequentially and one independent Primary on
+Revision **r06** completed V0-V3 once sequentially and one independent Primary on
 **17 October 2026 Australia/Sydney**. Work is paused at the primary-score handoff.
 Candidate-process studies, paired Repair evaluation, blinded review and case
 acceptance remain pending.
@@ -15,13 +15,13 @@ without planned activities or travel on 25 October. Input SHA-256:
 The scenario retains former case-14's identity under
 [Issue #163](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/163).
 
-All r05 executions used `5be3d028e1cf30889667309b09025d7872e66f8b` on
-`codex/case-12-r02`, including the reviewed bounded explanation compression and
-its audit correction. Source, runtime and commands were bound before execution.
-The user authorized one fresh V0-V3 selection and one Primary under the cumulative
-**USD 40 reference allowance**, preserving previous attempts and pausing after
-primary scoring. This selection uses the existing Planner behavior and scoring
-contracts without changing the input or adjusting scores after seeing results.
+All r06 executions used `5aabd1c45c5c5d6180424fb920fbb324822b2bd9` on
+`codex/case-12-r02`, including the reviewed full-day protection pace correction.
+Source, runtime and commands were bound before execution. The user raised the
+cumulative reference allowance from USD 40 to **USD 55** before dispatch and
+authorized one fresh V0-V3 selection and one Primary, preserving previous attempts
+and pausing after primary scoring. The original input and evaluator scoring
+contracts remain unchanged; results were not rescored after inspection.
 
 ## Requirements and observations
 
@@ -29,9 +29,9 @@ The independently authored and reviewed r02 RequirementSpec revision `"2"` appli
 to the identical original input. Exact spec bytes, distinct author/reviewer records,
 original times and available authentic message excerpts were reused. Only batch
 identity/revision headers in the schedule/density/transport contexts were rebound
-to r05. Native admission accepted this reuse; it is not a fresh semantic review.
+to r06. Native admission accepted this reuse; it is not a fresh semantic review.
 
-| Source requirement | Reviewed representation | r05 Primary result |
+| Source requirement | Reviewed representation | r06 Primary result |
 | --- | --- | --- |
 | Exactly one sightseeing visit on 2026-10-22 | `daily_visit_count`, `primary_visits`, exact 1; no invented named subject. | PASS in V0-V3; each has a confirmed count of 1. |
 | No activities or travel on 2026-10-25 | `protected_time`, full local day, `scheduled_commitments`. | PASS in V0-V3; submitted activities and touching transfers are both zero. |
@@ -46,69 +46,71 @@ these soft preferences are not certified by the two hard obligation scores.
 
 ## Primary scores and limits
 
-Native processing and acquisition are **complete**. Evidence is **unresolved**
-because V0 retains two opening UNKNOWN checks and one route UNKNOWN, with no
-acquisition failures. Common dimensions are requirements, grounding, non-overlap,
+Native processing and acquisition are **complete**, with zero acquisition failures.
+Evidence is **unresolved** because V0 retains two identity/opening UNKNOWN checks
+and one route UNKNOWN. Common dimensions are requirements, grounding, non-overlap,
 opening and routes.
 
 | Version | Five-dimension base | Mean daily density deduction | Primary score |
 | --- | ---: | ---: | ---: |
-| V0 | 86.909091 | 0.000000 | **86.909091** |
-| V1 | 80.000000 | 14.285714 | **65.714286** |
-| V2 | 100.000000 | 5.714286 | **94.285714** |
-| V3 | 100.000000 | 0.000000 | **100.000000** |
+| V0 | 80.000000 | 8.571429 | **71.428571** |
+| V1 | 80.000000 | 25.714286 | **54.285714** |
+| V2 | 100.000000 | 11.428571 | **88.571429** |
+| V3 | 100.000000 | 5.714286 | **94.285714** |
 
 Dimension cells show score followed by **PASS/FAIL/UNKNOWN** counts:
 
 | Dimension | V0 | V1 | V2 | V3 |
 | --- | ---: | ---: | ---: | ---: |
 | requirements | 100.000000 (2/0/0) | 100.000000 (2/0/0) | 100.000000 (2/0/0) | 100.000000 (2/0/0) |
-| grounding | 81.818182 (9/2/0) | 100.000000 (6/0/0) | 100.000000 (9/0/0) | 100.000000 (11/0/0) |
-| non_overlap | 100.000000 (16/0/0) | 100.000000 (6/0/0) | 100.000000 (12/0/0) | 100.000000 (16/0/0) |
-| opening | 72.727273 (8/1/2) | 100.000000 (6/0/0) | 100.000000 (9/0/0) | 100.000000 (11/0/0) |
-| routes | 80.000000 (4/0/1) | N/A; contributes 0 (0/0/0) | 100.000000 (3/0/0) | 100.000000 (5/0/0) |
+| grounding | 75.000000 (6/0/2) | 100.000000 (5/0/0) | 100.000000 (7/0/0) | 100.000000 (9/0/0) |
+| non_overlap | 100.000000 (10/0/0) | 100.000000 (5/0/0) | 100.000000 (8/0/0) | 100.000000 (12/0/0) |
+| opening | 75.000000 (6/0/2) | 100.000000 (5/0/0) | 100.000000 (7/0/0) | 100.000000 (9/0/0) |
+| routes | 50.000000 (1/0/1) | N/A; contributes 0 (0/0/0) | 100.000000 (1/0/0) | 100.000000 (3/0/0) |
 
-V0's independent identity judgments reject two address claims: Watsons Bay's
-submitted address refers to another place, and Sydney Observatory's address is incorrect.
-The Observatory visit also contains 5,100 seconds confirmed closed by the retained
-opening evidence. Manly Beach remains UNKNOWN because optional swimming conditions
-were explicitly unchecked; Watsons Bay's unresolved physical identity leaves its
-opening check and associated route UNKNOWN. These observations remain in the
-original report without corrective rescoring.
+The five common dimensions contain no FAIL checks. V0's claims for Manly to Shelly
+Beach Walk and Sydney Harbour Bridge Pylon Lookout have no independently supported
+identity match (`model_no_supported_match`). Their opening checks and the
+Pylon Lookout-to-Barangaroo Reserve route retain UNKNOWN (`identity_unresolved`).
+These source claims remain unverified in the saved report.
 
 V1 has no applicable same-day route checks. Its `N/A / no_checks` contributes zero
-within the common five-dimension denominator, giving an 80-point base; it is not
-a route FAIL or PASS. V2/V3 have three/five PASS route checks. V1 density FAIL dates
-are 23, 24 and 26-28 October; V2's are 26 and 28 October. Each has one primary visit
-and a relaxed-pace penalty of 20 on those dates. The mean uses all seven requested
-dates. V0/V3 have no density deduction. The exact first day and rest day both match.
+within the common five-dimension denominator, producing an 80-point base. V2/V3
+have one/three PASS route checks. Density FAIL dates are 24, 26 and 27 October for
+V0; 23, 24 and 26-28 for V1; 24 and 26-28 for V2; and 26 and 28 for V3. V1's
+unprotected blank day on 24 October has zero primary visits and a 100-point daily
+deduction; the other FAIL dates have one visit and deduct 20 each. Means use all
+seven requested dates. Every version's first-day and rest-day exact counts match.
 
-Eligible missing-hours assessment completed for **16 cases**: 15 received
-model-supported access PASS and one remained UNKNOWN. Complete API evidence counts
-for V0-V3 are 4/3/6/7; model-supported decidable counts are 5/3/3/4. Model-supported
-public/exterior access does not supply verified API hours. V3's 100-point Primary
-is this selection's result, not a general quality or affordability guarantee.
+Eligible missing-hours assessment completed for **10 cases**, all with
+model-supported access PASS. Complete API evidence counts for V0-V3 are 4/3/3/7;
+model-supported decidable counts are 2/2/4/2. Model-supported public/exterior access
+does not supply verified API hours. Scores describe this selection under these
+rules and evidence, not general travel quality or affordability.
 
 V2/V3 retain partial-retrieval observations while their required workflow mechanisms
-complete. V3 returns `ACCEPTED_PARTIAL / no_executable_candidate_operation` after
-six rounds, retaining round five. It made five proposal sends; the final round
-was skipped. No explanation-compression send was observed: all six round records
-have empty `reason_compression` objects and native model stages contain no
-compression event. This attempt does not exercise the new live compression path.
+complete. V3 returns `ACCEPTED_PARTIAL / round_or_model_limit` after six proposal
+sends, retaining round one. Its original/final native pace penalty totals are
+100/40, with means 14.285714/5.714286. The only remaining targets are 26 and
+28 October, each one visit with penalty 20. The rest day is PASS with penalty zero
+in both reports; `full_day_protection_pace_1` retains its sourced zero-count
+projection. The former false rest-day target is absent. Native Repair's ten model
+calls include six proposals and four semantic assessments. No explanation-compression
+send occurred: all six round compression records are empty, and no native model
+stage is a compression event.
 
-V3's physical `run.json` exists but is marked truncated: the 19,796,641-byte source
-payload exceeded the trace limit and produced a 10,740,182-byte preview artifact.
-Its evidence index therefore lacks a usable `finished_trace` and marks collection
-partial. The complete 19,012,246-byte native result retains the genuine draft/final,
-Repair records and selected itinerary; native intake admitted the four finals.
-The source trace remains unchanged. This limits later trace inspection without
-invalidating the already admitted Primary sources.
+V3's physical `run.json` exists but is marked truncated: its 14,767,335-byte source
+exceeded the trace limit and produced a 10,729,914-byte preview. The evidence index
+therefore lacks a usable `finished_trace` and marks collection partial. The complete
+14,260,688-byte native result retains the genuine draft/final and Repair records;
+native intake admitted all four finals. This limits trace inspection without
+invalidating the admitted Primary sources. Original trace bytes remain unchanged.
 
 ## All-attempt resources and budget
 
-r05 reuses r04's frozen official reference prices dated 17 October, valid for this
-same-day execution, rather than claiming another price lookup. Sources are the
-official [model](https://developers.openai.com/api/docs/models/gpt-6-luna),
+r06 reuses the same-day frozen official reference prices retained in r05, with a
+validity interval covering this execution; no new price lookup is claimed. Sources
+are the official [model](https://developers.openai.com/api/docs/models/gpt-6-luna),
 [embedding](https://developers.openai.com/api/docs/models/text-embedding-3-small),
 [tool](https://developers.openai.com/api/docs/pricing) and
 [Google](https://developers.google.com/maps/billing-and-pricing/pricing) references.
@@ -137,77 +139,82 @@ usage/billing are unavailable; free quotas, discounts and taxes are not inferred
 | r05 V2 | Completed; partial retrieval | 120.859 | 6 | 85 | 82,094 | 2.71241542 |
 | r05 V3 | Completed; partial Repair and trace | 219.204 | 12 | 113 | 375,403 | 3.177770735 |
 | r05 Primary | Completed; retained unresolved evidence | 54.531248 | 2 | 75 | 36,698 | 1.598520975 |
+| r06 V0 | Completed | 42.062 | 2 | 2 | 21,856 | 0.0047636 |
+| r06 V1 | Completed | 107.672 | 4 | 68 | 79,194 | 2.36411967 |
+| r06 V2 | Completed; partial retrieval | 119.156 | 6 | 85 | 81,825 | 2.71240242 |
+| r06 V3 | Completed; partial Repair and trace | 236.516 | 16 | 99 | 393,477 | 2.834059005 |
+| r06 Primary | Completed; retained unresolved evidence | 45.317531 | 2 | 55 | 27,714 | 1.25693485 |
 
-The 18 Planner invocations total **1,840.066 native seconds, 85 model calls,
-1,036 HTTP sends and 1,708,760 observed tokens**; one historical call still lacks
-usage. r04 Primary adds 58 Google sends, two model calls and 44,640 tokens.
-r05 Primary adds **73 Google sends** (26 searches, 35 Details and 12 route matrices),
-two model calls and **36,698 tokens**. Its native usage interval is
-`2026-10-17T05:44:09.872535Z` to `05:45:04.403783Z` (54.531248 seconds);
-the wrapper ran from `05:44:08.380848Z` to `05:45:07.381828Z` (59.000980 seconds).
-These timing scopes remain separate. All new costs are priced; retries and
-paired-access consumption are zero.
+The 22 Planner invocations total **2,345.472 native seconds, 113 model
+calls, 1,290 HTTP sends and 2,285,112 observed tokens**; one historical call
+still lacks usage. The separate r04/r05 Primaries retain 60/75 total HTTP sends and
+44,640/36,698 tokens. r06 Primary adds **53 Google sends** (21 searches, 28 Details,
+four route matrices), two model sends and **27,714 tokens**. Its native usage
+interval is `2026-10-17T07:16:06.796489Z` to `07:16:52.114020Z`
+(45.317531 seconds); the wrapper interval is `07:16:05.432248Z` to
+`07:16:54.124551Z` (48.692303 seconds). These scopes remain separate. All new costs
+are priced; execution retries and paired-access consumption are zero.
 
-New generation cost is **USD 8.259449425** and Primary is **USD 1.598520975**,
-totalling **USD 9.857970400**. Cumulative priced subtotal is **USD 35.251281430**.
+New generation cost is **USD 7.915344695** and Primary is **USD 1.256934850**,
+totalling **USD 9.172279545**. Cumulative priced subtotal is **USD 44.423560975**.
 The r03 incomplete request still has unknown usage/charge: two linked unpriced
 records represent one request. Its retained **USD 0.01 reservation** covers the
 standard-reference upper bound of USD 0.004695375 from the saved 4,795-token input
-bound and 8,192 output cap. It is not observed billing; native historical totals
-remain null.
+bound and 8,192 output cap. This is a reservation, not observed billing; historical
+native totals remain null.
 
 Including that reservation, cumulative reference budget accounting is
-**USD 35.261281430**, leaving **USD 4.738718570** within the USD 40 allowance.
-Before r05, accounted history was USD 25.403311030. Each sequential generation
+**USD 44.433560975**, leaving **USD 10.566439025** within the USD 55 allowance.
+Before r06, accounted history was USD 35.261281430. Each sequential generation
 required its current reference envelope plus the USD 3 Primary reserve to fit
-the then-remaining allowance. The generation envelopes were V0 0.10, V1 4,
-V2 4.50 and V3 5.51; future versions were contingent on actual prior costs, not
-simultaneously reserved. Generation has no native dollar hard stop; frozen runtime
-ceilings and checks between versions bounded continuation. Primary enforced its
+the then-remaining allowance. Generation envelopes were V0 0.10, V1 4,
+V2 4.50 and V3 5.51; the starting allowance covered their sum and the Primary
+reserve. Generation has no native dollar hard stop; frozen runtime ceilings and
+actual-cost checks between versions bounded continuation. Primary enforced its
 native USD 3 cap. Exact cumulative billing remains unknown.
 
 ## Checks, assistance and preservation
 
-r05 preflight passed input/date admission, worktree-local Python/imports/CLI,
+r06 preflight passed input/date admission, worktree-local Python/imports/CLI,
 63 locked dependencies, both local tokenizers, read-only TripWorld compatibility
-and reviewed-context admission. Database preflight timed out inside the sandbox
-and passed outside it without model/embedding sends. The uv check made no changes;
-no credentials or project configuration were reset.
+and reviewed-context admission. The database check ran outside the already established
+sandbox connectivity restriction, with zero embedding/model sends. The uv check
+made no changes; credentials and project configuration were not reset.
 
-The actual Primary package contains all four r05 final hashes, the original input,
-reviewed spec and the source-bound schedule, density and unrestricted transport
-objects. Semantic/population readiness is ready, with zero missing role or occupancy
-reviews and eligible missing-hours assessment enabled. Post-execution verification
-checked **237 closed-inventory native files** and **9,685 prior files unchanged**.
-It read saved results and hashes only, without replay or rescoring.
+The actual Primary package contains all four r06 final hashes, the original input,
+reviewed spec and source-bound schedule, density and unrestricted transport objects.
+Semantic/population readiness is ready, with zero missing role or occupancy reviews
+and eligible missing-hours assessment enabled. Post-execution verification checked
+**177 closed-inventory native files** and **13,485 prior files unchanged**. It read
+saved results and hashes only, without replay or rescoring.
 
 Parent `/root` owns preparation, orchestration, saved-evidence assessment,
-accounting and documentation. Execution child `/root/case12_r05_execution` was
+accounting and documentation. Execution child `/root/case12_r06_execution` was
 explicitly configured as `gpt-6.1-sol/medium` with fresh context and executed only
-the frozen four generation commands and the later exact Primary handoff. Existing
-source-only author/reviewer records were reused. Agent checks are distinct from
-human review. Available parent/child messages are retained in the chat; full
-hidden/tool transcripts and external billing remain unavailable.
+the frozen generation commands, each after a parent gate, and the exact later
+Primary handoff. Original source-only author/reviewer records were reused. Agent
+checks are distinct from human review. Available parent/child messages are retained
+in the chat; complete hidden/tool transcripts and external billing remain unavailable.
 
 Private roots are logical evidence identifiers rather than public dependencies:
-`benchmark/scratch/case-12/work/run-r01/` through `run-r05/`, plus the offline
-correction aids. Failed and completed originals, commands, bindings, captures,
-usage/cost reports and receipts remain retained. V1/V2 passive candidate captures
-and the genuine V3 same-run draft/final are available for separately authorized
-studies, subject to the disclosed r05 trace truncation. No old final was inserted
-into r05. Source-review exposure limits and the excluded r01 reviewer remain in
-history. No candidate/paired study, final acceptance or Git publication occurred.
+`benchmark/scratch/case-12/work/run-r01/` through `run-r06/`, plus offline correction
+aids. Failed/completed originals, commands, bindings, captures, usage/cost reports
+and receipts remain retained. V1/V2 passive candidate captures and the genuine V3
+same-run draft/final are available for separately authorized studies, subject to
+the disclosed trace limitation. No old final was inserted into r06. Source-review
+exposure limits and the excluded r01 reviewer remain in history. No candidate/paired
+study, final acceptance or Git publication occurred.
 
-| r05 evidence | SHA-256 |
+| r06 evidence | SHA-256 |
 | --- | --- |
-| V0 final | `b1d6f291b02954d5d9cdb5f60444f76dd70f96e823377608c9e231b0dd0760e9` |
-| V1 final | `f7be662a796bf5eac37bf0e57afd6ade4dee06c486b0ef58bbe4c75bae518d47` |
-| V2 final | `65a11e3a160bfc45838aef4da5ab041859271c6d18fb715c1c78dadf9614cc01` |
-| V3 final | `5d9e4b1de2e4efb481f23276c426e5ae7830a7922f71b1d50b0f24047054120e` |
+| V0 final | `2c65185113a3d1fabcf06f31d5b85ae359aca20d20bcab257821f24bda0c4a6a` |
+| V1 final | `958426e894c411c6d1bf02e27a98e0bcd2b33732795fdb207d441f7b5d896588` |
+| V2 final | `8ba81e3705dca5372c0523a4508066b355c5616cf1f180de2b07a17cf1777439` |
+| V3 final | `578f7e002eb0b1bfa7c33be27d1a70b32e4ffbe5bc22cd0032e8d3639b24ded5` |
 | Reused reviewed requirements | `6601f742a2fa7ccb903b31c45c2580cad6d6a74524bdee781b0b5b5ca00114b9` |
-| Frozen generation commands | `4326f5d1c7e68730ecccd588a9c05c947d9791e6d1501d1ec78c29c1baa41d19` |
-| Native Primary preparation | `f4cd55efa281ae8156e3429706f1109a5f4d23c461b5ca7e0c273622ee355fd2` |
-| Primary report | `ed1ceae50c5a6b32cdcf7e6d0dd0300f3c57b6784c1a5f08499ee262fb468159` |
+| Frozen generation commands | `f4d009387f1fb6e0fa985360b2d5fe31dee37095569e556679599fbcbaefb976` |
+| Native Primary preparation | `cd4283a4c7c9bc13d2b5929ba46ff0fcff06eacd479219df7f2c9c655ac63572` |
+| Primary report | `a6ce9d8c932e3c12a8b841f0c5698a28bbefc587d4f39c0644a7aa6f8dc491e6` |
 
 ## Historical context
 
@@ -255,7 +262,7 @@ Earlier source-only authors, reviewers and the interest actor were configured as
 reviewers inherited the parent configuration, whose exact runtime is unavailable.
 Actual identities, times, hashes, excluded-review disclosure and available authentic
 messages remain in the private roots and Git history. The r01-r03 revisions supply
-no independent Primary scores. r04 and r05 retain separate Primary selections;
+no independent Primary scores. r04-r06 retain separate Primary selections;
 case acceptance remains pending.
 
 r04 used `189dfa51c8a86e79a3b6f911caceac8f943d9583` and completed all four versions
@@ -269,3 +276,14 @@ The subsequent explanation correction `e4985d0` and audit correction `471f194`
 passed 1,169 selected offline tests and Standards/Spec review before r05. The
 [development record](../../docs/records/v0-v3/v3-development.md#repair-reason-length-recovery-2026-10-17)
 owns that failure/correction evidence.
+
+r05 used `5be3d028e1cf30889667309b09025d7872e66f8b` and retained Primary scores
+V0 86.909091, V1 65.714286, V2 94.285714 and V3 100. All hard obligations passed.
+Native Repair resolved five pace targets but retained a false 100-point rest-day
+target, ending `ACCEPTED_PARTIAL / no_executable_candidate_operation`. Its complete
+native result and truncated trace remain unchanged. Correction `b292a10` passed
+646 selected offline tests and independent Standards/Spec review before r06;
+`5aabd1c` documents that checkpoint. The
+[development record](../../docs/records/v0-v3/v3-development.md#full-day-rest-pace-applicability-correction-2026-10-17)
+owns that diagnosis and correction. These independent fresh generations are distinct
+selections; their score differences do not establish the correction's causal effect.
