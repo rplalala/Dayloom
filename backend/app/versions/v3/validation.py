@@ -163,7 +163,7 @@ def validate_draft(
             evidence_refs=("application:primary_role_policy_1",),
             adopted_evidence={"basis": "semantic_judgment_and_product_policy_not_operating_fact"},
         )
-    from backend.app.policies.daily_visit_constraints import assess_daily_visits, hard_exact_count
+    from backend.app.policies.daily_visit_constraints import assess_daily_visits
 
     for count in assess_daily_visits(itinerary, contract, semantic_assessments):
         status = count.status
@@ -210,8 +210,14 @@ def validate_draft(
             continue
         if row.minimum_coverage == "exempt":
             continue
-        if hard_exact_count(contract, row.date) is not None:
-            continue  # The sourced daily count supersedes a default quantity review.
+        if any(
+            rule.date == row.date and rule.strength == "hard"
+            for rule in contract.daily_visit_constraints or ()
+        ):
+            # Source-bound counts and their feasible pace projection own this date's
+            # quantity objectives. A default upper target must not turn a minimum
+            # into an incompatible maximum.
+            continue
         if row.minimum_coverage == "unknown" and count == 0:
             add("coverage", "UNKNOWN", row.minimum_coverage_reason, dates=(row.date,))
             continue

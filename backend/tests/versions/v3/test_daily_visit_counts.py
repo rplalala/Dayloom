@@ -8,6 +8,7 @@ import pytest
 
 from backend.app.policies.interpreted_requirements import canonicalize_requirements
 from backend.app.schemas.request import PlanningRequest
+from backend.app.versions.v3.models import ValidationPolicy
 from backend.app.versions.v3.repair_acceptance import assess
 from backend.app.versions.v3.repair_service import run_repair_once
 from backend.app.versions.v3.wiring import operation_scope
@@ -59,6 +60,27 @@ def test_hard_minimum_limits_the_soft_objective_without_becoming_a_maximum(count
     pace = next(f for f in report.findings if f.check == "soft_pace")
     assert pace.magnitude == penalty
     assert pace.adopted_evidence["zero_counts"] == (3,)
+
+
+@pytest.mark.parametrize("count", [6, 7])
+def test_satisfied_hard_minimum_does_not_authorize_a_conflicting_default_overfull_repair(count):
+    ctx = counted_context(6, mode="minimum")
+    items = [activity(str(i), str(i), f"{9 + i:02}:00", f"{9 + i:02}:30") for i in range(count)]
+    ctx = ctx.model_copy(
+        update={
+            "original_supply_ids": tuple(str(i) for i in range(count)),
+            "places": tuple(
+                ctx.places[0].model_copy(update={"place_id": str(i)}) for i in range(count)
+            ),
+            "policy": ValidationPolicy(review_targets={"coverage", "overfull", "soft_pace"}),
+        }
+    )
+    original = draft(items)
+    report = assess(original, ctx)
+    assert next(f for f in report.findings if f.check == "daily_visit_count").status == "PASS"
+    assert next(f for f in report.findings if f.check == "soft_pace").status == "PASS"
+    assert not any(f.check == "overfull" for f in report.findings)
+    assert operation_scope(original, report, context=ctx) is None
 
 
 def test_surplus_visit_can_be_deleted_to_satisfy_exact_one():
