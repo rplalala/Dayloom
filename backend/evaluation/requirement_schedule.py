@@ -275,14 +275,6 @@ def _requirement_checks(group, projection, identity_index, timezone):
                     "reason": obligation.get("reason", "semantics_unresolved"),
                 }
             )
-        elif obligation.get("subject_ref") in unresolved_common_subjects:
-            components.append(
-                {
-                    "kind": "subject_identity",
-                    "state": "UNKNOWN",
-                    "reason": "requirement_target_unresolved",
-                }
-            )
         elif kind == "transport_modes":
             components.append(_transport_component(projection, obligation))
         elif kind == "daily_visit_count":
@@ -350,6 +342,14 @@ def _requirement_checks(group, projection, identity_index, timezone):
         else:
             components.append({"kind": kind, "state": "UNKNOWN", "reason": "pending_check"})
         failure = subject_failures.get(obligation.get("subject_ref"))
+        if obligation.get("subject_ref") in unresolved_common_subjects:
+            components.append(
+                {
+                    "kind": "subject_identity",
+                    "state": "UNKNOWN",
+                    "reason": "requirement_target_unresolved",
+                }
+            )
         if failure:
             components.append({"kind": "subject_identity", "state": "FAIL", "identity": failure})
         checks.append(

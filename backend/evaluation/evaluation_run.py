@@ -441,21 +441,24 @@ async def execute_run(
                 )
             packet = prepare_identity_judgment(
                 intake, evidence, model=options["model"], visits_only=common_subjects
-            ).to_dict()
-            _save(execution, "model-packet.json", packet)
-            response, event = await transport.model(
-                packet, reasoning_effort=options.get("reasoning_effort", "low")
             )
-            material = {
-                "schema_version": BOUND_RESULT_VERSION,
-                "packet": packet,
-                "binding_source": {"intake": intake, "evidence": evidence},
-                "requested_at": event["requested_at"],
-                "retrieved_at": event["retrieved_at"],
-                "response": response,
-                "response_sha256": canonical_digest(response),
-            }
-            _save(execution, "model-result.json", material)
+            material = None
+            if packet is not None:
+                packet = packet.to_dict()
+                _save(execution, "model-packet.json", packet)
+                response, event = await transport.model(
+                    packet, reasoning_effort=options.get("reasoning_effort", "low")
+                )
+                material = {
+                    "schema_version": BOUND_RESULT_VERSION,
+                    "packet": packet,
+                    "binding_source": {"intake": intake, "evidence": evidence},
+                    "requested_at": event["requested_at"],
+                    "retrieved_at": event["retrieved_at"],
+                    "response": response,
+                    "response_sha256": canonical_digest(response),
+                }
+                _save(execution, "model-result.json", material)
             identity = resolve_versioned_identities(
                 intake,
                 evidence,
@@ -614,22 +617,31 @@ def replay_run(directory):
     evidence = identity_evidence(
         load_snapshot(execution / "identity-snapshot", expected_plan=preparation["identity_plan"])
     )
-    material = _read(execution / "model-result.json")[0]
+    from .identity import identity_references
+
+    common_subjects = preparation["schema_version"] == VERSION
+    needs_v0 = not common_subjects or any(
+        r["version"] == "v0" and r["kind"] == "primary_visit"
+        for r in identity_references(preparation["intake"])
+    )
+    material = _read(execution / "model-result.json")[0] if needs_v0 else None
     model_events = [e for e in journal if e.get("model_event_id") == "v0-identity"]
-    if len(model_events) != 1:
+    if len(model_events) != int(needs_v0):
         raise ValueError("Model HTTP receipt missing or duplicated")
     identity_calls = [call for call in usage["model_calls"] if call["operation"] == "identity"]
-    if len(identity_calls) != 1:
+    if len(identity_calls) != int(needs_v0):
         raise ValueError("Exactly one identity model attempt required")
-    verify_model_capture(
-        execution,
-        model_events[0],
-        material,
-        preparation["options"],
-        identity_calls[0],
-        reasoning_effort=preparation["options"].get("reasoning_effort", "low"),
-    )
-    common_subjects = preparation["schema_version"] == VERSION
+    if needs_v0:
+        verify_model_capture(
+            execution,
+            model_events[0],
+            material,
+            preparation["options"],
+            identity_calls[0],
+            reasoning_effort=preparation["options"].get("reasoning_effort", "low"),
+        )
+    elif any((execution / name).exists() for name in ("model-packet.json", "model-result.json")):
+        raise ValueError("Unselected V0 stage has unexpected material")
     subject_material = None
     if common_subjects:
         from .primary_subjects import replay_subjects
@@ -665,7 +677,9 @@ def replay_run(directory):
         )
         if opening_stage != _read(execution / "opening-assessment.json")[0]:
             raise ValueError("Opening assessment stage replay differs")
-    expected_models = 1 + int(opening_material is not None) + int(subject_material is not None)
+    expected_models = (
+        int(needs_v0) + int(opening_material is not None) + int(subject_material is not None)
+    )
     if (
         len(usage["model_calls"]) != expected_models
         or sum(e["provider"] == "azure_foundry" for e in journal) != expected_models
@@ -716,7 +730,9 @@ def prepare_run(
     from .identity import identity_references
     from .subject_correspondence import POLICY_VERSION as SUBJECT_POLICY_VERSION
 
-    has_subjects = any(r["kind"] == "requirement_subject" for r in identity_references(intake))
+    references = identity_references(intake)
+    has_subjects = any(r["kind"] == "requirement_subject" for r in references)
+    has_v0 = any(r["version"] == "v0" and r["kind"] == "primary_visit" for r in references)
     if has_subjects:
         from .cost_report import estimate
 
@@ -802,7 +818,9 @@ def prepare_run(
         },
         "scope": "four_final_automatic_quality",
         "subject_policy": SUBJECT_POLICY_VERSION,
-        "max_model_sends": 1 + int(options.get("assess_missing_hours", True)) + int(has_subjects),
+        "max_model_sends": int(has_v0)
+        + int(options.get("assess_missing_hours", True))
+        + int(has_subjects),
         "max_retries": 0,
     }
     value["content_sha256"] = canonical_digest(value)

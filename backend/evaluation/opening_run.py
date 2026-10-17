@@ -42,10 +42,15 @@ def _parent(directory):
         subject_material = replay_subjects(
             preparation, execution, evidence, journal, _read(execution / "usage.json")[0]
         )
+    model_material = (
+        _read(execution / "model-result.json")[0]
+        if (execution / "model-result.json").exists()
+        else None
+    )
     identity = resolve_versioned_identities(
         preparation["intake"],
         evidence,
-        model_result=_read(execution / "model-result.json")[0],
+        model_result=model_material,
         common_subjects=common_subjects,
         subject_result=subject_material,
     ).to_dict()

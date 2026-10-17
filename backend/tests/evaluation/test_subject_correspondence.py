@@ -14,14 +14,17 @@ from backend.tests.evaluation.test_requirement_identity_versions import requirem
 pytest_plugins = ("backend.tests.evaluation.test_intake",)
 
 
-def test_destination_context_and_provider_name_are_one_common_target(batch):
+@pytest.mark.parametrize(
+    "provider_name", ["The Municipal Museum of Art", "Musée Municipal des Arts", "MMA Gallery"]
+)
+def test_destination_context_and_provider_name_are_one_common_target(batch, provider_name):
     from backend.evaluation.subject_correspondence import prepare_subject_judgment
 
     intake = requirement_batch(
         batch, bound=False, location="Example City, Country", destination="Example City, Country"
     )
     subject = next(r for r in identity_references(intake) if r["kind"] == "requirement_subject")
-    observed = evidence(intake, [search(subject, "The Municipal Museum of Art")])
+    observed = evidence(intake, [search(subject, provider_name)])
     packet = prepare_subject_judgment(intake, observed, model="fixture-model").to_dict()
     cases = json.loads(packet["request"]["input"])["cases"]
     assert len(cases) == 1
@@ -31,7 +34,7 @@ def test_destination_context_and_provider_name_are_one_common_target(batch):
         "purpose": "destination_context",
         "original": "Example City, Country",
     }
-    assert cases[0]["candidates"][0]["display_name"] == "The Municipal Museum of Art"
+    assert cases[0]["candidates"][0]["display_name"] == provider_name
     assert "version" not in cases[0]
 
 
@@ -449,3 +452,58 @@ def test_cli_prepares_and_imports_common_subjects_offline(batch, capsys):
     assert {
         r["canonical_place_id"] for r in report["records"] if r["kind"] == "requirement_subject"
     } == {"place-a"}
+
+
+def test_unknown_target_keeps_proven_impossible_count_failure(batch):
+    from backend.evaluation.identity_program import resolve_versioned_identities
+    from backend.evaluation.requirement_schedule import score_requirement_schedule
+    from backend.tests.evaluation.test_identity import prepared
+    from backend.tests.evaluation.test_requirement_schedule import context
+
+    requirement_batch(batch, bound=False)
+    batch[1]["v1"]["itinerary"]["days"][0]["activities"] = []
+    batch[2]("v1")
+    intake = prepared(batch)
+    identity = resolve_versioned_identities(
+        intake, evidence(intake, []), common_subjects=True
+    ).to_dict()
+    report = score_requirement_schedule(intake, identity, context(intake)).to_dict()
+    assert (
+        next(r for r in report["results"] if r["version"] == "v1")["requirements"]["state"]
+        == "FAIL"
+    )
+
+
+def test_native_empty_v0_visits_skip_the_model_and_replay(batch):
+    import asyncio
+
+    import httpx
+
+    from backend.evaluation.evaluation_run import execute_run, prepare_run, replay_run
+    from backend.tests.evaluation.test_evaluation_run import mock_provider, options, run_prices
+
+    requirement_batch(batch, bound=False, kind="excluded_visit")
+    batch[1]["v0"]["itinerary"]["days"][0]["activities"] = []
+    batch[2]("v0")
+    root = batch[4] / "empty-v0"
+    preparation = prepare_run(batch[2](), root, options=options(), prices=run_prices())
+
+    async def execute():
+        async with httpx.AsyncClient(transport=httpx.MockTransport(mock_provider)) as client:
+            return await execute_run(
+                preparation,
+                approved_sha256=preparation["content_sha256"],
+                google_api_key="synthetic",
+                model_api_key="synthetic",
+                http_client=client,
+            )
+
+    result = asyncio.run(execute())
+    assert result["processing_status"] == "complete"
+    assert preparation["max_model_sends"] == 2
+    assert result["usage"]["actual_model_sends"] == 1
+    assert {c["operation"] for c in result["usage"]["raw"]["model_calls"]} == {
+        "requirement_subject"
+    }
+    assert not (root / "execution/model-result.json").exists()
+    assert replay_run(root) == result

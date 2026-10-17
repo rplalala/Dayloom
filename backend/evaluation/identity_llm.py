@@ -247,6 +247,8 @@ def prepare_identity_judgment(
         prepared, evidence, v0_only=not historical, legacy_v0=legacy_v0, visits_only=visits_only
     )
     if not refs:
+        if visits_only:
+            return None
         raise ValueError("No applicable identity references")
     packet = _packet(cases)
     request = {

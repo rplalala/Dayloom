@@ -69,9 +69,8 @@ def identity_command(intake, evidence, args, read, *, audit=None, legacy=None):
         if args.prepare:
             if args.model_result or args.subject_result:
                 raise ValueError("Packet preparation cannot import results")
-            return prepare_identity_judgment(
-                intake, evidence, model=args.model, visits_only=True
-            ).to_dict()
+            packet = prepare_identity_judgment(intake, evidence, model=args.model, visits_only=True)
+            return packet.to_dict() if packet else {"status": "skipped", "reason": "no_v0_visits"}
         if args.model:
             raise ValueError("--model requires packet preparation")
         return resolve_versioned_identities(
