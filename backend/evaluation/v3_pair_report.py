@@ -259,7 +259,9 @@ def build_v3_pair_report(
         if opening_judgment is not None:
             material = _value(opening_judgment)
             require(
-                material.get("packet", {}).get("pair_only") is True,
+                isinstance(material, dict)
+                and isinstance(material.get("packet"), dict)
+                and material["packet"].get("pair_only") is True,
                 "opening_judgment",
                 "V3-only paired access material required",
             )

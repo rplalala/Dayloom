@@ -1,5 +1,7 @@
 """Source-bound paired access assessments through public evaluation interfaces."""
 
+import pytest
+
 from backend.evaluation.opening_judgment import prepare_packet
 from backend.tests.evaluation import test_v3_pair_report as pairs
 from backend.tests.evaluation.test_opening_judgment import material
@@ -8,6 +10,14 @@ pytest_plugins = ("backend.tests.evaluation.test_intake",)
 pair_case = pairs.pair_case
 route_case = pairs.route_case
 prepared_scenario = pairs.prepared_scenario
+
+
+@pytest.mark.parametrize("access", [[], {"packet": None}, {"packet": []}])
+def test_malformed_access_material_rejects_the_whole_pair_without_crashing(pair_case, access):
+    result = pairs.report(pair_case(), opening_judgment=access)
+    assert result["status"] == "needs_material_correction"
+    assert result["groups"] == []
+    assert result["diagnostics"]
 
 
 def missing_hours(request):
