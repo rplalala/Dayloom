@@ -1,0 +1,19 @@
+{
+  "canonical_place_id": "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "independently_reviewed_description": "The institution describes the Palais de Tokyo as a site devoted to contemporary creativity and a contemporary-art center occupying the west wing of its 1937 building.",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The institution describes the Palais de Tokyo as a site devoted to contemporary creativity and a contemporary-art center occupying the west wing of its 1937 building.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result and/or opened page",
+      "title": "The site & its history - Palais de Tokyo",
+      "url": "https://palaisdetokyo.com/en/the-site-and-its-history/"
+    }
+  ],
+  "subject_name_for_identity_only": "Palais de Tokyo",
+  "unresolved_subject_id": null
+}

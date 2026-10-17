@@ -1,0 +1,30 @@
+{
+  "assessment": "The operator independently confirms a Pyramides agency at the exact address and offers many cultural and other tours. This canonical subject does not identify which product is represented; agency identity and its catalogue cannot establish the subject's art/architecture relevance.",
+  "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment.",
+  "observed_at": "2026-10-17T04:02:39.9786851+00:00",
+  "observed_date": "2026-10-17",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The operator lists its Pyramides agency at 3 Place des Pyramides.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description",
+      "title": "Conditions générales de vente — PARISCityVISION",
+      "url": "https://www.pariscityvision.com/fr/conditions-generales-vente"
+    },
+    {
+      "factual_paraphrase": "The operator describes a broad tour agency catalogue including art museums, monuments, dining, cabarets, sightseeing and excursions.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web open, redirected from /en",
+      "title": "Paris tours and activities — PARISCityVISION / Extime Travel",
+      "url": "https://www.pariscityvision.com/"
+    }
+  ],
+  "subject_address": "3 Pl. des Pyramides, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "subject_name": "Paris City Vision",
+  "unresolved_subject_id": null,
+  "verdict": "unknown"
+}

@@ -1,0 +1,220 @@
+{
+  "analysis_recorded_at": "2026-10-17T04:29:18.263072+00:00",
+  "candidate_stages": {
+    "v1": {
+      "end_to_end_relevant_complete": null,
+      "end_to_end_relevant_lower": 9,
+      "omissions": {
+        "admission_capacity": 7,
+        "not_selected": 14,
+        "unprocessed_new_success_target": 28
+      },
+      "scheduled": 9,
+      "scheduled_relevant": 9,
+      "stages": {
+        "admitted": {
+          "count": 56,
+          "origin_counts": {
+            "google_only": 56,
+            "mixed": 0,
+            "rag_only": 0
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 37,
+          "status": "complete"
+        },
+        "discovered": {
+          "count": 63,
+          "origin_counts": {
+            "google_only": 63,
+            "mixed": 0,
+            "rag_only": 0
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 43,
+          "status": "complete"
+        },
+        "enriched": {
+          "count": 28,
+          "origin_counts": {
+            "google_only": 28,
+            "mixed": 0,
+            "rag_only": 0
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 18,
+          "status": "complete"
+        },
+        "supplied": {
+          "count": 14,
+          "origin_counts": {
+            "google_only": 14,
+            "mixed": 0,
+            "rag_only": 0
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 12,
+          "status": "complete"
+        }
+      }
+    },
+    "v2": {
+      "end_to_end_relevant_complete": null,
+      "end_to_end_relevant_lower": 6,
+      "omissions": {
+        "admission_capacity": 20,
+        "not_selected": 26,
+        "unprocessed_new_success_target": 16
+      },
+      "scheduled": 6,
+      "scheduled_relevant": 6,
+      "stages": {
+        "admitted": {
+          "count": 56,
+          "origin_counts": {
+            "google_only": 39,
+            "mixed": 5,
+            "rag_only": 12
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 39,
+          "status": "complete"
+        },
+        "discovered": {
+          "count": 76,
+          "origin_counts": {
+            "google_only": 56,
+            "mixed": 6,
+            "rag_only": 14
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 54,
+          "status": "complete"
+        },
+        "enriched": {
+          "count": 40,
+          "origin_counts": {
+            "google_only": 25,
+            "mixed": 3,
+            "rag_only": 12
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 28,
+          "status": "complete"
+        },
+        "supplied": {
+          "count": 14,
+          "origin_counts": {
+            "google_only": 12,
+            "mixed": 2,
+            "rag_only": 0
+          },
+          "relevant_complete_count": null,
+          "relevant_lower_count": 12,
+          "status": "complete"
+        }
+      }
+    }
+  },
+  "completed_request": {
+    "actual_google_sends": 0,
+    "actual_model_sends": 1,
+    "actual_retries": 0,
+    "destination": "https://captone-trip.services.ai.azure.com/openai/v1/responses",
+    "dispatched": true,
+    "eligible_contexts": 1,
+    "max_cost_usd": "1",
+    "max_google_sends": 0,
+    "max_model_sends": 1,
+    "max_retries": 0,
+    "model": "gpt-6-luna",
+    "model_input_utf8_bytes": 3288,
+    "native_elapsed_seconds": 5.47374,
+    "native_reasoning_effort": "medium",
+    "observed_input_tokens": 2103,
+    "observed_output_tokens": 313,
+    "observed_total_tokens": 2416,
+    "payload_summary": "Place des Vosges visit on 2026-10-24 15:00-16:00 +02:00: activity title/notes, venue and opening observations, timezone and interval, source aliases for the unchanged V3 draft/final pair, and assessment policy. No original traveler/budget/preference object appears in the model request.",
+    "prepared_digest": "89424500b5bc2f986b0dbaec14b316a448670ad306bcf2bfbbfbf075053571d0",
+    "reference_usd": "0.000419300",
+    "status": "complete"
+  },
+  "execution_revision": "2",
+  "generation_source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+  "independent_relevance": {
+    "corpus_study_selected": false,
+    "note": "One combined stable native interest matches the unchanged reviewed specification; art and architecture both remain explicit. UNKNOWN is a completed judgment, not a missing review.",
+    "unique_reviewed_subjects": 77,
+    "verdict_counts": {
+      "not_relevant": 8,
+      "relevant": 55,
+      "unknown": 14
+    }
+  },
+  "independent_v3_minus_v2": {
+    "auxiliary_percentage_points": 0,
+    "interpretation": "Different independent generations; no Repair causality.",
+    "mean_density_penalty_delta": -20,
+    "overall_percentage_points": 20
+  },
+  "processing_status": "analysis_complete_paused_before_acceptance",
+  "resources": {
+    "actual_billing": null,
+    "cumulative_limit_usd": "40",
+    "external_codex_billing": null,
+    "http_sends": 348,
+    "model_calls": 27,
+    "new_provider_cost_usd": "0.000419300",
+    "observed_tokens": 332269,
+    "reference_usd": "9.554197440",
+    "remaining_usd": "30.445802560",
+    "retries": 0,
+    "unpriced_events": 0
+  },
+  "same_run_repair": {
+    "api_only_delta": 0,
+    "api_only_pair_stage_scores": {
+      "draft": 97.5,
+      "final_primary": 97.5
+    },
+    "api_only_unknowns_per_stage": 1,
+    "api_opening_known_per_stage": 7,
+    "api_opening_population_per_stage": 8,
+    "attempted": false,
+    "common_access_policy_status": "complete",
+    "current_opening_counts_per_stage": {
+      "FAIL": 0,
+      "PASS": 8,
+      "UNKNOWN": 0
+    },
+    "current_paired_delta": 0,
+    "current_paired_total": {
+      "draft": 100,
+      "final_primary": 100
+    },
+    "draft_equals_final_primary": true,
+    "model_calls": 0,
+    "model_supported_access_contexts": 1,
+    "reason": "no_authorized_targets",
+    "rounds": 0,
+    "visit_additions": 0,
+    "visit_removals": 0,
+    "visit_replacements": 0
+  },
+  "schema_version": "case11_analysis_summary_1",
+  "source_bindings": {
+    "approval_block_record_sha256": "4618cb07e2767d3a43acc40a07a9e63a57a0eff527fad65fd5735d5cfc62e14d",
+    "explicit_approval_record_sha256": "3042f5267a16823567b887f65825d62ec878c9a0e35fdcf9e3238d4b5db9d61a",
+    "native_all_attempt_cost_sha256": "485017a52b1bdb2981e45fb702e47ab6c4482a8dbac3d8501e9a79fce7fc5fe6",
+    "native_opportunities_sha256": "da62bcc69779380fca769709c212fca55d0dbad8ae4d5e8bc749be3d0e1ef172",
+    "native_relevance_sha256": "905a7319c2b980bd2785fe722e2c11511a3b2c1427d9023247ba95fa828b063e",
+    "native_repair_sha256": "bc733e45d0bd3e3276ef2b72aac25a21126b946bf20bb8e559fe94bd07e5d612",
+    "native_tradeoffs_sha256": "c893472a87bb0ade73ef07a86609b7c0c4b6b5409cc967c4afa910928a8a6bc9",
+    "pair_api_only_report_sha256": "0f70ef0446f4e49630d3d548bf4bb1aa6f02fd7b6dd4b5f7782784df036f5485",
+    "pair_completed_report_sha256": "1d80ece5fdd83d43795cd0c1b2f07fa383ac4b4180bf31888dff5e3500d5d609",
+    "paired_access_model_result_sha256": "3bf25c5f2565060b558f0c4714e1ef320a5eaee763288db3f4a932bde0b8ed34",
+    "paired_access_receipt_sha256": "5b3c11e9d333061ed4709c036a5bf365a93edf704fabc56bec4940f20ff4c357",
+    "primary_report_sha256": "dcc751d82b5339a394d9add7631864cbf94d299c22a95036b63aa2cfcea01718"
+  },
+  "source_revision": "04e6860f4de785ad71b847411e28345f3227a55d"
+}

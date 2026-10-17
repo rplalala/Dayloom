@@ -1,0 +1,19 @@
+{
+  "canonical_place_id": "ChIJS2t0QgFu5kcR92388prakcE",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "independently_reviewed_description": "The museum describes a collection spanning Picasso’s painted, sculpted, engraved and drawn work, with thousands of artworks.",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The museum describes a collection spanning Picasso’s painted, sculpted, engraved and drawn work, with thousands of artworks.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result and/or opened page",
+      "title": "The collection | Musée Picasso Paris",
+      "url": "https://www.museepicassoparis.fr/en/collection/"
+    }
+  ],
+  "subject_name_for_identity_only": "Musée National Picasso-Paris",
+  "unresolved_subject_id": null
+}

@@ -1,0 +1,26 @@
+{
+  "adapter_coverage": "declared_default_adapters",
+  "cache_lookup_hits": 12,
+  "failed_http_responses": 0,
+  "incomplete_http_sends": 0,
+  "metrics": {
+    "cache_hits": 0,
+    "elapsed_seconds": 103.31300000000192,
+    "http_sends": 81,
+    "model_calls": 6,
+    "total_tokens": 66107
+  },
+  "missing_fields": [],
+  "namespace": "planner",
+  "observed_http_sends": 81,
+  "observed_model_calls": 6,
+  "observed_token_subtotal": 66107,
+  "observed_tool_http_sends": 75,
+  "outcome": "completed",
+  "repair_model_calls": 0,
+  "repair_token_observed_subtotal": null,
+  "run_id": "case-11-r02-v3",
+  "timing_scope": "selected_invocation_through_cleanup",
+  "token_missing_calls": 0,
+  "token_observed_calls": 6
+}

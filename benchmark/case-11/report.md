@@ -1,231 +1,376 @@
 # Case-11: Paris, France
 
-## Status and scope
+## Status and selected material
 
-Execution revision 1 started on 17 October 2026 Australia/Sydney and is
-**blocked before independent primary evaluation**. V0 and V1 each completed one
-selected generation. V1's submitted final-day timestamps fail the numerical
-population preparation gate; V2, V3 and paid evaluation remain unstarted. There
-are no primary scores and the case is not accepted.
+Execution revision **r02** completed fresh V0–V3 generation and one independent
+four-final Primary on **17 October 2026, Australia/Sydney**. Processing and
+acquisition completed; all four totals are available. Candidate POI, independent
+relevance, same-run paired access, Repair process and resource reports are complete.
+The same-run no-Repair observation is verified. The researcher explicitly accepted
+the current r02 selection and disclosed limitations on **17 October 2026,
+Australia/Sydney**. [Automatic acceptance](#acceptance) defines the exact scope;
+execution is paused, with blinded human review and remote publication deferred.
 
 The [original request](../inputs/case-11.json) is unchanged: Paris, 22–25 October
-2026, two adults, EUR 1,500 for the whole group and trip, art and architecture
-interests and moderate pace. On 23 October, 14:00–16:00 Paris local time must
-contain no scheduled activities or travel. Source SHA-256 is
+2026, two adults, EUR 1,500 for the group and trip, art and architecture interests,
+and moderate pace. On 23 October, 14:00–16:00 Paris local time must contain no
+activities or travel. Input SHA-256 is
 `60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487`.
-The live scope and USD 40 reference allowance were explicitly authorized in the
-current individual case chat. [Issue #160](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/160)
-is the case tracker; its remote status has not been changed during this local stage.
+[Issue #160](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/160)
+is the case tracker; its remote state was not changed.
 
-All attempts use application source
-`b73c8eed09fafb6d54bee8684c5b2e7766515357`, runtime file SHA-256
-`a6c932272e8d5037ed66fb057e629f8dcff44f3e12117d2dbcb16c8905454058`
-and runtime snapshot SHA-256
+All four new runs use source `bc985c273afcf48c5f1d4da59be532c22d403efd`, which
+merges actual `origin/main` at `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3` while
+retaining the earlier case commits. Runtime file SHA-256 remains
+`a6c932272e8d5037ed66fb057e629f8dcff44f3e12117d2dbcb16c8905454058`;
+the runtime snapshot SHA-256 remains
 `ed0853d6968c8b526a695e9a69b97e22dc2e331291e4051ddc8d305046cd5107`.
-No application implementation or runtime configuration changed.
-
-## Selected material and preparation
+No case-specific application, configuration or input change was made.
 
 | Material | Reader view |
 | --- | --- |
-| Independent final requirements | [Reviewed specification](requirements/reviewed.json) |
-| Independent source-only interests | [Art and architecture judgments](interests/source-review.json) |
-| Independent source policies | [Transport](requirements/route-reviews.json), [density](requirements/density-reviews.json), [destination time](requirements/schedule-context.json) |
-| Selected submitted itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json) |
-| Native V1 population gate and temporal evidence | [Preparation diagnostics](evaluation/population-v1.json), [locked-environment probes](evaluation/temporal-v1.json), [model-to-output origin](evaluation/timezone-origin-v1.json) |
-| Attempt consumption and source hashes | [Primary-stage resource ledger](resources/primary-stage.json) |
-| Source and publication bindings | [Material index](material-index.json) |
+| Independently authored and reviewed requirements | [Reviewed specification](requirements/reviewed.json) |
+| Independent interests and relevance | [Native inventory](interests/inventory.json), [reviews A](interests/relevance-a.json), [reviews B](interests/relevance-b.json); [original source review](interests/source-review.json) |
+| r02 source-policy bindings | [Transport](requirements/r02/route-reviews.json), [density](requirements/r02/density-reviews.json), [destination time](requirements/r02/schedule-context.json) |
+| Selected final schedules | [Daily schedules](itinerary.md); [V0](generation/r02/v0/itinerary.json), [V1](generation/r02/v1/itinerary.json), [V2](generation/r02/v2/itinerary.json), [V3](generation/r02/v3/itinerary.json) |
+| Independent Primary | [Scores, dimensions and daily deductions](evaluation/primary/summary.json) |
+| Candidate process | [Stage inventory](analysis/poi-process/opportunities.json), [independent relevance](analysis/poi-process/relevance.json), [venue labels](analysis/poi-process/venues.json) |
+| Repair process and completed pair | [Native Repair view](analysis/repair/repair.json), [mechanism observations](analysis/repair/mechanism.json), [current pair](evaluation/v3-pair/report.json); [preliminary API-only pair](evaluation/v3-pair/api-only.json) |
+| All-attempt stage consumption | [Resource ledger](resources/primary-stage.json), [native cost reconstruction](analysis/resources/all-attempt-cost.json), [selected-run resources](analysis/resources/tradeoffs.json) |
+| Current analysis and completed access request | [Analysis status](analysis/summary.json) |
+| Exact sources and publication hashes | [Material index](material-index.json) |
 
-The reviewed specification has one resolved `protected_time` obligation with
-`scope=scheduled_commitments`. It invents no named-venue obligation or visit quota.
-The independently reviewed transport status is unrestricted, daily density is
-ordinary with no exact count or dated override, and the destination zone is
-`Europe/Paris`. Source-only interest judgments retain art and architecture
-separately without adding counts; their reader view is not a native venue-relevance
-report.
+The same-input reviewed requirements, unrestricted transport, ordinary density and
+`Europe/Paris` policies retain their actual original actors, review times and
+evidence. The spec has one resolved `protected_time` obligation with
+`scope=scheduled_commitments`, no named-venue requirement or exact visit quota.
+A fresh source-only native interest binding uses the unchanged spec identity
+`case-11-art-and-architecture`. Both named topics remain explicit; either can
+support a venue judgment without inventing a topic quota. The earlier split-topic
+source review remains historical evidence, not a native venue-relevance report.
 
-Python 3.12.14, all 63 installed distributions against the lock file, local
-editable imports/CLI, both checksum-bound tokenizers and the query-only TripWorld
-manifest/vector-space/policy checks passed. Four native offline generation
-preparations passed with zero dispatches. The known sandbox database/temporary-file
-restrictions passed verification outside the sandbox; live invocations therefore
-used the approved escalated path from their first dispatch. No credential or
-permission reset was performed.
+## Primary results
 
-Native requirements handoff validation passed. Both selected outputs use
-`itinerary_3` and have complete role/occupancy review coverage without required
-additional semantic decisions. V0's numerical population preparation is ready.
-V1's role/occupancy coverage is ready, but its temporal population is not.
-These are preparation states, not independent factual scores or feasibility PASSes.
+| Version | Overall / 100 | Five-dimension auxiliary / 100 | Mean pace deduction | Factual FAIL units | Factual UNKNOWN units |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| V0 | 100 | 100 | 0 | 0 | 0 |
+| V1 | 97.5 | 100 | 2.5 | 0 | 0 |
+| V2 | 80 | 100 | 20 | 0 | 0 |
+| V3 | 100 | 100 | 0 | 0 | 0 |
 
-## Temporal blocker and scoring availability
+Requirements, grounding, non-overlap, opening and routes all pass for the selected
+finals under `rtpeval_declared_population_1`. In particular, all four versions pass
+the protected meeting interval. The soft density policy accounts for every deduction:
 
-The independent IANA context, backed by installed `tzdata 2026.1`, changes Paris
-from UTC+02:00 to UTC+01:00 on 25 October. V1 instead retains UTC+02:00 for all three
-selected activities that day:
+- V1 has three primary visits on 22 October: a daily deduction of 10 averages to
+  2.5 over the four requested dates.
+- V2 has one primary visit on each of 22 and 23 October: two daily deductions of
+  40 average to 20. Its other two dates have two visits each.
+- V0 and V3 have two primary visits on every date, with no density deduction.
 
-| Activity | Submitted interval on 25 October | Native reason |
-| --- | --- | --- |
-| Musee de Cluny | 10:00–12:00, +02:00 | `timezone_offset_conflict` |
-| Sainte-Chapelle | 12:45–13:45, +02:00 | `timezone_offset_conflict` |
-| Conciergerie | 14:30–16:00, +02:00 | `timezone_offset_conflict` |
+These are pace deductions, not violations of an invented hard daily count. The
+Primary summary preserves the per-dimension PASS/FAIL/UNKNOWN counts and exact
+fractions. Primary acquisition has no failed or unknown acquisitions. Eligible
+missing-hours assessment completed for two visits before the single final score;
+model-supported access remains distinct from verified API opening hours.
 
-The raw names and timestamps remain in the linked V1 itinerary. Native
-`normalize_interval` returns UNKNOWN with no adopted span for each conflict.
-`population_readiness` returns `needs_population_resolution` with the exact three
-result-hash/pointer bindings. Two submitted transfers on the same date also retain
-+02:00 and return the same temporal UNKNOWN; these are corroborating native time
-probes, not an additional primary score or transport-association judgment. The
-new-wire numerical gate requires this population
-to be established before paid acquisition. Source preservation prohibits silently
-changing the offsets, choosing a favorable clock/instant interpretation, replacing
-the independently supported zone, or switching to an older scoring profile.
+## Candidate POI process and independent relevance
 
-| Version | Generation | Primary score | Primary FAIL/UNKNOWN inventory |
-| --- | --- | --- | --- |
-| V0 | Completed | Unavailable: evaluation not started | Not computed |
-| V1 | Completed; population blocked | Unavailable: evaluation not started | Not computed; three preparation time-UNKNOWNs above |
-| V2 | Not started | Unavailable | Not computed |
-| V3 | Not started | Unavailable | Not computed |
+The retrospective process declaration selects the four approved r02 first-dispatched
+runs on the fixed application baseline. Earlier r01 attempts remain in cumulative
+resource accounting; they are not substitute process observations. Native readers
+replay the exact captures and independent Primary identities. Canonical Google
+Place IDs are the unit; references and repeated query positions do not add visits.
 
-No qualified four-version manifest, executable primary package or evaluation receipt
-exists. The three time-UNKNOWN preparation records are not a zero score, a completed
-primary UNKNOWN inventory, or evidence that the meeting obligation passed or failed.
+| Version | Discovered | Admitted | Enriched | Supplied | Independently scheduled |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| V1 | 63 complete | 56 | 28 | 14 | 9 |
+| V2 | 76 complete | 56 | 40 | 14 | 6 |
 
-### Origin and application acceptance gap
+V1 records seven admission-capacity omissions, 28 unprocessed candidates at its
+new-success target and 14 enriched candidates not selected. V2 records 20, 16 and
+26 respectively. These are preserved fates, not failed service requests. Both
+native opportunity rows have complete stage/scheduling capture and no diagnostics.
 
-The 17 October offline diagnosis locates the error in the original model output,
-with a separate application acceptance gap. All 209 files in the V1 evidence index
-retain their captured artifact hashes. The primary event
-`06398975a5bc4278b0b7af602ce26bec` binds credential-filtered logical request/response
-identifiers `evidence/wire/0060-request.json` and
-`evidence/wire/0060-response.json`; these identify private evidence, not public links.
-The captured response file SHA-256 is
-`32220c72846aa8774a2f8a3d9cbdf23494dc443dd6d6f5d75b27d32bb21933f8`.
-Observed HTTP-body hashes refer to a distinct pre-filter representation; the
-artifact-file hashes verify the saved filtered JSON wrappers.
+V2's 76 discoveries partition into 56 Google-only, 14 RAG-only and six mixed-source
+places. Its one retrieval returned 20 positions and 20 unique entities, with one
+embedding call and 14 identity-resolution Details sends; no fallback send occurred.
+The runtime corpus artifact, text hashes, embedding space, policy, 15 km scope and
+configured limits remain in the native opportunity report. No corpus-wide coverage
+study was selected.
 
-The model itself returned the October 25 activity components
-`date=2026-10-25`, `time=10:00:00`, `utc_offset=+02:00`, and the same wrong offset
-for the other five activity endpoints that day. Replaying the actual
-`FoundryPrimaryItineraryDTO` and `map_foundry_v1_itinerary` over that saved response
-preserved all eight activity start/end pairs exactly. The captured accepted
-primary-generation trace and final itinerary contain those same times. There is
-no evidence of an offset introduced or rewritten by DTO mapping or serialization.
+Twelve RAG-only candidates were enriched, but none reached the final supplied set.
+The two mixed-source supplied places were Panthéon and Arc de Triomphe; only the
+latter was scheduled. This preserves real discovery origins rather than attributing
+all resolved Google IDs to Google discovery or treating overlap as a RAG-only gain.
 
-The primary trace contained no transfers. Replaying real `route_option` with the
-saved normalized Routes bundle, submitted activities and unchanged policy
-reproduced both October 25 WALK transfers exactly: departure inherits the preceding
-activity's end; arrival adds 597 or 139 seconds, with zero reserve. Program-owned
-transport therefore propagates the model's bad offset rather than independently
-creating it. No provider/client was constructed for these replays.
+Two independent reviewers judged all 77 union candidates against the combined
+interest using official venue/operator, city and official tourism descriptions:
+**55 relevant, eight not relevant and 14 UNKNOWN**. Completed UNKNOWN judgments
+retain ambiguous identity, insufficient official description or thematic-boundary
+reasons. Producer labels identify targets only; query intent, ranks, similarity,
+stage membership, schedules and scores were excluded from the judgments.
 
-The actual model request already included `Europe/Paris` in all fourteen supplied
-place timezone fields and in weather evidence. The system prompt required numeric
-UTC-offset components but did not explicitly describe the DST transition or
-provide per-date offsets. Wrong/missing IANA identity is ruled out for this case;
-the effect of stronger prompting has not been tested and is not a demonstrated
-standalone cure. The application schema requires aware endpoints and matching
-civil dates, and the trip-date guard accepts this captured output; neither checks
-that a supplied offset agrees with the identified IANA zone. Independent evaluation
-correctly detects that conflict later.
+| Version | Relevant discovered, lower bound | Relevant admitted, lower bound | Relevant enriched, lower bound | Relevant supplied, lower bound | Relevant scheduled, exact |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| V1 | 43 | 37 | 18 | 12 | 9 |
+| V2 | 54 | 39 | 28 | 12 | 6 |
 
-A deterministic offline probe fails on the original three activities and remains
-failing after reducing to the first interval. Synthetic in-memory controls with
-the correct +01:00 offset, the preceding day, or no zone context normalize known.
-The controls are not adopted source edits. Existing mapping, V1 itinerary adapter,
-evaluator time and initial mixed-route tests passed: **81 tests in 4.55 seconds**.
-These passing baseline tests do not establish a fix; application behavior is unchanged.
+Unknown upstream labels keep complete relevance counts, full-chain conversion
+rates and end-to-end signed differences unavailable. The observed end-to-end lower
+counts are nine and six. Independently scheduled relevant venues are fully judged:
+V2 retains six V1 venues, adds none and omits Musée des Archives Nationales, Place
+des Vosges and Musée de Cluny. This is a descriptive selected-output difference,
+not evidence that RAG caused a particular outcome.
 
-### Proposed minimum correction and verification
+## Repair observations and paired access
 
-The proposal is not implemented. Keep the DTO and its exact-value mapping unchanged.
-At the shared tools output-acceptance boundary in
-[the output policy](../../backend/app/policies/itinerary_output.py), check each
-known venue's supplied IANA zone against both submitted activity endpoints before
-transfer construction. Reject a known offset/local-clock inconsistency with an
-explicit source-linked diagnostic. Preserve unresolved zone evidence rather than
-inventing a fixed offset or silently choosing between conflicting zones. Do not
-rewrite timestamps, retry generation, or import evaluator scoring/evidence into
-the Planner. The V0 `places=None` branch remains unchanged.
+V3 generation, retrieval and validation completed. Repair was `not_applicable`
+with reason `no_authorized_targets`: zero attempted or accepted rounds and zero
+Repair model calls. Original `/v3/draft` and `/v3/final_primary` are identical;
+the source-linked diagnostic records eight retained visits, no additions, removals
+or replacements, and zero signed change. There is no attempted-Repair success-rate
+denominator.
 
-Add a short instruction to [the tools prompt](../../backend/app/versions/v1/prompts.py)
-to derive each endpoint's offset from the supplied IANA zone and actual date,
-including DST; a trip-wide constant is not sufficient. This adds no provider call,
-new transport mode, response schema, evaluator rule or budget increase. The prompt instruction addresses the missing DST guidance; deterministic
-acceptance prevents silent propagation even when the model still errs. This minimum does not guarantee that a future model run
-will succeed.
+Independent V2/V3 finals differ: V3 retains all six V2 places and adds Panthéon
+and Place des Vosges. The Primary overall difference is +20 percentage points,
+with zero five-dimension auxiliary difference and a 20-point reduction in mean
+pace deduction. These are separate generations; the difference cannot be assigned
+to Repair, which did not run.
 
-Validation should cover the saved bad-offset pattern at the real DTO-to-acceptance
-seam; valid Paris October 22–24 +02:00 and October 25 daytime +01:00; both valid
-explicit offsets in an autumn fold; nonexistent spring local time; an interval
-crossing a transition with different valid endpoint offsets; an ordinary non-DST
-zone; missing/conflicting zone evidence; and unchanged input/output bytes. Mocked
-graph tests must show no extra post-response Routes/Nearby sends or retry after a
-rejection. V1/V2/V3 share initial acceptance, and V3 validation/final delivery also
-call the output policy, so their wiring, Repair failure/retention behavior and valid
-final acceptance need affected regression coverage. V0's independent branch and
-historical evaluator/readers remain compatibility controls. The old captured V1
-must still be rejected by the independent gate; it cannot become a corrected run
-through a code or report change. A new live revision remains a separate decision.
+Paired identity and evidence were imported offline from verified Primary and
+source-labelled generation observations, preserving original observation times and
+inherited accounting. Offline evidence acquisition sent zero Google/model requests. The
+saved **API-only preliminary pair** has 97.5 for each stage and a zero delta,
+with one opening UNKNOWN per stage for the same Place des Vosges visit. It is not
+the completed current common-access-policy pair; the Primary V3 score remains 100.
+The completed common-policy pair scores **100 for draft and 100 for final-primary**,
+with a zero delta and eight opening PASS, zero FAIL and zero UNKNOWN per stage.
+One model-supported access judgment covers the shared Place des Vosges context;
+API opening-hours coverage remains seven of eight visits per stage. The native
+research Repair view classifies the pair as unchanged while preserving
+`repair_attempted=false` and the separate four-final comparison.
+
+The V3-only access packet has one eligible context for 24 October, 15:00–16:00
++02:00, sharing unchanged draft/final source aliases. The original Primary model
+answer cannot be rebound to this new packet. A single `gpt-6-luna / medium` request
+completed under USD 1, zero Google sends, 128,000 input/16,384 output tokens,
+60-second request/120-second total limits and no retries. Its prepared digest is
+`89424500b5bc2f986b0dbaec14b316a448670ad306bcf2bfbbfbf075053571d0`.
+
+The explicitly approved request used
+`https://captone-trip.services.ai.azure.com/openai/v1/responses` and included only
+the relevant activity/notes, venue/opening observations, timezone, interval, source
+aliases and assessment policy. It contained no original traveler, budget or preference
+object. The first actual invocation sent one model request, with zero retries and
+zero Google sends. Its 2,103 input and 313 output tokens cost USD 0.000419300 by
+the frozen reference prices. Native access receipt replay and source-bound paired
+report reconstruction preserve the returned judgment without changing Primary.
+
+## Time correction and verification
+
+The integrated [civil-time contract](../../docs/0003-itinerary-transport.md#civil-time-and-iana-acceptance)
+now makes V1–V3 local endpoint offsets application-owned using sourced IANA zones
+and dates, rejects conflicts and invalid clocks, and uses UTC elapsed arithmetic
+for transport. V0 retains its independent model-authored timestamps.
+
+All r02 finals pass native semantic readiness and numerical population preparation.
+The separate zero-provider Paris interval probes return known for all 46 activity
+and transfer intervals across the four finals. New tools outputs use +02:00 before
+the transition and +01:00 for the 25 October daytime visits; the r01 conflict does
+not recur in these executions. This verifies the observed case, not universal
+future-model success.
+
+The locked environment, 63 distributions, both tokenizers, input dates and read-only
+corpus compatibility passed. Four offline generation preparations dispatched zero
+providers. Fourteen targeted civil-time/route-time tests and the UTC elapsed probe
+across the autumn clock repetition passed. All 740 indexed r02 generation artifacts
+match their captured hashes. Native requirements attachment, four-version intake,
+preflight and population preparation passed with no missing semantic review work.
+
+The first offline `validate` invocation encountered Windows GBK stdout encoding on
+an accented venue name after intake. Process-only UTF-8 settings resolved the output
+failure; the offline rerun was accepted. No provider request or project configuration
+change resulted. Primary receipt verification and zero-network native replay passed;
+the replayed report equals the saved report exactly.
+
+Post-primary native population, opportunity, relevance, Repair and resource builders
+completed. Local assembly corrections supplied required reference headers and
+selected producer-declaration provenance; original independent judgments and native
+captures were retained unchanged. The selected-run usage view and eight-operation
+cost reconstruction use their distinct supported scopes. No application code changed.
 
 ## Resources
 
-| Selected generation | Native elapsed seconds | Model calls | Tokens | HTTP sends | Reference USD |
+| Attempt | Native seconds | Model calls, including embeddings | Tokens | HTTP sends | Reference USD |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| V0 | 65.344 | 2 | 27,772 | 2 | 0.006291725 |
-| V1 | 112.641 | 4 | 67,817 | 64 | 1.982172725 |
-| Total | 177.985 | 6 | 95,589 | 66 | 1.988464450 |
+| r01 V0 | 65.344 | 2 | 27,772 | 2 | 0.006291725 |
+| r01 V1 | 112.641 | 4 | 67,817 | 64 | 1.982172725 |
+| r02 V0 | 45.407 | 2 | 22,662 | 2 | 0.003796960 |
+| r02 V1 | 90.016 | 4 | 63,367 | 64 | 1.981359640 |
+| r02 V2 | 98.015 | 6 | 64,730 | 80 | 2.261463995 |
+| r02 V3 | 103.313 | 6 | 66,107 | 81 | 2.267072995 |
+| r02 Primary | 25.538 | 2 | 17,398 | 54 | 1.051620100 |
+| r02 paired access | 5.474 | 1 | 2,416 | 1 | 0.000419300 |
+| Total | 545.748 | 27 | 332,269 | 348 | 9.554197440 |
 
-V1 sends comprise four Foundry model HTTP requests, eleven Google searches,
-28 Details requests, twenty Matrix requests and one weather request. All observed
-V0/V1 sends completed, and their native cost reports have zero unpriced events.
-There were no retries, embedding sends, V3 Repair sends or independent evaluation
-sends. USD 38.011535550 of the USD 40 reference allowance remains unspent.
-The per-stage reservations were V0 1, V1 8, V2 10, V3 13 and primary evaluation 8.
+The cumulative USD 40 reference allowance includes r01. Remaining allowance is
+USD **30.445802560**. r02 generation cost USD 6.513693590 and Primary cost
+USD 1.051620100. All observed events are priced; service retries are zero. V2/V3
+each include one completed two-token embedding call. Primary used 52 Google and
+two model sends. Post-primary offline imports/reporting added no provider sends or
+cost; paired access added the single model send listed above. Reconstructed native
+costs include all eight observed operations, preserve the seven earlier rows exactly
+and do not recharge inherited paired evidence. External Codex usage, offline-analysis
+timing and actual account invoices are unavailable.
 
-Native generation prices retain their original 8 October reference basis, checked
-against current official references during this chat's offline preparation. Foundry
-cost uses the declared OpenAI retail proxy; actual account invoices, discounts,
-credits and tax are unavailable. External Codex use is separate and its tokens and
-billing are not observable. No missing bill or external-agent cost is treated as zero.
+The r02 reservations were V0/V1/V2/V3/Primary USD 1/7/9/13/8. Generation retained
+its native 600-second invocation limit; those reservations are not a hard
+per-send spend guard. Primary froze USD 8, 240 Google sends, two model sends,
+128,000 input/16,384 output tokens per call, 60-second requests, 900-second total
+and zero retries. Its missing-hours assessment remained enabled.
 
-## AI assistance and current boundary
+Generation retains the native 8 October price reference, checked against official
+sources on 17 October; Primary uses a separately frozen 17 October price book.
+Foundry model cost uses the disclosed OpenAI retail proxy. Estimates cover observed
+instrumented adapters; discounts, free quota, tax and actual invoices are unavailable.
 
-| Work | Actual performer and available configuration |
+## AI assistance and boundaries
+
+| Contribution | Actual performer and available configuration |
 | --- | --- |
-| Orchestration, preparation, source checks, offline origin diagnosis/replays, resource reconciliation and local presentation | Current parent Codex chat; exact parent model/effort not independently exposed |
-| Source-only requirements author | `/root/case11_requirements_author`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
-| Independent requirements review | `/root/case11_requirements_reviewer`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
-| Source-only interest judgments | `/root/case11_interests`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
-| Source-only transport, density and time review | `/root/case11_source_policies`, explicitly dispatched `gpt-6.1-sol / high`, fresh context |
-| Corroborating literal V1 temporal review | `/root/case11_v1_temporal_review`, explicitly dispatched `gpt-6.1-sol / high`, fresh context; native probes independently reproduced by the parent |
-| Two selected live invocations | `/root/case11_live_executor`, explicitly dispatched `gpt-6.1-sol / medium`; native Planner deployment `gpt-6-luna` |
+| Orchestration, preparation, offline diagnosis/gates, resource reconciliation and presentation | Current parent Codex chat; exact parent model/effort not independently exposed |
+| Original source-only requirements author and separate reviewer | `/root/case11_requirements_author` and `/root/case11_requirements_reviewer`, each `gpt-6.1-sol / high`, fresh context |
+| Original interests and source-policy judgments | `/root/case11_interests` and `/root/case11_source_policies`, each `gpt-6.1-sol / high`, fresh context |
+| r01 corroborating temporal review | `/root/case11_v1_temporal_review`, `gpt-6.1-sol / high`, fresh context |
+| Two r01 and five r02 live invocations | `/root/case11_live_executor` and `/root/case11_r02_live_executor`, `gpt-6.1-sol / medium`; one parent-dispatched invocation at a time |
+| Fresh native interest binding | `/root/case11_analysis_interests`; source-only, model/effort not exposed |
+| Independent official-source relevance | `/root/case11_relevance_a` and `/root/case11_relevance_b`; 39 and 38 subjects, fresh contexts, model/effort not exposed |
+| Authorized paired access invocation | `/root/case11_r02_live_executor`, `gpt-6.1-sol / medium`; one evaluator model send, zero retries |
+| Planner/evaluator provider model | `gpt-6-luna`; embedding model `text-embedding-3-small` where observed |
 
-Author and reviewer used the complete original request and exact authored draft in
-ordered separate executions, excluding Planner interpretations, generated results,
-scores and mechanisms. The author disclosed an overbroad read of generic contract
-text; no case-result evidence was exposed. The actual author artifact, reviewer
-artifact, observations, dispatch settings and available verbatim final-response
-excerpts are retained privately. Full child conversation/tool exports and external
-Codex token/billing telemetry are unavailable; no complete transcript was fabricated.
-The independent reviewed spec kept the author's semantics and changed review metadata.
+Primary identity used `low` reasoning effort; eligible access assessment used
+`medium`, as required by the native access stage.
 
-The temporal reviewer disclosed accidental exposure to nested itinerary route
-diagnostics/validation fields and a discarded PowerShell display conversion of
-timestamps. Its work is labelled corroborating, not uncontaminated/blinded review,
-and supplies no adopted scoring override. The reviewer used system Python 3.13.5;
-the parent reproduced all twelve raw interval probes with the locked Python
-3.12.14 environment and obtained identical native results.
+Original author/reviewer operations used the complete request and exact draft,
+excluding generated results, scores and mechanisms. The author disclosed an
+over-broad read of generic contract text; no case-result exposure was identified.
+Actual drafts, review outputs, execution settings and available authentic response
+excerpts remain private. Full child transcripts and external token/billing telemetry
+are unavailable and were not fabricated. Generation-stage r02 requirements and source-policy reviews reuse their original
+provenance. The post-primary interest and relevance operations are separately
+identified fresh executions.
 
-The researcher authorized the scope and budgets; no human review of itineraries or
-case acceptance has occurred. Original V0/V1 native captures, logs, source snapshots,
-registration artifacts, requirements provenance and preparation diagnostics remain
-under private logical root `benchmark/scratch/case-11/work/r01`; the material index
-maps the reader views to those unchanged sources. Existing accepted cases are untouched.
+The r01 temporal reviewer disclosed exposure to nested route/validation fields and
+a discarded PowerShell timestamp display conversion. Its work remains corroborating,
+not blinded evidence. The parent reproduced its probes using locked Python 3.12.14.
+New-wire role/occupancy gates required no additional output-specific review for r02.
+The fresh interest/relevance actors retained actual observations and source evidence.
+Mechanical reference corrections created separately bound copies while preserving
+original inventory/review files, judgment times, meanings and evidence. Their full
+transcripts and external billing remain unavailable. Agent checks do not constitute
+human review.
 
-Execution is paused at the blocker. No input/output correction, replacement run,
-additional paid acquisition, post-primary process analysis, paired scoring, human
-study or remote publication is included in this stage. Continuation requires an
-explicit decision on the preserved V1 timestamp conflict and the affected execution
-scope; unused budget does not authorize a retry.
+## Private evidence archive
+
+The local private archive identifier is `benchmark/scratch/case-11/archive/`.
+Its manifest maps original case-relative logical paths to immutable SHA-256 and byte
+lengths; `blobs.zip` stores each byte sequence once. The 6,641 retained logical paths
+include 5,246 original private paths, both r01/r02 application-source snapshots and
+the accepted reader/input snapshot. They share 1,707 unique blobs. Original requests,
+selected results, actual semantic actor records, failure evidence, usage, independent
+observations, frozen preparations, native reports and receipts remain byte-exact.
+The 3,403 excluded files are dependency-checked staging/export copies, superseded
+derived views and temporary assembly/check scripts. Historical r01 logical aliases
+remain available from shared archive bytes.
+
+Fresh-root restoration verified all archived bytes, 123 public/source projections,
+556 r01 preservation bindings and 740 indexed r02 generation artifacts. Archived
+native code exactly reproduced Primary receipt/HTTP/report replay, paired-access
+receipt/HTTP/report replay, independent quality/pair reports, all five current research
+tracks and the eight-operation cost report. Network operations and reads from the
+original working evidence were denied during these checks. The initial case-local
+restoration exceeded the Windows path-length limit; a fresh short destination in
+the authorized workspace passed without altering evidence or source bindings.
+
+After successful restoration and a final 8,649-file original-inventory check, the
+working and preservation copies, temporary assembly script and both temporary
+restoration trees were removed. Private storage decreased from approximately
+168.4 MB to 10.4 MB, including archive metadata and verification tools. Environment
+files remain outside the archive, with their original hashes unchanged. No other
+case or shared runtime data was cleaned.
+
+Original absolute preparation bindings are unchanged. Relocated legacy directory-bound
+CLI replay is not claimed: that interface requires the original roots and matching
+implementation/dependencies. The verified fresh-root checks use native offline
+readers/composers with explicit restored directories. Source paths in the
+[material index](material-index.json) now identify archive manifest entries rather
+than live working files; public selections remain reader views, not native replay
+bundles. The archive includes standard-library integrity/restoration instructions
+and the actual verification records. Archival incurred zero provider sends and did
+not regenerate or rescore the selected outputs. Original acquisition/analysis status
+fields retain their checkpoint meanings; the decision below owns acceptance.
+
+## Acceptance
+
+**Automatically accepted by the human researcher on 17 October 2026,
+Australia/Sydney**, through an explicit decision in the current Codex chat.
+Acceptance binds batch `case-11-r02`, revision `2`, as recorded in local material
+commit `2fc49fa3f16aff4088814d4e1e82676c83eae2ce`: the unchanged original input,
+independently reviewed requirements and interests, source-policy context, selected
+first-dispatched runs `case-11-r02-v0` through `case-11-r02-v3`, admitted manifest,
+independent Primary, candidate/relevance analysis, Repair mechanism and completed
+same-run pair, and all-attempt resources including r01. The
+[material index](material-index.json) retains the selected source hashes and the
+pre-decision index SHA-256
+`00cca4d1f46cc66203e12835189cf7c9367c3d2588a1f73924ce2d5bc125c1ed`.
+r01 remains historical failure evidence and resource history, not a selected result.
+
+The accepted [Primary results](#primary-results) remain **100 / 97.5 / 80 / 100**;
+requirements each have one PASS, zero FAIL and zero UNKNOWN. The accepted current
+V3 pair is **100 → 100**, with no attempted Repair. The
+[candidate analysis](#candidate-poi-process-and-independent-relevance) retains
+14 UNKNOWN relevance labels and unavailable complete relevance counts/full-chain
+conversion rates. Independent version differences do not establish causal RAG or
+Repair improvement, and no attempted-Repair success rate is available.
+
+Model-supported access is distinct from API-verified opening hours. All submitted
+activity cost fields are unspecified, so the EUR 1,500 whole-trip affordability is
+unverified. The [resource ledger](#resources) retains USD **9.554197440** of the
+cumulative USD 40 reference allowance, including earlier attempts; actual invoices
+and external Codex consumption remain unavailable. These are accepted evidence
+limits, not additional quality passes or replacement judgments.
+
+The pre-decision checks verified 123 public material/source bindings, 556 original
+r01 files, 740 indexed r02 generation artifacts and both local environment files;
+paired-access receipt replay, native paired reconstruction and native Repair report
+reconstruction matched exactly. Acceptance recording checks the unchanged selection
+and documentation bindings; no new generation, evaluation acquisition or scoring
+was performed. Native reports, original observations, scores and receipts remain
+unchanged.
+
+This decision completes step 10 for this selection only. Blinded human review has
+not been conducted and remains deferred; it is separate from researcher acceptance
+and agent review. Remote publication, Issue updates/closure, further case execution
+and reruns are not part of this decision. Work pauses after the local acceptance
+record; no version freeze or final research conclusion is established.
+
+## Historical context
+
+Automatic approval initially refused paired access before subprocess or provider
+dispatch because explicit payload/destination approval was missing. Approval of
+the exact prepared packet and Azure destination then enabled the first actual
+invocation. The refusal, approval and successful receipt remain separate original
+records; the refusal incurred no provider usage.
+
+r01 generated V0 and V1 on source `b73c8eed09fafb6d54bee8684c5b2e7766515357`
+and stopped before V2/V3/Primary. Its V1 model supplied +02:00 for three 25 October
+activities; DTO mapping preserved all eight activity endpoint pairs and program-owned
+routing propagated the bad offset to two transfers. Independent preparation returned
+three activity time UNKNOWNs and blocked acquisition. The immutable
+[old V0](generation/v0/itinerary.json), [old V1](generation/v1/itinerary.json),
+[population diagnostics](evaluation/population-v1.json),
+[temporal probes](evaluation/temporal-v1.json) and
+[model-to-output diagnosis](evaluation/timezone-origin-v1.json) retain that evidence.
+The shared correction arrived through PR #180; r02 used four fresh same-baseline
+runs, without rewriting old outputs or mixing old successes into the new batch.

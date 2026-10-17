@@ -1,0 +1,19 @@
+{
+  "canonical_place_id": "ChIJI7UujsRv5kcRATZ9iNLc85I",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "independently_reviewed_description": "The operator identifies a fast-food venue at 58 boulevard Marguerite de Rochechouart and describes burgers, pizza, tacos and homemade bread.",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "source_kind": "independent_official",
+  "sources": [
+    {
+      "factual_paraphrase": "The operator identifies a fast-food venue at 58 boulevard Marguerite de Rochechouart and describes burgers, pizza, tacos and homemade bread.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result and/or opened page",
+      "title": "Va te faire food",
+      "url": "https://vatefairefood.fr/"
+    }
+  ],
+  "subject_name_for_identity_only": "Va te faire food",
+  "unresolved_subject_id": null
+}
