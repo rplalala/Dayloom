@@ -1787,3 +1787,45 @@ its [acceptance scope](../../../benchmark/case-05/report.md#acceptance) remains 
 from deferred blinded human assessment.
 The related [CLI encoding correction](../evaluation/intake-identity-usage.md#legacy-stdout-encoding-correction-2026-10-15)
 has separate implementation and validation scope.
+
+## Repair reason-length recovery (2026-10-17)
+
+The retained [case-12 r04 result](../../../benchmark/case-12/report.md) exposed a
+transport/domain mismatch: the last Repair response completed, but one disposition
+reason contained 255 characters against the application's 240-character limit.
+Mapping therefore raised `StructuredOutputError`, producing `model_failed_no_retry`.
+The response contained no edits; correcting its explanation does not establish an
+arrangement improvement or alter the saved score. The private original evidence
+identifier is `benchmark/scratch/case-12/work/run-r04/captures/v3/evidence/wire/0111-response.json`.
+
+Implementation `e4985d0`, reviewed against fixed base `e82b1f6`, adds caller-owned
+batch compression only for explanation-length errors. The transport schema uses a
+length description compatible with the project's Foundry profile; application
+validation still enforces the bound. Hard truncation was rejected because it can
+remove qualifications or causal information. Compression preserves the original
+patch, replaces only the overlong reasons and remains subject to all ordinary edit
+authorization and acceptance checks. Meaning preservation is a model instruction,
+not a property proved by length validation. Current budgets, shared deadlines and
+failure behavior belong to the [configuration reference](../../../config/README.md#counting-timing-and-invariants).
+
+Standards review found no actionable issue. Spec review identified one audit gap:
+adapter validation could discard a returned malformed compression object before the
+service recorded it. A real-adapter regression reproduced the missing response.
+Correction `471f194` returns structured content for service-owned capture followed
+by strict validation; malformed output remains rejected without another call.
+Both review axes rechecked the correction without remaining findings. Synthetic
+price fixtures also use a fixed validity interval rather than expiring with the
+capture date.
+
+The final network-blocked selected suite passed 1,169 tests across all V0-V3 versions,
+LLM clients, runtime configuration, observability and selected usage/cost/receipt
+readers. Regression checks first reproduced the explanation overflow, incomplete
+usage labeling and rejected-output audit gap, then passed with the corrections.
+The full backend suite was not run. Initial broad execution hit sandbox
+temporary-directory permissions; using a unique worktree-local pytest
+base directory resolved those environment errors without project configuration or
+credential changes. Static checks passed. At this documentation update, code was
+committed through `471f194` and only this record was uncommitted. These checks use
+controlled model/provider responses and establish implementation behavior, not live
+compression quality. No provider execution, case-12 rerun or rescoring occurred;
+the original case records and cumulative USD 40 execution limit remain unchanged.
