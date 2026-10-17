@@ -424,15 +424,68 @@
     {
       "material": "evaluation/v3-pair/report.json",
       "path": "evaluation/v3-pair/report.json",
-      "sha256": "f9ea0802479a781d4dc544d41ae209a633b3ffc9884a63b990333f956a68eee1",
-      "bytes": 757444,
-      "representation": "lossless_json_value_with_shared_refs",
-      "expanded_semantic_sha256": "4de362c66e8bb7bce5ef763d5542deea23076ad9efb8f7c0ac5f9fc8a7ffcbe8",
-      "original_source": {
-        "path": ".scratch/c6f/reports/pair-operation.json",
-        "sha256": "a09367f3c9a969c3a7f63b93da9ece791a1debc1d6cb33844eae88ff082b92bd",
-        "json_pointer": "/pair"
-      }
+      "sha256": "2fdb4ea4a13a7a0cc32349b9e784512373426c63ee9d9a03454b1da5377752f5",
+      "bytes": 442318,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "18af07538c8699f42219325bbe81e3c87f62e68c12d6a4e3ebdf6817a5015d28",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "eace5a5dff649a76ea65396049e414be71106dd5ad742b5daccde25300eb6968",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "omitted_json_pointers": [
+        "/groups/0/stages/draft/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/6/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/opening/checks/7/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/draft/primary_metrics/routes/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/3/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/4/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/5/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/6/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/opening/checks/7/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/0/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/1/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/2/evidence_reference",
+        "/groups/0/stages/final_primary/primary_metrics/routes/checks/3/evidence_reference",
+        "/groups/0/continuity/opening/0/before/evidence_reference",
+        "/groups/0/continuity/opening/0/after/evidence_reference",
+        "/groups/0/continuity/opening/1/before/evidence_reference",
+        "/groups/0/continuity/opening/1/after/evidence_reference",
+        "/groups/0/continuity/opening/2/before/evidence_reference",
+        "/groups/0/continuity/opening/2/after/evidence_reference",
+        "/groups/0/continuity/opening/3/before/evidence_reference",
+        "/groups/0/continuity/opening/3/after/evidence_reference",
+        "/groups/0/continuity/opening/4/before/evidence_reference",
+        "/groups/0/continuity/opening/4/after/evidence_reference",
+        "/groups/0/continuity/opening/5/before/evidence_reference",
+        "/groups/0/continuity/opening/5/after/evidence_reference",
+        "/groups/0/continuity/opening/6/before/evidence_reference",
+        "/groups/0/continuity/opening/6/after/evidence_reference",
+        "/groups/0/continuity/opening/7/before/evidence_reference",
+        "/groups/0/continuity/opening/7/after/evidence_reference",
+        "/groups/0/continuity/routes/0/before/evidence_reference",
+        "/groups/0/continuity/routes/0/after/evidence_reference",
+        "/groups/0/continuity/routes/1/before/evidence_reference",
+        "/groups/0/continuity/routes/1/after/evidence_reference",
+        "/groups/0/continuity/routes/2/before/evidence_reference",
+        "/groups/0/continuity/routes/2/after/evidence_reference",
+        "/groups/0/continuity/routes/3/before/evidence_reference",
+        "/groups/0/continuity/routes/3/after/evidence_reference"
+      ]
     },
     {
       "material": "analysis/poi-process/opportunities.json",
@@ -473,32 +526,44 @@
     {
       "material": "analysis/repair/repair.json",
       "path": "analysis/repair/repair.json",
-      "sha256": "70fc6e438bcc6eaa9cd7d02b0e55dcd957a6b659a1ad30c79a56a7a42d6190b8",
-      "bytes": 3277,
-      "representation": "source_bound_derived_view_with_shared_refs",
-      "expanded_semantic_sha256": "bf6ce120855639aafa014155bd22047f0a3d5963153896af21c04e05b31de95a",
+      "sha256": "f3c91c5cb2669ebe091f946d9007a43fd8e051542acea6f94be0cb564e0a5a2e",
+      "bytes": 3539,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "0fcafd6a6340e1575c06c8b54b5c91adbe134d90a148cbba80987eaf98f2f358",
       "sources": [
         {
-          "path": ".scratch/c6f/reports/pair-operation.json",
-          "sha256": "a09367f3c9a969c3a7f63b93da9ece791a1debc1d6cb33844eae88ff082b92bd"
-        },
-        {
-          "path": "benchmark/scratch/case-06/work/v3-replacement-prep-20261015-01/captures/v3-a2/result.json",
-          "sha256": "23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e"
-        },
-        {
-          "path": ".scratch/c6p5/execution/report.json",
-          "sha256": "e2ec4fd28f13479e00191eaf28df89b5bba4376453affe4f1c54073c4e7cf613"
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "eace5a5dff649a76ea65396049e414be71106dd5ad742b5daccde25300eb6968",
+          "json_pointer": ""
         }
-      ]
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "sources": [
+            {
+              "path": ".scratch/c6f/reports/pair-operation.json",
+              "sha256": "a09367f3c9a969c3a7f63b93da9ece791a1debc1d6cb33844eae88ff082b92bd"
+            },
+            {
+              "path": "benchmark/scratch/case-06/work/v3-replacement-prep-20261015-01/captures/v3-a2/result.json",
+              "sha256": "23146d0b67b2e81f6010cfcbe2ce643083899671b2a51bdb7189d57d4de07a1e"
+            },
+            {
+              "path": ".scratch/c6p5/execution/report.json",
+              "sha256": "e2ec4fd28f13479e00191eaf28df89b5bba4376453affe4f1c54073c4e7cf613"
+            }
+          ]
+        }
+      },
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources."
     },
     {
       "material": "analysis/resources/accounting.json",
       "path": "analysis/resources/accounting.json",
-      "sha256": "5033edb6ab537a46411bb7293d6f39afb2a8040ffe9e5da3b915f304045e031e",
-      "bytes": 12438,
-      "representation": "source_bound_derived_view_with_shared_refs",
-      "expanded_semantic_sha256": "9df98f2490ee6a00e4141bb2775cb7d2abe88f09d981980822b1a0e57cf5a90c",
+      "sha256": "b585dc8c36344c138e0878d6b23f35cb13ae49e33807d6d7b563eef0f26dca85",
+      "bytes": 13172,
+      "representation": "section_derived_reader_view",
+      "expanded_semantic_sha256": "4c4645d7321481931762b36249255be4673076b3b4b2baa9892445f9c3cd035f",
       "sources": [
         {
           "path": ".scratch/c6f/reports/tradeoffs.json",
@@ -507,8 +572,14 @@
         {
           "path": ".scratch/c6p5/execution/report.json",
           "sha256": "e2ec4fd28f13479e00191eaf28df89b5bba4376453affe4f1c54073c4e7cf613"
+        },
+        {
+          "logical_path": "reassessment/access-final/execution/report.json",
+          "sha256": "421b62cd1907fd600e33d7ded898884c26af76b36088098f621e8c3070b6ec54",
+          "json_pointer": "/usage"
         }
-      ]
+      ],
+      "transformation": "Original generation/primary cohorts unchanged; current paired oracle phase and applicable known subtotal refreshed."
     }
   ],
   "post_fix_compatibility": {
@@ -518,5 +589,46 @@
     "representation": "sanitized_derived_offline_acceptance_summary",
     "tested_revision": "8326fb8c017f17df2426275a8634e35b91325394",
     "relationship": "Separate derived acceptance; excluded from the original data-material table and historical score selection."
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-06-v3-20261015-a2",
+    "report": "evaluation/v3-pair/report.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.0009298",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 4599,
+      "input_tokens_details": {
+        "cache_write_tokens": 4596,
+        "cached_tokens": 0
+      },
+      "output_tokens": 710,
+      "output_tokens_details": {
+        "reasoning_tokens": 285
+      },
+      "total_tokens": 5309
+    },
+    "model_material_sha256": "0c0e1716798da8588aa60eeb3eb596dd744a07cf98cf821ab705f1d49901e8c5",
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "eace5a5dff649a76ea65396049e414be71106dd5ad742b5daccde25300eb6968",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-06/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "af778f3de8bbd643c7baf515fbe8733cc90e2981882907a70d52fb481487eed8",
+    "archive_counts": {
+      "logical_files": 611,
+      "unique_blobs": 314
+    },
+    "preparation_sha256": "813a83bfb19b3654455bd78451ce8f5b0555667e81a431b3443e73e0af231540",
+    "packet_sha256": "4215b90dcef9d1a472e16e7ff440d926703ba2433105fac3078165aed8f262df"
   }
 }

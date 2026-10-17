@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_reviewed_description",
+  "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+  "unresolved_subject_id": null,
+  "source_url": "https://www.kouwan.metro.tokyo.lg.jp/documents/d/kouwan/24825_4_kaijokouen_symbol_en_202404",
+  "source_reference": "turn33search12; turn42view0",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run indexed official-source description independently read and paraphrased; full-page body not relied upon",
+  "factual_paraphrase": "The Tokyo port authority park brochure identifies a letter-shaped TOKYO monument in front of Tokyo Teleport Station commemorating the waterfront Tokyo 2020 Games.",
+  "limitations": "The official PDF open returned 503; its indexed official brochure description was independently reviewed. No artistic authorship or modern-art framing is documented.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

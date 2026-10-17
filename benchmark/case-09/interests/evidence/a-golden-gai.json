@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+  "unresolved_subject_id": null,
+  "source_url": "https://golden-gai.tokyo/en/",
+  "source_reference": "turn37view0 lines 13-22",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The local association describes a postwar pub district with preserved Showa atmosphere, long-running bars, distinctive house rules, community continuity and local drinking traditions.",
+  "limitations": "Traditional culture is used broadly for inherited local social customs, without claiming antiquity or designated heritage.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

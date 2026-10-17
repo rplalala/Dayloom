@@ -120,22 +120,30 @@ were removed; the final has two visits per day. Producer completion records
 `ACCEPTED_COMPLETE` / `authorized_targets_complete`. Its recorded day-coverage
 regression remains visible in the Repair summary.
 
-Independent paired evidence reuses exact source-labelled saved observations.
-It resolves all 14 draft/final-primary identity records previously outside the
-four-final evaluation scope. It adds zero current Google or model sends. Paired
-opening remains API-only: draft 5 / 0 / 3 and final 5 / 0 / 1.
+The [same-run paired report](evaluation/v3-pair/pair-report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
 
-| Same-run stage | Primary | Auxiliary | Density deduction |
-| --- | ---: | ---: | ---: |
-| Draft | 73.9583 | 90.6250 | 16.6667 |
-| Final primary | 95.8333 | 95.8333 | 0.0000 |
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 80.208333 | 96.875 | 16.666667 | 7 / 0 / 1 | 0 |
+| Final primary | 100 | 100 | 0 | 6 / 0 / 0 | 0 |
 
-The paired primary delta is **21.8750 points**: the auxiliary fraction increases
-by 5.2083 points and the density deduction decreases by 16.6667. Continuity has
-six unchanged and two removed grounding/opening checks, three unchanged route
-checks and two structurally removed legs. There are no added or replaced visits.
-The final display differs from final primary only in post-final reference
-recommendations, excluded from evaluation.
+The paired overall change is **+19.791667 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.00105055** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+Removed visits and denominator changes do not prove repair of their old facts.
+
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+Six visits continue and two are removed; no visit is added or replaced. The final
+display adds only unscheduled reference recommendations after final-primary scoring.
 
 Independent V2 and V3 model-supplemented finals differ by 9.7917 points. V2 is
 not the V3 draft; this descriptive difference does not establish causal Repair
@@ -168,7 +176,7 @@ Access assessment used one `gpt-6-luna / medium` request, 10,541 input and 2,277
 output tokens, and zero retries/Google sends; reference USD 0.002456050. Its
 USD 0.05 stage allowance stayed within the original USD 50 case allowance
 (generation 40, evaluation 10). Known priced reference consumption is
-**USD 8.080836750**. Actual account invoices, the failed V1 main charge and external
+**USD 8.081887300**, including the paired refresh. Actual account invoices, the failed V1 main charge and external
 Codex usage/billing are unavailable. Reference allowances are not invoice caps.
 
 Parent verification confirms exact denied-network replay for supplemented

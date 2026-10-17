@@ -1,67 +1,67 @@
 {
   "schema_version": "case02_repair_view_1",
   "same_run_id": "case-02-r1-v3-a1",
-  "independent_pair_basis": "API-only opening; source-labelled reuse, zero current sends",
+  "independent_pair_basis": "Frozen Google observation reuse plus fresh source-bound paired missing-hours access assessment",
   "scores": {
     "draft": {
       "primary": {
+        "score_0_100": 80.20833333333333,
         "exact_fraction": {
-          "denominator": 96,
-          "numerator": 71
+          "numerator": 77,
+          "denominator": 96
         },
-        "reason": null,
-        "score_0_100": 73.95833333333333
+        "reason": null
       },
       "auxiliary": {
+        "score_0_100": 96.875,
         "exact_fraction": {
-          "denominator": 32,
-          "numerator": 29
+          "numerator": 31,
+          "denominator": 32
         },
-        "reason": null,
-        "score_0_100": 90.625,
         "total_included_dimensions": 4,
+        "reason": null,
         "unavailable_dimensions": []
       },
       "opening_counts": {
+        "PASS": 7,
         "FAIL": 0,
-        "PASS": 5,
-        "UNKNOWN": 3
+        "UNKNOWN": 1
       },
       "density_penalty": 16.666666666666668
     },
     "final_primary": {
       "primary": {
+        "score_0_100": 100.0,
         "exact_fraction": {
-          "denominator": 24,
-          "numerator": 23
+          "numerator": 1,
+          "denominator": 1
         },
-        "reason": null,
-        "score_0_100": 95.83333333333333
+        "reason": null
       },
       "auxiliary": {
+        "score_0_100": 100.0,
         "exact_fraction": {
-          "denominator": 24,
-          "numerator": 23
+          "numerator": 1,
+          "denominator": 1
         },
-        "reason": null,
-        "score_0_100": 95.83333333333333,
         "total_included_dimensions": 4,
+        "reason": null,
         "unavailable_dimensions": []
       },
       "opening_counts": {
+        "PASS": 6,
         "FAIL": 0,
-        "PASS": 5,
-        "UNKNOWN": 1
+        "UNKNOWN": 0
       },
       "density_penalty": 0.0
     }
   },
   "delta": {
+    "percentage_points": 19.791666666666668,
     "exact_fraction": {
-      "denominator": 32,
-      "numerator": 7
-    },
-    "percentage_points": 21.875
+      "numerator": 19,
+      "denominator": 96
+    }
   },
   "visit_changes": {
     "added_count": 0,
@@ -73,21 +73,21 @@
     "unresolved_before": []
   },
   "continuity_counts": {
-    "conflicts": {},
+    "requirements": {},
     "grounding": {
-      "removed": 2,
-      "unchanged": 6
+      "unchanged": 6,
+      "removed": 2
     },
     "opening": {
-      "removed": 2,
-      "unchanged": 6
+      "unchanged": 6,
+      "removed": 2
     },
-    "protection_conflicts": {},
-    "requirements": {},
     "routes": {
-      "structural_leg_removed": 2,
-      "unchanged": 3
-    }
+      "unchanged": 3,
+      "structural_leg_removed": 2
+    },
+    "conflicts": {},
+    "protection_conflicts": {}
   },
   "producer_repair": {
     "status": "ACCEPTED_COMPLETE",

@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+  "unresolved_subject_id": null,
+  "source_url": "https://www.beams.co.jp/special/b_cultures/label/tokyo-cultuart-by-beams/",
+  "source_reference": "turn40view0 lines 48-50,105-126",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The brand describes Tokyo-created art, design objects and publications, and documents exhibitions and artist collaborations in painting, illustration and photography.",
+  "limitations": "The page describes the brand and programs, not confirmed current inventory at the packet Harajuku address.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "rtpeval_independent_venue_evidence_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+  "unresolved_subject_id": null,
+  "venue_lookup_name": "Tokyo Gallery + BTAP",
+  "source_url": "https://www.tokyo-gallery.com/en/about",
+  "source_reference": "turn14view4",
+  "acquired_at": "2026-10-16T22:39:59+00:00",
+  "acquisition_window": {
+    "started_at": "2026-10-16T22:35:55+00:00",
+    "completed_at": "2026-10-16T22:37:39+00:00"
+  },
+  "acquisition_time_note": "The acquired_at timestamp is the actual time this independent paraphrase was recorded. The web tool did not expose individual response UTC timestamps; the acquisition window bounds the source searches and page opens.",
+  "official_page_attempt": {
+    "url": "https://www.tokyo-gallery.com/en/about",
+    "source_reference": "turn14view4",
+    "status": "available",
+    "retried": false
+  },
+  "additional_inspected_descriptions": [],
+  "factual_paraphrase": "The gallery explicitly presents postwar Japanese art and contemporary East Asian art, with a history of abstract, avant-garde and Mono-ha exhibitions.",
+  "limitations": [
+    "Venue-level interest relevance only; no visit feasibility, opening-date guarantee or admission assumption is evaluated."
+  ],
+  "reviewer_ref": "/root/case09_relevance_b",
+  "reviewer_kind": "external_model",
+  "evidence_independence": "Packet names and addresses served only as lookup labels. No Planner judgments, query/rank/similarity signals, generation outputs, opportunity stages or scores were used.",
+  "copyrighted_source_text_quoted": false
+}

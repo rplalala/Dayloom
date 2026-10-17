@@ -41,7 +41,7 @@
     },
     {
       "path": "analysis/repair/report.md",
-      "sha256": "9e8ef8e234044d38ec29d64b42da76a3daa55fff4b96c6847ea6a7dfa1660e90",
+      "sha256": "a35c84c3cf0a4092c795e354dae8fa1546e91aeec15a60465d778d86242785b7",
       "publication": "reader_view"
     },
     {
@@ -67,9 +67,19 @@
     },
     {
       "path": "evaluation/v3-pair/summary.json",
-      "sha256": "7ed84fb1243c277536cfe38a9d6a3dfe7f9d62bce7270b445091d734338b83a8",
+      "sha256": "0bdbe25b489e795b8d1b3e9ef566005561435c2db7ecb4d027f835b0903bf0f6",
       "publication": "derived_view",
-      "source_sha256": "cf6f46641d95489afed878b13bd9103ffdd31daae34067283e4b1875c9298d1b"
+      "bytes": 6301,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "e51daeccde1e7ad1e730a7ccc0a5291eb67aad22c5f734f919a78cc73b907ed8",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "f0db00d3638580f7ff4ac035a6adca95b45c391382df691fdd2a7da95f2399aa",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources."
     },
     {
       "path": "generation/rag-origins.json",
@@ -172,5 +182,33 @@
     "scope": "Internal nearby-request tokens in unscheduled recommendation source_ref fields only",
     "replacement": "Stable within-file recommendation ordinal; provider source kind and result position retained",
     "source_equivalence": "All remaining fields, submitted schedule content and transport data match the private originals; native originals remain unchanged"
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-04-20261015-02-v3",
+    "report": "evaluation/v3-pair/summary.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 0,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0",
+    "actual_billing": null,
+    "usage": null,
+    "model_material_sha256": null,
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "f0db00d3638580f7ff4ac035a6adca95b45c391382df691fdd2a7da95f2399aa",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-04/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "c60698891f53f27b5b2e48d5eebdeb934eb077f7b1fafdac094cfa8c6dc2392b",
+    "archive_counts": {
+      "logical_files": 1086,
+      "unique_blobs": 506
+    }
   }
 }

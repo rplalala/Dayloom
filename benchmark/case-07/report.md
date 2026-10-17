@@ -7,11 +7,11 @@ follow-up analysis. **Accepted by the human researcher on 16 October 2026
 Australia/Sydney, with the disclosed limitations.** The selected
 [date-only input revision](requirements/input-r02.json) covers 22–24 October 2026,
 one traveler and EUR 650. The unchanged [original input](../inputs/case-07.json)
-covers 15–17 October. Neither earlier results nor scores are replaced.
+covers 15–17 October. Original generation and four-final primary results are preserved.
 
 The [case Issue](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/156)
-owns acceptance. This stage performed no generation, scoring, rescoring or project
-API calls. Case-11/12 remain unstarted. No human study or corpus study was selected.
+owns acceptance. The current follow-up refreshes the same-run paired view;
+generation and primary scores are preserved. Case-11/12 remain unstarted. No human study or corpus study was selected.
 These are case observations, not formal version-level research conclusions.
 
 | Material | Reader view |
@@ -110,13 +110,31 @@ itinerary then adds Nearby references. Both differences are retained in the
 lossless [draft delta](generation/v3/draft-delta.json) and
 [final-primary delta](generation/v3/final-primary-delta.json).
 
-V2 and V3 are separate generations. Their saved final scores differ by 3.333333
-points through density, which does not establish a Repair effect. A paired quality
-score was not computed: native pair import/replay invokes quality scoring and the
-current scope prohibits scoring. Consequently, the native Repair summary honestly
-marks its quality comparisons unavailable. Structural observations are complete.
+The [same-run paired report](evaluation/v3-pair/report.json) applies the same source-bound missing-hours
+access policy to the original V3 draft and final-primary stages. Saved Google
+observations retain their exact provenance; eligible access gaps receive a fresh
+assessment. Identical activity/time/evidence contexts share one decision. Primary
+scores, original activities and factual API-hours coverage are unchanged.
 
-| Reference cost, USD | Current revision | Cumulative case |
+| Same-run stage | Overall / 100 | Auxiliary / 100 | Density deduction | Opening P / F / U | Route UNKNOWN |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Draft | 100 | 100 | 0 | 6 / 0 / 0 | 0 |
+| Final primary | 100 | 100 | 0 | 6 / 0 / 0 | 0 |
+
+The paired overall change is **+0 percentage points**.
+The 17 October 2026 refresh used one model call, zero Google sends
+and zero retries, for **USD 0.0004733** reference cost. Native source, model-response
+and receipt replay passed offline. Model-supported access is not certified opening
+hours, and the paired mask remains separate from the historical primary mask.
+
+The [shared refresh record](../../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns the execution limits and provenance. Original evidence and historical reports
+remain retained; this current view replaces the earlier paired presentation.
+
+V2 and V3 are separate generations; their +3.333333-point primary difference
+comes from density. The current unchanged paired score supplies no Repair benefit.
+
+| Original generation/primary reference cost, USD | Current revision | Cumulative cohorts |
 | --- | ---: | ---: |
 | Generation | 5.992815210 | 11.926259195 |
 | Primary evaluation | 1.381919350 | 2.510566450 |
@@ -132,7 +150,9 @@ boundaries. Failure time is not pooled with successful elapsed times.
 
 Costs use each execution's saved dated retail/proxy prices. HTTP sends are transport
 observations, not confirmed charges. Actual account invoices and external Codex
-token usage/billing are unavailable. No new cost was inferred for this offline stage.
+token usage/billing are unavailable. The original cohort table excludes the current
+paired assessment's USD 0.000473300; the updated accounting view gives a known case
+reference subtotal of USD 14.437298945.
 
 ## Preservation and validation
 
@@ -164,7 +184,8 @@ Standards and Spec reviews finished with zero unresolved findings after the two
 prompt/Repair corrections. The [engineering record](../../docs/records/evaluation/intake-identity-usage.md#activity-semantics-implementation-and-offline-validation-2026-10-16)
 owns the initial failures, corrections and retest sequence.
 
-Saved-material readers accepted 28 outputs / 267 activities, and six non-scoring
+At the original 16 October delivery checkpoint, saved-material readers accepted
+28 outputs / 267 activities, and six non-scoring
 reports matched their saved semantic hashes. A fresh unexecuted preparation
 retained the same declared population. Original private bytes, the exact final
 archive and both receipts passed preservation checks. Unrelated fixed-baseline
@@ -176,8 +197,8 @@ score was recomputed.
 
 The researcher explicitly accepted execution revision 3 / input revision 2, its
 selected V0–V3 results and reports, and the disclosed limitations on 16 October
-2026 Australia/Sydney. This includes partial V2 discovery, 108 relevance UNKNOWNs,
-absence of a new paired quality score and unverified EUR 650 affordability. The
+2026 Australia/Sydney. Remaining limitations include partial V2 discovery,
+108 relevance UNKNOWNs and unverified EUR 650 affordability. The
 decision preserves historical results and supplies no blinded human quality ratings.
 Additional evidence acquisition or scoring requires separate authorization.
 [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) owns Git delivery of this accepted selection and the prospective

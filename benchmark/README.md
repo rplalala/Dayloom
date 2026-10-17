@@ -129,7 +129,8 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
 | 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
-| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs, unavailable paired scoring and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
+| 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
+| 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); current-worktree package awaiting integration |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
@@ -150,7 +151,7 @@ require their own explicit authorization.
 | 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
 | 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Qualified four-final material and reviewed context; independent identity/evidence, eligible missing-hours access assessment, then one final primary calculation; report each version and pause. |
 | 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
-| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
+| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence under the [common paired access policy](../docs/contracts/0005-quality-human-review.md#v3-pairs), findings, changes, continuity and outcomes. |
 | 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
 | 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then follow the worker's covered queue instruction. |
 | 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
@@ -254,6 +255,17 @@ relevance presentation omits corpus sections unless coverage material or a profi
 is explicitly selected. The final-case handoff remains tracked in #138; no general
 directory-assembly command is implied. Source-labelled paired evidence reuse is
 available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
+
+For all current and subsequent cases, the [paired contract](../docs/contracts/0005-quality-human-review.md#v3-pairs)
+defines the common missing-hours access policy for both V3 stages. A refresh updates the
+current paired view and its source mappings in place, while preserving original
+generation, primary scores, receipts and historical reports. Eligible model
+assessment requires covered execution authorization; ordinary offline report import
+does not call a service. Section-derived Repair views identify current same-run
+sources separately from preserved historical four-final sources. The
+[17 October refresh](../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+covers cases 01–07 and 09; case-09's [automatic acceptance](case-09/report.md#acceptance)
+retains the refreshed pair and disclosed limitations, with blinded review deferred.
 
 ## Layout
 
@@ -373,8 +385,9 @@ itinerary's available modes, time or daily visit capacity.
 
 Case-01–07 retain their existing input bytes, selected revisions, results, scores,
 reports, receipts, original dates and acceptance limitations. Historical accepted
-dates need not satisfy today's moving window. Five pending inputs use the dates
-below; the new case-12 is the former Sydney case-14.
+dates need not satisfy today's moving window. The five inputs revised on 16 October
+use the dates below; case-09 is now accepted, while 08/10/11/12 remain unexecuted.
+The new case-12 is the former Sydney case-14.
 
 Dates and durations are inclusive. Selected reports are indexed
 [above](#accepted-selections). Case-05 uses the approved 2026-10-16 through

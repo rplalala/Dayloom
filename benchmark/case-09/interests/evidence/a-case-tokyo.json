@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_reviewed_description",
+  "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+  "unresolved_subject_id": null,
+  "source_url": "https://case-publishing.jp/jp/about",
+  "source_reference": "turn45search9; turn45search12; turn44search2",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run indexed official-source description independently read and paraphrased; full-page body not relied upon",
+  "factual_paraphrase": "Official publisher material identifies photography exhibitions at the packet Shibuya basement address in 2018; its current about page lists Case Tokyo at a different Meguro address.",
+  "limitations": "The attempted case-tokyo.com URL was unverified and inaccessible. Historical exhibition evidence does not resolve the current identity and offering of the packet location.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

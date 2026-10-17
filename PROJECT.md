@@ -320,8 +320,15 @@ owns active case-03–12 dispatch, budgets and worker integration under the
 The coordinator stays in the main worktree; five workers own disjoint case queues.
 [Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
 owns case-01 workflow acceptance. The active set has 12 requests in four groups of three, following the
-user-approved 16 October 2026 selection revision. Case-01–07 remain unchanged;
-former case-14 becomes case-12 and former 12/13/15 are retired unexecuted. The
+user-approved 16 October 2026 selection revision. Former case-14 becomes case-12
+and former 12/13/15 are retired unexecuted. Case-01–07 retain their original inputs,
+generation, primary results and researcher acceptance. Their current V3 paired views
+and case-09's paired view were separately refreshed under the common access policy on
+17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
+automatically accepted on 17 October 2026 with its updated pair and disclosed limitations;
+blinded review is deferred, and its package remains in the current worktree awaiting
+separate integration/publication instructions. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
 locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
@@ -332,8 +339,8 @@ including UNKNOWN and producer-runtime replay limits. Blinded human assessment
 remains deferred. Git publication remains separately authorized; the retired former
 case-15 remains unexecuted.
 Case-07 execution revision 3 / input revision 2 was separately accepted on
-16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs, no new paired
-quality score and unverified whole-trip EUR 650 affordability. Its
+16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs and unverified
+whole-trip EUR 650 affordability. Its
 [acceptance record](benchmark/case-07/report.md#acceptance) owns the selected
 materials and limitations. Issue #172's prospective activity contract and these
 sanitized materials are delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174); historical results remain unchanged.

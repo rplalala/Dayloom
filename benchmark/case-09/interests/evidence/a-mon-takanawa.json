@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_reviewed_description",
+  "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+  "unresolved_subject_id": null,
+  "source_url": "https://montakanawa.jp/en/programs/national-treasure/",
+  "source_reference": "turn46search0; turn46search2; turn17view8",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run indexed official-source description independently read and paraphrased; full-page body not relied upon",
+  "factual_paraphrase": "The museum program documents rakugo, kodan, rokyoku and gidayu performances by Living National Treasures; its partners page also describes continuing traditional-performing-arts development.",
+  "limitations": "The detailed performance took place in May, outside the requested trip. This supports institutional thematic relevance, not availability during October. The about-page open failed.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

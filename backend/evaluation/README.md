@@ -1693,6 +1693,25 @@ Its pair mask/auxiliary totals remain separate from Ticket 08's four-final repor
 Exit 0 means complete processing, including unavailable pairs and FAIL/UNKNOWN checks;
 corrupt/stale material exits 2. See the [paired contract](../../docs/contracts/0005-quality-human-review.md#v3-pairs).
 
+For authorized missing-hours assessment of both V3 stages, use the same access policy
+and fresh V3-only material. Existing primary responses retain their original bindings.
+Preparation and replay below are offline; execution is one model attempt with zero Google
+sends and no retries. Options must explicitly set `max_google_sends=0` and all model,
+token, timeout and USD reference limits. Batch call/cost limits remain the operator's gate.
+
+```powershell
+rtpeval pair access prepare manifest.json identity-report.json paired-evidence-snapshot --context schedule-context.json --directory artifacts/pair-access --options access-options.json --prices access-prices.json
+rtpeval pair access execute artifacts/pair-access --approved-sha256 EXACT_PREPARATION_SHA256 --env-file .env
+rtpeval pair access replay artifacts/pair-access
+rtpeval pair report manifest.json identity-report.json paired-evidence-snapshot --context schedule-context.json --opening-judgment artifacts/pair-access/execution/model-result.json
+```
+
+Pass the same optional expected plan during packet preparation and report building.
+Retain the pair's required route, occupancy, density and correspondence materials in
+the report command. Zero eligible contexts skips model execution; preserve API UNKNOWNs
+when the policy cannot support access. Pair scores and historical primary scores remain
+distinct. The contract above defines context sharing and source binding.
+
 ## Verification and status boundary
 
 <a id="offline-cost-report"></a>

@@ -154,24 +154,60 @@
     },
     {
       "path": "analysis/resources/summary.json",
-      "sha256": "e6bd71ffff8087e041d4d9babbaa1407c813348846c6cbb7674014bdf82dbd52",
+      "sha256": "4abf4790bc0d610b17816f333784f15a58ebaa2afdf684aed165ac386927f72d",
       "source_logical_path": "work/r03-close/reports/resources/summary.json",
       "source_sha256": "5cbbb4e563ac2ab447ed6c2b70fa20e6cdf79b5b722d9eef9419cf87c5321c18",
-      "json_pointer": ""
+      "json_pointer": "",
+      "representation": "section_derived_reader_view",
+      "sources": [
+        {
+          "logical_path": "reassessment/access-final/execution/report.json",
+          "sha256": "92df251d88856e2b470b0768c6c3f228355a713292821cd8bb3ffae2d5ee01ce",
+          "json_pointer": "/usage"
+        }
+      ],
+      "transformation": "Original generation/primary cohorts unchanged; current paired oracle phase and applicable known subtotal refreshed."
     },
     {
       "path": "evaluation/v3-pair/summary.json",
-      "sha256": "d96e48c59da3522fc160f63d143b5714df54afe1e8d96bff2c60c00eb2a99301",
-      "source_logical_path": "work/r03-close/pair/execution/report.json",
-      "source_sha256": "da0eeeacc85ce94c49ccaf2c429c9f6a30b7d9d42c5dbbf8f45d98e54ef136e8",
-      "transformation": "Native paired scores, changes, correspondence coverage and continuity classifications; raw checks retained privately."
+      "sha256": "e1ecb4efb981e2faf22f054ef080b2dbeb3d268d66261aafd1c12f73157da1ba",
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "bytes": 17139,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "64b24393ada6280ed592f0728649e9024de36124543f7c108b8923171aec0358",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "b2044926d1df1981bb91023aea5de90370528916b3aef3918a4c3998e0ee7f50",
+          "json_pointer": ""
+        }
+      ]
     },
     {
       "path": "analysis/repair/summary.json",
-      "sha256": "8c0cebbbe105f1ae85079d890f620a8120301508c4b6a8fec5f245aa338a7503",
-      "source_logical_path": "work/r03-close/reports/repair/mechanism-report.json",
-      "source_sha256": "a9b3d82ba5b39cc66d7c6666af1a20136d33307c268c00764120f52231698613",
-      "transformation": "Native mechanism observations joined with actual timing and independent pair classifications; no controlled experiment."
+      "sha256": "9f35c14003fa81e46417bbd09f34797f1150e8449fc4d231e4526a1edaf8c4ec",
+      "transformation": "Current paired scores/continuity; private evidence references are opaque semantic identifiers. Original primary and generation sections retain historical sources.",
+      "bytes": 4626,
+      "representation": "sanitized_section_derived_reader_view",
+      "expanded_semantic_sha256": "39828bc4a230ec6f86a44bf84689c51c30dd01984f16575be194eef80a72cca0",
+      "sources": [
+        {
+          "logical_path": "reassessment/current-pair.json",
+          "sha256": "b2044926d1df1981bb91023aea5de90370528916b3aef3918a4c3998e0ee7f50",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "reassessment/research-current/repair.json",
+          "sha256": "940f98c22c400b93876e5a2723de166eb2072bd990a1e4074281c6d80ea68ac4",
+          "json_pointer": "/same_run"
+        }
+      ],
+      "preserved_section_sources": {
+        "historical_four_final_or_mechanism": {
+          "source_logical_path": "work/r03-close/reports/repair/mechanism-report.json",
+          "source_sha256": "a9b3d82ba5b39cc66d7c6666af1a20136d33307c268c00764120f52231698613"
+        }
+      }
     }
   ],
   "native_verification": {
@@ -237,5 +273,46 @@
     "source_data_changed": false,
     "blinded_human_assessment": "deferred",
     "decision_ref": "report.md#acceptance"
+  },
+  "paired_evaluation_refresh": {
+    "on": "2026-10-17",
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10",
+    "selected_run_id": "case-05-r03-v3-attempt-01",
+    "report": "evaluation/v3-pair/summary.json",
+    "opening_policy": "llm_access_reasonableness_2",
+    "new_model_sends": 1,
+    "new_google_sends": 0,
+    "retries": 0,
+    "reference_usd": "0.00039855",
+    "actual_billing": null,
+    "usage": {
+      "input_tokens": 2157,
+      "input_tokens_details": {
+        "cache_write_tokens": 2154,
+        "cached_tokens": 0
+      },
+      "output_tokens": 258,
+      "output_tokens_details": {
+        "reasoning_tokens": 127
+      },
+      "total_tokens": 2415
+    },
+    "model_material_sha256": "71955515bec26a11d00bc7f30d19d6aebe3fd6f04e83f23117695d97848997b5",
+    "original_primary_and_generation": "Unchanged; historical researcher acceptance retained.",
+    "native_sources": {
+      "pair": {
+        "logical_path": "reassessment/current-pair.json",
+        "sha256": "b2044926d1df1981bb91023aea5de90370528916b3aef3918a4c3998e0ee7f50",
+        "json_pointer": ""
+      }
+    },
+    "private_archive_identifier": "benchmark/scratch/case-05/paired-access-20261017/archive",
+    "private_archive_manifest_sha256": "84ae6ee5743a7e47b8d831e1bf45c7c6520ccfd715bd3dc529b56262eb45b339",
+    "archive_counts": {
+      "logical_files": 2157,
+      "unique_blobs": 545
+    },
+    "preparation_sha256": "3af831b8fd1b1b1c01b60343b1103007bdd4690fa0085482e318d6945c2b26a2",
+    "packet_sha256": "d8766bf88a8e0cc474ca868b1207dc6f4bf44867e20eda7d366e261723507a39"
   }
 }

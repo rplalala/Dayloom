@@ -1,0 +1,134 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-09-requirements",
+  "revision": "1",
+  "group_id": "case-09",
+  "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+  "review": {
+    "status": "reviewed",
+    "reviewer_ref": "/root/case09_requirements_review",
+    "reviewed_at": "2026-10-16T21:58:57.368965+00:00"
+  },
+  "subjects": [
+    {
+      "subject_id": "ueno-park",
+      "wording": "Ueno Park",
+      "place_name": "Ueno Park",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Ueno Park",
+          "occurrence": 0,
+          "offset_start": 99,
+          "offset_end": 108
+        }
+      ]
+    },
+    {
+      "subject_id": "tokyo-national-museum",
+      "wording": "Tokyo National Museum",
+      "place_name": "Tokyo National Museum",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Tokyo National Museum",
+          "occurrence": 0,
+          "offset_start": 199,
+          "offset_end": 220
+        }
+      ]
+    }
+  ],
+  "obligations": [
+    {
+      "obligation_id": "ueno-park-exactly-once-on-october-23",
+      "kind": "required_visit",
+      "subject_ref": "ueno-park",
+      "resolution": "resolved",
+      "count": {
+        "mode": "exact",
+        "value": 1
+      },
+      "date_obligations": [
+        {
+          "date": "2026-10-23",
+          "count_mode": "exact",
+          "count": 1
+        }
+      ],
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23.",
+          "occurrence": 0,
+          "offset_start": 70,
+          "offset_end": 164
+        }
+      ]
+    },
+    {
+      "obligation_id": "tokyo-national-museum-exactly-once",
+      "kind": "required_visit",
+      "subject_ref": "tokyo-national-museum",
+      "resolution": "resolved",
+      "count": {
+        "mode": "exact",
+        "value": 1
+      },
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "Also include exactly one visit to Tokyo National Museum on any suitable date during the trip.",
+          "occurrence": 0,
+          "offset_start": 165,
+          "offset_end": 258
+        }
+      ]
+    }
+  ],
+  "soft_preferences": [
+    {
+      "preference_id": "traditional-culture",
+      "wording": "traditional culture",
+      "interpretation": "Prefer activities related to traditional culture; no numeric quota or fixed time is stated.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "traditional culture",
+          "occurrence": 0,
+          "offset_start": 34,
+          "offset_end": 53
+        }
+      ]
+    },
+    {
+      "preference_id": "modern-art",
+      "wording": "modern art",
+      "interpretation": "Prefer activities related to modern art; no numeric quota or fixed time is stated.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "modern art",
+          "occurrence": 0,
+          "offset_start": 58,
+          "offset_end": 68
+        }
+      ]
+    },
+    {
+      "preference_id": "flexible-remaining-activities",
+      "wording": "We are flexible about the remaining activities.",
+      "interpretation": "Remaining activity choices are flexible; this creates no daily count, pace, duration, or protected-time condition.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "We are flexible about the remaining activities.",
+          "occurrence": 0,
+          "offset_start": 259,
+          "offset_end": 306
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}
