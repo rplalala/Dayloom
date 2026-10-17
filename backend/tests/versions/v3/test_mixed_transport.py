@@ -1,8 +1,11 @@
 """Real application route/component paths with fixture-only provider boundaries."""
 
 import asyncio
+import json
 from datetime import timedelta
 from time import monotonic
+
+import pytest
 
 from backend.app.schemas.itinerary import ItineraryDay
 from backend.app.versions.v3.repair_budget import RepairBudget
@@ -62,6 +65,78 @@ def test_existing_drive_enters_real_repair_beyond_walk_prefilter_without_fetch()
     assert (transfer.arrival_time - transfer.departure_time).total_seconds() == 1680
     assert result.counters.get("routes", 0) == 0
     assert next(f for f in result.proposed_report.findings if f.check == "route").status == "PASS"
+
+
+def test_soft_pace_addition_presents_cached_directed_transport_before_proposal():
+    from backend.app.versions.v3.models import ValidationPolicy
+    from backend.tests.versions.v3.test_soft_pace import pace_contract
+
+    original = draft()
+    ctx = context(
+        pace_contract(),
+        policy=ValidationPolicy(review_targets={"soft_pace"}),
+        places=(place(), place("b", longitude=0.06)),
+        route_evidence=(measured("WALK", 6600), measured("DRIVE", 1149, distance=9398)),
+    )
+    model = Model([])
+    result = run(
+        original=original,
+        ctx=ctx,
+        scope=scope_for(original, ctx, check="soft_pace", add_dates=(DAY,)),
+        model=model,
+    )
+    options = model.input["transport_options"]
+    assert len(options) == 1
+    option = options[0]
+    assert (option["origin_place_id"], option["destination_place_id"], option["mode"]) == (
+        "a",
+        "b",
+        "DRIVE",
+    )
+    assert option["duration_seconds"] == 1149 and option["reserve_seconds"] == 600
+    assert option["total_duration_seconds"] == 1749
+    assert option["temporal_applicability"] == "time_independent_estimate"
+    assert option["feasibility"] == "requires_proposed_adjacency_and_window_recheck"
+    assert result.counters.get("routes", 0) == result.counters.get("elements", 0) == 0
+    from backend.app.llm.reference_transport import repair_references
+
+    refs, wire = repair_references(json.dumps(model.input))
+    transport = json.loads(wire)["transport_options"][0]
+    assert transport["origin_place_id"] == refs.forward["p"]["a"]
+    assert transport["destination_place_id"] == transport["place_id"] == refs.forward["p"]["b"]
+    assert transport["activity_id"] == refs.forward["a"]["one"]
+
+
+@pytest.mark.parametrize("case", ["reverse", "stale_transit", "forbidden_drive"])
+def test_soft_pace_transport_projection_preserves_applicability(case):
+    from backend.app.versions.v3.models import ValidationPolicy
+    from backend.tests.versions.v3.test_soft_pace import pace_contract
+
+    original = draft()
+    evidence = (
+        measured("DRIVE", 1038, origin="b", destination="a")
+        if case == "reverse"
+        else measured("TRANSIT", 600, departure=original.days[0].activities[0].start_time)
+        if case == "stale_transit"
+        else measured("DRIVE", 600)
+    )
+    ctx = context(
+        pace_contract(),
+        policy=ValidationPolicy(review_targets={"soft_pace"}),
+        places=(place(), place("b", longitude=0.005)),
+        route_evidence=(evidence,),
+    )
+    scope = scope_for(original, ctx, check="soft_pace", add_dates=(DAY,))
+    if case == "forbidden_drive":
+        scope = scope.model_copy(update={"allowed_transport_modes": ("WALK",)})
+    model = Model([])
+    run(original=original, ctx=ctx, scope=scope, model=model)
+    options = model.input["transport_options"]
+    if case == "reverse":
+        assert len(options) == 1
+        assert (options[0]["origin_place_id"], options[0]["destination_place_id"]) == ("b", "a")
+    else:
+        assert options == []
 
 
 def test_drive_reserve_must_fit_actual_gap_and_explicit_walk_is_restrictive():

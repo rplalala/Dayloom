@@ -86,8 +86,16 @@ def improves(candidate: RepairObjective, best: RepairObjective):
     )
 
 
-def proposal_key(patch, itinerary, context, scope, evidence):
+def proposal_key(patch, itinerary, context, scope, evidence, *, material=None):
     """Explanations are not operations; permissions and directed evidence are dependencies."""
+    if material is not None:
+        return digest(
+            dict(
+                base=state_key(itinerary, context.schedule),
+                edits=[e.model_dump(mode="json") for e in patch.edits],
+                material=material,
+            )
+        )
     return digest(
         {
             "base": state_key(itinerary, context.schedule),

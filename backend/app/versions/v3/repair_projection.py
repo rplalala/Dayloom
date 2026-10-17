@@ -247,7 +247,23 @@ def build_repair_input(
             if r.place_id in input_ids
         ],
         "version": "repair_input_2",
-        "projection_revision": "mixed_transport_components_1",
+        "projection_revision": "qualified_opportunities_feedback_1",
+        "operation_guidance": {
+            "authority_rule": (
+                "scope.permissions controls edits to existing activities only. Add authority is "
+                "independent: use addition_candidates on their authorized dates even when "
+                "scope.permissions is empty. Protected existing activities remain protected."
+            ),
+            "goals_ref": "target_worksheet",
+            "add_authority_ref": "addition_candidates",
+            "existing_activity_authority_ref": "scope.permissions",
+            "transport_ref": "transport_options",
+            "empty_proposal_effect": (
+                "Empty edits do not improve arrangement. Model explanations are claims, not "
+                "verified restrictions. Use the current objective, permissions and directed "
+                "transport evidence; final adjacency and continuous windows are rechecked."
+            ),
+        },
         "transport_options": transport_options,
         "adopted_transfers": [t.model_dump(mode="json") for t in original.transfers],
         "target_worksheet": [
@@ -393,6 +409,7 @@ def build_repair_input(
             "visit_bindings",
             "adopted_transfers",
             "target_worksheet",
+            "operation_guidance",
         ),
         "candidate_tokens": (
             "candidate_catalog",

@@ -288,6 +288,7 @@ async def prepare_candidates(
         "candidate_specific_conflict",
     }
     local_stops = []
+    qualification_audit = []
     reserve = 0
 
     def discovery_scope():
@@ -389,8 +390,8 @@ async def prepare_candidates(
         )
         if semantic_service:
             assessment = semantic_service.ledger.get(candidate.place.place_id)
-            # Newly acquired identities await the bounded batch in finish(). These
-            # provisional associations never authorize model input before assessment.
+            # New associations are settled before they can stop acquisition or
+            # count as a novel final-input opportunity.
             if assessment is not None and not assessment.main_eligible:
                 return []
         rows = []
@@ -692,14 +693,13 @@ async def prepare_candidates(
         return matched_capacity(rows, targets, alternatives) < reference
 
     def material_reasons():
-        rows = list(eligible.values())
+        selected = select_ids()
+        rows = [r for r in eligible.values() if r.place_id in selected]
         result = []
         if insufficient(rows):
             result.append("distinct_target_alternatives_shortfall")
         # Missing generic facts do not make candidates ineligible or cause universal exploration.
-        novel = any(
-            r.opportunity_signature not in presented for r in rows if r.place_id in select_ids()
-        )
+        novel = any(r.opportunity_signature not in presented for r in rows)
         if feedback_adjustment and not novel:
             result.append("no_progress_requires_new_opportunity")
         elif getattr(budget, "explore_feedback", False) and not getattr(
@@ -816,17 +816,21 @@ async def prepare_candidates(
             )
         return False
 
-    async def finish():
+    async def qualify_candidates():
         judgments = {r.place_id: r for r in context.semantic_assessments}
         if semantic_service:
             judgments = await semantic_service.prepare(
                 [c.place for c in ledger.values()], context.contract, deadline=budget.io_deadline
             )
-            for key in list(eligible):
-                if key[0] not in judgments or not judgments[key[0]].main_eligible:
-                    del eligible[key]
+        before = len(eligible)
+        removed = []
         for key, option in list(eligible.items()):
-            if option.target_id in goal_targets and (
+            reason = None
+            if semantic_service and option.place_id not in judgments:
+                reason = "semantic_assessment_unavailable"
+            elif semantic_service and not judgments[option.place_id].main_eligible:
+                reason = "semantic_role_not_main"
+            elif option.target_id in goal_targets and (
                 option.place_id not in judgments
                 or not judgments[option.place_id].main_eligible
                 or not any(
@@ -834,7 +838,40 @@ async def prepare_candidates(
                     for m in judgments[option.place_id].matches
                 )
             ):
+                reason = "semantic_requirement_not_supported"
+            if reason:
+                rejected = option.model_copy(
+                    update=dict(
+                        disposition="fact_ineligible",
+                        reason=reason,
+                        opportunity_status="BLOCKED",
+                        opportunity_reason=reason,
+                    )
+                )
+                decisions.append(rejected)
+                removed.append(
+                    dict(
+                        place_id=option.place_id,
+                        target_id=option.target_id,
+                        reason=reason,
+                        role=judgments[option.place_id].role
+                        if option.place_id in judgments
+                        else None,
+                    )
+                )
                 del eligible[key]
+        if removed:
+            qualification_audit.append(
+                dict(
+                    associations_before=before,
+                    associations_after=len(eligible),
+                    rejected=removed,
+                    continuation_reasons=material_reasons(),
+                )
+            )
+
+    async def finish():
+        await qualify_candidates()
         chosen = select_ids()
         auth = tuple(
             r.model_copy(
@@ -907,6 +944,7 @@ async def prepare_candidates(
             )
 
         return CandidatePreparation(
+            qualification_audit=tuple(qualification_audit),
             identity_capacity_summary=dict(
                 scope="all_active_candidate_operations",
                 independent_identity_capacity=matched_capacity(
@@ -1038,6 +1076,29 @@ async def prepare_candidates(
                 admit(merge_details(item, dto), origin)
             except ValueError:
                 budget.stops.append("invalid_details")
+            await settle_acquisition()
+
+    async def settle_acquisition():
+        # Batch pending identities until a provisional sufficiency/novelty decision
+        # could stop acquisition, then settle it before the next can_acquire().
+        pending_ids = {
+            r.place_id
+            for r in eligible.values()
+            if semantic_service and r.place_id not in semantic_service.ledger
+        }
+        selected = select_ids()
+        novel = feedback_adjustment and any(
+            r.opportunity_signature not in presented
+            for r in eligible.values()
+            if r.place_id in selected
+        )
+        if (
+            not material_reasons()
+            or novel
+            or semantic_service
+            and len(pending_ids) >= semantic_service.config.batch_size
+        ):
+            await qualify_candidates()
 
     old_attempt_start = budget.used["canonical"]
     # When discovery is available, retain up to two existing canonical/Details
@@ -1061,6 +1122,7 @@ async def prepare_candidates(
         if not can_acquire():
             break
         await details(item, origin)
+    await qualify_candidates()
     preparing_old = False
     reasons = material_reasons()
     reserve = min(policy.exploration_positions, max(0, slots - len(pinned))) if reasons else 0
@@ -1197,6 +1259,7 @@ async def prepare_candidates(
                     items = {}
                     resolver.attach(items, value.place_id, entity, [(query, row)], method, value)
                     admit(merge_details(items[value.place_id], value), "rag")
+                    await settle_acquisition()
                 except RepairLimit:
                     budget.stops.append("canonical_budget_exhausted")
                     break

@@ -90,10 +90,11 @@ def test_later_provider_failure_preserves_partial_improvement():
 
 
 def test_repeated_failed_patch_does_not_exhaust_other_operations():
-    model = SequenceModel([[], [], [edit()]])
+    unchanged = [edit("10:30", "11:30")]
+    model = SequenceModel([unchanged, unchanged, unchanged, [edit()]])
     result = stage(model, routes_provider=Routes())
-    assert model.calls == 3
-    assert result.rounds[1].result.reason == "equivalent_proposal_suppressed"
+    assert model.calls == 4
+    assert result.rounds[2].result.reason == "equivalent_proposal_suppressed"
     assert result.status == "ACCEPTED_COMPLETE"
     assert result.final != result.original
 

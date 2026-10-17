@@ -127,6 +127,7 @@ async def run_repair_once(
     model_timeout = None
     model_available = None
     fingerprint = None
+    empty_guard = {}
     components = ()
     decision_key = None
     preparation_started = preparation_elapsed = input_build_elapsed = None
@@ -174,6 +175,7 @@ async def run_repair_once(
             effective_patch=effective_patch,
             components=components,
             material_fingerprint=fingerprint,
+            empty_proposal_guard=empty_guard,
             related_targets=related_progress(
                 snapshot,
                 proposed if proposed is not None else snapshot,
@@ -286,6 +288,11 @@ async def run_repair_once(
                 "outcome": status,
                 "reason": reason,
                 "edits": [e.model_dump(mode="json") for e in effective_patch.edits],
+            }
+        if attempted and patch is not None and not patch.edits and fingerprint is not None:
+            empty_guard["action"] = "empty_proposal_recorded"
+            budget.empty_proposal_inputs = getattr(budget, "empty_proposal_inputs", set()) | {
+                (fingerprint, proposal_strategy)
             }
         if tracer is not None:
             # Separate compact artifacts survive truncation of the full V3 outcome.
@@ -417,6 +424,16 @@ async def run_repair_once(
                 fingerprint = material_fingerprint(user)
                 input_build_elapsed = budget.clock() - input_build_started
                 preparation_elapsed = budget.clock() - preparation_started
+                empty_guard = dict(
+                    material_fingerprint=fingerprint,
+                    strategy=proposal_strategy,
+                    action="eligible",
+                    discovery_outcomes=list(preparation.discovery_opportunities),
+                )
+                if (fingerprint, proposal_strategy) in getattr(budget, "empty_proposal_inputs", ()):
+                    empty_guard["action"] = "stop_unchanged_input"
+                    budget.stops.append("no_new_material_after_empty_proposal")
+                    return result("SKIPPED", "no_new_material_after_empty_proposal")
                 timeout = min(timing.model_seconds, remaining() - timing.recheck_reserve_seconds)
                 model_available = max(0, timeout)
                 if timeout < timing.minimum_model_seconds:
@@ -520,7 +537,9 @@ async def run_repair_once(
             )
             from backend.app.versions.v3.repair_search import proposal_key
 
-            decision_key = proposal_key(effective_patch, snapshot, context, scope, extra)
+            decision_key = proposal_key(
+                effective_patch, snapshot, context, scope, extra, material=fingerprint
+            )
             budget.proposal_history = getattr(budget, "proposal_history", {})
             if decision_key in budget.proposal_history:
                 return result("REJECTED", "equivalent_proposal_suppressed")

@@ -170,7 +170,8 @@ def test_sixth_eligible_proposal_and_equivalent_failure_suppression():
             return value
 
     original, ctx = overlap_draft(), context()
-    model = Explanations([[], [], [], [], [], [edit()]])
+    unchanged = [edit("10:30", "11:30")]
+    model = Explanations([unchanged] * 5 + [[edit()]])
     result = asyncio.run(
         run_repair_stage(
             original,
@@ -183,8 +184,8 @@ def test_sixth_eligible_proposal_and_equivalent_failure_suppression():
     )
     assert model.calls == result.counters["model"] == 6
     assert result.status == "ACCEPTED_COMPLETE"
-    assert result.rounds[1].result.reason == "equivalent_proposal_suppressed"
-    assert not result.rounds[1].result.components
+    assert result.rounds[2].result.reason == "equivalent_proposal_suppressed"
+    assert not result.rounds[2].result.components
     assert model.inputs[1]["feedback"]["previous_status"] == "REJECTED"
     assert model.inputs[5]["feedback"]["tried_operations"]
 

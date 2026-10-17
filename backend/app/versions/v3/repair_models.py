@@ -150,6 +150,7 @@ class CandidateDecision(ValidationModel):
 
 
 class CandidatePreparation(ValidationModel):
+    qualification_audit: tuple[dict, ...] = ()
     identity_capacity_summary: dict = Field(default_factory=dict)
     identity_free_operations: tuple[dict, ...] = ()
     target_opportunities: tuple[dict, ...] = ()
@@ -231,6 +232,7 @@ class RepairResult(ValidationModel):
     acquisition_audit: tuple[dict, ...] = ()
     feedback_kind: str = "not_evaluated"
     material_fingerprint: str | None = None
+    empty_proposal_guard: dict = Field(default_factory=dict)
     presentation_history: tuple[dict, ...] = ()
     conflict_records: tuple[dict, ...] = ()
     related_targets: tuple[RelatedTarget, ...] = ()
