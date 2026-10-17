@@ -5,7 +5,11 @@ import json
 
 import pytest
 
-from backend.evaluation.declared_population import population_readiness
+from backend.evaluation.declared_population import (
+    PROFILE_ID,
+    UnreadyPopulation,
+    population_readiness,
+)
 from backend.evaluation.intake import load_batch
 from backend.evaluation.quality_report import build_quality_report
 from backend.tests.evaluation import test_routes as route_tests
@@ -192,6 +196,42 @@ def test_offset_conflicts_remain_unknown_in_the_final_candidate_metrics(route_ca
     assert first["interval"]["original_start"] == "2020-01-01T09:00:00+01:00"
     assert version["primary_metrics"]["routes"]["checks"][0]["state"] == "UNKNOWN"
     assert version["overall_total"]["score_0_100"] is not None
+
+
+@pytest.mark.parametrize("end", ["14:00", "15:00"])
+def test_historical_opt_in_rejects_nonpositive_intervals_with_wrong_offsets(batch, end):
+    from backend.evaluation.evaluation_run import prepare_run
+    from backend.tests.evaluation.test_evaluation_run import options, run_prices
+    from backend.tests.evaluation.test_intake import activity
+
+    _, results, write, _, root = batch
+    route_tests.no_departure(results)
+    rest = activity("rest", "Rest", "15:00", end, role="free_time")
+    for field in ("start_time", "end_time"):
+        rest[field] = rest[field].replace("+00:00", "+01:00")
+    results["v0"]["itinerary"]["days"][0]["activities"].append(rest)
+    for version in results:
+        write(version)
+    manifest = write()
+    intake = load_batch(manifest)
+    assert intake.status == "accepted"
+    directory = root / "must-not-prepare"
+    with pytest.raises(UnreadyPopulation) as caught:
+        prepare_run(
+            manifest,
+            directory,
+            options=options(),
+            prices=run_prices(),
+            quality_profile=PROFILE_ID,
+            schedule_context=context(intake, "Europe/London"),
+            density_reviews=density_reviews(intake),
+        )
+    assert any(
+        item["reason"] == "activity_date_or_interval_unresolved"
+        and item["sources"][0]["pointer"] == "/itinerary/days/0/activities/2"
+        for item in caught.value.report["diagnostics"]
+    )
+    assert not directory.exists()
 
 
 def test_new_wire_selects_candidate_profile_in_normal_report_entry(route_case):

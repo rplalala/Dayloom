@@ -6,6 +6,7 @@ from ._schedule_preparation import _days, _occupancy_reviews, _validate_spec
 from .daily_density import prepare_density_policies
 from .occupancy import prepare_occupancy
 from .preparation import schedule_timezones
+from .projection import interval as submitted_interval
 from .records import canonical_digest, require
 from .schedule_time import normalize_interval
 
@@ -93,8 +94,11 @@ def population_readiness(
                     activity["declared_day"],
                     zones.get(group["group_id"]),
                 )
-                known_date_offset_conflict = interval.date_consistent and interval.reasons == (
-                    "timezone_offset_conflict",
+                known_date_offset_conflict = (
+                    interval.date_consistent
+                    and interval.reasons == ("timezone_offset_conflict",)
+                    and submitted_interval(interval.original_start, interval.original_end)
+                    is not None
                 )
                 if (
                     interval.span is None
