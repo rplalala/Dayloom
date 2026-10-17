@@ -91,12 +91,6 @@
     "Original absolute Primary preparation bindings are unchanged; source worktrees remain retained. The paired export is portable and was independently rebuilt from restored archive files."
   ],
   "deferred": "Step 11 consolidated blinded human review",
-  "not_performed": [
-    "push",
-    "PR creation",
-    "main integration",
-    "Issue closure"
-  ],
   "automatic_acceptance_owner": "researcher",
   "acceptance": {
     "step": 10,
@@ -104,7 +98,7 @@
     "decided_by": "researcher",
     "decision_date": "2026-10-17",
     "timezone": "Australia/Sydney",
-    "decision_source": "Explicit researcher approval in the current conversation. Accept the presented exact material and retained limitations; defer blinded review. Update status and prepare the final local package only.",
+    "decision_source": "Explicit researcher approval in the current conversation: accept the presented exact material and retained limitations, with blinded human review deferred.",
     "reviewed_material_revision": "75ade00f259dd69b79fcafa23dfbc012e70bf15c",
     "reviewed_report_sha256": "16f64a9c4dd3f15a5e173e3d7990d3415190528eda0f00f842bafa23a31a39c1",
     "original_input_sha256": "769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a",
@@ -118,7 +112,27 @@
     },
     "retained_limitations": "All retained_limitations in this checklist remain accepted without alteration.",
     "blinded_review": "deferred",
-    "publication_and_issue_operations": "not_authorized",
     "new_execution": "not_authorized"
+  },
+  "delivery": {
+    "case_pull_request": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188",
+    "case_merge_commit": "3fbb2ef79a808a77949efa095fecb8ffd10eb74c",
+    "case_material_status": "merged_into_main",
+    "issue_closeout": {
+      "157": {
+        "url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157",
+        "state": "CLOSED",
+        "state_reason": "COMPLETED",
+        "closed_at_utc": "2026-10-17T12:51:56Z"
+      },
+      "182": {
+        "url": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182",
+        "state": "CLOSED",
+        "state_reason": "COMPLETED",
+        "closed_at_utc": "2026-10-17T12:51:52Z"
+      }
+    },
+    "closeout_authorization": "The researcher separately authorized in-place Issue reconciliation and closure, merged-state documentation and necessary commit/delivery.",
+    "evidence_retention": "Private archive, original worktrees and absolute preparation bindings retained unchanged."
   }
 }
