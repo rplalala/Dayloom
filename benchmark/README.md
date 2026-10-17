@@ -150,7 +150,7 @@ require their own explicit authorization.
 | 5 | Generate V0-V3 sequentially and inspect each outcome | Installed tools, orchestrated by Codex | Selected results, exact sources, actual usage/completion, failure records and required mechanism material. |
 | 6 | Independently evaluate final itineraries | Evaluator and applicable independent semantic reviewers | Qualified four-final material and reviewed context; independent identity/evidence, eligible missing-hours access assessment, then one final primary calculation; report each version and pause. |
 | 7 | **Candidate POI process analysis (V1-V2)** | Tools and Codex; independent relevance reviewer when interests apply | Discovery/admission/enrichment/supply/scheduled sets, counts and sources; recorded omissions; gained/lost/retained POIs and applicable relevance/conversions. |
-| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence, findings, changes, continuity and outcomes. |
+| 8 | **Repair process analysis (V2-V3)** | Tools and applicable independent reviewers | V2/V3 final differences, plus same-run V3 draft/final independent evidence under the [common paired access policy](../docs/contracts/0005-quality-human-review.md#v3-pairs), findings, changes, continuity and outcomes. |
 | 9 | Reconcile attempts/resources and verify offline | Tools and Codex | All-attempt consumption/completion, explicit missing prices/usage, source consistency and available native replay. |
 | 10 | Joint automatic case acceptance | Codex presents; user decides | Accepted exact input/material/reports and limitations; human review deferred, then follow the worker's covered queue instruction. |
 | 11 | Consolidated blinded review | Codex prepares; real raters answer | Anonymous questionnaires, private mappings, actual answer revisions and separate native human reports. |
@@ -255,8 +255,8 @@ is explicitly selected. The final-case handoff remains tracked in #138; no gener
 directory-assembly command is implied. Source-labelled paired evidence reuse is
 available through the [installed import flow](../backend/evaluation/README.md#installed-paired-acquisition).
 
-The [paired contract](../docs/contracts/0005-quality-human-review.md#v3-pairs) owns
-the common missing-hours access policy for both V3 stages. A refresh updates the
+For all current and subsequent cases, the [paired contract](../docs/contracts/0005-quality-human-review.md#v3-pairs)
+defines the common missing-hours access policy for both V3 stages. A refresh updates the
 current paired view and its source mappings in place, while preserving original
 generation, primary scores, receipts and historical reports. Eligible model
 assessment requires covered execution authorization; ordinary offline report import
