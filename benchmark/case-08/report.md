@@ -2,7 +2,7 @@
 
 ## Selection and status
 
-**Automatically accepted on 2026-10-17 (Australia/Sydney); blinded human review deferred.** The researcher completed step 10 by accepting the exact selected material and disclosed limitations presented at `75ade00`. The selected r02 V0-V3 outputs, historical Primary and separately authorized corrected Primary are retained. Same-run V3 pairing, independent continuity, all-attempt reconciliation and retained-evidence archive verification are complete. Case lifecycle is tracked in [Issue #157](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157); shared evaluator corrections are tracked in [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182).
+**Automatically accepted on 2026-10-17 (Australia/Sydney); blinded human review deferred.** The researcher completed step 10 by accepting the exact selected material and disclosed limitations presented at `75ade00`. The selected r02 V0-V3 outputs, historical Primary and separately authorized corrected Primary are retained. Same-run V3 pairing, independent continuity, all-attempt reconciliation and retained-evidence archive verification are complete. Case lifecycle is recorded in completed [Issue #157](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/157); shared evaluator corrections are recorded in completed [#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182).
 
 The unchanged [original request](../inputs/case-08.json) covers Barcelona, 22-24 October 2026, two adults and EUR 1,000 for the whole trip. It requires exactly one Sagrada Família visit, excludes Park Güell and expresses architecture/history interests. Input SHA-256 is `769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
 
@@ -92,14 +92,15 @@ The external-network guard initially interfered with Python SSL imports and Wind
 | Independent common-policy V3 pair and continuity | Complete through source-labelled offline reuse; exact native replay |
 | Retained-evidence archive and native restored pair | Verified; original absolute Primary dependencies retained unchanged |
 | Researcher automatic case acceptance (step 10) | Accepted on 2026-10-17 with the retained limitations |
-| Git publication and Issue closure | Not performed; separate authorization required |
+| Case material delivery | [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged into main at `3fbb2ef` |
+| Issue closeout | #157 and #182 completed on 2026-10-17 under separate researcher authorization |
 | Blinded human review | Deferred separately |
 
 The generic target corrections are integrated through [PR #185](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/185); the paired policy/material compatibility extension is integrated through [PR #187](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/187). Those fixes need no further case-specific code merge. The current case pair uses those integrated contracts; code integration alone never establishes case acceptance.
 
 The former USD 3.10 paid-pair planning reservation was unused. Actual selected pairing has zero current model/Google sends and zero incremental project-provider reference cost; inherited Primary consumption is not charged again.
 
-The researcher accepted the exact r02 outputs, corrected Primary, current pair, process reports and retained limitations in the [checklist](analysis/acceptance.json) on 2026-10-17. The checklist binds the reviewed material revision and report/selected-summary hashes. Genuine V0 FAIL, V1 UNKNOWN, partial relevance, unverified affordability/thematic fulfillment and billing gaps remain accepted limitations. Step 11 human review stays deferred. Acceptance does not authorize publication, merge, Issue closure or additional execution. The public view is accompanied by verified private dependencies; it is not a standalone native execution bundle.
+The researcher accepted the exact r02 outputs, corrected Primary, current pair, process reports and retained limitations in the [checklist](analysis/acceptance.json) on 2026-10-17. The checklist binds the reviewed material revision and report/selected-summary hashes. Genuine V0 FAIL, V1 UNKNOWN, partial relevance, unverified affordability/thematic fulfillment and billing gaps remain accepted limitations. Step 11 human review stays deferred. The separately authorized case delivery and Issue closure are complete. Further execution remains unauthorized; private evidence and original worktrees stay retained. The public view is accompanied by verified private dependencies; it is not a standalone native execution bundle.
 
 ## Assistance and history
 
