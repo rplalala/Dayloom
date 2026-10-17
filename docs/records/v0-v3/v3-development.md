@@ -1829,3 +1829,40 @@ committed through `471f194` and only this record was uncommitted. These checks u
 controlled model/provider responses and establish implementation behavior, not live
 compression quality. No provider execution, case-12 rerun or rescoring occurred;
 the original case records and cumulative USD 40 execution limit remain unchanged.
+
+## Full-day rest pace applicability correction (2026-10-17)
+
+The retained [case-12 r05 result](../../../benchmark/case-12/report.md) scored 100
+in Primary while native Repair ended `ACCEPTED_PARTIAL`. Saved-output inspection
+identified one remaining objective: the protected rest date, 25 October, had zero
+visits but received a native pace penalty of 100 under the default relaxed curve.
+Its full-day time protection prevented insertion; all five model proposals left
+the date unchanged, and the final preparation stopped without a model send because
+there was no authorized insertion window. The other five pace targets resolved.
+Primary's independently reviewed zero-count policy correctly assigned no deduction
+to the rest date. This establishes an internal objective-applicability mismatch,
+not an outstanding sightseeing obligation. The private original evidence identifiers
+are `benchmark/scratch/case-12/work/run-r05/captures/v3/result.json` and
+`benchmark/scratch/case-12/work/run-r05/primary-r05/execution/report.json`.
+
+Implementation `b292a10`, reviewed against fixed base `b6fd38c`, corrects V3's
+read-only measurement and finding provenance under the
+[soft pace contract](../../0005-validation-repair%28v3%29.md#soft-pace-objective).
+It does not rewrite the interpreted daily-count contract or force a completion
+status. The initial two regression cases reproduced the erroneous rest-day target;
+both passed after the correction. Thirteen added cases cover dated/all-trip rest,
+ordinary blank days, partial/unresolved/other-date protections, actual visit counts,
+hard time conflicts, role uncertainty, first-day exact-one counts and complete Repair
+convergence while retaining a rest day.
+
+The selected network-blocked suite passed **646 tests**: all V3 tests plus shared
+daily-count interpretation, time protection, generation diagnostics and independent
+daily-density tests. An initial run passed 635 tests with 11 temporary-directory setup
+errors; a fresh worktree-local pytest base directory resolved those sandbox errors
+without configuration changes. Ruff, formatting and whitespace checks passed.
+Independent Standards and Spec review each found zero actionable issues. At this
+record update, implementation and tests were committed through `b292a10`, with only
+the related documentation uncommitted. The full backend suite was not run. No
+provider execution, case-12 rerun, replay or rescoring occurred; saved outputs,
+historical Repair statuses, Primary scores and the cumulative execution budget
+remain unchanged. These checks establish offline behavior, not a new live result.

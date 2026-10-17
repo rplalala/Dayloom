@@ -147,6 +147,18 @@ policy/roles/counts remain diagnostic uncertainty without guessed edit authority
 The numeric curves live in `backend/pace_policy.py`; independent evaluation retains
 its own reviewed input policies and evidence rather than consuming planner interpretation.
 
+For a date covered by a fixed full-day `time_protections` entry, the internal pace
+objective projects the feasible primary-visit count to zero. An empty protection date
+list applies to every trip date. A known zero count has zero penalty; a known positive
+count has penalty 100, while unresolved activity roles retain UNKNOWN. The finding's
+`time_protection_projection` records `full_day_protection_pace_1`, the zero target and
+the applicable protections with their source references. This read-only projection
+leaves `daily_pace` and `daily_visit_constraints` unchanged. Existing fixed-time validation
+and patch authorization still protect the whole day, including against scheduled
+non-visit activities. Partial-day or unresolved protections do not receive this
+projection. Other dates retain their sourced daily counts and ordinary pace/coverage
+rules, including repair targets for unprotected blank days.
+
 The application permits bounded additions or removal/movement of dispensable visits,
 then reuses existing mandatory count/date/time, role, coverage, route/occupancy and
 budget checks. [Search and retention](#exploration-and-retained-result) use aggregate
