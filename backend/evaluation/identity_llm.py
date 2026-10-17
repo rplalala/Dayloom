@@ -324,6 +324,7 @@ def _decisions(
     legacy_v0=False,
     visits_only=False,
     subject_only=False,
+    subject_policy=None,
 ):
     if material is None:
         return {}, None
@@ -340,7 +341,9 @@ def _decisions(
     if subject_only:
         from .subject_correspondence import prepare_subject_judgment
 
-        expected = prepare_subject_judgment(intake, evidence, model=model).to_dict()
+        expected = prepare_subject_judgment(
+            intake, evidence, model=model, policy_version=subject_policy
+        ).to_dict()
     else:
         expected = prepare_identity_judgment(
             intake,

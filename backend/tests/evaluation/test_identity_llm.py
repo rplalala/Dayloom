@@ -72,9 +72,16 @@ def test_packet_covers_protected_subjects_and_all_versions(batch):
     assert all(r["review_history"] == [] for r in judged["records"])
 
 
-def model_material(intake, observed, *, decisions=None, historical=True, legacy_v0=False):
+def model_material(
+    intake, observed, *, decisions=None, historical=True, legacy_v0=False, visits_only=False
+):
     packet = _prepare_identity_judgment(
-        intake, observed, model="fixture-model", historical=historical, legacy_v0=legacy_v0
+        intake,
+        observed,
+        model="fixture-model",
+        historical=historical,
+        legacy_v0=legacy_v0,
+        visits_only=visits_only,
     ).to_dict()
     cases = json.loads(packet["request"]["input"])["cases"]
     rows = []

@@ -17,6 +17,13 @@ def add_identity_options(parser):
         help="Prepare the common-subject packet offline; requires --common-subjects",
     )
     parser.add_argument("--subject-result", help="Saved common-subject model result")
+    from .subject_correspondence import POLICIES
+
+    parser.add_argument(
+        "--subject-policy",
+        choices=POLICIES,
+        help="Explicit common-subject policy; defaults to the current policy",
+    )
     parser.add_argument(
         "--prepare",
         action="store_true",
@@ -45,7 +52,9 @@ def add_identity_options(parser):
 
 def identity_command(intake, evidence, args, read, *, audit=None, legacy=None):
     """Choose one explicit policy and reject contradictory command options."""
-    if (args.prepare_subjects or args.subject_result) and not args.common_subjects:
+    if (
+        args.prepare_subjects or args.subject_result or args.subject_policy
+    ) and not args.common_subjects:
         raise ValueError("Subject options require --common-subjects")
     if args.common_subjects:
         if (
@@ -60,9 +69,15 @@ def identity_command(intake, evidence, args, read, *, audit=None, legacy=None):
         if args.prepare_subjects:
             if args.prepare or args.model_result or args.subject_result:
                 raise ValueError("Subject preparation cannot import results or prepare visits")
+            from .subject_correspondence import POLICY_VERSION as SUBJECT_POLICY
             from .subject_correspondence import prepare_subject_judgment
 
-            packet = prepare_subject_judgment(intake, evidence, model=args.model)
+            packet = prepare_subject_judgment(
+                intake,
+                evidence,
+                model=args.model,
+                policy_version=args.subject_policy or SUBJECT_POLICY,
+            )
             return (
                 packet.to_dict() if packet else {"status": "skipped", "reason": "no_named_subjects"}
             )
@@ -79,6 +94,7 @@ def identity_command(intake, evidence, args, read, *, audit=None, legacy=None):
             model_result=read(args.model_result),
             common_subjects=True,
             subject_result=read(args.subject_result),
+            subject_policy=args.subject_policy,
         ).to_dict()
     if args.legacy:
         if (

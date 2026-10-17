@@ -38,10 +38,11 @@ def test_destination_context_and_provider_name_are_one_common_target(batch, prov
     assert "version" not in cases[0]
 
 
-def subject_material(intake, observed, change=None):
+def subject_material(intake, observed, change=None, *, policy_version=None):
     from backend.evaluation.subject_correspondence import prepare_subject_judgment
 
-    packet = prepare_subject_judgment(intake, observed, model="fixture-model").to_dict()
+    options = {"policy_version": policy_version} if policy_version else {}
+    packet = prepare_subject_judgment(intake, observed, model="fixture-model", **options).to_dict()
     cases = json.loads(packet["request"]["input"])["cases"]
     decisions = {}
     for case in cases:
@@ -135,7 +136,7 @@ def test_native_preparation_reserves_one_distinct_subject_stage(batch):
     preparation = prepare_run(batch[2](), batch[4] / "evaluation", options=options(), prices=book)
     assert preparation["schema_version"] == "rtpeval_execution_preparation_3"
     assert preparation["max_model_sends"] == 3
-    assert preparation["subject_policy"] == "requirement_subject_correspondence_1"
+    assert preparation["subject_policy"] == "requirement_subject_correspondence_2"
 
 
 @pytest.mark.parametrize(
@@ -451,7 +452,7 @@ def test_cli_prepares_and_imports_common_subjects_offline(batch, capsys):
     assert main([*base, "--prepare-subjects", "--model", "fixture-model"]) == 0
     assert (
         json.loads(capsys.readouterr().out)["association_policy_version"]
-        == "requirement_subject_correspondence_1"
+        == "requirement_subject_correspondence_2"
     )
     result_path = batch[4] / "subject-result.json"
     result_path.write_text(json.dumps(subject_material(intake, observed)), encoding="utf-8")

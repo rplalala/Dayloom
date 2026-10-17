@@ -10,7 +10,10 @@ from .subject_correspondence import prepare_subject_judgment, resolve_subjects
 
 async def assess_subjects(preparation, execution, evidence, transport):
     packet = prepare_subject_judgment(
-        preparation["intake"], evidence, model=preparation["options"]["model"]
+        preparation["intake"],
+        evidence,
+        model=preparation["options"]["model"],
+        policy_version=preparation["subject_policy"],
     )
     if packet is None:
         return None
@@ -26,13 +29,18 @@ async def assess_subjects(preparation, execution, evidence, transport):
         "retrieved_at": event["retrieved_at"],
     }
     (execution / "subject-model-result.json").write_bytes(_bytes(material))
-    resolve_subjects(preparation["intake"], evidence, material)
+    resolve_subjects(
+        preparation["intake"], evidence, material, policy_version=preparation["subject_policy"]
+    )
     return material
 
 
 def replay_subjects(preparation, execution, evidence, journal, usage):
     packet = prepare_subject_judgment(
-        preparation["intake"], evidence, model=preparation["options"]["model"]
+        preparation["intake"],
+        evidence,
+        model=preparation["options"]["model"],
+        policy_version=preparation["subject_policy"],
     )
     events = [e for e in journal if e.get("model_event_id") == "requirement-subject"]
     calls = [c for c in usage["model_calls"] if c["operation"] == "requirement_subject"]
@@ -58,5 +66,7 @@ def replay_subjects(preparation, execution, evidence, journal, usage):
     verify_model_capture(
         execution, events[0], material, preparation["options"], calls[0], reasoning_effort="low"
     )
-    resolve_subjects(preparation["intake"], evidence, material)
+    resolve_subjects(
+        preparation["intake"], evidence, material, policy_version=preparation["subject_policy"]
+    )
     return material

@@ -14,7 +14,17 @@ from .identity_llm import IdentityJudgmentPacket, _correspondence_schema, _decis
 from .records import canonical_digest as digest
 from .records import freeze, text
 
-POLICY_VERSION = "requirement_subject_correspondence_1"
+LEGACY_POLICY_VERSION = "requirement_subject_correspondence_1"
+POLICY_VERSION = "requirement_subject_correspondence_2"
+POLICIES = (LEGACY_POLICY_VERSION, POLICY_VERSION)
+
+
+def validate_policy(policy_version):
+    if policy_version not in POLICIES:
+        raise ValueError("Unsupported requirement-subject policy")
+    return policy_version
+
+
 INSTRUCTIONS = """Resolve original user-requested venues against their own independent Google facts.
 These are common requirement targets, not planner visits or V0 judgments. Use only the
 supplied original request, reviewed subject/obligations and this case's candidates.
@@ -135,10 +145,11 @@ def subject_cases(intake, evidence):
     return cases
 
 
-def prepare_subject_judgment(intake, evidence, *, model):
+def prepare_subject_judgment(intake, evidence, *, model, policy_version=POLICY_VERSION):
     """Freeze the independent common-subject request; return None for an empty scope."""
     if not text(model):
         raise ValueError("An explicit subject judgment model is required")
+    validate_policy(policy_version)
     cases = subject_cases(intake, evidence)
     if not cases:
         return None
@@ -162,11 +173,18 @@ def prepare_subject_judgment(intake, evidence, *, model):
             }
         },
     }
+    if policy_version == POLICY_VERSION:
+        request["instructions"] += (
+            "\npostal_town is typed city evidence. Conflicting city/country evidence remains "
+            "unresolved; a unique candidate is not sufficient correspondence evidence."
+        )
     return IdentityJudgmentPacket(
         freeze(
             {
-                "schema_version": "rtpeval_subject_judgment_packet_1",
-                "association_policy_version": POLICY_VERSION,
+                "schema_version": "rtpeval_subject_judgment_packet_1"
+                if policy_version == LEGACY_POLICY_VERSION
+                else "rtpeval_subject_judgment_packet_2",
+                "association_policy_version": policy_version,
                 "source_cases_sha256": digest(cases),
                 "reference_maps": packet.manifest,
                 "request": request,
@@ -176,15 +194,22 @@ def prepare_subject_judgment(intake, evidence, *, model):
     )
 
 
-def resolve_subjects(intake, evidence, material=None):
+def resolve_subjects(intake, evidence, material=None, *, policy_version=POLICY_VERSION):
     """Import only owned semantic decisions; factual compatibility still gates adoption."""
+    validate_policy(policy_version)
     cases = subject_cases(intake, evidence)
     if not cases:
         if material is not None:
             raise ValueError("Subject results require named subjects")
         return {}, None
     decisions, provenance = _decisions(
-        intake, evidence, cases, material, historical=False, subject_only=True
+        intake,
+        evidence,
+        cases,
+        material,
+        historical=False,
+        subject_only=True,
+        subject_policy=policy_version,
     )
     targets = {}
     for case in cases:
@@ -206,11 +231,17 @@ def resolve_subjects(intake, evidence, material=None):
             location = case["claim"]["location"]
             compatible = (
                 not text(location)
-                or location_matches(location, candidate)
+                or location_matches(
+                    location, candidate, postal_town=policy_version == POLICY_VERSION
+                )
                 or compare_address_claim(location, candidate)["verdict"] == "PASS"
             )
             if (
-                strict_destination_matches(case["claim"]["destination"], candidate)
+                strict_destination_matches(
+                    case["claim"]["destination"],
+                    candidate,
+                    postal_town=policy_version == POLICY_VERSION,
+                )
                 and compatible
                 and judgment["destination_assessment"] == "consistent"
                 and judgment["address_assessment"] in ("equivalent", "not_supplied")

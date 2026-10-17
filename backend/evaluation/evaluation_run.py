@@ -76,6 +76,10 @@ def _options(options, *, allow_no_google=False):
 
 
 def _verify(preparation, *, implementation=False):
+    if preparation.get("schema_version") == VERSION:
+        from .subject_correspondence import validate_policy
+
+        validate_policy(preparation.get("subject_policy"))
     if preparation.get("schema_version") not in (
         VERSION,
         PREVIOUS_VERSION,
@@ -465,6 +469,7 @@ async def execute_run(
                 model_result=material,
                 common_subjects=common_subjects,
                 subject_result=subject_material,
+                subject_policy=preparation["subject_policy"] if common_subjects else None,
             ).to_dict()
             _save(execution, "identity-report.json", identity)
             routes = prepare_routes(
@@ -653,6 +658,7 @@ def replay_run(directory):
         model_result=material,
         common_subjects=common_subjects,
         subject_result=subject_material,
+        subject_policy=preparation["subject_policy"] if common_subjects else None,
     ).to_dict()
     if identity != _read(execution / "identity-report.json")[0]:
         raise ValueError("Identity report replay differs")

@@ -573,7 +573,10 @@ def score_requirement_schedule(
             "daily_visit_count": "source_distinct_primary_occurrences_with_date_role_bounds_1",
         }
         base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
-    if identity.get("association_policy_version") == "versioned_api_identity_5":
+    if identity.get("association_policy_version") in (
+        "versioned_api_identity_5",
+        "versioned_api_identity_6",
+    ):
         rules = {
             **rules,
             "version": "rtpeval_requirement_schedule_rules_6",

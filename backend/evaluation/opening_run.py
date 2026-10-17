@@ -53,6 +53,7 @@ def _parent(directory):
         model_result=model_material,
         common_subjects=common_subjects,
         subject_result=subject_material,
+        subject_policy=preparation["subject_policy"] if common_subjects else None,
     ).to_dict()
     require(
         identity == _read(execution / "identity-report.json")[0],

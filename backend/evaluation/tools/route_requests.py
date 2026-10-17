@@ -8,7 +8,11 @@ from pathlib import Path
 
 from ..identity import resolve_identities
 from ..identity_adoption import load_v0_material
-from ..identity_program import COMMON_POLICY_VERSION, VERSIONED_TARGET_POLICIES
+from ..identity_program import (
+    COMMON_POLICY_VERSION,
+    PREVIOUS_COMMON_POLICY_VERSION,
+    VERSIONED_TARGET_POLICIES,
+)
 from ..identity_program import POLICY_VERSION as IDENTITY_POLICY_VERSION
 from ..intake import _read
 from ..place_association import associated_place_id
@@ -303,7 +307,7 @@ def prepare_v0_route_requests(
         require(
             legacy
             or identity.get("association_policy_version")
-            in (IDENTITY_POLICY_VERSION, COMMON_POLICY_VERSION),
+            in (IDENTITY_POLICY_VERSION, PREVIOUS_COMMON_POLICY_VERSION, COMMON_POLICY_VERSION),
             "identity/policy",
             "Current version-specific identity report required; historical replay is explicit",
         )

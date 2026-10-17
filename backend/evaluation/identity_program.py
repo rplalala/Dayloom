@@ -21,11 +21,13 @@ LEGACY_POLICY_VERSION = "versioned_api_identity_1"
 PREVIOUS_POLICY_VERSION = "versioned_api_identity_2"
 EXACT_POLICY_VERSION = "versioned_api_identity_3"
 POLICY_VERSION = "versioned_api_identity_4"
-COMMON_POLICY_VERSION = "versioned_api_identity_5"
+PREVIOUS_COMMON_POLICY_VERSION = "versioned_api_identity_5"
+COMMON_POLICY_VERSION = "versioned_api_identity_6"
 VERSIONED_TARGET_POLICIES = (
     PREVIOUS_POLICY_VERSION,
     EXACT_POLICY_VERSION,
     POLICY_VERSION,
+    PREVIOUS_COMMON_POLICY_VERSION,
     COMMON_POLICY_VERSION,
 )
 
@@ -170,18 +172,30 @@ def resolve_versioned_identities(
     exact_addresses=False,
     common_subjects=False,
     subject_result=None,
+    subject_policy=None,
 ):
     """V0 model results never decide targets or visits of another version."""
     prepared = _intake_dict(intake)
     if sum((historical, previous, exact_addresses, common_subjects)) > 1:
         raise ValueError("Choose one historical identity policy")
-    if subject_result is not None and not common_subjects:
+    if (subject_result is not None or subject_policy is not None) and not common_subjects:
         raise ValueError("Common subject results require their declared policy")
     targets, subject_provenance = {}, None
     if common_subjects:
+        from .subject_correspondence import LEGACY_POLICY_VERSION as LEGACY_SUBJECT_POLICY
+        from .subject_correspondence import POLICY_VERSION as SUBJECT_POLICY
         from .subject_correspondence import resolve_subjects
 
-        targets, subject_provenance = resolve_subjects(prepared, evidence, subject_result)
+        if subject_policy is None:
+            subject_policy = SUBJECT_POLICY
+        targets, subject_provenance = resolve_subjects(
+            prepared, evidence, subject_result, policy_version=subject_policy
+        )
+        common_policy = (
+            PREVIOUS_COMMON_POLICY_VERSION
+            if subject_policy == LEGACY_SUBJECT_POLICY
+            else COMMON_POLICY_VERSION
+        )
     refs = identity_references(prepared)
     observed = _observation_index(evidence, refs, prepared) if historical else {}
     if not historical:
@@ -333,7 +347,7 @@ def resolve_versioned_identities(
                 if previous
                 else EXACT_POLICY_VERSION
                 if exact_addresses
-                else COMMON_POLICY_VERSION
+                else common_policy
                 if common_subjects
                 else POLICY_VERSION,
                 "reference_set_digest": digest(refs),
@@ -389,7 +403,14 @@ def verify_versioned_report(intake, report):
                 historical=policy == LEGACY_POLICY_VERSION,
                 previous=policy == PREVIOUS_POLICY_VERSION,
                 exact_addresses=policy == EXACT_POLICY_VERSION,
-                common_subjects=policy == COMMON_POLICY_VERSION,
+                common_subjects=policy in (COMMON_POLICY_VERSION, PREVIOUS_COMMON_POLICY_VERSION),
+                subject_policy=(
+                    "requirement_subject_correspondence_1"
+                    if policy == PREVIOUS_COMMON_POLICY_VERSION
+                    else "requirement_subject_correspondence_2"
+                    if policy == COMMON_POLICY_VERSION
+                    else None
+                ),
                 subject_result=replay.get("subject_result"),
             ).to_dict()
             == report
