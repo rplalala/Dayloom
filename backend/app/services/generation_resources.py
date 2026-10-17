@@ -2,7 +2,7 @@
 
 import json
 
-from backend.app.llm.azure_foundry.dto import FoundryPrimaryItineraryDTO
+from backend.app.llm.azure_foundry.civil_time import primary_transport_schema
 from backend.app.llm.reference_transport import primary_references
 from backend.app.runtime.token_counting import count_tokens
 from backend.model_references import INSTRUCTION
@@ -14,7 +14,7 @@ class GenerationResourceError(ValueError):
 
 def check_primary_input(system_prompt, user_prompt, config):
     references, user_prompt = primary_references(user_prompt)
-    schema = FoundryPrimaryItineraryDTO.model_json_schema()
+    schema = primary_transport_schema(system_prompt).model_json_schema()
     if references is not None:
         system_prompt += "\n" + INSTRUCTION
         schema = references.constrain_schema(schema)

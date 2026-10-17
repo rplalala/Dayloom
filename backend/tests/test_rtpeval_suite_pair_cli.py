@@ -75,6 +75,33 @@ def test_explicit_unchanged_no_repair_pair_preserves_native_zero_deltas(pair_sui
     assert not list(directory.rglob("started.json"))
 
 
+def test_suite_imports_paired_access_without_triggering_a_model(pair_suite, installed_cli):
+    from backend.evaluation.opening_judgment import prepare_packet
+    from backend.tests.evaluation.test_opening_judgment import material
+    from backend.tests.evaluation.test_pair_opening import missing_hours
+
+    source, directory, declaration, case = pair_suite(details_payload=missing_hours)
+    packet = prepare_packet(
+        case[0],
+        case[1],
+        case[2],
+        case[3],
+        model="fixture-model",
+        paired=True,
+        pair_only=True,
+        expected_plan=case[6],
+    )
+    (source.parent / "access.json").write_text(json.dumps(material(packet)), encoding="utf-8")
+    declaration["cases"][0]["tracks"]["pair"]["opening_judgment"] = "access.json"
+    source.write_text(json.dumps(declaration), encoding="utf-8")
+    result = installed_cli(
+        "suite", "prepare", source, "--directory", directory, evaluation_offline=True
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    pair = json.loads((directory / "tracks/0001/pair.json").read_bytes())
+    assert pair["groups"][0]["stages"]["draft"]["dimensions"]["opening"]["counts"]["PASS"] == 2
+
+
 def test_changed_pair_reports_native_signed_loss_and_regression(pair_suite, installed_cli):
     def overlap(itinerary):
         itinerary["days"][0]["activities"][1].update(

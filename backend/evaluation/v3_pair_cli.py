@@ -31,6 +31,7 @@ def main(argv=None):
         ("edit-provenance", "Optional preparation to verify against original result bytes"),
         ("correspondence-reviews", "Evidence-backed residual correspondence review JSON"),
         ("density-reviews", "Source-linked daily pace/count policy review JSON"),
+        ("opening-judgment", "Source-bound paired missing-hours access model material JSON"),
     ):
         report.add_argument("--" + option, help=help_text)
     report.add_argument(
@@ -59,6 +60,10 @@ def main(argv=None):
             ):
                 path = getattr(args, attribute)
                 files[name], hashes[attribute] = _read(Path(path)) if path else (None, None)
+            if args.opening_judgment:
+                files["opening_judgment"], hashes["opening_judgment"] = _read(
+                    Path(args.opening_judgment)
+                )
             result = build_v3_pair_report(
                 intake,
                 identity,

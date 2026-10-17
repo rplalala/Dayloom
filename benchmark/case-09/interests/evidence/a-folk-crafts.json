@@ -1,0 +1,20 @@
+{
+  "schema_version": "case09_independent_venue_description_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+  "unresolved_subject_id": null,
+  "source_url": "https://mingeikan.or.jp/collections/?lang=en",
+  "source_reference": "turn17view0 lines 26-29",
+  "acquisition_time": {
+    "started_at": "2026-10-16T22:35:46+00:00",
+    "ended_at": "2026-10-16T22:40:48+00:00",
+    "precision": "bounded actual session interval; exact individual call clocks unavailable"
+  },
+  "recorded_at": "2026-10-16T22:41:03.916262+00:00",
+  "reviewer_ref": "/root/case09_relevance_a",
+  "acquisition_method": "web.run official page body inspected",
+  "factual_paraphrase": "The museum holds old Japanese ceramics, regional clothing and textiles, Ainu and Okinawan crafts, and works by artists associated with the Mingei movement.",
+  "limitations": "The page does not establish what is displayed during the trip or enough period-specific presentation detail for a separate modern-art label.",
+  "identity_metadata_used_as_relevance_evidence": false,
+  "evidence_context": "Only the supplied packet lookup identity and independently reviewed primary or official content were used. No planner decisions, ranks, similarity, generation stages or scores were inspected."
+}

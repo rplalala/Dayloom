@@ -15,6 +15,18 @@ route_case = pair_tests.route_case
 prepared_scenario = pair_tests.prepared_scenario
 
 
+def test_reviewed_edit_preparation_replays_with_the_same_correspondence_reviews(pair_case, batch):
+    case = pair_case(before=pair_tests.repeated_before, after=pair_tests.retimed_after)
+    sources = read_v3_result_sources(case[0], batch[4] / "manifest.json")
+    review = pair_tests.correspondence_review(case)
+    provenance = prepare_v3_correspondence(case[0], case[1], sources, review).to_dict()
+    assert provenance["status"] == "complete"
+    report = pair_tests.report(
+        case, result_sources=sources, correspondence_reviews=review, edit_provenance=provenance
+    )
+    assert report["status"] == "complete", report["diagnostics"]
+
+
 @pytest.mark.parametrize(
     "fault",
     [

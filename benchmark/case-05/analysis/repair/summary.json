@@ -8,17 +8,17 @@
   "same_run_pair": {
     "auxiliary_total": {
       "exact_fraction": {
-        "denominator": 60,
-        "numerator": 1
+        "denominator": 1,
+        "numerator": 0
       },
-      "percentage_points": 1.6666666666666667
+      "percentage_points": 0.0
     },
     "overall_total": {
       "exact_fraction": {
-        "denominator": 300,
-        "numerator": 53
+        "denominator": 25,
+        "numerator": 4
       },
-      "percentage_points": 17.666666666666668
+      "percentage_points": 16.0
     },
     "daily_density_penalty": -16.0
   },
@@ -130,7 +130,7 @@
     }
   },
   "continuity_transitions": {
-    "conflicts": {},
+    "requirements": {},
     "grounding": {
       "added": 4,
       "unchanged": 6
@@ -139,20 +139,19 @@
       "added": 4,
       "unchanged": 6
     },
-    "protection_conflicts": {},
-    "requirements": {},
     "routes": {
       "unchanged": 1,
       "structural_leg_added": 4
-    }
+    },
+    "conflicts": {},
+    "protection_conflicts": {}
   },
   "new_business_api_sends": 0,
   "source_result_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
   "mechanism_report_sha256": "a9b3d82ba5b39cc66d7c6666af1a20136d33307c268c00764120f52231698613",
   "native_research_report": {
-    "processing_status": "completed",
-    "source_digest": "31914d6bcc07741cefcc1111a0d910b7e3fb5f7ed54f2af3d4b0658c3ab2b766",
-    "semantic_sha256": "9f961624144222a95c74c62a19a700d0532d7e2591f331cf978e0398893c5ec1",
-    "sha256": "8fff62f4d90638c331d2f11722f9393030b6189b895cabc7d3d0a2d8cfbb40d1"
+    "logical_path": "reassessment/research-current/repair.json",
+    "sha256": "940f98c22c400b93876e5a2723de166eb2072bd990a1e4074281c6d80ea68ac4",
+    "scope": "Current native same-run view; original four-final results retained separately."
   }
 }

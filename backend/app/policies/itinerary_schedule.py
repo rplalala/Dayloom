@@ -5,6 +5,8 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from backend.app.policies.schedule_time import ScheduleTimeError, elapsed_seconds, local_datetime
+
 
 class ValidationModel(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
@@ -72,18 +74,6 @@ def build_schedule(itinerary, contract, places=(), *, primary_generated=False):
             schedule_days.append(ItineraryDay(date=date_cursor, activities=[]))
         date_cursor += timedelta(days=1)
     for day_index, day in enumerate(schedule_days):
-        if day.activities and all(a.start_time.utcoffset() is not None for a in day.activities):
-            midnight = datetime.combine(
-                day.date, datetime.min.time(), day.activities[0].start_time.tzinfo
-            )
-            day_windows.append(
-                TimeWindow(
-                    root_activity_id=f"calendar:{day.date}",
-                    start=midnight,
-                    end=midnight + timedelta(days=1),
-                    source="existing_day_calendar_gaps",
-                )
-            )
         local_ids = {a.source_place_id for a in day.activities if a.source_place_id}
         local_zones = {
             p.timezone_id for p in relevant_places if p.place_id in local_ids and p.timezone_id
@@ -92,27 +82,57 @@ def build_schedule(itinerary, contract, places=(), *, primary_generated=False):
             day_zone = ZoneInfo(next(iter(local_zones))) if len(local_zones) == 1 else zone
         except (ValueError, KeyError):
             day_zone = None
+        if day.activities and all(a.start_time.utcoffset() is not None for a in day.activities):
+            try:
+                if day_zone:
+                    midnight = local_datetime(str(day.date), "00:00:00", day_zone.key)
+                    next_midnight = local_datetime(
+                        str(day.date + timedelta(days=1)), "00:00:00", day_zone.key
+                    )
+                else:
+                    # Historical submitted offsets are retained without claiming IANA evidence.
+                    midnight = datetime.combine(
+                        day.date, time(), day.activities[0].start_time.tzinfo
+                    )
+                    next_midnight = midnight + timedelta(days=1)
+                day_windows.append(
+                    TimeWindow(
+                        root_activity_id=f"calendar:{day.date}",
+                        start=midnight,
+                        end=next_midnight,
+                        source="existing_day_calendar_gaps",
+                    )
+                )
+            except ScheduleTimeError:
+                unresolved.add(str(day.date))
         relevant = [p for p in protections or () if not p.dates or day.date in p.dates]
         for index, protection in enumerate(relevant):
             if protection.status == "unresolved" or day_zone is None:
                 unresolved.add(str(day.date))
                 continue
-            fixed.append(
-                TimeWindow(
-                    root_activity_id=f"requirement_time_{day.date}_{index}",
-                    start=datetime.combine(
-                        day.date,
-                        datetime.min.time() if protection.full_day else protection.start_time,
-                        day_zone,
-                    ),
-                    end=datetime.combine(
-                        day.date + timedelta(days=1), datetime.min.time(), day_zone
+            try:
+                fixed.append(
+                    TimeWindow(
+                        root_activity_id=f"requirement_time_{day.date}_{index}",
+                        start=local_datetime(
+                            str(day.date),
+                            "00:00:00"
+                            if protection.full_day
+                            else protection.start_time.isoformat(),
+                            day_zone.key,
+                        ),
+                        end=local_datetime(
+                            str(day.date + timedelta(days=1)), "00:00:00", day_zone.key
+                        )
+                        if protection.full_day
+                        else local_datetime(
+                            str(day.date), protection.end_time.isoformat(), day_zone.key
+                        ),
+                        source=protection.model_dump_json(),
                     )
-                    if protection.full_day
-                    else datetime.combine(day.date, protection.end_time, day_zone),
-                    source=protection.model_dump_json(),
                 )
-            )
+            except ScheduleTimeError:
+                unresolved.add(str(day.date))
         for activity_index, activity in enumerate(day.activities):
             explicit_free = (
                 itinerary.output_version == "itinerary_3" and activity.time_use == "free_window"
@@ -202,11 +222,11 @@ def available_minutes(left, right, schedule=None, *, at_departure=False):
     try:
         gaps = available_intervals(left, right, schedule)
         if at_departure:
-            return next(((b - a).total_seconds() / 60 for a, b in gaps if a == left.end_time), 0)
+            return next((elapsed_seconds(a, b) / 60 for a, b in gaps if a == left.end_time), 0)
         if gaps:
-            return max((b - a).total_seconds() / 60 for a, b in gaps)
-        return min(0, (right.start_time - left.end_time).total_seconds() / 60)
-    except TypeError:
+            return max(elapsed_seconds(a, b) / 60 for a, b in gaps)
+        return min(0, elapsed_seconds(left.end_time, right.start_time) / 60)
+    except (TypeError, ScheduleTimeError):
         return None
 
 
@@ -220,6 +240,7 @@ def prepare_blank_windows(itinerary, context, policy):
     except (ValueError, ZoneInfoNotFoundError):
         zone = None
     windows = []
+    unresolved = set(state.unresolved_dates)
     existing = {d.date: d.activities for d in itinerary.days}
     day = itinerary.start_date
     while day <= itinerary.end_date:
@@ -229,15 +250,25 @@ def prepare_blank_windows(itinerary, context, policy):
             and context.contract.time_protections is not None
             and str(day) not in state.unresolved_dates
         ):
-            start = datetime.combine(day, time(policy.blank_day_start_hour), zone)
-            end = datetime.combine(day, time(), zone) + timedelta(hours=policy.blank_day_end_hour)
-            windows.append(
-                TimeWindow(
-                    root_activity_id=f"blank:{day}",
-                    start=start,
-                    end=end,
-                    source="application_blank_day_policy",
+            try:
+                start = local_datetime(
+                    str(day), time(policy.blank_day_start_hour).isoformat(), zone.key
                 )
-            )
+                civil_end = datetime.combine(day, time()) + timedelta(
+                    hours=policy.blank_day_end_hour
+                )
+                end = local_datetime(str(civil_end.date()), civil_end.time().isoformat(), zone.key)
+                windows.append(
+                    TimeWindow(
+                        root_activity_id=f"blank:{day}",
+                        start=start,
+                        end=end,
+                        source="application_blank_day_policy",
+                    )
+                )
+            except ScheduleTimeError:
+                unresolved.add(str(day))
         day += timedelta(days=1)
-    return state.model_copy(update={"blank_windows": tuple(windows)})
+    return state.model_copy(
+        update={"blank_windows": tuple(windows), "unresolved_dates": tuple(sorted(unresolved))}
+    )

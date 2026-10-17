@@ -1,0 +1,32 @@
+{
+  "schema_version": "rtpeval_independent_venue_evidence_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+  "unresolved_subject_id": null,
+  "venue_lookup_name": "Yoyogi Park Clock Tower",
+  "source_url": "https://www.gotokyo.org/en/destinations/western-tokyo/yoyogi/index.html",
+  "source_reference": "turn43view1",
+  "acquired_at": "2026-10-16T22:39:59+00:00",
+  "acquisition_window": {
+    "started_at": "2026-10-16T22:35:55+00:00",
+    "completed_at": "2026-10-16T22:37:39+00:00"
+  },
+  "acquisition_time_note": "The acquired_at timestamp is the actual time this independent paraphrase was recorded. The web tool did not expose individual response UTC timestamps; the acquisition window bounds the source searches and page opens.",
+  "official_page_attempt": {
+    "url": "https://www.gotokyo.org/en/destinations/western-tokyo/yoyogi/index.html",
+    "source_reference": "turn43view1",
+    "status": "available",
+    "retried": false
+  },
+  "additional_inspected_descriptions": [],
+  "factual_paraphrase": "The official tourism guide confirms a clock tower among Yoyogi Park's gardens, ponds and outdoor features, but gives no tower-specific cultural history or artistic description.",
+  "limitations": [
+    "The independently inspected description identifies the landmark but supplies no traditional-cultural content for that specific tower.",
+    "The guide gives no artist, artwork status or modern-art context for the clock tower; its name and appearance are insufficient.",
+    "Venue-level interest relevance only; no visit feasibility, opening-date guarantee or admission assumption is evaluated."
+  ],
+  "reviewer_ref": "/root/case09_relevance_b",
+  "reviewer_kind": "external_model",
+  "evidence_independence": "Packet names and addresses served only as lookup labels. No Planner judgments, query/rank/similarity signals, generation outputs, opportunity stages or scores were used.",
+  "copyrighted_source_text_quoted": false
+}

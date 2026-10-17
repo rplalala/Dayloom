@@ -27,6 +27,7 @@ class Finding(ValidationModel):
         "semantic_requirements",
         "primary_policy",
         "soft_pace",
+        "daily_visit_count",
     ]
     status: Literal["PASS", "CONFIRMED", "NEEDS_REVIEW", "UNKNOWN"]
     reason: str

@@ -148,6 +148,111 @@ def first(report, version="v0"):
     return next(item for item in report["results"] if item["version"] == version)
 
 
+def test_dated_total_primary_count_is_an_independent_executable_obligation(scenario):
+    obligation = {
+        "obligation_id": "daily-total",
+        "kind": "daily_visit_count",
+        "resolution": "resolved",
+        "date": "2020-01-01",
+        "scope": "primary_visits",
+        "count": {"mode": "exact", "value": 1},
+        "source_refs": SOURCE,
+    }
+    intake, identity, _ = scenario([obligation])
+    report = score_requirement_schedule(intake, identity).to_dict()
+    assert report["rules_version"] == "rtpeval_requirement_schedule_rules_5"
+    check = first(report)["requirements"]["checks"][0]
+    assert check["state"] == "FAIL"
+    assert check["components"][0]["bounds"] == {"lower": 2, "upper": 2}
+
+
+@pytest.mark.parametrize(
+    "mode,target,state",
+    [("exact", 0, "FAIL"), ("exact", 2, "PASS"), ("exact", 3, "PASS"), ("minimum", 2, "PASS")],
+)
+def test_daily_counts_preserve_separate_repeat_occurrences(scenario, mode, target, state):
+    obligation = {
+        "obligation_id": "daily-total",
+        "kind": "daily_visit_count",
+        "resolution": "resolved",
+        "date": "2020-01-01",
+        "scope": "primary_visits",
+        "count": {"mode": mode, "value": target},
+        "source_refs": SOURCE,
+    }
+    intake, identity, _ = scenario([obligation], duplicate_a if target == 3 else None)
+    report = first(score_requirement_schedule(intake, identity).to_dict())["requirements"]
+    assert report["state"] == state
+    assert report["checks"][0]["components"][0]["bounds"] == {
+        "lower": target if target == 3 else 2,
+        "upper": target if target == 3 else 2,
+    }
+
+
+def test_daily_count_does_not_need_identity_but_uncertain_dates_remain_unknown(scenario):
+    obligation = {
+        "obligation_id": "daily-total",
+        "kind": "daily_visit_count",
+        "resolution": "resolved",
+        "date": "2020-01-01",
+        "scope": "primary_visits",
+        "count": {"mode": "exact", "value": 2},
+        "source_refs": SOURCE,
+    }
+
+    def inconsistent(results):
+        for result in results.values():
+            result["itinerary"]["days"][0]["activities"][0]["start_time"] = (
+                "2020-01-02T09:00:00+00:00"
+            )
+            result["itinerary"]["days"][0]["activities"][0]["end_time"] = (
+                "2020-01-02T10:00:00+00:00"
+            )
+
+    intake, identity, _ = scenario([obligation], inconsistent, unresolved_names=["Museum A"])
+    check = first(score_requirement_schedule(intake, identity).to_dict())["requirements"]["checks"][
+        0
+    ]
+    assert check["state"] == "UNKNOWN"
+    assert check["components"][0]["bounds"] == {"lower": 1, "upper": 2}
+
+
+def test_daily_count_is_in_the_resolved_declared_population(scenario):
+    from backend.evaluation.declared_population import population_readiness
+
+    obligation = {
+        "obligation_id": "daily-total",
+        "kind": "daily_visit_count",
+        "resolution": "resolved",
+        "date": "2020-01-01",
+        "scope": "primary_visits",
+        "count": {"mode": "exact", "value": 1},
+        "source_refs": SOURCE,
+    }
+    intake, _, _ = scenario([obligation])
+    report = population_readiness(intake.to_dict())
+    assert not any(
+        r["reason"] == "executable_obligation_population_unresolved" for r in report["diagnostics"]
+    )
+    assert report["rows"][0]["inventory"]["requirements"][0]["candidate_id"] == "daily-total"
+    assert report["provider_calls"] == 0
+
+
+@pytest.mark.parametrize("count", [True, -1, 1.5])
+def test_daily_count_invalid_numeric_meaning_is_material_correction(scenario, count):
+    obligation = {
+        "obligation_id": "daily-total",
+        "kind": "daily_visit_count",
+        "resolution": "resolved",
+        "date": "2020-01-01",
+        "scope": "primary_visits",
+        "count": {"mode": "exact", "value": count},
+        "source_refs": SOURCE,
+    }
+    intake, identity, _ = scenario([obligation])
+    assert score_requirement_schedule(intake, identity).status == "needs_material_correction"
+
+
 @pytest.mark.parametrize("mode,state", [("WALK", "PASS"), ("DRIVE", "FAIL"), (None, "UNKNOWN")])
 def test_transport_obligation_is_executable_with_independent_sources(scenario, mode, state):
     obligation = {

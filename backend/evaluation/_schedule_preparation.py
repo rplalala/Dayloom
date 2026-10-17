@@ -8,6 +8,7 @@ from .records import require, text
 from .schedule_time import expand_protection
 
 OBLIGATION_FIELDS = {
+    "daily_visit_count": {"date", "scope", "count"},
     "transport_modes": {"allowed_modes", "scope"},
     "required_visit": {"subject_ref", "count", "distinct_dates", "date_obligations"},
     "excluded_visit": {"subject_ref", "scope", "dates"},
@@ -95,6 +96,7 @@ def _validate_spec(group):
     days = set(_days(original))
     subjects = {item["subject_id"] for item in spec["subjects"]}
     totals, dated, exclusions, distinct, single_times = {}, {}, {}, {}, {}
+    daily_totals = {}
     incomplete = False
     ids = {item["obligation_id"] for item in spec["obligations"]}
     for item in spec["obligations"]:
@@ -116,18 +118,32 @@ def _validate_spec(group):
             oid,
             "Unknown executable fields",
         )
-        if kind not in ("protected_time", "transport_modes"):
+        if kind not in ("protected_time", "transport_modes", "daily_visit_count"):
             require(
                 text(item.get("subject_ref")) and item["subject_ref"] in subjects,
                 oid,
                 "Unknown requirement subject",
             )
-        if kind in ("protected_time", "fixed_visit_time"):
+        if kind in ("protected_time", "fixed_visit_time", "daily_visit_count"):
             require(
                 text(item.get("date")) and item["date"] in days,
                 oid,
                 "Obligation date outside requested dates",
             )
+        if kind == "daily_visit_count":
+            count = item.get("count")
+            require(
+                item.get("scope") == "primary_visits"
+                and isinstance(count, dict)
+                and set(count) == {"mode", "value"}
+                and count["mode"] in {"minimum", "exact"}
+                and type(count["value"]) is int
+                and count["value"] >= 0,
+                oid,
+                "Invalid daily primary visit count",
+            )
+            daily_totals.setdefault(item["date"], []).append(count)
+            continue
         if kind == "transport_modes":
             modes = item.get("allowed_modes")
             require(
@@ -254,6 +270,18 @@ def _validate_spec(group):
             )
             if item["match"] == "single_visit":
                 single_times.setdefault((item["subject_ref"], item["date"]), []).append(conditions)
+    for day, counts in daily_totals.items():
+        lower = max(c["value"] for c in counts)
+        exact = [c["value"] for c in counts if c["mode"] == "exact"]
+        require(not exact or lower <= min(exact), day, "Contradictory daily visit quotas")
+        blocked = any(
+            o["kind"] == "protected_time"
+            and o["resolution"] == "resolved"
+            and o["date"] == day
+            and o["interval"]["kind"] == "full_day"
+            for o in spec["obligations"]
+        )
+        require(not blocked or lower == 0, day, "Daily visit count contradicts full-day protection")
     for subject, ranges in totals.items():
         lower = max(low for low, _ in ranges)
         uppers = [high for _, high in ranges if high is not None]

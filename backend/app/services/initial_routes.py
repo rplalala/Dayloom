@@ -278,6 +278,9 @@ class InitialRoutes:
         )
 
     async def bind(self, itinerary, contract, places, bundle, mode):
+        from backend.app.policies.schedule_time import ScheduleTimeContext
+
+        time_context = ScheduleTimeContext(places)
         evidence = [bundle.baseline, *bundle.alternatives]
         lookup = {p.place_id: p for p in places}
         schedule = build_schedule(itinerary, contract, places, primary_generated=True)
@@ -316,6 +319,7 @@ class InitialRoutes:
                                         self.policy,
                                         schedule,
                                         mode.routing_preference if mode.is_explicit else None,
+                                        time_context=time_context,
                                     )
                                 )
                             ),

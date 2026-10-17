@@ -367,6 +367,7 @@ def score_opening(
                 model=material["packet"]["model"],
                 paired=paired,
                 expected_plan=expected_plan,
+                pair_only=material["packet"].get("pair_only", False),
             )
             judgments = validate_material(material, packet)
             base.update(rules=ACCESS_RULES, rules_hash=canonical_digest(ACCESS_RULES))

@@ -49,6 +49,9 @@ locates installed commands, original-input/generation material preparation and
 report outputs. The [suite research attachment flow](../backend/evaluation/README.md#optional-research-attachments-and-offline-refresh)
 locates optional integrated reports, append revisions and offline replay; detailed
 definitions remain in the topic contracts above.
+The [paired access refresh](records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+records the common two-stage policy's implementation, bounded calls and current
+case-01–07/09 outcomes, while original primary evidence and acceptance dates remain intact.
 The [combined offline acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
 records main-worktree verification and the boundaries of reused regression evidence.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)

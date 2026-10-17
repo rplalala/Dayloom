@@ -95,6 +95,11 @@ def prepare_opening_run(parent_directory, directory, *, options, prices):
 
 
 def _verify_opening(preparation, *, implementation=False):
+    from .paired_opening import VERSION as PAIR_VERSION
+    from .paired_opening import verify_pair_opening
+
+    if preparation.get("schema_version") == PAIR_VERSION:
+        return verify_pair_opening(preparation, implementation=implementation)
     require(
         preparation.get("schema_version") == VERSION
         and canonical_digest({k: v for k, v in preparation.items() if k != "content_sha256"})
@@ -139,6 +144,13 @@ def _verify_opening(preparation, *, implementation=False):
 
 
 def _compose(preparation, parent, execution, identity, plan, material, usage, generated_at):
+    from .paired_opening import VERSION as PAIR_VERSION
+    from .paired_opening import compose_pair_opening
+
+    if preparation.get("schema_version") == PAIR_VERSION:
+        return compose_pair_opening(
+            preparation, execution, identity, plan, material, usage, generated_at
+        )
     report = _report(
         {**parent, "prices": preparation["prices"]},
         execution,

@@ -1,0 +1,43 @@
+{
+  "schema_version": "rtpeval_independent_venue_evidence_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+  "unresolved_subject_id": null,
+  "venue_lookup_name": "Tokyo Arts",
+  "source_url": "https://www.tokyoartsgallery.com/",
+  "source_reference": "turn14view0",
+  "acquired_at": "2026-10-16T22:39:59+00:00",
+  "acquisition_window": {
+    "started_at": "2026-10-16T22:35:55+00:00",
+    "completed_at": "2026-10-16T22:37:39+00:00"
+  },
+  "acquisition_time_note": "The acquired_at timestamp is the actual time this independent paraphrase was recorded. The web tool did not expose individual response UTC timestamps; the acquisition window bounds the source searches and page opens.",
+  "official_page_attempt": {
+    "url": "https://www.tokyoartsgallery.com/",
+    "source_reference": "turn14view0",
+    "status": "available",
+    "retried": false
+  },
+  "additional_inspected_descriptions": [
+    {
+      "url": "https://www.tokyoartsgallery.com/single-post/baroque-event",
+      "source_reference": "turn10search7",
+      "inspection": "Search-returned historical official event notice matches packet address."
+    },
+    {
+      "url": "https://www.tokyoartsgallery.com/contact",
+      "source_reference": "turn12search11",
+      "inspection": "Search-returned official contact lists a different current address; not opened."
+    }
+  ],
+  "factual_paraphrase": "The official homepage exposed gallery navigation but no substantive artist or exhibition description. An official search result from an older event notice gives the KiKi Building address; a current official contact search result instead gives Sendagaya.",
+  "limitations": [
+    "A gallery lookup label, navigation-only page and inconsistent address history do not establish a traditional-cultural offering.",
+    "No substantive independently inspected description establishes modern-art content for the specific packet identity.",
+    "Venue-level interest relevance only; no visit feasibility, opening-date guarantee or admission assumption is evaluated."
+  ],
+  "reviewer_ref": "/root/case09_relevance_b",
+  "reviewer_kind": "external_model",
+  "evidence_independence": "Packet names and addresses served only as lookup labels. No Planner judgments, query/rank/similarity signals, generation outputs, opportunity stages or scores were used.",
+  "copyrighted_source_text_quoted": false
+}

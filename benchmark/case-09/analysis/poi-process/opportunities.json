@@ -1,0 +1,3040 @@
+{
+  "schema_version": "rtpeval_research_opportunities_report_1",
+  "processing_status": "completed",
+  "track": "opportunities",
+  "applicability": "applicable",
+  "population_digest": "d9d731ac60166bd1b44bd200df59e07693def9d098b6ef107f2669b81ccea59b",
+  "measurement_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "planned_slots": 2,
+    "captured_slots": 2,
+    "stages": {
+      "discovered": {
+        "complete": 1,
+        "partial": 1,
+        "unavailable": 0
+      },
+      "admitted": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "enriched": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "supplied": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "scheduled": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      }
+    }
+  },
+  "review_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "independent_association_slots": 2,
+    "relevance_review": "not_performed"
+  },
+  "diagnostics": [],
+  "identity_unit": "canonical_place_id",
+  "population_id": "case-09-population",
+  "population_revision": "1",
+  "profile_id": "case-09-first-dispatched",
+  "profile_revision": "1",
+  "runs": [
+    {
+      "case_id": "case-09",
+      "case_revision": "1",
+      "version": "v1",
+      "repetition_id": "r1",
+      "attempt_id": "case-09-v1-attempt-1",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJD1M2GbCMGGARmUFziof73JM",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+            "ChIJLfAnTQWLGGARjQW3e3gEzrw",
+            "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+            "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "ChIJbSqxxHiLGGARKEK0IzZMksI",
+            "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+            "ChIJe5n9LgCLGGARE2_t14iLwn8",
+            "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+            "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJn-VLO73xGGARjQnHXH7u7Rc",
+            "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "ChIJocRqFr-LGGARmVhVGLXS0L0",
+            "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+            "ChIJq6rq_BuJGGARh1qAooLX-as",
+            "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJseohrGmLGGARWx9gVUaRc7Y",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJxU48-2OLGGARHMtB5RAhytA",
+            "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 48,
+          "complete_count": 48,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/discovered/canonical_ids",
+                "expanded_semantic_sha256": "a244cea711ce24dad76b2117f27a597ce3979af38e791d23b2a8d46f6d316cee"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "admitted": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/stages/discovered",
+            "expanded_semantic_sha256": "cbbdda9a22bafb9a0967a7a220bcab4f017453e073cb6fcfa5055ecfb0f0b174"
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJD1M2GbCMGGARmUFziof73JM",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 32,
+          "complete_count": 32,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/enriched/canonical_ids",
+                "expanded_semantic_sha256": "1071210dc0c26b59b86ba9e037d3f403316e3b8f1c8e86bd9f97effe0fc16c3a"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU"
+          ],
+          "observed_count": 16,
+          "complete_count": 16,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/supplied/canonical_ids",
+                "expanded_semantic_sha256": "f31baa9189532c9f20d0d5a09011609991aab8702740a0453d63815b779d8ba8"
+              }
+            },
+            "rag_only": [],
+            "mixed": []
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "ChIJwfegutyLGGARGjiY-L2eSps",
+          "ChIJx2F0QC2NGGARLQpGhWsI7gU"
+        ],
+        "observed_count": 10,
+        "complete_count": 10,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/report.json",
+            "pointer": "/groups/0/versions/v1/descriptive/identity_checks",
+            "expanded_semantic_sha256": "14f182dfb8131bab3db9dfb737c88f4d10c2717a0b9e97a9e19c9fb3678ce004"
+          }
+        },
+        "identity_source_digest": "03401f466e9c15ce240ec4a9fd4589c7777eb8d03ffd58e0b7d0e9de43ea7330",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "finalized/manifest.json",
+            "sha256": "0f58a32d1e1cf206f2c114d489011891c4782a3eb0cfa0d2cfeeab16a0cf58a9",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "primary/execution/identity-evidence.json",
+            "sha256": "571f182f78d920029de16b1a296643284ebe612922ebe7efc9420f7f4443259b",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          },
+          "model_result_ref": {
+            "path": "primary/execution/model-result.json",
+            "sha256": "d53b80c5f83e3171e53f7b086386acf0dbafa5ce9fe6520f2db1a0d59f6c14ec",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_model_result_2"
+          }
+        }
+      },
+      "places": {
+        "ChIJ35ov0dCOGGARKvdDH7NPHX0": {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8": {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4_ZvIgCLGGARLUI8wFAnNA0": {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5SZMmreMGGARcz8QSTiJyo8": {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ8T1GpMGOGGARDYGSgpooDWw": {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAQCEbPGLGGARFa0L-v-rNtg": {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJCaoz7S3zGGARrAnbz14VDcw": {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg": {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD1M2GbCMGGARmUFziof73JM": {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJEX3XFIOOGGAR3XdJvRjWLyM": {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJK9EM68qLGGARacmu4KJj5SA": {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJKbFrx72LGGAR1uyToVEdITo": {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJLfAnTQWLGGARjQW3e3gEzrw": {
+          "canonical_place_id": "ChIJLfAnTQWLGGARjQW3e3gEzrw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJMwpiebSMGGARPr_454zHvDQ": {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJP-vO9nuLGGARGJ2q8uryJUA": {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJP9eKBdeMGGAR0zzBXJNVj5A": {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPfFaQhOMGGAR-QPbNQoAG6M": {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPyOTG8KMGGARh_IXobWxHmo": {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQRMvwr2LGGARC3GHLt8p1wY": {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQS7vBxuLGGAR-Grk6oJ8etw": {
+          "canonical_place_id": "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJTQbYAg2MGGARt22eNwtfGtE": {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJW2cLzSGLGGARXAKXv6EkbqI": {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJW9hE2tiLGGAR8n7eT4TTvFA": {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJY4HWjseLGGARIBjdW6fAwYs": {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJbSqxxHiLGGARKEK0IzZMksI": {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJb_o7HiiMGGARUKu8uO7fGIQ": {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJe5n9LgCLGGARE2_t14iLwn8": {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJg5RCD3eLGGAR6dbIHRM98w8": {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJh0l19UeLGGARpTcL3Xl0sfQ": {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJiXsyjf-PGGAR3G9iaPQ3tj8": {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJn-VLO73xGGARjQnHXH7u7Rc": {
+          "canonical_place_id": "ChIJn-VLO73xGGARjQnHXH7u7Rc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJoTcat9SMGGAR6GGG8zdcZvE": {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJocRqFr-LGGARmVhVGLXS0L0": {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq6qaMEXzGGARn_9fV8xMf3M": {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq6rq_BuJGGARh1qAooLX-as": {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJqb-xEgCLGGARSaVWlndYgrg": {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJr7mGZdmMGGARjxoMFeHApXE": {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJseohrGmLGGARWx9gVUaRc7Y": {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJuxkVQeCNGGARfFgbeDEPG6g": {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJveA1ZsCLGGAR0Hawvlg9FCw": {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJw2qQRZuOGGARWmROEiM2y7E": {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwfegutyLGGARGjiY-L2eSps": {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJx2F0QC2NGGARLQpGhWsI7gU": {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJxU48-2OLGGARHMtB5RAhytA": {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJyVdfgWGJGGAR1vj5VaRAois": {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJz-ZkAQb0GGARLd-j4HlLkaM": {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJzRzI3HSNGGARRwZW6AtJfi0": {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJn-VLO73xGGARjQnHXH7u7Rc",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJLfAnTQWLGGARjQW3e3gEzrw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "incremental_rag_ids": [],
+      "diagnostics": [],
+      "pre_rag_google_ids": {
+        "$case_material_ref": {
+          "path": "opportunities.json",
+          "pointer": "/runs/0/stages/discovered/canonical_ids",
+          "expanded_semantic_sha256": "a244cea711ce24dad76b2117f27a597ce3979af38e791d23b2a8d46f6d316cee"
+        }
+      },
+      "incremental_rag_status": "complete",
+      "rag_provenance": null,
+      "observation": {
+        "case_id": "case-09",
+        "case_revision": "1",
+        "version": "v1",
+        "repetition_id": "r1",
+        "attempt_id": "case-09-v1-attempt-1",
+        "run_id": "case-09-v1-r1",
+        "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "result_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+        "capture_ref": {
+          "path": "material/captures/v1/opportunities.json",
+          "sha256": "12c9d591a1b8905e16248ee30d948d6b9b3de8899dd5d7d0508ea4697c6ce53d",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "expanded_semantic_sha256": "90795c98ad4ba10ec89df2d57a69ea5e1165f6aade1f9aa5e2c1a2da634b820c"
+          }
+        }
+      }
+    },
+    {
+      "case_id": "case-09",
+      "case_revision": "1",
+      "version": "v2",
+      "repetition_id": "r1",
+      "attempt_id": "case-09-v2-attempt-1",
+      "completion_status": "completed",
+      "stages": {
+        "discovered": {
+          "status": "partial",
+          "canonical_ids": [
+            "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJ91khboGMGGARBo42MbnQzg8",
+            "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+            "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJD1M2GbCMGGARmUFziof73JM",
+            "ChIJD4KER5OMGGARGI6iNtBWYQE",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+            "ChIJHeBCIOyMGGAR7BktETlUP_w",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+            "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+            "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "ChIJSeco5wiJGGARItbTS8lQ5G0",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "ChIJ______qJGGARHpd1TBA9uZ8",
+            "ChIJaRti5uOLGGARC_hz-hGQFz4",
+            "ChIJbSqxxHiLGGARKEK0IzZMksI",
+            "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+            "ChIJe5n9LgCLGGARE2_t14iLwn8",
+            "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+            "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+            "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "ChIJocRqFr-LGGARmVhVGLXS0L0",
+            "ChIJof1KZwCNGGARFfqGRkwb5tY",
+            "ChIJp39ByceLGGARrE8X0wVJIVk",
+            "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+            "ChIJq6radhaLGGAR2-mAGeshrHk",
+            "ChIJq6rq_BuJGGARh1qAooLX-as",
+            "ChIJq89_SiOLGGARNfbenIKLrPU",
+            "ChIJqYnH4ViLGGARZLMJt16bjLU",
+            "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJrWQOSKOMGGARINdTU-VzqoM",
+            "ChIJsZTc61eLGGARG19EHRBJGjE",
+            "ChIJseohrGmLGGARWx9gVUaRc7Y",
+            "ChIJtxODuv6LGGAR4xf7X3WayX0",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJxU48-2OLGGARHMtB5RAhytA",
+            "ChIJxcha6qSMGGARqdOIwOETVQc",
+            "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 65,
+          "complete_count": null,
+          "reasons": [
+            "rag_partial"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+              "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+              "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+              "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+              "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+              "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+              "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+              "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+              "ChIJD1M2GbCMGGARmUFziof73JM",
+              "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+              "ChIJK9EM68qLGGARacmu4KJj5SA",
+              "ChIJKbFrx72LGGAR1uyToVEdITo",
+              "ChIJMwpiebSMGGARPr_454zHvDQ",
+              "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+              "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+              "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+              "ChIJPyOTG8KMGGARh_IXobWxHmo",
+              "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+              "ChIJSeco5wiJGGARItbTS8lQ5G0",
+              "ChIJTQbYAg2MGGARt22eNwtfGtE",
+              "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+              "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+              "ChIJY4HWjseLGGARIBjdW6fAwYs",
+              "ChIJbSqxxHiLGGARKEK0IzZMksI",
+              "ChIJe5n9LgCLGGARE2_t14iLwn8",
+              "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+              "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+              "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+              "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+              "ChIJocRqFr-LGGARmVhVGLXS0L0",
+              "ChIJof1KZwCNGGARFfqGRkwb5tY",
+              "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+              "ChIJq6rq_BuJGGARh1qAooLX-as",
+              "ChIJqb-xEgCLGGARSaVWlndYgrg",
+              "ChIJr7mGZdmMGGARjxoMFeHApXE",
+              "ChIJseohrGmLGGARWx9gVUaRc7Y",
+              "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+              "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+              "ChIJw2qQRZuOGGARWmROEiM2y7E",
+              "ChIJwfegutyLGGARGjiY-L2eSps",
+              "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+              "ChIJxU48-2OLGGARHMtB5RAhytA",
+              "ChIJxcha6qSMGGARqdOIwOETVQc",
+              "ChIJyVdfgWGJGGAR1vj5VaRAois",
+              "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+              "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+            ],
+            "rag_only": {
+              "$case_material_ref": {
+                "path": "../../generation/v2/rag-discovery.json",
+                "pointer": "/new_canonical_ids",
+                "expanded_semantic_sha256": "439be2d8f5b53d3ae827ee47aaf6fb894cf3f881e3860b49c0d83134df2742d2"
+              }
+            },
+            "mixed": [
+              "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+              "ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+            ]
+          }
+        },
+        "admitted": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJ91khboGMGGARBo42MbnQzg8",
+            "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+            "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJD1M2GbCMGGARmUFziof73JM",
+            "ChIJD4KER5OMGGARGI6iNtBWYQE",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+            "ChIJHeBCIOyMGGAR7BktETlUP_w",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+            "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+            "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "ChIJSeco5wiJGGARItbTS8lQ5G0",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "ChIJ______qJGGARHpd1TBA9uZ8",
+            "ChIJbSqxxHiLGGARKEK0IzZMksI",
+            "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+            "ChIJe5n9LgCLGGARE2_t14iLwn8",
+            "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+            "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+            "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "ChIJocRqFr-LGGARmVhVGLXS0L0",
+            "ChIJof1KZwCNGGARFfqGRkwb5tY",
+            "ChIJp39ByceLGGARrE8X0wVJIVk",
+            "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+            "ChIJq6radhaLGGAR2-mAGeshrHk",
+            "ChIJq6rq_BuJGGARh1qAooLX-as",
+            "ChIJq89_SiOLGGARNfbenIKLrPU",
+            "ChIJqYnH4ViLGGARZLMJt16bjLU",
+            "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJsZTc61eLGGARG19EHRBJGjE",
+            "ChIJseohrGmLGGARWx9gVUaRc7Y",
+            "ChIJtxODuv6LGGAR4xf7X3WayX0",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJxU48-2OLGGARHMtB5RAhytA",
+            "ChIJxcha6qSMGGARqdOIwOETVQc",
+            "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 63,
+          "complete_count": 63,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/1/stages/discovered/origin_partitions/google_only",
+                "expanded_semantic_sha256": "638c84cf804d1241fc3b728271e0bc862ca1a95ac9675725c0f7d631a9b894f0"
+              }
+            },
+            "rag_only": {
+              "$case_material_ref": {
+                "path": "../../generation/v2/rag-discovery.json",
+                "pointer": "/fate/enriched",
+                "expanded_semantic_sha256": "f8fff781e6737b02be21990cc61279cf51e827e95372cb20db35bde8cb684c28"
+              }
+            },
+            "mixed": [
+              "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+              "ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+            ]
+          }
+        },
+        "enriched": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJ91khboGMGGARBo42MbnQzg8",
+            "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJD1M2GbCMGGARmUFziof73JM",
+            "ChIJD4KER5OMGGARGI6iNtBWYQE",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+            "ChIJHeBCIOyMGGAR7BktETlUP_w",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJKbFrx72LGGAR1uyToVEdITo",
+            "ChIJMwpiebSMGGARPr_454zHvDQ",
+            "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+            "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+            "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+            "ChIJY4HWjseLGGARIBjdW6fAwYs",
+            "ChIJ______qJGGARHpd1TBA9uZ8",
+            "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+            "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+            "ChIJp39ByceLGGARrE8X0wVJIVk",
+            "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+            "ChIJq6radhaLGGAR2-mAGeshrHk",
+            "ChIJq89_SiOLGGARNfbenIKLrPU",
+            "ChIJqYnH4ViLGGARZLMJt16bjLU",
+            "ChIJqb-xEgCLGGARSaVWlndYgrg",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJsZTc61eLGGARG19EHRBJGjE",
+            "ChIJtxODuv6LGGAR4xf7X3WayX0",
+            "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJyVdfgWGJGGAR1vj5VaRAois",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 47,
+          "complete_count": 47,
+          "reasons": [
+            "new_success_target"
+          ],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+              "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+              "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+              "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+              "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+              "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+              "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+              "ChIJD1M2GbCMGGARmUFziof73JM",
+              "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+              "ChIJK9EM68qLGGARacmu4KJj5SA",
+              "ChIJKbFrx72LGGAR1uyToVEdITo",
+              "ChIJMwpiebSMGGARPr_454zHvDQ",
+              "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+              "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+              "ChIJPyOTG8KMGGARh_IXobWxHmo",
+              "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+              "ChIJTQbYAg2MGGARt22eNwtfGtE",
+              "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+              "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+              "ChIJY4HWjseLGGARIBjdW6fAwYs",
+              "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+              "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+              "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+              "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+              "ChIJqb-xEgCLGGARSaVWlndYgrg",
+              "ChIJr7mGZdmMGGARjxoMFeHApXE",
+              "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+              "ChIJw2qQRZuOGGARWmROEiM2y7E",
+              "ChIJwfegutyLGGARGjiY-L2eSps",
+              "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+              "ChIJyVdfgWGJGGAR1vj5VaRAois",
+              "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+            ],
+            "rag_only": {
+              "$case_material_ref": {
+                "path": "../../generation/v2/rag-discovery.json",
+                "pointer": "/fate/enriched",
+                "expanded_semantic_sha256": "f8fff781e6737b02be21990cc61279cf51e827e95372cb20db35bde8cb684c28"
+              }
+            },
+            "mixed": []
+          }
+        },
+        "supplied": {
+          "status": "complete",
+          "canonical_ids": [
+            "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+            "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+            "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+            "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+            "ChIJCaoz7S3zGGARrAnbz14VDcw",
+            "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+            "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+            "ChIJK9EM68qLGGARacmu4KJj5SA",
+            "ChIJPyOTG8KMGGARh_IXobWxHmo",
+            "ChIJTQbYAg2MGGARt22eNwtfGtE",
+            "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+            "ChIJr7mGZdmMGGARjxoMFeHApXE",
+            "ChIJw2qQRZuOGGARWmROEiM2y7E",
+            "ChIJwfegutyLGGARGjiY-L2eSps",
+            "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+            "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ],
+          "observed_count": 16,
+          "complete_count": 16,
+          "reasons": [],
+          "origin_partitions": {
+            "google_only": [
+              "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+              "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+              "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+              "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+              "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+              "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+              "ChIJK9EM68qLGGARacmu4KJj5SA",
+              "ChIJPyOTG8KMGGARh_IXobWxHmo",
+              "ChIJTQbYAg2MGGARt22eNwtfGtE",
+              "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+              "ChIJr7mGZdmMGGARjxoMFeHApXE",
+              "ChIJw2qQRZuOGGARWmROEiM2y7E",
+              "ChIJwfegutyLGGARGjiY-L2eSps",
+              "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+              "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+            ],
+            "rag_only": [
+              "ChIJCaoz7S3zGGARrAnbz14VDcw"
+            ],
+            "mixed": []
+          }
+        }
+      },
+      "scheduled": {
+        "status": "complete",
+        "canonical_ids": [
+          "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "ChIJwfegutyLGGARGjiY-L2eSps"
+        ],
+        "observed_count": 9,
+        "complete_count": 9,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/report.json",
+            "pointer": "/groups/0/versions/v2/descriptive/identity_checks",
+            "expanded_semantic_sha256": "ed9e3d7df66951340ae6bd38a6cae6f609aebadd3d6543e974ce1d50ee7bbce4"
+          }
+        },
+        "identity_source_digest": "03401f466e9c15ce240ec4a9fd4589c7777eb8d03ffd58e0b7d0e9de43ea7330",
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "expanded_semantic_sha256": "90795c98ad4ba10ec89df2d57a69ea5e1165f6aade1f9aa5e2c1a2da634b820c"
+          }
+        }
+      },
+      "places": {
+        "ChIJ-_gC6_aJGGARubvcJZXmvZk": {
+          "canonical_place_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJ-_gC6_aJGGARubvcJZXmvZk",
+              "expanded_semantic_sha256": "7661da24941a3e6b4dce9dba186b0b01b5f05b5dc89f82776cf011542c50d7de"
+            }
+          }
+        },
+        "ChIJ35ov0dCOGGARKvdDH7NPHX0": {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8": {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4_ZvIgCLGGARLUI8wFAnNA0": {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5SZMmreMGGARcz8QSTiJyo8": {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ5ZkFd-iLGGAR-68BpnWljj0": {
+          "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+              "expanded_semantic_sha256": "02010c14db6d4b089894b0739b57340fdd9e5df9ea6075e4788cd631ca5ee363"
+            }
+          }
+        },
+        "ChIJ8T1GpMGOGGARDYGSgpooDWw": {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ91khboGMGGARBo42MbnQzg8": {
+          "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJ91khboGMGGARBo42MbnQzg8",
+              "expanded_semantic_sha256": "fc7e177ed1e07478165377d6836b828830b1d35e7b63dbbfd69db18eff8ade8f"
+            }
+          }
+        },
+        "ChIJ95WgVBGNGGAR5oqlQiT2qS4": {
+          "canonical_place_id": "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAQCEbPGLGGARFa0L-v-rNtg": {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJCaoz7S3zGGARrAnbz14VDcw": {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJCaoz7S3zGGARrAnbz14VDcw",
+              "expanded_semantic_sha256": "b84763f4d6ae68d67e6c97565984c59483d7e63b70851314b4ad9050f3bba052"
+            }
+          }
+        },
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg": {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD1M2GbCMGGARmUFziof73JM": {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJD4KER5OMGGARGI6iNtBWYQE": {
+          "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJD4KER5OMGGARGI6iNtBWYQE",
+              "expanded_semantic_sha256": "dfd452c1cc9147a8143f3ce8ee5825529ef44a53f3b5d2f322d9bacf49e076b9"
+            }
+          }
+        },
+        "ChIJEX3XFIOOGGAR3XdJvRjWLyM": {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJEYFuvD2MGGARJ5YqbNhgqfU": {
+          "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+              "expanded_semantic_sha256": "b1d2f8b30f31ec2380422dbc652894d79f33a1992a03a61ef3b0b907488a4c18"
+            }
+          }
+        },
+        "ChIJHeBCIOyMGGAR7BktETlUP_w": {
+          "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJHeBCIOyMGGAR7BktETlUP_w",
+              "expanded_semantic_sha256": "6eba6e54f3675ba25cab8ed6c7967cc1efbdb28bc87a0329aad950d7c199831f"
+            }
+          }
+        },
+        "ChIJK9EM68qLGGARacmu4KJj5SA": {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJKbFrx72LGGAR1uyToVEdITo": {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+              "expanded_semantic_sha256": "21b2091203b70a0e297a2cb76893621b6d0709514bb2def8928c74e8940ff4a4"
+            }
+          }
+        },
+        "ChIJMwpiebSMGGARPr_454zHvDQ": {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJP-vO9nuLGGARGJ2q8uryJUA": {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJP9eKBdeMGGAR0zzBXJNVj5A": {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPfFaQhOMGGAR-QPbNQoAG6M": {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJPyOTG8KMGGARh_IXobWxHmo": {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJQRMvwr2LGGARC3GHLt8p1wY": {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJSeco5wiJGGARItbTS8lQ5G0": {
+          "canonical_place_id": "ChIJSeco5wiJGGARItbTS8lQ5G0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJTQbYAg2MGGARt22eNwtfGtE": {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJW2cLzSGLGGARXAKXv6EkbqI": {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJW9hE2tiLGGAR8n7eT4TTvFA": {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJY4HWjseLGGARIBjdW6fAwYs": {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ______qJGGARHpd1TBA9uZ8": {
+          "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJ______qJGGARHpd1TBA9uZ8",
+              "expanded_semantic_sha256": "fd56c32580daa63ba42bd316f171e7ce6b235ebade4326be43d27aeac4336490"
+            }
+          }
+        },
+        "ChIJaRti5uOLGGARC_hz-hGQFz4": {
+          "canonical_place_id": "ChIJaRti5uOLGGARC_hz-hGQFz4",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJaRti5uOLGGARC_hz-hGQFz4",
+              "expanded_semantic_sha256": "3d6f08619a4580832cf2bdee2db5b173a1a6be46f9cc84588f3ec4ed065573c0"
+            }
+          }
+        },
+        "ChIJbSqxxHiLGGARKEK0IzZMksI": {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJb_o7HiiMGGARUKu8uO7fGIQ": {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+              "expanded_semantic_sha256": "dee560becbf60b5596069ba7ffce10a79ee3948e8fcbf2da4f68fc5ef544d09f"
+            }
+          }
+        },
+        "ChIJe5n9LgCLGGARE2_t14iLwn8": {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJg5RCD3eLGGAR6dbIHRM98w8": {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJh0l19UeLGGARpTcL3Xl0sfQ": {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJiXsyjf-PGGAR3G9iaPQ3tj8": {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJj6WgJUOLGGAR9sX0nsLtUWY": {
+          "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+              "expanded_semantic_sha256": "5a8a1b82febebf5d2d83fd100ceb7fcc1322d86f833e175e538ffb8efa814eeb"
+            }
+          }
+        },
+        "ChIJoTcat9SMGGAR6GGG8zdcZvE": {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJocRqFr-LGGARmVhVGLXS0L0": {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJof1KZwCNGGARFfqGRkwb5tY": {
+          "canonical_place_id": "ChIJof1KZwCNGGARFfqGRkwb5tY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJp39ByceLGGARrE8X0wVJIVk": {
+          "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJp39ByceLGGARrE8X0wVJIVk",
+              "expanded_semantic_sha256": "103b4ff9bb2b1fd3726da97f302a95344b2504556b1cf74e8b231222bb65ace7"
+            }
+          }
+        },
+        "ChIJq6qaMEXzGGARn_9fV8xMf3M": {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq6radhaLGGAR2-mAGeshrHk": {
+          "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJq6radhaLGGAR2-mAGeshrHk",
+              "expanded_semantic_sha256": "c698285976198cf4ba2365b0366877f89cd057c803f191cfe4860275fca41bfe"
+            }
+          }
+        },
+        "ChIJq6rq_BuJGGARh1qAooLX-as": {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJq89_SiOLGGARNfbenIKLrPU": {
+          "canonical_place_id": "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJq89_SiOLGGARNfbenIKLrPU",
+              "expanded_semantic_sha256": "c1db39f7406d806b09f3583190788a6166a72b6f5079b231f743a71a64ea7ac7"
+            }
+          }
+        },
+        "ChIJqYnH4ViLGGARZLMJt16bjLU": {
+          "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJqYnH4ViLGGARZLMJt16bjLU",
+              "expanded_semantic_sha256": "83f616e45030dbbfa565267c01d1c81ab53f58e9e0a3ffebf41f0b67362b0a43"
+            }
+          }
+        },
+        "ChIJqb-xEgCLGGARSaVWlndYgrg": {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJr7mGZdmMGGARjxoMFeHApXE": {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJrWQOSKOMGGARINdTU-VzqoM": {
+          "canonical_place_id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJrWQOSKOMGGARINdTU-VzqoM",
+              "expanded_semantic_sha256": "f9f91f4a3ee5b2d9cb13067bcd4f8dec3b31545b5407a9dd9cce9c451d947e86"
+            }
+          }
+        },
+        "ChIJsZTc61eLGGARG19EHRBJGjE": {
+          "canonical_place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJsZTc61eLGGARG19EHRBJGjE",
+              "expanded_semantic_sha256": "a69c8c38ddb72a18622786916f49e3df51fe9971fe4f43b70335d7c88bf61ab2"
+            }
+          }
+        },
+        "ChIJseohrGmLGGARWx9gVUaRc7Y": {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJtxODuv6LGGAR4xf7X3WayX0": {
+          "canonical_place_id": "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "google_origins": [],
+          "rag_origins": {
+            "$case_material_ref": {
+              "path": "../../generation/v2/rag-discovery.json",
+              "pointer": "/origins/ChIJtxODuv6LGGAR4xf7X3WayX0",
+              "expanded_semantic_sha256": "a709446b04366554511ec36f2c3973ce376641867a5cd148b0eb5c6cab218172"
+            }
+          }
+        },
+        "ChIJuxkVQeCNGGARfFgbeDEPG6g": {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJveA1ZsCLGGAR0Hawvlg9FCw": {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJw2qQRZuOGGARWmROEiM2y7E": {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJwfegutyLGGARGjiY-L2eSps": {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_11",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJx2F0QC2NGGARLQpGhWsI7gU": {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJxU48-2OLGGARHMtB5RAhytA": {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJxcha6qSMGGARqdOIwOETVQc": {
+          "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJyVdfgWGJGGAR1vj5VaRAois": {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJz-ZkAQb0GGARLd-j4HlLkaM": {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJzRzI3HSNGGARRwZW6AtJfi0": {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      },
+      "omissions": [
+        {
+          "canonical_place_id": "ChIJaRti5uOLGGARC_hz-hGQFz4",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+          "stage": "admitted",
+          "reason": "ineligible_or_excluded"
+        },
+        {
+          "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJof1KZwCNGGARFfqGRkwb5tY",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJSeco5wiJGGARItbTS8lQ5G0",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "stage": "supplied",
+          "reason": "not_selected"
+        }
+      ],
+      "incremental_rag_ids": {
+        "$case_material_ref": {
+          "path": "../../generation/v2/rag-discovery.json",
+          "pointer": "/new_canonical_ids",
+          "expanded_semantic_sha256": "439be2d8f5b53d3ae827ee47aaf6fb894cf3f881e3860b49c0d83134df2742d2"
+        }
+      },
+      "diagnostics": [],
+      "pre_rag_google_ids": [
+        "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+        "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+        "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+        "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+        "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+        "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+        "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+        "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+        "ChIJD1M2GbCMGGARmUFziof73JM",
+        "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+        "ChIJK9EM68qLGGARacmu4KJj5SA",
+        "ChIJKbFrx72LGGAR1uyToVEdITo",
+        "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+        "ChIJMwpiebSMGGARPr_454zHvDQ",
+        "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+        "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+        "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+        "ChIJPyOTG8KMGGARh_IXobWxHmo",
+        "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+        "ChIJSeco5wiJGGARItbTS8lQ5G0",
+        "ChIJTQbYAg2MGGARt22eNwtfGtE",
+        "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+        "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+        "ChIJY4HWjseLGGARIBjdW6fAwYs",
+        "ChIJbSqxxHiLGGARKEK0IzZMksI",
+        "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+        "ChIJe5n9LgCLGGARE2_t14iLwn8",
+        "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+        "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+        "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+        "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+        "ChIJocRqFr-LGGARmVhVGLXS0L0",
+        "ChIJof1KZwCNGGARFfqGRkwb5tY",
+        "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+        "ChIJq6rq_BuJGGARh1qAooLX-as",
+        "ChIJqb-xEgCLGGARSaVWlndYgrg",
+        "ChIJr7mGZdmMGGARjxoMFeHApXE",
+        "ChIJseohrGmLGGARWx9gVUaRc7Y",
+        "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+        "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+        "ChIJw2qQRZuOGGARWmROEiM2y7E",
+        "ChIJwfegutyLGGARGjiY-L2eSps",
+        "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+        "ChIJxU48-2OLGGARHMtB5RAhytA",
+        "ChIJxcha6qSMGGARqdOIwOETVQc",
+        "ChIJyVdfgWGJGGAR1vj5VaRAois",
+        "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+        "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+      ],
+      "incremental_rag_status": "partial",
+      "rag_provenance": {
+        "$case_material_ref": {
+          "path": "../../generation/v2/rag-discovery.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "14fc9118cf497efd51ae91c585528794378ccb55160b2064616db995fd93c171"
+        }
+      },
+      "observation": {
+        "case_id": "case-09",
+        "case_revision": "1",
+        "version": "v2",
+        "repetition_id": "r1",
+        "attempt_id": "case-09-v2-attempt-1",
+        "run_id": "case-09-v2-r1",
+        "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+        "configuration_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "result_sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+        "capture_ref": {
+          "path": "material/captures/v2/opportunities.json",
+          "sha256": "f58ae0298af4d3384e44d249311424c5b347b839d41f23855c50150d9cab2996",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/0/scheduled/identity_sources",
+            "expanded_semantic_sha256": "90795c98ad4ba10ec89df2d57a69ea5e1165f6aade1f9aa5e2c1a2da634b820c"
+          }
+        }
+      }
+    }
+  ],
+  "cross_version": [
+    {
+      "case_id": "case-09",
+      "case_revision": "1",
+      "repetition_id": "r1",
+      "discovered": {
+        "status": "unavailable",
+        "v2_added_ids": null,
+        "v1_only_ids": null
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "ChIJ91khboGMGGARBo42MbnQzg8",
+          "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+          "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "ChIJSeco5wiJGGARItbTS8lQ5G0",
+          "ChIJ______qJGGARHpd1TBA9uZ8",
+          "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "ChIJof1KZwCNGGARFfqGRkwb5tY",
+          "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "ChIJxcha6qSMGGARqdOIwOETVQc"
+        ],
+        "v1_only_ids": [
+          "ChIJLfAnTQWLGGARjQW3e3gEzrw",
+          "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+          "ChIJn-VLO73xGGARjQnHXH7u7Rc"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "ChIJ91khboGMGGARBo42MbnQzg8",
+          "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "ChIJ______qJGGARHpd1TBA9uZ8",
+          "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "ChIJtxODuv6LGGAR4xf7X3WayX0"
+        ],
+        "v1_only_ids": []
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+        ],
+        "v1_only_ids": [
+          "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "ChIJCaoz7S3zGGARrAnbz14VDcw"
+        ],
+        "v1_only_ids": [
+          "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "ChIJx2F0QC2NGGARLQpGhWsI7gU"
+        ]
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "analysis/census.json",
+      "sha256": "82d0fbbb17b1cfffdda640f9aad9aa2cbfc57c651729ee69185c919b4664daf2",
+      "schema_version": "rtpeval_research_census_1"
+    },
+    {
+      "path": "analysis/opportunities-material.json",
+      "sha256": "1451770a8dee5e236fff5b44442aa851fc5888a855a654be7bed3f09e809a3f5",
+      "schema_version": "rtpeval_research_opportunities_1"
+    },
+    {
+      "path": "analysis/population.json",
+      "sha256": "253d30551d8e91a34e589336a297d081aeeb734b4267b67a846db7c039435c04",
+      "schema_version": "rtpeval_research_population_1"
+    },
+    {
+      "path": "analysis/profile.json",
+      "sha256": "1160eaacb5c5a188fb3efb14d9c8299e3b2ee5bfaa89b3c8a588e3724d320ecf",
+      "schema_version": "rtpeval_research_profile_1"
+    },
+    {
+      "path": "finalized/manifest.json",
+      "sha256": "0f58a32d1e1cf206f2c114d489011891c4782a3eb0cfa0d2cfeeab16a0cf58a9",
+      "schema_version": "rtpeval_batch_1"
+    },
+    {
+      "path": "finalized/requirements/semantics/reviewed-final.json",
+      "sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+      "schema_version": "rtpeval_requirements_1"
+    },
+    {
+      "path": "finalized/semantic-reviews/projection_reviews_ref.json",
+      "sha256": "add9fd07ab31c04840658dc1ff89a296e73a860042980b24ccc2731c893e5dca",
+      "schema_version": "rtpeval_reviews_1"
+    },
+    {
+      "path": "finalized/sources/captures/v0/producer-declaration-0-v0.json",
+      "sha256": "7e21d5699479df3046a0dbe90a528dd8bc579336e10a7539ac628f143590efe3",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "finalized/sources/captures/v0/result.json",
+      "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+      "schema_version": null
+    },
+    {
+      "path": "finalized/sources/captures/v0/usage.json",
+      "sha256": "da82fec3bc8b624d4c2f77a1e25968aba855ef5c368325934eb74a8b2c824499",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "finalized/sources/captures/v1/producer-declaration-0-v1.json",
+      "sha256": "3336a3fc004c8ed26bd4f591c02873d0393883bdea965629ea566b0fed3ee1ad",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "finalized/sources/captures/v1/result.json",
+      "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+      "schema_version": null
+    },
+    {
+      "path": "finalized/sources/captures/v1/usage.json",
+      "sha256": "b44185c29ea556fc1c076878884cbd1a8b734133722dd4aadef4f2990754bd82",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "finalized/sources/captures/v2/producer-declaration-0-v2.json",
+      "sha256": "6981c0f3538ae9bb06a5c7c4fd10be5df7d2a17ae710eec248a6053f50220a2a",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "finalized/sources/captures/v2/result.json",
+      "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+      "schema_version": null
+    },
+    {
+      "path": "finalized/sources/captures/v2/usage.json",
+      "sha256": "bbda78825a2760d3620bd7427e62f48a3d0068f94687b78a91bf5d331d5b21d3",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "finalized/sources/captures/v3/producer-declaration-0-v3.json",
+      "sha256": "dd8162024914987b15e5c81fbd8c8c0c049292c04231ad5ab3304698fb1880c4",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "finalized/sources/captures/v3/result.json",
+      "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+      "schema_version": null
+    },
+    {
+      "path": "finalized/sources/captures/v3/usage.json",
+      "sha256": "be4ef89825e9a3665ba303d04f6680875373a6ac33fef99593cf0a51cae5fa4d",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "finalized/sources/input.json",
+      "sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v0/planner-dispatch.json",
+      "sha256": "cb25504255f32f77601de00e3e93a4eebb8e757b4e7c7d04d6d1d34bcbd7d01d",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "material/captures/v0/producer-completion.json",
+      "sha256": "c728d82878f385dc9a06abf7421372eb8efa4dcd7796a56e3824411b89851646",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v0/result.json",
+      "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v0/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v0/usage.json",
+      "sha256": "da82fec3bc8b624d4c2f77a1e25968aba855ef5c368325934eb74a8b2c824499",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/captures/v1/opportunities.json",
+      "sha256": "12c9d591a1b8905e16248ee30d948d6b9b3de8899dd5d7d0508ea4697c6ce53d",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "material/captures/v1/planner-dispatch.json",
+      "sha256": "989084b7eb54066e4f0f362fa35694366fa39403307e64a7aaf1489c263c068d",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "material/captures/v1/producer-completion.json",
+      "sha256": "f30dba72b4ac22a4120d391c2aff3b63c6c92337565f111968dea0f90b46143b",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v1/result.json",
+      "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v1/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v1/usage.json",
+      "sha256": "b44185c29ea556fc1c076878884cbd1a8b734133722dd4aadef4f2990754bd82",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/captures/v2/opportunities.json",
+      "sha256": "f58ae0298af4d3384e44d249311424c5b347b839d41f23855c50150d9cab2996",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "material/captures/v2/planner-dispatch.json",
+      "sha256": "54a39972d4398ca8d0857c932e156e2f667cbc33f1372d33aa71e830577b99d7",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "material/captures/v2/producer-completion.json",
+      "sha256": "8315da96e39bf63118a71dea952c5b3b46d94117f3e6f004bf21882fbd00ae89",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v2/result.json",
+      "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v2/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v2/usage.json",
+      "sha256": "bbda78825a2760d3620bd7427e62f48a3d0068f94687b78a91bf5d331d5b21d3",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/captures/v3/planner-dispatch.json",
+      "sha256": "b7064912877632d8e86f08c8c6853a456fcd385e50b309d91c968ac74d111dc4",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "material/captures/v3/producer-completion.json",
+      "sha256": "77362b7ec2a1887d31d58a07a66fca01b6135a90f75f633530bd0ac04a06f2d1",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v3/result.json",
+      "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v3/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "schema_version": null
+    },
+    {
+      "path": "material/captures/v3/usage.json",
+      "sha256": "be4ef89825e9a3665ba303d04f6680875373a6ac33fef99593cf0a51cae5fa4d",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "material/input.json",
+      "sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "schema_version": null
+    },
+    {
+      "path": "primary/execution/identity-evidence.json",
+      "sha256": "571f182f78d920029de16b1a296643284ebe612922ebe7efc9420f7f4443259b",
+      "schema_version": "rtpeval_identity_evidence_1"
+    },
+    {
+      "path": "primary/execution/model-result.json",
+      "sha256": "d53b80c5f83e3171e53f7b086386acf0dbafa5ce9fe6520f2db1a0d59f6c14ec",
+      "schema_version": "rtpeval_identity_model_result_2"
+    },
+    {
+      "path": "research.json",
+      "sha256": "087eb4f66a080c3e4f8fc4a1e4f8ede18eaee8ae76818c88ce964df9350a7f59",
+      "schema_version": "rtpeval_research_declaration_1"
+    }
+  ],
+  "source_digest": "b6b14f2176ee05a61df5d9912b5f0426545dc90585c9bff48381c8c9013098b6",
+  "semantic_sha256": "2a65f6729e42c50245817777f0efb8a6394cd2db6c3b5ffea85e6697b112915a"
+}

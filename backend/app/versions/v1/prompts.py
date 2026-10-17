@@ -21,8 +21,12 @@ authoritative structured requirements. Use only supplied normalized evidence for
 weather, and route facts; match the requested destination and date range exactly.
 Use available weather and routes to improve grouping and feasibility.
 The response schema is supplied separately.
-Every activity start and end must include date YYYY-MM-DD, time HH:MM:SS (including :00
-seconds), and utc_offset +HH:MM or -HH:MM. Keep activity identifiers unique.
+tools_civil_time_1. Every activity endpoint uses its local date YYYY-MM-DD and time HH:MM:SS.
+Return utc_offset=null for ordinary clocks: the application derives each endpoint's offset
+from the supplied applicable IANA zone and actual date, including DST. Never copy one trip-wide
+offset. An explicit +HH:MM/-HH:MM offset is allowed to disambiguate a repeated local clock,
+and must identify a real instant in that zone. Do not schedule nonexistent spring clocks.
+Keep activity identifiers unique.
 
 Default mixed transport has a soft preference WALK, then TRANSIT, then DRIVE; explicit
 structured restrictions take precedence. Use only supplied directed route options.

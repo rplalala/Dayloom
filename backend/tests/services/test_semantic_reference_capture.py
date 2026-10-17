@@ -120,7 +120,7 @@ def test_sdk_reference_boundary_and_capture(tmp_path, refs, relation, message):
     }
     assert len({r["call_id"] for r in records}) == (2 if message else 1)
     assert len({r["input_sha256"] for r in records}) == (2 if message else 1)
-    assert all(r["prompt_version"] == "poi_semantics_prompt_5" for r in records)
+    assert all(r["prompt_version"] == "poi_semantics_prompt_6" for r in records)
     assert len(sends) == (2 if message else 1)
     assert "copy only the exact source_ref" in json.dumps(sends[0])
 

@@ -79,6 +79,8 @@ reference instruction and constrained schema under the existing ceilings.
 
 | Boundary | Identity transport |
 | --- | --- |
+| Requirement interpretation | Request-bound integer source selections, restored before exact original-source checks |
+| User-named place correspondence | Requirement/candidate/evidence aliases with query ownership and unique-adoption checks |
 | V1-V3 primary generation | Place references shared across evidence, route facts, conflicts and candidate supply |
 | V3 Repair | Place, activity and target references, including permissions, feedback and time fragments |
 | Review profiling | Place references; existing `review_N` references retained |
@@ -90,9 +92,10 @@ reference instruction and constrained schema under the existing ceilings.
 standard-library dependencies. Planner projection lives in
 [reference_transport](../backend/app/llm/reference_transport.py); the independent
 [identity packet](../backend/evaluation/identity_assistance.py) has no planner imports.
-V0 plain generation receives no supplied external place IDs to repeat. Requirement
-interpretation and landmark nomination do not repeat supplied long IDs; POI semantics
-already uses bounded short references. Provider-generated search citations and embedding
+V0 plain generation receives no supplied external place IDs to repeat. Current requirement
+interpretation uses the [source transport](0002-requirements-evidence.md#input-gate-and-provenance-contract)
+rather than copying long endpoints. Landmark nomination emits names rather than supplied
+external IDs; POI semantics uses bounded short references. Provider-generated search citations and embedding
 responses require no identity round trip. The native evaluator remains independently
 offline; a proposal packet neither verifies identity nor authorizes evidence acquisition.
 Short references prevent copying long identities but do not prove that a model selected

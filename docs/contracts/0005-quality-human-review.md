@@ -406,6 +406,26 @@ Repair is launched, and primary four-final arithmetic remains independent.
 
 The report calls the public requirement/schedule, opening and route scorers, verifies
 all expected final/optional rows and source hashes, then selects the two V3 stages.
+
+Current paired analysis applies the same missing-hours access policy to both stages.
+An eligible unresolved visit uses fresh source-bound `opening_judgment` material with
+`pair_only=true`; the packet includes only V3 draft/final-primary visits. Exact activity,
+interval, venue and observation contexts within the same group share one decision and
+retain all stage source aliases. Changed activity intent, time or evidence requires a
+separate context. Historical primary responses cannot be rebound to this packet.
+API schedules retain priority; ineligible or unresolved facts remain UNKNOWN. A model
+assessment changes neither factual API-hours coverage nor the original four-final scores.
+The report records the access basis and material hash. API-only historical replay remains
+available; a case with no eligible visits needs no model request. A refreshed paired
+final can differ from historical primary because the masks and model assessments are separate.
+
+`rtpeval pair access prepare/execute/replay` freezes and validates the packet, makes at
+most one explicitly authorized model attempt with zero Google sends/retries, and replays
+the captured HTTP response and usage offline. Execution requires the exact preparation
+digest and a fresh one-use directory. Per-run limits do not authorize a batch budget;
+operators must enforce the approved aggregate call/cost ceiling. `pair report` accepts
+`--opening-judgment`; suite pairs accept `opening_judgment` and research descriptors accept
+`opening_judgment_ref`. These imports never invoke a model.
 The reviewed-coordinate and saved identity-snapshot paths retain Ticket 07 semantics.
 Foreign/stale supplied sources, preparation/reviews or corrupt snapshots fail atomically;
 they do not silently shrink the cohort or become itinerary FAIL.

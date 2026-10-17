@@ -64,11 +64,24 @@ def _schedule_missing(payload, field):
 
 
 def prepare_packet(
-    intake, identity, directory, context, *, model, paired=False, expected_plan=None
+    intake,
+    identity,
+    directory,
+    context,
+    *,
+    model,
+    paired=False,
+    expected_plan=None,
+    pair_only=False,
 ):
     from .opening import score_opening
 
     require(text(model), "model", "An explicit model/deployment is required")
+    require(
+        type(pair_only) is bool and (not pair_only or paired),
+        "scope",
+        "Pair scope requires paired evidence",
+    )
     report = score_opening(
         intake, identity, directory, context, paired=paired, expected_plan=expected_plan
     ).to_dict()
@@ -86,6 +99,10 @@ def prepare_packet(
     records = {r["key"]: r for r in load_snapshot(directory)["records"]}
     cases = []
     for row in report["results"]:
+        if pair_only and (
+            row["version"] != "v3" or row["projection"] not in ("draft", "final_primary")
+        ):
+            continue
         for check in row["opening"]["checks"]:
             record = records.get(check["evidence_reference"]["request_key"])
             payload = record["summary"].get("payload", {}) if record else {}
@@ -142,6 +159,8 @@ def prepare_packet(
                     },
                 }
             )
+    if pair_only:
+        cases = _shared_pair_contexts(cases)
     properties = {
         "reference_id": {"type": "string", "enum": [c["reference_id"] for c in cases] or ["none"]},
         "state": {"type": "string", "enum": ["PASS", "UNKNOWN"]},
@@ -218,8 +237,42 @@ def prepare_packet(
             },
         },
     }
+    if pair_only:
+        packet["pair_only"] = True
     packet["content_sha256"] = canonical_digest(packet)
     return packet
+
+
+def _shared_pair_contexts(cases):
+    """Judge byte-equivalent semantic/evidence contexts once, retaining every source."""
+
+    def portable(value):
+        if isinstance(value, dict):
+            return {k: portable(v) for k, v in value.items() if k != "path"}
+        if isinstance(value, list):
+            return [portable(v) for v in value]
+        return value
+
+    contexts = {}
+    for case in cases:
+        key = canonical_digest(
+            {
+                k: portable(v)
+                for k, v in case.items()
+                if k not in ("reference_id", "source", "projection")
+            }
+        )
+        if key in contexts:
+            contexts[key]["source_aliases"].append(
+                {"source": case["source"], "projection": case["projection"]}
+            )
+        else:
+            contexts[key] = {
+                **case,
+                "reference_id": f"visit{len(contexts) + 1:03d}",
+                "source_aliases": [],
+            }
+    return list(contexts.values())
 
 
 def validate_material(material, expected):
@@ -343,6 +396,8 @@ def validate_material(material, expected):
             "PASS requires supported public access and reasonable unrestricted interval",
         )
         linked[case["source"]["record_id"]] = decision
+        for alias in case.get("source_aliases", []):
+            linked[alias["source"]["record_id"]] = decision
     usage = response.get("usage")
     require(isinstance(usage, dict), "response.usage", "Recorded model usage required")
     for field in ("input_tokens", "output_tokens", "total_tokens"):

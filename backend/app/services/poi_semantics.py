@@ -30,6 +30,9 @@ def serialize_semantic_input(places, contract, named_bindings=None):
             "version": SEMANTICS_VERSION,
             "requirements": [r.model_dump(mode="json") for r in contract.semantic_requirements],
             "named_requirements": [r.model_dump(mode="json") for r in contract.named_places],
+            "daily_visit_constraints": [
+                r.model_dump(mode="json") for r in contract.daily_visit_constraints or ()
+            ],
             "application_named_bindings": named_bindings or {},
             "places": [
                 {

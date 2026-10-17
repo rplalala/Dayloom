@@ -20,6 +20,7 @@ FILES = {
     "edit_provenance": "edit_provenance",
     "correspondence_reviews": "correspondence_reviews",
     "density_reviews": "density_reviews",
+    "opening_judgment": "opening_judgment",
 }
 
 

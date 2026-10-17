@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-16.
+Current source of truth. Updated 2026-10-17.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -62,9 +62,14 @@ Details: [shared architecture](docs/0001-system-architecture.md),
   skip that model call. Application-owned requirements retain exact source and
   subject provenance. Unsupported hard conditions and unresolved required identities
   preserve clarification boundaries.
-- Current interpretation uses request-bound source selections and a required pace
+- Current interpretation uses compact request-bound integer source selections and a required pace
   default. Whole-trip hard transport mode sets constrain V0 acceptance and V1-V3
   acquisition, selection and Repair; unsupported hard semantics still require clarification.
+- Explicit dated totals count primary visit occurrences and protect each hard obligation
+  throughout V3 Repair; zero sightseeing remains distinct from a full rest day. Independent
+  evaluation has its own reviewed count operator and prospective rules version.
+- User-named places bind to acquired candidates through sourced semantic correspondence
+  and unique application adoption; provider-standard names need not match user wording exactly.
 - Ordinary positive POI interests use soft targets of one distinct qualifying POI,
   or two for an explicitly sourced trip focus. Explicit counts, dates, exclusions
   and exclusive restrictions take priority. Broad enjoyment does not invent quotas.
@@ -80,6 +85,11 @@ Details: [requirements](docs/0002-requirements-evidence.md),
 [V2 retrieval](docs/0004-retrieval-persistence%28v2v3%29.md).
 
 ### Itinerary, transport and Repair
+
+Tools versions derive new local timestamps from sourced IANA zones per endpoint and date,
+reject conflicting explicit offsets and ambiguous/nonexistent clocks, and use elapsed UTC
+arithmetic for transfers. V0 retains its independent time generation. See the
+[civil-time contract](docs/0003-itinerary-transport.md#civil-time-and-iana-acceptance).
 
 - Current generation uses `itinerary_3` with explicit roles and scheduled/free-window
   time use; historical `itinerary_1/2` remain readable. Primary visits and optional unscheduled Nearby
@@ -161,8 +171,9 @@ See the [review readiness contract](docs/contracts/0002-intake-identity-usage.md
 | Original-input research | Installed offline population, canonical opportunity, independent relevance/coverage, Repair and generation tradeoff reports, with explicit optional suite attachments, fresh report revisions and deterministic offline replay | [Offline research](backend/evaluation/README.md#installed-offline-research), [track relationships](docs/0006-independent-evaluation.md#research-track-relationships) |
 
 Current identity policies are `versioned_api_identity_4` and
-`v0_identity_correspondence_3`. Requirement/schedule and route rules select versions
-4/3 for the new `transport_modes` operator and retain 3/2 for inputs without it.
+`v0_identity_correspondence_3`. Requirement/schedule rules select version 5 for a reviewed
+`daily_visit_count`, otherwise version 4 for `transport_modes` or version 3 without either.
+Route rules select version 3 with `transport_modes` and retain version 2 without it.
 Opening retains
 API-only rules 2 and selects rules 4 with validated policy-2 access judgments. Verified physical
 associations can support occurrence matching,
@@ -309,8 +320,16 @@ owns active case-03–12 dispatch, budgets and worker integration under the
 The coordinator stays in the main worktree; five workers own disjoint case queues.
 [Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
 owns case-01 workflow acceptance. The active set has 12 requests in four groups of three, following the
-user-approved 16 October 2026 selection revision. Case-01–07 remain unchanged;
-former case-14 becomes case-12 and former 12/13/15 are retired unexecuted. The
+user-approved 16 October 2026 selection revision. Former case-14 becomes case-12
+and former 12/13/15 are retired unexecuted. Case-01–07 retain their original inputs,
+generation, primary results and researcher acceptance. Their current V3 paired views
+and case-09's paired view were separately refreshed under the common access policy on
+17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
+owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
+automatically accepted on 17 October 2026 with its updated pair and disclosed limitations;
+blinded review is deferred. Its accepted package and required private evidence are
+integrated into the main worktree; [delivery #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
+tracks publication and preserved validation limits. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
 locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
@@ -321,8 +340,8 @@ including UNKNOWN and producer-runtime replay limits. Blinded human assessment
 remains deferred. Git publication remains separately authorized; the retired former
 case-15 remains unexecuted.
 Case-07 execution revision 3 / input revision 2 was separately accepted on
-16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs, no new paired
-quality score and unverified whole-trip EUR 650 affordability. Its
+16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs and unverified
+whole-trip EUR 650 affordability. Its
 [acceptance record](benchmark/case-07/report.md#acceptance) owns the selected
 materials and limitations. Issue #172's prospective activity contract and these
 sanitized materials are delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174); historical results remain unchanged.

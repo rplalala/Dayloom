@@ -365,6 +365,8 @@ def apply_patch(
 
 
 def finding_key(f):
+    if f.check == "daily_visit_count":
+        return f.check, f.dates, f.requirement_ids
     if f.check == "soft_pace":
         return f.check, f.dates
     if f.reason == "minimum_daily_coverage_missing":
@@ -383,6 +385,8 @@ def finding_key(f):
 
 
 def severity(f, itinerary):
+    if f.check == "daily_visit_count":
+        return f.magnitude
     if f.reason == "minimum_daily_coverage_missing":
         return f.magnitude
     if f.check == "overlap":
@@ -391,8 +395,10 @@ def severity(f, itinerary):
             return 0.0
         a, b = (items[i] for i in f.activity_ids)
         try:
+            from backend.app.policies.schedule_time import elapsed_seconds
+
             return max(
-                0, (min(a.end_time, b.end_time) - max(a.start_time, b.start_time)).total_seconds()
+                0, elapsed_seconds(max(a.start_time, b.start_time), min(a.end_time, b.end_time))
             )
         except TypeError:
             return None
@@ -431,6 +437,13 @@ def compare(
         and r.permission.reason in {"excluded_removal", "confirmed_visit_removal"}
     }
     rejections = []
+    if context is not None:
+        from backend.app.policies.daily_visit_constraints import protect_daily_visits
+
+        try:
+            protect_daily_visits(original, proposed, context.contract, context.semantic_assessments)
+        except ValueError as exc:
+            rejections.append(str(exc))
     for f in initial_report.findings:
         if f.status == "CONFIRMED":
             updated = old.get(finding_key(f))
@@ -505,6 +518,12 @@ def compare(
             len((old_ids - new_ids) & (excluded | conflict_removals)) if day in permitted else 0
         )
         floor = min(scope.daily_main_min, before.distinct_main_poi_count - allowed_loss)
+        if context:
+            from backend.app.policies.daily_visit_constraints import hard_exact_count
+
+            exact = hard_exact_count(context.contract, day)
+            if exact is not None:
+                floor = min(floor, 0 if exact == 0 else 1)
         for f in initial_report.findings:
             if f.check == "soft_pace" and f.finding_id in scope.target_ids and day in f.dates:
                 floor = pace_coverage_floor(
@@ -599,7 +618,7 @@ def compare(
                     distance(a.distinct_main_poi_count),
                     distance(b.distinct_main_poi_count),
                 )
-        elif f.check == "soft_pace":
+        elif f.check in {"soft_pace", "daily_visit_count"}:
             current = new.get(key)
             left = baseline.magnitude if baseline else None
             right = current.magnitude if current else None
