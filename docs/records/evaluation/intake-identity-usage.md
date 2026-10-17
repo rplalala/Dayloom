@@ -2118,3 +2118,174 @@ and XML are in `.scratch/case07-integration-20261016/`. These are local evidence
 identifiers. They do not create a published navigation dependency. [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174)
 owns the authorized Git delivery and linked Issue closure. This delivery performs
 no generation, actual case scoring or paid project call; case-11/12 remain unstarted.
+
+#### Known-date offset preparation correction (2026-10-17)
+
+Case-10 revision 2 generated four final outputs on `cc779bb2`; source intake and
+role/occupancy readiness passed. Primary preparation nevertheless rejected three
+V0 activities on 25 October because their model-authored `+01:00` conflicted with
+reviewed `Europe/London`. Their dates, candidate membership and 14 occupancy units
+were established. The gate had conflated an unknown instant with an unknown
+population. The raw model error and correct time normalization remain unchanged.
+
+Local implementation `17641af` retains these candidates and source-linked time
+uncertainty under the [population contract](../../0003-itinerary-transport.md#numerical-scoring-policy-and-limits).
+Independent Standards review passed. Spec review found one P2: historical explicit
+opt-in could also admit reversed or zero-length intervals because normalization
+reported the offset conflict before interval order. Both public-prepare controls
+failed before separate correction `c6875d1`, which requires a positive submitted
+interval without repairing timestamps. Both review axes then passed with no
+unresolved findings. Generation code, scoring formula, historical defaults and
+selected outputs were not changed.
+
+The initial population regression failed before implementation. The first full
+evaluator gate passed 1,327 tests with one environment skip; the review correction
+passed 123 affected tests. The final corrected-code gate passed **1,329 tests / one
+skip** in 281.40 seconds, with external sockets blocked and synthetic transports.
+The skipped symlink-creation check remains unverified on this Windows host.
+Ruff and formatting passed. An initial suite attempt was interrupted after the
+sandbox default temporary root failed to create pytest subdirectories; an isolated
+probe reproduced that setup failure, and the unchanged code passed using an
+explicit writable temporary root. No permissions or project configuration changed.
+
+A fresh, unexecuted Primary preparation passes native source/implementation
+integrity and semantic/population readiness. Its five candidate inventories equal
+the original blocked preparation; all three offset conflicts remain time UNKNOWN.
+All 226 protected result/raw-response/manifest hashes are unchanged. Original r01
+failures, r02 finals and the blocked preparation diagnostic remain retained. The
+preparation keeps the reviewed exact-two/distinct-date obligation, IANA zone,
+transport/density context and existing execution limits. No generation, Primary,
+project model/Google request, rescoring or case acceptance occurred in this fix.
+
+Local evidence identifiers are
+`benchmark/scratch/case-10/r02/offline-gate-fix/` and
+`benchmark/scratch/case-10/r02/primary-prepared-gate-fix-r01/`.
+The preparation content digest is
+`51b0c2dcaaa5b2a060b73345fb9df137300307a07c15c7bf8de079f9c7cc4451`.
+These private identifiers are not published navigation dependencies or an
+authorization to execute the prepared package.
+
+### Common requirement subjects and geographic purpose (2026-10-17)
+
+Case-08 r02 exposed two evaluator defects on unchanged outputs: literal subject-name
+matching rejected an independently acquired provider-standard name, and a reviewed
+city/country location was compared with an entire street address. A target-level address
+FAIL then contaminated an exclusion requirement despite no confirmed excluded visit.
+Changing the name alone or dropping the location alone did not resolve both defects;
+this diagnosis justified separate semantic correspondence and geographic-purpose handling.
+The subsequent case-10 handoff identified another independent blocker: London was typed
+`postal_town`, which the former destination checker ignored even after name correspondence.
+That supplied diagnosis was reproduced through a minimal source-bound fixture without
+rewriting the original user name, null location or candidate city type.
+
+[#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182) owns the approved
+generic correction. Review base was `57ead849f8a0c783c3b645fc1787f34e13ed0b49`;
+implementation `87dab1b` introduced independently sourced common subjects, prospective
+identity/preparation/schedule policies, explicit stage pricing and preserved visit checks.
+The current [identity contract](../../contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation)
+owns the detailed rules. Historical policies and responses remain distinct.
+
+The postal-town extension starts from `de60002` and is implemented in `8676164`, with
+administrative-destination review correction `cc959ba`. It adds
+subject policy 2 / packet 2 / identity policy 6, selected by the existing preparation-3
+`subject_policy` field. Explicit policy 1 retains its fixed-base packet digest and old
+UNKNOWN result; native mocked execution and replay verify both selectors independently.
+Default visit/legacy geographic helpers remain unchanged unless the new subject policy
+opts in. Conflicting postal-town/locality or country evidence remains unresolved.
+
+Initial regressions failed before implementation. The first broad evaluator run had
+1,339 passed, one environment skip and seven failures in incremental opening: its parent
+reader still reconstructed the old V0 packet. Correcting that reader produced 84 passing
+focused tests. Independent Standards and Spec review each found one P2 boundary issue:
+empty V0 visits must skip their stage, and unresolved targets must not mask independently
+proven impossible counts. Both regressions reproduced before correction. Separate commit
+`ded42bd` corrected stage eligibility/inventory and conjoined uncertainty after conservative
+count checks; 86 focused tests passed. Generic Unicode/abbreviation packet cases and a
+native three-stage mocked execution/replay exercise the broader protocol without claiming
+that synthetic model responses establish real-world semantic accuracy.
+
+The initial combined evaluator, installed CLI, suite and pair compatibility gate passed
+**1,615 tests with one Windows symlink-privilege skip** in 1,054.79 seconds. The strengthened
+typed-locality/district/postcode fixture also passed the 38-test subject gate. These gates
+overlap; their counts are not additive. Global backend/tool Ruff, all 15 affected Python
+format checks, whitespace and 324 tracked local document targets/anchors passed. Standards
+and Spec rechecks each have zero unresolved findings; Spec independently reran both review
+regressions. Current contracts replace obsolete stage/target rules in their topic owners.
+
+Postal-town validation first reproduced the original all-version UNKNOWN, then passed
+the focused subject gate. These tests cover the supplied British Museum
+name/candidate, null location, postal-town/country aliases, conflicting/missing facts,
+semantic uncertainty, explicit location precision, exact-two/distinct-date PASS and real
+count/date FAILs across V0-V3. The fixtures use the handoff's venue fields with synthetic
+source/itinerary/transport data; they are not the original case-10 snapshot or a real model
+judgment. The extension's evaluator and installed evaluate/tools CLI gate passed
+**1,473 tests with one Windows symlink-privilege skip** in 466.51 seconds on `8676164`.
+Both independent review axes identified the same P2: postal-town support accidentally
+removed valid administrative destinations. A public subject-path regression reproduced
+the rejection of a consistent region-level destination. Correction `cc959ba` retains both
+administrative levels while rejecting postal-town/locality conflicts. The corrected
+**210-test affected gate passed** in 55.49 seconds, including 29 postal regressions and
+native execution/replay under both subject policies. The earlier broad gate predates this
+correction; it is not a complete broad run on the corrected tree. Backend/tool Ruff,
+all 13 affected Python format checks, whitespace and 247 tracked local document links
+passed. Independent correction rechecks leave zero unresolved findings on each axis;
+Spec independently reran all 29 postal regressions and Standards reran the four
+administrative-destination controls. Standards first encountered an unwritable sandbox
+temporary directory during setup; using an owned scratch directory passed without
+changing source or project configuration.
+
+Original request SHA-256 remains
+`769a0b33a4eb9eb42e7414f847465ce42b8ed2070c864515d20f61eb07ff394a`.
+All 191 r01 preservation hashes and 213 r02 Primary receipt entries were rechecked with
+zero mismatches. Original input, failure records, selected outputs, provider responses,
+usage and tracked case presentation bytes were not rewritten. The r02 V3 score remains
+80 under its executed policy; no corrected case score is claimed. New case/provider execution
+sends, incremental provider charges and actual case reruns were zero; Codex review billing
+is unavailable. Integration/publication and any fresh scoring remain separate actions.
+
+#### Shared evaluator delivery preparation (2026-10-17)
+
+Offline integration from local main `31b0178` combines the three case-10 time-gate
+commits with the six original case-08 common-subject commits. Implementation tip
+`cb0603c` has the same backend, tests, tools, configuration and existing shared
+contracts as case-10 `6320785`. The sole cherry-pick conflict was an evidence-record
+append: retaining both dated sections reproduces the previously validated combined
+record. Original source commits remain unchanged, with `-x` attribution on each copy.
+
+The complete evaluator and 28 RTPEval CLI modules collected 2,348 tests. The initial
+run recorded **2,334 passed, seven failed and seven skipped** in 2,119.59 seconds.
+Three failed junction controls passed outside the Windows sandbox. Four failed V2
+capture controls passed after copying and checksum-verifying the existing offline
+vocabularies; their initial RAG unavailable result came from the missing local
+`cl100k_base` vocabulary. Five cross-volume rendering skips passed with an explicit
+owned C-drive source root and D-drive output root. The two host symlink-privilege
+skips remain unverified. All seven initial failures have passing targeted controls;
+the initial broad run is not represented as all-green or as a fresh full run after
+environment provisioning. No application/evaluator code correction was needed.
+
+Backend/tool Ruff, all 21 affected Python format checks and 340 local document
+targets/anchors passed. Source Standards/Spec review evidence is reused on the
+verified identical implementation; no fresh independent model review is claimed.
+Case material is absent from this shared delivery diff. Case-10's 351 earlier and
+226 selected-source hashes, both Primary reports and their 240/244-file receipts
+remain unchanged. This preparation performs no paid provider calls or saved-case
+reruns and leaves main and both case branches unchanged.
+
+Once the actual delivery base contains these shared changes, case-08 delivery can
+skip the following source commits. Until then, the shared code is still a dependency.
+
+| Case-08 source | Integrated copy |
+| --- | --- |
+| `87dab1b` | `ccb0fc2` |
+| `ded42bd` | `546a5eb` |
+| `de60002` | `cbc1ee2` |
+| `8676164` | `f8379a8` |
+| `cc959ba` | `e5e9345` |
+| `21bd707` | `cb0603c` |
+
+`de60002` needs explicit accounting: its source patch ID differs because the combined
+evidence append retains the time-gate section. Its content is integrated even when
+`git cherry` labels the original as new. Case-only delivery should use a fresh
+branch from the verified base and inspect later unintegrated changes, rather than
+reapply the old branch's shared-fix range. Original evaluator fingerprints, saved
+responses and scores retain their historical bindings.

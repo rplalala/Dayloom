@@ -6,6 +6,7 @@ from ._schedule_preparation import _days, _occupancy_reviews, _validate_spec
 from .daily_density import prepare_density_policies
 from .occupancy import prepare_occupancy
 from .preparation import schedule_timezones
+from .projection import interval as submitted_interval
 from .records import canonical_digest, require
 from .schedule_time import normalize_interval
 
@@ -37,7 +38,7 @@ def population_readiness(
     zones = schedule_timezones(intake, schedule_context)
     reviews = _occupancy_reviews(intake, occupancy_reviews)
     density = prepare_density_policies(intake, density_reviews)
-    rows, diagnostics = [], []
+    rows, diagnostics, time_uncertainties = [], [], []
 
     def pending(group, version, reason, sources=()):
         diagnostics.append(
@@ -93,9 +94,29 @@ def population_readiness(
                     activity["declared_day"],
                     zones.get(group["group_id"]),
                 )
-                if interval.span is None or activity["declared_day"] not in _days(group["input"]):
+                known_date_offset_conflict = (
+                    interval.date_consistent
+                    and interval.reasons == ("timezone_offset_conflict",)
+                    and submitted_interval(interval.original_start, interval.original_end)
+                    is not None
+                )
+                if (
+                    interval.span is None
+                    and not known_date_offset_conflict
+                    or activity["declared_day"] not in _days(group["input"])
+                ):
                     pending(
                         group, version, "activity_date_or_interval_unresolved", [activity["source"]]
+                    )
+                elif known_date_offset_conflict:
+                    # An unknown instant does not remove an established candidate.
+                    time_uncertainties.append(
+                        {
+                            "group_id": group["group_id"],
+                            "version": version,
+                            "source": activity["source"],
+                            "interval": interval.to_dict(),
+                        }
                     )
                 if role == "primary_visit":
                     for name in ("grounding", "opening"):
@@ -152,6 +173,7 @@ def population_readiness(
         "rows": rows,
         "diagnostics": diagnostics,
         "provider_calls": 0,
+        **({"time_uncertainties": time_uncertainties} if time_uncertainties else {}),
         "review_hashes": {
             name: canonical_digest(value) if value is not None else None
             for name, value in (

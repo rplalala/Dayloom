@@ -120,7 +120,7 @@ def destination_matches(value, candidate):
     return parts[0] in typed["locality"] and all(p in qualifiers for p in parts[1:])
 
 
-def strict_destination_matches(value, candidate):
+def strict_destination_matches(value, candidate, *, postal_town=False):
     """Verify every literal destination token without legacy semantic normalization."""
     parts = [piece.strip() for piece in re.split(r"[,;]", value)]
     if not parts or any(not part for part in parts):
@@ -137,6 +137,12 @@ def strict_destination_matches(value, candidate):
                 )
             )
         )
+        if postal_town and "postal_town" in typed:
+            cities = typed["postal_town"]
+            locality = typed.get("locality", set())
+            if locality and not cities & locality:
+                return False
+            destinations |= cities
         qualifiers = set().union(
             *(
                 typed.get(kind, set())
@@ -160,14 +166,14 @@ def street_forms(typed):
     }
 
 
-def location_matches(value, candidate):
+def location_matches(value, candidate, *, postal_town=False):
     typed = components(candidate)
     target = normalized(value)
     if numbered_street(value) and street_forms(typed):
         return target in street_forms(typed)
     if target in street_forms(typed) or any(target in values for values in typed.values()):
         return True
-    if "locality" in typed:
+    if "locality" in typed or postal_town and "postal_town" in typed:
         # Typed city evidence cannot be overridden by an untyped address token.
         return False
     return legacy_match(value, candidate)

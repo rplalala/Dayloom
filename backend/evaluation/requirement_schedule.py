@@ -252,6 +252,15 @@ def _requirement_checks(group, projection, identity_index, timezone):
         and ("programmatic_judgment" in item or "candidate_correspondence" in item)
         and item["grounding_verdict"] == "FAIL"
     }
+    unresolved_common_subjects = {
+        item["source"].get("subject_id")
+        for item in identity_index.values()
+        if item["kind"] == "requirement_subject"
+        and item["group_id"] == group["group_id"]
+        and item["version"] in (None, projection["planner_version"])
+        and "common_subject_resolution" in item
+        and item["resolution"] != "resolved"
+    }
     checks = []
     for obligation in group["requirement_spec"]["obligations"]:
         components = []
@@ -333,6 +342,14 @@ def _requirement_checks(group, projection, identity_index, timezone):
         else:
             components.append({"kind": kind, "state": "UNKNOWN", "reason": "pending_check"})
         failure = subject_failures.get(obligation.get("subject_ref"))
+        if obligation.get("subject_ref") in unresolved_common_subjects:
+            components.append(
+                {
+                    "kind": "subject_identity",
+                    "state": "UNKNOWN",
+                    "reason": "requirement_target_unresolved",
+                }
+            )
         if failure:
             components.append({"kind": "subject_identity", "state": "FAIL", "identity": failure})
         checks.append(
@@ -554,6 +571,16 @@ def score_requirement_schedule(
             **rules,
             "version": "rtpeval_requirement_schedule_rules_5",
             "daily_visit_count": "source_distinct_primary_occurrences_with_date_role_bounds_1",
+        }
+        base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
+    if identity.get("association_policy_version") in (
+        "versioned_api_identity_5",
+        "versioned_api_identity_6",
+    ):
+        rules = {
+            **rules,
+            "version": "rtpeval_requirement_schedule_rules_6",
+            "requirement_targets": "independent_common_subjects_1",
         }
         base.update(rules_version=rules["version"], rules_hash=stable_id(rules))
     try:

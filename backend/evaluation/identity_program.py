@@ -21,7 +21,15 @@ LEGACY_POLICY_VERSION = "versioned_api_identity_1"
 PREVIOUS_POLICY_VERSION = "versioned_api_identity_2"
 EXACT_POLICY_VERSION = "versioned_api_identity_3"
 POLICY_VERSION = "versioned_api_identity_4"
-VERSIONED_TARGET_POLICIES = (PREVIOUS_POLICY_VERSION, EXACT_POLICY_VERSION, POLICY_VERSION)
+PREVIOUS_COMMON_POLICY_VERSION = "versioned_api_identity_5"
+COMMON_POLICY_VERSION = "versioned_api_identity_6"
+VERSIONED_TARGET_POLICIES = (
+    PREVIOUS_POLICY_VERSION,
+    EXACT_POLICY_VERSION,
+    POLICY_VERSION,
+    PREVIOUS_COMMON_POLICY_VERSION,
+    COMMON_POLICY_VERSION,
+)
 
 
 def subject_bindings(intake):
@@ -155,12 +163,39 @@ def _check(
 
 
 def resolve_versioned_identities(
-    intake, evidence, *, model_result=None, historical=False, previous=False, exact_addresses=False
+    intake,
+    evidence,
+    *,
+    model_result=None,
+    historical=False,
+    previous=False,
+    exact_addresses=False,
+    common_subjects=False,
+    subject_result=None,
+    subject_policy=None,
 ):
     """V0 model results never decide targets or visits of another version."""
     prepared = _intake_dict(intake)
-    if sum((historical, previous, exact_addresses)) > 1:
+    if sum((historical, previous, exact_addresses, common_subjects)) > 1:
         raise ValueError("Choose one historical identity policy")
+    if (subject_result is not None or subject_policy is not None) and not common_subjects:
+        raise ValueError("Common subject results require their declared policy")
+    targets, subject_provenance = {}, None
+    if common_subjects:
+        from .subject_correspondence import LEGACY_POLICY_VERSION as LEGACY_SUBJECT_POLICY
+        from .subject_correspondence import POLICY_VERSION as SUBJECT_POLICY
+        from .subject_correspondence import resolve_subjects
+
+        if subject_policy is None:
+            subject_policy = SUBJECT_POLICY
+        targets, subject_provenance = resolve_subjects(
+            prepared, evidence, subject_result, policy_version=subject_policy
+        )
+        common_policy = (
+            PREVIOUS_COMMON_POLICY_VERSION
+            if subject_policy == LEGACY_SUBJECT_POLICY
+            else COMMON_POLICY_VERSION
+        )
     refs = identity_references(prepared)
     observed = _observation_index(evidence, refs, prepared) if historical else {}
     if not historical:
@@ -169,13 +204,22 @@ def resolve_versioned_identities(
         refs = versioned_references(prepared)
         observed = versioned_observations(prepared, evidence, refs)
     bindings = subject_bindings(prepared)
-    v0_refs = [r for r in refs if r["version"] == "v0"]
+    v0_refs = [
+        r
+        for r in refs
+        if r["version"] == "v0" and (not common_subjects or r["kind"] == "primary_visit")
+    ]
     model_records, provenance = {}, None
     if v0_refs:
         from .identity_llm import resolve_llm_identities
 
         model = resolve_llm_identities(
-            prepared, evidence, model_result=model_result, v0_only=True, legacy_v0=historical
+            prepared,
+            evidence,
+            model_result=model_result,
+            v0_only=True,
+            legacy_v0=historical,
+            visits_only=common_subjects,
         ).to_dict()
         model_records = {r["reference_id"]: r for r in model["records"]}
         provenance = model["model_judgment_provenance"]
@@ -193,19 +237,25 @@ def resolve_versioned_identities(
         observation = observed.get(rid)
         binding = bindings.get((ref["group_id"], ref["source"].get("subject_id")))
         candidate_comparisons = []
-        verdict, reason, canonical = _check(
-            ref,
-            observation,
-            binding,
-            historical=historical,
-            equivalent_addresses=not (historical or previous or exact_addresses),
-            address_comparisons=candidate_comparisons,
-        )
+        target = targets.get(ref.get("evidence_reference_id"))
+        if target is not None:
+            canonical, reason = target["canonical_place_id"], target["reason"]
+            verdict = "PASS" if canonical else "UNKNOWN"
+        else:
+            verdict, reason, canonical = _check(
+                ref,
+                observation,
+                binding,
+                historical=historical,
+                equivalent_addresses=not (historical or previous or exact_addresses),
+                address_comparisons=candidate_comparisons,
+            )
         detail, search = _evidence_candidates(observation)
         compared = detail or next((c for c in search if c["place_id"] == canonical), None)
         comparison = (
             compare_address_claim(ref["location"], compared)
-            if not (historical or previous or exact_addresses)
+            if target is None
+            and not (historical or previous or exact_addresses)
             and compared
             and reason
             in {
@@ -242,7 +292,9 @@ def resolve_versioned_identities(
                 "reason": reason,
                 "canonical_place_id": canonical,
                 "grounding_verdict": verdict,
-                "decision_route": (
+                "decision_route": "independent_subject_correspondence"
+                if target and canonical
+                else (
                     "independent_api_address_equivalent"
                     if canonical and comparison and comparison["basis"] != "exact"
                     else "independent_api_exact"
@@ -264,6 +316,7 @@ def resolve_versioned_identities(
                     "location": ref["location"],
                 },
                 "programmatic_judgment": {"verdict": verdict, "reason": reason},
+                **({"common_subject_resolution": target} if target is not None else {}),
                 **({"address_comparison": comparison} if comparison else {}),
                 **(
                     {"candidate_address_comparisons": candidate_comparisons}
@@ -294,6 +347,8 @@ def resolve_versioned_identities(
                 if previous
                 else EXACT_POLICY_VERSION
                 if exact_addresses
+                else common_policy
+                if common_subjects
                 else POLICY_VERSION,
                 "reference_set_digest": digest(refs),
                 "batch_id": prepared["batch_id"],
@@ -307,8 +362,13 @@ def resolve_versioned_identities(
                 "review_queue": [],
                 "judgment_queue": queue,
                 "model_judgment_provenance": provenance,
+                **({"subject_judgment_provenance": subject_provenance} if common_subjects else {}),
                 "groups": _summaries(refs, records, prepared),
-                "identity_versioned_replay": {"evidence": evidence, "model_result": model_result},
+                "identity_versioned_replay": {
+                    "evidence": evidence,
+                    "model_result": model_result,
+                    **({"subject_result": subject_result} if common_subjects else {}),
+                },
             }
         ),
     )
@@ -343,6 +403,15 @@ def verify_versioned_report(intake, report):
                 historical=policy == LEGACY_POLICY_VERSION,
                 previous=policy == PREVIOUS_POLICY_VERSION,
                 exact_addresses=policy == EXACT_POLICY_VERSION,
+                common_subjects=policy in (COMMON_POLICY_VERSION, PREVIOUS_COMMON_POLICY_VERSION),
+                subject_policy=(
+                    "requirement_subject_correspondence_1"
+                    if policy == PREVIOUS_COMMON_POLICY_VERSION
+                    else "requirement_subject_correspondence_2"
+                    if policy == COMMON_POLICY_VERSION
+                    else None
+                ),
+                subject_result=replay.get("subject_result"),
             ).to_dict()
             == report
         )

@@ -1,9 +1,21 @@
 """Synthetic checks for the separately versioned finite-candidate scoring policy."""
 
+import copy
+import json
+
+import pytest
+
+from backend.evaluation.declared_population import (
+    PROFILE_ID,
+    UnreadyPopulation,
+    population_readiness,
+)
+from backend.evaluation.intake import load_batch
 from backend.evaluation.quality_report import build_quality_report
 from backend.tests.evaluation import test_routes as route_tests
 from backend.tests.evaluation.test_daily_density import density_reviews
 from backend.tests.evaluation.test_quality_report import report
+from backend.tests.evaluation.test_requirement_schedule import context
 
 pytest_plugins = ("backend.tests.evaluation.test_intake",)
 prepared_scenario = route_tests.prepared_scenario
@@ -47,6 +59,179 @@ def declared_results(results):
         plan["output_version"] = "itinerary_3"
         for activity in plan["days"][0]["activities"]:
             activity["time_use"] = "scheduled"
+
+
+def test_known_date_offset_conflicts_keep_the_candidate_population_ready(batch):
+    _, results, write, _, _ = batch
+    declared_results(results)
+    for activity in results["v0"]["itinerary"]["days"][0]["activities"]:
+        for field in ("start_time", "end_time"):
+            activity[field] = activity[field].replace("+00:00", "+01:00").replace("Z", "+01:00")
+    for version in results:
+        write(version)
+    loaded = load_batch(write())
+    intake = loaded.to_dict()
+    original = copy.deepcopy(intake)
+    readiness = population_readiness(
+        intake, context(loaded, "Europe/London"), density_reviews=density_reviews(intake)
+    )
+    assert readiness["status"] == "ready", readiness["diagnostics"]
+    row = next(row for row in readiness["rows"] if row["version"] == "v0")
+    assert {name: len(checks) for name, checks in row["inventory"].items()} == {
+        "requirements": 0,
+        "grounding": 2,
+        "non_overlap": 2,
+        "opening": 2,
+        "routes": 1,
+    }
+    assert len(readiness["time_uncertainties"]) == 2
+    assert all(
+        item["interval"]["reasons"] == ["timezone_offset_conflict"]
+        and item["interval"]["interval"] is None
+        for item in readiness["time_uncertainties"]
+    )
+    assert readiness["provider_calls"] == 0
+    assert intake == original
+
+
+@pytest.mark.parametrize(
+    ("start", "end", "day"),
+    [
+        ("2020-01-02T09:00:00Z", "2020-01-02T10:00:00Z", "2020-01-01"),
+        ("2020-01-01T23:30:00Z", "2020-01-02T00:30:00Z", "2020-01-01"),
+        ("2020-01-01T00:15:00+01:00", "2020-01-01T00:45:00+01:00", "2020-01-01"),
+        ("2020-01-01T09:00:00Z", "2020-01-01T08:00:00Z", "2020-01-01"),
+        ("2020-01-01T09:00:00+01:00", "2020-01-01T10:00:00+01:00", "2020-01-02"),
+    ],
+)
+def test_unknown_or_conflicting_date_membership_still_blocks(batch, start, end, day):
+    _, results, write, _, _ = batch
+    declared_results(results)
+    changed_day = results["v0"]["itinerary"]["days"][0]
+    changed_day["date"] = day
+    changed_day["activities"][0].update(start_time=start, end_time=end)
+    for version in results:
+        write(version)
+    intake = load_batch(write())
+    if intake.status != "accepted":
+        assert intake.status == "needs_material_correction"
+        return
+    readiness = population_readiness(
+        intake.to_dict(), context(intake, "Europe/London"), density_reviews=density_reviews(intake)
+    )
+    assert readiness["status"] == "needs_population_resolution"
+    assert any(
+        item["reason"] == "activity_date_or_interval_unresolved"
+        and item["sources"][0]["pointer"] == "/itinerary/days/0/activities/0"
+        for item in readiness["diagnostics"]
+    )
+    assert readiness["provider_calls"] == 0
+
+
+@pytest.mark.parametrize("start", [None, "invalid"])
+def test_invalid_timestamps_are_rejected_before_population_preparation(batch, start):
+    _, results, write, _, _ = batch
+    declared_results(results)
+    results["v0"]["itinerary"]["days"][0]["activities"][0]["start_time"] = start
+    for version in results:
+        write(version)
+    assert load_batch(write()).status == "needs_material_correction"
+
+
+def test_prepare_freezes_offset_conflicts_without_rewriting_sources(batch):
+    from backend.evaluation.evaluation_run import prepare_run
+    from backend.tests.evaluation.test_evaluation_run import options, run_prices
+
+    _, results, write, _, root = batch
+    declared_results(results)
+    activity = results["v0"]["itinerary"]["days"][0]["activities"][0]
+    activity.update(start_time="2020-01-01T09:00:00+01:00", end_time="2020-01-01T10:00:00+01:00")
+    for version in results:
+        write(version)
+    manifest = write()
+    intake = load_batch(manifest)
+    originals = {p: p.read_bytes() for p in root.glob("*.json")}
+    directory = root / "prepared"
+    prepared = prepare_run(
+        manifest,
+        directory,
+        options=options(),
+        prices=run_prices(),
+        schedule_context=context(intake, "Europe/London"),
+        density_reviews=density_reviews(intake),
+    )
+    population = prepared["population_readiness"]
+    assert prepared["status"] == "prepared"
+    assert population["status"] == "ready"
+    uncertainty = population["time_uncertainties"][0]
+    assert uncertainty["interval"]["original_start"] == "2020-01-01T09:00:00+01:00"
+    assert uncertainty["interval"]["status"] == "unknown"
+    assert (
+        uncertainty["source"]["artifact_sha256"]
+        == prepared["intake"]["inventory"][0]["runs"]["v0"]["final"]["context"]["artifact_sha256"]
+    )
+    assert json.loads((directory / "preparation.json").read_bytes()) == prepared
+    assert not (directory / "execution").exists()
+    assert {p: p.read_bytes() for p in originals} == originals
+
+
+def test_offset_conflicts_remain_unknown_in_the_final_candidate_metrics(route_case):
+    def conflict(results):
+        declared_results(results)
+        activity = results["v0"]["itinerary"]["days"][0]["activities"][0]
+        activity.update(
+            start_time="2020-01-01T09:00:00+01:00", end_time="2020-01-01T10:00:00+01:00"
+        )
+
+    case = route_case(change=conflict)
+    result = report(case, density_reviews=density_reviews(case[0]))
+    assert result["status"] == "complete", result["diagnostics"]
+    version = result["groups"][0]["versions"]["v0"]
+    assert version["dimensions"]["non_overlap"]["denominator"] == 2
+    assert version["dimensions"]["non_overlap"]["counts"]["UNKNOWN"] == 2
+    checks = version["primary_metrics"]["opening"]["checks"]
+    first = next(check for check in checks if check["activity_id"] == "a")
+    assert first["state"] == "UNKNOWN"
+    assert "timezone_offset_conflict" in first["reasons"]
+    assert first["interval"]["original_start"] == "2020-01-01T09:00:00+01:00"
+    assert version["primary_metrics"]["routes"]["checks"][0]["state"] == "UNKNOWN"
+    assert version["overall_total"]["score_0_100"] is not None
+
+
+@pytest.mark.parametrize("end", ["14:00", "15:00"])
+def test_historical_opt_in_rejects_nonpositive_intervals_with_wrong_offsets(batch, end):
+    from backend.evaluation.evaluation_run import prepare_run
+    from backend.tests.evaluation.test_evaluation_run import options, run_prices
+    from backend.tests.evaluation.test_intake import activity
+
+    _, results, write, _, root = batch
+    route_tests.no_departure(results)
+    rest = activity("rest", "Rest", "15:00", end, role="free_time")
+    for field in ("start_time", "end_time"):
+        rest[field] = rest[field].replace("+00:00", "+01:00")
+    results["v0"]["itinerary"]["days"][0]["activities"].append(rest)
+    for version in results:
+        write(version)
+    manifest = write()
+    intake = load_batch(manifest)
+    assert intake.status == "accepted"
+    directory = root / "must-not-prepare"
+    with pytest.raises(UnreadyPopulation) as caught:
+        prepare_run(
+            manifest,
+            directory,
+            options=options(),
+            prices=run_prices(),
+            quality_profile=PROFILE_ID,
+            schedule_context=context(intake, "Europe/London"),
+            density_reviews=density_reviews(intake),
+        )
+    assert any(
+        item["reason"] == "activity_date_or_interval_unresolved"
+        and item["sources"][0]["pointer"] == "/itinerary/days/0/activities/2"
+        for item in caught.value.report["diagnostics"]
+    )
+    assert not directory.exists()
 
 
 def test_new_wire_selects_candidate_profile_in_normal_report_entry(route_case):

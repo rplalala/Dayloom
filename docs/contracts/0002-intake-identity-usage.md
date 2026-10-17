@@ -233,112 +233,124 @@ original source artifacts and historical reports. The density table remains
 
 ### Version-specific identity evaluation
 
-Accepted by the user on 2026-10-06 and published in
-[parent #74](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/74).
-V0 introduces an LLM primarily to correspond original freely generated POI claims
-with supplied independent API candidates, when available. Correspondence is distinct
-from original-claim correctness: recognizing a venue cannot repair a wrong submitted
-address or certify opening/route feasibility. Insufficient support remains UNKNOWN.
+Fresh Primary preparations use `versioned_api_identity_6`, approved under
+[#182](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/182). Requirement
+subjects and submitted visits have distinct responsibilities. One independent semantic
+subject judgment supplies the same target to all submitted versions; each version's
+visits retain their own original-claim grounding and verified occurrence associations.
+Planner requirements, candidate bindings, caches, validation and Repair findings never
+supply independent target truth. V0 visit judgments cannot supply another version's target.
 
-V1-V3 identity and requirement evaluation uses independent API evidence and deterministic
-program rules, without an identity model call, model-result dependency or model fallback.
-The subsequently approved [missing-hours access assessment](0004-opening-routes.md#missing-hours-access-judgment)
-is a narrow opening-only model exception shared by V0-V3; it does not change identity rules.
-Original API-backed names/addresses are compared with corresponding API facts;
-differences count as errors without model-based precision, translation or semantic
-equivalence. User-named requirements and optional V3 projections follow this same
-version rule. Verifiable bindings identify claims; planner decisions/caches do not
-replace independent evidence. Unresolved/ambiguous evidence remains visible without
-borrowing V0 model judgments. Wrong original addresses and different venues are FAIL;
-failed/missing API evidence is UNKNOWN. Original claims and erroneous endpoints are
-never repaired, and score arithmetic is unchanged.
+#### Common requirement subjects
 
-Implemented under [#75](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/75),
-with version-owned requirement targets corrected locally under
-[#83](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/83).
-`resolve_identities(intake, evidence, *, model_result=None)` produces
-`association_policy_version=versioned_api_identity_4`. Every V1-V3 final/optional
-primary visit requires its original `source_place_id`, structured `place_name` and
-`location`. Proven missing fields are FAIL even without an API response. Independent
-Details must have an available observation with retrieval provenance, the requested ID
-equal to the original ID and the returned ID equal to that request. Missing/failed,
-malformed or unlinked Details are UNKNOWN. Names retain literal equality. Address
-comparison is binary PASS/FAIL: exact text, case/Unicode/whitespace formatting, or
-complete equivalence explained by `longText`/`shortText` pairs supplied by the same
-independent Google observation. Remaining words, punctuation and numbers must agree.
-No abbreviation dictionary, similarity threshold or model fallback is used. Conflicting
-alias mappings and unexplained differences are FAIL. Missing acquisition/identity
-provenance is a separate uncertainty; it cannot author an address comparison PASS.
-`address_comparison` retains the original/provider strings, binary verdict, basis and
-used pairs. Policy 3 retains literal address behavior during historical reconstruction;
-policies 1/2 and historical V0 correspondence also keep their original replay paths.
-Only PASS adopts a canonical ID. FAIL/UNKNOWN retain null canonical IDs and original claims.
+`prepare_subject_judgment` uses only the original request, independently reviewed
+subject and related obligations, and that subject's independently acquired Google facts.
+There is one case per source subject, without a planner version. Source/spec identifiers,
+original request, raw reviewed location, derived purpose and the exact independent
+observation hash bind the packet. No itinerary or Planner interpretation is exposed.
+Optional reviewed `source_place_id` is a claim binding: independent available Details
+must retain retrieval provenance and identical requested/returned IDs. Without that
+binding, Search must retain its exact original query, 20-result scope, independent-source
+and retrieval provenance, complete raw count and candidates. Truncation, a full page,
+any pagination field, malformed candidates or conflicting facts for one ID leave no
+usable candidates. Invalid batch/reference linkage remains a material error.
 
-Accepted on 2026-10-08, primary-visit `place_association` independently records
-`state` (`verified` or `UNKNOWN`), `place_id` and `reason`. It does not change
-`grounding_verdict`, `resolution`, `canonical_place_id` or original claims.
-V1-V3 verify the original submitted ID using independent available Details, offset-aware
-retrieval provenance and identical requested/returned IDs. This check still runs when
-the original name/address is missing or incorrect. Missing or unverified IDs have no
-association; search candidates never replace the original ID. No evaluator model is used.
-V0 uses the existing source-bound, validated model correspondence: a selected supplied
-candidate with decision `match`, consistent destination and supported address assessment
-(`equivalent`, `different_precision`, `incorrect_claim` or `not_supplied`). Missing/ambiguous
-correspondence, different-place/unknown address assessment, contradictory destination,
-conflicting candidate observations or unverifiable provenance leave association UNKNOWN.
-Candidate presence/rank alone never establishes eligibility. An `incorrect_claim` address
-remains grounding FAIL while a trustworthy association permits independent physical checks.
+The single `requirement_subject_correspondence_2` batch may select only a supplied
+candidate owned by its case. The schema requires every reference exactly once; import
+also rejects foreign candidates, incomplete/duplicate decisions, empty or unsupported
+citations and conflicting address-presence assessments. Names may differ through
+language, provider naming or abbreviations. Neither rank nor uniqueness proves a match;
+ambiguity, competing branches/entrances/shops and insufficient evidence require UNKNOWN.
+Model judgment is fallible and cannot manufacture API facts. No retry or literal-name
+fallback changes an unresolved decision into acceptance.
 
-Snapshot, coordinate, opening and route consumers use this physical association.
-Opening checks the associated API venue's hours against the original visit interval;
-routes use its API coordinates with the original order, mode, departure and reserved duration.
-WALK, DRIVE and TRANSIT remain their original modes. No original output is repaired.
-Requirement occurrence matching also uses verified associations under the
-[requirement count contract](0003-requirement-schedule.md#count-bounds-and-completeness),
-against each version's adopted target identity. Target grounding, count/date/time conditions,
-canonical repetition and paired venue correspondence remain separately applicable.
-A downstream PASS never cancels grounding FAIL or proves full requirement fulfillment. The report policy versions this change; the unchanged
-V0 correspondence packet remains `v0_identity_correspondence_3` and existing validated
-material can be consumed offline without another model request.
+The raw reviewed location is preserved. Equality after Unicode/case/whitespace
+normalization with the original destination derives `destination_context`; it is checked
+as geographic compatibility, not complete formatted-address equality. Missing location
+is `not_supplied`. Other locations remain `explicit_constraint`, requiring a supported
+typed component/street or complete Google-supported address equivalence at the supplied
+precision. Unverified compound qualifiers remain unresolved; they are not discarded.
+Typed malformed/conflicting evidence cannot be overridden by formatted text. Destination
+tokens must match typed city/administrative and country evidence, or exact address tokens
+when typed components are absent. Policy 2 also treats `postal_town` as city evidence.
+It augments the existing city/administrative destination evidence and must overlap any
+supplied `locality` aliases. A postal-town/locality conflict cannot be overridden by an
+administrative match; consistent administrative-area destinations remain supported.
+Country qualifiers use the supplied typed long/short values. Duplicate
+conflicting components, wrong cities/countries and missing geographic support leave the
+target unresolved; formatted text cannot override them. Explicit location constraints
+use typed components or complete address equivalence; an untyped formatted token cannot
+bypass postal-town evidence. This extension affects common subjects only. No case-specific
+venue aliases or accent stripping exist.
 
-Reviewed requirement subjects can retain an optional `source_place_id`; it is a claim
-binding, not factual evidence. Identity planning independently requests its Details.
-RequirementSpec meaning and acquisition references remain shared, but target identity
-results belong to each submitted version. Target reference IDs hash their source with
-the version; `evidence_reference_id` links to the original shared acquisition reference.
-V0 targets use only V0 model correspondence. V1-V3 targets use program rules and never
-borrow a V0 decision. Each version's projections share its target result.
+A supported target projects to the existing four version-owned source/reference IDs,
+with `evidence_reference_id` linking their common acquisition reference and
+`common_subject_resolution` retaining the shared case digest, decision, location purpose
+and target. Missing or incompatible evidence gives UNKNOWN, not a delivered-visit FAIL.
+Requirement rules 6 conjoin target uncertainty with conservative occurrence checks.
+An unresolved target normally leaves UNKNOWN, but an independently impossible count or
+date condition remains FAIL (for example, requiring one visit when there are zero possible
+visits). Verified counts, dates, exclusions and time conditions retain their normal checks. Name-only fulfillment and Planner-ID equality remain insufficient.
 
-Without a binding, V1-V3 resolution requires the exact original query, declared
-20-result scope, independent-source/retrieval provenance and the complete retained set.
-The candidate count must equal the declared result count; a full 20-result page or
-retained next-page token remains UNKNOWN because completeness is unverified. A present
-pagination field with an empty or non-string value is malformed and also UNKNOWN. Malformed
-candidates or conflicting facts for one ID also remain UNKNOWN. Filter all candidates
-by literal original name, verified destination and any supplied equivalent formatted
-address, then require one distinct surviving ID. A complete search with exactly one
-name/destination-eligible ID and a supplied address mismatch gives FAIL, retaining
-`address_comparison`. `candidate_address_comparisons` preserves each eligible ID's
-binary comparison even when multiple identities leave resolution UNKNOWN. Zero eligible
-identities and multiple surviving matches remain UNKNOWN; rank never chooses a candidate.
-Identical repeated observations of one ID are allowed. Ambiguous mappings include any
-long or short endpoint paired with multiple different endpoints.
-Destination tokens use literal typed long/short component values, with explicit locality
-or administrative region and country evidence; without typed components they require
-exact formatted-address tokens. Hierarchical sublocality levels remain separate and
-do not conflict through their generic sublocality tag. Conflicting/malformed typed
-components cannot be overridden by formatted text. Historical address rules are unchanged.
-Missing source/retrieval/query provenance remains a local UNKNOWN; false source declarations,
-invalid batch/reference linkage and impossible count structure remain material errors.
+#### Submitted visit grounding
 
-Default `prepare_identity_judgment(..., model=MODEL)` includes V0 primary visits and
-V0 requirement targets only, with packet policy `v0_identity_correspondence_3`;
-source digests and short-reference
-ownership bind eligibility. Foreign decisions, historical all-version packets and edited policy/version
-markers cannot pass current import. Absence of a V0 result leaves V0 UNKNOWN while V1-V3
-targets still evaluate. Confirmed target FAIL is retained as a component of that
-version's associated requirement checks. No identity resolver or `identity_cli` command
-executes a model or provider.
+V0 visit-only packets use `v0_visit_correspondence_1`. They correspond original freely
+generated claims with their own independent API candidates; recognizing a venue does
+not repair an incorrect submitted address. V1-V3 final/optional primary visits retain
+independent API/program checks with no model fallback: original `source_place_id`,
+structured `place_name` and address are required. Missing claim fields are FAIL;
+unavailable, malformed or unlinked independent Details are UNKNOWN. Available Details
+must verify retrieval provenance and identical requested/original/returned IDs. Names
+remain literal. Address comparison is binary, permitting exact text, formatting, or
+complete equivalence explained by the same observation's Google long/short component
+pairs. Unexplained street, number, city or district differences remain FAIL. No global
+address relaxation or searched replacement is introduced.
+
+`place_association` separately records a verified physical venue despite an original
+name/address FAIL. V1-V3 require independently verified original IDs. V0 requires validated
+candidate correspondence, consistent destination and supported address assessment;
+conflicting or ambiguous facts remain unresolved. Snapshot/coordinate/opening/route and
+requirement-occurrence consumers use this association against original dates, intervals,
+order, modes and reserved durations. A downstream PASS never cancels grounding FAIL.
+
+#### Preparation and historical compatibility
+
+Fresh `rtpeval_execution_preparation_3` reserves one separately priced low-effort
+`requirement_subject` send when named subjects exist, one V0 visit send and the existing
+conditional medium-effort opening send: at most three, with zero retries. No named
+subjects skips the subject stage; no V0 primary visits skips the V0 stage. Preparation
+ceilings, captured-material inventory and replay reflect both eligibility decisions. Each send uses the configured model/token ceilings,
+shared deadline and cumulative reference-cost guard; the extra stage never increases
+the total USD allowance. Missing subject pricing or an individually unaffordable
+reservation blocks offline preparation. Google acquisition planning is unchanged.
+
+Primary persists the exact subject packet/result and HTTP/usage receipts. Replay
+reconstructs eligibility, validates the selected operation's sole captured send and
+recomputes the full identity report. Common subjects have an exact packet/source binding;
+no response is rebound across subject revisions. Fresh V0 packets exclude subjects.
+The complete replay capsule contains both distinct materials and their provenance.
+The unchanged preparation-3 envelope freezes `subject_policy`: fresh packages select
+`requirement_subject_correspondence_2` / packet 2 / identity policy 6. Previously prepared
+policy-1 packages select packet 1 / identity policy 5 and retain the former geographic
+checks, exact packet bytes and recorded verdicts. An unsupported or missing selector is
+rejected before execution; changing a selector cannot rebind a saved response. Opening
+and route consumers honor the selected identity policy. No new send or budget allowance
+is introduced by the postal-town extension.
+
+Offline callers explicitly select `common_subjects=True`, or CLI `--common-subjects`
+with `--prepare-subjects` / `--subject-result`. Explicit
+`--subject-policy requirement_subject_correspondence_1` selects the earlier common strategy;
+Python callers use `policy_version` for subject packets/imports and `subject_policy` for
+the versioned resolver. `--prepare` then prepares V0 visits only.
+These commands send nothing. The default low-level resolver/packet API and CLI without
+that flag retain policy 4 / `v0_identity_correspondence_3` for existing offline callers:
+version-owned targets, V0-only target correspondence, literal V1-V3 target names and
+whole-address comparisons, including target FAIL components. Preparations 1/2 retain
+their original stage inventory and policies. Policies 1-5 and saved responses remain
+replayable under their declared bindings; exact archived execution replay may require
+the retained producer implementation. New policies produce separate reports and do not
+replace historical inputs, failures or scores. Score arithmetic and Planner V0-V3 behavior
+are unchanged.
 
 Explicit `--historical-association` replays `versioned_api_identity_2`, including
 version-owned targets and the former FAIL/UNKNOWN downstream block. It reconstructs
@@ -468,14 +480,17 @@ The [formal CLI](../../backend/evaluation/README.md#fresh-automatic-evaluation-c
 native acquisition/scoring. Preparation freezes originals, reviewed schedule/occupancy/
 route/density contexts, explicit send/token/time/cost limits, caller-supplied dated USD
 prices and code hashes without sending. Execution verifies the exact digest and sources,
-creates a new one-use directory and acquires both snapshots afresh. V1-V3 use API/program
-rules; one V0-only Responses request is allowed with no fallback or automatic retries.
+creates a new one-use directory and acquires both snapshots afresh. Subject and visit
+stages follow the [identity policy](#version-specific-identity-evaluation); V1-V3 visit
+checks remain API/programmatic. Stage-specific prices and the shared total allowance
+gate each model send without fallback or automatic retries.
 
 Identity execution options may specify `reasoning_effort=low|medium`; absence preserves
 the historical low request without altering saved option data. The explicit value is
 part of the preparation digest and must match both the sent Responses body and the
 HTTP body verified by offline replay. Unsupported values fail before execution.
-This option does not apply to the separately fixed-medium opening-access workflow.
+This option applies to V0 visits. Common-subject correspondence uses fixed low effort;
+the opening-access workflow uses fixed medium effort.
 
 Search retains original name/destination/location and page size 20. Search/Details masks
 include ID, name, address, typed address components, business status, coordinates and

@@ -270,7 +270,13 @@ class EvaluationTransport:
             call["operation"] == operation for call in self.model_calls
         ):
             raise ValueError("Model send allowance consumed")
-        event_id = "v0-identity" if operation == "identity" else "opening-access"
+        event_id = {
+            "identity": "v0-identity",
+            "opening_access": "opening-access",
+            "requirement_subject": "requirement-subject",
+        }.get(operation)
+        if event_id is None:
+            raise ValueError("Unsupported model operation")
         event = {
             "event_id": event_id,
             "provider": "azure_foundry",

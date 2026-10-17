@@ -46,7 +46,7 @@ unimplemented follow-up modules are available.
 Snapshot acquisition accepts injected transport. The evaluator-owned
 `evaluation_run.prepare_run / execute_run / replay_run` and
 [formal CLI](../backend/evaluation/README.md#fresh-automatic-evaluation-cli) now compose
-fresh Google acquisition, V0-only correspondence and all native automatic final-quality
+fresh Google acquisition, independent common-subject and V0 visit correspondence, and all native final-quality
 consumers. Preparation freezes originals, contexts, limits, prices and code; execution
 persists evidence/failures; replay sends nothing. Final-only scope explicitly excludes
 optional V3 and human and controlled tracks. Processing, acquisition and unresolved
@@ -134,9 +134,9 @@ evidence belongs to the [evaluation record](records/evaluation/intake-identity-u
 
 ## Scoring semantics and uncertainty
 
-[Version-specific identity](contracts/0002-intake-identity-usage.md#version-specific-identity-requirement)
-uses V0-only model correspondence and V1-V3 independent API/program checks, with explicit
-historical replay. Grounding assesses original claims; a separately verified physical
+[Version-specific identity](contracts/0002-intake-identity-usage.md#version-specific-identity-evaluation)
+uses independent common requirement subjects, V0 visit correspondence and V1-V3
+API/program visit checks, with explicit historical replay. Grounding assesses original claims; a separately verified physical
 association can support occurrence matching, opening and routes while grounding FAIL stays
 visible. [Requirement count bounds](contracts/0003-requirement-schedule.md#count-bounds-and-completeness)
 define fulfillment; recognizing a venue never establishes every requirement component.
