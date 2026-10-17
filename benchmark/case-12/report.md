@@ -454,7 +454,9 @@ the worker and its original private evidence remain retained.
 Private receiving evidence and reproduction instructions are historical identifiers
 under `benchmark/scratch/case-12/integration/`. This integration added no project
 provider calls, generation, Primary, rescoring or human answers. Reference accounting
-is unchanged. Git publication remains separate from this completed local integration.
+is unchanged. The integrated source and public material are published on
+`codex/case12-r07-delivery` and proposed in [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190).
+Remote-main merge remains pending; local integration and private migration are complete.
 
 ## Historical context
 
