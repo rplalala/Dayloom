@@ -374,9 +374,9 @@
       "omitted_json_pointers": []
     },
     {
-      "path": "generation/v3/draft.json",
-      "sha256": "044e3c6ea73830daf7849ce5fea96f87753b5a630e30442660f34073a52f34b8",
-      "bytes": 10612,
+      "path": "analysis/repair/draft.json",
+      "sha256": "b1100962ee615ed41392811f720d59ea4725e8cd68744792a3b418566ab29d14",
+      "bytes": 10892,
       "representation": "exact_json_subtree",
       "original_source": {
         "logical_path": "work/20261015-primary-a1/captures/v3/result.json",
@@ -903,13 +903,13 @@
   "documents": [
     {
       "path": "report.md",
-      "sha256": "a5a38d78156214cc61a9880c642ea90e3f375464f01a7f69ab622a69b8655b80",
-      "bytes": 20587
+      "sha256": "2f34a3dd73444d5a210670e0a5191c25980ff4fd67f9c0c271774175cb139698",
+      "bytes": 20763
     },
     {
       "path": "itinerary.md",
-      "sha256": "2d8eb261d7c7eef95de083ce4a6c9ca3b5c37203167b650e76d6e2bb71f0f821",
-      "bytes": 29870
+      "sha256": "c71413e9698bac7bd87554f29df3177f6b8fcff1c267eb1a15c5526f912dc6b1",
+      "bytes": 29873
     }
   ],
   "researcher_acceptance": {
@@ -971,5 +971,114 @@
     },
     "preparation_sha256": "caafffa9943ce3b7c99c0abec4c2c57c16ede70738a3efe382ed41f7c54f73e5",
     "packet_sha256": "ef7d7838b6dda0d48c7b0f47db337913813376b9f43cb17742b2d97fc43e18d2"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "1b22091f83a6e806591fedaad92e9954762d4c918e0907c7a3ad1d1283013c7d",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-03.json"
+      ],
+      "requirements": [
+        "requirements/reviewed-requirements.json"
+      ],
+      "interests": [
+        "interests/interests.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [
+        "requirements/context.json",
+        "requirements/density.json",
+        "requirements/transport.json"
+      ],
+      "interest_reviews": [],
+      "origin_captures": [
+        "generation/v2/rag-discovery.json",
+        "generation/v3/rag-discovery.json"
+      ],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/opening-assessment.json",
+        "evaluation/primary/quality-report.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/pair-report.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/opportunities.json",
+        "analysis/poi-process/relevance.json",
+        "analysis/poi-process/review-evidence.json"
+      ],
+      "repair": [
+        "analysis/repair/draft.json",
+        "analysis/repair/mechanism.json",
+        "analysis/repair/repair.json"
+      ],
+      "resources": [
+        "analysis/resources/costs.json",
+        "analysis/resources/population.json",
+        "analysis/resources/tradeoffs.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/draft.json": "analysis/repair/draft.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
   }
 }

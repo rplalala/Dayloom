@@ -4,6 +4,24 @@
 
 The [original request](../inputs/case-10.json), [reviewed requirements](requirements/reviewed.json), [interest inventory](interests/reviewed.json), [four daily itineraries](itinerary.md) and [material index](material-index.json) identify the exact selection. Generation revision 2 uses source `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`; the current Primary and process reports use evaluator source `6320785d5e8679cdaf588f334888c1e181a5b31b`.
 
+| Material | Reader view |
+| --- | --- |
+| Original request | [case 10](../inputs/case-10.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [reviewed](interests/reviewed.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Independent review records | [relevance reviews](interests/relevance-reviews.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [summary](evaluation/v3-pair/summary.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [v3 origins](analysis/poi-process/v3-origins.json) |
+| Repair and complete stages | [draft difference](analysis/repair/draft-difference.json), [final_primary difference](analysis/repair/final_primary-difference.json), [mechanism](analysis/repair/mechanism.json), [summary](analysis/repair/summary.json) |
+| All-attempt resources | [summary](analysis/resources/summary.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
+
 ## Primary results
 
 | Version | Overall | Auxiliary | Mean density deduction | FAIL | UNKNOWN |

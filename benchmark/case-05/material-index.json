@@ -131,15 +131,15 @@
       "transformation": "V1/V2 canonical origin records and incremental RAG IDs."
     },
     {
-      "path": "generation/v3/draft.json",
-      "sha256": "fff710fab4351c276f4b4a1469bd4a955e7689b3baa2aac6000fa52a677d9fb8",
+      "path": "analysis/repair/draft.json",
+      "sha256": "8bd075bd91673a92e9fe6882349f29b35f92d6cd7b06bfa882b0b89006d87aab",
       "source_logical_path": "work/r03-d16/captures/v3/result.json",
       "source_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
       "json_pointer": "/v3/draft"
     },
     {
-      "path": "generation/v3/final-primary.json",
-      "sha256": "093a1275a2a749950d88a001fa005ee0da2a53d82026ee0c73b95fa5fdc29fcd",
+      "path": "analysis/repair/final-primary.json",
+      "sha256": "4cacea54fcbcfbd615940f8f374b1e8fe77d2fe5cd836396c2b5421af42bc870",
       "source_logical_path": "work/r03-d16/captures/v3/result.json",
       "source_sha256": "abe9140d12290679ed18128edcb02564a7a194ce3f7310ad8bf1f17690ef7dfa",
       "json_pointer": "/v3/final_primary",
@@ -208,6 +208,78 @@
           "source_sha256": "a9b3d82ba5b39cc66d7c6666af1a20136d33307c268c00764120f52231698613"
         }
       }
+    },
+    {
+      "path": "analysis/poi-process/report.md",
+      "sha256": "424db2c77c714e0dd93adf4527d8e34c5d5a710dd5b4be471bf082028eed4a5e",
+      "bytes": 2343,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/analysis/poi-process/report.md",
+        "sha256": "424db2c77c714e0dd93adf4527d8e34c5d5a710dd5b4be471bf082028eed4a5e",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "analysis/repair/report.md",
+      "sha256": "3506c738ea0e79fa103cf6925897373fc15d388bb20e4b0f4ae141f274ab201b",
+      "bytes": 2621,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/analysis/repair/report.md",
+        "sha256": "3506c738ea0e79fa103cf6925897373fc15d388bb20e4b0f4ae141f274ab201b",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "analysis/resources/report.md",
+      "sha256": "1391416a2cd537ddcf3fdfd92dfe9d27cf8bc863969ab7aee260a21b67d41b1c",
+      "bytes": 2214,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/analysis/resources/report.md",
+        "sha256": "1391416a2cd537ddcf3fdfd92dfe9d27cf8bc863969ab7aee260a21b67d41b1c",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "evaluation/v3-pair/report.md",
+      "sha256": "8ea28f1bd413e4d514b5b72a93953105741745adba91327b75fa843bff2f873f",
+      "bytes": 1642,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/evaluation/v3-pair/report.md",
+        "sha256": "8ea28f1bd413e4d514b5b72a93953105741745adba91327b75fa843bff2f873f",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "33b0eb37d59b724404961926a5ffd950c54385cf0040360aad5a508b87f64d84",
+      "bytes": 3609,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/itinerary.md",
+        "sha256": "e4268cc5241693ccfefdcc2595a8721a4efed3c7c75680bed5018ecc3b20aff1",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "report.md",
+      "sha256": "b984a8575543fb96fb9c1d4b5b5f3782ed6fca050bcfb7fe326ae01154f0760d",
+      "bytes": 9990,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-05/report.md",
+        "sha256": "183c5dccd7bc97a2d5b56da348271f257a1cada86bbbf686a126def7b59c460c",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
     }
   ],
   "native_verification": {
@@ -314,5 +386,105 @@
     },
     "preparation_sha256": "3af831b8fd1b1b1c01b60343b1103007bdd4690fa0085482e318d6945c2b26a2",
     "packet_sha256": "d8766bf88a8e0cc474ca868b1207dc6f4bf44867e20eda7d366e261723507a39"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "53d582e49d8e92093bfb74fc089f07cde8a777e4697b8f2669befdd7bc9e8766",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage-summary.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage-summary.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage-summary.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage-summary.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-05.json"
+      ],
+      "requirements": [
+        "requirements/reviewed-requirements.json"
+      ],
+      "interests": [
+        "interests/interests.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [],
+      "interest_reviews": [],
+      "origin_captures": [
+        "generation/poi-origins.json"
+      ],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage-summary.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage-summary.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage-summary.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage-summary.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/summary.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/summary.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/summary.json"
+      ],
+      "repair": [
+        "analysis/repair/draft.json",
+        "analysis/repair/final-primary.json",
+        "analysis/repair/summary.json"
+      ],
+      "resources": [
+        "analysis/resources/summary.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/draft.json": "analysis/repair/draft.json",
+      "generation/v3/final-primary.json": "analysis/repair/final-primary.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
   }
 }

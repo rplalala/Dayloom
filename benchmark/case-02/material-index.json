@@ -39,14 +39,14 @@
       "json_pointer": "/itinerary"
     },
     {
-      "path": "generation/v3/draft.json",
+      "path": "analysis/repair/draft.json",
       "sha256": "b3b51d6558365403797ea8134ad3553287c20db3b3065cfdc96a49455cb8b448",
       "source_logical_path": "work/captures/v3/result.json",
       "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
       "json_pointer": "/v3/draft"
     },
     {
-      "path": "generation/v3/final-primary.json",
+      "path": "analysis/repair/final-primary.json",
       "sha256": "96d55eec17ba42111cc17c116bbadb3ed1107b93075b3bb47a4e411ea8514fa4",
       "source_logical_path": "work/captures/v3/result.json",
       "source_sha256": "a26b9084896e662f4d1bde50b14586659bf86c27dfd4c1336bcd02460745bbbb",
@@ -192,6 +192,129 @@
           "sha256": "8585bc7f0b95cfabfc7dbd9cabdeccec532c8251ea4f273be2798099bb691f2b"
         }
       ]
+    },
+    {
+      "path": "generation/v0/provenance.json",
+      "sha256": "c3a42f8ea879b371f3ac4c9bde2b60fded06644ef120416da1514507d43944d2",
+      "bytes": 960,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v0/provenance.json",
+        "sha256": "c3a42f8ea879b371f3ac4c9bde2b60fded06644ef120416da1514507d43944d2",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v0/usage.json",
+      "sha256": "fcc7c2e0965b3a1b88d24493dde45d5eb20086b9f6a7b1631925548006dad76b",
+      "bytes": 3049,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v0/usage.json",
+        "sha256": "fcc7c2e0965b3a1b88d24493dde45d5eb20086b9f6a7b1631925548006dad76b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "af142c78bfd378df6c42745a34af5cb8afec9ac98e7c7abb285226b56bcae68a",
+      "bytes": 960,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v1-a2/provenance.json",
+        "sha256": "af142c78bfd378df6c42745a34af5cb8afec9ac98e7c7abb285226b56bcae68a",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v1/usage.json",
+      "sha256": "919ee48ed11f146112721be872430ff53f91614d0b85a93af3dd8ccbb06fc6c0",
+      "bytes": 38742,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v1-a2/usage.json",
+        "sha256": "919ee48ed11f146112721be872430ff53f91614d0b85a93af3dd8ccbb06fc6c0",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "e312423163829133ffc65fb161de1d34da0a9da9a896b08769162241dd029555",
+      "bytes": 960,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v2/provenance.json",
+        "sha256": "e312423163829133ffc65fb161de1d34da0a9da9a896b08769162241dd029555",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v2/usage.json",
+      "sha256": "bb388fdc66bc3fae4cb4311bd872f27dc350e1c3c8f249eeb820350975ea41f3",
+      "bytes": 48740,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v2/usage.json",
+        "sha256": "bb388fdc66bc3fae4cb4311bd872f27dc350e1c3c8f249eeb820350975ea41f3",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "54ae45d3332b8e372b87590811b118b7a3299f1e055022bde7bfc476e2b6274b",
+      "bytes": 960,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v3/provenance.json",
+        "sha256": "54ae45d3332b8e372b87590811b118b7a3299f1e055022bde7bfc476e2b6274b",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/v3/usage.json",
+      "sha256": "e26d12b632d7b3db704fcef4a954ea7277206bcf932c5f3d46a0529a7167eb38",
+      "bytes": 54108,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v3/usage.json",
+        "sha256": "e26d12b632d7b3db704fcef4a954ea7277206bcf932c5f3d46a0529a7167eb38",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "bytes": 6500,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "work/captures/v0/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "45fce4651b865aca2264d900922f77345c1297aaffb9f749299052a00060b6b7",
+      "bytes": 6037,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-02/itinerary.md",
+        "sha256": "45fce4651b865aca2264d900922f77345c1297aaffb9f749299052a00060b6b7",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+    },
+    {
+      "path": "report.md",
+      "sha256": "023c902ce960be48139781cf76ba65f68e2b71e25a7f32e51e174aaf401a47ac",
+      "bytes": 13532,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-02/report.md",
+        "sha256": "9f9baeebd1fdaedf6338daa013447c48e13c3ac849e6fe1928219e0eca92bf60",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
     }
   ],
   "private_native_bindings": [
@@ -476,5 +599,106 @@
     },
     "preparation_sha256": "cea3524cfcffa655997491ff0c826457399f81bc35c664cedc65778cc2a7aba7",
     "packet_sha256": "81d1b521d7a4e6a0f446e22a4d1be50ffd961585f7e7ae97394ba65492024d99"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "d5128290385ece2e67460b1af578a956a35bbc4ee33951d469b811600c456f38",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-02.json"
+      ],
+      "requirements": [
+        "requirements/reviewed-requirements.json"
+      ],
+      "interests": [
+        "interests/interests.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [],
+      "interest_reviews": [],
+      "origin_captures": [
+        "generation/poi-origins.json"
+      ],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage.json",
+        "generation/v0/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage.json",
+        "generation/v1/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage.json",
+        "generation/v2/provenance.json",
+        "generation/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage.json",
+        "generation/v3/provenance.json",
+        "generation/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/quality-report.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/pair-report.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/selected-process.json"
+      ],
+      "repair": [
+        "analysis/repair/draft.json",
+        "analysis/repair/final-primary.json",
+        "analysis/repair/repair-summary.json"
+      ],
+      "resources": [
+        "analysis/resources/accounting.json",
+        "analysis/resources/population-summary.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/draft.json": "analysis/repair/draft.json",
+      "generation/v3/final-primary.json": "analysis/repair/final-primary.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
   }
 }

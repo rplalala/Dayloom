@@ -6,8 +6,7 @@
 The researcher accepted the exact selected input/results, primary scores, offline
 analyses and all stated limitations as the final case-06 data and documentation
 baseline. The reviewed package is local commit `6ce08f5`; recording its acceptance
-changed status metadata only. Blinded human ratings remain deferred. Case-08/10
-are explicitly paused pending a separate start instruction.
+changed status metadata only. Blinded human ratings remain deferred.
 
 The [original request](../inputs/case-06.json) is a Sydney trip on 15–18 October 2026
 for three travelers, with a whole-group budget of AUD 2,200. Two adults and a child
@@ -25,8 +24,7 @@ all-attempt resource account. It is not substituted for a selected final result.
 [Issue #155](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/155) owns the
 live acceptance state; [parent #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
 owns the first-wave budget. This package makes no general version ranking, causal
-Repair claim, corpus recall estimate or version-freeze decision. Case-08/10 remain
-unstarted, with no automatic queue or backfill.
+Repair claim, corpus recall estimate or version-freeze decision.
 
 ### Post-fix offline compatibility
 
@@ -57,20 +55,25 @@ owns the detailed execution; this update adds no live calls or new case dispatch
 
 ## Material map
 
-| Material | Final reader view |
+| Material | Reader view |
 | --- | --- |
-| Complete schedules, transfers, unscheduled references and recorded POI origins | [Itineraries](itinerary.md) |
-| Exact public hashes, original sources, selected runs and lossless reference format | [Material index](material-index.json) |
-| Independently reviewed source meaning | [Requirements](requirements/reviewed-requirements.json), [interests](interests/interests.json) |
-| Reviewed timezone, transport, density and occupancy | [Schedule](requirements/schedule.json), [transport](requirements/transport.json), [density](requirements/density.json), [occupancy](requirements/occupancy.json) |
-| Selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
-| Selected usage | [V0](generation/v0/usage.json), [V1](generation/v1/usage.json), [V2](generation/v2/usage.json), [V3](generation/v3/usage.json) |
-| Selected provenance | [V0](generation/v0/provenance.json), [V1](generation/v1/provenance.json), [V2](generation/v2/provenance.json), [V3](generation/v3/provenance.json) |
-| Shared configuration and recorded RAG origins | [Runtime policy](generation/runtime-policy.json), [V2 origins](generation/v2/rag-origins.json), [V3 origins](generation/v3/rag-origins.json) |
-| Final independent primary report | [Primary](evaluation/primary/report.json) |
-| Candidate stages and independent interest judgments | [Opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [review records](interests/relevance-reviews.json) |
-| Same-run V3 stages and Repair observations | [Lossless draft delta](generation/v3/draft-delta.json), [validation](generation/v3/validation.json), [paired diagnostics](evaluation/v3-pair/report.json), [Repair view](analysis/repair/repair.json), [mechanisms](analysis/repair/mechanism.json) |
-| Selected and all-attempt resources | [Accounting](analysis/resources/accounting.json) |
+| Original request | [case 06](../inputs/case-06.json) |
+| Reviewed requirements | [reviewed requirements](requirements/reviewed-requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Supporting request context | [density](requirements/density.json), [occupancy](requirements/occupancy.json), [schedule](requirements/schedule.json), [transport](requirements/transport.json) |
+| Independent review records | [relevance reviews](interests/relevance-reviews.json) |
+| Recorded RAG origins | [rag origins](generation/v2/rag-origins.json), [rag origins](generation/v3/rag-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [report](evaluation/primary/report.json) |
+| Same-run V3 pairing | [report](evaluation/v3-pair/report.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json) |
+| Repair and complete stages | [draft delta](analysis/repair/draft-delta.json), [mechanism](analysis/repair/mechanism.json), [repair](analysis/repair/repair.json), [validation](analysis/repair/validation.json) |
+| All-attempt resources | [accounting](analysis/resources/accounting.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 Public JSON values use indexed `$case_material_ref` links to store repeated large
 objects once. Expanding those references recovers the exact source JSON value.

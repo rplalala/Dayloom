@@ -39,15 +39,23 @@ selected schedules and reported metrics; the original closed native bundles
 remain the replay authority. Source-labelled public projections do not replace
 their native preparations or receipts.
 
-| Material | Files |
+| Material | Reader view |
 | --- | --- |
-| Readable schedules and actual changes | [Itineraries](itinerary.md) |
-| Independent request semantics | [Reviewed requirements](requirements/reviewed-requirements.json), [interests](interests/interests.json) |
-| Selected final schedules | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
-| Same-run V3 stages | [Draft](generation/v3/draft.json), [final primary](generation/v3/final-primary.json) |
-| Independent scores | [Corrected API-only](evaluation/primary/quality-report.json), [model-supplemented](evaluation/opening/quality-report.json), [access states](evaluation/opening/access-summary.json) |
-| Process observations | [POI stages and differences](analysis/poi-process/selected-process.json), [recorded origins](generation/poi-origins.json), [V3 pair](evaluation/v3-pair/pair-report.json), [Repair](analysis/repair/repair-summary.json) |
-| Completion and resources | [First-attempt population](analysis/resources/population-summary.json), [all-attempt accounting](analysis/resources/accounting.json) |
+| Original request | [case 02](../inputs/case-02.json) |
+| Reviewed requirements | [reviewed requirements](requirements/reviewed-requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Recorded RAG origins | [poi origins](generation/poi-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [quality report](evaluation/primary/quality-report.json) |
+| Same-run V3 pairing | [pair report](evaluation/v3-pair/pair-report.json) |
+| Candidate process and relevance | [selected process](analysis/poi-process/selected-process.json) |
+| Repair and complete stages | [draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [repair summary](analysis/repair/repair-summary.json) |
+| All-attempt resources | [accounting](analysis/resources/accounting.json), [population summary](analysis/resources/population-summary.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 ## Primary scores and evidence
 

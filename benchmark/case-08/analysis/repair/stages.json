@@ -1,0 +1,169 @@
+{
+  "schema_version": "case_lossless_itinerary_stages_1",
+  "patch_format": "RFC6902 add/remove/replace; apply in listed order to expanded base",
+  "native_result_sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+  "stages": {
+    "draft": {
+      "base": {
+        "$case_material_ref": {
+          "path": "../../generation/r02/v3/itinerary.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "aa1f5fdcbe55cd9971f0455c88678d1ee610217eed6c586f28c8d6c217620fae"
+        }
+      },
+      "patch": [
+        {
+          "op": "add",
+          "path": "/days/0/activities/0",
+          "value": {
+            "activity_kind": "main_poi",
+            "time_use": "scheduled",
+            "activity_id": "day1-cathedral",
+            "title": "Visit the Cathedral of Barcelona",
+            "place_name": "Cathedral of Barcelona",
+            "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "location": "Pla de la Seu, s/n, Ciutat Vella, 08002 Barcelona, Spain",
+            "start_time": "2026-10-22T09:45:00+02:00",
+            "end_time": "2026-10-22T11:00:00+02:00",
+            "estimated_cost": null,
+            "notes": "The supplied Places hours are a general baseline; date-specific exceptions are unknown. Admission details are not established by the supplied evidence."
+          }
+        },
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/2"
+        },
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/1"
+        },
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/0"
+        },
+        {
+          "op": "add",
+          "path": "/route_diagnostics/0",
+          "value": {
+            "from_activity_id": "day1-cathedral",
+            "to_activity_id": "day1-temple",
+            "origin": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "destination": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "departure": "2026-10-22T11:00:00+02:00",
+            "next_start": "2026-10-22T11:20:00+02:00",
+            "considered_modes": [
+              "WALK",
+              "TRANSIT",
+              "DRIVE"
+            ],
+            "adopted_mode": "WALK",
+            "result": "PASS",
+            "reason": "bound",
+            "mode_results": [
+              {
+                "mode": "WALK",
+                "status": "PASS",
+                "reason": "time_connection_only",
+                "evidence": [
+                  {
+                    "duration_seconds": 179,
+                    "source_ref": "google_routes:compute_route_matrix",
+                    "travel_mode": "WALK",
+                    "routing_preference": null,
+                    "departure_time": null,
+                    "requested_at": "2026-10-17T03:50:49.624109+00:00",
+                    "retrieved_at": "2026-10-17T03:50:50.240043+00:00",
+                    "basis": "walk_provider_estimate",
+                    "element": {
+                      "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                      "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                      "evidence_type": "provider_observed",
+                      "derived_from_origin_place_id": null,
+                      "derived_from_destination_place_id": null,
+                      "status": "OK",
+                      "condition": "ROUTE_EXISTS",
+                      "status_state": "success",
+                      "static_duration_seconds": 179,
+                      "fallback_info": null,
+                      "requested_at": "2026-10-17T03:50:49.624109Z",
+                      "retrieved_at": "2026-10-17T03:50:50.240043Z",
+                      "origin_index": 4,
+                      "destination_index": 7,
+                      "distance_meters": 215,
+                      "duration_seconds": 179,
+                      "availability": "available",
+                      "unavailable_reason": null
+                    }
+                  }
+                ]
+              },
+              {
+                "mode": "TRANSIT",
+                "status": "UNKNOWN",
+                "reason": "applicable_route_unavailable",
+                "evidence": []
+              },
+              {
+                "mode": "DRIVE",
+                "status": "UNKNOWN",
+                "reason": "applicable_route_unavailable",
+                "evidence": []
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/transfers/0",
+          "value": {
+            "from_activity_id": "day1-cathedral",
+            "to_activity_id": "day1-temple",
+            "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "mode": "WALK",
+            "mode_source": "APPLICATION_DEFAULT_WALK",
+            "departure_time": "2026-10-22T11:00:00+02:00",
+            "arrival_time": "2026-10-22T11:02:59+02:00",
+            "provider_duration_seconds": 179.0,
+            "distance_meters": 215,
+            "reserve_seconds": 0.0,
+            "routing_preference": null,
+            "evidence_refs": [
+              "google_routes:compute_route_matrix"
+            ],
+            "calculation_basis": "walk_provider_estimate",
+            "validation_state": "PASS",
+            "unknowns": []
+          }
+        }
+      ],
+      "expanded_semantic_sha256": "bdeeaed5aeb490308148eb1f54190c6b008dfa18bf795f80e4bfa6ac508baf80",
+      "native_json_pointer": "/v3/draft"
+    },
+    "final_primary": {
+      "base": {
+        "$case_material_ref": {
+          "path": "../../generation/r02/v3/itinerary.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "aa1f5fdcbe55cd9971f0455c88678d1ee610217eed6c586f28c8d6c217620fae"
+        }
+      },
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/2"
+        },
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/1"
+        },
+        {
+          "op": "remove",
+          "path": "/reference_recommendations/0"
+        }
+      ],
+      "expanded_semantic_sha256": "cc95d256a539c16b14f905586332b30c031ca92776d5efa1c875ea3cb9fcddb9",
+      "native_json_pointer": "/v3/final_primary"
+    }
+  }
+}

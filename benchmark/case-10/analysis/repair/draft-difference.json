@@ -1,6 +1,6 @@
 {
   "format": "case_itinerary_root_field_patch_1",
-  "base_path": "itinerary.json",
+  "base_path": "../../generation/v3/itinerary.json",
   "base_semantic_sha256": "e4bad58dc719cf3b739b461841a8fbe653d9608af475bed7b7ddc4170c32709d",
   "expanded_semantic_sha256": "d3385bb62a1eb9960f0863c4cdacfe5c4fd0004f7cc1a74f76ae08ad3672f380",
   "operations": [

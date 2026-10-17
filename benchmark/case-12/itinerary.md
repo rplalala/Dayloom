@@ -207,7 +207,7 @@ No scheduled activities.
 
 ## V3 same-run Repair
 
-The actual draft has five primary visits; the selected final has eleven. The lossless [draft delta](generation/v3/draft-delta.json) reconstructs the draft from the final; the independent V2 final is a different generation.
+The actual draft has five primary visits; the selected final has eleven. The lossless [draft delta](analysis/repair/draft-delta.json) reconstructs the draft from the final; the independent V2 final is a different generation.
 
 | Round | Accepted additions | Rejected proposals |
 | --- | --- | --- |

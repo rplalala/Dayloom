@@ -23,7 +23,7 @@
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/transfers/0",
         "semantic_sha256": "b96f53c45a9d0dcad680365d1bc8524efad03b6ab6d5ac67193fdedc097937d1"
       }
@@ -50,21 +50,21 @@
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/transfers/1",
         "semantic_sha256": "097db21fe51b2905a0180b02b957d1883b739abc38f0eb35ef5e5cfacb60ec8c"
       }
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/transfers/2",
         "semantic_sha256": "6715f642260491812001cadf9655fc425ff30c525f6175ac5fe46c4cea499be8"
       }
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/transfers/3",
         "semantic_sha256": "18343d8095ab983968ef814ea3baebac55a8d798cdd1944efb10152ec38e8771"
       }
@@ -140,7 +140,7 @@
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/route_diagnostics/0",
         "semantic_sha256": "b6fba6a587d1f56fc6201559b679916ea850d3dd2ee088ead2ee1692376205b0"
       }
@@ -214,21 +214,21 @@
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/route_diagnostics/1",
         "semantic_sha256": "f61e2dcc03f7875c1670b5d547b487685cb33849f592efd277fcb35420e995d3"
       }
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/route_diagnostics/2",
         "semantic_sha256": "2a4b6b97fcfee2a5aaf5eb484a6e76ea42169ca52634bd5ec69222e22a365e37"
       }
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/route_diagnostics/3",
         "semantic_sha256": "ed09815f2678695ae8043903e0afd97d94278b9726d368a9e5ee876cdc20d988"
       }
@@ -256,14 +256,14 @@
         },
         {
           "$case_material_ref": {
-            "path": "itinerary.json",
+            "path": "../../generation/v3/itinerary.json",
             "pointer": "/days/0/activities/0",
             "semantic_sha256": "2406032bf04beaa6154d6e2ddbb5e61bd296c8c19d3351060a80a02c5bdf9481"
           }
         },
         {
           "$case_material_ref": {
-            "path": "itinerary.json",
+            "path": "../../generation/v3/itinerary.json",
             "pointer": "/days/0/activities/1",
             "semantic_sha256": "5e11168ff82928e919cb03c12050867026dd0891779e3bb42128ca5d9b710a10"
           }
@@ -287,14 +287,14 @@
         },
         {
           "$case_material_ref": {
-            "path": "itinerary.json",
+            "path": "../../generation/v3/itinerary.json",
             "pointer": "/days/1/activities/0",
             "semantic_sha256": "e7d291a7d0ffa9c2accd713c7c44872c7f6cedba606ff257dd4f19280ae4611e"
           }
         },
         {
           "$case_material_ref": {
-            "path": "itinerary.json",
+            "path": "../../generation/v3/itinerary.json",
             "pointer": "/days/1/activities/1",
             "semantic_sha256": "53014f96da739cec30466d7e8e4614f1d1919d32a0562adc08a6656c42d26f5f"
           }
@@ -303,14 +303,14 @@
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/days/2",
         "semantic_sha256": "d8cf06df33f04bcf222c357cb7e1df10953a6dce23427fcb67097cab69517569"
       }
     },
     {
       "$case_material_ref": {
-        "path": "itinerary.json",
+        "path": "../../generation/v3/itinerary.json",
         "pointer": "/days/3",
         "semantic_sha256": "595c9894234005ca735af3ff49a6547aa7b9d21fc3326aa498ecb7df62de940f"
       }

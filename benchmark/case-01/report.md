@@ -29,19 +29,23 @@ The case follows the [common acceptance workflow](../README.md#per-case-executio
 
 ## Case materials
 
-| Material | Files |
+| Material | Reader view |
 | --- | --- |
-| Readable schedules and changes | [Itineraries and RAG labels](itinerary.md) |
-| Reviewed request semantics | [RequirementSpec](requirements/reviewed-requirements.json), [interest inventory](interests/interests.json) |
-| Selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
-| Same-run V3 draft | [Lossless draft delta](generation/v3/draft.json) |
-| Generation usage | [V0](generation/v0/usage.json), [V1](generation/v1/usage.json), [V2](generation/v2/usage.json), [V3](generation/v3/usage.json) |
-| Producer provenance | [V0](generation/v0/provenance.json), [V1](generation/v1/provenance.json), [V2](generation/v2/provenance.json), [V3](generation/v3/provenance.json) |
-| Runtime policies | [V0-V2](generation/runtime-policy.json), [V3](generation/v3/runtime-policy.json) |
-| Independent evaluation | [API-only quality](evaluation/primary/quality-report.json), [V3 pair](evaluation/v3-pair/pair-report.json), [opening assessment](evaluation/opening/report.json), [supplemented quality](evaluation/opening/quality-report.json) |
-| Candidate process | [Stage analysis](analysis/poi-process/opportunities.json), [RAG origins](generation/rag-origins.json), [interest applicability](analysis/poi-process/relevance.json) |
-| Repair | [Actual lineage and independent final differences](analysis/repair/repair.json) |
-| Resources | [Attempt inventory](analysis/resources/population.json), [descriptive tradeoffs](analysis/resources/tradeoffs.json), [accounting](analysis/resources/accounting.json) |
+| Original request | [case 01](../inputs/case-01.json) |
+| Reviewed requirements | [reviewed requirements](requirements/reviewed-requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Recorded RAG origins | [rag origins](generation/rag-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/v3/runtime-policy.json) |
+| Primary scoring | [quality report](evaluation/primary/quality-report.json) |
+| Same-run V3 pairing | [pair report](evaluation/v3-pair/pair-report.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json) |
+| Repair and complete stages | [draft](analysis/repair/draft.json), [repair](analysis/repair/repair.json) |
+| All-attempt resources | [accounting](analysis/resources/accounting.json), [population](analysis/resources/population.json), [tradeoffs](analysis/resources/tradeoffs.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 ## Source provenance
 
@@ -105,7 +109,6 @@ is included in the separate rejected-attempt cost scope.
 
 ## Candidate POI process
 
-
 | Stage | V1 distinct places | V2 distinct places | V2 gained / V1-only / retained |
 | --- | ---: | ---: | --- |
 | Discovered | 56, complete | 66 observed, partial | Complete comparison unavailable |
@@ -122,7 +125,6 @@ identity association and exclude Nearby-only references. Empty interests make re
 non-applicable. No corpus census, recall estimate or causal RAG benefit is claimed.
 
 ## V3 Repair and independent pair
-
 
 The selected real V3 run accepted three `system_delete` rounds. Sydney Opera House,
 Taronga Zoo Sydney and Royal Botanic Garden Sydney were removed from their respective

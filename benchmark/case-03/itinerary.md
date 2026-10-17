@@ -309,11 +309,11 @@ Application-owned transfers:
 
 ## Same-run V3 draft to final
 
-The [lossless draft material](generation/v3/draft.json) references shared final content. Expansion recovers every original field, including transfers and unscheduled recommendations. Two deterministic adopted deletions reduce daily primary counts from 3/3/2/2 to 2/2/2/2. Eight retained activities are unchanged.
+The [lossless draft material](analysis/repair/draft.json) references shared final content. Expansion recovers every original field, including transfers and unscheduled recommendations. Two deterministic adopted deletions reduce daily primary counts from 3/3/2/2 to 2/2/2/2. Eight retained activities are unchanged.
 
 - Removed **Ueno Park** on 2026-10-15, 2026-10-15T10:00:00+09:00 → 2026-10-15T11:15:00+09:00; 4 Uenokoen, Taito City, Tokyo 110-0007, Japan. Original notes: Not stated.
 - Removed **Meiji Jingu** on 2026-10-16, 2026-10-16T09:30:00+09:00 → 2026-10-16T11:15:00+09:00; 1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan. Original notes: Opening hours for this date were not verified.
 
 The two outgoing transport legs from those visits disappear; four continued legs retain their judgments. No new scheduled venue, replacement or retained-activity retiming is recorded. Removal is not independent resolution of an old venue or route condition.
 
-Unscheduled recommendations increase from zero in the draft to three in the published final itinerary: **Smoking Area** and **SKYTREE GALLERY** on 2026-10-15, and **A piece of cake** on 2026-10-16. Their reasons, addresses, uncertainties and Google Nearby source references appear in the preceding [Unscheduled references](#unscheduled-references-3) section and the [final material](generation/v3/itinerary.json). These are post-Repair reference attachments: the native `v3.final_primary` still contains zero recommendations and otherwise equals the published final itinerary. They add no scheduled activity or transport leg and are excluded from the draft/final-primary scoring pair below.
+Unscheduled recommendations increase from zero in the draft to three in the published final itinerary: **Smoking Area** and **SKYTREE GALLERY** on 2026-10-15, and **A piece of cake** on 2026-10-16. Their reasons, addresses, uncertainties and Google Nearby source references appear in the preceding [Unscheduled references](.#unscheduled-references-3) section and the [final material](generation/v3/itinerary.json). These are post-Repair reference attachments: the native `v3.final_primary` still contains zero recommendations and otherwise equals the published final itinerary. They add no scheduled activity or transport leg and are excluded from the draft/final-primary scoring pair below.

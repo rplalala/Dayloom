@@ -1,7 +1,7 @@
 {
   "schema_version": "case_itinerary_delta_1",
   "base_ref": {
-    "path": "itinerary.json",
+    "path": "../../generation/v3/itinerary.json",
     "json_pointer": "",
     "expanded_semantic_sha256": "3cc16e8ff8c392263b5308ac9729ae7fea09eab657b1692a64c95f2ee8dc8ac9"
   },

@@ -6441,7 +6441,7 @@
   ],
   "original_rag_discovery": {
     "$case_material_ref": {
-      "path": "rag-origins.json",
+      "path": "../../generation/v3/rag-origins.json",
       "json_pointer": "",
       "expanded_semantic_sha256": "c646ced1973d9bfc51b9478dab69730dbda186e3d7323b88e56c0454cd22ef3a"
     }

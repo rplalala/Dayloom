@@ -17,7 +17,8 @@
     "path": "evaluation/primary/source-material-index.json",
     "sha256": "b4b40c613a3d97c4a56b5cee26eb0a8fdf3fe8857d8a67e1ebf7c9f47b711786",
     "reference_resolution_root": "case_directory",
-    "meaning": "Exact frozen pre-correction index; historical status/costs, not current acceptance."
+    "meaning": "Exact frozen pre-correction index; historical status/costs, not current acceptance.",
+    "reference_resolution_revision": "2c48c8910cfc3819bc18cebab33fe1ccf809fcc0"
   },
   "versions": {
     "v0": {
@@ -75,7 +76,7 @@
   },
   "materials": [
     {
-      "path": "analysis/offline-r01/acceptance.json",
+      "path": "analysis/history/offline-r01/acceptance.json",
       "sha256": "e248340d02b8b77ebcd3a9c0d33b1962b538de17023fd4c985e066f46afca669",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/acceptance.json",
@@ -85,7 +86,7 @@
       "transformation": "Only archive_probe.correction replaces the local temporary-root spelling. Original verdicts, metrics and stage scope are unchanged."
     },
     {
-      "path": "analysis/offline-r01/candidates.json",
+      "path": "analysis/history/offline-r01/candidates.json",
       "sha256": "4878633b13213975934f94be456cb3984a7c190888bc5901367a441ae4c145eb",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/candidates.json",
@@ -94,7 +95,7 @@
       "publication_kind": "exact_source_copy"
     },
     {
-      "path": "analysis/offline-r01/relevance.json",
+      "path": "analysis/history/offline-r01/relevance.json",
       "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/relevance.json",
@@ -103,7 +104,7 @@
       "publication_kind": "exact_source_copy"
     },
     {
-      "path": "analysis/offline-r01/repair.json",
+      "path": "analysis/history/offline-r01/repair.json",
       "sha256": "dda9951b5ffecb47f931f268e70dba7b768828b4c2e2b16fe7c208a77416555e",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/analysis/offline-r01/repair.json",
@@ -279,7 +280,7 @@
       }
     },
     {
-      "path": "generation/v0/itinerary.json",
+      "path": "analysis/history/r01/v0/itinerary.json",
       "sha256": "1bc20ef61c4f4eb4ad78edd7a9ae143d7fd8441bcd72016d7b1c79c5f17992c8",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/v0/itinerary.json",
@@ -293,7 +294,7 @@
       }
     },
     {
-      "path": "generation/v1/failure.json",
+      "path": "analysis/history/r01/v1/failure.json",
       "sha256": "27061ca2efe08994e05496b4309d44d6cbd516801e9070f0f36f184aad8dd24e",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/generation/v1/failure.json",
@@ -303,7 +304,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "b51023c18f8f8273ddd8c54542d0127e78affab90add55506905da46cae728f0",
+      "sha256": "75901853ec3a5b5710e1e4b37e82437844cb796a89448511621fc34765d21783",
       "source": {
         "storage_identifier": "git:2c48c8910cfc3819bc18cebab33fe1ccf809fcc0:benchmark/case-08/report.md",
         "sha256": "574e88951c8015a922223263653c8059b2b49b4ca64a09228a915ad079748400"
@@ -350,6 +351,299 @@
         "sha256": "28c81b6de63200682b13561b676ad5dc402b62fa3487fa1fde14cb23e293f1fb"
       },
       "publication_kind": "current_acceptance_checklist"
+    },
+    {
+      "path": "generation/r02/v0/provenance.json",
+      "sha256": "d4fc9b588cbe052b63c78e4614490d444e9a87cdf750b9b42fe732333e1c5e01",
+      "bytes": 958,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v0/provenance.json",
+        "sha256": "d4fc9b588cbe052b63c78e4614490d444e9a87cdf750b9b42fe732333e1c5e01",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v1/provenance.json",
+      "sha256": "3c0bc953890f2ee1aabacb4328f047cbe8b4956c5f9c428da9ecff29cc91884c",
+      "bytes": 958,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v1/provenance.json",
+        "sha256": "3c0bc953890f2ee1aabacb4328f047cbe8b4956c5f9c428da9ecff29cc91884c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v2/provenance.json",
+      "sha256": "2fc6ae05015a3f2c237743bbe6bc6b71a1c86013c3d4a2426febccca61b95e93",
+      "bytes": 958,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v2/provenance.json",
+        "sha256": "2fc6ae05015a3f2c237743bbe6bc6b71a1c86013c3d4a2426febccca61b95e93",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/v3/provenance.json",
+      "sha256": "30c94d83dee24d5eff0fb85a612ec636d54dcfb9f17da0d45e0b4d7f68d884b8",
+      "bytes": 958,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/provenance.json",
+        "sha256": "30c94d83dee24d5eff0fb85a612ec636d54dcfb9f17da0d45e0b4d7f68d884b8",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "generation/r02/runtime-policy.json",
+      "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "bytes": 6500,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v0/runtime-policy.json",
+        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "interests/inventory.json",
+      "sha256": "f973639faa66638c88fba6d0c23c2ac836086e1702cf973b7d4103a829606c25",
+      "bytes": 7586,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/interests/inventory.json",
+        "sha256": "a180755ba236c1c043bb8635e6b3cf417cca0d7350b3cb82e0bfa145de2e61d8",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/repair/stages.json",
+      "sha256": "c59076a0452441673f923630917e2a6361605d573c34233d092e2e8ed94cdeed",
+      "bytes": 6288,
+      "representation": "lossless_stage_differences",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/result.json",
+        "sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+        "json_pointer": ""
+      },
+      "transformation": "Expand the saved final itinerary and apply each ordered patch; hashes bind the complete original stage, including recommendations."
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "992725dc5fcb91d8167d8d4e07e188dd837a852d9b9f628784144b947b1a82b4",
+      "bytes": 30080,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/mechanism.json",
+        "sha256": "992725dc5fcb91d8167d8d4e07e188dd837a852d9b9f628784144b947b1a82b4",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "c9c6063b7fc8ad1a2322565b9a7fde34c47c5ce2e1615f941141644cc99f0f40",
+      "bytes": 1469,
+      "representation": "derived_current_view",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/analysis/offline-r01/candidates.json",
+        "sha256": "4878633b13213975934f94be456cb3984a7c190888bc5901367a441ae4c145eb",
+        "json_pointer": ""
+      },
+      "transformation": "Current source-bound view over unchanged historical stage fields and the completed pair; pending historical states are not current findings."
+    },
+    {
+      "path": "analysis/repair/repair.json",
+      "sha256": "234e5c81e418badb4fd7b2fcd3158490b1b0819817d13fa327318e6b9b7cce32",
+      "bytes": 1991,
+      "representation": "derived_current_view",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/analysis/offline-r01/repair.json",
+        "sha256": "dda9951b5ffecb47f931f268e70dba7b768828b4c2e2b16fe7c208a77416555e",
+        "json_pointer": ""
+      },
+      "transformation": "Current source-bound view over unchanged historical stage fields and the completed pair; pending historical states are not current findings."
+    },
+    {
+      "path": "analysis/resources/price-books.json",
+      "sha256": "6c8508cea277567e659f289977d189fd069f970df76ba0c2335046490b89d2f7",
+      "bytes": 227358,
+      "representation": "saved_json_projection",
+      "transformation": "Distinct complete saved price books keyed by canonical semantic hash; rates and dates are unchanged.",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v0/cost-report.json",
+          "sha256": "25421d0df930e54ce0a3c1d7743d089f890c874208cf1ec971fcbbe17b95f7bb",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v1/cost-report.json",
+          "sha256": "4a2706fd31261abc3b74c86558539b681670f2008f81790a88bcfb229149ece6",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v0/cost-report.json",
+          "sha256": "f34c06d6c473d8e05061b3252766a41f318a407e744b1bbb7ee8d6cbeabe49ef",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v1/cost-report.json",
+          "sha256": "22488c41e0ba6016104d22513a8d6017122e47dadc684415eba6a7c19579cc55",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v2/cost-report.json",
+          "sha256": "a9bc114307722f2dc389303212b921fceb487a9c3a90e9c937a0f0b9fd606ca3",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/cost-report.json",
+          "sha256": "7b53fee299b5c3c00803394392d8d3cd4b139b36ed2eddfa65592ac3969f0b15",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/primary/execution/report.json",
+          "sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+          "json_pointer": "/usage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+          "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+          "json_pointer": "/usage"
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/accounting.json",
+      "sha256": "9b538620beba44a28779068e941c6fc069741d6cf828ad6b7fec7580292e186d",
+      "bytes": 346591,
+      "representation": "saved_json_projection",
+      "transformation": "Project authentic usage and native cost totals for six Planner and two Primary invocations; retain separate namespaces, saved prices, failures and missing telemetry.",
+      "sources": [
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v0/usage-summary.json",
+          "sha256": "28256b757ea5878e42271b26e58df631d9112f3a217194b65ef418e047b2e1c5",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v0/cost-report.json",
+          "sha256": "25421d0df930e54ce0a3c1d7743d089f890c874208cf1ec971fcbbe17b95f7bb",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v1/usage-summary.json",
+          "sha256": "91aa91b8182a4ee320b0ba27a1cf5ddf7616e8eb180255356030ee07eeb162a5",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r01/captures/v1/cost-report.json",
+          "sha256": "4a2706fd31261abc3b74c86558539b681670f2008f81790a88bcfb229149ece6",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v0/usage-summary.json",
+          "sha256": "af91eb276bfcb0cd3c43c3168c9af4c52633abd86e050023e1c3e89edd93a363",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v0/cost-report.json",
+          "sha256": "f34c06d6c473d8e05061b3252766a41f318a407e744b1bbb7ee8d6cbeabe49ef",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v1/usage-summary.json",
+          "sha256": "c32c1908fe0cf75d9e0d5cc9d0484a13ab66e7a73676e819eb43e5c1d173c339",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v1/cost-report.json",
+          "sha256": "22488c41e0ba6016104d22513a8d6017122e47dadc684415eba6a7c19579cc55",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v2/usage-summary.json",
+          "sha256": "87d3396575ee0ac1b72e4a7e298cab7b65150fe0c428f8ed504c6e8b59a0678a",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v2/cost-report.json",
+          "sha256": "a9bc114307722f2dc389303212b921fceb487a9c3a90e9c937a0f0b9fd606ca3",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/usage-summary.json",
+          "sha256": "939b3b65183a4d0568c09367c2c9281d0df6084918a000dc503fe63a6896ee2f",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/cost-report.json",
+          "sha256": "7b53fee299b5c3c00803394392d8d3cd4b139b36ed2eddfa65592ac3969f0b15",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/work/r02/primary/execution/report.json",
+          "sha256": "5d919194c2af389e5170160afa24610302a04876ce78e9510248fde9170fc95b",
+          "json_pointer": "/usage"
+        },
+        {
+          "logical_path": "benchmark/scratch/case-08/next-r01/primary/execution/report.json",
+          "sha256": "fc450e32f9882fe65b1d43b23d8e262ef108ae34ca535aff1c9d4e5ffcedb872",
+          "json_pointer": "/usage"
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/v3-origins.json",
+      "sha256": "b754259dbc886b1a396643073577d17238f6ae5b3b499d9d1cebafc9a7fbd4ed",
+      "bytes": 325,
+      "representation": "saved_json_projection",
+      "original_source": {
+        "logical_path": "benchmark/scratch/case-08/work/r02/captures/v3/result.json",
+        "sha256": "7da4f9d7860036a108ddbd9c06f57e4cf87a32ca26019ab6af017c91bbb83d90",
+        "json_pointer": "/v3/original_rag_discovery"
+      },
+      "transformation": "Saved canonical origin and fate fields; an empty retrieval is retained as empty."
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "2e9cf92f2dabb0e45d7c95b22721da37e4cbc3308b4259b95a1ccc105842822c",
+      "bytes": 205,
+      "representation": "unchanged_review_with_shared_reference",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/analysis/offline-r01/relevance.json",
+        "sha256": "14ca6d987ac4cc06a3bcc4313d32cf11548dd5fd5b300fb29d4b2e9a78e8f509",
+        "json_pointer": ""
+      }
+    },
+    {
+      "path": "itinerary.md",
+      "sha256": "ed3e1ea8fc3b3fc966a2788d90bf2a85dddb7e245bbe2ac61288d17c6b3991c1",
+      "bytes": 12784,
+      "representation": "reader_document",
+      "sources": [
+        {
+          "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/generation/r02/v0/itinerary.json",
+          "sha256": "e44bf613ef485b9df23e1f0b7e06cc01ce3dc9f577e8e4d2457de7fd12272a60",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/generation/r02/v1/itinerary.json",
+          "sha256": "9a0550c92d8b66491000356dea326a1c8a4ea96da8c2de6e479f07672082b544",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/generation/r02/v2/itinerary.json",
+          "sha256": "491817761a0865380b7daa5d0ecf64b7c8c2b95a6a072eadea16f75a75546a5b",
+          "json_pointer": ""
+        },
+        {
+          "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-08/generation/r02/v3/itinerary.json",
+          "sha256": "141d49c1b833375e14a47a5bdb5092fb3fb8064a85f15d28ccb84f6bf7701ae8",
+          "json_pointer": ""
+        }
+      ],
+      "transformation": "Daily schedule and origin presentation from saved selected outputs and canonical candidate associations."
     }
   ],
   "accounting": {
@@ -392,5 +686,116 @@
     "case_merge_commit": "3fbb2ef79a808a77949efa095fecb8ffd10eb74c",
     "status": "merged_into_main_issues_completed",
     "details": "analysis/acceptance.json"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "5c7f46989e5bcf637ac965e73cebc7f456635b0a0b857d00a721236f2c293231",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/r02/v0/itinerary.json",
+        "usage": "generation/r02/v0/usage.json",
+        "provenance": "generation/r02/v0/provenance.json",
+        "runtime_policy": "generation/r02/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/r02/v1/itinerary.json",
+        "usage": "generation/r02/v1/usage.json",
+        "provenance": "generation/r02/v1/provenance.json",
+        "runtime_policy": "generation/r02/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/r02/v2/itinerary.json",
+        "usage": "generation/r02/v2/usage.json",
+        "provenance": "generation/r02/v2/provenance.json",
+        "runtime_policy": "generation/r02/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/r02/v3/itinerary.json",
+        "usage": "generation/r02/v3/usage.json",
+        "provenance": "generation/r02/v3/provenance.json",
+        "runtime_policy": "generation/r02/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-08.json"
+      ],
+      "requirements": [
+        "requirements/reviewed.json"
+      ],
+      "interests": [
+        "interests/inventory.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [],
+      "interest_reviews": [],
+      "origin_captures": [],
+      "generation": [
+        "generation/r02/v0/itinerary.json",
+        "generation/r02/v0/usage.json",
+        "generation/r02/v0/provenance.json",
+        "generation/r02/runtime-policy.json",
+        "generation/r02/v1/itinerary.json",
+        "generation/r02/v1/usage.json",
+        "generation/r02/v1/provenance.json",
+        "generation/r02/runtime-policy.json",
+        "generation/r02/v2/itinerary.json",
+        "generation/r02/v2/usage.json",
+        "generation/r02/v2/provenance.json",
+        "generation/r02/runtime-policy.json",
+        "generation/r02/v3/itinerary.json",
+        "generation/r02/v3/usage.json",
+        "generation/r02/v3/provenance.json",
+        "generation/r02/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary-corrected-r01/report.json",
+        "evaluation/primary-corrected-r01/summary.json"
+      ],
+      "paired": [
+        "evaluation/pair/report.json",
+        "evaluation/pair/summary.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/opportunities.json",
+        "analysis/poi-process/relevance.json",
+        "analysis/poi-process/v3-origins.json"
+      ],
+      "repair": [
+        "analysis/repair/mechanism.json",
+        "analysis/repair/repair.json",
+        "analysis/repair/stages.json"
+      ],
+      "resources": [
+        "analysis/resources/accounting.json",
+        "analysis/resources/price-books.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v0/itinerary.json": "analysis/history/r01/v0/itinerary.json",
+      "generation/v1/failure.json": "analysis/history/r01/v1/failure.json",
+      "analysis/offline-r01/acceptance.json": "analysis/history/offline-r01/acceptance.json",
+      "analysis/offline-r01/candidates.json": "analysis/history/offline-r01/candidates.json",
+      "analysis/offline-r01/relevance.json": "analysis/history/offline-r01/relevance.json",
+      "analysis/offline-r01/repair.json": "analysis/history/offline-r01/repair.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
+  },
+  "publication_format": {
+    "shared_reference": "$case_material_ref paths are relative to the containing public file; expand the JSON Pointer and verify canonical sorted-key UTF-8 compact JSON SHA-256.",
+    "stages": "RFC6902 patches apply to the expanded saved final; each complete resulting stage has its own semantic hash."
   }
 }

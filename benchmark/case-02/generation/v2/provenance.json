@@ -1,0 +1,24 @@
+{
+  "schema_version": "rtpeval_provenance_1",
+  "group_id": "case-02",
+  "run_id": "case-02-r1-v2-a1",
+  "version": "v2",
+  "input_sha256": "afd045d47b93bef9cc3743bcd2512805bc5b85cf35d1e0b97d23a740e53c9c1b",
+  "result_sha256": "43ca173f98a61ae8820c2a0e5d754ac1bbe793628ea20bf7e0afbde03a0c8897",
+  "source_revision": "8808340ceae7f6bd5688eccf4f4b461a98934b2b",
+  "configuration_ref": {
+    "path": "runtime-policy.json",
+    "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "evidence_index_ref": {
+    "path": "evidence-index.json",
+    "sha256": "f50ea3f8c375952998165e2613787650854a7aa910bcc5fd6c549922d823e61e"
+  },
+  "mechanism_ref": {
+    "path": "mechanism.json",
+    "sha256": "792ea3d730ef495f9b6d4d57217039685c5e06441c55340660be4fea8b757988"
+  },
+  "scope": "Development capture only; producer completion and batch qualification are separate."
+}

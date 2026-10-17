@@ -1,0 +1,110 @@
+{
+  "identity_unit": "unique canonical Google place ID",
+  "v1": {
+    "discovered": 43,
+    "admitted": 43,
+    "enriched": 28,
+    "supplied": 14,
+    "scheduled_unique": 11,
+    "scheduled_occurrences": 12
+  },
+  "v2": {
+    "discovered": 54,
+    "admitted": 54,
+    "enriched": 39,
+    "supplied": 14,
+    "scheduled_unique": 10,
+    "scheduled_occurrences": 11
+  },
+  "cross_version": [
+    {
+      "case_id": "case-10",
+      "case_revision": "2",
+      "repetition_id": "once",
+      "discovered": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+          "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+          "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+          "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+          "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+          "ChIJ_c6npyobdkgRwkGJb16SWVA",
+          "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+          "ChIJkeddM88adkgR80g3pdkn0vw",
+          "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+          "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+          "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+          "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+        ],
+        "v1_only_ids": [
+          "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s"
+        ]
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+          "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+          "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+          "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+          "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+          "ChIJ_c6npyobdkgRwkGJb16SWVA",
+          "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+          "ChIJkeddM88adkgR80g3pdkn0vw",
+          "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+          "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+          "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+          "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+        ],
+        "v1_only_ids": [
+          "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ-9AX1k0DdkgRBucVmbfb4z0",
+          "ChIJ03GSCloDdkgRe_s-p2vyvQA",
+          "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+          "ChIJDz0Q3FMDdkgRdUsGfj-UW7Q",
+          "ChIJO44XSkkDdkgRQMdr9sHhn2M",
+          "ChIJVX1-GtIEdkgR1n_gGjHQZpI",
+          "ChIJ_c6npyobdkgRwkGJb16SWVA",
+          "ChIJgZ24Us4adkgRpDNAwNPO_SY",
+          "ChIJkeddM88adkgR80g3pdkn0vw",
+          "ChIJn9qAmqgFdkgRa9_4irRlNJw",
+          "ChIJnzLnCMcEdkgRioLEm8rT_aA",
+          "ChIJrZIzFyUFdkgRQlxXXtD9UF4",
+          "ChIJxRitKU0DdkgRazPYpNTm0Q4"
+        ],
+        "v1_only_ids": [
+          "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+          "ChIJh7wHoqwEdkgR3l-vqQE1HTo"
+        ]
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ7w-V58oNdkgRhz8svCpc5ok",
+          "ChIJn9qAmqgFdkgRa9_4irRlNJw"
+        ],
+        "v1_only_ids": [
+          "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s",
+          "ChIJh7wHoqwEdkgR3l-vqQE1HTo"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ7w-V58oNdkgRhz8svCpc5ok"
+        ],
+        "v1_only_ids": [
+          "ChIJH-tBOc4EdkgRJ8aJ8P1CUxo",
+          "ChIJPy8Y5kIFdkgRxGSXw4Xjt3s"
+        ]
+      }
+    }
+  ],
+  "interpretation": "Observed candidate populations and descriptive selected-run differences only; no causal or general ranking claim."
+}

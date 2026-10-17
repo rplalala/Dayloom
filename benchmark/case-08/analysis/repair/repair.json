@@ -1,0 +1,59 @@
+{
+  "schema_version": "case08_current_repair_view_1",
+  "case_id": "case-08",
+  "execution_revision": "r02",
+  "original_request": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/original_request",
+      "expanded_semantic_sha256": "ede013d0c02edab1ce54250348ef3a676a44811d88272d56e6751f8a8e7ea76c"
+    }
+  },
+  "processing_status": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/processing_status",
+      "expanded_semantic_sha256": "575951db5c63b1e721c1f8f9aefb547ca834245433e7561dc8204a3a18427aae"
+    }
+  },
+  "sources": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/sources",
+      "expanded_semantic_sha256": "f758171b93ecca7c09382d31648eb86ffa64a3f6734094fbd14142394dd89c98"
+    }
+  },
+  "saved_repair": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/saved_repair",
+      "expanded_semantic_sha256": "012e046cf8e3dfe1a29ef8261b8052027b6968a64c4cc77b360dfe3c27fbb013"
+    }
+  },
+  "same_run_structure": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/same_run_structure",
+      "expanded_semantic_sha256": "db4b3248685fcadeeea3027e535d2835ca7433c3b53e763c5dd7b3ad74935be5"
+    }
+  },
+  "v2_v3_finals": {
+    "$case_material_ref": {
+      "path": "../history/offline-r01/repair.json",
+      "pointer": "/v2_v3_finals",
+      "expanded_semantic_sha256": "5c669d6b969804098f5151a1f169cc19ee669e4310dae95cdaf6857cc2d8e2a1"
+    }
+  },
+  "independent_evaluation": {
+    "$case_material_ref": {
+      "path": "../../evaluation/pair/summary.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "0a20dc5188b56fbb0687e3f669dfea2ca819afe2c6f2ab734cd720c5398faf4e"
+    }
+  },
+  "independent_pair": {
+    "status": "complete",
+    "summary": "../../evaluation/pair/summary.json"
+  },
+  "stage_material": "stages.json"
+}

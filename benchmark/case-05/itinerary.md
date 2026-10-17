@@ -63,7 +63,7 @@ These are the selected revision-3 schedules for Barcelona, 16–20 October 2026.
 
 ## V3 changes
 
-[Draft](generation/v3/draft.json) and [final](generation/v3/itinerary.json) retain all submitted fields. Four visits were added: La Pedrera–Casa Milà (16 October), Casa Amatller (17 October), MEAM Museum (18 October), and Temple d’August (20 October). The six original visits remain. The complete independent change classification is in the [paired summary](evaluation/v3-pair/summary.json).
+[Draft](analysis/repair/draft.json) and [final](generation/v3/itinerary.json) retain all submitted fields. Four visits were added: La Pedrera–Casa Milà (16 October), Casa Amatller (17 October), MEAM Museum (18 October), and Temple d’August (20 October). The six original visits remain. The complete independent change classification is in the [paired summary](evaluation/v3-pair/summary.json).
 
 ## Recorded origins
 

@@ -102,14 +102,14 @@
         {
           "activity_kind": "main_poi",
           "activity_id": "visit-park-guell",
-          "title": "Explore Park G\u00fcell",
-          "place_name": "Park G\u00fcell",
+          "title": "Explore Park Güell",
+          "place_name": "Park Güell",
           "source_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-          "location": "Gr\u00e0cia, 08024 Barcelona, Spain",
+          "location": "Gràcia, 08024 Barcelona, Spain",
           "start_time": "2026-10-16T10:00:00+02:00",
           "end_time": "2026-10-16T12:30:00+02:00",
           "estimated_cost": null,
-          "notes": "A spacious first visit, with time to explore at an unhurried pace. Current date-window hours list 09:30\u201319:30; date-specific exceptions are unknown."
+          "notes": "A spacious first visit, with time to explore at an unhurried pace. Current date-window hours list 09:30–19:30; date-specific exceptions are unknown."
         }
       ]
     },
@@ -119,14 +119,14 @@
         {
           "activity_kind": "main_poi",
           "activity_id": "visit-casa-batllo",
-          "title": "Visit Casa Batll\u00f3",
-          "place_name": "Casa Batll\u00f3",
+          "title": "Visit Casa Batlló",
+          "place_name": "Casa Batlló",
           "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
-          "location": "Pg. de Gr\u00e0cia, 43, Eixample, 08007 Barcelona, Spain",
+          "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain",
           "start_time": "2026-10-17T10:30:00+02:00",
           "end_time": "2026-10-17T13:00:00+02:00",
           "estimated_cost": null,
-          "notes": "Allow time for an in-depth architectural visit. Current date-window hours list 08:30\u201322:30; date-specific exceptions are unknown."
+          "notes": "Allow time for an in-depth architectural visit. Current date-window hours list 08:30–22:30; date-specific exceptions are unknown."
         }
       ]
     },
@@ -136,14 +136,14 @@
         {
           "activity_kind": "main_poi",
           "activity_id": "visit-macba",
-          "title": "Explore Museu d\u2019Art Contemporani de Barcelona",
-          "place_name": "Museu d\u2019Art Contemporani de Barcelona",
+          "title": "Explore Museu d’Art Contemporani de Barcelona",
+          "place_name": "Museu d’Art Contemporani de Barcelona",
           "source_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
-          "location": "Pla\u00e7a dels \u00c0ngels, 1, Ciutat Vella, 08001 Barcelona, Spain",
+          "location": "Plaça dels Àngels, 1, Ciutat Vella, 08001 Barcelona, Spain",
           "start_time": "2026-10-18T11:00:00+02:00",
           "end_time": "2026-10-18T14:00:00+02:00",
           "estimated_cost": null,
-          "notes": "A single, unhurried indoor art visit. Current date-window hours list 10:00\u201315:00; date-specific exceptions are unknown."
+          "notes": "A single, unhurried indoor art visit. Current date-window hours list 10:00–15:00; date-specific exceptions are unknown."
         }
       ]
     },
@@ -165,14 +165,14 @@
         {
           "activity_kind": "main_poi",
           "activity_id": "visit-santa-maria-del-mar",
-          "title": "Visit Bas\u00edlica de Santa Maria del Mar",
-          "place_name": "Bas\u00edlica de Santa Maria del Mar",
+          "title": "Visit Basílica de Santa Maria del Mar",
+          "place_name": "Basílica de Santa Maria del Mar",
           "source_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-          "location": "Pla\u00e7a de Santa Maria, 1, Ciutat Vella, 08003 Barcelona, Spain",
+          "location": "Plaça de Santa Maria, 1, Ciutat Vella, 08003 Barcelona, Spain",
           "start_time": "2026-10-19T14:00:00+02:00",
           "end_time": "2026-10-19T15:30:00+02:00",
           "estimated_cost": null,
-          "notes": "A separate architectural visit in the old city. Current date-window hours list 10:00\u201318:00; date-specific exceptions are unknown."
+          "notes": "A separate architectural visit in the old city. Current date-window hours list 10:00–18:00; date-specific exceptions are unknown."
         }
       ]
     },
@@ -185,11 +185,11 @@
           "title": "Explore the Museum of the History of Catalonia",
           "place_name": "Museum of the History of Catalonia",
           "source_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
-          "location": "P\u00e7a. de Pau Vila, 3, Ciutat Vella, 08039 Barcelona, Spain",
+          "location": "Pça. de Pau Vila, 3, Ciutat Vella, 08039 Barcelona, Spain",
           "start_time": "2026-10-20T10:30:00+02:00",
           "end_time": "2026-10-20T13:00:00+02:00",
           "estimated_cost": null,
-          "notes": "A relaxed indoor history visit. Current date-window hours list 10:00\u201319:00; date-specific exceptions are unknown."
+          "notes": "A relaxed indoor history visit. Current date-window hours list 10:00–19:00; date-specific exceptions are unknown."
         }
       ]
     }

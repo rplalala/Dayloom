@@ -5,7 +5,7 @@ Times and fields remain submitted values. Recorded discovery origins are produce
 observations; independent relevance is reported separately. Full notes and Nearby
 references remain in each itinerary JSON; Nearby-only references are not scheduled visits.
 
-V3 [draft](generation/r02/v3/draft.json) and [final-primary](generation/r02/v3/final-primary.json)
+V3 [draft](analysis/repair/r02/draft.json) and [final-primary](analysis/repair/r02/final-primary.json)
 are identical: no Repair round, added/removed/replaced visit or retiming occurred.
 The selected final itinerary also carries post-primary Nearby recommendations; these
 remain distinct from Repair changes. The completed common-policy pair scores

@@ -86,7 +86,7 @@ discovery. Query relevance is not independent interest fulfillment.
 The independent occurrence review establishes 10 unchanged activities and one
 removed activity: ART FRONT GALLERY, 24 October. No activity was added. The native
 mechanism records one accepted deterministic deletion, not a Repair model call.
-[Lossless stage patches](generation/v3/stages.json) reconstruct both saved stages
+[Lossless stage patches](analysis/repair/stages.json) reconstruct both saved stages
 from the selected itinerary, including transfers and recommendation differences.
 
 The selected top-level itinerary is post-Nearby presentation. It differs from

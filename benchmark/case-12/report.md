@@ -28,6 +28,26 @@ accounting plus unchanged generation envelopes and Primary reserve required
 USD 61.543560975. Source, runtime, commands and actual budget admission were frozen.
 The input and evaluator scoring contracts remain unchanged; no result was rescored.
 
+| Material | Reader view |
+| --- | --- |
+| Original request | [case 12](../inputs/case-12.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [inventory](interests/inventory.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Supporting request context | [actors](requirements/actors.json) |
+| Independent review records | [reviews](interests/reviews.json), [venue evidence](interests/venue-evidence.json) |
+| Recorded RAG origins | [rag origins](generation/v2/rag-origins.json), [rag origins](generation/v3/rag-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [report](evaluation/primary/report.json), [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [report](evaluation/v3-pair/report.json) |
+| Candidate process and relevance | [interest axes](analysis/poi-process/interest-axes.json), [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [v1 capture](analysis/poi-process/v1-capture.json), [v2 capture](analysis/poi-process/v2-capture.json) |
+| Repair and complete stages | [draft delta](analysis/repair/draft-delta.json), [mechanism](analysis/repair/mechanism.json), [process](analysis/repair/process.json), [research](analysis/repair/research.json) |
+| All-attempt resources | [accounting](analysis/resources/accounting.json), [census](analysis/resources/census.json), [r01](analysis/resources/r01.json), [r02](analysis/resources/r02.json), [r03](analysis/resources/r03.json), [r04](analysis/resources/r04.json), [r05](analysis/resources/r05.json), [r06](analysis/resources/r06.json), [r07](analysis/resources/r07.json), [selected r07](analysis/resources/selected-r07.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
+
 ## Requirements and observations
 
 The independently authored and reviewed r02 RequirementSpec revision `"2"` applies
@@ -466,7 +486,6 @@ The merge tree equals the reviewed PR head's tree; that head and `7408df9` remai
 Blinded human review remains deferred.
 
 ## Historical context
-
 
 r01 used `b73c8eed09fafb6d54bee8684c5b2e7766515357`. V0-V2 completed with one
 first-day primary visit and an empty rest day. V3's separate interpretation emitted

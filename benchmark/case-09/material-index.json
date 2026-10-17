@@ -1176,6 +1176,18 @@
         "sha256": "7daf7e373aadab04da0fe07bef277016b364c0e539d6e78b2985fd0c14cd6ae9",
         "json_pointer": ""
       }
+    },
+    {
+      "path": "report.md",
+      "sha256": "2561d3ceeebbdfbb53ba41dcc5c3e622abe852d1a1aa2dabfb6a357505e1f129",
+      "bytes": 21639,
+      "representation": "reader_document",
+      "original_source": {
+        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-09/report.md",
+        "sha256": "f4aca7885739e1e3d20a237d9ee5da51d04fa6b85949c5065aa0adea6ac36840",
+        "json_pointer": ""
+      },
+      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
     }
   ],
   "analysis_scope": {
@@ -1190,11 +1202,11 @@
   },
   "itinerary_view": {
     "path": "itinerary.md",
-    "sha256": "59a7d005b925f4c313860c9dcc079d799b1310646c7a6d79e3d2286b52584d26"
+    "sha256": "e0b6e966b02dc3ef003c85be52432c111a83ade4cb3421d224c6888bf423906d"
   },
   "v3_stages": {
-    "path": "generation/v3/stages.json",
-    "sha256": "9a53a87918e033c172bfdd21f34f4ee19f9800576eb699f5050d235e12893b92"
+    "path": "analysis/repair/stages.json",
+    "sha256": "f4304d9a5250ce37e73ca26ee73416b0aca452c93fdcac8a71c63ea7794b0e0a"
   },
   "private_archive": {
     "identifier": "benchmark/scratch/case-09/archive/",
@@ -1286,5 +1298,111 @@
     "new_service_sends": 0,
     "new_reference_usd": "0",
     "delivery_tracking_issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158"
+  },
+  "publication_correction": {
+    "date": "2026-10-18",
+    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
+    "preceding_index_sha256": "3646a1d95b2231f4d652ba5d101914e661e2f175d3361de0cb4b2322cdf7e5db",
+    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
+    "selected_generation": {
+      "v0": {
+        "itinerary": "generation/v0/itinerary.json",
+        "usage": "generation/v0/usage.json",
+        "provenance": "generation/v0/provenance.json",
+        "runtime_policy": "generation/v0/runtime-policy.json"
+      },
+      "v1": {
+        "itinerary": "generation/v1/itinerary.json",
+        "usage": "generation/v1/usage.json",
+        "provenance": "generation/v1/provenance.json",
+        "runtime_policy": "generation/v1/runtime-policy.json"
+      },
+      "v2": {
+        "itinerary": "generation/v2/itinerary.json",
+        "usage": "generation/v2/usage.json",
+        "provenance": "generation/v2/provenance.json",
+        "runtime_policy": "generation/v2/runtime-policy.json"
+      },
+      "v3": {
+        "itinerary": "generation/v3/itinerary.json",
+        "usage": "generation/v3/usage.json",
+        "provenance": "generation/v3/provenance.json",
+        "runtime_policy": "generation/v3/runtime-policy.json"
+      }
+    },
+    "reader_categories": {
+      "original_input": [
+        "../inputs/case-09.json"
+      ],
+      "requirements": [
+        "requirements/reviewed.json"
+      ],
+      "interests": [
+        "interests/inventory.json"
+      ],
+      "itinerary": [
+        "itinerary.md"
+      ],
+      "request_context": [],
+      "interest_reviews": [
+        "interests/cross-review.json",
+        "interests/relevance-reviews.json"
+      ],
+      "origin_captures": [
+        "generation/v2/rag-discovery.json",
+        "generation/v3/rag-discovery.json"
+      ],
+      "generation": [
+        "generation/v0/itinerary.json",
+        "generation/v0/usage.json",
+        "generation/v0/provenance.json",
+        "generation/v0/runtime-policy.json",
+        "generation/v1/itinerary.json",
+        "generation/v1/usage.json",
+        "generation/v1/provenance.json",
+        "generation/v1/runtime-policy.json",
+        "generation/v2/itinerary.json",
+        "generation/v2/usage.json",
+        "generation/v2/provenance.json",
+        "generation/v2/runtime-policy.json",
+        "generation/v3/itinerary.json",
+        "generation/v3/usage.json",
+        "generation/v3/provenance.json",
+        "generation/v3/runtime-policy.json"
+      ],
+      "primary": [
+        "evaluation/primary/report.json",
+        "evaluation/primary/summary.json"
+      ],
+      "paired": [
+        "evaluation/v3-pair/report.json"
+      ],
+      "poi_process": [
+        "analysis/poi-process/opportunities.json",
+        "analysis/poi-process/relevance.json"
+      ],
+      "repair": [
+        "analysis/repair/mechanism.json",
+        "analysis/repair/report.json",
+        "analysis/repair/stages.json"
+      ],
+      "resources": [
+        "analysis/resources/population.json",
+        "analysis/resources/tradeoffs.json"
+      ]
+    },
+    "relocated_public_paths": {
+      "generation/v3/stages.json": "analysis/repair/stages.json"
+    },
+    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
+    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
+    "shared_reference_path_base": "containing_file",
+    "execution": {
+      "generation_runs": 0,
+      "evaluation_runs": 0,
+      "model_calls": 0,
+      "google_calls": 0,
+      "rescoring": false
+    }
   }
 }

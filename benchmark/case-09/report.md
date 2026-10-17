@@ -11,11 +11,30 @@ Batch `case-09-batch`, revision `1`, contains one first-dispatched generation pe
 version, produced on source `b73c8eed09fafb6d54bee8684c5b2e7766515357`. Primary evaluation
 and the authorized analyses completed on **17 October 2026,
 Australia/Sydney**. Native material admission passed; **automatic case acceptance was
-explicitly confirmed on 17 October 2026**. [Acceptance](#acceptance) binds the selected
+explicitly confirmed on 17 October 2026**. [Acceptance](.#acceptance) binds the selected
 material and disclosed limitations; blinded human review is deferred. The [material index](material-index.json)
 owns source hashes, publication mappings and shared-value expansion rules.
 [Daily itineraries and recorded POI origins](itinerary.md) present all four selected
 schedules and the actual V3 draft/final change.
+
+| Material | Reader view |
+| --- | --- |
+| Original request | [case 09](../inputs/case-09.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [inventory](interests/inventory.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Independent review records | [cross review](interests/cross-review.json), [relevance reviews](interests/relevance-reviews.json) |
+| Recorded RAG origins | [rag discovery](generation/v2/rag-discovery.json), [rag discovery](generation/v3/rag-discovery.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/v0/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/v1/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/v2/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/v3/runtime-policy.json) |
+| Primary scoring | [report](evaluation/primary/report.json), [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [report](evaluation/v3-pair/report.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json) |
+| Repair and complete stages | [mechanism](analysis/repair/mechanism.json), [report](analysis/repair/report.json), [stages](analysis/repair/stages.json) |
+| All-attempt resources | [population](analysis/resources/population.json), [tradeoffs](analysis/resources/tradeoffs.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 ## Primary results
 
@@ -148,7 +167,7 @@ The [native mechanism report](analysis/repair/mechanism.json) and
 zero Repair model calls. Independent review of the actual 11 draft and 10 final
 primary activities establishes ten unchanged occurrences and one deletion:
 **ART FRONT GALLERY on 24 October**. There are no additions or replacements.
-[Lossless stage patches](generation/v3/stages.json) retain every actual difference,
+[Lossless stage patches](analysis/repair/stages.json) retain every actual difference,
 including transfers and recommendations.
 
 The [same-run paired report](evaluation/v3-pair/report.json) applies the same source-bound missing-hours

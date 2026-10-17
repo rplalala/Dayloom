@@ -8,7 +8,7 @@ acquisition completed; all four totals are available. Candidate POI, independent
 relevance, same-run paired access, Repair process and resource reports are complete.
 The same-run no-Repair observation is verified. The researcher explicitly accepted
 the current r02 selection and disclosed limitations on **17 October 2026,
-Australia/Sydney**. [Automatic acceptance](#acceptance) defines the exact scope;
+Australia/Sydney**. [Automatic acceptance](.#acceptance) defines the exact scope;
 execution is paused, with blinded human review deferred. Git delivery is separately
 authorized; the accepted native selection remains unchanged.
 
@@ -30,16 +30,22 @@ No case-specific application, configuration or input change was made.
 
 | Material | Reader view |
 | --- | --- |
-| Independently authored and reviewed requirements | [Reviewed specification](requirements/reviewed.json) |
-| Independent interests and relevance | [Native inventory](interests/inventory.json), [reviews A](interests/relevance-a.json), [reviews B](interests/relevance-b.json); [original source review](interests/source-review.json) |
-| r02 source-policy bindings | [Transport](requirements/r02/route-reviews.json), [density](requirements/r02/density-reviews.json), [destination time](requirements/r02/schedule-context.json) |
-| Selected final schedules | [Daily schedules](itinerary.md); [V0](generation/r02/v0/itinerary.json), [V1](generation/r02/v1/itinerary.json), [V2](generation/r02/v2/itinerary.json), [V3](generation/r02/v3/itinerary.json) |
-| Independent Primary | [Scores, dimensions and daily deductions](evaluation/primary/summary.json) |
-| Candidate process | [Stage inventory](analysis/poi-process/opportunities.json), [independent relevance](analysis/poi-process/relevance.json), [venue labels](analysis/poi-process/venues.json) |
-| Repair process and completed pair | [Native Repair view](analysis/repair/repair.json), [mechanism observations](analysis/repair/mechanism.json), [current pair](evaluation/v3-pair/report.json); [preliminary API-only pair](evaluation/v3-pair/api-only.json) |
-| All-attempt stage consumption | [Resource ledger](resources/primary-stage.json), [native cost reconstruction](analysis/resources/all-attempt-cost.json), [selected-run resources](analysis/resources/tradeoffs.json) |
-| Current analysis and completed access request | [Analysis status](analysis/summary.json) |
-| Exact sources and publication hashes | [Material index](material-index.json) |
+| Original request | [case 11](../inputs/case-11.json) |
+| Reviewed requirements | [reviewed](requirements/reviewed.json) |
+| Independent interests | [inventory](interests/inventory.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Supporting request context | [density reviews](requirements/density-reviews.json), [density reviews](requirements/r02/density-reviews.json), [route reviews](requirements/r02/route-reviews.json), [schedule context](requirements/r02/schedule-context.json), [route reviews](requirements/route-reviews.json), [schedule context](requirements/schedule-context.json) |
+| Independent review records | [relevance a](interests/relevance-a.json), [relevance b](interests/relevance-b.json), [source review](interests/source-review.json) |
+| V0 selected generation | [itinerary](generation/r02/v0/itinerary.json), [usage](generation/r02/v0/usage-summary.json), [provenance](generation/r02/v0/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/r02/v1/itinerary.json), [usage](generation/r02/v1/usage-summary.json), [provenance](generation/r02/v1/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/r02/v2/itinerary.json), [usage](generation/r02/v2/usage-summary.json), [provenance](generation/r02/v2/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/r02/v3/itinerary.json), [usage](generation/r02/v3/usage-summary.json), [provenance](generation/r02/v3/provenance.json), [runtime policy](generation/r02/runtime-policy.json) |
+| Primary scoring | [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [api only](evaluation/v3-pair/api-only.json), [report](evaluation/v3-pair/report.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [venues](analysis/poi-process/venues.json) |
+| Repair and complete stages | [mechanism](analysis/repair/mechanism.json), [draft](analysis/repair/r02/draft.json), [final primary](analysis/repair/r02/final-primary.json), [repair](analysis/repair/repair.json), [source origins](analysis/repair/source-origins.json) |
+| All-attempt resources | [all attempt cost](analysis/resources/all-attempt-cost.json), [population](analysis/resources/population.json), [selected usage](analysis/resources/selected-usage.json), [tradeoffs](analysis/resources/tradeoffs.json), [primary stage](resources/primary-stage.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 The same-input reviewed requirements, unrestricted transport, ordinary density and
 `Europe/Paris` policies retain their actual original actors, review times and
@@ -333,17 +339,17 @@ pre-decision index SHA-256
 `00cca4d1f46cc66203e12835189cf7c9367c3d2588a1f73924ce2d5bc125c1ed`.
 r01 remains historical failure evidence and resource history, not a selected result.
 
-The accepted [Primary results](#primary-results) remain **100 / 97.5 / 80 / 100**;
+The accepted [Primary results](.#primary-results) remain **100 / 97.5 / 80 / 100**;
 requirements each have one PASS, zero FAIL and zero UNKNOWN. The accepted current
 V3 pair is **100 → 100**, with no attempted Repair. The
-[candidate analysis](#candidate-poi-process-and-independent-relevance) retains
+[candidate analysis](.#candidate-poi-process-and-independent-relevance) retains
 14 UNKNOWN relevance labels and unavailable complete relevance counts/full-chain
 conversion rates. Independent version differences do not establish causal RAG or
 Repair improvement, and no attempted-Repair success rate is available.
 
 Model-supported access is distinct from API-verified opening hours. All submitted
 activity cost fields are unspecified, so the EUR 1,500 whole-trip affordability is
-unverified. The [resource ledger](#resources) retains USD **9.554197440** of the
+unverified. The [resource ledger](.#resources) retains USD **9.554197440** of the
 cumulative USD 40 reference allowance, including earlier attempts; actual invoices
 and external Codex consumption remain unavailable. These are accepted evidence
 limits, not additional quality passes or replacement judgments.
@@ -375,7 +381,7 @@ and stopped before V2/V3/Primary. Its V1 model supplied +02:00 for three 25 Octo
 activities; DTO mapping preserved all eight activity endpoint pairs and program-owned
 routing propagated the bad offset to two transfers. Independent preparation returned
 three activity time UNKNOWNs and blocked acquisition. The immutable
-[old V0](generation/v0/itinerary.json), [old V1](generation/v1/itinerary.json),
+[old V0](analysis/history/r01/v0/itinerary.json), [old V1](analysis/history/r01/v1/itinerary.json),
 [population diagnostics](evaluation/population-v1.json),
 [temporal probes](evaluation/temporal-v1.json) and
 [model-to-output diagnosis](evaluation/timezone-origin-v1.json) retain that evidence.

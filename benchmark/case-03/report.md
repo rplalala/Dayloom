@@ -6,7 +6,7 @@ The final primary scores are **71.3961 / 97.5 / 92.5 / 100** for V0–V3. Each v
 
 ## Acceptance status
 
-**Accepted by the human researcher on 15 October 2026 Australia/Sydney.** The decision accepts the exact input, reviewed semantic inputs, selected V0-V3 outputs, independent evaluation and analysis reports, public presentation and stated limitations at material commit `54e7d53b3bd73785c0766f3d081afbbc5c057dbc`. Original source identities, result values and evidence remain unchanged. The researcher also authorized recording acceptance, refreshing material hashes, updating Issue #152 and synchronizing public commits/private evidence to the main worktree. Blinded human assessment remains deferred; no participant responses or human quality judgments were supplied. Work pauses after synchronization checks; case-09 and case-13 remain waiting.
+**Accepted by the human researcher on 15 October 2026 Australia/Sydney.** The decision accepts the exact input, reviewed semantic inputs, selected V0-V3 outputs, independent evaluation and analysis reports, public presentation and stated limitations at material commit `54e7d53b3bd73785c0766f3d081afbbc5c057dbc`. Original source identities, result values and evidence remain unchanged. The researcher also authorized recording acceptance, refreshing material hashes, updating Issue #152 and synchronizing public commits/private evidence to the main worktree. Blinded human assessment remains deferred; no participant responses or human quality judgments were supplied.
 
 ### Post-fix offline compatibility
 
@@ -36,19 +36,24 @@ limitations belong to the [shared compatibility record](../../docs/records/v0-v3
 
 ## Materials and source identity
 
-| Material | Files |
+| Material | Reader view |
 | --- | --- |
-| Complete readable schedules, addresses, notes, transfers and unscheduled references | [Itineraries](itinerary.md) |
-| Reviewed request meaning | [RequirementSpec](requirements/reviewed-requirements.json), [interests](interests/interests.json), [time context](requirements/context.json), [transport](requirements/transport.json), [density](requirements/density.json) |
-| Four selected itineraries | [V0](generation/v0/itinerary.json), [V1](generation/v1/itinerary.json), [V2](generation/v2/itinerary.json), [V3](generation/v3/itinerary.json) |
-| Same-run V3 draft | [Lossless shared-content view](generation/v3/draft.json) |
-| Generation usage and provenance | [V0 usage](generation/v0/usage.json) / [provenance](generation/v0/provenance.json), [V1 usage](generation/v1/usage.json) / [provenance](generation/v1/provenance.json), [V2 usage](generation/v2/usage.json) / [provenance](generation/v2/provenance.json), [V3 usage](generation/v3/usage.json) / [provenance](generation/v3/provenance.json) |
-| Shared runtime configuration | [Runtime policy](generation/runtime-policy.json) |
-| Independent evaluation | [Primary quality](evaluation/primary/quality-report.json), [missing-hours assessment status](evaluation/primary/opening-assessment.json), [V3 pair](evaluation/v3-pair/pair-report.json) |
-| Candidate process and independent relevance | [Stages and origins](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [normalized venue facts](analysis/poi-process/review-evidence.json) |
-| RAG source observations | [V2](generation/v2/rag-discovery.json), [V3](generation/v3/rag-discovery.json) |
-| Repair | [Independent final/pair views](analysis/repair/repair.json), [captured mechanism](analysis/repair/mechanism.json) |
-| Resources | [Population and attempts](analysis/resources/population.json), [tradeoffs](analysis/resources/tradeoffs.json), [generation cost accounting](analysis/resources/costs.json) |
+| Original request | [case 03](../inputs/case-03.json) |
+| Reviewed requirements | [reviewed requirements](requirements/reviewed-requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Supporting request context | [context](requirements/context.json), [density](requirements/density.json), [transport](requirements/transport.json) |
+| Recorded RAG origins | [rag discovery](generation/v2/rag-discovery.json), [rag discovery](generation/v3/rag-discovery.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [opening assessment](evaluation/primary/opening-assessment.json), [quality report](evaluation/primary/quality-report.json) |
+| Same-run V3 pairing | [pair report](evaluation/v3-pair/pair-report.json) |
+| Candidate process and relevance | [opportunities](analysis/poi-process/opportunities.json), [relevance](analysis/poi-process/relevance.json), [review evidence](analysis/poi-process/review-evidence.json) |
+| Repair and complete stages | [draft](analysis/repair/draft.json), [mechanism](analysis/repair/mechanism.json), [repair](analysis/repair/repair.json) |
+| All-attempt resources | [costs](analysis/resources/costs.json), [population](analysis/resources/population.json), [tradeoffs](analysis/resources/tradeoffs.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
 
 The [material index](material-index.json) binds publication bytes, expanded semantic hashes, original source-file hashes and extraction pointers. JSON objects shared across files use `$case_material_ref`; expansion recovers the stated source value. The V3 draft shares unchanged objects with the final itinerary and preserves all actual differences, including transfers and recommendations. Native report projections explicitly identify omitted raw provider/model fields. `$private_evidence_ref` values are opaque archive identifiers, not public links or executable artifact references. Public views are not closed native replay bundles.
 

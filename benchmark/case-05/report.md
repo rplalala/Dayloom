@@ -2,6 +2,24 @@
 
 The [original request](../inputs/case-05.json) covers **16–20 October 2026**, one traveler and EUR 1300 for the whole trip. Interests are architecture, historic neighbourhoods and art, with relaxed, in-depth exploration. The selected execution is **revision 3**, input revision 2, source `b1ab089fd24bab98795a9f7c0728b84e7ba2c5fd`.
 
+| Material | Reader view |
+| --- | --- |
+| Original request | [case 05](../inputs/case-05.json) |
+| Reviewed requirements | [reviewed requirements](requirements/reviewed-requirements.json) |
+| Independent interests | [interests](interests/interests.json) |
+| Daily schedules and origins | [itinerary](itinerary.md) |
+| Recorded RAG origins | [poi origins](generation/poi-origins.json) |
+| V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage-summary.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V1 selected generation | [itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage-summary.json), [provenance](generation/v1/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V2 selected generation | [itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage-summary.json), [provenance](generation/v2/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| V3 selected generation | [itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage-summary.json), [provenance](generation/v3/provenance.json), [runtime policy](generation/runtime-policy.json) |
+| Primary scoring | [summary](evaluation/primary/summary.json) |
+| Same-run V3 pairing | [summary](evaluation/v3-pair/summary.json) |
+| Candidate process and relevance | [summary](analysis/poi-process/summary.json) |
+| Repair and complete stages | [draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [summary](analysis/repair/summary.json) |
+| All-attempt resources | [summary](analysis/resources/summary.json) |
+| Canonical publication hashes and original sources | [Material index](material-index.json) |
+
 ## Results
 
 | Version | Final primary / 100 | Auxiliary / 100 | Density deduction |
@@ -58,7 +76,7 @@ Generation, one primary, offline closeout and main-worktree integration are comp
 
 **Accepted by the human researcher on 16 October 2026 Australia/Sydney.** The decision accepts revision 3 / input revision 2, the selected V0-V3 results and reports at integrated checkpoint `83c703936a1785fcacea31fa9c5cbae10bd44d5e`, the CLI GBK correction, the Repair timing correction through `d7dd30a`, and all disclosed limitations. It includes the retained UNKNOWN outcomes, model-supported access distinction, producer-bound exact replay and bounded current-main compatibility described above. Status recording preserves every selected source value and original evidence binding.
 
-This completes automatic case acceptance and the joint gate for Issues [#154](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/154), [#169](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/169) and [#170](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/170), now closed as completed. Blinded human assessment remains deferred; this decision supplies no human quality ratings or final research conclusions. Git publication and case-15 remain unstarted.
+This completes automatic case acceptance and the joint gate for Issues [#154](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/154), [#169](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/169) and [#170](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/170), now closed as completed. Blinded human assessment remains deferred; this decision supplies no human quality ratings or final research conclusions. Git delivery is distinct from the original automatic acceptance decision.
 
 ## Historical context
 

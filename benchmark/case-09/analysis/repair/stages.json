@@ -6,7 +6,7 @@
     "draft": {
       "base": {
         "$case_material_ref": {
-          "path": "itinerary.json",
+          "path": "../../generation/v3/itinerary.json",
           "pointer": "",
           "expanded_semantic_sha256": "01981e19a77eae92db1259830728d26c73229575e3c06d10847596647fe1ca43"
         }
@@ -22,7 +22,7 @@
             "title": "Visit ART FRONT GALLERY",
             "place_name": "ART FRONT GALLERY",
             "source_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
-            "location": "Japan, \u3012150-0033 Tokyo, Shibuya, Sarugakuch\u014d, 29\u2212\uff11\uff18 HILLSIDE TERRACE Building E, A\u68df",
+            "location": "Japan, 〒150-0033 Tokyo, Shibuya, Sarugakuchō, 29−１８ HILLSIDE TERRACE Building E, A棟",
             "start_time": "2026-10-24T11:00:00+09:00",
             "end_time": "2026-10-24T13:00:00+09:00",
             "estimated_cost": null,
@@ -143,7 +143,7 @@
     "final_primary": {
       "base": {
         "$case_material_ref": {
-          "path": "itinerary.json",
+          "path": "../../generation/v3/itinerary.json",
           "pointer": "",
           "expanded_semantic_sha256": "01981e19a77eae92db1259830728d26c73229575e3c06d10847596647fe1ca43"
         }

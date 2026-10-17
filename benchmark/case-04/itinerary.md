@@ -145,6 +145,6 @@ The draft has 5/4 primary visits; the final has 3/3. Three deterministic deletio
 - Singapore Botanic Gardens (2026-10-18, 09:00–11:00).
 
 Retained activity fields are unchanged.
-The full [draft reference view](generation/v3/draft.json) expands against the final itinerary with the same declared provenance-token sanitization. Transfer and recommendation differences remain in those source views.
+The full [draft reference view](analysis/repair/draft.json) expands against the final itinerary with the same declared provenance-token sanitization. Transfer and recommendation differences remain in those source views.
 
 The final retains Fort Canning Park, but its two explicitly named garden venues were removed. The Primary score alone does not establish interest preservation.
