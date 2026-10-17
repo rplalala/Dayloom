@@ -7,7 +7,6 @@ import shutil
 from pathlib import Path
 
 from .evaluation_transport import EvaluationTransport
-from .identity_program import resolve_versioned_identities
 from .paired_run import (
     available,
     capture_status,
@@ -19,6 +18,7 @@ from .paired_run import (
     usage_summary,
     write_receipt,
 )
+from .paired_subjects import resolve_pair_identity
 from .snapshot import (
     AcquisitionPolicy,
     TransportFailure,
@@ -97,7 +97,8 @@ async def execute(directory, *, approved_sha256, env_file=None, http_client=None
     inventory = {"phases": {}, "pair_available": has_pair}
     from .paired_run import native_report, unresolved_identity
 
-    identity, plan = unresolved_identity(intake), preparation["evidence_plan"]
+    subject_source = preparation.get("subject_source")
+    identity, plan = unresolved_identity(intake, subject_source), preparation["evidence_plan"]
     report = None
     deadline = asyncio.get_running_loop().time() + options["total_timeout_seconds"]
     try:
@@ -153,7 +154,7 @@ async def execute(directory, *, approved_sha256, env_file=None, http_client=None
                     if phase == "identity":
                         evidence = identity_evidence(snapshot)
                         save(execution, "identity-evidence.json", evidence)
-                        identity = resolve_versioned_identities(intake, evidence).to_dict()
+                        identity = resolve_pair_identity(intake, evidence, subject_source)
                         save(execution, "identity-report.json", identity)
                         route_preparation = routes(intake, identity, context, target)
                         save(execution, "route-preparation.json", route_preparation)

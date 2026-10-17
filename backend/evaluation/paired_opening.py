@@ -12,6 +12,24 @@ from .opening_judgment import prepare_packet
 from .records import canonical_digest, require
 
 VERSION = "rtpeval_pair_opening_preparation_1"
+COMMON_VERSION = "rtpeval_pair_opening_preparation_2"
+
+
+def subject_binding(identity):
+    policy = identity.get("association_policy_version")
+    if policy not in ("versioned_api_identity_5", "versioned_api_identity_6"):
+        return {}
+    replay = identity["identity_versioned_replay"]
+    return {
+        "identity_policy": policy,
+        "subject_policy": "requirement_subject_correspondence_2"
+        if policy == "versioned_api_identity_6"
+        else "requirement_subject_correspondence_1",
+        "subject_evidence_sha256": canonical_digest(
+            replay.get("subject_evidence", replay["evidence"])
+        ),
+        "subject_result_sha256": canonical_digest(replay.get("subject_result")),
+    }
 
 
 def prepare_pair_opening(
@@ -33,6 +51,7 @@ def prepare_pair_opening(
     require(prices["currency"] == "USD", "prices", "USD reference budget required")
     intake = load_batch(manifest).to_dict()
     identity, identity_sha = _read(Path(identity_path))
+    binding = subject_binding(identity)
     packet = prepare_packet(
         intake,
         identity,
@@ -45,7 +64,8 @@ def prepare_pair_opening(
     )
     require(packet["cases"], "packet", "No eligible paired missing-hours visits")
     preparation = {
-        "schema_version": VERSION,
+        "schema_version": COMMON_VERSION if binding else VERSION,
+        **binding,
         "status": "prepared",
         "prepared_at": _now(),
         "directory": str(Path(directory).resolve()),
@@ -81,7 +101,7 @@ def prepare_pair_opening(
 
 def verify_pair_opening(preparation, *, implementation=False):
     require(
-        preparation.get("schema_version") == VERSION
+        preparation.get("schema_version") in (VERSION, COMMON_VERSION)
         and canonical_digest({k: v for k, v in preparation.items() if k != "content_sha256"})
         == preparation.get("content_sha256"),
         "preparation",
@@ -101,6 +121,13 @@ def verify_pair_opening(preparation, *, implementation=False):
     )
     identity, digest = _read(Path(preparation["identity_path"]))
     require(digest == preparation["identity_sha256"], "identity", "Paired identity bytes changed")
+    if preparation["schema_version"] == COMMON_VERSION:
+        binding = subject_binding(identity)
+        require(
+            binding and all(preparation.get(k) == v for k, v in binding.items()),
+            "identity",
+            "Paired opening common-subject provenance changed",
+        )
     if implementation:
         require(
             all(

@@ -115,10 +115,10 @@ def prepare_opening_run(parent_directory, directory, *, options, prices):
 
 
 def _verify_opening(preparation, *, implementation=False):
+    from .paired_opening import COMMON_VERSION, verify_pair_opening
     from .paired_opening import VERSION as PAIR_VERSION
-    from .paired_opening import verify_pair_opening
 
-    if preparation.get("schema_version") == PAIR_VERSION:
+    if preparation.get("schema_version") in (PAIR_VERSION, COMMON_VERSION):
         return verify_pair_opening(preparation, implementation=implementation)
     require(
         preparation.get("schema_version") == VERSION
@@ -164,10 +164,10 @@ def _verify_opening(preparation, *, implementation=False):
 
 
 def _compose(preparation, parent, execution, identity, plan, material, usage, generated_at):
+    from .paired_opening import COMMON_VERSION, compose_pair_opening
     from .paired_opening import VERSION as PAIR_VERSION
-    from .paired_opening import compose_pair_opening
 
-    if preparation.get("schema_version") == PAIR_VERSION:
+    if preparation.get("schema_version") in (PAIR_VERSION, COMMON_VERSION):
         return compose_pair_opening(
             preparation, execution, identity, plan, material, usage, generated_at
         )
