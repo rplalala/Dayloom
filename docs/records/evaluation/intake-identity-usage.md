@@ -2242,3 +2242,50 @@ usage and tracked case presentation bytes were not rewritten. The r02 V3 score r
 80 under its executed policy; no corrected case score is claimed. New case/provider execution
 sends, incremental provider charges and actual case reruns were zero; Codex review billing
 is unavailable. Integration/publication and any fresh scoring remain separate actions.
+
+#### Shared evaluator delivery preparation (2026-10-17)
+
+Offline integration from local main `31b0178` combines the three case-10 time-gate
+commits with the six original case-08 common-subject commits. Implementation tip
+`cb0603c` has the same backend, tests, tools, configuration and existing shared
+contracts as case-10 `6320785`. The sole cherry-pick conflict was an evidence-record
+append: retaining both dated sections reproduces the previously validated combined
+record. Original source commits remain unchanged, with `-x` attribution on each copy.
+
+The complete evaluator and 28 RTPEval CLI modules collected 2,348 tests. The initial
+run recorded **2,334 passed, seven failed and seven skipped** in 2,119.59 seconds.
+Three failed junction controls passed outside the Windows sandbox. Four failed V2
+capture controls passed after copying and checksum-verifying the existing offline
+vocabularies; their initial RAG unavailable result came from the missing local
+`cl100k_base` vocabulary. Five cross-volume rendering skips passed with an explicit
+owned C-drive source root and D-drive output root. The two host symlink-privilege
+skips remain unverified. All seven initial failures have passing targeted controls;
+the initial broad run is not represented as all-green or as a fresh full run after
+environment provisioning. No application/evaluator code correction was needed.
+
+Backend/tool Ruff, all 21 affected Python format checks and 340 local document
+targets/anchors passed. Source Standards/Spec review evidence is reused on the
+verified identical implementation; no fresh independent model review is claimed.
+Case material is absent from this shared delivery diff. Case-10's 351 earlier and
+226 selected-source hashes, both Primary reports and their 240/244-file receipts
+remain unchanged. This preparation performs no paid provider calls or saved-case
+reruns and leaves main and both case branches unchanged.
+
+Once the actual delivery base contains these shared changes, case-08 delivery can
+skip the following source commits. Until then, the shared code is still a dependency.
+
+| Case-08 source | Integrated copy |
+| --- | --- |
+| `87dab1b` | `ccb0fc2` |
+| `ded42bd` | `546a5eb` |
+| `de60002` | `cbc1ee2` |
+| `8676164` | `f8379a8` |
+| `cc959ba` | `e5e9345` |
+| `21bd707` | `cb0603c` |
+
+`de60002` needs explicit accounting: its source patch ID differs because the combined
+evidence append retains the time-gate section. Its content is integrated even when
+`git cherry` labels the original as new. Case-only delivery should use a fresh
+branch from the verified base and inspect later unintegrated changes, rather than
+reapply the old branch's shared-fix range. Original evaluator fingerprints, saved
+responses and scores retain their historical bindings.
