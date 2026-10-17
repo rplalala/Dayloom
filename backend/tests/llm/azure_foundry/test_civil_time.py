@@ -125,7 +125,7 @@ def test_reason_compression_uses_a_compatible_text_only_schema_and_per_call_opti
             system_prompt="Compress", user_prompt='{"reasons": []}', output_tokens=8192
         )
     )
-    assert result.model_dump() == raw
+    assert result == raw
     assert_foundry_schema_contract(FakeChatOpenAI.schema)
     assert FakeChatOpenAI.structured_kwargs["max_output_tokens"] == 8192
     assert FakeChatOpenAI.init_kwargs["max_retries"] == 0

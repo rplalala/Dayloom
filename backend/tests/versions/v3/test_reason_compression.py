@@ -325,8 +325,9 @@ def test_missing_compression_usage_is_explicit_and_does_not_become_zero_cost():
 
 
 @pytest.mark.parametrize("missing_usage", [False, True])
+@pytest.mark.parametrize("malformed", [False, True])
 def test_real_client_compression_is_a_separate_native_usage_and_cost_event(
-    monkeypatch, missing_usage
+    monkeypatch, missing_usage, malformed
 ):
     from langchain_core.language_models.fake_chat_models import FakeMessagesListChatModel
     from langchain_core.messages import AIMessage
@@ -345,6 +346,8 @@ def test_real_client_compression_is_a_separate_native_usage_and_cost_event(
         ],
     }
     compressed = {"reasons": [{"reason_ref": "r01", "reason": "No supported route."}]}
+    if malformed:
+        compressed["reasons"][0]["disposition"] = "proposed"
 
     class Port(FakeMessagesListChatModel):
         @property
@@ -411,10 +414,16 @@ def test_real_client_compression_is_a_separate_native_usage_and_cost_event(
         "repair_reason_compression",
     ]
     assert len(usage["repair_summary"]["model_event_ids"]) == 2
-    assert result.parsed_patch.target_dispositions[0].reason == "No supported route."
+    assert result.reason_compression["response"] == compressed
+    if malformed:
+        assert result.reason == "reason_compression_failed" and result.parsed_patch is None
+        assert result.final == fixture[0]
+    else:
+        assert result.parsed_patch.target_dispositions[0].reason == "No supported route."
     assert usage["model_calls"][1]["total_tokens"] == (None if missing_usage else 100)
     catalog = prices()
     catalog["rows"] = [catalog["rows"][0]]
+    catalog["rows"][0].update(valid_from="2000-01-01", valid_until="2100-01-01")
     catalog["rows"][0]["match"].update(provider="langchain", operation="chat_model")
     # Synthetic known rates: (170 input * 2 + 80 output * 4) / 1e6 = .00066.
     report = build_cost_report([{"sha256": "a" * 64, "usage": usage}], catalog)["runs"][0]

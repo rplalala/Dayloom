@@ -543,7 +543,9 @@ class AzureFoundryStructuredLLMClient:
             [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)],
             **({"config": {"callbacks": [usage_callback]}} if usage_callback is not None else {}),
         )
-        return ReasonCompressionDTO.model_validate(raw)
+        # Preserve returned structured content before the service validates it, so
+        # rejected compression outputs remain available in the Repair audit too.
+        return raw
 
     @staged("repair_model")
     async def generate_repair_structured(
