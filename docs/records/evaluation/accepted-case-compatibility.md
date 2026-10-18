@@ -204,7 +204,7 @@ so the earlier 359-test result was not rerun or relabeled as a new test executio
 
 ### Reference allowance and limits
 
-The proposed execution allowance is **USD 40**, subject to explicit live approval:
+The authorized execution allowance is **USD 40** in reference reservations:
 
 | Reservation | Reference USD |
 | --- | ---: |
@@ -246,13 +246,75 @@ a time after checking observed usage and all remaining reservations. Unknown
 accounting, insufficient remaining allowance or any native limit failure stops
 subsequent dispatch. A generation overrun cannot be retroactively prevented.
 
+### Execution and enforced stop
+
+The bounded batch started on 18 October at
+`62f04cddad8635bbef12d116ea84346d0f9788a5`, with unchanged production content and
+frozen inputs/runtime/prices. Three of six base generations ran; neither Primary
+evaluation ran. The batch is **stopped**, not complete or newly accepted.
+
+| Generation | Observed outcome | Reference USD |
+| --- | --- | ---: |
+| 04 V0 | Generation/workflow completed; all six adjacent primary-visit pairs have WALK/TRANSIT declarations | 0.0054891 |
+| 04 V1 | Generation/workflow completed; hard WALK/TRANSIT policy retained; all five adjacent primary-visit pairs have allowed application-owned transfers | 1.344135235 |
+| 05 V3 | Generation returned; three natural Repair rounds; workflow unqualified because retrieval failed | 2.472041815 observed subtotal; total unavailable |
+
+Case-04's submitted-mode checks passed, but neither the V0 model declarations nor
+the V1 native transfer states establish independent whole-trip quality or universal
+live feasibility. These remain partial-version, new-date functional checks.
+
+Case-05's retained proposal reports show successive native objective improvements;
+each adopted proposal matches its submitted state, and selected round 3 matches
+Repair final, V3 final-primary and the submitted itinerary. This supports the
+same-run best-retention invariant for this execution, not exhaustive search or
+independent quality. Reason compression was not triggered, and deadline exhaustion
+was not exercised. Internal `ACCEPTED_COMPLETE` describes authorized Repair targets,
+not successful RAG, qualified V3 completion or Primary acceptance.
+
+Two blockers prevent continuation:
+
+- One Repair round-2 revalidation request returned HTTP 400. The captured request
+  combines `DRIVE`, `TRAFFIC_UNAWARE` and `departureTime`; Google's response states
+  that a timestamp cannot be set for that routing mode. Native accounting retains
+  `charge_uncertain`, one unpriced event and a null total. No zero charge or
+  replacement price was invented.
+- RAG connection preparation timed out at its 10-second connection limit, with
+  zero embedding sends and retrieval queries. Its status is `deadline_limited`,
+  with `timeout_scope=other_suboperation_or_limit`; this was not exhaustion of the
+  360-second RAG phase deadline. Producer qualification correctly marks retrieval
+  failed despite the returned itinerary and completed validation/Repair. Two
+  subsequent TCP-only checks of the same endpoint timed out inside the sandbox
+  but connected outside it. This supports a sandbox-connectivity limitation, not
+  a credential or database-service failure; authentication, SQL, corpus
+  compatibility and successful retrieval remain unverified. No configuration,
+  credentials or permissions were changed.
+
+The three captures contain 13 model calls and 146 provider events, including one
+failed route event. The combined **observed reference subtotal is USD 3.821666150**;
+the grand total and actual account invoice remain unavailable. The accounting stop
+was enforced before 09 V0/V1, 11 V3 or either Primary could dispatch. The allowance
+was not exhausted, and the global correction/retest reservation remains unused.
+
+The first CLI registration check also rejected pending producer declarations in a
+planned capture slot, before any Planner dispatch. Separate registration selectors
+with raw planned slots and relocated, byte-verified donor completion references
+then passed all six native offline registration checks. The rejected invocation,
+original preparation and corrected selectors remain distinct evidence; this was
+not a repeat generation or a production-code fix.
+
+Offline checks verified submitted modes, recorded Repair promotion/final-state
+consistency, the stopped invocation census and all 1,746 protected original file
+hashes. Execution receipts, complete captures, TCP checks and the stopped census
+are retained under the existing task-local evidence identifiers. Original case
+acceptance, scores and artifacts remain unchanged; no new Primary scores exist.
+
 ### Remaining execution gates
 
 The execution window is 18-22 October inclusive, Australia/Sydney. Check the actual
 date before dispatch; expiration stops execution rather than forging a runtime
 date. Unchanged production content and frozen input/runtime/price hashes are
-required. Environment-file presence was checked, but credential authentication and
-database/RAG access remain untested; no secrets were loaded during preparation.
+required. Model and Google credentials worked in the dispatched captures; RAG
+authentication and query access remain unverified by the TCP connectivity checks.
 
 After generation, newly submitted outputs require genuine output-specific review.
 Only then can cases 09/11 assemble complete native manifests, pass intake/semantic
@@ -262,12 +324,19 @@ check their resource estimates and admit each exact digest. Prepared command
 templates do not claim these output-dependent packages already exist or authorize
 their execution. New current-policy judgments belong only to these two cohorts.
 
-If case-05 naturally does not exercise Repair, report that coverage gap; do not
-force Repair or repeat the run. Report violations, UNKNOWN and missing evidence
-without changing intended V0-V3 behavior. The remaining finite stages are the
-approved batch, at most the single bounded correction/retest cycle if applicable,
-and one consolidated update to this record. Stop at the present preparation gate
-until live scope and allowance are explicitly approved.
+Continuation first requires an admitted accounting treatment for the failed request,
+an authorized correction for the invalid routing option/timestamp combination, and
+verified query-only RAG prerequisites in an accessible execution context. No such
+production correction or repeat generation has occurred. Preserve the failed
+capture if a separately admitted correction attempt follows; do not relabel it as
+qualified or substitute a no-RAG result.
+
+The remaining scope consists of three base generations, two Primary evaluations,
+at most the one global correction/retest cycle within its approved bounds, and
+consolidated closure. Any corrective generation consumes that single extra slot;
+it does not authorize a new cycle per blocker or case. Preserve FAIL/UNKNOWN and
+missing evidence without changing intended V0-V3 behavior. The batch remains at
+the enforced accounting/qualification stop until those continuation gates are met.
 
 ## Regression and limitations
 
