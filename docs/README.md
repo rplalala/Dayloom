@@ -54,6 +54,10 @@ records the common two-stage policy's implementation, bounded calls and current
 case-01–07/09 outcomes, while original primary evidence and acceptance dates remain intact.
 The [combined offline acceptance](records/evaluation/intake-identity-usage.md#post-integration-offline-acceptance-2026-10-12)
 records main-worktree verification and the boundaries of reused regression evidence.
+The [accepted-case compatibility audit](records/evaluation/accepted-case-compatibility.md)
+checks all twelve accepted selections against the 18 October integrated code,
+separating unchanged saved-material calculations from source-bound policy upgrades
+and proposed targeted generation checks.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;
