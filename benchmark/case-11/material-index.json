@@ -1,1362 +1,1733 @@
 {
-  "acceptance": "Accepted by the human researcher on 2026-10-17 Australia/Sydney for the exact r02 selection and limitations in report.md#acceptance. Execution paused; blinded human review and remote publication deferred.",
-  "analysis_revision": "04e6860f4de785ad71b847411e28345f3227a55d",
-  "automatic_acceptance": {
-    "accepted_on": "2026-10-17",
-    "batch_id": "case-11-r02",
-    "batch_revision": "2",
-    "decision_by": "human researcher",
-    "decision_source": "Explicit user acceptance in the current Codex chat",
-    "decision_timezone": "Australia/Sydney",
-    "execution_state": "paused",
-    "historical_r01": "Retained as failure evidence and resource history; excluded from the selected r02 outputs.",
-    "human_review": "deferred_not_conducted",
-    "limitations_ref": "report.md#acceptance",
-    "recording_provider_sends": 0,
-    "recording_reruns": 0,
-    "remote_issue_state": "unchanged",
-    "remote_publication": "not_authorized",
-    "report_ref": "report.md#acceptance",
-    "scope": [
-      "unchanged original input",
-      "independently reviewed requirements and interests",
-      "source-policy context",
-      "selected first-dispatched r02 V0-V3 outputs and admitted manifest",
-      "independent Primary",
-      "candidate POI and relevance analysis",
-      "Repair mechanism and completed same-run V3 pair",
-      "all-attempt resources including historical r01"
-    ],
-    "selected_material_commit": "2fc49fa3f16aff4088814d4e1e82676c83eae2ce",
-    "selected_material_index_sha256": "00cca4d1f46cc66203e12835189cf7c9367c3d2588a1f73924ce2d5bc125c1ed",
-    "selected_public_entry_count": 123,
-    "selected_runs": {
-      "v0": "case-11-r02-v0",
-      "v1": "case-11-r02-v1",
-      "v2": "case-11-r02-v2",
-      "v3": "case-11-r02-v3"
-    }
-  },
-  "canonical_original_input": "../inputs/case-11.json",
+  "schema_version": "case_public_material_index_1",
   "case_id": "case-11",
-  "case_material_references": {
-    "semantics": "Expand recursively relative to each containing file. Native source bytes remain private and unchanged. Public views are not closed native replay bundles.",
-    "shape": {
-      "$case_material_ref": {
-        "expanded_semantic_sha256": "canonical UTF-8 sorted-key compact JSON hash",
-        "path": "relative publication JSON path",
-        "pointer": "JSON Pointer into the expanded target"
+  "case_revision": "current-path-20261018-r1",
+  "batch_id": "case-11-current-path-check",
+  "status": "researcher_accepted_current_selection",
+  "original_input": {
+    "path": "../inputs/case-11.json",
+    "sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487"
+  },
+  "versions": {
+    "v0": {
+      "run_id": "case-11-r02-v0",
+      "selected_result_sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v0/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/result.json",
+          "sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v1": {
+      "run_id": "case-11-r02-v1",
+      "selected_result_sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v1/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/result.json",
+          "sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v2": {
+      "run_id": "case-11-r02-v2",
+      "selected_result_sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v2/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/result.json",
+          "sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v3": {
+      "run_id": "case-11-current-path-v3-a1",
+      "selected_result_sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v3/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/itinerary"
+        }
       }
     }
   },
-  "current_selection": {
-    "v0": "generation/v0/itinerary.json",
-    "v1": "generation/v1/itinerary.json",
-    "v2": "generation/v2/itinerary.json",
-    "v3": "generation/v3/itinerary.json"
+  "current_selection": "selection.json",
+  "preceding_publication": {
+    "git_revision": "5ee40b6eb5a7e435bbefbc34fa5b5985c43e6576",
+    "path": "benchmark/case-11",
+    "material_index_sha256": "28634699adeef2d7f6aa879f8a902fd8ca92657198f58b705fe2618a4504e58e",
+    "original_git_revision_before_consolidation": "986ff398adf64c7022f5b23c505f4c7194d13903",
+    "tree_equivalent": true
   },
-  "delivery": {
-    "accepted_material_and_native_reports": "unchanged",
-    "case_branch": "codex/case-11-r02",
-    "date": "2026-10-17",
-    "delivery_branch": "codex/case11-delivery",
-    "fresh_main_worktree_restoration_native_replay": "exact",
-    "generation_reruns": 0,
-    "human_review": "deferred_not_conducted",
-    "main_worktree_integrated": true,
-    "private_archive_migrated_files": 9,
-    "provider_sends": 0,
-    "publication_authorized": true,
-    "source_destination_archive_hashes": "identical",
-    "timezone": "Australia/Sydney",
-    "tracker": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/160"
+  "public_material_format": {
+    "reference": "$case_material_ref paths are relative to the containing file. Resolve the JSON Pointer, recursively expand, then verify the SHA-256 of UTF-8 canonical JSON: sorted keys, compact separators, ensure_ascii=False.",
+    "source_identifiers": "Native logical paths, hashes and embedded native references identify exact private sources, not public navigation. Source SHA mappings in this index locate their published projections. Reader navigation uses canonical public paths.",
+    "scope": "One current selected dataset. Earlier selections remain in immutable private archives and the recorded Git revision, not parallel public history datasets."
+  },
+  "private_archive": {
+    "originals": "benchmark/scratch/case-11/",
+    "refresh": "benchmark/scratch/case-11/refresh-20261018/archive/"
   },
   "entries": [
     {
-      "json_pointer": "",
       "path": "requirements/reviewed.json",
-      "publication_kind": "exact_bytes",
       "sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/requirements-reviewed.json",
-      "source_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c"
+      "expanded_semantic_sha256": "febcd649e3131a74de5fb1ad9e230e0afe3710d148b7e7ee26f0c9a5e3cea1b0",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/requirements.json",
+          "sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "json_pointer": "",
-      "path": "analysis/history/r01/requirements/route-reviews.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "775e0dbe30cfee57a71b8256d40f61b7d84faa5dcf64a7692ba42de44bce06d3",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/route-reviews.json",
-      "source_sha256": "047c6e15dee01fd959963ed533cd5b91a5008db2147ea436acbc90f88afdeab4"
-    },
-    {
-      "json_pointer": "",
-      "path": "analysis/history/r01/requirements/density-reviews.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "a29a4350717e27f4803a6e5f8d78c6c753594696738ddfec1ed44cabd057aba0",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/density-reviews.json",
-      "source_sha256": "f4071c90e7ea1bf6f38f58733ae5f9a0e9ef144ee5dabffb65e9c70ce80c7783"
-    },
-    {
-      "json_pointer": "",
-      "path": "analysis/history/r01/requirements/schedule-context.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "41079e401b1a435aaaf826cf2f36e3fe3f58533424a4d2658c6e09b93bdec741",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/schedule-context.json",
-      "source_sha256": "efa88a02c9594abfd561455c7d1527112d7ddcffdd9e54539c374ff306e32d01"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "analysis/history/r01/v0/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "e3aedce478b3aca92fb3f8bbe7b64c8d8e36ae3319c48c7ca9f8d8de8bebc69c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/material/captures/v0/result.json",
-      "source_sha256": "932cd7a04d9c2a88d334852542410e59ab01724d19631f1da5545004d07cfb96"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "analysis/history/r01/v1/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "0e1ecb393b16e6cc5dcd64b2f20dc22fef7f3eea339925ab0dc91cb83e1c0f14",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/material/captures/v1/result.json",
-      "source_sha256": "7a59f29bc190c6b6b16bd356137e7b80911341bbe9971c74280bf93c5bbca690"
-    },
-    {
-      "json_pointer": "",
-      "path": "evaluation/population-v1.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "3a558a38834fed690f0f0aacdfc7aba359d53018578c90bbab2e17d99a8e67ce",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/handoffs/population-v1.json",
-      "source_sha256": "1c3ad2ed5399651a492810805f7ba5f9b9c0e6c776e6b67aa676f6279ee5bcbb"
-    },
-    {
-      "json_pointer": "",
-      "path": "interests/source-review.json",
-      "publication_kind": "derived_source_review_view",
-      "sha256": "ea57979f771cf34eba164d7f459ffdcbcbce10ed6bae09b728256d682872b5e2",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/source-reviews/source-only-interest-review.json",
-      "source_sha256": "a997b4488ddd05ad37746913c3693aa29abdb72a49a1e8943bdb60914fff76ec"
-    },
-    {
-      "json_pointer": "",
-      "path": "evaluation/temporal-v1.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "87377dd7ed28918545b189faa387592f0fe4ba5954f2de553c736b8a9e6a365d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/handoffs/locked-temporal-probe-v1.json",
-      "source_sha256": "87377dd7ed28918545b189faa387592f0fe4ba5954f2de553c736b8a9e6a365d"
-    },
-    {
-      "json_pointer": "",
-      "path": "evaluation/timezone-origin-v1.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "ed9d362f0b67255815b87a76b01298d2e02b8d97f3d71bd5bb01d3ef83ad5cab",
-      "source_logical_path": "benchmark/scratch/case-11/work/r01/diagnosis/timezone-origin.json",
-      "source_sha256": "ed9d362f0b67255815b87a76b01298d2e02b8d97f3d71bd5bb01d3ef83ad5cab"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "generation/v0/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "e48afe5dd4c78604d0a42c5db069f70d05dac15e88c9c4ed845ca03a8e9c5742",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/result.json",
-      "source_sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v0/usage-summary.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "2179133a9924eca0a44cd8e0fb5eda99e908b97f51054e32edf16f5514241612",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/usage-summary.json",
-      "source_sha256": "494080001208ed5c57f96aa8c1d4c8d76b3079cc9858da9ced4bceb38cc973fd"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v0/provenance.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "abfe100149442469988105f6bed88f8e0fd77c435edab3b038ba35ead8c99881",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v0/provenance.json",
-      "source_sha256": "e744fb741cf21d4abcde69b329e79f3508a40c85b8453253b3596b55a36d6d48"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "generation/v1/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "0ae4e3fadd59488ea2024befbdaec5ff9339b068bee1cc3681c68d87404237cf",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/result.json",
-      "source_sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v1/usage-summary.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "d5e0134f03ab9e18eaf927312c32bfad53f0eb908e218d877046f002c20f19ec",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/usage-summary.json",
-      "source_sha256": "77d4c518094491484d5b0cc717f3c7ccd5d37117d96ac0898633e028c3e42206"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v1/provenance.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "bae750afe4c95ae775eb030900eb9f1df3531ba60f384ff9ac424b27e8324ca2",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v1/provenance.json",
-      "source_sha256": "8fde481828a1a4ece035936e68781d19614a0f5ed4885afa9b9b499a69a49e0e"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "generation/v2/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "6d13a385cb5038ad24d4bcac61b389608d4e6f98f7f2fed21596e053c0c7476a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/result.json",
-      "source_sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v2/usage-summary.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "4f97f779fc2ee12d434b1630d4b7f11f2e2c8d5fbe6da4b95d978183cf3ee3cf",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/usage-summary.json",
-      "source_sha256": "d4998f8faa1d1b7d4de25d5d844449b45690470cc66e7ebde65a92c1a7136ad9"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v2/provenance.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "586c7d78e3f4695d0b3553d954fb65062e3332ecf4ca44c554aa4b8dbbeeb8cb",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v2/provenance.json",
-      "source_sha256": "0e96af0467880409662c95a35df3bc13ea84e4098327e299f49857d61421191a"
-    },
-    {
-      "json_pointer": "/itinerary",
-      "path": "generation/v3/itinerary.json",
-      "publication_kind": "selected_json_subtree",
-      "sha256": "b95b866df2c90c97ad276c2f4bbb69cade0c8440b3876b8aa178b62e8d6166d6",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
-      "source_sha256": "c341c44ced43717bd1e64c489961dab295d7a9c05652b8a672bcad5e8aadbe09"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v3/usage-summary.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "63b7e5721fc6a98f8d5c2e099543c4e9152fc810591d8cf759e344e9616592e5",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/usage-summary.json",
-      "source_sha256": "c5c538e3d809d989106c823c529906a1e10e969ce3d840b9436ca12f05eaca35"
-    },
-    {
-      "json_pointer": "",
-      "path": "generation/v3/provenance.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "7f5a4bf4ef1ece46184e9cef68325f73d77ef9fcc1927e16a743e6b8854e27ba",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/provenance.json",
-      "source_sha256": "30287ada5a5bc984efef31b5f96f6a5a31853231412c850eecf60b8560d59819"
-    },
-    {
-      "json_pointer": "",
-      "path": "requirements/route-reviews.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "d2e14d4c220dbeddde43feedf7f03d7bca559b49b4d6f8d0afc339101667366c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/route-reviews.json",
-      "source_sha256": "aa2fbb4d68c6738642cb9fcf097073c3eaa96e6973ba524485cce688a586c15a"
-    },
-    {
-      "json_pointer": "",
-      "path": "requirements/density-reviews.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "51f7a094e88a55eb33f5b80ba60b979562fa08e8de6368e61cb36c4845f614bf",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/density-reviews.json",
-      "source_sha256": "7f04b0c243793c7e715a0262e2d0cfba14a7e762d4b98862e1fbf5a3f110055a"
-    },
-    {
-      "json_pointer": "",
-      "path": "requirements/schedule-context.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "dfc9d495719139eae190e1c8258d3abc96940ec04913ed20037ca8dc069d9d41",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/schedule-context.json",
-      "source_sha256": "480b87745800174fed14febc91b802486aa2c23d3208d8cad12f840400b44905"
-    },
-    {
-      "json_pointer": "",
-      "path": "evaluation/primary/summary.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "4b40b5aef2280d42cd75b0a2c539a4edb4231e11fa44b7c524614ac47cfce353",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/primary-summary.json",
-      "source_sha256": "4b40b5aef2280d42cd75b0a2c539a4edb4231e11fa44b7c524614ac47cfce353"
-    },
-    {
-      "expanded_semantic_sha256": "334beca0ec68312af549a2989b29c75881be7a0e154616d788cfae5def5c57bf",
-      "json_pointer": "",
-      "path": "analysis/summary.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "2345b4f04743aa64b851130c92cfc06b379820a6463200b8824351fffbdf05da",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/paired-completed/summary.json",
-      "source_sha256": "41dd9949b900c0b3676176a361530e90a375f01d788bce6aa0e7f3142b2520fb"
-    },
-    {
-      "expanded_semantic_sha256": "f9b54759ee18efb416dbaa047a1dd5efc89beae3beb12761eddbfd6bf18a3251",
-      "json_pointer": "",
-      "path": "analysis/poi-process/opportunities.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "aea519f88d80d1a1cf938f37858a5dbbeb4acf8f5296e2493be64924e0478f83",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/reports/opportunities/opportunities.json",
-      "source_sha256": "da62bcc69779380fca769709c212fca55d0dbad8ae4d5e8bc749be3d0e1ef172"
-    },
-    {
-      "expanded_semantic_sha256": "a553249421e07a56b8e40ea8592ee5aed2346c9be1e33eb25e601d87388bfce8",
-      "json_pointer": "",
-      "path": "analysis/poi-process/relevance.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "15cf7d973bf6c388d4fb86f267206ccd19070fee2bc5c8cbbbd0d82c595a4d6a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/reports/relevance/relevance.json",
-      "source_sha256": "905a7319c2b980bd2785fe722e2c11511a3b2c1427d9023247ba95fa828b063e"
-    },
-    {
-      "expanded_semantic_sha256": "d1649062c708390738a36155a2294464fa7b44683c4e5a663957610db0791e85",
-      "json_pointer": "",
-      "path": "analysis/repair/repair.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "2dda4c965c9e28c002a91801c3ecaa5513d9921ee5596a5d66194a2b22b9cb8d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/paired-completed/research-repair/repair.json",
-      "source_sha256": "bc733e45d0bd3e3276ef2b72aac25a21126b946bf20bb8e559fe94bd07e5d612"
-    },
-    {
-      "expanded_semantic_sha256": "6cc48f78dfec872657e9d64acbe82528af9bdcdccb4cff8860b65686ff81087c",
-      "json_pointer": "",
-      "path": "analysis/resources/tradeoffs.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "444cecd67e2a35601bf6d8f3251ae8319181ac429cab4ad23c38529727f39eba",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/reports/tradeoffs/tradeoffs.json",
-      "source_sha256": "c893472a87bb0ade73ef07a86609b7c0c4b6b5409cc967c4afa910928a8a6bc9"
-    },
-    {
-      "expanded_semantic_sha256": "6e5ad8624d1a3818a4c5054c254672dc458067ed91140209d760f51b2a8b1be3",
-      "json_pointer": "",
-      "path": "analysis/resources/population.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "a11f9f0a31b48863692df5dfa937c4007853b10e7b2bc10a8964f69119d40d40",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/reports/population/population.json",
-      "source_sha256": "c6ece8d0cc0830cc3392c49acb78abe31ce026584f761e2104e6c132fb049cf4"
-    },
-    {
-      "expanded_semantic_sha256": "285add5e1d92f0a555f53a65b72e0f028c3c874f7c9aee9953af841bd6eb15d1",
-      "json_pointer": "",
-      "path": "analysis/repair/mechanism.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "95388601eeac7fd42590ef23994b004778a4353212fcb4355a580ceb1483bc5c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/mechanism-report.json",
-      "source_sha256": "8ee37b0b65816fe2f930ea98e643e926cc81bb1b913e278252b8e9f42b9cf4da"
-    },
-    {
-      "expanded_semantic_sha256": "ddc8628813e894b3794d917a36f97bdac5aef35650b35ca00b3cc86c9c8dec94",
-      "json_pointer": "",
-      "path": "analysis/resources/all-attempt-cost.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "83f6564e3a0dfba80570306523aa7d0127ad70649d59004679a24ddc89d5fe55",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/paired-completed/all-attempt-cost.json",
-      "source_sha256": "485017a52b1bdb2981e45fb702e47ab6c4482a8dbac3d8501e9a79fce7fc5fe6"
-    },
-    {
-      "expanded_semantic_sha256": "4fa8dd152c6ee76e9dfea9bf67ad9056b190de15eeb4c80cfdad4763ff30f575",
-      "json_pointer": "",
-      "path": "analysis/resources/selected-usage.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "9a8b5b8bfb313bd940de4d7d715b1fd3bad7686285ae8c8d7aa64723a5083a93",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/selected-usage.json",
-      "source_sha256": "ec7bff43f2fb22629ff7b1dc2ed52a5d017f7c3f7bf1e044560f091742c3cffc"
-    },
-    {
-      "expanded_semantic_sha256": "50273de8e0bc629b19769f90c18596d0f075ada4b80b73fe36f3b34a3cb9bd5d",
-      "json_pointer": "",
-      "path": "resources/primary-stage.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "81131d0bd61a90b32e1feeb9c2fdee7ec77b264ccc3344be207c106c63dbdcb5",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/paired-completed/resource-ledger.json",
-      "source_sha256": "f2041db5647d2d9ffee71f973df47954065137a9f1ab428df5c62f3c848a31ca"
-    },
-    {
-      "expanded_semantic_sha256": "22f8356d201325fcaedc7efa58810bf42b3f7ea3c8c252b7c46e4b0c9959b159",
-      "json_pointer": "/pair",
-      "path": "evaluation/v3-pair/api-only.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "c523b32ce75e32fe299733b5d2018939f01738e77074fe8ad326e582b05603d9",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/pair-run/execution/report.json",
-      "source_sha256": "0f70ef0446f4e49630d3d548bf4bb1aa6f02fd7b6dd4b5f7782784df036f5485"
-    },
-    {
-      "expanded_semantic_sha256": "6c5375fe6f2dfe2a38f26d371855a36eaafe81d04b4c30cc1b994aab1e8a89e9",
-      "json_pointer": "",
       "path": "interests/inventory.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "129ea2050d1c5625ece24f68abb50066097ace606d666e9edc6884262564c8ee",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/interests/inventory-native.json",
-      "source_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40"
+      "sha256": "fb761f9b12342b31bbc5b9e2f06b3aeaf278ad1ca9944b165e8aa6e854440b67",
+      "expanded_semantic_sha256": "6c5375fe6f2dfe2a38f26d371855a36eaafe81d04b4c30cc1b994aab1e8a89e9",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/interests.json",
+          "sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "e00109218fbb86f39ae6a7fc8d08426e169c8e0b57a09a9fc5629b9429f68140",
-      "json_pointer": "",
-      "path": "interests/relevance-a.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "05341642bf1738938ac84c5675ed7d0f71d7c7e29c1ce72399aa502d2d648a70",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/reviews-a-native.json",
-      "source_sha256": "1234a56fe8353c9e5a32038855cf70bd273a1f4a6b7c91a4a11c769858c1cb52"
+      "path": "interests/relevance-reviews.json",
+      "sha256": "9d3f525e76afff9eaa91aac4250ba771a029e61bb901301af0a24003b8c2d39d",
+      "expanded_semantic_sha256": "1697a28b9ac3df28eb5ec04899abf8286590d2f399dd7bc53c13080c1d3ddd40",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/relevance-reviews.json",
+          "sha256": "9d3f525e76afff9eaa91aac4250ba771a029e61bb901301af0a24003b8c2d39d",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/dd0994ab876425a26d68fb2b01e5aaf6d8601f3141307ba22fae68739b5be062.json",
+      "sha256": "dd0994ab876425a26d68fb2b01e5aaf6d8601f3141307ba22fae68739b5be062",
       "expanded_semantic_sha256": "cda09bc56db12b7fcc2d32680f56f070aaf79b75c45b526806302acf95ba08b5",
-      "json_pointer": "",
-      "path": "interests/evidence/a-01.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "b86bbcd95440562296d363dad015a2a5e57b9cc61a857679faab8dc49a6c0a4f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-01.json",
-      "source_sha256": "dd0994ab876425a26d68fb2b01e5aaf6d8601f3141307ba22fae68739b5be062"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-01.json",
+          "sha256": "dd0994ab876425a26d68fb2b01e5aaf6d8601f3141307ba22fae68739b5be062",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/1c064b5ab64818b4cf79854857d9ac8f9fc75d551ad586c9be62fa2dfc073e3a.json",
+      "sha256": "1c064b5ab64818b4cf79854857d9ac8f9fc75d551ad586c9be62fa2dfc073e3a",
       "expanded_semantic_sha256": "1c105a874c82776a6189ef7963fdd22daf028388a9203317121cfe5926782e0c",
-      "json_pointer": "",
-      "path": "interests/evidence/a-02.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "5b1df273423db8147e64497f1ceec0e034933c28577620fd0a0745dee2cc3806",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-02.json",
-      "source_sha256": "1c064b5ab64818b4cf79854857d9ac8f9fc75d551ad586c9be62fa2dfc073e3a"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-02.json",
+          "sha256": "1c064b5ab64818b4cf79854857d9ac8f9fc75d551ad586c9be62fa2dfc073e3a",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/dbca9d0fa1eadc1f483d79d23a64e4916a098e958e9a5816526086f5bf9b93f2.json",
+      "sha256": "dbca9d0fa1eadc1f483d79d23a64e4916a098e958e9a5816526086f5bf9b93f2",
       "expanded_semantic_sha256": "4656aeb8ce9fcc1c947b60d7a79950f2bdb0efe83239376ae736ae8aaf46fdb8",
-      "json_pointer": "",
-      "path": "interests/evidence/a-03.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "b3af858ee7754ada1a886cd9b821f5d1b9c46a30af1c426eb455f9362ea6ec49",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-03.json",
-      "source_sha256": "dbca9d0fa1eadc1f483d79d23a64e4916a098e958e9a5816526086f5bf9b93f2"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-03.json",
+          "sha256": "dbca9d0fa1eadc1f483d79d23a64e4916a098e958e9a5816526086f5bf9b93f2",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/51da7cc2abef71d860327236a2ea581d182dfdabf33ddeffab69b313fd9b1018.json",
+      "sha256": "51da7cc2abef71d860327236a2ea581d182dfdabf33ddeffab69b313fd9b1018",
       "expanded_semantic_sha256": "a38a1f709a0fa4248c2a8d1bba524f352ec378d28715195655108de90f2b1b2b",
-      "json_pointer": "",
-      "path": "interests/evidence/a-04.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "f87a54a4f733300619dc13f8cd340fc7e8a9f95a57adfe195ceb6f27c821dc7b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-04.json",
-      "source_sha256": "51da7cc2abef71d860327236a2ea581d182dfdabf33ddeffab69b313fd9b1018"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-04.json",
+          "sha256": "51da7cc2abef71d860327236a2ea581d182dfdabf33ddeffab69b313fd9b1018",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/fe52490f6b95e2d26d5b914a5b94f20fe78c9a9c19496a6e9234613174ed122a.json",
+      "sha256": "fe52490f6b95e2d26d5b914a5b94f20fe78c9a9c19496a6e9234613174ed122a",
       "expanded_semantic_sha256": "b08d4823d4325e9be4eae74ca517345ae64cc284ca4c80f573ec278c562d62f9",
-      "json_pointer": "",
-      "path": "interests/evidence/a-05.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "edfc9076d0d5c29605fff8e36f122fe1b9d593926fad4b2b2a78c3bd3e55a90e",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-05.json",
-      "source_sha256": "fe52490f6b95e2d26d5b914a5b94f20fe78c9a9c19496a6e9234613174ed122a"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-05.json",
+          "sha256": "fe52490f6b95e2d26d5b914a5b94f20fe78c9a9c19496a6e9234613174ed122a",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "973c940e663b9e09a4892447eae478db97529b9bfb8d5b7bd9524246f2f406bd",
-      "json_pointer": "",
-      "path": "interests/evidence/a-06.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "9f1383a99fbb3ea505aada29778ee514918b60d066be00b99c6f02a6b7766fe6",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-06.json",
-      "source_sha256": "782ee534ca4ac7c330377f318087046f792c65d769af48ea63792b470599bdd6"
-    },
-    {
+      "path": "interests/evidence/ce849cc67f45d661983c938486b5e82ae9698a528eb2e7bd6e9f0f13f107696c.json",
+      "sha256": "ce849cc67f45d661983c938486b5e82ae9698a528eb2e7bd6e9f0f13f107696c",
       "expanded_semantic_sha256": "1716fe68afd05990bd15ec8288bc0fcf804674d7e320614e639fa1bb1f9d6a82",
-      "json_pointer": "",
-      "path": "interests/evidence/a-07.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "de84734c152994a8c621adc271d5118c7277f19e116bf0f6f790f6f1ae389f4b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-07.json",
-      "source_sha256": "ce849cc67f45d661983c938486b5e82ae9698a528eb2e7bd6e9f0f13f107696c"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-07.json",
+          "sha256": "ce849cc67f45d661983c938486b5e82ae9698a528eb2e7bd6e9f0f13f107696c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/7b31354899a0ae33638de8634b0960e24baed008545990f50a2be0bcf1714b82.json",
+      "sha256": "7b31354899a0ae33638de8634b0960e24baed008545990f50a2be0bcf1714b82",
       "expanded_semantic_sha256": "c8c70ba1dfb5349988e47ee3d5c6ebeaa7c3c4a1b343c1a83d13c232d7f22aa0",
-      "json_pointer": "",
-      "path": "interests/evidence/a-08.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "6a2ba82562ecaa94c24d8f507a15d051612c2351584b4c6aba022910b1e055eb",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-08.json",
-      "source_sha256": "7b31354899a0ae33638de8634b0960e24baed008545990f50a2be0bcf1714b82"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-08.json",
+          "sha256": "7b31354899a0ae33638de8634b0960e24baed008545990f50a2be0bcf1714b82",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/7e6e8b286f25a1ac2df9b93bf0fb675a5aeb0ff8c5c1838b88ab53e1569a6d76.json",
+      "sha256": "7e6e8b286f25a1ac2df9b93bf0fb675a5aeb0ff8c5c1838b88ab53e1569a6d76",
       "expanded_semantic_sha256": "37ac80ced800b9c606a8f9e9ec303eeed460e950b13c0729916b255870429ed6",
-      "json_pointer": "",
-      "path": "interests/evidence/a-09.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "e9111c069178d9da002f151565ca935ac7c4348cfadeed4c517995595aa651bb",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-09.json",
-      "source_sha256": "7e6e8b286f25a1ac2df9b93bf0fb675a5aeb0ff8c5c1838b88ab53e1569a6d76"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-09.json",
+          "sha256": "7e6e8b286f25a1ac2df9b93bf0fb675a5aeb0ff8c5c1838b88ab53e1569a6d76",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/a397dd421cd2c5e41db88e8849ff29da021b9a3f68988d3bd6442476bd562b0a.json",
+      "sha256": "a397dd421cd2c5e41db88e8849ff29da021b9a3f68988d3bd6442476bd562b0a",
       "expanded_semantic_sha256": "98614a69c8cb33581f835d0ae2e37f68d5126635f3ee57319597209e5016673a",
-      "json_pointer": "",
-      "path": "interests/evidence/a-10.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "2e284925dbbdc1584b0b286498812eb4349114667f657bf9af6707c2f75a6aba",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-10.json",
-      "source_sha256": "a397dd421cd2c5e41db88e8849ff29da021b9a3f68988d3bd6442476bd562b0a"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-10.json",
+          "sha256": "a397dd421cd2c5e41db88e8849ff29da021b9a3f68988d3bd6442476bd562b0a",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/cb0cf6e72ec5c21fb4de86c5f86f21c7143de1e6f66a4686855bea95120ae482.json",
+      "sha256": "cb0cf6e72ec5c21fb4de86c5f86f21c7143de1e6f66a4686855bea95120ae482",
       "expanded_semantic_sha256": "12be218b2944e1602b3a87988dacd4c333060514978da96134fb8a52c66592cf",
-      "json_pointer": "",
-      "path": "interests/evidence/a-11.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "711228a86e1894f6334b988fbe419f497f1e23c9a9f6ce62d8078422ce00ad28",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-11.json",
-      "source_sha256": "cb0cf6e72ec5c21fb4de86c5f86f21c7143de1e6f66a4686855bea95120ae482"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-11.json",
+          "sha256": "cb0cf6e72ec5c21fb4de86c5f86f21c7143de1e6f66a4686855bea95120ae482",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/383f0e14572a12b72f3decebdff7f7661e059545f2672bbc7825cb1e11310ad5.json",
+      "sha256": "383f0e14572a12b72f3decebdff7f7661e059545f2672bbc7825cb1e11310ad5",
       "expanded_semantic_sha256": "e30acc3ae59b7da9e8e451f589ec2102a34f128d9a2f6292dba7a20bd9263d41",
-      "json_pointer": "",
-      "path": "interests/evidence/a-12.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "9019d0f189bf653723992773510af1c7cb869e32f7aa62bf304ed297cb095c0b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-12.json",
-      "source_sha256": "383f0e14572a12b72f3decebdff7f7661e059545f2672bbc7825cb1e11310ad5"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-12.json",
+          "sha256": "383f0e14572a12b72f3decebdff7f7661e059545f2672bbc7825cb1e11310ad5",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/8888acd96eb8b003f1127a79d790c27aaee6a6ccceaa859f405666e326953101.json",
+      "sha256": "8888acd96eb8b003f1127a79d790c27aaee6a6ccceaa859f405666e326953101",
       "expanded_semantic_sha256": "3229690da7e957e2aabbb1e90bed4533ef5e21c6d7f45a5db91e1259bfb71ee3",
-      "json_pointer": "",
-      "path": "interests/evidence/a-13.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "276fb3a3cfb05cb8b26b66eb84272d2b72e4b536d8705253154ee2f7ecb3867d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-13.json",
-      "source_sha256": "8888acd96eb8b003f1127a79d790c27aaee6a6ccceaa859f405666e326953101"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-13.json",
+          "sha256": "8888acd96eb8b003f1127a79d790c27aaee6a6ccceaa859f405666e326953101",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/da14105239beb8e90931e16fc1d3c6e6c0df6eb63e82d1abf3279a3dbe341485.json",
+      "sha256": "da14105239beb8e90931e16fc1d3c6e6c0df6eb63e82d1abf3279a3dbe341485",
       "expanded_semantic_sha256": "9c1f51470aa1ee6418331f4950bb91f148e1bf696731dab5e35e37724d21a1b4",
-      "json_pointer": "",
-      "path": "interests/evidence/a-14.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "fc4c4e73e07e1abcedc089019799046e7099a32657bb7ff445248d7fcec26dc1",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-14.json",
-      "source_sha256": "da14105239beb8e90931e16fc1d3c6e6c0df6eb63e82d1abf3279a3dbe341485"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-14.json",
+          "sha256": "da14105239beb8e90931e16fc1d3c6e6c0df6eb63e82d1abf3279a3dbe341485",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/5156f75d73930c6b6c259363a8806ba4eb47915039fbad3050f56bb1d687c679.json",
+      "sha256": "5156f75d73930c6b6c259363a8806ba4eb47915039fbad3050f56bb1d687c679",
       "expanded_semantic_sha256": "afdf28f0de6844494c600649a3bf009314a33fa08852ab597fa1ae527b9f82d0",
-      "json_pointer": "",
-      "path": "interests/evidence/a-15.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "d7da90ae5ab63ce2b6249e5d1296b7f64b87fd396d7464dbb10873a436bd71d1",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-15.json",
-      "source_sha256": "5156f75d73930c6b6c259363a8806ba4eb47915039fbad3050f56bb1d687c679"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-15.json",
+          "sha256": "5156f75d73930c6b6c259363a8806ba4eb47915039fbad3050f56bb1d687c679",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/d4ef8e14543d3db5cfaf57a60bd7c63b452c523fff9ad292e9dd596638486014.json",
+      "sha256": "d4ef8e14543d3db5cfaf57a60bd7c63b452c523fff9ad292e9dd596638486014",
       "expanded_semantic_sha256": "55893e9feddbf46b487354c100df1d44327e1fb0b8648d21b079cf7b0c60fa2e",
-      "json_pointer": "",
-      "path": "interests/evidence/a-16.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "72620863060b7dd05eacc39901c03da0a98d8cc2a2071ce81ad0d92fe9823a84",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-16.json",
-      "source_sha256": "d4ef8e14543d3db5cfaf57a60bd7c63b452c523fff9ad292e9dd596638486014"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-16.json",
+          "sha256": "d4ef8e14543d3db5cfaf57a60bd7c63b452c523fff9ad292e9dd596638486014",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/06dfb469bce97ff9473f17d05baa9abd54b4e94877326293e73b04498d1584a7.json",
+      "sha256": "06dfb469bce97ff9473f17d05baa9abd54b4e94877326293e73b04498d1584a7",
       "expanded_semantic_sha256": "62241e71980090a3dcad9a9cc4348afb80654feb1c978cc0f3035c9301835586",
-      "json_pointer": "",
-      "path": "interests/evidence/a-17.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "65ce598828f538576f8ecbb4b40fdcbcefcacb6eecf0eef7c4a00ffad23a6633",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-17.json",
-      "source_sha256": "06dfb469bce97ff9473f17d05baa9abd54b4e94877326293e73b04498d1584a7"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-17.json",
+          "sha256": "06dfb469bce97ff9473f17d05baa9abd54b4e94877326293e73b04498d1584a7",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/debd914ac35ec3ed38da126172d68da065b14e9bb7162aff4945bf04a196d6af.json",
+      "sha256": "debd914ac35ec3ed38da126172d68da065b14e9bb7162aff4945bf04a196d6af",
       "expanded_semantic_sha256": "d44350336dab3d5ff1f8db0b1e75daf9ab8f545038a132991acc328159ef5a15",
-      "json_pointer": "",
-      "path": "interests/evidence/a-18.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "7296bd0090ce59b4f04cb1cd053ede8f39c8e5f9cb1e4481338df765ca4151a4",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-18.json",
-      "source_sha256": "debd914ac35ec3ed38da126172d68da065b14e9bb7162aff4945bf04a196d6af"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-18.json",
+          "sha256": "debd914ac35ec3ed38da126172d68da065b14e9bb7162aff4945bf04a196d6af",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/6c8aba3c13ccc7d550f3b51abff9a8cd616686eed6cbc9793fe7a038614cd7cc.json",
+      "sha256": "6c8aba3c13ccc7d550f3b51abff9a8cd616686eed6cbc9793fe7a038614cd7cc",
       "expanded_semantic_sha256": "891e4bf2afad153e4bc99f1319729af689ed892612f5343a861b11a14429a12a",
-      "json_pointer": "",
-      "path": "interests/evidence/a-19.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "ce5d99b484c6c8cc5d62233e4c3c880b313e6ca974bb4572d1edd2f73b31b2a9",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-19.json",
-      "source_sha256": "6c8aba3c13ccc7d550f3b51abff9a8cd616686eed6cbc9793fe7a038614cd7cc"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-19.json",
+          "sha256": "6c8aba3c13ccc7d550f3b51abff9a8cd616686eed6cbc9793fe7a038614cd7cc",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/5c9060280ffbf9cf9426581689da5a5201f5f3da7d3b4759795380ef1428e5f0.json",
+      "sha256": "5c9060280ffbf9cf9426581689da5a5201f5f3da7d3b4759795380ef1428e5f0",
       "expanded_semantic_sha256": "75d61a34aba6c0229843ac207621347e608ecb8418ac15dc0f81c971463f7a04",
-      "json_pointer": "",
-      "path": "interests/evidence/a-20.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "d1fe371d610b2312aa10a6d7d879d33ed2ccf3b10c81e729c499c9f6d3b66ccf",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-20.json",
-      "source_sha256": "5c9060280ffbf9cf9426581689da5a5201f5f3da7d3b4759795380ef1428e5f0"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-20.json",
+          "sha256": "5c9060280ffbf9cf9426581689da5a5201f5f3da7d3b4759795380ef1428e5f0",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/bc22fad44d1c4b9923d12c1c00f98e7734c1c1d940def0abb2e70a5445d4b399.json",
+      "sha256": "bc22fad44d1c4b9923d12c1c00f98e7734c1c1d940def0abb2e70a5445d4b399",
       "expanded_semantic_sha256": "f292b4c90b60a241a41ca87e07bbad108a809595a19dab14369ede7197b7956a",
-      "json_pointer": "",
-      "path": "interests/evidence/a-21.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "05f4de4aad3703bb3b33f68c08e880b682d6bd7a918497e7d339da95adf256b4",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-21.json",
-      "source_sha256": "bc22fad44d1c4b9923d12c1c00f98e7734c1c1d940def0abb2e70a5445d4b399"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-21.json",
+          "sha256": "bc22fad44d1c4b9923d12c1c00f98e7734c1c1d940def0abb2e70a5445d4b399",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/75a5b2e9b62f3f451f6910ebbf4e827619dc17a19f40898a22da69fce3052d9e.json",
+      "sha256": "75a5b2e9b62f3f451f6910ebbf4e827619dc17a19f40898a22da69fce3052d9e",
       "expanded_semantic_sha256": "b6956203eaabc4204f9bef9065024c1ee13c8735acf47342132e4e238df2454f",
-      "json_pointer": "",
-      "path": "interests/evidence/a-22.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "cf67a52099e4108150adb9e74dfba1358a33e613f7deb2aa5c0524feec93ec0f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-22.json",
-      "source_sha256": "75a5b2e9b62f3f451f6910ebbf4e827619dc17a19f40898a22da69fce3052d9e"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-22.json",
+          "sha256": "75a5b2e9b62f3f451f6910ebbf4e827619dc17a19f40898a22da69fce3052d9e",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/ba47f459b4c885466d9b23d09ab6c9fbf5f391e491762c64787d2f180c82527e.json",
+      "sha256": "ba47f459b4c885466d9b23d09ab6c9fbf5f391e491762c64787d2f180c82527e",
       "expanded_semantic_sha256": "6900fb71fb7f6a8d0b0a4c7f3b6cc50dbf90eaf49f7437495995bbd5dea13eb1",
-      "json_pointer": "",
-      "path": "interests/evidence/a-23.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "751609c95ada2830f83407c56d9e732150e2ef3231ede0704123dc4111f0930b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-23.json",
-      "source_sha256": "ba47f459b4c885466d9b23d09ab6c9fbf5f391e491762c64787d2f180c82527e"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-23.json",
+          "sha256": "ba47f459b4c885466d9b23d09ab6c9fbf5f391e491762c64787d2f180c82527e",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/78cb4c8515d047d998cc39a317ce37a3f6589fecdf18bb2de68c73abf29d009a.json",
+      "sha256": "78cb4c8515d047d998cc39a317ce37a3f6589fecdf18bb2de68c73abf29d009a",
       "expanded_semantic_sha256": "213698f0e30d5024a470373e74463b8b3f550d987272c807774210af76a46f39",
-      "json_pointer": "",
-      "path": "interests/evidence/a-24.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "4bbc980e64bcd988af8781f8c64fbd152ddd844659e2804f23b14e3b1a44562a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-24.json",
-      "source_sha256": "78cb4c8515d047d998cc39a317ce37a3f6589fecdf18bb2de68c73abf29d009a"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-24.json",
+          "sha256": "78cb4c8515d047d998cc39a317ce37a3f6589fecdf18bb2de68c73abf29d009a",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/fcddfb90c132535b363d46ab70e30fa8a164810592a36f846b767d5a7a0a0ee1.json",
+      "sha256": "fcddfb90c132535b363d46ab70e30fa8a164810592a36f846b767d5a7a0a0ee1",
       "expanded_semantic_sha256": "970aab7c47815c9b945847e662ea607137b421c2a73bfb74bec60bc73c289422",
-      "json_pointer": "",
-      "path": "interests/evidence/a-25.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "5a02412e2681fd545be7d35e59d79743986d72b6211d41c86c58b3c1f3b14b74",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-25.json",
-      "source_sha256": "fcddfb90c132535b363d46ab70e30fa8a164810592a36f846b767d5a7a0a0ee1"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-25.json",
+          "sha256": "fcddfb90c132535b363d46ab70e30fa8a164810592a36f846b767d5a7a0a0ee1",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/a08040b24d193cf076a631b0ec5d37724e6a34536656d0c03ca0443528fc35f4.json",
+      "sha256": "a08040b24d193cf076a631b0ec5d37724e6a34536656d0c03ca0443528fc35f4",
       "expanded_semantic_sha256": "443b012803672428c547854cd11243398721e8017bd6a506e7de87f882cb4596",
-      "json_pointer": "",
-      "path": "interests/evidence/a-26.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "7175ac9ae963b27c7be1182feecbfc0eed1e256513bd379bbc32aa627bdbbb4c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-26.json",
-      "source_sha256": "a08040b24d193cf076a631b0ec5d37724e6a34536656d0c03ca0443528fc35f4"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-26.json",
+          "sha256": "a08040b24d193cf076a631b0ec5d37724e6a34536656d0c03ca0443528fc35f4",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/556d178006257a9452febd7fceb357a12f9ab05a3d1cf2ee7564c8715752e05c.json",
+      "sha256": "556d178006257a9452febd7fceb357a12f9ab05a3d1cf2ee7564c8715752e05c",
       "expanded_semantic_sha256": "9eeb698cdeaca3ddc36573cdcdd1288606432b689ada6fe465f973246aa1559c",
-      "json_pointer": "",
-      "path": "interests/evidence/a-27.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "1a6cf660fe426a8e5df94a296a1b006f4b7e6e89f758da1350c465b0f00b08ac",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-27.json",
-      "source_sha256": "556d178006257a9452febd7fceb357a12f9ab05a3d1cf2ee7564c8715752e05c"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-27.json",
+          "sha256": "556d178006257a9452febd7fceb357a12f9ab05a3d1cf2ee7564c8715752e05c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/4469454ebccfdab8e92ad5f2085457856a3afa707b917f70ca3a9a375f364b23.json",
+      "sha256": "4469454ebccfdab8e92ad5f2085457856a3afa707b917f70ca3a9a375f364b23",
       "expanded_semantic_sha256": "41cf6bed75ac6f31c81b2419f0c5d510583acf68e6e27241718111abf80fac4b",
-      "json_pointer": "",
-      "path": "interests/evidence/a-28.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "d8b9132cac3e4b7ba95fcdc65a416caa9ef5fba02521981c41380495f903f6f7",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-28.json",
-      "source_sha256": "4469454ebccfdab8e92ad5f2085457856a3afa707b917f70ca3a9a375f364b23"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-28.json",
+          "sha256": "4469454ebccfdab8e92ad5f2085457856a3afa707b917f70ca3a9a375f364b23",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/b41f82e87bc6af9c8589d4b825940664c140ffa9b3158cb0f8cf255e6f8c7289.json",
+      "sha256": "b41f82e87bc6af9c8589d4b825940664c140ffa9b3158cb0f8cf255e6f8c7289",
       "expanded_semantic_sha256": "6e977fd34823e4582e58185480d608e9d952efdd054293e45fea71460aa73f58",
-      "json_pointer": "",
-      "path": "interests/evidence/a-29.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "4f4a5e2e33c91c5920bf354bf3e931acd12d78a63a5cb69e78af29aca5052c83",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-29.json",
-      "source_sha256": "b41f82e87bc6af9c8589d4b825940664c140ffa9b3158cb0f8cf255e6f8c7289"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-29.json",
+          "sha256": "b41f82e87bc6af9c8589d4b825940664c140ffa9b3158cb0f8cf255e6f8c7289",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/caac39fc0f9ae8a20f9d55fe00bbbf12dfac1dee7a196cdd9fd1ccd6b1f50d3d.json",
+      "sha256": "caac39fc0f9ae8a20f9d55fe00bbbf12dfac1dee7a196cdd9fd1ccd6b1f50d3d",
       "expanded_semantic_sha256": "73c0acaf1a115660a5bd5bc4f4970b13ab72ce9d52fc761d01a61904975987b8",
-      "json_pointer": "",
-      "path": "interests/evidence/a-30.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "3ef7af9b58e1845cf1abdfeca35de3d3c647bfe9ea1ae772c0a33d7e6685a2c0",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-30.json",
-      "source_sha256": "caac39fc0f9ae8a20f9d55fe00bbbf12dfac1dee7a196cdd9fd1ccd6b1f50d3d"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-30.json",
+          "sha256": "caac39fc0f9ae8a20f9d55fe00bbbf12dfac1dee7a196cdd9fd1ccd6b1f50d3d",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/2679ca8b365f0e0ab4a54d3b13ccf9084357e56f07829537cabe71c57ef9ac63.json",
+      "sha256": "2679ca8b365f0e0ab4a54d3b13ccf9084357e56f07829537cabe71c57ef9ac63",
       "expanded_semantic_sha256": "da0920518e850f6ce832b05961269e02bb5931ee0abe9684172b17647779f9ea",
-      "json_pointer": "",
-      "path": "interests/evidence/a-31.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "85b88d5d362cf75fb93c611341df1847a402585556f5f7ccf0ae2a608377d8db",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-31.json",
-      "source_sha256": "2679ca8b365f0e0ab4a54d3b13ccf9084357e56f07829537cabe71c57ef9ac63"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-31.json",
+          "sha256": "2679ca8b365f0e0ab4a54d3b13ccf9084357e56f07829537cabe71c57ef9ac63",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/71578c3e29123b7e8934c072dd95f3f79762a8a3fd2f2aaa44f8a03b1f725384.json",
+      "sha256": "71578c3e29123b7e8934c072dd95f3f79762a8a3fd2f2aaa44f8a03b1f725384",
       "expanded_semantic_sha256": "0d446d05fc76af5b0ff1a0165c8535629be748f6b4e714af0eddf376105ea6ff",
-      "json_pointer": "",
-      "path": "interests/evidence/a-32.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "37002d9acca1177257f22871107d01806bde6abdc0ff6c2388baa5970202e48a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-32.json",
-      "source_sha256": "71578c3e29123b7e8934c072dd95f3f79762a8a3fd2f2aaa44f8a03b1f725384"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-32.json",
+          "sha256": "71578c3e29123b7e8934c072dd95f3f79762a8a3fd2f2aaa44f8a03b1f725384",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/32a6e105d9effa64ba19a7804610ae77dad25aebfc78793fbec3d123d2c28e01.json",
+      "sha256": "32a6e105d9effa64ba19a7804610ae77dad25aebfc78793fbec3d123d2c28e01",
       "expanded_semantic_sha256": "2e2d22cfe91b9a7b11f8e8feabae3e019b4e037ade3b031cb80a2e5010b0e872",
-      "json_pointer": "",
-      "path": "interests/evidence/a-33.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "623522493e1e55041f2bb8e54254996618f156680d6851a0ceab44a365649693",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-33.json",
-      "source_sha256": "32a6e105d9effa64ba19a7804610ae77dad25aebfc78793fbec3d123d2c28e01"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-33.json",
+          "sha256": "32a6e105d9effa64ba19a7804610ae77dad25aebfc78793fbec3d123d2c28e01",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/5df4fc0920b3310afd28f135587547ed753eed2a7b73edb1ff84049c432f5c8c.json",
+      "sha256": "5df4fc0920b3310afd28f135587547ed753eed2a7b73edb1ff84049c432f5c8c",
       "expanded_semantic_sha256": "ec21aaa99fdecbd451c3ed8df404f17bfd1c6360d14f5d9b3d97ce8ad5ed62fc",
-      "json_pointer": "",
-      "path": "interests/evidence/a-34.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "58888843a26a1c5360a063d70f2f2d828973411927117448a27a8ec08644e949",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-34.json",
-      "source_sha256": "5df4fc0920b3310afd28f135587547ed753eed2a7b73edb1ff84049c432f5c8c"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-34.json",
+          "sha256": "5df4fc0920b3310afd28f135587547ed753eed2a7b73edb1ff84049c432f5c8c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/4031b26e71114270cbb570ce40fcc4e3eb88d1742e521eb69cd03ac31e1277e4.json",
+      "sha256": "4031b26e71114270cbb570ce40fcc4e3eb88d1742e521eb69cd03ac31e1277e4",
       "expanded_semantic_sha256": "5b5b629baeaf5697f6d31896f9d603a576eedaeaae98e26db528b75357e029b7",
-      "json_pointer": "",
-      "path": "interests/evidence/a-35.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "68775209b620c9b6d9ecf31f0947946d944ca439d84aa9117c4bb53045980710",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-35.json",
-      "source_sha256": "4031b26e71114270cbb570ce40fcc4e3eb88d1742e521eb69cd03ac31e1277e4"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-35.json",
+          "sha256": "4031b26e71114270cbb570ce40fcc4e3eb88d1742e521eb69cd03ac31e1277e4",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/0db8d6700b29e54f5fc65777ceef4a18aa47df5eee2c321a7dafe0d292fbcc88.json",
+      "sha256": "0db8d6700b29e54f5fc65777ceef4a18aa47df5eee2c321a7dafe0d292fbcc88",
       "expanded_semantic_sha256": "f509ed0b203da34f1d3bd1b727aa7bf67b0750e0fa9374ca78eb716d7b771de5",
-      "json_pointer": "",
-      "path": "interests/evidence/a-36.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "4a70ffa07c840ea9601ac542c14d13f16526c62b5109ce825d8c650d701e028f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-36.json",
-      "source_sha256": "0db8d6700b29e54f5fc65777ceef4a18aa47df5eee2c321a7dafe0d292fbcc88"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-36.json",
+          "sha256": "0db8d6700b29e54f5fc65777ceef4a18aa47df5eee2c321a7dafe0d292fbcc88",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/7b07a5a87a721a1ce43ec21ed3c645bf2ed26d4771161ff9ccb19573f01a4415.json",
+      "sha256": "7b07a5a87a721a1ce43ec21ed3c645bf2ed26d4771161ff9ccb19573f01a4415",
       "expanded_semantic_sha256": "1cec250b59939284660a089649d9238ed16fd2737eb06f5fd51f1227ca076243",
-      "json_pointer": "",
-      "path": "interests/evidence/a-37.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "9d1c46f29330529c41262c857cf9e5e3e49652763177d45c94041a363d18707a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-37.json",
-      "source_sha256": "7b07a5a87a721a1ce43ec21ed3c645bf2ed26d4771161ff9ccb19573f01a4415"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-37.json",
+          "sha256": "7b07a5a87a721a1ce43ec21ed3c645bf2ed26d4771161ff9ccb19573f01a4415",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/3459617de3b3c0285b42c4c8fabd892b7f7e956580e9cbd08735050c5fdd8deb.json",
+      "sha256": "3459617de3b3c0285b42c4c8fabd892b7f7e956580e9cbd08735050c5fdd8deb",
       "expanded_semantic_sha256": "37c403c31083f9767ff11e57e6b5d0ff5bdd5d5f3aa11a9dcb77118edb2e2ee5",
-      "json_pointer": "",
-      "path": "interests/evidence/a-38.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "8b1e569fb9097949f20f794eaffd921b3813fb0c9dcb87bc0992f6f5025f8de7",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-38.json",
-      "source_sha256": "3459617de3b3c0285b42c4c8fabd892b7f7e956580e9cbd08735050c5fdd8deb"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/a-38.json",
+          "sha256": "3459617de3b3c0285b42c4c8fabd892b7f7e956580e9cbd08735050c5fdd8deb",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "053d710f3ec525cfc819cb7ac245c626771959d037045843022a1cd677f64b94",
-      "json_pointer": "",
-      "path": "interests/evidence/a-39.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "77fb39cd36be3f1dc7987d4d6915c6a91fa149f9c78482e7a44e888681c1f4bd",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/a-39.json",
-      "source_sha256": "d7b35cb1eb82c8952182e7e3eab145b1eedf6eb1f4958ffb527e644498408a1f"
-    },
-    {
-      "expanded_semantic_sha256": "cbec38eab6b3fded8dfd0acba4ed8502afa06a52ee0adba2fef61b9ef9bf497c",
-      "json_pointer": "",
-      "path": "interests/relevance-b.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "e858765379de0b0b325ee14af481acc596269e9e3060e11eb32fdcff0b9157fc",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/reviews-b-native.json",
-      "source_sha256": "7209396139d32cf19ab0669ee2a3141f57d207490779828e58e51609c7ea41c5"
-    },
-    {
+      "path": "interests/evidence/e6ac6645100cf0d535218b8e0a23d626c0f52b4b16b7599afa642eeea00830b2.json",
+      "sha256": "93f1873c2f9257aecb860fac97f8c2b325a5bf6666164ec4107ac8eed8ba1562",
       "expanded_semantic_sha256": "ec2b6da3c4124b88808d04eb452cd1b53d1efcdfca5969a81717dfee371927a2",
-      "json_pointer": "",
-      "path": "interests/evidence/b-01.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "368ab77bd00ea8b920a4e704c71e7f77224ad1e743e6f0e683a6b2ca9d90c970",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-01.json",
-      "source_sha256": "e6ac6645100cf0d535218b8e0a23d626c0f52b4b16b7599afa642eeea00830b2"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-01.json",
+          "sha256": "e6ac6645100cf0d535218b8e0a23d626c0f52b4b16b7599afa642eeea00830b2",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "06faa6dc546abf02501bf823c7c98bc38879a86636e49d619b46a4539ae89ee5",
-      "json_pointer": "",
-      "path": "interests/evidence/b-02.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "afb5a30bab99c4480f8e9c0847887931d36ad09e143c28e5736d5add80344f87",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-02.json",
-      "source_sha256": "797397d706427eff914525a5614ca3d78930b4ed89712594bfd5512947e6ceaa"
-    },
-    {
+      "path": "interests/evidence/424489e7f62a2926511e1b52c6036a2f0677bd68e42af31da11309c71bd08e88.json",
+      "sha256": "eaf8b38111aada7fe47c15d1042504ea5359210becda8d27853179e83120b14d",
       "expanded_semantic_sha256": "730777ca9808f1fd75db717659722b248f86ac915c75219fa839b2f77f81442d",
-      "json_pointer": "",
-      "path": "interests/evidence/b-03.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "24ad63c207713109f3173dda124379ab6b462d079ccdde786e201b9a332ed6b6",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-03.json",
-      "source_sha256": "424489e7f62a2926511e1b52c6036a2f0677bd68e42af31da11309c71bd08e88"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-03.json",
+          "sha256": "424489e7f62a2926511e1b52c6036a2f0677bd68e42af31da11309c71bd08e88",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/e43e9a26a101430cb7e6a2d92dfadc93400b664223805e39bd5a59c863d390d0.json",
+      "sha256": "328f35cf402a324905639e8d9461a3f0d5ebbae4289cb0ddaba9eb8f15f13bff",
       "expanded_semantic_sha256": "34b855ff38407f2cc2e6df9d7a838fe7a8f7a555b50149cbb305a75f9a63b537",
-      "json_pointer": "",
-      "path": "interests/evidence/b-04.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "77842e949a5ed9d9809f7504303d3a2e65a2f26918f28fa6b0c86de9e9a49760",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-04.json",
-      "source_sha256": "e43e9a26a101430cb7e6a2d92dfadc93400b664223805e39bd5a59c863d390d0"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-04.json",
+          "sha256": "e43e9a26a101430cb7e6a2d92dfadc93400b664223805e39bd5a59c863d390d0",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/2ab84c77eb6e31517512485506096ccfa8404a5daaa055da06874e627dfbdb75.json",
+      "sha256": "48ebbc93273a8b9b14e624610716471662c6c5ba923c5bc3164e8a808b338754",
       "expanded_semantic_sha256": "9038429268947652595c155bd045afebb4ff0888157ba8ab99eca89589587289",
-      "json_pointer": "",
-      "path": "interests/evidence/b-05.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "3397203910c537d67e3eebda64f75d9248209cbad78f97bc5c26f539cb9d16ca",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-05.json",
-      "source_sha256": "2ab84c77eb6e31517512485506096ccfa8404a5daaa055da06874e627dfbdb75"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-05.json",
+          "sha256": "2ab84c77eb6e31517512485506096ccfa8404a5daaa055da06874e627dfbdb75",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "de236afd7499826030b66d65cdd094fd6da106a71bfcd27a66e46b02d4998b41",
-      "json_pointer": "",
-      "path": "interests/evidence/b-06.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "6b09535d8d10fa3a1981c7b816dcd60fe7fadc33fdfd3e0f8a49ec4a658c44dc",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-06.json",
-      "source_sha256": "07a4955380ce1ce958b5f600cc741fb8acee00b3b555faf3b3514dfd87f3cc5e"
-    },
-    {
+      "path": "interests/evidence/7d5daf8aa7444bf25f454bf1d865348527f9e140bbe378a4878581951c31f7c7.json",
+      "sha256": "9cd2947e5c066127ddacfb323b06e7bc022cecd44b8a3d91d77df98958ad02a3",
       "expanded_semantic_sha256": "b21d05bf06279195e5697eb36ca131934c3a9f547969395131cc0af4aec4c111",
-      "json_pointer": "",
-      "path": "interests/evidence/b-07.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "8da8dfdb504e39e43d01935e447d79890823ee200e1dc4f85f295ad2129e462d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-07.json",
-      "source_sha256": "7d5daf8aa7444bf25f454bf1d865348527f9e140bbe378a4878581951c31f7c7"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-07.json",
+          "sha256": "7d5daf8aa7444bf25f454bf1d865348527f9e140bbe378a4878581951c31f7c7",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/5b73852ece0ae3f84ca0b8582cbfb8a4521a3ed1d666b6c7597806c72c67e9fe.json",
+      "sha256": "221a4ec23675b30dc4beb2fc8081fd46549f3a063f90c84aed2aa867f0d59c30",
       "expanded_semantic_sha256": "e9c711fbdfa3d54162c78cdf57b66eaf4af9073201ea3afb0d5ae6108acfb98c",
-      "json_pointer": "",
-      "path": "interests/evidence/b-08.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "468dfa42569f15201b1f5a1a7f1e73a240f3998c6ba5089fa78dfc17b24e5d6f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-08.json",
-      "source_sha256": "5b73852ece0ae3f84ca0b8582cbfb8a4521a3ed1d666b6c7597806c72c67e9fe"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-08.json",
+          "sha256": "5b73852ece0ae3f84ca0b8582cbfb8a4521a3ed1d666b6c7597806c72c67e9fe",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/888c0c0c028e2107a065326fcf204737a6e510d37ad9e7dbc8003e3a3995987d.json",
+      "sha256": "c13c7f5f9ce7ce648998aa620cec77007942b21c3da4aeb42aa30b674de62df3",
       "expanded_semantic_sha256": "3af0711f439cee4c59b5cc04ad7ed453beb775d908386a19bd07027e6ae73b6d",
-      "json_pointer": "",
-      "path": "interests/evidence/b-09.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "217600133740c9e2df4c7aceba1155a82d415bbb60ccc11b70247bf1adce0c26",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-09.json",
-      "source_sha256": "888c0c0c028e2107a065326fcf204737a6e510d37ad9e7dbc8003e3a3995987d"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-09.json",
+          "sha256": "888c0c0c028e2107a065326fcf204737a6e510d37ad9e7dbc8003e3a3995987d",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/a00c3674437e648aafa53cbb5e527b6c560ae4bf1d20c3b0bb18fdd264c9e3c8.json",
+      "sha256": "fedd5796c229a2f8dfabe01082b8f89e8f897ce29d2d74c6c550e83dc952096e",
       "expanded_semantic_sha256": "0d3bc5545b27bef090276010f17ae4aa9eec143a6ce6776c6eb34ea5c0a4a8dc",
-      "json_pointer": "",
-      "path": "interests/evidence/b-10.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "a5e2bcb7fc5462d2b559b48b21003f188fea6ce33ef66732c2965a8f83f83da2",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-10.json",
-      "source_sha256": "a00c3674437e648aafa53cbb5e527b6c560ae4bf1d20c3b0bb18fdd264c9e3c8"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-10.json",
+          "sha256": "a00c3674437e648aafa53cbb5e527b6c560ae4bf1d20c3b0bb18fdd264c9e3c8",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/4a5a6ae48c6b9fc7f94b8ee06d62a6f41dc22ad93b8160c1abe0465806c96d67.json",
+      "sha256": "3c169ce3242bafb3edf8b670611808a9f9f7ff96f0ba0d599b1133e1d7de3f74",
       "expanded_semantic_sha256": "91144d03e90da0433da7b9daf434a2c3b661c0ba44c110171bfb4995bdedf541",
-      "json_pointer": "",
-      "path": "interests/evidence/b-11.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "738304abeb5fb68a7fefdc9cb4d07402602dc04ee43d9600a3a2821b2dbabe60",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-11.json",
-      "source_sha256": "4a5a6ae48c6b9fc7f94b8ee06d62a6f41dc22ad93b8160c1abe0465806c96d67"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-11.json",
+          "sha256": "4a5a6ae48c6b9fc7f94b8ee06d62a6f41dc22ad93b8160c1abe0465806c96d67",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/9cfab22c3bc69d4349e9580079a61e062a21c937de028b75b2040e92ba8ae378.json",
+      "sha256": "aac0bc734696efb80d358db89b0abb7db1eefea7d98a3e477659235aa8383530",
       "expanded_semantic_sha256": "40c3830c45d90bf92adfec05af77784c081f2d1c6d57678f143516a937defb98",
-      "json_pointer": "",
-      "path": "interests/evidence/b-12.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "7f24059376e27f967f32fca11191d1395bcafeed8b9fe1799808274e2ec7e402",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-12.json",
-      "source_sha256": "9cfab22c3bc69d4349e9580079a61e062a21c937de028b75b2040e92ba8ae378"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-12.json",
+          "sha256": "9cfab22c3bc69d4349e9580079a61e062a21c937de028b75b2040e92ba8ae378",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/e0a386f541c84fa13385b8a974434602fe8083926b93d338496aa14f77a53992.json",
+      "sha256": "60534bbf7e55d301c5daf0af6b343b0ee358fb055971f4d4235accaa1f89e8dc",
       "expanded_semantic_sha256": "b26fe710d08cd6492c351566a89cdd7a4cef38d90c5ea7c96b0b39bd770b27be",
-      "json_pointer": "",
-      "path": "interests/evidence/b-13.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "1ea65657fb6ede84c740bdee4df1a9284c2476bd14218a9498f9cd9abe6132c1",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-13.json",
-      "source_sha256": "e0a386f541c84fa13385b8a974434602fe8083926b93d338496aa14f77a53992"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-13.json",
+          "sha256": "e0a386f541c84fa13385b8a974434602fe8083926b93d338496aa14f77a53992",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/63532ecde382e6f4aef95ce7bf65131143b0a832a65d56deff0f641462bb0ebb.json",
+      "sha256": "963487e6e819df5d04f6ecb9df80673c421e94523d29443754fbbe571d1d83dd",
       "expanded_semantic_sha256": "76d2add4c26be3e4029ab7d220f108c0cfaf1516f9d41f5cc92cd7656250af2f",
-      "json_pointer": "",
-      "path": "interests/evidence/b-14.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "33899119ecf43b7ab7cdffd574c45467a5b09f4e8f451bfcd1460acd6a5d69b7",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-14.json",
-      "source_sha256": "63532ecde382e6f4aef95ce7bf65131143b0a832a65d56deff0f641462bb0ebb"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-14.json",
+          "sha256": "63532ecde382e6f4aef95ce7bf65131143b0a832a65d56deff0f641462bb0ebb",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/81bee2ffe255005ac53fa857bdfbe39165d399d6a3e5bf47d904722a0720d0f8.json",
+      "sha256": "75b675bd6552d0e02eaeafb3cd1f6c3f77b9a9eda4a100dcba95ec68dcbc9160",
       "expanded_semantic_sha256": "ac74254847bd44465eed7706fc31783911dd4f57c4d7ca019f66c84375f0a075",
-      "json_pointer": "",
-      "path": "interests/evidence/b-15.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "7c3c259d1f377c76e7bc35544ed75de4e2df038a5ccd0a9bc99f2fa4e467c557",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-15.json",
-      "source_sha256": "81bee2ffe255005ac53fa857bdfbe39165d399d6a3e5bf47d904722a0720d0f8"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-15.json",
+          "sha256": "81bee2ffe255005ac53fa857bdfbe39165d399d6a3e5bf47d904722a0720d0f8",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/8767f6d95a4b31ba5cb8c33e73b2ce8152eeabc292c5b8fa27b7fa06a5996b96.json",
+      "sha256": "05c1f0fedf73915cee88953fb46579326fc72eba09004c10bbdd6df95f35014d",
       "expanded_semantic_sha256": "c892ef74f2f386696ac24f328ec9e98f1f1b29fbd9e13adc714cf96e3dcf419a",
-      "json_pointer": "",
-      "path": "interests/evidence/b-16.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "74435eb114b537214709d62ac5a92693a1a5b3feac9cce97666ea82052601e65",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-16.json",
-      "source_sha256": "8767f6d95a4b31ba5cb8c33e73b2ce8152eeabc292c5b8fa27b7fa06a5996b96"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-16.json",
+          "sha256": "8767f6d95a4b31ba5cb8c33e73b2ce8152eeabc292c5b8fa27b7fa06a5996b96",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/3baefcf4de5ca1bea44afadc95f26eb17a333d9f0480ad958e1359cb3477bc22.json",
+      "sha256": "ce710fdbd2966ba7e7672710ddd7134c4b7a7b0cf26a0fdb3ef11be955f601cf",
       "expanded_semantic_sha256": "d0f406440382559430756bc051e1d9823588f145ea81c2158931cf4631b0a7f6",
-      "json_pointer": "",
-      "path": "interests/evidence/b-17.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "de7f058c14e023cdc63b1e7ecb7d3f5c8276663c69eee7a8c69769de1c7eb265",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-17.json",
-      "source_sha256": "3baefcf4de5ca1bea44afadc95f26eb17a333d9f0480ad958e1359cb3477bc22"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-17.json",
+          "sha256": "3baefcf4de5ca1bea44afadc95f26eb17a333d9f0480ad958e1359cb3477bc22",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/50703db8c45b2e9248a23481ee14f1005c32bcc3f5c9a26fff2e21317d6adf9c.json",
+      "sha256": "26b85d8b10c6cd3fd7cde942ab9347b62f17194db9dad9d086f069dc41799f72",
       "expanded_semantic_sha256": "c64b35e23562578312b441f0d4995e51776a6d78e3a7fcc0650f1c473ff7b887",
-      "json_pointer": "",
-      "path": "interests/evidence/b-18.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "43ffa2404129880402a216bc2d0a9acaff2b21771a69c8c59c2c12ab348464fb",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-18.json",
-      "source_sha256": "50703db8c45b2e9248a23481ee14f1005c32bcc3f5c9a26fff2e21317d6adf9c"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-18.json",
+          "sha256": "50703db8c45b2e9248a23481ee14f1005c32bcc3f5c9a26fff2e21317d6adf9c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/d5e512b9890878c8e78082949ded8011acbc8fd71c3c8814acaab5c6021812f0.json",
+      "sha256": "79006ee2604f9a05597f40db2619eb877ce290fcabf67a8e5e518dfed22018ae",
       "expanded_semantic_sha256": "d2c3e3900bb9f800954ae35e4069d3a76d67e90129ebf7f6fd8cbf9738f3104b",
-      "json_pointer": "",
-      "path": "interests/evidence/b-19.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "880283be553ca1ae622fa3899adba453e4d2e71a4ab3dbf3c1002505b527f87b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-19.json",
-      "source_sha256": "d5e512b9890878c8e78082949ded8011acbc8fd71c3c8814acaab5c6021812f0"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-19.json",
+          "sha256": "d5e512b9890878c8e78082949ded8011acbc8fd71c3c8814acaab5c6021812f0",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/59156e87b3c5b5c75b91e37c4262cbc706209a8c8061ca0a463769a4cf74978d.json",
+      "sha256": "60454c6339a783d758a291eba225c42e4bdffe35552627571a9ab8060fb773e0",
       "expanded_semantic_sha256": "0ecc51e85b9d490fe5e56a65a87c107bcf4a250b8d8320668c927e99585f06fa",
-      "json_pointer": "",
-      "path": "interests/evidence/b-20.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "8ff376d21cccda98b1df8daf93a78aca891a25a8a7b3c684d57e49f366464a09",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-20.json",
-      "source_sha256": "59156e87b3c5b5c75b91e37c4262cbc706209a8c8061ca0a463769a4cf74978d"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-20.json",
+          "sha256": "59156e87b3c5b5c75b91e37c4262cbc706209a8c8061ca0a463769a4cf74978d",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/f6021184975c45e38eeaf77e2f5391d688d12f45e590f23aea90af7b4de8fbed.json",
+      "sha256": "8e9288144b34fccba4181df8ffac2bd2edd0650602609e099ed7838c7c3dd68e",
       "expanded_semantic_sha256": "06505513d6f6d066d94ea239ee264c02e2eb8698ab634845080b91cbd5d19bef",
-      "json_pointer": "",
-      "path": "interests/evidence/b-21.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "3202fe199eedcce83976177b34b5d20df9bd19f8af3d5e47376944029199e8ce",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-21.json",
-      "source_sha256": "f6021184975c45e38eeaf77e2f5391d688d12f45e590f23aea90af7b4de8fbed"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-21.json",
+          "sha256": "f6021184975c45e38eeaf77e2f5391d688d12f45e590f23aea90af7b4de8fbed",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/3c45a473fbfaa5acaf134ebeda86c32dfa4b8b6ac27c874c9d2fb45384054625.json",
+      "sha256": "1800818703ab2d9b67580d0cdb090df38c5b49325cea6dd450cc636122cbf814",
       "expanded_semantic_sha256": "2202709181add320a49c33d12786ee7eae2109fffe5f805a2f9db3c0ff84a32c",
-      "json_pointer": "",
-      "path": "interests/evidence/b-22.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "99729d80c2029ec5bc1c1f7ef3126d8864ae4c78d5691d8d6d16c5313f598c5f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-22.json",
-      "source_sha256": "3c45a473fbfaa5acaf134ebeda86c32dfa4b8b6ac27c874c9d2fb45384054625"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-22.json",
+          "sha256": "3c45a473fbfaa5acaf134ebeda86c32dfa4b8b6ac27c874c9d2fb45384054625",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/c4dce0d60177929056a8d804a4fd030738f85c3664d52949f61660e337914942.json",
+      "sha256": "692976ebb88eff6219976b7d7cce2f6b371aca7decddbea1f214193f682f8f80",
       "expanded_semantic_sha256": "7be0f46a9bcc3bdafb89e277bd78102164ecdbe03a9bd1c0b1d3e2796d1940b6",
-      "json_pointer": "",
-      "path": "interests/evidence/b-23.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "49dcb4e4b04de2de2fe4c2dfc8586c950eda75bde0bc97ae731151f7f5dfdfc1",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-23.json",
-      "source_sha256": "c4dce0d60177929056a8d804a4fd030738f85c3664d52949f61660e337914942"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-23.json",
+          "sha256": "c4dce0d60177929056a8d804a4fd030738f85c3664d52949f61660e337914942",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/17cdd85329b1c7f9aa65b842a82dedd78e8948c21defc7461ef6d008c52dfcb4.json",
+      "sha256": "040844cb38a33929b988ba4c1930e473398bde14cb6eb1e87d298f58ac7adb23",
       "expanded_semantic_sha256": "d2d6446335e14972b454ad2e0ce1439fdf5412b2aa91640afc6135da96485269",
-      "json_pointer": "",
-      "path": "interests/evidence/b-24.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "62c85a14d536c42575508e1fd15c9dc36e59aabb6384d96d95869a639fa3e4d3",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-24.json",
-      "source_sha256": "17cdd85329b1c7f9aa65b842a82dedd78e8948c21defc7461ef6d008c52dfcb4"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-24.json",
+          "sha256": "17cdd85329b1c7f9aa65b842a82dedd78e8948c21defc7461ef6d008c52dfcb4",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/08bfb0640eee07c62e92b9c0b685988c0a282ea0212847b73bbbbfa59fede114.json",
+      "sha256": "3a965b14ef291a25242e930a2326713cb502f5ca27703720625fabcf89f25435",
       "expanded_semantic_sha256": "bfe9d38d5ec6b95f5de180cf3aeb2a5f205dc7e89b6b6a49366c7e1732701eed",
-      "json_pointer": "",
-      "path": "interests/evidence/b-25.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "4b83a1b33396f9c360887b600224f4b928b1fe49ff78139fc87318a64a625f6c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-25.json",
-      "source_sha256": "08bfb0640eee07c62e92b9c0b685988c0a282ea0212847b73bbbbfa59fede114"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-25.json",
+          "sha256": "08bfb0640eee07c62e92b9c0b685988c0a282ea0212847b73bbbbfa59fede114",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/b482054e8336b8d389fc6664745c1ee56106d6f99bcb8ce4b4d5e04e2d47c239.json",
+      "sha256": "7a72b5a0aeee488bc9fdcb85f2e7e7c33942bad4c36230772b211dd74efb8954",
       "expanded_semantic_sha256": "6345947475b08f1e97c49a91afe60d5cbeceb51cbcabeb8f960b1856cdaf557f",
-      "json_pointer": "",
-      "path": "interests/evidence/b-26.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "62134f33ff73ca95dedf677c5f230e7eb10630b05da247b8e76b5e3e0e0047a8",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-26.json",
-      "source_sha256": "b482054e8336b8d389fc6664745c1ee56106d6f99bcb8ce4b4d5e04e2d47c239"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-26.json",
+          "sha256": "b482054e8336b8d389fc6664745c1ee56106d6f99bcb8ce4b4d5e04e2d47c239",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/ff94b25a17824f9586ecc3fbb1160d31532ed37430fb7521f3f2d248ed920725.json",
+      "sha256": "6fc6e57c6a942b3c3233ca4ea4418a6d5e0ffad4daf89f758aab7f229918e670",
       "expanded_semantic_sha256": "045dce763bcdd416a35a7892267b215b2e54147194f7e6bc4f8d3d850698063a",
-      "json_pointer": "",
-      "path": "interests/evidence/b-27.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "0c5708db6d8c5c5c28298e0387de2d8e9ee704bba9d8828b109684de3528df3b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-27.json",
-      "source_sha256": "ff94b25a17824f9586ecc3fbb1160d31532ed37430fb7521f3f2d248ed920725"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-27.json",
+          "sha256": "ff94b25a17824f9586ecc3fbb1160d31532ed37430fb7521f3f2d248ed920725",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/fa9e5d732203054815580f4b763f0c0c4a764a0a0bf91717b5b3e5bb52ba5acc.json",
+      "sha256": "77874f33ec354021ac246580ac76005dfe95c788550f880d7d7fb1ccc9271327",
       "expanded_semantic_sha256": "e2c49ac2376d1e1c4e42b13c5ea133603384f05835b7c977a03ca5bc68001216",
-      "json_pointer": "",
-      "path": "interests/evidence/b-28.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "5f6b4963818457d0a1de5d95a022893bf1ba3042cfb49524c2072eba50cd1653",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-28.json",
-      "source_sha256": "fa9e5d732203054815580f4b763f0c0c4a764a0a0bf91717b5b3e5bb52ba5acc"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-28.json",
+          "sha256": "fa9e5d732203054815580f4b763f0c0c4a764a0a0bf91717b5b3e5bb52ba5acc",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/2ab42fe2b31af779e50aaa08b2befb00bed016a12ee37625bb6e52d290362b20.json",
+      "sha256": "741cd3ec8c7ff1716dad54d29db2de5e5f2c5b07d75b9c30c6118aa3e4b8f5de",
       "expanded_semantic_sha256": "04992efde3005a163e983bb90c0fbd0ee39d724a48e110ab328b311f419e1f78",
-      "json_pointer": "",
-      "path": "interests/evidence/b-29.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "bc5342926b5399dee2d56c8478e83be4d37b0ebab390ac9f01f35cdde61c8556",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-29.json",
-      "source_sha256": "2ab42fe2b31af779e50aaa08b2befb00bed016a12ee37625bb6e52d290362b20"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-29.json",
+          "sha256": "2ab42fe2b31af779e50aaa08b2befb00bed016a12ee37625bb6e52d290362b20",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/637851824c29d9f520445030121e61769f5ad17e62e1b00f4a8debc754d3fab6.json",
+      "sha256": "1c9def12c05a1c37262444f58434ab356b026404c5d02e9b98f8afe2c74823ae",
       "expanded_semantic_sha256": "eba51e68f3e811db54fd63a5b4d7503630b7f640d402d488f0a9d8c9fa3eac3a",
-      "json_pointer": "",
-      "path": "interests/evidence/b-30.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "7011a9e1f29bd3683738437352d0e5ce5f3d5becaf97d2b6750781926399bd60",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-30.json",
-      "source_sha256": "637851824c29d9f520445030121e61769f5ad17e62e1b00f4a8debc754d3fab6"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-30.json",
+          "sha256": "637851824c29d9f520445030121e61769f5ad17e62e1b00f4a8debc754d3fab6",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/9271dc27889e227106c90ce8061026c3c10e8ed078b26e039940d37e7cf944db.json",
+      "sha256": "9c4ea85b61ce2e221df6aa476083d69941da0bced4edbb1026dccc9a86a32204",
       "expanded_semantic_sha256": "9b00eb8db954ed5cff45a0af769d9a8f843c8ee3b5591708d8f2170044bf2943",
-      "json_pointer": "",
-      "path": "interests/evidence/b-31.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "f857f2c5bc25253847ba106c56bfa41ac36e11ce5b4035a2a16e9e77a3dbaa7d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-31.json",
-      "source_sha256": "9271dc27889e227106c90ce8061026c3c10e8ed078b26e039940d37e7cf944db"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-31.json",
+          "sha256": "9271dc27889e227106c90ce8061026c3c10e8ed078b26e039940d37e7cf944db",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/f8b18db4b94fcfbcf6ac2a2e7002fc243e4647486c1c99a2827efa3fab5bf1c5.json",
+      "sha256": "ff2102c75064b9769b6369414ddc0e2738f8de807d44aec174ce985a93d84bdc",
       "expanded_semantic_sha256": "f0bf00df8f82e2c685c28f7743c2cfb913faaa16605a8eafc3d02a6876864626",
-      "json_pointer": "",
-      "path": "interests/evidence/b-32.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "a631954d8f3e228a47a790fde234919c178737c309c9191475b2616ad59460f2",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-32.json",
-      "source_sha256": "f8b18db4b94fcfbcf6ac2a2e7002fc243e4647486c1c99a2827efa3fab5bf1c5"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-32.json",
+          "sha256": "f8b18db4b94fcfbcf6ac2a2e7002fc243e4647486c1c99a2827efa3fab5bf1c5",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/3b7450594ae7b602122ba77c23b19ce9a2d207cc3e23d2b22f878f7931a8e53c.json",
+      "sha256": "ecf5ce10012f53fedca48dbadb8b89bef10164fc769976443dd1a05327528448",
       "expanded_semantic_sha256": "befffc116cf6bb1c25c2bde2dcf9c2e662566ad634d8b8e2a94c910db08f1b8d",
-      "json_pointer": "",
-      "path": "interests/evidence/b-33.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "db92e3ba958e266d3db95159cfa38a67609983a007884cb151fed1bfda87d565",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-33.json",
-      "source_sha256": "3b7450594ae7b602122ba77c23b19ce9a2d207cc3e23d2b22f878f7931a8e53c"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-33.json",
+          "sha256": "3b7450594ae7b602122ba77c23b19ce9a2d207cc3e23d2b22f878f7931a8e53c",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/4486f466fef4bc97438e2becf838349c353bbb84498fb405724469c4e2e3dc47.json",
+      "sha256": "e838dac8ab3a17350ef3e3ef5e1217d0f49b514b839701f9e06c9392df97fbca",
       "expanded_semantic_sha256": "9742e13c301c47a59f6687470a505f8ca23a242e32b20c01a883d6733bc73553",
-      "json_pointer": "",
-      "path": "interests/evidence/b-34.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "8293367e8c3e31f3e00d53cd86db5cfd8d7d21d97957f9394b33527ce41e9f52",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-34.json",
-      "source_sha256": "4486f466fef4bc97438e2becf838349c353bbb84498fb405724469c4e2e3dc47"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-34.json",
+          "sha256": "4486f466fef4bc97438e2becf838349c353bbb84498fb405724469c4e2e3dc47",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/1c3d84b8cdd9f80ba8df7c1eb06f61f6f610c2e2faf5e22228de6136fe368527.json",
+      "sha256": "f55fd209f4cc17c480f886201b6dde9f5bb0dc0080503de88eaa69ec59ef0b34",
       "expanded_semantic_sha256": "77cbd24ebe90d5de2fb368d38222a0dd9c4519be9b41d888024999a126a167ef",
-      "json_pointer": "",
-      "path": "interests/evidence/b-35.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "c4b5704e3ee0908c849c8433ee661c39f59b7e639695d4fad376ae246aedd521",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-35.json",
-      "source_sha256": "1c3d84b8cdd9f80ba8df7c1eb06f61f6f610c2e2faf5e22228de6136fe368527"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-35.json",
+          "sha256": "1c3d84b8cdd9f80ba8df7c1eb06f61f6f610c2e2faf5e22228de6136fe368527",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/1752a80dbe57d5f1e3e9e34bd886812f7a193c7cc899efeddfc7b6d32fe68a5b.json",
+      "sha256": "68ec59d416cf5a82e690e6f9f24f68650cc6a0620b7b2321799b47594e574355",
       "expanded_semantic_sha256": "86c5becc960ce73bad2c86f64d47a3efa799284a458ff48d459320a1e8d01178",
-      "json_pointer": "",
-      "path": "interests/evidence/b-36.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "32486bd9677b8854fe2539062f74758baeee705b5359a5de4aabab499c2edc1f",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-36.json",
-      "source_sha256": "1752a80dbe57d5f1e3e9e34bd886812f7a193c7cc899efeddfc7b6d32fe68a5b"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-36.json",
+          "sha256": "1752a80dbe57d5f1e3e9e34bd886812f7a193c7cc899efeddfc7b6d32fe68a5b",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/89a77d7eed81f330433ec0cca35405fbd26a792363a90238bb956298246da264.json",
+      "sha256": "9933f4e84b5f27e5c461bd1455b42a32948c5d0296bf1d3f83eedc98d6dbd805",
       "expanded_semantic_sha256": "99bb58bd23795baddb1bfca3c21dbf904a73c041a8a628866ae1829ae4935260",
-      "json_pointer": "",
-      "path": "interests/evidence/b-37.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "c1a6a470d830c3173376a8a22c4def7206dd89fca571589045590e4bea1a7f0c",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-37.json",
-      "source_sha256": "89a77d7eed81f330433ec0cca35405fbd26a792363a90238bb956298246da264"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-37.json",
+          "sha256": "89a77d7eed81f330433ec0cca35405fbd26a792363a90238bb956298246da264",
+          "json_pointer": ""
+        }
+      ]
     },
     {
+      "path": "interests/evidence/debde77d8ec9132bb897ebef6dba72a20456824abfaa3349c5926d21986967b6.json",
+      "sha256": "a809508bae491155e9f4b59159f1ca0bdca7a4eaf667054559a461e8b235f801",
       "expanded_semantic_sha256": "7b24cf1e06088c9b00daa544094ed4a11612bff4b49bcf51955a386d62995f52",
-      "json_pointer": "",
-      "path": "interests/evidence/b-38.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "729d7adcc92290e0ed7ceeca215d9f9d273accade32d39392abdde0738e7fffa",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/relevance/evidence/b-38.json",
-      "source_sha256": "debde77d8ec9132bb897ebef6dba72a20456824abfaa3349c5926d21986967b6"
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/r02/analysis/relevance/evidence/b-38.json",
+          "sha256": "debde77d8ec9132bb897ebef6dba72a20456824abfaa3349c5926d21986967b6",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "954ec52481ad0977f42ab681214271161cc86e68b9f7d51069fd1a4279a51860",
-      "json_pointer": "",
-      "path": "analysis/poi-process/venues.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "008a39dce0199a9f0a63f6b1058801d18b07ceff16406e39fe1f7e20e8f5b520",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/venue-catalog.json",
-      "source_sha256": "008a39dce0199a9f0a63f6b1058801d18b07ceff16406e39fe1f7e20e8f5b520"
+      "path": "generation/v0/itinerary.json",
+      "sha256": "4249ae0d76336cd2aeb9d87add8f0076194743d5e7250c29237d8475d229c333",
+      "expanded_semantic_sha256": "b8a5ee13d28942acb4f581eea3d9f5e513146e844804564085992dfdf06e5078",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/result.json",
+          "sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+          "json_pointer": "/itinerary"
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "ef95015b81ee37f9d58c3d2304ef31bfa419d7534868db79a17a6d8ce17af75d",
-      "json_pointer": "",
-      "path": "analysis/shared-values.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "fd10a48a1c649c47fc76822f5a7efc0b96d512b911664327be5f9bac1c93332d",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/publication-values-expanded.json",
-      "source_sha256": "6607c0300ef4ace0ab05ebcaf467b0434d9c1332f5cc06b9f53f678c337dec64"
+      "path": "generation/v0/usage.json",
+      "sha256": "1e71d84bd5c1b34639bb3653de38906904dc6debbafb59677f36f4af9077e31e",
+      "expanded_semantic_sha256": "c162d48d64ba216d7f0c0bbee32ac24a1e0801e856567a744837a46d6f6b5735",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/usage.json",
+          "sha256": "1e71d84bd5c1b34639bb3653de38906904dc6debbafb59677f36f4af9077e31e",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "be762c84b5b56e42408d3effa54987a8f60be2612501c759a0827ae7aa52cd83",
-      "json_pointer": "/v3/draft",
-      "path": "analysis/repair/draft.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "e067d40c9011b3ca5bc14fb6f83d12da629b4513abe5866fe94f98647008050b",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
-      "source_sha256": "c341c44ced43717bd1e64c489961dab295d7a9c05652b8a672bcad5e8aadbe09"
+      "path": "generation/v0/provenance.json",
+      "sha256": "fd387d3a1e12f027f9f93d33d8a4a40c58bb579bebd5d17cfbe749263b94768f",
+      "expanded_semantic_sha256": "338890b91ecf6a10fd5752ead01cc0bac0a6804b7e1d8092c7f4fd1724d9481e",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/producer-declaration-0-v0.json",
+          "sha256": "fd387d3a1e12f027f9f93d33d8a4a40c58bb579bebd5d17cfbe749263b94768f",
+          "json_pointer": ""
+        }
+      ]
     },
     {
-      "expanded_semantic_sha256": "be762c84b5b56e42408d3effa54987a8f60be2612501c759a0827ae7aa52cd83",
-      "json_pointer": "/v3/final_primary",
-      "path": "analysis/repair/final-primary.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "f12d42254872588cb4151f1b35e810f1e2269a8988ba8a612a9e6547201ba18a",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/material/captures/v3/result.json",
-      "source_sha256": "c341c44ced43717bd1e64c489961dab295d7a9c05652b8a672bcad5e8aadbe09"
-    },
-    {
-      "json_pointer": "",
-      "path": "analysis/repair/source-origins.json",
-      "publication_kind": "json_with_lf_publication",
-      "sha256": "2e757e0c6d9b1d6ad13c382d27b6f34c20463b463b38c97d538b601ad98babae",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/v3-origin-view.json",
-      "source_sha256": "2e757e0c6d9b1d6ad13c382d27b6f34c20463b463b38c97d538b601ad98babae"
-    },
-    {
-      "expanded_semantic_sha256": "0b2576e6bb6d9a73445b4f61183457d642d9895c757dcff8de9f319154f15b17",
-      "json_pointer": "",
-      "path": "evaluation/v3-pair/report.json",
-      "publication_kind": "lossless_json_reference_view",
-      "sha256": "e4724901380baa8e62ab084e2675520b25b4f1452eaf4b0086b48d77d3371833",
-      "source_logical_path": "benchmark/scratch/case-11/work/r02/analysis/paired-completed/pair-report.json",
-      "source_sha256": "1d80ece5fdd83d43795cd0c1b2f07fa383ac4b4180bf31888dff5e3500d5d609"
-    },
-    {
-      "path": "generation/runtime-policy.json",
+      "path": "generation/v0/runtime-policy.json",
       "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
-      "bytes": 6500,
-      "representation": "saved_json_projection",
-      "original_source": {
-        "logical_path": "work/r02/material/captures/v0/runtime-policy.json",
-        "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
-        "json_pointer": ""
-      }
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/producer-completion.json",
+      "sha256": "918f2f7755c5b7d3d41a8bde5aed36920f496de1fb7c89bed2f501e9017e658f",
+      "expanded_semantic_sha256": "8577fb2513ae3450da0e61529c0815881e0ad6cb458d97a26899c79a04ff4848",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/producer-completion.json",
+          "sha256": "307fc8881e508bcfdeafa5937054e0e49faec580de195ccddc6d005c6c378d3e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/usage-summary.json",
+      "sha256": "494080001208ed5c57f96aa8c1d4c8d76b3079cc9858da9ced4bceb38cc973fd",
+      "expanded_semantic_sha256": "e5f060f1abf5dc83e216a32b37689899e6efc11a13825bd159ff618f10def533",
+      "publication_kind": "derived_native_usage_summary",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/usage.json",
+          "sha256": "1e71d84bd5c1b34639bb3653de38906904dc6debbafb59677f36f4af9077e31e",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v0/cost-report.json",
+      "sha256": "652c1da489e9af41eb6f7b1552c72a815342b2ed0bac47e96234475b13837042",
+      "expanded_semantic_sha256": "d8c2942768e43f051d87e27c974b46177f5fc246e3ec27360b8a164fda64bae3",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/v0-selected-cost-report.json",
+          "sha256": "652c1da489e9af41eb6f7b1552c72a815342b2ed0bac47e96234475b13837042",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/itinerary.json",
+      "sha256": "18554a3f66fd226d28a36cbfa70b449157b8743a88e16442e68f0dc0eb38a3d9",
+      "expanded_semantic_sha256": "c7294fe9c30ab0f778eee3696f08a994b7b70a014a795352b731f5feb6c77f62",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/result.json",
+          "sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/usage.json",
+      "sha256": "8676635edf8eabfe636206fe0f3760b8be9cfef62b028551d37ca16757a6653b",
+      "expanded_semantic_sha256": "37e7fcf2ac5e8f5563fd3c5746d1f739b7f7c01094a7d80baeb938190642cf6e",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/usage.json",
+          "sha256": "8676635edf8eabfe636206fe0f3760b8be9cfef62b028551d37ca16757a6653b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/provenance.json",
+      "sha256": "bd5dd280380d809e8462a80174192d3b254217461400baaef6bfb798bff3e938",
+      "expanded_semantic_sha256": "d47afd286303c7f3addb437e543681fc5d026b8b7932a83dc767ae6510beec31",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/producer-declaration-0-v1.json",
+          "sha256": "bd5dd280380d809e8462a80174192d3b254217461400baaef6bfb798bff3e938",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/runtime-policy.json",
+      "sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/producer-completion.json",
+      "sha256": "f71a95d5bf8ef6e2de5664c765e5b3d9b9a5695070f38f6524312269d8e17580",
+      "expanded_semantic_sha256": "3330bd96f0be694f8633c9ead262cbcd711aebff03fd8be89a630ca437e2ae5b",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/producer-completion.json",
+          "sha256": "aa1c3f786eff493d783c85fb02a3080c3eef8a802bfede15ca40b3cba7ce1eb0",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/usage-summary.json",
+      "sha256": "77d4c518094491484d5b0cc717f3c7ccd5d37117d96ac0898633e028c3e42206",
+      "expanded_semantic_sha256": "f4c4734d641f1abd169ac738a4bdad97f2e057d897c3ca113a6e68e4b14e5d7e",
+      "publication_kind": "derived_native_usage_summary",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/usage.json",
+          "sha256": "8676635edf8eabfe636206fe0f3760b8be9cfef62b028551d37ca16757a6653b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v1/cost-report.json",
+      "sha256": "8dfd0c1797566cea1b6f6c5efd2ed3224ad3debb9e6373b21af9ee5070b6d848",
+      "expanded_semantic_sha256": "48619b3d8b3244787678471bc6b8b5ba4db75d1caa05117756f0274c2f59a8e4",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/v1-selected-cost-report.json",
+          "sha256": "0b11eb338df54031293544e2188403280de14a9e4e4ce73db5c568318d2cde55",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/itinerary.json",
+      "sha256": "c0e943d264dff14be16dd35c005bc79de78d3944dfd2e6e87c3708404682449c",
+      "expanded_semantic_sha256": "73ab668d16f2485b4d15106970d8102d2246d5009669f9a2587ed97d621cdd1b",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/result.json",
+          "sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/usage.json",
+      "sha256": "0c675813bee66302649c13f8b3a70a20af4ee4af86d501f244d785b56d79180d",
+      "expanded_semantic_sha256": "f19ee68b57be3e2a331aa474c0f53ee413763d304fe698b5233d09bb4fece8e1",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/usage.json",
+          "sha256": "0c675813bee66302649c13f8b3a70a20af4ee4af86d501f244d785b56d79180d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/provenance.json",
+      "sha256": "40ff0d2d29fa84d2ca07ed7a7b9f6371e6ca5c03feeaaf3c9cf67f3434b7d837",
+      "expanded_semantic_sha256": "fd8c1105a10fdc462afc705f9e81d91132f39d365c9e14071501351af3e60e5c",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/producer-declaration-0-v2.json",
+          "sha256": "40ff0d2d29fa84d2ca07ed7a7b9f6371e6ca5c03feeaaf3c9cf67f3434b7d837",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/runtime-policy.json",
+      "sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/runtime-policy.json",
+          "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/producer-completion.json",
+      "sha256": "f4a876eb44b294ad710255ba6fe27b5c8d3262ab485262e09f62a42889df1255",
+      "expanded_semantic_sha256": "6c30c1390e7fbbfb3db7c2f91005d122eb967af3dc3a90aa351a40ad7e05674c",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/producer-completion.json",
+          "sha256": "9b71b9a607fc2e33628101a79e4d430958639e36910f1e8ccebdefa075df331b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/usage-summary.json",
+      "sha256": "d4998f8faa1d1b7d4de25d5d844449b45690470cc66e7ebde65a92c1a7136ad9",
+      "expanded_semantic_sha256": "ae49e02d195c18c0540e31e048f33f542af1e40d73599fb411fb54d036f443e5",
+      "publication_kind": "derived_native_usage_summary",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/usage.json",
+          "sha256": "0c675813bee66302649c13f8b3a70a20af4ee4af86d501f244d785b56d79180d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/cost-report.json",
+      "sha256": "afd80498d055db027ed670818941369c05c888a51cbfe6c501e92d59bc962e29",
+      "expanded_semantic_sha256": "87b2fe44aadf6a3d8103e62616a8aaf0ef1ecea118394a81ddca01dd890eae69",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/v2-cost-report.json",
+          "sha256": "841cdcd74360cd533cef8d654bbeefb047b157dd9003a7addf664039255fb9c1",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v2/rag-origins.json",
+      "sha256": "c69efe52a24eb0d8c431647127c94ac1dc62b40e092a17a1ee5764e3cdd0ddd9",
+      "expanded_semantic_sha256": "6dd2518530acc39cde9ec11de207f95aea6ecaedfbda44bcc300e12766283b5b",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/result.json",
+          "sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/itinerary.json",
+      "sha256": "c2bf093875139634ce45e303966475dfae9ffaf97ac4861a185fe326403da546",
+      "expanded_semantic_sha256": "c2930e8a856cbe700abaee037ebd986e653c355a18ab952f47f779c4b85e379f",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/itinerary"
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/usage.json",
+      "sha256": "d666115132ef31799e77d6f8c3e3f33e2828ef6da493719227e94316e074d827",
+      "expanded_semantic_sha256": "91bff45b8d6099eb31fc1f088c7edaf13f3450cf88d1bb9462c91a2ad46c5896",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/usage.json",
+          "sha256": "d666115132ef31799e77d6f8c3e3f33e2828ef6da493719227e94316e074d827",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/provenance.json",
+      "sha256": "d66aedacdc78ed7baba35fb65efc06f4652f759aea43ffef0e8bf52f90a5caa0",
+      "expanded_semantic_sha256": "71d919cadec230b812204e54561afef58266a5ba99d52e7bc0bc87a5a4281fc8",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/producer-declaration-0-v3.json",
+          "sha256": "d66aedacdc78ed7baba35fb65efc06f4652f759aea43ffef0e8bf52f90a5caa0",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "expanded_semantic_sha256": "9ddf1f64b5a88f976665b4b10672b7eca9959048d399deba3ff82fab8f0754a4",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/runtime-policy.json",
+          "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/producer-completion.json",
+      "sha256": "0701163b01787f357944efc71953d8739b95499fcc7a8d38c3ddac5f904c7056",
+      "expanded_semantic_sha256": "b6dfc0131ab4b5d7d39087a052536dd33879472bcf3c3fc59494484dac88acf9",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/producer-completion.json",
+          "sha256": "4c38adf3a49dd332857ebf32c3b1b435b4020cfe09a82c2713ac1bfe5f7c2807",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/usage-summary.json",
+      "sha256": "472f6410b65cb93a0af4ca335413323babf40fdd25edd79fc77c3bb5af901176",
+      "expanded_semantic_sha256": "7d6a2c22473f58ad24143fa14ec524c3d54b407118c5c8693eb2ff769919b9c8",
+      "publication_kind": "derived_native_usage_summary",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/usage.json",
+          "sha256": "d666115132ef31799e77d6f8c3e3f33e2828ef6da493719227e94316e074d827",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/cost-report.json",
+      "sha256": "4801d60dde55bcbfc72bbcf612db1bc8e925606290843d6de06c7a97e2ef7163",
+      "expanded_semantic_sha256": "d4f7018f8cff1355a2567cf3f68da4ceba5f0132377c2b9d9ca6c3477ad92852",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/captures/v3/cost-report.json",
+          "sha256": "86c4c9cbf70487e56a968bc66851718ee809abac30866464edb370ec9b7128cf",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "generation/v3/rag-origins.json",
+      "sha256": "7c81ac1f18d190548c69758fb761a2109ba54595898bca627e8679a1cc7eea05",
+      "expanded_semantic_sha256": "1c93964174b796fae8832be564c07787596270e791f80e7030db9031f088f598",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/rag_discovery"
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/draft.json",
+      "sha256": "89368e29fef29fb19c3fc0ba1aa9901fbd87b71c76176ecc1ae60891877bcec3",
+      "expanded_semantic_sha256": "0fc92432ece5bbb671be3855b93d389ff387782d0162e1bbfeaf6bf045e4974e",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/v3/draft"
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/final-primary.json",
+      "sha256": "3d105d14437139f24458e3c8363f2b373e47a13556507a800180e4bc5e93687a",
+      "expanded_semantic_sha256": "716b2055593e8d03c1ad569f2548ae5fde3c09305253f1478f1d5d7df195ac6e",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/v3/final_primary"
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/validation.json",
+      "sha256": "5c46d50fc35be7c62c5cfefdfc32642ba3b2a46d6ee7f5ff243cbe795f672202",
+      "expanded_semantic_sha256": "32121e227fa36239882399ff1386101bc9dbeb6e31db40120a5c7941a1a740e4",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/v3/final_report"
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/original-validation.json",
+      "sha256": "9d10e193c20e3523af537ebdbbaee15ea78d1564d3cdd39169b1cba756dbdd1f",
+      "expanded_semantic_sha256": "8ca4d36a8052ff2a70f59a9870fe42c6d5e32c848f2c4f08a568d2535ed7dfc5",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/v3/original_report"
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/repair.json",
+      "sha256": "5e869ea175f904e6ecea5b070187bf84b643061fae21ed4b3568ee8599ef9245",
+      "expanded_semantic_sha256": "31305f0d79bf39174430d7ef2d3af387d457a9968f517c476e83f3cdaaee50b9",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/v3/repair"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/primary/report.json",
+      "sha256": "301954366c7b45f20967a64f0ccd979fc526f43ee8bd7070830942b80a1d94a3",
+      "expanded_semantic_sha256": "883d2fd0f27c6d8bd455728d5b64510bc91fbe5460ba988d835dbc918dc8832d",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/primary-a1/execution/report.json",
+          "sha256": "883d2fd0f27c6d8bd455728d5b64510bc91fbe5460ba988d835dbc918dc8832d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "evaluation/primary/quality.json",
+      "sha256": "ecbf4315b687c6baa2aafceacd95d1ff8f6b9e0606a81987ef4fb6ddf3c24fd0",
+      "expanded_semantic_sha256": "2623086491455565781a94e6209b9b849b4ce3a2a81bcf8799f677d8068ba530",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/quality.json",
+          "sha256": "168ee261da59d19654d313cebb2d0920f54bc5ae4855ca93b899326071e8d2ba",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "evaluation/v3-pair/report.json",
+      "sha256": "c89efdee9ca41f6f616412e9d19e201279717de9b6b5ee48eab5dfb8172313e0",
+      "expanded_semantic_sha256": "7415f867da24d2c0c7f36714859c2084bdaad99808f1556a15d479dd4e22d51d",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/pair.json",
+          "sha256": "0a88817f0494491cf9744399f675709276637695b45e021963b655d33a86bc1a",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/opportunities.json",
+      "sha256": "39bfbc50f3cc8b04f552ce80bee44320631adda470e0f001b149a225ae68fb59",
+      "expanded_semantic_sha256": "1bfcd05560445a9add6465f93cd2bf339039c099e2114a2723109cd71fcf5b65",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/opportunities.json",
+          "sha256": "3e9c3a8e96caf2ca095c59b39cf2c1c97a5e95eb9953f284f705ace4e4712510",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/relevance.json",
+      "sha256": "fad05ca0dc7c76ed4f92f1fa99b3be42e42d0f87257fea35d813fbd229c90def",
+      "expanded_semantic_sha256": "240bdb47fa28a32ff13a09f5d91aae611530064a9e2e4ae7e8087a0fe514ced0",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/relevance.json",
+          "sha256": "39a82394cd1070508ea2ea9749f3d2d4e8f6efbe93f7890e7aecc2e0542250bb",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/mechanism.json",
+      "sha256": "da46781cd46b8235101acdfc71657dbfb84bbbcffb34d967a5c0d3ac3bb25914",
+      "expanded_semantic_sha256": "ae89f3e8512dc07c1ccc75caed5e3a4d3c287e984d371d1352b90df0af23dab8",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/mechanism.json",
+          "sha256": "3406da2efc90bea62d01983e4b781614f766289461aff0c8ee9824fa7dfa3eeb",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/repair/research.json",
+      "sha256": "1ddb7437903dc39290dd6495d693461ab9279ebabf7d89cee6b6fa1e76d00352",
+      "expanded_semantic_sha256": "08aca67b0e3b7d6c30587e1503ec6fb595a37598dcf1c8189618a40c88c6ed1f",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/repair.json",
+          "sha256": "694d4a1a9d1614d9baf6c67ed32241f100d515930198520a2e24c045c1cc9f4d",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/selected-tradeoffs.json",
+      "sha256": "9a359d0dc64f1c08523062a24fe1ef50fb406eb1750c4655b1414f87273c5a93",
+      "expanded_semantic_sha256": "5c406b48a2c5556f3391a682a5445d4bca416e372be81728474f0cee15fdc993",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/tradeoffs.json",
+          "sha256": "073c89ce9e49054122e4ea0409554df7812c544d3136ac6f03b4bfba1c09d9e8",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/selected-population.json",
+      "sha256": "edfbd8f7307546b816eea529091576a4bbc5b7292a5855f49fa3ed5965d97848",
+      "expanded_semantic_sha256": "a2ecff6d869b7148e0ebf038a73b854b525b6b3086374fa249e3bc2e28307d36",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/population.json",
+          "sha256": "d515bdab36ff2a74f3b4781279427a28632c7f47faf74c9a738a38c729e308f7",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/resources/all-attempt-resources.json",
+      "sha256": "ba68d34f16653f69822a4f39eb0a0c7aadb208edb72b369879da242e878c1f8c",
+      "expanded_semantic_sha256": "ae325ea71a60ecd1225e1231e8569cd13f6e1771659a64715e62c4ce3824c894",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-native/all-attempt-resources.json",
+          "sha256": "ba68d34f16653f69822a4f39eb0a0c7aadb208edb72b369879da242e878c1f8c",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/v1-candidate-opportunities.json",
+      "sha256": "0c817e704188002d565b70556407082d018cf5886294263f4441174621bb1c71",
+      "expanded_semantic_sha256": "2f1f277e33053f02353cab335c23b686593d2297af949604649ad33fd1d15b49",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/v1-candidate-opportunities.json",
+          "sha256": "a6a5ac91b6216d45197741a3c05603e59c3574a9a3feeaaae709735da852c899",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "analysis/poi-process/v2-candidate-opportunities.json",
+      "sha256": "8538667051eb4a361ee0c1c0ea7a71331110ac81c35c755dc5d6901acf250324",
+      "expanded_semantic_sha256": "0e89f7349455195b938a37455868b6f94781f9dc9bb8481c66154a857176382b",
+      "publication_kind": "source_linked_lossless_json_view",
+      "sources": [
+        {
+          "logical_path": ".scratch/rf18/case-11/analysis-input/v2-candidate-opportunities.json",
+          "sha256": "61963d803ab17bb48673ae2c57c372f79ac84b85ae7c99a33af7425b6ec04cd7",
+          "json_pointer": ""
+        }
+      ]
+    },
+    {
+      "path": "evaluation/v3-pair/source-binding.json",
+      "sha256": "015ba87a2c4e1c3336aa901133a52c0ec2cd62edfbcd88fd74ab24d355598009",
+      "expanded_semantic_sha256": "55ba631bc9189746e885679eb06354b26999463c984ef604f230b56186352ebf",
+      "publication_kind": "derived_selection_or_source_binding",
+      "sources": []
+    },
+    {
+      "path": "analysis/resources/refresh-execution.json",
+      "sha256": "012155bfb1d53d1c9f2957d9a17272d65d3ebd0234473f5f252adbe139fecaaf",
+      "expanded_semantic_sha256": "ed92751edbf0286603395fb96deb1d2adbea3fc131953758a649f0cedffd0b71",
+      "publication_kind": "derived_selection_or_source_binding",
+      "sources": []
+    },
+    {
+      "path": "selection.json",
+      "sha256": "9a328b792599f3c7c3ea61285a137ba3282678853b2eee085d626debdb3c0e76",
+      "expanded_semantic_sha256": "136923b9fe446fd10f641e43d043269c38cfc280a5bc6f3a53e36d9ff3f4c622",
+      "publication_kind": "derived_selection_or_source_binding",
+      "sources": []
+    }
+  ],
+  "reader_views": [
+    {
+      "path": "report.md",
+      "sha256": "1a6cc5d87f08d476d9e3784c6f9d19b7c00a23d2823e2105d7b13f84ca4f7340"
     },
     {
       "path": "itinerary.md",
-      "sha256": "0635552f01c9c0d46dce174e81bbcdc7277f663c4198947fbe55cb06a1693255",
-      "bytes": 7163,
-      "representation": "reader_document",
-      "original_source": {
-        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-11/itinerary.md",
-        "sha256": "66d1a9635b736ccf3da7a33257bb565442efd857429371ac2a1cd76cbc7a6cce",
-        "json_pointer": ""
-      },
-      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
-    },
-    {
-      "path": "report.md",
-      "sha256": "acc747cd72a3015ff5c77772c1fdafe8f254cfe51d007536b83c7850dbf4875f",
-      "bytes": 26267,
-      "representation": "reader_document",
-      "original_source": {
-        "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-11/report.md",
-        "sha256": "7af12a5069bab8ecd1bbdd0d8ff6489b1f6fff3d4748e2ca08a36461bd703e7e",
-        "json_pointer": ""
-      },
-      "transformation": "Reader projection maintained in place; selected results and original source bytes are unchanged."
+      "sha256": "70d7d06be698f24a722082fcf10eb456d532b5036baa8e6f5b138c041a246ff9"
     }
   ],
-  "execution_revision": "2",
-  "historical_selection": {
-    "revision": "1",
-    "status": "blocked_before_primary_evaluation",
-    "v0": "analysis/history/r01/v0/itinerary.json",
-    "v1": "analysis/history/r01/v1/itinerary.json"
-  },
-  "original_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
-  "private_archive": {
-    "absolute_preparation_bindings": "Unchanged. Native offline fresh-root replay verified; legacy directory-bound CLI relocation is not claimed.",
-    "accepted_reader_snapshot_commit": "ec826a34b885be5cbd8af36639156da861d0d69b",
-    "archive_logical_paths": 6641,
-    "archive_scope": "Case-11 only; no provider sends, generation reruns, human review or remote publication.",
-    "blobs_sha256": "2b6f6c6ef2bcb4f86d3e1140c3f0c58bdf7cfae8793369bab0d7baaf6354486b",
-    "compressed_blob_bytes": 7632146,
-    "excluded_duplicate_or_temporary_files": 3403,
-    "logical_root": "benchmark/scratch/case-11/archive/",
-    "manifest_sha256": "a0b01526f76e5370fb3779b70c5d0b3f0acec6769a0a7297dcc73e1b18ab330b",
-    "retained_original_private_paths": 5246,
-    "source_path_mapping": "Remove benchmark/scratch/case-11/ from each private source logical path to locate its original path in the archive manifest.",
-    "status": "restored_verified_cleanup_complete",
-    "unique_blobs": 1707,
-    "verification_sha256": "5e4b52aa37be58012a73f4111abd21cb7f5d1ac02dcb3d71d734b7ea37b53229"
-  },
-  "private_source_roots": [
-    "benchmark/scratch/case-11/work/r01",
-    "benchmark/scratch/case-11/work/r02"
-  ],
-  "schema_version": "case11_public_material_index_1",
-  "source_path_semantics": "Private source logical paths identify original archive manifest entries after compaction, not live working files or public navigation dependencies. Selected JSON subtrees and lossless references preserve parsed values; native source bytes remain unchanged.",
-  "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
-  "status": "automatically_accepted_blinded_review_deferred",
-  "publication_correction": {
-    "date": "2026-10-18",
-    "preceding_revision": "87ecd35bb38b2d93164af4ce1a1a9de927621124",
-    "preceding_index_sha256": "7873154fe38f6e5eef19e19d2177f7442661560f77b1614096731f45e539087c",
-    "scope": "Offline public-material presentation and saved-evidence extraction; original step-10 approval, selected outputs, failures and scores are unchanged.",
-    "selected_generation": {
-      "v0": {
-        "itinerary": "generation/v0/itinerary.json",
-        "usage": "generation/v0/usage-summary.json",
-        "provenance": "generation/v0/provenance.json",
-        "runtime_policy": "generation/runtime-policy.json"
-      },
-      "v1": {
-        "itinerary": "generation/v1/itinerary.json",
-        "usage": "generation/v1/usage-summary.json",
-        "provenance": "generation/v1/provenance.json",
-        "runtime_policy": "generation/runtime-policy.json"
-      },
-      "v2": {
-        "itinerary": "generation/v2/itinerary.json",
-        "usage": "generation/v2/usage-summary.json",
-        "provenance": "generation/v2/provenance.json",
-        "runtime_policy": "generation/runtime-policy.json"
-      },
-      "v3": {
-        "itinerary": "generation/v3/itinerary.json",
-        "usage": "generation/v3/usage-summary.json",
-        "provenance": "generation/v3/provenance.json",
-        "runtime_policy": "generation/runtime-policy.json"
-      }
-    },
-    "reader_categories": {
-      "original_input": [
-        "../inputs/case-11.json"
-      ],
-      "requirements": [
-        "requirements/reviewed.json"
-      ],
-      "interests": [
-        "interests/inventory.json"
-      ],
-      "itinerary": [
-        "itinerary.md"
-      ],
-      "request_context": [
-        "requirements/density-reviews.json",
-        "requirements/route-reviews.json",
-        "requirements/schedule-context.json"
-      ],
-      "interest_reviews": [
-        "interests/relevance-a.json",
-        "interests/relevance-b.json",
-        "interests/source-review.json"
-      ],
-      "origin_captures": [],
-      "generation": [
-        "generation/v0/itinerary.json",
-        "generation/v0/usage-summary.json",
-        "generation/v0/provenance.json",
-        "generation/runtime-policy.json",
-        "generation/v1/itinerary.json",
-        "generation/v1/usage-summary.json",
-        "generation/v1/provenance.json",
-        "generation/runtime-policy.json",
-        "generation/v2/itinerary.json",
-        "generation/v2/usage-summary.json",
-        "generation/v2/provenance.json",
-        "generation/runtime-policy.json",
-        "generation/v3/itinerary.json",
-        "generation/v3/usage-summary.json",
-        "generation/v3/provenance.json",
-        "generation/runtime-policy.json"
-      ],
-      "primary": [
-        "evaluation/primary/summary.json"
-      ],
-      "paired": [
-        "evaluation/v3-pair/api-only.json",
-        "evaluation/v3-pair/report.json"
-      ],
-      "poi_process": [
-        "analysis/poi-process/opportunities.json",
-        "analysis/poi-process/relevance.json",
-        "analysis/poi-process/venues.json"
-      ],
-      "repair": [
-        "analysis/repair/draft.json",
-        "analysis/repair/final-primary.json",
-        "analysis/repair/mechanism.json",
-        "analysis/repair/repair.json",
-        "analysis/repair/source-origins.json"
-      ],
-      "resources": [
-        "analysis/resources/all-attempt-cost.json",
-        "analysis/resources/population.json",
-        "analysis/resources/selected-usage.json",
-        "analysis/resources/tradeoffs.json",
-        "resources/primary-stage.json"
-      ]
-    },
-    "relocated_public_paths": {
-      "generation/r02/v3/draft.json": "analysis/repair/draft.json",
-      "generation/r02/v3/final-primary.json": "analysis/repair/final-primary.json",
-      "generation/v0/itinerary.json": "analysis/history/r01/v0/itinerary.json",
-      "generation/v1/itinerary.json": "analysis/history/r01/v1/itinerary.json",
-      "generation/r02/runtime-policy.json": "generation/runtime-policy.json",
-      "generation/r02/v0/itinerary.json": "generation/v0/itinerary.json",
-      "generation/r02/v0/provenance.json": "generation/v0/provenance.json",
-      "generation/r02/v0/usage-summary.json": "generation/v0/usage-summary.json",
-      "generation/r02/v1/itinerary.json": "generation/v1/itinerary.json",
-      "generation/r02/v1/provenance.json": "generation/v1/provenance.json",
-      "generation/r02/v1/usage-summary.json": "generation/v1/usage-summary.json",
-      "generation/r02/v2/itinerary.json": "generation/v2/itinerary.json",
-      "generation/r02/v2/provenance.json": "generation/v2/provenance.json",
-      "generation/r02/v2/usage-summary.json": "generation/v2/usage-summary.json",
-      "generation/r02/v3/itinerary.json": "generation/v3/itinerary.json",
-      "generation/r02/v3/provenance.json": "generation/v3/provenance.json",
-      "generation/r02/v3/usage-summary.json": "generation/v3/usage-summary.json",
-      "requirements/density-reviews.json": "analysis/history/r01/requirements/density-reviews.json",
-      "requirements/r02/density-reviews.json": "requirements/density-reviews.json",
-      "requirements/route-reviews.json": "analysis/history/r01/requirements/route-reviews.json",
-      "requirements/r02/route-reviews.json": "requirements/route-reviews.json",
-      "requirements/schedule-context.json": "analysis/history/r01/requirements/schedule-context.json",
-      "requirements/r02/schedule-context.json": "requirements/schedule-context.json",
-      "analysis/repair/r02/draft.json": "analysis/repair/draft.json",
-      "analysis/repair/r02/final-primary.json": "analysis/repair/final-primary.json"
-    },
-    "historical_index_resolution": "Frozen indexes and their original reader paths resolve at their recorded Git revision; relocated_public_paths locates current public equivalents.",
-    "evidence_storage": "Private archives and original worktrees are retained without writes; native source paths are immutable evidence identifiers, not public navigation.",
-    "shared_reference_path_base": "containing_file",
-    "execution": {
-      "generation_runs": 0,
-      "evaluation_runs": 0,
-      "model_calls": 0,
-      "google_calls": 0,
-      "rescoring": false
-    },
-    "layout": "Current selected materials use canonical category paths without revision directories; revision IDs remain in source metadata and history."
+  "researcher_acceptance": {
+    "status": "accepted",
+    "accepted_on": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193",
+    "details": "selection.json#/researcher_acceptance"
   }
 }

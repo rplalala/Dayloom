@@ -1,7 +1,28 @@
 {
-  "$case_material_ref": {
-    "path": "../../generation/v3/itinerary.json",
-    "pointer": "",
-    "expanded_semantic_sha256": "d40f88459c981988478c39513462b55256ff4acfb726df892a2474446f57dbaf"
+  "output_version": "itinerary_3",
+  "transfers": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/transfers",
+      "expanded_semantic_sha256": "1e3b4c21cb38b088d88906fc278b243ab8b5ffd7ecc25028190d9ff4b7770ec5"
+    }
+  },
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/route_diagnostics",
+      "expanded_semantic_sha256": "2ffc5ebe29e02b10b0b8ec2dc24a8bb9fa8da72f5523f6cf8dc28645433a12f9"
+    }
+  },
+  "reference_recommendations": [],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-26",
+  "end_date": "2026-10-30",
+  "days": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/days",
+      "expanded_semantic_sha256": "fbe9db031c0701714daad9c92f63e9c9e0938ec6f2893f02bcf8c3ac99d57893"
+    }
   }
 }

@@ -1,0 +1,30 @@
+{
+  "schema_version": "case_refresh_consumption_1",
+  "case_id": "case-11",
+  "global_new_allowance_usd": "40",
+  "global_new_reference_subtotal_usd": "14.440100520",
+  "automatic_retries": 0,
+  "concurrency": 1,
+  "actual_billing": null,
+  "invocations": [
+    {
+      "job_id": "case-11-pair-a1",
+      "kind": "pair",
+      "status": "complete",
+      "started_at": "2026-10-18T04:51:53.088731+00:00",
+      "completed_at": "2026-10-18T04:52:11.655701+00:00",
+      "exit_code": 0,
+      "native_reference_usd": "1.093"
+    },
+    {
+      "job_id": "case-11-pair-access-a1",
+      "kind": "pair-access",
+      "status": "complete",
+      "started_at": "2026-10-18T04:53:53.119330+00:00",
+      "completed_at": "2026-10-18T04:53:53.119330+00:00",
+      "exit_code": null,
+      "native_reference_usd": "0"
+    }
+  ],
+  "note": "Zero-eligible assessment receipts are zero-dispatch records, not additional model invocations. Previous-batch consumption is outside this new allowance and remains in cumulative resources."
+}

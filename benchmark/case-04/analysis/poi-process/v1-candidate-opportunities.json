@@ -1,0 +1,1914 @@
+{
+  "schema_version": "rtpeval_candidate_capture_1",
+  "version": "v1",
+  "run_id": "case-04-current-path-v1-a1",
+  "stages": {
+    "discovered": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJHXRM6hsa2jERTWva5xCUhy4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWQLwKP0P2jER-AOMrDbkIW8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJi3VWZfob2jERFNw7sbvKS_w",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJo714KsEZ2jERAwbjfpK78oY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJs91Di4w82jERasclvd3Rb18",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "admitted": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJHXRM6hsa2jERTWva5xCUhy4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJo714KsEZ2jERAwbjfpK78oY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJi3VWZfob2jERFNw7sbvKS_w",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "enriched": {
+      "status": "complete",
+      "reasons": [
+        "new_success_target"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "supplied": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    }
+  },
+  "pre_rag_google_ids": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/0/stages/discovered/canonical_ids",
+      "expanded_semantic_sha256": "f851098674b2cf2a937df95271aa6a105a6c6d59da9f2a49f21975cc34e26188"
+    }
+  },
+  "omissions": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/0/omissions",
+      "expanded_semantic_sha256": "16087951aa15a6c1bac994e4a19f662b37d3d6c1a5d8bdc6683aa5ebeb9a4760"
+    }
+  },
+  "rag": null,
+  "outcome": "completed",
+  "failure_type": null,
+  "result_semantic_sha256": "b6828e9c1ef53b693feb65ff5d50e076e080fc2f2e8d5e8d73b677d20f7e0c3d"
+}

@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Musée Rodin",
+  "sources": [
+    {
+      "url": "https://www.musee-rodin.fr/recherche/fonds-patrimoniaux-et-documentaires-du-musee/collections-oeuvres-du-musee/sculptures",
+      "title": "Sculptures | Musée Rodin",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The museum describes its Rodin sculpture collection, including bronzes, marbles and works in the sculpture garden and Hôtel Biron.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The museum describes its Rodin sculpture collection, including bronzes, marbles and works in the sculpture garden and Hôtel Biron.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

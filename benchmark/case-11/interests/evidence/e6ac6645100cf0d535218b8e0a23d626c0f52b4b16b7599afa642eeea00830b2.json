@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+  "unresolved_subject_id": null,
+  "subject_name": "Place des Vosges",
+  "subject_address": "Pl. des Vosges, 75004 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9110422+00:00",
+  "sources": [
+    {
+      "url": "https://parisjetaime.com/transport/place-des-vosges-p1907",
+      "title": "Place des Vosges — Paris je t'aime",
+      "factual_paraphrase": "The tourism office describes visitors walking under the square's arcades and admiring its red-brick facades.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The official tourism description identifies the square's arcades and red-brick facades as things to admire. This supports a specific architectural encounter rather than relevance from age or location.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

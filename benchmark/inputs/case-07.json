@@ -1,9 +1,12 @@
 {
   "input_version": "planning_request_2",
   "destination": "Paris, France",
-  "start_date": "2026-10-15",
-  "end_date": "2026-10-17",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-24",
   "traveler_count": 1,
-  "budget": {"amount": 650, "currency": "EUR"},
+  "budget": {
+    "amount": 650,
+    "currency": "EUR"
+  },
   "additional_preferences": "I am travelling alone on a limited budget. I would prefer to spend most of my sightseeing time in parks, exploring neighbourhoods and viewing architecture from outside, with a small number of paid visits. I am happy to prioritise lower-cost experiences."
 }

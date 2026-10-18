@@ -1,0 +1,123 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "empty",
+  "queries": [
+    {
+      "query_id": "rag_default_1",
+      "text": "top attractions",
+      "origin": "system_default",
+      "intent_ids": [],
+      "requirement_refs": [],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 0,
+  "unique_entities": 0,
+  "resolution_attempts": 0,
+  "details_sends": 0,
+  "fallback_sends": 0,
+  "embedding_sends": 1,
+  "retrieval_queries": 1,
+  "cache_hits": 0,
+  "entities": [],
+  "origins": {},
+  "stops": [],
+  "phase_seconds": {
+    "embedding": 0.6913695999992342,
+    "retrieval": 0.010905499999353196,
+    "resolution": 1.5999994502635673e-06
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": 41.387437399999996,
+    "longitude": 2.1686495999999997,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.0341511000005994
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.014724700000442681
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.018662799999219715
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 0.6913244999996095
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-d5d6947bb651407298c72c91e26edf14.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 0.010675999999875785,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 0.010638699999617529
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 4.800000169780105e-06
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "7929352d2c32405c8d85706c78151743",
+      "status_code": 200,
+      "request_id": "req_80e7bcd375e24097af1c047006cf662c"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 2,
+    "total_tokens": 2
+  },
+  "elapsed_seconds": 0.8437258000012662,
+  "new_canonical_ids": [],
+  "mixed_source_ids": [],
+  "google_overlap_entities": 0,
+  "origin_associations": {},
+  "admission": {},
+  "fate": {
+    "admitted": [],
+    "enriched": [],
+    "supplied": [],
+    "scheduled": [],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {}
+}

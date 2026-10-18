@@ -1,26 +1,26 @@
 {
-  "schema_version": "case05_generation_usage_view_1",
-  "run_id": "case-05-r03-v0-attempt-01",
+  "run_id": "case-05-completion-v0-a1",
+  "outcome": "completed",
+  "namespace": "planner",
+  "timing_scope": "selected_invocation_through_cleanup",
   "metrics": {
-    "elapsed_seconds": 49.95299999997951,
+    "elapsed_seconds": 41.90699999999924,
+    "total_tokens": 22068,
     "model_calls": 2,
     "http_sends": 2,
-    "input_tokens": 17886,
-    "output_tokens": 6009,
-    "total_tokens": 23895,
-    "embedding_calls": 0,
-    "embedding_input_tokens": 0,
-    "embedding_total_tokens": 0,
     "cache_hits": 0
   },
-  "repair_subset": {
-    "model_calls": 0,
-    "http_sends": 0,
-    "total_tokens": 0,
-    "observed_token_subtotal": 0,
-    "scope": "subset_counted_once"
-  },
-  "reference_usd": "0.0052401",
-  "unpriced_events": 0,
-  "actual_invoice_usd": null
+  "observed_token_subtotal": 22068,
+  "observed_model_calls": 2,
+  "observed_http_sends": 2,
+  "cache_lookup_hits": 0,
+  "observed_tool_http_sends": 0,
+  "token_observed_calls": 2,
+  "token_missing_calls": 0,
+  "adapter_coverage": "declared_default_adapters",
+  "repair_model_calls": 0,
+  "repair_token_observed_subtotal": null,
+  "failed_http_responses": 0,
+  "incomplete_http_sends": 0,
+  "missing_fields": []
 }

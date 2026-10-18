@@ -1,0 +1,35 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJHXRM6hsa2jERTWva5xCUhy4",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://sbg.nparks.gov.sg/about/our-history/",
+      "title": "Our History",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Sembcorp Cool House forms part of the enhanced orchid collection."
+      ],
+      "limitations": []
+    },
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.nparks.gov.sg/-/media/sbg/documents/national-orchid-garden-trail-guide.pdf",
+      "title": "National Orchid Garden trail guide",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Cool House simulates a plant-rich montane forest."
+      ],
+      "limitations": [
+        "Older botanical trail guide; current opening feasibility was not assessed."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/34/evidence"
+}

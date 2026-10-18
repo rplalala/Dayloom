@@ -1,17 +1,57 @@
 {
-  "output_version": "itinerary_2",
+  "output_version": "itinerary_3",
   "transfers": [
     {
-      "from_activity_id": "visit-park-guell",
-      "to_activity_id": "repair_r2_new_c1_1",
+      "from_activity_id": "macba-20261026",
+      "to_activity_id": "repair_r1_new_c1_1",
+      "origin_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+      "destination_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-26T14:00:00+01:00",
+      "arrival_time": "2026-10-26T14:18:20+01:00",
+      "provider_duration_seconds": 1100.0,
+      "distance_meters": 1274,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "sagrada-familia-20261027",
+      "to_activity_id": "repair_r1_new_c2_1",
+      "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-27T13:00:00+01:00",
+      "arrival_time": "2026-10-27T13:34:37+01:00",
+      "provider_duration_seconds": 2077.0,
+      "distance_meters": 2588,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "park-guell-20261028",
+      "to_activity_id": "repair_r1_new_c3_1",
       "origin_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-      "destination_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+      "destination_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
       "mode": "TRANSIT",
       "mode_source": "APPLICATION_TRANSIT_FALLBACK",
-      "departure_time": "2026-10-16T12:30:00+02:00",
-      "arrival_time": "2026-10-16T12:54:05+02:00",
-      "provider_duration_seconds": 1445.0,
-      "distance_meters": 3504,
+      "departure_time": "2026-10-28T13:30:00+01:00",
+      "arrival_time": "2026-10-28T13:54:00+01:00",
+      "provider_duration_seconds": 1440.0,
+      "distance_meters": 3978,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -22,94 +62,370 @@
       "unknowns": []
     },
     {
-      "from_activity_id": "visit-casa-batllo",
-      "to_activity_id": "repair_r2_new_c2_1",
-      "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
-      "destination_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-17T13:00:00+02:00",
-      "arrival_time": "2026-10-17T13:00:13+02:00",
-      "provider_duration_seconds": 13.0,
-      "distance_meters": 16,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "visit-macba",
-      "to_activity_id": "repair_r2_new_c3_1",
-      "origin_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
-      "destination_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-18T14:00:00+02:00",
-      "arrival_time": "2026-10-18T14:20:45+02:00",
-      "provider_duration_seconds": 1245.0,
-      "distance_meters": 1548,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "visit-gothic-quarter",
-      "to_activity_id": "visit-santa-maria-del-mar",
-      "origin_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
-      "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-19T12:30:00+02:00",
-      "arrival_time": "2026-10-19T12:38:11+02:00",
-      "provider_duration_seconds": 491.0,
-      "distance_meters": 609,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "visit-history-of-catalonia",
-      "to_activity_id": "repair_r2_new_c4_1",
-      "origin_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
+      "from_activity_id": "barcelona-cathedral-20261029",
+      "to_activity_id": "temple-august-20261029",
+      "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
       "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-20T13:00:00+02:00",
-      "arrival_time": "2026-10-20T13:14:12+02:00",
-      "provider_duration_seconds": 852.0,
-      "distance_meters": 982,
+      "departure_time": "2026-10-29T12:00:00+01:00",
+      "arrival_time": "2026-10-29T12:02:59+01:00",
+      "provider_duration_seconds": 179.0,
+      "distance_meters": 215,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
         "google_routes:compute_route_matrix"
       ],
       "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "montjuic-castle-20261030",
+      "to_activity_id": "repair_r1_new_c4_1",
+      "origin_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "destination_place_id": "ChIJLcC0-PSipBIRdHiFCj_ewdY",
+      "mode": "TRANSIT",
+      "mode_source": "APPLICATION_TRANSIT_FALLBACK",
+      "departure_time": "2026-10-30T13:00:00+01:00",
+      "arrival_time": "2026-10-30T13:42:06+01:00",
+      "provider_duration_seconds": 2526.0,
+      "distance_meters": 6245,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "time_applicable",
       "validation_state": "PASS",
       "unknowns": []
     }
   ],
   "route_diagnostics": [
     {
-      "from_activity_id": "visit-park-guell",
-      "to_activity_id": "repair_r2_new_c1_1",
+      "from_activity_id": "macba-20261026",
+      "to_activity_id": "repair_r1_new_c1_1",
+      "origin": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+      "destination": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+      "departure": "2026-10-26T14:00:00+01:00",
+      "next_start": "2026-10-26T14:30:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1100,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T03:52:01.290098+00:00",
+              "retrieved_at": "2026-10-18T03:52:01.934149+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+                "destination_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1100,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:52:01.290098Z",
+                "retrieved_at": "2026-10-18T03:52:01.934149Z",
+                "origin_index": 3,
+                "destination_index": 13,
+                "distance_meters": 1274,
+                "duration_seconds": 1100,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "sagrada-familia-20261027",
+      "to_activity_id": "repair_r1_new_c2_1",
+      "origin": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "destination": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "departure": "2026-10-27T13:00:00+01:00",
+      "next_start": "2026-10-27T13:45:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 2077,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T03:52:01.937997+00:00",
+              "retrieved_at": "2026-10-18T03:52:02.593392+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+                "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2077,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:52:01.937997Z",
+                "retrieved_at": "2026-10-18T03:52:02.593392Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 2588,
+                "duration_seconds": 2077,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "park-guell-20261028",
+      "to_activity_id": "repair_r1_new_c3_1",
       "origin": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-      "destination": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
-      "departure": "2026-10-16T12:30:00+02:00",
-      "next_start": "2026-10-16T13:30:00+02:00",
+      "destination": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "departure": "2026-10-28T13:30:00+01:00",
+      "next_start": "2026-10-28T14:00:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "TRANSIT",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "CONFIRMED",
+          "reason": "specific_mode_transfer_deficit",
+          "evidence": [
+            {
+              "duration_seconds": 2673,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T03:51:59.965683+00:00",
+              "retrieved_at": "2026-10-18T03:52:00.641000+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "destination_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2673,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:51:59.965683Z",
+                "retrieved_at": "2026-10-18T03:52:00.641000Z",
+                "origin_index": 0,
+                "destination_index": 1,
+                "distance_meters": 3496,
+                "duration_seconds": 2673,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1440,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "TRANSIT",
+              "routing_preference": null,
+              "departure_time": "2026-10-28T13:30:00+01:00",
+              "requested_at": "2026-10-18T03:52:40.937593+00:00",
+              "retrieved_at": "2026-10-18T03:52:41.260449+00:00",
+              "basis": "time_applicable",
+              "element": {
+                "origin_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+                "destination_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1440,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:52:40.937593Z",
+                "retrieved_at": "2026-10-18T03:52:41.260449Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 3978,
+                "duration_seconds": 1440,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "barcelona-cathedral-20261029",
+      "to_activity_id": "temple-august-20261029",
+      "origin": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "destination": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "departure": "2026-10-29T12:00:00+01:00",
+      "next_start": "2026-10-29T12:30:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 179,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T03:52:01.937997+00:00",
+              "retrieved_at": "2026-10-18T03:52:02.593392+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+                "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 179,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:52:01.937997Z",
+                "retrieved_at": "2026-10-18T03:52:02.593392Z",
+                "origin_index": 3,
+                "destination_index": 14,
+                "distance_meters": 215,
+                "duration_seconds": 179,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "temple-august-20261029",
+      "to_activity_id": "historic-lanes-stroll-20261029",
+      "origin": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "destination": null,
+      "departure": "2026-10-29T13:15:00+01:00",
+      "next_start": "2026-10-29T13:30:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": null,
+      "result": "UNKNOWN",
+      "reason": "not_evaluable_location_or_time",
+      "mode_results": []
+    },
+    {
+      "from_activity_id": "montjuic-castle-20261030",
+      "to_activity_id": "repair_r1_new_c4_1",
+      "origin": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "destination": "ChIJLcC0-PSipBIRdHiFCj_ewdY",
+      "departure": "2026-10-30T13:00:00+01:00",
+      "next_start": "2026-10-30T14:00:00+01:00",
       "considered_modes": [
         "WALK",
         "TRANSIT",
@@ -125,31 +441,31 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 2348,
+              "duration_seconds": 2896,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-15T20:36:48.105513+00:00",
-              "retrieved_at": "2026-10-15T20:36:49.606250+00:00",
+              "requested_at": "2026-10-18T03:51:59.965683+00:00",
+              "retrieved_at": "2026-10-18T03:52:00.641000+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-                "destination_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "origin_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "destination_place_id": "ChIJLcC0-PSipBIRdHiFCj_ewdY",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 2348,
+                "static_duration_seconds": 2896,
                 "fallback_info": null,
-                "requested_at": "2026-10-15T20:36:48.105513Z",
-                "retrieved_at": "2026-10-15T20:36:49.606250Z",
-                "origin_index": 0,
-                "destination_index": 5,
-                "distance_meters": 3077,
-                "duration_seconds": 2348,
+                "requested_at": "2026-10-18T03:51:59.965683Z",
+                "retrieved_at": "2026-10-18T03:52:00.641000Z",
+                "origin_index": 2,
+                "destination_index": 3,
+                "distance_meters": 3403,
+                "duration_seconds": 2896,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -162,304 +478,36 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 1445,
+              "duration_seconds": 2526,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "TRANSIT",
               "routing_preference": null,
-              "departure_time": "2026-10-16T12:30:00+02:00",
-              "requested_at": "2026-10-15T20:38:05.261315+00:00",
-              "retrieved_at": "2026-10-15T20:38:05.581811+00:00",
+              "departure_time": "2026-10-30T13:00:00+01:00",
+              "requested_at": "2026-10-18T03:52:43.834930+00:00",
+              "retrieved_at": "2026-10-18T03:52:44.169558+00:00",
               "basis": "time_applicable",
               "element": {
-                "origin_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-                "destination_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
+                "origin_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+                "destination_place_id": "ChIJLcC0-PSipBIRdHiFCj_ewdY",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 1445,
+                "static_duration_seconds": 2526,
                 "fallback_info": null,
-                "requested_at": "2026-10-15T20:38:05.261315Z",
-                "retrieved_at": "2026-10-15T20:38:05.581811Z",
+                "requested_at": "2026-10-18T03:52:43.834930Z",
+                "retrieved_at": "2026-10-18T03:52:44.169558Z",
                 "origin_index": 0,
                 "destination_index": 0,
-                "distance_meters": 3504,
-                "duration_seconds": 1445,
+                "distance_meters": 6245,
+                "duration_seconds": 2526,
                 "availability": "available",
                 "unavailable_reason": null
               }
             }
           ]
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "visit-casa-batllo",
-      "to_activity_id": "repair_r2_new_c2_1",
-      "origin": "ChIJYUFLSe2ipBIRD04uni940kA",
-      "destination": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
-      "departure": "2026-10-17T13:00:00+02:00",
-      "next_start": "2026-10-17T13:30:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 13,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-15T20:38:05.604988+00:00",
-              "retrieved_at": "2026-10-15T20:38:05.894709+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
-                "destination_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 13,
-                "fallback_info": null,
-                "requested_at": "2026-10-15T20:38:05.604988Z",
-                "retrieved_at": "2026-10-15T20:38:05.894709Z",
-                "origin_index": 0,
-                "destination_index": 0,
-                "distance_meters": 16,
-                "duration_seconds": 13,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "visit-macba",
-      "to_activity_id": "repair_r2_new_c3_1",
-      "origin": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
-      "destination": "ChIJveK7vP6ipBIRiegu-jsxGX8",
-      "departure": "2026-10-18T14:00:00+02:00",
-      "next_start": "2026-10-18T14:30:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 1245,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-15T20:36:52.591496+00:00",
-              "retrieved_at": "2026-10-15T20:36:53.650992+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
-                "destination_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 1245,
-                "fallback_info": null,
-                "requested_at": "2026-10-15T20:36:52.591496Z",
-                "retrieved_at": "2026-10-15T20:36:53.650992Z",
-                "origin_index": 2,
-                "destination_index": 10,
-                "distance_meters": 1548,
-                "duration_seconds": 1245,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "visit-gothic-quarter",
-      "to_activity_id": "visit-santa-maria-del-mar",
-      "origin": "ChIJgQYekPiipBIRr6fNOMV-5bc",
-      "destination": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-      "departure": "2026-10-19T12:30:00+02:00",
-      "next_start": "2026-10-19T14:00:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 491,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-15T20:36:48.105513+00:00",
-              "retrieved_at": "2026-10-15T20:36:49.606250+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
-                "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 491,
-                "fallback_info": null,
-                "requested_at": "2026-10-15T20:36:48.105513Z",
-                "retrieved_at": "2026-10-15T20:36:49.606250Z",
-                "origin_index": 2,
-                "destination_index": 15,
-                "distance_meters": 609,
-                "duration_seconds": 491,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "visit-history-of-catalonia",
-      "to_activity_id": "repair_r2_new_c4_1",
-      "origin": "ChIJBTfBbwCjpBIRK-jjm940utc",
-      "destination": "ChIJ204RAfmipBIRgmi5nW7YHaE",
-      "departure": "2026-10-20T13:00:00+02:00",
-      "next_start": "2026-10-20T13:30:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 852,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-15T20:38:05.939329+00:00",
-              "retrieved_at": "2026-10-15T20:38:06.285820+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
-                "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 852,
-                "fallback_info": null,
-                "requested_at": "2026-10-15T20:38:05.939329Z",
-                "retrieved_at": "2026-10-15T20:38:06.285820Z",
-                "origin_index": 0,
-                "destination_index": 0,
-                "distance_meters": 982,
-                "duration_seconds": 852,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
         },
         {
           "mode": "DRIVE",
@@ -470,151 +518,202 @@
       ]
     }
   ],
-  "reference_recommendations": [],
-  "destination": "Barcelona, Spain",
-  "start_date": "2026-10-16",
-  "end_date": "2026-10-20",
-  "days": [
+  "reference_recommendations": [
     {
-      "date": "2026-10-16",
-      "activities": [
-        {
-          "activity_kind": "main_poi",
-          "activity_id": "visit-park-guell",
-          "title": "Explore Park G\u00fcell",
-          "place_name": "Park G\u00fcell",
-          "source_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
-          "location": "Gr\u00e0cia, 08024 Barcelona, Spain",
-          "start_time": "2026-10-16T10:00:00+02:00",
-          "end_time": "2026-10-16T12:30:00+02:00",
-          "estimated_cost": null,
-          "notes": "A spacious first visit, with time to explore at an unhurried pace. Current date-window hours list 09:30\u201319:30; date-specific exceptions are unknown."
-        },
-        {
-          "activity_kind": "main_poi",
-          "activity_id": "repair_r2_new_c1_1",
-          "title": "La Pedrera - Casa Mil\u00e0",
-          "place_name": "La Pedrera - Casa Mil\u00e0",
-          "source_place_id": "ChIJ1eGKmZOipBIRah43T2Kjn8Q",
-          "location": "Pg. de Gr\u00e0cia, 92, Eixample, 08008 Barcelona, Spain",
-          "start_time": "2026-10-16T13:30:00+02:00",
-          "end_time": "2026-10-16T14:30:00+02:00",
-          "estimated_cost": null,
-          "notes": null
-        }
-      ]
+      "place_name": "Terracccita",
+      "source_place_id": "ChIJkX2E-fSipBIRirnJCB-QgxE",
+      "reason": "Restaurant near Museu d’Art Contemporani de Barcelona (approximately 42 m straight-line).",
+      "associated_day": "2026-10-26",
+      "area": "Carrer de Montalegre, 5, Ciutat Vella, 08001 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-c7aa46c3-e132-4ec1-929d-f8100c3533d0:1"
     },
     {
-      "date": "2026-10-17",
+      "place_name": "Faborit Casa Amatller Barcelona",
+      "source_place_id": "ChIJIwsuTu2ipBIR9f-8rv_gBG8",
+      "reason": "Restaurant near Casa Batlló (approximately 30 m straight-line).",
+      "associated_day": "2026-10-28",
+      "area": "Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-b45e8a13-11a3-4713-ba1e-52163a7abb7d:1"
+    },
+    {
+      "place_name": "Sagrada família",
+      "source_place_id": "ChIJHdkZGACjpBIRi_R46Pnc-JU",
+      "reason": "Museum near Basilica of the Sagrada Familia (approximately 0 m straight-line).",
+      "associated_day": "2026-10-27",
+      "area": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-d1e4b89d-d664-414a-a68a-9635428255ab:0"
+    }
+  ],
+  "destination": "Barcelona, Spain",
+  "start_date": "2026-10-26",
+  "end_date": "2026-10-30",
+  "days": [
+    {
+      "date": "2026-10-26",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "visit-casa-batllo",
-          "title": "Visit Casa Batll\u00f3",
-          "place_name": "Casa Batll\u00f3",
-          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
-          "location": "Pg. de Gr\u00e0cia, 43, Eixample, 08007 Barcelona, Spain",
-          "start_time": "2026-10-17T10:30:00+02:00",
-          "end_time": "2026-10-17T13:00:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "macba-20261026",
+          "title": "Explore Museu d’Art Contemporani de Barcelona",
+          "place_name": "Museu d’Art Contemporani de Barcelona",
+          "source_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+          "location": "Plaça dels Àngels, 1, Ciutat Vella, 08001 Barcelona, Spain",
+          "start_time": "2026-10-26T11:00:00+01:00",
+          "end_time": "2026-10-26T14:00:00+01:00",
           "estimated_cost": null,
-          "notes": "Allow time for an in-depth architectural visit. Current date-window hours list 08:30\u201322:30; date-specific exceptions are unknown."
+          "notes": "A generous visit focused on the art. The supplied weekly-hours baseline lists Monday opening from 11:00; date-specific exceptions are unknown."
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "repair_r2_new_c2_1",
+          "time_use": "scheduled",
+          "activity_id": "repair_r1_new_c1_1",
           "title": "Casa Amatller",
           "place_name": "Casa Amatller",
           "source_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
-          "location": "Pg. de Gr\u00e0cia, 41, Eixample, 08007 Barcelona, Spain",
-          "start_time": "2026-10-17T13:30:00+02:00",
-          "end_time": "2026-10-17T14:30:00+02:00",
+          "location": "Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-26T14:30:00+01:00",
+          "end_time": "2026-10-26T15:30:00+01:00",
           "estimated_cost": null,
           "notes": null
         }
       ]
     },
     {
-      "date": "2026-10-18",
+      "date": "2026-10-27",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "visit-macba",
-          "title": "Explore Museu d\u2019Art Contemporani de Barcelona",
-          "place_name": "Museu d\u2019Art Contemporani de Barcelona",
-          "source_place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
-          "location": "Pla\u00e7a dels \u00c0ngels, 1, Ciutat Vella, 08001 Barcelona, Spain",
-          "start_time": "2026-10-18T11:00:00+02:00",
-          "end_time": "2026-10-18T14:00:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "sagrada-familia-20261027",
+          "title": "Visit the Basilica of the Sagrada Familia",
+          "place_name": "Basilica of the Sagrada Familia",
+          "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+          "location": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+          "start_time": "2026-10-27T10:00:00+01:00",
+          "end_time": "2026-10-27T13:00:00+01:00",
           "estimated_cost": null,
-          "notes": "A single, unhurried indoor art visit. Current date-window hours list 10:00\u201315:00; date-specific exceptions are unknown."
+          "notes": "Allow time to take in the architecture at an unhurried pace. Scheduled within the supplied weekly-hours baseline; date-specific exceptions are unknown."
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "repair_r2_new_c3_1",
-          "title": "MEAM Museum",
-          "place_name": "MEAM Museum",
-          "source_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
-          "location": "Carrer de la Barra de Ferro, 5, Ciutat Vella, 08003 Barcelona, Spain",
-          "start_time": "2026-10-18T14:30:00+02:00",
-          "end_time": "2026-10-18T15:30:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "repair_r1_new_c2_1",
+          "title": "El Born Centre de Cultura i Memòria",
+          "place_name": "El Born Centre de Cultura i Memòria",
+          "source_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+          "location": "Mercat del Born, Plaça Comercial, 12, Ciutat Vella, 08003 Barcelona, Spain",
+          "start_time": "2026-10-27T13:45:00+01:00",
+          "end_time": "2026-10-27T14:45:00+01:00",
           "estimated_cost": null,
           "notes": null
         }
       ]
     },
     {
-      "date": "2026-10-19",
+      "date": "2026-10-28",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "visit-gothic-quarter",
-          "title": "Wander the Gothic Quarter",
-          "place_name": "Gothic Quarter",
-          "source_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
-          "location": "Gothic Quarter, Ciutat Vella, Barcelona, Spain",
-          "start_time": "2026-10-19T10:30:00+02:00",
-          "end_time": "2026-10-19T12:30:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "park-guell-20261028",
+          "title": "Explore Park Güell",
+          "place_name": "Park Güell",
+          "source_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+          "location": "Gràcia, 08024 Barcelona, Spain",
+          "start_time": "2026-10-28T10:30:00+01:00",
+          "end_time": "2026-10-28T13:30:00+01:00",
           "estimated_cost": null,
-          "notes": "Take time to explore the historic neighbourhood on foot. Verified opening hours and current operational status were unavailable."
+          "notes": "A relaxed block for exploring the park and its architecture. The supplied weekly-hours baseline lists 09:30–19:30; date-specific exceptions are unknown."
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "visit-santa-maria-del-mar",
-          "title": "Visit Bas\u00edlica de Santa Maria del Mar",
-          "place_name": "Bas\u00edlica de Santa Maria del Mar",
-          "source_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-          "location": "Pla\u00e7a de Santa Maria, 1, Ciutat Vella, 08003 Barcelona, Spain",
-          "start_time": "2026-10-19T14:00:00+02:00",
-          "end_time": "2026-10-19T15:30:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "repair_r1_new_c3_1",
+          "title": "Casa Batlló",
+          "place_name": "Casa Batlló",
+          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-28T14:00:00+01:00",
+          "end_time": "2026-10-28T15:00:00+01:00",
           "estimated_cost": null,
-          "notes": "A separate architectural visit in the old city. Current date-window hours list 10:00\u201318:00; date-specific exceptions are unknown."
+          "notes": null
         }
       ]
     },
     {
-      "date": "2026-10-20",
+      "date": "2026-10-29",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "visit-history-of-catalonia",
-          "title": "Explore the Museum of the History of Catalonia",
-          "place_name": "Museum of the History of Catalonia",
-          "source_place_id": "ChIJBTfBbwCjpBIRK-jjm940utc",
-          "location": "P\u00e7a. de Pau Vila, 3, Ciutat Vella, 08039 Barcelona, Spain",
-          "start_time": "2026-10-20T10:30:00+02:00",
-          "end_time": "2026-10-20T13:00:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "barcelona-cathedral-20261029",
+          "title": "Visit the Cathedral of Barcelona",
+          "place_name": "Cathedral of Barcelona",
+          "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+          "location": "Pla de la Seu, s/n, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-29T10:00:00+01:00",
+          "end_time": "2026-10-29T12:00:00+01:00",
           "estimated_cost": null,
-          "notes": "A relaxed indoor history visit. Current date-window hours list 10:00\u201319:00; date-specific exceptions are unknown."
+          "notes": "Scheduled within the supplied weekly-hours baseline; date-specific exceptions are unknown."
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "repair_r2_new_c4_1",
-          "title": "Temple d'August",
+          "time_use": "scheduled",
+          "activity_id": "temple-august-20261029",
+          "title": "See the Temple d'August",
           "place_name": "Temple d'August",
           "source_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
-          "location": "Carrer del Parad\u00eds, 10, Ciutat Vella, 08002 Barcelona, Spain",
-          "start_time": "2026-10-20T13:30:00+02:00",
-          "end_time": "2026-10-20T14:30:00+02:00",
+          "location": "Carrer del Paradís, 10, Ciutat Vella, 08002 Barcelona, Spain",
+          "start_time": "2026-10-29T12:30:00+01:00",
+          "end_time": "2026-10-29T13:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Scheduled within the supplied weekly-hours baseline; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "generic_activity",
+          "time_use": "scheduled",
+          "activity_id": "historic-lanes-stroll-20261029",
+          "title": "Unhurried stroll through nearby historic lanes",
+          "place_name": null,
+          "source_place_id": null,
+          "location": null,
+          "start_time": "2026-10-29T13:30:00+01:00",
+          "end_time": "2026-10-29T14:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "A flexible, low-key way to spend time among the surrounding streets."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "montjuic-castle-20261030",
+          "title": "Explore Montjuïc Castle",
+          "place_name": "Montjuïc Castle",
+          "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+          "location": "Ctra. de Montjuïc, 66, Sants-Montjuïc, 08038 Barcelona, Spain",
+          "start_time": "2026-10-30T10:30:00+01:00",
+          "end_time": "2026-10-30T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "A single main visit for the day, leaving room to explore at an easy pace. The supplied weekly-hours baseline lists 10:00–18:00; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "repair_r1_new_c4_1",
+          "title": "Centre de Cultura Contemporània de Barcelona",
+          "place_name": "Centre de Cultura Contemporània de Barcelona",
+          "source_place_id": "ChIJLcC0-PSipBIRdHiFCj_ewdY",
+          "location": "Carrer de Montalegre, 5, Ciutat Vella, 08001 Barcelona, Spain",
+          "start_time": "2026-10-30T14:00:00+01:00",
+          "end_time": "2026-10-30T15:00:00+01:00",
           "estimated_cost": null,
           "notes": null
         }

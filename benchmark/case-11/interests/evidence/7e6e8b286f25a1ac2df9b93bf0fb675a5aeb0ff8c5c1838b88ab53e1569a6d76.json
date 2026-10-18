@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Musée Cognacq-Jay",
+  "sources": [
+    {
+      "url": "https://www.museecognacqjay.paris.fr/en",
+      "title": "Homepage | Musée Cognacq-Jay",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The museum states that it gathers eighteenth-century artworks acquired by Ernest Cognacq and Marie-Louise Jay.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The museum states that it gathers eighteenth-century artworks acquired by Ernest Cognacq and Marie-Louise Jay.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

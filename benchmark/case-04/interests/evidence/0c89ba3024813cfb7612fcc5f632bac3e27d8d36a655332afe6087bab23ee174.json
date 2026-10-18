@@ -1,0 +1,24 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.gardensbythebay.com.sg/en/things-to-do/attractions/bay-east-garden.html",
+      "title": "Bay East Garden",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Bay East Garden offers Marina Bay skyline views."
+      ],
+      "limitations": [
+        "Development closure is separate from thematic relevance."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/70/evidence"
+}

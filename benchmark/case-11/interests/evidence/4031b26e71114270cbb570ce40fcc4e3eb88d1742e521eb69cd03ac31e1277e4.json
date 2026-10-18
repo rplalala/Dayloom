@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Conciergerie",
+  "sources": [
+    {
+      "url": "https://www.paris-conciergerie.fr/var/cmn_inter/storage/original/application/f441b7a5c78bd1f5da6e1b2bc493bac3.pdf",
+      "title": "Conciergerie - Dossier pédagogique",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The monument operator’s educational dossier describes the Salle des Gens d’Armes as a fourteenth-century Gothic architectural work.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The monument operator’s educational dossier describes the Salle des Gens d’Armes as a fourteenth-century Gothic architectural work.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

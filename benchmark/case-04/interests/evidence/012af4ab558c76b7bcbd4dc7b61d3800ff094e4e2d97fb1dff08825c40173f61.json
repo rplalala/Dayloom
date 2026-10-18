@@ -1,0 +1,24 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.nationalgallery.sg/",
+      "title": "National Gallery Singapore",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Official leading-art-museum page presents exhibitions and visitor programmes."
+      ],
+      "limitations": [
+        "Embedded visitor social posts were not used as official venue evidence."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/31/evidence"
+}

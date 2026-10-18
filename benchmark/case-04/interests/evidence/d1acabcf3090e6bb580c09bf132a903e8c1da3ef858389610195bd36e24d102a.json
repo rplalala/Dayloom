@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://juronglakegardens.nparks.gov.sg/discover/about-jurong-lake-gardens/",
+      "title": "About Jurong Lake Gardens",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Chinese Garden: planted landscapes and lake views from Stoneboat/Twin Pagoda."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/80/evidence"
+}

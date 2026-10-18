@@ -1,0 +1,37 @@
+{
+  "schema_version": "rtpeval_independent_venue_evidence_1",
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+  "unresolved_subject_id": null,
+  "venue_lookup_name": "Ōta Memorial Museum of Art",
+  "source_url": "https://www.ukiyoe-ota-muse.jp/eng/information/",
+  "source_reference": "turn43view4",
+  "acquired_at": "2026-10-16T22:39:59+00:00",
+  "acquisition_window": {
+    "started_at": "2026-10-16T22:35:55+00:00",
+    "completed_at": "2026-10-16T22:37:39+00:00"
+  },
+  "acquisition_time_note": "The acquired_at timestamp is the actual time this independent paraphrase was recorded. The web tool did not expose individual response UTC timestamps; the acquisition window bounds the source searches and page opens.",
+  "official_page_attempt": {
+    "url": "https://www.ukiyoe-ota-muse.jp/eng/information/",
+    "source_reference": "turn43view4",
+    "status": "available",
+    "retried": false
+  },
+  "additional_inspected_descriptions": [
+    {
+      "url": "https://www.ukiyoe-ota-muse.jp/wp-content/uploads/2026/01/202601-02ojisan-en.pdf",
+      "source_reference": "turn30search13",
+      "inspection": "Search-returned official exhibition list independently read; nineteenth-century prints explicitly dated."
+    }
+  ],
+  "factual_paraphrase": "The official museum visitor page describes ukiyo-e exhibitions and an English-subtitled introduction to ukiyo-e history. Official search-returned exhibition material identifies nineteenth-century Utagawa woodblock prints.",
+  "limitations": [
+    "The inspected information does not establish whether modern printmaking or other modern art is presented; ukiyo-e and the museum label alone do not settle that question.",
+    "Venue-level interest relevance only; no visit feasibility, opening-date guarantee or admission assumption is evaluated."
+  ],
+  "reviewer_ref": "/root/case09_relevance_b",
+  "reviewer_kind": "external_model",
+  "evidence_independence": "Packet names and addresses served only as lookup labels. No Planner judgments, query/rank/similarity signals, generation outputs, opportunity stages or scores were used.",
+  "copyrighted_source_text_quoted": false
+}

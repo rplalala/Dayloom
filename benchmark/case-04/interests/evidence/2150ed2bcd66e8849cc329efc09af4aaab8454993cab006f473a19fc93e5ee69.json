@@ -1,0 +1,25 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.visitsingapore.com/content/dam/desktop/global/about-singapore/traveller-information/destination-singapore-guide-2019.pdf",
+      "title": "Destination Singapore guide 2019",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "official_search_excerpt_only; open_failed",
+      "facts": [
+        "Tourism search excerpt describes Helix Bridge's DNA design and illuminated stroll."
+      ],
+      "limitations": [
+        "One open attempt failed; no retry or usable venue description obtained.",
+        "Only the inspected official search excerpt supplied descriptive facts; the guide dates from 2019."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/46/evidence"
+}

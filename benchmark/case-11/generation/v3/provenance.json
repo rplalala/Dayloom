@@ -1,24 +1,57 @@
 {
+  "schema_version": "rtpeval_provenance_1",
+  "group_id": "case-11",
+  "run_id": "case-11-current-path-v3-a1",
+  "version": "v3",
+  "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+  "result_sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+  "source_revision": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
   "configuration_ref": {
-    "availability": "available",
-    "media_type": "application/json",
     "path": "runtime-policy.json",
-    "sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c"
+    "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+    "media_type": "application/json",
+    "availability": "available"
   },
   "evidence_index_ref": {
     "path": "evidence-index.json",
-    "sha256": "a6d301769ad9259e78b2562fd1fb4f37ef66aed0483ee42601f4a7f0ff34e74c"
+    "sha256": "6948c5b458022a9097f1cac70233c24720f6023e036441307f0c8c615a186651"
   },
-  "group_id": "case-11",
-  "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
   "mechanism_ref": {
     "path": "mechanism.json",
-    "sha256": "929dd3da9e768106037de64667a805aef7705518a33484dd44636ee9b2f748ee"
+    "sha256": "b973aa8bd10bb722b0ab38e12ac59e7e3fcea35676a1c5eb0c6f44024b6654b2"
   },
-  "result_sha256": "c341c44ced43717bd1e64c489961dab295d7a9c05652b8a672bcad5e8aadbe09",
-  "run_id": "case-11-r02-v3",
-  "schema_version": "rtpeval_provenance_1",
   "scope": "Development capture only; producer completion and batch qualification are separate.",
-  "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
-  "version": "v3"
+  "declared_by": "rtpeval.generate/selected_workflow_1",
+  "declared_at": "2026-10-18T04:00:01.551491+00:00",
+  "rationale": "Selected Planner workflow observation; qualification is separate from quality.",
+  "captured_input_ref": {
+    "path": "input.json",
+    "sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "captured_runtime_config_ref": {
+    "path": "runtime.yaml",
+    "sha256": "76dabacf63c2b5e03eb0ef9109b21a28a39a0401431c640fa93c10ac94b08077",
+    "media_type": "application/yaml",
+    "availability": "available"
+  },
+  "producer_completion_ref": {
+    "path": "producer-completion.json",
+    "sha256": "4c38adf3a49dd332857ebf32c3b1b435b4020cfe09a82c2713ac1bfe5f7c2807",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "capture_manifest_ref": {
+    "path": "manifest.json",
+    "sha256": "90786327da902e7d2b862e67ecea67e13e1b6b84db874ee5f367316bdaddb7fb",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "native_provenance_ref": {
+    "path": "provenance.json",
+    "sha256": "906fe2f72547f0e0b8f4e43752297e36e742fc019e95d88823e5085af9448cca",
+    "media_type": "application/json",
+    "availability": "available"
+  }
 }

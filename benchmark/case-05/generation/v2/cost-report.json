@@ -1,0 +1,4670 @@
+{
+  "schema_version": "rtpeval_cost_report_1",
+  "currency": "USD",
+  "scope": "observed_instrumented_adapters_only",
+  "runs": [
+    {
+      "namespace": "planner",
+      "group_id": "case-05",
+      "run_id": "case-05-completion-v2-a1",
+      "version": "v2",
+      "result_sha256": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d",
+      "usage_sha256": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094",
+      "events": [
+        {
+          "event_id": "01a14d57-555b-7381-8771-1f6b8bc5a9b0",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00098775",
+          "best_available": "0.00098775",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-555b-7381-8771-1f6b8bc5a9b0",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d57-555b-7381-8771-1f6b8bc5a9b0",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 3,
+              "cached_input_tokens": 11845,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1738
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "01a14d57-8c79-7a70-9d31-7558252ecb83",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.0001586",
+          "best_available": "0.0001586",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-8c79-7a70-9d31-7558252ecb83",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d57-8c79-7a70-9d31-7558252ecb83",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 226,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 272
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "5b17c18c35e046b881872f40948e2097",
+          "kind": "model",
+          "category": "embeddings",
+          "provider": "openai",
+          "operation": "embedding",
+          "model": "text-embedding-3-small",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00000004",
+          "best_available": "0.00000004",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:5b17c18c35e046b881872f40948e2097",
+            "source": "https://developers.openai.com/api/docs/models/text-embedding-3-small",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "openai",
+              "operation": "embedding",
+              "event_id": "5b17c18c35e046b881872f40948e2097",
+              "model": "text-embedding-3-small"
+            },
+            "rates": {
+              "input_tokens": "0.020"
+            },
+            "per": "1000000",
+            "sku_reference": "Query embedding",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "input_tokens": 2
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "01a14d57-d85a-7640-b97d-828efbceb1b0",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00167644",
+          "best_available": "0.00167644",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-d85a-7640-b97d-828efbceb1b0",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d57-d85a-7640-b97d-828efbceb1b0",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 3,
+              "cached_input_tokens": 1214,
+              "cache_write_input_tokens": 2160,
+              "output_tokens": 2788
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "01a14d58-5697-77b3-95ab-6a7dc3b8b5fc",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00714868",
+          "best_available": "0.00714868",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d58-5697-77b3-95ab-6a7dc3b8b5fc",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d58-5697-77b3-95ab-6a7dc3b8b5fc",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 3,
+              "cached_input_tokens": 2663,
+              "cache_write_input_tokens": 44454,
+              "output_tokens": 3130
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "193e9309051342ba8a5efc4f4203b4d4",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "aa3cb1a339a045fc92e6a15aa62e5330",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:aa3cb1a339a045fc92e6a15aa62e5330",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "aa3cb1a339a045fc92e6a15aa62e5330",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "f82eed2b423949699ee384c01d21d590",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "8de80e05b19342279029d98e94d8d246",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8de80e05b19342279029d98e94d8d246",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "8de80e05b19342279029d98e94d8d246",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "5a3fadb938d245578c00c0cefe27301e",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:5a3fadb938d245578c00c0cefe27301e",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "5a3fadb938d245578c00c0cefe27301e",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "b5e42aac7bb3427ead0a2f3336b3a293",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b5e42aac7bb3427ead0a2f3336b3a293",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "b5e42aac7bb3427ead0a2f3336b3a293",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "37c0c8d4690e410cbb0c741e53962888",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:37c0c8d4690e410cbb0c741e53962888",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "37c0c8d4690e410cbb0c741e53962888",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "846cdd6b1a31496087794d23c4ea7988",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:846cdd6b1a31496087794d23c4ea7988",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "846cdd6b1a31496087794d23c4ea7988",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "6a0fa8b92e6344c1a7b9538fe2c00fc9",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:6a0fa8b92e6344c1a7b9538fe2c00fc9",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "6a0fa8b92e6344c1a7b9538fe2c00fc9",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "1123594ffe63488d9fd6dbf50ee62a99",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:1123594ffe63488d9fd6dbf50ee62a99",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "1123594ffe63488d9fd6dbf50ee62a99",
+              "billing_context": {
+                "endpoint": "searchText",
+                "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Text Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "d786b7e6f18940088a845b3000474d41",
+          "kind": "provider",
+          "category": "embedding",
+          "provider": "openai",
+          "operation": "embedding",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "ce384f215856418fb9c0e043adb22171",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ce384f215856418fb9c0e043adb22171",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "ce384f215856418fb9c0e043adb22171",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "b5f5dbbfbdb44ad3bac902524820cebd",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b5f5dbbfbdb44ad3bac902524820cebd",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "b5f5dbbfbdb44ad3bac902524820cebd",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "b7b2c5dfdc52498db69c0bdb39cd0ebc",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b7b2c5dfdc52498db69c0bdb39cd0ebc",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "b7b2c5dfdc52498db69c0bdb39cd0ebc",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "544bbc23966644c5b8f13d56ca8d31a5",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:544bbc23966644c5b8f13d56ca8d31a5",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "544bbc23966644c5b8f13d56ca8d31a5",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "926edbda6e0b4bcbac65e31ecaf238aa",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:926edbda6e0b4bcbac65e31ecaf238aa",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "926edbda6e0b4bcbac65e31ecaf238aa",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "05ee1e08c36f43109e6f7334e3075767",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:05ee1e08c36f43109e6f7334e3075767",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "05ee1e08c36f43109e6f7334e3075767",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "d7b10f0dfb674f70a09476cff0c06b66",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:d7b10f0dfb674f70a09476cff0c06b66",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "d7b10f0dfb674f70a09476cff0c06b66",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "ddcb315dda97489683a0746d5d385306",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ddcb315dda97489683a0746d5d385306",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "ddcb315dda97489683a0746d5d385306",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "e36043c4e9404f14935b3c137446673f",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:e36043c4e9404f14935b3c137446673f",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "e36043c4e9404f14935b3c137446673f",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "2d5f657e3ed441d3948ade20d2b8e50e",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:2d5f657e3ed441d3948ade20d2b8e50e",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "2d5f657e3ed441d3948ade20d2b8e50e",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "7ffe890a39b244d1803777a31066b787",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:7ffe890a39b244d1803777a31066b787",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "7ffe890a39b244d1803777a31066b787",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4a48ce8e6f96463f9e31330cb9904ea8",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4a48ce8e6f96463f9e31330cb9904ea8",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "4a48ce8e6f96463f9e31330cb9904ea8",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "9bbbc06dd777486cad2f714027cd057a",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:9bbbc06dd777486cad2f714027cd057a",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "9bbbc06dd777486cad2f714027cd057a",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "17f9ba0ca8b847c8adfa34416f89b82d",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:17f9ba0ca8b847c8adfa34416f89b82d",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "17f9ba0ca8b847c8adfa34416f89b82d",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "220799d8ebe64c688cbca1295caa814b",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:220799d8ebe64c688cbca1295caa814b",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "220799d8ebe64c688cbca1295caa814b",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "27558e613a824417a46380333a4d992d",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:27558e613a824417a46380333a4d992d",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "27558e613a824417a46380333a4d992d",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "10acea5e5a4548faab3f4d4029f5d022",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:10acea5e5a4548faab3f4d4029f5d022",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "10acea5e5a4548faab3f4d4029f5d022",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "809c47113a4248d7a4ffb6255745efb1",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:809c47113a4248d7a4ffb6255745efb1",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "809c47113a4248d7a4ffb6255745efb1",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4c60a778e5c8486f9d387c24268ec591",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4c60a778e5c8486f9d387c24268ec591",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "4c60a778e5c8486f9d387c24268ec591",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "2b20286b1a9a400188dabde158359ac1",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:2b20286b1a9a400188dabde158359ac1",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "2b20286b1a9a400188dabde158359ac1",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "1d8b112080604072a3f9008747dd0dc3",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:1d8b112080604072a3f9008747dd0dc3",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "1d8b112080604072a3f9008747dd0dc3",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "6c9e20588adf4eb5bbefed020dc0b023",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:6c9e20588adf4eb5bbefed020dc0b023",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "6c9e20588adf4eb5bbefed020dc0b023",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "3b0c852513dc413f8d3d9da97aa78096",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:3b0c852513dc413f8d3d9da97aa78096",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "3b0c852513dc413f8d3d9da97aa78096",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "3b0e3dba982147e5945bb22b1d96bc4d",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:3b0e3dba982147e5945bb22b1d96bc4d",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "3b0e3dba982147e5945bb22b1d96bc4d",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "12f17ea94178492391423cd6cd2559be",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:12f17ea94178492391423cd6cd2559be",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "12f17ea94178492391423cd6cd2559be",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "a1251ee2cd4f4203a407b637e395a550",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a1251ee2cd4f4203a407b637e395a550",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "a1251ee2cd4f4203a407b637e395a550",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "d69587e10ee54289bc96e5a807b33aff",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:d69587e10ee54289bc96e5a807b33aff",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "d69587e10ee54289bc96e5a807b33aff",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "570a88de460f493b8aaf6e8a68de1ba4",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:570a88de460f493b8aaf6e8a68de1ba4",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "570a88de460f493b8aaf6e8a68de1ba4",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "606823fd6d114e63a4d1cdb842e58677",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:606823fd6d114e63a4d1cdb842e58677",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "606823fd6d114e63a4d1cdb842e58677",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "a5524768ddbc45af8b439e5878b37a6c",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a5524768ddbc45af8b439e5878b37a6c",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "a5524768ddbc45af8b439e5878b37a6c",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "cd400f71a084416d998c9fe28f04b2da",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:cd400f71a084416d998c9fe28f04b2da",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "cd400f71a084416d998c9fe28f04b2da",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "dae3818dd7a6405890edfed4053db9fd",
+          "kind": "provider",
+          "category": "place_details",
+          "provider": "google",
+          "operation": "place_details",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.02",
+          "best_available": "0.02",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:dae3818dd7a6405890edfed4053db9fd",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "place_details",
+              "event_id": "dae3818dd7a6405890edfed4053db9fd",
+              "billing_context": {
+                "endpoint": "details",
+                "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+              }
+            },
+            "rates": {
+              "requests": "0.020"
+            },
+            "per": "1",
+            "sku_reference": "Details Enterprise",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "ccab2c691078409f82b65f6d7af7c380",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "8c05e1f16cf7499da7282e0c1ce38de6",
+          "kind": "provider",
+          "category": "weather",
+          "provider": "open_meteo",
+          "operation": "weather",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0",
+          "best_available": "0",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8c05e1f16cf7499da7282e0c1ce38de6",
+            "source": "https://open-meteo.com/en/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "open_meteo",
+              "operation": "weather",
+              "event_id": "8c05e1f16cf7499da7282e0c1ce38de6"
+            },
+            "rates": {
+              "requests": "0"
+            },
+            "per": "1",
+            "sku_reference": "Free-use reference scenario",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "76e6e407b0e24168862db454f9f3062f",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.32",
+          "best_available": "0.32",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:76e6e407b0e24168862db454f9f3062f",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "76e6e407b0e24168862db454f9f3062f",
+              "billing_context": {
+                "travel_mode": "WALK"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 64
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "a21f6648e8774203bf4018efd5859ca1",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.32",
+          "best_available": "0.32",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a21f6648e8774203bf4018efd5859ca1",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "a21f6648e8774203bf4018efd5859ca1",
+              "billing_context": {
+                "travel_mode": "WALK"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 64
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "193c03e28d734bb38476f9744e4d071c",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.32",
+          "best_available": "0.32",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:193c03e28d734bb38476f9744e4d071c",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "193c03e28d734bb38476f9744e4d071c",
+              "billing_context": {
+                "travel_mode": "WALK"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 64
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "c001de7e431c4152bb5725ffa217c27c",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.32",
+          "best_available": "0.32",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c001de7e431c4152bb5725ffa217c27c",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "c001de7e431c4152bb5725ffa217c27c",
+              "billing_context": {
+                "travel_mode": "WALK"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 64
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "593b00fa4e4a4dc89494a63167719bf2",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:593b00fa4e4a4dc89494a63167719bf2",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "593b00fa4e4a4dc89494a63167719bf2",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "546680dd58de4313aa2af05b7a1a3d20",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:546680dd58de4313aa2af05b7a1a3d20",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "546680dd58de4313aa2af05b7a1a3d20",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "bf7d1606ae6144aa865661040ebd1eeb",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:bf7d1606ae6144aa865661040ebd1eeb",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "bf7d1606ae6144aa865661040ebd1eeb",
+              "billing_context": {
+                "travel_mode": "DRIVE",
+                "routing_preference": "TRAFFIC_UNAWARE"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4ff534d2005240beb95f73d4d2ae9b25",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4ff534d2005240beb95f73d4d2ae9b25",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "4ff534d2005240beb95f73d4d2ae9b25",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "72272db391834088a02c7033939da307",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:72272db391834088a02c7033939da307",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "72272db391834088a02c7033939da307",
+              "billing_context": {
+                "travel_mode": "DRIVE",
+                "routing_preference": "TRAFFIC_UNAWARE"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "56515a44183549579b8d4504a19d4a86",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:56515a44183549579b8d4504a19d4a86",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "56515a44183549579b8d4504a19d4a86",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "05b64b27615e4ce58abacf8bc7457a40",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:05b64b27615e4ce58abacf8bc7457a40",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "05b64b27615e4ce58abacf8bc7457a40",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "bc54d00cbe6e4b2ca2e530e542ce4bb9",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:bc54d00cbe6e4b2ca2e530e542ce4bb9",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "bc54d00cbe6e4b2ca2e530e542ce4bb9",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "c17c4ed428364750a719a8e5a0df2f2e",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c17c4ed428364750a719a8e5a0df2f2e",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "c17c4ed428364750a719a8e5a0df2f2e",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "f034d83403d446789f4141afe3af1150",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:f034d83403d446789f4141afe3af1150",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "f034d83403d446789f4141afe3af1150",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "8f9d060291e74662a44666180648bf97",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8f9d060291e74662a44666180648bf97",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "8f9d060291e74662a44666180648bf97",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "c63fe20eb86642f7bc16204e540c939e",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c63fe20eb86642f7bc16204e540c939e",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "c63fe20eb86642f7bc16204e540c939e",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "cb07f9b34cf24087a6b364449a9c88e5",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:cb07f9b34cf24087a6b364449a9c88e5",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "cb07f9b34cf24087a6b364449a9c88e5",
+              "billing_context": {
+                "travel_mode": "DRIVE",
+                "routing_preference": "TRAFFIC_UNAWARE"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "a9d71820db9448259dcb853d7cfd4fb0",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a9d71820db9448259dcb853d7cfd4fb0",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "a9d71820db9448259dcb853d7cfd4fb0",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "87dbb4c5d4e34f42812208a9eecf1585",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:87dbb4c5d4e34f42812208a9eecf1585",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "87dbb4c5d4e34f42812208a9eecf1585",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "61301311ddb8491abef87b89e38e5f2d",
+          "kind": "provider",
+          "category": "route_matrix",
+          "provider": "google",
+          "operation": "route_matrix",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.005",
+          "best_available": "0.005",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:61301311ddb8491abef87b89e38e5f2d",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "route_matrix",
+              "event_id": "61301311ddb8491abef87b89e38e5f2d",
+              "billing_context": {
+                "travel_mode": "TRANSIT"
+              }
+            },
+            "rates": {
+              "element_count": "0.005"
+            },
+            "per": "1",
+            "sku_reference": "Matrix Essentials",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "element_count": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "f84a9041081a4146969ad8303893b476",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "ea36893be43e4b7aa7aac092f553d6db",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ea36893be43e4b7aa7aac092f553d6db",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "ea36893be43e4b7aa7aac092f553d6db",
+              "billing_context": {
+                "endpoint": "searchNearby",
+                "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Nearby Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4b1138e0b1e741d992674e3e6c65d087",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4b1138e0b1e741d992674e3e6c65d087",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "4b1138e0b1e741d992674e3e6c65d087",
+              "billing_context": {
+                "endpoint": "searchNearby",
+                "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Nearby Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4c7a588ec0a64e15b44f356a67d3237c",
+          "kind": "provider",
+          "category": "places_search",
+          "provider": "google",
+          "operation": "places_search",
+          "model": null,
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.032",
+          "best_available": "0.032",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4c7a588ec0a64e15b44f356a67d3237c",
+            "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "provider",
+              "provider": "google",
+              "operation": "places_search",
+              "event_id": "4c7a588ec0a64e15b44f356a67d3237c",
+              "billing_context": {
+                "endpoint": "searchNearby",
+                "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+              }
+            },
+            "rates": {
+              "requests": "0.032"
+            },
+            "per": "1",
+            "sku_reference": "Nearby Search Pro",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "billable_units": {
+              "requests": 1
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        }
+      ],
+      "actual_observed_subtotal": null,
+      "actual_total": null,
+      "estimated_observed_subtotal": "2.36197151",
+      "estimated_total": "2.36197151",
+      "best_available_observed_subtotal": "2.36197151",
+      "best_available_total": "2.36197151",
+      "unpriced_event_count": 0,
+      "categories": {
+        "embedding": {
+          "actual_observed_subtotal": "0",
+          "actual_total": "0",
+          "estimated_observed_subtotal": "0",
+          "estimated_total": "0",
+          "best_available_observed_subtotal": "0",
+          "best_available_total": "0",
+          "unpriced_event_count": 0
+        },
+        "embeddings": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0.00000004",
+          "estimated_total": "0.00000004",
+          "best_available_observed_subtotal": "0.00000004",
+          "best_available_total": "0.00000004",
+          "unpriced_event_count": 0
+        },
+        "model_http": {
+          "actual_observed_subtotal": "0",
+          "actual_total": "0",
+          "estimated_observed_subtotal": "0",
+          "estimated_total": "0",
+          "best_available_observed_subtotal": "0",
+          "best_available_total": "0",
+          "unpriced_event_count": 0
+        },
+        "models": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0.00997147",
+          "estimated_total": "0.00997147",
+          "best_available_observed_subtotal": "0.00997147",
+          "best_available_total": "0.00997147",
+          "unpriced_event_count": 0
+        },
+        "place_details": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0.64",
+          "estimated_total": "0.64",
+          "best_available_observed_subtotal": "0.64",
+          "best_available_total": "0.64",
+          "unpriced_event_count": 0
+        },
+        "places_search": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0.352",
+          "estimated_total": "0.352",
+          "best_available_observed_subtotal": "0.352",
+          "best_available_total": "0.352",
+          "unpriced_event_count": 0
+        },
+        "route_matrix": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "1.36",
+          "estimated_total": "1.36",
+          "best_available_observed_subtotal": "1.36",
+          "best_available_total": "1.36",
+          "unpriced_event_count": 0
+        },
+        "weather": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0",
+          "estimated_total": "0",
+          "best_available_observed_subtotal": "0",
+          "best_available_total": "0",
+          "unpriced_event_count": 0
+        }
+      },
+      "repair": {
+        "actual_observed_subtotal": "0",
+        "actual_total": "0",
+        "estimated_observed_subtotal": "0",
+        "estimated_total": "0",
+        "best_available_observed_subtotal": "0",
+        "best_available_total": "0",
+        "unpriced_event_count": 0
+      },
+      "missing_fields": []
+    }
+  ],
+  "unallocated_bills": [],
+  "prices": {
+    "schema_version": "rtpeval_prices_1",
+    "currency": "USD",
+    "rows": [
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-555b-7381-8771-1f6b8bc5a9b0",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d57-555b-7381-8771-1f6b8bc5a9b0",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-8c79-7a70-9d31-7558252ecb83",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d57-8c79-7a70-9d31-7558252ecb83",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:5b17c18c35e046b881872f40948e2097",
+        "source": "https://developers.openai.com/api/docs/models/text-embedding-3-small",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "openai",
+          "operation": "embedding",
+          "event_id": "5b17c18c35e046b881872f40948e2097",
+          "model": "text-embedding-3-small"
+        },
+        "rates": {
+          "input_tokens": "0.020"
+        },
+        "per": "1000000",
+        "sku_reference": "Query embedding",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d57-d85a-7640-b97d-828efbceb1b0",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d57-d85a-7640-b97d-828efbceb1b0",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:model:01a14d58-5697-77b3-95ab-6a7dc3b8b5fc",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d58-5697-77b3-95ab-6a7dc3b8b5fc",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:aa3cb1a339a045fc92e6a15aa62e5330",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "aa3cb1a339a045fc92e6a15aa62e5330",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8de80e05b19342279029d98e94d8d246",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "8de80e05b19342279029d98e94d8d246",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:5a3fadb938d245578c00c0cefe27301e",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "5a3fadb938d245578c00c0cefe27301e",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b5e42aac7bb3427ead0a2f3336b3a293",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "b5e42aac7bb3427ead0a2f3336b3a293",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:37c0c8d4690e410cbb0c741e53962888",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "37c0c8d4690e410cbb0c741e53962888",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:846cdd6b1a31496087794d23c4ea7988",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "846cdd6b1a31496087794d23c4ea7988",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:6a0fa8b92e6344c1a7b9538fe2c00fc9",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "6a0fa8b92e6344c1a7b9538fe2c00fc9",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:1123594ffe63488d9fd6dbf50ee62a99",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "1123594ffe63488d9fd6dbf50ee62a99",
+          "billing_context": {
+            "endpoint": "searchText",
+            "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Text Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ce384f215856418fb9c0e043adb22171",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "ce384f215856418fb9c0e043adb22171",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b5f5dbbfbdb44ad3bac902524820cebd",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "b5f5dbbfbdb44ad3bac902524820cebd",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:b7b2c5dfdc52498db69c0bdb39cd0ebc",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "b7b2c5dfdc52498db69c0bdb39cd0ebc",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:544bbc23966644c5b8f13d56ca8d31a5",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "544bbc23966644c5b8f13d56ca8d31a5",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:926edbda6e0b4bcbac65e31ecaf238aa",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "926edbda6e0b4bcbac65e31ecaf238aa",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:05ee1e08c36f43109e6f7334e3075767",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "05ee1e08c36f43109e6f7334e3075767",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:d7b10f0dfb674f70a09476cff0c06b66",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "d7b10f0dfb674f70a09476cff0c06b66",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ddcb315dda97489683a0746d5d385306",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "ddcb315dda97489683a0746d5d385306",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:e36043c4e9404f14935b3c137446673f",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "e36043c4e9404f14935b3c137446673f",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:2d5f657e3ed441d3948ade20d2b8e50e",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "2d5f657e3ed441d3948ade20d2b8e50e",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:7ffe890a39b244d1803777a31066b787",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "7ffe890a39b244d1803777a31066b787",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4a48ce8e6f96463f9e31330cb9904ea8",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "4a48ce8e6f96463f9e31330cb9904ea8",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:9bbbc06dd777486cad2f714027cd057a",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "9bbbc06dd777486cad2f714027cd057a",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:17f9ba0ca8b847c8adfa34416f89b82d",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "17f9ba0ca8b847c8adfa34416f89b82d",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:220799d8ebe64c688cbca1295caa814b",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "220799d8ebe64c688cbca1295caa814b",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:27558e613a824417a46380333a4d992d",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "27558e613a824417a46380333a4d992d",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:10acea5e5a4548faab3f4d4029f5d022",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "10acea5e5a4548faab3f4d4029f5d022",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:809c47113a4248d7a4ffb6255745efb1",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "809c47113a4248d7a4ffb6255745efb1",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4c60a778e5c8486f9d387c24268ec591",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "4c60a778e5c8486f9d387c24268ec591",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:2b20286b1a9a400188dabde158359ac1",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "2b20286b1a9a400188dabde158359ac1",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:1d8b112080604072a3f9008747dd0dc3",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "1d8b112080604072a3f9008747dd0dc3",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:6c9e20588adf4eb5bbefed020dc0b023",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "6c9e20588adf4eb5bbefed020dc0b023",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:3b0c852513dc413f8d3d9da97aa78096",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "3b0c852513dc413f8d3d9da97aa78096",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:3b0e3dba982147e5945bb22b1d96bc4d",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "3b0e3dba982147e5945bb22b1d96bc4d",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:12f17ea94178492391423cd6cd2559be",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "12f17ea94178492391423cd6cd2559be",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a1251ee2cd4f4203a407b637e395a550",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "a1251ee2cd4f4203a407b637e395a550",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:d69587e10ee54289bc96e5a807b33aff",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "d69587e10ee54289bc96e5a807b33aff",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:570a88de460f493b8aaf6e8a68de1ba4",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "570a88de460f493b8aaf6e8a68de1ba4",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:606823fd6d114e63a4d1cdb842e58677",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "606823fd6d114e63a4d1cdb842e58677",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a5524768ddbc45af8b439e5878b37a6c",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "a5524768ddbc45af8b439e5878b37a6c",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:cd400f71a084416d998c9fe28f04b2da",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "cd400f71a084416d998c9fe28f04b2da",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:dae3818dd7a6405890edfed4053db9fd",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "place_details",
+          "event_id": "dae3818dd7a6405890edfed4053db9fd",
+          "billing_context": {
+            "endpoint": "details",
+            "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+          }
+        },
+        "rates": {
+          "requests": "0.020"
+        },
+        "per": "1",
+        "sku_reference": "Details Enterprise",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8c05e1f16cf7499da7282e0c1ce38de6",
+        "source": "https://open-meteo.com/en/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "open_meteo",
+          "operation": "weather",
+          "event_id": "8c05e1f16cf7499da7282e0c1ce38de6"
+        },
+        "rates": {
+          "requests": "0"
+        },
+        "per": "1",
+        "sku_reference": "Free-use reference scenario",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:76e6e407b0e24168862db454f9f3062f",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "76e6e407b0e24168862db454f9f3062f",
+          "billing_context": {
+            "travel_mode": "WALK"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a21f6648e8774203bf4018efd5859ca1",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "a21f6648e8774203bf4018efd5859ca1",
+          "billing_context": {
+            "travel_mode": "WALK"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:193c03e28d734bb38476f9744e4d071c",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "193c03e28d734bb38476f9744e4d071c",
+          "billing_context": {
+            "travel_mode": "WALK"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c001de7e431c4152bb5725ffa217c27c",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "c001de7e431c4152bb5725ffa217c27c",
+          "billing_context": {
+            "travel_mode": "WALK"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:593b00fa4e4a4dc89494a63167719bf2",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "593b00fa4e4a4dc89494a63167719bf2",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:546680dd58de4313aa2af05b7a1a3d20",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "546680dd58de4313aa2af05b7a1a3d20",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:bf7d1606ae6144aa865661040ebd1eeb",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "bf7d1606ae6144aa865661040ebd1eeb",
+          "billing_context": {
+            "travel_mode": "DRIVE",
+            "routing_preference": "TRAFFIC_UNAWARE"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4ff534d2005240beb95f73d4d2ae9b25",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "4ff534d2005240beb95f73d4d2ae9b25",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:72272db391834088a02c7033939da307",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "72272db391834088a02c7033939da307",
+          "billing_context": {
+            "travel_mode": "DRIVE",
+            "routing_preference": "TRAFFIC_UNAWARE"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:56515a44183549579b8d4504a19d4a86",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "56515a44183549579b8d4504a19d4a86",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:05b64b27615e4ce58abacf8bc7457a40",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "05b64b27615e4ce58abacf8bc7457a40",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:bc54d00cbe6e4b2ca2e530e542ce4bb9",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "bc54d00cbe6e4b2ca2e530e542ce4bb9",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c17c4ed428364750a719a8e5a0df2f2e",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "c17c4ed428364750a719a8e5a0df2f2e",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:f034d83403d446789f4141afe3af1150",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "f034d83403d446789f4141afe3af1150",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:8f9d060291e74662a44666180648bf97",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "8f9d060291e74662a44666180648bf97",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:c63fe20eb86642f7bc16204e540c939e",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "c63fe20eb86642f7bc16204e540c939e",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:cb07f9b34cf24087a6b364449a9c88e5",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "cb07f9b34cf24087a6b364449a9c88e5",
+          "billing_context": {
+            "travel_mode": "DRIVE",
+            "routing_preference": "TRAFFIC_UNAWARE"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:a9d71820db9448259dcb853d7cfd4fb0",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "a9d71820db9448259dcb853d7cfd4fb0",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:87dbb4c5d4e34f42812208a9eecf1585",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "87dbb4c5d4e34f42812208a9eecf1585",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:61301311ddb8491abef87b89e38e5f2d",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "route_matrix",
+          "event_id": "61301311ddb8491abef87b89e38e5f2d",
+          "billing_context": {
+            "travel_mode": "TRANSIT"
+          }
+        },
+        "rates": {
+          "element_count": "0.005"
+        },
+        "per": "1",
+        "sku_reference": "Matrix Essentials",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:ea36893be43e4b7aa7aac092f553d6db",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "ea36893be43e4b7aa7aac092f553d6db",
+          "billing_context": {
+            "endpoint": "searchNearby",
+            "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Nearby Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4b1138e0b1e741d992674e3e6c65d087",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "4b1138e0b1e741d992674e3e6c65d087",
+          "billing_context": {
+            "endpoint": "searchNearby",
+            "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Nearby Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      },
+      {
+        "price_id": "5df70fd23d65533f48ae68d9055f7a7a8348a6d7b7ded5b3ac052832fd347094:provider:4c7a588ec0a64e15b44f356a67d3237c",
+        "source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "provider",
+          "provider": "google",
+          "operation": "places_search",
+          "event_id": "4c7a588ec0a64e15b44f356a67d3237c",
+          "billing_context": {
+            "endpoint": "searchNearby",
+            "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+          }
+        },
+        "rates": {
+          "requests": "0.032"
+        },
+        "per": "1",
+        "sku_reference": "Nearby Search Pro",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota."
+      }
+    ],
+    "reference_basis": {
+      "$case_material_ref": {
+        "path": "../v0/cost-report.json",
+        "pointer": "/prices/reference_basis",
+        "expanded_semantic_sha256": "1c5024c6ed917826a812714a62d732ad9af0ce030aded056ee3ac9e6431610dd"
+      }
+    },
+    "excluded_model_references": []
+  },
+  "limitations": [
+    "Retail estimates exclude credits, free tiers, volume discounts and tax.",
+    "Unobserved services are not inferred; partial subtotals are not totals.",
+    "Repair is a subset. Oracle runs are not allocated to planner versions."
+  ]
+}

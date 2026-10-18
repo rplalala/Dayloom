@@ -1,0 +1,240 @@
+{
+  "configuration": {
+    "landmark_nomination": {
+      "max_calls": 1,
+      "max_names": 12,
+      "input_tokens": 8000,
+      "output_tokens": 2000,
+      "call_timeout_seconds": 20.0,
+      "supplementary_searches": 4
+    },
+    "input_assistance": {
+      "destination": {
+        "min_chars": 2,
+        "max_chars": 100,
+        "result_limit": 5,
+        "timeout_seconds": 3.0,
+        "minimum_interval_seconds": 1.1,
+        "daily_attempts_per_process": 100
+      },
+      "polishing": {
+        "source_max_chars": 4000,
+        "source_max_tokens": 1500,
+        "model_input_tokens_per_call": 8000,
+        "draft_output_tokens": 2000,
+        "call_timeout_seconds": 20.0,
+        "total_timeout_seconds": 40.0,
+        "daily_operations_per_process": 20
+      }
+    },
+    "poi_semantics": {
+      "max_calls": 6,
+      "batch_size": 32,
+      "input_tokens": 32000,
+      "output_tokens": 8192,
+      "call_timeout_seconds": 45.0,
+      "total_seconds": 120.0,
+      "exploration_fraction": 0.3333333333333333,
+      "exception_alternatives": 2
+    },
+    "transport": {
+      "walk_route_max_km": 3.0,
+      "transit_max_minutes": 45.0,
+      "drive_max_minutes": 30.0,
+      "drive_reserve_minutes": 10.0,
+      "walk_radius_km": 2.0,
+      "motor_radius_km": 5.0,
+      "max_leg_minutes": 45.0
+    },
+    "v3_repair": {
+      "max_rounds": 6,
+      "max_model_calls": 6,
+      "max_deletion_attempts": 12,
+      "quantity_review_enabled": true,
+      "overfull_review_enabled": false,
+      "daily_main_min": 2,
+      "daily_main_max": 5,
+      "move_max_days": 1,
+      "blank_day_start_hour": 9,
+      "blank_day_end_hour": 18,
+      "alternatives_per_gap": 2,
+      "exploration_positions": 2,
+      "timing": {
+        "stage_seconds": 420.0,
+        "round_seconds": 150.0,
+        "model_seconds": 70.0,
+        "preparation_seconds": 60.0,
+        "recheck_reserve_seconds": 20.0,
+        "minimum_model_seconds": 30.0,
+        "round_reference_seconds": 120.0,
+        "finalization_reserve_seconds": 1.0
+      },
+      "input": {
+        "input_tokens": 252000,
+        "output_tokens": 16384,
+        "framing_tokens": 2048,
+        "identity_capacity": 32,
+        "activity_capacity": 120,
+        "candidate_characters": 12000,
+        "feedback_characters": 12000
+      },
+      "acquisition": {
+        "google": 6,
+        "fallback": 1,
+        "embedding": 1,
+        "retrieval": 1,
+        "canonical": 30,
+        "details": 30,
+        "routes": 24,
+        "post_proposal_route_reserve": 8,
+        "elements": 32,
+        "top_k": 10,
+        "provider_timeout_seconds": 20.0
+      },
+      "spatial": {
+        "walk_route_max_km": 3.0,
+        "transit_max_minutes": 45.0,
+        "drive_max_minutes": 30.0,
+        "drive_reserve_minutes": 10.0,
+        "walk_radius_km": 2.0,
+        "motor_radius_km": 5.0,
+        "max_leg_minutes": 45.0,
+        "detour_floor_km": 1.0,
+        "detour_ratio": 0.5,
+        "fallback_distance_km": 1.0,
+        "fallback_reserve_minutes": 45.0,
+        "daily_added_minutes": 90.0
+      },
+      "reason_compression": {
+        "max_calls": 1,
+        "input_tokens": 32000,
+        "output_tokens": 8192,
+        "timeout_seconds": 30.0
+      }
+    },
+    "acquisition": {
+      "policy_id": "quality_first_1",
+      "details_deadline_seconds": 120.0,
+      "details_timeout_seconds": 20.0
+    },
+    "main_generation": {
+      "enabled": true,
+      "input_tokens": 252000,
+      "output_tokens": 16384,
+      "framing_tokens": 2048
+    },
+    "development_timeout_seconds": 600,
+    "schema_version": 6,
+    "app": {
+      "time_zone": "Australia/Sydney"
+    },
+    "budget": {
+      "candidates": 64,
+      "final_pois": 20,
+      "places": {
+        "destination_search_calls": 1,
+        "candidate_search_calls": 12,
+        "detail_calls": 60,
+        "review_detail_calls": 8
+      },
+      "weather": {
+        "calls": 2
+      },
+      "routes": {
+        "matrix_elements": 64,
+        "baseline_elements_per_request": 64,
+        "baseline_elements_per_run": 400,
+        "baseline_calls": 7,
+        "alternative_pairs": 32,
+        "alternative_matrix_calls": 32,
+        "alternative_elements": 64,
+        "post_generation_reserved_pairs": 16,
+        "post_generation_reserved_requests": 16,
+        "post_generation_reserved_elements": 32,
+        "work_seconds": 120.0,
+        "post_generation_reserved_seconds": 30.0,
+        "provider_timeout_seconds": 20.0
+      },
+      "web": {
+        "evidence_tasks": 8,
+        "page_fetches": 8
+      },
+      "experience": {
+        "review_enriched_places": 8,
+        "profile_llm_calls": 8
+      }
+    },
+    "web_evidence": {
+      "reasoning_effort": "low",
+      "max_tool_calls": 2,
+      "search_context_size": "low",
+      "timeout_seconds": 20,
+      "authority_domain_overrides": [],
+      "page_retrieval": {
+        "max_targets_per_need": 2,
+        "max_redirects": 2,
+        "timeout_seconds": 10,
+        "max_response_bytes": 262144,
+        "max_text_chars": 20000
+      },
+      "claim_extraction": {
+        "max_native_sources": 3,
+        "max_native_snippet_chars": 1200,
+        "max_candidates_per_call": 3,
+        "max_calls_per_need": 3,
+        "max_extraction_output_units": 1200
+      }
+    },
+    "reference_discovery": {
+      "policy_version": "nearby_references_1",
+      "max_requests": 3,
+      "max_result_count": 10,
+      "radius_metres": 800.0,
+      "anchor_reuse_metres": 300.0,
+      "deadline_seconds": 10.0,
+      "request_timeout_seconds": 4.0,
+      "retries": 0,
+      "max_references": 3,
+      "rank_preference": "DISTANCE",
+      "included_types": [
+        "restaurant",
+        "cafe",
+        "park",
+        "museum"
+      ]
+    },
+    "tripworld_discovery": {
+      "version": "tripworld_runtime_1",
+      "max_queries": 4,
+      "max_positions": 80,
+      "total_query_tokens": 2048,
+      "top_k": 20,
+      "resolution_entities": 30,
+      "details_calls": 30,
+      "fallback_calls": 4,
+      "radius_km": 15,
+      "identity_radius_km": 1,
+      "deadline_seconds": 360.0,
+      "embedding_timeout": 8.0,
+      "sql_timeout": 60.0,
+      "connect_timeout": 10.0,
+      "google_timeout": 4.0,
+      "retries": 0
+    },
+    "logging": {
+      "level": "INFO",
+      "console": true
+    },
+    "trace": {
+      "enabled": true,
+      "directory": "logs",
+      "payload_level": "metadata",
+      "capture_llm": true,
+      "capture_tools": true,
+      "capture_evidence": true,
+      "raw_provider_payloads": false,
+      "max_payload_bytes": 10000000
+    }
+  },
+  "sha256": "10cf06f6715dbdd4a4f3e7de0e5e5afd3a530feca1f16795cd07c1e112ce758a"
+}

@@ -1,0 +1,30 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+  "unresolved_subject_id": null,
+  "subject_name": "Oasis d'Aboukir",
+  "subject_address": "83 Rue d'Aboukir, 75002 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9540364+00:00",
+  "sources": [
+    {
+      "url": "https://www.verticalgardenpatrickblanc.com/realisations/paris/loasis-daboukir-paris",
+      "title": "L'Oasis d'Aboukir, Paris — Vertical Garden Patrick Blanc",
+      "factual_paraphrase": "Patrick Blanc identifies his vertical garden in Paris as completed in 2013 and documents its later growth.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    },
+    {
+      "url": "https://www.labiennale.org/en/architecture/2025/natural/oasis-d%E2%80%99aboukir",
+      "title": "Oasis d'Aboukir — Biennale Architettura 2025",
+      "factual_paraphrase": "The official architecture exhibition presents Patrick Blanc's named living-wall project, discussing structural materials and plant-growth strategies and crediting structure and irrigation collaborators.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The creator identifies this as his completed vertical-garden project, and the official Venice Architecture Biennale presents the named project as a living-wall installation with designed structure and irrigation. This supports an architectural installation rather than ordinary planting.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

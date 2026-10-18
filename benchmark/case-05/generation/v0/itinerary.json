@@ -1,142 +1,273 @@
 {
-  "output_version": "itinerary_2",
+  "output_version": "itinerary_3",
   "transfers": [],
   "route_diagnostics": [],
   "reference_recommendations": [
     {
-      "place_name": "Palau de la M\u00fasica Catalana",
+      "place_name": "Els Quatre Gats",
       "source_place_id": null,
-      "reason": "An optional architectural addition to the historic-center day, complementing the Gothic Quarter's older streets with a distinct modernist landmark.",
-      "associated_day": "2026-10-16",
-      "area": "Historic center, near the Gothic Quarter",
-      "uncertainty": "Proximity and availability are model estimates and have not been checked; this is an unscheduled suggestion.",
+      "reason": "An optional historic café-restaurant suggestion to consider while exploring Barcelona's older central neighborhoods, including the area around the planned El Born visit.",
+      "associated_day": "2026-10-28",
+      "area": "El Born and the historic center",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
       "source_ref": null
     },
     {
-      "place_name": "Santa Maria del Mar",
+      "place_name": "Cafè del Centre",
       "source_place_id": null,
-      "reason": "An optional historic church to consider near the Picasso Museum and El Born area, fitting the interest in historic architecture.",
-      "associated_day": "2026-10-18",
-      "area": "El Born",
-      "uncertainty": "Proximity and availability are model estimates and have not been checked; this is an unscheduled suggestion.",
+      "reason": "An optional café suggestion for a break near the planned Eixample architecture visits.",
+      "associated_day": "2026-10-26",
+      "area": "Eixample",
+      "uncertainty": "Proximity and availability are model estimates and have not been checked.",
       "source_ref": null
     }
   ],
   "destination": "Barcelona, Spain",
-  "start_date": "2026-10-16",
-  "end_date": "2026-10-20",
+  "start_date": "2026-10-26",
+  "end_date": "2026-10-30",
   "days": [
     {
-      "date": "2026-10-16",
+      "date": "2026-10-26",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "gothic-quarter-2026-10-16",
-          "title": "Explore the Gothic Quarter",
-          "place_name": "Gothic Quarter",
+          "time_use": "scheduled",
+          "activity_id": "d1-casa-batllo",
+          "title": "Explore Casa Batlló",
+          "place_name": "Casa Batlló",
           "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-16T10:00:00+02:00",
-          "end_time": "2026-10-16T13:00:00+02:00",
+          "location": "Passeig de Gràcia, Eixample",
+          "start_time": "2026-10-26T09:30:00+01:00",
+          "end_time": "2026-10-26T12:00:00+01:00",
           "estimated_cost": null,
-          "notes": "A relaxed visit focused on the historic streets, squares, and layers of architecture; leave room to pause and explore at your own pace."
-        }
-      ]
-    },
-    {
-      "date": "2026-10-17",
-      "activities": [
-        {
-          "activity_kind": "main_poi",
-          "activity_id": "sagrada-familia-2026-10-17",
-          "title": "Explore the Sagrada Fam\u00edlia",
-          "place_name": "Sagrada Fam\u00edlia",
-          "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-17T10:00:00+02:00",
-          "end_time": "2026-10-17T12:30:00+02:00",
-          "estimated_cost": null,
-          "notes": "Allow time to take in the building's architectural details without rushing. Opening hours and admission availability have not been checked."
+          "notes": "Allow an unhurried visit to the building and its architectural details. Opening hours and admission have not been checked."
         },
         {
           "activity_kind": "transport",
-          "activity_id": "walk-sagrada-to-sant-pau-2026-10-17",
-          "title": "Walk toward Sant Pau",
+          "time_use": "scheduled",
+          "activity_id": "d1-walk-to-tapies",
+          "title": "Walk to Fundació Antoni Tàpies",
           "place_name": null,
           "source_place_id": null,
-          "location": null,
-          "start_time": "2026-10-17T12:30:00+02:00",
-          "end_time": "2026-10-17T12:50:00+02:00",
+          "location": "Eixample",
+          "start_time": "2026-10-26T12:00:00+01:00",
+          "end_time": "2026-10-26T12:15:00+01:00",
           "estimated_cost": null,
-          "notes": "Route via Avinguda de Gaud\u00ed; route and 20-minute duration are model estimates, not live-verified.",
+          "notes": "Route and 15-minute duration are model estimates, not live-verified.",
           "transport": {
             "mode": "WALK",
-            "from_activity_id": "sagrada-familia-2026-10-17",
-            "to_activity_id": "sant-pau-2026-10-17"
+            "from_activity_id": "d1-casa-batllo",
+            "to_activity_id": "d1-tapies"
           }
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "sant-pau-2026-10-17",
-          "title": "Explore the Sant Pau Art Nouveau Site",
+          "time_use": "scheduled",
+          "activity_id": "d1-tapies",
+          "title": "Visit Fundació Antoni Tàpies",
+          "place_name": "Fundació Antoni Tàpies",
+          "source_place_id": null,
+          "location": "Eixample",
+          "start_time": "2026-10-26T12:30:00+01:00",
+          "end_time": "2026-10-26T14:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "A focused art visit after exploring Casa Batlló. Opening hours and admission have not been checked."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "d2-sagrada-familia",
+          "title": "Explore the Basílica de la Sagrada Família",
+          "place_name": "Basílica de la Sagrada Família",
+          "source_place_id": null,
+          "location": "Eixample",
+          "start_time": "2026-10-27T09:30:00+01:00",
+          "end_time": "2026-10-27T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Set aside time to take in the architecture at a relaxed pace. Opening hours, access, and admission have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "d2-walk-to-sant-pau",
+          "title": "Walk to Recinte Modernista de Sant Pau",
+          "place_name": null,
+          "source_place_id": null,
+          "location": "Eixample",
+          "start_time": "2026-10-27T12:00:00+01:00",
+          "end_time": "2026-10-27T12:25:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route and 25-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d2-sagrada-familia",
+            "to_activity_id": "d2-sant-pau"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "d2-sant-pau",
+          "title": "Explore Recinte Modernista de Sant Pau",
           "place_name": "Recinte Modernista de Sant Pau",
           "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-17T12:50:00+02:00",
-          "end_time": "2026-10-17T14:30:00+02:00",
+          "location": "El Guinardó",
+          "start_time": "2026-10-27T12:30:00+01:00",
+          "end_time": "2026-10-27T14:30:00+01:00",
           "estimated_cost": null,
-          "notes": "A second, unhurried architectural visit, with time to appreciate the site and its decorative details. Opening hours and admission availability have not been checked."
+          "notes": "Take time to appreciate the site's modernist architecture and grounds. Opening hours and admission have not been checked."
         }
       ]
     },
     {
-      "date": "2026-10-18",
+      "date": "2026-10-28",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "picasso-museum-2026-10-18",
-          "title": "Visit the Picasso Museum",
-          "place_name": "Picasso Museum",
+          "time_use": "scheduled",
+          "activity_id": "d3-picasso-museum",
+          "title": "Visit Museu Picasso",
+          "place_name": "Museu Picasso",
           "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-18T10:00:00+02:00",
-          "end_time": "2026-10-18T13:00:00+02:00",
+          "location": "El Born",
+          "start_time": "2026-10-28T10:00:00+01:00",
+          "end_time": "2026-10-28T12:30:00+01:00",
           "estimated_cost": null,
-          "notes": "A substantial block for exploring the collection at a relaxed pace. Opening hours and admission availability have not been checked."
+          "notes": "A substantial art visit in the historic El Born area. Opening hours and admission have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "d3-walk-to-santa-maria",
+          "title": "Walk to Santa Maria del Mar",
+          "place_name": null,
+          "source_place_id": null,
+          "location": "El Born",
+          "start_time": "2026-10-28T12:30:00+01:00",
+          "end_time": "2026-10-28T12:40:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route and 10-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d3-picasso-museum",
+            "to_activity_id": "d3-santa-maria"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "d3-santa-maria",
+          "title": "Visit Basílica de Santa Maria del Mar",
+          "place_name": "Basílica de Santa Maria del Mar",
+          "source_place_id": null,
+          "location": "El Born",
+          "start_time": "2026-10-28T12:50:00+01:00",
+          "end_time": "2026-10-28T13:40:00+01:00",
+          "estimated_cost": null,
+          "notes": "A chance to experience a historic church and the surrounding neighborhood. Access and opening hours have not been checked."
         }
       ]
     },
     {
-      "date": "2026-10-19",
+      "date": "2026-10-29",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "casa-batllo-2026-10-19",
-          "title": "Explore Casa Batll\u00f3",
-          "place_name": "Casa Batll\u00f3",
+          "time_use": "scheduled",
+          "activity_id": "d4-joan-miro",
+          "title": "Visit Fundació Joan Miró",
+          "place_name": "Fundació Joan Miró",
           "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-19T10:00:00+02:00",
-          "end_time": "2026-10-19T12:30:00+02:00",
+          "location": "Montjuïc",
+          "start_time": "2026-10-29T10:00:00+01:00",
+          "end_time": "2026-10-29T12:30:00+01:00",
           "estimated_cost": null,
-          "notes": "Focus on the building's architecture and interior details, with time to explore rather than adding another scheduled stop. Opening hours and admission availability have not been checked."
+          "notes": "Allow time for an unhurried look through the art collection. Opening hours and admission have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "d4-walk-to-mnac",
+          "title": "Walk to Museu Nacional d’Art de Catalunya",
+          "place_name": null,
+          "source_place_id": null,
+          "location": "Montjuïc",
+          "start_time": "2026-10-29T12:30:00+01:00",
+          "end_time": "2026-10-29T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d4-joan-miro",
+            "to_activity_id": "d4-mnac"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "d4-mnac",
+          "title": "Explore Museu Nacional d’Art de Catalunya",
+          "place_name": "Museu Nacional d’Art de Catalunya",
+          "source_place_id": null,
+          "location": "Montjuïc",
+          "start_time": "2026-10-29T13:15:00+01:00",
+          "end_time": "2026-10-29T15:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Choose a manageable portion of the collection rather than trying to see everything. Opening hours and admission have not been checked."
         }
       ]
     },
     {
-      "date": "2026-10-20",
+      "date": "2026-10-30",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "mnac-2026-10-20",
-          "title": "Explore the Museu Nacional d'Art de Catalunya",
-          "place_name": "Museu Nacional d'Art de Catalunya",
+          "time_use": "scheduled",
+          "activity_id": "d5-casa-vicens",
+          "title": "Explore Casa Vicens",
+          "place_name": "Casa Vicens",
           "source_place_id": null,
-          "location": "Barcelona, Spain",
-          "start_time": "2026-10-20T10:00:00+02:00",
-          "end_time": "2026-10-20T13:00:00+02:00",
+          "location": "Gràcia",
+          "start_time": "2026-10-30T10:00:00+01:00",
+          "end_time": "2026-10-30T11:30:00+01:00",
           "estimated_cost": null,
-          "notes": "A relaxed art-focused visit that also offers an opportunity to appreciate the museum building. Opening hours and admission availability have not been checked."
+          "notes": "A focused visit to an important architectural landmark in Gràcia. Opening hours and admission have not been checked."
+        },
+        {
+          "activity_kind": "transport",
+          "time_use": "scheduled",
+          "activity_id": "d5-walk-to-park-guell",
+          "title": "Walk to Park Güell",
+          "place_name": null,
+          "source_place_id": null,
+          "location": "Gràcia",
+          "start_time": "2026-10-30T11:30:00+01:00",
+          "end_time": "2026-10-30T12:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Route and 30-minute duration are model estimates, not live-verified.",
+          "transport": {
+            "mode": "WALK",
+            "from_activity_id": "d5-casa-vicens",
+            "to_activity_id": "d5-park-guell"
+          }
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "d5-park-guell",
+          "title": "Explore Park Güell",
+          "place_name": "Park Güell",
+          "source_place_id": null,
+          "location": "Gràcia",
+          "start_time": "2026-10-30T12:15:00+01:00",
+          "end_time": "2026-10-30T15:15:00+01:00",
+          "estimated_cost": null,
+          "notes": "Leave room to explore the park and its architecture without rushing. Access, opening hours, and admission have not been checked."
         }
       ]
     }

@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+  "unresolved_subject_id": null,
+  "subject_name": "Arc de Triomphe",
+  "subject_address": "Pl. Charles de Gaulle, 75008 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9461325+00:00",
+  "sources": [
+    {
+      "url": "https://www.paris-arc-de-triomphe.fr/en/discover/the-sculpted-groups",
+      "title": "The sculpted groups — Arc de Triomphe",
+      "factual_paraphrase": "The arch's pedestals carry four sculptural groups created in 1833–1836, with named artists and explanations of their allegorical treatment.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The monument operator describes four major sculptural groups by named sculptors, including Rude, Cortot and Etex. Sculpture alone establishes the art match.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

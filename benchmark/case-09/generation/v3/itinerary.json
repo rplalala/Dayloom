@@ -445,25 +445,25 @@
       "source_place_id": "ChIJq6op05yOGGARACPQil8rZ74",
       "reason": "Museum near Tokyo National Museum (approximately 44 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
+      "area": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-dbeaf844-70b1-4510-8eeb-36e402ab9206:1"
     },
     {
       "place_name": "Smoking Area",
       "source_place_id": "ChIJ5f9kewCPGGARnzi9Chr9Xow",
-      "reason": "Park near Sens\u014d-ji (approximately 86 m straight-line).",
+      "reason": "Park near Sensō-ji (approximately 86 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "2-ch\u014dme-29-19 Asakusa, Taito City, Tokyo 111-0032, Japan",
+      "area": "2-chōme-29-19 Asakusa, Taito City, Tokyo 111-0032, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-98ed9e68-e03f-438b-a22d-e51e84bb7941:0"
     },
     {
-      "place_name": "\u6b63\u5ca1\u5b50\u898f\u8a18\u5ff5\u7403\u5834",
+      "place_name": "正岡子規記念球場",
       "source_place_id": "ChIJKQ2eTACPGGARAhzvUeOhTZY",
       "reason": "Park near Ueno Park (approximately 75 m straight-line).",
       "associated_day": "2026-10-23",
-      "area": "5-5 Uenok\u014den, Taito City, Tokyo 110-0007, Japan",
+      "area": "5-5 Uenokōen, Taito City, Tokyo 110-0007, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-e2db5a37-4d8b-40fe-ba3b-da9fc15cbb82:1"
     }
@@ -482,20 +482,20 @@
           "title": "Visit Tokyo National Museum",
           "place_name": "Tokyo National Museum",
           "source_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-          "location": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
+          "location": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
           "start_time": "2026-10-22T10:00:00+09:00",
           "end_time": "2026-10-22T13:00:00+09:00",
           "estimated_cost": null,
-          "notes": "Planned within the supplied date-specific hours of 09:30\u201317:00. Exhibition details and admission costs are not established by the supplied evidence."
+          "notes": "Planned within the supplied date-specific hours of 09:30–17:00. Exhibition details and admission costs are not established by the supplied evidence."
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
           "activity_id": "sensoji-20261022",
-          "title": "Visit Sens\u014d-ji",
-          "place_name": "Sens\u014d-ji",
+          "title": "Visit Sensō-ji",
+          "place_name": "Sensō-ji",
           "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
-          "location": "2-ch\u014dme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+          "location": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
           "start_time": "2026-10-22T14:00:00+09:00",
           "end_time": "2026-10-22T15:30:00+09:00",
           "estimated_cost": null,
@@ -544,7 +544,7 @@
           "title": "Visit Shibuya Sky",
           "place_name": "Shibuya Sky",
           "source_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
-          "location": "Japan, \u3012150-6145 Tokyo, Shibuya, 2-ch\u014dme\u221224\u2212\uff11\uff12 \u30b9\u30af\u30e9\u30f3\u30d6\u30eb\u30b9\u30af\u30a8\u30a2 14\u968e\u30fb45\u968e 46\u968e\u30fb\u5c4b\u4e0a",
+          "location": "Japan, 〒150-6145 Tokyo, Shibuya, 2-chōme−24−１２ スクランブルスクエア 14階・45階 46階・屋上",
           "start_time": "2026-10-24T13:45:00+09:00",
           "end_time": "2026-10-24T15:00:00+09:00",
           "estimated_cost": null,
@@ -575,7 +575,7 @@
           "title": "Visit Meiji Jingu",
           "place_name": "Meiji Jingu",
           "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-          "location": "1-1 Yoyogikamizonoch\u014d, Shibuya, Tokyo 151-8557, Japan",
+          "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
           "start_time": "2026-10-25T10:00:00+09:00",
           "end_time": "2026-10-25T11:30:00+09:00",
           "estimated_cost": null,
@@ -588,11 +588,11 @@
           "title": "Visit Shinjuku Gyoen National Garden",
           "place_name": "Shinjuku Gyoen National Garden",
           "source_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
-          "location": "11 Nait\u014dmachi, Shinjuku City, Tokyo 160-0014, Japan",
+          "location": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
           "start_time": "2026-10-25T12:15:00+09:00",
           "end_time": "2026-10-25T14:15:00+09:00",
           "estimated_cost": null,
-          "notes": "Planned within the supplied regular weekly hours of 09:00\u201316:30; date-specific exceptions are unknown."
+          "notes": "Planned within the supplied regular weekly hours of 09:00–16:30; date-specific exceptions are unknown."
         }
       ]
     },
@@ -619,7 +619,7 @@
           "title": "Explore Tokyo Dome City",
           "place_name": "Tokyo Dome City",
           "source_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
-          "location": "1-ch\u014dme-3-61 K\u014draku, Bunkyo City, Tokyo 112-0004, Japan",
+          "location": "1-chōme-3-61 Kōraku, Bunkyo City, Tokyo 112-0004, Japan",
           "start_time": "2026-10-26T12:30:00+09:00",
           "end_time": "2026-10-26T14:30:00+09:00",
           "estimated_cost": null,

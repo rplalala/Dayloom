@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Notre-Dame Cathedral of Paris",
+  "sources": [
+    {
+      "url": "https://www.notredamedeparis.fr/en/understand/architecture/",
+      "title": "Architecture of Notre-Dame de Paris",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The cathedral describes itself as a major work of Gothic architecture and explains its construction phases, portals, chapels and flying buttresses.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The cathedral describes itself as a major work of Gothic architecture and explains its construction phases, portals, chapels and flying buttresses.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

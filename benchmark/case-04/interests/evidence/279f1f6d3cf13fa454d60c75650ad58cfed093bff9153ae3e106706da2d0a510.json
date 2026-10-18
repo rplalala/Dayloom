@@ -1,0 +1,24 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.nparks.gov.sg/-/media/sbg/documents/national-orchid-garden-trail-guide.pdf",
+      "title": "National Orchid Garden trail guide",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "National Orchid Garden: orchid displays and tropical-highland plant collection."
+      ],
+      "limitations": [
+        "Older botanical trail guide; current opening feasibility was not assessed."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/43/evidence"
+}

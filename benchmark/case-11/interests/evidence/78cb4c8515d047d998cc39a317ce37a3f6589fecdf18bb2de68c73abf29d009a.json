@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJI7jEef5x5kcRkWRFsJD96So",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Bistro des lettres",
+  "sources": [
+    {
+      "url": "https://fr.laromegroup.com/portfolio",
+      "title": "Portfolio | France Larome Group – Restaurants et concepts culinaires",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The operator describes Bistro des Lettres on boulevard Saint-Germain as a traditional French culinary experience with a nostalgic atmosphere and an invitation to write a letter after the meal.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The operator describes Bistro des Lettres on boulevard Saint-Germain as a traditional French culinary experience with a nostalgic atmosphere and an invitation to write a letter after the meal.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

@@ -1,7 +1,38 @@
 {
-  "$case_material_ref": {
-    "path": "../analysis/poi-process/relevance.json",
-    "pointer": "/runs/0/interest_inventory",
-    "expanded_semantic_sha256": "d1af700b137a504e958ceca087658ad4f1ecf9236e54d54da51e4a382555d98f"
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-09",
+  "case_revision": "1",
+  "revision": "1",
+  "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+  "requirement_spec_ref": {
+    "path": "material/semantics/reviewed-final.json",
+    "sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "reviewer_ref": "/root/case09_interests",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-16T21:56:06Z",
+  "rationale": "The original request states two broad POI interests and separately names two mandatory visits. Interest categories preserve the explicit preference meanings without converting them into venue quotas. Named visit constraints remain requirement obligations and do not create additional broad interest categories.",
+  "interests": [
+    {
+      "interest_id": "traditional-culture",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "modern-art",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities.",
+      "requirement_pointer": "/soft_preferences/1"
+    }
+  ],
+  "technical_normalization": {
+    "actor_ref": "/root",
+    "source_inventory_sha256": "ebe1d1d79c283b95dbc3b16fc795161040cf8b07be34a31b318940fd2be15694",
+    "source_inventory_path": "material/semantics/interests.json",
+    "change": "Rebase references to the existing work root for native research readers; interest meaning and independent decisions unchanged."
   }
 }

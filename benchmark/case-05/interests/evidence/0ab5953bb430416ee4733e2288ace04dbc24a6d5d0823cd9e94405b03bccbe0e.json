@@ -1,0 +1,20 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJxyhI-vuipBIRHrGKtFZVcLA",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance05_clean",
+  "checked_at": "2026-10-18T04:55:46Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://bid.barcelonaturisme.com/wv3/en/search/results_m.html?nom=&nresultats=68&pg=2&tipus=-1",
+      "title": "Tourism of Barcelona: Museums, entries 25–36",
+      "checked_at": "2026-10-18T04:53:14Z",
+      "access_status": "opened",
+      "facts": "Santa Caterina's archaeological site interprets the area's development from prehistory to the present.",
+      "limitations": ""
+    }
+  ],
+  "original_decisions_sha256": "4dca3e5ca5c300b499a5fba6c6a3eb99f65472714a95d190d46a749d5e24c0a6",
+  "original_pointer": "/records/52/evidence"
+}

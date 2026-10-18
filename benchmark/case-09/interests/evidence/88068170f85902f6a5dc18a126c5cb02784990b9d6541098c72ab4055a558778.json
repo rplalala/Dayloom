@@ -1,0 +1,26 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance09_clean",
+  "checked_at": "2026-10-18T04:46:56Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.yomiuriland.com/attraction/",
+      "title": "Attractions | Yomiuriland Amusement Park",
+      "checked_at": "2026-10-18T04:46:41Z",
+      "access_status": "opened_successfully",
+      "facts": [
+        "The operator lists 44 attractions, including coasters, car-themed experiences, shooting games and an original-knitting activity.",
+        "The footer identifies Yomiuriland at 4015-1 Yanokuchi, Inagi, matching the supplied target."
+      ],
+      "limitations": [
+        "Only the attractions catalog was opened; linked event, illumination and neighboring-facility pages were not inspected.",
+        "A ride catalog cannot exclude additional cultural or artistic programming."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "2d86563a3204ef0fbc641c42e6e626b4a8c098406c7d411f545c1650a235a22a",
+  "original_pointer": "/records/0/evidence"
+}

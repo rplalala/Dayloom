@@ -1,0 +1,98 @@
+{
+  "schema_version": "case_public_current_selection_1",
+  "case_id": "case-11",
+  "case_revision": "current-path-20261018-r1",
+  "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+  "versions": {
+    "v0": {
+      "run_id": "case-11-r02-v0",
+      "selected_result_sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v0/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v0/result.json",
+          "sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v1": {
+      "run_id": "case-11-r02-v1",
+      "selected_result_sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v1/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v1/result.json",
+          "sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v2": {
+      "run_id": "case-11-r02-v2",
+      "selected_result_sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "completion_qualified": true,
+      "selection_origin": "unchanged_accepted_donor",
+      "itinerary_projection": {
+        "path": "generation/v2/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/existing/sources/captures/v2/result.json",
+          "sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v3": {
+      "run_id": "case-11-current-path-v3-a1",
+      "selected_result_sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v3/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/itinerary"
+        }
+      }
+    }
+  },
+  "primary": "evaluation/primary/report.json",
+  "pair": "evaluation/v3-pair/report.json",
+  "status": "researcher_accepted_current_selection",
+  "preceding_publication_git_revision": "5ee40b6eb5a7e435bbefbc34fa5b5985c43e6576",
+  "historical_acceptance": "Prior automatic acceptance remains bound to the former selection and immutable native originals. The explicit 18 October 2026 decision accepts this refreshed selection and its disclosed limits.",
+  "source_note": "Current system compatibility is established by bounded reruns and source-compatible donor retention, not by claiming every selected result was newly generated.",
+  "preceding_publication_original_git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+  "researcher_acceptance": {
+    "status": "accepted",
+    "accepted_on": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "decision_source": "Explicit researcher confirmation of the replacement scope in the current conversation.",
+    "issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193",
+    "scope": "Selected canonical input and V0-V3 finals, matched Primary and applicable candidate/relevance/Repair/pair/resource materials, actual source revisions and disclosed limitations.",
+    "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+    "selected_result_sha256s": {
+      "v0": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+      "v1": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+      "v2": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+      "v3": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1"
+    },
+    "primary_report_expanded_semantic_sha256": "883d2fd0f27c6d8bd455728d5b64510bc91fbe5460ba988d835dbc918dc8832d",
+    "pair_report_expanded_semantic_sha256": "7415f867da24d2c0c7f36714859c2084bdaad99808f1556a15d479dd4e22d51d",
+    "blinded_human_review": "deferred",
+    "additional_live_execution": false
+  }
+}

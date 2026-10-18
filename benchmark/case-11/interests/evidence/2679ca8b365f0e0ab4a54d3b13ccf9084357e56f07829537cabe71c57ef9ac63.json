@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Au Pied de Cochon",
+  "sources": [
+    {
+      "url": "https://www.visitparisregion.com/fr/au-pied-de-cochon",
+      "title": "Au pied de Cochon | VisitParisRegion",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The official regional tourism office describes the dining-room frescoes as conceived by students of the École des Beaux-Arts in the 1990s and invites visitors to look at them.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The official regional tourism office describes the dining-room frescoes as conceived by students of the École des Beaux-Arts in the 1990s and invites visitors to look at them.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

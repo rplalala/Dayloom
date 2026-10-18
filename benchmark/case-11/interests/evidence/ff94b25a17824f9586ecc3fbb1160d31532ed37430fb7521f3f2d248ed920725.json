@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJszgj1CRu5kcR4ppUJCp67M8",
+  "unresolved_subject_id": null,
+  "subject_name": "Bistrot Richelieu",
+  "subject_address": "45 Rue de Richelieu, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9603473+00:00",
+  "sources": [
+    {
+      "url": "https://www.bistrotrichelieu.com/",
+      "title": "Bistrot Richelieu",
+      "factual_paraphrase": "The operator landing page identifies a restaurant and bar at 45 rue de Richelieu, with reservation and contact information.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web open"
+    }
+  ],
+  "verdict": "unknown",
+  "assessment": "The exact-address operator site identifies a restaurant and bar but provides only a sparse landing page. That limited description does not justify turning missing art/architecture information into a negative judgment.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

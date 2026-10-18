@@ -319,6 +319,53 @@ def test_routes_adapter_uses_minimal_fields_and_omits_invalid_preference() -> No
     assert "departureTime" not in body
 
 
+@pytest.mark.parametrize("routing_preference", [None, "TRAFFIC_UNAWARE"])
+def test_routes_adapter_omits_departure_for_traffic_unaware_drive(
+    routing_preference: str | None,
+) -> None:
+    transport = FakeTransport(responses=[[]])
+    provider = GoogleRoutesProvider(api_key="test-key", transport=transport, tracer=TRACER)
+    waypoint = RouteWaypoint(place_id="poi-1", location=LatLng(latitude=41.36, longitude=2.16))
+    asyncio.run(
+        provider.compute_route_matrix(
+            RouteMatrixRequest(
+                origins=[waypoint],
+                destinations=[waypoint],
+                travel_mode="DRIVE",
+                routing_preference=routing_preference,
+                departure_time=datetime.fromisoformat("2026-10-30T13:00:00+01:00"),
+                field_mask=ROUTE_MATRIX_FIELD_MASK,
+            )
+        )
+    )
+    body = transport.calls[0]["json_body"]
+    assert "departureTime" not in body
+    if routing_preference is not None:
+        assert body["routingPreference"] == routing_preference
+
+
+@pytest.mark.parametrize("routing_preference", ["TRAFFIC_AWARE", "TRAFFIC_AWARE_OPTIMAL"])
+def test_routes_adapter_preserves_departure_for_traffic_aware_drive(
+    routing_preference: str,
+) -> None:
+    transport = FakeTransport(responses=[[]])
+    provider = GoogleRoutesProvider(api_key="test-key", transport=transport, tracer=TRACER)
+    waypoint = RouteWaypoint(place_id="poi-1", location=LatLng(latitude=41.36, longitude=2.16))
+    request = RouteMatrixRequest(
+        origins=[waypoint],
+        destinations=[waypoint],
+        travel_mode="DRIVE",
+        routing_preference=routing_preference,
+        departure_time=datetime.fromisoformat("2026-10-30T13:00:00+01:00"),
+        field_mask=ROUTE_MATRIX_FIELD_MASK,
+    )
+    asyncio.run(provider.compute_route_matrix(request))
+    body = transport.calls[0]["json_body"]
+    assert body["departureTime"] == "2026-10-30T12:00:00Z"
+    assert body["routingPreference"] == routing_preference
+    assert request.departure_time == datetime.fromisoformat("2026-10-30T13:00:00+01:00")
+
+
 def test_routes_adapter_serializes_transit_departure_time() -> None:
     transport = FakeTransport(responses=[[]])
     provider = GoogleRoutesProvider(api_key="secret-key", transport=transport, tracer=TRACER)

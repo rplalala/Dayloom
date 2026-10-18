@@ -1,6 +1,6 @@
 {
   "$case_material_ref": {
-    "path": "../v0/runtime-policy.json",
+    "path": "../v2/runtime-policy.json",
     "pointer": "",
     "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952"
   }

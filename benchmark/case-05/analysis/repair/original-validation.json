@@ -1,0 +1,1070 @@
+{
+  "contract_version": "v3_validation_1",
+  "diagnostics": {
+    "daily_visit_counts": [],
+    "policy_completion": "complete",
+    "policy_issues": [],
+    "goal_progress": [
+      {
+        "requirement_id": "semantic_1",
+        "expected": 1,
+        "matched": 5,
+        "matched_dates": 4,
+        "satisfied": true,
+        "soft": true,
+        "preference": "Enjoys architecture.",
+        "target_origin": "ordinary_preference",
+        "focus_source": null,
+        "remaining": 0,
+        "coverage_status": "covered",
+        "basis": "model_semantic_judgment_not_operating_fact"
+      },
+      {
+        "requirement_id": "semantic_2",
+        "expected": 1,
+        "matched": 0,
+        "matched_dates": 0,
+        "satisfied": false,
+        "soft": true,
+        "preference": "Enjoys historic neighborhoods.",
+        "target_origin": "ordinary_preference",
+        "focus_source": null,
+        "remaining": 1,
+        "coverage_status": "unassessed",
+        "basis": "model_semantic_judgment_not_operating_fact"
+      },
+      {
+        "requirement_id": "semantic_3",
+        "expected": 1,
+        "matched": 1,
+        "matched_dates": 1,
+        "satisfied": true,
+        "soft": true,
+        "preference": "Enjoys art.",
+        "target_origin": "ordinary_preference",
+        "focus_source": null,
+        "remaining": 0,
+        "coverage_status": "covered",
+        "basis": "model_semantic_judgment_not_operating_fact"
+      }
+    ],
+    "days": [
+      {
+        "date": "2026-10-26",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 1,
+        "distinct_main_poi_count": 1,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "below_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-27",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 1,
+        "distinct_main_poi_count": 1,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "below_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-28",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 1,
+        "distinct_main_poi_count": 1,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "below_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-29",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 2,
+        "distinct_main_poi_count": 2,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 1,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "within_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-30",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 1,
+        "distinct_main_poi_count": 1,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "below_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      }
+    ],
+    "days_meeting_default_target": 1,
+    "days_below_target": 4,
+    "days_above_target": 0,
+    "days_unassessable": 0,
+    "empty_days": 0,
+    "days_with_zero_main_pois": 0,
+    "scheduled_unique_supply": 6,
+    "unused_supply": 10,
+    "cross_day_repeated_visits": 0,
+    "related_requirement_ids": [
+      "semantic_1",
+      "semantic_2",
+      "semantic_3",
+      "semantic_4"
+    ],
+    "assessment_basis": "default_target_observation_not_feasibility"
+  },
+  "findings": [
+    {
+      "finding_id": "finding_1",
+      "check": "coverage",
+      "status": "NEEDS_REVIEW",
+      "reason": "default_target_observation_without_executable_exception_contract",
+      "dates": [
+        "2026-10-26"
+      ],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "generation_diagnostics:2026-10-26"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_2",
+      "check": "coverage",
+      "status": "NEEDS_REVIEW",
+      "reason": "default_target_observation_without_executable_exception_contract",
+      "dates": [
+        "2026-10-27"
+      ],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "generation_diagnostics:2026-10-27"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_3",
+      "check": "coverage",
+      "status": "NEEDS_REVIEW",
+      "reason": "default_target_observation_without_executable_exception_contract",
+      "dates": [
+        "2026-10-28"
+      ],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "generation_diagnostics:2026-10-28"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_4",
+      "check": "coverage",
+      "status": "NEEDS_REVIEW",
+      "reason": "default_target_observation_without_executable_exception_contract",
+      "dates": [
+        "2026-10-30"
+      ],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "generation_diagnostics:2026-10-30"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_5",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-26"
+      ],
+      "activity_ids": [
+        "macba-20261026"
+      ],
+      "place_ids": [
+        "ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-26",
+            "place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+            "source_ref": "google_places:ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+            "retrieved_at": "2026-10-18T03:51:26.287191+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-26T11:00:00",
+                "2026-10-26T19:30:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_6",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-26"
+      ],
+      "activity_ids": [
+        "macba-20261026"
+      ],
+      "place_ids": [
+        "ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_7",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-27"
+      ],
+      "activity_ids": [
+        "sagrada-familia-20261027"
+      ],
+      "place_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-27",
+            "place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "source_ref": "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js",
+            "retrieved_at": "2026-10-18T03:51:32.810789+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-27T09:00:00",
+                "2026-10-27T20:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_8",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-27"
+      ],
+      "activity_ids": [
+        "sagrada-familia-20261027"
+      ],
+      "place_ids": [
+        "ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_9",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-28"
+      ],
+      "activity_ids": [
+        "park-guell-20261028"
+      ],
+      "place_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-28",
+            "place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "source_ref": "google_places:ChIJq0HUUq6ipBIRWM6qGqALmok",
+            "retrieved_at": "2026-10-18T03:51:23.504061+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-28T09:30:00",
+                "2026-10-28T19:30:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJq0HUUq6ipBIRWM6qGqALmok"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_10",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-28"
+      ],
+      "activity_ids": [
+        "park-guell-20261028"
+      ],
+      "place_ids": [
+        "ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJq0HUUq6ipBIRWM6qGqALmok"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_11",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-29"
+      ],
+      "activity_ids": [
+        "barcelona-cathedral-20261029"
+      ],
+      "place_ids": [
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-29",
+            "place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "source_ref": "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY",
+            "retrieved_at": "2026-10-18T03:51:27.357732+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-29T09:30:00",
+                "2026-10-29T17:45:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_12",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-29"
+      ],
+      "activity_ids": [
+        "barcelona-cathedral-20261029"
+      ],
+      "place_ids": [
+        "ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_13",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-29"
+      ],
+      "activity_ids": [
+        "temple-august-20261029"
+      ],
+      "place_ids": [
+        "ChIJ204RAfmipBIRgmi5nW7YHaE"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-29",
+            "place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "source_ref": "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE",
+            "retrieved_at": "2026-10-18T03:51:30.653502+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-29T10:00:00",
+                "2026-10-29T19:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_14",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-29"
+      ],
+      "activity_ids": [
+        "temple-august-20261029"
+      ],
+      "place_ids": [
+        "ChIJ204RAfmipBIRgmi5nW7YHaE"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_15",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-30"
+      ],
+      "activity_ids": [
+        "montjuic-castle-20261030"
+      ],
+      "place_ids": [
+        "ChIJN7FiCkGipBIR1PJn6ohejww"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-30",
+            "place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+            "source_ref": "google_places:ChIJN7FiCkGipBIR1PJn6ohejww",
+            "retrieved_at": "2026-10-18T03:51:24.415377+00:00",
+            "timezone": "Europe/Madrid",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-30T10:00:00",
+                "2026-10-30T18:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_16",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-30"
+      ],
+      "activity_ids": [
+        "montjuic-castle-20261030"
+      ],
+      "place_ids": [
+        "ChIJN7FiCkGipBIR1PJn6ohejww"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_17",
+      "check": "route",
+      "status": "UNKNOWN",
+      "reason": "transition_binding_missing",
+      "dates": [],
+      "activity_ids": [
+        "temple-august-20261029",
+        "historic-lanes-stroll-20261029"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_18",
+      "check": "route",
+      "status": "PASS",
+      "reason": "minimum_transfer_only",
+      "dates": [],
+      "activity_ids": [
+        "barcelona-cathedral-20261029",
+        "temple-august-20261029"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "available_seconds": 1800.0,
+        "application_reserve_seconds": 0.0,
+        "selected_routes": [
+          {
+            "duration_seconds": 179,
+            "source_ref": "google_routes:compute_route_matrix",
+            "travel_mode": "WALK",
+            "routing_preference": null,
+            "departure_time": null,
+            "requested_at": "2026-10-18T03:52:01.937997+00:00",
+            "retrieved_at": "2026-10-18T03:52:02.593392+00:00",
+            "basis": "walk_provider_estimate",
+            "element": {
+              "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+              "destination_place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+              "evidence_type": "provider_observed",
+              "derived_from_origin_place_id": null,
+              "derived_from_destination_place_id": null,
+              "status": "OK",
+              "condition": "ROUTE_EXISTS",
+              "status_state": "success",
+              "static_duration_seconds": 179,
+              "fallback_info": null,
+              "requested_at": "2026-10-18T03:52:01.937997Z",
+              "retrieved_at": "2026-10-18T03:52:02.593392Z",
+              "origin_index": 3,
+              "destination_index": 14,
+              "distance_meters": 215,
+              "duration_seconds": 179,
+              "availability": "available",
+              "unavailable_reason": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_19",
+      "check": "budget",
+      "status": "UNKNOWN",
+      "reason": "verified_party_currency_cost_coverage_not_supported",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_20",
+      "check": "semantic_requirements",
+      "status": "UNKNOWN",
+      "reason": "open_semantics_not_executable_predicates",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [
+        "semantic_1",
+        "semantic_2",
+        "semantic_3",
+        "semantic_4"
+      ],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_21",
+      "check": "soft_pace",
+      "status": "NEEDS_REVIEW",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-26"
+      ],
+      "activity_ids": [
+        "macba-20261026"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 20.0,
+      "adopted_evidence": {
+        "count": 1,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "relaxed",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a relaxed pace",
+              "occurrence": 0,
+              "start": 81,
+              "end": 102,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_22",
+      "check": "soft_pace",
+      "status": "NEEDS_REVIEW",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-27"
+      ],
+      "activity_ids": [
+        "sagrada-familia-20261027"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 20.0,
+      "adopted_evidence": {
+        "count": 1,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "relaxed",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a relaxed pace",
+              "occurrence": 0,
+              "start": 81,
+              "end": 102,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_23",
+      "check": "soft_pace",
+      "status": "NEEDS_REVIEW",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-28"
+      ],
+      "activity_ids": [
+        "park-guell-20261028"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 20.0,
+      "adopted_evidence": {
+        "count": 1,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "relaxed",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a relaxed pace",
+              "occurrence": 0,
+              "start": 81,
+              "end": 102,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_24",
+      "check": "soft_pace",
+      "status": "PASS",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-29"
+      ],
+      "activity_ids": [
+        "barcelona-cathedral-20261029",
+        "temple-august-20261029"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "count": 2,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "relaxed",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a relaxed pace",
+              "occurrence": 0,
+              "start": 81,
+              "end": 102,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_25",
+      "check": "soft_pace",
+      "status": "NEEDS_REVIEW",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-30"
+      ],
+      "activity_ids": [
+        "montjuic-castle-20261030"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 20.0,
+      "adopted_evidence": {
+        "count": 1,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "relaxed",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a relaxed pace",
+              "occurrence": 0,
+              "start": 81,
+              "end": 102,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    }
+  ],
+  "place_use_observations": [
+    {
+      "place_id": "ChIJ0V6MrPWipBIRKnssXv0o_Y4",
+      "primary_type": "art_museum",
+      "source_ref": "google_places:ChIJ0V6MrPWipBIRKnssXv0o_Y4"
+    },
+    {
+      "place_id": "ChIJ204RAfmipBIRgmi5nW7YHaE",
+      "primary_type": "historical_landmark",
+      "source_ref": "google_places:ChIJ204RAfmipBIRgmi5nW7YHaE"
+    },
+    {
+      "place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
+      "primary_type": "castle",
+      "source_ref": "google_places:ChIJN7FiCkGipBIR1PJn6ohejww"
+    },
+    {
+      "place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
+      "primary_type": "church",
+      "source_ref": "google_places:ChIJg2xxlvmipBIRg1jhdSQR9hY"
+    },
+    {
+      "place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
+      "primary_type": "church",
+      "source_ref": "google_places:ChIJk_s92NyipBIRUMnDG8Kq2Js"
+    },
+    {
+      "place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+      "primary_type": "park",
+      "source_ref": "google_places:ChIJq0HUUq6ipBIRWM6qGqALmok"
+    }
+  ],
+  "improvement_targets": [
+    {
+      "finding_id": "finding_21",
+      "basis": "review_policy"
+    },
+    {
+      "finding_id": "finding_22",
+      "basis": "review_policy"
+    },
+    {
+      "finding_id": "finding_23",
+      "basis": "review_policy"
+    },
+    {
+      "finding_id": "finding_25",
+      "basis": "review_policy"
+    }
+  ],
+  "scope": "read_only_partial_validation"
+}

@@ -1,0 +1,3 @@
+case-04.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+case-05.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+case-07.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

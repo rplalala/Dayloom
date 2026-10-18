@@ -1,0 +1,33 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.marinabaysands.com/guides/exceptional-experiences/marina-bay-sands-architecture.html",
+      "title": "Architecture of Marina Bay Sands",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Resort architecture includes SkyPark and ArtScience Museum."
+      ],
+      "limitations": []
+    },
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.bigducktours.com/en/singapore/",
+      "title": "Singapore DUCKtours",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Marina Bay Sands is named among must-see landmarks."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/18/evidence"
+}

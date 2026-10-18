@@ -1,143 +1,130 @@
 {
-  "source_sha256": "b860a2fa8f16960934a8c4e06de1470f7463077edf2e1388ebb16b7e4e179a5c",
+  "schema_version": "rtpeval_research_opportunities_report_1",
+  "processing_status": "completed",
+  "track": "opportunities",
+  "applicability": "applicable",
+  "population_digest": "b1ec9b0da236e93b4eb21f95df861ce317a0656ff5f8739baf9c10df7d2ef38d",
+  "measurement_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "planned_slots": 2,
+    "captured_slots": 2,
+    "stages": {
+      "discovered": {
+        "complete": 1,
+        "partial": 1,
+        "unavailable": 0
+      },
+      "admitted": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "enriched": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "supplied": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      },
+      "scheduled": {
+        "complete": 2,
+        "partial": 0,
+        "unavailable": 0
+      }
+    }
+  },
+  "review_coverage": {
+    "unit": "planned_v1_v2_slots",
+    "independent_association_slots": 2,
+    "relevance_review": "not_performed"
+  },
+  "diagnostics": [],
+  "identity_unit": "canonical_place_id",
+  "population_id": "case-04-current-selected-population",
+  "population_revision": "20261018-complete",
+  "profile_id": "case-04-current-selected-profile",
+  "profile_revision": "20261018-complete",
   "runs": [
     {
+      "case_id": "case-04",
+      "case_revision": "current-path-20261018-r1",
       "version": "v1",
+      "repetition_id": "selected",
+      "attempt_id": "case-04-current-path-v1-a1-selected",
+      "completion_status": "completed",
       "stages": {
         "discovered": {
           "status": "complete",
           "canonical_ids": [
+            "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
+            "ChIJ18iYTgAZ2jEROr0Y675azV8",
             "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-            "ChIJ3eg6SXMZ2jERCxutt4adUyY",
-            "ChIJ3xSV5_ob2jERCnZyINDAtN4",
-            "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-            "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-            "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-            "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+            "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+            "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+            "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+            "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+            "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
             "ChIJ9xUuiNcT2jER49FS2OpE8W8",
             "ChIJA5LATO4Z2jER111V-v6abAI",
-            "ChIJARv2j3QZ2jERquLdsXGisU4",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+            "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
             "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-            "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+            "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+            "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
             "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-            "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-            "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-            "ChIJMdewuaQZ2jERwwfStN_krnM",
+            "ChIJHXRM6hsa2jERTWva5xCUhy4",
+            "ChIJM8FcNhka2jER-7g-ZTXCpyk",
             "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
             "ChIJOScA0tkZ2jERRqSy4_FqfD4",
             "ChIJOeEf9S2vewIRM0B9a06CKwg",
             "ChIJPYrvewEZ2jERK-pztVWcDig",
-            "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-            "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+            "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+            "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
             "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-            "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+            "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+            "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+            "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-            "ChIJWZX956MZ2jERIGdnbs_SgMw",
+            "ChIJWQLwKP0P2jER-AOMrDbkIW8",
             "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-            "ChIJY618FAQQ2jERzo1f5IAj4Bg",
-            "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-            "ChIJaczGWKMZ2jERizrM83vLEM0",
-            "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+            "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+            "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
             "ChIJc-qInBwa2jERpyqg4OcodwA",
-            "ChIJc0Fxb-UW2jERUtUJQipPfns",
-            "ChIJcwAAUPoa2jERiv_0ph5iKlg",
             "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-            "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-            "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-            "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-            "ChIJg4jcdA0Z2jERe0XPfVA08bU",
-            "ChIJixzGhuMZ2jERpijfVdsTdFw",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-            "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-            "ChIJlcijSfYa2jERGZ3CD7lpz_E",
+            "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+            "ChIJi3VWZfob2jERFNw7sbvKS_w",
+            "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+            "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+            "ChIJkWHbygsZ2jERjkvNI-5be_8",
+            "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
             "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-            "ChIJoZOhmQkZ2jERehLfvKlsoCA",
-            "ChIJq7P-2n4P2jERoflGFhUAEfQ",
-            "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+            "ChIJo714KsEZ2jERAwbjfpK78oY",
+            "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+            "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-            "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-            "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+            "ChIJs91Di4w82jERasclvd3Rb18",
+            "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
             "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-            "ChIJveKYa4oQ2jERj43WxevKhMI",
             "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-            "ChIJxWCbaXwZ2jERMHpks71MWqk",
             "ChIJxZfX_9gT2jERknwK8es7IHU",
-            "ChIJzToAJoAZ2jERJPijXPaKjR8",
             "ChIJzVHFNqkZ2jERboLN2YrltH8"
           ],
-          "observed_count": 62,
-          "complete_count": 62,
+          "observed_count": 54,
+          "complete_count": 54,
           "reasons": [],
           "origin_partitions": {
-            "google_only": [
-              "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
-              "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-              "ChIJ3eg6SXMZ2jERCxutt4adUyY",
-              "ChIJ3xSV5_ob2jERCnZyINDAtN4",
-              "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-              "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-              "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-              "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-              "ChIJA5LATO4Z2jER111V-v6abAI",
-              "ChIJARv2j3QZ2jERquLdsXGisU4",
-              "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-              "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-              "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-              "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-              "ChIJMdewuaQZ2jERwwfStN_krnM",
-              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-              "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-              "ChIJOeEf9S2vewIRM0B9a06CKwg",
-              "ChIJPYrvewEZ2jERK-pztVWcDig",
-              "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-              "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-              "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-              "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-              "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-              "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-              "ChIJWZX956MZ2jERIGdnbs_SgMw",
-              "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-              "ChIJY618FAQQ2jERzo1f5IAj4Bg",
-              "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-              "ChIJaczGWKMZ2jERizrM83vLEM0",
-              "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-              "ChIJc-qInBwa2jERpyqg4OcodwA",
-              "ChIJc0Fxb-UW2jERUtUJQipPfns",
-              "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-              "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-              "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-              "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-              "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-              "ChIJg4jcdA0Z2jERe0XPfVA08bU",
-              "ChIJixzGhuMZ2jERpijfVdsTdFw",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-              "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-              "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-              "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-              "ChIJoZOhmQkZ2jERehLfvKlsoCA",
-              "ChIJq7P-2n4P2jERoflGFhUAEfQ",
-              "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-              "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-              "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-              "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-              "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-              "ChIJveKYa4oQ2jERj43WxevKhMI",
-              "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-              "ChIJxWCbaXwZ2jERMHpks71MWqk",
-              "ChIJxZfX_9gT2jERknwK8es7IHU",
-              "ChIJzToAJoAZ2jERJPijXPaKjR8",
-              "ChIJzVHFNqkZ2jERboLN2YrltH8"
-            ],
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/discovered/canonical_ids",
+                "expanded_semantic_sha256": "f851098674b2cf2a937df95271aa6a105a6c6d59da9f2a49f21975cc34e26188"
+              }
+            },
             "rag_only": [],
             "mixed": []
           }
@@ -145,109 +132,66 @@
         "admitted": {
           "status": "complete",
           "canonical_ids": [
+            "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+            "ChIJ18iYTgAZ2jEROr0Y675azV8",
             "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-            "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-            "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-            "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+            "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+            "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+            "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+            "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+            "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
             "ChIJ9xUuiNcT2jER49FS2OpE8W8",
             "ChIJA5LATO4Z2jER111V-v6abAI",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+            "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
             "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+            "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+            "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
             "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-            "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-            "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-            "ChIJMdewuaQZ2jERwwfStN_krnM",
-            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJHXRM6hsa2jERTWva5xCUhy4",
+            "ChIJM8FcNhka2jER-7g-ZTXCpyk",
             "ChIJOScA0tkZ2jERRqSy4_FqfD4",
             "ChIJOeEf9S2vewIRM0B9a06CKwg",
             "ChIJPYrvewEZ2jERK-pztVWcDig",
-            "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+            "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+            "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
             "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-            "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+            "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+            "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-            "ChIJWZX956MZ2jERIGdnbs_SgMw",
-            "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-            "ChIJaczGWKMZ2jERizrM83vLEM0",
-            "ChIJb6xq2bAZ2jERE1P6sVKtofw",
+            "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+            "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
             "ChIJc-qInBwa2jERpyqg4OcodwA",
-            "ChIJc0Fxb-UW2jERUtUJQipPfns",
-            "ChIJcwAAUPoa2jERiv_0ph5iKlg",
             "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-            "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-            "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-            "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-            "ChIJixzGhuMZ2jERpijfVdsTdFw",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-            "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-            "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-            "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+            "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+            "ChIJi3VWZfob2jERFNw7sbvKS_w",
+            "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+            "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+            "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+            "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+            "ChIJo714KsEZ2jERAwbjfpK78oY",
+            "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+            "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-            "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-            "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+            "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
             "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-            "ChIJveKYa4oQ2jERj43WxevKhMI",
             "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
             "ChIJxZfX_9gT2jERknwK8es7IHU",
-            "ChIJzToAJoAZ2jERJPijXPaKjR8",
             "ChIJzVHFNqkZ2jERboLN2YrltH8"
           ],
           "observed_count": 48,
           "complete_count": 48,
           "reasons": [],
           "origin_partitions": {
-            "google_only": [
-              "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-              "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-              "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-              "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-              "ChIJA5LATO4Z2jER111V-v6abAI",
-              "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-              "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-              "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-              "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-              "ChIJMdewuaQZ2jERwwfStN_krnM",
-              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-              "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-              "ChIJOeEf9S2vewIRM0B9a06CKwg",
-              "ChIJPYrvewEZ2jERK-pztVWcDig",
-              "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-              "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-              "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-              "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-              "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-              "ChIJWZX956MZ2jERIGdnbs_SgMw",
-              "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-              "ChIJaczGWKMZ2jERizrM83vLEM0",
-              "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-              "ChIJc-qInBwa2jERpyqg4OcodwA",
-              "ChIJc0Fxb-UW2jERUtUJQipPfns",
-              "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-              "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-              "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-              "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-              "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-              "ChIJixzGhuMZ2jERpijfVdsTdFw",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-              "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-              "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-              "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-              "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-              "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-              "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-              "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-              "ChIJveKYa4oQ2jERj43WxevKhMI",
-              "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-              "ChIJxZfX_9gT2jERknwK8es7IHU",
-              "ChIJzToAJoAZ2jERJPijXPaKjR8",
-              "ChIJzVHFNqkZ2jERboLN2YrltH8"
-            ],
+            "google_only": {
+              "$case_material_ref": {
+                "path": "opportunities.json",
+                "pointer": "/runs/0/stages/admitted/canonical_ids",
+                "expanded_semantic_sha256": "49d6284aba19ee224617d1f4f63cdbfe9827657053cd15d1ce1ace99459f30ed"
+              }
+            },
             "rag_only": [],
             "mixed": []
           }
@@ -256,21 +200,21 @@
           "status": "complete",
           "canonical_ids": [
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+            "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+            "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
             "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+            "ChIJA5LATO4Z2jER111V-v6abAI",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
             "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-            "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+            "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+            "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+            "ChIJUc0YwKIZ2jERnCfsCKnOamE",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJaczGWKMZ2jERizrM83vLEM0",
-            "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-            "ChIJc-qInBwa2jERpyqg4OcodwA",
-            "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+            "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+            "ChIJnWdQKQQZ2jERScXuKeFHyIE",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-            "ChIJv4Mk4QYa2jERlGncaOIvpW4",
             "ChIJvWDbfRwa2jERgNnTOpAU3-o",
             "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
             "ChIJxZfX_9gT2jERknwK8es7IHU",
@@ -284,21 +228,21 @@
           "origin_partitions": {
             "google_only": [
               "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+              "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+              "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
               "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+              "ChIJA5LATO4Z2jER111V-v6abAI",
               "ChIJBTYg1g4Z2jERp_MBbu5erWY",
               "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+              "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
               "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+              "ChIJUc0YwKIZ2jERnCfsCKnOamE",
               "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJaczGWKMZ2jERizrM83vLEM0",
-              "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-              "ChIJc-qInBwa2jERpyqg4OcodwA",
-              "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+              "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+              "ChIJnWdQKQQZ2jERScXuKeFHyIE",
               "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-              "ChIJv4Mk4QYa2jERlGncaOIvpW4",
               "ChIJvWDbfRwa2jERgNnTOpAU3-o",
               "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
               "ChIJxZfX_9gT2jERknwK8es7IHU",
@@ -312,14 +256,14 @@
           "status": "complete",
           "canonical_ids": [
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+            "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-            "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+            "ChIJFQzeR6cZ2jERgM6--iWeY-U",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJb6xq2bAZ2jERE1P6sVKtofw",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
             "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+            "ChIJxZfX_9gT2jERknwK8es7IHU",
             "ChIJzVHFNqkZ2jERboLN2YrltH8"
           ],
           "observed_count": 10,
@@ -328,14 +272,14 @@
           "origin_partitions": {
             "google_only": [
               "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+              "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
               "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-              "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
               "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
               "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJb6xq2bAZ2jERE1P6sVKtofw",
               "ChIJr9wqENkT2jERkRs7pMj6FLQ",
               "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+              "ChIJxZfX_9gT2jERknwK8es7IHU",
               "ChIJzVHFNqkZ2jERboLN2YrltH8"
             ],
             "rag_only": [],
@@ -348,24 +292,60 @@
         "canonical_ids": [
           "ChIJ0bwmznIZ2jEREOCMNggtIBk",
           "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-          "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U",
           "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
           "ChIJVSYjJKIZ2jERpRFinATD52s",
-          "ChIJb6xq2bAZ2jERE1P6sVKtofw",
           "ChIJvWDbfRwa2jERgNnTOpAU3-o",
           "ChIJzVHFNqkZ2jERboLN2YrltH8"
         ],
-        "observed_count": 9,
-        "complete_count": 9,
-        "reasons": []
+        "observed_count": 7,
+        "complete_count": 7,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v1/descriptive/identity_checks",
+            "expanded_semantic_sha256": "2760b9108e374c900794ad4c2f3a30a5dd9de7952030f808a03c8660a4bfad6f"
+          }
+        },
+        "identity_source_digest": "ee2869290e771d331434cd7cc0c38a8a77a29596911c42e939b1fa4ae0f5a892",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "assembled/manifest.json",
+            "sha256": "b0efb13d95cbdee1c7146489532520ac6c49624876173f7d7aa5a5570b41c41a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "primary-a1/execution/identity-evidence.json",
+            "sha256": "3163bc9b7abfd402e0addcb8d9cefabcd980caa00c3b225ede273f0dc2a64016",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          }
+        }
       },
       "places": {
+        "ChIJ-aOKT9YZ2jERY2NV-aN5VEU": {
+          "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
         "ChIJ0bwmznIZ2jEREOCMNggtIBk": {
           "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
           "google_origins": [
             {
-              "intent_id": "landmark_6",
+              "intent_id": "landmark_8",
               "source_query": "Buddha Tooth Relic Temple in Singapore",
               "provider_rank": 0,
               "actual_result_count": 1,
@@ -374,15 +354,15 @@
           ],
           "rag_origins": []
         },
-        "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q": {
-          "canonical_place_id": "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
+        "ChIJ18iYTgAZ2jEROr0Y675azV8": {
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 2,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 4,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -400,80 +380,74 @@
           ],
           "rag_origins": []
         },
-        "ChIJ3eg6SXMZ2jERCxutt4adUyY": {
-          "canonical_place_id": "ChIJ3eg6SXMZ2jERCxutt4adUyY",
+        "ChIJ3wysGNcQ2jERfWy5UZcW7mY": {
+          "canonical_place_id": "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 18,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 16,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJ3xSV5_ob2jERCnZyINDAtN4": {
-          "canonical_place_id": "ChIJ3xSV5_ob2jERCnZyINDAtN4",
+        "ChIJ42oYzrMZ2jERBvQPkuvE8DA": {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 12,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 10,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE": {
-          "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+        "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE": {
+          "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 13,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0": {
-          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-          "google_origins": [
-            {
-              "intent_id": "default_0",
-              "source_query": "top attractions in Singapore",
-              "provider_rank": 19,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0": {
-          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 1,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI": {
-          "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
               "provider_rank": 14,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I": {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJ6xTEJgAZ2jER9GkL8PQkT6s": {
+          "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -504,19 +478,6 @@
           ],
           "rag_origins": []
         },
-        "ChIJARv2j3QZ2jERquLdsXGisU4": {
-          "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 10,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
         "ChIJBTYg1g4Z2jERp_MBbu5erWY": {
           "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
           "google_origins": [
@@ -530,16 +491,22 @@
           ],
           "rag_origins": []
         },
+        "ChIJC0QiBqgZ2jERMi6yVlsqB6Y": {
+          "canonical_place_id": "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
         "ChIJD1u-EaMZ2jERaLhNfFkR45I": {
           "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
           "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 1,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            },
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
@@ -550,15 +517,28 @@
           ],
           "rag_origins": []
         },
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc": {
-          "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+        "ChIJE9ZgZWwZ2jERlu5z66UIED8": {
+          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 18,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 5,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJEy4Jk7Eb2jERjHRiAWMr5AE": {
+          "canonical_place_id": "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -567,50 +547,37 @@
           "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 3,
-              "actual_result_count": 20,
+              "intent_id": "landmark_6",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
               "intent_kind": "fallback"
             }
           ],
           "rag_origins": []
         },
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8": {
-          "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+        "ChIJHXRM6hsa2jERTWva5xCUhy4": {
+          "canonical_place_id": "ChIJHXRM6hsa2jERTWva5xCUhy4",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 9,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 16,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw": {
-          "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+        "ChIJM8FcNhka2jER-7g-ZTXCpyk": {
+          "canonical_place_id": "ChIJM8FcNhka2jER-7g-ZTXCpyk",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 12,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 8,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJMdewuaQZ2jERwwfStN_krnM": {
-          "canonical_place_id": "ChIJMdewuaQZ2jERwwfStN_krnM",
-          "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 14,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -618,6 +585,13 @@
         "ChIJMxZ-kwQZ2jERdsqftXeWCWI": {
           "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
           "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
@@ -632,6 +606,13 @@
           "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
           "google_origins": [
             {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
               "provider_rank": 8,
@@ -644,6 +625,13 @@
         "ChIJOeEf9S2vewIRM0B9a06CKwg": {
           "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
           "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
@@ -663,32 +651,39 @@
               "provider_rank": 10,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJPzQ2GKEZ2jERnUTk4vYhg34": {
-          "canonical_place_id": "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+        "ChIJQZPwo3Ab2jERqobnp1dHMGQ": {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 19,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 1,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ": {
-          "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+        "ChIJRW8Hwo0Z2jEREk5x5tk4JIg": {
+          "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 0,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 8,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -710,6 +705,13 @@
           "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
           "google_origins": [
             {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
               "provider_rank": 0,
@@ -719,15 +721,41 @@
           ],
           "rag_origins": []
         },
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws": {
-          "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+        "ChIJUbO-TQAZ2jERPEczb5E75Jo": {
+          "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 15,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJUc0YwKIZ2jERnCfsCKnOamE": {
+          "canonical_place_id": "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": {
+          "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -745,28 +773,15 @@
           ],
           "rag_origins": []
         },
-        "ChIJW7B7zRIZ2jERINTI_uV1O-A": {
-          "canonical_place_id": "ChIJW7B7zRIZ2jERINTI_uV1O-A",
+        "ChIJWQLwKP0P2jER-AOMrDbkIW8": {
+          "canonical_place_id": "ChIJWQLwKP0P2jER-AOMrDbkIW8",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 16,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 7,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJWZX956MZ2jERIGdnbs_SgMw": {
-          "canonical_place_id": "ChIJWZX956MZ2jERIGdnbs_SgMw",
-          "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 4,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -784,54 +799,28 @@
           ],
           "rag_origins": []
         },
-        "ChIJY618FAQQ2jERzo1f5IAj4Bg": {
-          "canonical_place_id": "ChIJY618FAQQ2jERzo1f5IAj4Bg",
+        "ChIJX9eeAB0Z2jER-jpnq5mQijQ": {
+          "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 17,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ_6SSVDUb2jERZzS4PfvOSp0": {
-          "canonical_place_id": "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-          "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
               "provider_rank": 13,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJaczGWKMZ2jERizrM83vLEM0": {
-          "canonical_place_id": "ChIJaczGWKMZ2jERizrM83vLEM0",
+        "ChIJbf7nMwAZ2jERWNS0iCBvkOQ": {
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 10,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 6,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw": {
-          "canonical_place_id": "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-          "google_origins": [
-            {
-              "intent_id": "landmark_7",
-              "source_query": "Sultan Mosque in Singapore",
-              "provider_rank": 0,
-              "actual_result_count": 1,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -845,32 +834,13 @@
               "provider_rank": 11,
               "actual_result_count": 20,
               "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJc0Fxb-UW2jERUtUJQipPfns": {
-          "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
-          "google_origins": [
+            },
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 16,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 18,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJcwAAUPoa2jERiv_0ph5iKlg": {
-          "canonical_place_id": "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-          "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 7,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -884,110 +854,98 @@
               "provider_rank": 6,
               "actual_result_count": 20,
               "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJdXkrRKIZ2jERL3OFhRYeSp4": {
-          "canonical_place_id": "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-          "google_origins": [
+            },
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 5,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 3,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg": {
-          "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+        "ChIJgyRHTJ8Z2jER6FHvw5gLY78": {
+          "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 6,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 14,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ": {
-          "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+        "ChIJi3VWZfob2jERFNw7sbvKS_w": {
+          "canonical_place_id": "ChIJi3VWZfob2jERFNw7sbvKS_w",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 4,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 17,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJg4jcdA0Z2jERe0XPfVA08bU": {
-          "canonical_place_id": "ChIJg4jcdA0Z2jERe0XPfVA08bU",
+        "ChIJj29qegQZ2jER-gIhO5Kq3Ns": {
+          "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
               "provider_rank": 15,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJixzGhuMZ2jERpijfVdsTdFw": {
-          "canonical_place_id": "ChIJixzGhuMZ2jERpijfVdsTdFw",
+        "ChIJk8h8MoUZ2jERCnwwXpymc7o": {
+          "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 11,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 2,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c": {
-          "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
+        "ChIJkWHbygsZ2jERjkvNI-5be_8": {
+          "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 19,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 7,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJlShO3LgZ2jER4Xlf4Yo-jbs": {
-          "canonical_place_id": "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
+        "ChIJlU3yPoUZ2jERY0LQdNA4KPo": {
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
               "provider_rank": 6,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJlcijSfYa2jERGZ3CD7lpz_E": {
-          "canonical_place_id": "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-          "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 8,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -995,13 +953,6 @@
         "ChIJnWdQKQQZ2jERScXuKeFHyIE": {
           "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
           "google_origins": [
-            {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 0,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            },
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
@@ -1012,41 +963,41 @@
           ],
           "rag_origins": []
         },
-        "ChIJoZOhmQkZ2jERehLfvKlsoCA": {
-          "canonical_place_id": "ChIJoZOhmQkZ2jERehLfvKlsoCA",
+        "ChIJo714KsEZ2jERAwbjfpK78oY": {
+          "canonical_place_id": "ChIJo714KsEZ2jERAwbjfpK78oY",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 2,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 12,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJq7P-2n4P2jERoflGFhUAEfQ": {
-          "canonical_place_id": "ChIJq7P-2n4P2jERoflGFhUAEfQ",
+        "ChIJp_FOT5Ab2jERn8FGgYjk33E": {
+          "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
           "google_origins": [
             {
-              "intent_id": "default_2",
-              "source_query": "museums and cultural attractions in Singapore",
-              "provider_rank": 9,
+              "intent_id": "discovery_2",
+              "source_query": "Major city sights and viewpoints in Singapore",
+              "provider_rank": 19,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE": {
-          "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+        "ChIJqWGGqgIZ2jER2IgzqdgnBtA": {
+          "canonical_place_id": "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 11,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 19,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -1064,28 +1015,28 @@
           ],
           "rag_origins": []
         },
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM": {
-          "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+        "ChIJs91Di4w82jERasclvd3Rb18": {
+          "canonical_place_id": "ChIJs91Di4w82jERasclvd3Rb18",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 3,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 9,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4": {
-          "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+        "ChIJuZ4kdB0Q2jERdp1SrojDF_I": {
+          "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
           "google_origins": [
             {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 8,
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 15,
               "actual_result_count": 20,
-              "intent_kind": "fallback"
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -1094,22 +1045,16 @@
           "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
           "google_origins": [
             {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
               "provider_rank": 13,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJveKYa4oQ2jERj43WxevKhMI": {
-          "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 17,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -1129,19 +1074,6 @@
           ],
           "rag_origins": []
         },
-        "ChIJxWCbaXwZ2jERMHpks71MWqk": {
-          "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 7,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
         "ChIJxZfX_9gT2jERknwK8es7IHU": {
           "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
           "google_origins": [
@@ -1149,19 +1081,6 @@
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
               "provider_rank": 15,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJzToAJoAZ2jERJPijXPaKjR8": {
-          "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 5,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -1184,112 +1103,67 @@
       },
       "omissions": [
         {
-          "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJg4jcdA0Z2jERe0XPfVA08bU",
+          "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJoZOhmQkZ2jERehLfvKlsoCA",
+          "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "canonical_place_id": "ChIJWQLwKP0P2jER-AOMrDbkIW8",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJ3eg6SXMZ2jERCxutt4adUyY",
+          "canonical_place_id": "ChIJs91Di4w82jERasclvd3Rb18",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJ3xSV5_ob2jERCnZyINDAtN4",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJY618FAQQ2jERzo1f5IAj4Bg",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJq7P-2n4P2jERoflGFhUAEfQ",
-          "stage": "admitted",
-          "reason": "admission_capacity"
+          "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
         },
         {
           "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
@@ -1299,32 +1173,52 @@
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "canonical_place_id": "ChIJHXRM6hsa2jERTWva5xCUhy4",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJMdewuaQZ2jERwwfStN_krnM",
+          "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "stage": "enriched",
+          "reason": "unprocessed_new_success_target"
+        },
+        {
+          "canonical_place_id": "ChIJo714KsEZ2jERAwbjfpK78oY",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
@@ -1334,92 +1228,57 @@
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJWZX956MZ2jERIGdnbs_SgMw",
+          "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJW7B7zRIZ2jERINTI_uV1O-A",
+          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "canonical_place_id": "ChIJi3VWZfob2jERFNw7sbvKS_w",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJixzGhuMZ2jERpijfVdsTdFw",
+          "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "canonical_place_id": "ChIJPYrvewEZ2jERK-pztVWcDig",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
           "stage": "enriched",
           "reason": "unprocessed_new_success_target"
         },
         {
-          "canonical_place_id": "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-          "stage": "enriched",
-          "reason": "unprocessed_new_success_target"
-        },
-        {
-          "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "canonical_place_id": "ChIJM8FcNhka2jER-7g-ZTXCpyk",
           "stage": "supplied",
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJaczGWKMZ2jERizrM83vLEM0",
+          "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -1429,12 +1288,7 @@
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -1442,100 +1296,108 @@
           "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
           "stage": "supplied",
           "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "stage": "supplied",
+          "reason": "not_selected"
         }
       ],
-      "pre_rag_google_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
-        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-        "ChIJ3eg6SXMZ2jERCxutt4adUyY",
-        "ChIJ3xSV5_ob2jERCnZyINDAtN4",
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-        "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-        "ChIJA5LATO4Z2jER111V-v6abAI",
-        "ChIJARv2j3QZ2jERquLdsXGisU4",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-        "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-        "ChIJMdewuaQZ2jERwwfStN_krnM",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "ChIJOeEf9S2vewIRM0B9a06CKwg",
-        "ChIJPYrvewEZ2jERK-pztVWcDig",
-        "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-        "ChIJWZX956MZ2jERIGdnbs_SgMw",
-        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-        "ChIJY618FAQQ2jERzo1f5IAj4Bg",
-        "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-        "ChIJaczGWKMZ2jERizrM83vLEM0",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-        "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "ChIJc0Fxb-UW2jERUtUJQipPfns",
-        "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-        "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-        "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-        "ChIJg4jcdA0Z2jERe0XPfVA08bU",
-        "ChIJixzGhuMZ2jERpijfVdsTdFw",
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-        "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-        "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-        "ChIJoZOhmQkZ2jERehLfvKlsoCA",
-        "ChIJq7P-2n4P2jERoflGFhUAEfQ",
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-        "ChIJxWCbaXwZ2jERMHpks71MWqk",
-        "ChIJxZfX_9gT2jERknwK8es7IHU",
-        "ChIJzToAJoAZ2jERJPijXPaKjR8",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ],
       "incremental_rag_ids": [],
-      "incremental_rag_status": "complete"
+      "diagnostics": [],
+      "pre_rag_google_ids": {
+        "$case_material_ref": {
+          "path": "opportunities.json",
+          "pointer": "/runs/0/stages/discovered/canonical_ids",
+          "expanded_semantic_sha256": "f851098674b2cf2a937df95271aa6a105a6c6d59da9f2a49f21975cc34e26188"
+        }
+      },
+      "incremental_rag_status": "complete",
+      "rag_provenance": null,
+      "observation": {
+        "case_id": "case-04",
+        "case_revision": "current-path-20261018-r1",
+        "version": "v1",
+        "repetition_id": "selected",
+        "attempt_id": "case-04-current-path-v1-a1-selected",
+        "run_id": "case-04-current-path-v1-a1",
+        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "result_sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+        "capture_ref": {
+          "path": "captures/v1/candidate-opportunities.json",
+          "sha256": "d2e48719eef09b9a887ac214b88642c395ce0279f496a1f325db9cfb0848898b",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "assembled/manifest.json",
+            "sha256": "b0efb13d95cbdee1c7146489532520ac6c49624876173f7d7aa5a5570b41c41a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "primary-a1/execution/identity-evidence.json",
+            "sha256": "3163bc9b7abfd402e0addcb8d9cefabcd980caa00c3b225ede273f0dc2a64016",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          }
+        }
+      }
     },
     {
+      "case_id": "case-04",
+      "case_revision": "current-path-20261018-r1",
       "version": "v2",
+      "repetition_id": "selected",
+      "attempt_id": "case-04-completion-v2-a1-selected",
+      "completion_status": "completed",
       "stages": {
         "discovered": {
           "status": "partial",
           "canonical_ids": [
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-            "ChIJ15nIVN0Z2jERDvML_R3kSQo",
             "ChIJ18iYTgAZ2jEROr0Y675azV8",
             "ChIJ1WZDpv8b2jERQhRdwN8KE80",
             "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
             "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-            "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
             "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
             "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
             "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
             "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-            "ChIJ6TgDW3IU2jERgoko8dksZTc",
+            "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
             "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
             "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
             "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
             "ChIJ9xUuiNcT2jER49FS2OpE8W8",
             "ChIJA5LATO4Z2jER111V-v6abAI",
             "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+            "ChIJAQAAAK0e2jERMFQeIT5IR-E",
             "ChIJARv2j3QZ2jERquLdsXGisU4",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
             "ChIJC2PqwWgb2jERlTBRz4YkJtY",
@@ -1543,7 +1405,8 @@
             "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
             "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
             "ChIJE6uwTPsZ2jERZFH4XI60LHw",
-            "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+            "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+            "ChIJG9GVwT8a2jERvxDHau3hggQ",
             "ChIJGc8TpWsa2jERSFrowt5WsTA",
             "ChIJKYL-X7oZ2jER_dORqR3YUa8",
             "ChIJKcCAXsMZ2jERJtnerWi_JYw",
@@ -1554,17 +1417,13 @@
             "ChIJPYrvewEZ2jERK-pztVWcDig",
             "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
             "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-            "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
             "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-            "ChIJUbO-TQAZ2jERPEczb5E75Jo",
             "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
             "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
             "ChIJWbbHWvAb2jERpIJ56UdMj_E",
             "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
-            "ChIJYQzLG2YZ2jERNcDUA6ReADY",
-            "ChIJYZ8284w82jERmqMxhqDAFWQ",
             "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
             "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
             "ChIJc-qInBwa2jERpyqg4OcodwA",
@@ -1574,10 +1433,10 @@
             "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
             "ChIJjzZiUAIZ2jERNSoqcM46xEA",
             "ChIJkWHbygsZ2jERjkvNI-5be_8",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
             "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
             "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
             "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+            "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
             "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
             "ChIJu0Kj3f8W2jERpHVeB5eORMM",
@@ -1591,7 +1450,7 @@
             "ChIJzToAJoAZ2jERJPijXPaKjR8",
             "ChIJzVHFNqkZ2jERboLN2YrltH8"
           ],
-          "observed_count": 73,
+          "observed_count": 68,
           "complete_count": null,
           "reasons": [
             "rag_partial"
@@ -1599,30 +1458,28 @@
           "origin_partitions": {
             "google_only": [
               "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-              "ChIJ15nIVN0Z2jERDvML_R3kSQo",
               "ChIJ18iYTgAZ2jEROr0Y675azV8",
               "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-              "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
               "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
               "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
               "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
-              "ChIJ6TgDW3IU2jERgoko8dksZTc",
+              "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
               "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
               "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
               "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-              "ChIJA5LATO4Z2jER111V-v6abAI",
               "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+              "ChIJAQAAAK0e2jERMFQeIT5IR-E",
               "ChIJARv2j3QZ2jERquLdsXGisU4",
               "ChIJD1u-EaMZ2jERaLhNfFkR45I",
               "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
               "ChIJE6uwTPsZ2jERZFH4XI60LHw",
-              "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "ChIJG9GVwT8a2jERvxDHau3hggQ",
               "ChIJGc8TpWsa2jERSFrowt5WsTA",
               "ChIJKYL-X7oZ2jER_dORqR3YUa8",
               "ChIJKcCAXsMZ2jERJtnerWi_JYw",
               "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-              "ChIJPYrvewEZ2jERK-pztVWcDig",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
               "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
               "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
               "ChIJT4lHCgMZ2jERloDE6WmkdMk",
@@ -1630,8 +1487,6 @@
               "ChIJVSYjJKIZ2jERpRFinATD52s",
               "ChIJWbbHWvAb2jERpIJ56UdMj_E",
               "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
-              "ChIJYQzLG2YZ2jERNcDUA6ReADY",
-              "ChIJYZ8284w82jERmqMxhqDAFWQ",
               "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
               "ChIJc-qInBwa2jERpyqg4OcodwA",
               "ChIJc0Fxb-UW2jERUtUJQipPfns",
@@ -1639,9 +1494,9 @@
               "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
               "ChIJjzZiUAIZ2jERNSoqcM46xEA",
               "ChIJkWHbygsZ2jERjkvNI-5be_8",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
               "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
               "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+              "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
               "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
               "ChIJr9wqENkT2jERkRs7pMj6FLQ",
               "ChIJu0Kj3f8W2jERpHVeB5eORMM",
@@ -1656,23 +1511,22 @@
             "rag_only": [
               "ChIJ1WZDpv8b2jERQhRdwN8KE80",
               "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
               "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
               "ChIJC2PqwWgb2jERlTBRz4YkJtY",
               "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
               "ChIJP9jJLh8a2jERhU3Mx563lXE",
-              "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-              "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+              "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
               "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
               "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
               "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
               "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
             ],
             "mixed": [
-              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "ChIJA5LATO4Z2jER111V-v6abAI",
               "ChIJBTYg1g4Z2jERp_MBbu5erWY",
               "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-              "ChIJOeEf9S2vewIRM0B9a06CKwg",
-              "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "ChIJPYrvewEZ2jERK-pztVWcDig",
               "ChIJd0VihwEZ2jERKeREhO6G1Qg",
               "ChIJvWDbfRwa2jERgNnTOpAU3-o"
             ]
@@ -1682,41 +1536,41 @@
           "status": "complete",
           "canonical_ids": [
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-            "ChIJ15nIVN0Z2jERDvML_R3kSQo",
             "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
             "ChIJ20X__K4Z2jERRE8GRs-d8HE",
             "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
             "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+            "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
             "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-            "ChIJ6TgDW3IU2jERgoko8dksZTc",
+            "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
             "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
             "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
             "ChIJ9xUuiNcT2jER49FS2OpE8W8",
             "ChIJA5LATO4Z2jER111V-v6abAI",
+            "ChIJAQAAAK0e2jERMFQeIT5IR-E",
             "ChIJARv2j3QZ2jERquLdsXGisU4",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
             "ChIJD1u-EaMZ2jERaLhNfFkR45I",
             "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
             "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+            "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+            "ChIJG9GVwT8a2jERvxDHau3hggQ",
             "ChIJGc8TpWsa2jERSFrowt5WsTA",
             "ChIJKYL-X7oZ2jER_dORqR3YUa8",
             "ChIJKcCAXsMZ2jERJtnerWi_JYw",
             "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-            "ChIJOScA0tkZ2jERRqSy4_FqfD4",
             "ChIJOeEf9S2vewIRM0B9a06CKwg",
+            "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
             "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
             "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-            "ChIJT4lHCgMZ2jERloDE6WmkdMk",
             "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
             "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-            "ChIJYZ8284w82jERmqMxhqDAFWQ",
-            "ChIJc-qInBwa2jERpyqg4OcodwA",
+            "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
             "ChIJc0Fxb-UW2jERUtUJQipPfns",
+            "ChIJd0VihwEZ2jERKeREhO6G1Qg",
             "ChIJdw9r2-wa2jERGnTgPE-UVEg",
             "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
             "ChIJnWdQKQQZ2jERScXuKeFHyIE",
             "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
             "ChIJr9wqENkT2jERkRs7pMj6FLQ",
@@ -1736,34 +1590,31 @@
           "origin_partitions": {
             "google_only": [
               "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-              "ChIJ15nIVN0Z2jERDvML_R3kSQo",
               "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
               "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
               "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-              "ChIJ6TgDW3IU2jERgoko8dksZTc",
+              "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+              "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
               "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
               "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-              "ChIJA5LATO4Z2jER111V-v6abAI",
+              "ChIJAQAAAK0e2jERMFQeIT5IR-E",
               "ChIJARv2j3QZ2jERquLdsXGisU4",
               "ChIJD1u-EaMZ2jERaLhNfFkR45I",
               "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "ChIJG9GVwT8a2jERvxDHau3hggQ",
               "ChIJGc8TpWsa2jERSFrowt5WsTA",
               "ChIJKYL-X7oZ2jER_dORqR3YUa8",
               "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-              "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+              "ChIJOeEf9S2vewIRM0B9a06CKwg",
               "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
               "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-              "ChIJT4lHCgMZ2jERloDE6WmkdMk",
               "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
               "ChIJVSYjJKIZ2jERpRFinATD52s",
               "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-              "ChIJYZ8284w82jERmqMxhqDAFWQ",
-              "ChIJc-qInBwa2jERpyqg4OcodwA",
               "ChIJc0Fxb-UW2jERUtUJQipPfns",
               "ChIJdw9r2-wa2jERGnTgPE-UVEg",
               "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
               "ChIJnWdQKQQZ2jERScXuKeFHyIE",
               "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
               "ChIJr9wqENkT2jERkRs7pMj6FLQ",
@@ -1778,145 +1629,56 @@
             ],
             "rag_only": [
               "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
               "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-              "ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+              "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+              "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
             ],
             "mixed": [
-              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "ChIJA5LATO4Z2jER111V-v6abAI",
               "ChIJBTYg1g4Z2jERp_MBbu5erWY",
               "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-              "ChIJOeEf9S2vewIRM0B9a06CKwg",
+              "ChIJd0VihwEZ2jERKeREhO6G1Qg",
               "ChIJvWDbfRwa2jERgNnTOpAU3-o"
             ]
           }
         },
         "enriched": {
           "status": "complete",
-          "canonical_ids": [
-            "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-            "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-            "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-            "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-            "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-            "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-            "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-            "ChIJ6TgDW3IU2jERgoko8dksZTc",
-            "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-            "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-            "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-            "ChIJA5LATO4Z2jER111V-v6abAI",
-            "ChIJARv2j3QZ2jERquLdsXGisU4",
-            "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-            "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-            "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-            "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
-            "ChIJGc8TpWsa2jERSFrowt5WsTA",
-            "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-            "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-            "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-            "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-            "ChIJOeEf9S2vewIRM0B9a06CKwg",
-            "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-            "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-            "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-            "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-            "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-            "ChIJYZ8284w82jERmqMxhqDAFWQ",
-            "ChIJc-qInBwa2jERpyqg4OcodwA",
-            "ChIJc0Fxb-UW2jERUtUJQipPfns",
-            "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-            "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-            "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-            "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-            "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-            "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-            "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-            "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-            "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-            "ChIJveKYa4oQ2jERj43WxevKhMI",
-            "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-            "ChIJxWCbaXwZ2jERMHpks71MWqk",
-            "ChIJxZfX_9gT2jERknwK8es7IHU",
-            "ChIJzToAJoAZ2jERJPijXPaKjR8",
-            "ChIJzVHFNqkZ2jERboLN2YrltH8"
-          ],
+          "canonical_ids": {
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/stages/admitted/canonical_ids",
+              "expanded_semantic_sha256": "9c30d2270510e9032bfdcc526da24c00ec84eb5c29c97750c3d33a1964c22719"
+            }
+          },
           "observed_count": 48,
           "complete_count": 48,
           "reasons": [
             "queue_exhausted"
           ],
           "origin_partitions": {
-            "google_only": [
-              "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-              "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-              "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-              "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-              "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-              "ChIJ6TgDW3IU2jERgoko8dksZTc",
-              "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-              "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-              "ChIJA5LATO4Z2jER111V-v6abAI",
-              "ChIJARv2j3QZ2jERquLdsXGisU4",
-              "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-              "ChIJGc8TpWsa2jERSFrowt5WsTA",
-              "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-              "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-              "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-              "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-              "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-              "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-              "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-              "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-              "ChIJYZ8284w82jERmqMxhqDAFWQ",
-              "ChIJc-qInBwa2jERpyqg4OcodwA",
-              "ChIJc0Fxb-UW2jERUtUJQipPfns",
-              "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-              "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-              "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-              "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-              "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-              "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-              "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-              "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-              "ChIJveKYa4oQ2jERj43WxevKhMI",
-              "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-              "ChIJxWCbaXwZ2jERMHpks71MWqk",
-              "ChIJxZfX_9gT2jERknwK8es7IHU",
-              "ChIJzToAJoAZ2jERJPijXPaKjR8",
-              "ChIJzVHFNqkZ2jERboLN2YrltH8"
-            ],
-            "rag_only": [
-              "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-              "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-              "ChIJE6cVwggZ2jER2gl3yXW-5mQ"
-            ],
-            "mixed": [
-              "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-              "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-              "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-              "ChIJOeEf9S2vewIRM0B9a06CKwg",
-              "ChIJvWDbfRwa2jERgNnTOpAU3-o"
-            ]
+            "$case_material_ref": {
+              "path": "opportunities.json",
+              "pointer": "/runs/1/stages/admitted/origin_partitions",
+              "expanded_semantic_sha256": "57f0291524824ef95c805862aedee1e6681fdaaefbb56bb37bd589de52ffe5f1"
+            }
           }
         },
         "supplied": {
           "status": "complete",
           "canonical_ids": [
             "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-            "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-            "ChIJ15nIVN0Z2jERDvML_R3kSQo",
             "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
             "ChIJBTYg1g4Z2jERp_MBbu5erWY",
             "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+            "ChIJFQzeR6cZ2jERgM6--iWeY-U",
             "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
             "ChIJVSYjJKIZ2jERpRFinATD52s",
-            "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-            "ChIJzVHFNqkZ2jERboLN2YrltH8"
+            "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+            "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+            "ChIJvWDbfRwa2jERgNnTOpAU3-o"
           ],
           "observed_count": 10,
           "complete_count": 10,
@@ -1924,17 +1686,18 @@
           "origin_partitions": {
             "google_only": [
               "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-              "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-              "ChIJ15nIVN0Z2jERDvML_R3kSQo",
               "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-              "ChIJVSYjJKIZ2jERpRFinATD52s",
-              "ChIJzVHFNqkZ2jERboLN2YrltH8"
+              "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "ChIJVSYjJKIZ2jERpRFinATD52s"
             ],
-            "rag_only": [],
-            "mixed": [
+            "rag_only": [
               "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+            ],
+            "mixed": [
               "ChIJBTYg1g4Z2jERp_MBbu5erWY",
               "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "ChIJd0VihwEZ2jERKeREhO6G1Qg",
               "ChIJvWDbfRwa2jERgNnTOpAU3-o"
             ]
           }
@@ -1944,53 +1707,51 @@
         "status": "complete",
         "canonical_ids": [
           "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-          "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
           "ChIJBTYg1g4Z2jERp_MBbu5erWY",
           "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U",
           "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
           "ChIJVSYjJKIZ2jERpRFinATD52s",
-          "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+          "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
         ],
-        "observed_count": 8,
-        "complete_count": 8,
-        "reasons": []
+        "observed_count": 7,
+        "complete_count": 7,
+        "reasons": [],
+        "associations": {
+          "$case_material_ref": {
+            "path": "../../evaluation/primary/report.json",
+            "pointer": "/quality/groups/0/versions/v2/descriptive/identity_checks",
+            "expanded_semantic_sha256": "ee8d146c819f116fac0673644ea4264a81605cd20a82496d59fa9b4d89c5d372"
+          }
+        },
+        "identity_source_digest": "ee2869290e771d331434cd7cc0c38a8a77a29596911c42e939b1fa4ae0f5a892",
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "assembled/manifest.json",
+            "sha256": "b0efb13d95cbdee1c7146489532520ac6c49624876173f7d7aa5a5570b41c41a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "primary-a1/execution/identity-evidence.json",
+            "sha256": "3163bc9b7abfd402e0addcb8d9cefabcd980caa00c3b225ede273f0dc2a64016",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          }
+        }
       },
       "places": {
         "ChIJ0bwmznIZ2jEREOCMNggtIBk": {
           "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
           "google_origins": [
             {
-              "intent_id": "landmark_8",
+              "intent_id": "landmark_9",
               "source_query": "Buddha Tooth Relic Temple in Singapore",
               "provider_rank": 0,
               "actual_result_count": 1,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU": {
-          "canonical_place_id": "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-          "google_origins": [
-            {
-              "intent_id": "landmark_9",
-              "source_query": "Sri Mariamman Temple in Singapore",
-              "provider_rank": 0,
-              "actual_result_count": 3,
-              "intent_kind": "fallback"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo": {
-          "canonical_place_id": "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-          "google_origins": [
-            {
-              "intent_id": "landmark_9",
-              "source_query": "Sri Mariamman Temple in Singapore",
-              "provider_rank": 1,
-              "actual_result_count": 3,
               "intent_kind": "fallback"
             }
           ],
@@ -2001,8 +1762,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 5,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 3,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2018,18 +1779,19 @@
               "entity_id": "google:ChIJ1WZDpv8b2jERQhRdwN8KE80",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 13,
-              "cosine": 0.39677537718112743,
+              "rank": 6,
+              "cosine": 0.4355795460248535,
               "distance_km": 10.902880006189747,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "31c924de8b767678d2a60abe124502d806fb073887c8f14ae939a432e9b00f6f",
@@ -2046,7 +1808,7 @@
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
-              "provider_rank": 18,
+              "provider_rank": 19,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2062,18 +1824,19 @@
               "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
               "rank": 2,
-              "cosine": 0.4434742100865591,
+              "cosine": 0.46230149718505176,
               "distance_km": 7.6870117493745695,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "700e863b18da9531451afe2cd348bb7da05c031833c9d80f21c321ea2cb7f11d",
@@ -2083,19 +1846,6 @@
               "evidence_ref": "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
             }
           ]
-        },
-        "ChIJ3SUg4AMZ2jER0C_X9CgMlUc": {
-          "canonical_place_id": "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
-          "google_origins": [
-            {
-              "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 13,
-              "actual_result_count": 20,
-              "intent_kind": "normal_preference"
-            }
-          ],
-          "rag_origins": []
         },
         "ChIJ41s8zx8Z2jERXqRSzEj-TcE": {
           "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
@@ -2115,8 +1865,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 2,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 0,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2128,8 +1878,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 3,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 13,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2138,51 +1888,44 @@
         },
         "ChIJ50uIMa0Z2jER0cTt5fLaZt0": {
           "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-          "google_origins": [
-            {
-              "intent_id": "default_0",
-              "source_query": "top attractions in Singapore",
-              "provider_rank": 19,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
-            }
-          ],
+          "google_origins": [],
           "rag_origins": [
             {
               "source": "tripworld",
               "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 14,
-              "cosine": 0.39413681626320163,
+              "rank": 13,
+              "cosine": 0.4140898883342772,
               "distance_km": 9.805491882338876,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
               "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
               "policy_version": "tripworld-production-policy-v1",
-              "resolution": "google_observation",
+              "resolution": "direct_id",
               "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
             }
           ]
         },
-        "ChIJ6TgDW3IU2jERgoko8dksZTc": {
-          "canonical_place_id": "ChIJ6TgDW3IU2jERgoko8dksZTc",
+        "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0": {
+          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
           "google_origins": [
             {
-              "intent_id": "landmark_9",
-              "source_query": "Sri Mariamman Temple in Singapore",
-              "provider_rank": 2,
-              "actual_result_count": 3,
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
               "intent_kind": "fallback"
             }
           ],
@@ -2193,8 +1936,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 4,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 7,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2210,18 +1953,19 @@
               "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 3,
-              "cosine": 0.4346295673096696,
+              "rank": 4,
+              "cosine": 0.45490724385890435,
               "distance_km": 9.014344319602973,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "217f9d589abfc18463190edbeb3fa74e0cdc3736fd023d471b249914c7b0ba4f",
@@ -2251,7 +1995,7 @@
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
-              "provider_rank": 16,
+              "provider_rank": 17,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2262,24 +2006,64 @@
           "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
           "google_origins": [
             {
-              "intent_id": "landmark_3",
+              "intent_id": "landmark_2",
               "source_query": "Marina Bay Sands in Singapore",
               "provider_rank": 0,
               "actual_result_count": 1,
               "intent_kind": "fallback"
             }
           ],
-          "rag_origins": []
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.411252176090946,
+              "distance_km": 8.700364037423515,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "3ef836bab8ec0047208eeaabbeee84ef9abecb6fff37f40d5dc87f0409ade5e1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJA5LATO4Z2jER111V-v6abAI"
+            }
+          ]
         },
         "ChIJA8Chy6wP2jER5gV-C5bUNKI": {
           "canonical_place_id": "ChIJA8Chy6wP2jER5gV-C5bUNKI",
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
               "provider_rank": 15,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJAQAAAK0e2jERMFQeIT5IR-E": {
+          "canonical_place_id": "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
             }
           ],
           "rag_origins": []
@@ -2290,7 +2074,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 9,
+              "provider_rank": 10,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2314,18 +2098,19 @@
               "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 4,
-              "cosine": 0.4324977438153189,
+              "rank": 3,
+              "cosine": 0.45946854594537423,
               "distance_km": 8.229926438365897,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
@@ -2345,18 +2130,19 @@
               "entity_id": "google:ChIJC2PqwWgb2jERlTBRz4YkJtY",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 19,
-              "cosine": 0.3862069384805038,
+              "rank": 18,
+              "cosine": 0.4085662175934055,
               "distance_km": 11.000200803102496,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "9032fcb608325df175985878956ab09cbdb48e746952926fafd207f730afdbfe",
@@ -2373,7 +2159,7 @@
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
-              "provider_rank": 17,
+              "provider_rank": 18,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2386,7 +2172,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 17,
+              "provider_rank": 16,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2402,18 +2188,19 @@
               "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 18,
-              "cosine": 0.38637275180979125,
+              "rank": 17,
+              "cosine": 0.41106615000569,
               "distance_km": 8.21680563162131,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "b1c2a2e14550862320dfa46d129a3bbfe1ea171a2c3e5063d67a83589cc0d852",
@@ -2429,23 +2216,36 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 7,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 5,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
         },
-        "ChIJE9ZgZWwZ2jERlu5z66UIED8": {
-          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+        "ChIJFQzeR6cZ2jERgM6--iWeY-U": {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
           "google_origins": [
             {
-              "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 11,
+              "intent_id": "landmark_8",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        "ChIJG9GVwT8a2jERvxDHau3hggQ": {
+          "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 18,
               "actual_result_count": 20,
-              "intent_kind": "normal_preference"
+              "intent_kind": "fallback"
             }
           ],
           "rag_origins": []
@@ -2469,7 +2269,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 8,
+              "provider_rank": 9,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -2494,8 +2294,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 12,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 1,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             },
@@ -2513,18 +2313,19 @@
               "entity_id": "google:ChIJMxZ-kwQZ2jERdsqftXeWCWI",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
               "rank": 1,
-              "cosine": 0.4623095713669325,
+              "cosine": 0.4856621929608478,
               "distance_km": 9.16781298458928,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "a1c0399c89c7b463449b8d9a400a9e2a3245c8511003723debd1ce981ee5cd37",
@@ -2544,6 +2345,13 @@
               "provider_rank": 8,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -2559,33 +2367,7 @@
               "intent_kind": "fallback"
             }
           ],
-          "rag_origins": [
-            {
-              "source": "tripworld",
-              "entity_id": "google:ChIJOeEf9S2vewIRM0B9a06CKwg",
-              "query": {
-                "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
-                "origin": "user",
-                "intent_ids": [
-                  "discovery_1"
-                ],
-                "requirement_refs": [
-                  "semantic_1"
-                ],
-                "version": "rag_query_plan_1"
-              },
-              "rank": 12,
-              "cosine": 0.397610593269362,
-              "distance_km": 8.778443999922283,
-              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
-              "text_hash": "afcda6902fff5b52205b28819facadc0f4bf9d421582bf22d1994bbc59554451",
-              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
-              "policy_version": "tripworld-production-policy-v1",
-              "resolution": "google_observation",
-              "evidence_ref": "google_places:ChIJOeEf9S2vewIRM0B9a06CKwg"
-            }
-          ]
+          "rag_origins": []
         },
         "ChIJP9jJLh8a2jERhU3Mx563lXE": {
           "canonical_place_id": "ChIJP9jJLh8a2jERhU3Mx563lXE",
@@ -2596,18 +2378,19 @@
               "entity_id": "google:ChIJP9jJLh8a2jERhU3Mx563lXE",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 20,
-              "cosine": 0.38597058099596115,
+              "rank": 15,
+              "cosine": 0.4120254393808429,
               "distance_km": 4.56068996999007,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "552c6d75cd111bd0540c921e3c4595c45ec43d95c4a49c9f515db3cda4c6b383",
@@ -2630,21 +2413,8 @@
             },
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 6,
-              "actual_result_count": 20,
-              "intent_kind": "normal_preference"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJQZPwo3Ab2jERqobnp1dHMGQ": {
-          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
-          "google_origins": [
-            {
-              "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 18,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 10,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2652,27 +2422,60 @@
           "rag_origins": [
             {
               "source": "tripworld",
-              "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "entity_id": "google:ChIJPYrvewEZ2jERK-pztVWcDig",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 9,
-              "cosine": 0.40503165691902376,
+              "rank": 20,
+              "cosine": 0.403227066801366,
+              "distance_km": 9.022869267784783,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "294ce511c0f6ea034dcd73187c8186d1352c3e75a7df8df46bfaf17b63d44736",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJPYrvewEZ2jERK-pztVWcDig"
+            }
+          ]
+        },
+        "ChIJQZPwo3Ab2jERqobnp1dHMGQ": {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.41962960841479324,
               "distance_km": 4.486417058196392,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "792fc8b190452ccd486ebd627821c3aa76dbe83e84af6e50c69c90ee4937a3bb",
               "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
               "policy_version": "tripworld-production-policy-v1",
-              "resolution": "google_observation",
+              "resolution": "direct_id",
               "evidence_ref": "google_places:ChIJQZPwo3Ab2jERqobnp1dHMGQ"
             }
           ]
@@ -2689,37 +2492,6 @@
             }
           ],
           "rag_origins": []
-        },
-        "ChIJRTbX4Rgb2jER8Zmg6qH2_Es": {
-          "canonical_place_id": "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-          "google_origins": [],
-          "rag_origins": [
-            {
-              "source": "tripworld",
-              "entity_id": "google:ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-              "query": {
-                "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
-                "origin": "user",
-                "intent_ids": [
-                  "discovery_1"
-                ],
-                "requirement_refs": [
-                  "semantic_1"
-                ],
-                "version": "rag_query_plan_1"
-              },
-              "rank": 17,
-              "cosine": 0.3884219958279138,
-              "distance_km": 8.823446087888039,
-              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
-              "text_hash": "a7799312a7db8fcc814f08eef9602f37e454a6a0070bab78a6cb08213723d350",
-              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
-              "policy_version": "tripworld-production-policy-v1",
-              "resolution": "direct_id",
-              "evidence_ref": "google_places:ChIJRTbX4Rgb2jER8Zmg6qH2_Es"
-            }
-          ]
         },
         "ChIJT4AHFwcZ2jERDJbPVLTEbOk": {
           "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
@@ -2743,40 +2515,16 @@
               "provider_rank": 0,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
-        },
-        "ChIJUbO-TQAZ2jERPEczb5E75Jo": {
-          "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
-          "google_origins": [],
-          "rag_origins": [
-            {
-              "source": "tripworld",
-              "entity_id": "google:ChIJUbO-TQAZ2jERPEczb5E75Jo",
-              "query": {
-                "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
-                "origin": "user",
-                "intent_ids": [
-                  "discovery_1"
-                ],
-                "requirement_refs": [
-                  "semantic_1"
-                ],
-                "version": "rag_query_plan_1"
-              },
-              "rank": 16,
-              "cosine": 0.3909476296399309,
-              "distance_km": 9.2027564305541,
-              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
-              "text_hash": "28a090c8c0f2e1957bd6d1f3c04dad5cdb13ac7e59b12f9c8ec58822d93dd2e8",
-              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
-              "policy_version": "tripworld-production-policy-v1",
-              "resolution": "direct_id",
-              "evidence_ref": "google_places:ChIJUbO-TQAZ2jERPEczb5E75Jo"
-            }
-          ]
         },
         "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": {
           "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
@@ -2787,18 +2535,19 @@
               "entity_id": "google:ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
               "rank": 11,
-              "cosine": 0.3976637484035649,
+              "cosine": 0.4193774211777801,
               "distance_km": 8.833105081507105,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "1b7240351ee8e383618b996f291e66c8fffd56cabc78d52069a521dd98ff4b24",
@@ -2834,8 +2583,8 @@
             },
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 10,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 9,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -2860,36 +2609,10 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 17,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 11,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJYQzLG2YZ2jERNcDUA6ReADY": {
-          "canonical_place_id": "ChIJYQzLG2YZ2jERNcDUA6ReADY",
-          "google_origins": [
-            {
-              "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 14,
-              "actual_result_count": 20,
-              "intent_kind": "normal_preference"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJYZ8284w82jERmqMxhqDAFWQ": {
-          "canonical_place_id": "ChIJYZ8284w82jERmqMxhqDAFWQ",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 3,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
             }
           ],
           "rag_origins": []
@@ -2903,18 +2626,19 @@
               "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 6,
-              "cosine": 0.41657671829600895,
+              "rank": 8,
+              "cosine": 0.43289629024885434,
               "distance_km": 9.753341932272603,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
@@ -2930,7 +2654,7 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
               "provider_rank": 19,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
@@ -2947,6 +2671,13 @@
               "provider_rank": 11,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": []
@@ -2968,18 +2699,18 @@
           "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
           "google_origins": [
             {
-              "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 9,
-              "actual_result_count": 20,
-              "intent_kind": "normal_preference"
-            },
-            {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
               "provider_rank": 6,
               "actual_result_count": 20,
               "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
             }
           ],
           "rag_origins": [
@@ -2988,18 +2719,19 @@
               "entity_id": "google:ChIJd0VihwEZ2jERKeREhO6G1Qg",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 10,
-              "cosine": 0.40001864433066314,
+              "rank": 14,
+              "cosine": 0.4129582151224357,
               "distance_km": 9.154371449127103,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "8ac226b2b0d2ece680e666d4f442038ec90eaa3313c1bc6639c0d9454896ad1b",
@@ -3016,7 +2748,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 6,
+              "provider_rank": 8,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3041,7 +2773,7 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
               "provider_rank": 16,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
@@ -3054,23 +2786,10 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 1,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 4,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
-            }
-          ],
-          "rag_origins": []
-        },
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c": {
-          "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-          "google_origins": [
-            {
-              "intent_id": "default_1",
-              "source_query": "local food in Singapore",
-              "provider_rank": 18,
-              "actual_result_count": 20,
-              "intent_kind": "fallback"
             }
           ],
           "rag_origins": []
@@ -3080,8 +2799,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 0,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 2,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             }
@@ -3097,18 +2816,19 @@
               "entity_id": "google:ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 7,
-              "cosine": 0.40848155046944923,
+              "rank": 9,
+              "cosine": 0.4217715687087693,
               "distance_km": 8.837963583910925,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "cf0271510ad8667ddadbebd9043b92877f13293e46be4d648b7f65b2bb7ba9e9",
@@ -3132,13 +2852,26 @@
           ],
           "rag_origins": []
         },
+        "ChIJq-yS9QYZ2jERF5vtZzLjV5A": {
+          "canonical_place_id": "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
         "ChIJq_C4dPkZ2jERxkvY-4pAtWE": {
           "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
           "google_origins": [
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 10,
+              "provider_rank": 7,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3164,7 +2897,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 1,
+              "provider_rank": 3,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3180,18 +2913,19 @@
               "entity_id": "google:ChIJuZ4kdB0Q2jERdp1SrojDF_I",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 15,
-              "cosine": 0.39200959253254053,
+              "rank": 12,
+              "cosine": 0.4168310513001061,
               "distance_km": 10.098292275027628,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "29e26f9637cb38caf043906a958c40fa5badc51e512aa3fad2e69d0afbd230ae",
@@ -3208,7 +2942,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 5,
+              "provider_rank": 4,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3220,8 +2954,8 @@
           "google_origins": [
             {
               "intent_id": "discovery_1",
-              "source_query": "Gardens and major city sights with views in Singapore",
-              "provider_rank": 8,
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 6,
               "actual_result_count": 20,
               "intent_kind": "normal_preference"
             },
@@ -3239,18 +2973,19 @@
               "entity_id": "google:ChIJvWDbfRwa2jERgNnTOpAU3-o",
               "query": {
                 "query_id": "rag_1",
-                "text": "Gardens and major city sights with views",
+                "text": "Gardens, major city sights, and scenic views",
                 "origin": "user",
                 "intent_ids": [
                   "discovery_1"
                 ],
                 "requirement_refs": [
-                  "semantic_1"
+                  "semantic_1",
+                  "semantic_2"
                 ],
                 "version": "rag_query_plan_1"
               },
-              "rank": 8,
-              "cosine": 0.4077928474196377,
+              "rank": 7,
+              "cosine": 0.4353167491773666,
               "distance_km": 4.04924432277999,
               "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
               "text_hash": "7bebf2593e67fcc1387aeaa3143b9dbee87e9600c499f50c13dbc3c6c4c47ec8",
@@ -3267,7 +3002,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 16,
+              "provider_rank": 17,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3278,7 +3013,7 @@
           "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
           "google_origins": [
             {
-              "intent_id": "landmark_6",
+              "intent_id": "landmark_5",
               "source_query": "Raffles Hotel in Singapore",
               "provider_rank": 0,
               "actual_result_count": 1,
@@ -3293,7 +3028,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 7,
+              "provider_rank": 6,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3306,7 +3041,7 @@
             {
               "intent_id": "default_0",
               "source_query": "top attractions in Singapore",
-              "provider_rank": 15,
+              "provider_rank": 16,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3319,7 +3054,7 @@
             {
               "intent_id": "default_1",
               "source_query": "local food in Singapore",
-              "provider_rank": 4,
+              "provider_rank": 5,
               "actual_result_count": 20,
               "intent_kind": "fallback"
             }
@@ -3352,32 +3087,7 @@
           "reason": "ineligible_or_excluded"
         },
         {
-          "canonical_place_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
@@ -3387,7 +3097,7 @@
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
@@ -3397,7 +3107,17 @@
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJYQzLG2YZ2jERNcDUA6ReADY",
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
@@ -3407,27 +3127,12 @@
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
           "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
         {
-          "canonical_place_id": "ChIJUbO-TQAZ2jERPEczb5E75Jo",
-          "stage": "admitted",
-          "reason": "admission_capacity"
-        },
-        {
-          "canonical_place_id": "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
@@ -3438,6 +3143,11 @@
         },
         {
           "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+          "stage": "admitted",
+          "reason": "admission_capacity"
+        },
+        {
+          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
           "stage": "admitted",
           "reason": "admission_capacity"
         },
@@ -3482,22 +3192,22 @@
           "reason": "not_selected"
         },
         {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
           "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
           "stage": "supplied",
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
           "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJkaIuTuUW2jER0jvkeQGdb7c",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -3532,7 +3242,17 @@
           "reason": "not_selected"
         },
         {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
           "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -3542,12 +3262,7 @@
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJ6TgDW3IU2jERgoko8dksZTc",
+          "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -3557,27 +3272,12 @@
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJYZ8284w82jERmqMxhqDAFWQ",
+          "canonical_place_id": "ChIJAQAAAK0e2jERMFQeIT5IR-E",
           "stage": "supplied",
           "reason": "not_selected"
         },
         {
           "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-          "stage": "supplied",
-          "reason": "not_selected"
-        },
-        {
-          "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -3647,7 +3347,7 @@
           "reason": "not_selected"
         },
         {
-          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
           "stage": "supplied",
           "reason": "not_selected"
         },
@@ -3655,368 +3355,459 @@
           "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
           "stage": "supplied",
           "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "stage": "supplied",
+          "reason": "not_selected"
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "stage": "supplied",
+          "reason": "not_selected"
         }
-      ],
-      "pre_rag_google_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-        "ChIJ18iYTgAZ2jEROr0Y675azV8",
-        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-        "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-        "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-        "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-        "ChIJ6TgDW3IU2jERgoko8dksZTc",
-        "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-        "ChIJA5LATO4Z2jER111V-v6abAI",
-        "ChIJA8Chy6wP2jER5gV-C5bUNKI",
-        "ChIJARv2j3QZ2jERquLdsXGisU4",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-        "ChIJE6uwTPsZ2jERZFH4XI60LHw",
-        "ChIJE9ZgZWwZ2jERlu5z66UIED8",
-        "ChIJGc8TpWsa2jERSFrowt5WsTA",
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "ChIJOeEf9S2vewIRM0B9a06CKwg",
-        "ChIJPYrvewEZ2jERK-pztVWcDig",
-        "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-        "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
-        "ChIJYQzLG2YZ2jERNcDUA6ReADY",
-        "ChIJYZ8284w82jERmqMxhqDAFWQ",
-        "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
-        "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "ChIJc0Fxb-UW2jERUtUJQipPfns",
-        "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-        "ChIJjzZiUAIZ2jERNSoqcM46xEA",
-        "ChIJkWHbygsZ2jERjkvNI-5be_8",
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-        "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
-        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-        "ChIJxWCbaXwZ2jERMHpks71MWqk",
-        "ChIJxZfX_9gT2jERknwK8es7IHU",
-        "ChIJzToAJoAZ2jERJPijXPaKjR8",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
       ],
       "incremental_rag_ids": [
         "ChIJ1WZDpv8b2jERQhRdwN8KE80",
         "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
         "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
         "ChIJC2PqwWgb2jERlTBRz4YkJtY",
         "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
         "ChIJP9jJLh8a2jERhU3Mx563lXE",
-        "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-        "ChIJUbO-TQAZ2jERPEczb5E75Jo",
+        "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
         "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
         "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
         "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
         "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
       ],
-      "incremental_rag_status": "partial"
+      "diagnostics": [],
+      "pre_rag_google_ids": [
+        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "ChIJ18iYTgAZ2jEROr0Y675azV8",
+        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+        "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+        "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+        "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+        "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+        "ChIJA5LATO4Z2jER111V-v6abAI",
+        "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+        "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+        "ChIJARv2j3QZ2jERquLdsXGisU4",
+        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+        "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+        "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+        "ChIJG9GVwT8a2jERvxDHau3hggQ",
+        "ChIJGc8TpWsa2jERSFrowt5WsTA",
+        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+        "ChIJOeEf9S2vewIRM0B9a06CKwg",
+        "ChIJPYrvewEZ2jERK-pztVWcDig",
+        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+        "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+        "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+        "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+        "ChIJc-qInBwa2jERpyqg4OcodwA",
+        "ChIJc0Fxb-UW2jERUtUJQipPfns",
+        "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+        "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+        "ChIJkWHbygsZ2jERjkvNI-5be_8",
+        "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+        "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
+        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+        "ChIJveKYa4oQ2jERj43WxevKhMI",
+        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+        "ChIJxWCbaXwZ2jERMHpks71MWqk",
+        "ChIJxZfX_9gT2jERknwK8es7IHU",
+        "ChIJzToAJoAZ2jERJPijXPaKjR8",
+        "ChIJzVHFNqkZ2jERboLN2YrltH8"
+      ],
+      "incremental_rag_status": "partial",
+      "rag_provenance": {
+        "$case_material_ref": {
+          "path": "../../generation/v2/rag-origins.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "6a6500970bb2f4429490e4c1966afb4726a193fc34166f781a97d295168e4087"
+        }
+      },
+      "observation": {
+        "case_id": "case-04",
+        "case_revision": "current-path-20261018-r1",
+        "version": "v2",
+        "repetition_id": "selected",
+        "attempt_id": "case-04-completion-v2-a1-selected",
+        "run_id": "case-04-completion-v2-a1",
+        "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+        "configuration_sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+        "result_sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+        "capture_ref": {
+          "path": "captures/v2/candidate-opportunities.json",
+          "sha256": "13ba4fde9967baa8e9659ff8e8598c2d643406135a7d476002fbe7bb96ef8829",
+          "media_type": "application/json",
+          "availability": "available",
+          "schema_version": "rtpeval_candidate_capture_1"
+        },
+        "identity_sources": {
+          "mode": "program",
+          "manifest_ref": {
+            "path": "assembled/manifest.json",
+            "sha256": "b0efb13d95cbdee1c7146489532520ac6c49624876173f7d7aa5a5570b41c41a",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_batch_1"
+          },
+          "evidence_ref": {
+            "path": "primary-a1/execution/identity-evidence.json",
+            "sha256": "3163bc9b7abfd402e0addcb8d9cefabcd980caa00c3b225ede273f0dc2a64016",
+            "media_type": "application/json",
+            "availability": "available",
+            "schema_version": "rtpeval_identity_evidence_1"
+          }
+        }
+      }
     }
   ],
   "cross_version": [
     {
-      "stage": "discovered",
-      "comparison_status": "observed_only",
-      "v1_only_ids": [
-        "ChIJ1ZbzmxIZ2jERLxbskKJNx8Q",
-        "ChIJ3eg6SXMZ2jERCxutt4adUyY",
-        "ChIJ3xSV5_ob2jERCnZyINDAtN4",
-        "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
-        "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-        "ChIJMdewuaQZ2jERwwfStN_krnM",
-        "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-        "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-        "ChIJWZX956MZ2jERIGdnbs_SgMw",
-        "ChIJY618FAQQ2jERzo1f5IAj4Bg",
-        "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-        "ChIJaczGWKMZ2jERizrM83vLEM0",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-        "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-        "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-        "ChIJg4jcdA0Z2jERe0XPfVA08bU",
-        "ChIJixzGhuMZ2jERpijfVdsTdFw",
-        "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-        "ChIJlcijSfYa2jERGZ3CD7lpz_E",
-        "ChIJoZOhmQkZ2jERehLfvKlsoCA",
-        "ChIJq7P-2n4P2jERoflGFhUAEfQ"
-      ],
-      "v2_only_ids": [
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-        "ChIJ18iYTgAZ2jEROr0Y675azV8",
-        "ChIJ1WZDpv8b2jERQhRdwN8KE80",
-        "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-        "ChIJ3SUg4AMZ2jER0C_X9CgMlUc",
-        "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-        "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
-        "ChIJ6TgDW3IU2jERgoko8dksZTc",
-        "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
-        "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-        "ChIJA8Chy6wP2jER5gV-C5bUNKI",
-        "ChIJC2PqwWgb2jERlTBRz4YkJtY",
-        "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
-        "ChIJE6uwTPsZ2jERZFH4XI60LHw",
-        "ChIJE9ZgZWwZ2jERlu5z66UIED8",
-        "ChIJGc8TpWsa2jERSFrowt5WsTA",
-        "ChIJP9jJLh8a2jERhU3Mx563lXE",
-        "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
-        "ChIJRTbX4Rgb2jER8Zmg6qH2_Es",
-        "ChIJUbO-TQAZ2jERPEczb5E75Jo",
-        "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
-        "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
-        "ChIJYQzLG2YZ2jERNcDUA6ReADY",
-        "ChIJYZ8284w82jERmqMxhqDAFWQ",
-        "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
-        "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
-        "ChIJjzZiUAIZ2jERNSoqcM46xEA",
-        "ChIJkWHbygsZ2jERjkvNI-5be_8",
-        "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
-        "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
-        "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
-      ],
-      "retained_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-        "ChIJA5LATO4Z2jER111V-v6abAI",
-        "ChIJARv2j3QZ2jERquLdsXGisU4",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "ChIJOeEf9S2vewIRM0B9a06CKwg",
-        "ChIJPYrvewEZ2jERK-pztVWcDig",
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-        "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "ChIJc0Fxb-UW2jERUtUJQipPfns",
-        "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-        "ChIJxWCbaXwZ2jERMHpks71MWqk",
-        "ChIJxZfX_9gT2jERknwK8es7IHU",
-        "ChIJzToAJoAZ2jERJPijXPaKjR8",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ]
-    },
-    {
-      "stage": "admitted",
-      "comparison_status": "complete",
-      "v1_only_ids": [
-        "ChIJFQzeR6cZ2jERgM6--iWeY-U",
-        "ChIJMdewuaQZ2jERwwfStN_krnM",
-        "ChIJPYrvewEZ2jERK-pztVWcDig",
-        "ChIJPzQ2GKEZ2jERnUTk4vYhg34",
-        "ChIJW7B7zRIZ2jERINTI_uV1O-A",
-        "ChIJWZX956MZ2jERIGdnbs_SgMw",
-        "ChIJ_6SSVDUb2jERZzS4PfvOSp0",
-        "ChIJaczGWKMZ2jERizrM83vLEM0",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-        "ChIJcwAAUPoa2jERiv_0ph5iKlg",
-        "ChIJd0VihwEZ2jERKeREhO6G1Qg",
-        "ChIJdXkrRKIZ2jERL3OFhRYeSp4",
-        "ChIJixzGhuMZ2jERpijfVdsTdFw",
-        "ChIJlShO3LgZ2jER4Xlf4Yo-jbs",
-        "ChIJlcijSfYa2jERGZ3CD7lpz_E"
-      ],
-      "v2_only_ids": [
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-        "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-        "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-        "ChIJ6TgDW3IU2jERgoko8dksZTc",
-        "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-        "ChIJARv2j3QZ2jERquLdsXGisU4",
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-        "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
-        "ChIJGc8TpWsa2jERSFrowt5WsTA",
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-        "ChIJYZ8284w82jERmqMxhqDAFWQ",
-        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-        "ChIJxWCbaXwZ2jERMHpks71MWqk"
-      ],
-      "retained_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-        "ChIJA5LATO4Z2jER111V-v6abAI",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "ChIJOeEf9S2vewIRM0B9a06CKwg",
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "ChIJc0Fxb-UW2jERUtUJQipPfns",
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-        "ChIJxZfX_9gT2jERknwK8es7IHU",
-        "ChIJzToAJoAZ2jERJPijXPaKjR8",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ]
-    },
-    {
-      "stage": "enriched",
-      "comparison_status": "complete",
-      "v1_only_ids": [
-        "ChIJaczGWKMZ2jERizrM83vLEM0",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw"
-      ],
-      "v2_only_ids": [
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-        "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
-        "ChIJ20X__K4Z2jERRE8GRs-d8HE",
-        "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
-        "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
-        "ChIJ6TgDW3IU2jERgoko8dksZTc",
-        "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
-        "ChIJA5LATO4Z2jER111V-v6abAI",
-        "ChIJARv2j3QZ2jERquLdsXGisU4",
-        "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
-        "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
-        "ChIJGc8TpWsa2jERSFrowt5WsTA",
-        "ChIJKcCAXsMZ2jERJtnerWi_JYw",
-        "ChIJOScA0tkZ2jERRqSy4_FqfD4",
-        "ChIJOeEf9S2vewIRM0B9a06CKwg",
-        "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
-        "ChIJT4lHCgMZ2jERloDE6WmkdMk",
-        "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
-        "ChIJWbbHWvAb2jERpIJ56UdMj_E",
-        "ChIJYZ8284w82jERmqMxhqDAFWQ",
-        "ChIJc0Fxb-UW2jERUtUJQipPfns",
-        "ChIJdw9r2-wa2jERGnTgPE-UVEg",
-        "ChIJnWdQKQQZ2jERScXuKeFHyIE",
-        "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
-        "ChIJu0Kj3f8W2jERpHVeB5eORMM",
-        "ChIJveKYa4oQ2jERj43WxevKhMI",
-        "ChIJxWCbaXwZ2jERMHpks71MWqk",
-        "ChIJzToAJoAZ2jERJPijXPaKjR8"
-      ],
-      "retained_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
-        "ChIJ9xUuiNcT2jER49FS2OpE8W8",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJKYL-X7oZ2jER_dORqR3YUa8",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJc-qInBwa2jERpyqg4OcodwA",
-        "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
-        "ChIJkaIuTuUW2jER0jvkeQGdb7c",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ",
-        "ChIJv4Mk4QYa2jERlGncaOIvpW4",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
-        "ChIJxZfX_9gT2jERknwK8es7IHU",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ]
-    },
-    {
-      "stage": "supplied",
-      "comparison_status": "complete",
-      "v1_only_ids": [
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw",
-        "ChIJr9wqENkT2jERkRs7pMj6FLQ"
-      ],
-      "v2_only_ids": [
-        "ChIJ0yjU0QwZ2jER6gg0ImuCTRU",
-        "ChIJ15nIVN0Z2jERDvML_R3kSQo",
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0"
-      ],
-      "retained_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ]
-    },
-    {
-      "stage": "scheduled",
-      "comparison_status": "complete",
-      "v1_only_ids": [
-        "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
-        "ChIJb6xq2bAZ2jERE1P6sVKtofw"
-      ],
-      "v2_only_ids": [
-        "ChIJ50uIMa0Z2jER0cTt5fLaZt0"
-      ],
-      "retained_ids": [
-        "ChIJ0bwmznIZ2jEREOCMNggtIBk",
-        "ChIJBTYg1g4Z2jERp_MBbu5erWY",
-        "ChIJD1u-EaMZ2jERaLhNfFkR45I",
-        "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
-        "ChIJVSYjJKIZ2jERpRFinATD52s",
-        "ChIJvWDbfRwa2jERgNnTOpAU3-o",
-        "ChIJzVHFNqkZ2jERboLN2YrltH8"
-      ]
+      "case_id": "case-04",
+      "case_revision": "current-path-20261018-r1",
+      "repetition_id": "selected",
+      "discovered": {
+        "status": "unavailable",
+        "v2_added_ids": null,
+        "v1_only_ids": null
+      },
+      "admitted": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+          "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+          "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+          "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+          "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "ChIJARv2j3QZ2jERquLdsXGisU4",
+          "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+          "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "ChIJGc8TpWsa2jERSFrowt5WsTA",
+          "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+          "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+          "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "ChIJzToAJoAZ2jERJPijXPaKjR8"
+        ],
+        "v1_only_ids": [
+          "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+          "ChIJ18iYTgAZ2jEROr0Y675azV8",
+          "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+          "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
+          "ChIJC0QiBqgZ2jERMi6yVlsqB6Y",
+          "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+          "ChIJEy4Jk7Eb2jERjHRiAWMr5AE",
+          "ChIJHXRM6hsa2jERTWva5xCUhy4",
+          "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+          "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "ChIJPYrvewEZ2jERK-pztVWcDig",
+          "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+          "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+          "ChIJUc0YwKIZ2jERnCfsCKnOamE",
+          "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+          "ChIJc-qInBwa2jERpyqg4OcodwA",
+          "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+          "ChIJi3VWZfob2jERFNw7sbvKS_w",
+          "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+          "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+          "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+          "ChIJo714KsEZ2jERAwbjfpK78oY",
+          "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+          "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
+          "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
+        ]
+      },
+      "enriched": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+          "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+          "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+          "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+          "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "ChIJARv2j3QZ2jERquLdsXGisU4",
+          "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+          "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "ChIJGc8TpWsa2jERSFrowt5WsTA",
+          "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+          "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+          "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+          "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "ChIJzToAJoAZ2jERJPijXPaKjR8"
+        ],
+        "v1_only_ids": [
+          "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "ChIJM8FcNhka2jER-7g-ZTXCpyk",
+          "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+          "ChIJUc0YwKIZ2jERnCfsCKnOamE"
+        ]
+      },
+      "supplied": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "ChIJd0VihwEZ2jERKeREhO6G1Qg"
+        ],
+        "v1_only_ids": [
+          "ChIJ3wysGNcQ2jERfWy5UZcW7mY",
+          "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ]
+      },
+      "scheduled": {
+        "status": "complete",
+        "v2_added_ids": [
+          "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+        ],
+        "v1_only_ids": [
+          "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ]
+      }
     }
-  ]
+  ],
+  "source_bindings": [
+    {
+      "path": "analysis-input/census.json",
+      "sha256": "2f5ff1678b92877518ba00590082d0a2179245a849cb05a81977bcf4d36d6376",
+      "schema_version": "rtpeval_research_census_1"
+    },
+    {
+      "path": "analysis-input/opportunities-material.json",
+      "sha256": "47fd7f1854e171774e7300d750c134ce1ef4d3f02f2ac8118e2eef59cbf9cc9c",
+      "schema_version": "rtpeval_research_opportunities_1"
+    },
+    {
+      "path": "analysis-input/population.json",
+      "sha256": "6b288dbfae17dca69aa233cd9537046946e8b0aa08491b6d9639a20cdf15f83b",
+      "schema_version": "rtpeval_research_population_1"
+    },
+    {
+      "path": "analysis-input/profile.json",
+      "sha256": "912dd343203ad89a0d76d5cec4357fc2addf32b1cda4fa6df5e0556b61b8bca2",
+      "schema_version": "rtpeval_research_profile_1"
+    },
+    {
+      "path": "assembled/manifest.json",
+      "sha256": "b0efb13d95cbdee1c7146489532520ac6c49624876173f7d7aa5a5570b41c41a",
+      "schema_version": "rtpeval_batch_1"
+    },
+    {
+      "path": "assembled/requirements.json",
+      "sha256": "be37be6baccd447e555a74df2396996f1033569da1be5e1f37c079c0a2b1278e",
+      "schema_version": "rtpeval_requirements_1"
+    },
+    {
+      "path": "assembled/sources/captures/v0/producer-completion.json",
+      "sha256": "ada6acbef27183f31287c16b887f4688e2f1dd44691aa7f2c4bfb0993f06ccc0",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v0/producer-declaration-0-v0.json",
+      "sha256": "b36b4fc166e5271dab4b7d59943752f59a3831469ba9e8a778fbd72d867b05d0",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "assembled/sources/captures/v0/result.json",
+      "sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v0/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v0/usage.json",
+      "sha256": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "assembled/sources/captures/v1/producer-completion.json",
+      "sha256": "0c5f3ed2ad72ee21582c6601f3a40ba0857940192605a9c0a1c8e209d204024b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v1/producer-declaration-0-v1.json",
+      "sha256": "3f923414fe3b24ca7bf0a75df1ccaf43b643f4a69098481e6733cd25cafd8fab",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "assembled/sources/captures/v1/result.json",
+      "sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v1/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v1/usage.json",
+      "sha256": "c7f7d95339ca03654b415858a0618d9d6f4c50c8273733eb9a4dc41e0832a8be",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "assembled/sources/captures/v2/producer-completion.json",
+      "sha256": "717656293b35ab58297778c194a99873530332b8de8b92a04f67ed945015e440",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v2/producer-declaration-0-v2.json",
+      "sha256": "737f759061f40469232229b6eff02cf06e10f43c518b386cb7f90ced8d05f953",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "assembled/sources/captures/v2/result.json",
+      "sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v2/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v2/usage.json",
+      "sha256": "b4f075575400158b30f9cce1cb967a7d94104fc09eb9deab4e150ab9031431c2",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "assembled/sources/captures/v3/producer-completion.json",
+      "sha256": "db67acb58225f83eb2d320019b240630ad61717b9044bfef002ff710c4fa53a5",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v3/producer-declaration-0-v3.json",
+      "sha256": "6ea5bd330f91d28cd2eac6eecd3a854797198472a2adc8f9f1d7992f08fe68e5",
+      "schema_version": "rtpeval_provenance_1"
+    },
+    {
+      "path": "assembled/sources/captures/v3/result.json",
+      "sha256": "263c61efd99e3437444060bd8ece84d7f0b19ae19835ca781ba9a1537636550b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v3/runtime-policy.json",
+      "sha256": "3daf6e515dc0aeb7199b15d9ff1a4521d871183c236b4a3c3027124cfd1b2d6b",
+      "schema_version": null
+    },
+    {
+      "path": "assembled/sources/captures/v3/usage.json",
+      "sha256": "29e975ba6f4772a7d0f6c76ffc8ee92827e6af7a74ee0f1509634320a97c236a",
+      "schema_version": "rtpeval_usage_1"
+    },
+    {
+      "path": "assembled/sources/input.json",
+      "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "schema_version": null
+    },
+    {
+      "path": "captures/v0/planner-dispatch.json",
+      "sha256": "26bfa41be563ee6eb29a288c6100b61c1ffc416c737b2dfd5ef765db5e24dabd",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v1/candidate-opportunities.json",
+      "sha256": "d2e48719eef09b9a887ac214b88642c395ce0279f496a1f325db9cfb0848898b",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "captures/v1/planner-dispatch.json",
+      "sha256": "73ab66d1867f33a448be5c8bcd0fd5d69046caeccff4accd37a899ffd1be415f",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v2/candidate-opportunities.json",
+      "sha256": "13ba4fde9967baa8e9659ff8e8598c2d643406135a7d476002fbe7bb96ef8829",
+      "schema_version": "rtpeval_candidate_capture_1"
+    },
+    {
+      "path": "captures/v2/planner-dispatch.json",
+      "sha256": "dce984547eebd00a954455d0e0e8081fba17ed3b1e58623914c7ad67f5de2f57",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "captures/v3/planner-dispatch.json",
+      "sha256": "3b5f7819ab647a9d844c913fac3ee42df4f55cae0ffd9dc467394f4b851bbc8e",
+      "schema_version": "rtpeval_planner_dispatch_1"
+    },
+    {
+      "path": "primary-a1/execution/identity-evidence.json",
+      "sha256": "3163bc9b7abfd402e0addcb8d9cefabcd980caa00c3b225ede273f0dc2a64016",
+      "schema_version": "rtpeval_identity_evidence_1"
+    },
+    {
+      "path": "research.json",
+      "sha256": "cbca56fc6ac03f82b0b06b3ebde1078a8bbdac1c8334a99730417690ed5ee4a0",
+      "schema_version": "rtpeval_research_declaration_1"
+    }
+  ],
+  "source_digest": "681d5a875f01f55ad46d3c536078f34e9ef9e4278e22bffc09ccc81a05bc26ce",
+  "semantic_sha256": "1cc24f9a59fb9591dfc569b5b925bd751ac647ab03f57b776d2bdd297e9f862e"
 }

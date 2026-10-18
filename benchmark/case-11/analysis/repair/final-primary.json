@@ -1,7 +1,28 @@
 {
-  "$case_material_ref": {
-    "expanded_semantic_sha256": "be762c84b5b56e42408d3effa54987a8f60be2612501c759a0827ae7aa52cd83",
-    "path": "draft.json",
-    "pointer": ""
+  "output_version": "itinerary_3",
+  "transfers": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/transfers",
+      "expanded_semantic_sha256": "30547c3084ab1d0bbc15a992453f066d0696317cfbaf636aa4cbf29d63654001"
+    }
+  },
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/route_diagnostics",
+      "expanded_semantic_sha256": "78af506901972d3aa27b84e9019681bb8d356af9001509dc23092fb3280fa2bd"
+    }
+  },
+  "reference_recommendations": [],
+  "destination": "Paris, France",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-25",
+  "days": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/days",
+      "expanded_semantic_sha256": "34f807f0daabdc59a708a5f5b624614fd6a02fd7c3b6aca5f5209aabe1107078"
+    }
   }
 }

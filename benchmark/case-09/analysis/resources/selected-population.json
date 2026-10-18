@@ -1,0 +1,7 @@
+{
+  "$case_material_ref": {
+    "path": "selected-tradeoffs.json",
+    "pointer": "/population_completion",
+    "expanded_semantic_sha256": "ed9471805988f6392d16190ce6638dc0757e08056c114c8049354086ad184ba2"
+  }
+}

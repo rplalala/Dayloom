@@ -5,9 +5,10 @@
 Execution revision 3 is complete through primary scoring and authorized offline
 follow-up analysis. **Accepted by the human researcher on 16 October 2026
 Australia/Sydney, with the disclosed limitations.** The selected
-[date-only input revision](requirements/input-r02.json) covers 22–24 October 2026,
-one traveler and EUR 650. The unchanged [original input](../inputs/case-07.json)
-covers 15–17 October. Original generation and four-final primary results are preserved.
+[date-only input revision](../inputs/case-07.json) covers 22–24 October 2026,
+one traveler and EUR 650. The canonical `inputs/case-07.json` now uses the exact
+accepted native revision-2 bytes rather than the former 15–17 October draft.
+Original generation and four-final primary results are preserved.
 
 The [case Issue](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/156)
 owns acceptance. The current follow-up refreshes the same-run paired view;
@@ -20,7 +21,6 @@ These are case observations, not formal version-level research conclusions.
 | Reviewed requirements | [reviewed](requirements/reviewed.json) |
 | Independent interests | [inventory](interests/inventory.json) |
 | Daily schedules and origins | [itinerary](itinerary.md) |
-| Supporting request context | [input r02](requirements/input-r02.json) |
 | Independent review records | [relevance review execution](interests/relevance-review-execution.json) |
 | Recorded RAG origins | [rag origins](generation/v2/rag-origins.json), [rag origins](generation/v3/rag-origins.json) |
 | V0 selected generation | [itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [provenance](generation/v0/provenance.json), [runtime policy](generation/runtime-policy.json) |

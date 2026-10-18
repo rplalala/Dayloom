@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Sacré Frenchy !",
+  "sources": [
+    {
+      "url": "https://en.sacrefrenchy.com/sacre-frenchy",
+      "title": "Sacré Frenchy | Restaurant Bar Private Room in Central Paris",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The operator describes traditional French cuisine and piano-bar dinners featuring a named pianist performing jazz, blues and French popular music at 58 boulevard Sébastopol.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The operator describes traditional French cuisine and piano-bar dinners featuring a named pianist performing jazz, blues and French popular music at 58 boulevard Sébastopol.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

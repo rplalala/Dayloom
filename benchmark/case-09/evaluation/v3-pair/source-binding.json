@@ -1,0 +1,23 @@
+{
+  "schema_version": "case_pair_source_binding_1",
+  "case_id": "case-09",
+  "v3_result_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+  "run_id": "case-09-v3-r1",
+  "scope": "Independent same-run V3 draft/final-primary, not a V2 generation.",
+  "policy": "Retained source-compatible paired-access report; exact historical-runtime replay. Original four-final manifest is not rebound to the new V0/V1 cohort.",
+  "paired_report_semantic_sha256": "3ae54ac421cac3c99ba5cf63d786ca173e013622163bc14771082220e4dc9c4c",
+  "historical_verification": {
+    "case_id": "case-09",
+    "status": "passed",
+    "restored_files": 2575,
+    "unique_blobs": 603,
+    "packet_and_model_http_receipt": "exact",
+    "paired_report": "exact",
+    "current_same_run_research": "exact",
+    "network_attempts": 0,
+    "old_evidence_root_reads": 0,
+    "historical_preparations_rewritten": false,
+    "source_revision": "45f8c330540459cc38f53bc453c5be199b704f10"
+  },
+  "note": "Current four-final research and retained same-run pairing remain separately bound."
+}

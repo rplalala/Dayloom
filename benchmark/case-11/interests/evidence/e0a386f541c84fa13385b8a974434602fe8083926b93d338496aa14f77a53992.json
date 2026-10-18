@@ -1,0 +1,30 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJdUyx15R95kcRj85ZX8H8OAU",
+  "unresolved_subject_id": null,
+  "subject_name": "Palace of Versailles",
+  "subject_address": "Place d'Armes, 78000 Versailles, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9415673+00:00",
+  "sources": [
+    {
+      "url": "https://en.chateauversailles.fr/discover/estate/palace/hall-mirrors?itid=lk_inline_enhanced-template",
+      "title": "The Hall of Mirrors — Château de Versailles",
+      "factual_paraphrase": "The 73-metre gallery replaced Le Vau's terrace and incorporates 357 mirrors in 17 arches, reflecting France's artistic achievements.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    },
+    {
+      "url": "https://en.chateauversailles.fr/press/restorations/revealing-hall-mirrors",
+      "title": "Revealing the Hall of Mirrors — Château de Versailles",
+      "factual_paraphrase": "The palace describes Charles Le Brun's painted ceiling as a major work of seventeenth-century French painting.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The palace's own account of the Hall of Mirrors describes its designed architectural space, mirror arches and painted ceiling. These provide direct art and architecture evidence within the palace.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+  "unresolved_subject_id": null,
+  "subject_name": "LE PARIS HALLES CAFÉ",
+  "subject_address": "41 Bd de Sébastopol, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9675317+00:00",
+  "sources": [
+    {
+      "url": "https://leparishalles.fr/fr",
+      "title": "Le Paris Halles — Site officiel",
+      "factual_paraphrase": "At 41 boulevard de Sebastopol the brasserie offers breakfast, lunch, dinner, French and Italian dishes, wines, cocktails and social dining.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web open"
+    }
+  ],
+  "verdict": "not_relevant",
+  "assessment": "The operator's substantial description presents a French/Italian brasserie experience of meals, drinks and social gatherings. The independently documented activity is dining; this does not substantively concern the requested art or architecture interest.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

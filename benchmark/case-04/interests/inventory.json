@@ -1,0 +1,38 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-04",
+  "case_revision": "current-path-20261018-r1",
+  "revision": "1",
+  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+  "requirement_spec_ref": {
+    "path": "requirements.json",
+    "sha256": "be37be6baccd447e555a74df2396996f1033569da1be5e1f37c079c0a2b1278e",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "reviewer_kind": "external_model",
+  "reviewer_ref": "/root/revalidation_semantic_reviewer",
+  "reviewed_at": "2026-10-18T02:03:12Z",
+  "rationale": "Gardens, major city sights and views are source-stated venue or theme interests. The preference for a fairly full itinerary and active use of both days concerns pace, and the public-transport/walking-only clause concerns transport. Those remain in their corresponding requirements entries rather than becoming venue interests. This reviewed inventory contains no output-specific relevance judgments.",
+  "interests": [
+    {
+      "interest_id": "gardens",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults taking a weekend trip to Singapore. We would like a fairly full itinerary that combines gardens with major city sights and views. Use public transport and walking only; do not include car, taxi or ride-hailing transfers. We prefer to make active use of both days.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "major-city-sights",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults taking a weekend trip to Singapore. We would like a fairly full itinerary that combines gardens with major city sights and views. Use public transport and walking only; do not include car, taxi or ride-hailing transfers. We prefer to make active use of both days.",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "interest_id": "views",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults taking a weekend trip to Singapore. We would like a fairly full itinerary that combines gardens with major city sights and views. Use public transport and walking only; do not include car, taxi or ride-hailing transfers. We prefer to make active use of both days.",
+      "requirement_pointer": "/soft_preferences/2"
+    }
+  ]
+}

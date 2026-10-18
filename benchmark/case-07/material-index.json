@@ -6,13 +6,13 @@
   "status": "human_accepted",
   "source_revision": "2b6a80b437e30dd14826db92f447d52627820e24",
   "canonical_original_input": "../inputs/case-07.json",
-  "selected_input": "requirements/input-r02.json",
+  "selected_input": "../inputs/case-07.json",
   "publication_format": {
     "reference": "$case_material_ref paths are relative to this case directory. Resolve the JSON Pointer, recursively expand, and verify SHA-256 of UTF-8 canonical JSON (sorted keys, compact separators, ensure_ascii=False).",
     "delta": "case_itinerary_delta_1 replaces only specified top-level keys on the fully expanded base; verify the expanded semantic hash.",
     "source_identifiers": "Original logical paths identify private archive entries; they are not public navigation links. Raw native inventories and receipts retain their exact original bytes.",
     "projections": "Selected fields and sanitized projections are explicitly marked; they are reader views, not native closed replay bundles.",
-    "line_endings": "Published text uses LF so Git checkout preserves publication byte hashes. The date-revised input is canonical JSON; its original captured byte SHA remains in the source mapping."
+    "line_endings": "Canonical input uses the exact accepted native r02 bytes; published selected JSON values are unchanged."
   },
   "original_manifest": {
     "path": "benchmark/scratch/case-07/p172/l/completed-manifest.json",
@@ -21,9 +21,9 @@
   },
   "entries": [
     {
-      "path": "requirements/input-r02.json",
-      "sha256": "f187bf6a13e94f0d988f7d8864508cbfc870ebda2fe9951332491d4d941db5cb",
-      "publication_kind": "canonical_json",
+      "path": "../inputs/case-07.json",
+      "sha256": "f303b660a4ae6d760cfcef701ce49ce05aa78f653a345f967342c251d1f48ec7",
+      "publication_kind": "exact_native_bytes",
       "sources": [
         {
           "logical_path": "benchmark/scratch/case-07/p172/m/input.json",
@@ -805,7 +805,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "64b564eb18b49f2d9dcf59f333fd6eaa7668933816af4fc79ae989b22e7b5213",
+      "sha256": "f8445c52a476fb30b2dc31a874c906b2ce5e8860ff0dd9ae866a4d77a67ef711",
       "publication_kind": "reader_explanation",
       "sources": [
         {
@@ -1017,7 +1017,7 @@
         "itinerary.md"
       ],
       "request_context": [
-        "requirements/input-r02.json"
+        "../inputs/case-07.json"
       ],
       "interest_reviews": [
         "interests/relevance-review-execution.json"

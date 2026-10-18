@@ -1,0 +1,3632 @@
+{
+  "schema_version": "rtpeval_candidate_capture_1",
+  "version": "v2",
+  "run_id": "case-09-v2-r1",
+  "stages": {
+    "discovered": {
+      "status": "partial",
+      "reasons": [
+        "rag_partial"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ-_gC6_aJGGARubvcJZXmvZk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 14,
+              "cosine": 0.5150803923606873,
+              "distance_km": 12.57662789627932,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c12dd85d4ee9ff4bd5c60c4d7734907018a82069106a531468617b026f77ab2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ-_gC6_aJGGARubvcJZXmvZk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.5362115459189994,
+              "distance_km": 10.192344693410622,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "75b229b22d0508318e07ecb29f249d33d0cc16168cb7180d7c7477611d3ed697",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.5051895681136598,
+              "distance_km": 7.022705530097316,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.5262881517410278,
+              "distance_km": 3.4317197776906077,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJD4KER5OMGGARGI6iNtBWYQE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.5198825287888936,
+              "distance_km": 6.198494208928015,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2f13c28c9d6b2abdd56804648a7fa9ce7a5ff7eb648b7c697b2df3c13a7e8620",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJD4KER5OMGGARGI6iNtBWYQE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.522383451461792,
+              "distance_km": 10.307369436998124,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "075cf7a261262c8ca4344630d6b23f98ed8b953a37eb0e39d1e3a63a20ce0ddc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.5518276691436768,
+              "distance_km": 6.36051515508925,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4abf1864ab2e6e69da7deca4d4fee582cd4c24c1caf499b3cca1d999d18d230f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJHeBCIOyMGGAR7BktETlUP_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.554280953236847,
+              "distance_km": 9.582805354333567,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "e73653f4e20cc69a4df3b711fb9a15603e45e67c547920e434e6d935a8f11455",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJSeco5wiJGGARItbTS8lQ5G0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.5570442080497742,
+              "distance_km": 4.987412675461347,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJaRti5uOLGGARC_hz-hGQFz4",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJaRti5uOLGGARC_hz-hGQFz4",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.5448891520500183,
+              "distance_km": 10.742706116260786,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "6fb388e13c373ff297a373d0599555ed0e0da158ff3ae212aec86bf8934ad4a1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJaRti5uOLGGARC_hz-hGQFz4"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.533976137638092,
+              "distance_km": 11.972484491766158,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2c7510f29dd01d4e64109273436af2ea5d1fb8f33beae89e497e9840bed8695f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.5579999089241028,
+              "distance_km": 5.919548594385647,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b684fc855e10e6748e4592a099875a3be94b7da901a1d64dd5ea4b0a4630fcba",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJof1KZwCNGGARFfqGRkwb5tY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.5079648494720459,
+              "distance_km": 10.864838811652398,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "668702379ac45a48a0d3588be687a1d0f4dc448bfbd1826c8ec25b9a4755129f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJp39ByceLGGARrE8X0wVJIVk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq6radhaLGGAR2-mAGeshrHk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 18,
+              "cosine": 0.5079524517059326,
+              "distance_km": 6.900991160521121,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b70fb744468f0415473387c13514036042a66bc20fabfe066eb124504dcb510c",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq6radhaLGGAR2-mAGeshrHk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.5095711654169071,
+              "distance_km": 6.989748594050662,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8e083d6092b67e5c651f50e87ead0f95febdacdbac70e2c5022dbfdf70a99a5d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq89_SiOLGGARNfbenIKLrPU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59fd4a7a10345b7adc6823c5",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.5199894905090332,
+              "distance_km": 5.285594517601778,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7687b60e686905e6d2b93606fcd9e614ea791baefe986e9c695b23b908dd11e9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJqYnH4ViLGGARZLMJt16bjLU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJrWQOSKOMGGARINdTU-VzqoM",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJrWQOSKOMGGARINdTU-VzqoM",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.5641675499827482,
+              "distance_km": 5.236554871180861,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "5353b3a737b6533097b303793257a8d47d9530e2c9d14ca85500a6f9e749f891",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJrWQOSKOMGGARINdTU-VzqoM"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 15,
+              "cosine": 0.5145401818639224,
+              "distance_km": 4.919180688146519,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d423ced5de30e00b38b13b6fd11d3186a632a52bd45abf81cc5551b8d22b40ec",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJtxODuv6LGGAR4xf7X3WayX0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.5053623914718628,
+              "distance_km": 10.525252864836666,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c340de34b9a084059c46e71d96a7bf330418830d072f39538328d502610c5ff",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJtxODuv6LGGAR4xf7X3WayX0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_11",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "admitted": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.5262881517410278,
+              "distance_km": 3.4317197776906077,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_11",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 15,
+              "cosine": 0.5145401818639224,
+              "distance_km": 4.919180688146519,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d423ced5de30e00b38b13b6fd11d3186a632a52bd45abf81cc5551b8d22b40ec",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.5570442080497742,
+              "distance_km": 4.987412675461347,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59fd4a7a10345b7adc6823c5",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.5199894905090332,
+              "distance_km": 5.285594517601778,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7687b60e686905e6d2b93606fcd9e614ea791baefe986e9c695b23b908dd11e9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJqYnH4ViLGGARZLMJt16bjLU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.5051895681136598,
+              "distance_km": 7.022705530097316,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.5362115459189994,
+              "distance_km": 10.192344693410622,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "75b229b22d0508318e07ecb29f249d33d0cc16168cb7180d7c7477611d3ed697",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.522383451461792,
+              "distance_km": 10.307369436998124,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "075cf7a261262c8ca4344630d6b23f98ed8b953a37eb0e39d1e3a63a20ce0ddc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ-_gC6_aJGGARubvcJZXmvZk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 14,
+              "cosine": 0.5150803923606873,
+              "distance_km": 12.57662789627932,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c12dd85d4ee9ff4bd5c60c4d7734907018a82069106a531468617b026f77ab2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ-_gC6_aJGGARubvcJZXmvZk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxcha6qSMGGARqdOIwOETVQc",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.5579999089241028,
+              "distance_km": 5.919548594385647,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b684fc855e10e6748e4592a099875a3be94b7da901a1d64dd5ea4b0a4630fcba",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJof1KZwCNGGARFfqGRkwb5tY",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJD4KER5OMGGARGI6iNtBWYQE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.5198825287888936,
+              "distance_km": 6.198494208928015,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2f13c28c9d6b2abdd56804648a7fa9ce7a5ff7eb648b7c697b2df3c13a7e8620",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJD4KER5OMGGARGI6iNtBWYQE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.5518276691436768,
+              "distance_km": 6.36051515508925,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4abf1864ab2e6e69da7deca4d4fee582cd4c24c1caf499b3cca1d999d18d230f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJHeBCIOyMGGAR7BktETlUP_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJveA1ZsCLGGAR0Hawvlg9FCw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJseohrGmLGGARWx9gVUaRc7Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq6radhaLGGAR2-mAGeshrHk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 18,
+              "cosine": 0.5079524517059326,
+              "distance_km": 6.900991160521121,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b70fb744468f0415473387c13514036042a66bc20fabfe066eb124504dcb510c",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq6radhaLGGAR2-mAGeshrHk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.5095711654169071,
+              "distance_km": 6.989748594050662,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8e083d6092b67e5c651f50e87ead0f95febdacdbac70e2c5022dbfdf70a99a5d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq89_SiOLGGARNfbenIKLrPU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJP-vO9nuLGGARGJ2q8uryJUA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJbSqxxHiLGGARKEK0IzZMksI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJg5RCD3eLGGAR6dbIHRM98w8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ95WgVBGNGGAR5oqlQiT2qS4",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJe5n9LgCLGGARE2_t14iLwn8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJL0kSfg2MGGARKv5KX53ZZ2Y",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.554280953236847,
+              "distance_km": 9.582805354333567,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "e73653f4e20cc69a4df3b711fb9a15603e45e67c547920e434e6d935a8f11455",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJL0kSfg2MGGARKv5KX53ZZ2Y"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJz-ZkAQb0GGARLd-j4HlLkaM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJtxODuv6LGGAR4xf7X3WayX0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.5053623914718628,
+              "distance_km": 10.525252864836666,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c340de34b9a084059c46e71d96a7bf330418830d072f39538328d502610c5ff",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJtxODuv6LGGAR4xf7X3WayX0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.5079648494720459,
+              "distance_km": 10.864838811652398,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "668702379ac45a48a0d3588be687a1d0f4dc448bfbd1826c8ec25b9a4755129f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJp39ByceLGGARrE8X0wVJIVk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJocRqFr-LGGARmVhVGLXS0L0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJb_o7HiiMGGARUKu8uO7fGIQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.533976137638092,
+              "distance_km": 11.972484491766158,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2c7510f29dd01d4e64109273436af2ea5d1fb8f33beae89e497e9840bed8695f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJb_o7HiiMGGARUKu8uO7fGIQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJSeco5wiJGGARItbTS8lQ5G0",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq6rq_BuJGGARh1qAooLX-as",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "enriched": {
+      "status": "complete",
+      "reasons": [
+        "new_success_target"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.5262881517410278,
+              "distance_km": 3.4317197776906077,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJsZTc61eLGGARG19EHRBJGjE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 15,
+              "cosine": 0.5145401818639224,
+              "distance_km": 4.919180688146519,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "d423ced5de30e00b38b13b6fd11d3186a632a52bd45abf81cc5551b8d22b40ec",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ______qJGGARHpd1TBA9uZ8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.5570442080497742,
+              "distance_km": 4.987412675461347,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8da50a3c9a433db7ade31fd2ae56dc6891cf8ce0db2139c783b80d835fcc909e",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJqYnH4ViLGGARZLMJt16bjLU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59fd4a7a10345b7adc6823c5",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.5199894905090332,
+              "distance_km": 5.285594517601778,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7687b60e686905e6d2b93606fcd9e614ea791baefe986e9c695b23b908dd11e9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJqYnH4ViLGGARZLMJt16bjLU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ91khboGMGGARBo42MbnQzg8",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ91khboGMGGARBo42MbnQzg8",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 20,
+              "cosine": 0.5051895681136598,
+              "distance_km": 7.022705530097316,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7982c77844e5e5605efa92bc2c3932c45d3855eb7c57c0757fe8b4ee63e1f469",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ91khboGMGGARBo42MbnQzg8"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ5ZkFd-iLGGAR-68BpnWljj0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.5362115459189994,
+              "distance_km": 10.192344693410622,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "75b229b22d0508318e07ecb29f249d33d0cc16168cb7180d7c7477611d3ed697",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ5ZkFd-iLGGAR-68BpnWljj0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJEYFuvD2MGGARJ5YqbNhgqfU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.522383451461792,
+              "distance_km": 10.307369436998124,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "075cf7a261262c8ca4344630d6b23f98ed8b953a37eb0e39d1e3a63a20ce0ddc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJEYFuvD2MGGARJ5YqbNhgqfU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ-_gC6_aJGGARubvcJZXmvZk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ-_gC6_aJGGARubvcJZXmvZk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 14,
+              "cosine": 0.5150803923606873,
+              "distance_km": 12.57662789627932,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c12dd85d4ee9ff4bd5c60c4d7734907018a82069106a531468617b026f77ab2",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ-_gC6_aJGGARubvcJZXmvZk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJj6WgJUOLGGAR9sX0nsLtUWY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.5579999089241028,
+              "distance_km": 5.919548594385647,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b684fc855e10e6748e4592a099875a3be94b7da901a1d64dd5ea4b0a4630fcba",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJj6WgJUOLGGAR9sX0nsLtUWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJD4KER5OMGGARGI6iNtBWYQE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJD4KER5OMGGARGI6iNtBWYQE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.5198825287888936,
+              "distance_km": 6.198494208928015,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "2f13c28c9d6b2abdd56804648a7fa9ce7a5ff7eb648b7c697b2df3c13a7e8620",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJD4KER5OMGGARGI6iNtBWYQE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJHeBCIOyMGGAR7BktETlUP_w",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJHeBCIOyMGGAR7BktETlUP_w",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 5,
+              "cosine": 0.5518276691436768,
+              "distance_km": 6.36051515508925,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "4abf1864ab2e6e69da7deca4d4fee582cd4c24c1caf499b3cca1d999d18d230f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJHeBCIOyMGGAR7BktETlUP_w"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq6radhaLGGAR2-mAGeshrHk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq6radhaLGGAR2-mAGeshrHk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 18,
+              "cosine": 0.5079524517059326,
+              "distance_km": 6.900991160521121,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b70fb744468f0415473387c13514036042a66bc20fabfe066eb124504dcb510c",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq6radhaLGGAR2-mAGeshrHk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJq89_SiOLGGARNfbenIKLrPU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJq89_SiOLGGARNfbenIKLrPU",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.5095711654169071,
+              "distance_km": 6.989748594050662,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "8e083d6092b67e5c651f50e87ead0f95febdacdbac70e2c5022dbfdf70a99a5d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJq89_SiOLGGARNfbenIKLrPU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJtxODuv6LGGAR4xf7X3WayX0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJtxODuv6LGGAR4xf7X3WayX0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 19,
+              "cosine": 0.5053623914718628,
+              "distance_km": 10.525252864836666,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "0c340de34b9a084059c46e71d96a7bf330418830d072f39538328d502610c5ff",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJtxODuv6LGGAR4xf7X3WayX0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJp39ByceLGGARrE8X0wVJIVk",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJp39ByceLGGARrE8X0wVJIVk",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.5079648494720459,
+              "distance_km": 10.864838811652398,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "668702379ac45a48a0d3588be687a1d0f4dc448bfbd1826c8ec25b9a4755129f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJp39ByceLGGARrE8X0wVJIVk"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_11",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_10",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJh0l19UeLGGARpTcL3Xl0sfQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq6qaMEXzGGARn_9fV8xMf3M",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "supplied": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJCaoz7S3zGGARrAnbz14VDcw",
+              "query": {
+                "query_id": "rag_1",
+                "text": "traditional culture and modern art experiences in Tokyo",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.5262881517410278,
+              "distance_km": 3.4317197776906077,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "a2fa3f40be4464f535977ac903b5e6165f9cf4f9f73c1bde29e1b6219eb596c5",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            },
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
+          "google_origins": [
+            {
+              "intent_id": "landmark_11",
+              "source_query": "Hamarikyu Gardens in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "traditional culture and modern art experiences in Tokyo in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    }
+  },
+  "pre_rag_google_ids": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/1/pre_rag_google_ids",
+      "expanded_semantic_sha256": "fd9bcec3b64b4eb75cdd0a83318fee5451c6f8deed3698f04e64a7b762c82e1d"
+    }
+  },
+  "omissions": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/1/omissions",
+      "expanded_semantic_sha256": "869908922b2cfd8f848cd10295aabb655f479bbc3234fe6cfcc9664c526cc190"
+    }
+  },
+  "rag": {
+    "$case_material_ref": {
+      "path": "../../generation/v2/rag-origins.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "14fc9118cf497efd51ae91c585528794378ccb55160b2064616db995fd93c171"
+    }
+  },
+  "outcome": "completed",
+  "failure_type": null,
+  "result_semantic_sha256": "9dd34cc39d73130d02abb492f1eea7fe1ee321b428e1071512ec26f7990d913d"
+}

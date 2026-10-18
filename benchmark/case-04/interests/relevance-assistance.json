@@ -1,0 +1,148 @@
+{
+  "schema_version": "independent_relevance_decisions_1",
+  "case_id": "case-04",
+  "case_revision": "current-path-20261018-r1",
+  "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+  "requirement_spec_sha256": "be37be6baccd447e555a74df2396996f1033569da1be5e1f37c079c0a2b1278e",
+  "interest_inventory_sha256": "15620cb188e5bcd3b3c01d5822ff241de308085bc5095f0bd1251232a4c460bd",
+  "reviewer_ref": "/root/relevance04_clean",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-18T04:52:41Z",
+  "model_identity": "inherited configuration; exact model identifier unavailable",
+  "limits": {
+    "actual_opens": 50,
+    "actual_searches": 12,
+    "budget_exclusions": [
+      {
+        "canonical_place_id": "ChIJ-aOKT9YZ2jERY2NV-aN5VEU",
+        "name": "City View",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+        "name": "Viewpoint Gardens by the Bay and Marina Bay Sands",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+        "name": "Sentosa Merlion",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+        "name": "Gardens by the Bay East (Panoramic view)",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ4wDrZwAZ2jERt9Bg-YqBQlE",
+        "name": "Downtown Viewpoint",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+        "name": "Marina Bay Sands Garden Park",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJ6xTEJgAZ2jER9GkL8PQkT6s",
+        "name": "Viewpoint light show",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+        "name": "Merlion Walk",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+        "name": "Downtown Core",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+        "name": "Garden by the Bay - Bay East",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+        "name": "Two Chefs Eating Place",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+        "name": "Bugis Street Food",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+        "name": "Singapore Skyline View",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+        "name": "National Parks Board",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+        "name": "Daisy's Dream Kitchen",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJgyRHTJ8Z2jER6FHvw5gLY78",
+        "name": "Garden by the Bay - Orchid Extravaganza",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJj29qegQZ2jER-gIhO5Kq3Ns",
+        "name": "Marina Bay Overpass Viewing Point",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+        "name": "Golden Garden",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJk8h8MoUZ2jERCnwwXpymc7o",
+        "name": "MBS Viewpoint",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+        "name": "Supertree Grove Viewpoint",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJp_FOT5Ab2jERn8FGgYjk33E",
+        "name": "Mount Faber Top View Garden",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
+        "name": "Marina Bay Sands Roof Garden",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+        "name": "Maddie’s Kitchen",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      },
+      {
+        "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+        "name": "Beauty World Food Centre",
+        "reason": "No exact independent official description established within the allowance; venue-specific identity or theme gaps appear in the decisions."
+      }
+    ],
+    "limitations": [
+      "All 89 canonical targets and all three interests were considered. Missing claims were not treated as negative evidence; no negative verdict was justified by the inspected evidence.",
+      "50 counts distinct official URL open attempts, including failures and JavaScript shells. Existing-page text finds retrieved excerpts without additional URL open attempts. No URL was retried.",
+      "12 targeted official-domain/site searches were used. Nonofficial results and embedded visitor social posts were not used for judgments.",
+      "Some official pages returned sparse text, failed, or supplied only search excerpts. Limits appear at venue level. Generic viewpoint pins were not equated with neighbouring attractions.",
+      "No itinerary, Planner label, candidate stage, output, score, report, capture, excluded local file, project provider/model API or database was inspected or invoked.",
+      "Opening availability, adult-access restrictions and transport feasibility are separate from relevance.",
+      "Bindings copied exactly from venues.json; source package file SHA256: 98c183e505ac0316ba13952357a323e05042c4b68d6bab616030dbee16ba5fe9."
+    ],
+    "existing_page_find_requests": 47
+  }
+}

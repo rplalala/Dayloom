@@ -1,0 +1,69 @@
+{
+  "schema_version": "case_refresh_consumption_1",
+  "case_id": "case-05",
+  "global_new_allowance_usd": "40",
+  "global_new_reference_subtotal_usd": "14.440100520",
+  "automatic_retries": 0,
+  "concurrency": 1,
+  "actual_billing": null,
+  "invocations": [
+    {
+      "job_id": "case-05-completion-v0-a1",
+      "kind": "generation",
+      "status": "complete",
+      "started_at": "2026-10-18T04:45:30.946014+00:00",
+      "completed_at": "2026-10-18T04:46:21.050591+00:00",
+      "exit_code": 0,
+      "native_reference_usd": "0.003986"
+    },
+    {
+      "job_id": "case-05-completion-v1-a1",
+      "kind": "generation",
+      "status": "complete",
+      "started_at": "2026-10-18T04:46:39.396773+00:00",
+      "completed_at": "2026-10-18T04:48:26.332577+00:00",
+      "exit_code": 0,
+      "native_reference_usd": "2.36231084"
+    },
+    {
+      "job_id": "case-05-completion-v2-a1",
+      "kind": "generation",
+      "status": "complete",
+      "started_at": "2026-10-18T04:48:44.130345+00:00",
+      "completed_at": "2026-10-18T04:50:36.745958+00:00",
+      "exit_code": 0,
+      "native_reference_usd": "2.36197151"
+    },
+    {
+      "job_id": "case-05-pair-a1",
+      "kind": "pair",
+      "status": "stopped",
+      "started_at": "2026-10-18T04:54:42.030366+00:00",
+      "completed_at": "2026-10-18T04:55:01.806461+00:00",
+      "exit_code": 1,
+      "native_reference_usd": "1.224",
+      "native_completion": "Closed native report and receipt verified; exact offline replay. Controller exit 1 occurred only during GBK stdout printing.",
+      "original_receipt_sha256": "e0ea4e52f3b3c4d36a63cd99e4150b91370777e4ec89fa0f618940af0b88bf87",
+      "offline_assessment_sha256": "3c27c6d202e15918127ea2466f98d6f4475d99abed1daaf646f8c6346e6aecd6"
+    },
+    {
+      "job_id": "case-05-pair-access-a1",
+      "kind": "pair-access",
+      "status": "complete",
+      "started_at": "2026-10-18T04:56:10.912901+00:00",
+      "completed_at": "2026-10-18T04:56:10.912901+00:00",
+      "exit_code": null,
+      "native_reference_usd": "0"
+    },
+    {
+      "job_id": "case-05-primary-a1",
+      "kind": "primary",
+      "status": "complete",
+      "started_at": "2026-10-18T04:52:30.265877+00:00",
+      "completed_at": "2026-10-18T04:53:07.378773+00:00",
+      "exit_code": 0,
+      "native_reference_usd": "1.39213035"
+    }
+  ],
+  "note": "Zero-eligible assessment receipts are zero-dispatch records, not additional model invocations. Previous-batch consumption is outside this new allowance and remains in cumulative resources."
+}
