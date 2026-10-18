@@ -4,7 +4,7 @@
 
 Barcelona, Spain, 2026-10-26 to 2026-10-30. The [original request](../inputs/case-05.json) is the single canonical input. The [selection](selection.json) preserves exact run/result/input hashes and generation revisions. Four-final scores and every dependent process view refer to that selection.
 
-Current reader data directly replaces the preceding publication; superseded datasets are not maintained alongside it. Immutable private originals and Git history retain earlier acceptance evidence. New material is verified engineering evidence, not a new researcher acceptance, blinded human review or formal version-ranking experiment.
+Current reader data directly replaces the preceding publication; superseded datasets are not maintained alongside it. Immutable private originals and Git history retain earlier acceptance evidence. The researcher explicitly accepted this refreshed selection and its disclosed limitations on 18 October 2026 (Australia/Sydney). This is automatic case acceptance, not blinded human assessment or a formal version-ranking experiment.
 
 ## Materials
 
@@ -83,7 +83,7 @@ The fresh paired acquisition saved a complete closed native report and receipt, 
 
 The researcher accepted the preceding revision-3/input-revision-2 automatic selection on 16 October 2026 (Australia/Sydney).
 
-Earlier automatically accepted selections remain identified by Git history and immutable native evidence. This refresh updates current material, inputs and dependent analyses under the approved bounded scope; it does not silently extend the earlier researcher decision. Human answers and blinded-review reports remain absent.
+The researcher explicitly confirmed this replacement scope on 18 October 2026 (Australia/Sydney), accepting the current canonical input, selected four finals, matched reports and disclosed FAIL/UNKNOWN/resource limits. Exact input/result/report hashes and the decision scope are bound in the [selection](selection.json) and [delivery Issue #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193). Earlier decisions remain attached to their original sources; human answers and blinded-review reports remain absent.
 
 ## AI assistance
 

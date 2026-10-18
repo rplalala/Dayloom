@@ -71,8 +71,28 @@
   },
   "primary": "evaluation/primary/report.json",
   "pair": "evaluation/v3-pair/report.json",
-  "status": "current_material_verified_researcher_acceptance_pending",
-  "preceding_publication_git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
-  "historical_acceptance": "Prior automatic acceptance is preserved at its exact Git revision and immutable native archives, not asserted for this refreshed selection.",
-  "source_note": "Current system compatibility is established by bounded reruns and source-compatible donor retention, not by claiming every selected result was newly generated."
+  "status": "researcher_accepted_current_selection",
+  "preceding_publication_git_revision": "5ee40b6eb5a7e435bbefbc34fa5b5985c43e6576",
+  "historical_acceptance": "Prior automatic acceptance remains bound to the former selection and immutable native originals. The explicit 18 October 2026 decision accepts this refreshed selection and its disclosed limits.",
+  "source_note": "Current system compatibility is established by bounded reruns and source-compatible donor retention, not by claiming every selected result was newly generated.",
+  "preceding_publication_original_git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+  "researcher_acceptance": {
+    "status": "accepted",
+    "accepted_on": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "decision_source": "Explicit researcher confirmation of the replacement scope in the current conversation.",
+    "issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193",
+    "scope": "Selected canonical input and V0-V3 finals, matched Primary and applicable candidate/relevance/Repair/pair/resource materials, actual source revisions and disclosed limitations.",
+    "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+    "selected_result_sha256s": {
+      "v0": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+      "v1": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+      "v2": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+      "v3": "263c61efd99e3437444060bd8ece84d7f0b19ae19835ca781ba9a1537636550b"
+    },
+    "primary_report_expanded_semantic_sha256": "19e7fed65774e63e15e81e6c9d9e827f3e9ed39b777db5078daa4950cad688ce",
+    "pair_report_expanded_semantic_sha256": "64f191e491683dbabae0fac7138af2ac24e902c23b758e578fa407f92cfd3370",
+    "blinded_human_review": "deferred",
+    "additional_live_execution": false
+  }
 }

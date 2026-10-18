@@ -12,8 +12,10 @@ changes accompany this material update.
 The [selection index](../../../benchmark/README.md#accepted-selections) locates
 current material and earlier researcher decisions. A compatible retained output
 keeps its actual generation revision; it is not relabeled as a new generation.
-Automatic material checks, researcher acceptance and blinded human assessment
-remain separate. No uniform latest-policy experiment or version ranking is claimed.
+The researcher explicitly accepted the refreshed 04/05/09/11 selections and their
+disclosed limitations on 18 October 2026 (Australia/Sydney);
+[delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193) owns publication.
+Automatic material checks, researcher acceptance and blinded human assessment remain separate. No uniform latest-policy experiment or version ranking is claimed.
 
 ## Current-data replacement
 
@@ -23,7 +25,13 @@ now has one canonical selection, four final itineraries, matched Primary and pai
 evidence, candidate stages/relevance, complete V3 reconstruction, resource accounting
 and reader views. Superseded public datasets are removed rather than maintained in
 parallel history folders; exact former publications remain at the recorded Git
-revision and original native bytes remain in immutable private archives.
+revision and original native bytes remain in immutable private archives. Three
+consecutive post-fix documentation commits were consolidated without changing their
+final tree; the implementation and separate reader-review correction stay distinct.
+Frozen original source IDs were not rewritten. The private evidence identifier
+`benchmark/scratch/accepted-case-refresh-delivery-20261018/source-history.bundle`
+preserves the original commit chain; public predecessor mappings point to the
+tree-equivalent consolidated commit.
 
 | Case | Current selected generations | Canonical dates | Primary V0 / V1 / V2 / V3 |
 | --- | --- | --- | --- |

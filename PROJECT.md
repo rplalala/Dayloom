@@ -350,7 +350,9 @@ Primary and 04/05/11 independent pairs. Current candidate/relevance/Repair/resou
 views and canonical inputs are aligned. Unchanged donors retain their exact sources;
 case-09's pair is explicitly retained on its historical runtime and unchanged V3.
 Only one current public dataset is kept; former native evidence and Git history remain
-immutable. Updated material does not silently extend researcher acceptance.
+immutable. The researcher explicitly accepted the four refreshed selections and
+their disclosed limitations on 18 October 2026; [delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
+owns publication and closure. Blinded human assessment remains deferred.
 Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
 on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound

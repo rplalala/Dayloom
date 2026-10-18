@@ -3,7 +3,7 @@
   "case_id": "case-04",
   "case_revision": "current-path-20261018-r1",
   "batch_id": "case-04-current-path-check",
-  "status": "current_material_verified_researcher_acceptance_pending",
+  "status": "researcher_accepted_current_selection",
   "original_input": {
     "path": "../inputs/case-04.json",
     "sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789"
@@ -76,9 +76,11 @@
   },
   "current_selection": "selection.json",
   "preceding_publication": {
-    "git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+    "git_revision": "5ee40b6eb5a7e435bbefbc34fa5b5985c43e6576",
     "path": "benchmark/case-04",
-    "material_index_sha256": "1e7709553dca45a7ee6149f1a38aeb76f541e8831582fce73f642bce9bc7936a"
+    "material_index_sha256": "1e7709553dca45a7ee6149f1a38aeb76f541e8831582fce73f642bce9bc7936a",
+    "original_git_revision_before_consolidation": "986ff398adf64c7022f5b23c505f4c7194d13903",
+    "tree_equivalent": true
   },
   "public_material_format": {
     "reference": "$case_material_ref paths are relative to the containing file. Resolve the JSON Pointer, recursively expand, then verify the SHA-256 of UTF-8 canonical JSON: sorted keys, compact separators, ensure_ascii=False.",
@@ -1614,8 +1616,8 @@
     },
     {
       "path": "selection.json",
-      "sha256": "3c913fee14e23483051586d621ce20f30f7731879f30178f851c14d2bd289dd5",
-      "expanded_semantic_sha256": "bcaefe0b7c46406ea79f8616c837798230443cc42093f70b10072a9c7d8745da",
+      "sha256": "e968c2bc5a5e67959459da73fc84b6fb0ecc679a53efbb3f38d92013c9fa4d01",
+      "expanded_semantic_sha256": "5dada2a2d2703a4dcff75c93084946efe3ce3200d6f70418e3df6fb4e11f6d2e",
       "publication_kind": "derived_selection_or_source_binding",
       "sources": []
     }
@@ -1623,11 +1625,18 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "7122f4cb36324ec8240240f619ac48ee9fc714fc01acd272ada944586ecbe71d"
+      "sha256": "205115451e515548c66e2cea06312178b0705013bb44834b8fc889ef6ff368d4"
     },
     {
       "path": "itinerary.md",
       "sha256": "08a1c56c860fa9c333bd488aa9e2ffccd040c770cad7f9e6c2bdd37847f53233"
     }
-  ]
+  ],
+  "researcher_acceptance": {
+    "status": "accepted",
+    "accepted_on": "2026-10-18",
+    "timezone": "Australia/Sydney",
+    "issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193",
+    "details": "selection.json#/researcher_acceptance"
+  }
 }
