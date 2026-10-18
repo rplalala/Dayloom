@@ -1,0 +1,771 @@
+{
+  "schema_version": "rtpeval_human_answers_1",
+  "answers": [
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-1",
+      "answer_revision": 1,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "A leads for a compact heritage, art and harbour theme: The Rocks, the Art Gallery and Harbour Bridge form a focused selection. C is close through its harbour, garden and museum experiences, followed by B and D. No extra interests were specified, so this distinction concerns the coherence of the selected experiences rather than omitted mandatory landmarks."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "A's paired visits and substantial gaps provide the most room between main stops. B and D tie next, mixing longer museum visits with fuller days. C's three-stop days, including the zoo afternoon, require the most sustained sightseeing."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "A's short daily sequences make the main sightseeing outline easiest to follow. C follows with clearly described visits and connecting walks, then B and D. This concerns the readability of the sequence; routes and visitor access are not thereby verified."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-2",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "D and B tie for coherent introductions to London. D combines major heritage visits with Borough Market and Covent Garden, while B combines Tower/Bridge, Eye/Gallery and Palace/Park themes. C follows, then A. The comparison concerns how these experiences fit together, rather than the number of landmarks."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "B provides substantial paired visits, a clear gap between the Eye and Gallery, and a lighter final day. D follows with identifiable daily clusters and time within each area. C's museum/cathedral/gallery day is more sustained, while A's four-stop opening day involves the most repeated transitions."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "D and B tie for clear day themes and understandable sequences. D explains the exterior Palace visit and market scope, while B's short paired-stop outline is easy to scan. C follows, then A's more fragmented opening-day sequence. Admissions and service details remain unverified."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-3",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "A most explicitly covers modern urban neighbourhoods through Harajuku/Omotesando, Shibuya, Marunouchi and Ginza alongside traditional culture. D follows with its art, digital-art and urban experiences. C adds the Taro Okamoto museum and city viewpoints, while B relies more on individual sights and establishes less neighbourhood exploration."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A",
+              "D"
+            ]
+          ],
+          "reason": "C's substantial paired blocks provide the clearest opportunity to pause and explore each stop. B follows with mostly short, buffered sequences. A and D tie below them for their more sustained multi-stop days, even though both offer worthwhile experiences."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "A clearly identifies the East Gardens, named neighbourhoods and the intended nature of its district visits. D follows with identifiable venues, then B. C's Imperial Palace entry leaves the grounds, exterior or interior scope unresolved, creating the main clarity limitation on this dimension."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-4",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D"
+            ],
+            [
+              "A"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "B and D tie for combining gardens, major city sights and views across an active weekend. Both include the Botanic Gardens, Gardens by the Bay and Flyer. A follows with civic and marina experiences; C places less emphasis on the requested garden combination. Extra landmarks alone do not decide this ranking."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B",
+              "A"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "D balances both days around substantial sightseeing blocks and pauses. B and A tie next: their fuller days fit the request for active use of the weekend but involve more continuous activity. C's five-stop first day and lighter second day produce the least even rhythm."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "D's three main blocks each day give the clearest overview. B follows with explicit public-transport and walking descriptions, then A. C's more fragmented first-day sequence takes more effort to interpret. The ordering concerns the outline; transit services and access remain unverified."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-5",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D",
+              "A"
+            ]
+          ],
+          "reason": "C combines substantial art and architecture visits with an explicit historic-lane stroll, matching all three stated interests. B is close through its art collections, modernist architecture and El Born experiences. A and D tie next with focused alternatives. The distinction concerns the mix and articulation of experiences, rather than building counts."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "D and A best support relaxed exploration in depth through substantial single visits and fewer secondary stops. B follows with coherent pairs. C's repeated one-hour secondary visits and additional transitions leave less depth at those particular stops, so it ranks last for pace."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "C makes its primary visits and nearby historic-lane exploration explicit, giving a clear account of what each block is for. B follows with focused collection and architectural visits, then A and D. This concerns the description of the outline; the separate criticism of C's pace is not counted again here."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-6",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A"
+            ],
+            [
+              "B",
+              "C"
+            ]
+          ],
+          "reason": "D and A tie for complementary science and nature choices. D combines the Australian Museum, Observatory and extensive outdoor settings; A combines Observatory astronomy, gardens and Bondi. B and C tie next. Maritime and natural-history venues can contribute to the request, without confirming a particular exhibition or child-access arrangement."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "A's shorter blocks and sizeable intervals leave the clearest room for the family's requested breaks. B and C tie next with a mixture of short visits and longer zoo time. D's zoo and national-park outings require the most sustained time away, although a zoo visit need not mean uninterrupted walking."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "D and A tie for explaining a driving-based sequence with room to pause. D describes flexible coastal and nature outings, while A provides short daily blocks. C follows, then B. Route, parking and admission uncertainty remains unresolved for the relevant plans."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-7",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "A",
+              "B",
+              "D"
+            ]
+          ],
+          "reason": "All four support a low-cost emphasis through parks, neighbourhoods and exterior architecture. D's contextual street-exploration blocks count as neighbourhood experiences, as do B's Le Marais and C's Montmartre and Saint-Germain areas. No minimum number of paid visits is required, so the plans tie on preference coverage."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "C and D tie for gentle outdoor exploration: C combines gardens and neighbourhood wandering, while D explicitly leaves room for flexible street exploration. B follows. A's succession of landmark and square stops creates more repeated transitions. Unscheduled time is not counted as another visit."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "C and D tie for making the intended experience clear. C distinguishes its single planned paid visit from exterior sightseeing; D connects street-exploration blocks to nearby anchor stops. B follows, then A. This concerns clarity of scope, rather than confirmed prices or access."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-8",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A",
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "A, D and B tie for strong architecture and history coverage while meeting the single Sagrada Familia visit and Park Guell exclusion. Their alternatives include modernist buildings, Roman/MUHBA history and the castle. C offers relevant experiences too, but its broader mix is less focused on the central architecture/history thread."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "A",
+              "D"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "B's consistent paired-stop days provide the most even rhythm. A and D tie next for substantial focused visits, with D including a busier middle day. C's three- and four-stop days involve the most repeated transitions. The comparison concerns the structure of the days, rather than site counts alone."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "A"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ]
+          ],
+          "reason": "B communicates clear Roman-history, modernist and castle themes across its three days. A follows with straightforward architectural pairings, then D's more varied daily clusters. C's broader programme leaves more separate elements to follow. No additional route or admission certainty is implied."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-9",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "D leads because Mori Art Museum provides a specifically supported modern/contemporary-art opportunity alongside traditional culture. B follows through Tokyo Opera City Art Gallery. C has limited sculptural or pop-cultural potential. A's shrines, heritage museum and city sights do not establish a corresponding modern-art experience, so it ranks last for preference coverage."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C",
+              "B"
+            ]
+          ],
+          "reason": "A provides a regular pattern of paired main blocks with substantial time at the museum, park and gardens. D follows with a gentler, sparse programme that leaves considerable free time. C and B tie next for less uniform mixtures of brief landmarks and longer visits. All preserve the dated Ueno visit."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "C",
+              "B"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "D most clearly identifies the intended nature of its shrine, museum and park visits. C and B tie next with understandable venue-specific outlines. A's Imperial Palace entry leaves grounds, exterior or interior scope unresolved, placing it last for clarity without repeating the separate modern-art coverage criticism."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-10",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "A"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "C combines the two British Museum visits with explicit Fitzrovia, Covent Garden and Greenwich exploration and a dedicated gallery. A follows, then B. D still provides integrated Abbey and public-art experiences, but its historic-neighbourhood scope and art breadth are narrower, placing it fourth."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "D's substantial paired visits and margins create the most relaxed structure, followed by C's museum-and-neighbourhood blocks. A follows, while B's more fragmented mixed days produce the greatest transition burden. The lighter final park/exterior day can fit the request."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "D makes the two museum sessions, Abbey visit and exterior Palace stop easy to distinguish in a short daily outline. C follows with explicit neighbourhood experiences, then A and B's more segmented programmes. The order concerns readability, rather than stronger booking or access evidence."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-11",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "C"
+            ],
+            [
+              "D"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "B and C tie for a clear art-and-architecture focus: B combines collections with historic areas and buildings, while C combines major collections with Sainte-Chapelle, Notre-Dame and Cluny. D follows with a more concentrated selection, then A. The distinction concerns the combination of experiences, not landmark totals."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "D's focused museum mornings leave the most room around major visits. B follows with substantial paired blocks. C's Eiffel/Orsay day is more sustained, while A's three-stop opening day adds further transitions. The protected 23 October meeting interval is a separate condition and remains preserved."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "A"
+            ]
+          ],
+          "reason": "C communicates a clear museum-and-building outline and leaves the meeting afternoon open. B is close through its well-described daily pairings, followed by D and A. This concerns the clarity of the outline; more notes, a tower visit or an address does not independently verify admission."
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-12",
+      "answer_revision": 3,
+      "updated_at": "2026-10-18T17:49:27.521619+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "D"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "A leads for sustained nature and harbour experiences through gardens, the zoo, coastal walking and North Head. C follows with garden, beach, zoo and harbour stops, then D. B meets the first-day and rest-day structure, but its additional art and city visits make the overall selection less focused on nature."
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "C"
+            ],
+            [
+              "A"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "reason": "D and C's substantial single-visit days best fit the relaxed-pace request. A follows because its coastal walk can require sustained activity. B's repeated paired visits and transitions create the fullest rhythm. All leave 25 October completely free of planned activities and travel."
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "reason": "A and B tie for clearly identifying their main stops, visit scope and dates. C follows, then D, whose shorter outline leaves more of the intended use of individual stops to the reader. The empty 25 October remains clear; single-visit days do not require invented inter-stop journeys."
+        }
+      }
+    }
+  ]
+}

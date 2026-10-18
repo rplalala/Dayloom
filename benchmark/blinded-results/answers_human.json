@@ -1,0 +1,671 @@
+{
+  "schema_version": "rtpeval_human_answers_1",
+  "answers": [
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-1",
+      "answer_revision": 1,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-2",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ],
+            [
+              "D"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "D"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "D"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-3",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "B",
+              "D",
+              "C"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "A"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B"
+            ],
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-4",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A",
+              "C"
+            ],
+            [
+              "B"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "C",
+              "A",
+              "D"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-5",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D",
+              "A",
+              "C"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "A"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D",
+              "A",
+              "C"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-6",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "A"
+            ],
+            [
+              "B",
+              "C"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "B",
+              "C"
+            ],
+            [
+              "D"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B"
+            ],
+            [
+              "D"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-7",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "A",
+              "B",
+              "D"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C",
+              "A"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "A"
+            ],
+            [
+              "C"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-8",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "A"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D",
+              "A"
+            ],
+            [
+              "C"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "A"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-9",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "B"
+            ],
+            [
+              "C"
+            ],
+            [
+              "A"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "C",
+              "B",
+              "A"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "C",
+              "B"
+            ],
+            [
+              "A"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-10",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C"
+            ],
+            [
+              "B",
+              "A"
+            ],
+            [
+              "D"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "C"
+            ],
+            [
+              "B",
+              "A"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "C",
+              "B",
+              "A",
+              "D"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-11",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "A",
+              "D",
+              "C"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D"
+            ],
+            [
+              "B"
+            ],
+            [
+              "C",
+              "A"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "B",
+              "A",
+              "D",
+              "C"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "answer_schema_version": "rtpeval_human_answer_1",
+      "batch_id": "9713a0e69746c918c360a80652db8d59",
+      "batch_revision": 1,
+      "presentation_id": "af9e5404fa975fe1d14b3488ced580e2",
+      "rater_ref": "b4e719cc31258518a4c1bd47556839e6",
+      "presentation_hash": "9e5f525c097a9c668c8fb68d320e27606fc6b0a83ab5b23bf876aa38c6dbd65a",
+      "task_id": "task-12",
+      "answer_revision": 2,
+      "updated_at": "2026-10-18T17:25:46.051812+00:00",
+      "state": "submitted",
+      "responses": {
+        "preference": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A",
+              "D",
+              "C",
+              "B"
+            ]
+          ]
+        },
+        "pace": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "D",
+              "C"
+            ],
+            [
+              "A",
+              "B"
+            ]
+          ]
+        },
+        "usefulness": {
+          "status": "ranked",
+          "tie_groups": [
+            [
+              "A",
+              "D",
+              "C",
+              "B"
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}

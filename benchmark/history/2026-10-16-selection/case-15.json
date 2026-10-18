@@ -1,9 +1,0 @@
-{
-  "input_version": "planning_request_2",
-  "destination": "Barcelona, Spain",
-  "start_date": "2026-10-15",
-  "end_date": "2026-10-21",
-  "traveler_count": 4,
-  "budget": {"amount": 4200, "currency": "EUR"},
-  "additional_preferences": "We are four adults travelling together. Two of us prefer architecture and art, while the other two prefer parks and seaside scenery. Please balance these interests across the trip. Include exactly one visit to Sagrada Família. Leave 15:00–18:00 on 2026-10-16, Barcelona local time, unscheduled for private commitments. Do not schedule any activities or travel during that interval."
-}

@@ -1,0 +1,2 @@
+blinded-results/*.html -text whitespace=cr-at-eol
+blinded-results/*.json -text whitespace=cr-at-eol

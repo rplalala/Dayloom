@@ -88,7 +88,8 @@ does not refresh accepted datasets.
   tracks workflow/layout adoption and case-01 end-to-end acceptance. The
   [initial case-01 dataset](../benchmark/case-01/report.md#acceptance) records the
   user's 14 October 2026 automatic acceptance and its limitations. Issue publication
-  and closure are separate; blinded human assessment remains deferred.
+  and closure are separate. The [final blinded results](../benchmark/README.md#final-blinded-results)
+  locate the accepted English/Chinese questionnaires and separate human/model answer exports.
 - [AI assistance records](../benchmark/README.md#ai-assistance-records): actual
   performers, contributions, validation and evidence gaps for later thesis disclosure;
   [case-01](../benchmark/case-01/report.md#system-and-external-assistance) records the

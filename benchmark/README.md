@@ -32,14 +32,15 @@ has its own child Issue tracking request revisions, attempts, findings and match
 reports; children may be prepared together for an approved batch. Queue order is
 local to its worker, not a dependency between workers. The user explicitly accepts
 each exact input/report selection; another case can progress while that decision
-is pending. Consolidated blinded review follows separately. Native material
-admission alone does not complete automatic acceptance; the
+is pending. Consolidated blinded review is a separate stage; the
+[final accepted questionnaires and answers](#final-blinded-results) are retained
+together. Native material admission alone does not complete automatic acceptance; the
 [evaluation architecture](../docs/0006-independent-evaluation.md#material-admission-and-scenario-acceptance)
 defines the distinct milestones.
 
 [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124) owns overall
 coverage and acceptance status, distinguishing completed automatic case reviews
-from the deferred human stage and any later final research acceptance.
+from blinded assessment and any later final research acceptance.
 [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126) owns common
 operational decisions and child-Issue lifecycle. The
 [workflow/layout update plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
@@ -122,7 +123,8 @@ updating the canonical generation, scoring and reader views together. Original
 native evidence and frozen receipts remain immutable; dependent analyses must match
 the replacement sources or explicitly retain historical/pending status.
 Git publication and Issue closure require their own authorization. Separate Repair engineering diagnostics do
-not contribute to case scores. Blinded human assessment is deferred.
+not contribute to case scores. The [final blinded results](#final-blinded-results)
+retain the separately accepted questionnaires and answers.
 
 | Case | Researcher acceptance date | Accepted selection and limitations |
 | --- | --- | --- |
@@ -133,19 +135,29 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 05 | 2026-10-16; refreshed selection accepted 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
-| 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged; #157/#182 completed; blinded review deferred |
+| 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged; #157/#182 completed |
 | 09 | 2026-10-17; refreshed selection accepted 2026-10-18 | [Tokyo current selection](case-09/report.md#acceptance): replacement V0/V1, exact accepted V2/V3 donors and fresh current-policy Primary; exact-source historical-runtime V3 pair retained; current process/relevance/resource joins complete; refreshed selection explicitly accepted with disclosed limitations |
 | 10 | 2026-10-17 | [London revision 2, exact-two British Museum visits on distinct dates, retained time/access uncertainty, relevance UNKNOWNs and unverified affordability](case-10/report.md#acceptance-status) |
 | 11 | 2026-10-17; refreshed selection accepted 2026-10-18 | [Paris current selection](case-11/report.md#acceptance): replacement V3 with one Repair round, exact accepted r02 V0–V2 donors and fresh current-policy Primary; protected interval passes; fresh independent pair for replacement V3 and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
-| 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190) merged; #163/#184 completed; main synchronized and private-evidence migration verified; blinded review deferred |
+| 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190) merged; #163/#184 completed; main synchronized and private-evidence migration verified |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 defines both stages. Preserve each automatically accepted revision and its matched
 generation/evaluation evidence for later anonymous packaging. Human answers and
 reports bind those exact outputs; they add a separate assessment without replacing
-the accepted input, automatic judgments or scores. The current decision defines
-the workflow only; formal benchmark execution and real blinded assessment still
-require their own explicit authorization.
+the accepted input, automatic judgments or scores. Further execution, assessment
+or formal research analysis requires its own covered authorization.
+
+### Final blinded results
+
+The [blinded-review report](blinded-results/report.md) presents the English/Chinese
+questionnaires and separate human and GPT-6.1 sol xhigh answer exports accepted on
+19 October 2026 (Australia/Sydney). It explains the three dimensions, shows all
+task-level rankings and separate V0-V3 mean ranks, and describes agreement, use of
+ties and interpretation limits.
+The report and four original artifacts are tracked directly in `blinded-results/`,
+without round or category subdirectories. Private mappings and native report
+dependencies remain in private evidence storage.
 
 ### Workflow and responsibilities
 
@@ -272,7 +284,7 @@ does not call a service. Section-derived Repair views identify current same-run
 sources separately from preserved historical four-final sources. The
 [17 October refresh](../docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
 covers cases 01–07 and 09; case-09's [automatic acceptance](case-09/report.md#acceptance)
-retains the refreshed pair and disclosed limitations, with blinded review deferred.
+retains the refreshed pair and disclosed limitations.
 
 ## Layout
 
@@ -284,7 +296,12 @@ benchmark/
     case-01.json
     ...
     case-12.json
-  history/2026-10-16-selection/    # retired original inputs, not active cases
+  blinded-results/                # final accepted questionnaires and answers
+    report.md                     # readable comparison of the two reviews
+    review.html
+    review.zh-CN.html
+    answers_6.1sol.json
+    answers_human.json
   <case-id>/
     report.md                     # reader-facing observations and material links
     itinerary.md                  # daily schedules, POI origins and draft/final changes
@@ -378,9 +395,10 @@ detect an omitted category. Retain genuine empty/no-Repair/partial observations;
 unavailable evidence stays explicitly unavailable rather than being reconstructed
 from assumptions. Native execution/replay closures remain private.
 
-When human review is authorized, private `human/packages/`, `private/`, `answers/`
-and `reports/` retain anonymous presentation, researcher mappings, real responses
-and native reports. No human or corpus directories are created by default.
+The [final blinded results](#final-blinded-results) are the published questionnaires
+and answer exports. Preparation, private version mappings, source bindings and
+native report/replay dependencies stay in private evidence storage. Additional
+human or corpus directories are created only for covered work.
 
 ### Private archive retention
 
@@ -465,18 +483,18 @@ On 16 October 2026 Australia/Sydney, the user approved reducing the active set f
 durations, weekdays, request meaning, party sizes, budgets and destination-local
 clock times. Selection follows request coverage, not observed scores.
 
-| Previous 15-case ID | Current disposition | Issue and retained source |
+| Previous 15-case ID | Current disposition | Issue and historical source |
 | --- | --- | --- |
 | 01–07 | Unchanged | Existing accepted case records and source bindings |
 | 08–11 | Same IDs; pending dates revised | #157, #158, #159, #160 |
-| 12: Singapore museum | Retired unexecuted | [#161](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/161); [original input](history/2026-10-16-selection/case-12.json) |
-| 13: Tokyo art/design | Retired unexecuted | [#162](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/162); [original input](history/2026-10-16-selection/case-13.json) |
+| 12: Singapore museum | Retired unexecuted | [#161](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/161); [historical input](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/d3dd58e8fee1cc9a88aa3491cd8e0632a57b2ebb/benchmark/history/2026-10-16-selection/case-12.json) |
+| 13: Tokyo art/design | Retired unexecuted | [#162](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/162); [historical input](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/d3dd58e8fee1cc9a88aa3491cd8e0632a57b2ebb/benchmark/history/2026-10-16-selection/case-13.json) |
 | 14: Sydney count/rest day | New case-12 | [#163](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/163); [previous input](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/73686a071fa4fda5b5c68b4b451a38f8b973e467/benchmark/inputs/case-14.json) |
-| 15: Barcelona mixed group | Retired unexecuted | [#164](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/164); [original input](history/2026-10-16-selection/case-15.json) |
+| 15: Barcelona mixed group | Retired unexecuted | [#164](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/164); [historical input](https://github.com/rplalala/Reliable-Trip-Plan-Agent/blob/d3dd58e8fee1cc9a88aa3491cd8e0632a57b2ebb/benchmark/history/2026-10-16-selection/case-15.json) |
 
-The retired originals retain their exact bytes outside the active `inputs/`
-directory. Old Singapore case-12 and new Sydney case-12 have distinct source
-histories and Issues; #161 is never reassigned to Sydney. Native historical Issue
+The retired originals are retained in Git history; the current tree has no
+`benchmark/history/` directory. Old Singapore case-12 and new Sydney case-12 have
+distinct source histories and Issues; #161 is never reassigned to Sydney. Native historical Issue
 links remain traceable even after retirement.
 
 Retirement reduces specialized coverage: former 12 isolated hard dates versus soft

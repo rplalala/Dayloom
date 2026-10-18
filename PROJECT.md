@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-18.
+Current source of truth. Updated 2026-10-19.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -245,7 +245,7 @@ The earlier case-12 integration checkpoint on the same date: merged delivery of 
 original shared Repair corrections and includes remote main `7408df9` (case-08
 closeout, PR #189). [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190)
 merged as `8bedb15`; local main is synchronized, private migration is verified and
-Issues #163/#184 are completed. Blinded human review remains deferred. The initial
+Issues #163/#184 are completed. The initial
 full backend run completed with **4,608 passed,
 16 skipped and seven failures**. Three junction-fixture failures passed unchanged
 outside the sandbox. Four deadline-telemetry parity comparisons received a test-only
@@ -328,8 +328,11 @@ The [benchmark workflow](benchmark/README.md#workflow-and-responsibilities)
 accepts automatic input/report evidence case by case, including V1/V2 candidate
 POI process analysis and V2/V3 Repair process analysis. Corpus measurement,
 coverage sidecars and corpus reporting are optional studies. Separately authorized
-consolidated blinded review uses the same accepted outputs and adds independent
-human reports without changing primary scores. The
+consolidated blinded review adds separate human assessment without changing
+primary scores. The [final blinded results](benchmark/README.md#final-blinded-results)
+retain the user-accepted English/Chinese questionnaires and separate human and
+GPT-6.1 sol xhigh answer exports for 12 tasks. Private mappings and native report
+generation remain separate from publication of these original artifacts. The
 [staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
 owns that handoff; the benchmark README owns the detailed sequence, responsibilities
 and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
@@ -347,8 +350,8 @@ researcher decisions remain source-bound when current material is replaced. Thei
 and case-09's paired view were separately refreshed under the common access policy on
 17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
 owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
-automatically accepted on 17 October 2026 with its updated pair and disclosed limitations;
-blinded review is deferred. Its accepted package and required private evidence are
+automatically accepted on 17 October 2026 with its updated pair and disclosed limitations.
+Its accepted package and required private evidence are
 integrated into the main worktree; [delivery #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
 tracks publication and preserved validation limits. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
@@ -361,16 +364,15 @@ case-09's pair is explicitly retained on its historical runtime and unchanged V3
 Only one current public dataset is kept; former native evidence and Git history remain
 immutable. The researcher explicitly accepted the four refreshed selections and
 their disclosed limitations on 18 October 2026; [delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
-owns publication and closure. Blinded human assessment remains deferred.
+owns publication and closure.
 Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
 on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
 verification. That historical selection remains in immutable native archives; the current
 26–30 October dataset is identified by the replacement above.
 [Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
-including UNKNOWN and producer-runtime replay limits. Blinded human assessment
-remains deferred. Git publication remains separately authorized; the retired former
-case-15 remains unexecuted.
+including UNKNOWN and producer-runtime replay limits. Git publication remains
+separately authorized; the retired former case-15 remains unexecuted.
 Case-07 execution revision 3 / input revision 2 was separately accepted on
 16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs and unverified
 whole-trip EUR 650 affordability. Its

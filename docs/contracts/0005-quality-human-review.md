@@ -1,6 +1,6 @@
 # Quality scores and anonymous human review
 
-Current implemented Tickets 08-10 contract, updated 2026-10-04. Automatic verified compliance,
+Current implemented Tickets 08-10 contract, updated 2026-10-19. Automatic verified compliance,
 paired diagnostics, human preference, resources and mechanism/controlled-Repair tracks have separate meanings.
 [Evaluation architecture](../0006-independent-evaluation.md) owns status; formal comparative
 analysis and new implementation require separately authorized work.
@@ -320,9 +320,12 @@ Corpus measurement, corpus coverage sidecars and corpus coverage reporting are
 [optional studies](../../benchmark/README.md#optional-work-compared-with-the-initial-plan).
 Their native contracts remain available when explicitly selected. Retain runtime
 RAG source identity without requiring a database-wide scan. The
-[final-case layout](../../benchmark/README.md#layout) preserves native dependencies
-and later human material in ignored private scratch storage, with a public case
-report and deduplicated selected materials. The
+[final-case layout](../../benchmark/README.md#layout) preserves preparation, private
+version mappings, source bindings and native report/replay dependencies in private
+evidence storage, alongside public case reports and deduplicated selected materials.
+The [final blinded results](../../benchmark/README.md#final-blinded-results) define
+the published, user-accepted questionnaires and separate human/model answer exports.
+The
 [private archive retention rules](../../benchmark/README.md#private-archive-retention)
 require compact long-term evidence, deletion of unnecessary working copies and
 restored offline validation before removal. Each case Issue owns readiness and decisions;
