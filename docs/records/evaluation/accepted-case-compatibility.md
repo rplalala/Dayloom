@@ -149,27 +149,125 @@ do not by themselves justify redoing all four versions. Older cases 01-07/09 hav
 broader changes; their current material-readability results are not end-to-end
 generation passes.
 
-A bounded next stage should first prepare current-path checks around cases
-04/05/09/11, selecting only versions and stages needed to cover those questions.
-Keep 01-03/06/07/08/10 as preserved supporting selections unless a specific uncovered
-path or detected regression requires expansion. This is a proposed coverage set,
-not an authorized live dispatch or a claim that unexecuted paths passed.
+## Prepared supplementary scope
 
-Date and native-intake constraints affect that preparation:
+On 18 October, authorized steps 2-3 prepared the following bounded engineering
+checks at `9d953384e58a0358d232b5e3d04904a353dcfe38`. That revision adds the audit
+documentation only; its production content matches the audited target. No Planner
+generation, project provider acquisition, database access or independent Primary
+execution occurred during preparation. External Codex source-only authoring and
+review did occur; public price documentation was consulted separately.
 
-- On 18 October, original accepted inputs 01-06 fail the current new-run start-date
-  gate; accepted inputs 07-12 pass. Historical date controls do not authorize a
-  forged runtime clock. Any future-date variant needs a separate input revision
-  and consistent date-dependent constraints/reviews.
-- Native Primary intake requires four selected finals for one exact input.
-  A partial-version generation check is not a new complete Primary dataset. If
-  new dates are necessary, old-date outputs cannot fill its other version slots.
-  A complete new evaluated case may therefore require four generations for that
-  revised input, while the other cases remain untouched.
-- New outputs require their own output-specific review coverage. Reuse old
-  evidence or reviewed judgments only where native source/plan contracts admit
-  it; otherwise prepare the missing acquisition explicitly. Report mixed producer
-  revisions where applicable rather than claiming uniform new generation.
+| Case | New generations | Input and check | Independent Primary |
+| --- | --- | --- | --- |
+| 04 | V0, V1 | New 24-25 October input revision; preserve weekend duration and WALK/TRANSIT-only restriction; check current interpretation and submitted travel | None: partial-version check |
+| 05 | V3 | New 26-30 October input revision; preserve five-day request, avoid the Barcelona daylight-saving transition; inspect native best-result/Repair behavior | None: partial-version check |
+| 09 | V0, V1 | Exact accepted 22-26 October input; dated Ueno Park visit and Tokyo National Museum quantity | One fresh evaluation combining new V0/V1 with exact accepted V2/V3 |
+| 11 | V3 | Exact accepted 22-25 October input; protected 23 October 14:00-16:00 Europe/Paris interval, including travel | One fresh evaluation combining exact accepted V0/V1/V2 with new V3 |
+
+The base scope is **six generations and two independent Primary evaluations**.
+Cases 01-03/06-08/10/12 retain existing supporting evidence. No full-suite generation
+or blanket identity/opening refresh is included. The two Primary cohorts explicitly
+mix generation revisions; neither represents four newly generated versions.
+Cases 04/05 cannot use old-date outputs to fill missing version slots or publish
+new four-version Primary scores. Case-05 has no explicit weekday requirement, but
+its changed dates can still change live availability. Its functional check is not
+directly comparable to the original accepted score.
+
+The new requests changed only `start_date` and `end_date`. Distinct source-only
+Codex `gpt-6.1-sol/high` agents authored and reviewed their requirements, timezone,
+transport, density and interest inventories. Native handoff validation verifies
+actual separate identities, ordered UTC times, original inputs, author drafts and
+reviewed output hashes. Native requirement, timezone, route, density and interest
+consumers accepted the final materials. Interests initially used numeric revision
+`1`; the reviewer corrected it to the required string and refreshed final bindings.
+Original author drafts remain intact. Agent review is not human review; retained
+message transcripts are explicitly partial and external-agent billing is unavailable.
+
+Cases 09/11 reuse byte-identical reviewed requirements and existing source-linked
+interest inventories for unchanged original inputs. Only batch/revision envelopes
+and relocated inventory references were rebound; original review identities, times
+and meaning remain unchanged. Both reused interest inventories pass native
+validation after verified public-reference expansion. Recursive restoration and
+native collection qualified all five unchanged donor finals. Old occupancy
+decisions are not applied to new outputs.
+
+Six native generation preparations completed without `--execute`, using an
+unchanged runtime snapshot and distinct future capture paths. Collection correctly
+leaves unstarted selected runs unqualified and the batches blocked. A Windows path
+length failure during dependency copying was resolved with short task-local paths,
+not a collector or system configuration change. Local evidence identifiers are
+`artifacts/bounded-revalidation-20261018/` and `.scratch/rv18/`; they are ignored
+preparation evidence, not published specifications. Validation confirmed all
+1,746 protected original files remain unchanged. No implementation or test changed,
+so the earlier 359-test result was not rerun or relabeled as a new test execution.
+
+### Reference allowance and limits
+
+The proposed execution allowance is **USD 40**, subject to explicit live approval:
+
+| Reservation | Reference USD |
+| --- | ---: |
+| 04 V0 / V1 | 0.25 / 4.00 |
+| 05 V3 | 7.00 |
+| 09 V0 / V1 | 0.25 / 4.50 |
+| 11 V3 | 6.00 |
+| Two Primary evaluations | 3.00 each |
+| One global correction/retest allowance | 10.00 |
+| Unallocated price margin | 2.00 |
+| Total | 40.00 |
+
+The base reservation is USD 28. The correction allowance permits at most one
+additional generation, reserved at up to USD 7, and one additional Primary,
+reserved at up to USD 3, across the whole task, not per case. Including correction,
+the limits are seven generations and three Primary evaluations, sequentially with
+concurrency one. No discretionary retries, score chasing or scope expansion are
+included. Any implementation fix still requires its own authorized change scope.
+
+Generation retains the exact native call/token/provider limits in the frozen
+runtime snapshot: 600 seconds per run, V3 Repair stage/round limits of 420/150
+seconds, at most six proposal model calls and one separate reason-compression call.
+Each Primary is limited to 400 Google sends, USD 3 reference cost, 45 seconds per
+provider call, 900 seconds total, and model input/output ceilings of 64,000/8,192
+tokens. Current native model-stage ceilings are three for 09 and two for 11,
+including eligible missing-hours assessment; no model retries are added.
+
+Public [OpenAI pricing](https://developers.openai.com/api/docs/pricing) and
+[Google Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing)
+were checked on 18 October. Native generation's original price-basis capture is
+preserved; a dated sidecar records the recheck, while derived Primary tables cover
+18-22 October. OpenAI retail rates are a reference proxy, not verified Foundry
+account billing. Discounts, free quotas, regional differences, tax and external
+Codex usage are not established by project telemetry.
+
+Generation has **no in-flight monetary hard stop**. USD 40 is therefore a reference
+admission envelope, not an invoice guarantee. The parent admits one invocation at
+a time after checking observed usage and all remaining reservations. Unknown
+accounting, insufficient remaining allowance or any native limit failure stops
+subsequent dispatch. A generation overrun cannot be retroactively prevented.
+
+### Remaining execution gates
+
+The execution window is 18-22 October inclusive, Australia/Sydney. Check the actual
+date before dispatch; expiration stops execution rather than forging a runtime
+date. Unchanged production content and frozen input/runtime/price hashes are
+required. Environment-file presence was checked, but credential authentication and
+database/RAG access remain untested; no secrets were loaded during preparation.
+
+After generation, newly submitted outputs require genuine output-specific review.
+Only then can cases 09/11 assemble complete native manifests, pass intake/semantic
+readiness, derive exact acquisition plans and produce native preparation digests.
+The parent must verify required context/reviews actually entered those packages,
+check their resource estimates and admit each exact digest. Prepared command
+templates do not claim these output-dependent packages already exist or authorize
+their execution. New current-policy judgments belong only to these two cohorts.
+
+If case-05 naturally does not exercise Repair, report that coverage gap; do not
+force Repair or repeat the run. Report violations, UNKNOWN and missing evidence
+without changing intended V0-V3 behavior. The remaining finite stages are the
+approved batch, at most the single bounded correction/retest cycle if applicable,
+and one consolidated update to this record. Stop at the present preparation gate
+until live scope and allowance are explicitly approved.
 
 ## Regression and limitations
 
