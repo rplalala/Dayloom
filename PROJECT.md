@@ -231,7 +231,16 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint (18 October 2026): merged delivery of accepted
+Latest offline checkpoint (18 October 2026): [bounded case-refresh delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
+completed the full offline backend suite with **4,619 passed and 16 skipped** on
+the reviewed `23e47eb` code state. Scoped routing-file Ruff and full-diff checks
+passed; independent Standards/Spec reviews have no remaining actionable finding.
+The first test attempt was blocked by default temporary-directory permissions;
+a fresh workspace-local basetemp/cache resolved the environment issue without
+changing system permissions or project configuration. Skipped environments remain
+unverified; no additional paid run or blinded human assessment occurred.
+
+The earlier case-12 integration checkpoint on the same date: merged delivery of accepted
 [case-12 r07](benchmark/case-12/report.md#main-worktree-integration) preserves the
 original shared Repair corrections and includes remote main `7408df9` (case-08
 closeout, PR #189). [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190)
@@ -241,7 +250,7 @@ full backend run completed with **4,608 passed,
 16 skipped and seven failures**. Three junction-fixture failures passed unchanged
 outside the sandbox. Four deadline-telemetry parity comparisons received a test-only
 normalization correction; both affected modules then passed **24 tests**. No failures
-remain unresolved; a second full corrected run was not performed. Ruff and formatting
+remain unresolved; the later full delivery run above confirms the corrected code state. Ruff and formatting
 pass for all 38 changed Python files. Independent Standards and Spec integration
 reviews and correction rechecks report zero actionable findings. The skipped
 environments remain unverified; frontend code was unchanged and was not retested.
