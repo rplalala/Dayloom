@@ -69,7 +69,10 @@ class GoogleRoutesProvider:
         }
         if request.routing_preference is not None:
             body["routingPreference"] = request.routing_preference
-        if request.departure_time is not None:
+        if request.departure_time is not None and not (
+            request.travel_mode == "DRIVE"
+            and request.routing_preference in (None, "TRAFFIC_UNAWARE")
+        ):
             body["departureTime"] = (
                 request.departure_time.astimezone(UTC).isoformat().replace("+00:00", "Z")
             )
