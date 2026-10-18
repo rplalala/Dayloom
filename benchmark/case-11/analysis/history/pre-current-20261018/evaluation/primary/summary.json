@@ -1,0 +1,778 @@
+{
+  "acquisition_failures": [],
+  "acquisition_status": "complete",
+  "acquisition_unknowns": [],
+  "batch_id": "case-11-r02",
+  "case_id": "case-11",
+  "code_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+  "dimension_weights": {
+    "grounding": {
+      "denominator": 5,
+      "numerator": 1
+    },
+    "non_overlap": {
+      "denominator": 5,
+      "numerator": 1
+    },
+    "opening": {
+      "denominator": 5,
+      "numerator": 1
+    },
+    "requirements": {
+      "denominator": 5,
+      "numerator": 1
+    },
+    "routes": {
+      "denominator": 5,
+      "numerator": 1
+    }
+  },
+  "evidence_status": "decidable",
+  "execution_revision": "2",
+  "offline_replay_matches": true,
+  "opening_assessment": {
+    "eligible_count": 2,
+    "packet_sha256": "2264523bb7380eb525e43d7e1b6c6c5c5753bf94b3a3a74491edb497a1d8dec7",
+    "reason": null,
+    "status": "complete"
+  },
+  "paused_after_primary": true,
+  "processing_status": "complete",
+  "rules_profile_id": "rtpeval_declared_population_1",
+  "schema_version": "case11_primary_summary_1",
+  "source_hashes": {
+    "native_receipt": "2c79309d2248101d215bafa0563405935e83237b03fde7d85ec01673c5018479",
+    "native_report": "dcc751d82b5339a394d9add7631864cbf94d299c22a95036b63aa2cfcea01718",
+    "preparation_content": "4589e87b8bf969bd5fe3708359d6cfabd015d38656e095d7d56b1b11a3370b6b"
+  },
+  "versions": {
+    "v0": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "mean_penalty_0_100": 0.0,
+        "policy_public_path": "../../requirements/r02/density-reviews.json",
+        "requested_day_count": 4,
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      },
+      "factual_fail_count": 0,
+      "factual_unknown_count": 0,
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0
+      },
+      "run_id": "case-11-r02-v0"
+    },
+    "v1": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 3,
+              "upper": 3
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 3,
+            "penalty_0_100": 10,
+            "penalty_bounds": {
+              "lower": 10,
+              "upper": 10
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "mean_penalty_0_100": 2.5,
+        "policy_public_path": "../../requirements/r02/density-reviews.json",
+        "requested_day_count": 4,
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 14,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 5,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      },
+      "factual_fail_count": 0,
+      "factual_unknown_count": 0,
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 40,
+          "numerator": 39
+        },
+        "reason": null,
+        "score_0_100": 97.5
+      },
+      "run_id": "case-11-r02-v1"
+    },
+    "v2": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "mean_penalty_0_100": 20.0,
+        "policy_public_path": "../../requirements/r02/density-reviews.json",
+        "requested_day_count": 4,
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 6,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 2,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      },
+      "factual_fail_count": 0,
+      "factual_unknown_count": 0,
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 5,
+          "numerator": 4
+        },
+        "reason": null,
+        "score_0_100": 80.0
+      },
+      "run_id": "case-11-r02-v2"
+    },
+    "v3": {
+      "auxiliary_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0,
+        "total_included_dimensions": 5,
+        "unavailable_dimensions": []
+      },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "mean_penalty_0_100": 0.0,
+        "policy_public_path": "../../requirements/r02/density-reviews.json",
+        "requested_day_count": 4,
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
+      "dimensions": {
+        "grounding": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 12,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 8,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "requirements": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 1,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "routes": {
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 4,
+            "UNKNOWN": 0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        }
+      },
+      "factual_fail_count": 0,
+      "factual_unknown_count": 0,
+      "overall_total": {
+        "exact_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reason": null,
+        "score_0_100": 100.0
+      },
+      "run_id": "case-11-r02-v3"
+    }
+  }
+}

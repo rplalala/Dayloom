@@ -1,7 +1,80 @@
 {
-  "$case_material_ref": {
-    "expanded_semantic_sha256": "6e5ad8624d1a3818a4c5054c254672dc458067ed91140209d760f51b2a8b1be3",
-    "path": "../shared-values.json",
-    "pointer": "/values/6e5ad8624d1a3818a4c5054c254672dc458067ed91140209d760f51b2a8b1be3"
-  }
+  "schema_version": "case_public_selected_population_1",
+  "case_id": "case-11",
+  "batch_id": "case-11-current-path-check",
+  "revision": "current-path-20261018-r1",
+  "native_manifest": {
+    "logical_path": ".scratch/rv18/case-11/assembled/manifest.json",
+    "sha256": "2eb1afbb92f6c398874f110c13d4188046f0ad78a4b8a001c03965757345860c",
+    "json_pointer": ""
+  },
+  "selected_runs": {
+    "v0": {
+      "run_id": "case-11-r02-v0",
+      "selected_result_sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "selection_origin": "unchanged_accepted_donor",
+      "completion_qualified": true,
+      "itinerary_projection": {
+        "path": "generation/v0/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rv18/case-11/assembled/sources/existing/sources/captures/v0/result.json",
+          "sha256": "18c54f900b7fd2b7a178a028386d745661a7107c921ed36d775b2fb750b37cdc",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v1": {
+      "run_id": "case-11-r02-v1",
+      "selected_result_sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "selection_origin": "unchanged_accepted_donor",
+      "completion_qualified": true,
+      "itinerary_projection": {
+        "path": "generation/v1/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rv18/case-11/assembled/sources/existing/sources/captures/v1/result.json",
+          "sha256": "24a1a1c89b52ade0148adf70afad280f661e9ed0313b703c64f4a07b86fd40e4",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v2": {
+      "run_id": "case-11-r02-v2",
+      "selected_result_sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "bc985c273afcf48c5f1d4da59be532c22d403efd",
+      "selection_origin": "unchanged_accepted_donor",
+      "completion_qualified": true,
+      "itinerary_projection": {
+        "path": "generation/v2/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rv18/case-11/assembled/sources/existing/sources/captures/v2/result.json",
+          "sha256": "4dc9175d8f49f48438afb68507ebfa35a4072743b488c6ce81455b7751a6a1d0",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v3": {
+      "run_id": "case-11-current-path-v3-a1",
+      "selected_result_sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+      "selected_input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "source_revision": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+      "selection_origin": "qualified_current_system_rerun",
+      "completion_qualified": true,
+      "itinerary_projection": {
+        "path": "generation/v3/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rv18/case-11/assembled/sources/captures/v3/result.json",
+          "sha256": "e3ee0b41e838ac9f63f0f023df892622887d81cb98e6130ea09521cd9fb09fd1",
+          "json_pointer": "/itinerary"
+        }
+      }
+    }
+  },
+  "native_intake": "accepted",
+  "semantic_readiness": "ready",
+  "historical_population": "../../analysis/history/pre-current-20261018/analysis/resources/population.json"
 }

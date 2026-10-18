@@ -1,0 +1,149 @@
+{
+  "schema_version": "case_public_historical_selection_1",
+  "git_revision": "a85a539680d0a7cc0aab8ce273aa091150b3f121",
+  "case_id": "case-09",
+  "material_index_sha256": "f5ee903af405351c97c53ce92708605aa0007c6a76319229e2b9bcf3a4b33d12",
+  "automatic_acceptance": {
+    "status": "accepted",
+    "on": "2026-10-17",
+    "timezone": "Australia/Sydney",
+    "decision_by": "human_researcher",
+    "decision_basis": "Explicit acceptance of this batch input, results and disclosed limitations in the current chat.",
+    "record": "report.md#acceptance",
+    "case_revision": "1",
+    "batch_id": "case-09-batch",
+    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+    "selected_results": {
+      "v0": {
+        "run_id": "case-09-v0-r1",
+        "sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8"
+      },
+      "v1": {
+        "run_id": "case-09-v1-r1",
+        "sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7"
+      },
+      "v2": {
+        "run_id": "case-09-v2-r1",
+        "sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3"
+      },
+      "v3": {
+        "run_id": "case-09-v3-r1",
+        "sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7"
+      }
+    },
+    "native_requirements_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+    "primary_preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
+    "native_primary_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
+    "native_current_pair_sha256": "1ba7af7e8f20b2dd4c45e4e8627f4d4bb783ddba753506493269698ba09e8366",
+    "human_review": "deferred",
+    "main_worktree_integration": "complete",
+    "new_service_sends": 0,
+    "new_reference_usd": "0",
+    "delivery_tracking_issue": "https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158"
+  },
+  "private_archive": {
+    "identifier": "benchmark/scratch/case-09/archive/",
+    "manifest_sha256": "aef8c5d89ea94bcb4c66933c3ee8514fd9ba5bf7ae47014673dc388d022fd9f1",
+    "blobs_zip_sha256": "ce8427654c00011199bdb051fd8db85a2ec80f577840610b43e2f4a2c960918c",
+    "verification_sha256": "7c37e650d0ce3f84596c9c379e329938111bbee399910d50b776ed0d39447ef9",
+    "retained_logical_files": 7044,
+    "unique_blobs": 910,
+    "zip_bytes": 5516974,
+    "native_research_tracks_exact_replayed": 5,
+    "public_native_projection_equivalence": 93,
+    "researcher_acceptance_at_archive_creation": "pending"
+  },
+  "materials": [
+    {
+      "original_path": "analysis/poi-process/opportunities.json",
+      "original_public_sha256": "fcb2efdfb2df6f8051b62754a9e3aa4f45075faf5062bb7fc031c229c00e7f7a",
+      "path": "analysis/history/pre-current-20261018/analysis/poi-process/opportunities.json",
+      "expanded_semantic_sha256": "c8861454740477e95a285ca033088aa1483ec8456a675fb597574d2d96198420"
+    },
+    {
+      "original_path": "analysis/poi-process/relevance.json",
+      "original_public_sha256": "c8b53ea5b26da266db886cfc8f93a1c1762b4a7a6420056c9ee3e6aac9834da4",
+      "path": "analysis/history/pre-current-20261018/analysis/poi-process/relevance.json",
+      "expanded_semantic_sha256": "5a1d2775151b4686402694a8e36736f4a0da382c3b1d84deea31740e869abb56"
+    },
+    {
+      "original_path": "analysis/repair/mechanism.json",
+      "original_public_sha256": "5ddbec245cec90b9e70247c11f81cf2ee4317dd52c8c74a1663e37dff403c2d9",
+      "path": "analysis/history/pre-current-20261018/analysis/repair/mechanism.json",
+      "expanded_semantic_sha256": "ed45607f5a22cadd5d37e63a2a21fcb3cf13c9d151b3c02d67569d5c546fda69"
+    },
+    {
+      "original_path": "analysis/resources/population.json",
+      "original_public_sha256": "d5482fa8dbc942c0cdb8d2944b6e6589b4783cfd5d533973a48161af668b109a",
+      "path": "analysis/history/pre-current-20261018/analysis/resources/population.json",
+      "expanded_semantic_sha256": "9b5046e2494a3c4b535b3bd05950eec56e4ab7045ce7e112239c0ccc1796dfe1"
+    },
+    {
+      "original_path": "analysis/resources/tradeoffs.json",
+      "original_public_sha256": "f4f56ecc2843cf83a87519cb74bf659cd4f5b3ec847fc7e0c4a52dc04e441228",
+      "path": "analysis/history/pre-current-20261018/analysis/resources/tradeoffs.json",
+      "expanded_semantic_sha256": "4691ee2a05222f09db1004ef5da8c7c2da70afb252009a0fca36accad4e20670"
+    },
+    {
+      "original_path": "evaluation/primary/report.json",
+      "original_public_sha256": "d355e392f1beaeb43932b0ab68b854f7acec9ff6504ad841171de7b0248b524c",
+      "path": "analysis/history/pre-current-20261018/evaluation/primary/report.json",
+      "expanded_semantic_sha256": "88622523c7e39a3b100004df512f0b0e8f9a84d76cfc94f85519b8591056286f"
+    },
+    {
+      "original_path": "evaluation/primary/summary.json",
+      "original_public_sha256": "8a6c99b1e7c613d6370a95e0f451c267d57dd85c8b994ea0e13f81475982594a",
+      "path": "analysis/history/pre-current-20261018/evaluation/primary/summary.json",
+      "expanded_semantic_sha256": "343ceb220d57f3ccc61411e199350967149600a5a9799b753dd53ed60606ef24"
+    },
+    {
+      "original_path": "generation/v0/itinerary.json",
+      "original_public_sha256": "86a8a2acfd10948d836c191b03b1122b8bda93bfa4e133c8ccca332baffef261",
+      "path": "analysis/history/pre-current-20261018/generation/v0/itinerary.json",
+      "expanded_semantic_sha256": "357f70da7e7cd5a8f95e8799cd2880e5c66e67ccb8543eca6c7da378881b0936"
+    },
+    {
+      "original_path": "generation/v0/provenance.json",
+      "original_public_sha256": "a9ab025a5cc6a62600d2848d4adb970a0edf53d90aeee7c32ede8cdd937b796f",
+      "path": "analysis/history/pre-current-20261018/generation/v0/provenance.json",
+      "expanded_semantic_sha256": "c971ac5a9e058f9596598ca52ecf10c2989b46423092faa385ef8f30148cffa8"
+    },
+    {
+      "original_path": "generation/v0/runtime-policy.json",
+      "original_public_sha256": "0d109173d3141ee25386d0e255c92c5e8fd44ffa91ac5002035830154103ca2c",
+      "path": "analysis/history/pre-current-20261018/generation/v0/runtime-policy.json",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952"
+    },
+    {
+      "original_path": "generation/v0/usage.json",
+      "original_public_sha256": "da82fec3bc8b624d4c2f77a1e25968aba855ef5c368325934eb74a8b2c824499",
+      "path": "analysis/history/pre-current-20261018/generation/v0/usage.json",
+      "expanded_semantic_sha256": "9ff83175cd1da101ab437b563511f2ffbad30852a4ad4aa9a7d476aceff83091"
+    },
+    {
+      "original_path": "generation/v1/itinerary.json",
+      "original_public_sha256": "c14e24d853c3c186563bba12e6e145172b78959238bdb195bd3c3a46e72d9d08",
+      "path": "analysis/history/pre-current-20261018/generation/v1/itinerary.json",
+      "expanded_semantic_sha256": "c5b631c9f400af867b3789e756a572b84a5ee32a298f8025865ea74563d1cb1a"
+    },
+    {
+      "original_path": "generation/v1/provenance.json",
+      "original_public_sha256": "4c7808da1304ceceb67166b53d410b97a68f97397f5cbd847193bc1b7067fa55",
+      "path": "analysis/history/pre-current-20261018/generation/v1/provenance.json",
+      "expanded_semantic_sha256": "9e8593c05aeb430f9a88708b69acf9ef4c0f9a83403b59b2c51fc5d20f5ec9f6"
+    },
+    {
+      "original_path": "generation/v1/runtime-policy.json",
+      "original_public_sha256": "ff2e1d030690321c051f4d851e5b206138cc54659e47ccfff5f852475fa2972b",
+      "path": "analysis/history/pre-current-20261018/generation/v1/runtime-policy.json",
+      "expanded_semantic_sha256": "863a9b0fc70ac7ad1a67fa9c804519950cfa13092e0948992e16bd62b48c9952"
+    },
+    {
+      "original_path": "generation/v1/usage.json",
+      "original_public_sha256": "b44185c29ea556fc1c076878884cbd1a8b734133722dd4aadef4f2990754bd82",
+      "path": "analysis/history/pre-current-20261018/generation/v1/usage.json",
+      "expanded_semantic_sha256": "889f5b9060b6d8cbb6c823f543abf8652371c404b96cac4cbf355c63e96f94cf"
+    }
+  ],
+  "notice": "Superseded selection and dependent views. Public-reference paths are relocated while recursively expanded JSON values stay unchanged; native originals and the exact former public bytes remain in the private archive and the recorded Git revision."
+}

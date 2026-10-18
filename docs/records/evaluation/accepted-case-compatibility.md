@@ -121,7 +121,7 @@ evaluation would require compatible new judgment material and any evidence missi
 from its prepared plan; the original policy reports remain usable as historical
 evidence.
 
-## Change impact and bounded follow-up
+## Change impact and selection rationale
 
 The change matrix compares actual Git file content from each version's recorded
 producer to the target, including shared backend modules, version dependencies,
@@ -241,108 +241,187 @@ account billing. Discounts, free quotas, regional differences, tax and external
 Codex usage are not established by project telemetry.
 
 Generation has **no in-flight monetary hard stop**. USD 40 is therefore a reference
-admission envelope, not an invoice guarantee. The parent admits one invocation at
-a time after checking observed usage and all remaining reservations. Unknown
-accounting, insufficient remaining allowance or any native limit failure stops
-subsequent dispatch. A generation overrun cannot be retroactively prevented.
+admission envelope, not an invoice guarantee. Each invocation was admitted after
+checking observed usage and remaining reservations. New or unbounded unknown
+accounting, insufficient allowance or native limit failures stop dispatch; a
+generation overrun cannot be retroactively prevented.
 
-### Execution and enforced stop
+For the preserved first case-05 failure, the authorized correction admitted one
+specific **USD 0.05 contingent hold**, taken from the existing USD 2 margin. The
+captured request has one Matrix element; the hold exceeds the highest published
+standard first-tier Matrix element rate in the checked
+[Google price list](https://developers.google.com/maps/billing-and-pricing/pricing).
+[Google's reporting guidance](https://developers.google.com/maps/reporting-and-monitoring/reporting)
+distinguishes billable and nonbillable HTTP 400 categories, so that status alone
+does not establish a zero charge. This hold is neither a priced native event nor
+an actual bill, does not rewrite the old null total and does not waive any new
+unknown event. Remaining unallocated margin is USD 1.95.
 
-The bounded batch started on 18 October at
-`62f04cddad8635bbef12d116ea84346d0f9788a5`, with unchanged production content and
-frozen inputs/runtime/prices. Three of six base generations ran; neither Primary
-evaluation ran. The batch is **stopped**, not complete or newly accepted.
+### Bounded execution and correction
 
-| Generation | Observed outcome | Reference USD |
-| --- | --- | ---: |
-| 04 V0 | Generation/workflow completed; all six adjacent primary-visit pairs have WALK/TRANSIT declarations | 0.0054891 |
-| 04 V1 | Generation/workflow completed; hard WALK/TRANSIT policy retained; all five adjacent primary-visit pairs have allowed application-owned transfers | 1.344135235 |
-| 05 V3 | Generation returned; three natural Repair rounds; workflow unqualified because retrieval failed | 2.472041815 observed subtotal; total unavailable |
+The batch and its single authorized correction completed on 18 October, within
+the 18-22 October execution window: **six selected qualified new generations,
+one preserved failed generation, and two independent Primary executions**. No
+corrective Primary or further generation was dispatched.
 
-Case-04's submitted-mode checks passed, but neither the V0 model declarations nor
-the V1 native transfer states establish independent whole-trip quality or universal
-live feasibility. These remain partial-version, new-date functional checks.
+Execution started at `62f04cddad8635bbef12d116ea84346d0f9788a5`. The first case-05
+capture exposed two independent problems and triggered the accounting stop:
 
-Case-05's retained proposal reports show successive native objective improvements;
-each adopted proposal matches its submitted state, and selected round 3 matches
-Repair final, V3 final-primary and the submitted itinerary. This supports the
-same-run best-retention invariant for this execution, not exhaustive search or
-independent quality. Reason compression was not triggered, and deadline exhaustion
-was not exercised. Internal `ACCEPTED_COMPLETE` describes authorized Repair targets,
-not successful RAG, qualified V3 completion or Primary acceptance.
-
-Two blockers prevent continuation:
-
-- One Repair round-2 revalidation request returned HTTP 400. The captured request
-  combines `DRIVE`, `TRAFFIC_UNAWARE` and `departureTime`; Google's response states
-  that a timestamp cannot be set for that routing mode. Native accounting retains
-  `charge_uncertain`, one unpriced event and a null total. No zero charge or
-  replacement price was invented.
+- Repair round-2 revalidation sent `DRIVE`, `TRAFFIC_UNAWARE` and `departureTime`
+  together. Google returned HTTP 400 because a timestamp is invalid for that
+  routing mode. The returned itinerary and three Repair rounds remain preserved,
+  but that capture is not the selected successful V3 check.
 - RAG connection preparation timed out at its 10-second connection limit, with
-  zero embedding sends and retrieval queries. Its status is `deadline_limited`,
-  with `timeout_scope=other_suboperation_or_limit`; this was not exhaustion of the
-  360-second RAG phase deadline. Producer qualification correctly marks retrieval
-  failed despite the returned itinerary and completed validation/Repair. Two
-  subsequent TCP-only checks of the same endpoint timed out inside the sandbox
-  but connected outside it. This supports a sandbox-connectivity limitation, not
-  a credential or database-service failure; authentication, SQL, corpus
-  compatibility and successful retrieval remain unverified. No configuration,
-  credentials or permissions were changed.
+  no embedding send or retrieval query. Native qualification correctly marked
+  retrieval failed; `deadline_limited` did not mean exhaustion of the 360-second
+  RAG phase budget. The same endpoint timed out inside the sandbox but connected
+  outside it. Subsequent native read-only preparation outside the sandbox verified
+  authentication, corpus/embedding-space compatibility and read-only transaction
+  state without embedding, model or Google requests.
 
-The three captures contain 13 model calls and 146 provider events, including one
-failed route event. The combined **observed reference subtotal is USD 3.821666150**;
-the grand total and actual account invoice remain unavailable. The accounting stop
-was enforced before 09 V0/V1, 11 V3 or either Primary could dispatch. The allowance
-was not exhausted, and the global correction/retest reservation remains unused.
+Correction `2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8` omits the timestamp at the
+Google adapter boundary for default/explicit traffic-unaware driving, preserving
+the chosen mode and pricing tier. Traffic-aware/optimal driving and TRANSIT retain
+their times; request objects and V0 behavior are unchanged. Remaining executions
+used this revision outside the sandbox with the same ignored credentials and
+query-only corpus. No project configuration, database content, system permissions
+or credentials were changed. Case-04's retained V1 capture made only WALK/TRANSIT
+route requests, so the corrected DRIVE branch does not affect its checked path.
 
-The first CLI registration check also rejected pending producer declarations in a
-planned capture slot, before any Planner dispatch. Separate registration selectors
-with raw planned slots and relocated, byte-verified donor completion references
-then passed all six native offline registration checks. The rejected invocation,
-original preparation and corrected selectors remain distinct evidence; this was
-not a repeat generation or a production-code fix.
+| Generation | Selected observation | Reference USD |
+| --- | --- | ---: |
+| 04 V0 | All six adjacent primary-visit pairs have allowed WALK/TRANSIT declarations | 0.0054891 |
+| 04 V1 | Hard mode policy retained; all five adjacent pairs have allowed application-owned transfers | 1.344135235 |
+| 05 V3 correction | All required mechanisms completed; one natural Repair round; read-only RAG query completed with an empty result | 2.452579185 |
+| 09 V0 | Qualified new final for the unchanged original request | 0.003254585 |
+| 09 V1 | Exact-one Ueno Park visit on 23 October and exact-one Tokyo National Museum visit retained in the executable contract | 2.281874900 |
+| 11 V3 | RAG returned 20 entities; one natural Repair round; submitted activities and transfers avoid the protected interval | 2.349849695 |
 
-Offline checks verified submitted modes, recorded Repair promotion/final-state
-consistency, the stopped invocation census and all 1,746 protected original file
-hashes. Execution receipts, complete captures, TCP checks and the stopped census
-are retained under the existing task-local evidence identifiers. Original case
-acceptance, scores and artifacts remain unchanged; no new Primary scores exist.
+Case-05's corrected capture contains successful traffic-unaware DRIVE responses
+without the invalid timestamp. For corrected 05 and new 11, selected round 1
+matches Repair final, V3 final-primary and the submitted state; retained proposal
+reports support the recorded promotion. These are native same-run consistency
+checks, not independent quality or exhaustive-search proofs. Case-04's mode checks
+likewise do not prove universal live feasibility. Cases 04/05 remain partial-version
+new-date checks without independent four-version Primary scores.
 
-### Remaining execution gates
+The first CLI registration attempt was rejected before Planner dispatch because
+planned slots included pending producer declarations. Separate raw-slot selectors
+and byte-verified relocated donor references passed native offline registration
+checks. This preparation correction did not consume an extra generation.
 
-The execution window is 18-22 October inclusive, Australia/Sydney. Check the actual
-date before dispatch; expiration stops execution rather than forging a runtime
-date. Unchanged production content and frozen input/runtime/price hashes are
-required. Model and Google credentials worked in the dispatched captures; RAG
-authentication and query access remain unverified by the TCP connectivity checks.
+### Independent Primary results
 
-After generation, newly submitted outputs require genuine output-specific review.
-Only then can cases 09/11 assemble complete native manifests, pass intake/semantic
-readiness, derive exact acquisition plans and produce native preparation digests.
-The parent must verify required context/reviews actually entered those packages,
-check their resource estimates and admit each exact digest. Prepared command
-templates do not claim these output-dependent packages already exist or authorize
-their execution. New current-policy judgments belong only to these two cohorts.
+Both exact-input cohorts passed native intake, semantic readiness and declared
+numerical-population readiness. Prepared timezone, transport and density context
+actually entered each package. Case-09 reused 19 role and 19 occupancy decisions
+only for unchanged V2/V3 donor outputs; occupancy source batch/record identifiers
+were relocated to the new batch with exact input/run/result/pointer/projection
+bindings and original-source mappings retained. Review decisions, identities and
+times were preserved. No donor judgment was copied onto a newly generated result.
+New wire declarations supplied the required new-output coverage without invented
+external reviews.
 
-Continuation first requires an admitted accounting treatment for the failed request,
-an authorized correction for the invalid routing option/timestamp combination, and
-verified query-only RAG prerequisites in an accessible execution context. No such
-production correction or repeat generation has occurred. Preserve the failed
-capture if a separately admitted correction attempt follows; do not relabel it as
-qualified or substitute a no-RAG result.
+Exact preparation digests were admitted separately before each fresh acquisition.
+Current identity/subject policies and eligible missing-hours model assessment were
+used; neither evaluation substituted API-only mode. These mixed-generation cohorts
+were initially supplementary evidence. The subsequently authorized current-data
+replacement is defined below.
 
-The remaining scope consists of three base generations, two Primary evaluations,
-at most the one global correction/retest cycle within its approved bounds, and
-consolidated closure. Any corrective generation consumes that single extra slot;
-it does not authorize a new cycle per blocker or case. Preserve FAIL/UNKNOWN and
-missing evidence without changing intended V0-V3 behavior. The batch remains at
-the enforced accounting/qualification stop until those continuation gates are met.
+| Case | V0 final | V1 final | V2 final | V3 final | Mean daily-density deductions, V0/V1/V2/V3 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 09 | 68 | 92 | 92 | 98 | 32 / 8 / 8 / 0 |
+| 11 | 90 | 97.5 | 80 | 100 | 0 / 2.5 / 20 / 0 |
+
+The common dimensions are requirements, grounding, non-overlap, opening and routes.
+Case-09's five-dimensional auxiliary scores are 100/100/100/98; all versions pass
+both visit obligations. One retained V3 opening UNKNOWN concerns Tokyo Dome City:
+the submitted activity does not establish public-area versus indoor/ticketed access.
+Case-11's auxiliary scores are 90/100/100/100. Its retained V0 has one grounding
+FAIL, `model_address_different_place`, with associated opening/route UNKNOWNs from
+unresolved identity. V3's protected-time check passes, including travel occupancy.
+These failures, unknowns and density deductions were not repaired or hidden.
+
+Primary 09 used 67 Google sends and three model sends, at USD 1.441668275 reference
+cost; Primary 11 used 57 and two, at USD 1.190533350. Both completed acquisition and
+eligible opening assessment with no acquisition failure or unpriced new event.
+Evidence status remains `unresolved` because the disclosed UNKNOWNs remain.
+
+### Completion and limits
+
+The **observed reference subtotal is USD 13.541426140**, including USD 2.472041815
+from the preserved failed case-05 attempt. With its separate USD 0.05 hold, budget
+admission accounts for **USD 13.591426140**, below USD 40. The full native grand
+total and actual invoice remain unavailable because the original failed event is
+still `charge_uncertain`; no assumption of zero billing was introduced. Unused
+allowance does not authorize more calls.
+
+All seven generation captures passed source-bound staging verification and exact
+offline cost-report reconstruction; six selected captures are completion-qualified.
+Both closed Primary inventories verified and their complete reports replayed
+exactly, including identity/subject judgments, access packets, usage and final
+scores. Replay made zero external connections. At bounded-batch closure, all 1,746
+original protected files, scores and acceptance decisions retained their original
+hashes. Subsequent public-data replacement does not rewrite those frozen native
+sources or historical acceptance. Detailed captures,
+original failure/stop snapshots, source relocations, runtime/pricing bindings and
+final verification remain under the existing task-local evidence identifiers.
+
+The bounded batch and single correction are complete. Reason compression and
+deadline exhaustion were not exercised live; an empty case-05 retrieval establishes
+the query path, not a positive RAG contribution. No paired, relevance, corpus study
+or genuine human review was run. No all-case latest-policy refresh, uniform new
+four-version generation, version ranking or automatic version freeze is implied.
+
+## Current-data replacement
+
+On 18 October, the researcher explicitly requested using the qualified reruns to
+update the original current data rather than leaving a supplementary report.
+The fixed public predecessor is `a85a539680d0a7cc0aab8ce273aa091150b3f121`.
+Case-09's canonical selection now uses the new V0/V1 and exact accepted V2/V3
+donors; case-11 uses exact accepted r02 V0–V2 and the new V3. Both current Primary
+datasets use the completed current-policy evaluations above. Generation sources
+remain explicit; unchanged donors are not relabeled as new current-system runs.
+
+The [case-09](../../../benchmark/case-09/report.md) and
+[case-11](../../../benchmark/case-11/report.md) reader views, selected itineraries,
+source indexes and resource views follow those replacements. Superseded public
+material is retained under each case's `analysis/history/pre-current-20261018/`,
+with immutable original native evidence and receipts preserved. Case-09's old V1
+process/relevance population is no longer current; the new passive capture is
+published without inventing independent joins. Case-11's old no-Repair pair is
+historical: its replacement has one native Repair round, but no independently
+scored draft/final pair. Exact-source donor analyses retain their original bindings.
+
+Case-04/05 retain their original current selections. Their reruns changed dates
+and cover only V0/V1 and V3 respectively; mixing those outputs with old-date donor
+versions would not form a valid complete case. Promoting those new dates requires
+the missing five generations and two independent Primary evaluations under a
+separately admitted live scope. No additional live calls are part of this data
+replacement. Cases 01–03, 06–08, 10 and 12 remain unchanged.
+
+Promotion verification accepted both native intakes, matched all eight selected
+public itinerary projections to their full native results, and replayed both
+closed Primary reports exactly without network access. All 271 indexed JSON files
+passed public-byte and expanded-value hashes; 110 local Markdown links resolved.
+The 1,142 protected private files and all other 373 protected files outside the
+two case folders and the shared benchmark index retained their original hashes.
+A publication review identified repeated large Repair objects; 67 lossless public
+references reduced the replacement Repair view from 3,179,682 to 605,963 bytes.
+Its recursively expanded value still exactly matches the private native subtree.
 
 ## Regression and limitations
 
 Fourteen existing modules covering requirements, transport time, activity roles,
 identity, schedule, declared populations, semantic readiness and V3 Repair search/
 timing completed with **359 passed**. No full backend or frontend run was performed.
+
+The routing correction separately reproduced two timestamp assertions before the
+fix; its default/explicit unaware, traffic-aware/optimal and existing TRANSIT
+controls then passed. Nine relevant adapter, route, hard-mode, Repair and accounting
+modules completed with **166 passed**, and scoped Ruff/diff checks passed. Standards
+and Spec review found no actionable issue. This does not relabel the earlier 359
+tests as newly executed or relax failed-request accounting.
 
 The first guarded test run produced 93 failures and 266 passes because the audit
 wrapper also blocked Windows asyncio's internal loopback socket pair. The same
@@ -352,9 +431,10 @@ external connections, the complete selected set passed all 359 tests. No project
 implementation or test was changed. Corrected audit/regression processes recorded
 zero external connection attempts; no model, Google or database request was sent.
 
-The audit does not establish current-model output quality, new live provider
-behavior, uniform latest-policy scores, complete historical raw-response
-reconstructibility or a complete regeneration of candidate/Repair research tracks.
-Existing FAIL/UNKNOWN outcomes, partial evidence and deferred human review retain
-their case-specific meanings. Original acceptance decisions and scores stand;
-remaining validation is explicitly bounded to the uncovered paths above.
+The offline audit alone does not establish new live output quality. The bounded
+batch adds only the stated current-path checks and two mixed-cohort evaluations,
+not uniform latest-policy scores, complete historical raw-response reconstruction
+or regeneration of research tracks. Existing FAIL/UNKNOWN outcomes, partial evidence
+and deferred human review retain their case-specific meanings. Original acceptance
+decisions and scores remain historical evidence; the two promoted current selections
+use their new Primary data and explicitly scoped dependent analyses.

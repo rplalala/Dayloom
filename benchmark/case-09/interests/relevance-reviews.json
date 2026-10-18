@@ -2,7 +2,7 @@
   "schema_version": "rtpeval_research_relevance_reviews_1",
   "records": {
     "$case_material_ref": {
-      "path": "../analysis/poi-process/relevance.json",
+      "path": "../analysis/history/pre-current-20261018/analysis/poi-process/relevance.json",
       "pointer": "/independent_reviews",
       "expanded_semantic_sha256": "ef68dca0b46a3ae84092ecfcef5bf9953599c31649b3495f4fd8f06d7d6fc00d"
     }

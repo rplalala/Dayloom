@@ -1,7 +1,7 @@
 {
   "model_calls": [
     {
-      "event_id": "01a146bc-40ec-7351-a8ef-48fe85fd47a8",
+      "event_id": "01a14d25-4dff-7f82-a2ec-0c48efdf5b65",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "requirements",
@@ -10,29 +10,29 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 15.593000000000757,
-      "input_tokens": 16841,
-      "output_tokens": 1913,
-      "total_tokens": 18754,
-      "cached_input_tokens": 9632,
-      "cache_write_input_tokens": 7206,
-      "reasoning_tokens": 816,
+      "elapsed_seconds": 14.20299999999952,
+      "input_tokens": 12696,
+      "output_tokens": 1875,
+      "total_tokens": 14571,
+      "cached_input_tokens": 10090,
+      "cache_write_input_tokens": 2603,
+      "reasoning_tokens": 929,
       "usage_details": {
-        "input_tokens": 16841,
-        "output_tokens": 1913,
-        "total_tokens": 18754,
+        "input_tokens": 12696,
+        "output_tokens": 1875,
+        "total_tokens": 14571,
         "input_token_details": {
-          "cache_creation": 7206,
-          "cache_read": 9632
+          "cache_creation": 2603,
+          "cache_read": 10090
         },
         "output_token_details": {
-          "reasoning": 816
+          "reasoning": 929
         }
       },
       "total_status": "reported"
     },
     {
-      "event_id": "01a146bc-7df2-7513-98ae-8729ae6f0a41",
+      "event_id": "01a14d25-857c-7741-89de-169e0cf2c4b0",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "structured_generation",
@@ -41,23 +41,23 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 33.671000000002095,
-      "input_tokens": 3920,
-      "output_tokens": 4804,
-      "total_tokens": 8724,
-      "cached_input_tokens": 2737,
-      "cache_write_input_tokens": 1180,
-      "reasoning_tokens": 1423,
+      "elapsed_seconds": 22.140000000001237,
+      "input_tokens": 3972,
+      "output_tokens": 3437,
+      "total_tokens": 7409,
+      "cached_input_tokens": 2821,
+      "cache_write_input_tokens": 1148,
+      "reasoning_tokens": 1731,
       "usage_details": {
-        "input_tokens": 3920,
-        "output_tokens": 4804,
-        "total_tokens": 8724,
+        "input_tokens": 3972,
+        "output_tokens": 3437,
+        "total_tokens": 7409,
         "input_token_details": {
-          "cache_creation": 1180,
-          "cache_read": 2737
+          "cache_creation": 1148,
+          "cache_read": 2821
         },
         "output_token_details": {
-          "reasoning": 1423
+          "reasoning": 1731
         }
       },
       "total_status": "reported"
@@ -65,7 +65,7 @@
   ],
   "provider_events": [
     {
-      "event_id": "2a3faffa550f41a493d5e32e284b42f5",
+      "event_id": "e8fb356d07914d66a4f06f16267d1a84",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "requirements",
@@ -76,13 +76,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a146bc-40ec-7351-a8ef-48fe85fd47a8",
+      "model_event_id": "01a14d25-4dff-7f82-a2ec-0c48efdf5b65",
       "model_provider": "langchain",
-      "elapsed_seconds": 15.14100000000326,
+      "elapsed_seconds": 13.765999999999622,
       "status_code": 200
     },
     {
-      "event_id": "9889d6cc683d484f9a858ab5907d7b34",
+      "event_id": "9e6640ba2aae4e639eac07954e3c12ad",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "structured_generation",
@@ -93,9 +93,9 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a146bc-7df2-7513-98ae-8729ae6f0a41",
+      "model_event_id": "01a14d25-857c-7741-89de-169e0cf2c4b0",
       "model_provider": "langchain",
-      "elapsed_seconds": 33.59399999999732,
+      "elapsed_seconds": 22.063000000000102,
       "status_code": 200
     }
   ],
@@ -105,35 +105,35 @@
       "stage": "requirements",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 15.625,
+      "elapsed_seconds": 14.20299999999952,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "structured_generation",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 15.625,
+      "elapsed_seconds": 14.20299999999952,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "requirements",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 15.64100000000326,
+      "elapsed_seconds": 14.20299999999952,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "structured_generation",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 33.671000000002095,
+      "elapsed_seconds": 22.140000000001237,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "planner",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 50.54699999999866,
+      "elapsed_seconds": 37.25,
       "scope": "inclusive_not_additive"
     }
   ],
@@ -146,18 +146,18 @@
   "diagnostics": [],
   "timing": {
     "scope": "selected_invocation_through_cleanup",
-    "started_at": "2026-10-16T22:01:43.706242+00:00",
-    "finished_at": "2026-10-16T22:02:34.244754+00:00",
-    "elapsed_seconds": 50.54699999999866,
+    "started_at": "2026-10-18T03:54:11.951935+00:00",
+    "finished_at": "2026-10-18T03:54:49.210181+00:00",
+    "elapsed_seconds": 37.25,
     "status": "measured"
   },
   "outcome": "completed",
   "schema_version": "rtpeval_usage_1",
   "group_id": "case-09",
-  "run_id": "case-09-v0-r1",
+  "run_id": "case-09-current-path-v0-a1",
   "version": "v0",
   "namespace": "planner",
-  "result_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+  "result_sha256": "9d420d94787ab7851cc3f9026d81b7e668a9dededaf3aa4b9aaf15d8a7e2e5c7",
   "collection_status": "available",
   "coverage": {
     "scope": "instrumented_adapters_only",

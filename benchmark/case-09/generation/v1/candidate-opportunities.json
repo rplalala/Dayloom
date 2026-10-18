@@ -1,0 +1,1499 @@
+{
+  "schema_version": "rtpeval_candidate_capture_1",
+  "version": "v1",
+  "run_id": "case-09-current-path-v1-a1",
+  "stages": {
+    "discovered": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Senso-ji in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "admitted": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Senso-ji in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "enriched": {
+      "status": "complete",
+      "reasons": [
+        "queue_exhausted"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Senso-ji in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "supplied": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "google_origins": [
+            {
+              "intent_id": "named_2",
+              "source_query": "Tokyo National Museum in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "google_origins": [
+            {
+              "intent_id": "named_1",
+              "source_query": "Ueno Park in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "explicit_requirement"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Imperial Palace in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 3,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_6",
+              "source_query": "Shibuya Scramble Crossing in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Tsukiji Outer Market in Tokyo, Japan",
+              "provider_rank": 1,
+              "actual_result_count": 4,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "landmark_1",
+              "source_query": "Senso-ji in Tokyo, Japan",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Tokyo, Japan",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    }
+  },
+  "pre_rag_google_ids": [
+    "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+    "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+    "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+    "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+    "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+    "ChIJ9_FxdIj6GGARU_kzX6Xrguc",
+    "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+    "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+    "ChIJD1M2GbCMGGARmUFziof73JM",
+    "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+    "ChIJK9EM68qLGGARacmu4KJj5SA",
+    "ChIJKbFrx72LGGAR1uyToVEdITo",
+    "ChIJMwpiebSMGGARPr_454zHvDQ",
+    "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+    "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+    "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+    "ChIJPyOTG8KMGGARh_IXobWxHmo",
+    "ChIJTQbYAg2MGGARt22eNwtfGtE",
+    "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+    "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+    "ChIJY4HWjseLGGARIBjdW6fAwYs",
+    "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+    "ChIJnctryNSMGGARLv4MknPFseU",
+    "ChIJqb-xEgCLGGARSaVWlndYgrg",
+    "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+    "ChIJw2qQRZuOGGARWmROEiM2y7E",
+    "ChIJyVdfgWGJGGAR1vj5VaRAois",
+    "ChIJzRzI3HSNGGARRwZW6AtJfi0"
+  ],
+  "omissions": [
+    {
+      "canonical_place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJP9eKBdeMGGAR0zzBXJNVj5A",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+      "stage": "supplied",
+      "reason": "not_selected"
+    },
+    {
+      "canonical_place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+      "stage": "supplied",
+      "reason": "not_selected"
+    }
+  ],
+  "rag": null,
+  "outcome": "completed",
+  "failure_type": null,
+  "result_semantic_sha256": "638cff959b3cb3b7ccd5e9465e283741302f3c5071e16347b6252b6e8a77821d"
+}

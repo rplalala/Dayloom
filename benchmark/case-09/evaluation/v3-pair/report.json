@@ -10,7 +10,7 @@
     "quality": "independent checks; deletion and replacement do not repair old facts",
     "daily_density": {
       "$case_material_ref": {
-        "path": "../primary/report.json",
+        "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
         "pointer": "/rules_profile/daily_density",
         "expanded_semantic_sha256": "1148179dbd6e7186db599f6dd3b0ffa071b23cb96417927fd695a4d0c6b20eed"
       }
@@ -925,7 +925,7 @@
           "dimensions": {
             "requirements": {
               "$case_material_ref": {
-                "path": "../primary/report.json",
+                "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                 "pointer": "/groups/0/versions/v0/dimensions/requirements",
                 "expanded_semantic_sha256": "5169b26abdcbfc5e6b1f2ae9b8af99825380f19dd811b6dabbb45a9b2b0b8433"
               }
@@ -3575,7 +3575,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -3603,7 +3603,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -3744,7 +3744,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -3772,7 +3772,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -3913,7 +3913,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -4103,7 +4103,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -4131,7 +4131,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -4272,7 +4272,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -4300,7 +4300,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -4441,7 +4441,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -4469,7 +4469,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -4736,14 +4736,14 @@
             "daily": {
               "2026-10-22": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-22",
                   "expanded_semantic_sha256": "abbb4dbb222ec6f2d8ab2d46bb6ddd720503f5fcb105466bf7e67e42247d4999"
                 }
               },
               "2026-10-23": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-23",
                   "expanded_semantic_sha256": "296138d74c7b5e42d275974dfe69c7848184e39e11c1e66ec5f449ed23bace93"
                 }
@@ -4798,14 +4798,14 @@
               },
               "2026-10-25": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-25",
                   "expanded_semantic_sha256": "1a3dab238da5a6bbae18a701630eec0c1e39d21db86f19c6f95c7e6c00160394"
                 }
               },
               "2026-10-26": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-26",
                   "expanded_semantic_sha256": "cb7c4cddde9889290f25f417428eecf4a3026a8e31a954b7c970b037890f78fe"
                 }
@@ -5177,7 +5177,7 @@
               "status": "complete",
               "reviewed_revisit_obligations": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/descriptive/repetition/reviewed_revisit_obligations",
                   "expanded_semantic_sha256": "cc4fbf9497a4210a241f01bd308e2e8b131ad9914398bb822a0d03fc46884d73"
                 }
@@ -5190,14 +5190,14 @@
             "days": [
               {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/daily_density/days/0",
                   "expanded_semantic_sha256": "ed01766332525c8094b31319f2dc1f84affab13b7eeff6bdc1ed82ae17efe8ac"
                 }
               },
               {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/daily_density/days/1",
                   "expanded_semantic_sha256": "d0769c864525463c707c13748cb0c28b5f97ed8ec674f4489d32e096a10a6e6d"
                 }
@@ -5233,14 +5233,14 @@
               },
               {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/daily_density/days/3",
                   "expanded_semantic_sha256": "841e6c9b8e1cad8e36ee05caa9eafbab7a25d738151d4b70b4cae4f61c3ec96b"
                 }
               },
               {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/daily_density/days/4",
                   "expanded_semantic_sha256": "afdf69f15722203bacb49e382327a0c010f5331b4e525bad04fcf46709f84b77"
                 }
@@ -5248,7 +5248,7 @@
             ],
             "review": {
               "$case_material_ref": {
-                "path": "../primary/report.json",
+                "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                 "pointer": "/groups/0/versions/v0/daily_density/review",
                 "expanded_semantic_sha256": "75032537ca8adb48f7a46707425b07932b37a62e5a7f8ac44d7bfa4724787a28"
               }
@@ -6428,7 +6428,7 @@
           },
           "dimensions": {
             "$case_material_ref": {
-              "path": "../primary/report.json",
+              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
               "pointer": "/groups/0/versions/v1/dimensions",
               "expanded_semantic_sha256": "f97d1e0483157eef813a3b629e9646db7cce3b319fbcebf8d6d654c637518388"
             }
@@ -8433,7 +8433,7 @@
               },
               "duration_subtotals": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/primary_metrics/opening/duration_subtotals",
                   "expanded_semantic_sha256": "61521d5d089e9134232493894dc9f60cdc90b0b4c68dd487421f81273eaa68b1"
                 }
@@ -8549,7 +8549,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -8577,7 +8577,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -8718,7 +8718,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -8746,7 +8746,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -8887,7 +8887,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -8915,7 +8915,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -9056,7 +9056,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -9084,7 +9084,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -9225,7 +9225,7 @@
                   },
                   "mode_review": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
                       "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
                     }
@@ -9253,7 +9253,7 @@
                   "state": "PASS",
                   "components": {
                     "$case_material_ref": {
-                      "path": "../primary/report.json",
+                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                       "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
                       "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
                     }
@@ -9355,7 +9355,7 @@
               },
               "daily_observed_transfer_burden": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v3/primary_metrics/routes/daily_observed_transfer_burden",
                   "expanded_semantic_sha256": "d80ce9800712c0650bcb3fd90a02f6f3fbd59ce2e6de43fc7d3f9187603c883c"
                 }
@@ -9364,7 +9364,7 @@
           },
           "schedule_measures": {
             "$case_material_ref": {
-              "path": "../primary/report.json",
+              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
               "pointer": "/groups/0/versions/v3/schedule_measures",
               "expanded_semantic_sha256": "bd6d34d2ca688e4e30926d0e38a71b466153322f67a8fe8f8f05da917542c514"
             }
@@ -9705,7 +9705,7 @@
               "status": "complete",
               "reviewed_revisit_obligations": {
                 "$case_material_ref": {
-                  "path": "../primary/report.json",
+                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
                   "pointer": "/groups/0/versions/v0/descriptive/repetition/reviewed_revisit_obligations",
                   "expanded_semantic_sha256": "cc4fbf9497a4210a241f01bd308e2e8b131ad9914398bb822a0d03fc46884d73"
                 }
@@ -9714,7 +9714,7 @@
           },
           "daily_density": {
             "$case_material_ref": {
-              "path": "../primary/report.json",
+              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
               "pointer": "/groups/0/versions/v0/daily_density",
               "expanded_semantic_sha256": "2d9630d5c40efb59b0dd44642097f30cab9ab3f2fd5442a3f73e74f9a2151e7f"
             }
@@ -12688,7 +12688,7 @@
       "schema_version": "rtpeval_opening_report_1",
       "rules": {
         "$case_material_ref": {
-          "path": "../primary/report.json",
+          "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
           "pointer": "/components/opening/rules",
           "expanded_semantic_sha256": "3db88619bc16740ffe73fb84169e03cfb83b0de0b9e4db71f807b2f5b9f1af6a"
         }
@@ -12733,7 +12733,7 @@
       "schema_version": "rtpeval_route_report_1",
       "rules": {
         "$case_material_ref": {
-          "path": "../primary/report.json",
+          "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
           "pointer": "/components/routes/rules",
           "expanded_semantic_sha256": "d93efe60c4b5a2c3f2c70f10ceb0d1657c4a7603d9102d3cae9f4c46292e0cc7"
         }

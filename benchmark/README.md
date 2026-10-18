@@ -116,9 +116,12 @@ their separate authorization and completion meanings.
 ### Accepted selections
 
 Automatic case acceptance applies only to the exact selection and limitations in
-its linked report. Decision dates use Australia/Sydney. Original inputs, selected
-outputs and verified private evidence remain unchanged; Git publication and Issue
-closure require their own authorization. Separate Repair engineering diagnostics do
+its linked report. Decision dates use Australia/Sydney. User-authorized current-data
+replacement preserves the previous selection and acceptance as history, while
+updating the canonical generation, scoring and reader views together. Original
+native evidence and frozen receipts remain immutable; dependent analyses must match
+the replacement sources or explicitly retain historical/pending status.
+Git publication and Issue closure require their own authorization. Separate Repair engineering diagnostics do
 not contribute to case scores. Blinded human assessment is deferred.
 
 | Case | Researcher acceptance date | Accepted selection and limitations |
@@ -131,9 +134,9 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
 | 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged; #157/#182 completed; blinded review deferred |
-| 09 | 2026-10-17 | [Tokyo revision 1, with the refreshed V3 pair, retained FAIL/UNKNOWN, partial discovery and unverified affordability](case-09/report.md#acceptance); main-worktree integration and private-evidence migration complete |
+| 09 | 2026-10-17; current data updated 2026-10-18 | [Tokyo current selection](case-09/report.md#acceptance): replacement V0/V1, exact accepted V2/V3 donors and fresh current-policy Primary; V3 pair retained on its unchanged source; new V1 process/relevance joins incomplete |
 | 10 | 2026-10-17 | [London revision 2, exact-two British Museum visits on distinct dates, retained time/access uncertainty, relevance UNKNOWNs and unverified affordability](case-10/report.md#acceptance-status) |
-| 11 | 2026-10-17 | [Paris execution revision 2, protected interval, genuine no-Repair, completed same-run pair, 14 relevance UNKNOWNs and unverified affordability](case-11/report.md#acceptance); automatically accepted and integrated into the main worktree with verified private archive migration; blinded review deferred |
+| 11 | 2026-10-17; current data updated 2026-10-18 | [Paris current selection](case-11/report.md#acceptance): replacement V3 with one Repair round, exact accepted r02 V0–V2 donors and fresh current-policy Primary; protected interval passes; old no-Repair pair is historical, with no independent pair for the replacement V3 |
 | 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190) merged; #163/#184 completed; main synchronized and private-evidence migration verified; blinded review deferred |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)

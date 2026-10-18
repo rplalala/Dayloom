@@ -60,13 +60,13 @@
       "alternatives_per_gap": 2,
       "exploration_positions": 2,
       "timing": {
-        "stage_seconds": 360.0,
-        "round_seconds": 120.0,
+        "stage_seconds": 420.0,
+        "round_seconds": 150.0,
         "model_seconds": 70.0,
-        "preparation_seconds": 45.0,
+        "preparation_seconds": 60.0,
         "recheck_reserve_seconds": 20.0,
         "minimum_model_seconds": 30.0,
-        "round_reference_seconds": 60.0,
+        "round_reference_seconds": 120.0,
         "finalization_reserve_seconds": 1.0
       },
       "input": {
@@ -104,6 +104,12 @@
         "fallback_distance_km": 1.0,
         "fallback_reserve_minutes": 45.0,
         "daily_added_minutes": 90.0
+      },
+      "reason_compression": {
+        "max_calls": 1,
+        "input_tokens": 32000,
+        "output_tokens": 8192,
+        "timeout_seconds": 30.0
       }
     },
     "acquisition": {
@@ -230,5 +236,5 @@
       "max_payload_bytes": 10000000
     }
   },
-  "sha256": "ed0853d6968c8b526a695e9a69b97e22dc2e331291e4051ddc8d305046cd5107"
+  "sha256": "10cf06f6715dbdd4a4f3e7de0e5e5afd3a530feca1f16795cd07c1e112ce758a"
 }

@@ -341,7 +341,12 @@ blinded review is deferred. Its accepted package and required private evidence a
 integrated into the main worktree; [delivery #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
 tracks publication and preserved validation limits. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
-locates researcher decisions, exact datasets and stated limitations. Case-05 revision 3 /
+locates researcher decisions, exact datasets and stated limitations. The authorized
+18 October [current-data replacement](docs/records/evaluation/accepted-case-compatibility.md#current-data-replacement)
+promotes case-09's new V0/V1 and case-11's new V3 with matched fresh Primary;
+unchanged donor outputs retain their exact sources. Their case reports identify
+dependent-analysis gaps, while former selections and native evidence remain preserved.
+Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
 on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
 verification. Original inputs, selected results and private archives remain unchanged.

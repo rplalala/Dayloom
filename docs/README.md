@@ -57,7 +57,8 @@ records main-worktree verification and the boundaries of reused regression evide
 The [accepted-case compatibility audit](records/evaluation/accepted-case-compatibility.md)
 checks all twelve accepted selections against the 18 October integrated code,
 separating unchanged saved-material calculations from source-bound policy upgrades
-and proposed targeted generation checks.
+and the completed bounded generation/Primary checks. It also records the authorized
+current-data replacement for case-09/11 and the remaining dependent-analysis gaps.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;

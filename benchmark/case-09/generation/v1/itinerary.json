@@ -2,54 +2,14 @@
   "output_version": "itinerary_3",
   "transfers": [
     {
-      "from_activity_id": "2026-10-22-meiji-jingu",
-      "to_activity_id": "2026-10-22-japanime-art-gallery",
-      "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-      "destination_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-22T11:00:00+09:00",
-      "arrival_time": "2026-10-22T11:19:01+09:00",
-      "provider_duration_seconds": 1141.0,
-      "distance_meters": 1420,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "2026-10-23-tokyo-national-museum",
-      "to_activity_id": "2026-10-23-ueno-park",
-      "origin_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-      "destination_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
-      "mode": "WALK",
-      "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-23T12:30:00+09:00",
-      "arrival_time": "2026-10-23T12:37:15+09:00",
-      "provider_duration_seconds": 435.0,
-      "distance_meters": 530,
-      "reserve_seconds": 0.0,
-      "routing_preference": null,
-      "evidence_refs": [
-        "google_routes:compute_route_matrix"
-      ],
-      "calculation_basis": "walk_provider_estimate",
-      "validation_state": "PASS",
-      "unknowns": []
-    },
-    {
-      "from_activity_id": "2026-10-24-senso-ji",
-      "to_activity_id": "2026-10-24-tokyo-skytree",
+      "from_activity_id": "tokyo-20261022-sensoji",
+      "to_activity_id": "tokyo-20261022-skytree",
       "origin_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
       "destination_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-24T11:30:00+09:00",
-      "arrival_time": "2026-10-24T11:54:55+09:00",
+      "departure_time": "2026-10-22T11:30:00+09:00",
+      "arrival_time": "2026-10-22T11:54:55+09:00",
       "provider_duration_seconds": 1495.0,
       "distance_meters": 1713,
       "reserve_seconds": 0.0,
@@ -62,16 +22,16 @@
       "unknowns": []
     },
     {
-      "from_activity_id": "2026-10-25-hamarikyu-gardens",
-      "to_activity_id": "2026-10-25-tokyo-tower",
-      "origin_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
-      "destination_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "from_activity_id": "tokyo-20261023-ueno-park",
+      "to_activity_id": "tokyo-20261023-national-museum",
+      "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "destination_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-25T12:00:00+09:00",
-      "arrival_time": "2026-10-25T12:36:55+09:00",
-      "provider_duration_seconds": 2215.0,
-      "distance_meters": 2494,
+      "departure_time": "2026-10-23T10:30:00+09:00",
+      "arrival_time": "2026-10-23T10:37:15+09:00",
+      "provider_duration_seconds": 435.0,
+      "distance_meters": 530,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -82,16 +42,36 @@
       "unknowns": []
     },
     {
-      "from_activity_id": "2026-10-26-imperial-palace",
-      "to_activity_id": "2026-10-26-tokyo-dome-city",
-      "origin_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
-      "destination_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+      "from_activity_id": "tokyo-20261024-meiji-jingu",
+      "to_activity_id": "tokyo-20261024-shibuya-crossing",
+      "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-26T11:30:00+09:00",
-      "arrival_time": "2026-10-26T12:04:56+09:00",
-      "provider_duration_seconds": 2096.0,
-      "distance_meters": 2451,
+      "departure_time": "2026-10-24T11:00:00+09:00",
+      "arrival_time": "2026-10-24T11:30:52+09:00",
+      "provider_duration_seconds": 1852.0,
+      "distance_meters": 2307,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "tokyo-20261025-shinjuku-gyoen",
+      "to_activity_id": "tokyo-20261025-godzilla-head",
+      "origin_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "destination_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-25T11:30:00+09:00",
+      "arrival_time": "2026-10-25T11:52:51+09:00",
+      "provider_duration_seconds": 1371.0,
+      "distance_meters": 1633,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -104,146 +84,12 @@
   ],
   "route_diagnostics": [
     {
-      "from_activity_id": "2026-10-22-meiji-jingu",
-      "to_activity_id": "2026-10-22-japanime-art-gallery",
-      "origin": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-      "destination": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
-      "departure": "2026-10-22T11:00:00+09:00",
-      "next_start": "2026-10-22T12:00:00+09:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 1141,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-16T22:04:04.313082+00:00",
-              "retrieved_at": "2026-10-16T22:04:05.108800+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-                "destination_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 1141,
-                "fallback_info": null,
-                "requested_at": "2026-10-16T22:04:04.313082Z",
-                "retrieved_at": "2026-10-16T22:04:05.108800Z",
-                "origin_index": 3,
-                "destination_index": 8,
-                "distance_meters": 1420,
-                "duration_seconds": 1141,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "2026-10-23-tokyo-national-museum",
-      "to_activity_id": "2026-10-23-ueno-park",
-      "origin": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-      "destination": "ChIJw2qQRZuOGGARWmROEiM2y7E",
-      "departure": "2026-10-23T12:30:00+09:00",
-      "next_start": "2026-10-23T13:15:00+09:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 435,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-16T22:04:04.313082+00:00",
-              "retrieved_at": "2026-10-16T22:04:05.108800+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-                "destination_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 435,
-                "fallback_info": null,
-                "requested_at": "2026-10-16T22:04:04.313082Z",
-                "retrieved_at": "2026-10-16T22:04:05.108800Z",
-                "origin_index": 0,
-                "destination_index": 1,
-                "distance_meters": 530,
-                "duration_seconds": 435,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
-    },
-    {
-      "from_activity_id": "2026-10-24-senso-ji",
-      "to_activity_id": "2026-10-24-tokyo-skytree",
+      "from_activity_id": "tokyo-20261022-sensoji",
+      "to_activity_id": "tokyo-20261022-skytree",
       "origin": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
       "destination": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
-      "departure": "2026-10-24T11:30:00+09:00",
-      "next_start": "2026-10-24T12:30:00+09:00",
+      "departure": "2026-10-22T11:30:00+09:00",
+      "next_start": "2026-10-22T12:15:00+09:00",
       "considered_modes": [
         "WALK",
         "TRANSIT",
@@ -264,8 +110,8 @@
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-16T22:04:04.313082+00:00",
-              "retrieved_at": "2026-10-16T22:04:05.108800+00:00",
+              "requested_at": "2026-10-18T03:56:28.723565+00:00",
+              "retrieved_at": "2026-10-18T03:56:29.552693+00:00",
               "basis": "walk_provider_estimate",
               "element": {
                 "origin_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
@@ -278,10 +124,10 @@
                 "status_state": "success",
                 "static_duration_seconds": 1495,
                 "fallback_info": null,
-                "requested_at": "2026-10-16T22:04:04.313082Z",
-                "retrieved_at": "2026-10-16T22:04:05.108800Z",
-                "origin_index": 2,
-                "destination_index": 9,
+                "requested_at": "2026-10-18T03:56:28.723565Z",
+                "retrieved_at": "2026-10-18T03:56:29.552693Z",
+                "origin_index": 1,
+                "destination_index": 7,
                 "distance_meters": 1713,
                 "duration_seconds": 1495,
                 "availability": "available",
@@ -305,12 +151,12 @@
       ]
     },
     {
-      "from_activity_id": "2026-10-25-hamarikyu-gardens",
-      "to_activity_id": "2026-10-25-tokyo-tower",
-      "origin": "ChIJwfegutyLGGARGjiY-L2eSps",
-      "destination": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
-      "departure": "2026-10-25T12:00:00+09:00",
-      "next_start": "2026-10-25T13:00:00+09:00",
+      "from_activity_id": "tokyo-20261023-ueno-park",
+      "to_activity_id": "tokyo-20261023-national-museum",
+      "origin": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "destination": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+      "departure": "2026-10-23T10:30:00+09:00",
+      "next_start": "2026-10-23T11:00:00+09:00",
       "considered_modes": [
         "WALK",
         "TRANSIT",
@@ -326,31 +172,31 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 2215,
+              "duration_seconds": 435,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-16T22:04:05.865935+00:00",
-              "retrieved_at": "2026-10-16T22:04:06.637305+00:00",
+              "requested_at": "2026-10-18T03:56:27.115468+00:00",
+              "retrieved_at": "2026-10-18T03:56:27.937502+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
-                "destination_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+                "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+                "destination_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 2215,
+                "static_duration_seconds": 435,
                 "fallback_info": null,
-                "requested_at": "2026-10-16T22:04:05.865935Z",
-                "retrieved_at": "2026-10-16T22:04:06.637305Z",
-                "origin_index": 2,
-                "destination_index": 4,
-                "distance_meters": 2494,
-                "duration_seconds": 2215,
+                "requested_at": "2026-10-18T03:56:27.115468Z",
+                "retrieved_at": "2026-10-18T03:56:27.937502Z",
+                "origin_index": 1,
+                "destination_index": 0,
+                "distance_meters": 530,
+                "duration_seconds": 435,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -372,12 +218,12 @@
       ]
     },
     {
-      "from_activity_id": "2026-10-26-imperial-palace",
-      "to_activity_id": "2026-10-26-tokyo-dome-city",
-      "origin": "ChIJTQbYAg2MGGARt22eNwtfGtE",
-      "destination": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
-      "departure": "2026-10-26T11:30:00+09:00",
-      "next_start": "2026-10-26T13:00:00+09:00",
+      "from_activity_id": "tokyo-20261024-meiji-jingu",
+      "to_activity_id": "tokyo-20261024-shibuya-crossing",
+      "origin": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "destination": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "departure": "2026-10-24T11:00:00+09:00",
+      "next_start": "2026-10-24T12:00:00+09:00",
       "considered_modes": [
         "WALK",
         "TRANSIT",
@@ -393,31 +239,98 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 2096,
+              "duration_seconds": 1852,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-16T22:04:05.111977+00:00",
-              "retrieved_at": "2026-10-16T22:04:05.863432+00:00",
+              "requested_at": "2026-10-18T03:56:27.115468+00:00",
+              "retrieved_at": "2026-10-18T03:56:27.937502+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
-                "destination_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+                "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 2096,
+                "static_duration_seconds": 1852,
                 "fallback_info": null,
-                "requested_at": "2026-10-16T22:04:05.111977Z",
-                "retrieved_at": "2026-10-16T22:04:05.863432Z",
-                "origin_index": 1,
-                "destination_index": 14,
-                "distance_meters": 2451,
-                "duration_seconds": 2096,
+                "requested_at": "2026-10-18T03:56:27.115468Z",
+                "retrieved_at": "2026-10-18T03:56:27.937502Z",
+                "origin_index": 2,
+                "destination_index": 5,
+                "distance_meters": 2307,
+                "duration_seconds": 1852,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "tokyo-20261025-shinjuku-gyoen",
+      "to_activity_id": "tokyo-20261025-godzilla-head",
+      "origin": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "destination": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+      "departure": "2026-10-25T11:30:00+09:00",
+      "next_start": "2026-10-25T13:00:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1371,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T03:56:27.940523+00:00",
+              "retrieved_at": "2026-10-18T03:56:28.720374+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                "destination_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1371,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T03:56:27.940523Z",
+                "retrieved_at": "2026-10-18T03:56:28.720374Z",
+                "origin_index": 2,
+                "destination_index": 15,
+                "distance_meters": 1633,
+                "duration_seconds": 1371,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -441,31 +354,31 @@
   ],
   "reference_recommendations": [
     {
-      "place_name": "Treasure Hall Lawn",
-      "source_place_id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
-      "reason": "Park near Meiji Jingu (approximately 337 m straight-line).",
+      "place_name": "Smoking Area",
+      "source_place_id": "ChIJ5f9kewCPGGARnzi9Chr9Xow",
+      "reason": "Park near Sensō-ji (approximately 86 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "1-1 Yoyogikamizonoch\u014d, Shibuya, Tokyo 151-8557, Japan",
+      "area": "2-chōme-29-19 Asakusa, Taito City, Tokyo 111-0032, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-39796b2f-f4d7-497d-ba63-56969b3964f0:0"
+      "source_ref": "google_places_nearby:nearby-7bbbec7b-7650-479e-ba8e-cf6d57838178:0"
     },
     {
-      "place_name": "Marion Cr\u00eapes Takeshita Street",
-      "source_place_id": "ChIJPft3N7uMGGAReOEjLwqJIm0",
-      "reason": "Restaurant near Japanime Art Gallery Tokyo (approximately 5 m straight-line).",
+      "place_name": "SKYTREE GALLERY",
+      "source_place_id": "ChIJP7KkV1ePGGARnAp_ETT56kA",
+      "reason": "Museum near Tokyo Skytree (approximately 4 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "Japan, \u3012150-0001 Tokyo, Shibuya, Jing\u016bmae, 1-ch\u014dme\u22126\u2212\uff11\uff15 \u30b8\u30e5\u30cd\u30b9\u30d3\u30eb 1F",
+      "area": "1-chōme-1-83 Oshiage, Sumida City, Tokyo 131-0045, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-abcb8b56-80b8-4523-b0df-89dfd3a4e8cc:0"
+      "source_ref": "google_places_nearby:nearby-ff81475e-d537-4fb2-b374-76ba2b887ffe:0"
     },
     {
-      "place_name": "Tokyo National Museum Shop",
-      "source_place_id": "ChIJq6op05yOGGARACPQil8rZ74",
-      "reason": "Museum near Tokyo National Museum (approximately 44 m straight-line).",
+      "place_name": "Shin Uguisu-tei",
+      "source_place_id": "ChIJIb7G9SeMGGARnkik2MxQlXI",
+      "reason": "Cafe near Ueno Park (approximately 116 m straight-line).",
       "associated_day": "2026-10-23",
-      "area": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
+      "area": "9-86 Uenokōen, Taito City, Tokyo 110-0007, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-2f72152c-d06e-43e0-a423-8302e132f406:1"
+      "source_ref": "google_places_nearby:nearby-a214393d-072f-4e1f-ac3c-f5235ca5427e:1"
     }
   ],
   "destination": "Tokyo, Japan",
@@ -478,28 +391,28 @@
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-22-meiji-jingu",
-          "title": "Visit Meiji Jingu",
-          "place_name": "Meiji Jingu",
-          "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-          "location": "1-1 Yoyogikamizonoch\u014d, Shibuya, Tokyo 151-8557, Japan",
-          "start_time": "2026-10-22T09:30:00+09:00",
-          "end_time": "2026-10-22T11:00:00+09:00",
+          "activity_id": "tokyo-20261022-sensoji",
+          "title": "Visit Sensō-ji",
+          "place_name": "Sensō-ji",
+          "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "location": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+          "start_time": "2026-10-22T10:00:00+09:00",
+          "end_time": "2026-10-22T11:30:00+09:00",
           "estimated_cost": null,
-          "notes": "Date-specific opening hours are not verified in the supplied evidence."
+          "notes": "A traditional-culture visit. Date-specific opening hours were not supplied."
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-22-japanime-art-gallery",
-          "title": "Visit Japanime Art Gallery Tokyo",
-          "place_name": "Japanime Art Gallery Tokyo",
-          "source_place_id": "ChIJx2F0QC2NGGARLQpGhWsI7gU",
-          "location": "Japan, \u3012150-0001 Tokyo, Shibuya, Jing\u016bmae, 1-ch\u014dme\u22126\u2212\uff11\uff15 Harajuku Jeunesse, 2F",
-          "start_time": "2026-10-22T12:00:00+09:00",
-          "end_time": "2026-10-22T13:30:00+09:00",
+          "activity_id": "tokyo-20261022-skytree",
+          "title": "Visit Tokyo Skytree",
+          "place_name": "Tokyo Skytree",
+          "source_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "location": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+          "start_time": "2026-10-22T12:15:00+09:00",
+          "end_time": "2026-10-22T14:00:00+09:00",
           "estimated_cost": null,
-          "notes": "The supplied evidence identifies this as an art gallery but does not establish that its art is modern."
+          "notes": null
         }
       ]
     },
@@ -509,28 +422,28 @@
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-23-tokyo-national-museum",
-          "title": "Visit Tokyo National Museum",
-          "place_name": "Tokyo National Museum",
-          "source_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-          "location": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
-          "start_time": "2026-10-23T10:00:00+09:00",
-          "end_time": "2026-10-23T12:30:00+09:00",
-          "estimated_cost": null,
-          "notes": null
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "2026-10-23-ueno-park",
+          "activity_id": "tokyo-20261023-ueno-park",
           "title": "Visit Ueno Park",
           "place_name": "Ueno Park",
           "source_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
           "location": "4 Uenokoen, Taito City, Tokyo 110-0007, Japan",
-          "start_time": "2026-10-23T13:15:00+09:00",
-          "end_time": "2026-10-23T14:45:00+09:00",
+          "start_time": "2026-10-23T09:30:00+09:00",
+          "end_time": "2026-10-23T10:30:00+09:00",
           "estimated_cost": null,
-          "notes": null
+          "notes": "The requested single Ueno Park visit, scheduled on 2026-10-23."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "tokyo-20261023-national-museum",
+          "title": "Visit Tokyo National Museum",
+          "place_name": "Tokyo National Museum",
+          "source_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "location": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
+          "start_time": "2026-10-23T11:00:00+09:00",
+          "end_time": "2026-10-23T14:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "The requested single museum visit. Supplied hours for this date are 09:30–20:00; date-specific closure exceptions were not established."
         }
       ]
     },
@@ -540,26 +453,26 @@
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-24-senso-ji",
-          "title": "Visit Sens\u014d-ji",
-          "place_name": "Sens\u014d-ji",
-          "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
-          "location": "2-ch\u014dme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
-          "start_time": "2026-10-24T10:00:00+09:00",
-          "end_time": "2026-10-24T11:30:00+09:00",
+          "activity_id": "tokyo-20261024-meiji-jingu",
+          "title": "Visit Meiji Jingu",
+          "place_name": "Meiji Jingu",
+          "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+          "start_time": "2026-10-24T09:30:00+09:00",
+          "end_time": "2026-10-24T11:00:00+09:00",
           "estimated_cost": null,
-          "notes": "Date-specific opening hours are not verified in the supplied evidence."
+          "notes": "A traditional-culture visit. Date-specific opening hours were not supplied."
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-24-tokyo-skytree",
-          "title": "Visit Tokyo Skytree",
-          "place_name": "Tokyo Skytree",
-          "source_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
-          "location": "1-ch\u014dme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
-          "start_time": "2026-10-24T12:30:00+09:00",
-          "end_time": "2026-10-24T14:30:00+09:00",
+          "activity_id": "tokyo-20261024-shibuya-crossing",
+          "title": "See Shibuya Scramble Crossing",
+          "place_name": "Shibuya Scramble Crossing",
+          "source_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "location": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+          "start_time": "2026-10-24T12:00:00+09:00",
+          "end_time": "2026-10-24T12:30:00+09:00",
           "estimated_cost": null,
           "notes": null
         }
@@ -571,28 +484,28 @@
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-25-hamarikyu-gardens",
-          "title": "Visit Hamarikyu Gardens",
-          "place_name": "Hamarikyu Gardens",
-          "source_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
-          "location": "1-1 Hamariky\u016bteien, Chuo City, Tokyo 104-0046, Japan",
+          "activity_id": "tokyo-20261025-shinjuku-gyoen",
+          "title": "Visit Shinjuku Gyoen National Garden",
+          "place_name": "Shinjuku Gyoen National Garden",
+          "source_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "location": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
           "start_time": "2026-10-25T09:30:00+09:00",
-          "end_time": "2026-10-25T12:00:00+09:00",
+          "end_time": "2026-10-25T11:30:00+09:00",
           "estimated_cost": null,
-          "notes": null
+          "notes": "The supplied regular weekly baseline lists hours of 09:00–16:30; date-specific exceptions were not established."
         },
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-25-tokyo-tower",
-          "title": "Visit Tokyo Tower",
-          "place_name": "Tokyo Tower",
-          "source_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
-          "location": "4-ch\u014dme-2-8 Shibak\u014den, Minato City, Tokyo 105-0011, Japan",
+          "activity_id": "tokyo-20261025-godzilla-head",
+          "title": "See Godzilla Head",
+          "place_name": "Godzilla Head",
+          "source_place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+          "location": "1-chōme-19-1 Kabukichō, Shinjuku City, Tokyo 160-0021, Japan",
           "start_time": "2026-10-25T13:00:00+09:00",
-          "end_time": "2026-10-25T14:30:00+09:00",
+          "end_time": "2026-10-25T13:30:00+09:00",
           "estimated_cost": null,
-          "notes": null
+          "notes": "Date-specific operating hours were not supplied."
         }
       ]
     },
@@ -602,28 +515,15 @@
         {
           "activity_kind": "main_poi",
           "time_use": "scheduled",
-          "activity_id": "2026-10-26-imperial-palace",
-          "title": "Visit Imperial Palace",
-          "place_name": "Imperial Palace",
-          "source_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
-          "location": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+          "activity_id": "tokyo-20261026-tokyo-tower",
+          "title": "Visit Tokyo Tower",
+          "place_name": "Tokyo Tower",
+          "source_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "location": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
           "start_time": "2026-10-26T10:00:00+09:00",
           "end_time": "2026-10-26T11:30:00+09:00",
           "estimated_cost": null,
-          "notes": "Date-specific operating status and hours are not verified in the supplied evidence."
-        },
-        {
-          "activity_kind": "main_poi",
-          "time_use": "scheduled",
-          "activity_id": "2026-10-26-tokyo-dome-city",
-          "title": "Visit Tokyo Dome City",
-          "place_name": "Tokyo Dome City",
-          "source_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
-          "location": "1-ch\u014dme-3-61 K\u014draku, Bunkyo City, Tokyo 112-0004, Japan",
-          "start_time": "2026-10-26T13:00:00+09:00",
-          "end_time": "2026-10-26T15:00:00+09:00",
-          "estimated_cost": null,
-          "notes": "Date-specific operating status and hours are not verified in the supplied evidence."
+          "notes": "The supplied regular weekly baseline lists hours of 09:00–23:00; date-specific exceptions were not established. No supplied candidate specifically supports a modern-art visit, so a dedicated modern-art venue is not scheduled."
         }
       ]
     }

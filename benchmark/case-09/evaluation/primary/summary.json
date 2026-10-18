@@ -1,230 +1,910 @@
 {
   "schema_version": "case_public_primary_summary_1",
-  "notice": "Reader-facing projection of the native four-final report. Original receipts, raw acquisition evidence, model judgments and exact replay material remain private.",
   "case_id": "case-09",
-  "case_revision": "1",
-  "batch_id": "case-09-batch",
-  "scope": "selected_V0_V3_finals",
-  "case_status": "primary_complete_awaiting_user_continuation_not_accepted",
-  "source_revision": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+  "case_revision": "current-path-20261018-r1",
+  "batch_id": "case-09-current-path-check",
+  "scope": "four_final_automatic_quality",
+  "notice": "Selected final results evaluated under current policies. Generation sources are mixed and remain explicit. Native file references identify retained private evidence, not public navigation.",
   "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
-  "preparation_sha256": "5b5993b9d072a346d74abc7c6ad4df2d53f37f5ee1ce69d520ef82ceae0070e2",
-  "native_report_sha256": "3f6ff8082b81ad2b1f15568acb683d23d638c91cf0bf47d138a78727b054d3c7",
-  "native_receipt_sha256": "d88c9405cf660cf343d5df90f1f8c38e59e9048571d987ecc786fbea9e81c639",
+  "generation_source_revisions": {
+    "v0": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+    "v1": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+    "v2": "b73c8eed09fafb6d54bee8684c5b2e7766515357",
+    "v3": "b73c8eed09fafb6d54bee8684c5b2e7766515357"
+  },
+  "preparation_sha256": "0ebf4a4e848a2cff0bae1875e5913eac4450721f1a99f9ade0e3c4d12f4817e9",
+  "native_report_sha256": "92c349eb8ed6d9ce6577759788170ad6b4e21efcadd9aa824e370d0bcbb5d283",
+  "native_receipt_sha256": "bcaddb898c35f7c87034c9033b137f0a504638c789481d6a08ea5da2c4a9b33e",
   "processing_status": "complete",
   "acquisition_status": "complete",
   "evidence_status": "unresolved",
-  "quality_profile": "rtpeval_declared_population_1",
   "opening_assessment": {
     "eligible_count": 14,
-    "packet_sha256": "16b9b8f8949fdb351da0dde57e17e2a0d319eef22c7a3e51823874adf2696fa8",
+    "packet_sha256": "89be13d2a24fd223c4e6706bb974a6a6ebe441e50b9c438d7da411fab6dd6e64",
     "reason": null,
     "status": "complete"
   },
+  "quality_profile": "rtpeval_declared_population_1",
   "versions": {
     "v0": {
-      "run_id": "case-09-v0-r1",
-      "selected_result_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
+      "run_id": "case-09-current-path-v0-a1",
+      "selected_result_sha256": "9d420d94787ab7851cc3f9026d81b7e668a9dededaf3aa4b9aaf15d8a7e2e5c7",
       "overall_total": {
         "exact_fraction": {
-          "denominator": 50,
-          "numerator": 43
+          "denominator": 25,
+          "numerator": 17
         },
         "reason": null,
-        "score_0_100": 86.0
+        "score_0_100": 68.0
       },
       "auxiliary_total": {
         "exact_fraction": {
-          "denominator": 50,
-          "numerator": 43
+          "denominator": 1,
+          "numerator": 1
         },
         "reason": null,
-        "score_0_100": 86.0,
+        "score_0_100": 100.0,
         "total_included_dimensions": 5,
         "unavailable_dimensions": []
       },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-26",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 32
+        },
+        "mean_penalty_0_100": 32.0,
+        "mean_penalty_bounds": {
+          "lower": 32.0,
+          "upper": 32.0
+        },
+        "requested_day_count": 5,
+        "review": {
+          "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+          "reviewer_ref": "/root/case09_requirements_review"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
       "dimensions": {
         "grounding": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
-            "PASS": 10,
+            "PASS": 6,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 10
+          "denominator": 6,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "confirmed_violation_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "verified_fraction": {
+              "denominator": 6,
+              "numerator": 6
+            }
+          },
+          "known_unit_count": 6,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "non_overlap": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
-            "PASS": 15,
+            "PASS": 7,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 15
+          "denominator": 7,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "confirmed_violation_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 7,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 7,
+              "numerator": 7
+            },
+            "verified_fraction": {
+              "denominator": 7,
+              "numerator": 7
+            }
+          },
+          "known_unit_count": 7,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "opening": {
-          "state": "FAIL",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
-            "FAIL": 1,
-            "PASS": 9,
+            "FAIL": 0,
+            "PASS": 6,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 90.0,
-          "denominator": 10
+          "denominator": 6,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "confirmed_violation_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 6,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 6,
+              "numerator": 6
+            },
+            "verified_fraction": {
+              "denominator": 6,
+              "numerator": 6
+            }
+          },
+          "known_unit_count": 6,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "requirements": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 2,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 2
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "routes": {
-          "state": "FAIL",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
-            "FAIL": 3,
-            "PASS": 2,
+            "FAIL": 0,
+            "PASS": 1,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 40.0,
-          "denominator": 5
+          "denominator": 1,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "confirmed_violation_rate": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 1,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "verified_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          "known_unit_count": 1,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         }
-      },
-      "mean_density_deduction": 0.0,
-      "daily_primary_counts": [
-        {
-          "date": "2026-10-22",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-23",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-24",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-25",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-26",
-          "count": 2,
-          "deduction": 0
-        }
-      ]
+      }
     },
     "v1": {
-      "run_id": "case-09-v1-r1",
-      "selected_result_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
+      "run_id": "case-09-current-path-v1-a1",
+      "selected_result_sha256": "d60e988a6077a133186aba176a01848863a539e46697b97a6fd768d86956a42b",
       "overall_total": {
         "exact_fraction": {
-          "denominator": 50,
-          "numerator": 49
+          "denominator": 25,
+          "numerator": 23
         },
         "reason": null,
-        "score_0_100": 98.0
+        "score_0_100": 92.0
       },
       "auxiliary_total": {
         "exact_fraction": {
-          "denominator": 50,
-          "numerator": 49
+          "denominator": 1,
+          "numerator": 1
         },
         "reason": null,
-        "score_0_100": 98.0,
+        "score_0_100": 100.0,
         "total_included_dimensions": 5,
         "unavailable_dimensions": []
       },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-26",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 8
+        },
+        "mean_penalty_0_100": 8.0,
+        "mean_penalty_bounds": {
+          "lower": 8.0,
+          "upper": 8.0
+        },
+        "requested_day_count": 5,
+        "review": {
+          "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+          "reviewer_ref": "/root/case09_requirements_review"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
       "dimensions": {
         "grounding": {
-          "state": "PASS",
-          "counts": {
-            "FAIL": 0,
-            "PASS": 10,
-            "UNKNOWN": 0
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 10
-        },
-        "non_overlap": {
-          "state": "PASS",
-          "counts": {
-            "FAIL": 0,
-            "PASS": 15,
-            "UNKNOWN": 0
-          },
-          "verified_score_0_100": 100.0,
-          "denominator": 15
-        },
-        "opening": {
-          "state": "UNKNOWN",
           "counts": {
             "FAIL": 0,
             "PASS": 9,
-            "UNKNOWN": 1
+            "UNKNOWN": 0
           },
-          "verified_score_0_100": 90.0,
-          "denominator": 10
+          "denominator": 9,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 9,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 9,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "non_overlap": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 13,
+            "UNKNOWN": 0
+          },
+          "denominator": 13,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 13,
+              "numerator": 13
+            },
+            "confirmed_violation_rate": {
+              "denominator": 13,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 13,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 13,
+              "numerator": 13
+            },
+            "verified_fraction": {
+              "denominator": 13,
+              "numerator": 13
+            }
+          },
+          "known_unit_count": 13,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
+        },
+        "opening": {
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
+          "counts": {
+            "FAIL": 0,
+            "PASS": 9,
+            "UNKNOWN": 0
+          },
+          "denominator": 9,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 9,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 9,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "requirements": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 2,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 2
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "routes": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
-            "PASS": 5,
+            "PASS": 4,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 5
+          "denominator": 4,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "confirmed_violation_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "verified_fraction": {
+              "denominator": 4,
+              "numerator": 4
+            }
+          },
+          "known_unit_count": 4,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         }
-      },
-      "mean_density_deduction": 0.0,
-      "daily_primary_counts": [
-        {
-          "date": "2026-10-22",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-23",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-24",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-25",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-26",
-          "count": 2,
-          "deduction": 0
-        }
-      ]
+      }
     },
     "v2": {
       "run_id": "case-09-v2-r1",
@@ -247,86 +927,424 @@
         "total_included_dimensions": 5,
         "unavailable_dimensions": []
       },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 1,
+              "upper": 1
+            },
+            "date": "2026-10-26",
+            "known_primary_count": 1,
+            "penalty_0_100": 40,
+            "penalty_bounds": {
+              "lower": 40,
+              "upper": 40
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "FAIL"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 8
+        },
+        "mean_penalty_0_100": 8.0,
+        "mean_penalty_bounds": {
+          "lower": 8.0,
+          "upper": 8.0
+        },
+        "requested_day_count": 5,
+        "review": {
+          "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+          "reviewer_ref": "/root/case09_requirements_review"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
       "dimensions": {
         "grounding": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 9,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 9
+          "denominator": 9,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 9,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 9,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "non_overlap": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 13,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 13
+          "denominator": 13,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 13,
+              "numerator": 13
+            },
+            "confirmed_violation_rate": {
+              "denominator": 13,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 13,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 13,
+              "numerator": 13
+            },
+            "verified_fraction": {
+              "denominator": 13,
+              "numerator": 13
+            }
+          },
+          "known_unit_count": 13,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "opening": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 9,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 9
+          "denominator": 9,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 9,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 9,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 9,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "requirements": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 2,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 2
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "routes": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 4,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 4
+          "denominator": 4,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "confirmed_violation_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 4,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 4,
+              "numerator": 4
+            },
+            "verified_fraction": {
+              "denominator": 4,
+              "numerator": 4
+            }
+          },
+          "known_unit_count": 4,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         }
-      },
-      "mean_density_deduction": 8.0,
-      "daily_primary_counts": [
-        {
-          "date": "2026-10-22",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-23",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-24",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-25",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-26",
-          "count": 1,
-          "deduction": 40
-        }
-      ]
+      }
     },
     "v3": {
       "run_id": "case-09-v3-r1",
@@ -349,228 +1367,653 @@
         "total_included_dimensions": 5,
         "unavailable_dimensions": []
       },
+      "daily_density": {
+        "days": [
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-22",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-23",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-24",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-25",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          },
+          {
+            "count_bounds": {
+              "lower": 2,
+              "upper": 2
+            },
+            "date": "2026-10-26",
+            "known_primary_count": 2,
+            "penalty_0_100": 0,
+            "penalty_bounds": {
+              "lower": 0,
+              "upper": 0
+            },
+            "policy": {
+              "exact_count": null,
+              "profile": "ordinary",
+              "source_refs": [
+                {
+                  "field_path": "additional_preferences",
+                  "occurrence": 0,
+                  "offset_end": 306,
+                  "offset_start": 0,
+                  "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                }
+              ]
+            },
+            "possible_primary_count": 0,
+            "reason": "default_pace_penalty",
+            "state": "PASS"
+          }
+        ],
+        "exact_mean_penalty": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "mean_penalty_0_100": 0.0,
+        "mean_penalty_bounds": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "requested_day_count": 5,
+        "review": {
+          "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions.",
+          "review_origin": "agent",
+          "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+          "reviewer_ref": "/root/case09_requirements_review"
+        },
+        "rules_profile_id": "rtpeval_daily_density_2"
+      },
       "dimensions": {
         "grounding": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 10,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 10
+          "denominator": 10,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 10,
+              "numerator": 10
+            },
+            "confirmed_violation_rate": {
+              "denominator": 10,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 10,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 10,
+              "numerator": 10
+            },
+            "verified_fraction": {
+              "denominator": 10,
+              "numerator": 10
+            }
+          },
+          "known_unit_count": 10,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "non_overlap": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 15,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 15
+          "denominator": 15,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 15,
+              "numerator": 15
+            },
+            "confirmed_violation_rate": {
+              "denominator": 15,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 15,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 15,
+              "numerator": 15
+            },
+            "verified_fraction": {
+              "denominator": 15,
+              "numerator": 15
+            }
+          },
+          "known_unit_count": 15,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "opening": {
-          "state": "UNKNOWN",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 10,
+              "numerator": 9
+            },
+            "reason": null,
+            "score_0_100": 90.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 9,
             "UNKNOWN": 1
           },
-          "verified_score_0_100": 90.0,
-          "denominator": 10
+          "denominator": 10,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 9,
+              "numerator": 9
+            },
+            "confirmed_violation_rate": {
+              "denominator": 10,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 10,
+              "numerator": 1
+            },
+            "verification_coverage": {
+              "denominator": 10,
+              "numerator": 9
+            },
+            "verified_fraction": {
+              "denominator": 10,
+              "numerator": 9
+            }
+          },
+          "known_unit_count": 10,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.1,
+            "verification_coverage": 0.9,
+            "verified_fraction": 0.9
+          },
+          "state": "UNKNOWN",
+          "verified_score_0_100": 90.0
         },
         "requirements": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 2,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 2
+          "denominator": 2,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "confirmed_violation_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 2,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 2,
+              "numerator": 2
+            },
+            "verified_fraction": {
+              "denominator": 2,
+              "numerator": 2
+            }
+          },
+          "known_unit_count": 2,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         },
         "routes": {
-          "state": "PASS",
+          "conditional_compliance": 1.0,
+          "contribution": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0
+          },
           "counts": {
             "FAIL": 0,
             "PASS": 5,
             "UNKNOWN": 0
           },
-          "verified_score_0_100": 100.0,
-          "denominator": 5
+          "denominator": 5,
+          "denominator_unresolved": false,
+          "exact_fractions": {
+            "conditional_compliance": {
+              "denominator": 5,
+              "numerator": 5
+            },
+            "confirmed_violation_rate": {
+              "denominator": 5,
+              "numerator": 0
+            },
+            "unknown_rate": {
+              "denominator": 5,
+              "numerator": 0
+            },
+            "verification_coverage": {
+              "denominator": 5,
+              "numerator": 5
+            },
+            "verified_fraction": {
+              "denominator": 5,
+              "numerator": 5
+            }
+          },
+          "known_unit_count": 5,
+          "not_applicable_count": 0,
+          "rates": {
+            "confirmed_violation_rate": 0.0,
+            "unknown_rate": 0.0,
+            "verification_coverage": 1.0,
+            "verified_fraction": 1.0
+          },
+          "state": "PASS",
+          "verified_score_0_100": 100.0
         }
-      },
-      "mean_density_deduction": 0.0,
-      "daily_primary_counts": [
-        {
-          "date": "2026-10-22",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-23",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-24",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-25",
-          "count": 2,
-          "deduction": 0
-        },
-        {
-          "date": "2026-10-26",
-          "count": 2,
-          "deduction": 0
-        }
-      ]
+      }
     }
   },
-  "findings": [
+  "unknowns": [
     {
-      "version": "v0",
-      "dimension": "opening",
-      "state": "FAIL",
-      "date": "2026-10-26",
-      "activity_id": "imperial-palace-east-gardens",
-      "place_name": "Imperial Palace East Gardens",
-      "from_place": null,
-      "to_place": null,
-      "mode": null,
-      "reason": null,
-      "reasons": [],
-      "explanation": "A positive-duration portion of the visit is confirmed closed.",
-      "source": {
-        "artifact_sha256": "af984c3e0946227da0f496e658d300511376eb84185b7bb25f88c120001b0bb8",
-        "batch_id": "case-09-batch",
-        "group_id": "case-09",
-        "pointer": "/itinerary/days/4/activities/0",
-        "projection_version": "rtpeval_projection_1",
-        "record_id": "7a6d18e7ca7c7ba4498b65920107e9171f4bafa3464e80d9dbad309c73ed2c3b",
-        "run_id": "case-09-v0-r1"
+      "acquisition": [
+        {
+          "attempts": [
+            {
+              "attempt": 1,
+              "raw": {
+                "path": "raw/2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b-1.bin",
+                "sha256": "b1adf018bed8a10bddbb7fdd97b46267a96befd784d8fc49508ba4965f50b6f4"
+              },
+              "requested_at": "2026-10-18T04:01:21.004209+00:00",
+              "retrieved_at": "2026-10-18T04:01:21.159955+00:00",
+              "status_code": 200
+            }
+          ],
+          "operation": "details",
+          "phase": "identity",
+          "reason": null,
+          "reference_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+          "request_key": "2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b",
+          "source": {
+            "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+            "batch_id": "case-09-current-path-check",
+            "group_id": "case-09",
+            "pointer": "/itinerary/days/4/activities/1",
+            "projection_version": "rtpeval_projection_1",
+            "record_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+            "run_id": "case-09-v3-r1"
+          },
+          "status": "available"
+        },
+        {
+          "attempts": [
+            {
+              "attempt": 1,
+              "raw": {
+                "path": "raw/fdfd589973597e9b6ea81d57d36a1f9c7d32a095997da482a8fe571eb4783252-1.bin",
+                "sha256": "06493898833041ba73e606d886d8c58bc9aaa95c35a60267a481790753eb93c5"
+              },
+              "requested_at": "2026-10-18T04:01:31.234988+00:00",
+              "retrieved_at": "2026-10-18T04:01:31.681702+00:00",
+              "status_code": 200
+            }
+          ],
+          "operation": "search",
+          "phase": "identity",
+          "reason": null,
+          "reference_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+          "request_key": "fdfd589973597e9b6ea81d57d36a1f9c7d32a095997da482a8fe571eb4783252",
+          "source": {
+            "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+            "batch_id": "case-09-current-path-check",
+            "group_id": "case-09",
+            "pointer": "/itinerary/days/4/activities/1",
+            "projection_version": "rtpeval_projection_1",
+            "record_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+            "run_id": "case-09-v3-r1"
+          },
+          "status": "available"
+        },
+        {
+          "attempts": [
+            {
+              "attempt": 1,
+              "raw": {
+                "path": "raw/2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b-1.bin",
+                "sha256": "b1adf018bed8a10bddbb7fdd97b46267a96befd784d8fc49508ba4965f50b6f4"
+              },
+              "requested_at": "2026-10-18T04:01:41.461557+00:00",
+              "retrieved_at": "2026-10-18T04:01:41.612275+00:00",
+              "status_code": 200
+            }
+          ],
+          "operation": "details",
+          "phase": "evidence",
+          "reason": null,
+          "reference_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+          "request_key": "2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b",
+          "source": {
+            "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+            "batch_id": "case-09-current-path-check",
+            "group_id": "case-09",
+            "pointer": "/itinerary/days/4/activities/1",
+            "projection_version": "rtpeval_projection_1",
+            "record_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+            "run_id": "case-09-v3-r1"
+          },
+          "status": "available"
+        }
+      ],
+      "check": {
+        "access_judgment": {
+          "access_mode": "ambiguous",
+          "activity_field": "title",
+          "activity_quote": "Explore Tokyo Dome City",
+          "intent_basis": "unresolved",
+          "rationale": "Tokyo Dome City is a multi-venue entertainment and attraction complex, not a public landmark or public area to which the generic public-landmark default applies. “Explore” does not resolve whether the activity involves public outdoor areas or ticketed/indoor attractions, and supplied operating details do not resolve access. The Oct 26, 2026 interval is 12:30–14:30 local time, a reasonable daytime window, but access mode and applicable restrictions remain uncertain.",
+          "reference_id": "visit014",
+          "restrictions": "uncertain",
+          "state": "UNKNOWN",
+          "venue_category": "indoor_attraction",
+          "visit_window": "reasonable"
+        },
+        "activity_id": "tokyo-dome-city-20261026",
+        "associated_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+        "basis": "unavailable",
+        "basis_segments": [
+          {
+            "basis": "unavailable",
+            "current_window_end": "2026-10-24",
+            "current_window_start": "2026-10-18",
+            "date": "2026-10-26",
+            "hours_field": null,
+            "hours_fields": [],
+            "interval": {
+              "end": "2026-10-26T05:30:00+00:00",
+              "seconds": 7200.0,
+              "start": "2026-10-26T03:30:00+00:00"
+            },
+            "known_closed": [],
+            "known_open": [],
+            "reasons": [
+              "hours_missing"
+            ],
+            "regular_fallback": null,
+            "selected_basis": "regular",
+            "unknown": [
+              {
+                "end": "2026-10-26T05:30:00+00:00",
+                "seconds": 7200.0,
+                "start": "2026-10-26T03:30:00+00:00"
+              }
+            ]
+          }
+        ],
+        "canonical_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+        "confirmed_outside_lower_bound_seconds": 0.0,
+        "declared_day": "2026-10-26",
+        "evidence_reference": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "raw": {
+                "path": "raw/2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b-1.bin",
+                "sha256": "b1adf018bed8a10bddbb7fdd97b46267a96befd784d8fc49508ba4965f50b6f4"
+              },
+              "requested_at": "2026-10-18T04:01:41.461557+00:00",
+              "retrieved_at": "2026-10-18T04:01:41.612275+00:00",
+              "status_code": 200
+            }
+          ],
+          "hours_fields_present": [],
+          "request_key": "2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b",
+          "summary": {
+            "status": "available"
+          }
+        },
+        "evidence_status": "missing",
+        "explanation": "Tokyo Dome City is a multi-venue entertainment and attraction complex, not a public landmark or public area to which the generic public-landmark default applies. “Explore” does not resolve whether the activity involves public outdoor areas or ticketed/indoor attractions, and supplied operating details do not resolve access. The Oct 26, 2026 interval is 12:30–14:30 local time, a reasonable daytime window, but access mode and applicable restrictions remain uncertain.",
+        "identity_available": true,
+        "identity_grounding_verdict": "PASS",
+        "interval": {
+          "date_consistent": true,
+          "interval": {
+            "end": "2026-10-26T05:30:00+00:00",
+            "seconds": 7200.0,
+            "start": "2026-10-26T03:30:00+00:00"
+          },
+          "original_end": "2026-10-26T14:30:00+09:00",
+          "original_start": "2026-10-26T12:30:00+09:00",
+          "reasons": [],
+          "status": "known"
+        },
+        "known_open_seconds": 0.0,
+        "outside_seconds": null,
+        "reasons": [
+          "hours_missing",
+          "llm_access_reasonableness_unknown"
+        ],
+        "reference_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+        "source": {
+          "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+          "batch_id": "case-09-current-path-check",
+          "group_id": "case-09",
+          "pointer": "/itinerary/days/4/activities/1",
+          "projection_version": "rtpeval_projection_1",
+          "record_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
+          "run_id": "case-09-v3-r1"
+        },
+        "state": "UNKNOWN",
+        "structurally_evaluable": true,
+        "timezone": {
+          "id": "Asia/Tokyo",
+          "origin": "place_timeZone",
+          "provider": {
+            "id": "Asia/Tokyo"
+          },
+          "reviewed_group_zone": "Asia/Tokyo",
+          "zone_data": {
+            "iana_version": "2026c",
+            "package_version": "2026.3",
+            "source": "tzdata",
+            "zone_file_sha256": "59a3871430f0d3b93e619fa30a43a41d1e88bdd49ff26f09d0f405a500706f96"
+          }
+        },
+        "unknown_seconds": 7200.0
       },
-      "leg_id": null
-    },
-    {
-      "version": "v1",
       "dimension": "opening",
-      "state": "UNKNOWN",
-      "date": "2026-10-26",
-      "activity_id": "2026-10-26-tokyo-dome-city",
-      "place_name": "Tokyo Dome City",
-      "from_place": null,
-      "to_place": null,
-      "mode": null,
-      "reason": null,
+      "group_id": "case-09",
       "reasons": [
         "hours_missing",
         "llm_access_reasonableness_unknown"
       ],
-      "explanation": "Tokyo Dome City is a mixed entertainment complex, not a public-landmark default case. \u201cVisit\u201d does not specify outdoor public-area sightseeing versus access to indoor or ticketed attractions, and the supplied evidence does not resolve that access. The interval is 2026-10-26, 13:00\u201315:00 JST, a reasonable daytime window, but access remains uncertain.",
-      "source": {
-        "artifact_sha256": "f0edb7d12a496163eb38f41e4d6319bd121ae4ead40d148b888850c7c93730b7",
-        "batch_id": "case-09-batch",
-        "group_id": "case-09",
-        "pointer": "/itinerary/days/4/activities/1",
-        "projection_version": "rtpeval_projection_1",
-        "record_id": "c83df33c0a0079d5c2249e0c4a247c8f8636f27bfd94c6af01943179887106fa",
-        "run_id": "case-09-v1-r1"
-      },
-      "leg_id": null
-    },
-    {
-      "version": "v3",
-      "dimension": "opening",
-      "state": "UNKNOWN",
-      "date": "2026-10-26",
-      "activity_id": "tokyo-dome-city-20261026",
-      "place_name": "Tokyo Dome City",
-      "from_place": null,
-      "to_place": null,
-      "mode": null,
-      "reason": null,
-      "reasons": [
-        "hours_missing",
-        "llm_access_reasonableness_unknown"
-      ],
-      "explanation": "Tokyo Dome City is a mixed entertainment complex, not a public-landmark default case. \u201cExplore\u201d does not resolve whether the activity is outdoor public-area sightseeing or access to indoor or ticketed attractions, and the supplied evidence does not establish which applies. The interval is 2026-10-26, 12:30\u201314:30 JST, a reasonable daytime window, but access remains uncertain.",
+      "reference_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
       "source": {
         "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
-        "batch_id": "case-09-batch",
+        "batch_id": "case-09-current-path-check",
         "group_id": "case-09",
         "pointer": "/itinerary/days/4/activities/1",
         "projection_version": "rtpeval_projection_1",
-        "record_id": "e9cbbfa20839a089d94ca7fd9e5c63d4dbe8d172c0139923a3854e805b30c8e9",
+        "record_id": "2cc70487bdb353dd2eb2d09c7926dcd44729e99e031ef2a1397e4dcfd9184dce",
         "run_id": "case-09-v3-r1"
       },
-      "leg_id": null
-    },
-    {
-      "version": "v0",
-      "dimension": "routes",
-      "state": "FAIL",
-      "date": "2026-10-22",
-      "activity_id": null,
-      "place_name": null,
-      "from_place": "Meiji Jingu",
-      "to_place": "Mori Art Museum",
-      "mode": "TRANSIT",
-      "reason": "no_route",
-      "reasons": [],
-      "explanation": null,
-      "source": null,
-      "leg_id": "77f0c730f5214c706941d0e4d38d92e6e6a012e328cb6a7cf86037468129160e"
-    },
-    {
-      "version": "v0",
-      "dimension": "routes",
-      "state": "FAIL",
-      "date": "2026-10-24",
-      "activity_id": null,
-      "place_name": null,
-      "from_place": "Senso-ji",
-      "to_place": "Nezu Museum",
-      "mode": "TRANSIT",
-      "reason": "no_route",
-      "reasons": [],
-      "explanation": null,
-      "source": null,
-      "leg_id": "0ac759eedf20c209f7c98618d61c144b7f2d4e6432132e25dee2a2d4cf9c50f4"
-    },
-    {
-      "version": "v0",
-      "dimension": "routes",
-      "state": "FAIL",
-      "date": "2026-10-26",
-      "activity_id": null,
-      "place_name": null,
-      "from_place": "Imperial Palace East Gardens",
-      "to_place": "Kiyosumi Garden",
-      "mode": "TRANSIT",
-      "reason": "no_route",
-      "reasons": [],
-      "explanation": null,
-      "source": null,
-      "leg_id": "4ca51ae8aeb1f32829cb8048c135ab64e69960d390e7850bdeb71a569eefa8a1"
+      "stage": "opening",
+      "version": "v3"
     }
   ],
-  "resources": {
-    "actual_google_sends": 77,
-    "actual_model_sends": 2,
-    "observed_tokens": 41833,
-    "reference_usd": "1.646084475",
-    "unpriced_event_count": 0,
-    "actual_account_billing": "unavailable",
-    "retries": 0
-  },
-  "offline_replay": {
-    "status": "complete",
-    "exact_report_equality": true,
-    "provider_sends": 0
-  }
+  "offline_replay_matches": true
 }

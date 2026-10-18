@@ -1,0 +1,1225 @@
+{
+  "contract_version": "v3_validation_1",
+  "diagnostics": {
+    "daily_visit_counts": [],
+    "policy_completion": "complete",
+    "policy_issues": [],
+    "goal_progress": [
+      {
+        "requirement_id": "semantic_1",
+        "expected": 1,
+        "matched": 5,
+        "matched_dates": 4,
+        "satisfied": true,
+        "soft": true,
+        "preference": "The party enjoys architecture.",
+        "target_origin": "ordinary_preference",
+        "focus_source": null,
+        "remaining": 0,
+        "coverage_status": "covered",
+        "basis": "model_semantic_judgment_not_operating_fact"
+      },
+      {
+        "requirement_id": "semantic_2",
+        "expected": 1,
+        "matched": 2,
+        "matched_dates": 2,
+        "satisfied": true,
+        "soft": true,
+        "preference": "The party enjoys art.",
+        "target_origin": "ordinary_preference",
+        "focus_source": null,
+        "remaining": 0,
+        "coverage_status": "covered",
+        "basis": "model_semantic_judgment_not_operating_fact"
+      }
+    ],
+    "days": [
+      {
+        "date": "2026-10-22",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 2,
+        "distinct_main_poi_count": 2,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "within_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-23",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 2,
+        "distinct_main_poi_count": 2,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "within_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-24",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 2,
+        "distinct_main_poi_count": 2,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "within_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      },
+      {
+        "date": "2026-10-25",
+        "day_present": true,
+        "applicability": "default_full_day",
+        "count_basis": "canonical_id",
+        "main_activity_count": 2,
+        "distinct_main_poi_count": 2,
+        "repeated_main_poi_count": 0,
+        "generic_activity_count": 0,
+        "transport_activity_count": 0,
+        "free_time_activity_count": 0,
+        "unclassified_activity_count": 0,
+        "target_status": "within_target",
+        "minimum_coverage": "satisfied",
+        "minimum_coverage_reason": "countable_primary_present_not_feasibility",
+        "minimum_coverage_evidence": [],
+        "empty_day": false
+      }
+    ],
+    "days_meeting_default_target": 4,
+    "days_below_target": 0,
+    "days_above_target": 0,
+    "days_unassessable": 0,
+    "empty_days": 0,
+    "days_with_zero_main_pois": 0,
+    "scheduled_unique_supply": 7,
+    "unused_supply": 7,
+    "cross_day_repeated_visits": 0,
+    "related_requirement_ids": [
+      "semantic_1",
+      "semantic_2",
+      "semantic_3"
+    ],
+    "assessment_basis": "default_target_observation_not_feasibility"
+  },
+  "findings": [
+    {
+      "finding_id": "finding_1",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-22"
+      ],
+      "activity_ids": [
+        "paris-20261022-louvre"
+      ],
+      "place_ids": [
+        "ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-22",
+            "place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "source_ref": "google_places:ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+            "retrieved_at": "2026-10-18T03:58:13.242423+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-22T09:00:00",
+                "2026-10-22T18:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_2",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-22"
+      ],
+      "activity_ids": [
+        "paris-20261022-louvre"
+      ],
+      "place_ids": [
+        "ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_3",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-22"
+      ],
+      "activity_ids": [
+        "paris-20261022-sainte-chapelle"
+      ],
+      "place_ids": [
+        "ChIJR3122B9u5kcRaCck3PlB9DM"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJR3122B9u5kcRaCck3PlB9DM"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-22",
+            "place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+            "source_ref": "google_places:ChIJR3122B9u5kcRaCck3PlB9DM",
+            "retrieved_at": "2026-10-18T03:58:14.417232+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-22T09:00:00",
+                "2026-10-22T17:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJR3122B9u5kcRaCck3PlB9DM"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_4",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-22"
+      ],
+      "activity_ids": [
+        "paris-20261022-sainte-chapelle"
+      ],
+      "place_ids": [
+        "ChIJR3122B9u5kcRaCck3PlB9DM"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJR3122B9u5kcRaCck3PlB9DM"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_5",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-23"
+      ],
+      "activity_ids": [
+        "paris-20261023-notre-dame"
+      ],
+      "place_ids": [
+        "ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-23",
+            "place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "source_ref": "google_places:ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+            "retrieved_at": "2026-10-18T03:58:13.543262+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-23T07:50:00",
+                "2026-10-23T19:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_6",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-23"
+      ],
+      "activity_ids": [
+        "paris-20261023-notre-dame"
+      ],
+      "place_ids": [
+        "ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_7",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-23"
+      ],
+      "activity_ids": [
+        "repair_r1_new_1"
+      ],
+      "place_ids": [
+        "ChIJvcVRUwBx5kcRod72V2bB-EI"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-23",
+            "place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+            "source_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI",
+            "retrieved_at": "2026-10-18T03:58:08.076168+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-23T09:00:00",
+                "2026-10-23T17:30:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_8",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-23"
+      ],
+      "activity_ids": [
+        "repair_r1_new_1"
+      ],
+      "place_ids": [
+        "ChIJvcVRUwBx5kcRod72V2bB-EI"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_9",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "paris-20261024-eiffel-tower"
+      ],
+      "place_ids": [
+        "ChIJLU7jZClu5kcR4PcOOO6p3I0"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJLU7jZClu5kcR4PcOOO6p3I0"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-24",
+            "place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "source_ref": "google_places:ChIJLU7jZClu5kcR4PcOOO6p3I0",
+            "retrieved_at": "2026-10-18T03:58:12.924123+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-24T09:00:00",
+                "2026-10-25T00:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJLU7jZClu5kcR4PcOOO6p3I0"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_10",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "paris-20261024-eiffel-tower"
+      ],
+      "place_ids": [
+        "ChIJLU7jZClu5kcR4PcOOO6p3I0"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJLU7jZClu5kcR4PcOOO6p3I0"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_11",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "paris-20261024-orsay"
+      ],
+      "place_ids": [
+        "ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-24",
+            "place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "source_ref": "google_places:ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+            "retrieved_at": "2026-10-18T03:58:14.126426+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "current_date_window",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-24T09:30:00",
+                "2026-10-24T18:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+            ],
+            "known": true,
+            "source_window_start": "2026-10-18",
+            "source_window_end": "2026-10-24"
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_12",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "paris-20261024-orsay"
+      ],
+      "place_ids": [
+        "ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_13",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "paris-20261025-pantheon"
+      ],
+      "place_ids": [
+        "ChIJc8mX0udx5kcRWKcjTwDr5QA"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-25",
+            "place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "source_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA",
+            "retrieved_at": "2026-10-18T03:58:14.708935+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-25T10:00:00",
+                "2026-10-25T18:00:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_14",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "paris-20261025-pantheon"
+      ],
+      "place_ids": [
+        "ChIJc8mX0udx5kcRWKcjTwDr5QA"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_15",
+      "check": "opening",
+      "status": "PASS",
+      "reason": "adopted_hours_only",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "paris-20261025-cluny"
+      ],
+      "place_ids": [
+        "ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "selected_hours": [
+          {
+            "date": "2026-10-25",
+            "place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "source_ref": "google_places:ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+            "retrieved_at": "2026-10-18T03:58:17.775762+00:00",
+            "timezone": "Europe/Paris",
+            "basis": "regular_weekly_baseline",
+            "reason": "adopted_intervals",
+            "intervals": [
+              [
+                "2026-10-25T09:30:00",
+                "2026-10-25T17:45:00"
+              ]
+            ],
+            "evidence_refs": [
+              "google_places:ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+            ],
+            "known": true,
+            "source_window_start": null,
+            "source_window_end": null
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_16",
+      "check": "visitor_suitability",
+      "status": "UNKNOWN",
+      "reason": "admission_reservation_and_special_area_unverified",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "paris-20261025-cluny"
+      ],
+      "place_ids": [
+        "ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+      ],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_places:ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+      ],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {
+        "scheduling_policy": "application_default",
+        "access_mode": "obey_place_hours",
+        "reported_conditions": [],
+        "unverified": [
+          "admission_eligibility",
+          "reservation_completion",
+          "ticket_possession",
+          "special_area_access"
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_17",
+      "check": "route",
+      "status": "PASS",
+      "reason": "minimum_transfer_only",
+      "dates": [],
+      "activity_ids": [
+        "paris-20261022-louvre",
+        "paris-20261022-sainte-chapelle"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "available_seconds": 3600.0,
+        "application_reserve_seconds": 0.0,
+        "selected_routes": [
+          {
+            "duration_seconds": 1055,
+            "source_ref": "google_routes:compute_route_matrix",
+            "travel_mode": "WALK",
+            "routing_preference": null,
+            "departure_time": null,
+            "requested_at": "2026-10-18T03:59:02.130277+00:00",
+            "retrieved_at": "2026-10-18T03:59:02.923712+00:00",
+            "basis": "walk_provider_estimate",
+            "element": {
+              "origin_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+              "destination_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+              "evidence_type": "provider_observed",
+              "derived_from_origin_place_id": null,
+              "derived_from_destination_place_id": null,
+              "status": "OK",
+              "condition": "ROUTE_EXISTS",
+              "status_state": "success",
+              "static_duration_seconds": 1055,
+              "fallback_info": null,
+              "requested_at": "2026-10-18T03:59:02.130277Z",
+              "retrieved_at": "2026-10-18T03:59:02.923712Z",
+              "origin_index": 1,
+              "destination_index": 4,
+              "distance_meters": 1308,
+              "duration_seconds": 1055,
+              "availability": "available",
+              "unavailable_reason": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_18",
+      "check": "route",
+      "status": "PASS",
+      "reason": "minimum_transfer_only",
+      "dates": [],
+      "activity_ids": [
+        "paris-20261023-notre-dame",
+        "repair_r1_new_1"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "available_seconds": 600.0,
+        "application_reserve_seconds": 0.0,
+        "selected_routes": [
+          {
+            "duration_seconds": 104,
+            "source_ref": "google_routes:compute_route_matrix",
+            "travel_mode": "WALK",
+            "routing_preference": null,
+            "departure_time": null,
+            "requested_at": "2026-10-18T03:59:40.952918+00:00",
+            "retrieved_at": "2026-10-18T03:59:41.230167+00:00",
+            "basis": "walk_provider_estimate",
+            "element": {
+              "origin_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+              "destination_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+              "evidence_type": "provider_observed",
+              "derived_from_origin_place_id": null,
+              "derived_from_destination_place_id": null,
+              "status": "OK",
+              "condition": "ROUTE_EXISTS",
+              "status_state": "success",
+              "static_duration_seconds": 104,
+              "fallback_info": null,
+              "requested_at": "2026-10-18T03:59:40.952918Z",
+              "retrieved_at": "2026-10-18T03:59:41.230167Z",
+              "origin_index": 0,
+              "destination_index": 0,
+              "distance_meters": 126,
+              "duration_seconds": 104,
+              "availability": "available",
+              "unavailable_reason": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_19",
+      "check": "route",
+      "status": "PASS",
+      "reason": "minimum_transfer_only",
+      "dates": [],
+      "activity_ids": [
+        "paris-20261024-eiffel-tower",
+        "paris-20261024-orsay"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "available_seconds": 5400.0,
+        "application_reserve_seconds": 0.0,
+        "selected_routes": [
+          {
+            "duration_seconds": 2226,
+            "source_ref": "google_routes:compute_route_matrix",
+            "travel_mode": "WALK",
+            "routing_preference": null,
+            "departure_time": null,
+            "requested_at": "2026-10-18T03:59:02.130277+00:00",
+            "retrieved_at": "2026-10-18T03:59:02.923712+00:00",
+            "basis": "walk_provider_estimate",
+            "element": {
+              "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+              "destination_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+              "evidence_type": "provider_observed",
+              "derived_from_origin_place_id": null,
+              "derived_from_destination_place_id": null,
+              "status": "OK",
+              "condition": "ROUTE_EXISTS",
+              "status_state": "success",
+              "static_duration_seconds": 2226,
+              "fallback_info": null,
+              "requested_at": "2026-10-18T03:59:02.130277Z",
+              "retrieved_at": "2026-10-18T03:59:02.923712Z",
+              "origin_index": 0,
+              "destination_index": 7,
+              "distance_meters": 2653,
+              "duration_seconds": 2226,
+              "availability": "available",
+              "unavailable_reason": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_20",
+      "check": "route",
+      "status": "PASS",
+      "reason": "minimum_transfer_only",
+      "dates": [],
+      "activity_ids": [
+        "paris-20261025-pantheon",
+        "paris-20261025-cluny"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "available_seconds": 5400.0,
+        "application_reserve_seconds": 0.0,
+        "selected_routes": [
+          {
+            "duration_seconds": 491,
+            "source_ref": "google_routes:compute_route_matrix",
+            "travel_mode": "WALK",
+            "routing_preference": null,
+            "departure_time": null,
+            "requested_at": "2026-10-18T03:59:03.537827+00:00",
+            "retrieved_at": "2026-10-18T03:59:04.199175+00:00",
+            "basis": "walk_provider_estimate",
+            "element": {
+              "origin_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+              "destination_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+              "evidence_type": "provider_observed",
+              "derived_from_origin_place_id": null,
+              "derived_from_destination_place_id": null,
+              "status": "OK",
+              "condition": "ROUTE_EXISTS",
+              "status_state": "success",
+              "static_duration_seconds": 491,
+              "fallback_info": null,
+              "requested_at": "2026-10-18T03:59:03.537827Z",
+              "retrieved_at": "2026-10-18T03:59:04.199175Z",
+              "origin_index": 0,
+              "destination_index": 12,
+              "distance_meters": 636,
+              "duration_seconds": 491,
+              "availability": "available",
+              "unavailable_reason": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "finding_id": "finding_21",
+      "check": "budget",
+      "status": "UNKNOWN",
+      "reason": "verified_party_currency_cost_coverage_not_supported",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_22",
+      "check": "semantic_requirements",
+      "status": "UNKNOWN",
+      "reason": "open_semantics_not_executable_predicates",
+      "dates": [],
+      "activity_ids": [],
+      "place_ids": [],
+      "requirement_ids": [
+        "semantic_1",
+        "semantic_2",
+        "semantic_3"
+      ],
+      "evidence_refs": [],
+      "is_violation": false,
+      "magnitude": null,
+      "adopted_evidence": {}
+    },
+    {
+      "finding_id": "finding_23",
+      "check": "soft_pace",
+      "status": "PASS",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-22"
+      ],
+      "activity_ids": [
+        "paris-20261022-louvre",
+        "paris-20261022-sainte-chapelle"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "count": 2,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "ordinary",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a moderate pace.",
+              "occurrence": 0,
+              "start": 53,
+              "end": 76,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_24",
+      "check": "soft_pace",
+      "status": "PASS",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-23"
+      ],
+      "activity_ids": [
+        "paris-20261023-notre-dame",
+        "repair_r1_new_1"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "count": 2,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "ordinary",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a moderate pace.",
+              "occurrence": 0,
+              "start": 53,
+              "end": 76,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_25",
+      "check": "soft_pace",
+      "status": "PASS",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-24"
+      ],
+      "activity_ids": [
+        "paris-20261024-eiffel-tower",
+        "paris-20261024-orsay"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "count": 2,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "ordinary",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a moderate pace.",
+              "occurrence": 0,
+              "start": 53,
+              "end": 76,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    },
+    {
+      "finding_id": "finding_26",
+      "check": "soft_pace",
+      "status": "PASS",
+      "reason": "soft_pace_objective",
+      "dates": [
+        "2026-10-25"
+      ],
+      "activity_ids": [
+        "paris-20261025-pantheon",
+        "paris-20261025-cluny"
+      ],
+      "place_ids": [],
+      "requirement_ids": [],
+      "evidence_refs": [
+        "policy:rtpeval_daily_density_2"
+      ],
+      "is_violation": false,
+      "magnitude": 0.0,
+      "adopted_evidence": {
+        "count": 2,
+        "zero_counts": [
+          2
+        ],
+        "policy": {
+          "date": null,
+          "profile": "ordinary",
+          "exact_count": null,
+          "source_refs": [
+            {
+              "quote": "prefer a moderate pace.",
+              "occurrence": 0,
+              "start": 53,
+              "end": 76,
+              "match_mode": "exact"
+            }
+          ]
+        },
+        "is_failure_constraint": false
+      }
+    }
+  ],
+  "place_use_observations": [
+    {
+      "place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "primary_type": "church",
+      "source_ref": "google_places:ChIJATr1n-Fx5kcRjQb6q6cdQDY"
+    },
+    {
+      "place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "primary_type": "art_museum",
+      "source_ref": "google_places:ChIJD3uTd9hx5kcR1IQvGfr8dbk"
+    },
+    {
+      "place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+      "primary_type": "art_museum",
+      "source_ref": "google_places:ChIJG5Qwtitu5kcR2CNEsYy9cdA"
+    },
+    {
+      "place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "primary_type": "historical_landmark",
+      "source_ref": "google_places:ChIJLU7jZClu5kcR4PcOOO6p3I0"
+    },
+    {
+      "place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+      "primary_type": "history_museum",
+      "source_ref": "google_places:ChIJLxPh9d1x5kcRf7M1U0pu1gU"
+    },
+    {
+      "place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+      "primary_type": "church",
+      "source_ref": "google_places:ChIJR3122B9u5kcRaCck3PlB9DM"
+    },
+    {
+      "place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "primary_type": "monument",
+      "source_ref": "google_places:ChIJc8mX0udx5kcRWKcjTwDr5QA"
+    },
+    {
+      "place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "primary_type": "cultural_landmark",
+      "source_ref": "google_places:ChIJvcVRUwBx5kcRod72V2bB-EI"
+    }
+  ],
+  "improvement_targets": [],
+  "scope": "read_only_partial_validation"
+}
