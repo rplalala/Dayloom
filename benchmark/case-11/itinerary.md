@@ -54,8 +54,12 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"20261022-louvre","to_activity_id":"20261022-sainte-chapelle","origin_place_id":"ChIJD3uTd9hx5kcR1IQvGfr8dbk","destination_place_id":"ChIJR3122B9u5kcRaCck3PlB9DM","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T12:30:00+02:00","arrival_time":"2026-10-22T12:47:35+02:00","provider_duration_seconds":1055.0,"distance_meters":1308,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"20261022-sainte-chapelle","to_activity_id":"20261022-notre-dame","origin_place_id":"ChIJR3122B9u5kcRaCck3PlB9DM","destination_place_id":"ChIJATr1n-Fx5kcRjQb6q6cdQDY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T14:30:00+02:00","arrival_time":"2026-10-22T14:38:21+02:00","provider_duration_seconds":501.0,"distance_meters":593,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 20261022-louvre → 20261022-sainte-chapelle | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T12:30:00+02:00 → 2026-10-22T12:47:35+02:00 | 1055.0 s / 1308 m | 0.0 s / PASS /  |
+| 20261022-sainte-chapelle → 20261022-notre-dame | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T14:30:00+02:00 → 2026-10-22T14:38:21+02:00 | 501.0 s / 593 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-23
 
@@ -66,7 +70,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"20261023-eiffel-tower","to_activity_id":"20261023-arc-de-triomphe","origin_place_id":"ChIJLU7jZClu5kcR4PcOOO6p3I0","destination_place_id":"ChIJjx37cOxv5kcRPWQuEW5ntdk","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-23T11:30:00+02:00","arrival_time":"2026-10-23T12:04:15+02:00","provider_duration_seconds":2055.0,"distance_meters":2350,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 20261023-eiffel-tower → 20261023-arc-de-triomphe | WALK / APPLICATION_DEFAULT_WALK | 2026-10-23T11:30:00+02:00 → 2026-10-23T12:04:15+02:00 | 2055.0 s / 2350 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-24
 
@@ -77,7 +85,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"20261024-orsay","to_activity_id":"20261024-pantheon","origin_place_id":"ChIJG5Qwtitu5kcR2CNEsYy9cdA","destination_place_id":"ChIJc8mX0udx5kcRWKcjTwDr5QA","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T13:00:00+02:00","arrival_time":"2026-10-24T13:35:36+02:00","provider_duration_seconds":2136.0,"distance_meters":2483,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 20261024-orsay → 20261024-pantheon | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T13:00:00+02:00 → 2026-10-24T13:35:36+02:00 | 2136.0 s / 2483 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -88,7 +100,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"20261025-place-des-vosges","to_activity_id":"20261025-archives-museum","origin_place_id":"ChIJUeiI4P9x5kcRqEwHl6V32GQ","destination_place_id":"ChIJDwZjvgNu5kcR92V2clFCGMk","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:15:00+01:00","arrival_time":"2026-10-25T11:27:11+01:00","provider_duration_seconds":731.0,"distance_meters":877,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 20261025-place-des-vosges → 20261025-archives-museum | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:15:00+01:00 → 2026-10-25T11:27:11+01:00 | 731.0 s / 877 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v1/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -117,7 +133,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261024-eiffel","to_activity_id":"paris-20261024-arc","origin_place_id":"ChIJLU7jZClu5kcR4PcOOO6p3I0","destination_place_id":"ChIJjx37cOxv5kcRPWQuEW5ntdk","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T12:00:00+02:00","arrival_time":"2026-10-24T12:34:15+02:00","provider_duration_seconds":2055.0,"distance_meters":2350,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261024-eiffel → paris-20261024-arc | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T12:00:00+02:00 → 2026-10-24T12:34:15+02:00 | 2055.0 s / 2350 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -128,7 +148,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261025-notredame","to_activity_id":"paris-20261025-sainte-chapelle","origin_place_id":"ChIJATr1n-Fx5kcRjQb6q6cdQDY","destination_place_id":"ChIJR3122B9u5kcRaCck3PlB9DM","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:15:00+01:00","arrival_time":"2026-10-25T11:23:15+01:00","provider_duration_seconds":495.0,"distance_meters":593,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261025-notredame → paris-20261025-sainte-chapelle | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:15:00+01:00 → 2026-10-25T11:23:15+01:00 | 495.0 s / 593 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v2/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -145,7 +169,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261022-louvre","to_activity_id":"paris-20261022-sainte-chapelle","origin_place_id":"ChIJD3uTd9hx5kcR1IQvGfr8dbk","destination_place_id":"ChIJR3122B9u5kcRaCck3PlB9DM","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T13:00:00+02:00","arrival_time":"2026-10-22T13:17:35+02:00","provider_duration_seconds":1055.0,"distance_meters":1308,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261022-louvre → paris-20261022-sainte-chapelle | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T13:00:00+02:00 → 2026-10-22T13:17:35+02:00 | 1055.0 s / 1308 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-23
 
@@ -156,7 +184,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261023-notre-dame","to_activity_id":"repair_r1_new_1","origin_place_id":"ChIJATr1n-Fx5kcRjQb6q6cdQDY","destination_place_id":"ChIJvcVRUwBx5kcRod72V2bB-EI","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-23T11:00:00+02:00","arrival_time":"2026-10-23T11:01:44+02:00","provider_duration_seconds":104.0,"distance_meters":126,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261023-notre-dame → repair_r1_new_1 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-23T11:00:00+02:00 → 2026-10-23T11:01:44+02:00 | 104.0 s / 126 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-24
 
@@ -167,7 +199,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261024-eiffel-tower","to_activity_id":"paris-20261024-orsay","origin_place_id":"ChIJLU7jZClu5kcR4PcOOO6p3I0","destination_place_id":"ChIJG5Qwtitu5kcR2CNEsYy9cdA","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T12:30:00+02:00","arrival_time":"2026-10-24T13:07:06+02:00","provider_duration_seconds":2226.0,"distance_meters":2653,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261024-eiffel-tower → paris-20261024-orsay | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T12:30:00+02:00 → 2026-10-24T13:07:06+02:00 | 2226.0 s / 2653 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -178,7 +214,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"paris-20261025-pantheon","to_activity_id":"paris-20261025-cluny","origin_place_id":"ChIJc8mX0udx5kcRWKcjTwDr5QA","destination_place_id":"ChIJLxPh9d1x5kcRf7M1U0pu1gU","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:30:00+01:00","arrival_time":"2026-10-25T11:38:11+01:00","provider_duration_seconds":491.0,"distance_meters":636,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| paris-20261025-pantheon → paris-20261025-cluny | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:30:00+01:00 → 2026-10-25T11:38:11+01:00 | 491.0 s / 636 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v3/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -186,8 +226,21 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 [Complete draft](analysis/repair/draft.json), [complete final primary](analysis/repair/final-primary.json), and [lossless Repair](analysis/repair/repair.json) retain every real change, including unchanged/skipped attempts.
 
-| Activity ID | Change | Saved before | Saved after |
-| --- | --- | --- | --- |
-| repair_r1_new_1 | added | null | ["2026-10-23", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "repair_r1_new_1", "title": "Tours de la cathédrale Notre-Dame de Paris", "place_name": "Tours de la cathédrale Notre-Dame de Paris", "source_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI", "location": "Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "start_time": "2026-10-23T11:10:00+02:00", "end_time": "2026-10-23T12:10:00+02:00", "estimated_cost": null, "notes": null}] |
+Only fields that actually differ are listed. For added/removed activities, the absent side is marked absent; `null` is a saved null value, not an inferred value.
 
-Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity row changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.
+| Activity ID | Changed field | Before | After |
+| --- | --- | --- | --- |
+| repair_r1_new_1 | `activity_id` | absent | repair_r1_new_1 |
+| repair_r1_new_1 | `activity_kind` | absent | main_poi |
+| repair_r1_new_1 | `date` | absent | 2026-10-23 |
+| repair_r1_new_1 | `end_time` | absent | 2026-10-23T12:10:00+02:00 |
+| repair_r1_new_1 | `estimated_cost` | absent | `null` |
+| repair_r1_new_1 | `location` | absent | Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France |
+| repair_r1_new_1 | `notes` | absent | `null` |
+| repair_r1_new_1 | `place_name` | absent | Tours de la cathédrale Notre-Dame de Paris |
+| repair_r1_new_1 | `source_place_id` | absent | ChIJvcVRUwBx5kcRod72V2bB-EI |
+| repair_r1_new_1 | `start_time` | absent | 2026-10-23T11:10:00+02:00 |
+| repair_r1_new_1 | `time_use` | absent | scheduled |
+| repair_r1_new_1 | `title` | absent | Tours de la cathédrale Notre-Dame de Paris |
+
+Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity field changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.

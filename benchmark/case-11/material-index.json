@@ -1714,11 +1714,11 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "866293a4da131fd53538f01356514193846154a4fcab8687880051ec56439617"
+      "sha256": "e2e75e1276094c3daf3aa1ff4241c3fd172bfda02d9c46946412b544cd694a23"
     },
     {
       "path": "itinerary.md",
-      "sha256": "d8c3db8c35175329fa188c333878805dfb55864d76c084e4bea9c8865ac64539"
+      "sha256": "70d7d06be698f24a722082fcf10eb456d532b5036baa8e6f5b138c041a246ff9"
     }
   ]
 }

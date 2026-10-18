@@ -71,9 +71,11 @@ Fresh paired acquisition uses the common paired access policy. The eligible miss
 
 ## Resources and limitations
 
+The [shared accounting boundaries](../../docs/records/evaluation/accepted-case-compatibility.md#consumption-and-failure-handling) define reference estimates, uncertain charges and the separate batch allowances.
+
 The cumulative ledger contains 12 retained invocation identities and 590 distinct observed charge/transport events. Its reference observed subtotal is USD 14.187580485; the complete reference total is 14.187580485, with 0 unpriced/conflicting events. Actual account billing is unavailable. Mocked test fixtures are excluded. Repeated archives/replays are not new consumption.
 
-Selected-cohort native tradeoffs are not all-history first-attempt completion rates. Earlier failed or abandoned invocations remain in cumulative accounting. A previous failed case-05 V3 retains charge uncertainty; its separate USD 0.05 planning hold is not an invoice or a substituted native charge. Historical conflicting price snapshots remain explicit rather than silently selecting a favorable estimate.
+The all-attempt ledger retains earlier failed or abandoned invocations; the selected-cohort view does not estimate their first-attempt completion rate.
 
 ## Acceptance
 
@@ -82,6 +84,8 @@ The researcher accepted the preceding r02 automatic selection on 17 October 2026
 Earlier automatically accepted selections remain identified by Git history and immutable native evidence. This refresh updates current material, inputs and dependent analyses under the approved bounded scope; it does not silently extend the earlier researcher decision. Human answers and blinded-review reports remain absent.
 
 ## AI assistance
+
+Independent material review by `/root/refresh_standards_review` and `/root/refresh_spec_review` checks repository standards and the approved replacement scope. Subsequent reader corrections are agent validation, not human acceptance.
 
 Codex coordinated source selection, native offline reconstruction, reconciliation and English reader material on 18 October 2026. `/root/refresh_live_executor` used the required `gpt-6.1-sol / medium` execution role for exact prepared jobs, serially with zero automatic retries. Planner/evaluator model identities and usage remain in native captures, separate from external assistance. Source-only requirement authors/reviewers and interest authors retain their original identities/timestamps; unchanged semantic material is reused only where exact source hashes permit it.
 

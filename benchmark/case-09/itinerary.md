@@ -53,7 +53,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261022-sensoji","to_activity_id":"tokyo-20261022-skytree","origin_place_id":"ChIJ8T1GpMGOGGARDYGSgpooDWw","destination_place_id":"ChIJ35ov0dCOGGARKvdDH7NPHX0","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T11:30:00+09:00","arrival_time":"2026-10-22T11:54:55+09:00","provider_duration_seconds":1495.0,"distance_meters":1713,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261022-sensoji → tokyo-20261022-skytree | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T11:30:00+09:00 → 2026-10-22T11:54:55+09:00 | 1495.0 s / 1713 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-23
 
@@ -64,7 +68,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261023-ueno-park","to_activity_id":"tokyo-20261023-national-museum","origin_place_id":"ChIJw2qQRZuOGGARWmROEiM2y7E","destination_place_id":"ChIJEX3XFIOOGGAR3XdJvRjWLyM","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-23T10:30:00+09:00","arrival_time":"2026-10-23T10:37:15+09:00","provider_duration_seconds":435.0,"distance_meters":530,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261023-ueno-park → tokyo-20261023-national-museum | WALK / APPLICATION_DEFAULT_WALK | 2026-10-23T10:30:00+09:00 → 2026-10-23T10:37:15+09:00 | 435.0 s / 530 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-24
 
@@ -75,7 +83,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261024-meiji-jingu","to_activity_id":"tokyo-20261024-shibuya-crossing","origin_place_id":"ChIJ5SZMmreMGGARcz8QSTiJyo8","destination_place_id":"ChIJK9EM68qLGGARacmu4KJj5SA","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T11:00:00+09:00","arrival_time":"2026-10-24T11:30:52+09:00","provider_duration_seconds":1852.0,"distance_meters":2307,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261024-meiji-jingu → tokyo-20261024-shibuya-crossing | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T11:00:00+09:00 → 2026-10-24T11:30:52+09:00 | 1852.0 s / 2307 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -86,7 +98,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261025-shinjuku-gyoen","to_activity_id":"tokyo-20261025-godzilla-head","origin_place_id":"ChIJPyOTG8KMGGARh_IXobWxHmo","destination_place_id":"ChIJzRzI3HSNGGARRwZW6AtJfi0","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:30:00+09:00","arrival_time":"2026-10-25T11:52:51+09:00","provider_duration_seconds":1371.0,"distance_meters":1633,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261025-shinjuku-gyoen → tokyo-20261025-godzilla-head | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:30:00+09:00 → 2026-10-25T11:52:51+09:00 | 1371.0 s / 1633 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-26
 
@@ -109,7 +125,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261022-01","to_activity_id":"tokyo-20261022-02","origin_place_id":"ChIJ5SZMmreMGGARcz8QSTiJyo8","destination_place_id":"ChIJCaoz7S3zGGARrAnbz14VDcw","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T11:45:00+09:00","arrival_time":"2026-10-22T12:11:03+09:00","provider_duration_seconds":1563.0,"distance_meters":1800,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261022-01 → tokyo-20261022-02 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T11:45:00+09:00 → 2026-10-22T12:11:03+09:00 | 1563.0 s / 1800 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-23
 
@@ -120,7 +140,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261023-01","to_activity_id":"tokyo-20261023-02","origin_place_id":"ChIJEX3XFIOOGGAR3XdJvRjWLyM","destination_place_id":"ChIJw2qQRZuOGGARWmROEiM2y7E","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-23T13:00:00+09:00","arrival_time":"2026-10-23T13:07:15+09:00","provider_duration_seconds":435.0,"distance_meters":530,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261023-01 → tokyo-20261023-02 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-23T13:00:00+09:00 → 2026-10-23T13:07:15+09:00 | 435.0 s / 530 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-24
 
@@ -131,7 +155,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261024-01","to_activity_id":"tokyo-20261024-02","origin_place_id":"ChIJ8T1GpMGOGGARDYGSgpooDWw","destination_place_id":"ChIJ35ov0dCOGGARKvdDH7NPHX0","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T12:00:00+09:00","arrival_time":"2026-10-24T12:24:55+09:00","provider_duration_seconds":1495.0,"distance_meters":1713,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261024-01 → tokyo-20261024-02 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T12:00:00+09:00 → 2026-10-24T12:24:55+09:00 | 1495.0 s / 1713 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -142,7 +170,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-20261025-01","to_activity_id":"tokyo-20261025-02","origin_place_id":"ChIJwfegutyLGGARGjiY-L2eSps","destination_place_id":"ChIJCewJkL2LGGAR3Qmk0vCTGkg","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:15:00+09:00","arrival_time":"2026-10-25T11:51:55+09:00","provider_duration_seconds":2215.0,"distance_meters":2494,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-20261025-01 → tokyo-20261025-02 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:15:00+09:00 → 2026-10-25T11:51:55+09:00 | 2215.0 s / 2494 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-26
 
@@ -165,7 +197,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"tokyo-national-museum-20261022","to_activity_id":"sensoji-20261022","origin_place_id":"ChIJEX3XFIOOGGAR3XdJvRjWLyM","destination_place_id":"ChIJ8T1GpMGOGGARDYGSgpooDWw","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-22T13:00:00+09:00","arrival_time":"2026-10-22T13:33:12+09:00","provider_duration_seconds":1992.0,"distance_meters":2309,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| tokyo-national-museum-20261022 → sensoji-20261022 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-22T13:00:00+09:00 → 2026-10-22T13:33:12+09:00 | 1992.0 s / 2309 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-23
 
@@ -176,7 +212,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"ueno-park-20261023","to_activity_id":"akihabara-electric-town-20261023","origin_place_id":"ChIJw2qQRZuOGGARWmROEiM2y7E","destination_place_id":"ChIJzdWdgh2MGGARh4kg2pVZL3c","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-23T12:00:00+09:00","arrival_time":"2026-10-23T12:24:08+09:00","provider_duration_seconds":1448.0,"distance_meters":1731,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| ueno-park-20261023 → akihabara-electric-town-20261023 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-23T12:00:00+09:00 → 2026-10-23T12:24:08+09:00 | 1448.0 s / 1731 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-24
 
@@ -187,7 +227,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"shibuya-sky-20261024","to_activity_id":"shibuya-crossing-20261024","origin_place_id":"ChIJ4Rr2JWiLGGARcyRSHuZ-9G8","destination_place_id":"ChIJK9EM68qLGGARacmu4KJj5SA","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T15:00:00+09:00","arrival_time":"2026-10-24T15:04:38+09:00","provider_duration_seconds":278.0,"distance_meters":313,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| shibuya-sky-20261024 → shibuya-crossing-20261024 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T15:00:00+09:00 → 2026-10-24T15:04:38+09:00 | 278.0 s / 313 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -198,7 +242,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"meiji-jingu-20261025","to_activity_id":"shinjuku-gyoen-20261025","origin_place_id":"ChIJ5SZMmreMGGARcz8QSTiJyo8","destination_place_id":"ChIJPyOTG8KMGGARh_IXobWxHmo","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T11:30:00+09:00","arrival_time":"2026-10-25T11:54:47+09:00","provider_duration_seconds":1487.0,"distance_meters":1805,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| meiji-jingu-20261025 → shinjuku-gyoen-20261025 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T11:30:00+09:00 → 2026-10-25T11:54:47+09:00 | 1487.0 s / 1805 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-26
 
@@ -209,7 +257,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"imperial-palace-20261026","to_activity_id":"tokyo-dome-city-20261026","origin_place_id":"ChIJTQbYAg2MGGARt22eNwtfGtE","destination_place_id":"ChIJuxkVQeCNGGARfFgbeDEPG6g","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-26T11:30:00+09:00","arrival_time":"2026-10-26T12:04:56+09:00","provider_duration_seconds":2096.0,"distance_meters":2451,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| imperial-palace-20261026 → tokyo-dome-city-20261026 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-26T11:30:00+09:00 → 2026-10-26T12:04:56+09:00 | 2096.0 s / 2451 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v3/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -217,8 +269,21 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 [Complete draft](analysis/repair/draft.json), [complete final primary](analysis/repair/final-primary.json), and [lossless Repair](analysis/repair/repair.json) retain every real change, including unchanged/skipped attempts.
 
-| Activity ID | Change | Saved before | Saved after |
-| --- | --- | --- | --- |
-| art-front-gallery-20261024 | removed | ["2026-10-24", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "art-front-gallery-20261024", "title": "Visit ART FRONT GALLERY", "place_name": "ART FRONT GALLERY", "source_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg", "location": "Japan, 〒150-0033 Tokyo, Shibuya, Sarugakuchō, 29−１８ HILLSIDE TERRACE Building E, A棟", "start_time": "2026-10-24T11:00:00+09:00", "end_time": "2026-10-24T13:00:00+09:00", "estimated_cost": null, "notes": "The supplied evidence identifies an art gallery but does not specify its current exhibitions. Hours are a regular weekly baseline; date-specific exceptions are unknown."}] | null |
+Only fields that actually differ are listed. For added/removed activities, the absent side is marked absent; `null` is a saved null value, not an inferred value.
 
-Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity row changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.
+| Activity ID | Changed field | Before | After |
+| --- | --- | --- | --- |
+| art-front-gallery-20261024 | `activity_id` | art-front-gallery-20261024 | absent |
+| art-front-gallery-20261024 | `activity_kind` | main_poi | absent |
+| art-front-gallery-20261024 | `date` | 2026-10-24 | absent |
+| art-front-gallery-20261024 | `end_time` | 2026-10-24T13:00:00+09:00 | absent |
+| art-front-gallery-20261024 | `estimated_cost` | `null` | absent |
+| art-front-gallery-20261024 | `location` | Japan, 〒150-0033 Tokyo, Shibuya, Sarugakuchō, 29−１８ HILLSIDE TERRACE Building E, A棟 | absent |
+| art-front-gallery-20261024 | `notes` | The supplied evidence identifies an art gallery but does not specify its current exhibitions. Hours are a regular weekly baseline; date-specific exceptions are unknown. | absent |
+| art-front-gallery-20261024 | `place_name` | ART FRONT GALLERY | absent |
+| art-front-gallery-20261024 | `source_place_id` | ChIJ1d8x9UWLGGARlBR79HRq4eg | absent |
+| art-front-gallery-20261024 | `start_time` | 2026-10-24T11:00:00+09:00 | absent |
+| art-front-gallery-20261024 | `time_use` | scheduled | absent |
+| art-front-gallery-20261024 | `title` | Visit ART FRONT GALLERY | absent |
+
+Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity field changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.

@@ -1259,11 +1259,11 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "03aefd6f63c496247230e815e910e6a51b25eb3d4a5b05d26cfa6b00da3562f2"
+      "sha256": "ccffd00d0397daf96e5775eab235465e8f887b994934763218aa541691fd7cf3"
     },
     {
       "path": "itinerary.md",
-      "sha256": "82ef3e29bf8a917c1add7eb057d405c5b9fb543e7cb86e79516841f867a4be3a"
+      "sha256": "5a9349598e03bd7af7f51161a5ab3b39f62fc54e5df857d390794d43937a4c25"
     }
   ]
 }

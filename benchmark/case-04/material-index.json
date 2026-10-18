@@ -1623,11 +1623,11 @@
   "reader_views": [
     {
       "path": "report.md",
-      "sha256": "7ec56f4b433415da8e37f4220ac12c238db54f52890688b3d66921a887b46fcb"
+      "sha256": "7122f4cb36324ec8240240f619ac48ee9fc714fc01acd272ada944586ecbe71d"
     },
     {
       "path": "itinerary.md",
-      "sha256": "5853ebf423a8522c86cc50fdec1807d28e8cc96c84bc55eae306aff1e1e3e657"
+      "sha256": "08a1c56c860fa9c333bd488aa9e2ffccd040c770cad7f9e6c2bdd37847f53233"
     }
   ]
 }

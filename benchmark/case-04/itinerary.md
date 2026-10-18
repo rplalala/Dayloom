@@ -48,10 +48,14 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"day1-buddha-tooth-relic-temple","to_activity_id":"day1-merlion-park","origin_place_id":"ChIJ0bwmznIZ2jEREOCMNggtIBk","destination_place_id":"ChIJBTYg1g4Z2jERp_MBbu5erWY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T09:00:00+08:00","arrival_time":"2026-10-24T09:23:27+08:00","provider_duration_seconds":1407.0,"distance_meters":1658,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"day1-merlion-park","to_activity_id":"day1-national-gallery","origin_place_id":"ChIJBTYg1g4Z2jERp_MBbu5erWY","destination_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T10:30:00+08:00","arrival_time":"2026-10-24T10:38:39+08:00","provider_duration_seconds":519.0,"distance_meters":594,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"day1-national-gallery","to_activity_id":"day1-fort-canning","origin_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","destination_place_id":"ChIJVSYjJKIZ2jERpRFinATD52s","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T13:00:00+08:00","arrival_time":"2026-10-24T13:16:59+08:00","provider_duration_seconds":1019.0,"distance_meters":1119,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"day1-fort-canning","to_activity_id":"day1-helix-bridge","origin_place_id":"ChIJVSYjJKIZ2jERpRFinATD52s","destination_place_id":"ChIJT4AHFwcZ2jERDJbPVLTEbOk","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T14:30:00+08:00","arrival_time":"2026-10-24T15:04:40+08:00","provider_duration_seconds":2080.0,"distance_meters":2510,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| day1-buddha-tooth-relic-temple → day1-merlion-park | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T09:00:00+08:00 → 2026-10-24T09:23:27+08:00 | 1407.0 s / 1658 m | 0.0 s / PASS /  |
+| day1-merlion-park → day1-national-gallery | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T10:30:00+08:00 → 2026-10-24T10:38:39+08:00 | 519.0 s / 594 m | 0.0 s / PASS /  |
+| day1-national-gallery → day1-fort-canning | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T13:00:00+08:00 → 2026-10-24T13:16:59+08:00 | 1019.0 s / 1119 m | 0.0 s / PASS /  |
+| day1-fort-canning → day1-helix-bridge | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T14:30:00+08:00 → 2026-10-24T15:04:40+08:00 | 2080.0 s / 2510 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -62,7 +66,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"day2-botanic-gardens","to_activity_id":"day2-singapore-flyer","origin_place_id":"ChIJvWDbfRwa2jERgNnTOpAU3-o","destination_place_id":"ChIJzVHFNqkZ2jERboLN2YrltH8","mode":"TRANSIT","mode_source":"APPLICATION_TRANSIT_FALLBACK","departure_time":"2026-10-25T11:30:00+08:00","arrival_time":"2026-10-25T12:09:01+08:00","provider_duration_seconds":2341.0,"distance_meters":8216,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"time_applicable","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| day2-botanic-gardens → day2-singapore-flyer | TRANSIT / APPLICATION_TRANSIT_FALLBACK | 2026-10-25T11:30:00+08:00 → 2026-10-25T12:09:01+08:00 | 2341.0 s / 8216 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v1/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -81,9 +89,13 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"2026-10-24-fort-canning","to_activity_id":"2026-10-24-national-museum","origin_place_id":"ChIJVSYjJKIZ2jERpRFinATD52s","destination_place_id":"ChIJD1u-EaMZ2jERaLhNfFkR45I","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T09:40:00+08:00","arrival_time":"2026-10-24T09:49:32+08:00","provider_duration_seconds":572.0,"distance_meters":716,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"2026-10-24-national-museum","to_activity_id":"2026-10-24-national-gallery","origin_place_id":"ChIJD1u-EaMZ2jERaLhNfFkR45I","destination_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T12:00:00+08:00","arrival_time":"2026-10-24T12:16:40+08:00","provider_duration_seconds":1000.0,"distance_meters":1187,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"2026-10-24-national-gallery","to_activity_id":"2026-10-24-merlion","origin_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","destination_place_id":"ChIJBTYg1g4Z2jERp_MBbu5erWY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T14:30:00+08:00","arrival_time":"2026-10-24T14:38:35+08:00","provider_duration_seconds":515.0,"distance_meters":594,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 2026-10-24-fort-canning → 2026-10-24-national-museum | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T09:40:00+08:00 → 2026-10-24T09:49:32+08:00 | 572.0 s / 716 m | 0.0 s / PASS /  |
+| 2026-10-24-national-museum → 2026-10-24-national-gallery | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T12:00:00+08:00 → 2026-10-24T12:16:40+08:00 | 1000.0 s / 1187 m | 0.0 s / PASS /  |
+| 2026-10-24-national-gallery → 2026-10-24-merlion | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T14:30:00+08:00 → 2026-10-24T14:38:35+08:00 | 515.0 s / 594 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -95,8 +107,12 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"2026-10-25-gardens-by-the-bay","to_activity_id":"2026-10-25-marina-barrage-roof","origin_place_id":"ChIJMxZ-kwQZ2jERdsqftXeWCWI","destination_place_id":"ChIJZZ-2cs0Z2jERdCRKtLGUw10","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T12:00:00+08:00","arrival_time":"2026-10-25T12:16:22+08:00","provider_duration_seconds":982.0,"distance_meters":1224,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"2026-10-25-marina-barrage-roof","to_activity_id":"2026-10-25-buddha-tooth-relic-temple","origin_place_id":"ChIJZZ-2cs0Z2jERdCRKtLGUw10","destination_place_id":"ChIJ0bwmznIZ2jEREOCMNggtIBk","mode":"TRANSIT","mode_source":"APPLICATION_TRANSIT_FALLBACK","departure_time":"2026-10-25T13:30:00+08:00","arrival_time":"2026-10-25T13:47:23+08:00","provider_duration_seconds":1043.0,"distance_meters":3968,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"time_applicable","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| 2026-10-25-gardens-by-the-bay → 2026-10-25-marina-barrage-roof | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T12:00:00+08:00 → 2026-10-25T12:16:22+08:00 | 982.0 s / 1224 m | 0.0 s / PASS /  |
+| 2026-10-25-marina-barrage-roof → 2026-10-25-buddha-tooth-relic-temple | TRANSIT / APPLICATION_TRANSIT_FALLBACK | 2026-10-25T13:30:00+08:00 → 2026-10-25T13:47:23+08:00 | 1043.0 s / 3968 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v2/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -114,8 +130,12 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"sg-20261024-botanic-gardens","to_activity_id":"sg-20261024-flyer","origin_place_id":"ChIJvWDbfRwa2jERgNnTOpAU3-o","destination_place_id":"ChIJzVHFNqkZ2jERboLN2YrltH8","mode":"TRANSIT","mode_source":"APPLICATION_TRANSIT_FALLBACK","departure_time":"2026-10-24T10:00:00+08:00","arrival_time":"2026-10-24T10:39:01+08:00","provider_duration_seconds":2341.0,"distance_meters":8216,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"time_applicable","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"sg-20261024-flyer","to_activity_id":"sg-20261024-gardens-bay","origin_place_id":"ChIJzVHFNqkZ2jERboLN2YrltH8","destination_place_id":"ChIJMxZ-kwQZ2jERdsqftXeWCWI","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-24T12:00:00+08:00","arrival_time":"2026-10-24T12:24:26+08:00","provider_duration_seconds":1466.0,"distance_meters":1720,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| sg-20261024-botanic-gardens → sg-20261024-flyer | TRANSIT / APPLICATION_TRANSIT_FALLBACK | 2026-10-24T10:00:00+08:00 → 2026-10-24T10:39:01+08:00 | 2341.0 s / 8216 m | 0.0 s / PASS /  |
+| sg-20261024-flyer → sg-20261024-gardens-bay | WALK / APPLICATION_DEFAULT_WALK | 2026-10-24T12:00:00+08:00 → 2026-10-24T12:24:26+08:00 | 1466.0 s / 1720 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-25
 
@@ -127,8 +147,12 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"sg-20261025-temple","to_activity_id":"sg-20261025-gallery","origin_place_id":"ChIJ0bwmznIZ2jEREOCMNggtIBk","destination_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T10:25:00+08:00","arrival_time":"2026-10-25T10:45:48+08:00","provider_duration_seconds":1248.0,"distance_meters":1484,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
-- `{"from_activity_id":"sg-20261025-gallery","to_activity_id":"sg-20261025-fort-canning","origin_place_id":"ChIJFQzeR6cZ2jERgM6--iWeY-U","destination_place_id":"ChIJVSYjJKIZ2jERpRFinATD52s","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-25T13:30:00+08:00","arrival_time":"2026-10-25T13:46:59+08:00","provider_duration_seconds":1019.0,"distance_meters":1119,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| sg-20261025-temple → sg-20261025-gallery | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T10:25:00+08:00 → 2026-10-25T10:45:48+08:00 | 1248.0 s / 1484 m | 0.0 s / PASS /  |
+| sg-20261025-gallery → sg-20261025-fort-canning | WALK / APPLICATION_DEFAULT_WALK | 2026-10-25T13:30:00+08:00 → 2026-10-25T13:46:59+08:00 | 1019.0 s / 1119 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v3/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -136,8 +160,21 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 [Complete draft](analysis/repair/draft.json), [complete final primary](analysis/repair/final-primary.json), and [lossless Repair](analysis/repair/repair.json) retain every real change, including unchanged/skipped attempts.
 
-| Activity ID | Change | Saved before | Saved after |
-| --- | --- | --- | --- |
-| sg-20261025-merlion | removed | ["2026-10-25", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "sg-20261025-merlion", "title": "See Merlion Park", "place_name": "Merlion Park", "source_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY", "location": "1 Fullerton Rd, Singapore 049213", "start_time": "2026-10-25T08:00:00+08:00", "end_time": "2026-10-25T09:00:00+08:00", "estimated_cost": null, "notes": "Moderate drizzle is forecast; allow flexibility for the outdoor visit."}] | null |
+Only fields that actually differ are listed. For added/removed activities, the absent side is marked absent; `null` is a saved null value, not an inferred value.
 
-Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity row changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.
+| Activity ID | Changed field | Before | After |
+| --- | --- | --- | --- |
+| sg-20261025-merlion | `activity_id` | sg-20261025-merlion | absent |
+| sg-20261025-merlion | `activity_kind` | main_poi | absent |
+| sg-20261025-merlion | `date` | 2026-10-25 | absent |
+| sg-20261025-merlion | `end_time` | 2026-10-25T09:00:00+08:00 | absent |
+| sg-20261025-merlion | `estimated_cost` | `null` | absent |
+| sg-20261025-merlion | `location` | 1 Fullerton Rd, Singapore 049213 | absent |
+| sg-20261025-merlion | `notes` | Moderate drizzle is forecast; allow flexibility for the outdoor visit. | absent |
+| sg-20261025-merlion | `place_name` | Merlion Park | absent |
+| sg-20261025-merlion | `source_place_id` | ChIJBTYg1g4Z2jERp_MBbu5erWY | absent |
+| sg-20261025-merlion | `start_time` | 2026-10-25T08:00:00+08:00 | absent |
+| sg-20261025-merlion | `time_use` | scheduled | absent |
+| sg-20261025-merlion | `title` | See Merlion Park | absent |
+
+Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity field changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.

@@ -61,7 +61,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"day1-casa-batllo","to_activity_id":"day1-gothic-quarter","origin_place_id":"ChIJYUFLSe2ipBIRD04uni940kA","destination_place_id":"ChIJgQYekPiipBIRr6fNOMV-5bc","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-26T12:00:00+01:00","arrival_time":"2026-10-26T12:23:43+01:00","provider_duration_seconds":1423.0,"distance_meters":1793,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| day1-casa-batllo → day1-gothic-quarter | WALK / APPLICATION_DEFAULT_WALK | 2026-10-26T12:00:00+01:00 → 2026-10-26T12:23:43+01:00 | 1423.0 s / 1793 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-27
 
@@ -78,7 +82,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"day3-meam","to_activity_id":"day3-el-born","origin_place_id":"ChIJveK7vP6ipBIRiegu-jsxGX8","destination_place_id":"ChIJc0WMe_GipBIR_EfbMXL48cY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-28T13:30:00+01:00","arrival_time":"2026-10-28T13:35:34+01:00","provider_duration_seconds":334.0,"distance_meters":412,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| day3-meam → day3-el-born | WALK / APPLICATION_DEFAULT_WALK | 2026-10-28T13:30:00+01:00 → 2026-10-28T13:35:34+01:00 | 334.0 s / 412 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-29
 
@@ -114,7 +122,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"d2-cathedral","to_activity_id":"d2-born","origin_place_id":"ChIJg2xxlvmipBIRg1jhdSQR9hY","destination_place_id":"ChIJc0WMe_GipBIR_EfbMXL48cY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-27T11:30:00+01:00","arrival_time":"2026-10-27T11:42:31+01:00","provider_duration_seconds":751.0,"distance_meters":925,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| d2-cathedral → d2-born | WALK / APPLICATION_DEFAULT_WALK | 2026-10-27T11:30:00+01:00 → 2026-10-27T11:42:31+01:00 | 751.0 s / 925 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-28
 
@@ -149,7 +161,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"macba-20261026","to_activity_id":"repair_r1_new_c1_1","origin_place_id":"ChIJ0V6MrPWipBIRKnssXv0o_Y4","destination_place_id":"ChIJdTx2T-2ipBIRQM8Gwarzfik","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-26T14:00:00+01:00","arrival_time":"2026-10-26T14:18:20+01:00","provider_duration_seconds":1100.0,"distance_meters":1274,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| macba-20261026 → repair_r1_new_c1_1 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-26T14:00:00+01:00 → 2026-10-26T14:18:20+01:00 | 1100.0 s / 1274 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-27
 
@@ -160,7 +176,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"sagrada-familia-20261027","to_activity_id":"repair_r1_new_c2_1","origin_place_id":"ChIJk_s92NyipBIRUMnDG8Kq2Js","destination_place_id":"ChIJc0WMe_GipBIR_EfbMXL48cY","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-27T13:00:00+01:00","arrival_time":"2026-10-27T13:34:37+01:00","provider_duration_seconds":2077.0,"distance_meters":2588,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| sagrada-familia-20261027 → repair_r1_new_c2_1 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-27T13:00:00+01:00 → 2026-10-27T13:34:37+01:00 | 2077.0 s / 2588 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-28
 
@@ -171,7 +191,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"park-guell-20261028","to_activity_id":"repair_r1_new_c3_1","origin_place_id":"ChIJq0HUUq6ipBIRWM6qGqALmok","destination_place_id":"ChIJYUFLSe2ipBIRD04uni940kA","mode":"TRANSIT","mode_source":"APPLICATION_TRANSIT_FALLBACK","departure_time":"2026-10-28T13:30:00+01:00","arrival_time":"2026-10-28T13:54:00+01:00","provider_duration_seconds":1440.0,"distance_meters":3978,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"time_applicable","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| park-guell-20261028 → repair_r1_new_c3_1 | TRANSIT / APPLICATION_TRANSIT_FALLBACK | 2026-10-28T13:30:00+01:00 → 2026-10-28T13:54:00+01:00 | 1440.0 s / 3978 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-29
 
@@ -183,7 +207,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"barcelona-cathedral-20261029","to_activity_id":"temple-august-20261029","origin_place_id":"ChIJg2xxlvmipBIRg1jhdSQR9hY","destination_place_id":"ChIJ204RAfmipBIRgmi5nW7YHaE","mode":"WALK","mode_source":"APPLICATION_DEFAULT_WALK","departure_time":"2026-10-29T12:00:00+01:00","arrival_time":"2026-10-29T12:02:59+01:00","provider_duration_seconds":179.0,"distance_meters":215,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"walk_provider_estimate","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| barcelona-cathedral-20261029 → temple-august-20261029 | WALK / APPLICATION_DEFAULT_WALK | 2026-10-29T12:00:00+01:00 → 2026-10-29T12:02:59+01:00 | 179.0 s / 215 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 ### 2026-10-30
 
@@ -194,7 +222,11 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 **Saved transfers:**
 
-- `{"from_activity_id":"montjuic-castle-20261030","to_activity_id":"repair_r1_new_c4_1","origin_place_id":"ChIJN7FiCkGipBIR1PJn6ohejww","destination_place_id":"ChIJLcC0-PSipBIRdHiFCj_ewdY","mode":"TRANSIT","mode_source":"APPLICATION_TRANSIT_FALLBACK","departure_time":"2026-10-30T13:00:00+01:00","arrival_time":"2026-10-30T13:42:06+01:00","provider_duration_seconds":2526.0,"distance_meters":6245,"reserve_seconds":0.0,"routing_preference":null,"evidence_refs":["google_routes:compute_route_matrix"],"calculation_basis":"time_applicable","validation_state":"PASS","unknowns":[]}`
+| Endpoints | Mode / source | Departure → arrival | Duration / distance | Reserve / status / uncertainty |
+| --- | --- | --- | --- | --- |
+| montjuic-castle-20261030 → repair_r1_new_c4_1 | TRANSIT / APPLICATION_TRANSIT_FALLBACK | 2026-10-30T13:00:00+01:00 → 2026-10-30T13:42:06+01:00 | 2526.0 s / 6245 m | 0.0 s / PASS /  |
+
+Exact route evidence references, diagnostics and optional transfer fields remain in the linked complete itinerary.
 
 [Complete transfer and Nearby fields](generation/v3/itinerary.json) retain all optional fields without counting references as visits.
 
@@ -202,11 +234,57 @@ Full saved final activities and transfers are shown below. Optional Nearby recom
 
 [Complete draft](analysis/repair/draft.json), [complete final primary](analysis/repair/final-primary.json), and [lossless Repair](analysis/repair/repair.json) retain every real change, including unchanged/skipped attempts.
 
-| Activity ID | Change | Saved before | Saved after |
-| --- | --- | --- | --- |
-| repair_r1_new_c1_1 | added | null | ["2026-10-26", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "repair_r1_new_c1_1", "title": "Casa Amatller", "place_name": "Casa Amatller", "source_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik", "location": "Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain", "start_time": "2026-10-26T14:30:00+01:00", "end_time": "2026-10-26T15:30:00+01:00", "estimated_cost": null, "notes": null}] |
-| repair_r1_new_c2_1 | added | null | ["2026-10-27", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "repair_r1_new_c2_1", "title": "El Born Centre de Cultura i Memòria", "place_name": "El Born Centre de Cultura i Memòria", "source_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY", "location": "Mercat del Born, Plaça Comercial, 12, Ciutat Vella, 08003 Barcelona, Spain", "start_time": "2026-10-27T13:45:00+01:00", "end_time": "2026-10-27T14:45:00+01:00", "estimated_cost": null, "notes": null}] |
-| repair_r1_new_c3_1 | added | null | ["2026-10-28", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "repair_r1_new_c3_1", "title": "Casa Batlló", "place_name": "Casa Batlló", "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA", "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain", "start_time": "2026-10-28T14:00:00+01:00", "end_time": "2026-10-28T15:00:00+01:00", "estimated_cost": null, "notes": null}] |
-| repair_r1_new_c4_1 | added | null | ["2026-10-30", {"activity_kind": "main_poi", "time_use": "scheduled", "activity_id": "repair_r1_new_c4_1", "title": "Centre de Cultura Contemporània de Barcelona", "place_name": "Centre de Cultura Contemporània de Barcelona", "source_place_id": "ChIJLcC0-PSipBIRdHiFCj_ewdY", "location": "Carrer de Montalegre, 5, Ciutat Vella, 08001 Barcelona, Spain", "start_time": "2026-10-30T14:00:00+01:00", "end_time": "2026-10-30T15:00:00+01:00", "estimated_cost": null, "notes": null}] |
+Only fields that actually differ are listed. For added/removed activities, the absent side is marked absent; `null` is a saved null value, not an inferred value.
 
-Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity row changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.
+| Activity ID | Changed field | Before | After |
+| --- | --- | --- | --- |
+| repair_r1_new_c1_1 | `activity_id` | absent | repair_r1_new_c1_1 |
+| repair_r1_new_c1_1 | `activity_kind` | absent | main_poi |
+| repair_r1_new_c1_1 | `date` | absent | 2026-10-26 |
+| repair_r1_new_c1_1 | `end_time` | absent | 2026-10-26T15:30:00+01:00 |
+| repair_r1_new_c1_1 | `estimated_cost` | absent | `null` |
+| repair_r1_new_c1_1 | `location` | absent | Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain |
+| repair_r1_new_c1_1 | `notes` | absent | `null` |
+| repair_r1_new_c1_1 | `place_name` | absent | Casa Amatller |
+| repair_r1_new_c1_1 | `source_place_id` | absent | ChIJdTx2T-2ipBIRQM8Gwarzfik |
+| repair_r1_new_c1_1 | `start_time` | absent | 2026-10-26T14:30:00+01:00 |
+| repair_r1_new_c1_1 | `time_use` | absent | scheduled |
+| repair_r1_new_c1_1 | `title` | absent | Casa Amatller |
+| repair_r1_new_c2_1 | `activity_id` | absent | repair_r1_new_c2_1 |
+| repair_r1_new_c2_1 | `activity_kind` | absent | main_poi |
+| repair_r1_new_c2_1 | `date` | absent | 2026-10-27 |
+| repair_r1_new_c2_1 | `end_time` | absent | 2026-10-27T14:45:00+01:00 |
+| repair_r1_new_c2_1 | `estimated_cost` | absent | `null` |
+| repair_r1_new_c2_1 | `location` | absent | Mercat del Born, Plaça Comercial, 12, Ciutat Vella, 08003 Barcelona, Spain |
+| repair_r1_new_c2_1 | `notes` | absent | `null` |
+| repair_r1_new_c2_1 | `place_name` | absent | El Born Centre de Cultura i Memòria |
+| repair_r1_new_c2_1 | `source_place_id` | absent | ChIJc0WMe_GipBIR_EfbMXL48cY |
+| repair_r1_new_c2_1 | `start_time` | absent | 2026-10-27T13:45:00+01:00 |
+| repair_r1_new_c2_1 | `time_use` | absent | scheduled |
+| repair_r1_new_c2_1 | `title` | absent | El Born Centre de Cultura i Memòria |
+| repair_r1_new_c3_1 | `activity_id` | absent | repair_r1_new_c3_1 |
+| repair_r1_new_c3_1 | `activity_kind` | absent | main_poi |
+| repair_r1_new_c3_1 | `date` | absent | 2026-10-28 |
+| repair_r1_new_c3_1 | `end_time` | absent | 2026-10-28T15:00:00+01:00 |
+| repair_r1_new_c3_1 | `estimated_cost` | absent | `null` |
+| repair_r1_new_c3_1 | `location` | absent | Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain |
+| repair_r1_new_c3_1 | `notes` | absent | `null` |
+| repair_r1_new_c3_1 | `place_name` | absent | Casa Batlló |
+| repair_r1_new_c3_1 | `source_place_id` | absent | ChIJYUFLSe2ipBIRD04uni940kA |
+| repair_r1_new_c3_1 | `start_time` | absent | 2026-10-28T14:00:00+01:00 |
+| repair_r1_new_c3_1 | `time_use` | absent | scheduled |
+| repair_r1_new_c3_1 | `title` | absent | Casa Batlló |
+| repair_r1_new_c4_1 | `activity_id` | absent | repair_r1_new_c4_1 |
+| repair_r1_new_c4_1 | `activity_kind` | absent | main_poi |
+| repair_r1_new_c4_1 | `date` | absent | 2026-10-30 |
+| repair_r1_new_c4_1 | `end_time` | absent | 2026-10-30T15:00:00+01:00 |
+| repair_r1_new_c4_1 | `estimated_cost` | absent | `null` |
+| repair_r1_new_c4_1 | `location` | absent | Carrer de Montalegre, 5, Ciutat Vella, 08001 Barcelona, Spain |
+| repair_r1_new_c4_1 | `notes` | absent | `null` |
+| repair_r1_new_c4_1 | `place_name` | absent | Centre de Cultura Contemporània de Barcelona |
+| repair_r1_new_c4_1 | `source_place_id` | absent | ChIJLcC0-PSipBIRdHiFCj_ewdY |
+| repair_r1_new_c4_1 | `start_time` | absent | 2026-10-30T14:00:00+01:00 |
+| repair_r1_new_c4_1 | `time_use` | absent | scheduled |
+| repair_r1_new_c4_1 | `title` | absent | Centre de Cultura Contemporània de Barcelona |
+
+Transfer, route-diagnostic and recommendation differences remain in the complete stage JSON, even when no activity field changes. Candidate source attribution is observational; no causal improvement is inferred from independent generations.
