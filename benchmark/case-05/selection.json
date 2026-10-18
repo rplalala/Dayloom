@@ -1,0 +1,78 @@
+{
+  "schema_version": "case_public_current_selection_1",
+  "case_id": "case-05",
+  "case_revision": "current-path-20261018-r1",
+  "input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+  "versions": {
+    "v0": {
+      "run_id": "case-05-completion-v0-a1",
+      "selected_result_sha256": "d5112640271fb0299d5e5d333c6c5b4ce6a2f8ed37feb244a05cef7e0fb24d31",
+      "selected_input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+      "source_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v0/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-05/assembled/sources/captures/v0/result.json",
+          "sha256": "d5112640271fb0299d5e5d333c6c5b4ce6a2f8ed37feb244a05cef7e0fb24d31",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v1": {
+      "run_id": "case-05-completion-v1-a1",
+      "selected_result_sha256": "58f0f19a2b1b79b04cbddea6350e61aefbb76f4cbe96773229d741ccc3f35f26",
+      "selected_input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+      "source_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v1/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-05/assembled/sources/captures/v1/result.json",
+          "sha256": "58f0f19a2b1b79b04cbddea6350e61aefbb76f4cbe96773229d741ccc3f35f26",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v2": {
+      "run_id": "case-05-completion-v2-a1",
+      "selected_result_sha256": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d",
+      "selected_input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+      "source_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v2/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-05/assembled/sources/captures/v2/result.json",
+          "sha256": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d",
+          "json_pointer": "/itinerary"
+        }
+      }
+    },
+    "v3": {
+      "run_id": "case-05-current-path-v3-c1",
+      "selected_result_sha256": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be",
+      "selected_input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+      "source_revision": "2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8",
+      "completion_qualified": true,
+      "selection_origin": "qualified_current_system_rerun",
+      "itinerary_projection": {
+        "path": "generation/v3/itinerary.json",
+        "original_source": {
+          "logical_path": ".scratch/rf18/case-05/assembled/sources/captures/v3-c1/result.json",
+          "sha256": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be",
+          "json_pointer": "/itinerary"
+        }
+      }
+    }
+  },
+  "primary": "evaluation/primary/report.json",
+  "pair": "evaluation/v3-pair/report.json",
+  "status": "current_material_verified_researcher_acceptance_pending",
+  "preceding_publication_git_revision": "986ff398adf64c7022f5b23c505f4c7194d13903",
+  "historical_acceptance": "Prior automatic acceptance is preserved at its exact Git revision and immutable native archives, not asserted for this refreshed selection.",
+  "source_note": "Current system compatibility is established by bounded reruns and source-compatible donor retention, not by claiming every selected result was newly generated."
+}

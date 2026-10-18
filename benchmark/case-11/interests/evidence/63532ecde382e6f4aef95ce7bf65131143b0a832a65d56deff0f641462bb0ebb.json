@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+  "unresolved_subject_id": null,
+  "subject_name": "Catacombs of Paris",
+  "subject_address": "1 Av. du Colonel Henri Rol-Tanguy, 75014 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9429307+00:00",
+  "sources": [
+    {
+      "url": "https://www.catacombes.paris.fr/en/history/ossuary",
+      "title": "The ossuary — Catacombes de Paris",
+      "factual_paraphrase": "Héricart de Thury arranged the ossuary as a monumental museum-like circuit with bone facades and masonry monuments in Antique and Egyptian styles, including Doric columns, altars, steles and tombs.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web open"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The official description identifies an intentionally composed funerary monument with masonry columns, altars, steles and tomb forms in Antique and Egyptian styles. This establishes architectural content beyond the ossuary's history.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

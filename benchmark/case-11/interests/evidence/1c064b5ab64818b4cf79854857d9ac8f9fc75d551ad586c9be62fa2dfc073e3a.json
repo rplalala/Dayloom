@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Grand Palais",
+  "sources": [
+    {
+      "url": "https://www.grandpalais.fr/fr/node/1553",
+      "title": "La naissance d’un monument | Grand Palais",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The institution describes the Grand Palais as a monument with steel, stone and glass architecture and ornamental decoration.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The institution describes the Grand Palais as a monument with steel, stone and glass architecture and ornamental decoration.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

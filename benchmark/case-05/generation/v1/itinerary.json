@@ -1,17 +1,37 @@
 {
-  "output_version": "itinerary_2",
+  "output_version": "itinerary_3",
   "transfers": [
     {
-      "from_activity_id": "cathedral-20261016",
-      "to_activity_id": "santa-maria-del-mar-20261016",
-      "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
-      "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+      "from_activity_id": "day1-casa-batllo",
+      "to_activity_id": "day1-gothic-quarter",
+      "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "destination_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
       "mode": "WALK",
       "mode_source": "APPLICATION_DEFAULT_WALK",
-      "departure_time": "2026-10-16T12:00:00+02:00",
-      "arrival_time": "2026-10-16T12:08:19+02:00",
-      "provider_duration_seconds": 499.0,
-      "distance_meters": 615,
+      "departure_time": "2026-10-26T12:00:00+01:00",
+      "arrival_time": "2026-10-26T12:23:43+01:00",
+      "provider_duration_seconds": 1423.0,
+      "distance_meters": 1793,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "day3-meam",
+      "to_activity_id": "day3-el-born",
+      "origin_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
+      "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-28T13:30:00+01:00",
+      "arrival_time": "2026-10-28T13:35:34+01:00",
+      "provider_duration_seconds": 334.0,
+      "distance_meters": 412,
       "reserve_seconds": 0.0,
       "routing_preference": null,
       "evidence_refs": [
@@ -24,12 +44,12 @@
   ],
   "route_diagnostics": [
     {
-      "from_activity_id": "cathedral-20261016",
-      "to_activity_id": "santa-maria-del-mar-20261016",
-      "origin": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
-      "destination": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-      "departure": "2026-10-16T12:00:00+02:00",
-      "next_start": "2026-10-16T14:00:00+02:00",
+      "from_activity_id": "day1-casa-batllo",
+      "to_activity_id": "day1-gothic-quarter",
+      "origin": "ChIJYUFLSe2ipBIRD04uni940kA",
+      "destination": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+      "departure": "2026-10-26T12:00:00+01:00",
+      "next_start": "2026-10-26T14:00:00+01:00",
       "considered_modes": [
         "WALK",
         "TRANSIT",
@@ -45,31 +65,98 @@
           "reason": "time_connection_only",
           "evidence": [
             {
-              "duration_seconds": 499,
+              "duration_seconds": 1423,
               "source_ref": "google_routes:compute_route_matrix",
               "travel_mode": "WALK",
               "routing_preference": null,
               "departure_time": null,
-              "requested_at": "2026-10-15T20:30:16.591371+00:00",
-              "retrieved_at": "2026-10-15T20:30:18.229165+00:00",
+              "requested_at": "2026-10-18T04:47:48.326186+00:00",
+              "retrieved_at": "2026-10-18T04:47:48.966730+00:00",
               "basis": "walk_provider_estimate",
               "element": {
-                "origin_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
-                "destination_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
+                "origin_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+                "destination_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
                 "evidence_type": "provider_observed",
                 "derived_from_origin_place_id": null,
                 "derived_from_destination_place_id": null,
                 "status": "OK",
                 "condition": "ROUTE_EXISTS",
                 "status_state": "success",
-                "static_duration_seconds": 499,
+                "static_duration_seconds": 1423,
                 "fallback_info": null,
-                "requested_at": "2026-10-15T20:30:16.591371Z",
-                "retrieved_at": "2026-10-15T20:30:18.229165Z",
-                "origin_index": 2,
-                "destination_index": 15,
-                "distance_meters": 615,
-                "duration_seconds": 499,
+                "requested_at": "2026-10-18T04:47:48.326186Z",
+                "retrieved_at": "2026-10-18T04:47:48.966730Z",
+                "origin_index": 1,
+                "destination_index": 2,
+                "distance_meters": 1793,
+                "duration_seconds": 1423,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "from_activity_id": "day3-meam",
+      "to_activity_id": "day3-el-born",
+      "origin": "ChIJveK7vP6ipBIRiegu-jsxGX8",
+      "destination": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+      "departure": "2026-10-28T13:30:00+01:00",
+      "next_start": "2026-10-28T15:00:00+01:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 334,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:47:49.668967+00:00",
+              "retrieved_at": "2026-10-18T04:47:50.322882+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
+                "destination_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 334,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:47:49.668967Z",
+                "retrieved_at": "2026-10-18T04:47:50.322882Z",
+                "origin_index": 0,
+                "destination_index": 13,
+                "distance_meters": 412,
+                "duration_seconds": 334,
                 "availability": "available",
                 "unavailable_reason": null
               }
@@ -93,131 +180,150 @@
   ],
   "reference_recommendations": [
     {
-      "place_name": "Pla\u00e7a de Garriga i Bachs",
-      "source_place_id": "ChIJq6patvmipBIRwEfAKY06rZE",
-      "reason": "Park near Cathedral of Barcelona (approximately 47 m straight-line).",
-      "associated_day": "2026-10-16",
-      "area": "Pl. de Garriga i Bachs, Ciutat Vella, 08002 Barcelona, Spain",
-      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-6d6d7a6f-8304-467c-a05e-a083837439cd:0"
-    },
-    {
-      "place_name": "Restaurant Petra",
-      "source_place_id": "ChIJzdpR9v6ipBIRYJcC0NR6sLE",
-      "reason": "Restaurant near Bas\u00edlica de Santa Maria del Mar (approximately 24 m straight-line).",
-      "associated_day": "2026-10-16",
-      "area": "Carrer dels Sombrerers, 13, Ciutat Vella, 08003 Barcelona, Spain",
-      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-5996e756-df25-41d8-a919-06c8c954dfc6:0"
-    },
-    {
       "place_name": "Casa Amatller",
       "source_place_id": "ChIJdTx2T-2ipBIRQM8Gwarzfik",
-      "reason": "Museum near Casa Batll\u00f3 (approximately 17 m straight-line).",
-      "associated_day": "2026-10-17",
-      "area": "Pg. de Gr\u00e0cia, 41, Eixample, 08007 Barcelona, Spain",
+      "reason": "Museum near Casa Batlló (approximately 17 m straight-line).",
+      "associated_day": "2026-10-26",
+      "area": "Pg. de Gràcia, 41, Eixample, 08007 Barcelona, Spain",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
-      "source_ref": "google_places_nearby:nearby-368884ad-4add-499f-b71b-03245e4c1227:0"
+      "source_ref": "google_places_nearby:nearby-a322bf54-d5e5-417a-aa3f-1d5d82c371fb:0"
+    },
+    {
+      "place_name": "Gotik quarter",
+      "source_place_id": "ChIJWd28LwCjpBIRIyWsXJJD_I0",
+      "reason": "Park near Gothic Quarter (approximately 15 m straight-line).",
+      "associated_day": "2026-10-26",
+      "area": "Plaça de Sant Miquel, 3, Ciutat Vella, 08002 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-1bb48963-3efa-41b5-81f4-c14f90df3bed:0"
+    },
+    {
+      "place_name": "Sagrada família",
+      "source_place_id": "ChIJHdkZGACjpBIRi_R46Pnc-JU",
+      "reason": "Museum near Basilica of the Sagrada Familia (approximately 0 m straight-line).",
+      "associated_day": "2026-10-27",
+      "area": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "source_ref": "google_places_nearby:nearby-8819eb62-30e2-4d70-98e7-63049a22be0f:0"
     }
   ],
   "destination": "Barcelona, Spain",
-  "start_date": "2026-10-16",
-  "end_date": "2026-10-20",
+  "start_date": "2026-10-26",
+  "end_date": "2026-10-30",
   "days": [
     {
-      "date": "2026-10-16",
+      "date": "2026-10-26",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "cathedral-20261016",
-          "title": "Cathedral of Barcelona",
-          "place_name": "Cathedral of Barcelona",
-          "source_place_id": "ChIJg2xxlvmipBIRg1jhdSQR9hY",
-          "location": "Pla de la Seu, s/n, Ciutat Vella, 08002 Barcelona, Spain",
-          "start_time": "2026-10-16T10:00:00+02:00",
-          "end_time": "2026-10-16T12:00:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "day1-casa-batllo",
+          "title": "Explore Casa Batlló",
+          "place_name": "Casa Batlló",
+          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
+          "location": "Pg. de Gràcia, 43, Eixample, 08007 Barcelona, Spain",
+          "start_time": "2026-10-26T10:00:00+01:00",
+          "end_time": "2026-10-26T12:00:00+01:00",
           "estimated_cost": null,
-          "notes": "Date-specific operating exceptions are unknown; recheck before visiting."
+          "notes": "Allow time to look closely at the building and its architectural details. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
         },
         {
           "activity_kind": "main_poi",
-          "activity_id": "santa-maria-del-mar-20261016",
-          "title": "Bas\u00edlica de Santa Maria del Mar",
-          "place_name": "Bas\u00edlica de Santa Maria del Mar",
-          "source_place_id": "ChIJV6QNXv6ipBIRYOHAH1yUvLQ",
-          "location": "Pla\u00e7a de Santa Maria, 1, Ciutat Vella, 08003 Barcelona, Spain",
-          "start_time": "2026-10-16T14:00:00+02:00",
-          "end_time": "2026-10-16T15:30:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "day1-gothic-quarter",
+          "title": "Unhurried exploration of the Gothic Quarter",
+          "place_name": "Gothic Quarter",
+          "source_place_id": "ChIJgQYekPiipBIRr6fNOMV-5bc",
+          "location": "Gothic Quarter, Ciutat Vella, Barcelona, Spain",
+          "start_time": "2026-10-26T14:00:00+01:00",
+          "end_time": "2026-10-26T16:00:00+01:00",
           "estimated_cost": null,
-          "notes": "Date-specific operating exceptions are unknown; recheck before visiting."
+          "notes": "Leave time to wander the historic streets at an easy pace. Opening hours and current operational status were not available for this neighbourhood."
         }
       ]
     },
     {
-      "date": "2026-10-17",
+      "date": "2026-10-27",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "casa-batllo-20261017",
-          "title": "Casa Batll\u00f3",
-          "place_name": "Casa Batll\u00f3",
-          "source_place_id": "ChIJYUFLSe2ipBIRD04uni940kA",
-          "location": "Pg. de Gr\u00e0cia, 43, Eixample, 08007 Barcelona, Spain",
-          "start_time": "2026-10-17T10:30:00+02:00",
-          "end_time": "2026-10-17T13:00:00+02:00",
-          "estimated_cost": null,
-          "notes": "Thunderstorms are forecast. Date-specific operating exceptions are unknown; recheck before visiting."
-        }
-      ]
-    },
-    {
-      "date": "2026-10-18",
-      "activities": [
-        {
-          "activity_kind": "main_poi",
-          "activity_id": "sagrada-familia-20261018",
-          "title": "Basilica of the Sagrada Familia",
+          "time_use": "scheduled",
+          "activity_id": "day2-sagrada-familia",
+          "title": "Visit the Basilica of the Sagrada Familia",
           "place_name": "Basilica of the Sagrada Familia",
           "source_place_id": "ChIJk_s92NyipBIRUMnDG8Kq2Js",
           "location": "Carrer de Mallorca, 401, Eixample, 08013 Barcelona, Spain",
-          "start_time": "2026-10-18T11:00:00+02:00",
-          "end_time": "2026-10-18T13:30:00+02:00",
+          "start_time": "2026-10-27T10:30:00+01:00",
+          "end_time": "2026-10-27T12:30:00+01:00",
           "estimated_cost": null,
-          "notes": "Thunderstorms are forecast. Date-specific operating exceptions are unknown; recheck before visiting."
+          "notes": "A single focused visit today, with time to take in the architecture. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
         }
       ]
     },
     {
-      "date": "2026-10-19",
+      "date": "2026-10-28",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "gaudi-house-museum-20261019",
-          "title": "Gaud\u00ed House Museum",
-          "place_name": "Gaud\u00ed House Museum",
-          "source_place_id": "ChIJ4eD9ztyipBIR_g1BtyluWPM",
-          "location": "Parc G\u00fcell, Gr\u00e0cia, 08013 Barcelona, Spain",
-          "start_time": "2026-10-19T10:30:00+02:00",
-          "end_time": "2026-10-19T12:30:00+02:00",
+          "time_use": "scheduled",
+          "activity_id": "day3-meam",
+          "title": "Explore the MEAM Museum",
+          "place_name": "MEAM Museum",
+          "source_place_id": "ChIJveK7vP6ipBIRiegu-jsxGX8",
+          "location": "Carrer de la Barra de Ferro, 5, Ciutat Vella, 08003 Barcelona, Spain",
+          "start_time": "2026-10-28T11:30:00+01:00",
+          "end_time": "2026-10-28T13:30:00+01:00",
           "estimated_cost": null,
-          "notes": "Date-specific operating exceptions are unknown; recheck before visiting."
+          "notes": "Allow a relaxed pace for the art collection. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day3-el-born",
+          "title": "Explore El Born Centre de Cultura i Memòria",
+          "place_name": "El Born Centre de Cultura i Memòria",
+          "source_place_id": "ChIJc0WMe_GipBIR_EfbMXL48cY",
+          "location": "Mercat del Born, Plaça Comercial, 12, Ciutat Vella, 08003 Barcelona, Spain",
+          "start_time": "2026-10-28T15:00:00+01:00",
+          "end_time": "2026-10-28T16:30:00+01:00",
+          "estimated_cost": null,
+          "notes": "A complementary visit focused on history and memory. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
         }
       ]
     },
     {
-      "date": "2026-10-20",
+      "date": "2026-10-29",
       "activities": [
         {
           "activity_kind": "main_poi",
-          "activity_id": "montjuic-castle-20261020",
-          "title": "Montju\u00efc Castle",
-          "place_name": "Montju\u00efc Castle",
+          "time_use": "scheduled",
+          "activity_id": "day4-park-guell",
+          "title": "Explore Park Güell",
+          "place_name": "Park Güell",
+          "source_place_id": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+          "location": "Gràcia, 08024 Barcelona, Spain",
+          "start_time": "2026-10-29T10:30:00+01:00",
+          "end_time": "2026-10-29T13:00:00+01:00",
+          "estimated_cost": null,
+          "notes": "Keep the visit unhurried, with time to explore the setting and architecture. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "day5-montjuic-castle",
+          "title": "Visit Montjuïc Castle",
+          "place_name": "Montjuïc Castle",
           "source_place_id": "ChIJN7FiCkGipBIR1PJn6ohejww",
-          "location": "Ctra. de Montju\u00efc, 66, Sants-Montju\u00efc, 08038 Barcelona, Spain",
-          "start_time": "2026-10-20T10:30:00+02:00",
-          "end_time": "2026-10-20T12:30:00+02:00",
+          "location": "Ctra. de Montjuïc, 66, Sants-Montjuïc, 08038 Barcelona, Spain",
+          "start_time": "2026-10-30T10:30:00+01:00",
+          "end_time": "2026-10-30T13:00:00+01:00",
           "estimated_cost": null,
-          "notes": "Slight rain is forecast. Date-specific operating exceptions are unknown; recheck before visiting."
+          "notes": "A relaxed final visit focused on the castle and its architecture. Supplied hours are a regular weekly baseline; date-specific exceptions are unknown."
         }
       ]
     }

@@ -1,0 +1,1007 @@
+{
+  "version": "tripworld_runtime_1",
+  "status": "partial",
+  "queries": [
+    {
+      "query_id": "rag_1",
+      "text": "Gardens, major city sights, and scenic views",
+      "origin": "user",
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ],
+      "version": "rag_query_plan_1"
+    }
+  ],
+  "omitted_queries": [],
+  "returned_positions": 20,
+  "unique_entities": 20,
+  "resolution_attempts": 15,
+  "details_sends": 13,
+  "fallback_sends": 4,
+  "embedding_sends": 1,
+  "retrieval_queries": 1,
+  "cache_hits": 0,
+  "entities": [
+    {
+      "entity_id": "google:ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "status": "google_observation",
+      "canonical_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+    },
+    {
+      "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE"
+    },
+    {
+      "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY"
+    },
+    {
+      "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
+      "status": "resolved",
+      "method": "fallback",
+      "canonical_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+    },
+    {
+      "entity_id": "fsq:foursquare:4d6473843384a0938a4c9c3c",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJ1WZDpv8b2jERQhRdwN8KE80",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80"
+    },
+    {
+      "entity_id": "google:ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "status": "google_observation",
+      "canonical_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+    },
+    {
+      "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+    },
+    {
+      "entity_id": "google:ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M"
+    },
+    {
+      "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ"
+    },
+    {
+      "entity_id": "google:ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw"
+    },
+    {
+      "entity_id": "google:ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
+    },
+    {
+      "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+    },
+    {
+      "entity_id": "google:ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "status": "google_observation",
+      "canonical_id": "ChIJd0VihwEZ2jERKeREhO6G1Qg"
+    },
+    {
+      "entity_id": "google:ChIJP9jJLh8a2jERhU3Mx563lXE",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJP9jJLh8a2jERhU3Mx563lXE"
+    },
+    {
+      "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+      "status": "google_observation",
+      "canonical_id": "ChIJA5LATO4Z2jER111V-v6abAI"
+    },
+    {
+      "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+    },
+    {
+      "entity_id": "google:ChIJC2PqwWgb2jERlTBRz4YkJtY",
+      "status": "resolved",
+      "method": "direct_id",
+      "canonical_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY"
+    },
+    {
+      "entity_id": "fsq:foursquare:4bf6640c4d5f20a13b2a99fe",
+      "status": "fallback_not_unique"
+    },
+    {
+      "entity_id": "google:ChIJPYrvewEZ2jERK-pztVWcDig",
+      "status": "google_observation",
+      "canonical_id": "ChIJPYrvewEZ2jERK-pztVWcDig"
+    }
+  ],
+  "origins": {
+    "ChIJA5LATO4Z2jER111V-v6abAI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 16,
+        "cosine": 0.411252176090946,
+        "distance_km": 8.700364037423515,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "3ef836bab8ec0047208eeaabbeee84ef9abecb6fff37f40d5dc87f0409ade5e1",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJA5LATO4Z2jER111V-v6abAI"
+      }
+    ],
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 3,
+        "cosine": 0.45946854594537423,
+        "distance_km": 8.229926438365897,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+      }
+    ],
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 1,
+        "cosine": 0.4856621929608478,
+        "distance_km": 9.16781298458928,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "a1c0399c89c7b463449b8d9a400a9e2a3245c8511003723debd1ce981ee5cd37",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+      }
+    ],
+    "ChIJPYrvewEZ2jERK-pztVWcDig": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJPYrvewEZ2jERK-pztVWcDig",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 20,
+        "cosine": 0.403227066801366,
+        "distance_km": 9.022869267784783,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "294ce511c0f6ea034dcd73187c8186d1352c3e75a7df8df46bfaf17b63d44736",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJPYrvewEZ2jERK-pztVWcDig"
+      }
+    ],
+    "ChIJd0VihwEZ2jERKeREhO6G1Qg": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJd0VihwEZ2jERKeREhO6G1Qg",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 14,
+        "cosine": 0.4129582151224357,
+        "distance_km": 9.154371449127103,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "8ac226b2b0d2ece680e666d4f442038ec90eaa3313c1bc6639c0d9454896ad1b",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJd0VihwEZ2jERKeREhO6G1Qg"
+      }
+    ],
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJvWDbfRwa2jERgNnTOpAU3-o",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 7,
+        "cosine": 0.4353167491773666,
+        "distance_km": 4.04924432277999,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "7bebf2593e67fcc1387aeaa3143b9dbee87e9600c499f50c13dbc3c6c4c47ec8",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "google_observation",
+        "evidence_ref": "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+      }
+    ],
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 2,
+        "cosine": 0.46230149718505176,
+        "distance_km": 7.6870117493745695,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "700e863b18da9531451afe2cd348bb7da05c031833c9d80f21c321ea2cb7f11d",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+      }
+    ],
+    "ChIJ6fYnewEZ2jERLHcHN0YpdnU": [
+      {
+        "source": "tripworld",
+        "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 4,
+        "cosine": 0.45490724385890435,
+        "distance_km": 9.014344319602973,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "217f9d589abfc18463190edbeb3fa74e0cdc3736fd023d471b249914c7b0ba4f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "fallback",
+        "evidence_ref": "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+      }
+    ],
+    "ChIJ1WZDpv8b2jERQhRdwN8KE80": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ1WZDpv8b2jERQhRdwN8KE80",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 6,
+        "cosine": 0.4355795460248535,
+        "distance_km": 10.902880006189747,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "31c924de8b767678d2a60abe124502d806fb073887c8f14ae939a432e9b00f6f",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ1WZDpv8b2jERQhRdwN8KE80"
+      }
+    ],
+    "ChIJZZ-2cs0Z2jERdCRKtLGUw10": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 8,
+        "cosine": 0.43289629024885434,
+        "distance_km": 9.753341932272603,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+      }
+    ],
+    "ChIJnV5WzKwZ2jERJ8cM9ja9u_M": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 9,
+        "cosine": 0.4217715687087693,
+        "distance_km": 8.837963583910925,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "cf0271510ad8667ddadbebd9043b92877f13293e46be4d648b7f65b2bb7ba9e9",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJnV5WzKwZ2jERJ8cM9ja9u_M"
+      }
+    ],
+    "ChIJQZPwo3Ab2jERqobnp1dHMGQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 10,
+        "cosine": 0.41962960841479324,
+        "distance_km": 4.486417058196392,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "792fc8b190452ccd486ebd627821c3aa76dbe83e84af6e50c69c90ee4937a3bb",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJQZPwo3Ab2jERqobnp1dHMGQ"
+      }
+    ],
+    "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 11,
+        "cosine": 0.4193774211777801,
+        "distance_km": 8.833105081507105,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "1b7240351ee8e383618b996f291e66c8fffd56cabc78d52069a521dd98ff4b24",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJUy-X9g8Z2jERJ0Jko3en1Rw"
+      }
+    ],
+    "ChIJuZ4kdB0Q2jERdp1SrojDF_I": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 12,
+        "cosine": 0.4168310513001061,
+        "distance_km": 10.098292275027628,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "29e26f9637cb38caf043906a958c40fa5badc51e512aa3fad2e69d0afbd230ae",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJuZ4kdB0Q2jERdp1SrojDF_I"
+      }
+    ],
+    "ChIJ50uIMa0Z2jER0cTt5fLaZt0": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 13,
+        "cosine": 0.4140898883342772,
+        "distance_km": 9.805491882338876,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+      }
+    ],
+    "ChIJP9jJLh8a2jERhU3Mx563lXE": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJP9jJLh8a2jERhU3Mx563lXE",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 15,
+        "cosine": 0.4120254393808429,
+        "distance_km": 4.56068996999007,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "552c6d75cd111bd0540c921e3c4595c45ec43d95c4a49c9f515db3cda4c6b383",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJP9jJLh8a2jERhU3Mx563lXE"
+      }
+    ],
+    "ChIJE6cVwggZ2jER2gl3yXW-5mQ": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 17,
+        "cosine": 0.41106615000569,
+        "distance_km": 8.21680563162131,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "b1c2a2e14550862320dfa46d129a3bbfe1ea171a2c3e5063d67a83589cc0d852",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+      }
+    ],
+    "ChIJC2PqwWgb2jERlTBRz4YkJtY": [
+      {
+        "source": "tripworld",
+        "entity_id": "google:ChIJC2PqwWgb2jERlTBRz4YkJtY",
+        "query": {
+          "query_id": "rag_1",
+          "text": "Gardens, major city sights, and scenic views",
+          "origin": "user",
+          "intent_ids": [
+            "discovery_1"
+          ],
+          "requirement_refs": [
+            "semantic_1",
+            "semantic_2"
+          ],
+          "version": "rag_query_plan_1"
+        },
+        "rank": 18,
+        "cosine": 0.4085662175934055,
+        "distance_km": 11.000200803102496,
+        "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+        "text_hash": "9032fcb608325df175985878956ab09cbdb48e746952926fafd207f730afdbfe",
+        "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+        "policy_version": "tripworld-production-policy-v1",
+        "resolution": "direct_id",
+        "evidence_ref": "google_places:ChIJC2PqwWgb2jERlTBRz4YkJtY"
+      }
+    ]
+  },
+  "stops": [],
+  "phase_seconds": {
+    "embedding": 2.2348423000003095,
+    "retrieval": 2.8906471999998757,
+    "resolution": 6.628456000000369
+  },
+  "config": {
+    "version": "tripworld_runtime_1",
+    "max_queries": 4,
+    "max_positions": 80,
+    "total_query_tokens": 2048,
+    "top_k": 20,
+    "resolution_entities": 30,
+    "details_calls": 30,
+    "fallback_calls": 4,
+    "radius_km": 15,
+    "identity_radius_km": 1,
+    "deadline_seconds": 360.0,
+    "embedding_timeout": 8.0,
+    "sql_timeout": 60.0,
+    "connect_timeout": 10.0,
+    "google_timeout": 4.0,
+    "retries": 0
+  },
+  "scope": {
+    "latitude": 1.352083,
+    "longitude": 103.819836,
+    "radius_km": 15.0,
+    "country": null
+  },
+  "runtime_diagnostics": [
+    {
+      "stage": "prepare",
+      "status": "completed",
+      "seconds": 0.026049099998999736
+    },
+    {
+      "stage": "connection",
+      "status": "completed",
+      "seconds": 0.014060999999855994
+    },
+    {
+      "stage": "compatibility",
+      "status": "completed",
+      "seconds": 0.011035700001229998
+    },
+    {
+      "stage": "embedding",
+      "status": "completed",
+      "seconds": 2.2347877000011067
+    },
+    {
+      "stage": "development_capture",
+      "status": "completed",
+      "file": "query-046f483d0af84861bfecc5180ea77d11.npz"
+    },
+    {
+      "stage": "sql",
+      "status": "completed",
+      "seconds": 2.890214200000628,
+      "sql_timeout_expired": false
+    },
+    {
+      "stage": "execute",
+      "status": "completed",
+      "seconds": 2.889906399999745
+    },
+    {
+      "stage": "fetch_decode",
+      "status": "completed",
+      "seconds": 0.00027520000003278255
+    }
+  ],
+  "embedding_http_attempts": [
+    {
+      "attempt_id": "0dedf87f24c2428ab85a2eb375200af5",
+      "status_code": 200,
+      "request_id": "req_a5b9b174fa064459ba069fb975f521e8"
+    }
+  ],
+  "embedding_usage": {
+    "prompt_tokens": 11,
+    "total_tokens": 11
+  },
+  "elapsed_seconds": 11.867799999999988,
+  "new_canonical_ids": [
+    "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+    "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+    "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+    "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+    "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+    "ChIJP9jJLh8a2jERhU3Mx563lXE",
+    "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+    "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+    "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+    "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+    "ChIJuZ4kdB0Q2jERdp1SrojDF_I"
+  ],
+  "mixed_source_ids": [
+    "ChIJA5LATO4Z2jER111V-v6abAI",
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+    "ChIJPYrvewEZ2jERK-pztVWcDig",
+    "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+  ],
+  "google_overlap_entities": 5,
+  "origin_associations": {
+    "ChIJA5LATO4Z2jER111V-v6abAI": {
+      "intent_ids": [
+        "discovery_1",
+        "landmark_2"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJPYrvewEZ2jERK-pztVWcDig": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJd0VihwEZ2jERKeREhO6G1Qg": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o": {
+      "intent_ids": [
+        "default_0",
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ6fYnewEZ2jERLHcHN0YpdnU": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ1WZDpv8b2jERQhRdwN8KE80": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJZZ-2cs0Z2jERdCRKtLGUw10": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJnV5WzKwZ2jERJ8cM9ja9u_M": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJQZPwo3Ab2jERqobnp1dHMGQ": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJuZ4kdB0Q2jERdp1SrojDF_I": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJ50uIMa0Z2jER0cTt5fLaZt0": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJP9jJLh8a2jERhU3Mx563lXE": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJE6cVwggZ2jER2gl3yXW-5mQ": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    },
+    "ChIJC2PqwWgb2jERlTBRz4YkJtY": {
+      "intent_ids": [
+        "discovery_1"
+      ],
+      "requirement_refs": [
+        "semantic_1",
+        "semantic_2"
+      ]
+    }
+  },
+  "admission": {
+    "ChIJA5LATO4Z2jER111V-v6abAI": "admitted",
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY": "admitted",
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI": "admitted",
+    "ChIJPYrvewEZ2jERK-pztVWcDig": "capacity",
+    "ChIJd0VihwEZ2jERKeREhO6G1Qg": "admitted",
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o": "admitted",
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE": "admitted",
+    "ChIJ6fYnewEZ2jERLHcHN0YpdnU": "admitted",
+    "ChIJ1WZDpv8b2jERQhRdwN8KE80": "ineligible",
+    "ChIJZZ-2cs0Z2jERdCRKtLGUw10": "admitted",
+    "ChIJnV5WzKwZ2jERJ8cM9ja9u_M": "capacity",
+    "ChIJQZPwo3Ab2jERqobnp1dHMGQ": "admitted",
+    "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": "capacity",
+    "ChIJuZ4kdB0Q2jERdp1SrojDF_I": "capacity",
+    "ChIJ50uIMa0Z2jER0cTt5fLaZt0": "admitted",
+    "ChIJP9jJLh8a2jERhU3Mx563lXE": "capacity",
+    "ChIJE6cVwggZ2jER2gl3yXW-5mQ": "admitted",
+    "ChIJC2PqwWgb2jERlTBRz4YkJtY": "ineligible"
+  },
+  "fate": {
+    "admitted": [
+      "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "ChIJA5LATO4Z2jER111V-v6abAI",
+      "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+    ],
+    "enriched": [
+      "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "ChIJA5LATO4Z2jER111V-v6abAI",
+      "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+      "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+    ],
+    "supplied": [
+      "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+      "ChIJd0VihwEZ2jERKeREhO6G1Qg",
+      "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+    ],
+    "scheduled": [
+      "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+    ],
+    "nearby_only": []
+  },
+  "canonical_outcomes": {
+    "ChIJ1WZDpv8b2jERQhRdwN8KE80": "ineligible",
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE": "not_selected_by_supply",
+    "ChIJ50uIMa0Z2jER0cTt5fLaZt0": "supplied_not_scheduled",
+    "ChIJ6fYnewEZ2jERLHcHN0YpdnU": "not_selected_by_supply",
+    "ChIJA5LATO4Z2jER111V-v6abAI": "not_selected_by_supply",
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY": "scheduled",
+    "ChIJC2PqwWgb2jERlTBRz4YkJtY": "ineligible",
+    "ChIJE6cVwggZ2jER2gl3yXW-5mQ": "not_selected_by_supply",
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI": "scheduled",
+    "ChIJP9jJLh8a2jERhU3Mx563lXE": "capacity",
+    "ChIJPYrvewEZ2jERK-pztVWcDig": "capacity",
+    "ChIJQZPwo3Ab2jERqobnp1dHMGQ": "not_selected_by_supply",
+    "ChIJUy-X9g8Z2jERJ0Jko3en1Rw": "capacity",
+    "ChIJZZ-2cs0Z2jERdCRKtLGUw10": "scheduled",
+    "ChIJd0VihwEZ2jERKeREhO6G1Qg": "supplied_not_scheduled",
+    "ChIJnV5WzKwZ2jERJ8cM9ja9u_M": "capacity",
+    "ChIJuZ4kdB0Q2jERdp1SrojDF_I": "capacity",
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o": "supplied_not_scheduled"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "rtpeval_requirements_1",
+  "spec_id": "case-05-current-path",
+  "revision": "current-path-20261018-r1",
+  "group_id": "case-05",
+  "input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+  "review": {
+    "status": "reviewed",
+    "author_ref": "/root/revalidation_semantic_author",
+    "reviewer_ref": "/root/revalidation_semantic_reviewer",
+    "reviewed_at": "2026-10-18T02:03:12Z"
+  },
+  "subjects": [],
+  "obligations": [],
+  "soft_preferences": [
+    {
+      "preference_id": "architecture",
+      "wording": "Include architecture as an itinerary theme.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "enjoy architecture, historic neighbourhoods and art",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "historic-neighbourhoods",
+      "wording": "Include historic neighbourhoods as an itinerary theme.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "enjoy architecture, historic neighbourhoods and art",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "art",
+      "wording": "Include art as an itinerary theme.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "enjoy architecture, historic neighbourhoods and art",
+          "occurrence": 0
+        }
+      ]
+    },
+    {
+      "preference_id": "relaxed-in-depth-pace",
+      "wording": "Prefer a relaxed pace with time to explore places in depth instead of fitting many sightseeing stops into each day.",
+      "source_refs": [
+        {
+          "field_path": "additional_preferences",
+          "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+          "occurrence": 0
+        }
+      ]
+    }
+  ],
+  "unresolved_items": []
+}

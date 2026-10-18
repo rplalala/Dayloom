@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.nea.gov.sg/our-services/hawker-management/programmes-and-grants/heritage-of-our-hawker-centres",
+      "title": "Heritage of Our Hawker Centres",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Newton is a food centre designed in a garden setting."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/62/evidence"
+}

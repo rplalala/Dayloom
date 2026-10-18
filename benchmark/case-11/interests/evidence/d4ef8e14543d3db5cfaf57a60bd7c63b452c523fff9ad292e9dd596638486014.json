@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Louvre Museum",
+  "sources": [
+    {
+      "url": "https://www.louvre.fr/en/explore/the-palace/a-pyramid-for-a-symbol",
+      "title": "A pyramid for a symbol - Cour Napoléon & Pyramid",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The Louvre describes I. M. Pei’s architectural intervention, exhibition spaces, visitor reception and relationships between the Pyramid and historical palace facades.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The Louvre describes I. M. Pei’s architectural intervention, exhibition spaces, visitor reception and relationships between the Pyramid and historical palace facades.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

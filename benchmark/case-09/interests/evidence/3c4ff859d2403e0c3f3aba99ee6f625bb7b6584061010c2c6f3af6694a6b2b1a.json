@@ -1,0 +1,26 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJOWXu4TSJGGAR07vEEi8fZAw",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance09_clean",
+  "checked_at": "2026-10-18T04:46:56Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://edo-tokyo-museum.or.jp/en/p-exhibition/",
+      "title": "Permanent Exhibition | Edo-Tokyo Museum",
+      "checked_at": "2026-10-18T04:46:41Z",
+      "access_status": "opened_successfully",
+      "facts": [
+        "The Edo Zone covers warrior culture and townspeople's lives with full-scale historical reconstructions and objects.",
+        "An independently inspected official search excerpt describes Bigot prints in the interpretation of Meiji everyday life."
+      ],
+      "limitations": [
+        "The permanent-exhibition page was the sole museum page opened; special exhibitions were visible only in official search excerpts.",
+        "The returned open excerpt was partial; modern-era historical material alone does not settle modern-art relevance."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "2d86563a3204ef0fbc641c42e6e626b4a8c098406c7d411f545c1650a235a22a",
+  "original_pointer": "/records/1/evidence"
+}

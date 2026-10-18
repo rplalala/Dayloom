@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Louvre Pyramid",
+  "sources": [
+    {
+      "url": "https://www.louvre.fr/en/explore/the-palace/a-pyramid-for-a-symbol",
+      "title": "A pyramid for a symbol - Cour Napoléon & Pyramid",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The Louvre explains Pei’s glass Pyramid and its design to preserve views of the historical palace facades from inside and outside.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The Louvre explains Pei’s glass Pyramid and its design to preserve views of the historical palace facades from inside and outside.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

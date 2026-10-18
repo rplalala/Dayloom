@@ -1,0 +1,26 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJnctryNSMGGARLv4MknPFseU",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance09_clean",
+  "checked_at": "2026-10-18T04:46:56Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou/",
+      "title": "Observatory Visitor Information | Tokyo Metropolitan Government Bureau of Finance",
+      "checked_at": "2026-10-18T04:46:41Z",
+      "access_status": "opened_successfully_with_title_only_excerpt; substantive_facts_from_official_search_excerpt",
+      "facts": [
+        "The official search excerpt distinguishes north and south observatories and describes views over Tokyo from 202 meters.",
+        "It states a civic-learning purpose and locates the public piano in the south observatory."
+      ],
+      "limitations": [
+        "The open returned the official title and page metadata without substantive page lines; facts above were inspected in the official search excerpt.",
+        "The available information does not resolve north-observatory cultural or modern-art programming."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "2d86563a3204ef0fbc641c42e6e626b4a8c098406c7d411f545c1650a235a22a",
+  "original_pointer": "/records/2/evidence"
+}

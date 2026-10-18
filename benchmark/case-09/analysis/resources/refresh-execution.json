@@ -1,0 +1,11 @@
+{
+  "schema_version": "case_refresh_consumption_1",
+  "case_id": "case-09",
+  "global_new_allowance_usd": "40",
+  "global_new_reference_subtotal_usd": "14.440100520",
+  "automatic_retries": 0,
+  "concurrency": 1,
+  "actual_billing": null,
+  "invocations": [],
+  "note": "Zero-eligible assessment receipts are zero-dispatch records, not additional model invocations. Previous-batch consumption is outside this new allowance and remains in cumulative resources."
+}

@@ -1,0 +1,1979 @@
+{
+  "schema_version": "rtpeval_research_relevance_reviews_1",
+  "records": [
+    {
+      "review_id": "case11-a-01",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-01.json",
+          "sha256": "dd0994ab876425a26d68fb2b01e5aaf6d8601f3141307ba22fae68739b5be062",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The independently described activity is dining. Culinary preparation and a cozy atmosphere do not themselves constitute an art or architecture experience; no distinctive artistic or architectural activity is established in this description."
+    },
+    {
+      "review_id": "case11-a-02",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ0dzuSNBv5kcRa6BHUVdFm0k",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-02.json",
+          "sha256": "1c064b5ab64818b4cf79854857d9ac8f9fc75d551ad586c9be62fa2dfc073e3a",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The explicit architectural design and ornamental monument provide a direct architecture match."
+    },
+    {
+      "review_id": "case11-a-03",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ16iAVchv5kcR2iUDThaRlkE",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-03.json",
+          "sha256": "dbca9d0fa1eadc1f483d79d23a64e4916a098e958e9a5816526086f5bf9b93f2",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "This subject identifies a general operator rather than a specified tour. Some offerings can include artistic history, but the evidence does not identify which activity the subject represents. Neither culinary focus alone nor an unspecified optional art component resolves relevance."
+    },
+    {
+      "review_id": "case11-a-04",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ442GNENu5kcRGYUrvgqHw88",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-04.json",
+          "sha256": "51da7cc2abef71d860327236a2ea581d182dfdabf33ddeffab69b313fd9b1018",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "A specifically documented monumental mosaic is sacred visual art and directly supports the combined interest."
+    },
+    {
+      "review_id": "case11-a-05",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ4xutfT5u5kcRaJn2NkiOhPU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-05.json",
+          "sha256": "fe52490f6b95e2d26d5b914a5b94f20fe78c9a9c19496a6e9234613174ed122a",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The specifically protected interior and identified painting establish architectural and visual-art interest beyond ordinary restaurant decoration."
+    },
+    {
+      "review_id": "case11-a-06",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ4zpdo99x5kcRn-0vKiMMPhU",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Official evidence was insufficient for an art or architecture judgment. Restaurant-category and nearby landmark references from third-party pages were not treated as proof of relevance or irrelevance."
+    },
+    {
+      "review_id": "case11-a-07",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ55llEENu5kcREU0LBvX0Jq4",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-07.json",
+          "sha256": "ce849cc67f45d661983c938486b5e82ae9698a528eb2e7bd6e9f0f13f107696c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The official description establishes a recreational carousel. Wooden ride figures, a film association and proximity to a church do not establish a substantive art or architecture experience for this subject."
+    },
+    {
+      "review_id": "case11-a-08",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ7ayOGeNx5kcReHHR9KTXiz0",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-08.json",
+          "sha256": "7b31354899a0ae33638de8634b0960e24baed008545990f50a2be0bcf1714b82",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The official material identifies the intended brasserie but provides too little independent descriptive content to settle a venue-specific art or architecture judgment. Ordinary tile and terrace photographs are not sufficient positive evidence."
+    },
+    {
+      "review_id": "case11-a-09",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ8TdmKgJu5kcRw_UDYIVAoXU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-09.json",
+          "sha256": "7e6e8b286f25a1ac2df9b93bf0fb675a5aeb0ff8c5c1838b88ab53e1569a6d76",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "An explicit collection of eighteenth-century artworks directly matches art."
+    },
+    {
+      "review_id": "case11-a-10",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ97YVkixv5kcR8UNDwqtkGlw",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-10.json",
+          "sha256": "a397dd421cd2c5e41db88e8849ff29da021b9a3f68988d3bd6442476bd562b0a",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The independently described offering is food service. Its stated culinary activity supplies no substantive art or architecture component; this bounded negative concerns the described experience rather than every possible feature of the premises."
+    },
+    {
+      "review_id": "case11-a-11",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAQAAMCxu5kcRx--_4QnbGcI",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-11.json",
+          "sha256": "cb0cf6e72ec5c21fb4de86c5f86f21c7143de1e6f66a4686855bea95120ae482",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Documented sculpture in the garden establishes an art experience independent of its general park function."
+    },
+    {
+      "review_id": "case11-a-12",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAQquYc1v5kcRLKslDuENAxg",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-12.json",
+          "sha256": "383f0e14572a12b72f3decebdff7f7661e059545f2672bbc7825cb1e11310ad5",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The square contains specifically documented monumental sculptures and fountains, directly supporting visual-art and architectural interest."
+    },
+    {
+      "review_id": "case11-a-13",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-13.json",
+          "sha256": "8888acd96eb8b003f1127a79d790c27aaee6a6ccceaa859f405666e326953101",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Explicit Gothic architecture and described structural features directly match architecture."
+    },
+    {
+      "review_id": "case11-a-14",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-14.json",
+          "sha256": "da14105239beb8e90931e16fc1d3c6e6c0df6eb63e82d1abf3279a3dbe341485",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The documented theater architecture provides direct relevance. This record keeps this canonical ID separate from the other Palais Garnier ID."
+    },
+    {
+      "review_id": "case11-a-15",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJC0I3-eZv5kcRHaMcXnrRLsk",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-15.json",
+          "sha256": "5156f75d73930c6b6c259363a8806ba4eb47915039fbad3050f56bb1d687c679",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Its explicit contemporary-art purpose directly matches art."
+    },
+    {
+      "review_id": "case11-a-16",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-16.json",
+          "sha256": "d4ef8e14543d3db5cfaf57a60bd7c63b452c523fff9ad292e9dd596638486014",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The museum and palace complex has explicitly documented architectural design. This supports architecture without relying on the supplied venue name."
+    },
+    {
+      "review_id": "case11-a-17",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJDwZjvgNu5kcR92V2clFCGMk",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-17.json",
+          "sha256": "06dfb469bce97ff9473f17d05baa9abd54b4e94877326293e73b04498d1584a7",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The documented museum interiors and architectural transformation directly support art and architecture."
+    },
+    {
+      "review_id": "case11-a-18",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-18.json",
+          "sha256": "debd914ac35ec3ed38da126172d68da065b14e9bb7162aff4945bf04a196d6af",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The available operator-style menu page did not provide enough descriptive evidence to judge art or architecture relevance. Third-party culinary summaries were not used to convert missing official evidence into a negative."
+    },
+    {
+      "review_id": "case11-a-19",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-19.json",
+          "sha256": "6c8aba3c13ccc7d550f3b51abff9a8cd616686eed6cbc9793fe7a038614cd7cc",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The independently described experience is regional dining. The stated culinary role provides no substantive art or architecture component; neighborhood location alone does not establish relevance."
+    },
+    {
+      "review_id": "case11-a-20",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-20.json",
+          "sha256": "5c9060280ffbf9cf9426581689da5a5201f5f3da7d3b4759795380ef1428e5f0",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Explicit visual-art collections directly match art."
+    },
+    {
+      "review_id": "case11-a-21",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJGTPjvRFv5kcRVY45WQQIYks",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-21.json",
+          "sha256": "bc22fad44d1c4b9923d12c1c00f98e7734c1c1d940def0abb2e70a5445d4b399",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The source specifically binds a cataloged sculptural fountain feature to the Grand Bassin rond. This supports art relevance for the basin rather than merely borrowing relevance from the wider garden."
+    },
+    {
+      "review_id": "case11-a-22",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJGxZyXh5u5kcRLmPA07LoheA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-22.json",
+          "sha256": "75a5b2e9b62f3f451f6910ebbf4e827619dc17a19f40898a22da69fce3052d9e",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Documented Gothic architecture and sculptural ornament directly support architecture and art."
+    },
+    {
+      "review_id": "case11-a-23",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJI7UujsRv5kcRATZ9iNLc85I",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-23.json",
+          "sha256": "ba47f459b4c885466d9b23d09ab6c9fbf5f391e491762c64787d2f180c82527e",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The independent description establishes fast-food service. Such culinary activity does not itself match the art or architecture interest."
+    },
+    {
+      "review_id": "case11-a-24",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJI7jEef5x5kcRkWRFsJD96So",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-24.json",
+          "sha256": "78cb4c8515d047d998cc39a317ce37a3f6589fecdf18bb2de68c73abf29d009a",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The literary atmosphere and letter-writing feature do not clearly establish an artistic activity or architectural significance. Art is not limited to a stated medium in the request, so this borderline cultural concept is retained as unknown rather than automatically excluded."
+    },
+    {
+      "review_id": "case11-a-25",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-25.json",
+          "sha256": "fcddfb90c132535b363d46ab70e30fa8a164810592a36f846b767d5a7a0a0ee1",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Explicit architectural and structural-design interpretation directly supports architecture."
+    },
+    {
+      "review_id": "case11-a-26",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-26.json",
+          "sha256": "a08040b24d193cf076a631b0ec5d37724e6a34536656d0c03ca0443528fc35f4",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The documented medieval art and architectural elements directly match the combined interest."
+    },
+    {
+      "review_id": "case11-a-27",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJM79fJd5x5kcRxEjMn9CzSLs",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-27.json",
+          "sha256": "556d178006257a9452febd7fceb357a12f9ab05a3d1cf2ee7564c8715752e05c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "A documented monumental fountain with bronze sculpture and designed architectural setting directly matches art and architecture."
+    },
+    {
+      "review_id": "case11-a-28",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJNUTIphpu5kcR4h07VuxFIHc",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-28.json",
+          "sha256": "4469454ebccfdab8e92ad5f2085457856a3afa707b917f70ca3a9a375f364b23",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Its specifically interpreted historic and contemporary architecture establishes relevance even though much of the museum concerns technology."
+    },
+    {
+      "review_id": "case11-a-29",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJOYNm1DBu5kcRZwdtKBzyq6k",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-29.json",
+          "sha256": "b41f82e87bc6af9c8589d4b825940664c140ffa9b3158cb0f8cf255e6f8c7289",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The documented theater architecture provides direct relevance. This canonical ID is judged separately and is not merged with the other Palais Garnier ID."
+    },
+    {
+      "review_id": "case11-a-30",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQ9vMHipw5kcRWHC2ESjYaGQ",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-30.json",
+          "sha256": "caac39fc0f9ae8a20f9d55fe00bbbf12dfac1dee7a196cdd9fd1ccd6b1f50d3d",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "An explicitly documented sculpture collection directly supports art."
+    },
+    {
+      "review_id": "case11-a-31",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQQtKZyJu5kcRhXhHvOUt3To",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-31.json",
+          "sha256": "2679ca8b365f0e0ab4a54d3b13ccf9084357e56f07829537cabe71c57ef9ac63",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The source specifically identifies murals and their artistic origin rather than merely calling the decor attractive. This establishes a bounded visual-art component in the restaurant."
+    },
+    {
+      "review_id": "case11-a-32",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJQdQyeiZu5kcRUfQHfB-OCLA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-32.json",
+          "sha256": "71578c3e29123b7e8934c072dd95f3f79762a8a3fd2f2aaa44f8a03b1f725384",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The explicit architectural intervention directly supports architecture for this Pyramid subject."
+    },
+    {
+      "review_id": "case11-a-33",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR1buQh5u5kcROogxFI7WlfM",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-33.json",
+          "sha256": "32a6e105d9effa64ba19a7804610ae77dad25aebfc78793fbec3d123d2c28e01",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The square’s documented purpose and layout frame a specific Gothic architectural monument. Relevance rests on the tower-centered designed setting, not generic proximity to an attraction."
+    },
+    {
+      "review_id": "case11-a-34",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-34.json",
+          "sha256": "5df4fc0920b3310afd28f135587547ed753eed2a7b73edb1ff84049c432f5c8c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Explicit Gothic architecture and stained glass directly support the interest."
+    },
+    {
+      "review_id": "case11-a-35",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJR3122B9u5kcRajG2bEZLypA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-35.json",
+          "sha256": "4031b26e71114270cbb570ce40fcc4e3eb88d1742e521eb69cd03ac31e1277e4",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The specifically described Gothic hall directly supports architecture."
+    },
+    {
+      "review_id": "case11-a-36",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJS2t0QgFu5kcR92388prakcE",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-36.json",
+          "sha256": "0db8d6700b29e54f5fc65777ceef4a18aa47df5eee2c321a7dafe0d292fbcc88",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The explicit collection of visual art directly supports art."
+    },
+    {
+      "review_id": "case11-a-37",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-37.json",
+          "sha256": "7b07a5a87a721a1ce43ec21ed3c645bf2ed26d4771161ff9ccb19573f01a4415",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "The official fine-arts collections and architectural interpretation directly match the interest."
+    },
+    {
+      "review_id": "case11-a-38",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJTdiHcqxv5kcRVgEUqDEcnbY",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/a-38.json",
+          "sha256": "3459617de3b3c0285b42c4c8fabd892b7f7e956580e9cbd08735050c5fdd8deb",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Explicit live piano performances provide a performing-art component. The request does not limit art to visual media; this judgment does not assert any particular performance is available on a travel date."
+    },
+    {
+      "review_id": "case11-a-39",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJU8BNx-5x5kcRNSC_roNvBRs",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "reviewer_ref": "/root/case11_relevance_a",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:01:12.166449+00:00",
+      "rationale": "Independent official evidence is insufficient. Neither cuisine alone nor unverified references to piano-bar evenings settle relevance, so the subject remains unknown."
+    },
+    {
+      "review_id": "case11-b-01",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJUeiI4P9x5kcRqEwHl6V32GQ",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-01.json",
+          "sha256": "e6ac6645100cf0d535218b8e0a23d626c0f52b4b16b7599afa642eeea00830b2",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0653026+00:00",
+      "rationale": "The official tourism description identifies the square's arcades and red-brick facades as things to admire. This supports a specific architectural encounter rather than relevance from age or location."
+    },
+    {
+      "review_id": "case11-b-02",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJV-oEDbZv5kcRciSi_eVZIgE",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0708151+00:00",
+      "rationale": "Searches for the exact name and Cardinal Dubois address did not establish a primary official venue description. A panorama near Sacre-Coeur cannot be treated as the basilica itself, and a city view alone does not establish an architectural subject."
+    },
+    {
+      "review_id": "case11-b-03",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJVUrgmz5u5kcRWPSN-T8a730",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-03.json",
+          "sha256": "424489e7f62a2926511e1b52c6036a2f0677bd68e42af31da11309c71bd08e88",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0735782+00:00",
+      "rationale": "Grévin's own workshop description explicitly identifies sculpture, moulding, painting and patination as the production techniques for its displayed wax figures. Figurative sculpture supports the broad art interest, regardless of the celebrity theme."
+    },
+    {
+      "review_id": "case11-b-04",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJVdC_TS9u5kcRtWVzi5v9Tt0",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-04.json",
+          "sha256": "e43e9a26a101430cb7e6a2d92dfadc93400b664223805e39bd5a59c863d390d0",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0758372+00:00",
+      "rationale": "The Louvre describes a designed three-arch monument with Corinthian marble columns, sculpture and bas-reliefs. Both architecture and sculpture independently support this interest."
+    },
+    {
+      "review_id": "case11-b-05",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJW7ySGCdu5kcRldwk22iNR0o",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-05.json",
+          "sha256": "2ab84c77eb6e31517512485506096ccfa8404a5daaa055da06874e627dfbdb75",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0776749+00:00",
+      "rationale": "The city's description documents the metal bridge's architectural form and the deliberate reduction from nine arches to seven in its reconstruction. This is an identifiable bridge-design subject, not relevance inferred from its name."
+    },
+    {
+      "review_id": "case11-b-06",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJX2c7lCtv5kcRxhdJCBIRGGU",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0791493+00:00",
+      "rationale": "Exact-name/address searches did not yield an adequate official venue/operator description. Third-party restaurant listings appeared but were not admitted as primary evidence. The apparent food-related identity is insufficient for a negative art/architecture judgment."
+    },
+    {
+      "review_id": "case11-b-07",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJY8922uBv5kcRJESw9l2dlLc",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-07.json",
+          "sha256": "7d5daf8aa7444bf25f454bf1d865348527f9e140bbe378a4878581951c31f7c7",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0809531+00:00",
+      "rationale": "The museum's own permanent-exhibition description identifies works of art and dedicated drawing, photography and print displays. This directly supports the art interest."
+    },
+    {
+      "review_id": "case11-b-08",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJZX-BcR9u5kcR2xLSVBwfbs8",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-08.json",
+          "sha256": "5b73852ece0ae3f84ca0b8582cbfb8a4521a3ed1d666b6c7597806c72c67e9fe",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0827342+00:00",
+      "rationale": "The operator describes publicly visitable studios devoted to visual arts, with works in progress and encounters with resident artists. This is direct contemporary-art engagement."
+    },
+    {
+      "review_id": "case11-b-09",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJ_QwlZC9u5kcRi6OALXVubvc",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-09.json",
+          "sha256": "888c0c0c028e2107a065326fcf204737a6e510d37ad9e7dbc8003e3a3995987d",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0845756+00:00",
+      "rationale": "The museum's collection description explicitly covers decorative arts, design, drawings, photography and art objects across periods. These collections establish art relevance."
+    },
+    {
+      "review_id": "case11-b-10",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJa6TNcOFx5kcRDd2mI71KoRY",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-10.json",
+          "sha256": "a00c3674437e648aafa53cbb5e527b6c560ae4bf1d20c3b0bb18fdd264c9e3c8",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0863935+00:00",
+      "rationale": "The city describes a functional reference marker for calculating road distances, materialised as a brass compass medallion. That documented purpose is geographic rather than artistic or architectural; its compass ornament and historic location do not independently change the topic."
+    },
+    {
+      "review_id": "case11-b-11",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-11.json",
+          "sha256": "4a5a6ae48c6b9fc7f94b8ee06d62a6f41dc22ad93b8160c1abe0465806c96d67",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0883563+00:00",
+      "rationale": "The monument operator describes the building as Soufflot's architectural work and provides architectural interpretation of its triple dome through Rondelet's model. This directly supports architecture."
+    },
+    {
+      "review_id": "case11-b-12",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJcVyG4w1u5kcR-2YrTtl8cww",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-12.json",
+          "sha256": "9cfab22c3bc69d4349e9580079a61e062a21c937de028b75b2040e92ba8ae378",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0910494+00:00",
+      "rationale": "Primary tourism searches produced a general unusual-places page whose accessible description did not adequately describe the specific house at 39 Rue du Chateau d'Eau. A museum postcard index supplied a matching title but no sufficient architectural description. The small-house name alone is not evidence."
+    },
+    {
+      "review_id": "case11-b-13",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJdUyx15R95kcRj85ZX8H8OAU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-13.json",
+          "sha256": "e0a386f541c84fa13385b8a974434602fe8083926b93d338496aa14f77a53992",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0930065+00:00",
+      "rationale": "The palace's own account of the Hall of Mirrors describes its designed architectural space, mirror arches and painted ceiling. These provide direct art and architecture evidence within the palace."
+    },
+    {
+      "review_id": "case11-b-14",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJdbbQwbZx5kcRs7Qu5nPw18g",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-14.json",
+          "sha256": "63532ecde382e6f4aef95ce7bf65131143b0a832a65d56deff0f641462bb0ebb",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0948895+00:00",
+      "rationale": "The official description identifies an intentionally composed funerary monument with masonry columns, altars, steles and tomb forms in Antique and Egyptian styles. This establishes architectural content beyond the ossuary's history."
+    },
+    {
+      "review_id": "case11-b-15",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-15.json",
+          "sha256": "81bee2ffe255005ac53fa857bdfbe39165d399d6a3e5bf47d904722a0720d0f8",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0967564+00:00",
+      "rationale": "The Senate documents a substantial sculpture collection and a designed garden combining French and English forms. The permanent sculpture content directly supports art."
+    },
+    {
+      "review_id": "case11-b-16",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJhwoMudpv5kcR1OtUTfh4A8k",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-16.json",
+          "sha256": "8767f6d95a4b31ba5cb8c33e73b2ce8152eeabc292c5b8fa27b7fa06a5996b96",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.0988877+00:00",
+      "rationale": "The institution's primary material explicitly treats the architecture of its Palais d'Antin setting and its own architecture interpretation visits. This supports architecture even though its main programme is science. The supplied address conflates the historic palace and a temporary site; this judgment concerns the named institution and its documented architectural subject, without inferring access or a scheduled visit."
+    },
+    {
+      "review_id": "case11-b-17",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJjx37cOxv5kcRPWQuEW5ntdk",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-17.json",
+          "sha256": "3baefcf4de5ca1bea44afadc95f26eb17a333d9f0480ad958e1359cb3477bc22",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1012117+00:00",
+      "rationale": "The monument operator describes four major sculptural groups by named sculptors, including Rude, Cortot and Etex. Sculpture alone establishes the art match."
+    },
+    {
+      "review_id": "case11-b-18",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJk8ku6wJu5kcR8r1QrGOSNe0",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-18.json",
+          "sha256": "50703db8c45b2e9248a23481ee14f1005c32bcc3f5c9a26fff2e21317d6adf9c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1031702+00:00",
+      "rationale": "The official tourism page identifies Les Philosophes as a typical Parisian brasserie, but gives insufficient subject-specific description to establish either art/architecture relevance or a sufficiently evidenced negative. The operator page could not be retrieved. No conclusion is drawn from its philosophical name or Marais location."
+    },
+    {
+      "review_id": "case11-b-19",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJm_jukgRv5kcRRIINaxFOqrw",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-19.json",
+          "sha256": "d5e512b9890878c8e78082949ded8011acbc8fd71c3c8814acaab5c6021812f0",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1142652+00:00",
+      "rationale": "Timescope's exact-address operator page identifies an immersive experience about the creation of the Eiffel Tower, showing its workshops, assembly and the Galerie des machines. This is substantive architectural interpretation, not relevance from the name or proximity."
+    },
+    {
+      "review_id": "case11-b-20",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-20.json",
+          "sha256": "59156e87b3c5b5c75b91e37c4262cbc706209a8c8061ca0a463769a4cf74978d",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1163296+00:00",
+      "rationale": "The museum documents a collection of Bourdelle's sculptures in plaster, bronze, marble, clay, stoneware and wood. This is direct art evidence."
+    },
+    {
+      "review_id": "case11-b-21",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-21.json",
+          "sha256": "f6021184975c45e38eeaf77e2f5391d688d12f45e590f23aea90af7b4de8fbed",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1181619+00:00",
+      "rationale": "The museum's own Water Lilies account establishes its display of Monet's monumental paintings in purpose-designed rooms. This directly supports art."
+    },
+    {
+      "review_id": "case11-b-22",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJozsIt1dv5kcRgnNM9SFTcbA",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-22.json",
+          "sha256": "3c45a473fbfaa5acaf134ebeda86c32dfa4b8b6ac27c874c9d2fb45384054625",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1203018+00:00",
+      "rationale": "The exact-address operator page identifies a Big Bus ticket distributor, but does not bind this canonical subject to a particular art or architecture tour or provide its substantive interpretation. Selling generic sightseeing tickets is insufficient to infer relevance or a negative."
+    },
+    {
+      "review_id": "case11-b-23",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJp5mKpxdu5kcRB2-y70IXpww",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-23.json",
+          "sha256": "c4dce0d60177929056a8d804a4fd030738f85c3664d52949f61660e337914942",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1223730+00:00",
+      "rationale": "The creator identifies this as his completed vertical-garden project, and the official Venice Architecture Biennale presents the named project as a living-wall installation with designed structure and irrigation. This supports an architectural installation rather than ordinary planting."
+    },
+    {
+      "review_id": "case11-b-24",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJr3SOmOdv5kcRJUwZDs3C3mA",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-24.json",
+          "sha256": "17cdd85329b1c7f9aa65b842a82dedd78e8948c21defc7461ef6d008c52dfcb4",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1244615+00:00",
+      "rationale": "The museum's primary collection description explicitly concerns twentieth- and twenty-first-century artistic creation. It directly supports the art interest."
+    },
+    {
+      "review_id": "case11-b-25",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJrZP7V9hx5kcRQlLc0kYQo44",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-25.json",
+          "sha256": "08bfb0640eee07c62e92b9c0b685988c0a282ea0212847b73bbbbfa59fede114",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1262373+00:00",
+      "rationale": "The museum's own introduction documents paintings, drawings and prints by Delacroix and his contemporaries, with interpretation of his artistic process. This directly supports art."
+    },
+    {
+      "review_id": "case11-b-26",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-26.json",
+          "sha256": "b482054e8336b8d389fc6664745c1ee56106d6f99bcb8ce4b4d5e04e2d47c239",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1283149+00:00",
+      "rationale": "The opera's official description documents Charles Garnier's theatre architecture, grand stair and Marc Chagall ceiling. Both architecture and painting support relevance."
+    },
+    {
+      "review_id": "case11-b-27",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJszgj1CRu5kcR4ppUJCp67M8",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-27.json",
+          "sha256": "ff94b25a17824f9586ecc3fbb1160d31532ed37430fb7521f3f2d248ed920725",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1300697+00:00",
+      "rationale": "The exact-address operator site identifies a restaurant and bar but provides only a sparse landing page. That limited description does not justify turning missing art/architecture information into a negative judgment."
+    },
+    {
+      "review_id": "case11-b-28",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJt5KhKwBv5kcR7K4PKbzbC_g",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-28.json",
+          "sha256": "fa9e5d732203054815580f4b763f0c0c4a764a0a0bf91717b5b3e5bb52ba5acc",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1318074+00:00",
+      "rationale": "The Louvre explicitly describes the inverted pyramid as a technical architectural feat and provides its construction geometry and location. This directly supports architecture."
+    },
+    {
+      "review_id": "case11-b-29",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJu_io1h1u5kcRV737GjvtdwE",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-29.json",
+          "sha256": "2ab42fe2b31af779e50aaa08b2befb00bed016a12ee37625bb6e52d290362b20",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1336503+00:00",
+      "rationale": "The operator's detailed description centres on sharing Alsatian flammekueche, regional recipes, wines, beers and group meals. This establishes the venue's food-and-drink experience; culinary craft is not the art/architecture topic named in the request."
+    },
+    {
+      "review_id": "case11-b-30",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJv-rX7Ndv5kcRJ0IdTc55HnY",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-30.json",
+          "sha256": "637851824c29d9f520445030121e61769f5ad17e62e1b00f4a8debc754d3fab6",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1353702+00:00",
+      "rationale": "The museum's own courtyard interpretation identifies seventeenth-century classical architecture and exhibited monumental sculpture. Both independently support the combined interest."
+    },
+    {
+      "review_id": "case11-b-31",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJv6ffXBtu5kcRvkMvpw_2wbU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-31.json",
+          "sha256": "9271dc27889e227106c90ce8061026c3c10e8ed078b26e039940d37e7cf944db",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1372150+00:00",
+      "rationale": "The city explicitly identifies a bronze artwork by Alexander Polzin in the garden. This is specific public sculpture evidence rather than an inference from greenery or memorial history."
+    },
+    {
+      "review_id": "case11-b-32",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJvcVRUwBx5kcRod72V2bB-EI",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-32.json",
+          "sha256": "f8b18db4b94fcfbcf6ac2a2e7002fc243e4647486c1c99a2827efa3fab5bf1c5",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1389521+00:00",
+      "rationale": "The tower operator documents architectural models and plans explaining the Gothic building, as well as sculpted chimeras and the belfry structure in the visitor circuit. This directly supports architecture."
+    },
+    {
+      "review_id": "case11-b-33",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJw0gjp9Nv5kcRM1cuUorGgj4",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-33.json",
+          "sha256": "3b7450594ae7b602122ba77c23b19ce9a2d207cc3e23d2b22f878f7931a8e53c",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1408902+00:00",
+      "rationale": "The city's urban-planning document treats Perronet's masonry bridge as a designed part of the riverfront composition and describes its architectural conception through a model and urban alignment. This supports bridge architecture beyond the reused Bastille stones or mere age."
+    },
+    {
+      "review_id": "case11-b-34",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJwSNtTBlu5kcR7bTZgmDKu5w",
+      "unresolved_subject_id": null,
+      "verdict": "not_relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-34.json",
+          "sha256": "4486f466fef4bc97438e2becf838349c353bbb84498fb405724469c4e2e3dc47",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1426630+00:00",
+      "rationale": "The operator's substantial description presents a French/Italian brasserie experience of meals, drinks and social gatherings. The independently documented activity is dining; this does not substantively concern the requested art or architecture interest."
+    },
+    {
+      "review_id": "case11-b-35",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJw_cV8Btu5kcRWM7vwSaK4pI",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-35.json",
+          "sha256": "1c3d84b8cdd9f80ba8df7c1eb06f61f6f610c2e2faf5e22228de6136fe368527",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1444121+00:00",
+      "rationale": "The exact-address operator describes its Art Deco architectural identity, a named visual-artist art director and art events. Those explicit architectural and artistic features exceed an inference from ordinary restaurant decoration."
+    },
+    {
+      "review_id": "case11-b-36",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJyWdN5SNu5kcRsskNxWnDf58",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-36.json",
+          "sha256": "1752a80dbe57d5f1e3e9e34bd886812f7a193c7cc899efeddfc7b6d32fe68a5b",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1462635+00:00",
+      "rationale": "The operator independently confirms a Pyramides agency at the exact address and offers many cultural and other tours. This canonical subject does not identify which product is represented; agency identity and its catalogue cannot establish the subject's art/architecture relevance."
+    },
+    {
+      "review_id": "case11-b-37",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJydDIqRxu5kcRqB6W-MQwcYU",
+      "unresolved_subject_id": null,
+      "verdict": "relevant",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-37.json",
+          "sha256": "89a77d7eed81f330433ec0cca35405fbd26a792363a90238bb956298246da264",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1479438+00:00",
+      "rationale": "The museum's own acquisitions description documents fine-art works including a Vuillard painting and works by artists of the Ecole de Paris. This directly supports art."
+    },
+    {
+      "review_id": "case11-b-38",
+      "revision": "1",
+      "case_id": "case-11",
+      "case_revision": "1",
+      "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+      "interest_inventory_sha256": "78928b1a853886ed95f5f52a55a2ca8297e8a30df2c8da693b6e099bac00ce40",
+      "requirement_spec_sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "canonical_place_id": "ChIJzc_-btdx5kcRKmpibTCAzrk",
+      "unresolved_subject_id": null,
+      "verdict": "unknown",
+      "venue_evidence_refs": [
+        {
+          "path": "r02/analysis/relevance/evidence/b-38.json",
+          "sha256": "debde77d8ec9132bb897ebef6dba72a20456824abfaa3349c5926d21986967b6",
+          "media_type": "application/json",
+          "availability": "available"
+        }
+      ],
+      "reviewer_ref": "/root/case11_relevance_b",
+      "reviewer_kind": "external_model",
+      "reviewed_at": "2026-10-17T04:03:33.1496142+00:00",
+      "rationale": "The operator documents an architect-designed restaurant interior, custom furniture and tattoo-art wall decoration, but does not describe a substantive architectural visit or art programme. Those details could be ordinary commercial decoration. Relevance remains uncertain; their presence also prevents a confident negative."
+    }
+  ]
+}

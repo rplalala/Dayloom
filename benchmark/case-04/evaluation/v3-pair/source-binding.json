@@ -1,0 +1,11 @@
+{
+  "schema_version": "case_pair_source_binding_1",
+  "case_id": "case-04",
+  "v3_result_sha256": "263c61efd99e3437444060bd8ece84d7f0b19ae19835ca781ba9a1537636550b",
+  "run_id": "case-04-completion-v3-a1",
+  "scope": "Independent same-run V3 draft/final-primary, not a V2 generation.",
+  "policy": "Fresh independent paired acquisition; common missing-hours assessment inspected and skipped because no eligible visits.",
+  "paired_report_semantic_sha256": "64f191e491683dbabae0fac7138af2ac24e902c23b758e578fa407f92cfd3370",
+  "historical_verification": null,
+  "note": null
+}

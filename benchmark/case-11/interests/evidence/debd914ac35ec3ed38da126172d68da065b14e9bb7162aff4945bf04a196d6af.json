@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJFZAIBJVx5kcRVzImVeaKQQU",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "La Maison du Boulevard",
+  "sources": [
+    {
+      "url": "https://wiicmenu-qrcode.com/app/restaurantWebSite.php?resto=1163",
+      "title": "Restaurant La Maison du Boulevard | Menu, avis, réservation",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "A menu-hosting page carrying the restaurant title exposes reservation and menu controls but no substantive description in the retrieved text.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "A menu-hosting page carrying the restaurant title exposes reservation and menu controls but no substantive description in the retrieved text.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

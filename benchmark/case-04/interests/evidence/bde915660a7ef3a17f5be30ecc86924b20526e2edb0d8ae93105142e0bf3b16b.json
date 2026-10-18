@@ -1,0 +1,33 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJqWGGqgIZ2jER2IgzqdgnBtA",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.gardensbythebay.com.sg/en/things-to-do/attractions.html",
+      "title": "Explore the Gardens",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Gardens by the Bay: outdoor gardens and plant conservatories."
+      ],
+      "limitations": []
+    },
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.bigducktours.com/en/singapore/",
+      "title": "Singapore DUCKtours",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Gardens by the Bay is named among must-see sights."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/75/evidence"
+}

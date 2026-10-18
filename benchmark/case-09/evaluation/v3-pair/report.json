@@ -9,11 +9,39 @@
     "correspondence": "validated adopted sources before unique fallback and review",
     "quality": "independent checks; deletion and replacement do not repair old facts",
     "daily_density": {
-      "$case_material_ref": {
-        "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-        "pointer": "/rules_profile/daily_density",
-        "expanded_semantic_sha256": "1148179dbd6e7186db599f6dd3b0ffa071b23cb96417927fd695a4d0c6b20eed"
-      }
+      "profile_id": "rtpeval_daily_density_2",
+      "penalties_by_count_0_to_5": {
+        "ordinary": [
+          100,
+          40,
+          0,
+          10,
+          50,
+          80
+        ],
+        "relaxed": [
+          100,
+          20,
+          0,
+          40,
+          70,
+          90
+        ],
+        "rich": [
+          100,
+          60,
+          0,
+          0,
+          30,
+          70
+        ]
+      },
+      "count_6_or_more": 100,
+      "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
+      "population": "source-distinct primary visit occurrences on every requested date",
+      "mean": "equal requested-date weight; exact arithmetic; empty dates included",
+      "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
+      "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable"
     },
     "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
     "identical_contexts": "one_judgment_with_bound_stage_sources"
@@ -924,10 +952,53 @@
           },
           "dimensions": {
             "requirements": {
-              "$case_material_ref": {
-                "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                "pointer": "/groups/0/versions/v0/dimensions/requirements",
-                "expanded_semantic_sha256": "5169b26abdcbfc5e6b1f2ae9b8af99825380f19dd811b6dabbb45a9b2b0b8433"
+              "state": "PASS",
+              "counts": {
+                "PASS": 2,
+                "FAIL": 0,
+                "UNKNOWN": 0
+              },
+              "known_unit_count": 2,
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "not_applicable_count": 0,
+              "rates": {
+                "verified_fraction": 1.0,
+                "verification_coverage": 1.0,
+                "unknown_rate": 0.0,
+                "confirmed_violation_rate": 0.0
+              },
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "verified_fraction": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "verification_coverage": {
+                  "numerator": 2,
+                  "denominator": 2
+                },
+                "unknown_rate": {
+                  "numerator": 0,
+                  "denominator": 2
+                },
+                "confirmed_violation_rate": {
+                  "numerator": 0,
+                  "denominator": 2
+                }
+              },
+              "conditional_compliance": 1.0,
+              "verified_score_0_100": 100.0,
+              "contribution": {
+                "score_0_100": 100.0,
+                "exact_fraction": {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                "reason": null
               }
             },
             "grounding": {
@@ -2376,9 +2447,26 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "9d74727a5649221293422cd94e50748579644bd7aff4068199d04a87317d7ab5"
-                    }
+                    "request_key": "ddd01c416c318e48a2213f3187a0761381b313d0617d378a7bde7fbb4a5efafc",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/31",
+                          "sha256": "75bb429730d81ca847d38b9d280aceb3553e0da0abe4df1565598fa430042aea"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.738640+00:00",
+                        "retrieved_at": "2026-10-16T22:15:17.884629+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "current",
                   "basis_segments": [
@@ -2464,9 +2552,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "7750224c001f7cb3e132764fa041dad3f6a934302eafe2f09ca53837f71bd477"
-                    }
+                    "request_key": "3400c72f0e4d2361bcaa2e5333c3b67d93f2bbf899e2373c6ca1f357ddce0904",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/7",
+                          "sha256": "1d16dd3ce33ada046ad3f13247fabdfa42e880f46f6f719f76b436e71e87cace"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.372721+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.521722+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -2567,9 +2669,26 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "94afd48a783a186ac2364a3eefa8dd8c1f0dddc8466e6729a813d5b2873e9b32"
-                    }
+                    "request_key": "f80e67ac43d192595c2b0921dce2d6714e778ba6e1bb7e739fba08064b93d942",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/36",
+                          "sha256": "cf76c10ffd2f56e216fb1586648d8d5552cb7f6a7a54f0e4e59f13ed6193d484"
+                        },
+                        "requested_at": "2026-10-16T22:15:18.434914+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.576351+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "current",
                   "basis_segments": [
@@ -2655,9 +2774,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "90dd36f610b466062f1c96d68f90bde9e3dc01899be154406e966afc39d8dbb4"
-                    }
+                    "request_key": "8dd43c28c72199481568685c9462580d5a8811e17fe6c2e4bb88346ee543db18",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/17",
+                          "sha256": "30ed88f7916082bf754f22b6d9a4292f08ca3f156185d75f132d57568425fdad"
+                        },
+                        "requested_at": "2026-10-16T22:15:15.751433+00:00",
+                        "retrieved_at": "2026-10-16T22:15:15.888447+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -2758,9 +2891,26 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "1112eb2c120ec1d11d1fbba9ee7af171f217acb893be468c11045bc79bb1f5a1"
-                    }
+                    "request_key": "fe878166038e23077c5a90aa76037da053794d10fdf4a3e8b2d85610ba6a2387",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s1/187",
+                          "sha256": "d9c529129d0eb40cd4f4b62b099de3b4c2a4ef0e0a12b676e5bbfdd1ab3ffbf1"
+                        },
+                        "requested_at": "2026-10-16T22:08:32.940370+00:00",
+                        "retrieved_at": "2026-10-16T22:11:28.125988+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "regular",
                   "basis_segments": [
@@ -2846,9 +2996,26 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "b29f819b7700b6337dc3a43b168b219408985886798ba7f0eaffe460bf8fac37"
-                    }
+                    "request_key": "e0bab5a96318022cb34df98a60b0c4f99bf8b2423fad7eaa8fb0a00f5078cc37",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/32",
+                          "sha256": "0980b0a3293674ad1005f92dcb1e03b6a53afbda425305c72346dd2f396859f2"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.884629+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.028212+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "regular",
                   "basis_segments": [
@@ -2934,9 +3101,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "3d275abbc5ebb833aeb1fc3066d6307afd683a8c684a6888e2c547b15415b7fe"
-                    }
+                    "request_key": "04112ef266188dc1da4e2971222ca3117d01124362ac167fb534520576c4db6e",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/2",
+                          "sha256": "653a3dd4b5b34d831dcd7ca9998dca8bf050325b10719ba1d659b01bc61373f2"
+                        },
+                        "requested_at": "2026-10-16T22:15:13.416833+00:00",
+                        "retrieved_at": "2026-10-16T22:15:13.678190+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -3037,9 +3218,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "95b9f655b77ea49025e55b9a476471f1d4b2174fcb4553df444dbb02852f49dd"
-                    }
+                    "request_key": "5d94c1bbdae43a4731ac08c4e949b50dc94007133ab40ddb547ac6ba5d422e3a",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/10",
+                          "sha256": "87918f1b2f4c449313fb1e2c862c7e75284fb07e27cd47d0da2be518abfcd009"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.794193+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.932312+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -3140,9 +3335,26 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "5b61ccdf434df9800e354b5941e158c396a718613661eaf456738e97c6b65395"
-                    }
+                    "request_key": "cbe8c80691206bffb6c68cfaddf960d011d5ad22f292c659b19fb68d732d7693",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/29",
+                          "sha256": "f93299bb6ec0737dc3d04c9d2e005644039f1a3050380a3d401e53700ed38847"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.443267+00:00",
+                        "retrieved_at": "2026-10-16T22:15:17.584084+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "regular",
                   "basis_segments": [
@@ -3228,9 +3440,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "81bb7cbf8eb0de6ba6e4e744be246c8b65df28d7c35bca0a721f9f98fa35b0b3"
-                    }
+                    "request_key": "9bdacc7dbbb7ed0446bdf26494a32f7f42d5e8a9b6983667627b62e6be6b42b9",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/20",
+                          "sha256": "19d5d019dd2f767f6be96963ad8f0462792a2bea4ca7f48be2d87d3dfa1f88ce"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.149699+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.287110+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -3331,9 +3557,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "58da0eed71d555cbabd3559fc64a25c53b847e5997b44d14e8c3c7aa49d64bcb"
-                    }
+                    "request_key": "2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/5",
+                          "sha256": "b1adf018bed8a10bddbb7fdd97b46267a96befd784d8fc49508ba4965f50b6f4"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.093803+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.232782+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "unavailable",
                   "basis_segments": [
@@ -3574,11 +3814,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "6365c96ae32ba199b84cc39d86c4f821210ba48a09eb2bfcd3a68fef912236a2",
@@ -3602,10 +3853,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -3619,8 +3898,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "4d34c80d551580b030294bccc05bec165a43077a27b56b8868163ea84bfdbddf"
+                    "request_key": "066f5c0d17a8b56cf9a852895299fa8217b7af34d88b4c47f890ea8dd70e6f04",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "5c6d227d20fdfdf792408da3da722458552ce4443922c19a9d1905bce4aa80f6",
+                        "latitude": 35.7147651,
+                        "longitude": 139.7966553,
+                        "place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "4cd6f9a861a2a63e7ac973f5608165460a1eb27a3dba2bf215f3fd7d745e75eb",
+                        "latitude": 35.7188351,
+                        "longitude": 139.7765215,
+                        "place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/12",
+                          "sha256": "4a1373f8a3fdd3d3f64b35ae49fee131e1e0cbd5b4ba99cc465dc4e7d8e41825"
+                        },
+                        "requested_at": "2026-10-16T22:15:15.074622+00:00",
+                        "retrieved_at": "2026-10-16T22:15:15.202252+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 2309,
+                        "duration": "1992s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -3743,11 +4062,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "bf2fd64395ecfcfb0fc4169f56d5c64a98c469860679309cfcfea8bfe60d2ed5",
@@ -3771,10 +4101,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -3788,8 +4146,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "c5fd992bc5193042af824c72126bdafcdc547937f576c7bb6decc8d377a78b9d"
+                    "request_key": "1714571c498c3df9566baa9a64c5f53387357ceaf258f50f8d6e5f2db44cad9a",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "2d7ec0672279ab8b11069946ffc56fbd3d730965474e03bd54175fe3abd44efc",
+                        "latitude": 35.699647299999995,
+                        "longitude": 139.7713703,
+                        "place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "c38defc45230876c89aec7001f257050e7e3f717d4d5cf1c8b35b93f20fdff31",
+                        "latitude": 35.7147557,
+                        "longitude": 139.7734312,
+                        "place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/34",
+                          "sha256": "b1b76e4903e14d85e3d6fc63fc526684740d9afc6c427a3804b5d08c6df38fd3"
+                        },
+                        "requested_at": "2026-10-16T22:15:18.158395+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.288733+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 1731,
+                        "duration": "1448s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -3912,11 +4310,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "1a16167e04a7e4421070e0a7a1f427de1ee9b0da271e2ab94b8d235abe9dc8ea",
@@ -3985,8 +4394,30 @@
                   "raw_deficit_nanoseconds": null,
                   "raw_deficit_seconds_exact": null,
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "afe0d2f4bf4dd382ad1810af2e00c9865a1d43e18a035cc8023846eda7ec7f44"
+                    "request_key": "35c2a70461caa23b64e3d09477a0f45057667f4649c07e922a3c38cd16eb28b2",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "38365780607374d176f416c80234a9a73ffbca0c350f09eb1fe4b8e518b2376b",
+                        "latitude": 35.6586719,
+                        "longitude": 139.7019848,
+                        "place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "0f3b1a27a93ae494bfbe61a8a8661c4c9e8062628d8405aa5b05686061f1ada7",
+                        "latitude": 35.6473662,
+                        "longitude": 139.7015658,
+                        "place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [],
+                    "summary": {
+                      "reason": "no_compatible_observation",
+                      "status": "unavailable"
                     }
                   },
                   "observation": {
@@ -4102,11 +4533,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "6f440b2f708bb6fa9daa84edba2b6c26e41a74e1eae82c98c54b17c1e41f8826",
@@ -4130,10 +4572,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -4147,8 +4617,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "f612dd72113744448b19cbb91d58765f2427abb2dfb9a340cfe348a7ac1e02f6"
+                    "request_key": "9e09e084f3915748ac23fdcce0ad1aef6c2b5728166b99e0acca11ba16869f9c",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "967f555302620360b05f85cdec4f3db7396c91f323ae8e9168e569b0f661762e",
+                        "latitude": 35.659482,
+                        "longitude": 139.7005596,
+                        "place_id": "ChIJK9EM68qLGGARacmu4KJj5SA"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "38365780607374d176f416c80234a9a73ffbca0c350f09eb1fe4b8e518b2376b",
+                        "latitude": 35.6586719,
+                        "longitude": 139.7019848,
+                        "place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/24",
+                          "sha256": "0d1a720bcd331f4fc39f3f33dc1ecf2e069b8d886a09ffb008dc893613f1ee78"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.752244+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.882707+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 313,
+                        "duration": "278s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -4271,11 +4781,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "6e4b06af88e183c9038456a3b50bd4b832ab95a146b5bd5bb40e032f7bdb4fe6",
@@ -4299,10 +4820,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -4316,8 +4865,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "baa3bb0161378f2b6426639536545e41e731143edeb0c43432312551c463805c"
+                    "request_key": "2cf9f0eeb96bcaaa3e4b609c7f48b89dd57e5bc0cf0e84d18a5213b5c47a4f54",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "26867250032b7db6aa1b4f6acbe7c6972313b34b5093574f3754869f5e6a6069",
+                        "latitude": 35.685176299999995,
+                        "longitude": 139.7100517,
+                        "place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "e426947aec62ec6a7cb9db5f7548c0ec5b070cd705f9c4c905d13ea145921caa",
+                        "latitude": 35.6763976,
+                        "longitude": 139.6993259,
+                        "place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/19",
+                          "sha256": "486f35b734d8a872cea72932991ba6e773770da959e0c73cdb49238cffe3c8c5"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.021520+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.149699+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 1805,
+                        "duration": "1487s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -4440,11 +5029,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "e262b7cd4e35b6c18f889e5aa86fc8fc3a2641949522fe0e7f62e775afe6c79a",
@@ -4468,10 +5068,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -4485,8 +5113,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "4481262750ed9c97a0b09fdc8cc75de0767d114eb32cba82aadfb5f9f5931e12"
+                    "request_key": "a97c64b0347c99d58e8e0b84bd61b10ebcfbbd60c5089ed6f6db59171f7b5de1",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "2e4757dd8d4f3d6db66051cb4633ae89f104ebc6c393e181570d03b2a9468b95",
+                        "latitude": 35.7053406,
+                        "longitude": 139.7521112,
+                        "place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "db5280bd02517433a85e39c817c4ae0cce1506669cf47f52a78e6934b520c5d1",
+                        "latitude": 35.685175,
+                        "longitude": 139.75279949999998,
+                        "place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/23",
+                          "sha256": "f02651f1ff89da66c432f2e83963f201fb0800c31ff74f68a2fd1c6df5cfd6d3"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.623769+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.752244+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 2451,
+                        "duration": "2096s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -4735,17 +5403,89 @@
             },
             "daily": {
               "2026-10-22": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-22",
-                  "expanded_semantic_sha256": "abbb4dbb222ec6f2d8ab2d46bb6ddd720503f5fcb105466bf7e67e42247d4999"
+                "scheduled_occupied": {
+                  "seconds": 18192.0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": [
+                    {
+                      "start": "2026-10-22T01:00:00+00:00",
+                      "end": "2026-10-22T04:33:12+00:00",
+                      "seconds": 12792.0
+                    },
+                    {
+                      "start": "2026-10-22T05:00:00+00:00",
+                      "end": "2026-10-22T06:30:00+00:00",
+                      "seconds": 5400.0
+                    }
+                  ]
+                },
+                "protected_reserved": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "commitment_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "protection_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "combined_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
                 }
               },
               "2026-10-23": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-23",
-                  "expanded_semantic_sha256": "296138d74c7b5e42d275974dfe69c7848184e39e11c1e66ec5f449ed23bace93"
+                "scheduled_occupied": {
+                  "seconds": 15848.0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": [
+                    {
+                      "start": "2026-10-23T01:00:00+00:00",
+                      "end": "2026-10-23T03:24:08+00:00",
+                      "seconds": 8648.0
+                    },
+                    {
+                      "start": "2026-10-23T04:00:00+00:00",
+                      "end": "2026-10-23T06:00:00+00:00",
+                      "seconds": 7200.0
+                    }
+                  ]
+                },
+                "protected_reserved": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "commitment_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "protection_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "combined_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
                 }
               },
               "2026-10-24": {
@@ -4797,17 +5537,89 @@
                 }
               },
               "2026-10-25": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-25",
-                  "expanded_semantic_sha256": "1a3dab238da5a6bbae18a701630eec0c1e39d21db86f19c6f95c7e6c00160394"
+                "scheduled_occupied": {
+                  "seconds": 14087.0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": [
+                    {
+                      "start": "2026-10-25T01:00:00+00:00",
+                      "end": "2026-10-25T02:54:47+00:00",
+                      "seconds": 6887.0
+                    },
+                    {
+                      "start": "2026-10-25T03:15:00+00:00",
+                      "end": "2026-10-25T05:15:00+00:00",
+                      "seconds": 7200.0
+                    }
+                  ]
+                },
+                "protected_reserved": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "commitment_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "protection_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "combined_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
                 }
               },
               "2026-10-26": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/schedule_measures/daily/2026-10-26",
-                  "expanded_semantic_sha256": "cb7c4cddde9889290f25f417428eecf4a3026a8e31a954b7c970b037890f78fe"
+                "scheduled_occupied": {
+                  "seconds": 14696.0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": [
+                    {
+                      "start": "2026-10-26T01:00:00+00:00",
+                      "end": "2026-10-26T03:04:56+00:00",
+                      "seconds": 7496.0
+                    },
+                    {
+                      "start": "2026-10-26T03:30:00+00:00",
+                      "end": "2026-10-26T05:30:00+00:00",
+                      "seconds": 7200.0
+                    }
+                  ]
+                },
+                "protected_reserved": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "commitment_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "protection_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
+                },
+                "combined_conflict": {
+                  "seconds": 0,
+                  "status": "complete",
+                  "unknown_record_count": 0,
+                  "intervals": []
                 }
               }
             },
@@ -5175,13 +5987,53 @@
               "within_day_extras": 0,
               "across_day_extras": 0,
               "status": "complete",
-              "reviewed_revisit_obligations": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/descriptive/repetition/reviewed_revisit_obligations",
-                  "expanded_semantic_sha256": "cc4fbf9497a4210a241f01bd308e2e8b131ad9914398bb822a0d03fc46884d73"
+              "reviewed_revisit_obligations": [
+                {
+                  "obligation_id": "ueno-park-exactly-once-on-october-23",
+                  "kind": "required_visit",
+                  "subject_ref": "ueno-park",
+                  "resolution": "resolved",
+                  "count": {
+                    "mode": "exact",
+                    "value": 1
+                  },
+                  "date_obligations": [
+                    {
+                      "date": "2026-10-23",
+                      "count_mode": "exact",
+                      "count": 1
+                    }
+                  ],
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23.",
+                      "occurrence": 0,
+                      "offset_start": 70,
+                      "offset_end": 164
+                    }
+                  ]
+                },
+                {
+                  "obligation_id": "tokyo-national-museum-exactly-once",
+                  "kind": "required_visit",
+                  "subject_ref": "tokyo-national-museum",
+                  "resolution": "resolved",
+                  "count": {
+                    "mode": "exact",
+                    "value": 1
+                  },
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "Also include exactly one visit to Tokyo National Museum on any suitable date during the trip.",
+                      "occurrence": 0,
+                      "offset_start": 165,
+                      "offset_end": 258
+                    }
+                  ]
                 }
-              }
+              ]
             }
           },
           "daily_density": {
@@ -5189,18 +6041,62 @@
             "requested_day_count": 5,
             "days": [
               {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/daily_density/days/0",
-                  "expanded_semantic_sha256": "ed01766332525c8094b31319f2dc1f84affab13b7eeff6bdc1ed82ae17efe8ac"
-                }
+                "date": "2026-10-22",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
               },
               {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/daily_density/days/1",
-                  "expanded_semantic_sha256": "d0769c864525463c707c13748cb0c28b5f97ed8ec674f4489d32e096a10a6e6d"
-                }
+                "date": "2026-10-23",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
               },
               {
                 "date": "2026-10-24",
@@ -5232,26 +6128,69 @@
                 "reason": "default_pace_penalty"
               },
               {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/daily_density/days/3",
-                  "expanded_semantic_sha256": "841e6c9b8e1cad8e36ee05caa9eafbab7a25d738151d4b70b4cae4f61c3ec96b"
-                }
+                "date": "2026-10-25",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
               },
               {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/daily_density/days/4",
-                  "expanded_semantic_sha256": "afdf69f15722203bacb49e382327a0c010f5331b4e525bad04fcf46709f84b77"
-                }
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "ordinary",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "offset_end": 306,
+                      "offset_start": 0,
+                      "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
               }
             ],
             "review": {
-              "$case_material_ref": {
-                "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                "pointer": "/groups/0/versions/v0/daily_density/review",
-                "expanded_semantic_sha256": "75032537ca8adb48f7a46707425b07932b37a62e5a7f8ac44d7bfa4724787a28"
-              }
+              "reviewer_ref": "/root/case09_requirements_review",
+              "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+              "review_origin": "agent",
+              "rationale": "The complete request states no daily pace or exact daily total. Flexibility about remaining activities concerns choice rather than relaxed pace. The ordinary profile is the native default, not an inferred user quota. The exactly-one Ueno Park visit on 2026-10-23 and exactly-one Tokyo National Museum visit across the trip constrain those subjects; neither limits the total activities on a date. There are no explicit dated density exceptions."
             },
             "mean_penalty_0_100": 2.0,
             "exact_mean_penalty": {
@@ -6428,8 +7367,8 @@
           },
           "dimensions": {
             "$case_material_ref": {
-              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-              "pointer": "/groups/0/versions/v1/dimensions",
+              "path": "../primary/report.json",
+              "pointer": "/quality/groups/0/versions/v3/dimensions",
               "expanded_semantic_sha256": "f97d1e0483157eef813a3b629e9646db7cce3b319fbcebf8d6d654c637518388"
             }
           },
@@ -7575,18 +8514,57 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "9d74727a5649221293422cd94e50748579644bd7aff4068199d04a87317d7ab5"
-                    }
+                    "request_key": "ddd01c416c318e48a2213f3187a0761381b313d0617d378a7bde7fbb4a5efafc",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/31",
+                          "sha256": "75bb429730d81ca847d38b9d280aceb3553e0da0abe4df1565598fa430042aea"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.738640+00:00",
+                        "retrieved_at": "2026-10-16T22:15:17.884629+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "current",
-                  "basis_segments": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/0/basis_segments",
-                      "expanded_semantic_sha256": "d6ed2562c0dc07129e981f2dd8ec1e3eed861e7f5914dfe655777733b1c6df47"
+                  "basis_segments": [
+                    {
+                      "date": "2026-10-22",
+                      "interval": {
+                        "start": "2026-10-22T01:00:00+00:00",
+                        "end": "2026-10-22T04:00:00+00:00",
+                        "seconds": 10800.0
+                      },
+                      "basis": "current",
+                      "selected_basis": "current",
+                      "hours_field": "currentOpeningHours",
+                      "hours_fields": [
+                        "currentOpeningHours"
+                      ],
+                      "regular_fallback": null,
+                      "current_window_start": "2026-10-17",
+                      "current_window_end": "2026-10-23",
+                      "known_open": [
+                        {
+                          "start": "2026-10-22T01:00:00+00:00",
+                          "end": "2026-10-22T04:00:00+00:00",
+                          "seconds": 10800.0
+                        }
+                      ],
+                      "known_closed": [],
+                      "unknown": [],
+                      "reasons": []
                     }
-                  },
+                  ],
                   "evidence_status": "complete",
                   "reasons": [],
                   "explanation": "The full visit is covered by adopted opening evidence.",
@@ -7641,9 +8619,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "7750224c001f7cb3e132764fa041dad3f6a934302eafe2f09ca53837f71bd477"
-                    }
+                    "request_key": "3400c72f0e4d2361bcaa2e5333c3b67d93f2bbf899e2373c6ca1f357ddce0904",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/7",
+                          "sha256": "1d16dd3ce33ada046ad3f13247fabdfa42e880f46f6f719f76b436e71e87cace"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.372721+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.521722+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -7686,11 +8678,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 5400.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/1/access_judgment",
-                      "expanded_semantic_sha256": "20835741166dd6b6a8a064e6b579350b5d21439f6239313270541b552edd68a5"
-                    }
+                    "access_mode": "public_outdoor",
+                    "activity_field": "title",
+                    "activity_quote": "Visit Sensō-ji",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Sensō-ji is a recognizable temple landmark, so a generic visit reasonably means ordinary outdoor or exterior sightseeing, not a commitment to enter a paid or restricted area. The 14:00–15:30 local interval on 2026-10-22 is a reasonable daytime window. Date-specific hours are not supplied, but no restriction applicable to ordinary outdoor or exterior sightseeing is established.",
+                    "reference_id": "visit001",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
                   }
                 },
                 {
@@ -7739,18 +8736,57 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "94afd48a783a186ac2364a3eefa8dd8c1f0dddc8466e6729a813d5b2873e9b32"
-                    }
+                    "request_key": "f80e67ac43d192595c2b0921dce2d6714e778ba6e1bb7e739fba08064b93d942",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/36",
+                          "sha256": "cf76c10ffd2f56e216fb1586648d8d5552cb7f6a7a54f0e4e59f13ed6193d484"
+                        },
+                        "requested_at": "2026-10-16T22:15:18.434914+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.576351+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "current",
-                  "basis_segments": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/2/basis_segments",
-                      "expanded_semantic_sha256": "20a60620459a20587b1eafa0bb431d18cf4b85c248f08632d59036c155dff745"
+                  "basis_segments": [
+                    {
+                      "date": "2026-10-23",
+                      "interval": {
+                        "start": "2026-10-23T01:00:00+00:00",
+                        "end": "2026-10-23T03:00:00+00:00",
+                        "seconds": 7200.0
+                      },
+                      "basis": "current",
+                      "selected_basis": "current",
+                      "hours_field": "currentOpeningHours",
+                      "hours_fields": [
+                        "currentOpeningHours"
+                      ],
+                      "regular_fallback": null,
+                      "current_window_start": "2026-10-17",
+                      "current_window_end": "2026-10-23",
+                      "known_open": [
+                        {
+                          "start": "2026-10-23T01:00:00+00:00",
+                          "end": "2026-10-23T03:00:00+00:00",
+                          "seconds": 7200.0
+                        }
+                      ],
+                      "known_closed": [],
+                      "unknown": [],
+                      "reasons": []
                     }
-                  },
+                  ],
                   "evidence_status": "complete",
                   "reasons": [],
                   "explanation": "The full visit is covered by adopted opening evidence.",
@@ -7805,9 +8841,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "90dd36f610b466062f1c96d68f90bde9e3dc01899be154406e966afc39d8dbb4"
-                    }
+                    "request_key": "8dd43c28c72199481568685c9462580d5a8811e17fe6c2e4bb88346ee543db18",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/17",
+                          "sha256": "30ed88f7916082bf754f22b6d9a4292f08ca3f156185d75f132d57568425fdad"
+                        },
+                        "requested_at": "2026-10-16T22:15:15.751433+00:00",
+                        "retrieved_at": "2026-10-16T22:15:15.888447+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -7850,11 +8900,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 7200.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/3/access_judgment",
-                      "expanded_semantic_sha256": "63e00bb72fa4750b94c265b137970f0e95475a65bc304938ec452aaabe012e92"
-                    }
+                    "access_mode": "public_outdoor",
+                    "activity_field": "title",
+                    "activity_quote": "Explore Akihabara Electric Town",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Akihabara Electric Town is identified as a district, so a generic exploration reasonably means an outdoor stroll through the public area rather than entry to a particular shop or attraction. The 13:00–15:00 local interval on 2026-10-23 is a reasonable daytime window. The supplied evidence does not establish district operating hours, but that does not indicate a restriction on ordinary public-area access.",
+                    "reference_id": "visit002",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_area",
+                    "visit_window": "reasonable"
                   }
                 },
                 {
@@ -7903,18 +8958,57 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "b29f819b7700b6337dc3a43b168b219408985886798ba7f0eaffe460bf8fac37"
-                    }
+                    "request_key": "e0bab5a96318022cb34df98a60b0c4f99bf8b2423fad7eaa8fb0a00f5078cc37",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/32",
+                          "sha256": "0980b0a3293674ad1005f92dcb1e03b6a53afbda425305c72346dd2f396859f2"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.884629+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.028212+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "regular",
-                  "basis_segments": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/5/basis_segments",
-                      "expanded_semantic_sha256": "a4e9af8b945607a1df65db73c432f15169b2a455bad46c662ea8ae56109a7a98"
+                  "basis_segments": [
+                    {
+                      "date": "2026-10-24",
+                      "interval": {
+                        "start": "2026-10-24T04:45:00+00:00",
+                        "end": "2026-10-24T06:00:00+00:00",
+                        "seconds": 4500.0
+                      },
+                      "basis": "regular",
+                      "selected_basis": "regular",
+                      "hours_field": "regularOpeningHours",
+                      "hours_fields": [
+                        "regularOpeningHours"
+                      ],
+                      "regular_fallback": null,
+                      "current_window_start": "2026-10-17",
+                      "current_window_end": "2026-10-23",
+                      "known_open": [
+                        {
+                          "start": "2026-10-24T04:45:00+00:00",
+                          "end": "2026-10-24T06:00:00+00:00",
+                          "seconds": 4500.0
+                        }
+                      ],
+                      "known_closed": [],
+                      "unknown": [],
+                      "reasons": []
                     }
-                  },
+                  ],
                   "evidence_status": "complete",
                   "reasons": [],
                   "explanation": "The full visit is covered by adopted opening evidence.",
@@ -7969,9 +9063,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "3d275abbc5ebb833aeb1fc3066d6307afd683a8c684a6888e2c547b15415b7fe"
-                    }
+                    "request_key": "04112ef266188dc1da4e2971222ca3117d01124362ac167fb534520576c4db6e",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/2",
+                          "sha256": "653a3dd4b5b34d831dcd7ca9998dca8bf050325b10719ba1d659b01bc61373f2"
+                        },
+                        "requested_at": "2026-10-16T22:15:13.416833+00:00",
+                        "retrieved_at": "2026-10-16T22:15:13.678190+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -8014,11 +9122,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 1800.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/6/access_judgment",
-                      "expanded_semantic_sha256": "d83d8413942cab1f9c254830a3579f24e0f8f7a3f13ac13e80371f7a55397402"
-                    }
+                    "access_mode": "public_outdoor",
+                    "activity_field": "title",
+                    "activity_quote": "See Shibuya Scramble Crossing",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Shibuya Scramble Crossing is a public urban landmark, and the generic visit reasonably means viewing or experiencing the crossing outdoors. The 15:30–16:00 local interval on 2026-10-24 is a reasonable short sightseeing window. No applicable restriction on ordinary public outdoor access is supplied.",
+                    "reference_id": "visit003",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
                   }
                 },
                 {
@@ -8067,9 +9180,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "95b9f655b77ea49025e55b9a476471f1d4b2174fcb4553df444dbb02852f49dd"
-                    }
+                    "request_key": "5d94c1bbdae43a4731ac08c4e949b50dc94007133ab40ddb547ac6ba5d422e3a",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/10",
+                          "sha256": "87918f1b2f4c449313fb1e2c862c7e75284fb07e27cd47d0da2be518abfcd009"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.794193+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.932312+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -8112,11 +9239,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 5400.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/7/access_judgment",
-                      "expanded_semantic_sha256": "0d1387d0c3db53018acf95755747c4aa852c7f1cd2e521765a30933b0b1cb243"
-                    }
+                    "access_mode": "public_outdoor",
+                    "activity_field": "title",
+                    "activity_quote": "Visit Meiji Jingu",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "Meiji Jingu is a major shrine landmark, so a generic visit reasonably means ordinary outdoor sightseeing on its grounds, not a commitment to a restricted activity. The 10:00–11:30 local interval on 2026-10-25 is a reasonable daytime window. Date-specific hours are unknown in the supplied evidence, but no restriction applicable to ordinary outdoor sightseeing is established.",
+                    "reference_id": "visit004",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
                   }
                 },
                 {
@@ -8165,18 +9297,57 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "5b61ccdf434df9800e354b5941e158c396a718613661eaf456738e97c6b65395"
-                    }
+                    "request_key": "cbe8c80691206bffb6c68cfaddf960d011d5ad22f292c659b19fb68d732d7693",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/29",
+                          "sha256": "f93299bb6ec0737dc3d04c9d2e005644039f1a3050380a3d401e53700ed38847"
+                        },
+                        "requested_at": "2026-10-16T22:15:17.443267+00:00",
+                        "retrieved_at": "2026-10-16T22:15:17.584084+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": [
+                      "currentOpeningHours",
+                      "regularOpeningHours"
+                    ]
                   },
                   "basis": "regular",
-                  "basis_segments": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/8/basis_segments",
-                      "expanded_semantic_sha256": "6b85ca6c2050d9d1445d80b3c5ed44f34a102a8eade73baa6907f9a36e0e218d"
+                  "basis_segments": [
+                    {
+                      "date": "2026-10-25",
+                      "interval": {
+                        "start": "2026-10-25T03:15:00+00:00",
+                        "end": "2026-10-25T05:15:00+00:00",
+                        "seconds": 7200.0
+                      },
+                      "basis": "regular",
+                      "selected_basis": "regular",
+                      "hours_field": "regularOpeningHours",
+                      "hours_fields": [
+                        "regularOpeningHours"
+                      ],
+                      "regular_fallback": null,
+                      "current_window_start": "2026-10-17",
+                      "current_window_end": "2026-10-23",
+                      "known_open": [
+                        {
+                          "start": "2026-10-25T03:15:00+00:00",
+                          "end": "2026-10-25T05:15:00+00:00",
+                          "seconds": 7200.0
+                        }
+                      ],
+                      "known_closed": [],
+                      "unknown": [],
+                      "reasons": []
                     }
-                  },
+                  ],
                   "evidence_status": "complete",
                   "reasons": [],
                   "explanation": "The full visit is covered by adopted opening evidence.",
@@ -8231,9 +9402,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "81bb7cbf8eb0de6ba6e4e744be246c8b65df28d7c35bca0a721f9f98fa35b0b3"
-                    }
+                    "request_key": "9bdacc7dbbb7ed0446bdf26494a32f7f42d5e8a9b6983667627b62e6be6b42b9",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/20",
+                          "sha256": "19d5d019dd2f767f6be96963ad8f0462792a2bea4ca7f48be2d87d3dfa1f88ce"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.149699+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.287110+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "llm_access_reasonableness",
                   "basis_segments": [
@@ -8276,11 +9461,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 5400.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/9/access_judgment",
-                      "expanded_semantic_sha256": "b25181179445181f8c8f54d787da6af04d8b187c7c1cc25cab9b669042fb6eda"
-                    }
+                    "access_mode": "exterior",
+                    "activity_field": "title",
+                    "activity_quote": "Visit the Imperial Palace",
+                    "intent_basis": "public_landmark_default",
+                    "rationale": "The Imperial Palace is a landmark, and this generic visit can reasonably mean exterior sightseeing rather than entry to restricted palace areas. The 10:00–11:30 local interval on 2026-10-26 is a reasonable daytime window. The supplied evidence does not establish visitor access or hours for palace areas, so this assessment is limited to ordinary exterior viewing and does not imply access inside.",
+                    "reference_id": "visit005",
+                    "restrictions": "none_known",
+                    "state": "PASS",
+                    "venue_category": "public_landmark",
+                    "visit_window": "reasonable"
                   }
                 },
                 {
@@ -8329,9 +9519,23 @@
                     }
                   },
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "58da0eed71d555cbabd3559fc64a25c53b847e5997b44d14e8c3c7aa49d64bcb"
-                    }
+                    "request_key": "2866a64574e01a60d9a6e74e1c6214394437369f4ea9cd5544183cce1216596b",
+                    "summary": {
+                      "status": "available"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/5",
+                          "sha256": "b1adf018bed8a10bddbb7fdd97b46267a96befd784d8fc49508ba4965f50b6f4"
+                        },
+                        "requested_at": "2026-10-16T22:15:14.093803+00:00",
+                        "retrieved_at": "2026-10-16T22:15:14.232782+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "hours_fields_present": []
                   },
                   "basis": "unavailable",
                   "basis_segments": [
@@ -8374,11 +9578,16 @@
                   "known_open_seconds": 0.0,
                   "unknown_seconds": 7200.0,
                   "access_judgment": {
-                    "$case_material_ref": {
-                      "path": "report.json",
-                      "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/10/access_judgment",
-                      "expanded_semantic_sha256": "bcb30dbceea1c8a200a4674ea85a1abdb44fb4e94e8263129bcb65490fd07839"
-                    }
+                    "access_mode": "ambiguous",
+                    "activity_field": "title",
+                    "activity_quote": "Explore Tokyo Dome City",
+                    "intent_basis": "unresolved",
+                    "rationale": "Tokyo Dome City is a mixed entertainment complex that includes attractions and indoor venues, rather than a confidently classified public landmark or public area. “Explore” does not specify outdoor-only access, and the evidence does not establish whether the visit is to a public area or requires admission to an attraction. The 12:30–14:30 local interval on 2026-10-26 is a reasonable daytime window, but access remains uncertain and operating details are not supplied.",
+                    "reference_id": "visit006",
+                    "restrictions": "uncertain",
+                    "state": "UNKNOWN",
+                    "venue_category": "indoor_attraction",
+                    "visit_window": "reasonable"
                   }
                 }
               ],
@@ -8432,10 +9641,29 @@
                 "rate": 1.0
               },
               "duration_subtotals": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/primary_metrics/opening/duration_subtotals",
-                  "expanded_semantic_sha256": "61521d5d089e9134232493894dc9f60cdc90b0b4c68dd487421f81273eaa68b1"
+                "outside_seconds": {
+                  "seconds": 0.0,
+                  "observed_visit_count": 4,
+                  "missing_visit_count": 6,
+                  "aggregation": "per_visit_observed_subtotal"
+                },
+                "confirmed_outside_lower_bound_seconds": {
+                  "seconds": 0.0,
+                  "observed_visit_count": 10,
+                  "missing_visit_count": 0,
+                  "aggregation": "per_visit_observed_subtotal"
+                },
+                "known_open_seconds": {
+                  "seconds": 29700.0,
+                  "observed_visit_count": 10,
+                  "missing_visit_count": 0,
+                  "aggregation": "per_visit_observed_subtotal"
+                },
+                "unknown_seconds": {
+                  "seconds": 32400.0,
+                  "observed_visit_count": 10,
+                  "missing_visit_count": 0,
+                  "aggregation": "per_visit_observed_subtotal"
                 }
               },
               "llm_decidable_count": 5,
@@ -8548,11 +9776,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "1e99129fa970da692391c3e39b5de08d629a013ff0b76ad30fa1745af1546095",
@@ -8576,10 +9815,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -8593,8 +9860,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "4d34c80d551580b030294bccc05bec165a43077a27b56b8868163ea84bfdbddf"
+                    "request_key": "066f5c0d17a8b56cf9a852895299fa8217b7af34d88b4c47f890ea8dd70e6f04",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "5c6d227d20fdfdf792408da3da722458552ce4443922c19a9d1905bce4aa80f6",
+                        "latitude": 35.7147651,
+                        "longitude": 139.7966553,
+                        "place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "4cd6f9a861a2a63e7ac973f5608165460a1eb27a3dba2bf215f3fd7d745e75eb",
+                        "latitude": 35.7188351,
+                        "longitude": 139.7765215,
+                        "place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/12",
+                          "sha256": "4a1373f8a3fdd3d3f64b35ae49fee131e1e0cbd5b4ba99cc465dc4e7d8e41825"
+                        },
+                        "requested_at": "2026-10-16T22:15:15.074622+00:00",
+                        "retrieved_at": "2026-10-16T22:15:15.202252+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 2309,
+                        "duration": "1992s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -8717,11 +10024,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "bd5879787e411ebbb2c5f36ae2594705d84048356f80166ee01acb367006c2b0",
@@ -8745,10 +10063,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -8762,8 +10108,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "c5fd992bc5193042af824c72126bdafcdc547937f576c7bb6decc8d377a78b9d"
+                    "request_key": "1714571c498c3df9566baa9a64c5f53387357ceaf258f50f8d6e5f2db44cad9a",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "2d7ec0672279ab8b11069946ffc56fbd3d730965474e03bd54175fe3abd44efc",
+                        "latitude": 35.699647299999995,
+                        "longitude": 139.7713703,
+                        "place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "c38defc45230876c89aec7001f257050e7e3f717d4d5cf1c8b35b93f20fdff31",
+                        "latitude": 35.7147557,
+                        "longitude": 139.7734312,
+                        "place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/34",
+                          "sha256": "b1b76e4903e14d85e3d6fc63fc526684740d9afc6c427a3804b5d08c6df38fd3"
+                        },
+                        "requested_at": "2026-10-16T22:15:18.158395+00:00",
+                        "retrieved_at": "2026-10-16T22:15:18.288733+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 1731,
+                        "duration": "1448s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -8886,11 +10272,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "d363750552ca4ea61657dd40493be34908dee879fa8bbeb3f55873720fc9055f",
@@ -8914,10 +10311,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -8931,8 +10356,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "f612dd72113744448b19cbb91d58765f2427abb2dfb9a340cfe348a7ac1e02f6"
+                    "request_key": "9e09e084f3915748ac23fdcce0ad1aef6c2b5728166b99e0acca11ba16869f9c",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "967f555302620360b05f85cdec4f3db7396c91f323ae8e9168e569b0f661762e",
+                        "latitude": 35.659482,
+                        "longitude": 139.7005596,
+                        "place_id": "ChIJK9EM68qLGGARacmu4KJj5SA"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "38365780607374d176f416c80234a9a73ffbca0c350f09eb1fe4b8e518b2376b",
+                        "latitude": 35.6586719,
+                        "longitude": 139.7019848,
+                        "place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/24",
+                          "sha256": "0d1a720bcd331f4fc39f3f33dc1ecf2e069b8d886a09ffb008dc893613f1ee78"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.752244+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.882707+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 313,
+                        "duration": "278s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -9055,11 +10520,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "5dcd2fcb848e70c78a211c9a56a51ae1a885a40460ad656c29796c838b62e581",
@@ -9083,10 +10559,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -9100,8 +10604,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "baa3bb0161378f2b6426639536545e41e731143edeb0c43432312551c463805c"
+                    "request_key": "2cf9f0eeb96bcaaa3e4b609c7f48b89dd57e5bc0cf0e84d18a5213b5c47a4f54",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "26867250032b7db6aa1b4f6acbe7c6972313b34b5093574f3754869f5e6a6069",
+                        "latitude": 35.685176299999995,
+                        "longitude": 139.7100517,
+                        "place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "e426947aec62ec6a7cb9db5f7548c0ec5b070cd705f9c4c905d13ea145921caa",
+                        "latitude": 35.6763976,
+                        "longitude": 139.6993259,
+                        "place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/19",
+                          "sha256": "486f35b734d8a872cea72932991ba6e773770da959e0c73cdb49238cffe3c8c5"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.021520+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.149699+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 1805,
+                        "duration": "1487s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -9224,11 +10768,22 @@
                     "reason": null
                   },
                   "mode_review": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/0/mode_review",
-                      "expanded_semantic_sha256": "b9d6fd335011cad52951bea5a21b550393cf1111fb45256abb1d1a49aafcefb3"
-                    }
+                    "group_id": "case-09",
+                    "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+                    "policies": [],
+                    "reason": "Review of the complete original request finds no transport-mode restriction and no explicitly stated transport mode. Three adults, a JPY budget, interests, exact venue visit counts, a visit date, and flexibility for remaining activities do not establish a mode preference. No Planner interpretation or generated itinerary was consulted.",
+                    "reviewed_at": "2026-10-16T21:58:57.368965+00:00",
+                    "reviewer_ref": "/root/case09_requirements_review",
+                    "source_refs": [
+                      {
+                        "field_path": "additional_preferences",
+                        "occurrence": 0,
+                        "offset_end": 306,
+                        "offset_start": 0,
+                        "quote": "We are three adults interested in traditional culture and modern art. Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23. Also include exactly one visit to Tokyo National Museum on any suitable date during the trip. We are flexible about the remaining activities."
+                      }
+                    ],
+                    "status": "unrestricted"
                   },
                   "expected_context": {
                     "leg_id": "21ed006a542fdb49d4d1e117696335f8ec8972b0a89da72e2b20499253bbe061",
@@ -9252,10 +10807,38 @@
                   },
                   "state": "PASS",
                   "components": {
-                    "$case_material_ref": {
-                      "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                      "pointer": "/groups/0/versions/v0/primary_metrics/routes/checks/1/components",
-                      "expanded_semantic_sha256": "3dcdc3d78fbc5d56f56e605d3f6f546cf04126188f9b02657a5a507c404aee00"
+                    "mode_policy": {
+                      "state": "PASS",
+                      "policies": [],
+                      "reason": null
+                    },
+                    "availability": {
+                      "state": "PASS",
+                      "reason": "route_exists"
+                    },
+                    "duration_cap": {
+                      "state": "PASS",
+                      "nominal_seconds": 2700,
+                      "tolerance_seconds": 300,
+                      "raw_overrun_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
+                    },
+                    "distance_cap": {
+                      "state": "PASS",
+                      "nominal_meters": 3000,
+                      "tolerance_meters": 0,
+                      "raw_overrun_meters": 0,
+                      "reason": null
+                    },
+                    "schedule": {
+                      "state": "PASS",
+                      "deadline_kind": "next_visit",
+                      "tolerance_seconds": 300,
+                      "reserve_seconds": 0,
+                      "raw_deficit_nanoseconds": 0,
+                      "classification": "exact",
+                      "reason": null
                     }
                   },
                   "structurally_evaluable": true,
@@ -9269,8 +10852,48 @@
                   "raw_deficit_nanoseconds": 0,
                   "raw_deficit_seconds_exact": "0",
                   "evidence_reference": {
-                    "$private_evidence_ref": {
-                      "semantic_sha256": "4481262750ed9c97a0b09fdc8cc75de0767d114eb32cba82aadfb5f9f5931e12"
+                    "request_key": "a97c64b0347c99d58e8e0b84bd61b10ebcfbbd60c5089ed6f6db59171f7b5de1",
+                    "query": {
+                      "departure": null,
+                      "destination": {
+                        "evidence_sha256": "2e4757dd8d4f3d6db66051cb4633ae89f104ebc6c393e181570d03b2a9468b95",
+                        "latitude": 35.7053406,
+                        "longitude": 139.7521112,
+                        "place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+                      },
+                      "mode": "WALK",
+                      "origin": {
+                        "evidence_sha256": "db5280bd02517433a85e39c817c4ae0cce1506669cf47f52a78e6934b520c5d1",
+                        "latitude": 35.685175,
+                        "longitude": 139.75279949999998,
+                        "place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE"
+                      },
+                      "routing_options": {},
+                      "source_kind": "independent_evaluation_context",
+                      "time_basis": "time_independent"
+                    },
+                    "attempts": [
+                      {
+                        "attempt": 1,
+                        "raw": {
+                          "path": "s0/23",
+                          "sha256": "f02651f1ff89da66c432f2e83963f201fb0800c31ff74f68a2fd1c6df5cfd6d3"
+                        },
+                        "requested_at": "2026-10-16T22:15:16.623769+00:00",
+                        "retrieved_at": "2026-10-16T22:15:16.752244+00:00",
+                        "status_code": 200
+                      }
+                    ],
+                    "summary": {
+                      "element": {
+                        "condition": "ROUTE_EXISTS",
+                        "destinationIndex": 0,
+                        "distanceMeters": 2451,
+                        "duration": "2096s",
+                        "originIndex": 0,
+                        "status": {}
+                      },
+                      "status": "available"
                     }
                   },
                   "observation": {
@@ -9355,8 +10978,8 @@
               },
               "daily_observed_transfer_burden": {
                 "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v3/primary_metrics/routes/daily_observed_transfer_burden",
+                  "path": "../primary/report.json",
+                  "pointer": "/quality/groups/0/versions/v3/primary_metrics/routes/daily_observed_transfer_burden",
                   "expanded_semantic_sha256": "d80ce9800712c0650bcb3fd90a02f6f3fbd59ce2e6de43fc7d3f9187603c883c"
                 }
               }
@@ -9364,8 +10987,8 @@
           },
           "schedule_measures": {
             "$case_material_ref": {
-              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-              "pointer": "/groups/0/versions/v3/schedule_measures",
+              "path": "../primary/report.json",
+              "pointer": "/quality/groups/0/versions/v3/schedule_measures",
               "expanded_semantic_sha256": "bd6d34d2ca688e4e30926d0e38a71b466153322f67a8fe8f8f05da917542c514"
             }
           },
@@ -9703,19 +11326,59 @@
               "within_day_extras": 0,
               "across_day_extras": 0,
               "status": "complete",
-              "reviewed_revisit_obligations": {
-                "$case_material_ref": {
-                  "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-                  "pointer": "/groups/0/versions/v0/descriptive/repetition/reviewed_revisit_obligations",
-                  "expanded_semantic_sha256": "cc4fbf9497a4210a241f01bd308e2e8b131ad9914398bb822a0d03fc46884d73"
+              "reviewed_revisit_obligations": [
+                {
+                  "obligation_id": "ueno-park-exactly-once-on-october-23",
+                  "kind": "required_visit",
+                  "subject_ref": "ueno-park",
+                  "resolution": "resolved",
+                  "count": {
+                    "mode": "exact",
+                    "value": 1
+                  },
+                  "date_obligations": [
+                    {
+                      "date": "2026-10-23",
+                      "count_mode": "exact",
+                      "count": 1
+                    }
+                  ],
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "Include exactly one visit to Ueno Park during the trip, and schedule that visit on 2026-10-23.",
+                      "occurrence": 0,
+                      "offset_start": 70,
+                      "offset_end": 164
+                    }
+                  ]
+                },
+                {
+                  "obligation_id": "tokyo-national-museum-exactly-once",
+                  "kind": "required_visit",
+                  "subject_ref": "tokyo-national-museum",
+                  "resolution": "resolved",
+                  "count": {
+                    "mode": "exact",
+                    "value": 1
+                  },
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "quote": "Also include exactly one visit to Tokyo National Museum on any suitable date during the trip.",
+                      "occurrence": 0,
+                      "offset_start": 165,
+                      "offset_end": 258
+                    }
+                  ]
                 }
-              }
+              ]
             }
           },
           "daily_density": {
             "$case_material_ref": {
-              "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-              "pointer": "/groups/0/versions/v0/daily_density",
+              "path": "../primary/report.json",
+              "pointer": "/quality/groups/0/versions/v3/daily_density",
               "expanded_semantic_sha256": "2d9630d5c40efb59b0dd44642097f30cab9ab3f2fd5442a3f73e74f9a2151e7f"
             }
           },
@@ -10792,10 +12455,40 @@
               "denominator": 1
             },
             "rates": {
-              "$case_material_ref": {
-                "path": "report.json",
-                "pointer": "/groups/0/deltas/dimensions/requirements/rates",
-                "expanded_semantic_sha256": "843d4535ebccf01bf58e7ea915f0e24c4d3b6ab1bd2113a072bcd7b17394adb2"
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
               }
             },
             "contribution": {
@@ -10821,10 +12514,40 @@
               "denominator": 1
             },
             "rates": {
-              "$case_material_ref": {
-                "path": "report.json",
-                "pointer": "/groups/0/deltas/dimensions/requirements/rates",
-                "expanded_semantic_sha256": "843d4535ebccf01bf58e7ea915f0e24c4d3b6ab1bd2113a072bcd7b17394adb2"
+              "conditional_compliance": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verified_fraction": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "verification_coverage": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "unknown_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
+              },
+              "confirmed_violation_rate": {
+                "percentage_points": 0.0,
+                "exact_fraction": {
+                  "numerator": 0,
+                  "denominator": 1
+                }
               }
             },
             "contribution": {
@@ -12106,18 +13829,84 @@
           {
             "obligation_id": "tokyo-national-museum-exactly-once",
             "before": {
-              "$case_material_ref": {
-                "path": "report.json",
-                "pointer": "/groups/0/stages/draft/primary_metrics/requirements/checks/1",
-                "expanded_semantic_sha256": "d82a3f82af76d68a4e7ebdd9d3a0cf189f7dcef2eb33e2857cdea4cfb3fa2729"
-              }
+              "check_id": "85cbb73dce4943303f392902820bf6b6e00c2cdc73e4b2bea6ce146e24a82364",
+              "obligation_id": "tokyo-national-museum-exactly-once",
+              "kind": "required_visit",
+              "applicability": "applicable",
+              "sources": [
+                {
+                  "field_path": "additional_preferences",
+                  "quote": "Also include exactly one visit to Tokyo National Museum on any suitable date during the trip.",
+                  "occurrence": 0,
+                  "offset_start": 165,
+                  "offset_end": 258
+                }
+              ],
+              "components": [
+                {
+                  "kind": "count",
+                  "state": "PASS",
+                  "bounds": {
+                    "lower": 1,
+                    "upper": 1
+                  },
+                  "mode": "exact",
+                  "target": 1,
+                  "confirmed_sources": [
+                    {
+                      "batch_id": "case-09-batch",
+                      "group_id": "case-09",
+                      "run_id": "case-09-v3-r1",
+                      "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+                      "pointer": "/v3/draft/days/0/activities/0",
+                      "projection_version": "rtpeval_projection_1",
+                      "record_id": "71d8b266dca7ad94f28ee8efd2a0ada4a066eabc0abf29f9abff0e81241b8ffa"
+                    }
+                  ],
+                  "potential_sources": []
+                }
+              ],
+              "state": "PASS"
             },
             "after": {
-              "$case_material_ref": {
-                "path": "report.json",
-                "pointer": "/groups/0/stages/final_primary/primary_metrics/requirements/checks/1",
-                "expanded_semantic_sha256": "cf5b4778be8d1a77066550c53e707d181a5436ca9a3b7870f6cf4d91f70f10ed"
-              }
+              "check_id": "85cbb73dce4943303f392902820bf6b6e00c2cdc73e4b2bea6ce146e24a82364",
+              "obligation_id": "tokyo-national-museum-exactly-once",
+              "kind": "required_visit",
+              "applicability": "applicable",
+              "sources": [
+                {
+                  "field_path": "additional_preferences",
+                  "quote": "Also include exactly one visit to Tokyo National Museum on any suitable date during the trip.",
+                  "occurrence": 0,
+                  "offset_start": 165,
+                  "offset_end": 258
+                }
+              ],
+              "components": [
+                {
+                  "kind": "count",
+                  "state": "PASS",
+                  "bounds": {
+                    "lower": 1,
+                    "upper": 1
+                  },
+                  "mode": "exact",
+                  "target": 1,
+                  "confirmed_sources": [
+                    {
+                      "batch_id": "case-09-batch",
+                      "group_id": "case-09",
+                      "run_id": "case-09-v3-r1",
+                      "artifact_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+                      "pointer": "/v3/final_primary/days/0/activities/0",
+                      "projection_version": "rtpeval_projection_1",
+                      "record_id": "9c3ff4c1c92e201765e0361df3446e8ee31711936243eb380420104f5e550830"
+                    }
+                  ],
+                  "potential_sources": []
+                }
+              ],
+              "state": "PASS"
             },
             "transition": "unchanged",
             "partial_observed_improvement": null
@@ -12354,14 +14143,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/3",
-                "expanded_semantic_sha256": "2d8eec3ea3d6b7d2ee2ad4ab5b0248a97a7c1e0b49aa8c2bf08931e0677e853a"
+                "expanded_semantic_sha256": "2f75388ce39e06543104192139289b6e0fc8732c21b1810d058e8e6d1c14ce98"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/3",
-                "expanded_semantic_sha256": "0a802a1b92dc36314a7b1b40d11ee4145ea552d682bbb893adb866e20c7fb859"
+                "expanded_semantic_sha256": "7295899e567ae132004ae9932d33d5e1981aba413cdc3027e97fa6c7ec0b6699"
               }
             },
             "transition": "unchanged",
@@ -12373,7 +14162,7 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/4",
-                "expanded_semantic_sha256": "fe685cee3c18a6dd6385986089744abb5c0b0fba3e3f7afb7a4222c3668e5f6a"
+                "expanded_semantic_sha256": "36153835aa20feb52e7ec7904b4156cb7fce0e518760acbb44620bed72ab68ce"
               }
             },
             "after": null,
@@ -12386,14 +14175,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/9",
-                "expanded_semantic_sha256": "70df353a5b16c19cd5b2283d8ae6e8e3e06a27516625a29d85988b93cd23b75d"
+                "expanded_semantic_sha256": "088af93dd06d5f64cc7b8cbfa2de7efc3c7635158767a3b41b30c0a52920ed05"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/8",
-                "expanded_semantic_sha256": "9d8d4ff230ac35d98d221da2663c7c2fb0d187605580caa202c1fb06e4657060"
+                "expanded_semantic_sha256": "63c49afcfffc3f63baebb337b466fb34b8ced7fc22adaa62bc9fe877881df851"
               }
             },
             "transition": "unchanged",
@@ -12405,14 +14194,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/7",
-                "expanded_semantic_sha256": "53ccd607a2e7c43fc6e3867f942f4c2e1e74f930ed8092e6ecf73d94463a832b"
+                "expanded_semantic_sha256": "ec37fac4b924a5caf3cdb12e725c9355ad87cf12cf44710065c198d7f216db52"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/6",
-                "expanded_semantic_sha256": "8dcfd1075a9729ba5278634d91477f6b938407430380b88aead7e66c9ae4c4d5"
+                "expanded_semantic_sha256": "6611e65ab27c50b634871913cdec512872ad32cc6a41e5ff92d0d1958ec7b722"
               }
             },
             "transition": "unchanged",
@@ -12424,14 +14213,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/1",
-                "expanded_semantic_sha256": "bb027c789c5e45c562e158c98dac01295f0381063805c3e0fbd36ab640178a0f"
+                "expanded_semantic_sha256": "5874183cb04424e7c8bb222836df093bb67b4fb8f5edd47c1c912d76e35153d3"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/1",
-                "expanded_semantic_sha256": "4330c710de0c4d11d1b1ec5f6581cbcfecc35d73d24787c698ba60b66a7e0498"
+                "expanded_semantic_sha256": "b5d32768566860dac94fcefa9717309d53a250d6beefe00c0905780e6f64954a"
               }
             },
             "transition": "unchanged",
@@ -12443,14 +14232,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/6",
-                "expanded_semantic_sha256": "cf71c7b5bd73b56edaf4b35d292ebffab73fb80ae40ba61885c7d82a6b30660d"
+                "expanded_semantic_sha256": "16b6db00a775727c2ab32a45847d26e12fb68175f0a871748a0c33ded0fc8ad1"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/5",
-                "expanded_semantic_sha256": "f5919c6f49857ea95aafed4de5e7bf73bac6cfc2268fd19f11150150bd965b96"
+                "expanded_semantic_sha256": "6650fad7306df7df8ed6ed873a8caae442c84a4257b65f111212ade715ca2b69"
               }
             },
             "transition": "unchanged",
@@ -12462,14 +14251,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/5",
-                "expanded_semantic_sha256": "6a4191f9504231ff8ddb6623c99384faedf8f1915ed2d1d4541676d6a57096ca"
+                "expanded_semantic_sha256": "de0dda8e0e5f9e9e76b1d2821dbdf15af409982a711d0a8ed20001407a6f57ae"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/4",
-                "expanded_semantic_sha256": "a1333e3c687b2f8a4f79d71cdedaa61dcb17f5d0785bf136483669319607441a"
+                "expanded_semantic_sha256": "e4faf376bba6200b21e3ea3173f571236a42811f29d7ef00d26efa76bfbf93a3"
               }
             },
             "transition": "unchanged",
@@ -12481,14 +14270,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/8",
-                "expanded_semantic_sha256": "1a926864b83440113d6a8442b3556a21e271a3fe0acb18e0e9155fb325d0c2c9"
+                "expanded_semantic_sha256": "e0ab54f4639ba74cb1a79593c36e54baa76654721344a38a95e148bac0c1e73f"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/7",
-                "expanded_semantic_sha256": "4919cb276ddbc775b61c014d5a83e35178ba5b78abbdcbd4435c41f7e479cb57"
+                "expanded_semantic_sha256": "3b79d14b58f585ac8e4fc558a2a35718a17f4c77d339742d8c8ac24e343245d5"
               }
             },
             "transition": "unchanged",
@@ -12500,14 +14289,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/10",
-                "expanded_semantic_sha256": "2b8b9aeb99c9ee7166250b7741141ac6e45a34103050c5e107e1ccc67b5fd30a"
+                "expanded_semantic_sha256": "95d7f774b65db7e5c15ff3927241d31e4c97cdc8de91332dfebae15c24baf94c"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/9",
-                "expanded_semantic_sha256": "87d1b0766b87008b6121627d73fdc16e274910ed4ea868ab97d2dad9bd1f833f"
+                "expanded_semantic_sha256": "628f1bba6339fee3d7fa8481025b456195def11df1dba1187ac7a3cc6d62f46b"
               }
             },
             "transition": "unchanged",
@@ -12519,14 +14308,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/0",
-                "expanded_semantic_sha256": "a953fd9803bb0477a32f47d00e03ff7c7212412295cc68751ff8e053aa110afa"
+                "expanded_semantic_sha256": "7a62da03f46cb627c4ff49dd616229e7c41147cadc69244d50153f5c6de4dfd0"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/0",
-                "expanded_semantic_sha256": "16325e17d61b782a884c5fe159ffa6ac561aa89a5a0e1a4ce0f86486e058015a"
+                "expanded_semantic_sha256": "1e64f7d9d3de7cbd4ed09270aff1c62b4a1e6948a9eeb39ae17c186366b41bf5"
               }
             },
             "transition": "unchanged",
@@ -12538,14 +14327,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/opening/checks/2",
-                "expanded_semantic_sha256": "40927ead7730465b7eeea2546b2c0187657197a2e585735b2f4858da597f861e"
+                "expanded_semantic_sha256": "2f87554e37220cccc0384ab1c9e902fde5e8f4eaab38c1e75d8476b7f6f25389"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/opening/checks/2",
-                "expanded_semantic_sha256": "82589e68113f502d1cb9c7af1071c95dd698ec0fcae56a8ff397bdd4b156a0a4"
+                "expanded_semantic_sha256": "4490c49dcde944eee522273364574ed42bb19555b78ff8dc7aaddfe3ac0bdd07"
               }
             },
             "transition": "unchanged",
@@ -12558,14 +14347,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/0",
-                "expanded_semantic_sha256": "58106f730e67fdf7aef8cf48ed43f9376859d56223721ae48c556d09050f5a9b"
+                "expanded_semantic_sha256": "2cb6a7c6b1b5530b4d0cc84db226f2c22d215737105e11d4e5e8295aaa525087"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/routes/checks/0",
-                "expanded_semantic_sha256": "2f0d71444f75723017a4b25f0a95f40eaf4ede2885872c67a63d07b5b1920533"
+                "expanded_semantic_sha256": "e8efc13c74c07ecae5d9c49d62fe01cb268072f9688b51fc9cd47df79767fc53"
               }
             },
             "transition": "unchanged",
@@ -12578,14 +14367,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/1",
-                "expanded_semantic_sha256": "2372071b61555720e5a7ef1189da5b3bd857ce99b4566fad68e2986492739ebc"
+                "expanded_semantic_sha256": "bbd320d0cc521ba64071271cf5744c41ba449ed53bc4c1f0a94338a3ed55c92d"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/routes/checks/1",
-                "expanded_semantic_sha256": "a497ad821cb41ddd532381e9f030c0fc613f4f7d8871940c93946edbf2a9790b"
+                "expanded_semantic_sha256": "3212410c5c6bf26c5c1dfc9df9c29273d0231cca240487f525e2c38eb5e024b6"
               }
             },
             "transition": "unchanged",
@@ -12598,7 +14387,7 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/2",
-                "expanded_semantic_sha256": "d20673a6eeee506d678b8ea42fe1ccd5a950178c366936a3d2090a3730f485f5"
+                "expanded_semantic_sha256": "8994a4ed36ec3843a7ae02bc1f44733f8dac88bd84f7cb0ce6d327bbbb09f925"
               }
             },
             "after": null,
@@ -12609,14 +14398,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/3",
-                "expanded_semantic_sha256": "09fc95185382856516eb0ea5655be5c0544554173a96c511806fc28ea572fef3"
+                "expanded_semantic_sha256": "dd47563e1696f690063eec332ec8d337bc914efb62a4229f806e9bc4b3f3a56f"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/routes/checks/2",
-                "expanded_semantic_sha256": "32f9cfa4e68a571f2be9c37c98fb5d80bf14762e2faec539dfa8aae3c41cf5b8"
+                "expanded_semantic_sha256": "16c99eba102fee73068226aaf0dba8100688c6ffed2f4ed81beea2212e31f6bc"
               }
             },
             "transition": "unchanged",
@@ -12629,14 +14418,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/4",
-                "expanded_semantic_sha256": "fecbdb31c66d643128cf4732c5841cca138fa1235ae2c6ac9cf08a58f3a78c76"
+                "expanded_semantic_sha256": "c6abe2150617705e70714155b2f6ce273e20c6e6bbca12f5fd1a92ad16cf2567"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/routes/checks/3",
-                "expanded_semantic_sha256": "405e0b64a832203833eecc7da614d26371712230cd73000d5b4550a937a5df8f"
+                "expanded_semantic_sha256": "4ab22464fdf501399f59d27d7229d52910d0d0e39fe865e1f428973c5baecd91"
               }
             },
             "transition": "unchanged",
@@ -12649,14 +14438,14 @@
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/draft/primary_metrics/routes/checks/5",
-                "expanded_semantic_sha256": "aa78f9f782e2f4b10cabd4cca73374571dae167a7c402cd018dc9b2808c29cfc"
+                "expanded_semantic_sha256": "5ae67c37953bc3a543e0189a36a2f0780f3c832e80043ce8a198d95842aa64b3"
               }
             },
             "after": {
               "$case_material_ref": {
                 "path": "report.json",
                 "pointer": "/groups/0/stages/final_primary/primary_metrics/routes/checks/4",
-                "expanded_semantic_sha256": "e9dac247eb635a82f7c84df3a9eea4f6ea90f5542b57485c863b2c7ad6774201"
+                "expanded_semantic_sha256": "bcef032d8355d188790f78864cbf01e74ec5ce8681e5b1f5df5f60bde34d1317"
               }
             },
             "transition": "unchanged",
@@ -12687,11 +14476,24 @@
       "status": "complete",
       "schema_version": "rtpeval_opening_report_1",
       "rules": {
-        "$case_material_ref": {
-          "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-          "pointer": "/components/opening/rules",
-          "expanded_semantic_sha256": "3db88619bc16740ffe73fb84169e03cfb83b0de0b9e4db71f807b2f5b9f1af6a"
-        }
+        "version": "rtpeval_opening_rules_4",
+        "intervals": "half_open",
+        "grace_seconds": 0,
+        "compliance_denominator": "PASS+FAIL",
+        "identity_scope": "required_excluded_fixed_time_1",
+        "current_window_days": 7,
+        "timestamp_fraction_digits": 6,
+        "unknown_time_is_closed": false,
+        "basis_order": [
+          "applicable_current",
+          "regular_for_unresolved_intervals"
+        ],
+        "special_date_without_schedule": "diagnostic_only",
+        "open_now": "query_instant_not_planned_visit",
+        "timezone": "independent_place_or_reviewed_context",
+        "missing_hours_fallback": "llm_access_reasonableness_2",
+        "public_landmark_intent": "ordinary_sightseeing_unless_restricted_activity",
+        "model_pass_is_verified_hours": false
       },
       "batch_id": "case-09-batch",
       "batch_revision": "1",
@@ -12732,11 +14534,41 @@
       "status": "complete",
       "schema_version": "rtpeval_route_report_1",
       "rules": {
-        "$case_material_ref": {
-          "path": "../../analysis/history/pre-current-20261018/evaluation/primary/report.json",
-          "pointer": "/components/routes/rules",
-          "expanded_semantic_sha256": "d93efe60c4b5a2c3f2c70f10ceb0d1657c4a7603d9102d3cae9f4c46292e0cc7"
-        }
+        "version": "rtpeval_route_rules_2",
+        "duration_caps_seconds": {
+          "WALK": 2700,
+          "TRANSIT": 2700,
+          "DRIVE": 1800
+        },
+        "duration_cap_tolerance_seconds": 300,
+        "walk_distance_cap_meters": 3000,
+        "distance_tolerance_meters": 0,
+        "drive_reserve_seconds": 600,
+        "hard_boundary_tolerance_seconds": 0,
+        "next_visit_tolerance_seconds": 300,
+        "default_departure": "longest_continuous_fragment_then_earliest",
+        "duration_precision": "integer_nanoseconds",
+        "query_timestamp_fraction_digits": 6,
+        "default_query_options": {
+          "WALK": {
+            "time_basis": "time_independent",
+            "routing_options": {}
+          },
+          "TRANSIT": {
+            "time_basis": "explicit_departure",
+            "routing_options": {}
+          },
+          "DRIVE": {
+            "time_basis": "time_independent",
+            "routing_options": {
+              "routing_preference": "TRAFFIC_UNAWARE"
+            }
+          }
+        },
+        "transport": "v0_activity_v1_v3_transfer",
+        "unbound_v0_transport": "declared_activity_clock_establishes_occupancy_without_route_identity",
+        "partial_proven_failure": "FAIL",
+        "conditional_compliance": "PASS/(PASS+FAIL)"
       },
       "rules_hash": "d93efe60c4b5a2c3f2c70f10ceb0d1657c4a7603d9102d3cae9f4c46292e0cc7",
       "diagnostics": [],
@@ -13934,11 +15766,28 @@
       {
         "request_key": "fe878166038e23077c5a90aa76037da053794d10fdf4a3e8b2d85610ba6a2387",
         "origin": {
-          "$case_material_ref": {
-            "path": "report.json",
-            "pointer": "/components/routes/coordinate_preparation/records/0/observations/0/acquisition_origin",
-            "expanded_semantic_sha256": "a85ab1fe7d72fbd3007da9845d0f03e5ec15d7158027f7cc2eb65e4013c72678"
-          }
+          "http_event_id": "654cc9285cd245598402179e407f003e",
+          "kind": "planner_generation",
+          "native_provenance_sha256": "f92f29fb63125491faf7c1b39ead42726d2792c4598ec7f17fe07dad83a70839",
+          "observation_time_basis": "run_capture_window",
+          "required_fields": [
+            "businessStatus",
+            "currentOpeningHours",
+            "displayName",
+            "formattedAddress",
+            "id",
+            "location",
+            "regularOpeningHours",
+            "timeZone"
+          ],
+          "response_representation": "credential_filtered_utf8",
+          "selected_provenance_sha256": "dd8162024914987b15e5c81fbd8c8c0c049292c04231ad5ab3304698fb1880c4",
+          "source_field_mask": "id,displayName,location,formattedAddress,primaryType,businessStatus,openingDate,timeZone,currentOpeningHours,regularOpeningHours,rating,websiteUri,priceLevel,priceRange,accessibilityOptions",
+          "source_files_sha256": "e880f7ea92170bd6018d6a90199017eb527f3409abaa26d93cb4de2b661064fe",
+          "source_language_code": "en",
+          "source_path": "s1",
+          "source_run_id": "case-09-v3-r1",
+          "source_url": "https://places.googleapis.com/v1/places/ChIJ1d8x9UWLGGARlBR79HRq4eg?languageCode=en"
         },
         "status": "available"
       }

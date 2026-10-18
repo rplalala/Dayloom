@@ -331,8 +331,10 @@ The coordinator stays in the main worktree; five workers own disjoint case queue
 [Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
 owns case-01 workflow acceptance. The active set has 12 requests in four groups of three, following the
 user-approved 16 October 2026 selection revision. Former case-14 becomes case-12
-and former 12/13/15 are retired unexecuted. Case-01–07 retain their original inputs,
-generation, primary results and researcher acceptance. Their current V3 paired views
+and former 12/13/15 are retired unexecuted. Cases 01–03/06 retain their selected data.
+Case-07 retains its accepted generation
+and scores with its canonical input aligned to accepted revision 2. Earlier
+researcher decisions remain source-bound when current material is replaced. Their V3 paired views
 and case-09's paired view were separately refreshed under the common access policy on
 17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
 owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
@@ -343,13 +345,17 @@ tracks publication and preserved validation limits. The
 benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
 locates researcher decisions, exact datasets and stated limitations. The authorized
 18 October [current-data replacement](docs/records/evaluation/accepted-case-compatibility.md#current-data-replacement)
-promotes case-09's new V0/V1 and case-11's new V3 with matched fresh Primary;
-unchanged donor outputs retain their exact sources. Their case reports identify
-dependent-analysis gaps, while former selections and native evidence remain preserved.
+directly updates 04/05/09/11, including the five missing generations, fresh 04/05
+Primary and 04/05/11 independent pairs. Current candidate/relevance/Repair/resource
+views and canonical inputs are aligned. Unchanged donors retain their exact sources;
+case-09's pair is explicitly retained on its historical runtime and unchanged V3.
+Only one current public dataset is kept; former native evidence and Git history remain
+immutable. Updated material does not silently extend researcher acceptance.
 Case-05 revision 3 /
 input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
 on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
-verification. Original inputs, selected results and private archives remain unchanged.
+verification. That historical selection remains in immutable native archives; the current
+26–30 October dataset is identified by the replacement above.
 [Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
 including UNKNOWN and producer-runtime replay limits. Blinded human assessment
 remains deferred. Git publication remains separately authorized; the retired former

@@ -1,0 +1,28 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/transfers",
+      "expanded_semantic_sha256": "b11d3ba2e85443c963c2397769010219136d8af246993b13bd6002909cd16dfb"
+    }
+  },
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/route_diagnostics",
+      "expanded_semantic_sha256": "493585570178d2b8fb9fe8ff446127e09569ea05c0c2563543ab264ea5b3cf61"
+    }
+  },
+  "reference_recommendations": [],
+  "destination": "Singapore",
+  "start_date": "2026-10-24",
+  "end_date": "2026-10-25",
+  "days": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/days",
+      "expanded_semantic_sha256": "98cb3cea7da1ae0ac561df2a347128346346631b3a959d7aaa527e88f1f08d48"
+    }
+  }
+}

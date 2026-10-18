@@ -358,16 +358,16 @@
       "source_place_id": "ChIJV4WwpsmMGGARWuGtovJT4VU",
       "reason": "Park near Meiji Jingu (approximately 337 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "1-1 Yoyogikamizonoch\u014d, Shibuya, Tokyo 151-8557, Japan",
+      "area": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-6685deab-35c1-4d6b-a801-5e780ecf5a63:0"
     },
     {
-      "place_name": "Excelsior Caff\u00e9 Tokyo Opera City",
+      "place_name": "Excelsior Caffé Tokyo Opera City",
       "source_place_id": "ChIJYQxU7S3zGGARbi0hbdTY-28",
       "reason": "Cafe near Tokyo Opera City Art Gallery (approximately 14 m straight-line).",
       "associated_day": "2026-10-22",
-      "area": "Japan, \u3012163-1401 Tokyo, Shinjuku City, Nishishinjuku, 3-ch\u014dme\u221220\u2212\uff12 \u6771\u4eac\u30aa\u30da\u30e9\u30b7\u30c6\u30a3 \uff11\uff26",
+      "area": "Japan, 〒163-1401 Tokyo, Shinjuku City, Nishishinjuku, 3-chōme−20−２ 東京オペラシティ １Ｆ",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-54fbfe25-b72c-4251-9a9b-11b7356a0cda:1"
     },
@@ -376,7 +376,7 @@
       "source_place_id": "ChIJq6op05yOGGARACPQil8rZ74",
       "reason": "Museum near Tokyo National Museum (approximately 44 m straight-line).",
       "associated_day": "2026-10-23",
-      "area": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
+      "area": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
       "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
       "source_ref": "google_places_nearby:nearby-e8f6ab26-c337-4a74-8edb-86f81f34e9fd:1"
     }
@@ -395,7 +395,7 @@
           "title": "Visit Meiji Jingu",
           "place_name": "Meiji Jingu",
           "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
-          "location": "1-1 Yoyogikamizonoch\u014d, Shibuya, Tokyo 151-8557, Japan",
+          "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
           "start_time": "2026-10-22T10:30:00+09:00",
           "end_time": "2026-10-22T11:45:00+09:00",
           "estimated_cost": null,
@@ -408,7 +408,7 @@
           "title": "Visit Tokyo Opera City Art Gallery",
           "place_name": "Tokyo Opera City Art Gallery",
           "source_place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
-          "location": "3-ch\u014dme-20-2 Nishishinjuku, Shinjuku City, Tokyo 163-1403, Japan",
+          "location": "3-chōme-20-2 Nishishinjuku, Shinjuku City, Tokyo 163-1403, Japan",
           "start_time": "2026-10-22T13:00:00+09:00",
           "end_time": "2026-10-22T14:30:00+09:00",
           "estimated_cost": null,
@@ -426,11 +426,11 @@
           "title": "Visit Tokyo National Museum",
           "place_name": "Tokyo National Museum",
           "source_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
-          "location": "13-9 Uenok\u014den, Taito City, Tokyo 110-8712, Japan",
+          "location": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
           "start_time": "2026-10-23T10:00:00+09:00",
           "end_time": "2026-10-23T13:00:00+09:00",
           "estimated_cost": null,
-          "notes": "Current Places hours indicate 09:30\u201320:00; a date-specific exception is unknown."
+          "notes": "Current Places hours indicate 09:30–20:00; a date-specific exception is unknown."
         },
         {
           "activity_kind": "main_poi",
@@ -454,10 +454,10 @@
           "activity_kind": "main_poi",
           "time_use": "scheduled",
           "activity_id": "tokyo-20261024-01",
-          "title": "Visit Sens\u014d-ji",
-          "place_name": "Sens\u014d-ji",
+          "title": "Visit Sensō-ji",
+          "place_name": "Sensō-ji",
           "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
-          "location": "2-ch\u014dme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+          "location": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
           "start_time": "2026-10-24T10:30:00+09:00",
           "end_time": "2026-10-24T12:00:00+09:00",
           "estimated_cost": null,
@@ -470,11 +470,11 @@
           "title": "Visit Tokyo Skytree",
           "place_name": "Tokyo Skytree",
           "source_place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
-          "location": "1-ch\u014dme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+          "location": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
           "start_time": "2026-10-24T13:15:00+09:00",
           "end_time": "2026-10-24T14:45:00+09:00",
           "estimated_cost": null,
-          "notes": "Regular weekly hours are listed as 09:00\u201322:00; date-specific exceptions are not established."
+          "notes": "Regular weekly hours are listed as 09:00–22:00; date-specific exceptions are not established."
         }
       ]
     },
@@ -488,11 +488,11 @@
           "title": "Visit Hamarikyu Gardens",
           "place_name": "Hamarikyu Gardens",
           "source_place_id": "ChIJwfegutyLGGARGjiY-L2eSps",
-          "location": "1-1 Hamariky\u016bteien, Chuo City, Tokyo 104-0046, Japan",
+          "location": "1-1 Hamarikyūteien, Chuo City, Tokyo 104-0046, Japan",
           "start_time": "2026-10-25T09:30:00+09:00",
           "end_time": "2026-10-25T11:15:00+09:00",
           "estimated_cost": null,
-          "notes": "Regular weekly hours are listed as 09:00\u201317:00; date-specific exceptions are not established."
+          "notes": "Regular weekly hours are listed as 09:00–17:00; date-specific exceptions are not established."
         },
         {
           "activity_kind": "main_poi",
@@ -501,11 +501,11 @@
           "title": "Visit Tokyo Tower",
           "place_name": "Tokyo Tower",
           "source_place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
-          "location": "4-ch\u014dme-2-8 Shibak\u014den, Minato City, Tokyo 105-0011, Japan",
+          "location": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
           "start_time": "2026-10-25T12:15:00+09:00",
           "end_time": "2026-10-25T13:45:00+09:00",
           "estimated_cost": null,
-          "notes": "Regular weekly hours are listed as 09:00\u201323:00; date-specific exceptions are not established."
+          "notes": "Regular weekly hours are listed as 09:00–23:00; date-specific exceptions are not established."
         }
       ]
     },
@@ -519,11 +519,11 @@
           "title": "Visit Shibuya Sky",
           "place_name": "Shibuya Sky",
           "source_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
-          "location": "Japan, \u3012150-6145 Tokyo, Shibuya, 2-ch\u014dme\u221224\u2212\uff11\uff12 \u30b9\u30af\u30e9\u30f3\u30d6\u30eb\u30b9\u30af\u30a8\u30a2 14\u968e\u30fb45\u968e 46\u968e\u30fb\u5c4b\u4e0a",
+          "location": "Japan, 〒150-6145 Tokyo, Shibuya, 2-chōme−24−１２ スクランブルスクエア 14階・45階 46階・屋上",
           "start_time": "2026-10-26T10:30:00+09:00",
           "end_time": "2026-10-26T12:00:00+09:00",
           "estimated_cost": null,
-          "notes": "Regular weekly hours are listed as 10:00\u201322:30; date-specific exceptions are not established."
+          "notes": "Regular weekly hours are listed as 10:00–22:30; date-specific exceptions are not established."
         }
       ]
     }

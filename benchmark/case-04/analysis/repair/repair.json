@@ -1,0 +1,2580 @@
+{
+  "search_version": 1,
+  "selected_round_index": 1,
+  "selected_semantic_assessments": [
+    {
+      "place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+      "visit_object": "Merlion Park",
+      "role": "attraction",
+      "categories": [
+        "landmark",
+        "waterfront"
+      ],
+      "reason": "A named waterfront landmark and park, fitting major city sights.",
+      "evidence_refs": [
+        "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+      "visit_object": "Suntec City",
+      "role": "attraction",
+      "categories": [
+        "shopping",
+        "urban_complex"
+      ],
+      "reason": "A named shopping mall and city complex; it is a city venue, though no specific garden or view feature is supplied.",
+      "evidence_refs": [
+        "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+      "visit_object": "Downtown Core",
+      "role": "unresolved",
+      "categories": [
+        "urban_area"
+      ],
+      "reason": "The name identifies a district rather than a specific visit object or attraction.",
+      "evidence_refs": [
+        "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+      "visit_object": "Mediterranean Garden",
+      "role": "attraction",
+      "categories": [
+        "garden"
+      ],
+      "reason": "The supplied name identifies a garden, fitting the garden preference.",
+      "evidence_refs": [
+        "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+      "visit_object": "Marina Barrage",
+      "role": "attraction",
+      "categories": [
+        "recreation",
+        "waterfront"
+      ],
+      "reason": "A named public recreational site at Marina Barrage, suitable as a city-side sightseeing stop.",
+      "evidence_refs": [
+        "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+      "visit_object": "Gardens by the Bay",
+      "role": "attraction",
+      "categories": [
+        "garden",
+        "urban_landmark"
+      ],
+      "reason": "A named garden and major city attraction, directly fitting the preference.",
+      "evidence_refs": [
+        "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+      "visit_object": "Singapore Botanic Gardens",
+      "role": "attraction",
+      "categories": [
+        "botanical_garden"
+      ],
+      "reason": "A named botanical garden, directly fitting the garden preference.",
+      "evidence_refs": [
+        "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+      "visit_object": "Singapore Flyer",
+      "role": "attraction",
+      "categories": [
+        "observation",
+        "landmark"
+      ],
+      "reason": "A named observation wheel, fitting major city sights and views.",
+      "evidence_refs": [
+        "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+      "visit_object": "National Gallery Singapore",
+      "role": "attraction",
+      "categories": [
+        "art_museum",
+        "culture"
+      ],
+      "reason": "A named art museum and city sightseeing destination.",
+      "evidence_refs": [
+        "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+      "visit_object": "Buddha Tooth Relic Temple",
+      "role": "attraction",
+      "categories": [
+        "temple",
+        "culture"
+      ],
+      "reason": "A named temple and cultural city sight.",
+      "evidence_refs": [
+        "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+      "visit_object": "Fort Canning Park",
+      "role": "attraction",
+      "categories": [
+        "park",
+        "heritage"
+      ],
+      "reason": "A named city park and sightseeing location.",
+      "evidence_refs": [
+        "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+      "visit_object": "Singapore Zoo",
+      "role": "attraction",
+      "categories": [
+        "zoo",
+        "wildlife"
+      ],
+      "reason": "A named zoo, but the supplied facts do not connect it to gardens, city sights, or views.",
+      "evidence_refs": [
+        "google_places:ChIJr9wqENkT2jERkRs7pMj6FLQ"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJr9wqENkT2jERkRs7pMj6FLQ"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+      "visit_object": "Adam Food Centre",
+      "role": "non_main",
+      "categories": [
+        "food_centre",
+        "dining"
+      ],
+      "reason": "A restaurant/food venue, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJv4Mk4QYa2jERlGncaOIvpW4"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJv4Mk4QYa2jERlGncaOIvpW4"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+      "visit_object": "National Parks Board",
+      "role": "unresolved",
+      "categories": [
+        "organization",
+        "tourism_listing"
+      ],
+      "reason": "The organization name conflicts with the broad tourist-attraction type; supplied facts do not establish whether the visit object is an office, organization, or attraction.",
+      "evidence_refs": [
+        "google_places:ChIJc-qInBwa2jERpyqg4OcodwA"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJc-qInBwa2jERpyqg4OcodwA"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+      "visit_object": "Boon Tong Kee Restaurant",
+      "role": "non_main",
+      "categories": [
+        "restaurant",
+        "chinese_cuisine"
+      ],
+      "reason": "A named restaurant, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJ7wTBRt8Z2jERQO-YNjVAXyI"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ7wTBRt8Z2jERQO-YNjVAXyI"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+      "visit_object": "Newton Food Centre",
+      "role": "non_main",
+      "categories": [
+        "food_centre",
+        "dining"
+      ],
+      "reason": "A named food court, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJe4wL_OsZ2jERySoDk6jlhNQ"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJe4wL_OsZ2jERySoDk6jlhNQ"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+      "visit_object": "Night Safari",
+      "role": "attraction",
+      "categories": [
+        "wildlife",
+        "nighttime"
+      ],
+      "reason": "A named wildlife attraction, but no supplied fact connects it to gardens, city sights, or views.",
+      "evidence_refs": [
+        "google_places:ChIJ9xUuiNcT2jER49FS2OpE8W8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ9xUuiNcT2jER49FS2OpE8W8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+      "visit_object": "River Wonders",
+      "role": "attraction",
+      "categories": [
+        "wildlife",
+        "river"
+      ],
+      "reason": "A named wildlife park, but no supplied fact connects it to gardens, city sights, or views.",
+      "evidence_refs": [
+        "google_places:ChIJxZfX_9gT2jERknwK8es7IHU"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJxZfX_9gT2jERknwK8es7IHU"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+      "visit_object": "Bugis Street Food",
+      "role": "non_main",
+      "categories": [
+        "food",
+        "fast_food"
+      ],
+      "reason": "A food venue, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJKYL-X7oZ2jER_dORqR3YUa8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJKYL-X7oZ2jER_dORqR3YUa8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+      "visit_object": "National Museum of Singapore",
+      "role": "attraction",
+      "categories": [
+        "museum",
+        "history"
+      ],
+      "reason": "A named museum and city sightseeing destination.",
+      "evidence_refs": [
+        "google_places:ChIJD1u-EaMZ2jERaLhNfFkR45I"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJD1u-EaMZ2jERaLhNfFkR45I"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+      "visit_object": "Raffles Singapore",
+      "role": "non_main",
+      "categories": [
+        "hotel",
+        "accommodation"
+      ],
+      "reason": "A hotel, not a primary sightseeing attraction based on the supplied facts.",
+      "evidence_refs": [
+        "google_places:ChIJwUTKu6UZ2jERwt5ctkU4f2Q"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJwUTKu6UZ2jERwt5ctkU4f2Q"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+      "visit_object": "The Helix Bridge",
+      "role": "attraction",
+      "categories": [
+        "bridge",
+        "landmark"
+      ],
+      "reason": "A named city landmark and potential sightseeing stop.",
+      "evidence_refs": [
+        "google_places:ChIJT4AHFwcZ2jERDJbPVLTEbOk"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJT4AHFwcZ2jERDJbPVLTEbOk"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+      "visit_object": "SkyPark Observation Deck",
+      "role": "attraction",
+      "categories": [
+        "observation",
+        "viewpoint"
+      ],
+      "reason": "A named observation deck, fitting the preference for city views.",
+      "evidence_refs": [
+        "google_places:ChIJOeEf9S2vewIRM0B9a06CKwg"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJOeEf9S2vewIRM0B9a06CKwg"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+      "visit_object": "Enjoy Eating House and Bar",
+      "role": "non_main",
+      "categories": [
+        "restaurant",
+        "bar"
+      ],
+      "reason": "A restaurant and bar, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJzToAJoAZ2jERJPijXPaKjR8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJzToAJoAZ2jERJPijXPaKjR8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+      "visit_object": "Two Chefs Eating Place",
+      "role": "non_main",
+      "categories": [
+        "restaurant",
+        "chinese_cuisine"
+      ],
+      "reason": "A named restaurant, not a primary sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJG9GVwT8a2jERvxDHau3hggQ"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJG9GVwT8a2jERvxDHau3hggQ"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    }
+  ],
+  "soft_pace": {
+    "objective": "zero_soft_pace_deductions",
+    "is_failure_constraint": false,
+    "comparable": {
+      "dates": [
+        "2026-10-24",
+        "2026-10-25"
+      ],
+      "before_total": 30.0,
+      "after_total": 0.0
+    },
+    "before": {
+      "mean_penalty": 15.0,
+      "days": [
+        {
+          "date": "2026-10-24",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-25",
+          "penalty": 30.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "after": {
+      "mean_penalty": 0.0,
+      "days": [
+        {
+          "date": "2026-10-24",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-25",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "target_state": "reached"
+  },
+  "pending_groups": [],
+  "effective_patch": {
+    "edits": [
+      {
+        "operation": "delete",
+        "activity_id": "sg-20261025-merlion",
+        "date": "2026-10-25",
+        "place_id": null,
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "target_dispositions": []
+  },
+  "components": [
+    {
+      "component_id": "component_1",
+      "edit_indices": [
+        0
+      ],
+      "dependencies": [
+        [
+          "activity",
+          "sg-20261025-merlion"
+        ],
+        [
+          "compensation",
+          "finding_23"
+        ],
+        [
+          "date",
+          "2026-10-25"
+        ],
+        [
+          "obligation",
+          "ChIJBTYg1g4Z2jERp_MBbu5erWY"
+        ],
+        [
+          "target",
+          "finding_23"
+        ]
+      ],
+      "status": "accepted",
+      "proposal": {
+        "output_version": "itinerary_3",
+        "transfers": {
+          "$case_material_ref": {
+            "path": "../../generation/v3/itinerary.json",
+            "pointer": "/transfers",
+            "expanded_semantic_sha256": "b11d3ba2e85443c963c2397769010219136d8af246993b13bd6002909cd16dfb"
+          }
+        },
+        "route_diagnostics": {
+          "$case_material_ref": {
+            "path": "draft.json",
+            "pointer": "/route_diagnostics",
+            "expanded_semantic_sha256": "7ae98fa0ce7eaf6df866d334b565f7ca5f330d2ce761b4ce85e875ec0bb81a21"
+          }
+        },
+        "reference_recommendations": [],
+        "destination": "Singapore",
+        "start_date": "2026-10-24",
+        "end_date": "2026-10-25",
+        "days": {
+          "$case_material_ref": {
+            "path": "../../generation/v3/itinerary.json",
+            "pointer": "/days",
+            "expanded_semantic_sha256": "98cb3cea7da1ae0ac561df2a347128346346631b3a959d7aaa527e88f1f08d48"
+          }
+        }
+      },
+      "comparison": {
+        "accepted": true,
+        "reason": "verifiable_arrangement_improvement",
+        "progress": [
+          {
+            "finding_id": "finding_23",
+            "check": "soft_pace",
+            "outcome": "resolved",
+            "before": 30.0,
+            "after": 0.0
+          }
+        ],
+        "coverage_regressions": [
+          "2026-10-25"
+        ],
+        "business_values": [
+          {
+            "finding_id": "finding_23",
+            "check": "soft_pace",
+            "obligation_removed": false,
+            "meaning": "comparable_business_condition",
+            "before": 30.0,
+            "after": 0.0,
+            "before_distinct_main": null,
+            "after_distinct_main": null
+          }
+        ]
+      },
+      "report": {
+        "$case_material_ref": {
+          "path": "validation.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "7a054f766e097abf08d83ae1f661665d86b3f47928a394d1537ff03d96a20d0b"
+        }
+      },
+      "spatial": {
+        "accepted": true,
+        "reasons": [],
+        "legs": [],
+        "daily": [],
+        "mode": "WALK",
+        "mode_basis": "structured"
+      },
+      "input_state_sha256": "c6db205d46db04e767b3bda34cc69e9e73f57e560ee2eb9a08c05ba030fb9d3c",
+      "budget_before": {
+        "deterministic_attempts": 1
+      },
+      "main_visits_lost": [
+        "sg-20261025-merlion"
+      ],
+      "changed_activity_ids": [],
+      "reason": "verifiable_component_improvement",
+      "budget_after": {
+        "deterministic_attempts": 1
+      },
+      "elapsed_seconds": 0.01599999999962165
+    }
+  ],
+  "acquisition_audit": [],
+  "feedback_kind": "arrangement_improved",
+  "material_fingerprint": null,
+  "empty_proposal_guard": {},
+  "presentation_history": [],
+  "conflict_records": [],
+  "related_targets": [
+    {
+      "permission": {
+        "target_id": "related:finding_23:2026-10-25",
+        "parent_id": "finding_23",
+        "date": "2026-10-25",
+        "trigger_activity_ids": [
+          "sg-20261025-merlion",
+          "sg-20261025-temple",
+          "sg-20261025-gallery",
+          "sg-20261025-fort-canning"
+        ],
+        "minimum_count": 2,
+        "allow_partial": false,
+        "reason": "review_compensation",
+        "removable_place_ids": []
+      },
+      "activated_by": [
+        "sg-20261025-merlion"
+      ],
+      "affected_adjacency": [
+        [
+          "sg-20261025-temple",
+          "sg-20261025-gallery"
+        ],
+        [
+          "sg-20261025-gallery",
+          "sg-20261025-fort-canning"
+        ]
+      ],
+      "before": 4,
+      "after": 3,
+      "status": "resolved"
+    }
+  ],
+  "schedule": {
+    "windows": [],
+    "blank_windows": [],
+    "day_windows": [
+      {
+        "root_activity_id": "calendar:2026-10-24",
+        "start": "2026-10-24T00:00:00+08:00",
+        "end": "2026-10-25T00:00:00+08:00",
+        "source": "existing_day_calendar_gaps"
+      },
+      {
+        "root_activity_id": "calendar:2026-10-25",
+        "start": "2026-10-25T00:00:00+08:00",
+        "end": "2026-10-26T00:00:00+08:00",
+        "source": "existing_day_calendar_gaps"
+      }
+    ],
+    "lineage": {},
+    "fixed": [],
+    "unresolved_dates": [],
+    "classifications": [],
+    "occupied_transfers": []
+  },
+  "window_adjustments": [],
+  "status": "ACCEPTED_COMPLETE",
+  "reason": "authorized_targets_complete",
+  "model_attempted": false,
+  "original": {
+    "$case_material_ref": {
+      "path": "draft.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "2db9d59130eb61af343c12b9c0d5c6276d5996cdaf3e29007703d195f71ad12f"
+    }
+  },
+  "final": {
+    "$case_material_ref": {
+      "path": "repair.json",
+      "pointer": "/components/0/proposal",
+      "expanded_semantic_sha256": "573816236ad927d4e6cdc7718ef4b02a07cac7cfe0754bf34efb10092b3ef347"
+    }
+  },
+  "original_report": {
+    "$case_material_ref": {
+      "path": "original-validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "f7f03e8b3eb80104f7cbc1b14a8c6af1e24d6bef39ca8c2d5e60f05772a98cfe"
+    }
+  },
+  "reassessed_original_report": {
+    "contract_version": "v3_validation_1",
+    "diagnostics": {
+      "$case_material_ref": {
+        "path": "original-validation.json",
+        "pointer": "/diagnostics",
+        "expanded_semantic_sha256": "581e474705cd49868cb4f30b0aa4b60e1faae05d67c1ade087cde25fb6b80af7"
+      }
+    },
+    "findings": [
+      {
+        "finding_id": "finding_1",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-botanic-gardens"
+        ],
+        "place_ids": [
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+              "source_ref": "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o",
+              "retrieved_at": "2026-10-18T04:44:01.937036+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-24T05:00:00",
+                  "2026-10-25T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-18",
+              "source_window_end": "2026-10-24"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_2",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-botanic-gardens"
+        ],
+        "place_ids": [
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_3",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-flyer"
+        ],
+        "place_ids": [
+          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+              "source_ref": "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8",
+              "retrieved_at": "2026-10-18T04:44:02.245172+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-24T10:00:00",
+                  "2026-10-24T22:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-18",
+              "source_window_end": "2026-10-24"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_4",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-flyer"
+        ],
+        "place_ids": [
+          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_5",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-gardens-bay"
+        ],
+        "place_ids": [
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "source_ref": "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "retrieved_at": "2026-10-18T04:44:01.638836+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-24T00:00:00",
+                  "2026-10-24T02:00:00"
+                ],
+                [
+                  "2026-10-24T05:00:00",
+                  "2026-10-25T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-18",
+              "source_window_end": "2026-10-24"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_6",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-gardens-bay"
+        ],
+        "place_ids": [
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_7",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-merlion"
+        ],
+        "place_ids": [
+          "ChIJBTYg1g4Z2jERp_MBbu5erWY"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+              "source_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY",
+              "retrieved_at": "2026-10-18T04:43:57.861754+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-25T00:00:00",
+                  "2026-10-26T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_8",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-merlion"
+        ],
+        "place_ids": [
+          "ChIJBTYg1g4Z2jERp_MBbu5erWY"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_9",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-temple"
+        ],
+        "place_ids": [
+          "ChIJ0bwmznIZ2jEREOCMNggtIBk"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+              "source_ref": "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk",
+              "retrieved_at": "2026-10-18T04:44:02.820795+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-25T07:00:00",
+                  "2026-10-25T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_10",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-temple"
+        ],
+        "place_ids": [
+          "ChIJ0bwmznIZ2jEREOCMNggtIBk"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_11",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-gallery"
+        ],
+        "place_ids": [
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "source_ref": "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U",
+              "retrieved_at": "2026-10-18T04:44:02.522918+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-25T10:00:00",
+                  "2026-10-25T19:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_12",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-gallery"
+        ],
+        "place_ids": [
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_13",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-fort-canning"
+        ],
+        "place_ids": [
+          "ChIJVSYjJKIZ2jERpRFinATD52s"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+              "source_ref": "google_places:ChIJVSYjJKIZ2jERpRFinATD52s",
+              "retrieved_at": "2026-10-18T04:44:03.128905+00:00",
+              "timezone": "Asia/Singapore",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-25T00:00:00",
+                  "2026-10-26T00:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_14",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-fort-canning"
+        ],
+        "place_ids": [
+          "ChIJVSYjJKIZ2jERpRFinATD52s"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_15",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "sg-20261024-botanic-gardens",
+          "sg-20261024-flyer"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 3300.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 2341,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "TRANSIT",
+              "routing_preference": null,
+              "departure_time": "2026-10-24T10:00:00+08:00",
+              "requested_at": "2026-10-18T04:45:00.473906+00:00",
+              "retrieved_at": "2026-10-18T04:45:00.873986+00:00",
+              "basis": "time_applicable",
+              "element": {
+                "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+                "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2341,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:45:00.473906Z",
+                "retrieved_at": "2026-10-18T04:45:00.873986Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 8216,
+                "duration_seconds": 2341,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 2341,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "TRANSIT",
+              "routing_preference": null,
+              "departure_time": "2026-10-24T10:00:00+08:00",
+              "requested_at": "2026-10-18T04:45:00.473906+00:00",
+              "retrieved_at": "2026-10-18T04:45:00.873986+00:00",
+              "basis": "time_applicable",
+              "element": {
+                "origin_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+                "destination_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2341,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:45:00.473906Z",
+                "retrieved_at": "2026-10-18T04:45:00.873986Z",
+                "origin_index": 0,
+                "destination_index": 0,
+                "distance_meters": 8216,
+                "duration_seconds": 2341,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_16",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "sg-20261024-flyer",
+          "sg-20261024-gardens-bay"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 2700.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1466,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "destination_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1466,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 3,
+                "destination_index": 0,
+                "distance_meters": 1720,
+                "duration_seconds": 1466,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1466,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+                "destination_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1466,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 3,
+                "destination_index": 0,
+                "distance_meters": 1720,
+                "duration_seconds": 1466,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_17",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "sg-20261025-merlion",
+          "sg-20261025-temple"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 2100.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1394,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                "destination_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1394,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 1,
+                "destination_index": 5,
+                "distance_meters": 1658,
+                "duration_seconds": 1394,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1394,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+                "destination_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1394,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 1,
+                "destination_index": 5,
+                "distance_meters": 1658,
+                "duration_seconds": 1394,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_18",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "sg-20261025-temple",
+          "sg-20261025-gallery"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 2100.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1248,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                "destination_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1248,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 5,
+                "destination_index": 4,
+                "distance_meters": 1484,
+                "duration_seconds": 1248,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1248,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+                "destination_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1248,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 5,
+                "destination_index": 4,
+                "distance_meters": 1484,
+                "duration_seconds": 1248,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_19",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "sg-20261025-gallery",
+          "sg-20261025-fort-canning"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 1800.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1019,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+                "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1019,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 4,
+                "destination_index": 6,
+                "distance_meters": 1119,
+                "duration_seconds": 1019,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1019,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-18T04:44:30.356668+00:00",
+              "retrieved_at": "2026-10-18T04:44:31.025181+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+                "destination_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1019,
+                "fallback_info": null,
+                "requested_at": "2026-10-18T04:44:30.356668Z",
+                "retrieved_at": "2026-10-18T04:44:31.025181Z",
+                "origin_index": 4,
+                "destination_index": 6,
+                "distance_meters": 1119,
+                "duration_seconds": 1019,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_20",
+        "check": "budget",
+        "status": "UNKNOWN",
+        "reason": "verified_party_currency_cost_coverage_not_supported",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_21",
+        "check": "semantic_requirements",
+        "status": "UNKNOWN",
+        "reason": "open_semantics_not_executable_predicates",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [
+          "semantic_1",
+          "semantic_2",
+          "semantic_3"
+        ],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_22",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "sg-20261024-botanic-gardens",
+          "sg-20261024-flyer",
+          "sg-20261024-gardens-bay"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 3,
+          "zero_counts": [
+            2,
+            3
+          ],
+          "policy": {
+            "date": null,
+            "profile": "rich",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "a fairly full itinerary",
+                "occurrence": 0,
+                "start": 68,
+                "end": 91,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_23",
+        "check": "soft_pace",
+        "status": "NEEDS_REVIEW",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "sg-20261025-merlion",
+          "sg-20261025-temple",
+          "sg-20261025-gallery",
+          "sg-20261025-fort-canning"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 30.0,
+        "adopted_evidence": {
+          "count": 4,
+          "zero_counts": [
+            2,
+            3
+          ],
+          "policy": {
+            "date": null,
+            "profile": "rich",
+            "exact_count": null,
+            "source_refs": [
+              {
+                "quote": "a fairly full itinerary",
+                "occurrence": 0,
+                "start": 68,
+                "end": 91,
+                "match_mode": "exact"
+              }
+            ]
+          },
+          "is_failure_constraint": false
+        }
+      }
+    ],
+    "place_use_observations": [
+      {
+        "place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+        "primary_type": "buddhist_temple",
+        "source_ref": "google_places:ChIJ0bwmznIZ2jEREOCMNggtIBk"
+      },
+      {
+        "place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+        "primary_type": "park",
+        "source_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+      },
+      {
+        "place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+        "primary_type": "art_museum",
+        "source_ref": "google_places:ChIJFQzeR6cZ2jERgM6--iWeY-U"
+      },
+      {
+        "place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+        "primary_type": "garden",
+        "source_ref": "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+      },
+      {
+        "place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+        "primary_type": "park",
+        "source_ref": "google_places:ChIJVSYjJKIZ2jERpRFinATD52s"
+      },
+      {
+        "place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+        "primary_type": "botanical_garden",
+        "source_ref": "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+      },
+      {
+        "place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+        "primary_type": "ferris_wheel",
+        "source_ref": "google_places:ChIJzVHFNqkZ2jERboLN2YrltH8"
+      }
+    ],
+    "improvement_targets": [
+      {
+        "finding_id": "finding_23",
+        "basis": "review_policy"
+      }
+    ],
+    "scope": "read_only_partial_validation"
+  },
+  "proposed_report": {
+    "$case_material_ref": {
+      "path": "validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "7a054f766e097abf08d83ae1f661665d86b3f47928a394d1537ff03d96a20d0b"
+    }
+  },
+  "adopted_report": {
+    "$case_material_ref": {
+      "path": "validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "7a054f766e097abf08d83ae1f661665d86b3f47928a394d1537ff03d96a20d0b"
+    }
+  },
+  "acquired_routes": [],
+  "target_progress": [
+    {
+      "finding_id": "finding_23",
+      "check": "soft_pace",
+      "outcome": "resolved",
+      "before": 30.0,
+      "after": 0.0
+    }
+  ],
+  "original_supply_ids": [
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+    "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+    "ChIJzVHFNqkZ2jERboLN2YrltH8",
+    "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+    "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+    "ChIJVSYjJKIZ2jERpRFinATD52s",
+    "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+    "ChIJxZfX_9gT2jERknwK8es7IHU",
+    "ChIJ20X__K4Z2jERRE8GRs-d8HE"
+  ],
+  "repair_whitelist": [],
+  "final_place_ids": [
+    "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+    "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+    "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+    "ChIJVSYjJKIZ2jERpRFinATD52s",
+    "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+    "ChIJzVHFNqkZ2jERboLN2YrltH8"
+  ],
+  "main_visits_lost": [
+    "sg-20261025-merlion"
+  ],
+  "coverage_regressions": [
+    "2026-10-25"
+  ],
+  "counters": {
+    "deterministic_attempts": 1,
+    "repair_input_candidates": 0,
+    "final_scheduled_unique": 6,
+    "repair_input_unused": 0,
+    "original_supply_unused": 4,
+    "final_main_visits": 6
+  },
+  "stops": [],
+  "sizing": {},
+  "candidate_preparation": {
+    "qualification_audit": [],
+    "identity_capacity_summary": {},
+    "identity_free_operations": [],
+    "target_opportunities": [],
+    "elastic_windows": [],
+    "discovery_opportunities": [],
+    "ledger": [],
+    "input_candidates": [],
+    "authorizations": [],
+    "decisions": [],
+    "scheduled_ids": [],
+    "exploration_reasons": [],
+    "exploration_slots": 0,
+    "preparation_reference": 0,
+    "spatial_options": []
+  },
+  "scope": {
+    "allowed_transport_modes": [
+      "WALK",
+      "TRANSIT"
+    ],
+    "deferred_review_target_ids": [],
+    "window_roots": [],
+    "coverage_permissions": [
+      {
+        "target_id": "related:finding_23:2026-10-25",
+        "parent_id": "finding_23",
+        "date": "2026-10-25",
+        "trigger_activity_ids": [
+          "sg-20261025-merlion",
+          "sg-20261025-temple",
+          "sg-20261025-gallery",
+          "sg-20261025-fort-canning"
+        ],
+        "minimum_count": 2,
+        "allow_partial": false,
+        "reason": "review_compensation",
+        "removable_place_ids": []
+      }
+    ],
+    "active_related": [],
+    "daily_main_min": 2,
+    "daily_main_max": 5,
+    "dates": [
+      "2026-10-24",
+      "2026-10-25"
+    ],
+    "permissions": [
+      {
+        "activity_id": "sg-20261025-fort-canning",
+        "operations": [
+          "delete",
+          "move"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-25",
+        "move_dates": [
+          "2026-10-24"
+        ]
+      },
+      {
+        "activity_id": "sg-20261025-gallery",
+        "operations": [
+          "delete",
+          "move"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-25",
+        "move_dates": [
+          "2026-10-24"
+        ]
+      },
+      {
+        "activity_id": "sg-20261025-merlion",
+        "operations": [
+          "delete",
+          "move"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-25",
+        "move_dates": [
+          "2026-10-24"
+        ]
+      },
+      {
+        "activity_id": "sg-20261025-temple",
+        "operations": [
+          "delete",
+          "move"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-25",
+        "move_dates": [
+          "2026-10-24"
+        ]
+      }
+    ],
+    "add_dates": [
+      "2026-10-25"
+    ],
+    "direct_add_dates": [],
+    "target_ids": [
+      "finding_23"
+    ],
+    "allow_coverage_regression": false,
+    "travel_mode": "WALK",
+    "revisits": [],
+    "routing_preference": null,
+    "mode_source": "hard_allowed_modes",
+    "unsupported_explicit_mode": null
+  },
+  "parsed_patch": {
+    "edits": [
+      {
+        "operation": "delete",
+        "activity_id": "sg-20261025-merlion",
+        "date": "2026-10-25",
+        "place_id": null,
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "target_dispositions": []
+  },
+  "proposed": {
+    "$case_material_ref": {
+      "path": "repair.json",
+      "pointer": "/components/0/proposal",
+      "expanded_semantic_sha256": "573816236ad927d4e6cdc7718ef4b02a07cac7cfe0754bf34efb10092b3ef347"
+    }
+  },
+  "comparison": {
+    "accepted": true,
+    "reason": "verifiable_arrangement_improvement",
+    "progress": [
+      {
+        "finding_id": "finding_23",
+        "check": "soft_pace",
+        "outcome": "resolved",
+        "before": 30.0,
+        "after": 0.0
+      }
+    ],
+    "coverage_regressions": [
+      "2026-10-25"
+    ],
+    "business_values": [
+      {
+        "finding_id": "finding_23",
+        "check": "soft_pace",
+        "obligation_removed": false,
+        "meaning": "comparable_business_condition",
+        "before": 30.0,
+        "after": 0.0,
+        "before_distinct_main": null,
+        "after_distinct_main": null
+      }
+    ]
+  },
+  "usage": {},
+  "usage_status": "not_called",
+  "reason_compression": {},
+  "timing": {
+    "stage_started": 12274.781,
+    "stage_deadline": 12694.781,
+    "round_deadline": 12424.812,
+    "round_started": 12274.812,
+    "round_reference_deadline": 12414.801666666666,
+    "request_deadline": 12774.109,
+    "preparation_or_route_deadline": 12423.812,
+    "model_timeout_seconds": null,
+    "stage_remaining_seconds": 419.89100000000144,
+    "round_remaining_seconds": 149.92200000000048,
+    "reference_remaining_seconds": 139.91166666666686,
+    "preparation_elapsed_seconds": null,
+    "input_build_elapsed_seconds": null,
+    "model_available_seconds": 70.0,
+    "limiting_deadline": "round"
+  },
+  "spatial": {
+    "accepted": true,
+    "reasons": [],
+    "legs": [],
+    "daily": [],
+    "mode": "WALK",
+    "mode_basis": "structured"
+  },
+  "rounds": [
+    {
+      "round_index": 1,
+      "strategy": "system_delete",
+      "base_state": "6c8d186e6b0d745cc2d0e73ae9f1ae9e6e969f21e30c968b8d504c31bb120da6",
+      "exploration_transition": true,
+      "best_promoted": true,
+      "best_state": "66c364a7acb565fa2199d9372d77b7bf919a8f2a12d10a082a112a85b10117ae",
+      "target_links": {
+        "finding_23": "finding_23"
+      },
+      "input_itinerary": {
+        "$case_material_ref": {
+          "path": "draft.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "2db9d59130eb61af343c12b9c0d5c6276d5996cdaf3e29007703d195f71ad12f"
+        }
+      },
+      "result": {
+        "search_version": null,
+        "selected_round_index": null,
+        "selected_semantic_assessments": null,
+        "soft_pace": {},
+        "pending_groups": [],
+        "effective_patch": {
+          "edits": [
+            {
+              "operation": "delete",
+              "activity_id": "sg-20261025-merlion",
+              "date": "2026-10-25",
+              "place_id": null,
+              "start_time": null,
+              "end_time": null
+            }
+          ],
+          "target_dispositions": []
+        },
+        "components": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components",
+            "expanded_semantic_sha256": "7b4599a0c62075d2aafd5a70e1a3fae586acb91d55f93d1fdb87c5123772fe29"
+          }
+        },
+        "acquisition_audit": [],
+        "feedback_kind": "arrangement_improved",
+        "material_fingerprint": null,
+        "empty_proposal_guard": {},
+        "presentation_history": [],
+        "conflict_records": [],
+        "related_targets": [
+          {
+            "permission": {
+              "target_id": "related:finding_23:2026-10-25",
+              "parent_id": "finding_23",
+              "date": "2026-10-25",
+              "trigger_activity_ids": [
+                "sg-20261025-merlion",
+                "sg-20261025-temple",
+                "sg-20261025-gallery",
+                "sg-20261025-fort-canning"
+              ],
+              "minimum_count": 2,
+              "allow_partial": false,
+              "reason": "review_compensation",
+              "removable_place_ids": []
+            },
+            "activated_by": [
+              "sg-20261025-merlion"
+            ],
+            "affected_adjacency": [
+              [
+                "sg-20261025-temple",
+                "sg-20261025-gallery"
+              ],
+              [
+                "sg-20261025-gallery",
+                "sg-20261025-fort-canning"
+              ]
+            ],
+            "before": 4,
+            "after": 3,
+            "status": "resolved"
+          }
+        ],
+        "schedule": {
+          "windows": [],
+          "blank_windows": [],
+          "day_windows": [
+            {
+              "root_activity_id": "calendar:2026-10-24",
+              "start": "2026-10-24T00:00:00+08:00",
+              "end": "2026-10-25T00:00:00+08:00",
+              "source": "existing_day_calendar_gaps"
+            },
+            {
+              "root_activity_id": "calendar:2026-10-25",
+              "start": "2026-10-25T00:00:00+08:00",
+              "end": "2026-10-26T00:00:00+08:00",
+              "source": "existing_day_calendar_gaps"
+            }
+          ],
+          "lineage": {},
+          "fixed": [],
+          "unresolved_dates": [],
+          "classifications": [],
+          "occupied_transfers": []
+        },
+        "window_adjustments": [],
+        "status": "ACCEPTED_COMPLETE",
+        "reason": "authorized_targets_complete",
+        "model_attempted": false,
+        "original": {
+          "$case_material_ref": {
+            "path": "draft.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "2db9d59130eb61af343c12b9c0d5c6276d5996cdaf3e29007703d195f71ad12f"
+          }
+        },
+        "final": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components/0/proposal",
+            "expanded_semantic_sha256": "573816236ad927d4e6cdc7718ef4b02a07cac7cfe0754bf34efb10092b3ef347"
+          }
+        },
+        "original_report": {
+          "$case_material_ref": {
+            "path": "original-validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "f7f03e8b3eb80104f7cbc1b14a8c6af1e24d6bef39ca8c2d5e60f05772a98cfe"
+          }
+        },
+        "reassessed_original_report": {
+          "$case_material_ref": {
+            "path": "original-validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "f7f03e8b3eb80104f7cbc1b14a8c6af1e24d6bef39ca8c2d5e60f05772a98cfe"
+          }
+        },
+        "proposed_report": {
+          "$case_material_ref": {
+            "path": "validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "7a054f766e097abf08d83ae1f661665d86b3f47928a394d1537ff03d96a20d0b"
+          }
+        },
+        "adopted_report": null,
+        "acquired_routes": [],
+        "target_progress": [
+          {
+            "finding_id": "finding_23",
+            "check": "soft_pace",
+            "outcome": "resolved",
+            "before": 30.0,
+            "after": 0.0
+          }
+        ],
+        "original_supply_ids": [
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "ChIJ20X__K4Z2jERRE8GRs-d8HE"
+        ],
+        "repair_whitelist": [],
+        "final_place_ids": [
+          "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "ChIJzVHFNqkZ2jERboLN2YrltH8"
+        ],
+        "main_visits_lost": [
+          "sg-20261025-merlion"
+        ],
+        "coverage_regressions": [
+          "2026-10-25"
+        ],
+        "counters": {
+          "deterministic_attempts": 1,
+          "repair_input_candidates": 0,
+          "final_scheduled_unique": 6,
+          "repair_input_unused": 0,
+          "original_supply_unused": 4,
+          "final_main_visits": 6
+        },
+        "stops": [],
+        "sizing": {},
+        "candidate_preparation": {
+          "qualification_audit": [],
+          "identity_capacity_summary": {},
+          "identity_free_operations": [],
+          "target_opportunities": [],
+          "elastic_windows": [],
+          "discovery_opportunities": [],
+          "ledger": [],
+          "input_candidates": [],
+          "authorizations": [],
+          "decisions": [],
+          "scheduled_ids": [],
+          "exploration_reasons": [],
+          "exploration_slots": 0,
+          "preparation_reference": 0,
+          "spatial_options": []
+        },
+        "scope": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/scope",
+            "expanded_semantic_sha256": "62ba99bd4bab429ce690eb21292cf29f2dd21d1dbfc436ef4e702834c62d8be8"
+          }
+        },
+        "parsed_patch": {
+          "edits": [
+            {
+              "operation": "delete",
+              "activity_id": "sg-20261025-merlion",
+              "date": "2026-10-25",
+              "place_id": null,
+              "start_time": null,
+              "end_time": null
+            }
+          ],
+          "target_dispositions": []
+        },
+        "proposed": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components/0/proposal",
+            "expanded_semantic_sha256": "573816236ad927d4e6cdc7718ef4b02a07cac7cfe0754bf34efb10092b3ef347"
+          }
+        },
+        "comparison": {
+          "accepted": true,
+          "reason": "verifiable_arrangement_improvement",
+          "progress": [
+            {
+              "finding_id": "finding_23",
+              "check": "soft_pace",
+              "outcome": "resolved",
+              "before": 30.0,
+              "after": 0.0
+            }
+          ],
+          "coverage_regressions": [
+            "2026-10-25"
+          ],
+          "business_values": [
+            {
+              "finding_id": "finding_23",
+              "check": "soft_pace",
+              "obligation_removed": false,
+              "meaning": "comparable_business_condition",
+              "before": 30.0,
+              "after": 0.0,
+              "before_distinct_main": null,
+              "after_distinct_main": null
+            }
+          ]
+        },
+        "usage": {},
+        "usage_status": "not_called",
+        "reason_compression": {},
+        "timing": {
+          "stage_started": 12274.781,
+          "stage_deadline": 12694.781,
+          "round_deadline": 12424.812,
+          "round_started": 12274.812,
+          "round_reference_deadline": 12414.801666666666,
+          "request_deadline": 12774.109,
+          "preparation_or_route_deadline": 12423.812,
+          "model_timeout_seconds": null,
+          "stage_remaining_seconds": 419.89100000000144,
+          "round_remaining_seconds": 149.92200000000048,
+          "reference_remaining_seconds": 139.91166666666686,
+          "preparation_elapsed_seconds": null,
+          "input_build_elapsed_seconds": null,
+          "model_available_seconds": 70.0,
+          "limiting_deadline": "round"
+        },
+        "spatial": {
+          "accepted": true,
+          "reasons": [],
+          "legs": [],
+          "daily": [],
+          "mode": "WALK",
+          "mode_basis": "structured"
+        },
+        "rounds": [],
+        "effective_policy": {
+          "$case_material_ref": {
+            "path": "../../generation/v0/runtime-policy.json",
+            "pointer": "/configuration/v3_repair",
+            "expanded_semantic_sha256": "1d5fae66261fc89794c16f102f30f74aa73a22d52a7cb0f8e7bee6eb776e4403"
+          }
+        },
+        "artifact_status": {
+          "patch": "recorded",
+          "proposal": "recorded",
+          "comparison": "recorded"
+        }
+      },
+      "adopted": {
+        "$case_material_ref": {
+          "path": "repair.json",
+          "pointer": "/components/0/proposal",
+          "expanded_semantic_sha256": "573816236ad927d4e6cdc7718ef4b02a07cac7cfe0754bf34efb10092b3ef347"
+        }
+      },
+      "feedback": null,
+      "continuation_reason": "authorized_targets_complete",
+      "usage": {}
+    }
+  ],
+  "effective_policy": {
+    "$case_material_ref": {
+      "path": "../../generation/v0/runtime-policy.json",
+      "pointer": "/configuration/v3_repair",
+      "expanded_semantic_sha256": "1d5fae66261fc89794c16f102f30f74aa73a22d52a7cb0f8e7bee6eb776e4403"
+    }
+  },
+  "artifact_status": {
+    "patch": "recorded",
+    "proposal": "recorded",
+    "comparison": "recorded"
+  }
+}

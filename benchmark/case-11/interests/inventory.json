@@ -1,7 +1,86 @@
 {
-  "$case_material_ref": {
-    "expanded_semantic_sha256": "6c5375fe6f2dfe2a38f26d371855a36eaafe81d04b4c30cc1b994aab1e8a89e9",
-    "path": "../analysis/shared-values.json",
-    "pointer": "/values/6c5375fe6f2dfe2a38f26d371855a36eaafe81d04b4c30cc1b994aab1e8a89e9"
+  "schema_version": "rtpeval_research_interests_1",
+  "revision": "1",
+  "case_id": "case-11",
+  "case_revision": "1",
+  "input_sha256": "60a5c7fc106d785f8f50e6a503f34010c8eb4979562a164f4b26612454972487",
+  "requirement_spec_ref": {
+    "path": "r02/source-reviews/requirements-reviewed.json",
+    "sha256": "232c0839f104d528d651eb04e069a9c8a5c8ba086d4c394ebc28b4739c4e2a5c",
+    "availability": "available",
+    "media_type": "application/json",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "reviewer_ref": "/root/case11_analysis_interests",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-17T03:56:57.568920+00:00",
+  "rationale": "The original request explicitly names art and architecture as enjoyment interests. The independently reviewed RequirementSpec represents those two topics in one soft preference, case-11-art-and-architecture. One native interest with that exact stable identity faithfully preserves the combined preference and satisfies the reviewed-spec identity binding. Both named topics remain explicit within this interest. A venue can be relevant through art, architecture, or both; the source does not require every venue to combine the two. The wording expresses enjoyment of both topics, but provides no minimum visits, topic balance, daily allocation, or requirement that each topic receive a separate scheduled visit. The earlier source-only split remains useful lineage, not two additional native identities.",
+  "interests": [
+    {
+      "interest_id": "case-11-art-and-architecture",
+      "source_pointer": "/additional_preferences",
+      "source_text": "We are two adults who enjoy art and architecture and prefer a moderate pace. Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval. The rest of our time is flexible.",
+      "requirement_pointer": "/soft_preferences/0",
+      "description": "Enjoy art and architecture.",
+      "source_interest_text": "enjoy art and architecture",
+      "topics": [
+        "art",
+        "architecture"
+      ],
+      "venue_relevance_match": "any",
+      "rationale": "Both source topics are retained in the one reviewed preference. Independent evidence of art or architecture can establish venue relevance to this combined interest. Requiring both topics at each venue would add an unsupported conjunction condition; discarding either topic would narrow the expressed interest.",
+      "quota": null,
+      "uncertainty": [
+        "No art medium, historical period, architectural style, venue type, or interior-access requirement is specified.",
+        "The source does not define relative topic priority, minimum visits, balance, or separate coverage requirements for the two topics.",
+        "Venue-specific relevance requires separate independent evidence; no venue classification is made in this source-only inventory."
+      ]
+    }
+  ],
+  "non_interest_source_elements": [
+    {
+      "source_pointer": "/additional_preferences",
+      "source_text_excerpt": "prefer a moderate pace",
+      "rationale": "Pacing preference, not a venue-topic interest."
+    },
+    {
+      "source_pointer": "/additional_preferences",
+      "source_text_excerpt": "Leave 14:00–16:00 on 2026-10-23, Paris local time, unscheduled for an online meeting. Do not schedule any activities or travel during that interval.",
+      "rationale": "Protected scheduling interval, not a venue-topic interest."
+    },
+    {
+      "source_pointers": [
+        "/destination",
+        "/start_date",
+        "/end_date",
+        "/traveler_count",
+        "/budget",
+        "/additional_preferences"
+      ],
+      "rationale": "Destination, dates, traveler count/adult description, budget and remaining-time flexibility are context or constraints and name no additional venue-topic interests."
+    }
+  ],
+  "source_review_lineage": {
+    "path": "r02/source-reviews/source-only-interest-review.json",
+    "sha256": "a997b4488ddd05ad37746913c3693aa29abdb72a49a1e8943bdb60914fff76ec",
+    "prior_interest_ids": [
+      "interest_art",
+      "interest_architecture"
+    ],
+    "native_mapping": "Both prior source topics are represented within case-11-art-and-architecture, the single stable preference identity in the final independently reviewed spec. The source-only predecessor is preserved unchanged."
+  },
+  "interpretation_limits": [
+    "This inventory does not impose a quota or schedule obligation.",
+    "The single native identity does not support separate per-topic counts without a separately specified subtopic measure.",
+    "The reviewed RequirementSpec is preserved unchanged."
+  ],
+  "mechanical_binding_lineage": {
+    "original_inventory_ref": {
+      "path": "r02/analysis/interests/inventory.json",
+      "sha256": "4e96c88d117d230bb8100a20600cb7ad0767730969479657eafa058b7c2a53b5"
+    },
+    "corrected_by": "/root/case11_analysis_interests",
+    "corrected_at": "2026-10-17T04:05:47.328024+00:00",
+    "correction": "Added availability, media_type and schema_version to requirement_spec_ref for the common-reference schema. All original semantic interest/topic/source bindings, reviewer metadata, input and requirement-spec bindings are preserved unchanged."
   }
 }

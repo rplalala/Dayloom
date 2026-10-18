@@ -129,14 +129,14 @@ not contribute to case scores. Blinded human assessment is deferred.
 | 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
 | 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
 | 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
-| 04 | 2026-10-15 | [Singapore selection](case-04/report.md#acceptance) |
-| 05 | 2026-10-16 | [Barcelona revision 3 / input revision 2, integrated CLI GBK and Repair timing corrections](case-05/report.md#acceptance) |
+| 04 | 2026-10-15; current material updated 2026-10-18 | [Singapore current selection](case-04/report.md#acceptance), 24–25 October; four current-system generations, fresh Primary/pair and complete dependent analyses; renewed researcher acceptance pending |
+| 05 | 2026-10-16; current material updated 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; renewed researcher acceptance pending |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |
 | 08 | 2026-10-17 | [Barcelona r02 selection](case-08/report.md#acceptance), completed same-run pair, retained FAIL/UNKNOWN, partial relevance and unverified affordability; [PR #188](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/188) merged; #157/#182 completed; blinded review deferred |
-| 09 | 2026-10-17; current data updated 2026-10-18 | [Tokyo current selection](case-09/report.md#acceptance): replacement V0/V1, exact accepted V2/V3 donors and fresh current-policy Primary; V3 pair retained on its unchanged source; new V1 process/relevance joins incomplete |
+| 09 | 2026-10-17; current data updated 2026-10-18 | [Tokyo current selection](case-09/report.md#acceptance): replacement V0/V1, exact accepted V2/V3 donors and fresh current-policy Primary; exact-source historical-runtime V3 pair retained; current process/relevance/resource joins complete; renewed researcher acceptance pending |
 | 10 | 2026-10-17 | [London revision 2, exact-two British Museum visits on distinct dates, retained time/access uncertainty, relevance UNKNOWNs and unverified affordability](case-10/report.md#acceptance-status) |
-| 11 | 2026-10-17; current data updated 2026-10-18 | [Paris current selection](case-11/report.md#acceptance): replacement V3 with one Repair round, exact accepted r02 V0–V2 donors and fresh current-policy Primary; protected interval passes; old no-Repair pair is historical, with no independent pair for the replacement V3 |
+| 11 | 2026-10-17; current data updated 2026-10-18 | [Paris current selection](case-11/report.md#acceptance): replacement V3 with one Repair round, exact accepted r02 V0–V2 donors and fresh current-policy Primary; protected interval passes; fresh independent pair for replacement V3 and complete dependent analyses; renewed researcher acceptance pending |
 | 12 | 2026-10-17 | [Sydney r07, with partial discovery/relevance, model-supported access, transport/cost uncertainty and historical accounting limits](case-12/report.md#acceptance); [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190) merged; #163/#184 completed; main synchronized and private-evidence migration verified; blinded review deferred |
 
 The [staged acceptance contract](../docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
@@ -303,7 +303,7 @@ benchmark/
       poi-process/
       repair/                     # V3 draft/final-primary, lossless differences, mechanism
       resources/
-      history/                    # retained earlier public observations and failures
+      history/                    # optional substantive failure observations, not parallel selections
   scratch/
     <case-id>/                     # ignored private storage
       work/                        # active execution/preparation and temporary files
@@ -329,6 +329,8 @@ Reference tracked `inputs/<case-id>.json` rather than copy the request. Store sh
 configuration and identical RAG-origin inventories once, and use references for
 repeated output content. Public material
 must exclude credentials, private transcripts and raw provider/model responses.
+Scoped Git attributes preserve the exact native input bytes for refreshed cases
+04/05 and the aligned case-07 input, including their original line endings.
 
 `generation/` contains exactly one selected final itinerary for each version, its
 usage/provenance and applicable shared runtime policy or origin metadata. Current
@@ -338,10 +340,11 @@ directory. Revision IDs remain in provenance, run metadata and historical eviden
 native schemas and original execution paths need not match across cases. V3
 draft/final-primary stages and validation traces belong in `analysis/repair/`, not
 additional generation selections.
-Earlier published generation observations and failures belong in `analysis/history/`.
-Superseded requirement contexts and scoring reports also belong there rather than
-beside the final material in current categories. Their source bytes and historical
-evaluation policies remain preserved.
+Replace superseded selected datasets and dependent views in place rather than
+keeping full old/new public selections alongside each other. Git history and compact
+immutable private archives retain former source bytes and evaluation policies.
+`analysis/history/` may retain distinct substantive failure observations, not a
+competing selected cohort.
 
 In the public material view, repeated large JSON objects use `$case_material_ref`
 with a relative file path, JSON Pointer and expanded semantic hash. The material index
@@ -424,19 +427,15 @@ itinerary's available modes, time or daily visit capacity.
 | C. Place obligations | 08, 09, 10 | Required/excluded places, dated visits and deliberate repeated visits |
 | D. Itinerary boundaries | 04, 11, 12 | Allowed transport modes, protected intervals and dated count/rest-day rules |
 
-Case-01–07 retain their existing input bytes, selected revisions, results, scores,
-reports, receipts, original dates and acceptance limitations. Historical accepted
-dates need not satisfy today's moving window. The five inputs revised on 16 October
-use the dates below. Current acceptance states and selected revisions are listed above.
-Case-12 r07 is [automatically accepted](case-12/report.md#acceptance), with
-local main-worktree integration and private-evidence migration complete. It is the former Sydney case-14.
+Cases 01–03/06/08/10/12 retain their selected inputs and results. Current
+replacement is limited to 04/05/09/11; case-07's canonical input is aligned with
+its unchanged accepted native revision. Historical accepted dates need not satisfy
+today's moving window. Current selections and acceptance boundaries are indexed above.
 
-Dates and durations are inclusive. Selected reports are indexed
-[above](#accepted-selections). Case-05 uses the approved 2026-10-16 through
-2026-10-20 interval; case-07's accepted
-[input revision 2](case-07/requirements/input-r02.json) uses 2026-10-22 through
-2026-10-24. Before executing a pending input, revalidate its stored dates against
-the actual application reference date.
+Dates and durations are inclusive. Case-04 uses 24–25 October, case-05 uses
+26–30 October, and [case-07 input revision 2](inputs/case-07.json) uses
+22–24 October 2026. Before executing any request, revalidate its dates against the
+actual application reference date. Case-12 r07 remains the accepted former Sydney case-14.
 
 | Case | Category | Destination | Days | Travelers | Group budget | Scenario and design rationale |
 | --- | --- | --- | --- | --- | --- | --- |

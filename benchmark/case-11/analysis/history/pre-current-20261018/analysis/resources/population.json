@@ -1,7 +1,0 @@
-{
-  "$case_material_ref": {
-    "expanded_semantic_sha256": "6e5ad8624d1a3818a4c5054c254672dc458067ed91140209d760f51b2a8b1be3",
-    "path": "../../../../shared-values.json",
-    "pointer": "/values/6e5ad8624d1a3818a4c5054c254672dc458067ed91140209d760f51b2a8b1be3"
-  }
-}

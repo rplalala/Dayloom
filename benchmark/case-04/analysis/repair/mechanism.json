@@ -1,0 +1,432 @@
+{
+  "schema_version": "rtpeval_mechanism_report_1",
+  "preparation_sha256": "e73347422031e5e758eda890c4856ea44abf4845a88236042d29a6210e75512a",
+  "batch_id": "case-04-current-path-check",
+  "optional_diagnostics": [],
+  "revision": "current-path-20261018-r1",
+  "runs": [
+    {
+      "group_id": "case-04",
+      "run_id": "case-04-current-path-v0-a1",
+      "version": "v0",
+      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "result_sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-04-current-path-v0-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 46.34299999999985,
+            "total_tokens": 23220,
+            "model_calls": 2,
+            "http_sends": 2,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 23220,
+          "observed_model_calls": 2,
+          "observed_http_sends": 2,
+          "cache_lookup_hits": 0,
+          "observed_tool_http_sends": 0,
+          "token_observed_calls": 2,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-04",
+      "run_id": "case-04-current-path-v1-a1",
+      "version": "v1",
+      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "result_sha256": "29caff0b0716c7e52cc5a59ba8ec6020b4d59cd5cceacdba45c0f7966af90bb1",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-04-current-path-v1-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 88.21900000000005,
+            "total_tokens": 46039,
+            "model_calls": 4,
+            "http_sends": 55,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 46039,
+          "observed_model_calls": 4,
+          "observed_http_sends": 55,
+          "cache_lookup_hits": 0,
+          "observed_tool_http_sends": 51,
+          "token_observed_calls": 4,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-04",
+      "run_id": "case-04-completion-v2-a1",
+      "version": "v2",
+      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "result_sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-04-completion-v2-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 145.98400000000038,
+            "total_tokens": 54368,
+            "model_calls": 6,
+            "http_sends": 95,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 54368,
+          "observed_model_calls": 6,
+          "observed_http_sends": 95,
+          "cache_lookup_hits": 7,
+          "observed_tool_http_sends": 89,
+          "token_observed_calls": 6,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-04",
+      "run_id": "case-04-completion-v3-a1",
+      "version": "v3",
+      "input_sha256": "dedcf826d45f2f959cda4d82fd445ba75f40ac96499fbab67a8dcb475f8ef789",
+      "result_sha256": "263c61efd99e3437444060bd8ece84d7f0b19ae19835ca781ba9a1537636550b",
+      "coverage": "available",
+      "diagnostics": [],
+      "triggered": true,
+      "initial_improvement_targets": [
+        "finding_23"
+      ],
+      "authorized_targets": [
+        "finding_23"
+      ],
+      "model_attempts": 0,
+      "accepted_rounds": 1,
+      "accepted_run": true,
+      "rounds": [
+        {
+          "round_index": 1,
+          "strategy": "system_delete",
+          "exploration_transition": true,
+          "best_promoted": true,
+          "selected_lineage": true,
+          "derived_target_links": {},
+          "source_refs": [
+            "/v3/repair/rounds/0"
+          ],
+          "status": "ACCEPTED_COMPLETE",
+          "model_attempted": false,
+          "accepted": true,
+          "target_links": {
+            "finding_23": "finding_23"
+          },
+          "related_target_links": {},
+          "internal_progress": [
+            {
+              "finding_id": "finding_23",
+              "check": "soft_pace",
+              "outcome": "resolved",
+              "before": 30.0,
+              "after": 0.0
+            }
+          ],
+          "related_targets": [
+            {
+              "permission": {
+                "target_id": "related:finding_23:2026-10-25",
+                "parent_id": "finding_23",
+                "date": "2026-10-25",
+                "trigger_activity_ids": [
+                  "sg-20261025-merlion",
+                  "sg-20261025-temple",
+                  "sg-20261025-gallery",
+                  "sg-20261025-fort-canning"
+                ],
+                "minimum_count": 2,
+                "allow_partial": false,
+                "reason": "review_compensation",
+                "removable_place_ids": []
+              },
+              "activated_by": [
+                "sg-20261025-merlion"
+              ],
+              "affected_adjacency": [
+                [
+                  "sg-20261025-temple",
+                  "sg-20261025-gallery"
+                ],
+                [
+                  "sg-20261025-gallery",
+                  "sg-20261025-fort-canning"
+                ]
+              ],
+              "before": 4,
+              "after": 3,
+              "status": "resolved"
+            }
+          ],
+          "components": {
+            "$case_material_ref": {
+              "path": "repair.json",
+              "pointer": "/components",
+              "expanded_semantic_sha256": "7b4599a0c62075d2aafd5a70e1a3fae586acb91d55f93d1fdb87c5123772fe29"
+            }
+          },
+          "component_source_refs": [
+            [
+              "/v3/repair/rounds/1/components/0"
+            ]
+          ],
+          "evaluated_components": 1,
+          "accepted_components": 1,
+          "pending_components": 0,
+          "unevaluated_components": 0,
+          "counters_snapshot": {
+            "deterministic_attempts": 1,
+            "repair_input_candidates": 0,
+            "final_scheduled_unique": 6,
+            "repair_input_unused": 0,
+            "original_supply_unused": 4,
+            "final_main_visits": 6
+          },
+          "usage_observation": {},
+          "continuation_reason": "authorized_targets_complete"
+        }
+      ],
+      "internal_progress": [
+        {
+          "finding_id": "finding_23",
+          "check": "soft_pace",
+          "outcome": "resolved",
+          "before": 30.0,
+          "after": 0.0
+        }
+      ],
+      "related_targets": [
+        {
+          "permission": {
+            "target_id": "related:finding_23:2026-10-25",
+            "parent_id": "finding_23",
+            "date": "2026-10-25",
+            "trigger_activity_ids": [
+              "sg-20261025-merlion",
+              "sg-20261025-temple",
+              "sg-20261025-gallery",
+              "sg-20261025-fort-canning"
+            ],
+            "minimum_count": 2,
+            "allow_partial": false,
+            "reason": "review_compensation",
+            "removable_place_ids": []
+          },
+          "activated_by": [
+            "sg-20261025-merlion"
+          ],
+          "affected_adjacency": [
+            [
+              "sg-20261025-temple",
+              "sg-20261025-gallery"
+            ],
+            [
+              "sg-20261025-gallery",
+              "sg-20261025-fort-canning"
+            ]
+          ],
+          "before": 4,
+          "after": 3,
+          "status": "resolved"
+        }
+      ],
+      "evaluated_components": 1,
+      "accepted_components": 1,
+      "pending_components": 0,
+      "unevaluated_components": 0,
+      "exploration_transitions": 1,
+      "best_promotions": 1,
+      "selected_lineage_rounds": 1,
+      "deterministic_attempts": 1,
+      "cumulative_counters_snapshot": {
+        "deterministic_attempts": 1,
+        "repair_input_candidates": 0,
+        "final_scheduled_unique": 6,
+        "repair_input_unused": 0,
+        "original_supply_unused": 4,
+        "final_main_visits": 6
+      },
+      "cumulative_usage_observation": {},
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-04-completion-v3-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 102.82799999999952,
+            "total_tokens": 46255,
+            "model_calls": 5,
+            "http_sends": 72,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 46255,
+          "observed_model_calls": 5,
+          "observed_http_sends": 72,
+          "cache_lookup_hits": 5,
+          "observed_tool_http_sends": 67,
+          "token_observed_calls": 5,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    }
+  ],
+  "interpretation": "Internal acceptance/progress is not independently verified resolution.",
+  "fractions": {
+    "run_acceptance": {
+      "numerator": 1,
+      "denominator": 1,
+      "observed_numerator": 1,
+      "observed_denominator": 1,
+      "unit": "triggered_run",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    },
+    "round_acceptance": {
+      "numerator": 0,
+      "denominator": 0,
+      "observed_numerator": 0,
+      "observed_denominator": 0,
+      "unit": "model_attempted_round",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": null
+    },
+    "component_acceptance": {
+      "numerator": 1,
+      "denominator": 1,
+      "observed_numerator": 1,
+      "observed_denominator": 1,
+      "unit": "evaluated_component",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    }
+  },
+  "status": "complete",
+  "content_hash": "819028472ecc9ce344abd6f2a1ee3fb313059df71ce5cc45ac6ac0f151db96be"
+}

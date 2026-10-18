@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJzc_-btdx5kcRKmpibTCAzrk",
+  "unresolved_subject_id": null,
+  "subject_name": "Cook’n Saj",
+  "subject_address": "5 Rue Bernard Palissy, 75006 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9803440+00:00",
+  "sources": [
+    {
+      "url": "https://cooknsaj.com/",
+      "title": "Cook'n Saj — official restaurant site",
+      "factual_paraphrase": "The operator describes Lebanese-inspired cooking at 5 rue Bernard Palissy, with an interior by architects 10h10, custom carpentry and walls decorated by La Ruche tattoo artists.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "unknown",
+  "assessment": "The operator documents an architect-designed restaurant interior, custom furniture and tattoo-art wall decoration, but does not describe a substantive architectural visit or art programme. Those details could be ordinary commercial decoration. Relevance remains uncertain; their presence also prevents a confident negative.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

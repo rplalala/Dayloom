@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJRW8Hwo0Z2jEREk5x5tk4JIg",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.ionorchard.com/en/ion-sky.html",
+      "title": "ION Sky",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "ION Sky: panoramic Singapore views, 56 levels above Orchard Road."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/45/evidence"
+}

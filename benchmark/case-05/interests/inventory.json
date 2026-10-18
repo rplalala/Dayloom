@@ -1,0 +1,38 @@
+{
+  "schema_version": "rtpeval_research_interests_1",
+  "case_id": "case-05",
+  "case_revision": "current-path-20261018-r1",
+  "revision": "1",
+  "input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+  "requirement_spec_ref": {
+    "path": "requirements.json",
+    "sha256": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+    "media_type": "application/json",
+    "availability": "available",
+    "schema_version": "rtpeval_requirements_1"
+  },
+  "reviewer_kind": "external_model",
+  "reviewer_ref": "/root/revalidation_semantic_reviewer",
+  "reviewed_at": "2026-10-18T02:03:12Z",
+  "rationale": "Architecture, historic neighbourhoods and art are source-stated venue or theme interests. The relaxed pace and time for exploration in depth concern pace and remain a separate soft preference. The request specifies no transport restriction. This reviewed inventory contains no output-specific relevance judgments.",
+  "interests": [
+    {
+      "interest_id": "architecture",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I am travelling alone and enjoy architecture, historic neighbourhoods and art. I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+      "requirement_pointer": "/soft_preferences/0"
+    },
+    {
+      "interest_id": "historic-neighbourhoods",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I am travelling alone and enjoy architecture, historic neighbourhoods and art. I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+      "requirement_pointer": "/soft_preferences/1"
+    },
+    {
+      "interest_id": "art",
+      "source_pointer": "/additional_preferences",
+      "source_text": "I am travelling alone and enjoy architecture, historic neighbourhoods and art. I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day.",
+      "requirement_pointer": "/soft_preferences/2"
+    }
+  ]
+}

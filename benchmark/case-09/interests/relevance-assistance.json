@@ -1,0 +1,23 @@
+{
+  "schema_version": "independent_relevance_decisions_1",
+  "case_id": "case-09",
+  "case_revision": "1",
+  "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+  "requirement_spec_sha256": "e29c9e0057f874fb63251a1143283d311ca30332eb9c4c4a7d3b22f7f5605abc",
+  "interest_inventory_sha256": "7a17b9baff8f9a69c85fe36cd773de2009c08fa12f12e189556bb2e4952df18d",
+  "reviewer_ref": "/root/relevance09_clean",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-18T04:46:56Z",
+  "model_identity": "inherited configuration; exact model identifier unavailable",
+  "limits": {
+    "actual_opens": 3,
+    "actual_searches": 3,
+    "limitations": [
+      "One targeted search and one official-page open were used per venue; no retries or additional page opens occurred.",
+      "No excluded repository material was inspected, and producer identities were used only to identify targets.",
+      "Only official operator or government evidence supports these judgments; unrelated search results were not used.",
+      "Unknown decisions preserve gaps in the limited evidence rather than treating omissions as negative facts.",
+      "These judgments assess venue-interest relevance, not opening hours, dates, admission feasibility or scheduling."
+    ]
+  }
+}

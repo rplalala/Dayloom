@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJscrTJQBv5kcRPMX6Mj9Vg5E",
+  "unresolved_subject_id": null,
+  "subject_name": "Palais Garnier",
+  "subject_address": "75009 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9590022+00:00",
+  "sources": [
+    {
+      "url": "https://www.operadeparis.fr/en/about/theaters-and-workshops/palais-garnier",
+      "title": "Palais Garnier — Opéra national de Paris",
+      "factual_paraphrase": "The operator identifies Charles Garnier's nineteenth-century theatre, its grand stair and foyer, Italian-style auditorium and ceiling painted by Marc Chagall.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The opera's official description documents Charles Garnier's theatre architecture, grand stair and Marc Chagall ceiling. Both architecture and painting support relevance.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

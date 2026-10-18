@@ -1,0 +1,3055 @@
+{
+  "schema_version": "rtpeval_candidate_capture_1",
+  "version": "v2",
+  "run_id": "case-04-completion-v2-a1",
+  "stages": {
+    "discovered": {
+      "status": "partial",
+      "reasons": [
+        "rag_partial"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ18iYTgAZ2jEROr0Y675azV8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1WZDpv8b2jERQhRdwN8KE80",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ1WZDpv8b2jERQhRdwN8KE80",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 6,
+              "cosine": 0.4355795460248535,
+              "distance_km": 10.902880006189747,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "31c924de8b767678d2a60abe124502d806fb073887c8f14ae939a432e9b00f6f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ1WZDpv8b2jERQhRdwN8KE80"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.46230149718505176,
+              "distance_km": 7.6870117493745695,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "700e863b18da9531451afe2cd348bb7da05c031833c9d80f21c321ea2cb7f11d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.4140898883342772,
+              "distance_km": 9.805491882338876,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ6UJjigYZ2jERIYv7ksgLyaA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.45490724385890435,
+              "distance_km": 9.014344319602973,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "217f9d589abfc18463190edbeb3fa74e0cdc3736fd023d471b249914c7b0ba4f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_2",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.411252176090946,
+              "distance_km": 8.700364037423515,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "3ef836bab8ec0047208eeaabbeee84ef9abecb6fff37f40d5dc87f0409ade5e1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJA5LATO4Z2jER111V-v6abAI"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJA8Chy6wP2jER5gV-C5bUNKI",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.45946854594537423,
+              "distance_km": 8.229926438365897,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJC2PqwWgb2jERlTBRz4YkJtY",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJC2PqwWgb2jERlTBRz4YkJtY",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 18,
+              "cosine": 0.4085662175934055,
+              "distance_km": 11.000200803102496,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9032fcb608325df175985878956ab09cbdb48e746952926fafd207f730afdbfe",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJC2PqwWgb2jERlTBRz4YkJtY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.41106615000569,
+              "distance_km": 8.21680563162131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b1c2a2e14550862320dfa46d129a3bbfe1ea171a2c3e5063d67a83589cc0d852",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJE6uwTPsZ2jERZFH4XI60LHw",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJMxZ-kwQZ2jERdsqftXeWCWI",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 1,
+              "cosine": 0.4856621929608478,
+              "distance_km": 9.16781298458928,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "a1c0399c89c7b463449b8d9a400a9e2a3245c8511003723debd1ce981ee5cd37",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJMxZ-kwQZ2jERdsqftXeWCWI"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJOScA0tkZ2jERRqSy4_FqfD4",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJP9jJLh8a2jERhU3Mx563lXE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJP9jJLh8a2jERhU3Mx563lXE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 15,
+              "cosine": 0.4120254393808429,
+              "distance_km": 4.56068996999007,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "552c6d75cd111bd0540c921e3c4595c45ec43d95c4a49c9f515db3cda4c6b383",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJP9jJLh8a2jERhU3Mx563lXE"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/1/places/ChIJPYrvewEZ2jERK-pztVWcDig",
+            "expanded_semantic_sha256": "259f08587913ab43f8975d627d20c354326902008cc21ead318c98c61c277387"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.41962960841479324,
+              "distance_km": 4.486417058196392,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "792fc8b190452ccd486ebd627821c3aa76dbe83e84af6e50c69c90ee4937a3bb",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQZPwo3Ab2jERqobnp1dHMGQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4lHCgMZ2jERloDE6WmkdMk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJUy-X9g8Z2jERJ0Jko3en1Rw",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 11,
+              "cosine": 0.4193774211777801,
+              "distance_km": 8.833105081507105,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1b7240351ee8e383618b996f291e66c8fffd56cabc78d52069a521dd98ff4b24",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJUy-X9g8Z2jERJ0Jko3en1Rw"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJX9eeAB0Z2jER-jpnq5mQijQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.43289629024885434,
+              "distance_km": 9.753341932272603,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJbf7nMwAZ2jERWNS0iCBvkOQ",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc-qInBwa2jERpyqg4OcodwA",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/1/places/ChIJd0VihwEZ2jERKeREhO6G1Qg",
+            "expanded_semantic_sha256": "33a443065cb81f4860b73175e731104042131c39f5e2b73636c225d71c42945c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJjzZiUAIZ2jERNSoqcM46xEA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJkWHbygsZ2jERjkvNI-5be_8",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJlU3yPoUZ2jERY0LQdNA4KPo",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJnV5WzKwZ2jERJ8cM9ja9u_M",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 9,
+              "cosine": 0.4217715687087693,
+              "distance_km": 8.837963583910925,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "cf0271510ad8667ddadbebd9043b92877f13293e46be4d648b7f65b2bb7ba9e9",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJnV5WzKwZ2jERJ8cM9ja9u_M"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq-yS9QYZ2jERF5vtZzLjV5A",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJuZ4kdB0Q2jERdp1SrojDF_I",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 12,
+              "cosine": 0.4168310513001061,
+              "distance_km": 10.098292275027628,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "29e26f9637cb38caf043906a958c40fa5badc51e512aa3fad2e69d0afbd230ae",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJuZ4kdB0Q2jERdp1SrojDF_I"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJvWDbfRwa2jERgNnTOpAU3-o",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJvWDbfRwa2jERgNnTOpAU3-o",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 7,
+              "cosine": 0.4353167491773666,
+              "distance_km": 4.04924432277999,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "7bebf2593e67fcc1387aeaa3143b9dbee87e9600c499f50c13dbc3c6c4c47ec8",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJvWDbfRwa2jERgNnTOpAU3-o"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "admitted": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.45946854594537423,
+              "distance_km": 8.229926438365897,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/29",
+            "expanded_semantic_sha256": "d4bac79a99d6e59e56c70bf349409e7b0d9e56c5bb6ce6e4d2ccf13f486818fa"
+          }
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/61",
+            "expanded_semantic_sha256": "1b876cba6906ecc24d02b683902580dd5faa2cb0147871048aa0eeff2284f43c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.46230149718505176,
+              "distance_km": 7.6870117493745695,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "700e863b18da9531451afe2cd348bb7da05c031833c9d80f21c321ea2cb7f11d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.41106615000569,
+              "distance_km": 8.21680563162131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b1c2a2e14550862320dfa46d129a3bbfe1ea171a2c3e5063d67a83589cc0d852",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.45490724385890435,
+              "distance_km": 9.014344319602973,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "217f9d589abfc18463190edbeb3fa74e0cdc3736fd023d471b249914c7b0ba4f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.4140898883342772,
+              "distance_km": 9.805491882338876,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.41962960841479324,
+              "distance_km": 4.486417058196392,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "792fc8b190452ccd486ebd627821c3aa76dbe83e84af6e50c69c90ee4937a3bb",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQZPwo3Ab2jERqobnp1dHMGQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_2",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.411252176090946,
+              "distance_km": 8.700364037423515,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "3ef836bab8ec0047208eeaabbeee84ef9abecb6fff37f40d5dc87f0409ade5e1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJA5LATO4Z2jER111V-v6abAI"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/1/places/ChIJd0VihwEZ2jERKeREhO6G1Qg",
+            "expanded_semantic_sha256": "33a443065cb81f4860b73175e731104042131c39f5e2b73636c225d71c42945c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.43289629024885434,
+              "distance_km": 9.753341932272603,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+            }
+          ]
+        }
+      ]
+    },
+    "enriched": {
+      "status": "complete",
+      "reasons": [
+        "queue_exhausted"
+      ],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.45946854594537423,
+              "distance_km": 8.229926438365897,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ20X__K4Z2jERRE8GRs-d8HE",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ20X__K4Z2jERRE8GRs-d8HE",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 2,
+              "cosine": 0.46230149718505176,
+              "distance_km": 7.6870117493745695,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "700e863b18da9531451afe2cd348bb7da05c031833c9d80f21c321ea2cb7f11d",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ20X__K4Z2jERRE8GRs-d8HE"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJE6cVwggZ2jER2gl3yXW-5mQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 17,
+              "cosine": 0.41106615000569,
+              "distance_km": 8.21680563162131,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "b1c2a2e14550862320dfa46d129a3bbfe1ea171a2c3e5063d67a83589cc0d852",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJE6cVwggZ2jER2gl3yXW-5mQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ6fYnewEZ2jERLHcHN0YpdnU",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:59ce476aa2a6ce3947448768",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 4,
+              "cosine": 0.45490724385890435,
+              "distance_km": 9.014344319602973,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "217f9d589abfc18463190edbeb3fa74e0cdc3736fd023d471b249914c7b0ba4f",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJ6fYnewEZ2jERLHcHN0YpdnU"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.4140898883342772,
+              "distance_km": 9.805491882338876,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJQZPwo3Ab2jERqobnp1dHMGQ",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 10,
+              "cosine": 0.41962960841479324,
+              "distance_km": 4.486417058196392,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "792fc8b190452ccd486ebd627821c3aa76dbe83e84af6e50c69c90ee4937a3bb",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJQZPwo3Ab2jERqobnp1dHMGQ"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.43289629024885434,
+              "distance_km": 9.753341932272603,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/29",
+            "expanded_semantic_sha256": "d4bac79a99d6e59e56c70bf349409e7b0d9e56c5bb6ce6e4d2ccf13f486818fa"
+          }
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/61",
+            "expanded_semantic_sha256": "1b876cba6906ecc24d02b683902580dd5faa2cb0147871048aa0eeff2284f43c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJzVHFNqkZ2jERboLN2YrltH8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJv4Mk4QYa2jERlGncaOIvpW4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 4,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ7wTBRt8Z2jERQO-YNjVAXyI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJe4wL_OsZ2jERySoDk6jlhNQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJr9wqENkT2jERkRs7pMj6FLQ",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ9xUuiNcT2jER49FS2OpE8W8",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxZfX_9gT2jERknwK8es7IHU",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKYL-X7oZ2jER_dORqR3YUa8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJwUTKu6UZ2jERwt5ctkU4f2Q",
+          "google_origins": [
+            {
+              "intent_id": "landmark_5",
+              "source_query": "Raffles Hotel in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ1_vobQ0Z2jER8clToFO8Zg0",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJT4AHFwcZ2jERDJbPVLTEbOk",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJOeEf9S2vewIRM0B9a06CKwg",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJzToAJoAZ2jERJPijXPaKjR8",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 5,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJG9GVwT8a2jERvxDHau3hggQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJnWdQKQQZ2jERScXuKeFHyIE",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJAQAAAK0e2jERMFQeIT5IR-E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJdw9r2-wa2jERGnTgPE-UVEg",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 8,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJWbbHWvAb2jERpIJ56UdMj_E",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJc0Fxb-UW2jERUtUJQipPfns",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 15,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJveKYa4oQ2jERj43WxevKhMI",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 17,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ41s8zx8Z2jERXqRSzEj-TcE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 12,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJq_C4dPkZ2jERxkvY-4pAtWE",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJKcCAXsMZ2jERJtnerWi_JYw",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 11,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJGc8TpWsa2jERSFrowt5WsTA",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 19,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJu0Kj3f8W2jERpHVeB5eORMM",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 3,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 14,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJDfcsE5EZ2jERrC6v6Okmdhc",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 16,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJxWCbaXwZ2jERMHpks71MWqk",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 6,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJQyGjSVMZ2jERj6HEua5pOHQ",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJARv2j3QZ2jERquLdsXGisU4",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 10,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ5Y6l4Q0Z2jERYL0KDIjT6v0",
+          "google_origins": [
+            {
+              "intent_id": "default_1",
+              "source_query": "local food in Singapore",
+              "provider_rank": 1,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ42oYzrMZ2jERBvQPkuvE8DA",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJA5LATO4Z2jER111V-v6abAI",
+          "google_origins": [
+            {
+              "intent_id": "landmark_2",
+              "source_query": "Marina Bay Sands in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJA5LATO4Z2jER111V-v6abAI",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 16,
+              "cosine": 0.411252176090946,
+              "distance_km": 8.700364037423515,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "3ef836bab8ec0047208eeaabbeee84ef9abecb6fff37f40d5dc87f0409ade5e1",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "google_observation",
+              "evidence_ref": "google_places:ChIJA5LATO4Z2jER111V-v6abAI"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/1/places/ChIJd0VihwEZ2jERKeREhO6G1Qg",
+            "expanded_semantic_sha256": "33a443065cb81f4860b73175e731104042131c39f5e2b73636c225d71c42945c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJ4xJ1si0Z2jERKy0RcV2Wd8I",
+          "google_origins": [
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 13,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        }
+      ]
+    },
+    "supplied": {
+      "status": "complete",
+      "reasons": [],
+      "places": [
+        {
+          "canonical_place_id": "ChIJBTYg1g4Z2jERp_MBbu5erWY",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 7,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "fsq:foursquare:57883c99cd10e8a1050e7f5d",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 3,
+              "cosine": 0.45946854594537423,
+              "distance_km": 8.229926438365897,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "1d4a0ee4bc36ee99ee32d66a2a60a0382374cedb53582173258d72694a709dbc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "fallback",
+              "evidence_ref": "google_places:ChIJBTYg1g4Z2jERp_MBbu5erWY"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 13,
+              "cosine": 0.4140898883342772,
+              "distance_km": 9.805491882338876,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "9dcf8c18bf539bdd1b71d1110c098d7afa2c2f04465d15f360c536d6fa42c1fc",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJ50uIMa0Z2jER0cTt5fLaZt0"
+            }
+          ]
+        },
+        {
+          "canonical_place_id": "ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+          "google_origins": [],
+          "rag_origins": [
+            {
+              "source": "tripworld",
+              "entity_id": "google:ChIJZZ-2cs0Z2jERdCRKtLGUw10",
+              "query": {
+                "query_id": "rag_1",
+                "text": "Gardens, major city sights, and scenic views",
+                "origin": "user",
+                "intent_ids": [
+                  "discovery_1"
+                ],
+                "requirement_refs": [
+                  "semantic_1",
+                  "semantic_2"
+                ],
+                "version": "rag_query_plan_1"
+              },
+              "rank": 8,
+              "cosine": 0.43289629024885434,
+              "distance_km": 9.753341932272603,
+              "artifact_hash": "a0de2721b0b8c1581d78496bfe06da1c3c7dc46cab2a7454c171504732c808f7",
+              "text_hash": "33aebdd4903c65d4673b02b45f4d7870e29643d018bd3589893db41ed318c1d6",
+              "space_id": "afa5ba967bb4dbf2978e5a8e99b1f9dca25a4e1e23a4c51f8cfe8572113259ec",
+              "policy_version": "tripworld-production-policy-v1",
+              "resolution": "direct_id",
+              "evidence_ref": "google_places:ChIJZZ-2cs0Z2jERdCRKtLGUw10"
+            }
+          ]
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/29",
+            "expanded_semantic_sha256": "d4bac79a99d6e59e56c70bf349409e7b0d9e56c5bb6ce6e4d2ccf13f486818fa"
+          }
+        },
+        {
+          "$case_material_ref": {
+            "path": "v2-candidate-opportunities.json",
+            "pointer": "/stages/discovered/places/61",
+            "expanded_semantic_sha256": "1b876cba6906ecc24d02b683902580dd5faa2cb0147871048aa0eeff2284f43c"
+          }
+        },
+        {
+          "canonical_place_id": "ChIJD1u-EaMZ2jERaLhNfFkR45I",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 18,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJFQzeR6cZ2jERgM6--iWeY-U",
+          "google_origins": [
+            {
+              "intent_id": "landmark_8",
+              "source_query": "National Gallery Singapore in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJ0bwmznIZ2jEREOCMNggtIBk",
+          "google_origins": [
+            {
+              "intent_id": "landmark_9",
+              "source_query": "Buddha Tooth Relic Temple in Singapore",
+              "provider_rank": 0,
+              "actual_result_count": 1,
+              "intent_kind": "fallback"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "canonical_place_id": "ChIJVSYjJKIZ2jERpRFinATD52s",
+          "google_origins": [
+            {
+              "intent_id": "default_0",
+              "source_query": "top attractions in Singapore",
+              "provider_rank": 2,
+              "actual_result_count": 20,
+              "intent_kind": "fallback"
+            },
+            {
+              "intent_id": "discovery_1",
+              "source_query": "Gardens, major city sights, and scenic views in Singapore",
+              "provider_rank": 9,
+              "actual_result_count": 20,
+              "intent_kind": "normal_preference"
+            }
+          ],
+          "rag_origins": []
+        },
+        {
+          "$case_material_ref": {
+            "path": "opportunities.json",
+            "pointer": "/runs/1/places/ChIJd0VihwEZ2jERKeREhO6G1Qg",
+            "expanded_semantic_sha256": "33a443065cb81f4860b73175e731104042131c39f5e2b73636c225d71c42945c"
+          }
+        }
+      ]
+    }
+  },
+  "pre_rag_google_ids": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/1/pre_rag_google_ids",
+      "expanded_semantic_sha256": "d3a51264f01d844c81cf7f29b1d4f2c87055c99d4631ae309e3959d0f7f37ec2"
+    }
+  },
+  "omissions": {
+    "$case_material_ref": {
+      "path": "opportunities.json",
+      "pointer": "/runs/1/omissions",
+      "expanded_semantic_sha256": "ba4dbfbdf1e2cceb0fc8e1baa40d4a54cad9c1d10d76b51b5d0a2441af029380"
+    }
+  },
+  "rag": {
+    "$case_material_ref": {
+      "path": "../../generation/v2/rag-origins.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "6a6500970bb2f4429490e4c1966afb4726a193fc34166f781a97d295168e4087"
+    }
+  },
+  "outcome": "completed",
+  "failure_type": null,
+  "result_semantic_sha256": "b50532c0f71e2188cc710281b85ef6f49f7806c93f306c7e9987a494fa7d4edd"
+}

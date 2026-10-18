@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJo6qq6i5u5kcRCpYBp4rQP9w",
+  "unresolved_subject_id": null,
+  "subject_name": "Musée de l'Orangerie",
+  "subject_address": "Jardin des Tuileries, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9515762+00:00",
+  "sources": [
+    {
+      "url": "https://www.musee-orangerie.fr/en/node/197502",
+      "title": "The Water Lilies by Claude Monet — Musée de l'Orangerie",
+      "factual_paraphrase": "The museum houses Monet's eight Water Lilies compositions, conceived for two elliptical rooms as a monumental painting environment.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The museum's own Water Lilies account establishes its display of Monet's monumental paintings in purpose-designed rooms. This directly supports art.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

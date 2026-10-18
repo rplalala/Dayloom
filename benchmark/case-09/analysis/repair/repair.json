@@ -1,0 +1,3973 @@
+{
+  "search_version": 1,
+  "selected_round_index": 1,
+  "selected_semantic_assessments": [
+    {
+      "place_id": "ChIJsZTc61eLGGARG19EHRBJGjE",
+      "visit_object": "Unclear from the supplied name and address whether this is a visitable artwork or another object.",
+      "role": "unresolved",
+      "categories": [
+        "art",
+        "public-space"
+      ],
+      "reason": "The supplied facts do not establish the actual visit object or its public-attraction role.",
+      "evidence_refs": [
+        "google_places:ChIJsZTc61eLGGARG19EHRBJGjE"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJlxp9i8qMGGARQEGZLkm1yEk",
+      "visit_object": "Culture Building, an event venue.",
+      "role": "unresolved",
+      "categories": [
+        "event-venue",
+        "culture"
+      ],
+      "reason": "The event-venue type does not establish a public sightseeing attraction or an exhibition of modern or traditional culture.",
+      "evidence_refs": [
+        "google_places:ChIJlxp9i8qMGGARQEGZLkm1yEk"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJn2fJGdWMGGARneZpR_piJjQ",
+      "visit_object": "Asahi Culture Center.",
+      "role": "unresolved",
+      "categories": [
+        "cultural-center"
+      ],
+      "reason": "The name and type identify a cultural center, but do not establish a visitor attraction or specific cultural content.",
+      "evidence_refs": [
+        "google_places:ChIJn2fJGdWMGGARneZpR_piJjQ"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJq6oaA4OMGGARWFlJPYwY9ws",
+      "visit_object": "A Chinese tea culture nonprofit organization.",
+      "role": "non_main",
+      "categories": [
+        "organization",
+        "tea-culture"
+      ],
+      "reason": "The supplied facts identify an organization, not a primary sightseeing visit object.",
+      "evidence_refs": [
+        "google_places:ChIJq6oaA4OMGGARWFlJPYwY9ws"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJq6oaA4OMGGARWFlJPYwY9ws"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ3w9KoqiMGGARXgmu3VV0Hwo",
+      "visit_object": "Shidax Culture Hall.",
+      "role": "unresolved",
+      "categories": [
+        "hall",
+        "culture"
+      ],
+      "reason": "The supplied facts identify a hall but do not establish its use as a public sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJ3w9KoqiMGGARXgmu3VV0Hwo"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ______qJGGARHpd1TBA9uZ8",
+      "visit_object": "A restaurant named Tokyo Culture Culture.",
+      "role": "non_main",
+      "categories": [
+        "restaurant"
+      ],
+      "reason": "The supplied type identifies a restaurant; its name alone does not establish a cultural attraction.",
+      "evidence_refs": [
+        "google_places:ChIJ______qJGGARHpd1TBA9uZ8"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ7YQCr6OMGGARmChg6OlYo6c",
+      "visit_object": "Art In Gallery, an art gallery.",
+      "role": "attraction",
+      "categories": [
+        "art-gallery",
+        "visual-art"
+      ],
+      "reason": "The supplied name and type identify an art gallery, though they do not specify that its art is modern.",
+      "evidence_refs": [
+        "google_places:ChIJ7YQCr6OMGGARmChg6OlYo6c"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJ7YQCr6OMGGARmChg6OlYo6c"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJg9lzn0buGGARH6EGJJqjolU",
+      "visit_object": "Art Center Ongoing.",
+      "role": "unresolved",
+      "categories": [
+        "art",
+        "cultural-venue"
+      ],
+      "reason": "The name suggests an art-related venue, but the supplied facts do not establish its actual function or visitor role.",
+      "evidence_refs": [
+        "google_places:ChIJg9lzn0buGGARH6EGJJqjolU"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJg9lzn0buGGARH6EGJJqjolU"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJMcSlsnWNGGAR0BaLRnZGof4",
+      "visit_object": "Minami-Otsuka Community Culture Center.",
+      "role": "unresolved",
+      "categories": [
+        "community-center",
+        "culture"
+      ],
+      "reason": "The name and type identify a community culture center, but do not establish a public sightseeing attraction or cultural exhibit.",
+      "evidence_refs": [
+        "google_places:ChIJMcSlsnWNGGAR0BaLRnZGof4"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJxQf0EiSMGGARVI9obnOHk0U",
+      "visit_object": "National Archives of Modern Architecture.",
+      "role": "unresolved",
+      "categories": [
+        "archives",
+        "architecture"
+      ],
+      "reason": "The supplied name identifies an archive, but does not establish its visitor or exhibition role.",
+      "evidence_refs": [
+        "google_places:ChIJxQf0EiSMGGARVI9obnOHk0U"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJxQf0EiSMGGARVI9obnOHk0U"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJAQBEZx6MGGARC13vKycf2XM",
+      "visit_object": "A cafe.",
+      "role": "non_main",
+      "categories": [
+        "cafe"
+      ],
+      "reason": "The supplied type identifies a cafe; its name does not establish a primary sightseeing role.",
+      "evidence_refs": [
+        "google_places:ChIJAQBEZx6MGGARC13vKycf2XM"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJu8dltYOOGGARqNvbup6WlHE",
+      "visit_object": "National Institutes for Cultural Heritage, an organization.",
+      "role": "non_main",
+      "categories": [
+        "organization",
+        "cultural-heritage"
+      ],
+      "reason": "The supplied type identifies an organization, not a primary sightseeing visit object.",
+      "evidence_refs": [
+        "google_places:ChIJu8dltYOOGGARqNvbup6WlHE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJu8dltYOOGGARqNvbup6WlHE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJIbEHUwBhGGARjqERID4UwZY",
+      "visit_object": "A bed and breakfast at Ōta Bunka no Mori.",
+      "role": "non_main",
+      "categories": [
+        "lodging"
+      ],
+      "reason": "The supplied type identifies lodging; the name and address do not establish it as a primary attraction.",
+      "evidence_refs": [
+        "google_places:ChIJIbEHUwBhGGARjqERID4UwZY"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJncHReR2TGGAROOdiIy2HZo4",
+      "visit_object": "Akabane Culture Center.",
+      "role": "unresolved",
+      "categories": [
+        "community-center",
+        "culture"
+      ],
+      "reason": "The supplied facts identify a community center but do not establish a public sightseeing role or cultural exhibit.",
+      "evidence_refs": [
+        "google_places:ChIJncHReR2TGGAROOdiIy2HZo4"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "visit_object": "ART FRONT GALLERY, an art gallery.",
+      "role": "attraction",
+      "categories": [
+        "art-gallery",
+        "visual-art"
+      ],
+      "reason": "The supplied name and type identify an art gallery, without specifying that its art is modern.",
+      "evidence_refs": [
+        "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJXVCDcrmSGGARU7XlyOYMJ8o",
+      "visit_object": "Itabashi Culture Hall.",
+      "role": "unresolved",
+      "categories": [
+        "hall",
+        "culture"
+      ],
+      "reason": "The supplied facts identify a cultural hall but do not establish its use as a public sightseeing attraction.",
+      "evidence_refs": [
+        "google_places:ChIJXVCDcrmSGGARU7XlyOYMJ8o"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJNfumrB2MGGARjelgyB96j-E",
+      "visit_object": "AKIBA Cultures Theater, a performing arts theater.",
+      "role": "attraction",
+      "categories": [
+        "theater",
+        "performing-arts"
+      ],
+      "reason": "The supplied type identifies a performing arts venue that can be a visitor attraction; no specific traditional or modern art content is given.",
+      "evidence_refs": [
+        "google_places:ChIJNfumrB2MGGARjelgyB96j-E"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJVVVp6njtGGARI5_4uOC7qv8",
+      "visit_object": "Nogata Culture Market, a market.",
+      "role": "attraction",
+      "categories": [
+        "market",
+        "shopping"
+      ],
+      "reason": "The supplied name and type identify a market visit object; the facts do not establish a connection to traditional culture beyond its name.",
+      "evidence_refs": [
+        "google_places:ChIJVVVp6njtGGARI5_4uOC7qv8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJVVVp6njtGGARI5_4uOC7qv8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJWxa6o36LGGARMi9FMRrLnXk",
+      "visit_object": "Art Unlimited, an art gallery.",
+      "role": "attraction",
+      "categories": [
+        "art-gallery",
+        "visual-art"
+      ],
+      "reason": "The supplied name and type identify an art gallery, without specifying that its art is modern.",
+      "evidence_refs": [
+        "google_places:ChIJWxa6o36LGGARMi9FMRrLnXk"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJWxa6o36LGGARMi9FMRrLnXk"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJn_WVUgmJGGAReedYpzGvIU4",
+      "visit_object": "Kōtō Furuishiba Cultural Center.",
+      "role": "unresolved",
+      "categories": [
+        "cultural-center"
+      ],
+      "reason": "The supplied facts identify a cultural center but do not establish a public sightseeing role or cultural exhibit.",
+      "evidence_refs": [
+        "google_places:ChIJn_WVUgmJGGAReedYpzGvIU4"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+      "visit_object": "Tokyo National Museum.",
+      "role": "attraction",
+      "categories": [
+        "museum",
+        "cultural-heritage"
+      ],
+      "reason": "The supplied name and museum type establish a museum attraction and match the required named place; the supplied facts do not specify its collections.",
+      "evidence_refs": [
+        "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+      ],
+      "matches": [
+        {
+          "requirement_id": "named_2",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "visit_object": "Ueno Park.",
+      "role": "attraction",
+      "categories": [
+        "park",
+        "urban-green-space"
+      ],
+      "reason": "The supplied name and type establish a park attraction and match the required named place.",
+      "evidence_refs": [
+        "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E"
+      ],
+      "matches": [
+        {
+          "requirement_id": "named_1",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "visit_object": "Tokyo Tower, an observation deck.",
+      "role": "attraction",
+      "categories": [
+        "landmark",
+        "observation-deck"
+      ],
+      "reason": "The supplied name and type identify a landmark observation-deck attraction.",
+      "evidence_refs": [
+        "google_places:ChIJCewJkL2LGGAR3Qmk0vCTGkg"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJCaoz7S3zGGARrAnbz14VDcw",
+      "visit_object": "Tokyo Opera City Art Gallery, an art museum.",
+      "role": "attraction",
+      "categories": [
+        "art-museum",
+        "visual-art"
+      ],
+      "reason": "The supplied name and type identify an art museum, without specifying that its art is modern.",
+      "evidence_refs": [
+        "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJCaoz7S3zGGARrAnbz14VDcw"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+      "visit_object": "Sensō-ji, a Buddhist temple.",
+      "role": "attraction",
+      "categories": [
+        "temple",
+        "religious-heritage"
+      ],
+      "reason": "The supplied name and type identify a temple and support a traditional-culture visit.",
+      "evidence_refs": [
+        "google_places:ChIJ8T1GpMGOGGARDYGSgpooDWw"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJ8T1GpMGOGGARDYGSgpooDWw"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "visit_object": "Meiji Jingu, a Shinto shrine.",
+      "role": "attraction",
+      "categories": [
+        "shrine",
+        "religious-heritage"
+      ],
+      "reason": "The supplied name and type identify a shrine and support a traditional-culture visit.",
+      "evidence_refs": [
+        "google_places:ChIJ5SZMmreMGGARcz8QSTiJyo8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJ5SZMmreMGGARcz8QSTiJyo8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+      "visit_object": "Imperial Palace, typed as a castle.",
+      "role": "attraction",
+      "categories": [
+        "palace",
+        "historic-landmark"
+      ],
+      "reason": "The supplied name and type identify a landmark visit object related to traditional heritage.",
+      "evidence_refs": [
+        "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "visit_object": "Shibuya Scramble Crossing, a tourist attraction.",
+      "role": "attraction",
+      "categories": [
+        "urban-landmark",
+        "public-space"
+      ],
+      "reason": "The supplied name and tourist-attraction type identify a sightseeing landmark.",
+      "evidence_refs": [
+        "google_places:ChIJK9EM68qLGGARacmu4KJj5SA"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+      "visit_object": "Tokyo Skytree, an observation deck.",
+      "role": "attraction",
+      "categories": [
+        "landmark",
+        "observation-deck"
+      ],
+      "reason": "The supplied name and type identify a landmark observation-deck attraction.",
+      "evidence_refs": [
+        "google_places:ChIJ35ov0dCOGGARKvdDH7NPHX0"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "visit_object": "Shinjuku Gyoen National Garden.",
+      "role": "attraction",
+      "categories": [
+        "garden",
+        "park"
+      ],
+      "reason": "The supplied name and type identify a garden attraction.",
+      "evidence_refs": [
+        "google_places:ChIJPyOTG8KMGGARh_IXobWxHmo"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJqb-xEgCLGGARSaVWlndYgrg",
+      "visit_object": "A Japanese restaurant at Tsukiji outer market.",
+      "role": "non_main",
+      "categories": [
+        "restaurant"
+      ],
+      "reason": "The supplied type identifies a restaurant; the market-related address does not change the visit object into a primary attraction.",
+      "evidence_refs": [
+        "google_places:ChIJqb-xEgCLGGARSaVWlndYgrg"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+      "visit_object": "Akihabara Electric Town.",
+      "role": "attraction",
+      "categories": [
+        "shopping-district",
+        "urban-destination"
+      ],
+      "reason": "The supplied name identifies a district visit object, though the supplied facts do not establish a match to the culture preferences.",
+      "evidence_refs": [
+        "google_places:ChIJzdWdgh2MGGARh4kg2pVZL3c"
+      ],
+      "matches": [],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJoTcat9SMGGAR6GGG8zdcZvE",
+      "visit_object": "Tokyo Metropolitan Government Building",
+      "role": "non_main",
+      "categories": [
+        "government office"
+      ],
+      "reason": "Supplied type identifies an office; no sightseeing experience is described.",
+      "evidence_refs": [
+        "google_places:ChIJoTcat9SMGGAR6GGG8zdcZvE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJoTcat9SMGGAR6GGG8zdcZvE"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJoTcat9SMGGAR6GGG8zdcZvE"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJoTcat9SMGGAR6GGG8zdcZvE"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJoTcat9SMGGAR6GGG8zdcZvE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJD1M2GbCMGGARmUFziof73JM",
+      "visit_object": "Yoyogi Park Clock Tower",
+      "role": "unresolved",
+      "categories": [
+        "landmark"
+      ],
+      "reason": "The name alone does not establish what the visit object offers.",
+      "evidence_refs": [
+        "google_places:ChIJD1M2GbCMGGARmUFziof73JM"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJD1M2GbCMGGARmUFziof73JM"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJD1M2GbCMGGARmUFziof73JM"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJD1M2GbCMGGARmUFziof73JM"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJD1M2GbCMGGARmUFziof73JM"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJKbFrx72LGGAR1uyToVEdITo",
+      "visit_object": "Maple Waterfall",
+      "role": "attraction",
+      "categories": [
+        "scenic spot",
+        "nature"
+      ],
+      "reason": "Supplied type identifies a scenic spot; no further visit details are provided.",
+      "evidence_refs": [
+        "google_places:ChIJKbFrx72LGGAR1uyToVEdITo"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJKbFrx72LGGAR1uyToVEdITo"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJKbFrx72LGGAR1uyToVEdITo"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJKbFrx72LGGAR1uyToVEdITo"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJKbFrx72LGGAR1uyToVEdITo"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJQRMvwr2LGGARC3GHLt8p1wY",
+      "visit_object": "Snake Mound",
+      "role": "attraction",
+      "categories": [
+        "historical landmark"
+      ],
+      "reason": "Supplied type identifies a historical landmark.",
+      "evidence_refs": [
+        "google_places:ChIJQRMvwr2LGGARC3GHLt8p1wY"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJQRMvwr2LGGARC3GHLt8p1wY"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "related_alternative",
+          "evidence_refs": [
+            "google_places:ChIJQRMvwr2LGGARC3GHLt8p1wY"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJQRMvwr2LGGARC3GHLt8p1wY"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJQRMvwr2LGGARC3GHLt8p1wY"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+      "visit_object": "Imperial Palace East National Gardens",
+      "role": "attraction",
+      "categories": [
+        "garden",
+        "park"
+      ],
+      "reason": "Supplied type identifies a national garden.",
+      "evidence_refs": [
+        "google_places:ChIJPfFaQhOMGGAR-QPbNQoAG6M"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJPfFaQhOMGGAR-QPbNQoAG6M"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJPfFaQhOMGGAR-QPbNQoAG6M"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJPfFaQhOMGGAR-QPbNQoAG6M"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJPfFaQhOMGGAR-QPbNQoAG6M"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJW2cLzSGLGGARXAKXv6EkbqI",
+      "visit_object": "Fish Market Tsukiji Outer Market",
+      "role": "attraction",
+      "categories": [
+        "market",
+        "food"
+      ],
+      "reason": "The supplied name identifies a fish market and outer-market visit object; the type also indicates wholesale activity.",
+      "evidence_refs": [
+        "google_places:ChIJW2cLzSGLGGARXAKXv6EkbqI"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW2cLzSGLGGARXAKXv6EkbqI"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW2cLzSGLGGARXAKXv6EkbqI"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW2cLzSGLGGARXAKXv6EkbqI"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW2cLzSGLGGARXAKXv6EkbqI"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJW9hE2tiLGGAR8n7eT4TTvFA",
+      "visit_object": "Tsukiji Uogashi",
+      "role": "attraction",
+      "categories": [
+        "market",
+        "food"
+      ],
+      "reason": "Supplied type identifies a market.",
+      "evidence_refs": [
+        "google_places:ChIJW9hE2tiLGGAR8n7eT4TTvFA"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW9hE2tiLGGAR8n7eT4TTvFA"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW9hE2tiLGGAR8n7eT4TTvFA"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW9hE2tiLGGAR8n7eT4TTvFA"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJW9hE2tiLGGAR8n7eT4TTvFA"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJMwpiebSMGGARPr_454zHvDQ",
+      "visit_object": "Yoyogi Park",
+      "role": "attraction",
+      "categories": [
+        "park",
+        "outdoors"
+      ],
+      "reason": "Supplied type identifies a park.",
+      "evidence_refs": [
+        "google_places:ChIJMwpiebSMGGARPr_454zHvDQ"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJMwpiebSMGGARPr_454zHvDQ"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJMwpiebSMGGARPr_454zHvDQ"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJMwpiebSMGGARPr_454zHvDQ"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJMwpiebSMGGARPr_454zHvDQ"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJzRzI3HSNGGARRwZW6AtJfi0",
+      "visit_object": "Godzilla Head",
+      "role": "attraction",
+      "categories": [
+        "landmark",
+        "pop culture"
+      ],
+      "reason": "Supplied type identifies a tourist attraction.",
+      "evidence_refs": [
+        "google_places:ChIJzRzI3HSNGGARRwZW6AtJfi0"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJzRzI3HSNGGARRwZW6AtJfi0"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJAQCEbPGLGGARFa0L-v-rNtg",
+      "visit_object": "Kokyo Gaien National Garden",
+      "role": "attraction",
+      "categories": [
+        "garden",
+        "park"
+      ],
+      "reason": "Supplied type identifies a national garden.",
+      "evidence_refs": [
+        "google_places:ChIJAQCEbPGLGGARFa0L-v-rNtg"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJAQCEbPGLGGARFa0L-v-rNtg"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJAQCEbPGLGGARFa0L-v-rNtg"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJAQCEbPGLGGARFa0L-v-rNtg"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJAQCEbPGLGGARFa0L-v-rNtg"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJY4HWjseLGGARIBjdW6fAwYs",
+      "visit_object": "Tsukiji Market",
+      "role": "attraction",
+      "categories": [
+        "market",
+        "food"
+      ],
+      "reason": "Supplied type identifies a market.",
+      "evidence_refs": [
+        "google_places:ChIJY4HWjseLGGARIBjdW6fAwYs"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJY4HWjseLGGARIBjdW6fAwYs"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJY4HWjseLGGARIBjdW6fAwYs"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJY4HWjseLGGARIBjdW6fAwYs"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJY4HWjseLGGARIBjdW6fAwYs"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "visit_object": "Shibuya Sky",
+      "role": "attraction",
+      "categories": [
+        "observation deck",
+        "viewpoint"
+      ],
+      "reason": "Supplied type identifies an observation deck.",
+      "evidence_refs": [
+        "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJr7mGZdmMGGARjxoMFeHApXE",
+      "visit_object": "Shinjuku Golden-Gai",
+      "role": "attraction",
+      "categories": [
+        "district",
+        "nightlife"
+      ],
+      "reason": "Supplied type identifies a tourist attraction; no specific experience details are given.",
+      "evidence_refs": [
+        "google_places:ChIJr7mGZdmMGGARjxoMFeHApXE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJr7mGZdmMGGARjxoMFeHApXE"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJr7mGZdmMGGARjxoMFeHApXE"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJr7mGZdmMGGARjxoMFeHApXE"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJr7mGZdmMGGARjxoMFeHApXE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ4_ZvIgCLGGARLUI8wFAnNA0",
+      "visit_object": "Tokyo Tower Main Deck",
+      "role": "attraction",
+      "categories": [
+        "observation deck",
+        "viewpoint"
+      ],
+      "reason": "Supplied type identifies an observation deck.",
+      "evidence_refs": [
+        "google_places:ChIJ4_ZvIgCLGGARLUI8wFAnNA0"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4_ZvIgCLGGARLUI8wFAnNA0"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4_ZvIgCLGGARLUI8wFAnNA0"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4_ZvIgCLGGARLUI8wFAnNA0"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ4_ZvIgCLGGARLUI8wFAnNA0"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+      "visit_object": "Tokyo Dome City",
+      "role": "attraction",
+      "categories": [
+        "entertainment complex"
+      ],
+      "reason": "Supplied type identifies a tourist attraction.",
+      "evidence_refs": [
+        "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJyVdfgWGJGGAR1vj5VaRAois",
+      "visit_object": "TOKYO Word Mark Monument",
+      "role": "attraction",
+      "categories": [
+        "monument",
+        "landmark"
+      ],
+      "reason": "Supplied type identifies a tourist attraction and the name identifies a monument.",
+      "evidence_refs": [
+        "google_places:ChIJyVdfgWGJGGAR1vj5VaRAois"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJyVdfgWGJGGAR1vj5VaRAois"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJyVdfgWGJGGAR1vj5VaRAois"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJyVdfgWGJGGAR1vj5VaRAois"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJyVdfgWGJGGAR1vj5VaRAois"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+      "visit_object": "Tokyo Skytree Town",
+      "role": "attraction",
+      "categories": [
+        "tourist complex",
+        "landmark"
+      ],
+      "reason": "Supplied type identifies a tourist attraction.",
+      "evidence_refs": [
+        "google_places:ChIJiXsyjf-PGGAR3G9iaPQ3tj8"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJiXsyjf-PGGAR3G9iaPQ3tj8"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJiXsyjf-PGGAR3G9iaPQ3tj8"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJiXsyjf-PGGAR3G9iaPQ3tj8"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJiXsyjf-PGGAR3G9iaPQ3tj8"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJH9IFXgCNGGARX-OhK4Bl3vE",
+      "visit_object": "Ninja + Kabuki Tokyo",
+      "role": "attraction",
+      "categories": [
+        "performance",
+        "traditional culture"
+      ],
+      "reason": "The name and supplied amusement-center type indicate a visitor experience associated with Kabuki.",
+      "evidence_refs": [
+        "google_places:ChIJH9IFXgCNGGARX-OhK4Bl3vE"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJH9IFXgCNGGARX-OhK4Bl3vE"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJH9IFXgCNGGARX-OhK4Bl3vE"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJH9IFXgCNGGARX-OhK4Bl3vE"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJH9IFXgCNGGARX-OhK4Bl3vE"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJI6qRbr-MGGARuQ_AkVCSGJc",
+      "visit_object": "National Noh Theater",
+      "role": "attraction",
+      "categories": [
+        "performing arts",
+        "traditional culture"
+      ],
+      "reason": "Supplied type identifies a performing-arts theater, and the name identifies Noh.",
+      "evidence_refs": [
+        "google_places:ChIJI6qRbr-MGGARuQ_AkVCSGJc"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJI6qRbr-MGGARuQ_AkVCSGJc"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "supported",
+          "evidence_refs": [
+            "google_places:ChIJI6qRbr-MGGARuQ_AkVCSGJc"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJI6qRbr-MGGARuQ_AkVCSGJc"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJI6qRbr-MGGARuQ_AkVCSGJc"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    },
+    {
+      "place_id": "ChIJ2XzHulqNGGARmHu6-TL94zY",
+      "visit_object": "KIMONO",
+      "role": "unresolved",
+      "categories": [
+        "tea house",
+        "culture"
+      ],
+      "reason": "The supplied tea-house type and name do not establish the specific visit experience.",
+      "evidence_refs": [
+        "google_places:ChIJ2XzHulqNGGARmHu6-TL94zY"
+      ],
+      "matches": [
+        {
+          "requirement_id": "semantic_1",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJ2XzHulqNGGARmHu6-TL94zY"
+          ]
+        },
+        {
+          "requirement_id": "semantic_2",
+          "relation": "unresolved",
+          "evidence_refs": [
+            "google_places:ChIJ2XzHulqNGGARmHu6-TL94zY"
+          ]
+        },
+        {
+          "requirement_id": "named_1",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ2XzHulqNGGARmHu6-TL94zY"
+          ]
+        },
+        {
+          "requirement_id": "named_2",
+          "relation": "mismatch",
+          "evidence_refs": [
+            "google_places:ChIJ2XzHulqNGGARmHu6-TL94zY"
+          ]
+        }
+      ],
+      "exception_requirement_ids": []
+    }
+  ],
+  "soft_pace": {
+    "objective": "zero_soft_pace_deductions",
+    "is_failure_constraint": false,
+    "comparable": {
+      "dates": [
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26"
+      ],
+      "before_total": 10.0,
+      "after_total": 0.0
+    },
+    "before": {
+      "mean_penalty": 2.0,
+      "days": [
+        {
+          "date": "2026-10-22",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-23",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-24",
+          "penalty": 10.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-25",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-26",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "after": {
+      "mean_penalty": 0.0,
+      "days": [
+        {
+          "date": "2026-10-22",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-23",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-24",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-25",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        },
+        {
+          "date": "2026-10-26",
+          "penalty": 0.0,
+          "reason": "soft_pace_objective"
+        }
+      ]
+    },
+    "target_state": "reached"
+  },
+  "pending_groups": [],
+  "effective_patch": {
+    "edits": [
+      {
+        "operation": "delete",
+        "activity_id": "art-front-gallery-20261024",
+        "date": "2026-10-24",
+        "place_id": null,
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "target_dispositions": []
+  },
+  "components": [
+    {
+      "component_id": "component_1",
+      "edit_indices": [
+        0
+      ],
+      "dependencies": [
+        [
+          "activity",
+          "art-front-gallery-20261024"
+        ],
+        [
+          "compensation",
+          "finding_35"
+        ],
+        [
+          "date",
+          "2026-10-24"
+        ],
+        [
+          "obligation",
+          "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+        ],
+        [
+          "target",
+          "finding_35"
+        ]
+      ],
+      "status": "accepted",
+      "proposal": {
+        "output_version": "itinerary_3",
+        "transfers": {
+          "$case_material_ref": {
+            "path": "../../generation/v3/itinerary.json",
+            "pointer": "/transfers",
+            "expanded_semantic_sha256": "2712b12a68e5d7d642e48d9042257ffd32b5eed3417b786c3a46abbb28c0025c"
+          }
+        },
+        "route_diagnostics": {
+          "$case_material_ref": {
+            "path": "draft.json",
+            "pointer": "/route_diagnostics",
+            "expanded_semantic_sha256": "f651d56de417a3b656ffec2930a89dfbfffa29cb44862757b696a46bf29ff59b"
+          }
+        },
+        "reference_recommendations": [],
+        "destination": "Tokyo, Japan",
+        "start_date": "2026-10-22",
+        "end_date": "2026-10-26",
+        "days": {
+          "$case_material_ref": {
+            "path": "../../generation/v3/itinerary.json",
+            "pointer": "/days",
+            "expanded_semantic_sha256": "6b55e225bdd4d99e62b9e224e62fd14ffa8e136980a9f6441b275d6bb1701ef5"
+          }
+        }
+      },
+      "comparison": {
+        "accepted": true,
+        "reason": "verifiable_arrangement_improvement",
+        "progress": [
+          {
+            "finding_id": "finding_35",
+            "check": "soft_pace",
+            "outcome": "resolved",
+            "before": 10.0,
+            "after": 0.0
+          }
+        ],
+        "coverage_regressions": [
+          "2026-10-24"
+        ],
+        "business_values": [
+          {
+            "finding_id": "finding_35",
+            "check": "soft_pace",
+            "obligation_removed": false,
+            "meaning": "comparable_business_condition",
+            "before": 10.0,
+            "after": 0.0,
+            "before_distinct_main": null,
+            "after_distinct_main": null
+          }
+        ]
+      },
+      "report": {
+        "$case_material_ref": {
+          "path": "validation.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "d842b60b27faea828602375a9b6510844da8010354df7f8dfb153e7369f929ba"
+        }
+      },
+      "spatial": {
+        "accepted": true,
+        "reasons": [],
+        "legs": [],
+        "daily": [],
+        "mode": "WALK",
+        "mode_basis": "structured"
+      },
+      "input_state_sha256": "8025c1de20d7d00c7eb7614ff92d21b5532b51073c4f30a1675bcf56411c03ea",
+      "budget_before": {
+        "deterministic_attempts": 1
+      },
+      "main_visits_lost": [
+        "art-front-gallery-20261024"
+      ],
+      "changed_activity_ids": [],
+      "reason": "verifiable_component_improvement",
+      "budget_after": {
+        "deterministic_attempts": 1
+      },
+      "elapsed_seconds": 0
+    }
+  ],
+  "acquisition_audit": [],
+  "feedback_kind": "arrangement_improved",
+  "material_fingerprint": null,
+  "presentation_history": [],
+  "conflict_records": [],
+  "related_targets": [
+    {
+      "permission": {
+        "target_id": "related:finding_35:2026-10-24",
+        "parent_id": "finding_35",
+        "date": "2026-10-24",
+        "trigger_activity_ids": [
+          "art-front-gallery-20261024",
+          "shibuya-sky-20261024",
+          "shibuya-crossing-20261024"
+        ],
+        "minimum_count": 2,
+        "allow_partial": false,
+        "reason": "review_compensation",
+        "removable_place_ids": []
+      },
+      "activated_by": [
+        "art-front-gallery-20261024"
+      ],
+      "affected_adjacency": [
+        [
+          "shibuya-sky-20261024",
+          "shibuya-crossing-20261024"
+        ]
+      ],
+      "before": 3,
+      "after": 2,
+      "status": "resolved"
+    }
+  ],
+  "schedule": {
+    "windows": [],
+    "blank_windows": [],
+    "day_windows": [
+      {
+        "root_activity_id": "calendar:2026-10-22",
+        "start": "2026-10-22T00:00:00+09:00",
+        "end": "2026-10-23T00:00:00+09:00",
+        "source": "existing_day_calendar_gaps"
+      },
+      {
+        "root_activity_id": "calendar:2026-10-23",
+        "start": "2026-10-23T00:00:00+09:00",
+        "end": "2026-10-24T00:00:00+09:00",
+        "source": "existing_day_calendar_gaps"
+      },
+      {
+        "root_activity_id": "calendar:2026-10-24",
+        "start": "2026-10-24T00:00:00+09:00",
+        "end": "2026-10-25T00:00:00+09:00",
+        "source": "existing_day_calendar_gaps"
+      },
+      {
+        "root_activity_id": "calendar:2026-10-25",
+        "start": "2026-10-25T00:00:00+09:00",
+        "end": "2026-10-26T00:00:00+09:00",
+        "source": "existing_day_calendar_gaps"
+      },
+      {
+        "root_activity_id": "calendar:2026-10-26",
+        "start": "2026-10-26T00:00:00+09:00",
+        "end": "2026-10-27T00:00:00+09:00",
+        "source": "existing_day_calendar_gaps"
+      }
+    ],
+    "lineage": {},
+    "fixed": [],
+    "unresolved_dates": [],
+    "classifications": [],
+    "occupied_transfers": []
+  },
+  "window_adjustments": [],
+  "status": "ACCEPTED_COMPLETE",
+  "reason": "authorized_targets_complete",
+  "model_attempted": false,
+  "original": {
+    "$case_material_ref": {
+      "path": "draft.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "f41148f6815de890ef9e3f1f60cc8997c132b9d406755fbe54ae59c62379bd36"
+    }
+  },
+  "final": {
+    "$case_material_ref": {
+      "path": "repair.json",
+      "pointer": "/components/0/proposal",
+      "expanded_semantic_sha256": "d093d0917c0691336be49b4491f10961a341953e4d4b056bc5bb61c61a362c54"
+    }
+  },
+  "original_report": {
+    "$case_material_ref": {
+      "path": "original-validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "526fb0ce44dae63079d8549307493f34defee69aa73ad008a67a9654087729cb"
+    }
+  },
+  "reassessed_original_report": {
+    "contract_version": "v3_validation_1",
+    "diagnostics": {
+      "$case_material_ref": {
+        "path": "original-validation.json",
+        "pointer": "/diagnostics",
+        "expanded_semantic_sha256": "b1996a5ab31b0b2557c6f7a02c3bd99daccbe96251f2497eb296e89062511eab"
+      }
+    },
+    "findings": [
+      {
+        "finding_id": "finding_1",
+        "check": "named_requirement",
+        "status": "PASS",
+        "reason": "identity_inclusion_only",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [
+          "ChIJw2qQRZuOGGARWmROEiM2y7E"
+        ],
+        "requirement_ids": [
+          "named_1"
+        ],
+        "evidence_refs": [
+          "requirements:named_1",
+          "named_resolution:named_1"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_2",
+        "check": "named_requirement",
+        "status": "PASS",
+        "reason": "identity_inclusion_only",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+        ],
+        "requirement_ids": [
+          "named_2"
+        ],
+        "evidence_refs": [
+          "requirements:named_2",
+          "named_resolution:named_2"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_3",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-22"
+        ],
+        "activity_ids": [
+          "tokyo-national-museum-20261022"
+        ],
+        "place_ids": [
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-22",
+              "place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+              "source_ref": "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+              "retrieved_at": "2026-10-16T22:09:34.431129+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-22T09:30:00",
+                  "2026-10-22T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-17",
+              "source_window_end": "2026-10-23"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_4",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-22"
+        ],
+        "activity_ids": [
+          "tokyo-national-museum-20261022"
+        ],
+        "place_ids": [
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJEX3XFIOOGGAR3XdJvRjWLyM"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_5",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-22"
+        ],
+        "activity_ids": [
+          "sensoji-20261022"
+        ],
+        "place_ids": [
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-22",
+              "place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+              "source_ref": "google_places:ChIJ8T1GpMGOGGARDYGSgpooDWw",
+              "retrieved_at": "2026-10-16T22:09:35.617791+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ8T1GpMGOGGARDYGSgpooDWw"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_6",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-22"
+        ],
+        "activity_ids": [
+          "sensoji-20261022"
+        ],
+        "place_ids": [
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ8T1GpMGOGGARDYGSgpooDWw"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_7",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-23"
+        ],
+        "activity_ids": [
+          "ueno-park-20261023"
+        ],
+        "place_ids": [
+          "ChIJw2qQRZuOGGARWmROEiM2y7E"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-23",
+              "place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+              "source_ref": "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E",
+              "retrieved_at": "2026-10-16T22:09:34.771422+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "current_date_window",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-23T05:00:00",
+                  "2026-10-23T23:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E"
+              ],
+              "known": true,
+              "source_window_start": "2026-10-17",
+              "source_window_end": "2026-10-23"
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_8",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-23"
+        ],
+        "activity_ids": [
+          "ueno-park-20261023"
+        ],
+        "place_ids": [
+          "ChIJw2qQRZuOGGARWmROEiM2y7E"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJw2qQRZuOGGARWmROEiM2y7E"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_9",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-23"
+        ],
+        "activity_ids": [
+          "akihabara-electric-town-20261023"
+        ],
+        "place_ids": [
+          "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-23",
+              "place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+              "source_ref": "google_places:ChIJzdWdgh2MGGARh4kg2pVZL3c",
+              "retrieved_at": "2026-10-16T22:09:38.315601+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJzdWdgh2MGGARh4kg2pVZL3c"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_10",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-23"
+        ],
+        "activity_ids": [
+          "akihabara-electric-town-20261023"
+        ],
+        "place_ids": [
+          "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJzdWdgh2MGGARh4kg2pVZL3c"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_11",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "art-front-gallery-20261024"
+        ],
+        "place_ids": [
+          "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+              "source_ref": "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg",
+              "retrieved_at": "2026-10-16T22:09:32.738660+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-24T11:00:00",
+                  "2026-10-24T17:00:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_12",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "art-front-gallery-20261024"
+        ],
+        "place_ids": [
+          "ChIJ1d8x9UWLGGARlBR79HRq4eg"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ1d8x9UWLGGARlBR79HRq4eg"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_13",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "shibuya-sky-20261024"
+        ],
+        "place_ids": [
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+              "source_ref": "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+              "retrieved_at": "2026-10-16T22:09:42.032906+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-24T10:00:00",
+                  "2026-10-24T22:30:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_14",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "shibuya-sky-20261024"
+        ],
+        "place_ids": [
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_15",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "shibuya-crossing-20261024"
+        ],
+        "place_ids": [
+          "ChIJK9EM68qLGGARacmu4KJj5SA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-24",
+              "place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+              "source_ref": "google_places:ChIJK9EM68qLGGARacmu4KJj5SA",
+              "retrieved_at": "2026-10-16T22:09:36.602357+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJK9EM68qLGGARacmu4KJj5SA"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_16",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "shibuya-crossing-20261024"
+        ],
+        "place_ids": [
+          "ChIJK9EM68qLGGARacmu4KJj5SA"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJK9EM68qLGGARacmu4KJj5SA"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_17",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "meiji-jingu-20261025"
+        ],
+        "place_ids": [
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+              "source_ref": "google_places:ChIJ5SZMmreMGGARcz8QSTiJyo8",
+              "retrieved_at": "2026-10-16T22:09:35.915264+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJ5SZMmreMGGARcz8QSTiJyo8"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_18",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "meiji-jingu-20261025"
+        ],
+        "place_ids": [
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJ5SZMmreMGGARcz8QSTiJyo8"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_19",
+        "check": "opening",
+        "status": "PASS",
+        "reason": "adopted_hours_only",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "shinjuku-gyoen-20261025"
+        ],
+        "place_ids": [
+          "ChIJPyOTG8KMGGARh_IXobWxHmo"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPyOTG8KMGGARh_IXobWxHmo"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-25",
+              "place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+              "source_ref": "google_places:ChIJPyOTG8KMGGARh_IXobWxHmo",
+              "retrieved_at": "2026-10-16T22:09:37.170924+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "regular_weekly_baseline",
+              "reason": "adopted_intervals",
+              "intervals": [
+                [
+                  "2026-10-25T09:00:00",
+                  "2026-10-25T16:30:00"
+                ]
+              ],
+              "evidence_refs": [
+                "google_places:ChIJPyOTG8KMGGARh_IXobWxHmo"
+              ],
+              "known": true,
+              "source_window_start": null,
+              "source_window_end": null
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_20",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "shinjuku-gyoen-20261025"
+        ],
+        "place_ids": [
+          "ChIJPyOTG8KMGGARh_IXobWxHmo"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJPyOTG8KMGGARh_IXobWxHmo"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_21",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-26"
+        ],
+        "activity_ids": [
+          "imperial-palace-20261026"
+        ],
+        "place_ids": [
+          "ChIJTQbYAg2MGGARt22eNwtfGtE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-26",
+              "place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+              "source_ref": "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE",
+              "retrieved_at": "2026-10-16T22:09:36.314346+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_22",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-26"
+        ],
+        "activity_ids": [
+          "imperial-palace-20261026"
+        ],
+        "place_ids": [
+          "ChIJTQbYAg2MGGARt22eNwtfGtE"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJTQbYAg2MGGARt22eNwtfGtE"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_23",
+        "check": "opening",
+        "status": "UNKNOWN",
+        "reason": "structured_periods_missing",
+        "dates": [
+          "2026-10-26"
+        ],
+        "activity_ids": [
+          "tokyo-dome-city-20261026"
+        ],
+        "place_ids": [
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "selected_hours": [
+            {
+              "date": "2026-10-26",
+              "place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+              "source_ref": "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g",
+              "retrieved_at": "2026-10-16T22:09:42.908703+00:00",
+              "timezone": "Asia/Tokyo",
+              "basis": "unknown",
+              "reason": "structured_periods_missing",
+              "intervals": [],
+              "evidence_refs": [
+                "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+              ],
+              "known": false
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_24",
+        "check": "visitor_suitability",
+        "status": "UNKNOWN",
+        "reason": "admission_reservation_and_special_area_unverified",
+        "dates": [
+          "2026-10-26"
+        ],
+        "activity_ids": [
+          "tokyo-dome-city-20261026"
+        ],
+        "place_ids": [
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+        ],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_places:ChIJuxkVQeCNGGARfFgbeDEPG6g"
+        ],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {
+          "scheduling_policy": "application_default",
+          "access_mode": "obey_place_hours",
+          "reported_conditions": [],
+          "unverified": [
+            "admission_eligibility",
+            "reservation_completion",
+            "ticket_possession",
+            "special_area_access"
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_25",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "tokyo-national-museum-20261022",
+          "sensoji-20261022"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 3600.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1992,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.133659+00:00",
+              "retrieved_at": "2026-10-16T22:10:40.844096+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+                "destination_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1992,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.133659Z",
+                "retrieved_at": "2026-10-16T22:10:40.844096Z",
+                "origin_index": 0,
+                "destination_index": 3,
+                "distance_meters": 2309,
+                "duration_seconds": 1992,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1992,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.133659+00:00",
+              "retrieved_at": "2026-10-16T22:10:40.844096+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+                "destination_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1992,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.133659Z",
+                "retrieved_at": "2026-10-16T22:10:40.844096Z",
+                "origin_index": 0,
+                "destination_index": 3,
+                "distance_meters": 2309,
+                "duration_seconds": 1992,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_26",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "ueno-park-20261023",
+          "akihabara-electric-town-20261023"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 3600.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1448,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.133659+00:00",
+              "retrieved_at": "2026-10-16T22:10:40.844096+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+                "destination_place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1448,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.133659Z",
+                "retrieved_at": "2026-10-16T22:10:40.844096Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 1731,
+                "duration_seconds": 1448,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1448,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.133659+00:00",
+              "retrieved_at": "2026-10-16T22:10:40.844096+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+                "destination_place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1448,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.133659Z",
+                "retrieved_at": "2026-10-16T22:10:40.844096Z",
+                "origin_index": 1,
+                "destination_index": 8,
+                "distance_meters": 1731,
+                "duration_seconds": 1448,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_27",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "art-front-gallery-20261024",
+          "shibuya-sky-20261024"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 2700.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1342,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:42.308981+00:00",
+              "retrieved_at": "2026-10-16T22:10:43.015001+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+                "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1342,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:42.308981Z",
+                "retrieved_at": "2026-10-16T22:10:43.015001Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 1602,
+                "duration_seconds": 1342,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1342,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:42.308981+00:00",
+              "retrieved_at": "2026-10-16T22:10:43.015001+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+                "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1342,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:42.308981Z",
+                "retrieved_at": "2026-10-16T22:10:43.015001Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 1602,
+                "duration_seconds": 1342,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_28",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "shibuya-sky-20261024",
+          "shibuya-crossing-20261024"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 1800.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 278,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:41.554504+00:00",
+              "retrieved_at": "2026-10-16T22:10:42.306642+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 278,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:41.554504Z",
+                "retrieved_at": "2026-10-16T22:10:42.306642Z",
+                "origin_index": 2,
+                "destination_index": 6,
+                "distance_meters": 313,
+                "duration_seconds": 278,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 278,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:41.554504+00:00",
+              "retrieved_at": "2026-10-16T22:10:42.306642+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 278,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:41.554504Z",
+                "retrieved_at": "2026-10-16T22:10:42.306642Z",
+                "origin_index": 2,
+                "destination_index": 6,
+                "distance_meters": 313,
+                "duration_seconds": 278,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_29",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "meiji-jingu-20261025",
+          "shinjuku-gyoen-20261025"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 2700.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 1487,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.844096+00:00",
+              "retrieved_at": "2026-10-16T22:10:41.552489+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                "destination_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1487,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.844096Z",
+                "retrieved_at": "2026-10-16T22:10:41.552489Z",
+                "origin_index": 0,
+                "destination_index": 7,
+                "distance_meters": 1805,
+                "duration_seconds": 1487,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 1487,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.844096+00:00",
+              "retrieved_at": "2026-10-16T22:10:41.552489+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+                "destination_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1487,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.844096Z",
+                "retrieved_at": "2026-10-16T22:10:41.552489Z",
+                "origin_index": 0,
+                "destination_index": 7,
+                "distance_meters": 1805,
+                "duration_seconds": 1487,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_30",
+        "check": "route",
+        "status": "PASS",
+        "reason": "minimum_transfer_only",
+        "dates": [],
+        "activity_ids": [
+          "imperial-palace-20261026",
+          "tokyo-dome-city-20261026"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "google_routes:compute_route_matrix"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "available_seconds": 3600.0,
+          "application_reserve_seconds": 0.0,
+          "selected_routes": [
+            {
+              "duration_seconds": 2096,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.844096+00:00",
+              "retrieved_at": "2026-10-16T22:10:41.552489+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+                "destination_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2096,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.844096Z",
+                "retrieved_at": "2026-10-16T22:10:41.552489Z",
+                "origin_index": 1,
+                "destination_index": 15,
+                "distance_meters": 2451,
+                "duration_seconds": 2096,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            },
+            {
+              "duration_seconds": 2096,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:40.844096+00:00",
+              "retrieved_at": "2026-10-16T22:10:41.552489+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+                "destination_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 2096,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:40.844096Z",
+                "retrieved_at": "2026-10-16T22:10:41.552489Z",
+                "origin_index": 1,
+                "destination_index": 15,
+                "distance_meters": 2451,
+                "duration_seconds": 2096,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "finding_id": "finding_31",
+        "check": "budget",
+        "status": "UNKNOWN",
+        "reason": "verified_party_currency_cost_coverage_not_supported",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_32",
+        "check": "semantic_requirements",
+        "status": "UNKNOWN",
+        "reason": "open_semantics_not_executable_predicates",
+        "dates": [],
+        "activity_ids": [],
+        "place_ids": [],
+        "requirement_ids": [
+          "semantic_1",
+          "semantic_2"
+        ],
+        "evidence_refs": [],
+        "is_violation": false,
+        "magnitude": null,
+        "adopted_evidence": {}
+      },
+      {
+        "finding_id": "finding_33",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-22"
+        ],
+        "activity_ids": [
+          "tokyo-national-museum-20261022",
+          "sensoji-20261022"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "ordinary",
+            "exact_count": null,
+            "source_refs": []
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_34",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-23"
+        ],
+        "activity_ids": [
+          "ueno-park-20261023",
+          "akihabara-electric-town-20261023"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "ordinary",
+            "exact_count": null,
+            "source_refs": []
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_35",
+        "check": "soft_pace",
+        "status": "NEEDS_REVIEW",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-24"
+        ],
+        "activity_ids": [
+          "art-front-gallery-20261024",
+          "shibuya-sky-20261024",
+          "shibuya-crossing-20261024"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 10.0,
+        "adopted_evidence": {
+          "count": 3,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "ordinary",
+            "exact_count": null,
+            "source_refs": []
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_36",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-25"
+        ],
+        "activity_ids": [
+          "meiji-jingu-20261025",
+          "shinjuku-gyoen-20261025"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "ordinary",
+            "exact_count": null,
+            "source_refs": []
+          },
+          "is_failure_constraint": false
+        }
+      },
+      {
+        "finding_id": "finding_37",
+        "check": "soft_pace",
+        "status": "PASS",
+        "reason": "soft_pace_objective",
+        "dates": [
+          "2026-10-26"
+        ],
+        "activity_ids": [
+          "imperial-palace-20261026",
+          "tokyo-dome-city-20261026"
+        ],
+        "place_ids": [],
+        "requirement_ids": [],
+        "evidence_refs": [
+          "policy:rtpeval_daily_density_2"
+        ],
+        "is_violation": false,
+        "magnitude": 0.0,
+        "adopted_evidence": {
+          "count": 2,
+          "zero_counts": [
+            2
+          ],
+          "policy": {
+            "date": null,
+            "profile": "ordinary",
+            "exact_count": null,
+            "source_refs": []
+          },
+          "is_failure_constraint": false
+        }
+      }
+    ],
+    "place_use_observations": {
+      "$case_material_ref": {
+        "path": "original-validation.json",
+        "pointer": "/place_use_observations",
+        "expanded_semantic_sha256": "ff5074cd78fab4219a84a5307845452cf9437313e12841ee56d3915df35bb0f7"
+      }
+    },
+    "improvement_targets": [
+      {
+        "finding_id": "finding_35",
+        "basis": "review_policy"
+      }
+    ],
+    "scope": "read_only_partial_validation"
+  },
+  "proposed_report": {
+    "$case_material_ref": {
+      "path": "validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "d842b60b27faea828602375a9b6510844da8010354df7f8dfb153e7369f929ba"
+    }
+  },
+  "adopted_report": {
+    "$case_material_ref": {
+      "path": "validation.json",
+      "pointer": "",
+      "expanded_semantic_sha256": "d842b60b27faea828602375a9b6510844da8010354df7f8dfb153e7369f929ba"
+    }
+  },
+  "acquired_routes": [],
+  "target_progress": [
+    {
+      "finding_id": "finding_35",
+      "check": "soft_pace",
+      "outcome": "resolved",
+      "before": 10.0,
+      "after": 0.0
+    }
+  ],
+  "original_supply_ids": [
+    "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+    "ChIJw2qQRZuOGGARWmROEiM2y7E",
+    "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+    "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+    "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+    "ChIJTQbYAg2MGGARt22eNwtfGtE",
+    "ChIJK9EM68qLGGARacmu4KJj5SA",
+    "ChIJPyOTG8KMGGARh_IXobWxHmo",
+    "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+    "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+    "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+    "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+    "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+    "ChIJCaoz7S3zGGARrAnbz14VDcw",
+    "ChIJr7mGZdmMGGARjxoMFeHApXE",
+    "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+  ],
+  "repair_whitelist": [],
+  "final_place_ids": [
+    "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+    "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+    "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+    "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+    "ChIJK9EM68qLGGARacmu4KJj5SA",
+    "ChIJPyOTG8KMGGARh_IXobWxHmo",
+    "ChIJTQbYAg2MGGARt22eNwtfGtE",
+    "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+    "ChIJw2qQRZuOGGARWmROEiM2y7E",
+    "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+  ],
+  "main_visits_lost": [
+    "art-front-gallery-20261024"
+  ],
+  "coverage_regressions": [
+    "2026-10-24"
+  ],
+  "counters": {
+    "deterministic_attempts": 1,
+    "repair_input_candidates": 0,
+    "final_scheduled_unique": 10,
+    "repair_input_unused": 0,
+    "original_supply_unused": 6,
+    "final_main_visits": 10
+  },
+  "stops": [],
+  "sizing": {},
+  "candidate_preparation": {
+    "identity_capacity_summary": {},
+    "identity_free_operations": [],
+    "target_opportunities": [],
+    "elastic_windows": [],
+    "discovery_opportunities": [],
+    "ledger": [],
+    "input_candidates": [],
+    "authorizations": [],
+    "decisions": [],
+    "scheduled_ids": [],
+    "exploration_reasons": [],
+    "exploration_slots": 0,
+    "preparation_reference": 0,
+    "spatial_options": []
+  },
+  "scope": {
+    "deferred_review_target_ids": [],
+    "window_roots": [],
+    "coverage_permissions": [
+      {
+        "target_id": "related:finding_35:2026-10-24",
+        "parent_id": "finding_35",
+        "date": "2026-10-24",
+        "trigger_activity_ids": [
+          "art-front-gallery-20261024",
+          "shibuya-sky-20261024",
+          "shibuya-crossing-20261024"
+        ],
+        "minimum_count": 2,
+        "allow_partial": false,
+        "reason": "review_compensation",
+        "removable_place_ids": []
+      }
+    ],
+    "active_related": [],
+    "daily_main_min": 2,
+    "daily_main_max": 5,
+    "dates": [
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25"
+    ],
+    "permissions": [
+      {
+        "activity_id": "art-front-gallery-20261024",
+        "operations": [
+          "move",
+          "delete"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-24",
+        "move_dates": [
+          "2026-10-23",
+          "2026-10-25"
+        ]
+      },
+      {
+        "activity_id": "shibuya-crossing-20261024",
+        "operations": [
+          "move",
+          "delete"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-24",
+        "move_dates": [
+          "2026-10-23",
+          "2026-10-25"
+        ]
+      },
+      {
+        "activity_id": "shibuya-sky-20261024",
+        "operations": [
+          "move",
+          "delete"
+        ],
+        "allow_duration_change": false,
+        "source_date": "2026-10-24",
+        "move_dates": [
+          "2026-10-23",
+          "2026-10-25"
+        ]
+      }
+    ],
+    "add_dates": [
+      "2026-10-24"
+    ],
+    "direct_add_dates": [],
+    "target_ids": [
+      "finding_35"
+    ],
+    "allow_coverage_regression": false,
+    "travel_mode": "WALK",
+    "revisits": [],
+    "routing_preference": null,
+    "mode_source": "default_pedestrian_transfer_for_poi_grouping",
+    "unsupported_explicit_mode": null
+  },
+  "parsed_patch": {
+    "edits": [
+      {
+        "operation": "delete",
+        "activity_id": "art-front-gallery-20261024",
+        "date": "2026-10-24",
+        "place_id": null,
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "target_dispositions": []
+  },
+  "proposed": {
+    "$case_material_ref": {
+      "path": "repair.json",
+      "pointer": "/components/0/proposal",
+      "expanded_semantic_sha256": "d093d0917c0691336be49b4491f10961a341953e4d4b056bc5bb61c61a362c54"
+    }
+  },
+  "comparison": {
+    "accepted": true,
+    "reason": "verifiable_arrangement_improvement",
+    "progress": [
+      {
+        "finding_id": "finding_35",
+        "check": "soft_pace",
+        "outcome": "resolved",
+        "before": 10.0,
+        "after": 0.0
+      }
+    ],
+    "coverage_regressions": [
+      "2026-10-24"
+    ],
+    "business_values": [
+      {
+        "finding_id": "finding_35",
+        "check": "soft_pace",
+        "obligation_removed": false,
+        "meaning": "comparable_business_condition",
+        "before": 10.0,
+        "after": 0.0,
+        "before_distinct_main": null,
+        "after_distinct_main": null
+      }
+    ]
+  },
+  "usage": {},
+  "usage_status": "not_called",
+  "timing": {
+    "stage_started": 42482.562,
+    "stage_deadline": 42842.562,
+    "round_deadline": 42602.609,
+    "round_started": 42482.609,
+    "round_reference_deadline": 42554.599599999994,
+    "request_deadline": 42909.921,
+    "preparation_or_route_deadline": 42601.609,
+    "model_timeout_seconds": null,
+    "stage_remaining_seconds": 359.875,
+    "round_remaining_seconds": 119.92199999999866,
+    "reference_remaining_seconds": 71.91259999999602,
+    "preparation_elapsed_seconds": null,
+    "input_build_elapsed_seconds": null,
+    "model_available_seconds": 70.0,
+    "limiting_deadline": "round"
+  },
+  "spatial": {
+    "accepted": true,
+    "reasons": [],
+    "legs": [],
+    "daily": [],
+    "mode": "WALK",
+    "mode_basis": "structured"
+  },
+  "rounds": [
+    {
+      "round_index": 1,
+      "strategy": "system_delete",
+      "base_state": "792395c425854038b606bbde778508a79c894b70c7ed4f9b58c783a58adaa500",
+      "exploration_transition": true,
+      "best_promoted": true,
+      "best_state": "b082f0d992371284faf288ae721fdec965896fe0d64d90d592b3dc8888691868",
+      "target_links": {
+        "finding_35": "finding_35"
+      },
+      "input_itinerary": {
+        "$case_material_ref": {
+          "path": "draft.json",
+          "pointer": "",
+          "expanded_semantic_sha256": "f41148f6815de890ef9e3f1f60cc8997c132b9d406755fbe54ae59c62379bd36"
+        }
+      },
+      "result": {
+        "search_version": null,
+        "selected_round_index": null,
+        "selected_semantic_assessments": null,
+        "soft_pace": {},
+        "pending_groups": [],
+        "effective_patch": {
+          "edits": [
+            {
+              "operation": "delete",
+              "activity_id": "art-front-gallery-20261024",
+              "date": "2026-10-24",
+              "place_id": null,
+              "start_time": null,
+              "end_time": null
+            }
+          ],
+          "target_dispositions": []
+        },
+        "components": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components",
+            "expanded_semantic_sha256": "734af375fa6909e868b5ea834f59ad45fa70a43dc2666e1abdb8cfb4bc30a17e"
+          }
+        },
+        "acquisition_audit": [],
+        "feedback_kind": "arrangement_improved",
+        "material_fingerprint": null,
+        "presentation_history": [],
+        "conflict_records": [],
+        "related_targets": [
+          {
+            "permission": {
+              "target_id": "related:finding_35:2026-10-24",
+              "parent_id": "finding_35",
+              "date": "2026-10-24",
+              "trigger_activity_ids": [
+                "art-front-gallery-20261024",
+                "shibuya-sky-20261024",
+                "shibuya-crossing-20261024"
+              ],
+              "minimum_count": 2,
+              "allow_partial": false,
+              "reason": "review_compensation",
+              "removable_place_ids": []
+            },
+            "activated_by": [
+              "art-front-gallery-20261024"
+            ],
+            "affected_adjacency": [
+              [
+                "shibuya-sky-20261024",
+                "shibuya-crossing-20261024"
+              ]
+            ],
+            "before": 3,
+            "after": 2,
+            "status": "resolved"
+          }
+        ],
+        "schedule": {
+          "windows": [],
+          "blank_windows": [],
+          "day_windows": [
+            {
+              "root_activity_id": "calendar:2026-10-22",
+              "start": "2026-10-22T00:00:00+09:00",
+              "end": "2026-10-23T00:00:00+09:00",
+              "source": "existing_day_calendar_gaps"
+            },
+            {
+              "root_activity_id": "calendar:2026-10-23",
+              "start": "2026-10-23T00:00:00+09:00",
+              "end": "2026-10-24T00:00:00+09:00",
+              "source": "existing_day_calendar_gaps"
+            },
+            {
+              "root_activity_id": "calendar:2026-10-24",
+              "start": "2026-10-24T00:00:00+09:00",
+              "end": "2026-10-25T00:00:00+09:00",
+              "source": "existing_day_calendar_gaps"
+            },
+            {
+              "root_activity_id": "calendar:2026-10-25",
+              "start": "2026-10-25T00:00:00+09:00",
+              "end": "2026-10-26T00:00:00+09:00",
+              "source": "existing_day_calendar_gaps"
+            },
+            {
+              "root_activity_id": "calendar:2026-10-26",
+              "start": "2026-10-26T00:00:00+09:00",
+              "end": "2026-10-27T00:00:00+09:00",
+              "source": "existing_day_calendar_gaps"
+            }
+          ],
+          "lineage": {},
+          "fixed": [],
+          "unresolved_dates": [],
+          "classifications": [],
+          "occupied_transfers": []
+        },
+        "window_adjustments": [],
+        "status": "ACCEPTED_COMPLETE",
+        "reason": "authorized_targets_complete",
+        "model_attempted": false,
+        "original": {
+          "$case_material_ref": {
+            "path": "draft.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "f41148f6815de890ef9e3f1f60cc8997c132b9d406755fbe54ae59c62379bd36"
+          }
+        },
+        "final": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components/0/proposal",
+            "expanded_semantic_sha256": "d093d0917c0691336be49b4491f10961a341953e4d4b056bc5bb61c61a362c54"
+          }
+        },
+        "original_report": {
+          "$case_material_ref": {
+            "path": "original-validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "526fb0ce44dae63079d8549307493f34defee69aa73ad008a67a9654087729cb"
+          }
+        },
+        "reassessed_original_report": {
+          "$case_material_ref": {
+            "path": "original-validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "526fb0ce44dae63079d8549307493f34defee69aa73ad008a67a9654087729cb"
+          }
+        },
+        "proposed_report": {
+          "$case_material_ref": {
+            "path": "validation.json",
+            "pointer": "",
+            "expanded_semantic_sha256": "d842b60b27faea828602375a9b6510844da8010354df7f8dfb153e7369f929ba"
+          }
+        },
+        "adopted_report": null,
+        "acquired_routes": [],
+        "target_progress": [
+          {
+            "finding_id": "finding_35",
+            "check": "soft_pace",
+            "outcome": "resolved",
+            "before": 10.0,
+            "after": 0.0
+          }
+        ],
+        "original_supply_ids": [
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+          "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "ChIJiXsyjf-PGGAR3G9iaPQ3tj8",
+          "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+          "ChIJCaoz7S3zGGARrAnbz14VDcw",
+          "ChIJr7mGZdmMGGARjxoMFeHApXE",
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g"
+        ],
+        "repair_whitelist": [],
+        "final_place_ids": [
+          "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "ChIJzdWdgh2MGGARh4kg2pVZL3c"
+        ],
+        "main_visits_lost": [
+          "art-front-gallery-20261024"
+        ],
+        "coverage_regressions": [
+          "2026-10-24"
+        ],
+        "counters": {
+          "deterministic_attempts": 1,
+          "repair_input_candidates": 0,
+          "final_scheduled_unique": 10,
+          "repair_input_unused": 0,
+          "original_supply_unused": 6,
+          "final_main_visits": 10
+        },
+        "stops": [],
+        "sizing": {},
+        "candidate_preparation": {
+          "identity_capacity_summary": {},
+          "identity_free_operations": [],
+          "target_opportunities": [],
+          "elastic_windows": [],
+          "discovery_opportunities": [],
+          "ledger": [],
+          "input_candidates": [],
+          "authorizations": [],
+          "decisions": [],
+          "scheduled_ids": [],
+          "exploration_reasons": [],
+          "exploration_slots": 0,
+          "preparation_reference": 0,
+          "spatial_options": []
+        },
+        "scope": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/scope",
+            "expanded_semantic_sha256": "26c4d2fb38aa7f47487b2551e8cf8a46698b88f7614c43e11a1b7aa534cb38b8"
+          }
+        },
+        "parsed_patch": {
+          "edits": [
+            {
+              "operation": "delete",
+              "activity_id": "art-front-gallery-20261024",
+              "date": "2026-10-24",
+              "place_id": null,
+              "start_time": null,
+              "end_time": null
+            }
+          ],
+          "target_dispositions": []
+        },
+        "proposed": {
+          "$case_material_ref": {
+            "path": "repair.json",
+            "pointer": "/components/0/proposal",
+            "expanded_semantic_sha256": "d093d0917c0691336be49b4491f10961a341953e4d4b056bc5bb61c61a362c54"
+          }
+        },
+        "comparison": {
+          "accepted": true,
+          "reason": "verifiable_arrangement_improvement",
+          "progress": [
+            {
+              "finding_id": "finding_35",
+              "check": "soft_pace",
+              "outcome": "resolved",
+              "before": 10.0,
+              "after": 0.0
+            }
+          ],
+          "coverage_regressions": [
+            "2026-10-24"
+          ],
+          "business_values": [
+            {
+              "finding_id": "finding_35",
+              "check": "soft_pace",
+              "obligation_removed": false,
+              "meaning": "comparable_business_condition",
+              "before": 10.0,
+              "after": 0.0,
+              "before_distinct_main": null,
+              "after_distinct_main": null
+            }
+          ]
+        },
+        "usage": {},
+        "usage_status": "not_called",
+        "timing": {
+          "stage_started": 42482.562,
+          "stage_deadline": 42842.562,
+          "round_deadline": 42602.609,
+          "round_started": 42482.609,
+          "round_reference_deadline": 42554.599599999994,
+          "request_deadline": 42909.921,
+          "preparation_or_route_deadline": 42601.609,
+          "model_timeout_seconds": null,
+          "stage_remaining_seconds": 359.875,
+          "round_remaining_seconds": 119.92199999999866,
+          "reference_remaining_seconds": 71.91259999999602,
+          "preparation_elapsed_seconds": null,
+          "input_build_elapsed_seconds": null,
+          "model_available_seconds": 70.0,
+          "limiting_deadline": "round"
+        },
+        "spatial": {
+          "accepted": true,
+          "reasons": [],
+          "legs": [],
+          "daily": [],
+          "mode": "WALK",
+          "mode_basis": "structured"
+        },
+        "rounds": [],
+        "effective_policy": {
+          "$case_material_ref": {
+            "path": "../../generation/v2/runtime-policy.json",
+            "pointer": "/configuration/v3_repair",
+            "expanded_semantic_sha256": "8cf4e381fa696f310097c2fa002ae1703df23d8cf83da11af0c8aa5aa67b60fa"
+          }
+        },
+        "artifact_status": {
+          "patch": "recorded",
+          "proposal": "recorded",
+          "comparison": "recorded"
+        }
+      },
+      "adopted": {
+        "$case_material_ref": {
+          "path": "repair.json",
+          "pointer": "/components/0/proposal",
+          "expanded_semantic_sha256": "d093d0917c0691336be49b4491f10961a341953e4d4b056bc5bb61c61a362c54"
+        }
+      },
+      "feedback": null,
+      "continuation_reason": "authorized_targets_complete",
+      "usage": {}
+    }
+  ],
+  "effective_policy": {
+    "$case_material_ref": {
+      "path": "../../generation/v2/runtime-policy.json",
+      "pointer": "/configuration/v3_repair",
+      "expanded_semantic_sha256": "8cf4e381fa696f310097c2fa002ae1703df23d8cf83da11af0c8aa5aa67b60fa"
+    }
+  },
+  "artifact_status": {
+    "patch": "recorded",
+    "proposal": "recorded",
+    "comparison": "recorded"
+  }
+}

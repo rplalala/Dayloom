@@ -1,0 +1,403 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": [
+    {
+      "from_activity_id": "tokyo-national-museum-20261022",
+      "to_activity_id": "sensoji-20261022",
+      "origin_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+      "destination_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-22T13:00:00+09:00",
+      "arrival_time": "2026-10-22T13:33:12+09:00",
+      "provider_duration_seconds": 1992.0,
+      "distance_meters": 2309,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "ueno-park-20261023",
+      "to_activity_id": "akihabara-electric-town-20261023",
+      "origin_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+      "destination_place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-23T12:00:00+09:00",
+      "arrival_time": "2026-10-23T12:24:08+09:00",
+      "provider_duration_seconds": 1448.0,
+      "distance_meters": 1731,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "art-front-gallery-20261024",
+      "to_activity_id": "shibuya-sky-20261024",
+      "origin_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T13:00:00+09:00",
+      "arrival_time": "2026-10-24T13:22:22+09:00",
+      "provider_duration_seconds": 1342.0,
+      "distance_meters": 1602,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "shibuya-sky-20261024",
+      "to_activity_id": "shibuya-crossing-20261024",
+      "origin_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "destination_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-24T15:00:00+09:00",
+      "arrival_time": "2026-10-24T15:04:38+09:00",
+      "provider_duration_seconds": 278.0,
+      "distance_meters": 313,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "meiji-jingu-20261025",
+      "to_activity_id": "shinjuku-gyoen-20261025",
+      "origin_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+      "destination_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-25T11:30:00+09:00",
+      "arrival_time": "2026-10-25T11:54:47+09:00",
+      "provider_duration_seconds": 1487.0,
+      "distance_meters": 1805,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    },
+    {
+      "from_activity_id": "imperial-palace-20261026",
+      "to_activity_id": "tokyo-dome-city-20261026",
+      "origin_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+      "destination_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+      "mode": "WALK",
+      "mode_source": "APPLICATION_DEFAULT_WALK",
+      "departure_time": "2026-10-26T11:30:00+09:00",
+      "arrival_time": "2026-10-26T12:04:56+09:00",
+      "provider_duration_seconds": 2096.0,
+      "distance_meters": 2451,
+      "reserve_seconds": 0.0,
+      "routing_preference": null,
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ],
+      "calculation_basis": "walk_provider_estimate",
+      "validation_state": "PASS",
+      "unknowns": []
+    }
+  ],
+  "route_diagnostics": [
+    {
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/0",
+        "expanded_semantic_sha256": "41ec4521bf035d778b9d3f9d9e114d35026284a1c0f5afc000633ed8ecaae80f"
+      }
+    },
+    {
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/1",
+        "expanded_semantic_sha256": "00b5296da186a8b28277d386e2c7964377cf7904ce112751a6a005e12c54affb"
+      }
+    },
+    {
+      "from_activity_id": "art-front-gallery-20261024",
+      "to_activity_id": "shibuya-sky-20261024",
+      "origin": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+      "destination": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+      "departure": "2026-10-24T13:00:00+09:00",
+      "next_start": "2026-10-24T13:45:00+09:00",
+      "considered_modes": [
+        "WALK",
+        "TRANSIT",
+        "DRIVE"
+      ],
+      "adopted_mode": "WALK",
+      "result": "PASS",
+      "reason": "bound",
+      "mode_results": [
+        {
+          "mode": "WALK",
+          "status": "PASS",
+          "reason": "time_connection_only",
+          "evidence": [
+            {
+              "duration_seconds": 1342,
+              "source_ref": "google_routes:compute_route_matrix",
+              "travel_mode": "WALK",
+              "routing_preference": null,
+              "departure_time": null,
+              "requested_at": "2026-10-16T22:10:42.308981+00:00",
+              "retrieved_at": "2026-10-16T22:10:43.015001+00:00",
+              "basis": "walk_provider_estimate",
+              "element": {
+                "origin_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+                "destination_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+                "evidence_type": "provider_observed",
+                "derived_from_origin_place_id": null,
+                "derived_from_destination_place_id": null,
+                "status": "OK",
+                "condition": "ROUTE_EXISTS",
+                "status_state": "success",
+                "static_duration_seconds": 1342,
+                "fallback_info": null,
+                "requested_at": "2026-10-16T22:10:42.308981Z",
+                "retrieved_at": "2026-10-16T22:10:43.015001Z",
+                "origin_index": 0,
+                "destination_index": 10,
+                "distance_meters": 1602,
+                "duration_seconds": 1342,
+                "availability": "available",
+                "unavailable_reason": null
+              }
+            }
+          ]
+        },
+        {
+          "mode": "TRANSIT",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        },
+        {
+          "mode": "DRIVE",
+          "status": "UNKNOWN",
+          "reason": "applicable_route_unavailable",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/2",
+        "expanded_semantic_sha256": "e71cf4e8bcf7bb4ca5801c4db2b8e9fb289544f69153b755fe2343d16e96964b"
+      }
+    },
+    {
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/3",
+        "expanded_semantic_sha256": "c7b796209f61f8125a94832e317a2c4611f7cc1703cee7a6def565433f5c3227"
+      }
+    },
+    {
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/4",
+        "expanded_semantic_sha256": "347fc061d193568e1d4893a8a5462d30a1b0be180e52caeb7905d4a840fe5f29"
+      }
+    }
+  ],
+  "reference_recommendations": [],
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-26",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "tokyo-national-museum-20261022",
+          "title": "Visit Tokyo National Museum",
+          "place_name": "Tokyo National Museum",
+          "source_place_id": "ChIJEX3XFIOOGGAR3XdJvRjWLyM",
+          "location": "13-9 Uenokōen, Taito City, Tokyo 110-8712, Japan",
+          "start_time": "2026-10-22T10:00:00+09:00",
+          "end_time": "2026-10-22T13:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "Planned within the supplied date-specific hours of 09:30–17:00. Exhibition details and admission costs are not established by the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "sensoji-20261022",
+          "title": "Visit Sensō-ji",
+          "place_name": "Sensō-ji",
+          "source_place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+          "location": "2-chōme-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+          "start_time": "2026-10-22T14:00:00+09:00",
+          "end_time": "2026-10-22T15:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Date-specific opening hours are unknown in the supplied evidence."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "ueno-park-20261023",
+          "title": "Visit Ueno Park",
+          "place_name": "Ueno Park",
+          "source_place_id": "ChIJw2qQRZuOGGARWmROEiM2y7E",
+          "location": "4 Uenokoen, Taito City, Tokyo 110-0007, Japan",
+          "start_time": "2026-10-23T10:00:00+09:00",
+          "end_time": "2026-10-23T12:00:00+09:00",
+          "estimated_cost": null,
+          "notes": null
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "akihabara-electric-town-20261023",
+          "title": "Explore Akihabara Electric Town",
+          "place_name": "Akihabara Electric Town",
+          "source_place_id": "ChIJzdWdgh2MGGARh4kg2pVZL3c",
+          "location": "Akihabara Electric Town, Tokyo, Japan",
+          "start_time": "2026-10-23T13:00:00+09:00",
+          "end_time": "2026-10-23T15:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied evidence does not establish current operating status or hours for this district."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "art-front-gallery-20261024",
+          "title": "Visit ART FRONT GALLERY",
+          "place_name": "ART FRONT GALLERY",
+          "source_place_id": "ChIJ1d8x9UWLGGARlBR79HRq4eg",
+          "location": "Japan, 〒150-0033 Tokyo, Shibuya, Sarugakuchō, 29−１８ HILLSIDE TERRACE Building E, A棟",
+          "start_time": "2026-10-24T11:00:00+09:00",
+          "end_time": "2026-10-24T13:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "The supplied evidence identifies an art gallery but does not specify its current exhibitions. Hours are a regular weekly baseline; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "shibuya-sky-20261024",
+          "title": "Visit Shibuya Sky",
+          "place_name": "Shibuya Sky",
+          "source_place_id": "ChIJ4Rr2JWiLGGARcyRSHuZ-9G8",
+          "location": "Japan, 〒150-6145 Tokyo, Shibuya, 2-chōme−24−１２ スクランブルスクエア 14階・45階 46階・屋上",
+          "start_time": "2026-10-24T13:45:00+09:00",
+          "end_time": "2026-10-24T15:00:00+09:00",
+          "estimated_cost": null,
+          "notes": "Hours are a regular weekly baseline; date-specific exceptions are unknown."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "shibuya-crossing-20261024",
+          "title": "See Shibuya Scramble Crossing",
+          "place_name": "Shibuya Scramble Crossing",
+          "source_place_id": "ChIJK9EM68qLGGARacmu4KJj5SA",
+          "location": "21 Udagawacho, Shibuya, Tokyo 150-0042, Japan",
+          "start_time": "2026-10-24T15:30:00+09:00",
+          "end_time": "2026-10-24T16:00:00+09:00",
+          "estimated_cost": null,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "meiji-jingu-20261025",
+          "title": "Visit Meiji Jingu",
+          "place_name": "Meiji Jingu",
+          "source_place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+          "location": "1-1 Yoyogikamizonochō, Shibuya, Tokyo 151-8557, Japan",
+          "start_time": "2026-10-25T10:00:00+09:00",
+          "end_time": "2026-10-25T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Date-specific opening hours are unknown in the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "shinjuku-gyoen-20261025",
+          "title": "Visit Shinjuku Gyoen National Garden",
+          "place_name": "Shinjuku Gyoen National Garden",
+          "source_place_id": "ChIJPyOTG8KMGGARh_IXobWxHmo",
+          "location": "11 Naitōmachi, Shinjuku City, Tokyo 160-0014, Japan",
+          "start_time": "2026-10-25T12:15:00+09:00",
+          "end_time": "2026-10-25T14:15:00+09:00",
+          "estimated_cost": null,
+          "notes": "Planned within the supplied regular weekly hours of 09:00–16:30; date-specific exceptions are unknown."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "imperial-palace-20261026",
+          "title": "Visit the Imperial Palace",
+          "place_name": "Imperial Palace",
+          "source_place_id": "ChIJTQbYAg2MGGARt22eNwtfGtE",
+          "location": "1-1 Chiyoda, Chiyoda City, Tokyo 100-8111, Japan",
+          "start_time": "2026-10-26T10:00:00+09:00",
+          "end_time": "2026-10-26T11:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Date-specific visitor access and hours are unknown in the supplied evidence."
+        },
+        {
+          "activity_kind": "main_poi",
+          "time_use": "scheduled",
+          "activity_id": "tokyo-dome-city-20261026",
+          "title": "Explore Tokyo Dome City",
+          "place_name": "Tokyo Dome City",
+          "source_place_id": "ChIJuxkVQeCNGGARfFgbeDEPG6g",
+          "location": "1-chōme-3-61 Kōraku, Bunkyo City, Tokyo 112-0004, Japan",
+          "start_time": "2026-10-26T12:30:00+09:00",
+          "end_time": "2026-10-26T14:30:00+09:00",
+          "estimated_cost": null,
+          "notes": "Date-specific operating details are unknown in the supplied evidence."
+        }
+      ]
+    }
+  ]
+}

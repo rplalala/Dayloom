@@ -1,0 +1,126 @@
+{
+  "schema_version": "independent_relevance_decisions_1",
+  "case_id": "case-05",
+  "case_revision": "current-path-20261018-r1",
+  "input_sha256": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+  "requirement_spec_sha256": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+  "interest_inventory_sha256": "edf3078cd4a68b095b229a40121f56e1dd9235a3bdfcc0c1e99674c31489db6b",
+  "reviewer_ref": "/root/relevance05_clean",
+  "reviewer_kind": "external_model",
+  "reviewed_at": "2026-10-18T04:55:46Z",
+  "model_identity": "inherited configuration; exact model identifier unavailable",
+  "limits": {
+    "actual_opens": 35,
+    "actual_searches": 10,
+    "actual_find_requests": 17,
+    "budget_exclusions": [
+      {
+        "canonical_place_id": "ChIJ14DbPpKipBIROjfbj6-0FW0",
+        "name": "Cerveceria Catalana",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJ29H6d_ijpBIRCrlAwhtJVww",
+        "name": "Can Plaça",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJ54tgi9-jpBIRsUESelPH0Qc",
+        "name": "La Tapería Barcelona",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJ8cSQT1-ipBIRHHtt6of4JmA",
+        "name": "A Tu Bola",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJA-c18FeipBIRw8n-UGwjVLk",
+        "name": "Bodega Biarritz 1881",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJDaIRz_qjpBIRN2KU00yNnuo",
+        "name": "Mimi Tapas Restaurant",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJFbGR9zCjpBIRMe35kJinIrY",
+        "name": "La Lolita Barcelona",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJH1jdYvmipBIRlOn_x70XWx0",
+        "name": "Fa Patxoca",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJH8gKMViipBIR-Naz1zh9Hbw",
+        "name": "Güell Tapas Restaurant",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJI7W3XMWjpBIRFQMbzDpuI8U",
+        "name": "La Taberna De La Ronda",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJWXpb8PeipBIR9qHIBx1PV4U",
+        "name": "Restaurant La Boqueria",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJc5AjH_iipBIRPz2aX952ezk",
+        "name": "Jesús Restaurant",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJcVA_AeyipBIR7AVyApkU0Ow",
+        "name": "Casa Amàlia",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJef1HPBWjpBIRnbC1J-cB5W8",
+        "name": "BODEGA OLIVA",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJf8Zst1-jpBIRkov6YZvFOpY",
+        "name": "Local Tapas",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJfzr5EfWipBIRbpBQmkaOrNI",
+        "name": "Doña Rosa - Cocina Urbana",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJk4PX9FWipBIR4BejEaOwXzw",
+        "name": "La Plata",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJz7Jj3beipBIReQW92-l4bWk",
+        "name": "Comida de Olla",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      },
+      {
+        "canonical_place_id": "ChIJzxk1cwCjpBIRUR-nQFfTHp4",
+        "name": "Restaurante tapas 108",
+        "reason": "Not individually researched after the 35 distinct-URL open budget was allocated; producer identity/name/address alone was not treated as thematic evidence."
+      }
+    ],
+    "limitations": [
+      "No excluded project material was opened or received. Project reads were restricted to the assigned allowlist.",
+      "Open count includes failed opens/clicks and treats each requested URL and its redirect chain as one target. Each of the 35 requested URL targets was opened once. Find requests searched already-returned references; some returned fetch errors or no matches.",
+      "Official search excerpts are explicitly marked when a full page failed. No unsupported facts were supplied from memory, venue fame, producer labels, ranking or omissions.",
+      "Several secondary themes remain unknown because the inspected official extracts do not establish them. Unknown is not a negative relevance judgment.",
+      "Nineteen exact venue targets received no individually inspected official description under the capped URL allocation. Their three dimensions are unknown with explicit budget exclusions.",
+      "Some opened pages supplied no usable thematic detail: La Pedrera homepage, Poble Espanyol homepage, BrightSide homepage, BIG FUN full page, the Dama del paraguas full page, Picasso homepage, La Virreina city page, Montjuïc Castle city page and the dedicated Xocolata tourism page. Relevant alternative official material is cited where available.",
+      "Casa Padellàs was not explicitly identified by the inspected Plaça del Rei material; nearby archaeological relevance was not transferred to the supplied canonical identity.",
+      "Review concerns venue or operator offerings, not opening feasibility, booking, itinerary inclusion, pace, price or actual visits. Operator relevance concerns advertised services rather than office visits.",
+      "Art includes explicitly documented visual art and performing arts; geographic location alone does not establish historic-neighbourhood relevance. Distinct architectural evidence is required beyond merely occupying a building.",
+      "No not_relevant verdicts were asserted: the inspected evidence supported positive themes or left precise gaps, rather than establishing thematic exclusion."
+    ]
+  }
+}

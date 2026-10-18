@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJV11WT8QZ2jEREvaIc2FO0Ws",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.peramakan.com/",
+      "title": "PeraMakan",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened_limited_text",
+      "facts": [],
+      "limitations": [
+        "Initial open returned a page title; later text lookup failed; exact Owen Road branch scope was not established."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/51/evidence"
+}

@@ -1,26 +1,26 @@
 {
-  "adapter_coverage": "declared_default_adapters",
-  "cache_lookup_hits": 12,
-  "failed_http_responses": 0,
-  "incomplete_http_sends": 0,
-  "metrics": {
-    "cache_hits": 0,
-    "elapsed_seconds": 98.01499999999942,
-    "http_sends": 80,
-    "model_calls": 6,
-    "total_tokens": 64730
-  },
-  "missing_fields": [],
-  "namespace": "planner",
-  "observed_http_sends": 80,
-  "observed_model_calls": 6,
-  "observed_token_subtotal": 64730,
-  "observed_tool_http_sends": 74,
+  "run_id": "case-11-r02-v2",
   "outcome": "completed",
+  "namespace": "planner",
+  "timing_scope": "selected_invocation_through_cleanup",
+  "metrics": {
+    "elapsed_seconds": 98.01499999999942,
+    "total_tokens": 64730,
+    "model_calls": 6,
+    "http_sends": 80,
+    "cache_hits": 0
+  },
+  "observed_token_subtotal": 64730,
+  "observed_model_calls": 6,
+  "observed_http_sends": 80,
+  "cache_lookup_hits": 12,
+  "observed_tool_http_sends": 74,
+  "token_observed_calls": 6,
+  "token_missing_calls": 0,
+  "adapter_coverage": "declared_default_adapters",
   "repair_model_calls": 0,
   "repair_token_observed_subtotal": null,
-  "run_id": "case-11-r02-v2",
-  "timing_scope": "selected_invocation_through_cleanup",
-  "token_missing_calls": 0,
-  "token_observed_calls": 6
+  "failed_http_responses": 0,
+  "incomplete_http_sends": 0,
+  "missing_fields": []
 }

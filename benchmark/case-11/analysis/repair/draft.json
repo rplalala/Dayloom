@@ -64,205 +64,25 @@
   ],
   "route_diagnostics": [
     {
-      "from_activity_id": "paris-20261022-louvre",
-      "to_activity_id": "paris-20261022-sainte-chapelle",
-      "origin": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
-      "destination": "ChIJR3122B9u5kcRaCck3PlB9DM",
-      "departure": "2026-10-22T13:00:00+02:00",
-      "next_start": "2026-10-22T14:00:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 1055,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-18T03:59:02.130277+00:00",
-              "retrieved_at": "2026-10-18T03:59:02.923712+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
-                "destination_place_id": "ChIJR3122B9u5kcRaCck3PlB9DM",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 1055,
-                "fallback_info": null,
-                "requested_at": "2026-10-18T03:59:02.130277Z",
-                "retrieved_at": "2026-10-18T03:59:02.923712Z",
-                "origin_index": 1,
-                "destination_index": 4,
-                "distance_meters": 1308,
-                "duration_seconds": 1055,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/0",
+        "expanded_semantic_sha256": "2a4b662a4abfe0085f74d3fd2c24b856145e27fd7d37f368f9aebad1480b3d56"
+      }
     },
     {
-      "from_activity_id": "paris-20261024-eiffel-tower",
-      "to_activity_id": "paris-20261024-orsay",
-      "origin": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
-      "destination": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
-      "departure": "2026-10-24T12:30:00+02:00",
-      "next_start": "2026-10-24T14:00:00+02:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 2226,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-18T03:59:02.130277+00:00",
-              "retrieved_at": "2026-10-18T03:59:02.923712+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
-                "destination_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 2226,
-                "fallback_info": null,
-                "requested_at": "2026-10-18T03:59:02.130277Z",
-                "retrieved_at": "2026-10-18T03:59:02.923712Z",
-                "origin_index": 0,
-                "destination_index": 7,
-                "distance_meters": 2653,
-                "duration_seconds": 2226,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/2",
+        "expanded_semantic_sha256": "27470eaeacc2c5ed1f8e114e570a6450734da43fae22ef87da4f432e8be5bce9"
+      }
     },
     {
-      "from_activity_id": "paris-20261025-pantheon",
-      "to_activity_id": "paris-20261025-cluny",
-      "origin": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
-      "destination": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
-      "departure": "2026-10-25T11:30:00+01:00",
-      "next_start": "2026-10-25T13:00:00+01:00",
-      "considered_modes": [
-        "WALK",
-        "TRANSIT",
-        "DRIVE"
-      ],
-      "adopted_mode": "WALK",
-      "result": "PASS",
-      "reason": "bound",
-      "mode_results": [
-        {
-          "mode": "WALK",
-          "status": "PASS",
-          "reason": "time_connection_only",
-          "evidence": [
-            {
-              "duration_seconds": 491,
-              "source_ref": "google_routes:compute_route_matrix",
-              "travel_mode": "WALK",
-              "routing_preference": null,
-              "departure_time": null,
-              "requested_at": "2026-10-18T03:59:03.537827+00:00",
-              "retrieved_at": "2026-10-18T03:59:04.199175+00:00",
-              "basis": "walk_provider_estimate",
-              "element": {
-                "origin_place_id": "ChIJc8mX0udx5kcRWKcjTwDr5QA",
-                "destination_place_id": "ChIJLxPh9d1x5kcRf7M1U0pu1gU",
-                "evidence_type": "provider_observed",
-                "derived_from_origin_place_id": null,
-                "derived_from_destination_place_id": null,
-                "status": "OK",
-                "condition": "ROUTE_EXISTS",
-                "status_state": "success",
-                "static_duration_seconds": 491,
-                "fallback_info": null,
-                "requested_at": "2026-10-18T03:59:03.537827Z",
-                "retrieved_at": "2026-10-18T03:59:04.199175Z",
-                "origin_index": 0,
-                "destination_index": 12,
-                "distance_meters": 636,
-                "duration_seconds": 491,
-                "availability": "available",
-                "unavailable_reason": null
-              }
-            }
-          ]
-        },
-        {
-          "mode": "TRANSIT",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        },
-        {
-          "mode": "DRIVE",
-          "status": "UNKNOWN",
-          "reason": "applicable_route_unavailable",
-          "evidence": []
-        }
-      ]
+      "$case_material_ref": {
+        "path": "../../generation/v3/itinerary.json",
+        "pointer": "/route_diagnostics/3",
+        "expanded_semantic_sha256": "09e9e32a42daa94bd42b2ff0256bf7e05ce488d6939d40edf01fac08a0009003"
+      }
     }
   ],
   "reference_recommendations": [],

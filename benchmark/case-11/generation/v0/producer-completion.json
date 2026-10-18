@@ -1,0 +1,24 @@
+{
+  "declared_by": "rtpeval.generate/selected_workflow_1",
+  "declared_at": "2026-10-17T03:37:51.431373+00:00",
+  "policy_ref": "selected_workflow_1",
+  "producer_policy_ref": "selected_workflow_1",
+  "workflow_status": "completed",
+  "required_mechanisms": {
+    "generation": "completed"
+  },
+  "observations": [],
+  "failure_type": null,
+  "operator_selection_ref": {
+    "path": "../../generation-selection-3bbcb3394d9842059f1c178276cd0b83.json",
+    "sha256": "d559297ecce47f0252a34ab0fe9d94fe0663b575db96c4d2d3bc397118dbf9b7",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "operator_config_ref": {
+    "path": "../../selection.json",
+    "sha256": "d559297ecce47f0252a34ab0fe9d94fe0663b575db96c4d2d3bc397118dbf9b7",
+    "media_type": "application/json",
+    "availability": "available"
+  }
+}

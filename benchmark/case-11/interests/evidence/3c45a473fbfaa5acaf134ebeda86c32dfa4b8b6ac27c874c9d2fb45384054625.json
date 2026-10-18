@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJozsIt1dv5kcRgnNM9SFTcbA",
+  "unresolved_subject_id": null,
+  "subject_name": "Hop On Hop Off",
+  "subject_address": "1 Pl. du Châtelet, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9528731+00:00",
+  "sources": [
+    {
+      "url": "https://hoponhopoff.fr/",
+      "title": "Hop On Hop Off — HopOnHopOff.fr",
+      "factual_paraphrase": "The operator identifies itself as an official Big Bus distributor and lists 1 Place du Chatelet for its Paris offer.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web open"
+    }
+  ],
+  "verdict": "unknown",
+  "assessment": "The exact-address operator page identifies a Big Bus ticket distributor, but does not bind this canonical subject to a particular art or architecture tour or provide its substantive interpretation. Selling generic sightseeing tickets is insufficient to infer relevance or a negative.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

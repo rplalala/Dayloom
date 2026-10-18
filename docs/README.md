@@ -58,7 +58,8 @@ The [accepted-case compatibility audit](records/evaluation/accepted-case-compati
 checks all twelve accepted selections against the 18 October integrated code,
 separating unchanged saved-material calculations from source-bound policy upgrades
 and the completed bounded generation/Primary checks. It also records the authorized
-current-data replacement for case-09/11 and the remaining dependent-analysis gaps.
+completed direct replacement for 04/05/09/11, matched dependent analyses,
+canonical input alignment, bounded consumption and retained evidence limitations.
 The [post-generation review readiness contract](contracts/0002-intake-identity-usage.md#post-generation-review-readiness)
 separates missing output-specific review work from completed unresolved judgments
 before primary acquisition, without changing Planner generation or score policies;

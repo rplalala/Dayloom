@@ -20,5 +20,38 @@
     "path": "mechanism.json",
     "sha256": "5645832f7e7fc50f3cec847bde78fc8c76164d8301b191475606b804b6aa0962"
   },
-  "scope": "Development capture only; producer completion and batch qualification are separate."
+  "scope": "Development capture only; producer completion and batch qualification are separate.",
+  "declared_by": "rtpeval.generate/selected_workflow_1",
+  "declared_at": "2026-10-18T03:57:01.497929+00:00",
+  "rationale": "Selected Planner workflow observation; qualification is separate from quality.",
+  "captured_input_ref": {
+    "path": "input.json",
+    "sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "captured_runtime_config_ref": {
+    "path": "runtime.yaml",
+    "sha256": "76dabacf63c2b5e03eb0ef9109b21a28a39a0401431c640fa93c10ac94b08077",
+    "media_type": "application/yaml",
+    "availability": "available"
+  },
+  "producer_completion_ref": {
+    "path": "producer-completion.json",
+    "sha256": "aad8cd8fd4d81e811b6bb4832981c2f1df646e35a49a4d0b7ff7c30f945a18ef",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "capture_manifest_ref": {
+    "path": "manifest.json",
+    "sha256": "eb3aace60b62c70127ef29f7a8e4d54deb4d3567db3edc98b9ffd46626622203",
+    "media_type": "application/json",
+    "availability": "available"
+  },
+  "native_provenance_ref": {
+    "path": "provenance.json",
+    "sha256": "95e078f8d36bcdee96f83940de6b54cd269c8e5d0bd32f6b31f99b74d384a962",
+    "media_type": "application/json",
+    "availability": "available"
+  }
 }

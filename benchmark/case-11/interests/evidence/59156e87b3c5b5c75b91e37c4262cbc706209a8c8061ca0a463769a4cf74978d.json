@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJneWSEjNw5kcRrpbgsvMnPIs",
+  "unresolved_subject_id": null,
+  "subject_name": "Bourdelle Museum",
+  "subject_address": "18 Rue Antoine Bourdelle, 75015 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9505667+00:00",
+  "sources": [
+    {
+      "url": "https://www.bourdelle.paris.fr/explorer/collections/un-musee-des-collections/sculptures",
+      "title": "Sculptures — Musée Bourdelle",
+      "factual_paraphrase": "The museum preserves thousands of plasters and bronzes alongside marble, clay, stoneware and wood sculpture by Antoine Bourdelle.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The museum documents a collection of Bourdelle's sculptures in plaster, bronze, marble, clay, stoneware and wood. This is direct art evidence.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

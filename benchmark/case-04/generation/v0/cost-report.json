@@ -1,0 +1,287 @@
+{
+  "schema_version": "rtpeval_cost_report_1",
+  "currency": "USD",
+  "scope": "observed_instrumented_adapters_only",
+  "runs": [
+    {
+      "namespace": "planner",
+      "group_id": "case-04",
+      "run_id": "case-04-current-path-v0-a1",
+      "version": "v0",
+      "result_sha256": "55b65a4ead0c92be9c5b43ffa7a1db0da1e3d049be6a1d1c8b2764a890207d77",
+      "usage_sha256": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b",
+      "events": [
+        {
+          "event_id": "01a14d0b-56df-7402-8b77-07e4c90d4324",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00272555",
+          "best_available": "0.00272555",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b:model:01a14d0b-56df-7402-8b77-07e4c90d4324",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d0b-56df-7402-8b77-07e4c90d4324",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 3,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 12486,
+              "output_tokens": 2329
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "01a14d0b-a5b3-7cc0-8254-4b9f51d361d0",
+          "kind": "model",
+          "category": "models",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "model": "gpt-6-luna",
+          "status": "estimated",
+          "actual": null,
+          "estimated": "0.00276355",
+          "best_available": "0.00276355",
+          "missing_reason": null,
+          "pricing": {
+            "price_id": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b:model:01a14d0b-a5b3-7cc0-8254-4b9f51d361d0",
+            "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "as_of": "2026-10-08",
+            "valid_from": "2026-10-18",
+            "valid_until": "2026-10-19",
+            "match": {
+              "kind": "model",
+              "provider": "langchain",
+              "operation": "chat_model",
+              "event_id": "01a14d0b-a5b3-7cc0-8254-4b9f51d361d0",
+              "model": "gpt-6-luna"
+            },
+            "rates": {
+              "input_tokens": "0.10",
+              "cached_input_tokens": "0.01",
+              "cache_write_input_tokens": "0.125",
+              "output_tokens": "0.50"
+            },
+            "per": "1000000",
+            "sku_reference": "GPT-6 Luna short context",
+            "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+            "unreported_cache_policy": "uncached_write_rate",
+            "billable_units": {
+              "input_tokens": 3,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 3830,
+              "output_tokens": 4569
+            }
+          },
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "4ae0301afb24429094708c851d7704e2",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        },
+        {
+          "event_id": "387d481136f44a93bd7d37c6d1f9fd32",
+          "kind": "provider",
+          "category": "model_http",
+          "provider": "azure_foundry",
+          "operation": "model_http",
+          "model": null,
+          "status": "transport_only",
+          "actual": null,
+          "estimated": null,
+          "best_available": null,
+          "missing_reason": null,
+          "pricing": null,
+          "bill": null,
+          "annotation": null,
+          "repair": false
+        }
+      ],
+      "actual_observed_subtotal": null,
+      "actual_total": null,
+      "estimated_observed_subtotal": "0.0054891",
+      "estimated_total": "0.0054891",
+      "best_available_observed_subtotal": "0.0054891",
+      "best_available_total": "0.0054891",
+      "unpriced_event_count": 0,
+      "categories": {
+        "model_http": {
+          "actual_observed_subtotal": "0",
+          "actual_total": "0",
+          "estimated_observed_subtotal": "0",
+          "estimated_total": "0",
+          "best_available_observed_subtotal": "0",
+          "best_available_total": "0",
+          "unpriced_event_count": 0
+        },
+        "models": {
+          "actual_observed_subtotal": null,
+          "actual_total": null,
+          "estimated_observed_subtotal": "0.0054891",
+          "estimated_total": "0.0054891",
+          "best_available_observed_subtotal": "0.0054891",
+          "best_available_total": "0.0054891",
+          "unpriced_event_count": 0
+        }
+      },
+      "repair": {
+        "actual_observed_subtotal": "0",
+        "actual_total": "0",
+        "estimated_observed_subtotal": "0",
+        "estimated_total": "0",
+        "best_available_observed_subtotal": "0",
+        "best_available_total": "0",
+        "unpriced_event_count": 0
+      },
+      "missing_fields": []
+    }
+  ],
+  "unallocated_bills": [],
+  "prices": {
+    "schema_version": "rtpeval_prices_1",
+    "currency": "USD",
+    "rows": [
+      {
+        "price_id": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b:model:01a14d0b-56df-7402-8b77-07e4c90d4324",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d0b-56df-7402-8b77-07e4c90d4324",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      },
+      {
+        "price_id": "5b7cf53b19268e6068d64cdd88f90092a26316b4a752c300434c16726469b34b:model:01a14d0b-a5b3-7cc0-8254-4b9f51d361d0",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "as_of": "2026-10-08",
+        "valid_from": "2026-10-18",
+        "valid_until": "2026-10-19",
+        "match": {
+          "kind": "model",
+          "provider": "langchain",
+          "operation": "chat_model",
+          "event_id": "01a14d0b-a5b3-7cc0-8254-4b9f51d361d0",
+          "model": "gpt-6-luna"
+        },
+        "rates": {
+          "input_tokens": "0.10",
+          "cached_input_tokens": "0.01",
+          "cache_write_input_tokens": "0.125",
+          "output_tokens": "0.50"
+        },
+        "per": "1000000",
+        "sku_reference": "GPT-6 Luna short context",
+        "assumption": "Dated official retail reference for saved usage; not an account invoice. Standard processing; no tax, credits or free quota.",
+        "unreported_cache_policy": "uncached_write_rate"
+      }
+    ],
+    "reference_basis": {
+      "checked_on": "2026-10-08",
+      "currency": "USD",
+      "actual_account_prices": false,
+      "model": {
+        "gpt-6-luna": {
+          "input_per_million": "0.10",
+          "cached_input_per_million": "0.01",
+          "cache_write_per_million": "0.125",
+          "output_per_million": "0.50",
+          "long_context_threshold": 272000,
+          "long_input_multiplier": "2",
+          "long_output_multiplier": "1.5",
+          "source": "https://developers.openai.com/api/docs/models/gpt-6-luna"
+        }
+      },
+      "embedding": {
+        "model": "text-embedding-3-small",
+        "input_per_million": "0.020",
+        "source": "https://developers.openai.com/api/docs/models/text-embedding-3-small"
+      },
+      "google_per_request": {
+        "text_search_ids_only": "0",
+        "text_search_pro": "0.032",
+        "nearby_pro": "0.032",
+        "details_ids_only": "0",
+        "details_essentials": "0.005",
+        "details_pro": "0.017",
+        "details_enterprise": "0.020",
+        "details_reviews": "0.025"
+      },
+      "matrix_per_element": {
+        "essentials": "0.005",
+        "pro": "0.010"
+      },
+      "web_search_per_tool_call": "0.010",
+      "google_source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+      "tool_source": "https://developers.openai.com/api/docs/pricing",
+      "assumptions": [
+        "Standard processing; no account discounts, free quotas or tax.",
+        "OpenAI model/tool rates proxy Foundry rates; actual account billing unavailable.",
+        "Missing cache details use an explicit conservative estimate, never observed zero.",
+        "Open-Meteo noncommercial endpoint and public HTML have no per-request fee in this scenario.",
+        "Failed requests and missing provider usage remain unpriced; no invoice is inferred."
+      ]
+    },
+    "excluded_model_references": []
+  },
+  "limitations": [
+    "Retail estimates exclude credits, free tiers, volume discounts and tax.",
+    "Unobserved services are not inferred; partial subtotals are not totals.",
+    "Repair is a subset. Oracle runs are not allocated to planner versions."
+  ]
+}

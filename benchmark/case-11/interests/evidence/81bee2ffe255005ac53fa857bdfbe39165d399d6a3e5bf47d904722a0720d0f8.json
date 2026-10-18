@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJe2jeNttx5kcRi_mJsGHdkQc",
+  "unresolved_subject_id": null,
+  "subject_name": "Jardin du Luxembourg",
+  "subject_address": "75006 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9441012+00:00",
+  "sources": [
+    {
+      "url": "https://jardin.senat.fr/infos-pratiques/le-jardin-en-chiffres.html",
+      "title": "Le Jardin en chiffres — Jardin du Luxembourg",
+      "factual_paraphrase": "The garden contains 102 statues, including a series of queens and notable women, and combines French formal and English-style gardens.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The Senate documents a substantial sculpture collection and a designed garden combining French and English forms. The permanent sculpture content directly supports art.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

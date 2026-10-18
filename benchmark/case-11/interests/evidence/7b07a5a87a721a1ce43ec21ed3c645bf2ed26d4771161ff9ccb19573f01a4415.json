@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJSUOPztFv5kcRnEbSPYG-9fM",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Petit Palais",
+  "sources": [
+    {
+      "url": "https://petitpalais.paris.fr/visiter/pendant-votre-visite",
+      "title": "Pendant votre visite | Petit Palais",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The Petit Palais identifies itself as the City of Paris fine-arts museum and describes resources for discovering its collections and architecture.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The Petit Palais identifies itself as the City of Paris fine-arts museum and describes resources for discovering its collections and architecture.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

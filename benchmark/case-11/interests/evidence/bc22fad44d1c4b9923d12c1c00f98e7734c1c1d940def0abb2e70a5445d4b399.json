@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJGTPjvRFv5kcRVY45WQQIYks",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Grand Bassin Rond",
+  "sources": [
+    {
+      "url": "https://collections.louvre.fr/en/ark:/53355/cl010420163",
+      "title": "Vasque - Louvre site des collections",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The Louvre catalogs a white-marble fountain basin titled Vasque du jet d’eau du Grand Bassin rond, dated around 1687–1688, within its garden sculpture collection and displayed in the Tuileries.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The Louvre catalogs a white-marble fountain basin titled Vasque du jet d’eau du Grand Bassin rond, dated around 1687–1688, within its garden sculpture collection and displayed in the Tuileries.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

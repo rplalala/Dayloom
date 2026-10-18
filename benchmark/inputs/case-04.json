@@ -1,8 +1,8 @@
 {
   "input_version": "planning_request_2",
   "destination": "Singapore",
-  "start_date": "2026-10-17",
-  "end_date": "2026-10-18",
+  "start_date": "2026-10-24",
+  "end_date": "2026-10-25",
   "traveler_count": 2,
   "budget": {
     "amount": 800,

@@ -1,8 +1,0 @@
-{
-  "schema_version": "case_public_analysis_availability_1",
-  "case_id": "case-11",
-  "status": "historical_snapshot_plus_current_selected_resources",
-  "historical_report": "../../analysis/history/pre-current-20261018/analysis/resources/all-attempt-cost.json",
-  "current_selected_resources": "selected-usage.json",
-  "notice": "The historical report excludes the 18 October rerun. It is not relabeled as a cumulative current native report."
-}

@@ -1,0 +1,2041 @@
+{
+  "model_calls": [
+    {
+      "event_id": "01a14d22-6560-7f41-85ae-988724c952a4",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 10.281000000000859,
+      "input_tokens": 11848,
+      "output_tokens": 1109,
+      "total_tokens": 12957,
+      "cached_input_tokens": 11845,
+      "cache_write_input_tokens": 0,
+      "reasoning_tokens": 516,
+      "usage_details": {
+        "input_tokens": 11848,
+        "output_tokens": 1109,
+        "total_tokens": 12957,
+        "input_token_details": {
+          "cache_creation": 0,
+          "cache_read": 11845
+        },
+        "output_token_details": {
+          "reasoning": 516
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a14d22-9000-7e12-a8b8-0ee998ff79b1",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 3.5,
+      "input_tokens": 226,
+      "output_tokens": 315,
+      "total_tokens": 541,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "reasoning_tokens": 227,
+      "usage_details": {
+        "input_tokens": 226,
+        "output_tokens": 315,
+        "total_tokens": 541,
+        "input_token_details": {
+          "cache_creation": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 227
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "14c6aff817c34346add3bbe8c9769ed6",
+      "provider": "openai",
+      "operation": "embedding",
+      "stage": "embedding",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "text-embedding-3-small",
+      "source": "sdk_response_usage",
+      "elapsed_seconds": 2.54700000000048,
+      "input_tokens": 2,
+      "output_tokens": null,
+      "total_tokens": 2,
+      "usage_details": {
+        "prompt_tokens": 2,
+        "total_tokens": 2
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a14d22-de06-7253-9194-9e6cec57b1e3",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 25.65600000000086,
+      "input_tokens": 3357,
+      "output_tokens": 2733,
+      "total_tokens": 6090,
+      "cached_input_tokens": 1214,
+      "cache_write_input_tokens": 2140,
+      "reasoning_tokens": 693,
+      "usage_details": {
+        "input_tokens": 3357,
+        "output_tokens": 2733,
+        "total_tokens": 6090,
+        "input_token_details": {
+          "cache_creation": 2140,
+          "cache_read": 1214
+        },
+        "output_token_details": {
+          "reasoning": 693
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a14d23-6c12-7e13-8bbb-52f85c472dec",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 31.296000000000276,
+      "input_tokens": 48654,
+      "output_tokens": 3375,
+      "total_tokens": 52029,
+      "cached_input_tokens": 2663,
+      "cache_write_input_tokens": 45988,
+      "reasoning_tokens": 1755,
+      "usage_details": {
+        "input_tokens": 48654,
+        "output_tokens": 3375,
+        "total_tokens": 52029,
+        "input_token_details": {
+          "cache_creation": 45988,
+          "cache_read": 2663
+        },
+        "output_token_details": {
+          "reasoning": 1755
+        }
+      },
+      "total_status": "reported"
+    },
+    {
+      "event_id": "01a14d23-fd55-7c31-aada-23ebd0303b32",
+      "provider": "langchain",
+      "operation": "chat_model",
+      "stage": "repair_model",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "model": "gpt-6-luna",
+      "source": "langchain_message_usage",
+      "elapsed_seconds": 23.54700000000048,
+      "input_tokens": 73276,
+      "output_tokens": 2914,
+      "total_tokens": 76190,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 73273,
+      "reasoning_tokens": 2512,
+      "usage_details": {
+        "input_tokens": 73276,
+        "output_tokens": 2914,
+        "total_tokens": 76190,
+        "input_token_details": {
+          "cache_creation": 73273,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "reasoning": 2512
+        }
+      },
+      "total_status": "reported"
+    }
+  ],
+  "provider_events": [
+    {
+      "event_id": "f83846486108440686d125f837d21019",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "requirements",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a14d22-6560-7f41-85ae-988724c952a4",
+      "model_provider": "langchain",
+      "elapsed_seconds": 10.061999999999898,
+      "status_code": 200
+    },
+    {
+      "event_id": "43c8946ca9cb4069937b8ffa754b8ef5",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType"
+      },
+      "elapsed_seconds": 0.5630000000001019,
+      "status_code": 200
+    },
+    {
+      "event_id": "cd8fd31756ad4725a159bb0a2dc99a96",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a14d22-9000-7e12-a8b8-0ee998ff79b1",
+      "model_provider": "langchain",
+      "elapsed_seconds": 3.360000000000582,
+      "status_code": 200
+    },
+    {
+      "event_id": "fffd1afcee914641821cc2b079a38800",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5159999999996217,
+      "status_code": 200
+    },
+    {
+      "event_id": "d8e42baf31ed4f16ba7a901b66406c74",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5630000000001019,
+      "status_code": 200
+    },
+    {
+      "event_id": "5a348e1a108e4887b87042b7af56893b",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5630000000001019,
+      "status_code": 200
+    },
+    {
+      "event_id": "ad05a88155ca41faa4efc8c970296e76",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5,
+      "status_code": 200
+    },
+    {
+      "event_id": "169c7fd0d07f4ffa9dc653a1684a81d4",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.43699999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "27e77cf8a430419a89c55825fa5b9ac7",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5159999999996217,
+      "status_code": 200
+    },
+    {
+      "event_id": "64d251b116a849a8b7210ffca4169ebc",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.5940000000009604,
+      "status_code": 200
+    },
+    {
+      "event_id": "2fcdd3fb80a34b1e968fee3bb104bc28",
+      "provider": "openai",
+      "operation": "embedding",
+      "stage": "embedding",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "14c6aff817c34346add3bbe8c9769ed6",
+      "model_provider": "openai",
+      "elapsed_seconds": 2.54700000000048,
+      "status_code": 200
+    },
+    {
+      "event_id": "d6253b5b68b448bbaf4b33328e33fa27",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "68c2981fd336432690c935eb4ce98401",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2649999999994179,
+      "status_code": 200
+    },
+    {
+      "event_id": "d17c7485f3e744638ba965aa6aa15377",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "9e73dd6125f441e38985bc7cf37042be",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2960000000002765,
+      "status_code": 200
+    },
+    {
+      "event_id": "b8501d1d012c4d358ac36d4d61e22301",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "a6b9ffda06104f31a3cca8354a13fb77",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "20e23418d05f47e98413ab4b5f2b0b6d",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.3280000000013388,
+      "status_code": 200
+    },
+    {
+      "event_id": "0d1cea7c25aa42ad88ec0078ab1c0bb6",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "87c6f6523b0145c695e1d41d818629af",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.26599999999962165,
+      "status_code": 200
+    },
+    {
+      "event_id": "b12f40dc17ce44a4aa489cb77d60b833",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "5a7fa8de94bf4b60be9c266c382382b2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "de5954b074dd4102bbb9218212e41d49",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.4219999999986612,
+      "status_code": 200
+    },
+    {
+      "event_id": "2896c0333c10485d848c545da3798435",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "27fba5171cfe4ac78ae8c92295c6fffd",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "27b5653c4a134e43ad64518a53ea0ebf",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "013b4f2ad8594a18a3dfa624079ea598",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.26600000000144064,
+      "status_code": 200
+    },
+    {
+      "event_id": "8b9890ef1d2b42db96f8e5afc022108a",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "3d4fc374a5b7415e881393c31fe71bbc",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.26599999999962165,
+      "status_code": 200
+    },
+    {
+      "event_id": "9c9fba178ec3420e86162d2bd2567acc",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2809999999990396,
+      "status_code": 200
+    },
+    {
+      "event_id": "b8782d62525e471f8d832dde9ddfdc8a",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "add3fdf8f9cd4e08bbfb8d0c8cf94443",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "7dee700f2a594263a51547a9aa104b6b",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2819999999992433,
+      "status_code": 200
+    },
+    {
+      "event_id": "7d416e17d74e402aa1310a4ce731b976",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2819999999992433,
+      "status_code": 200
+    },
+    {
+      "event_id": "a091b8a07c1a4750aeb09c700ec3131d",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "4dfe1a4faa5040d995fa187b751c1ba3",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2819999999992433,
+      "status_code": 200
+    },
+    {
+      "event_id": "b2207619250744bb8a7b635d07438c6e",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "b30eb7e205414382867a45c033c935a1",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "c7df425b2e344651ad2a171b83bbb613",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.26600000000144064,
+      "status_code": 200
+    },
+    {
+      "event_id": "d3c32e339f374f24a513fac41d2ae499",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "4da648178d7b4471b302193ac24cde0c",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "bbeb70f369234d1e8898e244ef68dfc2",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "bb28a32706dc4b05a8894d9b5cf8b639",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "92ce63216ad8481ba402841721164b32",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "semantics",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a14d22-de06-7253-9194-9e6cec57b1e3",
+      "model_provider": "langchain",
+      "elapsed_seconds": 25.53100000000086,
+      "status_code": 200
+    },
+    {
+      "event_id": "6681289ddd4c45288e2d56e405a97551",
+      "provider": "open_meteo",
+      "operation": "weather",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "elapsed_seconds": 1.125,
+      "status_code": 200
+    },
+    {
+      "event_id": "a86c9f9d29b1478ea33ed483961734ed",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 64,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.34399999999914144,
+      "status_code": 200
+    },
+    {
+      "event_id": "c2a6706127d84434ad90a134bd2a6613",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 64,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "5fb2d478c4e04978bf92bef0849ebfbf",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 64,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "961823e5e6b84ea68c6ab7601cd199a6",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 64,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "WALK"
+      },
+      "elapsed_seconds": 0.3430000000007567,
+      "status_code": 200
+    },
+    {
+      "event_id": "dbb68373809f498da961e82e4ee8e14a",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.48400000000037835,
+      "status_code": 200
+    },
+    {
+      "event_id": "63548927d84a4d3b955252fc1c47e4a9",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.4529999999995198,
+      "status_code": 200
+    },
+    {
+      "event_id": "ec740591559e46dd87119dadd79acd8c",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.2819999999992433,
+      "status_code": 200
+    },
+    {
+      "event_id": "6789f52690b0494cac880345792b2322",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "b47cf2c6bf7046599a6d56adb9e9b9bd",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "399d4d841cd54c87ac1e78e50cd88824",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.5310000000008586,
+      "status_code": 200
+    },
+    {
+      "event_id": "a4c225761f4546f0894187b41eeddb66",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.4690000000009604,
+      "status_code": 200
+    },
+    {
+      "event_id": "68d513da52ac468599ff0ce5a8621e11",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.5,
+      "status_code": 200
+    },
+    {
+      "event_id": "186d629014244f55adae39ddb8fc2508",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.5630000000001019,
+      "status_code": 200
+    },
+    {
+      "event_id": "b8bce2d404704375891cace95385b1ba",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.4690000000009604,
+      "status_code": 200
+    },
+    {
+      "event_id": "ba3624ef887a4e0184eff742d97cafde",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3899999999994179,
+      "status_code": 200
+    },
+    {
+      "event_id": "49960c0c60a34aef9e94d9d5cd18531f",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.46899999999914144,
+      "status_code": 200
+    },
+    {
+      "event_id": "92a84d74b3bd4c019d567a573711a252",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "dbf5dcf4743e4edd9b62f41cd244d4b0",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.34399999999914144,
+      "status_code": 200
+    },
+    {
+      "event_id": "4d8bf5a58dbf42049f91a1656e7c8fa0",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3280000000013388,
+      "status_code": 200
+    },
+    {
+      "event_id": "04b321632f684c68a35ddcc30fb3ca73",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.35900000000037835,
+      "status_code": 200
+    },
+    {
+      "event_id": "ebbdffa7c8364a43ba0b20baef43a995",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "structured_generation",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a14d23-6c12-7e13-8bbb-52f85c472dec",
+      "model_provider": "langchain",
+      "elapsed_seconds": 31.15600000000086,
+      "status_code": 200
+    },
+    {
+      "event_id": "110f895810cb4d3a8c75ffddc97937f8",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "8b09b531d22d4432b1855853a05cd7ff",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.46899999999914144,
+      "status_code": 200
+    },
+    {
+      "event_id": "b8e26ca0cd204f218ead970510ba7fde",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3280000000013388,
+      "status_code": 200
+    },
+    {
+      "event_id": "780f884c521746ca9f77f80e3da847f4",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "da5ee3a6bcdb4154a401344904610566",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3900000000012369,
+      "status_code": 200
+    },
+    {
+      "event_id": "7391f4230a14421789924778b4b127fd",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.2960000000002765,
+      "status_code": 200
+    },
+    {
+      "event_id": "692eb7e975df44858ebf0de3edea3c91",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "7d39ae3228d342749dd6013bd181ec66",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3430000000007567,
+      "status_code": 200
+    },
+    {
+      "event_id": "f209c8f52ee249b0a5d8b6531010eb1f",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3279999999995198,
+      "status_code": 200
+    },
+    {
+      "event_id": "1c8dc1dde5a44833939bda07fe91325d",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "23cdf4eef5e446ea9fa9dc952780af0d",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.43699999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "4d4015f5348b4c9a84b017378cf4172e",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31199999999989814,
+      "status_code": 200
+    },
+    {
+      "event_id": "7621ef5686ff4b8bb4c5e2e3330c6f78",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "DRIVE",
+        "routing_preference": "TRAFFIC_UNAWARE"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "ceebc5ec195f44e2b58fc3f3ff520b5c",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.2960000000002765,
+      "status_code": 200
+    },
+    {
+      "event_id": "62ae17da6e5044c296a78d89b522503a",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31300000000010186,
+      "status_code": 200
+    },
+    {
+      "event_id": "1be3eb472d304ca7a64c4e74ec471d4d",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "repair_round",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.3279999999995198,
+      "status_code": 200
+    },
+    {
+      "event_id": "704c3befba3244fda147198433f5a9ed",
+      "provider": "azure_foundry",
+      "operation": "model_http",
+      "stage": "repair_model",
+      "round_id": 1,
+      "repair": true,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {},
+      "model_event_id": "01a14d23-fd55-7c31-aada-23ebd0303b32",
+      "model_provider": "langchain",
+      "elapsed_seconds": 23.42200000000048,
+      "status_code": 200
+    },
+    {
+      "event_id": "ecd7af98c06c4db99504607a6b35ccc6",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchNearby",
+        "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+      },
+      "elapsed_seconds": 0.5149999999994179,
+      "status_code": 200
+    },
+    {
+      "event_id": "d8e65ed3df7f4bf3861d3105761407b4",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchNearby",
+        "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+      },
+      "elapsed_seconds": 0.3440000000009604,
+      "status_code": 200
+    },
+    {
+      "event_id": "eb66625ad2d24462b2d0fc49368ca5c2",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchNearby",
+        "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
+      },
+      "elapsed_seconds": 0.31300000000010186,
+      "status_code": 200
+    }
+  ],
+  "cache_events": [],
+  "stage_summaries": [
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 10.29700000000048,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 10.29700000000048,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "requirements",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 10.311999999999898,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "landmark_nomination",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 3.514999999999418,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "embedding",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 2.54700000000048,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "retrieval",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 2.686999999999898,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "semantics",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 25.65600000000086,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "structured_generation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 31.311999999999898,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.01599999999962165,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "repair_preparation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.09399999999914144,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "repair_model",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 23.563000000000102,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "repair_model",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 23.563000000000102,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.01599999999962165,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.014999999999417923,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.01600000000144064,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.014999999999417923,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.01599999999962165,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "revalidation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0.07799999999951979,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "repair_round",
+      "round_id": 1,
+      "outcome": "completed",
+      "elapsed_seconds": 29.76599999999962,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "repair",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 29.811999999999898,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "validation",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 0,
+      "scope": "inclusive_not_additive"
+    },
+    {
+      "stage": "planner",
+      "round_id": null,
+      "outcome": "completed",
+      "elapsed_seconds": 133.10899999999856,
+      "scope": "inclusive_not_additive"
+    }
+  ],
+  "repair_summary": {
+    "observed_rounds": 1,
+    "model_event_ids": [
+      "01a14d23-fd55-7c31-aada-23ebd0303b32"
+    ],
+    "provider_event_ids": [
+      "110f895810cb4d3a8c75ffddc97937f8",
+      "8b09b531d22d4432b1855853a05cd7ff",
+      "b8e26ca0cd204f218ead970510ba7fde",
+      "780f884c521746ca9f77f80e3da847f4",
+      "da5ee3a6bcdb4154a401344904610566",
+      "7391f4230a14421789924778b4b127fd",
+      "692eb7e975df44858ebf0de3edea3c91",
+      "7d39ae3228d342749dd6013bd181ec66",
+      "f209c8f52ee249b0a5d8b6531010eb1f",
+      "1c8dc1dde5a44833939bda07fe91325d",
+      "23cdf4eef5e446ea9fa9dc952780af0d",
+      "4d4015f5348b4c9a84b017378cf4172e",
+      "7621ef5686ff4b8bb4c5e2e3330c6f78",
+      "ceebc5ec195f44e2b58fc3f3ff520b5c",
+      "62ae17da6e5044c296a78d89b522503a",
+      "1be3eb472d304ca7a64c4e74ec471d4d",
+      "704c3befba3244fda147198433f5a9ed"
+    ]
+  },
+  "missing_fields": [],
+  "diagnostics": [],
+  "timing": {
+    "scope": "selected_invocation_through_cleanup",
+    "started_at": "2026-10-18T03:51:01.262243+00:00",
+    "finished_at": "2026-10-18T03:53:14.426316+00:00",
+    "elapsed_seconds": 133.10899999999856,
+    "status": "measured"
+  },
+  "outcome": "completed",
+  "schema_version": "rtpeval_usage_1",
+  "group_id": "case-05",
+  "run_id": "case-05-current-path-v3-c1",
+  "version": "v3",
+  "namespace": "planner",
+  "result_sha256": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be",
+  "collection_status": "available",
+  "coverage": {
+    "scope": "instrumented_adapters_only",
+    "adapter_coverage": "default_adapters",
+    "unobserved_injected_clients": "not_inferred",
+    "http_sends": "transport_entry_not_billing",
+    "model_calls": "provider_invocations_not_internal_reasoning"
+  }
+}

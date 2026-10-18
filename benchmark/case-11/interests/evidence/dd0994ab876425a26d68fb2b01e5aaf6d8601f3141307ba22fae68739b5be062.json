@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ05AX-wJu5kcR-2CTIOumOiw",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Le Colimaçon",
+  "sources": [
+    {
+      "url": "https://le-colimacon.fr/",
+      "title": "Homepage - Le Colimaçon",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The operator describes a restaurant serving homemade traditional French cuisine with fresh seasonal products, at 44 rue Vieille du Temple.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The operator describes a restaurant serving homemade traditional French cuisine with fresh seasonal products, at 44 rue Vieille du Temple.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

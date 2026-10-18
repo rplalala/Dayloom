@@ -1,109 +1,88 @@
-# Case-11: Paris evaluation and analysis
+# Case-11: current material
 
 ## Current selection
 
-Paris, France, 22–25 October 2026, two adults and EUR 1,500 for the group and trip, with art and architecture interests and moderate pace. The protected interval on 23 October, 14:00–16:00 Europe/Paris, excludes both activities and travel.
+Paris, France, 2026-10-22 to 2026-10-25. The [original request](../inputs/case-11.json) is the single canonical input. The [selection](selection.json) preserves exact run/result/input hashes and generation revisions. Four-final scores and every dependent process view refer to that selection.
 
-V3 is replaced by its qualified 18 October generation. V0, V1 and V2 retain the exact accepted r02 native result bytes.
-All selected runs bind the unchanged [original input](../inputs/case-11.json)
-and [reviewed requirements](requirements/reviewed.json). New generations use
-`2579e7f71fc2318d3469c8b7b126fd42c4d2a2e8`; the exact older donor revisions
-remain in the [selection](selection.json) and [material index](material-index.json).
+Current reader data directly replaces the preceding publication; superseded datasets are not maintained alongside it. Immutable private originals and Git history retain earlier acceptance evidence. New material is verified engineering evidence, not a new researcher acceptance, blinded human review or formal version-ranking experiment.
 
-The 18 October current-policy Primary replaces the former current scoring data.
-This is a mixed-generation selection, not four newly generated outputs.
-[Daily itineraries](itinerary.md) and each canonical `generation/` path now show
-the selected replacement data rather than a supplementary dataset.
+## Materials
 
-## Primary results
+| Material | Current view |
+| --- | --- |
+| Input and semantic inputs | [Original request](../inputs/case-11.json), [reviewed requirements](requirements/reviewed.json), [interest inventory](interests/inventory.json) |
+| Schedules and actual origins | [Complete daily schedules](itinerary.md) |
+| Final scoring | [Primary](evaluation/primary/report.json), [native quality](evaluation/primary/quality.json) |
+| Same-run V3 pair | [Independent report](evaluation/v3-pair/report.json), [exact source binding](evaluation/v3-pair/source-binding.json) |
+| Candidate process | [All stages, origins and omissions](analysis/poi-process/opportunities.json), [independent relevance](analysis/poi-process/relevance.json), [actual review records](interests/relevance-reviews.json) |
+| Repair | [Draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json), [complete Repair](analysis/repair/repair.json), [validation](analysis/repair/validation.json), [mechanism](analysis/repair/mechanism.json), [native research](analysis/repair/research.json) |
+| Resources | [All-attempt ledger](analysis/resources/all-attempt-resources.json), [selected-cohort tradeoffs](analysis/resources/selected-tradeoffs.json), [new batch consumption](analysis/resources/refresh-execution.json) |
+| Publication integrity | [Material index](material-index.json) |
+| V0 selected generation | [Itinerary](generation/v0/itinerary.json), [usage](generation/v0/usage.json), [usage summary](generation/v0/usage-summary.json), [provenance](generation/v0/provenance.json), [runtime](generation/v0/runtime-policy.json), [cost](generation/v0/cost-report.json) |
+| V1 selected generation | [Itinerary](generation/v1/itinerary.json), [usage](generation/v1/usage.json), [usage summary](generation/v1/usage-summary.json), [provenance](generation/v1/provenance.json), [runtime](generation/v1/runtime-policy.json), [cost](generation/v1/cost-report.json) |
+| V2 selected generation | [Itinerary](generation/v2/itinerary.json), [usage](generation/v2/usage.json), [usage summary](generation/v2/usage-summary.json), [provenance](generation/v2/provenance.json), [runtime](generation/v2/runtime-policy.json), [cost](generation/v2/cost-report.json) |
+| V3 selected generation | [Itinerary](generation/v3/itinerary.json), [usage](generation/v3/usage.json), [usage summary](generation/v3/usage-summary.json), [provenance](generation/v3/provenance.json), [runtime](generation/v3/runtime-policy.json), [cost](generation/v3/cost-report.json) |
 
-| Version | Overall / 100 | Five-dimension auxiliary / 100 | Mean pace deduction | FAIL units | UNKNOWN units |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| V0 | 90.0 | 90.0 | 0.0 | 1 | 2 |
-| V1 | 97.5 | 100.0 | 2.5 | 0 | 0 |
-| V2 | 80.0 | 100.0 | 20.0 | 0 | 0 |
-| V3 | 100.0 | 100.0 | 0.0 | 0 | 0 |
+## Results
 
-All four finals pass the protected-time requirement. The new V3 has no
-scheduled activity or application-transfer overlap with 23 October, 14:00–16:00
-Europe/Paris, and has no unresolved protection obligation.
+| Version | Final / 100 | Auxiliary / 100 | Mean density deduction |
+| --- | ---: | ---: | ---: |
+| V0 | 90 | 90 | 0 |
+| V1 | 97.5 | 100 | 2.5 |
+| V2 | 80 | 100 | 20 |
+| V3 | 100 | 100 | 0 |
 
-The retained V0 now has one grounding FAIL, `model_address_different_place`,
-under the fresh independent identity evaluation. Its related opening and route
-units remain UNKNOWN because identity is unresolved. This changes the current
-score without rewriting the retained V0 generation. V1 and V2 retain soft pace
-deductions of 2.5 and 20 points; V3 has no pace deduction.
+Common dimensions retain their native PASS/FAIL/UNKNOWN populations and exact fractions; the final score applies the separate daily-density deduction.
 
-Primary acquisition and processing completed. Missing-hours assessment covered
-one eligible visit. Model-supported access remains distinct from verified API hours.
+| Version | Dimension | PASS | FAIL | UNKNOWN |
+| --- | --- | ---: | ---: | ---: |
+| V0 | grounding | 7 | 1 | 0 |
+| V0 | non_overlap | 12 | 0 | 0 |
+| V0 | opening | 7 | 0 | 1 |
+| V0 | requirements | 1 | 0 | 0 |
+| V0 | routes | 3 | 0 | 1 |
+| V1 | grounding | 9 | 0 | 0 |
+| V1 | non_overlap | 14 | 0 | 0 |
+| V1 | opening | 9 | 0 | 0 |
+| V1 | requirements | 1 | 0 | 0 |
+| V1 | routes | 5 | 0 | 0 |
+| V2 | grounding | 6 | 0 | 0 |
+| V2 | non_overlap | 8 | 0 | 0 |
+| V2 | opening | 6 | 0 | 0 |
+| V2 | requirements | 1 | 0 | 0 |
+| V2 | routes | 2 | 0 | 0 |
+| V3 | grounding | 8 | 0 | 0 |
+| V3 | non_overlap | 12 | 0 | 0 |
+| V3 | opening | 8 | 0 | 0 |
+| V3 | requirements | 1 | 0 | 0 |
+| V3 | routes | 4 | 0 | 0 |
 
-The [summary](evaluation/primary/summary.json) preserves exact score fractions,
-daily counts and dimension counts. The [native report view](evaluation/primary/report.json)
-preserves source-linked findings. Both closed native executions and their receipts
-passed exact offline replay before current-data promotion.
+The protected 23 October 14:00–16:00 Europe/Paris interval includes travel and remains in the independent requirement/schedule checks.
 
-## Candidate process, relevance and Repair
+## Process and Repair
 
-V1 and V2 are unchanged donor runs. Their source-bound
-[opportunities](analysis/poi-process/opportunities.json),
-[independent relevance](analysis/poi-process/relevance.json), and
-[venue evidence](analysis/poi-process/venues.json) remain retained observations,
-not fresh acquisition. The 55 relevant, eight not relevant and 14 UNKNOWN venue
-judgments retain their original actors and evidence. These counts do not describe
-an independently reviewed candidate population for the replacement V3.
+V1/V2 candidate analysis preserves captured discovery, admission, enrichment, supply, scheduled IDs, source partitions and omissions. Scheduled sets are checked against the current Primary canonical identities. Partial discovery and unresolved provenance stay partial; Nearby-only suggestions are not scheduled visits.
 
-The replacement V3 completed retrieval with 20 unique entities and one natural
-Repair round, retaining round 1 (`ACCEPTED_COMPLETE`, `authorized_targets_complete`).
-Its [draft](analysis/repair/draft.json), [final primary](analysis/repair/final-primary.json),
-[complete structured Repair](analysis/repair/repair.json),
-[final validation](analysis/repair/validation.json), and
-[recorded origins](analysis/repair/source-origins.json) replace the old no-Repair
-observation. Native state/retention checks passed; this is not an independent
-draft-to-final quality judgment.
+Source-bound relevance records: {'not_relevant': 8, 'relevant': 55, 'unknown': 14}. UNKNOWN is an actual evidence limitation, not a negative label or a Planner judgment. No corpus-coverage study was added.
 
-Only the new final received independent Primary evaluation. The
-[pair availability record](evaluation/v3-pair/report.json) therefore has no current
-paired score or delta. The earlier 100/100 no-Repair pair belongs to the superseded
-r02 V3 and is retained only as history.
+Independent same-run V3 draft/final-primary: **90 → 100**. These are paired stages, not independently generated V2/V3 finals. Actual visit changes, correspondence and continuity remain in the paired report; complete adopted/rejected/skipped Repair records are retained without reconstructing absent proposals.
 
-## Resources and checks
+Fresh paired acquisition uses the common paired access policy. The eligible missing-hours packet is empty, so no additional assessment model call occurs.
 
-| Selected generation | Observed tokens | Model calls, including embeddings | HTTP sends | Reference USD |
-| --- | ---: | ---: | ---: | ---: |
-| V0 | 22662 | 2 | 2 | 0.00379696 |
-| V1 | 63367 | 4 | 64 | 1.98135964 |
-| V2 | 64730 | 6 | 80 | 2.261463995 |
-| V3 | 124229 | 7 | 97 | 2.349849695 |
+## Resources and limitations
 
-The replacement Primary used 57 Google sends and 2 model sends,
-with a reference estimate of USD 1.19053335.
-The [selected resource view](analysis/resources/selected-usage.json) separates
-these invocations from superseded generations, earlier evaluations and their
-real consumption. Historical attempts are not erased or charged again as current
-selected invocations. A complete new cumulative tradeoff analysis was not run.
+The cumulative ledger contains 12 retained invocation identities and 590 distinct observed charge/transport events. Its reference observed subtotal is USD 14.187580485; the complete reference total is 14.187580485, with 0 unpriced/conflicting events. Actual account billing is unavailable. Mocked test fixtures are excluded. Repeated archives/replays are not new consumption.
 
-Native four-version intake, reviewed semantic readiness, exact input/result
-bindings and independent Primary passed. Publication hashes, shared-reference
-expansion and public/native projection equivalence are checked during promotion.
-This publication step makes no new provider/model requests and changes no V0–V3
-runtime behavior. Reference estimates are not account invoices; whole-trip
-affordability and blinded human judgments remain unverified.
+Selected-cohort native tradeoffs are not all-history first-attempt completion rates. Earlier failed or abandoned invocations remain in cumulative accounting. A previous failed case-05 V3 retains charge uncertainty; its separate USD 0.05 planning hold is not an invoice or a substituted native charge. Historical conflicting price snapshots remain explicit rather than silently selecting a favorable estimate.
 
 ## Acceptance
 
-The researcher accepted the former selection on 17 October 2026 (Australia/Sydney).
-On 18 October, the researcher explicitly requested that qualified latest-system
-reruns update the original current data. This selection implements that replacement;
-the previous acceptance, selected sources and dependent material remain in the
-[historical selection](analysis/history/pre-current-20261018/selection.json).
-Historical acceptance does not silently certify missing analyses for replacement
-outputs. Current Primary is complete; the dependent-analysis gaps stated here
-remain explicit. No new blinded review or remote Issue update is recorded.
+The researcher accepted the preceding r02 automatic selection on 17 October 2026 (Australia/Sydney).
 
-## History
+Earlier automatically accepted selections remain identified by Git history and immutable native evidence. This refresh updates current material, inputs and dependent analyses under the approved bounded scope; it does not silently extend the earlier researcher decision. Human answers and blinded-review reports remain absent.
 
-The former current public selection is fixed at
-`a85a539680d0a7cc0aab8ce273aa091150b3f121`. Its source archive, frozen receipts
-and original native bytes remain unchanged. Only current public selections and
-their source-dependent reader views are replaced; compatible donor evidence is
-retained with its original bindings.
+## AI assistance
+
+Codex coordinated source selection, native offline reconstruction, reconciliation and English reader material on 18 October 2026. `/root/refresh_live_executor` used the required `gpt-6.1-sol / medium` execution role for exact prepared jobs, serially with zero automatic retries. Planner/evaluator model identities and usage remain in native captures, separate from external assistance. Source-only requirement authors/reviewers and interest authors retain their original identities/timestamps; unchanged semantic material is reused only where exact source hashes permit it.
+
+Relevance labels are the original independent reviews for unchanged V1/V2 captures, input and inventory. Their actual reviewers, evidence and review times remain in the source-bound records; no fresh relevance labeling is claimed.

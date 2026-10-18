@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJG5Qwtitu5kcR2CNEsYy9cdA",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Musée d'Orsay",
+  "sources": [
+    {
+      "url": "https://www.musee-orsay.fr/en/collections?S=0",
+      "title": "Collections | Musée d’Orsay",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The museum’s collections page lists paintings, sculpture, drawings, photography, decorative arts and architectural drawings.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The museum’s collections page lists paintings, sculpture, drawings, photography, decorative arts and architectural drawings.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

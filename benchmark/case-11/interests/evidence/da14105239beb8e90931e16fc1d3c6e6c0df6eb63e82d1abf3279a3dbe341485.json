@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJAZwm1jZu5kcRjoWAeauOELU",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Palais Garnier",
+  "sources": [
+    {
+      "url": "https://www.operadeparis.fr/apropos/theatres-et-ateliers/palais-garnier",
+      "title": "Palais Garnier - Opéra national de Paris",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The opera operator describes Charles Garnier’s nineteenth-century theater, its grand staircase and public spaces including the grand foyer.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The opera operator describes Charles Garnier’s nineteenth-century theater, its grand staircase and public spaces including the grand foyer.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

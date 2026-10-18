@@ -1,10 +1,422 @@
 {
-  "schema_version": "case_public_mechanism_selection_1",
-  "case_id": "case-09",
-  "v3_run_id": "case-09-v3-r1",
-  "v3_result_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
-  "status": "unchanged_v3_observation",
-  "historical_cohort_mechanism": "../../analysis/history/pre-current-20261018/analysis/repair/mechanism.json",
-  "current_v3_report": "report.json",
-  "notice": "Original whole-cohort mechanism metadata is historical. V3 stages, native mechanism and independent pair remain bound to the exact unchanged V3 output; no new pair acquisition was performed."
+  "schema_version": "rtpeval_mechanism_report_1",
+  "preparation_sha256": "6cb0b02a31e1df827e163746a70ccac5c713b3dfd50a28c2fb2652a30086268d",
+  "batch_id": "case-09-current-path-check",
+  "optional_diagnostics": [],
+  "revision": "current-path-20261018-r1",
+  "runs": [
+    {
+      "group_id": "case-09",
+      "run_id": "case-09-current-path-v0-a1",
+      "version": "v0",
+      "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "result_sha256": "9d420d94787ab7851cc3f9026d81b7e668a9dededaf3aa4b9aaf15d8a7e2e5c7",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-09-current-path-v0-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 37.25,
+            "total_tokens": 21980,
+            "model_calls": 2,
+            "http_sends": 2,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 21980,
+          "observed_model_calls": 2,
+          "observed_http_sends": 2,
+          "cache_lookup_hits": 0,
+          "observed_tool_http_sends": 0,
+          "token_observed_calls": 2,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-09",
+      "run_id": "case-09-current-path-v1-a1",
+      "version": "v1",
+      "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "result_sha256": "d60e988a6077a133186aba176a01848863a539e46697b97a6fd768d86956a42b",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-09-current-path-v1-a1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 91.8130000000001,
+            "total_tokens": 71414,
+            "model_calls": 5,
+            "http_sends": 65,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 71414,
+          "observed_model_calls": 5,
+          "observed_http_sends": 65,
+          "cache_lookup_hits": 0,
+          "observed_tool_http_sends": 60,
+          "token_observed_calls": 5,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-09",
+      "run_id": "case-09-v2-r1",
+      "version": "v2",
+      "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "result_sha256": "007a75f480bf6edbfd17ab1a05216a3be06a61086c24a20473a9fbef491fa6e3",
+      "coverage": "not_applicable",
+      "diagnostics": [],
+      "triggered": null,
+      "initial_improvement_targets": null,
+      "authorized_targets": null,
+      "model_attempts": null,
+      "accepted_rounds": null,
+      "accepted_run": null,
+      "rounds": [],
+      "internal_progress": null,
+      "related_targets": null,
+      "evaluated_components": null,
+      "accepted_components": null,
+      "pending_components": null,
+      "unevaluated_components": null,
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-09-v2-r1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 169.31300000000192,
+            "total_tokens": 83799,
+            "model_calls": 6,
+            "http_sends": 90,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 83799,
+          "observed_model_calls": 6,
+          "observed_http_sends": 90,
+          "cache_lookup_hits": 15,
+          "observed_tool_http_sends": 84,
+          "token_observed_calls": 6,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    },
+    {
+      "group_id": "case-09",
+      "run_id": "case-09-v3-r1",
+      "version": "v3",
+      "input_sha256": "6c68e892c01ad083a1d042c9ce61b0f128451852b11f5e941e0fd6e01a0effee",
+      "result_sha256": "6cc710e013f615d3773d8cfb537475a88ba8f5b41644faf84beb035378981af7",
+      "coverage": "available",
+      "diagnostics": [],
+      "triggered": true,
+      "initial_improvement_targets": [
+        "finding_35"
+      ],
+      "authorized_targets": [
+        "finding_35"
+      ],
+      "model_attempts": 0,
+      "accepted_rounds": 1,
+      "accepted_run": true,
+      "rounds": [
+        {
+          "round_index": 1,
+          "strategy": "system_delete",
+          "exploration_transition": true,
+          "best_promoted": true,
+          "selected_lineage": true,
+          "derived_target_links": {},
+          "source_refs": [
+            "/v3/repair/rounds/0"
+          ],
+          "status": "ACCEPTED_COMPLETE",
+          "model_attempted": false,
+          "accepted": true,
+          "target_links": {
+            "finding_35": "finding_35"
+          },
+          "related_target_links": {},
+          "internal_progress": [
+            {
+              "finding_id": "finding_35",
+              "check": "soft_pace",
+              "outcome": "resolved",
+              "before": 10.0,
+              "after": 0.0
+            }
+          ],
+          "related_targets": [
+            {
+              "permission": {
+                "target_id": "related:finding_35:2026-10-24",
+                "parent_id": "finding_35",
+                "date": "2026-10-24",
+                "trigger_activity_ids": [
+                  "art-front-gallery-20261024",
+                  "shibuya-sky-20261024",
+                  "shibuya-crossing-20261024"
+                ],
+                "minimum_count": 2,
+                "allow_partial": false,
+                "reason": "review_compensation",
+                "removable_place_ids": []
+              },
+              "activated_by": [
+                "art-front-gallery-20261024"
+              ],
+              "affected_adjacency": [
+                [
+                  "shibuya-sky-20261024",
+                  "shibuya-crossing-20261024"
+                ]
+              ],
+              "before": 3,
+              "after": 2,
+              "status": "resolved"
+            }
+          ],
+          "components": {
+            "$case_material_ref": {
+              "path": "repair.json",
+              "pointer": "/components",
+              "expanded_semantic_sha256": "734af375fa6909e868b5ea834f59ad45fa70a43dc2666e1abdb8cfb4bc30a17e"
+            }
+          },
+          "component_source_refs": [
+            [
+              "/v3/repair/rounds/1/components/0"
+            ]
+          ],
+          "evaluated_components": 1,
+          "accepted_components": 1,
+          "pending_components": 0,
+          "unevaluated_components": 0,
+          "counters_snapshot": {
+            "deterministic_attempts": 1,
+            "repair_input_candidates": 0,
+            "final_scheduled_unique": 10,
+            "repair_input_unused": 0,
+            "original_supply_unused": 6,
+            "final_main_visits": 10
+          },
+          "usage_observation": {},
+          "continuation_reason": "authorized_targets_complete"
+        }
+      ],
+      "internal_progress": [
+        {
+          "finding_id": "finding_35",
+          "check": "soft_pace",
+          "outcome": "resolved",
+          "before": 10.0,
+          "after": 0.0
+        }
+      ],
+      "related_targets": [
+        {
+          "permission": {
+            "target_id": "related:finding_35:2026-10-24",
+            "parent_id": "finding_35",
+            "date": "2026-10-24",
+            "trigger_activity_ids": [
+              "art-front-gallery-20261024",
+              "shibuya-sky-20261024",
+              "shibuya-crossing-20261024"
+            ],
+            "minimum_count": 2,
+            "allow_partial": false,
+            "reason": "review_compensation",
+            "removable_place_ids": []
+          },
+          "activated_by": [
+            "art-front-gallery-20261024"
+          ],
+          "affected_adjacency": [
+            [
+              "shibuya-sky-20261024",
+              "shibuya-crossing-20261024"
+            ]
+          ],
+          "before": 3,
+          "after": 2,
+          "status": "resolved"
+        }
+      ],
+      "evaluated_components": 1,
+      "accepted_components": 1,
+      "pending_components": 0,
+      "unevaluated_components": 0,
+      "exploration_transitions": 1,
+      "best_promotions": 1,
+      "selected_lineage_rounds": 1,
+      "deterministic_attempts": 1,
+      "cumulative_counters_snapshot": {
+        "deterministic_attempts": 1,
+        "repair_input_candidates": 0,
+        "final_scheduled_unique": 10,
+        "repair_input_unused": 0,
+        "original_supply_unused": 6,
+        "final_main_visits": 10
+      },
+      "cumulative_usage_observation": {},
+      "trace_observations": [],
+      "trace_coverage": "unavailable",
+      "trace_diagnostics": [],
+      "usage": {
+        "status": "available",
+        "diagnostics": [],
+        "report": {
+          "run_id": "case-09-v3-r1",
+          "outcome": "completed",
+          "namespace": "planner",
+          "timing_scope": "selected_invocation_through_cleanup",
+          "metrics": {
+            "elapsed_seconds": 175.14099999999598,
+            "total_tokens": 85485,
+            "model_calls": 6,
+            "http_sends": 103,
+            "cache_hits": 0
+          },
+          "observed_token_subtotal": 85485,
+          "observed_model_calls": 6,
+          "observed_http_sends": 103,
+          "cache_lookup_hits": 20,
+          "observed_tool_http_sends": 97,
+          "token_observed_calls": 6,
+          "token_missing_calls": 0,
+          "adapter_coverage": "declared_default_adapters",
+          "repair_model_calls": 0,
+          "repair_token_observed_subtotal": null,
+          "failed_http_responses": 0,
+          "incomplete_http_sends": 0,
+          "missing_fields": []
+        }
+      },
+      "independent_outcomes": {
+        "status": "unavailable",
+        "records": [],
+        "diagnostics": []
+      }
+    }
+  ],
+  "interpretation": "Internal acceptance/progress is not independently verified resolution.",
+  "fractions": {
+    "run_acceptance": {
+      "numerator": 1,
+      "denominator": 1,
+      "observed_numerator": 1,
+      "observed_denominator": 1,
+      "unit": "triggered_run",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    },
+    "round_acceptance": {
+      "numerator": 0,
+      "denominator": 0,
+      "observed_numerator": 0,
+      "observed_denominator": 0,
+      "unit": "model_attempted_round",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": null
+    },
+    "component_acceptance": {
+      "numerator": 1,
+      "denominator": 1,
+      "observed_numerator": 1,
+      "observed_denominator": 1,
+      "unit": "evaluated_component",
+      "covered_runs": 1,
+      "missing_runs": 0,
+      "fraction": 1.0
+    }
+  },
+  "status": "complete",
+  "content_hash": "f1bdce4d63be37f18791ca051acb6baa3547d641e5b5ba4608b3905e67d2e6dd"
 }

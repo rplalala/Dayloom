@@ -1,0 +1,22 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJE9ZgZWwZ2jERlu5z66UIED8",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.pinnacleduxton.com.sg/",
+      "title": "Pinnacle@Duxton",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "open_failed",
+      "facts": [],
+      "limitations": [
+        "One open attempt failed; no retry or usable venue description obtained."
+      ]
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/29/evidence"
+}

@@ -1,0 +1,19 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJG0s2Fedx5kcRY6Su2Sva7K8",
+  "unresolved_subject_id": null,
+  "subject_name_for_identity_only": "Le Bistrot Du Perigord",
+  "sources": [
+    {
+      "url": "https://www.lebistroduperigord.fr/",
+      "title": "le bistro du perigord / Restaurant traditionnel / PARIS",
+      "observed_date": "2026-10-17",
+      "factual_paraphrase": "The operator identifies a family restaurant serving traditional southwestern French, homemade and fresh-produce cuisine at 71 rue Saint Jacques.",
+      "retrieval_method": "web search result and/or opened page"
+    }
+  ],
+  "independently_reviewed_description": "The operator identifies a family restaurant serving traditional southwestern French, homemade and fresh-produce cuisine at 71 rue Saint Jacques.",
+  "evidence_limits": "Topical relevance only; no assertion about travel-date access, event availability, feasibility or quality.",
+  "reviewer_ref": "/root/case11_relevance_a",
+  "observed_at": "2026-10-17T04:01:12.166449+00:00"
+}

@@ -1,7 +1,7 @@
 {
   "model_calls": [
     {
-      "event_id": "01a13dbc-804a-7e43-8836-672d824717d2",
+      "event_id": "01a14d4f-a214-7451-9858-9ed1cfd27a2c",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "requirements",
@@ -10,29 +10,29 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 19.09299999999348,
-      "input_tokens": 16540,
-      "output_tokens": 2344,
-      "total_tokens": 18884,
-      "cached_input_tokens": 16537,
-      "cache_write_input_tokens": 0,
-      "reasoning_tokens": 1441,
+      "elapsed_seconds": 21.125,
+      "input_tokens": 12489,
+      "output_tokens": 2656,
+      "total_tokens": 15145,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 12486,
+      "reasoning_tokens": 1695,
       "usage_details": {
-        "input_tokens": 16540,
-        "output_tokens": 2344,
-        "total_tokens": 18884,
+        "input_tokens": 12489,
+        "output_tokens": 2656,
+        "total_tokens": 15145,
         "input_token_details": {
-          "cache_creation": 0,
-          "cache_read": 16537
+          "cache_creation": 12486,
+          "cache_read": 0
         },
         "output_token_details": {
-          "reasoning": 1441
+          "reasoning": 1695
         }
       },
       "total_status": "reported"
     },
     {
-      "event_id": "01a13dbc-cc95-7dd3-b608-c30ada7ad195",
+      "event_id": "01a14d4f-f661-7351-92c9-9edd38fa3ef3",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "landmark_nomination",
@@ -41,29 +41,29 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 3.547000000020489,
+      "elapsed_seconds": 2.9060000000008586,
       "input_tokens": 216,
-      "output_tokens": 255,
-      "total_tokens": 471,
+      "output_tokens": 243,
+      "total_tokens": 459,
       "cached_input_tokens": 0,
       "cache_write_input_tokens": 0,
-      "reasoning_tokens": 179,
+      "reasoning_tokens": 168,
       "usage_details": {
         "input_tokens": 216,
-        "output_tokens": 255,
-        "total_tokens": 471,
+        "output_tokens": 243,
+        "total_tokens": 459,
         "input_token_details": {
           "cache_creation": 0,
           "cache_read": 0
         },
         "output_token_details": {
-          "reasoning": 179
+          "reasoning": 168
         }
       },
       "total_status": "reported"
     },
     {
-      "event_id": "b59cbe5bb638466bad83c0fdf7ee82ab",
+      "event_id": "92b6349a16a0439bbbe2bbbd865351b3",
       "provider": "openai",
       "operation": "embedding",
       "stage": "embedding",
@@ -72,18 +72,18 @@
       "outcome": "completed",
       "model": "text-embedding-3-small",
       "source": "sdk_response_usage",
-      "elapsed_seconds": 3.5459999999729916,
-      "input_tokens": 9,
+      "elapsed_seconds": 2.2189999999991414,
+      "input_tokens": 11,
       "output_tokens": null,
-      "total_tokens": 9,
+      "total_tokens": 11,
       "usage_details": {
-        "prompt_tokens": 9,
-        "total_tokens": 9
+        "prompt_tokens": 11,
+        "total_tokens": 11
       },
       "total_status": "reported"
     },
     {
-      "event_id": "01a13dbd-5213-77d2-a8d4-e19cb71cc784",
+      "event_id": "01a14d50-5bd5-7a42-a90a-e46c5dd20017",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "semantics",
@@ -92,29 +92,29 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 17.17200000002049,
-      "input_tokens": 2476,
-      "output_tokens": 2393,
-      "total_tokens": 4869,
-      "cached_input_tokens": 1177,
-      "cache_write_input_tokens": 1296,
-      "reasoning_tokens": 796,
+      "elapsed_seconds": 31.01599999999962,
+      "input_tokens": 2779,
+      "output_tokens": 3875,
+      "total_tokens": 6654,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 2776,
+      "reasoning_tokens": 1150,
       "usage_details": {
-        "input_tokens": 2476,
-        "output_tokens": 2393,
-        "total_tokens": 4869,
+        "input_tokens": 2779,
+        "output_tokens": 3875,
+        "total_tokens": 6654,
         "input_token_details": {
-          "cache_creation": 1296,
-          "cache_read": 1177
+          "cache_creation": 2776,
+          "cache_read": 0
         },
         "output_token_details": {
-          "reasoning": 796
+          "reasoning": 1150
         }
       },
       "total_status": "reported"
     },
     {
-      "event_id": "01a13dbd-b24e-7b73-8663-44f521c6dec1",
+      "event_id": "01a14d50-ef6b-71a0-aab1-7ceae4024cd3",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "semantics",
@@ -123,29 +123,29 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 16.42200000002049,
-      "input_tokens": 2570,
-      "output_tokens": 2124,
-      "total_tokens": 4694,
-      "cached_input_tokens": 1177,
-      "cache_write_input_tokens": 1390,
-      "reasoning_tokens": 626,
+      "elapsed_seconds": 21.125,
+      "input_tokens": 2602,
+      "output_tokens": 2554,
+      "total_tokens": 5156,
+      "cached_input_tokens": 1214,
+      "cache_write_input_tokens": 1385,
+      "reasoning_tokens": 516,
       "usage_details": {
-        "input_tokens": 2570,
-        "output_tokens": 2124,
-        "total_tokens": 4694,
+        "input_tokens": 2602,
+        "output_tokens": 2554,
+        "total_tokens": 5156,
         "input_token_details": {
-          "cache_creation": 1390,
-          "cache_read": 1177
+          "cache_creation": 1385,
+          "cache_read": 1214
         },
         "output_token_details": {
-          "reasoning": 626
+          "reasoning": 516
         }
       },
       "total_status": "reported"
     },
     {
-      "event_id": "01a13dbe-1a4b-7c82-b15a-937656b1bb32",
+      "event_id": "01a14d51-6551-7f70-bc14-7c9935301fe1",
       "provider": "langchain",
       "operation": "chat_model",
       "stage": "structured_generation",
@@ -154,23 +154,23 @@
       "outcome": "completed",
       "model": "gpt-6-luna",
       "source": "langchain_message_usage",
-      "elapsed_seconds": 19.719000000040978,
-      "input_tokens": 22811,
-      "output_tokens": 2509,
-      "total_tokens": 25320,
-      "cached_input_tokens": 2303,
-      "cache_write_input_tokens": 20505,
-      "reasoning_tokens": 927,
+      "elapsed_seconds": 27.34400000000096,
+      "input_tokens": 23561,
+      "output_tokens": 3382,
+      "total_tokens": 26943,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 23558,
+      "reasoning_tokens": 1993,
       "usage_details": {
-        "input_tokens": 22811,
-        "output_tokens": 2509,
-        "total_tokens": 25320,
+        "input_tokens": 23561,
+        "output_tokens": 3382,
+        "total_tokens": 26943,
         "input_token_details": {
-          "cache_creation": 20505,
-          "cache_read": 2303
+          "cache_creation": 23558,
+          "cache_read": 0
         },
         "output_token_details": {
-          "reasoning": 927
+          "reasoning": 1993
         }
       },
       "total_status": "reported"
@@ -178,7 +178,7 @@
   ],
   "provider_events": [
     {
-      "event_id": "65638d2711a740a0aef84ab8d30f49e1",
+      "event_id": "1f594f0a29b54008a67959cf06062e11",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "requirements",
@@ -189,13 +189,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a13dbc-804a-7e43-8836-672d824717d2",
+      "model_event_id": "01a14d4f-a214-7451-9858-9ed1cfd27a2c",
       "model_provider": "langchain",
-      "elapsed_seconds": 18.43799999996554,
+      "elapsed_seconds": 20.75,
       "status_code": 200
     },
     {
-      "event_id": "9f060f4673be416792dc694317864d1c",
+      "event_id": "cb1c72d8f8ad462bb4219afcf77baf27",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -209,11 +209,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType"
       },
-      "elapsed_seconds": 0.3440000000409782,
+      "elapsed_seconds": 0.39099999999962165,
       "status_code": 200
     },
     {
-      "event_id": "7a1ba32b1b2143e797ef724efa4b442e",
+      "event_id": "b2df2d52c8c743d2b728f85405d06a82",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "landmark_nomination",
@@ -224,13 +224,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a13dbc-cc95-7dd3-b608-c30ada7ad195",
+      "model_event_id": "01a14d4f-f661-7351-92c9-9edd38fa3ef3",
       "model_provider": "langchain",
-      "elapsed_seconds": 3.4540000000270084,
+      "elapsed_seconds": 2.7180000000007567,
       "status_code": 200
     },
     {
-      "event_id": "76ea9cc2f49f456987f638ffa1f901e8",
+      "event_id": "85a764b5098742aa9b4935f54200c075",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -244,11 +244,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.6410000000614673,
+      "elapsed_seconds": 0.6880000000001019,
       "status_code": 200
     },
     {
-      "event_id": "e7aeb16a2c174a52a25e66c94eb99349",
+      "event_id": "e4d95e3435f249728d7e5e34b0fa8bd2",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -262,11 +262,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.734000000054948,
+      "elapsed_seconds": 1.375,
       "status_code": 200
     },
     {
-      "event_id": "7800134c1b234e83bd215a0981caf179",
+      "event_id": "2bb1f8317b6549b59cc4060026df1b5a",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -284,7 +284,7 @@
       "status_code": 200
     },
     {
-      "event_id": "343ff77fd3bc47e4b8fa065b629126c7",
+      "event_id": "f8d7029a8e1b46b9b94c2da189e0c942",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -298,11 +298,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.48499999998603016,
+      "elapsed_seconds": 0.5630000000001019,
       "status_code": 200
     },
     {
-      "event_id": "5797434316cf4a8dae79648fc25889b2",
+      "event_id": "d2980669a34f4306a2c17e3130ff8718",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -316,11 +316,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.5929999999934807,
+      "elapsed_seconds": 0.5940000000009604,
       "status_code": 200
     },
     {
-      "event_id": "4e47fd25d3c0437da0d268e357b3ff93",
+      "event_id": "283e30ee801841448d7a18011e6b1da2",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -334,11 +334,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.48499999998603016,
+      "elapsed_seconds": 0.6399999999994179,
       "status_code": 200
     },
     {
-      "event_id": "6fac792e5786417da0383b9f050afef5",
+      "event_id": "100d32de38a84beca2de435e2703c912",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -352,11 +352,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.5320000000065193,
+      "elapsed_seconds": 0.48399999999855936,
       "status_code": 200
     },
     {
-      "event_id": "b4f9cdaaa6aa4c96943e10c2c42fc1ef",
+      "event_id": "0f029c6651254243a77c352bb1dad72a",
       "provider": "openai",
       "operation": "embedding",
       "stage": "embedding",
@@ -367,13 +367,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "b59cbe5bb638466bad83c0fdf7ee82ab",
+      "model_event_id": "92b6349a16a0439bbbe2bbbd865351b3",
       "model_provider": "openai",
-      "elapsed_seconds": 3.530999999959022,
+      "elapsed_seconds": 2.2189999999991414,
       "status_code": 200
     },
     {
-      "event_id": "d339937fea6d4d66967167cfb231adba",
+      "event_id": "657374e72715434abed6ce0e40487f7b",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -387,11 +387,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.31299999996554106,
+      "elapsed_seconds": 0.26599999999962165,
       "status_code": 200
     },
     {
-      "event_id": "5970d4ebc5ec475db329e1f1afbdb06c",
+      "event_id": "fc00df86131c4a4082cc499c3fffb927",
       "provider": "google",
       "operation": "places_search",
       "stage": "retrieval",
@@ -405,11 +405,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.39000000001396984,
+      "elapsed_seconds": 0.4530000000013388,
       "status_code": 200
     },
     {
-      "event_id": "0693ea1dfab94b0bbbbf8cd8b40a23e3",
+      "event_id": "cb0f73c26b0b404f9d3947c1e660ef8b",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -423,11 +423,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.3279999999795109,
+      "elapsed_seconds": 0.26599999999962165,
       "status_code": 200
     },
     {
-      "event_id": "ed391d03c4fd46cb9ef29fa066619c03",
+      "event_id": "407115f1f09b4f6c88e807e225d3ab67",
       "provider": "google",
       "operation": "places_search",
       "stage": "retrieval",
@@ -441,11 +441,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 1.0309999999590218,
+      "elapsed_seconds": 1.0619999999998981,
       "status_code": 200
     },
     {
-      "event_id": "fbe8c7e6a63c43abbd6fdac777490d80",
+      "event_id": "e7e7abbfea22470bbd9d5c8df441d389",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -459,11 +459,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.31299999996554106,
+      "elapsed_seconds": 0.26599999999962165,
       "status_code": 200
     },
     {
-      "event_id": "ddec2331bf8c488ba321a5f5dcea79f9",
+      "event_id": "75732b14e4bf4d1fad06974d0c2a8a2e",
       "provider": "google",
       "operation": "places_search",
       "stage": "retrieval",
@@ -477,11 +477,11 @@
         "endpoint": "searchText",
         "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
       },
-      "elapsed_seconds": 0.5779999999795109,
+      "elapsed_seconds": 0.4849999999987631,
       "status_code": 200
     },
     {
-      "event_id": "472e134c0c254df1afec2204102e5f9c",
+      "event_id": "d74689ec683e4779a564f688a29041d5",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -495,11 +495,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2970000000004802,
       "status_code": 200
     },
     {
-      "event_id": "dd8526574c3c497ea8d417c55d20a612",
+      "event_id": "6642e5f444db41299210945150cc994a",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -513,11 +513,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2819999999992433,
       "status_code": 200
     },
     {
-      "event_id": "a1f02258ea694fbbbb262e716fb8c7e6",
+      "event_id": "5afcfd7e0fea4954bc07d5d5fe798bd5",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -531,11 +531,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2809999999990396,
       "status_code": 200
     },
     {
-      "event_id": "c31b1cca16b042469b3af671e542284f",
+      "event_id": "5df2fc6dfa7b408893ad266bfac5426c",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -549,11 +549,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.2649999999994179,
       "status_code": 200
     },
     {
-      "event_id": "2a5985ccdd2444f2bb8b98b03813c1d2",
+      "event_id": "359f56633e8a4de3b3b8221508c38890",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -567,11 +567,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.25,
       "status_code": 200
     },
     {
-      "event_id": "fb146a4efe05425883a79bbb6a4e0f73",
+      "event_id": "7baecc90b7e84e238fb3560eee6028f3",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -585,11 +585,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.4219999999986612,
       "status_code": 200
     },
     {
-      "event_id": "6465fb0c65474e45892b9f2ed63f0336",
+      "event_id": "475282685c2a45cdb6afaecebcc93836",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -603,11 +603,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26599999994505197,
+      "elapsed_seconds": 0.31300000000010186,
       "status_code": 200
     },
     {
-      "event_id": "1071b0e5004f4f279c915a1d1479b980",
+      "event_id": "73eb85d612f14cd8bbf31bb4046e9e6b",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -621,11 +621,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.31200000003445894,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "60760dff314a4e30ad8ec63e49d34c4c",
+      "event_id": "303005d1455a4c5da068e411d5c9688f",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -639,11 +639,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26500000001396984,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "a92ae4bbbe9c4b1ab0806092b5443203",
+      "event_id": "b5fe974abc9142799110424fc588ab59",
       "provider": "google",
       "operation": "place_details",
       "stage": "retrieval",
@@ -657,11 +657,29 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.45400000002700835,
+      "elapsed_seconds": 0.2809999999990396,
       "status_code": 200
     },
     {
-      "event_id": "0861c8aba78b400aa6133aecd0641f8f",
+      "event_id": "2770a139efb74adbaf263334ee9c4ea9",
+      "provider": "google",
+      "operation": "places_search",
+      "stage": "retrieval",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "searchText",
+        "field_mask": "places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.openingDate,places.primaryType"
+      },
+      "elapsed_seconds": 0.4850000000005821,
+      "status_code": 200
+    },
+    {
+      "event_id": "00414b3de5a643a08cf549099b7688af",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -675,11 +693,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26599999994505197,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "f05f02e255df4feb8a635903fca1cbf0",
+      "event_id": "37c1356d80e24dd4b3efcf5c914f4983",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -693,11 +711,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.3279999999795109,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "c05e56be8f5741659eb5550c0b312c68",
+      "event_id": "1dcb6c2a24714ebdadce5ea6eb8e0a66",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -711,11 +729,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2819999999992433,
       "status_code": 200
     },
     {
-      "event_id": "a3e79526562d42f7a57d4695c30aabc5",
+      "event_id": "77634ca951824daea1c16671dcb64dce",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -729,11 +747,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.35900000005494803,
+      "elapsed_seconds": 0.3279999999995198,
       "status_code": 200
     },
     {
-      "event_id": "a4442b089d454d1494530dde0f773080",
+      "event_id": "ea9b50267be74b04aea77c907cc53ab6",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -747,11 +765,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2970000000004802,
       "status_code": 200
     },
     {
-      "event_id": "3dc5d709a2e348f48b415c2a7c2c6387",
+      "event_id": "d97b5a2435854d77b950ea0495de6236",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -765,11 +783,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.31300000000010186,
       "status_code": 200
     },
     {
-      "event_id": "fb65a639edf449c2bf8e6bcf6382884c",
+      "event_id": "a085e49f1a8d4930937a45e05c7adce1",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -783,11 +801,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28100000007543713,
+      "elapsed_seconds": 0.2809999999990396,
       "status_code": 200
     },
     {
-      "event_id": "4569600df1f942179071413d33e49c4f",
+      "event_id": "9ab9b5f34c2a4fb4a54b61e602f0cedf",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -801,11 +819,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2809999999990396,
       "status_code": 200
     },
     {
-      "event_id": "e1eaf03456b742ee8b7a37f5825d9b92",
+      "event_id": "698f637ab1a04430be7143522608e813",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -819,11 +837,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.2650000000012369,
       "status_code": 200
     },
     {
-      "event_id": "99a8fa28c17144f7adcbe16c7f6b6fa4",
+      "event_id": "b99aaccb92404da48a707891688d313d",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -837,11 +855,65 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26500000001396984,
+      "elapsed_seconds": 0.2960000000002765,
       "status_code": 200
     },
     {
-      "event_id": "d0e808d5e4e64751ba2b6a55eac15755",
+      "event_id": "6f56b440eb00465ea54b6c1d6c968540",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2650000000012369,
+      "status_code": 200
+    },
+    {
+      "event_id": "9f256b93817f42cd875ecbcfb02251d3",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2970000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "6adda6c8026d4469a616e9148b322938",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "cd19bc1de6094057a89a230c30b3514d",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -859,7 +931,7 @@
       "status_code": 200
     },
     {
-      "event_id": "82214754075248b9ae7bdbecec307912",
+      "event_id": "5fafc277d9124f35b38417994658606e",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -873,11 +945,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2649999999994179,
       "status_code": 200
     },
     {
-      "event_id": "2d6c48da8ddf4a8bbd99da0a69e90244",
+      "event_id": "0c5c9d9669c54fdc8520b2fcfded3323",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -891,11 +963,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.25,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "9f07914f7bcc4b0e882cb6ee0ac7c831",
+      "event_id": "8c0f34009528482586b1f6d75bf80c41",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -909,11 +981,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "85b8870593064ec1baa399ca59c5c2c3",
+      "event_id": "d3bbe9896d364f84ad10e7acb549df2a",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -927,11 +999,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.2970000000004802,
       "status_code": 200
     },
     {
-      "event_id": "8e756cbb0f90489a8fd0fcc72dd45e4f",
+      "event_id": "a566c672042546ac8a54d4f0a4d2926d",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -945,11 +1017,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "7114f0a0410d4e02a2bcc7f8634495e1",
+      "event_id": "14128c6149424503b094ef588cd7cba4",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -963,65 +1035,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.26599999999962165,
       "status_code": 200
     },
     {
-      "event_id": "e3e9d58136df4af4bde8244b7036eb23",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2660000000614673,
-      "status_code": 200
-    },
-    {
-      "event_id": "6bda264a2b4a49bd8e4069a6bc2e25f6",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.26500000001396984,
-      "status_code": 200
-    },
-    {
-      "event_id": "37011753263c4542adc3e72e049628bc",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.28100000007543713,
-      "status_code": 200
-    },
-    {
-      "event_id": "3fb70da8db3b4b339f2778f1687126d2",
+      "event_id": "3ad0695878d14e2f8d0cd852ce0ebe4c",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "semantics",
@@ -1032,13 +1050,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a13dbd-5213-77d2-a8d4-e19cb71cc784",
+      "model_event_id": "01a14d50-5bd5-7a42-a90a-e46c5dd20017",
       "model_provider": "langchain",
-      "elapsed_seconds": 17.04700000002049,
+      "elapsed_seconds": 30.89099999999962,
       "status_code": 200
     },
     {
-      "event_id": "f649769cef4f424d93a2ba5469728a78",
+      "event_id": "7f4d38da09d9482f8890e3518f55575a",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1052,11 +1070,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2660000000614673,
+      "elapsed_seconds": 0.39100000000144064,
       "status_code": 200
     },
     {
-      "event_id": "297afcdadaeb4654967ab5140cca97c5",
+      "event_id": "38bd892cf4e64b278ccd9487304899d9",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1070,11 +1088,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28100000007543713,
+      "elapsed_seconds": 0.2819999999992433,
       "status_code": 200
     },
     {
-      "event_id": "6b174b4677f94981b277c0b7b5cb5491",
+      "event_id": "273dffb4b1754891be44cd6dccb72263",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1088,11 +1106,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.2809999999990396,
       "status_code": 200
     },
     {
-      "event_id": "a1302b8f82b6491188c091ed8e34e72f",
+      "event_id": "9478cd056dcf4d7691c5098f56c8a942",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1106,11 +1124,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.2969999999986612,
       "status_code": 200
     },
     {
-      "event_id": "8af74891fe8649f29f0f44dc125d4221",
+      "event_id": "2946484a4f6f404e966468bfdbff4f91",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1124,11 +1142,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26599999994505197,
+      "elapsed_seconds": 0.2819999999992433,
       "status_code": 200
     },
     {
-      "event_id": "192ad28bb0db408c8090842292f0c62d",
+      "event_id": "9d46a062015d46e2b6fa0415d7d56278",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1142,11 +1160,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.2649999999994179,
       "status_code": 200
     },
     {
-      "event_id": "dc0c8f28cec243789c5a8ea1ede5e51c",
+      "event_id": "991fda5da5eb4b878a59684b53161816",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1160,11 +1178,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.28100000000085856,
       "status_code": 200
     },
     {
-      "event_id": "b2778bcc14e64661ae3c1aa359c5d250",
+      "event_id": "109372658954481a902d939b8c3d9309",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1178,11 +1196,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2970000000204891,
+      "elapsed_seconds": 0.26600000000144064,
       "status_code": 200
     },
     {
-      "event_id": "1c7ba42a91564328a3dd38c1446405db",
+      "event_id": "8a5ff32b4b75440ea80fde62305b2f03",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1196,11 +1214,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.31300000000010186,
       "status_code": 200
     },
     {
-      "event_id": "b1e126fd48084f98a96fe5c013a4b67a",
+      "event_id": "989ebe0279e046c687182fd10f1dfa13",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1214,191 +1232,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.28200000000651926,
+      "elapsed_seconds": 0.26600000000144064,
       "status_code": 200
     },
     {
-      "event_id": "a4618e49097a436b843cff776549907e",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2969999999040738,
-      "status_code": 200
-    },
-    {
-      "event_id": "80dbce52e2d142dabd94b4f230dfdf5d",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2970000000204891,
-      "status_code": 200
-    },
-    {
-      "event_id": "f4b8894635dc4b44a81eec58b67d5890",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.26599999994505197,
-      "status_code": 200
-    },
-    {
-      "event_id": "7ce91ce68d55400b982dafd562cb5b9d",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2809999999590218,
-      "status_code": 200
-    },
-    {
-      "event_id": "d5140340609a48b59cd777ea2757c2f4",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.26599999994505197,
-      "status_code": 200
-    },
-    {
-      "event_id": "2d37dc6614e140749f09b5a6a75d64da",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2660000000614673,
-      "status_code": 200
-    },
-    {
-      "event_id": "96be6f8bd2024aa4b851a57473f73115",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.2970000000204891,
-      "status_code": 200
-    },
-    {
-      "event_id": "50571c925ab24e02bd597b8ea3f2c64a",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.28200000000651926,
-      "status_code": 200
-    },
-    {
-      "event_id": "2a603b40e8864c08a195c0e6bdea58be",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.31299999996554106,
-      "status_code": 200
-    },
-    {
-      "event_id": "9fd6963262fa45e090db61e36c16c34a",
-      "provider": "google",
-      "operation": "place_details",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": null,
-      "source": "http_request_hook",
-      "billing_context": {
-        "endpoint": "details",
-        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
-      },
-      "elapsed_seconds": 0.3910000000614673,
-      "status_code": 200
-    },
-    {
-      "event_id": "529d4e56df8545478a1a24d70109c845",
+      "event_id": "19e55691cbf54841bb661c501c96edd0",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1416,7 +1254,7 @@
       "status_code": 200
     },
     {
-      "event_id": "04407010925f4fdca27ee928039a774d",
+      "event_id": "611c37c5ee4044b9b384f4d326133e18",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1430,11 +1268,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.3130000000819564,
+      "elapsed_seconds": 0.26599999999962165,
       "status_code": 200
     },
     {
-      "event_id": "9db291b3bd0b460eb101de4eae205d62",
+      "event_id": "b497896e573e490093b0b5ed9f55aa45",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1448,11 +1286,11 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.31300000000010186,
       "status_code": 200
     },
     {
-      "event_id": "fe62ba0a3db542008203091166df2446",
+      "event_id": "258d5c2a7cad4a5f933ee106ff354902",
       "provider": "google",
       "operation": "place_details",
       "stage": "planner",
@@ -1466,11 +1304,137 @@
         "endpoint": "details",
         "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
       },
-      "elapsed_seconds": 0.26599999994505197,
+      "elapsed_seconds": 0.2970000000004802,
       "status_code": 200
     },
     {
-      "event_id": "849f594faacc4252845f6676249fbbde",
+      "event_id": "1d36905f18304b768ab4f9bba77a34af",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.4220000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "c26e13bbd0374f378d22e05cc0562639",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.28100000000085856,
+      "status_code": 200
+    },
+    {
+      "event_id": "034f1f4ebdaf40d895158c0d39eb9286",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.25,
+      "status_code": 200
+    },
+    {
+      "event_id": "fe4c98edb1a54cc3b2ad07161beeee27",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2809999999990396,
+      "status_code": 200
+    },
+    {
+      "event_id": "51c1756492224e578dfe13fdaf2513f8",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.2649999999994179,
+      "status_code": 200
+    },
+    {
+      "event_id": "c2b50128e74f4062816d27fa5883ef9f",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.26599999999962165,
+      "status_code": 200
+    },
+    {
+      "event_id": "cd8f06da01a44beb9e1f24a2dde9071d",
+      "provider": "google",
+      "operation": "place_details",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": null,
+      "source": "http_request_hook",
+      "billing_context": {
+        "endpoint": "details",
+        "field_mask": "accessibilityOptions,businessStatus,currentOpeningHours,displayName,formattedAddress,id,location,openingDate,priceLevel,priceRange,primaryType,rating,regularOpeningHours,timeZone,websiteUri"
+      },
+      "elapsed_seconds": 0.39099999999962165,
+      "status_code": 200
+    },
+    {
+      "event_id": "7a408939a92d4953a9c781e85d10f395",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "semantics",
@@ -1481,13 +1445,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a13dbd-b24e-7b73-8663-44f521c6dec1",
+      "model_event_id": "01a14d50-ef6b-71a0-aab1-7ceae4024cd3",
       "model_provider": "langchain",
-      "elapsed_seconds": 16.125,
+      "elapsed_seconds": 20.98400000000038,
       "status_code": 200
     },
     {
-      "event_id": "33ab1f1ef3d44df8a3328571ef9d73ba",
+      "event_id": "94b43d6fd3ba4371b2052be1dae1a26e",
       "provider": "open_meteo",
       "operation": "weather",
       "stage": "planner",
@@ -1498,11 +1462,11 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "elapsed_seconds": 2.718999999924563,
+      "elapsed_seconds": 1.1720000000004802,
       "status_code": 200
     },
     {
-      "event_id": "a65a2b7ccaf447edb16e0f13484380c7",
+      "event_id": "8cc2e5cc559b4d0b8d31dec21932b4b5",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1515,11 +1479,11 @@
       "billing_context": {
         "travel_mode": "WALK"
       },
-      "elapsed_seconds": 0.2809999999590218,
+      "elapsed_seconds": 0.375,
       "status_code": 200
     },
     {
-      "event_id": "05c7728f5a964c8d8beeb498c5a70f6f",
+      "event_id": "e0ea76b514bf48a7b3f5a8d9ea71d91b",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1532,79 +1496,11 @@
       "billing_context": {
         "travel_mode": "WALK"
       },
-      "elapsed_seconds": 0.26500000001396984,
+      "elapsed_seconds": 0.2969999999986612,
       "status_code": 200
     },
     {
-      "event_id": "14ecdc36f88148988de048f997974c41",
-      "provider": "google",
-      "operation": "route_matrix",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": 1,
-      "source": "http_request_hook",
-      "billing_context": {
-        "travel_mode": "TRANSIT"
-      },
-      "elapsed_seconds": 0.5470000000204891,
-      "status_code": 200
-    },
-    {
-      "event_id": "c99af30e0aba4c97844c6624709cc651",
-      "provider": "google",
-      "operation": "route_matrix",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": 1,
-      "source": "http_request_hook",
-      "billing_context": {
-        "travel_mode": "TRANSIT"
-      },
-      "elapsed_seconds": 0.3910000000614673,
-      "status_code": 200
-    },
-    {
-      "event_id": "6e73bacb46ea424fb3ba919397d3be63",
-      "provider": "google",
-      "operation": "route_matrix",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": 1,
-      "source": "http_request_hook",
-      "billing_context": {
-        "travel_mode": "TRANSIT"
-      },
-      "elapsed_seconds": 0.2970000000204891,
-      "status_code": 200
-    },
-    {
-      "event_id": "db260a717d174c69929ba8c5ff73f0b5",
-      "provider": "google",
-      "operation": "route_matrix",
-      "stage": "planner",
-      "round_id": null,
-      "repair": false,
-      "outcome": "completed",
-      "send_status": "transport_entered",
-      "element_count": 1,
-      "source": "http_request_hook",
-      "billing_context": {
-        "travel_mode": "TRANSIT"
-      },
-      "elapsed_seconds": 0.3279999999795109,
-      "status_code": 200
-    },
-    {
-      "event_id": "7287a1695ed54efeb9058bc4f179d79d",
+      "event_id": "dd9dbb163aa74e16a1cd151a501f7d67",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1621,7 +1517,7 @@
       "status_code": 200
     },
     {
-      "event_id": "cd2c77f31f3f4d4c84caeaa06f5681de",
+      "event_id": "1c9d9b80acb24cce8bdef504f444bbb9",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1634,11 +1530,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.34299999999348074,
+      "elapsed_seconds": 0.43699999999989814,
       "status_code": 200
     },
     {
-      "event_id": "0c865b7d206a4591923e4f98eb27fd81",
+      "event_id": "a69a9d48227e4d27a19aa1d6f2c40881",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1651,11 +1547,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.39099999994505197,
+      "elapsed_seconds": 0.4069999999992433,
       "status_code": 200
     },
     {
-      "event_id": "7a204a3b0d6f4d04af0e38aa1873d7d0",
+      "event_id": "7b2868b2d9cf4ebc86d7ddb02f09105e",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1668,11 +1564,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.34399999992456287,
+      "elapsed_seconds": 0.4069999999992433,
       "status_code": 200
     },
     {
-      "event_id": "33608928cc7f40fabcfa1df43ea35e49",
+      "event_id": "ac47a4fd75ed4e9cb33cdca6fd5e08ee",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1685,11 +1581,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.34399999992456287,
+      "elapsed_seconds": 0.39100000000144064,
       "status_code": 200
     },
     {
-      "event_id": "18c78e7e1e724edbab7e8f281365f82b",
+      "event_id": "2f8a2a62651c4bb9adfe9132f39cca57",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1702,11 +1598,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.31299999996554106,
+      "elapsed_seconds": 0.4539999999997235,
       "status_code": 200
     },
     {
-      "event_id": "175146e8f6914beb8ffab9450c1f0a22",
+      "event_id": "4cd0b58d632f47d6b90a30dc4b77e636",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1719,11 +1615,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.3440000000409782,
+      "elapsed_seconds": 0.39100000000144064,
       "status_code": 200
     },
     {
-      "event_id": "b09b7344bffd4681afcec107273b458b",
+      "event_id": "f877abdf3dfb4951962986eeea83deba",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1736,11 +1632,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.39000000001396984,
+      "elapsed_seconds": 0.4220000000004802,
       "status_code": 200
     },
     {
-      "event_id": "25d28134c36e44f88d307ccc88091989",
+      "event_id": "4764df6d1d6f4066b46b08d1b90414e4",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1753,11 +1649,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.3279999999795109,
+      "elapsed_seconds": 0.39099999999962165,
       "status_code": 200
     },
     {
-      "event_id": "a887bc1476cf40268d460d8bd3c2ea4a",
+      "event_id": "5917838e05454fb09ef37be988b39fa5",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1770,11 +1666,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.4380000000819564,
+      "elapsed_seconds": 0.3280000000013388,
       "status_code": 200
     },
     {
-      "event_id": "2a0db061d5ea460e94dc5d2b9827acfa",
+      "event_id": "8cf9acd1d0e9477683d8d2970997c39b",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1787,11 +1683,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.35999999998603016,
+      "elapsed_seconds": 0.35900000000037835,
       "status_code": 200
     },
     {
-      "event_id": "aa7f55f375e04f05a99c16a8a21ca7fc",
+      "event_id": "f7ea536df8b74f308bf8672b697c7096",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1804,11 +1700,79 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.3440000000409782,
+      "elapsed_seconds": 0.375,
       "status_code": 200
     },
     {
-      "event_id": "9ce01a74fc574ce49ff19dbc35f05139",
+      "event_id": "12fafe96dc7f46b1a1ec6a12d21c7da5",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.43800000000010186,
+      "status_code": 200
+    },
+    {
+      "event_id": "288ba33141fd4714a45367060479e379",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31300000000010186,
+      "status_code": 200
+    },
+    {
+      "event_id": "8f848326069444acaac8e911ec0a90ab",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.31300000000010186,
+      "status_code": 200
+    },
+    {
+      "event_id": "53175f76656c4ddaa0136a00737cbebc",
+      "provider": "google",
+      "operation": "route_matrix",
+      "stage": "planner",
+      "round_id": null,
+      "repair": false,
+      "outcome": "completed",
+      "send_status": "transport_entered",
+      "element_count": 1,
+      "source": "http_request_hook",
+      "billing_context": {
+        "travel_mode": "TRANSIT"
+      },
+      "elapsed_seconds": 0.4220000000004802,
+      "status_code": 200
+    },
+    {
+      "event_id": "2c8dcbe7a2b34fbe907937439f4b8be5",
       "provider": "azure_foundry",
       "operation": "model_http",
       "stage": "structured_generation",
@@ -1819,13 +1783,13 @@
       "element_count": null,
       "source": "http_request_hook",
       "billing_context": {},
-      "model_event_id": "01a13dbe-1a4b-7c82-b15a-937656b1bb32",
+      "model_event_id": "01a14d51-6551-7f70-bc14-7c9935301fe1",
       "model_provider": "langchain",
-      "elapsed_seconds": 19.516000000061467,
+      "elapsed_seconds": 27.20299999999952,
       "status_code": 200
     },
     {
-      "event_id": "831b42dfc6e548de82065007d41366e4",
+      "event_id": "c65242eba18e4dd6baf93667d0c16eab",
       "provider": "google",
       "operation": "route_matrix",
       "stage": "planner",
@@ -1838,11 +1802,11 @@
       "billing_context": {
         "travel_mode": "TRANSIT"
       },
-      "elapsed_seconds": 0.375,
+      "elapsed_seconds": 0.3280000000013388,
       "status_code": 200
     },
     {
-      "event_id": "db68e8102cd84a82b99b3bb4d7959837",
+      "event_id": "49eca7e7e96e4914af9b85cb2c70eb74",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -1856,11 +1820,11 @@
         "endpoint": "searchNearby",
         "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
       },
-      "elapsed_seconds": 0.3279999999795109,
+      "elapsed_seconds": 0.31300000000010186,
       "status_code": 200
     },
     {
-      "event_id": "2588c1eefe00442789adda9ee1328cb3",
+      "event_id": "029557c5d4ad402fb4a4e8c74af36bce",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -1874,11 +1838,11 @@
         "endpoint": "searchNearby",
         "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
       },
-      "elapsed_seconds": 0.39000000001396984,
+      "elapsed_seconds": 0.3279999999995198,
       "status_code": 200
     },
     {
-      "event_id": "b37d6ee47bfd460fbd65cfbdcf5fac61",
+      "event_id": "35a601676a5141ec8859938ae5c4a345",
       "provider": "google",
       "operation": "places_search",
       "stage": "planner",
@@ -1892,31 +1856,49 @@
         "endpoint": "searchNearby",
         "field_mask": "places.attributions,places.businessStatus,places.displayName,places.formattedAddress,places.id,places.location,places.primaryType,places.types"
       },
-      "elapsed_seconds": 0.3279999999795109,
+      "elapsed_seconds": 0.3279999999995198,
       "status_code": 200
     }
   ],
   "cache_events": [
     {
-      "event_id": "099bfd3d8fc4413aa354f5bc95c5e146",
+      "event_id": "486c5857ad384b97a676c4f158e1928f",
       "operation": "place_details",
       "stage": "planner",
       "outcome": "cache_lookup_hit"
     },
     {
-      "event_id": "295fc7e08c2a4130aede26a6079120e2",
+      "event_id": "7a2506575ccd4a728f8a194df4720b39",
       "operation": "place_details",
       "stage": "planner",
       "outcome": "cache_lookup_hit"
     },
     {
-      "event_id": "52a6da3a84da479b90a7c0730acaa9e3",
+      "event_id": "c5b6004c23b348459986cc3aab6d36c5",
       "operation": "place_details",
       "stage": "planner",
       "outcome": "cache_lookup_hit"
     },
     {
-      "event_id": "a240e1b695614ef4ad6213c528fe4807",
+      "event_id": "62ff039843ca41b393ee2e86c1ec9a31",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "db7953692f5c4d56938473b0772db7f8",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "82e96450d00c489b9bcb2f85ae95a065",
+      "operation": "place_details",
+      "stage": "planner",
+      "outcome": "cache_lookup_hit"
+    },
+    {
+      "event_id": "e1e74baa6743434b830b8b63092a4275",
       "operation": "place_details",
       "stage": "planner",
       "outcome": "cache_lookup_hit"
@@ -1927,70 +1909,70 @@
       "stage": "requirements",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 19.108999999938533,
+      "elapsed_seconds": 21.14100000000144,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "structured_generation",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 19.108999999938533,
+      "elapsed_seconds": 21.14100000000144,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "requirements",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 19.125,
+      "elapsed_seconds": 21.14100000000144,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "landmark_nomination",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 3.547000000020489,
+      "elapsed_seconds": 2.9060000000008586,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "embedding",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 3.5459999999729916,
+      "elapsed_seconds": 2.2189999999991414,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "retrieval",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 20.18799999996554,
+      "elapsed_seconds": 11.875,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "semantics",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 17.18700000003446,
+      "elapsed_seconds": 31.031999999999243,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "semantics",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 16.42200000002049,
+      "elapsed_seconds": 21.125,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "structured_generation",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 19.719000000040978,
+      "elapsed_seconds": 27.360000000000582,
       "scope": "inclusive_not_additive"
     },
     {
       "stage": "planner",
       "round_id": null,
       "outcome": "completed",
-      "elapsed_seconds": 129.17199999990407,
+      "elapsed_seconds": 145.98400000000038,
       "scope": "inclusive_not_additive"
     }
   ],
@@ -2003,18 +1985,18 @@
   "diagnostics": [],
   "timing": {
     "scope": "selected_invocation_through_cleanup",
-    "started_at": "2026-10-15T04:05:23.571905+00:00",
-    "finished_at": "2026-10-15T04:07:32.863411+00:00",
-    "elapsed_seconds": 129.17199999990407,
+    "started_at": "2026-10-18T04:40:25.304418+00:00",
+    "finished_at": "2026-10-18T04:42:51.370792+00:00",
+    "elapsed_seconds": 145.98400000000038,
     "status": "measured"
   },
   "outcome": "completed",
   "schema_version": "rtpeval_usage_1",
   "group_id": "case-04",
-  "run_id": "case-04-20261015-02-v2",
+  "run_id": "case-04-completion-v2-a1",
   "version": "v2",
   "namespace": "planner",
-  "result_sha256": "2b1161d9cfd459ea5310f68700db8e92142f41d142bfdb9269d88a022bf12056",
+  "result_sha256": "a4302ecc43d847309bca3adda4a00ac5e624fd7fd18203e9e6134fef6449dc90",
   "collection_status": "available",
   "coverage": {
     "scope": "instrumented_adapters_only",

@@ -1,0 +1,33 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJ50uIMa0Z2jER0cTt5fLaZt0",
+  "unresolved_subject_id": null,
+  "reviewer_ref": "/root/relevance04_clean",
+  "checked_at": "2026-10-18T04:52:41Z",
+  "sources": [
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.pub.gov.sg/public/places-of-interest/marina-barrage",
+      "title": "Marina Barrage",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Reservoir barrier; popular Green Roof has skyline views."
+      ],
+      "limitations": []
+    },
+    {
+      "source_kind": "independent_official",
+      "url": "https://www.pub.gov.sg/Public/Places-of-Interest/Marina-Barrage/Green-Features",
+      "title": "Green Features",
+      "checked_at": "2026-10-18T04:52:41Z",
+      "access_status": "opened",
+      "facts": [
+        "Green Roof is explicitly a rooftop garden."
+      ],
+      "limitations": []
+    }
+  ],
+  "original_decisions_sha256": "3c8e900ce7e321470112ba3810e382525d26aa3fc1746e839a519089f6bc3553",
+  "original_pointer": "/records/11/evidence"
+}

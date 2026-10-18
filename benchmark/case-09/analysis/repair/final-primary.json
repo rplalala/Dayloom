@@ -1,0 +1,28 @@
+{
+  "output_version": "itinerary_3",
+  "transfers": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/transfers",
+      "expanded_semantic_sha256": "2712b12a68e5d7d642e48d9042257ffd32b5eed3417b786c3a46abbb28c0025c"
+    }
+  },
+  "route_diagnostics": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/route_diagnostics",
+      "expanded_semantic_sha256": "8b136d63614af3d37cf691230dfa9e3589e696561331d8d73f9163ce905c5b2c"
+    }
+  },
+  "reference_recommendations": [],
+  "destination": "Tokyo, Japan",
+  "start_date": "2026-10-22",
+  "end_date": "2026-10-26",
+  "days": {
+    "$case_material_ref": {
+      "path": "../../generation/v3/itinerary.json",
+      "pointer": "/days",
+      "expanded_semantic_sha256": "6b55e225bdd4d99e62b9e224e62fd14ffa8e136980a9f6441b275d6bb1701ef5"
+    }
+  }
+}

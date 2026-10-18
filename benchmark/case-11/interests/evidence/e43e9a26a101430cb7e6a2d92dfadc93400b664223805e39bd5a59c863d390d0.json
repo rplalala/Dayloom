@@ -1,0 +1,23 @@
+{
+  "source_kind": "independent_official",
+  "canonical_place_id": "ChIJVdC_TS9u5kcRtWVzi5v9Tt0",
+  "unresolved_subject_id": null,
+  "subject_name": "Arc de Triomphe du Carrousel",
+  "subject_address": "Arc de Triomphe du Carrousel, Pl. du Carrousel, 75001 Paris, France",
+  "subject_metadata_use": "Identity only; supplied name and address are not relevance evidence.",
+  "reviewer_ref": "/root/case11_relevance_b",
+  "observed_date": "2026-10-17",
+  "observed_at": "2026-10-17T04:02:39.9308583+00:00",
+  "sources": [
+    {
+      "url": "https://www.louvre.fr/en/support-the-louvre/become-a-patron/the-campaigns/arc-de-triomphe-du-carrousel",
+      "title": "Arc de Triomphe du Carrousel — Louvre",
+      "factual_paraphrase": "Inspired by Roman arches, the monument has three archways, pink-marble Corinthian columns, a quadriga and sculpted reliefs.",
+      "observed_date": "2026-10-17",
+      "retrieval_method": "web search result with primary-source description"
+    }
+  ],
+  "verdict": "relevant",
+  "assessment": "The Louvre describes a designed three-arch monument with Corinthian marble columns, sculpture and bas-reliefs. Both architecture and sculpture independently support this interest.",
+  "evidence_limit": "Saved factual paraphrases of actually observed primary web descriptions; not a complete page archive or a fabricated lookup transcript. No scheduling, access or outcome judgment."
+}

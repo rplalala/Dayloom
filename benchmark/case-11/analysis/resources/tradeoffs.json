@@ -1,9 +1,0 @@
-{
-  "schema_version": "case_public_analysis_availability_1",
-  "case_id": "case-11",
-  "status": "not_recomputed_for_current_selection",
-  "reason": "The bounded rerun authorized selected generation and independent final Primary, not a new complete process/relevance/paired resource study.",
-  "selected_resources": "selected-usage.json",
-  "historical_report": "../../analysis/history/pre-current-20261018/analysis/resources/tradeoffs.json",
-  "quality_score_contribution": null
-}
