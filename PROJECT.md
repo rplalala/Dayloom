@@ -10,11 +10,12 @@ This Capstone / Thesis B project builds an LLM-based travel planner for feasible
 and reliable itinerary generation. It maintains four independently runnable
 versions so their mechanisms remain distinguishable.
 
-Current work covers system design, implementation, engineering validation and
-approved RTPEval implementation. Formal benchmark construction/execution,
-version-comparison experiments, thesis writing and final research conclusions
-require separate authorization. Development smoke results are bounded evidence,
-not general quality rankings or automatic version freezes.
+The project covers system design, implementation, engineering validation and
+RTPEval. The authorized twelve-case benchmark, blinded assessments and final comparison
+are complete and published. Further benchmark execution, version-comparison
+experiments, thesis writing and broader research conclusions require separate
+authorization. Development smoke results remain bounded engineering evidence;
+neither they nor benchmark acceptance automatically freeze a version.
 
 [AGENTS.md](AGENTS.md) and its linked policies own collaboration, language, approval,
 Git and archive rules; detailed rules are loaded for the relevant operation.
@@ -238,7 +239,8 @@ passed; independent Standards/Spec reviews have no remaining actionable finding.
 The first test attempt was blocked by default temporary-directory permissions;
 a fresh workspace-local basetemp/cache resolved the environment issue without
 changing system permissions or project configuration. Skipped environments remain
-unverified; no additional paid run or blinded human assessment occurred.
+unverified. That backend checkpoint included no additional paid run or blinded
+human assessment; the completed benchmark assessments are described in section 6.
 
 The earlier case-12 integration checkpoint on the same date: merged delivery of accepted
 [case-12 r07](benchmark/case-12/report.md#main-worktree-integration) preserves the
@@ -288,7 +290,7 @@ Remaining limitations:
   successful processing can retain genuine factual UNKNOWN judgments.
 - Blinded review, V3 paired diagnostics, controlled Repair and mechanism reports exist.
   Accepted per-case process/pair reports retain their own evidence limits; controlled
-  studies, real human assessment and final research conclusions need their covered scope.
+  studies, additional assessments and broader research conclusions need their covered scope.
 
 Detailed engineering history is indexed in [records](docs/records/README.md), including
 [evaluator records](docs/records/evaluation/intake-identity-usage.md),
@@ -321,65 +323,48 @@ Their responsibilities and relationship to native scoring are summarized in the
 GitHub Issues own detailed specifications, dependencies and acceptance state.
 The combined main-worktree offline gate [#130](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/130)
 is accepted at the checkpoint in section 5.
-Suite engineering acceptance uses synthetic saved material and injected transport;
-formal benchmark execution and paid acquisition remain separately authorized.
+Suite engineering acceptance used synthetic saved material and injected transport.
 
-The [benchmark workflow](benchmark/README.md#workflow-and-responsibilities)
-accepts automatic input/report evidence case by case, including V1/V2 candidate
-POI process analysis and V2/V3 Repair process analysis. Corpus measurement,
-coverage sidecars and corpus reporting are optional studies. Separately authorized
-consolidated blinded review adds separate human assessment without changing
-primary scores. The [final blinded results](benchmark/README.md#final-blinded-results)
-retain the user-accepted English/Chinese questionnaires and separate human and
-GPT-6.1 sol xhigh answer exports for 12 tasks. Private mappings and native report
-generation remain separate from publication of these original artifacts. The
+### Final benchmark and blinded assessment
+
+The [accepted selection index](benchmark/README.md#accepted-selections) identifies
+all 12 accepted cases in four groups of three, their exact datasets and remaining
+evidence limitations. Automatic case acceptance and the bounded current-data
+refresh are complete; [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124),
+[#151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151) and
+[#193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193) are closed.
+
+The [final benchmark report](benchmark/report.md) gives the final interpretation
+**V3 > V2 > V1 > V0** for reliable, feasible itineraries, with a weak V1/V0
+boundary. It presents automatic mean ranks and scores, separate human/model
+rankings, reasons for differences and selected-run cost/time trade-offs. Automatic
+evaluation is the primary ranking; the three evaluations are not combined into a
+weighted score.
+
+The [blinded-review report](benchmark/blinded-results/report.md) covers one human
+and one GPT-6.1 sol xhigh assessment of the same 12 selections. The accepted
+English/Chinese questionnaires and separate answer exports are published directly
+in `benchmark/blinded-results/`. Both reviewers rank V3 first overall; the human
+places V2 second and the model places V0 second. Publication and report delivery
+are completed under [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196);
+the [roadmap #51](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/51)
+tracks the remaining project work.
+
+The [current-data replacement record](docs/records/evaluation/accepted-case-compatibility.md#current-data-replacement)
+documents the 04/05/09/11 selections accepted on 18 October and their matched
+analyses. Historical evaluation policies and unresolved evidence remain visible;
+case-09's pair retains its original runtime and unchanged V3. Earlier selections
+and native evidence remain in immutable archives and Git history, with case
+details and retired-ID mappings maintained in the benchmark index.
+
+The [benchmark workflow](benchmark/README.md#workflow-and-responsibilities) and
 [staged acceptance contract](docs/contracts/0005-quality-human-review.md#staged-automatic-acceptance-and-deferred-blinded-review)
-owns that handoff; the benchmark README owns the detailed sequence, responsibilities
-and final-case layout. [Common workflow #126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-records common workflow adoption; [parallel batch #151](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/151)
-owns active case-03–12 dispatch, budgets and worker integration under the
-[parallel workflow](benchmark/README.md#parallel-sessions-and-integration).
-The coordinator stays in the main worktree; five workers own disjoint case queues.
-[Adoption plan #138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-owns case-01 workflow acceptance. The active set has 12 requests in four groups of three, following the
-user-approved 16 October 2026 selection revision. Former case-14 becomes case-12
-and former 12/13/15 are retired unexecuted. Cases 01–03/06 retain their selected data.
-Case-07 retains its accepted generation
-and scores with its canonical input aligned to accepted revision 2. Earlier
-researcher decisions remain source-bound when current material is replaced. Their V3 paired views
-and case-09's paired view were separately refreshed under the common access policy on
-17 October 2026; the [refresh record](docs/records/evaluation/v3-pair-report.md#paired-access-refresh-2026-10-17)
-owns exact outcomes and bounds. [Case-09](benchmark/case-09/report.md#acceptance) was
-automatically accepted on 17 October 2026 with its updated pair and disclosed limitations.
-Its accepted package and required private evidence are
-integrated into the main worktree; [delivery #158](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/158)
-tracks publication and preserved validation limits. The
-benchmark index owns coverage, historical mappings and the revised pending dates. The [accepted selection index](benchmark/README.md#accepted-selections)
-locates researcher decisions, exact datasets and stated limitations. The authorized
-18 October [current-data replacement](docs/records/evaluation/accepted-case-compatibility.md#current-data-replacement)
-directly updates 04/05/09/11, including the five missing generations, fresh 04/05
-Primary and 04/05/11 independent pairs. Current candidate/relevance/Repair/resource
-views and canonical inputs are aligned. Unchanged donors retain their exact sources;
-case-09's pair is explicitly retained on its historical runtime and unchanged V3.
-Only one current public dataset is kept; former native evidence and Git history remain
-immutable. The researcher explicitly accepted the four refreshed selections and
-their disclosed limitations on 18 October 2026; [delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
-owns publication and closure.
-Case-05 revision 3 /
-input revision 2 and its integrated CLI GBK and Repair timing corrections were accepted
-on 16 October 2026 Australia/Sydney, following main-worktree tests and source-bound
-verification. That historical selection remains in immutable native archives; the current
-26–30 October dataset is identified by the replacement above.
-[Case-05 acceptance](benchmark/case-05/report.md#acceptance) owns its exact scope,
-including UNKNOWN and producer-runtime replay limits. Git publication remains
-separately authorized; the retired former case-15 remains unexecuted.
-Case-07 execution revision 3 / input revision 2 was separately accepted on
-16 October 2026 with partial V2 discovery, 108 relevance UNKNOWNs and unverified
-whole-trip EUR 650 affordability. Its
-[acceptance record](benchmark/case-07/report.md#acceptance) owns the selected
-materials and limitations. Issue #172's prospective activity contract and these
-sanitized materials are delivered through [PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174); historical results remain unchanged.
-Subsequent runs report primary scores and pause before further diagnostics.
+own the detailed sequence and material boundaries. Blind judgments do not change
+accepted automatic scores. Private mappings and native report/replay dependencies
+remain in private evidence storage; corpus measurement and controlled studies
+remain optional work.
+
+### Earlier evaluator acceptance
 
 [CLI entry/validation #96](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/96)
 and [one-step evaluation #97](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/97)
@@ -418,7 +403,7 @@ Live Issues and PRs own delivery and lifecycle state. Retained earlier evidence:
 [validation acceptance](docs/records/evaluation/intake-identity-usage.md#installed-rtpeval-validation-acceptance-2026-10-09),
 [one-step acceptance](docs/records/evaluation/intake-identity-usage.md#one-step-rtpeval-evaluation-acceptance-2026-10-09).
 
-Current local implementation and acceptance cover
+The earlier implementation and acceptance covered
 [public-landmark access #91](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/91),
 [address equivalence #92](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/92),
 [V3 soft pace optimization #93](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/93)
@@ -428,7 +413,7 @@ The complete CLI flow over the unchanged original V0-V2 and source-protected V3 
 accepted as engineering integration evidence. Final scores, check inventories and usage
 are saved; repeated native/quality replay preserves all originals and stopped attempts.
 
-Remaining itinerary follow-ups are the V0 Australian Museum address assessment and
+That Sydney integration retained the V0 Australian Museum address assessment and
 Powerhouse indoor-access uncertainty. Further official evidence acquisition or policy
 changes need their own scope. The latest V3 starts with zero pace deduction and makes
 no Repair attempt; earlier actual Repair improvement remains separate dated evidence.

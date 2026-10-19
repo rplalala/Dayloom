@@ -79,17 +79,20 @@ does not refresh accepted datasets.
 
 ## Other responsibilities
 
-- [Benchmark workflow and case material](../benchmark/README.md): per-case sequence,
-  responsibilities and user intervention, optional studies, public itinerary views and case reports
-  and selected materials, ignored private execution storage and compact long-term archives,
-  twelve-case selection, four-group classification, historical ID mapping and date updates. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
-  owns final benchmark acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
-  owns shared execution/child-Issue rules; [#138](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/138)
-  tracks workflow/layout adoption and case-01 end-to-end acceptance. The
-  [initial case-01 dataset](../benchmark/case-01/report.md#acceptance) records the
-  user's 14 October 2026 automatic acceptance and its limitations. Issue publication
-  and closure are separate. The [final blinded results](../benchmark/README.md#final-blinded-results)
-  locate the accepted English/Chinese questionnaires and separate human/model answer exports.
+- [Final benchmark report](../benchmark/report.md): completed comparison of the
+  12 accepted cases, with final ranking **V3 > V2 > V1 > V0**, separate evaluation
+  results, reasons for differences and selected-run cost/time trade-offs. The
+  V1/V0 distinction is weak; the report states the historical policy boundaries.
+- [Blinded-review report](../benchmark/blinded-results/report.md): completed human
+  and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement
+  and differences. The accepted English/Chinese questionnaires and separate answer
+  exports are retained beside the report. [#196](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/196)
+  records completed publication of both reports and the final review artifacts.
+- [Benchmark workflow and case material](../benchmark/README.md): accepted datasets,
+  public itinerary views, source-linked reports, private archive boundaries,
+  optional studies and historical ID mappings. [#124](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/124)
+  owns completed dataset acceptance; [#126](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/126)
+  owns the shared execution and child-Issue rules.
 - [AI assistance records](../benchmark/README.md#ai-assistance-records): actual
   performers, contributions, validation and evidence gaps for later thesis disclosure;
   [case-01](../benchmark/case-01/report.md#system-and-external-assistance) records the
