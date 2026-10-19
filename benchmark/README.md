@@ -1,5 +1,8 @@
 # Benchmark workflow and case material
 
+The [final benchmark report](report.md) summarizes the V0-V3 ranking across the
+12 accepted cases, the reasons for their differences and quality/resource trade-offs.
+
 The active set contains 12 English travel-planning requests in four groups of three. Pending inputs remain
 working drafts; directory placement does not freeze the set. Each public case
 directory contains a reader-facing report and selected source-linked materials
@@ -291,6 +294,7 @@ retains the refreshed pair and disclosed limitations.
 ```text
 benchmark/
   README.md
+  report.md                       # final version ranking and cross-case analysis
   .gitignore
   inputs/
     case-01.json

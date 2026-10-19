@@ -107,8 +107,6 @@ activity content to the [selected itineraries](../README.md#accepted-selections)
 > Complete all 12 tasks, provide one or two sentences explaining each dimension's
 > ranking, and export the answers using the questionnaire's original JSON schema.
 
-This is the prompt given to Codex during the blind evaluation.
-
 ## Limitations
 
 These results describe one human and one model assessment of this set. Mean

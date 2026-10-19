@@ -5,6 +5,21 @@ uses plain model generation, V1 adds external travel information, V2 adds TripWo
 and V3 adds validation, targeted repair and re-validation. [PROJECT.md](PROJECT.md) records
 the current engineering state and evidence boundaries.
 
+## Benchmark results
+
+The [final benchmark report](benchmark/report.md) compares 12 accepted cases. For
+reliable, feasible itineraries, the final ranking is **V3 > V2 > V1 > V0**.
+
+V3 ranks first in automatic evaluation in all 12 cases and has the best overall
+mean rank in both blinded reviews. Validation and repair reduce overcrowded
+schedules, with selected-run costs and times in a similar range to V2. V2 is the
+strongest alternative; V0 is much faster and cheaper for initial drafts. The
+V1/V0 distinction is weak: each wins six automatic comparisons against the other.
+
+The human review agrees with the final order; the model review places V0 second.
+The report keeps the three evaluations separate and explains score gaps,
+experience differences, cost trade-offs and historical evaluation-policy limits.
+
 ## Command line
 
 Run `uv sync --locked --group dev` from the repository root to install the editable
@@ -167,5 +182,4 @@ Keep the database dump outside Git.
 [docs/README.md](docs/README.md) indexes current design and dated development records.
 The [planning input UX specification](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/25) owns the assistance
 contract and limits. Local `logs/` and `artifacts/` contain development evidence, including
-potential provider/model data, and are not part of a source commit. This project has not run
-a formal V0–V3 benchmark or reached a new version freeze through the recent input UX work.
+potential provider/model data, and are not part of a source commit.
