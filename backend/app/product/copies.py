@@ -7,12 +7,13 @@ from uuid import UUID, uuid4
 
 from fastapi import APIRouter, HTTPException, Response
 from psycopg import Error
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, model_validator
 
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
 from backend.app.product.detail import ProductDetail
 from backend.app.product.examples import COLLECTION, example_detail
+from backend.app.product.operation_keys import OperationKey
 from backend.app.product.saved_store import SavedStore
 
 router = APIRouter(prefix="/api/copies", tags=["trip-copies"])
@@ -23,7 +24,7 @@ class CopyIntent(BaseModel):
     model_config = ConfigDict(extra="forbid")
     source_kind: SourceKind
     source_id: str
-    operation_key: str = Field(min_length=1, max_length=120, pattern=r"\S")
+    operation_key: OperationKey
 
     @model_validator(mode="after")
     def canonical_source(self):
@@ -127,9 +128,18 @@ def copy_trip(body: CopyIntent, user: CurrentUser, response: Response):
 
 
 @router.get("/{source_kind}/{operation_key}")
-def lookup_copy(source_kind: SourceKind, operation_key: str, user: CurrentUser, response: Response):
+def lookup_copy(
+    source_kind: SourceKind, operation_key: OperationKey, user: CurrentUser, response: Response
+):
     response.headers["Cache-Control"] = "no-store"
     result = CopyStore().lookup(user["id"], source_kind, operation_key)
     if result is None:
         raise HTTPException(404, {"code": "copy_not_found"})
     return result
+
+
+@router.get("")
+def lookup_copy_query(
+    source_kind: SourceKind, operation_key: OperationKey, user: CurrentUser, response: Response
+):
+    return lookup_copy(source_kind, operation_key, user, response)

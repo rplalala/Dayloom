@@ -109,7 +109,7 @@ export function AuthPage() {
                 const itemReturn = target && /^\/(?:trips|previews|planning)\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
                 const exampleReturn = target && ['/examples/sydney-example', '/examples/kyoto-design', '/examples/melbourne-design', '/examples/nearby-linking'].includes(target);
                 navigate(
-                  target && (["/plan", "/trips", "/import", "/account", "/planning"].includes(target) || draftReturn || itemReturn || exampleReturn)
+                  target && (["/plan", "/trips", "/import", "/copy-recovery", "/account", "/planning"].includes(target) || draftReturn || itemReturn || exampleReturn)
                     ? target
                     : "/trips",
                   { replace: true },

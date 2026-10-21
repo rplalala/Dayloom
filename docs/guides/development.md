@@ -227,7 +227,7 @@ defines operation identity, source ownership, independent snapshots and deleted-
 With the isolated database and browser ports configured above, run:
 
 ```powershell
-uv run pytest backend/tests/product/test_copies.py backend/tests/product/test_copy_browser.py -q
+uv run pytest backend/tests/product/test_copies.py backend/tests/product/test_operation_keys.py backend/tests/product/test_copy_browser.py -q
 ```
 
 These cases exercise real API/PostgreSQL transactions and Chromium journeys for historical
@@ -235,7 +235,11 @@ import/example content, simultaneous same-key copies, conflicting intents, delet
 and result replay, child-write rollback, owner/CSRF isolation, lost responses and explicit
 retry. Browser checks include guest brief preservation, same-account expiry recovery,
 logout clearing, navigation fences and dialog keyboard/layout behavior at 390px, 800px
-and desktop widths. Screenshots belong to `.scratch/copy-browser`; API/Vite logs use
+and desktop widths. Recovery covers separate A/B source identities and status-only checks
+after source/result deletion, through both the unavailable detail and My trips recovery
+entry. Key admission/query tests use real APIs/PostgreSQL for Copy/import punctuation,
+unchanged normal lookup paths and rejected controls across Copy/import/task interfaces.
+Screenshots belong to `.scratch/copy-browser`; API/Vite logs use
 `.scratch/browser`. External display media must use the browser fixture's controlled
 replacements; the copy mutation itself makes no provider calls.
 

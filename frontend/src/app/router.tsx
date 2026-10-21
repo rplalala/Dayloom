@@ -13,6 +13,7 @@ import { ExamplePage } from "../features/product/detail/ExamplePage";
 import { PlanningTasksPage, PreviewPage } from "../features/product/tasks";
 import { SavedPage } from "../features/product/SavedPage";
 import { ImportPage } from '../features/product/ImportPage';
+import { CopyRecoveryPage } from '../features/product/CopyRecoveryPage';
 
 export const routes: RouteObject[] = [
   {
@@ -23,6 +24,7 @@ export const routes: RouteObject[] = [
       { path: "login", element: <AuthPage /> },
       { path: "trips", element: <LibraryPage /> },
       { path: "import", element: <ImportPage /> },
+      { path: "copy-recovery", element: <CopyRecoveryPage /> },
       { path: "trips/:tripId", element: <SavedPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "examples/:exampleId", element: <ExamplePage /> },

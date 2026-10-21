@@ -12,7 +12,7 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Request, Response
 from psycopg import Error
 from psycopg.types.json import Jsonb
-from pydantic import ValidationError
+from pydantic import TypeAdapter, ValidationError
 
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
@@ -23,6 +23,7 @@ from backend.app.product.detail import (
     DetailWeather,
     ProductDetail,
 )
+from backend.app.product.operation_keys import OperationKey
 from backend.app.product.task_store import TaskStore
 
 MAX_BYTES = 5 * 1024 * 1024
@@ -548,11 +549,13 @@ class ImportStore:
 async def import_preview(request: Request, user: CurrentUser, response: Response):
     response.headers["Cache-Control"] = "no-store"
     key = request.headers.get("X-Import-Key", "")
-    if not 1 <= len(key) <= 120 or not key.strip():
+    try:
+        key = TypeAdapter(OperationKey).validate_python(key)
+    except ValidationError as error:
         raise HTTPException(
             422,
             {"code": "invalid_import_key", "message": "Supply X-Import-Key outside the artifact"},
-        )
+        ) from error
     chunks, size = [], 0
     async for chunk in request.stream():
         size += len(chunk)
@@ -585,9 +588,14 @@ async def import_preview(request: Request, user: CurrentUser, response: Response
 
 
 @router.get("/{operation_key}")
-def lookup_import(operation_key: str, user: CurrentUser, response: Response):
+def lookup_import(operation_key: OperationKey, user: CurrentUser, response: Response):
     response.headers["Cache-Control"] = "no-store"
     result = ImportStore().lookup(user["id"], operation_key)
     if result is None:
         raise HTTPException(404, {"code": "import_not_found"})
     return result
+
+
+@router.get("")
+def lookup_import_query(operation_key: OperationKey, user: CurrentUser, response: Response):
+    return lookup_import(operation_key, user, response)

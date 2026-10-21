@@ -47,7 +47,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
 | `GET`, `PATCH`, `DELETE /api/trips/{id}` | Immutable owner detail, revision-checked title-only update and confirmed cascade deletion | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
 | `GET /api/trips/{id}/weather`, `/nearby`, `/transfers` | Owner-only ordered read views over the saved snapshot | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
-| `POST /api/copies`, `GET /api/copies/{source_kind}/{operation_key}` | Explicit owner copy/Keep and durable operation receipt lookup | [Independent copies](#independent-trip-copies-and-kept-examples) |
+| `POST /api/copies`, `GET /api/copies?source_kind=...&operation_key=...` | Explicit owner copy/Keep and durable operation receipt lookup | [Independent copies](#independent-trip-copies-and-kept-examples) |
 | `POST /api/planning` | Shared `PlanningRequest` plus `Idempotency-Key`; 202 durable task snapshot | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same submission identity; observe durable task revisions and final public detail with task/preview IDs | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `POST /api/planning/tasks` | `{operation_key, request, editor_snapshot?}`; 202 immutable task snapshot or 409 active/key conflict | [Task lifecycle](#durable-planning-tasks-and-previews) |
@@ -323,21 +323,35 @@ Underlying `provenance` and `trust` remain unchanged: a copy of an import stays 
 and a copy of a historical example stays a source fixture. Copies of copies remain separate
 identities; title changes and deletion never cascade between source and copied trips.
 
-`GET /api/copies/{source_kind}/{operation_key}` recovers the owner's minimal decision
-receipt without fetching providers. After an ambiguous response, the browser offers this
+`GET /api/copies?source_kind=...&operation_key=...` recovers the owner's minimal decision
+receipt without fetching providers. Query transport preserves accepted key text such as
+slashes and URL punctuation; the existing normal single-segment path remains supported.
+Copy/import keys contain 1–120 nonblank characters without Unicode control/format or
+invalid code points. Task keys retain their existing ASCII alphanumeric/`_.:-` domain;
+submission and lookup reject invalid keys before database access. Keys are never rewritten.
+After an ambiguous response, the browser offers this
 read before an explicit same-key retry; it never automatically repeats a write. Tab-local
-action identity is quarantined on expiry, restored only for the same account and cleared
+action identities are kept separately per owner, source kind and source identity, so
+working with another source cannot overwrite an unconfirmed operation. They are quarantined
+on expiry, restored only for the same account and cleared
 on logout/account invalidation. Mounted component, account, CSRF and invalidation fences
 exclude late replies after navigation or account changes. Guest Keep preserves the brief
 and returns after login to the allowlisted example review surface; another explicit click
 is required. Authenticated My trips retains its real saved/draft collection and empty state.
+Its pending-copy link opens `/copy-recovery`, an owner-fenced status-only review of retained
+actions. An unavailable saved-source page also offers its retained action's status check.
+These entry points require neither source detail nor a new write; deleted results keep
+their original receipt and never recreate content. Only an explicit new-copy action
+allocates another operation identity.
 
 ### Historical JSON import and export
 
 `/import` accepts pasted or uploaded UTF-8 JSON up to 5 MiB. `POST /api/imports`
 uses the authenticated cookie, Origin and CSRF token, with an operation key in the
-`X-Import-Key` header outside the artifact. `GET /api/imports/{operation_key}` returns
-the owner's original preview/decision receipt, including saved/discarded/deleted outcomes.
+`X-Import-Key` header outside the artifact. `GET /api/imports?operation_key=...` returns
+the owner's original preview/decision receipt, including saved/discarded/deleted outcomes;
+the existing normal single-segment lookup path remains compatible. Import uses the
+shared storable-key admission and query recovery described in the Copy contract above.
 Account-row serialization and the existing owner/kind/key unique constraint atomically
 create one imported preview. Replays compare a server-computed canonical fingerprint of
 validated content and known request metadata; object key order, JSON whitespace and

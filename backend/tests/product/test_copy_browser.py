@@ -283,7 +283,7 @@ def test_different_account_login_clears_copy_identity_without_replay(browser_app
         page.route("**/api/copies", lambda route: route.abort())
         page.get_by_role("button", name="Keep a copy", exact=True).click()
         expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
-        assert page.evaluate("JSON.parse(sessionStorage.getItem('dayloom.copy.intent.v1')).key")
+        assert page.evaluate("JSON.parse(sessionStorage.getItem('dayloom.copy.intent.v1'))[0].key")
         page.goto(base + "/login?return=/examples/sydney-example")
         page.get_by_role("tab", name="Sign up").click()
         page.get_by_label("Display name").fill("Other traveler")
@@ -343,5 +343,114 @@ def test_other_tab_logout_removes_this_tabs_quarantined_copy_identity(browser_ap
         other.get_by_role("button", name="Log out", exact=True).click()
         expect(page.get_by_role("button", name="Keep a copy", exact=True)).to_be_visible()
         assert page.evaluate("sessionStorage.getItem('dayloom.copy.intent.v1')") is None
+    finally:
+        context.close()
+
+
+def test_unconfirmed_copy_a_survives_a_copy_of_b_and_return_to_a(browser_app):  # noqa: F811
+    base, browser = browser_app.base_url, browser_app.browser
+    context = context_for(browser)
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        sent = []
+
+        def lose(route):
+            sent.append(route.request.post_data_json)
+            route.fetch()
+            route.abort()
+
+        page.route("**/api/copies", lose)
+        for slug in ("sydney-example", "kyoto-design"):
+            page.goto(base + f"/examples/{slug}")
+            page.get_by_role("button", name="Keep a copy", exact=True).click()
+            expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
+        page.goto(base + "/examples/sydney-example")
+        page.get_by_role("button", name="Check copy status", exact=True).click()
+        expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
+        page.goto(base + "/examples/kyoto-design")
+        page.get_by_role("button", name="Check copy status", exact=True).click()
+        expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
+        assert len(sent) == 2
+        assert sent[0]["operation_key"] != sent[1]["operation_key"]
+        assert page.request.get(base + "/api/library").json()["total"] == 2
+    finally:
+        context.close()
+
+
+@pytest.mark.parametrize("entry", ["source", "library"])
+@pytest.mark.parametrize("delete_result", [False, True])
+def test_source_deleted_copy_recovers_only_its_receipt_without_source_or_new_write(
+    browser_app,  # noqa: F811
+    entry,
+    delete_result,
+):
+    base, browser = browser_app.base_url, browser_app.browser
+    context = context_for(browser)
+    try:
+        page = context.new_page()
+        email = register_browser(page, base)
+        original = seed_example(page, base)
+        page.goto(base + f"/trips/{original}")
+        replies, posts = [], []
+
+        def lose(route):
+            posts.append(route.request.post_data_json)
+            replies.append(route.fetch().json())
+            route.abort()
+
+        page.route("**/api/copies", lose)
+        page.get_by_role("button", name="Make a copy", exact=True).click()
+        expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
+        account = page.request.get(base + "/api/auth/current").json()
+        for identity in [original] + ([replies[0]["saved_trip_id"]] if delete_result else []):
+            assert (
+                page.request.delete(
+                    base + f"/api/trips/{identity}",
+                    headers={"Origin": base, "X-CSRF-Token": account["csrf_token"]},
+                    data={"revision": 1, "confirmed": True},
+                ).status
+                == 204
+            )
+        page.goto(base + (f"/trips/{original}" if entry == "source" else "/trips"))
+        if entry == "source" and delete_result:
+            token = next(
+                cookie["value"]
+                for cookie in context.cookies()
+                if cookie["name"] == "dayloom_session"
+            )
+            claims = jwt.decode(token, options={"verify_signature": False})
+            claims["exp"] = datetime.now(UTC) - timedelta(minutes=1)
+            context.add_cookies(
+                [
+                    {
+                        "name": "dayloom_session",
+                        "value": jwt.encode(claims, BROWSER_TEST_SIGNING_KEY, algorithm="HS256"),
+                        "url": base,
+                        "httpOnly": True,
+                    }
+                ]
+            )
+            page.reload()
+            page.get_by_role("link", name="Log in", exact=True).last.click()
+            login(page, email)
+        if entry == "library":
+            page.get_by_role("link", name="Check pending copy status", exact=True).click()
+        expect(page.get_by_role("button", name="Make a copy", exact=True)).not_to_be_visible()
+        page.get_by_role("button", name="Check copy status", exact=True).click()
+        if delete_result:
+            expect(
+                page.get_by_text(
+                    "This saved copy was deleted. It will not be recreated.", exact=True
+                )
+            ).to_be_visible()
+            assert page.get_by_role("link", name="View saved copy", exact=True).count() == 0
+        else:
+            link = page.get_by_role("link", name="View saved copy", exact=True)
+            expect(link).to_have_attribute("href", f"/trips/{replies[0]['saved_trip_id']}")
+        assert len(posts) == 1
+        assert page.request.get(base + "/api/library").json()["total"] == (
+            0 if delete_result else 1
+        )
     finally:
         context.close()

@@ -63,12 +63,11 @@ function invalidate(owner: string | null) {
   if (!owner) return;
   try {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
+    sessionStorage.removeItem('dayloom.copy.intent.v1');
     const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
     if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
     const importIntent = JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1') || 'null');
     if (importIntent?.owner === owner) sessionStorage.removeItem('dayloom.import.intent.v1');
-    const copyIntent = JSON.parse(sessionStorage.getItem('dayloom.copy.intent.v1') || 'null');
-    if (copyIntent?.owner === owner) sessionStorage.removeItem('dayloom.copy.intent.v1');
   } catch {
     /* Keep this tab cleared. */
   }

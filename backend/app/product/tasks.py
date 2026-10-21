@@ -5,12 +5,13 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response
-from pydantic import BaseModel, ConfigDict, Field, TypeAdapter, ValidationError
+from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 
 from backend.app.api.dependencies import get_planning_service
 from backend.app.policies.trip_dates import TripDatePolicyError
 from backend.app.product.auth import CurrentUser
 from backend.app.product.editor import EditorSnapshot
+from backend.app.product.operation_keys import TaskOperationKey
 from backend.app.product.preferences import Currency
 from backend.app.product.task_coordinator import TaskCoordinator
 from backend.app.product.task_store import TaskConflict, TaskStore
@@ -22,7 +23,7 @@ router = APIRouter(tags=["planning-tasks"])
 
 class TaskSubmission(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    operation_key: str = Field(min_length=1, max_length=120, pattern=r"^[A-Za-z0-9_.:-]+$")
+    operation_key: TaskOperationKey
     request: PlanningRequest
     editor_snapshot: EditorSnapshot | None = None
 
@@ -76,7 +77,7 @@ async def recent_tasks(
     coordinator: Coordinator,
     response: Response,
     limit: int = Query(20, ge=1, le=50),
-    operation_key: str | None = Query(None, max_length=120),
+    operation_key: Annotated[TaskOperationKey | None, Query()] = None,
 ):
     response.headers["Cache-Control"] = "no-store"
     if operation_key is not None:

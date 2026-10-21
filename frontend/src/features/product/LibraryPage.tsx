@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSession } from "./session";
 import { ExampleCards } from "./detail/ExampleCards";
 import { LibraryCollection } from "./LibraryCollection";
+import { CopyRecoveryLink } from './CopyRecoveryPage';
 
 export function LibraryPage() {
   const { account, status } = useSession();
@@ -34,7 +35,7 @@ export function LibraryPage() {
         </p>
       </div>
       {account ? (
-        <LibraryCollection key={account.id} />
+        <><CopyRecoveryLink /><LibraryCollection key={account.id} /></>
       ) : (
         <>
           <div className="hint-strip">

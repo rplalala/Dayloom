@@ -56,7 +56,7 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
     remember(next); setBusy(true); setError('');
     const valid = () => mounted.current && currentSession.current.accountId === accountId && currentSession.current.csrf === csrf && submissionGeneration(accountId) === currentGeneration;
     try {
-      const response = await fetch(check ? `/api/imports/${encodeURIComponent(key)}` : '/api/imports', { credentials: 'same-origin', cache: 'no-store', method: check ? 'GET' : 'POST', headers: check ? {} : { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf, 'X-Import-Key': key }, ...(check ? {} : { body: intent.content }) });
+      const response = await fetch(check ? `/api/imports?${new URLSearchParams({ operation_key: key })}` : '/api/imports', { credentials: 'same-origin', cache: 'no-store', method: check ? 'GET' : 'POST', headers: check ? {} : { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf, 'X-Import-Key': key }, ...(check ? {} : { body: intent.content }) });
       const body = await response.json();
       if (!valid()) return;
       if (response.status === 401) { setLocked(true); await refresh(); return; }

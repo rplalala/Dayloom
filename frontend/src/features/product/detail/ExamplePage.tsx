@@ -44,5 +44,5 @@ export function ExamplePage() {
         <Link to="/trips">Browse examples →</Link>
       </div>
     );
-  return <TripDetail key={result.detail.id} detail={result.detail} actions={<CopyControls kind="example" source={result.detail.id} />} />;
+  return <TripDetail key={result.detail.id} detail={result.detail} actions={<CopyControls kind="example" source={result.detail.id} title={result.detail.title} />} />;
 }
