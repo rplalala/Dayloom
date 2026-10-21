@@ -281,3 +281,88 @@ def test_browser_recovers_a_lost_decision_response_without_replaying_write(task_
         expect(page.get_by_text("No pending previews.", exact=True)).to_be_visible()
     finally:
         context.close()
+
+
+@pytest.mark.parametrize("decision", ["save", "discard"])
+def test_browser_expired_lost_decision_hides_content_and_relogin_only_reads_receipt(
+    task_app, decision
+):
+    from datetime import UTC, datetime, timedelta
+
+    import jwt
+
+    from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
+    from backend.tests.product.test_browser import login, register_browser
+
+    base, browser = task_app.base_url, task_app.browser
+    context = browser.new_context(viewport={"width": 1440, "height": 1000})
+
+    def expire_session():
+        cookie = next(c for c in context.cookies() if c["name"] == "dayloom_session")
+        claims = jwt.decode(cookie["value"], options={"verify_signature": False})
+        claims["exp"] = int((datetime.now(UTC) - timedelta(seconds=5)).timestamp())
+        cookie["value"] = jwt.encode(claims, BROWSER_TEST_SIGNING_KEY, algorithm="HS256")
+        context.add_cookies([cookie])
+
+    try:
+        page = context.new_page()
+        email = register_browser(page, base)
+        (SCRATCH / "signals/model-release").touch()
+        page.goto(base + "/plan")
+        for label, value in [
+            ("Destination", "Sydney"),
+            ("Start date", "2026-09-12"),
+            ("End date", "2026-09-13"),
+            ("Travelers", "2"),
+            ("Whole-trip budget", "1800"),
+        ]:
+            page.get_by_label(label, exact=True).fill(value)
+        page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        page.get_by_role("link", name="Open task progress", exact=False).click()
+        page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
+        preview_url = page.url
+        expect(page.get_by_role("heading", name="Sydney journey", exact=True)).to_be_visible()
+        writes, expired_reads = [], []
+        page.on(
+            "response",
+            lambda response: expired_reads.append(response.url) if response.status == 401 else None,
+        )
+
+        def lose_after_commit_and_expiry(route):
+            result = route.fetch()
+            assert result.status == 200
+            writes.append("one")
+            expire_session()
+            route.abort("failed")
+
+        page.route(f"**/api/previews/*/{decision}", lose_after_commit_and_expiry)
+        if decision == "save":
+            page.get_by_role("button", name="Save to My trips", exact=True).click()
+        else:
+            page.get_by_role("button", name="Discard preview", exact=True).click()
+            page.get_by_role("button", name="Confirm discard", exact=True).click()
+        expect(page.get_by_role("heading", name="Log in to recover this preview.")).to_be_visible()
+        expect(page.get_by_role("heading", name="Sydney journey", exact=True)).to_have_count(0)
+        assert any("/api/previews/" in url for url in expired_reads)
+        assert any("/api/auth/current" in url for url in expired_reads)
+        page.get_by_role("link", name="Log in", exact=True).last.click()
+        login(page, email)
+        expected = "Saved to My trips." if decision == "save" else "Preview discarded."
+        expect(page.get_by_text(expected, exact=True)).to_be_visible()
+        assert page.url == preview_url and writes == ["one"]
+        if decision == "save":
+            page.get_by_role("link", name="View saved itinerary", exact=True).click()
+            expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+            saved_url = page.url
+            expire_session()
+            page.reload()
+            expect(
+                page.get_by_role("heading", name="Log in to view your saved itinerary.")
+            ).to_be_visible()
+            expect(page.get_by_role("heading", name="Sydney journey", exact=True)).to_have_count(0)
+            page.get_by_role("link", name="Log in", exact=True).last.click()
+            login(page, email)
+            expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+            assert page.url == saved_url and writes == ["one"]
+    finally:
+        context.close()

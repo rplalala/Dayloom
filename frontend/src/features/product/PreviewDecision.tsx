@@ -54,8 +54,10 @@ export function PreviewDecisionControls({ preview, onDecision }: { preview: Prev
       try {
         const value = await taskRequest<Preview>(`/api/previews/${encodeURIComponent(preview.id)}`);
         apply(value);
-      } catch {
-        if (valid()) { setNeedsCheck(true); setError('Could not confirm your decision. Check its status before trying again.'); }
+      } catch (recoveryFailure) {
+        if (!valid()) return;
+        if (recoveryFailure instanceof TaskFailure && recoveryFailure.status === 401) { void refresh(); return; }
+        setNeedsCheck(true); setError('Could not confirm your decision. Check its status before trying again.');
       }
     } finally { if (valid()) setBusy(false); }
   }
