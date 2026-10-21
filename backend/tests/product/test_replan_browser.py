@@ -55,7 +55,11 @@ def test_partial_original_request_opens_blank_without_inference_or_generation(
         page.on(
             "request", lambda request: sent.append(request.url) if request.method != "GET" else None
         )
-        page.get_by_role("button", name="Plan again", exact=True).click()
+        page.get_by_role(
+            "button",
+            name="Plan again" if original_request else "Plan another journey →",
+            exact=True,
+        ).click()
         expect(page).to_have_url(base + "/plan")
         for field in (
             "Start date",

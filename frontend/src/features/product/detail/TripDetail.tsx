@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import type {
   DetailActivity,
@@ -167,7 +167,7 @@ function NearbyRows({
   ));
 }
 
-export function TripDetail({ detail, actions }: { detail: ProductDetail; actions?: ReactNode }) {
+export function TripDetail({ detail, onReplan }: { detail: ProductDetail; onReplan?: () => void }) {
   const [filter, setFilter] = useState<string | null>(null);
   const [closedDays, setClosedDays] = useState<Set<string>>(() => new Set());
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
@@ -347,7 +347,7 @@ export function TripDetail({ detail, actions }: { detail: ProductDetail; actions
             {detail.destination} · {detail.start_date || "Dates unavailable"}
             {detail.end_date ? ` — ${detail.end_date}` : ""}
           </p>
-          {actions && <div className="detail-hero-buttons">{actions}</div>}
+          {onReplan && <div className="detail-hero-buttons"><button type="button" className="btn btn-primary" onClick={onReplan}>Plan again</button></div>}
           <span className="detail-art-credit">Landscape illustration</span>
         </div>
       </section>
@@ -884,9 +884,7 @@ export function TripDetail({ detail, actions }: { detail: ProductDetail; actions
                 <br />
                 Less time for the planning.
               </h3>
-              <Link to="/plan" className="text-link">
-                Plan another journey →
-              </Link>
+              {onReplan ? <button type="button" className="text-link inline-action" onClick={onReplan}>Plan another journey →</button> : <Link to="/plan" className="text-link">Plan another journey →</Link>}
             </section>
           </aside>
         </div>

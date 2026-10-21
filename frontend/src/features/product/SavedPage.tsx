@@ -28,8 +28,8 @@ export function SavedPage() {
   if (result.owner !== account.id || result.id !== tripId) return <p className="container page" role="status">Loading itinerary…</p>;
   if (!result.detail) return <div className="container page"><h1>{result.error}</h1><Link to="/trips">Back to My trips</Link></div>;
   const detail = result.detail;
-  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} actions={<button type="button" className="btn btn-primary" onClick={() => {
+  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} onReplan={() => {
     replaceBrief(replanBrief(detail.request), 'replan');
     navigate('/plan');
-  }}>Plan again</button>} /></>;
+  }} /></>;
 }

@@ -26,7 +26,7 @@ it.each(cases)('opens an editable original request without adopting generated sc
   }));
   const router = createMemoryRouter(routes, { initialEntries: ['/trips/saved'] });
   render(<RouterProvider router={router} />);
-  fireEvent.click(await screen.findByRole('button', { name: 'Plan again' }));
+  fireEvent.click(await screen.findByRole('button', { name: request ? 'Plan again' : 'Plan another journey →' }));
   await screen.findByLabelText('Destination');
   ['Destination', 'Start date', 'End date', 'Travelers', 'Whole-trip budget', 'Currency', 'Additional preferences'].forEach((field, index) => {
     const control = screen.getByLabelText(field, { exact: true });
