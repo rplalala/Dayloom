@@ -56,8 +56,10 @@ def test_only_new_itinerary_prose_gets_english_instruction():
 
 
 def test_optional_native_calls_preserve_limits_callbacks_and_one_send():
+    from backend.app.runtime.config_loader import load_runtime_config
+
     calls = []
-    config, callback, result = object(), object(), object()
+    config, callback, result = load_runtime_config().main_generation, object(), object()
 
     class Provider:
         async def generate_structured(self, **kwargs):
@@ -87,7 +89,7 @@ def test_optional_native_calls_preserve_limits_callbacks_and_one_send():
         assert (
             await client.generate_repair_structured(
                 system_prompt="Repair",
-                user_prompt="source evidence unchanged",
+                user_prompt='{"source_evidence": "unchanged"}',
                 output_tokens=4321,
                 usage_callback=callback,
             )
@@ -103,7 +105,7 @@ def test_optional_native_calls_preserve_limits_callbacks_and_one_send():
     assert calls[0][1]["user_prompt"] == "京都を歩く"
     assert calls[1][1]["output_tokens"] == 4321
     assert calls[1][1]["usage_callback"] is callback
-    assert calls[1][1]["user_prompt"] == "source evidence unchanged"
+    assert calls[1][1]["user_prompt"] == '{"source_evidence": "unchanged"}'
 
 
 def test_absent_capabilities_and_borrowed_operations_stay_truthful():
@@ -309,3 +311,191 @@ def test_product_factory_borrows_resources_without_changing_model_identity(ident
         with pytest.raises(RuntimeError if termination == "failure" else asyncio.CancelledError):
             asyncio.run(scenario())
     assert closed == [True]
+
+
+@pytest.mark.parametrize("native_primary", [False, True])
+def test_product_policy_must_fit_final_primary_input_ceiling_before_send(native_primary):
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.services.generation_resources import (
+        GenerationResourceError,
+        check_primary_input,
+    )
+
+    calls = []
+    config = load_runtime_config()
+    system, user = "Plan itinerary.", "Preserve quoted source: 京都を歩く."
+    baseline = check_primary_input(system, user, config.main_generation)
+    limits = config.main_generation.model_copy(update={"input_tokens": baseline["total_tokens"]})
+    config = config.model_copy(update={"main_generation": limits})
+    assert check_primary_input(system, user, limits)["remaining"] == 0
+
+    class Provider:
+        async def generate_structured(self, **kwargs):
+            calls.append(kwargs)
+            return object()
+
+        async def generate_primary_structured(self, *, generation_config, **kwargs):
+            return await self.generate_structured(**kwargs, _generation_config=generation_config)
+
+    client = ProductEnglishClient(Provider(), config=config)
+
+    async def scenario():
+        operation = (
+            client.generate_primary_structured if native_primary else client.generate_structured
+        )
+        kwargs = {"generation_config": limits} if native_primary else {}
+        return await operation(
+            system_prompt=system, user_prompt=user, response_schema=V1Itinerary, **kwargs
+        )
+
+    with pytest.raises(GenerationResourceError, match="primary_input_resource_overflow"):
+        asyncio.run(scenario())
+    assert calls == []
+
+
+@pytest.mark.parametrize("civil_time", [False, True])
+def test_product_policy_must_fit_final_repair_input_ceiling_before_send(civil_time):
+    import json
+
+    from backend.app.llm.azure_foundry.civil_time import FoundryCivilPatchDTO
+    from backend.app.llm.reference_transport import repair_references
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.token_counting import count_tokens
+    from backend.app.versions.v3.repair_projection import FoundryRepairPatchDTO, RepairInputOverflow
+    from backend.model_references import INSTRUCTION
+
+    calls = []
+    config = load_runtime_config()
+    system = "Propose a bounded patch."
+    payload = {"editable_activities": [], "protected_activities": []}
+    if civil_time:
+        payload["schedule_time_context"] = {"version": "tools_civil_time_1", "places": []}
+    user = json.dumps(payload)
+    refs, wire_user = repair_references(user)
+    schema = FoundryCivilPatchDTO if civil_time else FoundryRepairPatchDTO
+    # Independent transport calculation of the previously admitted exact boundary.
+    total = (
+        count_tokens(system + "\n" + INSTRUCTION)
+        + count_tokens(wire_user)
+        + count_tokens(
+            json.dumps(
+                refs.constrain_schema(schema.model_json_schema()), ensure_ascii=True, sort_keys=True
+            )
+        )
+        + config.v3_repair.input.framing_tokens
+    )
+    limits = config.v3_repair.input.model_copy(update={"input_tokens": total})
+    config = config.model_copy(
+        update={"v3_repair": config.v3_repair.model_copy(update={"input": limits})}
+    )
+
+    class Provider:
+        async def generate_repair_structured(self, **kwargs):
+            calls.append(kwargs)
+            return object()
+
+    client = ProductEnglishClient(Provider(), config=config)
+    with pytest.raises(RepairInputOverflow) as failure:
+        asyncio.run(
+            client.generate_repair_structured(
+                system_prompt=system, user_prompt=user, output_tokens=1234, usage_callback=object()
+            )
+        )
+    assert failure.value.counts["total_tokens"] > limits.input_tokens
+    assert failure.value.counts["input_ceiling"] == total
+    assert calls == []
+
+
+@pytest.mark.parametrize("native_primary", [False, True])
+@pytest.mark.parametrize("enabled", [False, True])
+def test_final_primary_admission_preserves_disabled_caps_and_records_effective_size(
+    native_primary, enabled
+):
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.token_counting import count_tokens
+    from backend.app.services.product_language import PRODUCT_WRITING_INSTRUCTION
+
+    calls, events = [], []
+    config = load_runtime_config()
+    limits = config.main_generation.model_copy(
+        update={"enabled": enabled, "input_tokens": 24000 if enabled else 1}
+    )
+    config = config.model_copy(update={"main_generation": limits})
+    expected = object()
+
+    class Provider:
+        async def generate_structured(self, **kwargs):
+            calls.append(kwargs)
+            return expected
+
+        async def generate_primary_structured(self, *, generation_config, **kwargs):
+            assert generation_config is limits
+            return await self.generate_structured(**kwargs)
+
+    class Tracer:
+        def event(self, kind, payload):
+            events.append((kind, payload))
+
+    client = ProductEnglishClient(Provider(), config=config, tracer=Tracer())
+    operation = client.generate_primary_structured if native_primary else client.generate_structured
+    kwargs = {"generation_config": limits} if native_primary else {}
+    assert (
+        asyncio.run(
+            operation(
+                system_prompt="Plan.",
+                user_prompt="Preserve 京都.",
+                response_schema=V1Itinerary,
+                **kwargs,
+            )
+        )
+        is expected
+    )
+    assert len(calls) == 1 and calls[0]["user_prompt"] == "Preserve 京都."
+    assert len(events) == int(enabled)
+    if enabled:
+        assert events[0][0] == "product_primary_generation_resources"
+        assert events[0][1]["system_tokens"] == count_tokens(
+            "Plan.\n" + PRODUCT_WRITING_INSTRUCTION
+        )
+        assert events[0][1]["ceiling"] == 24000
+        assert events[0][1]["remaining"] >= 0
+
+
+def test_final_repair_admission_records_effective_size_and_preserves_callback():
+    from backend.app.runtime.config_loader import load_runtime_config
+    from backend.app.runtime.token_counting import count_tokens
+    from backend.app.services.product_language import PRODUCT_WRITING_INSTRUCTION
+    from backend.model_references import INSTRUCTION
+
+    calls, events = [], []
+    config, callback, expected = load_runtime_config(), object(), object()
+
+    class Provider:
+        async def generate_repair_structured(self, **kwargs):
+            calls.append(kwargs)
+            return expected
+
+    class Tracer:
+        def event(self, kind, payload):
+            events.append((kind, payload))
+
+    client = ProductEnglishClient(Provider(), config=config, tracer=Tracer())
+    assert (
+        asyncio.run(
+            client.generate_repair_structured(
+                system_prompt="Patch.",
+                user_prompt="{}",
+                output_tokens=1234,
+                usage_callback=callback,
+            )
+        )
+        is expected
+    )
+    assert len(calls) == 1 and calls[0]["user_prompt"] == "{}"
+    assert calls[0]["output_tokens"] == 1234 and calls[0]["usage_callback"] is callback
+    assert len(events) == 1 and events[0][0] == "product_repair_generation_resources"
+    assert events[0][1]["system_tokens"] == count_tokens(
+        "Patch.\n" + PRODUCT_WRITING_INSTRUCTION + "\n" + INSTRUCTION
+    )
+    assert events[0][1]["input_ceiling"] == config.v3_repair.input.input_tokens
+    assert events[0][1]["total_tokens"] <= events[0][1]["input_ceiling"]
