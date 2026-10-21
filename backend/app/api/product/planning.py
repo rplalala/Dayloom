@@ -47,8 +47,15 @@ async def create_planning_result(
             **task,
             "task_id": task["id"],
             "result": previews[0]["snapshot"] if previews else None,
+            "preview_decision": preview_decision(previews),
         }
     return task
+
+
+def preview_decision(previews):
+    if not previews or previews[0]["state"] == "pending":
+        return None
+    return {key: previews[0].get(key) for key in ("id", "state", "saved_trip_id", "outcome")}
 
 
 async def task_events(coordinator, owner, task_id, *, interval=1):
@@ -70,6 +77,7 @@ async def task_events(coordinator, owner, task_id, *, interval=1):
                     "task_id": task["id"],
                     "preview_id": task["preview_id"],
                     "result": previews[0]["snapshot"] if previews else None,
+                    "preview_decision": preview_decision(previews),
                 }
                 yield f"event: result\ndata: {json.dumps(payload, ensure_ascii=True)}\n\n"
             return

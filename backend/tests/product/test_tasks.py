@@ -245,6 +245,21 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                 assert [
                     item["kind"] for item in (await http.get("/api/library")).json()["items"]
                 ] == ["draft"]
+                saved = await http.post(
+                    f"/api/previews/{preview_id}/save", json={}, headers=headers
+                )
+                assert saved.status_code == 200, saved.text
+                saved_id = saved.json()["saved_trip_id"]
+                from copy import deepcopy
+
+                expected_saved = deepcopy(preview["snapshot"])
+                expected_saved["id"] = saved_id
+                for day in expected_saved["days"]:
+                    if day["weather"] is not None:
+                        day["weather"].update(attribution=None, source_url=None)
+                assert (await http.get(f"/api/trips/{saved_id}")).json() == expected_saved
+                assert (await http.get("/api/previews")).json() == []
+                preview = (await http.get(f"/api/previews/{preview_id}")).json()
                 assert calls.count("V1Itinerary") == 1
                 assert (
                     len(retrievals) == 1 and retrievals[0].enters == 1 and retrievals[0].closes == 1
@@ -257,6 +272,7 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                 cookies=dict(client.cookies),
             ) as http:
                 assert (await http.get(f"/api/previews/{preview_id}")).json() == preview
+                assert (await http.get(f"/api/trips/{saved_id}")).json() == expected_saved
                 assert (await http.get(f"/api/planning/tasks/{task_id}")).json()[
                     "state"
                 ] == "completed"

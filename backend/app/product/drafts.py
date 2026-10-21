@@ -156,28 +156,37 @@ def library(
         "oldest": "updated_at ASC, id ASC",
         "name": "lower(title) ASC, id ASC",
     }[sort]
-    # Literal substring search: user '%' and '_' are characters, not wildcards.
-    condition = (
-        "owner_id=%s AND (strpos(lower(title),lower(%s))>0 "
-        "OR strpos(lower(editor->>'destination'),lower(%s))>0)"
-    )
+    # One server-side union gives both kinds the same bounded collection boundary.
+    collection = """WITH collection AS (
+        SELECT id,title,editor->>'destination' AS destination,
+        editor->>'start_date' AS start_date,editor->>'end_date' AS end_date,
+        revision,created_at,updated_at,'draft'::text AS kind,'draft'::text AS source
+        FROM app.planning_drafts WHERE owner_id=%s
+        UNION ALL
+        SELECT id,title,destination,start_date,end_date,revision,created_at,updated_at,
+        'saved'::text AS kind,source_kind AS source FROM app.trips WHERE owner_id=%s
+    ) """
+    condition = " WHERE strpos(lower(title),lower(%s))>0 OR strpos(lower(destination),lower(%s))>0"
     with connect() as connection:
+        args = (user["id"], user["id"], q, q)
         total = connection.execute(
-            "SELECT count(*) AS n FROM app.planning_drafts WHERE " + condition, (user["id"], q, q)
+            collection + "SELECT count(*) AS n FROM collection" + condition, args
         ).fetchone()["n"]
         rows = connection.execute(
-            "SELECT id, title, editor->>'destination' AS destination, "
-            "editor->>'start_date' AS start_date, editor->>'end_date' AS end_date, "
-            "revision, created_at, updated_at FROM app.planning_drafts WHERE "
+            collection
+            + "SELECT * FROM collection"
             + condition
             + " ORDER BY "
             + ordering
-            + " LIMIT %s OFFSET %s",
-            (user["id"], q, q, limit, offset),
+            + ",kind ASC LIMIT %s OFFSET %s",
+            (*args, limit, offset),
         ).fetchall()
     return {
         "items": [
-            {**public_draft(row), "kind": "draft", "source": "draft", "draft_id": str(row["id"])}
+            {
+                **public_draft(row),
+                **({"draft_id": str(row["id"])} if row["kind"] == "draft" else {}),
+            }
             for row in rows
         ],
         "total": total,

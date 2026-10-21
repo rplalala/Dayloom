@@ -278,7 +278,7 @@ class TaskStore:
                 + " ORDER BY created_at DESC,id LIMIT %s OFFSET %s",
                 (owner, preview_id, 1, 0) if preview_id else (owner, limit, offset),
             ).fetchall()
-            return [
+            result = [
                 {
                     **row,
                     "id": str(row["id"]),
@@ -288,3 +288,18 @@ class TaskStore:
                 }
                 for row in rows
             ]
+
+            if preview_id:
+                from backend.app.product.saved_store import SavedStore
+
+                for receipt in result:
+                    if receipt["state"] == "saved":
+                        receipt["snapshot"] = SavedStore(self.settings).read(
+                            owner, receipt["saved_trip_id"]
+                        )
+                        receipt["outcome"] = (
+                            "saved" if receipt["snapshot"] else "saved_result_deleted"
+                        )
+                    elif receipt["state"] == "discarded":
+                        receipt["outcome"] = "discarded"
+            return result
