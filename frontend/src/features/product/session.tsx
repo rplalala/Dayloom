@@ -28,6 +28,7 @@ type Recovery = {
   defaultsAttempted?: boolean;
   started?: boolean;
   draftRef?: DraftRef | null;
+  draftTitle?: string;
 };
 export type BriefOrigin = "new" | "edited" | "restored" | "draft" | "replan";
 export type DraftRef = { id: string; title: string; revision: number };
@@ -117,6 +118,8 @@ type Session = {
   newBrief: () => void;
   replaceBrief: (brief: Brief, origin: "draft" | "replan" | "restored") => void;
   draftRef: DraftRef | null;
+  draftTitle: string;
+  setDraftTitle: (value: string) => void;
   setDraftRef: (value: DraftRef | null) => void;
   actionId: string | null;
   editBrief: (brief: Brief) => void;
@@ -148,7 +151,8 @@ function readRecovery(): Recovery {
       }
       const unopened = saved.origin === "new" && saved.started === false && !saved.defaultsAttempted;
       const draftRef = saved.draftRef && typeof saved.draftRef.id === "string" && typeof saved.draftRef.title === "string" && Number.isSafeInteger(saved.draftRef.revision) && saved.draftRef.revision > 0 ? saved.draftRef as DraftRef : null;
-      return { ...saved, brief: restoreBrief(saved.brief), origin: unopened ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef };
+      const draftTitle = typeof saved.draftTitle === "string" && saved.draftTitle.length <= 120 ? saved.draftTitle : draftRef?.title || "";
+      return { ...saved, brief: restoreBrief(saved.brief), origin: unopened ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef, draftTitle };
     }
   } catch {
     /* An unavailable storage area must not prevent planning. */
@@ -166,6 +170,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [briefOrigin, setBriefOrigin] = useState<BriefOrigin>(recovery.current.origin || "new");
   const [defaultsApplied, setDefaultsApplied] = useState(false);
   const [draftRef, setDraft] = useState<DraftRef | null>(null);
+  const [draftTitle, setTitle] = useState("");
   const briefRevision = useRef(0);
   const epoch = useRef(0);
   const loggingOut = useRef(false);
@@ -193,6 +198,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setBriefOrigin("new");
     setDefaultsApplied(false);
     setDraft(null);
+    setTitle("");
     setStatus("guest");
     persist();
   }, [persist]);
@@ -226,6 +232,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setAction(recovery.current.actionId);
       setBriefOrigin(recovery.current.origin || "new");
       setDraft(recovery.current.draftRef || null);
+      setTitle(recovery.current.draftTitle || "");
       persist();
     },
     [persist],
@@ -239,6 +246,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setStatus("guest");
         setBrief({ ...recovery.current.brief });
         setAction(recovery.current.actionId);
+        setTitle(recovery.current.draftTitle || "");
       }
       return;
     }
@@ -276,10 +284,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setBrief({ ...emptyBrief });
         setAction(null);
         setDraft(null);
+        setTitle("");
       } else {
         setStatus("guest");
         setBrief({ ...recovery.current.brief });
         setAction(recovery.current.actionId);
+        setTitle(recovery.current.draftTitle || "");
       }
     } catch {
       // An ambiguous network failure hides account data, retaining recovery for a later check.
@@ -293,6 +303,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         );
         setAction(recovery.current.owner ? null : recovery.current.actionId);
         setDraft(null);
+        setTitle(recovery.current.owner ? "" : recovery.current.draftTitle || "");
         setStatus(recovery.current.owner ? "expired" : "guest");
       }
     }
@@ -439,8 +450,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setBriefOrigin("new");
     setDefaultsApplied(false);
     setDraft(null);
+    setTitle("");
     persist();
     void initializeNewBrief();
+  }
+  function setDraftTitle(next: string) {
+    if (status === "loading" || status === "expired") return;
+    recovery.current.draftTitle = next;
+    setTitle(next);
+    persist();
   }
   function setDraftRef(next: DraftRef | null) {
     if (status === "loading" || status === "expired") return;
@@ -463,7 +481,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     recovery.current.actionId = null;
     if (origin !== "draft") {
       recovery.current.draftRef = null;
+      recovery.current.draftTitle = "";
       setDraft(null);
+      setTitle("");
     }
     setBrief(recovery.current.brief);
     setBriefOrigin(origin);
@@ -489,6 +509,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         newBrief,
         replaceBrief,
         draftRef,
+        draftTitle,
+        setDraftTitle,
         setDraftRef,
         actionId,
         editBrief,

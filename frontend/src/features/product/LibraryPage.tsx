@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "./session";
 import { ExampleCards } from "./detail/ExampleCards";
+import { LibraryCollection } from "./LibraryCollection";
 
 export function LibraryPage() {
   const { account, status } = useSession();
@@ -32,13 +33,7 @@ export function LibraryPage() {
         </p>
       </div>
       {account ? (
-        <section className="flow-card result-placeholder">
-          <h2>Your next journey starts here.</h2>
-          <p>No trips yet. Start with an idea and make it yours.</p>
-          <Link to="/plan" className="btn btn-primary">
-            Plan a trip →
-          </Link>
-        </section>
+        <LibraryCollection key={account.id} />
       ) : (
         <>
           <div className="hint-strip">

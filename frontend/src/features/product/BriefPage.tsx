@@ -8,6 +8,7 @@ import { isValidISODate, latestEndDate, type TripDateWindow } from "../planning/
 import { currencies, isListedCurrency } from "../planning/currencies";
 import { briefErrors, editPreferences, interestPrompts, pacePrompts, toggleInterest, togglePace, toggleTransport, transportLabels, type Brief, type Interest, type Pace, type Transport, type TextReplacement } from "./editor";
 import { useSession } from "./session";
+import { DraftControls } from "./DraftControls";
 import "./editor.css";
 
 /** The single Product editor, shared by recovery and future drafts/submission. */
@@ -24,6 +25,7 @@ export function BriefPage() {
   const [dateError, setDateError] = useState(false);
   const [reviewed, setReviewed] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [draftLoading, setDraftLoading] = useState(false);
   const notesInput = useRef<HTMLTextAreaElement>(null);
   const textEdit = useRef<(TextReplacement & { before: string }) | null>(null);
   const brief = session.brief;
@@ -54,12 +56,15 @@ export function BriefPage() {
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
   const validBudget = brief.budget.trim() !== "" && Number.isFinite(Number(brief.budget)) && Number(brief.budget) >= 0 && isListedCurrency(brief.currency);
+  const loginReturn = `/login?return=${encodeURIComponent(draftId ? `/plan?draft=${draftId}` : "/plan")}`;
   if (session.status === "loading") return <div className="page container" role="status">Checking your session…</div>;
-  if (session.status === "expired") return <div className="page container"><h1>Log in to continue your brief.</h1><p>Your unsaved input is kept private until you return to the same account.</p><Link to="/login?return=/plan" className="btn btn-primary">Log in</Link></div>;
+  if (session.status === "expired") return <div className="page container"><h1>Log in to continue your brief.</h1><p>Your unsaved input is kept private until you return to the same account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
+  if (draftId && !session.account) return <div className="page container"><h1>Log in to open this draft.</h1><p>Planning drafts are private to their account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
 
   return <div className="page container plan-page brief-editor">
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>A city journey, made yours.</h1><p>Pick a destination. Bring your ideas. Make every day a little clearer.</p></div>
     <section className="flow-card form-card">
+      <DraftControls onLoading={setDraftLoading} />
       <div className="flow-title"><span className="step-number">01</span><div><h2>Tell us how you like to travel</h2><p>A few essentials, and the things that make it your trip.</p></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
         event.preventDefault();
@@ -68,7 +73,7 @@ export function BriefPage() {
         setChecked(true); setReviewed(errors.length === 0);
       }}>
         {session.defaultsApplied && <p className="subtle-help" role="status">Your travel defaults are shown below. Edit them for this trip.</p>}
-        <fieldset className="form-fields"><legend className="visually-hidden">Travel brief</legend>
+        <fieldset className="form-fields" disabled={draftLoading}><legend className="visually-hidden">Travel brief</legend>
           <div className="brief-essentials">
             <DestinationCombobox value={brief.destination} onChange={value => change("destination", value)} disabled={false} />
             <TripDateInput label="Start date" value={brief.start_date} onChange={value => change("start_date", value)} min={dateWindow?.allowedStart} max={dateWindow?.allowedEnd} />
@@ -98,7 +103,7 @@ export function BriefPage() {
           }} disabled={false} onApply={value => update(editPreferences(brief, value))} />
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
-        <div className="form-bottom"><p>City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" className="btn btn-primary btn-large">Generate itinerary →</button></div>
+        <div className="form-bottom"><p>City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading} className="btn btn-primary btn-large">Generate itinerary →</button></div>
         {reviewed && <p className="subtle-help" role="status">Your brief is ready. Review your details before you generate.</p>}
       </form>
     </section>

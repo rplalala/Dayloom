@@ -105,8 +105,9 @@ export function AuthPage() {
                   data.display_name = String(fields.get("display_name"));
                 await session.authenticate(mode, data);
                 const target = params.get("return");
+                const draftReturn = target && /^\/plan\?draft=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
                 navigate(
-                  target && ["/plan", "/trips", "/account"].includes(target)
+                  target && (["/plan", "/trips", "/account"].includes(target) || draftReturn)
                     ? target
                     : "/trips",
                   { replace: true },

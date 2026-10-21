@@ -1,0 +1,12 @@
+.dayloom .draft-toolbar { border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 24px; background: #f7faf6; }
+.dayloom .draft-toolbar .field { max-width: 460px; }
+.dayloom .draft-actions, .dayloom .library-tools, .dayloom .library-actions, .dayloom .library-pagination { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.dayloom .library-tools { margin: 24px 0; justify-content: space-between; }
+.dayloom .library-tools input, .dayloom .library-tools select { border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: inherit; max-width: 100%; background: white; }
+.dayloom .draft-card-cover { display: flex; align-items: center; justify-content: center; min-height: 160px; background: #e8efdf; color: var(--accent); font-size: 45px; text-decoration: none; }
+.dayloom .library-actions button { border: 1px solid var(--line); border-radius: 8px; background: white; padding: 8px 12px; cursor: pointer; color: var(--ink); font: inherit; font-size: 12px; }
+.dayloom .library-pagination { justify-content: center; margin-top: 30px; }
+.dayloom .trip-card-body h2 { overflow-wrap: anywhere; }
+.dayloom .library-dialog { border: 1px solid var(--line); border-radius: 18px; padding: 24px; max-width: min(460px, 90vw); }
+.dayloom .library-dialog::backdrop { background: #172d2866; }
+@media(max-width:800px) { .dayloom .library-tools { align-items: stretch; } .dayloom .library-tools > * { width: 100%; } .dayloom .draft-toolbar { padding: 16px; } }

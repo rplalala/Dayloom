@@ -53,7 +53,7 @@ def browser_app():
                     sys.executable,
                     "-m",
                     "uvicorn",
-                    "backend.app.main:create_app",
+                    "backend.tests.product.editor_server:create_editor_app",
                     "--factory",
                     "--host",
                     "127.0.0.1",

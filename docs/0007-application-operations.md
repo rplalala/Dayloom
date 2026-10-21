@@ -41,6 +41,8 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
+| `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
+| `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
 | `POST /api/planning` | Shared `PlanningRequest`; V3 Product response discriminated by `status` | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same input and terminal result, delivered through request-lifetime SSE | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
@@ -130,8 +132,8 @@ while Product is unmounted and after later login notices. Logout fences refresh 
 it settles and blocks implicit session adoption until a new explicit login, including
 after an ambiguous network response; the failure is shown to the user.
 Focus and periodic session checks detect remote revocation; network failure hides
-account content while preserving quarantined recovery. Server-side drafts and durable
-generation are implemented by later slices.
+account content while preserving quarantined recovery. Durable generation has a
+separate task lifecycle.
 
 ### Profile defaults and new-brief initialization
 
@@ -175,8 +177,40 @@ versioned bindings and does not search for or reclaim matching text.
 The existing bounded assistance APIs supply destination suggestions with manual entry
 and user-reviewed polish. Text/context revisions fence late responses; Apply and Undo
 reconcile ownership without reclaiming detached wording. Dismiss, polish and login
-return never generate an itinerary. Server-side drafts and task submission remain
-separate lifecycle slices; editing adds no persistence table.
+return never generate an itinerary. Draft persistence stores the editor snapshot;
+task submission validates the separate confirmed planning request.
+
+### Incomplete drafts and the collection boundary
+
+`app.planning_drafts` stores owner, nonblank title, versioned incomplete editor JSON,
+positive revision and timestamps. `POST /api/drafts` creates an independent idea;
+`GET/PUT /api/drafts/{id}` resumes or revision-updates it. `PATCH` renames it,
+`POST /api/drafts/{id}/copy` creates an independent copy, and revision-checked `DELETE`
+removes it after browser confirmation. Missing and other-owner IDs both return 404.
+Every mutation uses the account CSRF/origin boundary. No draft operation generates
+an itinerary or consults profile defaults.
+
+Snapshot validation accepts blank or generation-invalid field strings, while enforcing
+`editor_version=1`, supported currency/interest/pace/transport values, unique controls,
+field and collection bounds and valid Unicode. Exact span ownership uses browser
+UTF-16 offsets. Stale, repeated or overlapping bindings are discarded and their controls
+detached without searching for matching text; user wording remains intact.
+
+The editor retains draft identity, last accepted revision and unsaved title within the
+same account-scoped recovery record as its brief. Saving again updates that identity;
+Save as new allocates another. A 409 leaves local work intact and offers explicit reload
+or Save as new. Reload confirms replacement of local edits. Expiry quarantines this
+record; same-account login restores it without replaying a write. Logout and account
+switching clear it. Typing during a pending save is retained locally.
+
+`GET /api/library` is the single server-side collection boundary. Draft cards expose
+`kind=draft`, source/draft identity, minimal destination/date fields and created/updated
+timestamps. Literal case-insensitive title/destination search, newest/oldest updated
+ordering and case-insensitive name ordering use UUID tie-breaks. `limit` is 1–50
+(default 24), `offset` is 0–10000, and search is at most 100 characters. The browser
+requests pages of 12; missing draft fields use neutral placeholders. Saved cards join
+this boundary when saved-trip persistence is available, rather than combining separately
+paginated lists in the browser. Previews remain outside the library.
 
 ### Accepted application lifecycle
 

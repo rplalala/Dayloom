@@ -96,6 +96,8 @@ uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-b
 uv run pytest backend/tests/product/test_editor_browser.py --basetemp=.scratch/pytest-editor
 uv run pytest backend/tests/product/test_example_browser.py --basetemp=.scratch/pytest-examples
 uv run pytest backend/tests/product/test_profile_browser.py --basetemp=.scratch/pytest-profile-browser
+uv run pytest backend/tests/product/test_drafts.py --basetemp=.scratch/pytest-drafts
+uv run pytest backend/tests/product/test_draft_browser.py --basetemp=.scratch/pytest-draft-browser
 ```
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
@@ -126,6 +128,14 @@ above; this journey does not download it or call a paid model. Screenshots and l
 are written to `.scratch/editor-browser` at 390px, 800px and desktop, with distinct
 browser time zones. It exercises editable requirements, exact-span ownership,
 polish preview/Apply/Dismiss/Undo and delayed revisions, recovery and validation.
+
+Draft acceptance uses the same external-adapter substitutes and real account/API/database
+boundary. It covers incomplete round trips, recreated application/browser state,
+independent copies, owner isolation, simultaneous revision conflicts, stable server-side
+pages, database constraints/cascades, guest return and expiry recovery. Draft screenshots
+are written to `.scratch/draft-browser`. The [draft contract](../0007-application-operations.md#incomplete-drafts-and-the-collection-boundary)
+defines schema bounds and listing parameters. Apply the public migration entrypoint before
+starting the API; no additional configuration is required for drafts.
 
 Public example endpoints also run without Product account/provider configuration.
 `uv run pytest backend/tests/api/test_product_examples.py` checks their allowlisted
