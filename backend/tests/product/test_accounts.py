@@ -12,12 +12,15 @@ import psycopg
 import pytest
 from fastapi.testclient import TestClient
 
+from backend.tests.product.database_safety import require_test_database
+
 
 @pytest.fixture
 def client(monkeypatch):
     dsn = os.environ.get("PRODUCT_TEST_DATABASE_URL")
-    if not dsn or "test" not in dsn.rsplit("/", 1)[-1]:
+    if not dsn:
         pytest.skip("Set PRODUCT_TEST_DATABASE_URL to an isolated test database")
+    require_test_database(dsn)
     monkeypatch.setenv("PRODUCT_DATABASE_URL", dsn)
     monkeypatch.setenv("PRODUCT_JWT_SECRET", "test-signing-key-with-at-least-32-characters")
     monkeypatch.setenv("PRODUCT_ALLOW_INSECURE_LOOPBACK", "true")

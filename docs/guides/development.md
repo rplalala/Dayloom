@@ -78,7 +78,12 @@ same origin in the browser. Production uses same-origin HTTPS routing.
 Acceptance requires a separate disposable database whose name includes `test`.
 Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated
 PostgreSQL instance, choose unused ports and set its URL in
-`PRODUCT_TEST_DATABASE_URL`. From the worktree root:
+`PRODUCT_TEST_DATABASE_URL`.
+
+Both URL and PostgreSQL conninfo forms require an explicitly supplied actual database
+name containing `test`; query options, usernames and environment defaults do not satisfy
+the safety check. Supplied unsafe values fail before migrations, connections or cleanup.
+From the worktree root:
 
 ```powershell
 uv run pytest backend/tests/product/test_accounts.py --basetemp=.scratch/pytest-product

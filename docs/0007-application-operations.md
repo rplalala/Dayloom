@@ -120,7 +120,11 @@ recovery and a pending action identity stay in tab-local session storage, never 
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
 under its previous account. Successful same-account login restores it without a write;
 different-account login, explicit logout and confirmed revocation erase it. Shared
-storage notifications contain only account-change/logout notices and clear other tabs.
+storage contains only account IDs, opaque invalidation/login generations and notices.
+Recovery records retain their account's generation, so an invalidation remains effective
+while Product is unmounted and after later login notices. Logout fences refresh until
+it settles and blocks implicit session adoption until a new explicit login, including
+after an ambiguous network response; the failure is shown to the user.
 Focus and periodic session checks detect remote revocation; network failure hides
 account content while preserving quarantined recovery. Server-side drafts, profile
 editing, curated example detail and durable generation are implemented by later slices.

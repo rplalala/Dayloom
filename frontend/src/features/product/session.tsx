@@ -33,9 +33,78 @@ export const emptyBrief: Brief = {
   currency: "AUD",
   preferences: "",
 };
-type Recovery = { owner: string | null; brief: Brief; actionId: string | null };
+type Recovery = {
+  owner: string | null;
+  brief: Brief;
+  actionId: string | null;
+  generation?: string;
+};
 const key = "dayloom.editor.v1";
 const noticeKey = "dayloom.account.notice";
+const activeKey = "dayloom.account.active";
+const logoutKey = "dayloom.account.logged-out";
+const invalidationPrefix = "dayloom.account.invalidation.";
+
+function activeLogin(): { id: string; nonce: string } | null {
+  try {
+    const saved = JSON.parse(localStorage.getItem(activeKey) || "null");
+    return saved &&
+      typeof saved.id === "string" &&
+      typeof saved.nonce === "string"
+      ? saved
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function generation(owner: string): string {
+  try {
+    return localStorage.getItem(invalidationPrefix + owner) || "";
+  } catch {
+    return "";
+  }
+}
+
+function invalidate(owner: string | null) {
+  if (!owner) return;
+  try {
+    localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
+  } catch {
+    /* Keep this tab cleared. */
+  }
+}
+
+function blockCurrentSession() {
+  try {
+    sessionStorage.setItem(logoutKey, activeLogin()?.nonce || "");
+  } catch {
+    /* In-flight fencing remains in memory. */
+  }
+}
+
+function sessionBlocked(): boolean {
+  try {
+    const marker = sessionStorage.getItem(logoutKey);
+    return marker !== null && marker === (activeLogin()?.nonce || "");
+  } catch {
+    return false;
+  }
+}
+
+function beginLogin(next: Account) {
+  const previous = activeLogin();
+  if (previous && previous.id !== next.id) invalidate(previous.id);
+  try {
+    localStorage.setItem(
+      activeKey,
+      JSON.stringify({ id: next.id, nonce: crypto.randomUUID() }),
+    );
+    sessionStorage.removeItem(logoutKey);
+  } catch {
+    /* A successful explicit login is also fenced in memory. */
+  }
+}
 function notify(value: object) {
   try {
     localStorage.setItem(
@@ -74,8 +143,12 @@ function readRecovery(): Recovery {
       ) &&
       (saved.owner === null || typeof saved.owner === "string") &&
       (saved.actionId === null || typeof saved.actionId === "string")
-    )
+    ) {
+      if (saved.owner && (saved.generation || "") !== generation(saved.owner)) {
+        return { owner: null, brief: { ...emptyBrief }, actionId: null };
+      }
       return saved;
+    }
   } catch {
     /* An unavailable storage area must not prevent planning. */
   }
@@ -90,6 +163,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [brief, setBrief] = useState<Brief>({ ...emptyBrief });
   const [actionId, setAction] = useState<string | null>(null);
   const epoch = useRef(0);
+  const loggingOut = useRef(false);
 
   const persist = useCallback(() => {
     try {
@@ -113,13 +187,23 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [persist]);
   const adopt = useCallback(
     (next: Account) => {
-      if (recovery.current.owner && recovery.current.owner !== next.id) {
+      if (loggingOut.current || sessionBlocked()) return;
+      if (
+        recovery.current.owner &&
+        (recovery.current.owner !== next.id ||
+          (recovery.current.generation || "") !==
+            generation(recovery.current.owner))
+      ) {
         recovery.current = {
           owner: next.id,
           brief: { ...emptyBrief },
           actionId: null,
+          generation: generation(next.id),
         };
-      } else recovery.current.owner = next.id;
+      } else {
+        recovery.current.owner = next.id;
+        recovery.current.generation = generation(next.id);
+      }
       accountRef.current = next;
       setAccount(next);
       setStatus("authenticated");
@@ -131,6 +215,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   );
 
   const refresh = useCallback(async () => {
+    if (loggingOut.current) return;
+    if (sessionBlocked()) {
+      if (recovery.current.owner) clear();
+      else {
+        setStatus("guest");
+        setBrief({ ...recovery.current.brief });
+        setAction(recovery.current.actionId);
+      }
+      return;
+    }
     const version = ++epoch.current;
     try {
       const response = await fetch("/api/auth/current", {
@@ -138,7 +232,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         cache: "no-store",
       });
       const body = await response.json();
-      if (version !== epoch.current) return;
+      if (version !== epoch.current || loggingOut.current || sessionBlocked())
+        return;
       if (response.ok) {
         adopt(body);
         return;
@@ -151,6 +246,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           "conflicting_credentials",
         ].includes(body.detail?.code)
       ) {
+        invalidate(recovery.current.owner);
+        blockCurrentSession();
         clear();
         notify({ type: "logout" });
         return;
@@ -171,7 +268,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       if (version === epoch.current) {
         accountRef.current = null;
         setAccount(null);
-        setBrief(recovery.current.owner ? { ...emptyBrief } : { ...recovery.current.brief });
+        setBrief(
+          recovery.current.owner
+            ? { ...emptyBrief }
+            : { ...recovery.current.brief },
+        );
         setAction(recovery.current.owner ? null : recovery.current.actionId);
         setStatus(recovery.current.owner ? "expired" : "guest");
       }
@@ -179,6 +280,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [adopt, clear]);
 
   useEffect(() => {
+    persist();
     void refresh();
     const focus = () => {
       void refresh();
@@ -194,8 +296,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
             notice.id !== recovery.current.owner)
         ) {
           epoch.current++;
+          if (notice.type === "logout") blockCurrentSession();
           clear();
-        } else void refresh();
+        }
+        if (notice.type === "account") {
+          try {
+            sessionStorage.removeItem(logoutKey);
+          } catch {
+            /* Refresh remains fenced in memory. */
+          }
+          void refresh();
+        }
       } catch {
         /* Ignore malformed unrelated storage notifications. */
       }
@@ -208,12 +319,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("storage", storage);
       window.clearInterval(timer);
     };
-  }, [refresh, clear]);
+  }, [refresh, clear, persist]);
 
   async function authenticate(
     mode: "login" | "register",
     data: Record<string, string>,
   ) {
+    if (loggingOut.current)
+      throw new Error("Wait for logout to finish before logging in.");
     const response = await fetch(`/api/auth/${mode}`, {
       method: "POST",
       credentials: "same-origin",
@@ -228,24 +341,41 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           : "We could not sign you in. Check your details and try again.",
       );
     epoch.current++;
+    beginLogin(body);
     adopt(body);
     notify({ type: "account", id: body.id });
   }
 
   async function logout() {
+    if (loggingOut.current) return;
     const csrf = accountRef.current?.csrf_token;
+    const owner = accountRef.current?.id || recovery.current.owner;
+    loggingOut.current = true;
     epoch.current++;
+    invalidate(owner);
+    blockCurrentSession();
     clear();
     notify({ type: "logout" });
-    const response = await fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "same-origin",
-      headers: { "X-CSRF-Token": csrf || "" },
-    });
-    if (!response.ok && response.status !== 401)
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "X-CSRF-Token": csrf || "" },
+      });
+      if (!response.ok && response.status !== 401)
+        throw new Error("Logout failed");
+    } catch {
       throw new Error(
-        "Could not end the server session. Close this browser and try again.",
+        "Could not end the server session. Please log in again before continuing.",
       );
+    } finally {
+      epoch.current++;
+      blockCurrentSession();
+      invalidate(owner);
+      clear();
+      loggingOut.current = false;
+      notify({ type: "logout" });
+    }
   }
 
   function editBrief(next: Brief) {

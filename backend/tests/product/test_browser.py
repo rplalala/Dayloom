@@ -18,6 +18,8 @@ import jwt
 import pytest
 from playwright.sync_api import expect, sync_playwright
 
+from backend.tests.product.database_safety import require_test_database
+
 ROOT = Path(__file__).resolve().parents[3]
 SCRATCH = ROOT / ".scratch" / "browser"
 
@@ -25,8 +27,9 @@ SCRATCH = ROOT / ".scratch" / "browser"
 @pytest.fixture(scope="module")
 def browser_app():
     dsn = os.environ.get("PRODUCT_TEST_DATABASE_URL", "")
-    if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or "test" not in dsn.rsplit("/", 1)[-1]:
+    if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or not dsn:
         pytest.skip("Enable browser acceptance with an explicitly isolated Product test database")
+    require_test_database(dsn)
     SCRATCH.mkdir(parents=True, exist_ok=True)
     api_port = os.environ.get("PRODUCT_TEST_API_PORT", "8120")
     web_port = os.environ.get("PRODUCT_TEST_WEB_PORT", "5120")
@@ -110,6 +113,100 @@ def login(page, email):
     page.get_by_label("Email address").fill(email)
     page.get_by_label("Password", exact=True).fill("a secure password")
     page.get_by_role("button", name="Log in", exact=True).click()
+
+
+def register_browser(page, base):
+    email = f"browser-{uuid4()}@example.com"
+    page.goto(base + "/login")
+    page.get_by_role("tab", name="Sign up").click()
+    page.get_by_label("Display name").fill("Alice Smith")
+    page.get_by_label("Email address").fill(email)
+    page.get_by_label("Password", exact=True).fill("a secure password")
+    page.get_by_label("Confirm password").fill("a secure password")
+    page.get_by_role("button", name="Create account", exact=True).click()
+    expect(page.get_by_role("heading", name="My trips", exact=True)).to_be_visible()
+    return email
+
+
+def test_logout_invalidation_survives_product_unmount_and_later_login(browser_app):
+    base, browser, _ = browser_app
+    context = browser.new_context()
+    try:
+        first = context.new_page()
+        email = register_browser(first, base)
+        first.goto(base + "/plan")
+        first.get_by_label("Additional preferences").fill("Never restore after explicit logout")
+        first.get_by_role("button", name="Generate itinerary").click()
+        old_action = first.evaluate(
+            "JSON.parse(sessionStorage.getItem('dayloom.editor.v1')).actionId"
+        )
+        assert old_action
+        first.goto(base + "/dev")
+        second = context.new_page()
+        second.goto(base + "/account")
+        second.get_by_role("button", name="Log out", exact=True).click()
+        expect(second.get_by_role("link", name="Log in", exact=True).last).to_be_visible()
+        second.goto(base + "/login")
+        login(second, email)
+        expect(second.get_by_role("heading", name="My trips", exact=True)).to_be_visible()
+        first.goto(base + "/plan")
+        expect(first.get_by_label("Additional preferences")).to_have_value("")
+        assert (
+            first.evaluate("JSON.parse(sessionStorage.getItem('dayloom.editor.v1')).actionId")
+            is None
+        )
+    finally:
+        context.close()
+
+
+@pytest.mark.parametrize("lost_response", [False, True])
+def test_logout_fences_current_response_and_focus_until_completion(browser_app, lost_response):
+    base, browser, _ = browser_app
+    context = browser.new_context()
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.goto(base + "/account")
+        expect(page.get_by_role("button", name="Log out", exact=True)).to_be_visible()
+        currents, logouts = [], []
+
+        def hold_current(route):
+            currents.append((route, route.fetch()))
+
+        page.route("**/api/auth/current", hold_current)
+        page.route("**/api/auth/logout", lambda route: logouts.append(route))
+
+        def barrier(route):
+            for current, response in currents:
+                current.fulfill(response=response)
+            currents.clear()
+            route.continue_()
+
+        page.route("**/health?logout-barrier", barrier)
+        with page.expect_request("**/api/auth/logout"):
+            page.get_by_role("button", name="Log out", exact=True).click()
+        page.evaluate("""async () => {
+            window.dispatchEvent(new Event('focus'));
+            await fetch('/health?logout-barrier');
+            await new Promise(requestAnimationFrame);
+        }""")
+        assert logouts
+        response = logouts[0].fetch()  # The real API commits global revocation in PostgreSQL.
+        assert response.status == 204
+        if lost_response:
+            logouts[0].abort()
+            expect(page.get_by_role("alert")).to_contain_text("Could not end the server session")
+        else:
+            logouts[0].fulfill(response=response)
+        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+        expect(page.get_by_text("Alice Smith", exact=True)).to_have_count(0)
+        page.unroute("**/api/auth/current")
+        page.evaluate("window.dispatchEvent(new Event('focus'))")
+        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+        page.reload()
+        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+    finally:
+        context.close()
 
 
 def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_app):
