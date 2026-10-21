@@ -604,7 +604,11 @@ examples do not establish a verified place photo identity.
 Application-private slots (`activity:{activity_id}` and `nearby:{ordered_position}`)
 map to stable Google place IDs in `media_bindings` JSONB on previews and saved trips.
 Migration 006 adds columns without another domain table. Save carries the map into the
-trip transaction. Public detail, JSON/text export and research results omit the map;
+trip transaction. Whole-trip Copy reads this server-owned map inside the same owner/source
+transaction and carries it into the independent trip through the normalized writer;
+directly decided Copy receipts keep an empty map. Imported claims and client Copy bodies
+cannot supply bindings. Copies resolve display metadata separately after persistence.
+Public detail, JSON/text export and research results omit the map;
 no expiring photo resource name, CDN URL, author metadata or image bytes are persisted.
 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only

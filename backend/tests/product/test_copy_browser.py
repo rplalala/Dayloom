@@ -2,7 +2,6 @@
 
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from urllib.parse import urlsplit
 from uuid import uuid4
 
 import jwt
@@ -17,14 +16,7 @@ def context_for(browser, width=1440):
     context = browser.new_context(
         viewport={"width": width, "height": 1000}, reduced_motion="reduce"
     )
-    context.route(
-        "**/*",
-        lambda route: (
-            route.continue_()
-            if urlsplit(route.request.url).hostname in ("localhost", "127.0.0.1")
-            else route.abort()
-        ),
-    )
+    # The shared IsolatedBrowser installs controlled image responses before navigation.
     return context
 
 

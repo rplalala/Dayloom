@@ -80,6 +80,42 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.reload()
         expect(page.locator(".activity-photo img").first).to_be_visible()
         expect(page.get_by_role("link", name="Dan Freeman").first).to_be_visible()
+        # Copy reuses persisted server bindings; only subsequent display requests resolve photos.
+        original_id = saved_url.rsplit("/", 1)[-1]
+        copy_posts, generation_posts = [], []
+        page.on(
+            "request",
+            lambda request: (
+                copy_posts.append(request.url)
+                if request.method == "POST" and request.url.endswith("/api/copies")
+                else generation_posts.append(request.url)
+                if request.method == "POST" and "/api/planning" in request.url
+                else None
+            ),
+        )
+        page.get_by_role("button", name="Make a copy", exact=True).click()
+        page.get_by_role("link", name="View saved copy", exact=True).click()
+        expect(page.locator(".activity-photo img").first).to_be_visible()
+        expect(page.get_by_role("link", name="Controlled Photographer").first).to_be_visible()
+        assert len(copy_posts) == 1 and generation_posts == []
+        saved_url = page.url
+        assert saved_url.rsplit("/", 1)[-1] != original_id
+        account = page.request.get(base + "/api/auth/current").json()
+        assert (
+            page.request.delete(
+                base + f"/api/trips/{original_id}",
+                headers={"Origin": base, "X-CSRF-Token": account["csrf_token"]},
+                data={"revision": 1, "confirmed": True},
+            ).status
+            == 204
+        )
+        page.reload()
+        expect(page.locator(".activity-photo img").first).to_be_visible()
+        with page.expect_download() as download:
+            page.get_by_role("button", name="Export JSON", exact=True).click()
+        exported = Path(download.value.path()).read_text(encoding="utf-8")
+        assert "media_bindings" not in exported and "photos/" not in exported
+        assert "googleusercontent" not in exported
         for width in (800, 390):
             page.set_viewport_size({"width": width, "height": 1000})
             disclosure = page.get_by_role("button", name="Show nearby for", exact=False).first
