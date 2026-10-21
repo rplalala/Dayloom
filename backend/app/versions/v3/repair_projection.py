@@ -88,6 +88,35 @@ class RepairInputOverflow(ValueError):
         super().__init__("repair_input_overflow")
 
 
+def size_repair_input(system, user, policy):
+    """Size the effective transport, including identity instructions and native schema."""
+    from backend.app.llm.azure_foundry.civil_time import FoundryCivilPatchDTO, ToolsTimeProjection
+
+    payload = json.loads(user)
+    references, wire_user = repair_references(user)
+    schema = json.dumps(
+        references.constrain_schema(
+            (
+                FoundryCivilPatchDTO
+                if ToolsTimeProjection.repair(payload)
+                else FoundryRepairPatchDTO
+            ).model_json_schema()
+        ),
+        ensure_ascii=True,
+        sort_keys=True,
+    )
+    counts = {
+        "system_tokens": count_tokens(system + "\n" + INSTRUCTION),
+        "user_tokens": count_tokens(wire_user),
+        "schema_tokens": count_tokens(schema),
+        "framing_tokens": policy.input.framing_tokens,
+    }
+    counts["total_tokens"] = sum(counts.values())
+    counts["input_ceiling"] = policy.input.input_tokens
+    counts["output_ceiling"] = policy.input.output_tokens
+    return json.loads(wire_user), counts
+
+
 def build_repair_input(
     original,
     report,
@@ -378,24 +407,7 @@ def build_repair_input(
         if len(json.dumps(candidate, ensure_ascii=True)) > policy.input.candidate_characters:
             raise ValueError("repair_candidate_projection_overflow")
     user = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
-    references, wire_user = repair_references(user)
-    wire_payload = json.loads(wire_user)
-    from backend.app.llm.azure_foundry.civil_time import FoundryCivilPatchDTO
-
-    schema = json.dumps(
-        references.constrain_schema(FoundryCivilPatchDTO.model_json_schema()),
-        ensure_ascii=True,
-        sort_keys=True,
-    )
-    counts = {
-        "system_tokens": count_tokens(system + "\n" + INSTRUCTION),
-        "user_tokens": count_tokens(wire_user),
-        "schema_tokens": count_tokens(schema),
-        "framing_tokens": policy.input.framing_tokens,
-    }
-    counts["total_tokens"] = sum(counts.values())
-    counts["input_ceiling"] = policy.input.input_tokens
-    counts["output_ceiling"] = policy.input.output_tokens
+    wire_payload, counts = size_repair_input(system, user, policy)
     counts["candidate_count"] = len(whitelist)
     counts["input_identity_union"] = len(input_ids)
     for label, keys in {
