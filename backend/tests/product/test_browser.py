@@ -236,7 +236,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         ).to_be_visible()
         page.screenshot(path=str(SCRATCH / "home-desktop.png"), full_page=True)
         page.goto(base + "/trips")
-        expect(page.get_by_text("EXAMPLE · SYDNEY", exact=True)).to_have_count(3)
+        expect(page.get_by_role("link", name="View itinerary →")).to_have_count(3)
         page.goto(base + "/plan")
         page.get_by_label("Destination", exact=True).fill("Kyoto")
         page.get_by_label("Additional preferences").fill("Private slow mornings")

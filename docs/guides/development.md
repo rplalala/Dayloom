@@ -92,10 +92,13 @@ $env:PRODUCT_TEST_API_PORT = "8120"
 $env:PRODUCT_TEST_WEB_PORT = "5120"
 uv run python -m playwright install chromium
 uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
+uv run pytest backend/tests/product/test_example_browser.py --basetemp=.scratch/pytest-examples
 ```
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
-accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`.
+accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`
+and `.scratch/detail-browser`. Example acceptance covers real public APIs, guest/account
+access, exact activity-linked Nearby, keyboard navigation and desktop/800px/390px layouts.
 Acceptance subprocesses inherit only required OS/tool paths and explicit test settings.
 The public browser fixture excludes environment/configuration, and sensitive setup
 values use redacted diagnostic representations, including fixture failures.
@@ -105,6 +108,12 @@ Existing Playwright Chromium installations can be reused. No model, map, weather
 image-provider call is needed for these account journeys. The migration acceptance
 includes rerun/integrity checks and a seeded TripWorld sentinel preservation check;
 account acceptance includes deliberate profile-insert failure and rollback.
+
+Public example endpoints also run without Product account/provider configuration.
+`uv run pytest backend/tests/api/test_product_examples.py` checks their allowlisted
+HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
+references, real day order and safe text rendering. The public fixtures are historical
+source claims, not live provider verification.
 
 ## Independent version execution
 

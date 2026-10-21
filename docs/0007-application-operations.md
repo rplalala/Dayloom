@@ -127,7 +127,7 @@ it settles and blocks implicit session adoption until a new explicit login, incl
 after an ambiguous network response; the failure is shown to the user.
 Focus and periodic session checks detect remote revocation; network failure hides
 account content while preserving quarantined recovery. Server-side drafts, profile
-editing, curated example detail and durable generation are implemented by later slices.
+editing and durable generation are implemented by later slices.
 
 Product remains V3 over an allowlisted presentation, using the existing PostgreSQL
 instance/database with `app` alongside `tripworld`. The accepted application lifecycle is
@@ -153,12 +153,55 @@ soft priorities, with an empty set expressing no preference. Editable preference
 and polish preview/apply/dismiss/undo remain part of the unified flow. Account images use
 initials; avatar upload and its storage design are deferred.
 
-Detail preserves the desktop two-column layout. Nearby groups by day and exact activity
-ID, with a count entry and explicit bidirectional location/highlight; mobile uses an inline
-activity-card disclosure. Unresolved associations stay in Other nearby references; no
-favorites or saved-place collection is introduced. Google Places Photos require a verified
-identity binding and safe media presentation; Unsplash supplies destination/atmosphere
-imagery. Missing facts/images remain unavailable rather than invented.
+### Public examples and reusable detail
+
+`GET /api/examples` exposes three curated cards; `GET /api/examples/{example_id}`
+returns their detail. The allowlist contains `sydney-example`, `kyoto-design`,
+`melbourne-design` and the additional `nearby-linking` interaction example. The bundled
+fixtures come from the fixed r7 source at commit
+`b30eb3814513b12d7869ca8a5c59f0b7401d45d6`. They require neither an account nor
+provider/database configuration, and create no example table. Home and the guest
+library link to `/examples/{example_id}`; signed-in users can also read those routes.
+
+`backend/app/product/detail.py:ProductDetail` owns the `product_detail_1` contract,
+mirrored by `frontend/src/features/product/detail/types.ts` and rendered by
+`TripDetail`. It is separate from engine/research DTOs and the Developer view. Actual
+ordered day/activity arrays, including empty days, are preserved. ISO date/time strings
+are validated without datetime reserialization, retaining supplied precision and offsets.
+Weather, costs, introductions, original request information and completion information
+are optional. `request` contains only known original input; examples do not reconstruct
+it from an itinerary. Provenance (`example`, `generated`, `imported`) and trust
+(`source_fixture`, `generated_projection`, `unverified_import`) remain explicit.
+This contract is the rendering boundary for subsequent preview, save and import slices;
+those lifecycle operations are implemented separately.
+
+The fixture adapter allowlists public fields and excludes provider identity/evidence
+references. Example transfers retain supplied route metrics and source status as
+`source_claim`/`source_status`, with an unverified estimate kind. They are not a fresh
+route check. Trusted generated transfers can retain their final
+`validation_state` (`PASS`, `CONFIRMED`, `UNKNOWN`) and provider/derived estimate kind.
+Missing costs stay unknown, including when no total can be established. A zero amount
+or zero weather metric is a known value. Place slots use labelled illustrations while
+verified media integration is pending. Map queries are URL-encoded; weather source links
+admit only HTTP(S), and source text is rendered as text.
+
+Detail preserves the desktop two-column layout. Nearby references remain a flat ordered
+list with their exact supplied `anchor_activity_id` and optional `associated_day`.
+Resolution requires one scheduled activity with that exact ID and, when supplied, that
+date. A unique exact anchor can resolve without a supplied date; names and prose never
+establish links. Counts include only resolved references. Date and activity groups start
+expanded, with separate disclosure and locate controls. Explicit pointer/keyboard location
+expands the target day/group, focuses it and briefly highlights both surfaces; hover and
+scroll do not select. Day filters apply to both surfaces. Missing, mismatched or ambiguous
+anchors stay in Other nearby references with their supplied identifiers/dates; undated
+unresolved references survive every filter.
+
+At widths up to and including 800px, resolved references use an initially collapsed
+disclosure inside the activity card below its actions, without a new timeline marker or
+time. The resolved sidebar is hidden and Other nearby references remains available.
+Breakpoint changes preserve visible focus, and reduced motion disables the pulse and
+smooth location. Details use a native modal dialog with keyboard focus containment and
+restoration. No favorites or saved-place collection is introduced.
 
 The remaining task/storage mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
 browser journeys through those APIs with external providers mocked, and the public migration
