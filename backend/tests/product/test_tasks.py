@@ -227,6 +227,15 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                 preview = (await http.get(f"/api/previews/{preview_id}")).json()
                 assert preview["state"] == "pending"
                 assert preview["snapshot"]["trust"] == "generated_projection"
+                replay = await http.post(
+                    "/api/planning",
+                    json=payload["request"],
+                    headers={**headers, "Idempotency-Key": payload["operation_key"]},
+                )
+                assert replay.status_code == 202
+                assert replay.json()["task_id"] == task_id
+                assert replay.json()["preview_id"] == preview_id
+                assert replay.json()["result"] == preview["snapshot"]
                 assert preview["snapshot"]["completion"]["policy_completion"] in {
                     "complete",
                     "incomplete",
@@ -288,6 +297,13 @@ def test_finite_acceptance_deadline_reconciles_once_and_fences_stale_claims(clie
     assert first.renew(claim, {"stage": "generation", "message": "Planning your days"})
     observed = first.read(account["id"], next_task["id"])
     assert observed["progress"]["message"] == "Planning your days"
+    from backend.app.product.database import connect
+
+    with connect() as connection:
+        connection.execute(
+            "UPDATE app.planning_tasks SET state='stopping' WHERE id=%s", (next_task["id"],)
+        )
+    assert first.read(account["id"], next_task["id"])["state"] == "stopping"
     instant[0] += timedelta(seconds=11)
     assert not first.renew(claim)
     with ThreadPoolExecutor(2) as pool:

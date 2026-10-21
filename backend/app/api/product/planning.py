@@ -38,7 +38,17 @@ async def create_planning_result(
     operation_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
 ):
     response.headers["Cache-Control"] = "no-store"
-    return await submit_task(submission(body, operation_key), user, coordinator, planning_service)
+    task = await submit_task(submission(body, operation_key), user, coordinator, planning_service)
+    if task["state"] == "completed":
+        previews = await asyncio.to_thread(
+            coordinator.store.previews, user["id"], task["preview_id"]
+        )
+        return {
+            **task,
+            "task_id": task["id"],
+            "result": previews[0]["snapshot"] if previews else None,
+        }
+    return task
 
 
 async def task_events(coordinator, owner, task_id, *, interval=1):
