@@ -101,6 +101,33 @@ def editor_app():
             output.close()
 
 
+@pytest.mark.parametrize("replacement", ["paste", "type"])
+def test_manual_identical_replacement_detaches_owned_text(editor_app, replacement):
+    context = editor_app.browser.new_context(permissions=["clipboard-read", "clipboard-write"])
+    page = context.new_page()
+    try:
+        page.goto(editor_app.base_url + "/plan")
+        nature = page.get_by_role("button", name="Nature", exact=True)
+        nature.click()
+        notes = page.get_by_label("Additional preferences")
+        original = "Enjoy parks, waterfronts and gentle outdoor experiences."
+        expect(notes).to_have_value(original)
+        notes.focus()
+        notes.press("Control+A")
+        if replacement == "paste":
+            notes.press("Control+C")
+            notes.press("Control+V")
+        else:
+            page.keyboard.insert_text(original)
+        expect(notes).to_have_value(original)
+        expect(nature).to_have_attribute("aria-pressed", "false")
+        nature.click()
+        nature.click()
+        expect(notes).to_have_value(original)
+    finally:
+        context.close()
+
+
 @pytest.mark.parametrize(
     "width,time_zone",
     [(390, "Pacific/Kiritimati"), (800, "America/Los_Angeles"), (1440, "Australia/Sydney")],

@@ -70,7 +70,7 @@ it("keeps soft controls visible and detaches an edited sentence without deleting
   fireEvent.click(nature);
   expect(nature).toHaveAttribute("aria-pressed", "true");
   const notes = screen.getByLabelText("Additional preferences");
-  fireEvent.change(notes, { target: { value: "Enjoy quiet parks, waterfronts and gentle outdoor experiences." } });
+  fireEvent.input(notes, { target: { value: "Enjoy quiet parks, waterfronts and gentle outdoor experiences." } });
   expect(nature).toHaveAttribute("aria-pressed", "false");
   fireEvent.click(screen.getByRole("button", { name: /Balanced/ }));
   fireEvent.click(screen.getByRole("button", { name: /Relaxed/ }));

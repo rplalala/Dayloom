@@ -18,6 +18,7 @@ export function BriefPage() {
   const [dateError, setDateError] = useState(false);
   const [reviewed, setReviewed] = useState(false);
   const [checked, setChecked] = useState(false);
+  const notesInput = useRef<HTMLTextAreaElement>(null);
   const textEdit = useRef<(TextReplacement & { before: string }) | null>(null);
   const brief = session.brief;
   useEffect(() => {
@@ -25,6 +26,24 @@ export function BriefPage() {
     getTripDateWindow().then(value => { if (active) setDateWindow(value); }, () => { if (active) setDateError(true); });
     return () => { active = false; };
   }, []);
+  useEffect(() => {
+    const node = notesInput.current;
+    if (!node) return;
+    function beforeInput(event: InputEvent) {
+      if (!node) return;
+      let start = node.selectionStart, end = node.selectionEnd;
+      if (start === end && event.inputType === "deleteContentBackward") start = Math.max(0, start - 1);
+      if (start === end && event.inputType === "deleteContentForward") end = Math.min(node.value.length, end + 1);
+      textEdit.current = { before: node.value, start, end };
+    }
+    // Native beforeinput includes paste and unchanged replacements. React's
+    // synthetic beforeinput/change pair can omit either of these edits.
+    node.addEventListener("beforeinput", beforeInput);
+    return () => {
+      node.removeEventListener("beforeinput", beforeInput);
+      textEdit.current = null;
+    };
+  }, [session.status]);
   function update(next: Brief) { setReviewed(false); session.editBrief(next); }
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
@@ -57,17 +76,10 @@ export function BriefPage() {
             <fieldset className="brief-choice-group"><legend>Transport preferences</legend><div className="pace-row">{(Object.keys(transportLabels) as Transport[]).map(value => <button key={value} type="button" className={`pace-btn ${brief.transport.includes(value) ? "selected" : ""}`} aria-pressed={brief.transport.includes(value)} onClick={() => update(toggleTransport(brief, value))}><strong>{transportLabels[value]}</strong></button>)}</div><p className="selection-help">Choose one or more. Leave empty for no preference.</p></fieldset>
           </div>
           <div className="requirements-pair"><label className="field"><span>Places or experiences to include</span><input value={brief.required} onChange={event => change("required", event.target.value)} placeholder="An art museum, a waterfront walk…" /></label><label className="field"><span>Places or experiences to avoid</span><input value={brief.exclusions} onChange={event => change("exclusions", event.target.value)} placeholder="Large malls, very crowded places…" /></label></div>
-          <label className="field notes-wide"><span>Additional preferences</span><textarea rows={5} value={brief.preferences} onBeforeInput={event => {
-            const node = event.currentTarget;
-            let start = node.selectionStart, end = node.selectionEnd;
-            const kind = (event.nativeEvent as InputEvent).inputType;
-            if (start === end && kind === "deleteContentBackward") start = Math.max(0, start - 1);
-            if (start === end && kind === "deleteContentForward") end = Math.min(node.value.length, end + 1);
-            textEdit.current = { before: node.value, start, end };
-          }} onChange={event => {
+          <label className="field notes-wide"><span>Additional preferences</span><textarea ref={notesInput} rows={5} value={brief.preferences} onInput={event => {
             const replacement = textEdit.current?.before === brief.preferences ? textEdit.current : undefined;
             textEdit.current = null;
-            update(editPreferences(brief, event.target.value, replacement));
+            update(editPreferences(brief, event.currentTarget.value, replacement));
           }} onBlur={() => { textEdit.current = null; }} aria-describedby="preference-sync-help" placeholder="Tell us about slow mornings, accessibility needs, or anything else that matters…" /></label>
           <p className="subtle-help" id="preference-sync-help">Your selections appear here. Edit any sentence to make it your own.</p>
           <PreferencePolisher text={brief.preferences} context={{
