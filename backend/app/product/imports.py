@@ -299,7 +299,10 @@ def normalize_import(content: str) -> ProductDetail:
             if b is not None:
                 instant(b, tp + "." + last)
             if a is not None and b is not None:
-                interval(a, b, tp)
+                if first == "departure_time":
+                    interval(a, b, tp)
+                elif instant(a, tp + "." + first)[1] != instant(b, tp + "." + last)[1]:
+                    fail(tp, "Connection gap endpoints must have the same timezone awareness")
         values.update(
             status="source_claim",
             estimate_kind=transfer.get("estimate_kind", "unverified"),

@@ -291,6 +291,8 @@ monetary decimal scale are insignificant, while list order, IDs and ISO spelling
 significant. Conflicting content returns 409. Save/Discard use the shared decision service;
 minimal identity/fingerprint receipts survive content removal. An ambiguous response
 requires a status read before explicit same-key retry. A new key starts another import.
+Bounded normalization and synchronous PostgreSQL work run outside the API event loop,
+so a contended import row does not block task observation, Stop or coordinator scheduling.
 
 Supported envelopes are bare itineraries, the unversioned r7 `itinerary` wrapper, and
 `schema_version: dayloom_export_1`. Explicit output versions `itinerary_1`, `itinerary_2`
@@ -308,10 +310,16 @@ days, deriving a missing outer span from actual dates without filling gaps. Supp
 timestamps use `YYYY-MM-DDTHH:MM[:SS[.1–9 digits]][Z|±HH:MM]`; original strings survive
 Save/read/export. Integer nanosecond comparisons enforce positive actual duration and
 consistent endpoint awareness. Activity starts belong to their actual day. Actual transfer
-endpoints must exist, differ and share a day. Optional Nearby retains supplied orphan,
+endpoints must exist, differ and share a day. Connections retain zero or negative available
+gaps (`preceding_end_time` to
+`following_start_time`) as source conflicts: those boundaries require valid clocks and
+matching awareness, rather than a positive journey duration. Departure/arrival and activity
+intervals still require positive actual elapsed time. Optional Nearby retains supplied orphan,
 conflicting or undated references separately; only absent nested anchor/date fields inherit
-the real parent. Known measurements/costs must be finite and valid; missing facts stay
-unknown. Errors identify the failing field, and invalid imports create no preview.
+the real parent. Known measurements/costs must be finite and valid; public floating-point
+measurements must fit their storage representation. Missing facts stay unknown. Supplied
+`source_claims` must be an array of strings. Errors identify the failing field, and invalid
+imports create no preview.
 
 Artifact ownership, operation identity and private media binding declarations are rejected.
 Allowlisted imported content is always `provenance=imported`, `trust=unverified_import`.
@@ -322,9 +330,13 @@ generation, profile inference or media refresh occurs during import or export.
 Every shared detail offers versioned JSON, plain-text download and a copyable summary with
 a selectable-text dialog fallback. Exports retain supported public content and known request
 metadata, omit record authority/private diagnostics and distinguish unknown facts, free
-windows, connections, optional Nearby and source trust. Reimport always crosses the same
-unverified boundary. Guest input survives login; expired account input remains quarantined
+windows, connections, optional Nearby and source trust. JSON `origin` explicitly records
+the source snapshot's provenance/trust with `assertion=source_snapshot_only`; reimport
+retains it as a source claim and always crosses the unverified boundary. Guest input survives
+login; expired account input remains quarantined
 for same-account recovery. Logout/account invalidation clears its session-stored intent.
+File completions are fenced by edit/submission revision, component lifetime and session:
+a late file read cannot overwrite a later paste or clear an accepted operation key.
 
 ### Implemented visible brief editor
 

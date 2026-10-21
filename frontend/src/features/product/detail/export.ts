@@ -3,6 +3,7 @@ import type { ProductDetail } from './types';
 export function exportArtifact(detail: ProductDetail) {
   return {
     schema_version: 'dayloom_export_1', title: detail.title,
+    origin: { provenance: detail.provenance, trust: detail.trust, assertion: 'source_snapshot_only' },
     request: detail.request, completion: detail.completion,
     itinerary: {
       output_version: 'itinerary_3', destination: detail.destination,

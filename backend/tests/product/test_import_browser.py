@@ -10,7 +10,7 @@ from playwright.sync_api import expect
 
 from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
 from backend.tests.product.test_browser import browser_app, login, register_browser  # noqa: F401
-from backend.tests.product.test_imports import source
+from backend.tests.product.test_imports import conflicting_source, source
 
 
 def test_browser_import_save_export_reimport_and_lost_response(browser_app):  # noqa: F811
@@ -211,6 +211,60 @@ def test_deferred_file_cannot_erase_a_later_accepted_import_identity(browser_app
         assert len(posts) == 1
         page.screenshot(
             path=str(Path(".scratch/import-browser/deferred-file-recovery.png")), full_page=True
+        )
+    finally:
+        context.close()
+
+
+def test_historical_connection_conflicts_export_and_reimport_with_source_provenance(browser_app):  # noqa: F811
+    base, browser = browser_app.base_url, browser_app.browser
+    context = browser.new_context()
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        for next_start in ("10:00", "09:59"):
+            page.goto(base + "/import")
+            expect(page.get_by_role("heading", name="Import itinerary", exact=True)).to_be_visible()
+            new_import = page.get_by_role("button", name="Start new import", exact=True)
+            if new_import.is_visible():
+                new_import.click()
+            page.get_by_label("Itinerary JSON", exact=True).fill(
+                json.dumps(conflicting_source(next_start))
+            )
+            page.get_by_role("button", name="Preview import", exact=True).click()
+            page.get_by_role("button", name="Save to My trips", exact=True).click()
+            page.get_by_role("link", name="View saved itinerary", exact=True).click()
+            with page.expect_download() as download:
+                page.get_by_role("button", name="Export JSON", exact=True).click()
+            exported = json.loads(Path(download.value.path()).read_text())
+            assert exported["origin"] == {
+                "provenance": "imported",
+                "trust": "unverified_import",
+                "assertion": "source_snapshot_only",
+            }
+            transfer = exported["itinerary"]["transfers"][0]
+            assert transfer["preceding_end_time"] == "2020-01-01T10:00"
+            assert transfer["following_start_time"] == "2020-01-01T" + next_start
+            assert transfer["source_status"] == "CONFIRMED"
+            assert transfer["status"] == "source_claim"
+            page.goto(base + "/import")
+            page.get_by_role("button", name="Start new import", exact=True).click()
+            page.get_by_label("Itinerary JSON", exact=True).fill(json.dumps(exported))
+            page.get_by_role("button", name="Preview import", exact=True).click()
+            expect(
+                page.get_by_role("heading", name="Historical connection conflict", exact=True)
+            ).to_be_visible()
+            preview_url = page.url.replace(base, "")
+            preview = page.request.get(base + "/api" + preview_url).json()["snapshot"]
+            assert preview["trust"] == "unverified_import"
+            assert (
+                preview["transfers"][0]["following_start_time"] == transfer["following_start_time"]
+            )
+            assert any(
+                claim.startswith("origin: ") for claim in preview["completion"]["source_claims"]
+            )
+        page.screenshot(
+            path=str(Path(".scratch/import-browser/conflict-reimport.png")), full_page=True
         )
     finally:
         context.close()

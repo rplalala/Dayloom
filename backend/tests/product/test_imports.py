@@ -408,3 +408,116 @@ def test_public_import_rejects_unrepresentable_weather_with_field_location(clien
     assert response.status_code == 422, response.text
     assert response.json()["detail"]["path"] == f"$.days[0].weather.{field}"
     assert client.get("/api/previews").json() == []
+
+
+def conflicting_source(next_start="10:00"):
+    return {
+        "title": "Historical connection conflict",
+        "destination": "Sydney",
+        "days": [
+            {
+                "date": "2020-01-01",
+                "activities": [
+                    {
+                        "activity_id": "first",
+                        "title": "First stop",
+                        "start_time": "2020-01-01T09:00",
+                        "end_time": "2020-01-01T10:00",
+                    },
+                    {
+                        "activity_id": "second",
+                        "title": "Second stop",
+                        "start_time": "2020-01-01T" + next_start,
+                        "end_time": "2020-01-01T11:00",
+                    },
+                ],
+            }
+        ],
+        "transfers": [
+            {
+                "from_activity_id": "first",
+                "to_activity_id": "second",
+                "preceding_end_time": "2020-01-01T10:00",
+                "following_start_time": "2020-01-01T" + next_start,
+                "provider_duration_seconds": 300,
+                "validation_state": "CONFIRMED",
+            }
+        ],
+    }
+
+
+@pytest.mark.parametrize("next_start", ["10:00", "09:59"])
+def test_public_import_saves_zero_and_negative_available_connection_gaps(client, next_start):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "conflict",
+    }
+    value = conflicting_source(next_start)
+    response = client.post("/api/imports", headers=headers, content=json.dumps(value))
+    assert response.status_code == 200, response.text
+    preview = response.json()
+    saved = client.post(f"/api/previews/{preview['id']}/save", headers=headers, json={})
+    assert saved.status_code == 200, saved.text
+    detail = client.get(f"/api/trips/{saved.json()['saved_trip_id']}").json()
+    transfer = detail["transfers"][0]
+    assert transfer["following_start_time"] == "2020-01-01T" + next_start
+    assert transfer["source_status"] == "CONFIRMED" and transfer["status"] == "source_claim"
+    assert detail["trust"] == "unverified_import"
+
+
+def test_exported_origin_and_existing_claims_are_retained_only_as_source_claims(client):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "exported-origin",
+    }
+    origin = {
+        "provenance": "generated",
+        "trust": "generated_projection",
+        "assertion": "source_snapshot_only",
+    }
+    wrapper = {
+        "schema_version": "dayloom_export_1",
+        "origin": origin,
+        "completion": {
+            "source_claims": ["Original supplied note"],
+            "policy_completion": "complete",
+        },
+        "itinerary": conflicting_source(),
+    }
+    response = client.post("/api/imports", headers=headers, content=json.dumps(wrapper))
+    assert response.status_code == 200, response.text
+    detail = response.json()["snapshot"]
+    assert detail["provenance"] == "imported" and detail["trust"] == "unverified_import"
+    assert detail["completion"]["policy_completion"] == "unassessed"
+    assert "Original supplied note" in detail["completion"]["source_claims"]
+    assert 'policy_completion: "complete"' in detail["completion"]["source_claims"]
+    source_origin = next(
+        claim for claim in detail["completion"]["source_claims"] if claim.startswith("origin: ")
+    )
+    assert json.loads(source_origin.removeprefix("origin: ")) == origin
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"following_start_time": "2020-01-01T10:00Z"},
+        {"departure_time": "2020-01-01T10:00", "arrival_time": "2020-01-01T09:59"},
+        {"departure_time": "2020-01-01T10:00", "arrival_time": "2020-01-01T10:00"},
+    ],
+)
+def test_conflicting_schedule_gaps_do_not_relax_transfer_time_validation(client, change):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "malformed-conflict",
+    }
+    value = conflicting_source()
+    value["transfers"][0].update(change)
+    response = client.post("/api/imports", headers=headers, content=json.dumps(value))
+    assert response.status_code == 422, response.text
+    assert response.json()["detail"]["path"].startswith("$.transfers[0]")

@@ -10,6 +10,7 @@ describe('faithful shared exports', () => {
     expect(JSON.stringify(exported)).not.toContain('private-server-id');
     expect(exported.itinerary.days).toEqual(detail.days);
     expect(exported.request).toBeNull();
+    expect(exported.origin).toEqual({ provenance: 'imported', trust: 'unverified_import', assertion: 'source_snapshot_only' });
   });
   it('distinguishes unknown facts, empty days, optional references and provenance', () => {
     const summary = summaryText(detail);
@@ -17,5 +18,14 @@ describe('faithful shared exports', () => {
     expect(summary).toContain('No scheduled activities');
     expect(summary).toContain('Optional Nearby · not scheduled');
     expect(summary).toContain('Original request: unknown');
+  });
+  it('distinguishes each source snapshot without exporting authority', () => {
+    for (const source of [
+      { provenance: 'example', trust: 'source_fixture' },
+      { provenance: 'generated', trust: 'generated_projection' },
+      { provenance: 'imported', trust: 'unverified_import' },
+    ] as const) {
+      expect(exportArtifact({ ...detail, ...source }).origin).toEqual({ ...source, assertion: 'source_snapshot_only' });
+    }
   });
 });

@@ -205,13 +205,15 @@ and Copy summary use only the already loaded public detail. None runs generation
 With the isolated database and browser ports configured above, run:
 
 ```powershell
-uv run pytest backend/tests/product/test_imports.py backend/tests/product/test_import_browser.py
+uv run pytest backend/tests/product/test_imports.py backend/tests/product/test_import_responsiveness.py backend/tests/product/test_import_browser.py
 ```
 
 These checks use actual APIs/PostgreSQL for concurrent operation identity, account isolation,
-recreation, lost-response lookup, explicit retry, field errors and preview decisions. Browser
+recreation, lost-response lookup, explicit retry, field errors and preview decisions. An actual
+PostgreSQL lock wait checks concurrent health/Stop API responsiveness. Browser
 acceptance covers historical differing-offset/nanosecond/empty-day/orphan content through
-paste, Save, JSON download and file reimport, plus selectable summary. Its screenshots live
+paste, Save, JSON download and file reimport, plus selectable summary, delayed-file/lost-response
+recovery and historical zero/overlap connection gaps with unverified source provenance. Its screenshots live
 under `.scratch/import-browser`; its API/Vite lifecycle uses the shared isolated browser fixture.
 The browser includes a committed Save response delayed until another draft is open;
 the late response cannot navigate or replace that draft. Screenshots/logs remain in
