@@ -65,6 +65,8 @@ function invalidate(owner: string | null) {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
     const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
     if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
+    const importIntent = JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1') || 'null');
+    if (importIntent?.owner === owner) sessionStorage.removeItem('dayloom.import.intent.v1');
   } catch {
     /* Keep this tab cleared. */
   }

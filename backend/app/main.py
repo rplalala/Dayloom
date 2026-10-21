@@ -15,9 +15,10 @@ from backend.app.api.product.planning import router as product_planning_router
 from backend.app.product.auth import router as account_router
 from backend.app.product.drafts import router as drafts_router
 from backend.app.product.examples import router as examples_router
+from backend.app.product.imports import router as imports_router
 from backend.app.product.profiles import router as profile_router
-from backend.app.product.tasks import router as tasks_router
 from backend.app.product.saved import router as saved_router
+from backend.app.product.tasks import router as tasks_router
 
 
 class HealthResponse(BaseModel):
@@ -61,6 +62,7 @@ def create_app() -> FastAPI:
     application.include_router(drafts_router)
     application.include_router(tasks_router)
     application.include_router(saved_router)
+    application.include_router(imports_router)
 
     @application.exception_handler(RequestValidationError)
     async def safe_auth_validation(request: Request, exc: RequestValidationError):

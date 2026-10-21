@@ -108,7 +108,7 @@ export function AuthPage() {
                 const draftReturn = target && /^\/plan\?draft=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
                 const itemReturn = target && /^\/(?:trips|previews|planning)\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
                 navigate(
-                  target && (["/plan", "/trips", "/account", "/planning"].includes(target) || draftReturn || itemReturn)
+                  target && (["/plan", "/trips", "/import", "/account", "/planning"].includes(target) || draftReturn || itemReturn)
                     ? target
                     : "/trips",
                   { replace: true },

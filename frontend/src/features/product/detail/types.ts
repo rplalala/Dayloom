@@ -68,6 +68,7 @@ export type ProductDetail = {
   provenance: "example" | "generated" | "imported";
   trust: "source_fixture" | "generated_projection" | "unverified_import";
   request: {
+    known_fields?: string[] | null;
     destination?: string | null;
     start_date?: string | null;
     end_date?: string | null;
@@ -79,6 +80,7 @@ export type ProductDetail = {
   transfers: DetailTransfer[];
   nearby: DetailNearby[];
   completion?: {
+    source_claims?: string[];
     policy_completion: "complete" | "incomplete" | "unassessed";
     policy_reasons: string[];
     preference_coverage: PreferenceCoverage[];

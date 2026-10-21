@@ -12,6 +12,7 @@ import { AccountPage } from "../features/product/AccountPage";
 import { ExamplePage } from "../features/product/detail/ExamplePage";
 import { PlanningTasksPage, PreviewPage } from "../features/product/tasks";
 import { SavedPage } from "../features/product/SavedPage";
+import { ImportPage } from '../features/product/ImportPage';
 
 export const routes: RouteObject[] = [
   {
@@ -21,6 +22,7 @@ export const routes: RouteObject[] = [
       { path: "plan", element: <BriefPage /> },
       { path: "login", element: <AuthPage /> },
       { path: "trips", element: <LibraryPage /> },
+      { path: "import", element: <ImportPage /> },
       { path: "trips/:tripId", element: <SavedPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "examples/:exampleId", element: <ExamplePage /> },

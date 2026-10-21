@@ -26,6 +26,7 @@ export function LibraryPage() {
       <div className="page-heading">
         <span className="eyebrow">YOUR TRAVEL COLLECTION</span>
         <h1>My trips</h1>
+        <Link to="/import" className="btn btn-light">Import itinerary</Link>
         <p>
           {account
             ? "The journeys you keep, and the ideas still taking shape."

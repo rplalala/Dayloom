@@ -35,6 +35,7 @@ class DetailModel(BaseModel):
 
 
 class DetailRequest(DetailModel):
+    known_fields: list[str] | None = None
     destination: str | None = None
     start_date: ISODate | None = None
     end_date: ISODate | None = None
@@ -103,6 +104,7 @@ class DetailTransfer(DetailModel):
 
 
 class DetailCompletion(DetailModel):
+    source_claims: list[str] = Field(default_factory=list)
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"
     policy_reasons: list[str] = Field(default_factory=list)
     preference_coverage: list[PreferenceCoverage] = Field(default_factory=list)

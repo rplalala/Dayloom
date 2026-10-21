@@ -7,6 +7,7 @@ import type {
   ProductDetail,
 } from "./types";
 import "./detail.css";
+import { ExportControls } from './ExportControls';
 
 type Group = {
   key: string;
@@ -350,6 +351,7 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
         </div>
       </section>
       <div className="container detail-body">
+        <ExportControls detail={detail} />
         <nav className="detail-anchor-nav" aria-label="Itinerary sections">
           {[
             ["overview", "Overview"],
@@ -420,6 +422,7 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
                   {detail.completion.policy_reasons.map((reason, i) => (
                     <p key={i}>{reason}</p>
                   ))}
+                  {detail.completion.source_claims?.map((claim, i) => <p key={`source-${i}`}>Unverified source claim: {claim}</p>)}
                   {detail.completion.preference_coverage.map((coverage, i) => (
                     <p key={i}>
                       {coverage.preference}: {coverage.scheduled}/
