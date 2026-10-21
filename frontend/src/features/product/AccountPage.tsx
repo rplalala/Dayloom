@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession, type Account } from "./session";
 import { currencies } from "../planning/currencies";
 import { interestPrompts, pacePrompts, transportLabels, type Interest, type Pace, type Transport } from "./editor";
@@ -54,15 +54,19 @@ function ProfileForm({ account, refresh, logout }: { account: Account; refresh: 
   const [error, setError] = useState("");
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  const mounted = useRef(false);
   useEffect(() => {
+    mounted.current = true;
     let active = true;
     fetch("/api/profile", { credentials: "same-origin", cache: "no-store" }).then(async response => {
+      if (!active) return;
+      if (response.status === 401) { await refresh(); return; }
       if (!response.ok) throw new Error("Profile unavailable");
       const value = await response.json();
       if (active) setProfile(value);
     }).catch(() => { if (active) setError("Your profile could not be loaded. Reload to try again."); });
-    return () => { active = false; };
-  }, []);
+    return () => { active = false; mounted.current = false; };
+  }, [refresh]);
   function update(next: Profile) {
     const words = next.display_name.trim().split(/\s+/).filter(Boolean);
     const initials = (words.length > 1 ? [words[0], words[words.length - 1]] : words).map(word => word[0]).join("").toUpperCase();
@@ -76,10 +80,14 @@ function ProfileForm({ account, refresh, logout }: { account: Account; refresh: 
     setSaving(true); setSaved(false); setError("");
     const body = { display_name: profile.display_name, currency: profile.currency, interests: profile.interests, pace: profile.pace, transport: profile.transport, notes: profile.notes };
     void fetch("/api/profile", { method: "PUT", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-CSRF-Token": account.csrf_token }, body: JSON.stringify(body) }).then(async response => {
+      if (!mounted.current) return;
+      if (response.status === 401) { await refresh(); return; }
       if (!response.ok) throw new Error("Update rejected");
-      setProfile(await response.json()); setSaved(true);
+      const value = await response.json();
+      if (!mounted.current) return;
+      setProfile(value); setSaved(true);
       await refresh();
-    }).catch(() => setError("Your changes could not be saved. Check your details and session, then try again.")).finally(() => setSaving(false));
+    }).catch(() => { if (mounted.current) setError("Your changes could not be saved. Check your details and session, then try again."); }).finally(() => { if (mounted.current) setSaving(false); });
   }}>
     <h2>Profile</h2>
     <div className="account-initials"><span className="avatar" aria-label={`Account initials: ${profile.initials}`}>{profile.initials}</span><p>Your initials are your account image.</p></div>

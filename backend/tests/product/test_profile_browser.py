@@ -2,12 +2,16 @@
 # Reuse the credential-safe browser fixture at the real application boundary.
 # ruff: noqa: F811
 
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
 
+import jwt
+import pytest
 from playwright.sync_api import expect
 
-from backend.tests.product.test_browser import login
+from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
+from backend.tests.product.test_browser import login, register_browser
 from backend.tests.product.test_editor_browser import editor_app  # noqa: F401
 
 SCRATCH = Path(__file__).resolve().parents[3] / ".scratch" / "profile-browser"
@@ -87,3 +91,55 @@ def test_profile_edit_persists_and_prefills_only_new_brief(editor_app):
         page.screenshot(path=str(SCRATCH / "new-brief-390.png"), full_page=True)
     finally:
         fresh.close()
+
+
+@pytest.mark.parametrize("operation", ["load", "save"])
+def test_expired_profile_response_hides_private_data_and_restores_brief(editor_app, operation):
+    base, browser = editor_app.base_url, editor_app.browser
+    context = browser.new_context()
+    try:
+        page = context.new_page()
+        email = register_browser(page, base)
+        page.get_by_role("link", name="Account settings", exact=True).click()
+        page.get_by_label("Additional preferences").fill("Persisted profile notes")
+        page.get_by_role("button", name="Save changes", exact=True).click()
+        expect(page.get_by_role("status")).to_have_text("Your travel defaults have been saved.")
+        page.get_by_role("link", name="Plan a trip", exact=True).click()
+        page.get_by_label("Additional preferences").fill("Private unsaved brief to recover")
+        if operation == "save":
+            page.get_by_role("link", name="Account settings", exact=True).click()
+            expect(page.get_by_label("Additional preferences")).to_have_value(
+                "Persisted profile notes"
+            )
+        cookie = next(c for c in context.cookies() if c["name"] == "dayloom_session")
+        claims = jwt.decode(cookie["value"], options={"verify_signature": False})
+        claims["exp"] = datetime.now(UTC) - timedelta(seconds=1)
+        cookie["value"] = jwt.encode(claims, BROWSER_TEST_SIGNING_KEY, algorithm="HS256")
+        context.add_cookies([cookie])
+        writes = []
+        page.on(
+            "request",
+            lambda request: (
+                writes.append(request.url)
+                if request.method == "PUT" and request.url.endswith("/api/profile")
+                else None
+            ),
+        )
+        if operation == "save":
+            page.get_by_label("Additional preferences").fill("Rejected profile update")
+            page.get_by_role("button", name="Save changes", exact=True).click()
+        else:
+            page.get_by_role("link", name="Account settings", exact=True).click()
+        expect(page.get_by_role("link", name="Log in", exact=True).last).to_be_visible()
+        expect(page.get_by_label("Additional preferences")).to_have_count(0)
+        expect(page.get_by_text("Alice Smith", exact=True)).to_have_count(0)
+        page.get_by_role("link", name="Log in", exact=True).last.click()
+        login(page, email)
+        expect(page.get_by_label("Additional preferences")).to_have_value("Persisted profile notes")
+        page.get_by_role("link", name="Plan a trip", exact=True).click()
+        expect(page.get_by_label("Additional preferences")).to_have_value(
+            "Private unsaved brief to recover"
+        )
+        assert len(writes) == (1 if operation == "save" else 0)
+    finally:
+        context.close()
