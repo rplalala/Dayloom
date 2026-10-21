@@ -38,7 +38,8 @@ export function TripDateInput({ label, value, onChange, onSelect, min, max, disa
   const [visibleMonth, setVisibleMonth] = useState("");
   const trigger = useRef<HTMLButtonElement>(null);
   const calendar = useRef<HTMLDivElement>(null);
-  const selected = isValidISODate(value) ? value : min || new Date().toISOString().slice(0, 10);
+  const savedDate = isValidISODate(value) ? value : min || new Date().toISOString().slice(0, 10);
+  const selected = min && savedDate < min ? min : max && savedDate > max ? max : savedDate;
   const month = visibleMonth || monthStart(selected);
 
   function close() {
