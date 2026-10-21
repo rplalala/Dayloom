@@ -165,8 +165,8 @@ def test_tokens_generic_login_errors_and_public_protection(client):
 
 
 def test_registration_profile_failure_rolls_back_account(client):
-    dsn = os.environ["PRODUCT_DATABASE_URL"]
-    with psycopg.connect(dsn) as connection:
+    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute("""CREATE FUNCTION app.reject_profile()
             RETURNS trigger LANGUAGE plpgsql AS $$
             BEGIN RAISE EXCEPTION 'deliberate acceptance failure'; END; $$""")
@@ -186,7 +186,7 @@ def test_registration_profile_failure_rolls_back_account(client):
                 headers={"Origin": "http://localhost:5120"},
             )
             assert response.status_code == 500
-        with psycopg.connect(dsn) as connection:
+        with psycopg.connect(dsn.get_secret_value()) as connection:
             assert (
                 connection.execute(
                     "SELECT count(*) FROM app.users WHERE email='rollback@example.com'"
@@ -194,7 +194,7 @@ def test_registration_profile_failure_rolls_back_account(client):
                 == 0
             )
     finally:
-        with psycopg.connect(dsn) as connection:
+        with psycopg.connect(dsn.get_secret_value()) as connection:
             connection.execute("DROP TRIGGER reject_profile ON app.user_profiles")
             connection.execute("DROP FUNCTION app.reject_profile()")
     register(client, "rollback@example.com")
@@ -203,8 +203,8 @@ def test_registration_profile_failure_rolls_back_account(client):
 def test_public_migration_rerun_checksum_and_tripworld_preservation(client, tmp_path):
     from backend.app.product.database import migrate
 
-    dsn = os.environ["PRODUCT_DATABASE_URL"]
-    with psycopg.connect(dsn) as connection:
+    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute("CREATE SCHEMA IF NOT EXISTS tripworld")
         connection.execute(
             "CREATE TABLE IF NOT EXISTS tripworld.acceptance_seed"
@@ -213,12 +213,12 @@ def test_public_migration_rerun_checksum_and_tripworld_preservation(client, tmp_
         connection.execute(
             "INSERT INTO tripworld.acceptance_seed VALUES (1,'untouched') ON CONFLICT DO NOTHING"
         )
-    assert migrate(dsn) == []
+    assert migrate(dsn.get_secret_value()) == []
     source = Path("backend/app/product/migrations/001_accounts.sql")
     (tmp_path / source.name).write_bytes(source.read_bytes() + b"\n-- changed")
     with pytest.raises(ValueError, match="checksum"):
-        migrate(dsn, tmp_path)
-    with psycopg.connect(dsn) as connection:
+        migrate(dsn.get_secret_value(), tmp_path)
+    with psycopg.connect(dsn.get_secret_value()) as connection:
         assert (
             connection.execute("SELECT text FROM tripworld.acceptance_seed WHERE id=1").fetchone()[
                 0

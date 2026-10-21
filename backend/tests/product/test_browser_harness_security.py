@@ -4,6 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
 from pydantic import SecretStr
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -91,3 +92,50 @@ def test_intentional_failure(browser_app):
             "synthetic-secret-key-never-report",
         ]
     ), "Fixture diagnostic exposed sensitive environment data"
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "test_registration_profile_failure_rolls_back_account",
+        "test_public_migration_rerun_checksum_and_tripworld_preservation",
+    ],
+)
+def test_account_failure_frames_hide_connection_strings(tmp_path, target):
+    from backend.tests.product.browser_harness import isolated_environment
+
+    probe = tmp_path / "test_account_diagnostic_probe.py"
+    probe.write_text(
+        """from operator import attrgetter
+import psycopg
+from backend.tests.product import test_accounts as accounts
+
+def test_account_connection_failure(tmp_path,monkeypatch):
+    monkeypatch.setattr(psycopg,"connect",attrgetter("acceptance_connection_unavailable"))
+    if "migration" in TARGET:
+        getattr(accounts,TARGET)(None,tmp_path)
+    else:
+        getattr(accounts,TARGET)(None)
+""".replace("TARGET", repr(target)),
+        encoding="utf-8",
+    )
+    environment = isolated_environment(
+        SecretStr("postgresql://user:synthetic-account-connection-secret@127.0.0.1/isolated_test"),
+        "8120",
+        "5120",
+        tmp_path,
+    )
+    environment["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", str(probe), "--showlocals", "--tb=long", "-q"],
+        cwd=ROOT,
+        env=environment,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 1, "The account diagnostic probe must exercise actual test failure"
+    diagnostic = result.stdout + result.stderr
+    assert "acceptance_connection_unavailable" in diagnostic
+    assert "synthetic-account-connection-secret" not in diagnostic, (
+        "Account failure frame exposed its database credential"
+    )
