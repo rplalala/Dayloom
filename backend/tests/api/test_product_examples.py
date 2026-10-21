@@ -1,6 +1,7 @@
 """Curated examples are public, allowlisted source claims, with lossless detail."""
 
 import asyncio
+import json
 
 from httpx import ASGITransport, AsyncClient
 
@@ -43,5 +44,32 @@ def test_guest_can_follow_curated_collection_to_lossless_example():
                 assert (await c.get(f"/api/examples/{card['id']}")).status_code == 200
             assert (await c.get("/api/examples/not-an-example")).status_code == 404
             assert (await c.post("/api/examples", json=detail)).status_code == 405
+
+    asyncio.run(journey())
+
+
+def test_curated_example_display_hints_preserve_r7_without_request_or_verification_authority():
+    async def journey():
+        async with AsyncClient(
+            transport=ASGITransport(app=create_app()), base_url="http://test"
+        ) as client:
+            detail = (await client.get("/api/examples/sydney-example")).json()
+            assert detail["illustration_key"] == "sydney"
+            assert detail["display_tags"] == [
+                "City walks",
+                "Historic neighborhood",
+                "Art & museums",
+                "Balanced pace",
+            ]
+            assert detail["days"][0]["activities"][1]["illustration_key"] == "art"
+            assert detail["nearby"][0]["illustration_key"] == "city"
+            assert detail["request"] is None
+            assert detail["trust"] == "source_fixture"
+            assert detail["transfers"][0]["status"] == "source_claim"
+            assert "source_place_id" not in json.dumps(detail)
+            cards = (await client.get("/api/examples")).json()
+            assert cards[0]["stop_count"] == 6
+            assert cards[0]["transfer_count"] == 3
+            assert cards[1]["illustration_key"] == "nature"
 
     asyncio.run(journey())

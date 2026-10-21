@@ -1,6 +1,7 @@
 """Historical import behavior through the bounded public normalization seam."""
 
 import copy
+import hashlib
 import json
 
 import pytest
@@ -668,3 +669,91 @@ def test_valid_weather_domain_boundaries_survive_import_and_save(client):  # noq
         100,
         0,
     ]
+
+
+def legacy_display_free_import():
+    return {
+        "title": "An old journey",
+        "destination": "Sydney",
+        "days": [
+            {
+                "date": "2020-01-04",
+                "activities": [
+                    {
+                        "activity_id": "a",
+                        "title": "Museum",
+                        "start_time": "2020-01-04T11:00:00+11:00",
+                        "end_time": "2020-01-04T12:00:00+11:00",
+                    }
+                ],
+            }
+        ],
+        "nearby": [{"place_name": "An optional stop", "anchor_activity_id": "a"}],
+    }
+
+
+def test_neutral_display_hints_preserve_the_legacy_canonical_import_fingerprint():
+    # SHA-256 captured from the fixed pre-display-field schema at 8f709570.
+    detail = normalize_import(json.dumps(legacy_display_free_import()))
+    canonical = json.dumps(
+        detail.model_dump(mode="json", exclude={"id"}),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    )
+    assert (
+        hashlib.sha256(canonical.encode()).hexdigest()
+        == "59fc5599967a311bc30d7ac9ee63550409a8667a8dd30b47508a21dd54b05fdb"
+    )
+
+
+def test_import_receipt_with_legacy_fingerprint_recovers_after_save_and_app_recreation(client):  # noqa: F811
+    from fastapi.testclient import TestClient
+
+    from backend.app.main import create_app
+    from backend.app.product.database import connect
+
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "before-display-fields",
+    }
+    content = json.dumps(legacy_display_free_import())
+    accepted = client.post("/api/imports", headers=headers, content=content)
+    assert accepted.status_code == 200, accepted.text
+    preview_id = accepted.json()["id"]
+    # Set up an existing receipt's fixed legacy digest, independent of the new serializer.
+    with connect() as connection:
+        connection.execute(
+            "UPDATE app.itinerary_previews SET fingerprint=%s WHERE id=%s",
+            ("59fc5599967a311bc30d7ac9ee63550409a8667a8dd30b47508a21dd54b05fdb", preview_id),
+        )
+    decision = client.post(f"/api/previews/{preview_id}/save", headers=headers, json={})
+    assert decision.status_code == 200, decision.text
+    with TestClient(create_app(), base_url="http://localhost:5120") as recreated:
+        recreated.cookies.update(client.cookies)
+        replay = recreated.post("/api/imports", headers=headers, content=content)
+        assert replay.status_code == 200, replay.text
+        assert replay.json()["id"] == preview_id
+        assert replay.json()["saved_trip_id"] == decision.json()["saved_trip_id"]
+        assert recreated.get("/api/library").json()["total"] == 1
+
+
+def test_public_display_hints_remain_allowlisted_unverified_and_canonical_when_present():
+    payload = legacy_display_free_import()
+    payload.update(illustration_key="sydney", display_tags=["A supplied travel interest"])
+    payload["days"][0]["activities"][0]["illustration_key"] = "art"
+    payload["nearby"][0]["illustration_key"] = "city"
+    detail = normalize_import(
+        json.dumps({"schema_version": "dayloom_export_1", "itinerary": payload})
+    )
+    assert detail.illustration_key == "sydney"
+    assert detail.display_tags == ["A supplied travel interest"]
+    assert detail.days[0].activities[0].illustration_key == "art"
+    assert detail.nearby[0].illustration_key == "city"
+    assert detail.request is None and detail.trust == "unverified_import"
+    assert detail._media_bindings == {}
+    payload["illustration_key"] = "../../private"
+    with pytest.raises(ImportError, match="hero|sydney|art|city|nature"):
+        normalize_import(json.dumps(payload))

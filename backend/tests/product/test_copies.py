@@ -69,6 +69,46 @@ def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(cli
     assert client.get("/api/copies/example/keep-once").json() == receipt
     assert client.get("/api/library").json()["total"] == 1
 
+    # Persisted children and independent descendants retain only the fixed display hints.
+    assert detail["illustration_key"] == "sydney"
+    assert detail["display_tags"] == [
+        "City walks",
+        "Historic neighborhood",
+        "Art & museums",
+        "Balanced pace",
+    ]
+    assert detail["days"][0]["activities"][1]["illustration_key"] == "art"
+    assert detail["nearby"][0]["illustration_key"] == "city"
+    descendant = copy(
+        client, account, "copied", receipt["saved_trip_id"], "display-descendant"
+    ).json()
+    assert (
+        client.request(
+            "DELETE",
+            f"/api/trips/{receipt['saved_trip_id']}",
+            headers=headers,
+            json={"revision": 1, "confirmed": True},
+        ).status_code
+        == 204
+    )
+    with TestClient(create_app(), base_url="http://localhost:5120") as recreated:
+        recreated.cookies.update(client.cookies)
+        restored = recreated.get(f"/api/trips/{descendant['saved_trip_id']}").json()
+        assert restored == detail | {
+            "id": descendant["saved_trip_id"],
+            "title": detail["title"] + " (copy)",
+        }
+        assert restored["request"] is None and restored["trust"] == "source_fixture"
+        assert (
+            recreated.get(f"/api/trips/{descendant['saved_trip_id']}/media").json()["items"] == {}
+        )
+        assert (
+            copy(
+                recreated, account, "copied", receipt["saved_trip_id"], "display-descendant"
+            ).json()
+            == descendant
+        )
+
 
 def test_historical_import_copy_is_independent_lossless_and_replays_after_both_deletions(client):  # noqa: F811
     account = register(client)

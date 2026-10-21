@@ -28,6 +28,7 @@ def _clock(value: str) -> str:
 
 ISODate = Annotated[str, AfterValidator(_date)]
 ISOClock = Annotated[str, AfterValidator(_clock)]
+IllustrationKey = Literal["hero", "sydney", "art", "city", "nature"]
 
 
 class DetailModel(BaseModel):
@@ -45,6 +46,9 @@ class DetailRequest(DetailModel):
 
 
 class DetailNearby(DetailModel):
+    illustration_key: IllustrationKey | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     place_name: str
     anchor_activity_id: str | None = None
     associated_day: ISODate | None = None
@@ -65,6 +69,9 @@ class DetailWeather(DetailModel):
 
 
 class DetailActivity(DetailModel):
+    illustration_key: IllustrationKey | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     activity_id: str
     title: str
     time_use: Literal["scheduled", "free_window"] = "scheduled"
@@ -113,6 +120,10 @@ class DetailCompletion(DetailModel):
 
 class ProductDetail(DetailModel):
     _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
+    illustration_key: IllustrationKey | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+    display_tags: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
     schema_version: Literal["product_detail_1"] = "product_detail_1"
     id: str
     title: str
@@ -130,6 +141,11 @@ class ProductDetail(DetailModel):
 
 
 class ExampleCard(DetailModel):
+    illustration_key: IllustrationKey | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+    stop_count: int
+    transfer_count: int
     id: str
     title: str
     destination: str
@@ -137,3 +153,30 @@ class ExampleCard(DetailModel):
     end_date: ISODate | None
     day_count: int
     description: str | None
+
+
+class DetailDisplay(DetailModel):
+    """Persisted presentation hints, independent of request and media authority."""
+
+    illustration_key: IllustrationKey | None = None
+    display_tags: list[str] = Field(default_factory=list)
+    activities: dict[str, IllustrationKey] = Field(default_factory=dict)
+    nearby: dict[int, IllustrationKey] = Field(default_factory=dict)
+
+    @classmethod
+    def from_detail(cls, detail: ProductDetail):
+        return cls(
+            illustration_key=detail.illustration_key,
+            display_tags=detail.display_tags,
+            activities={
+                activity.activity_id: activity.illustration_key
+                for day in detail.days
+                for activity in day.activities
+                if activity.illustration_key is not None
+            },
+            nearby={
+                index: nearby.illustration_key
+                for index, nearby in enumerate(detail.nearby)
+                if nearby.illustration_key is not None
+            },
+        )

@@ -5,7 +5,7 @@ from uuid import uuid4
 from psycopg.types.json import Jsonb
 
 from backend.app.product.database import connect
-from backend.app.product.detail import ProductDetail
+from backend.app.product.detail import DetailDisplay, ProductDetail
 
 
 class SavedRevisionConflict(Exception):
@@ -95,7 +95,16 @@ class SavedStore:
 
     def _write(self, connection, preview, trip_id, detail):
         header = detail.model_dump(
-            mode="json", exclude={"id", "schema_version", "days", "transfers", "nearby"}
+            mode="json",
+            exclude={
+                "id",
+                "schema_version",
+                "days",
+                "transfers",
+                "nearby",
+                "illustration_key",
+                "display_tags",
+            },
         )
         # Trust is server-owned. No public save body can supply itinerary or origin.
         if preview["source_kind"] == "generated_v3":
@@ -112,6 +121,7 @@ class SavedStore:
                 source_kind=preview["source_kind"],
                 source_id=preview["source_id"],
                 media_bindings=Jsonb(preview.get("media_bindings", {})),
+                display_metadata=Jsonb(DetailDisplay.from_detail(detail).model_dump(mode="json")),
                 generated_at=preview["created_at"]
                 if preview["source_kind"] == "generated_v3"
                 else None,
@@ -135,7 +145,9 @@ class SavedStore:
                 ),
             )
             for position, activity in enumerate(day.activities):
-                values = activity.model_dump(mode="json", exclude={"estimated_cost"})
+                values = activity.model_dump(
+                    mode="json", exclude={"estimated_cost", "illustration_key"}
+                )
                 values["cost_amount"] = (
                     activity.estimated_cost.amount if activity.estimated_cost else None
                 )
@@ -155,7 +167,9 @@ class SavedStore:
                 and anchor[2] == "scheduled"
                 and (nearby.associated_day is None or nearby.associated_day == anchor[1])
             )
-            values = nearby.model_dump(exclude={"anchor_activity_id", "associated_day"})
+            values = nearby.model_dump(
+                exclude={"anchor_activity_id", "associated_day", "illustration_key"}
+            )
             insert(
                 connection,
                 "trip_nearby",
@@ -211,7 +225,15 @@ class SavedStore:
                 "completion",
             )
         }
-        detail.update(id=str(row["id"]), days=[], nearby=[], transfers=[])
+        display = DetailDisplay.model_validate(row.get("display_metadata", {}))
+        detail.update(
+            id=str(row["id"]),
+            days=[],
+            nearby=[],
+            transfers=[],
+            illustration_key=display.illustration_key,
+            display_tags=display.display_tags,
+        )
         days = connection.execute(
             "SELECT * FROM app.trip_weather WHERE trip_id=%s ORDER BY position", (trip_id,)
         ).fetchall()
@@ -249,6 +271,7 @@ class SavedStore:
                         "introduction",
                     )
                 }
+                value["illustration_key"] = display.activities.get(activity["activity_id"])
                 value["estimated_cost"] = (
                     None
                     if activity["cost_amount"] is None
@@ -271,6 +294,7 @@ class SavedStore:
                         key: nearby[key]
                         for key in ("place_name", "reason", "area", "uncertainty", "attribution")
                     },
+                    "illustration_key": display.nearby.get(nearby["position"]),
                     "anchor_activity_id": nearby["supplied_anchor_id"],
                     "associated_day": nearby["supplied_day"],
                 }

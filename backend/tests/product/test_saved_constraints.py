@@ -162,3 +162,56 @@ def test_saved_same_owner_cross_trip_keys_and_account_cascade(client):  # noqa: 
             "planning_tasks",
         ):
             assert connection.execute(f"SELECT count(*) AS n FROM app.{table}").fetchone()["n"] == 0
+
+
+def test_display_migration_upgrades_existing_rows_without_changing_public_detail(client):  # noqa: F811
+    import hashlib
+
+    account = register(client)
+    detail = pending(account["id"])
+    headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
+    decision = client.post(f"/api/previews/{detail.id}/save", headers=headers, json={}).json()
+    trip_id = decision["saved_trip_id"]
+    before = client.get(f"/api/trips/{trip_id}").json()
+    with connect() as connection:
+        # Simulate a genuine pre-007 saved row inside this isolated test database.
+        connection.execute("ALTER TABLE app.trips DROP COLUMN display_metadata")
+        connection.execute(
+            "DELETE FROM app.schema_migrations WHERE name='007_display_metadata.sql'"
+        )
+    environment = isolated_environment(
+        SecretStr(os.environ["PRODUCT_DATABASE_URL"]),
+        "8122",
+        "5122",
+        Path(".scratch/display-migration-tmp").resolve(),
+    )
+    command = [sys.executable, "scripts/migrate_product.py"]
+    applied = subprocess.run(command, env=environment, capture_output=True, text=True)
+    assert applied.returncode == 0 and "1 applied" in applied.stdout
+    assert client.get(f"/api/trips/{trip_id}").json() == before
+    with connect() as connection:
+        assert (
+            connection.execute(
+                "SELECT display_metadata FROM app.trips WHERE id=%s", (trip_id,)
+            ).fetchone()["display_metadata"]
+            == {}
+        )
+    repeated = subprocess.run(command, env=environment, capture_output=True, text=True)
+    assert repeated.returncode == 0 and "0 applied" in repeated.stdout
+    migration = Path("backend/app/product/migrations/007_display_metadata.sql")
+    try:
+        with connect() as connection:
+            connection.execute(
+                "UPDATE app.schema_migrations SET sha256='changed' WHERE name=%s", (migration.name,)
+            )
+        failed = subprocess.run(command, env=environment, capture_output=True, text=True)
+        assert (
+            failed.returncode != 0
+            and "Migration checksum mismatch: 007_display_metadata.sql" in failed.stderr
+        )
+    finally:
+        with connect() as connection:
+            connection.execute(
+                "UPDATE app.schema_migrations SET sha256=%s WHERE name=%s",
+                (hashlib.sha256(migration.read_bytes()).hexdigest(), migration.name),
+            )

@@ -61,13 +61,21 @@ def example_detail(example_id: str) -> ProductDetail:
                 if key in source
             },
             "id": example_id,
+            "illustration_key": source.get("cover"),
+            "display_tags": [
+                *source.get("interests", []),
+                *([source["pace"] + " pace"] if source.get("pace") else []),
+            ],
             "provenance": "example",
             "trust": "source_fixture",
             "days": [
                 {
                     "date": day["date"],
                     "activities": [
-                        {k: v for k, v in a.items() if k in activity_fields}
+                        {
+                            **{k: v for k, v in a.items() if k in activity_fields},
+                            "illustration_key": a.get("image_key"),
+                        }
                         for a in day.get("activities", [])
                     ],
                     "weather": {"summary": day["weather_note"]}
@@ -77,7 +85,11 @@ def example_detail(example_id: str) -> ProductDetail:
                 for day in source.get("days", [])
             ],
             "nearby": [
-                {k: v for k, v in n.items() if k in nearby_fields} for n in source.get("nearby", [])
+                {
+                    **{k: v for k, v in n.items() if k in nearby_fields},
+                    "illustration_key": n.get("image_key"),
+                }
+                for n in source.get("nearby", [])
             ],
             "transfers": [
                 {
@@ -97,6 +109,9 @@ def list_examples() -> list[ExampleCard]:
     return [
         ExampleCard(
             id=d.id,
+            illustration_key=d.illustration_key,
+            stop_count=sum(a.time_use != "free_window" for day in d.days for a in day.activities),
+            transfer_count=len(d.transfers),
             title=d.title,
             destination=d.destination,
             start_date=d.start_date,

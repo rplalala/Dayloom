@@ -459,6 +459,8 @@ def normalize_import(content: str) -> ProductDetail:
                 start_date=start,
                 end_date=end,
                 description=source.get("description"),
+                illustration_key=source.get("illustration_key"),
+                display_tags=source.get("display_tags", []),
                 provenance="imported",
                 trust="unverified_import",
                 request=request,
