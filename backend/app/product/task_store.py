@@ -45,7 +45,16 @@ def request_fingerprint(request):
     data = request.model_dump(mode="json")
     # Money semantics, rather than insignificant Decimal scale, identify the request.
     amount = request.budget.amount
-    data["budget"]["amount"] = format(amount.normalize(), "f") if amount else "0"
+    if amount:
+        # Exact tuple arithmetic avoids context rounding and enormous fixed-point strings.
+        _, digits, exponent = amount.as_tuple()
+        end = len(digits)
+        while digits[end - 1] == 0:
+            end -= 1
+        coefficient = "".join(str(digit) for digit in digits[:end])
+        data["budget"]["amount"] = f"{coefficient}e{exponent + len(digits) - end}"
+    else:
+        data["budget"]["amount"] = "0"
     return hashlib.sha256(
         json.dumps(data, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
     ).hexdigest()
@@ -97,9 +106,12 @@ class TaskStore:
         fingerprint = request_fingerprint(request)
         with connect(self.settings) as connection:
             # Account row serializes first submissions, operation replays and slot recovery.
-            connection.execute("SELECT id FROM app.users WHERE id=%s FOR UPDATE", (owner,))
+            # NO KEY UPDATE still serializes submissions, while remaining compatible
+            # with the owner KEY SHARE needed by an independently completing preview.
+            connection.execute("SELECT id FROM app.users WHERE id=%s FOR NO KEY UPDATE", (owner,))
             old = connection.execute(
-                "SELECT * FROM app.planning_tasks WHERE owner_id=%s AND operation_key=%s",
+                "SELECT * FROM app.planning_tasks WHERE owner_id=%s "
+                "AND operation_key=%s FOR UPDATE",
                 (owner, key),
             ).fetchone()
             if old:

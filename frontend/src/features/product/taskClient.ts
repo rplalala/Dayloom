@@ -27,18 +27,32 @@ export async function taskRequest<T>(url: string, options: { signal?: AbortSigna
   return body;
 }
 
+function exactAmount(value: string | number): string | null {
+  const match = String(value).trim().match(/^([+-]?)(\d*)(?:\.(\d*))?(?:[eE]([+-]?\d+))?$/);
+  if (!match || !(match[2] || match[3])) return null;
+  const fraction = match[3] || '';
+  const digits = (match[2] + fraction).replace(/^0+/, '');
+  if (!digits) return '0';
+  const coefficient = digits.replace(/0+$/, '');
+  const exponent = BigInt(match[4] || '0') - BigInt(fraction.length) + BigInt(digits.length - coefficient.length);
+  return `${match[1] === '-' ? '-' : ''}${coefficient}e${exponent}`;
+}
+
 export function sameConfirmedRequest(left: ProductPlanningInput, right: ProductPlanningInput) {
-  return left.destination === right.destination && left.start_date === right.start_date && left.end_date === right.end_date && left.traveler_count === right.traveler_count && Number(left.budget.amount) === Number(right.budget.amount) && left.budget.currency === right.budget.currency && (left.additional_preferences || '') === (right.additional_preferences || '');
+  const amount = exactAmount(left.budget.amount);
+  return amount !== null && amount === exactAmount(right.budget.amount) && left.destination === right.destination && left.start_date === right.start_date && left.end_date === right.end_date && left.traveler_count === right.traveler_count && left.budget.currency === right.budget.currency && (left.additional_preferences || '') === (right.additional_preferences || '');
 }
 
 type SubmissionIntent = { owner: string; generation: string; key: string; request: ProductPlanningInput; editor: Brief };
+export function submissionGeneration(owner: string): string {
+  try { return localStorage.getItem(`dayloom.account.invalidation.${owner}`) || ''; } catch { return ''; }
+}
 export function readSubmissionIntent(owner: string, key: string): SubmissionIntent | null {
   try { const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
-    const generation = localStorage.getItem(`dayloom.account.invalidation.${owner}`) || '';
+    const generation = submissionGeneration(owner);
     return intent?.owner === owner && intent.key === key && intent.generation === generation ? intent : null;
   } catch { return null; }
 }
 export function rememberSubmissionIntent(owner: string, key: string, request: ProductPlanningInput, editor: Brief) {
-  try { sessionStorage.setItem('dayloom.task.intent.v1', JSON.stringify({ owner, generation: localStorage.getItem(`dayloom.account.invalidation.${owner}`) || '', key, request, editor })); } catch { /* The server still enforces operation identity. */ }
+  try { sessionStorage.setItem('dayloom.task.intent.v1', JSON.stringify({ owner, generation: submissionGeneration(owner), key, request, editor })); } catch { /* The server still enforces operation identity. */ }
 }
-

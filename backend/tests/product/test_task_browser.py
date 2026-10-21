@@ -129,19 +129,24 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
                 route.continue_()
 
         page.route("**/api/planning/tasks*", lose_accepted_response)
-        page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        with page.expect_request(lambda request: "operation_key=" in request.url):
+            page.get_by_role("button", name="Generate itinerary", exact=False).click()
         page.get_by_label("Destination", exact=True).fill("Kyoto")
         page.get_by_label("Draft title", exact=True).fill("Brief B while A runs")
         page.get_by_role("button", name="Save draft", exact=True).click()
         expect(page.get_by_text("Draft saved.", exact=False)).to_be_visible()
         assert held_recovery
         held_recovery[0].continue_()
-        expect(page.get_by_text("Your task was accepted.", exact=False)).to_be_visible()
+        expect(page.get_by_role("link", name="Planning task running")).to_be_visible()
         expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
         assert post_count == ["one"]
-        task_url = page.get_by_role("link", name="Open task progress").get_attribute("href")
-        assert task_url and "/planning/" in task_url
-        task_id = task_url.rsplit("/", 1)[1]
+        # A stale editor observer cannot bind its response to B. The global task entry
+        # recovers the accepted A from the canonical account read instead.
+        expect(page.get_by_role("link", name="Open task progress")).to_have_count(0)
+        accepted_task = page.request.get(base + "/api/planning/tasks/active").json()
+        assert accepted_task["request"]["destination"] == "Sydney"
+        task_id = accepted_task["id"]
+        task_url = "/planning/" + task_id
         page.unroute("**/api/planning/tasks*", lose_accepted_response)
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
         expect(page.get_by_text("Planning is already running.", exact=False)).to_be_visible()

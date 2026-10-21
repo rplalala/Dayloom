@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getTripDateWindow } from "../planning/api";
 import { DestinationCombobox } from "../planning/components/DestinationCombobox";
@@ -10,7 +10,7 @@ import { briefErrors, editPreferences, interestPrompts, pacePrompts, toggleInter
 import { useSession } from "./session";
 import { DraftControls } from "./DraftControls";
 import "./editor.css";
-import { taskRequest, TaskFailure, sameConfirmedRequest, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
+import { taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
 
@@ -26,11 +26,18 @@ export function BriefPage() {
   }, [draftId, status, briefOrigin, initializeNewBrief]);
   const [dateWindow, setDateWindow] = useState<TripDateWindow | null>(null);
   const [dateError, setDateError] = useState(false);
-  const [submitState, setSubmitState] = useState<{ owner?: string; busy?: boolean; message?: string; taskId?: string }>({});
-  const submission = submitState.owner === session.account?.id ? submitState : {};
+  type SubmissionState = { owner?: string; csrf?: string; generation?: string; location?: string; editor?: Brief; busy?: boolean; message?: string; taskId?: string };
+  const [submitState, setSubmitState] = useState<SubmissionState>({});
+  const generation = session.account ? submissionGeneration(session.account.id) : '';
+  const submission = submitState.owner === session.account?.id && submitState.csrf === session.account?.csrf_token && submitState.generation === generation && submitState.editor === session.brief && submitState.location === location.key ? submitState : {};
   const { tasks, refresh: refreshTasks } = useTasks();
-  const owner = useRef(session.account?.id);
-  useEffect(() => { owner.current = session.account?.id; }, [session.account?.id]);
+  const mounted = useRef(false);
+  const attempt = useRef(0);
+  const context = useRef({ owner: session.account?.id, csrf: session.account?.csrf_token, location: location.key, editor: session.brief, action: session.actionId });
+  useLayoutEffect(() => {
+    context.current = { owner: session.account?.id, csrf: session.account?.csrf_token, location: location.key, editor: session.brief, action: session.actionId };
+  });
+  useLayoutEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const [checked, setChecked] = useState(false);
   const [draftLoading, setDraftLoading] = useState(false);
   const notesInput = useRef<HTMLTextAreaElement>(null);
@@ -65,48 +72,62 @@ export function BriefPage() {
   const validBudget = brief.budget.trim() !== "" && Number.isFinite(Number(brief.budget)) && Number(brief.budget) >= 0 && isListedCurrency(brief.currency);
   const loginReturn = `/login?return=${encodeURIComponent(draftId ? `/plan?draft=${draftId}` : "/plan")}`;
   async function generate() {
-    if (!session.actionId) session.setActionId(crypto.randomUUID());
-    if (!session.account) { if (!session.actionId) session.setActionId(crypto.randomUUID()); navigate('/login?return=/plan'); return; }
+    const initialKey = session.actionId || crypto.randomUUID();
+    if (!session.actionId) { session.setActionId(initialKey); context.current.action = initialKey; }
+    if (!session.account) { navigate('/login?return=/plan'); return; }
     setChecked(true);
     if (errors.length || !dateWindow || submission.busy) return;
     const account = session.account;
     const request = planningInput(brief, dateWindow);
-    let key = session.actionId;
-    setSubmitState({ owner: account.id, busy: true });
+    const sequence = ++attempt.current;
+    const ownership = { owner: account.id, csrf: account.csrf_token, generation: submissionGeneration(account.id), location: location.key, editor: brief };
+    let action = initialKey;
+    let key: string | null = session.actionId;
+    function ownsAction() {
+      const current = context.current;
+      return mounted.current && attempt.current === sequence && current.owner === account.id && current.csrf === ownership.csrf && current.location === ownership.location && current.editor === brief && current.action === action && submissionGeneration(account.id) === ownership.generation;
+    }
+    function show(value: Pick<SubmissionState, 'busy' | 'message' | 'taskId'>) {
+      if (ownsAction()) setSubmitState({ ...ownership, ...value });
+    }
+    show({ busy: true });
     try {
       if (key) {
         const intended = readSubmissionIntent(account.id, key);
         const existing = await taskRequest<PlanningTask | null>(`/api/planning/tasks?operation_key=${encodeURIComponent(key)}`);
-        if (owner.current !== account.id) return;
+        if (!ownsAction()) return;
         if (existing && sameConfirmedRequest(existing.request, request)) {
-          setSubmitState({ owner: account.id, message: 'Your submitted task is available. Open progress to continue.', taskId: existing.id });
+          show({ message: 'Your submitted task is available. Open progress to continue.', taskId: existing.id });
           void refreshTasks(); return;
         }
         if (!existing && intended && !sameConfirmedRequest(intended.request, request)) {
-          setSubmitState({ owner: account.id, message: 'An earlier submission is unresolved. Your new brief is retained. Check planning tasks before submitting another brief.' });
+          show({ message: 'An earlier submission is unresolved. Your new brief is retained. Check planning tasks before submitting another brief.' });
           return;
         }
         if (existing) key = null;
       }
-      key = key || crypto.randomUUID();
+      if (!ownsAction()) return;
+      key = key || (session.actionId ? crypto.randomUUID() : initialKey);
+      action = key;
+      context.current.action = key;
       session.setActionId(key);
       rememberSubmissionIntent(account.id, key, request, brief);
       const task = await taskRequest<PlanningTask>('/api/planning/tasks', { csrf: account.csrf_token, body: { operation_key: key, request, editor_snapshot: brief } });
-      if (owner.current !== account.id) return;
-      setSubmitState({ owner: account.id, message: 'Planning has started. You can keep editing or save another brief.', taskId: task.id });
+      if (!ownsAction()) return;
+      show({ message: 'Planning has started. You can keep editing or save another brief.', taskId: task.id });
       void refreshTasks();
     } catch (error) {
-      if (owner.current !== account.id) return;
+      if (!ownsAction()) return;
       if (error instanceof TaskFailure) {
         if (error.status === 401) void session.refresh();
-        setSubmitState({ owner: account.id, message: error.message, taskId: error.detail.task_id });
+        show({ message: error.message, taskId: error.detail.task_id });
       } else {
         // Unknown write outcome: observe by identity; never automatically POST again.
         try {
           const recovered = key ? await taskRequest<PlanningTask | null>(`/api/planning/tasks?operation_key=${encodeURIComponent(key)}`) : null;
-          if (owner.current !== account.id) return;
-          setSubmitState({ owner: account.id, message: recovered ? 'Your task was accepted. Open progress to continue.' : 'The response was lost. Check planning tasks before explicitly trying again.', taskId: recovered?.id });
-        } catch { if (owner.current === account.id) setSubmitState({ owner: account.id, message: 'The response was lost. Check planning tasks when reconnected before explicitly trying again.' }); }
+          if (!ownsAction()) return;
+          show({ message: recovered ? 'Your task was accepted. Open progress to continue.' : 'The response was lost. Check planning tasks before explicitly trying again.', taskId: recovered?.id });
+        } catch { show({ message: 'The response was lost. Check planning tasks when reconnected before explicitly trying again.' }); }
       }
     }
   }

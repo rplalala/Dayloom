@@ -136,4 +136,3 @@ export function PreviewPage() {
   if (result.error || !result.preview?.snapshot) return <div className="container page"><h1>{result.error || 'This preview has already been decided.'}</h1><Link to="/planning">Return to planning tasks</Link></div>;
   return <><div className="container preview-state"><strong>Unsaved itinerary preview</strong><span>This journey is separate from My trips.</span><Link to="/planning">All recoverable previews →</Link></div><TripDetail detail={result.preview.snapshot} /></>;
 }
-
