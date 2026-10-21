@@ -1,6 +1,6 @@
 # Development guide
 
-Current entry points, reconciled 2026-10-09. [PROJECT.md](../../PROJECT.md) owns status
+Current entry points, reconciled 2026-10-22. [PROJECT.md](../../PROJECT.md) owns status
 and authorization; [architecture](../0001-system-architecture.md) and
 [application contracts](../0007-application-operations.md) explain the code and APIs.
 Commands below are references, not evidence of execution or approval for a live run.
@@ -40,7 +40,7 @@ Product routes include `/`, `/plan`, `/trips`, `/import`, `/login`, `/account`, 
 `/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
 The Product r7 shell has its own shared brief surface. Developer retains independent
 V0-V3 and the existing structured form. Product generation HTTP endpoints require
-authentication; the durable generation UI is connected in its implementation slice.
+authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
 Foundry endpoint/deployment/key and `GOOGLE_MAPS_API_KEY` serve planning;
@@ -90,9 +90,15 @@ PostgreSQL instance, choose unused ports and set its URL in
 Both URL and PostgreSQL conninfo forms require an explicitly supplied actual database
 name containing `test`; query options, usernames and environment defaults do not satisfy
 the safety check. Supplied unsafe values fail before migrations, connections or cleanup.
-From the worktree root:
+The pytest host also needs complete isolated Product settings, even though browser
+children construct their own strict environment. Point both Product URLs at the
+same disposable database and use a synthetic signing secret. From the worktree root:
 
 ```powershell
+$env:PRODUCT_DATABASE_URL = $env:PRODUCT_TEST_DATABASE_URL
+$env:PRODUCT_JWT_SECRET = "isolated-tests-only-not-a-runtime-signing-secret"
+$env:PRODUCT_ORIGIN = "http://127.0.0.1:5120"
+$env:PRODUCT_ALLOW_INSECURE_LOOPBACK = "true"
 uv run pytest backend/tests/product/test_accounts.py --basetemp=.scratch/pytest-product
 uv run pytest backend/tests/product/test_profiles.py --basetemp=.scratch/pytest-profile
 $env:PRODUCT_BROWSER_TESTS = "1"
@@ -312,6 +318,7 @@ under `.scratch/import-browser`; its API/Vite lifecycle uses the shared isolated
 Storage admission checks cover located NUL/surrogate errors, exact activity-cost numeric
 limits, insignificant scale/zero semantics and unchanged large original-request budgets.
 Boundary integer reads return SQL booleans, avoiding expanded amounts in HTTP/log output.
+
 ### Mixed library acceptance
 
 With the same isolated database and browser ports configured, run:

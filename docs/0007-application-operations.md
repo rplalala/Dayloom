@@ -1,11 +1,11 @@
 # Application interfaces and engineering operation
 
-Status: Implemented application boundary, consolidated 2026-10-03.
-The unified Product design is being implemented in slices. Accounts, the r7 shell,
-authentication return, editable travel brief, migration entrypoint, durable generation
-tasks, recoverable previews, normalized saved trips, historical import/export and
-independent whole-trip copies are implemented.
-Product HTTP/stream entrypoints submit and observe that same account task lifecycle.
+Current application boundary, consolidated 2026-10-22.
+Product implements the account-owned brief/draft → task → recoverable preview →
+explicit Save/Discard lifecycle, with a mixed library, historical import/export,
+independent copies, known-input replanning and credited media. Product HTTP/stream
+entrypoints observe that same durable task. Actual verification and consequential
+corrections are recorded in [lifecycle acceptance](records/frontend/dayloom-product-lifecycle-acceptance.md).
 
 ## Product and Developer surfaces
 
@@ -44,6 +44,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
+| `GET /api/examples`, `/{example_id}` | Public allowlisted cards and historical fixture detail | [Examples](#public-examples-and-reusable-detail) |
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
 | `GET`, `PATCH`, `DELETE /api/trips/{id}` | Immutable owner detail, revision-checked title-only update and confirmed cascade deletion | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
 | `GET /api/trips/{id}/weather`, `/nearby`, `/transfers` | Owner-only ordered read views over the saved snapshot | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
@@ -54,6 +55,10 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/planning/tasks`, `/recent`, `/active`, `/{id}` | Owner-only bounded recent/active reads, operation-key lookup and canonical snapshots | [Task API](../backend/app/product/tasks.py) |
 | `POST /api/planning/tasks/{id}/stop` | Owner-only idempotent Stop; preserves completed tasks/previews, otherwise cancels pending work or requests running transport cleanup | [Task lifecycle](#durable-planning-tasks-and-previews) |
 | `GET /api/previews`, `/{id}` | Paged pending summaries and owner-only full public detail/decision receipt | [Task lifecycle](#durable-planning-tasks-and-previews) |
+| `POST /api/previews/{id}/save`, `/discard` | Explicit owner-scoped decision with a durable saved/discarded/deleted-result receipt | [Preview decisions](#explicit-preview-decisions-and-normalized-saved-trips) |
+| `POST /api/imports`, `GET /api/imports?operation_key=…` | Bounded historical import and status-first owner operation recovery | [Import/export](#historical-json-import-and-export) |
+| `GET /api/previews/{id}/media`, `/api/trips/{id}/media` | Owner-authorized display metadata for private verified bindings | [Media](#verified-place-media-and-curated-atmosphere) |
+| `GET /api/media/curated/{key}` | Fixed public destination/atmosphere catalog metadata | [Media](#verified-place-media-and-curated-atmosphere) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
 | `POST /api/dev/planning` | `{version, request, reference_date?}`; version is `v0` through `v3`, output is full `PlanningResult` | [Developer router](../backend/app/api/developer/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/dev/planning/stream` | Same version-selected input/result through an independent SSE request | [Developer router](../backend/app/api/developer/planning.py) |
@@ -89,9 +94,9 @@ weather or route facts remain honestly represented. Secrets belong in local envi
 configuration, not committed documents, logs or client bundles. Provider URLs and requests
 are constrained by their adapters; user prose is not arbitrary outbound-fetch authority.
 
-PostgreSQL/pgvector supports retrieval; Product accounts use the separate `app` schema
-in the same database. Normalized saved snapshots and their durable operation receipts
-follow the [unified Product design](#product-experience-and-persistence-design).
+PostgreSQL/pgvector supports retrieval; Product accounts, drafts, tasks, previews
+and normalized saved snapshots use the separate `app` schema in the same database.
+The public Product migrator maintains its own checksums and leaves TripWorld unchanged.
 Per-process development limits are not account-wide billing enforcement or distributed
 abuse controls; this design does not establish a public deployment guarantee.
 
@@ -99,13 +104,11 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-Status: Accounts, profiles, shell, drafts, brief editor, durable tasks/previews, saved-trip
-management, historical import/export, replanning and independent copies implemented.
-Dayloom r7's visual/interaction baseline is provisionally accepted. The unified specification
-[#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
-frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
-seams. Thirteen implementation slices are published under #198, reusing #120-#123;
-#119 is the historical design/mapping entry.
+The implemented lifecycle follows the fixed Dayloom r7 visual and interaction
+reference, with initials replacing the deferred avatar upload. The unified specification
+[#198](https://github.com/rplalala/Dayloom/issues/198) owns originating requirements and
+confirmed acceptance seams; its native children own task state. #119 retains the
+historical design/mapping role. The sections below define current behavior.
 
 ### Implemented account and browser session boundary
 
@@ -129,7 +132,8 @@ Product planning POST endpoints require the same authentication; date-window and
 input-assistance reads remain guest-accessible. Developer authentication is unchanged.
 
 The Product React shell exposes home, a shared brief editor, login/register, guest
-example cards, an authenticated empty library and an initials-only account page.
+example cards, an authenticated saved-trip/draft library with a genuine empty state,
+and an initials-only account page.
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
 JWT or shared local storage. Expiry hides account/editor content and quarantines it
@@ -429,7 +433,8 @@ and recoverable. The composition boundary adds visible required/avoided wording 
 The server remains authoritative for its token ceiling and current generation window.
 
 Interests, nullable pace (`relaxed`, `balanced`, `rich`) and transport priorities
-(`walk`, `transit`, `drive`) add visible English sentences. Transport is a soft preference,
+(`walk`, `transit`, `drive`) add visible English sentences. Pace allows one or none;
+transport allows any subset, including none for no preference. Transport is a soft preference,
 never an allowlist. `editor_version=1` snapshots retain selections and exact span
 bindings in tab-local recovery. Only untouched inserted text is owned: outside edits
 shift offsets, inside edits detach the affected control, and deselection removes only
@@ -507,29 +512,16 @@ replays the mutation. Previews stay outside the library.
 
 ### Accepted application lifecycle
 
-Product remains V3 over an allowlisted presentation, using the existing PostgreSQL
-instance/database with `app` alongside `tripworld`. The accepted application lifecycle is
-an editable brief, explicit task submission, a recoverable preview and explicit Save or
-Discard. Browser navigation, reload and closure detach observation rather than cancelling
-an accepted task. One account may have one active task while editing or saving other briefs.
-Generated/imported previews stay outside My trips until saved; copying a saved trip or
-keeping an example creates an independent snapshot without generation. Pending previews,
-task state, drafts and saved content are durable Product data, separate from graph state.
-
-The accepted ten-table model extends the seven original account/profile/trip snapshot
-entities with planning drafts, tasks and previews. It retains owner isolation, transaction
-rollback, idempotency, original dates/offsets, actual day/list order and honest uncertainty.
-It adds explicit provenance for imported/copied content, free-window semantics and nullable
-resolved Nearby associations with separately retained unresolved references. Imported status
-claims are not backend verification. The old automatic-save/exactly-seven-table design is
-not the implementation target.
-
-The r7 interface is English without a language selector. Guests see example trip cards;
-authenticated accounts see their own mixed saved-trip/draft collection or an empty state.
-Defaults visibly prefill only new briefs. Pace is single-select; transport selections are
-soft priorities, with an empty set expressing no preference. Editable preference text
-and polish preview/apply/dismiss/undo remain part of the unified flow. Account images use
-initials; avatar upload and its storage design are deferred.
+The English r7 Product interface has no language selector and uses V3 over an
+allowlisted presentation. Its ten Product domain tables share the existing
+PostgreSQL database with TripWorld.
+[Tasks and previews](#durable-planning-tasks-and-previews),
+[explicit decisions](#explicit-preview-decisions-and-normalized-saved-trips),
+[imports](#historical-json-import-and-export) and
+[drafts/library](#incomplete-drafts-and-the-collection-boundary) define durable
+ownership, recovery and mutation rules. Profile initialization belongs to the
+[new-brief contract](#profile-defaults-and-new-brief-initialization); historical
+detail and source trust belong to the following shared presentation contract.
 
 ### Public examples and reusable detail
 
@@ -586,10 +578,10 @@ Breakpoint changes preserve visible focus, and reduced motion disables the pulse
 smooth location. Details use a native modal dialog with keyboard focus containment and
 restoration. No favorites or saved-place collection is introduced.
 
-The remaining Product mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
-browser journeys through those APIs with external providers mocked, and the public migration
-entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
-Runnable account/migration checks are in the [development guide](guides/development.md#product-account-setup-and-acceptance).
+Acceptance uses real isolated PostgreSQL through Product APIs, browser journeys
+and the public migration entrypoint, with external transports substituted. The
+[development guide](guides/development.md#product-account-setup-and-acceptance)
+owns runnable commands; the dated lifecycle record owns actual results and limits.
 
 ### Verified place media and curated atmosphere
 
