@@ -1,3 +1,4 @@
 *.md text eol=lf
 *.json text eol=lf
 r7/** -text whitespace=cr-at-eol
+prototype/** -text whitespace=cr-at-eol

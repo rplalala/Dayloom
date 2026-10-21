@@ -1,12 +1,12 @@
 # Dayloom design prototypes
 
-This branch captures the standalone Dayloom design prototypes separately from the
+The `prototype/dayloom` branch captures the standalone Dayloom design prototypes separately from the
 production application. The product implementation and research code remain on their
 own branches.
 
 ## r7
 
-- [Open the online prototype](https://rplalala.github.io/Reliable-Trip-Plan-Agent/r7/)
+- [Open the online prototype](https://dingzh.cc/Reliable-Trip-Plan-Agent/prototype/)
 - [Read the prototype source and build instructions](r7/README.md)
 - [View desktop Nearby](r7/review/desktop-nearby.jpg) and [mobile Nearby](r7/review/mobile-nearby.jpg)
 - [Unified Product specification #198](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/198)
@@ -29,5 +29,6 @@ no password is sent or stored. Google Places Photos and the production backend a
 connected. Place photos use labelled illustration fallbacks; atmosphere imagery uses
 Unsplash. Never enter real credentials or private itinerary data into this public demo.
 
-GitHub Pages publishes this branch's root with `.nojekyll`; the root entry opens r7.
+GitHub Pages publishes this branch's root with `.nojekyll`. The root opens `/prototype/`,
+which currently serves the byte-identical r7 HTML. The `/r7/` archive remains intact.
 This branch is a prototype archive and preview source, not a production merge target.

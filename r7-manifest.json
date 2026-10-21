@@ -79,5 +79,9 @@
       "bytes": 16204,
       "sha256": "4f1bff84d12a7675624ca5c1d71e72d192079d51298d497482e1180f694663ab"
     }
+  },
+  "preview_entry": {
+    "path": "prototype/index.html",
+    "sha256": "7b69c4bf0d93e56e2b3fc5bbd1914f2e9696d21fded8c877c4f4a326932e09aa"
   }
 }
