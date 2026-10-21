@@ -175,6 +175,9 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         page.reload()
         expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
         page.screenshot(path=str(SCRATCH / "preview-desktop.png"), full_page=True)
+        page.set_viewport_size({"width": 800, "height": 1000})
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.screenshot(path=str(SCRATCH / "preview-800.png"), full_page=True)
         page.set_viewport_size({"width": 390, "height": 844})
         expect(page.get_by_role("link", name="Planning tasks", exact=True)).to_be_visible()
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
@@ -187,5 +190,94 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         assert snapshot["state"] == "completed" and snapshot["request"]["destination"] == "Sydney"
         page.goto(preview_url)
         expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+        saved_responses = []
+
+        def hold_committed_save(route):
+            saved_responses.append((route, route.fetch()))
+
+        page.route("**/api/previews/*/save", hold_committed_save)
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        expect(page.get_by_role("button", name="Saving decision…", exact=True)).to_be_visible()
+        page.get_by_role("link", name="All recoverable previews →", exact=True).click()
+        page.get_by_role("link", name="My trips", exact=True).click()
+        page.get_by_role("link", name="Continue planning →", exact=True).click()
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
+        assert saved_responses and saved_responses[0][1].status == 200
+        saved_responses[0][0].fulfill(response=saved_responses[0][1])
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
+        assert "/plan?draft=" in page.url
+        page.unroute("**/api/previews/*/save", hold_committed_save)
+        page.goto(preview_url)
+        expect(page.get_by_text("Saved to My trips.", exact=True)).to_be_visible()
+        page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+        page.screenshot(path=str(SCRATCH / "saved-390.png"), full_page=True)
+        page.set_viewport_size({"width": 800, "height": 1000})
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.screenshot(path=str(SCRATCH / "saved-800.png"), full_page=True)
+        page.set_viewport_size({"width": 1440, "height": 1000})
+        page.screenshot(path=str(SCRATCH / "saved-desktop.png"), full_page=True)
+        saved_url = page.url
+        page.reload()
+        expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+        page.goto(base + "/trips")
+        expect(page.get_by_text("Brief B while A runs", exact=True)).to_be_visible()
+        page.get_by_role("link", name="View details →", exact=True).click()
+        assert page.url == saved_url
+        assert (signals / "executions").read_text().splitlines() == ["one"]
+    finally:
+        context.close()
+
+
+@pytest.mark.parametrize("decision", ["save", "discard"])
+def test_browser_recovers_a_lost_decision_response_without_replaying_write(task_app, decision):
+    from backend.tests.product.test_browser import register_browser
+
+    base, browser = task_app.base_url, task_app.browser
+    context = browser.new_context(viewport={"width": 1440, "height": 1000})
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        (SCRATCH / "signals/model-release").touch()
+        page.goto(base + "/plan")
+        for label, value in [
+            ("Destination", "Sydney"),
+            ("Start date", "2026-09-12"),
+            ("End date", "2026-09-13"),
+            ("Travelers", "2"),
+            ("Whole-trip budget", "1800"),
+        ]:
+            page.get_by_label(label, exact=True).fill(value)
+        page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        page.get_by_role("link", name="Open task progress", exact=False).click()
+        page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
+        preview_url = page.url
+        writes = []
+
+        def lose_response(route):
+            result = route.fetch()
+            assert result.status == 200
+            writes.append("one")
+            route.abort("failed")
+
+        page.route(f"**/api/previews/*/{decision}", lose_response)
+        if decision == "discard":
+            page.get_by_role("button", name="Discard preview", exact=True).click()
+            expect(page.get_by_role("dialog")).to_be_visible()
+            assert writes == []
+            page.get_by_role("button", name="Keep preview", exact=True).click()
+            expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+            page.get_by_role("button", name="Discard preview", exact=True).click()
+            page.get_by_role("button", name="Confirm discard", exact=True).click()
+        else:
+            page.get_by_role("button", name="Save to My trips", exact=True).click()
+        expected = "Saved to My trips." if decision == "save" else "Preview discarded."
+        expect(page.get_by_text(expected, exact=True)).to_be_visible()
+        assert writes == ["one"]
+        assert page.url == preview_url
+        page.reload()
+        expect(page.get_by_text(expected, exact=True)).to_be_visible()
+        page.goto(base + "/planning")
+        expect(page.get_by_text("No pending previews.", exact=True)).to_be_visible()
     finally:
         context.close()

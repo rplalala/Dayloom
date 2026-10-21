@@ -2,7 +2,7 @@ import type { Brief } from "./editor";
 
 export type DraftRef = { id: string; title: string; revision: number };
 export type Draft = DraftRef & { editor: Brief; created_at: string; updated_at: string };
-export type LibraryCard = DraftRef & { kind: "draft"; source: "draft"; draft_id: string; destination: string; start_date: string; end_date: string; created_at: string; updated_at: string };
+export type LibraryCard = DraftRef & { kind: "draft" | "saved"; source: string; draft_id?: string; destination: string; start_date: string; end_date: string; created_at: string; updated_at: string };
 export type LibraryPageResult = { items: LibraryCard[]; total: number; limit: number; offset: number };
 
 export class DraftFailure extends Error {

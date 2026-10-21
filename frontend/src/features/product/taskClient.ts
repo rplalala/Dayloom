@@ -9,11 +9,11 @@ export type PlanningTask = {
   outcome: { code: string; message: string; action: string; issues?: unknown } | null;
   created_at: string; updated_at: string;
 };
-export type Preview = { id: string; source_task_id: string | null; state: 'pending' | 'saved' | 'discarded'; snapshot: ProductDetail | null; title?: string; destination?: string; saved_trip_id: string | null; created_at: string };
+export type Preview = { id: string; source_task_id: string | null; state: 'pending' | 'saved' | 'discarded'; snapshot: ProductDetail | null; title?: string; destination?: string; saved_trip_id: string | null; created_at: string; outcome?: 'saved' | 'discarded' | 'saved_result_deleted' };
 export const taskActive = (task: PlanningTask) => ['pending', 'running', 'stopping'].includes(task.state);
 
 export class TaskFailure extends Error {
-  constructor(public status: number, public detail: { code?: string; task_id?: string }) {
+  constructor(public status: number, public detail: { code?: string; task_id?: string; decision?: { id: string; state: 'saved' | 'discarded'; saved_trip_id: string | null; outcome: 'saved' | 'discarded' | 'saved_result_deleted' } }) {
     super(status === 401 ? 'Log in again to continue. Your brief remains private.' : status === 409 && detail.code === 'planning_task_active' ? 'Planning is already running. Please wait or save this brief as a draft.' : status === 422 ? 'Check your trip dates, budget and preferences before generating.' : 'Planning is unavailable. Your brief is still here.');
   }
 }

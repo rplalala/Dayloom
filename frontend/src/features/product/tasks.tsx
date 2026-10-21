@@ -5,6 +5,7 @@ import { TripDetail } from './detail/TripDetail';
 import './tasks.css';
 import { TaskContext, useTasks } from './taskContext';
 import { taskRequest, TaskFailure, taskActive, type PlanningTask, type Preview } from './taskClient';
+import { DecisionReceipt, PreviewDecisionControls } from './PreviewDecision';
 
 export function TaskProvider({ children }: { children: ReactNode }) {
   const { account, refresh: refreshSession } = useSession();
@@ -133,6 +134,7 @@ export function PreviewPage() {
   }, [previewId, account, refresh]);
   if (!account) return <div className="container page"><h1>Log in to recover this preview.</h1><Link to={`/login?return=${encodeURIComponent(`/previews/${previewId}`)}`}>Log in</Link></div>;
   if (result.owner !== account.id || result.id !== previewId) return <p className="container page" role="status">Loading preview…</p>;
-  if (result.error || !result.preview?.snapshot) return <div className="container page"><h1>{result.error || 'This preview has already been decided.'}</h1><Link to="/planning">Return to planning tasks</Link></div>;
-  return <><div className="container preview-state"><strong>Unsaved itinerary preview</strong><span>This journey is separate from My trips.</span><Link to="/planning">All recoverable previews →</Link></div><TripDetail detail={result.preview.snapshot} /></>;
+  if (result.preview && result.preview.state !== 'pending') return <DecisionReceipt decision={result.preview} />;
+  if (result.error || !result.preview?.snapshot) return <div className="container page"><h1>{result.error || 'This preview is unavailable.'}</h1><Link to="/planning">Return to planning tasks</Link></div>;
+  return <><div className="container preview-state"><strong>Unsaved itinerary preview</strong><span>This journey is separate from My trips.</span><Link to="/planning">All recoverable previews →</Link><PreviewDecisionControls key={`${account.id}:${account.csrf_token}:${previewId}`} preview={result.preview} onDecision={preview => setResult({ id: previewId, owner: account.id, preview })} /></div><TripDetail detail={result.preview.snapshot} /></>;
 }

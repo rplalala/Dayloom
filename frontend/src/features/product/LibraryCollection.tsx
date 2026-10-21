@@ -37,7 +37,7 @@ export function LibraryCollection() {
 
   async function mutate(card: LibraryCard, kind: "copy" | "rename" | "delete") {
     const account = session.account;
-    if (!account) return;
+    if (!account || card.kind !== "draft") return;
     setBusy(true); setError("");
     try {
       await draftRequest(`/api/drafts/${card.id}${kind === "copy" ? "/copy" : kind === "delete" ? `?revision=${card.revision}` : ""}`,
@@ -61,10 +61,10 @@ export function LibraryCollection() {
     {error && !action && <div role="alert"><p>{error}</p><button className="btn btn-outline" onClick={() => setReload(n => n + 1)}>Retry collection</button></div>}
     {!page && !error && <p role="status">Loading your collection…</p>}
     {page && page.total === 0 && <section className="flow-card result-placeholder"><h2>{search ? "No matching journeys." : "Your next journey starts here."}</h2><p>{search ? "Try another title or destination." : "No trips yet. Start with an idea and make it yours."}</p></section>}
-    {page && <div className="trip-grid">{page.items.map(card => <article className="trip-card" key={card.id}>
-      <Link className="draft-card-cover" to={`/plan?draft=${card.id}`} aria-label={`Continue ${card.title}`}>✎</Link>
-      <div className="trip-card-body"><span className="eyebrow">PLANNING DRAFT</span><h2>{card.title}</h2><p>{card.destination || "Destination to decide"}</p><p>{card.start_date || "Dates to decide"}{card.end_date && ` – ${card.end_date}`}</p><Link className="text-link" to={`/plan?draft=${card.id}`}>Continue planning →</Link>
-        <div className="library-actions"><button aria-label={`Rename ${card.title}`} disabled={busy} onClick={() => { setTitle(card.title); setError(""); setAction({ kind: "rename", card }); }}>Rename</button><button aria-label={`Copy ${card.title}`} disabled={busy} onClick={() => void mutate(card, "copy")}>Copy</button><button aria-label={`Delete ${card.title}`} disabled={busy} onClick={() => { setError(""); setAction({ kind: "delete", card }); }}>Delete</button></div>
+    {page && <div className="trip-grid">{page.items.map(card => <article className="trip-card" key={`${card.kind}:${card.id}`}>
+      <Link className="draft-card-cover" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`} aria-label={`${card.kind === "draft" ? "Continue" : "View"} ${card.title}`}>{card.kind === "draft" ? "✎" : "◇"}</Link>
+      <div className="trip-card-body"><span className="eyebrow">{card.kind === "draft" ? "PLANNING DRAFT" : "SAVED ITINERARY"}</span><h2>{card.title}</h2><p>{card.destination || "Destination to decide"}</p><p>{card.start_date || "Dates to decide"}{card.end_date && ` – ${card.end_date}`}</p><Link className="text-link" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`}>{card.kind === "draft" ? "Continue planning →" : "View details →"}</Link>
+        {card.kind === "draft" && <div className="library-actions"><button aria-label={`Rename ${card.title}`} disabled={busy} onClick={() => { setTitle(card.title); setError(""); setAction({ kind: "rename", card }); }}>Rename</button><button aria-label={`Copy ${card.title}`} disabled={busy} onClick={() => void mutate(card, "copy")}>Copy</button><button aria-label={`Delete ${card.title}`} disabled={busy} onClick={() => { setError(""); setAction({ kind: "delete", card }); }}>Delete</button></div>}
       </div></article>)}</div>}
     {page && page.total > 12 && <nav className="library-pagination" aria-label="Collection pages"><button className="btn btn-outline" disabled={offset === 0} onClick={() => setOffset(n => Math.max(0, n - 12))}>Previous</button><span>{offset + 1}–{Math.min(offset + 12, page.total)} of {page.total}</span><button className="btn btn-outline" disabled={offset + 12 >= page.total} onClick={() => setOffset(n => n + 12)}>Next</button></nav>}
     <dialog ref={dialog} className="library-dialog" aria-labelledby="library-dialog-title" onCancel={event => { if (busy) event.preventDefault(); else setAction(null); }}>
