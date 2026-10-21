@@ -211,6 +211,7 @@ With the isolated database and browser ports configured above, run:
 
 ```powershell
 uv run pytest backend/tests/product/test_imports.py backend/tests/product/test_import_responsiveness.py backend/tests/product/test_import_browser.py
+uv run pytest backend/tests/product/test_import_storage.py
 ```
 
 These checks use actual APIs/PostgreSQL for concurrent operation identity, account isolation,
@@ -220,6 +221,9 @@ acceptance covers historical differing-offset/nanosecond/empty-day/orphan conten
 paste, Save, JSON download and file reimport, plus selectable summary, delayed-file/lost-response
 recovery and historical zero/overlap connection gaps with unverified source provenance. Its screenshots live
 under `.scratch/import-browser`; its API/Vite lifecycle uses the shared isolated browser fixture.
+Storage admission checks cover located NUL/surrogate errors, exact activity-cost numeric
+limits, insignificant scale/zero semantics and unchanged large original-request budgets.
+Boundary integer reads return SQL booleans, avoiding expanded amounts in HTTP/log output.
 ### Mixed library acceptance
 
 With the same isolated database and browser ports configured, run:

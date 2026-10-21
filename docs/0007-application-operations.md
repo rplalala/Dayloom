@@ -338,6 +338,15 @@ measurements must fit their storage representation. Missing facts stay unknown. 
 `source_claims` must be an array of strings. Errors identify the failing field, and invalid
 imports create no preview.
 
+Import rejects NUL and unpaired Unicode surrogates in text or JSON keys before persistence;
+valid Unicode and literal escape text remain unchanged. Persisted activity costs must fit
+[PostgreSQL's exact numeric domain](https://www.postgresql.org/docs/17/datatype-numeric.html):
+at most 131072 integer digits and 16383 fractional digits. Exact Decimal tuple arithmetic
+checks the mathematical value without context rounding or fixed-point expansion. Zero is
+canonicalized, and excess insignificant scale is removed only when required for storage;
+ordinary accepted monetary scale is retained. These storage limits apply to activity costs,
+not known original-request budgets, whose exact amounts remain JSON strings.
+
 Artifact ownership, operation identity and private media binding declarations are rejected.
 Allowlisted imported content is always `provenance=imported`, `trust=unverified_import`.
 Google/origin/PASS/completion claims remain unverified source claims; imported completion

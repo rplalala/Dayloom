@@ -26,6 +26,8 @@ from backend.app.product.detail import (
 from backend.app.product.task_store import TaskStore
 
 MAX_BYTES = 5 * 1024 * 1024
+NUMERIC_INTEGER_DIGITS = 131072
+NUMERIC_FRACTION_DIGITS = 16383
 router = APIRouter(prefix="/api/imports", tags=["historical imports"])
 
 
@@ -128,12 +130,18 @@ AUTHORITY = {
 def guard(value, path="$"):
     if isinstance(value, dict):
         for key, item in value.items():
+            child_path = (
+                path + "." + key
+                if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key)
+                else path + "[" + json.dumps(key) + "]"
+            )
+            guard(key, child_path)
             if key in AUTHORITY:
                 fail(
-                    path + "." + key,
+                    child_path,
                     "Artifact cannot declare ownership, operation or media authority",
                 )
-            guard(item, path + "." + key)
+            guard(item, child_path)
     elif isinstance(value, list):
         for index, item in enumerate(value):
             guard(item, f"{path}[{index}]")
@@ -142,6 +150,8 @@ def guard(value, path="$"):
     elif isinstance(value, Decimal) and not value.is_finite():
         fail(path, "Numbers must be finite")
     elif isinstance(value, str):
+        if "\0" in value:
+            fail(path, "Text and JSON keys must not contain NUL (U+0000)")
         try:
             value.encode("utf-8")
         except UnicodeEncodeError:
@@ -171,6 +181,29 @@ def finite_measurement(value, path, *, nonnegative=False):
             if nonnegative
             else "Expected a representable finite measurement",
         )
+
+
+def stored_activity_amount(amount: Decimal, path: str) -> Decimal:
+    """Admit exact PostgreSQL numeric values without context arithmetic or expansion."""
+    sign, digits, exponent = amount.as_tuple()
+    if not any(digits):
+        return Decimal(0)
+    end = len(digits)
+    while digits[end - 1] == 0:
+        end -= 1
+    significant_exponent = exponent + len(digits) - end
+    if (
+        max(end + significant_exponent, 0) > NUMERIC_INTEGER_DIGITS
+        or max(-significant_exponent, 0) > NUMERIC_FRACTION_DIGITS
+    ):
+        fail(path, "Activity cost exceeds the exact PostgreSQL numeric storage domain")
+    # PostgreSQL rejects an excessive supplied scale even when its extra digits are
+    # zero. Strip only that insignificant scale; ordinary accepted spelling survives.
+    return (
+        Decimal((sign, digits[:end], significant_exponent))
+        if exponent < -NUMERIC_FRACTION_DIGITS
+        else amount
+    )
 
 
 def normalize_import(content: str) -> ProductDetail:
@@ -413,7 +446,7 @@ def normalize_import(content: str) -> ProductDetail:
                             text(value, container_path + ".origin")
                     claims.append(key + ": " + json.dumps(value, ensure_ascii=False, default=str))
     try:
-        return ProductDetail.model_validate(
+        detail = ProductDetail.model_validate(
             dict(
                 id="import",
                 title=text(
@@ -435,6 +468,14 @@ def normalize_import(content: str) -> ProductDetail:
     except ValidationError as error:
         first = error.errors()[0]
         fail("$." + ".".join(map(str, first["loc"])), first["msg"])
+    for di, day in enumerate(detail.days):
+        for ai, activity in enumerate(day.activities):
+            if activity.estimated_cost is not None:
+                activity.estimated_cost.amount = stored_activity_amount(
+                    activity.estimated_cost.amount,
+                    f"{path}.days[{di}].activities[{ai}].estimated_cost.amount",
+                )
+    return detail
 
 
 class ImportStore:
