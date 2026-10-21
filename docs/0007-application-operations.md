@@ -1,8 +1,8 @@
 # Application interfaces and engineering operation
 
 Status: Implemented application boundary, consolidated 2026-10-03.
-The accepted Product persistence design below is pending implementation; the HTTP map
-describes existing endpoints.
+The unified Product design below is accepted and unimplemented; the HTTP map and
+streaming section describe existing endpoints and request-lifetime execution.
 
 ## Product and Developer surfaces
 
@@ -71,71 +71,57 @@ configuration, not committed documents, logs or client bundles. Provider URLs an
 are constrained by their adapters; user prose is not arbitrary outbound-fetch authority.
 
 PostgreSQL/pgvector currently supports retrieval. Accounts and saved itineraries are pending
-under the [accepted Product persistence design](#accepted-product-persistence-design).
+under the [unified Product design](#product-experience-and-persistence-design).
 Per-process development limits are not account-wide billing enforcement or distributed
 abuse controls; this design does not establish a public deployment guarantee.
 
-## Accepted Product persistence design
+<a id="accepted-product-persistence-design"></a>
 
-Status: Accepted; not implemented. The detailed field definitions, relationships,
-constraints and backend acceptance criteria are owned by
-[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119).
-Its implementation slices are accounts/JWT (#120), profiles (#121), final V3 save/detail
-(#122), and history/child lists/rename/delete (#123). GitHub owns dependencies and live state.
+## Product experience and persistence design
 
-Reuse the existing PostgreSQL instance and database. The new `app` schema coexists with
-`tripworld`, preserving retrieval data and migrations. Exactly seven Product domain tables
-are planned:
+Status: Accepted design; not implemented. Dayloom r7's visual/interaction baseline is
+provisionally accepted. The unified specification
+[#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
+frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
+seams. Thirteen implementation slices are published under #198, reusing #120-#123;
+#119 is the historical design/mapping entry. Implementation remains pending.
 
-| Table | Responsibility |
-| --- | --- |
-| `app.users` | Normalized unique email, password hash and JWT `token_version` |
-| `app.user_profiles` | One profile per account, created atomically with registration |
-| `app.trips` | Owner, backend save key, title/destination/dates, confirmed request and public metadata snapshots, timestamps |
-| `app.trip_weather` | One row per actual final Product day, including unavailable weather and empty-activity days |
-| `app.trip_activities` | Ordered scheduled activities, original local datetimes and offsets, public costs and introductions |
-| `app.trip_nearby` | Ordered optional unscheduled recommendations anchored to an activity on the same trip/day |
-| `app.trip_transfers` | Ordered final adopted transport legs with same-trip/day endpoints and public uncertainty |
+Product remains V3 over an allowlisted presentation, using the existing PostgreSQL
+instance/database with `app` alongside `tripworld`. The accepted application lifecycle is
+an editable brief, explicit task submission, a recoverable preview and explicit Save or
+Discard. Browser navigation, reload and closure detach observation rather than cancelling
+an accepted task. One account may have one active task while editing or saving other briefs.
+Generated/imported previews stay outside My trips until saved; copying a saved trip or
+keeping an example creates an independent snapshot without generation. Pending previews,
+task state, drafts and saved content are durable Product data, separate from graph state.
 
-Email/password authentication uses expiring signed Bearer JWTs, with user existence and
-PostgreSQL `token_version` checked on each authenticated request. Logout increments the
-version and invalidates all previously issued account tokens. Redis, refresh tokens and
-per-device sessions are outside this scope.
+The accepted ten-table model extends the seven original account/profile/trip snapshot
+entities with planning drafts, tasks and previews. It retains owner isolation, transaction
+rollback, idempotency, original dates/offsets, actual day/list order and honest uncertainty.
+It adds explicit provenance for imported/copied content, free-window semantics and nullable
+resolved Nearby associations with separately retained unresolved references. Imported status
+claims are not backend verification. The old automatic-save/exactly-seven-table design is
+not the implementation target.
 
-Profiles support display name, optional avatar URL, default currency, interests and
-additional preferences. `preferred_pace` is a nullable single choice of `relaxed`,
-`balanced` or `rich`; `preferred_transport` is a deduplicated multiselect subset of
-`walk`, `transit` and `drive`, including the empty set. Future form prefill stays visible
-and editable; the confirmed planning request remains authoritative without a hidden
-profile overlay.
+The r7 interface is English without a language selector. Guests see example trip cards;
+authenticated accounts see their own mixed saved-trip/draft collection or an empty state.
+Defaults visibly prefill only new briefs. Pace is single-select; transport selections are
+soft priorities, with an empty set expressing no preference. Editable preference text
+and polish preview/apply/dismiss/undo remain part of the unified flow. Account images use
+initials; avatar upload and its storage design are deferred.
 
-Authenticated Product generation saves only the trusted final V3 Product projection
-after adoption and optional enrichment. Ordinary HTTP and SSE share one transactional
-save boundary. A backend-owned save key makes repeated saves of the same result idempotent;
-any child-write failure rolls back the complete new snapshot. Save failure preserves the
-generated response with explicit unsaved metadata and does not trigger another generation.
-Clarification, blocked outcomes, generation errors and cancellation before saving create
-no trip; a disconnect after commit cannot undo a saved result. Developer, V0-V2 and
-research/evaluator artifacts remain outside Product persistence.
+Detail preserves the desktop two-column layout. Nearby groups by day and exact activity
+ID, with a count entry and explicit bidirectional location/highlight; mobile uses an inline
+activity-card disclosure. Unresolved associations stay in Other nearby references; no
+favorites or saved-place collection is introduced. Google Places Photos require a verified
+identity binding and safe media presentation; Unsplash supplies destination/atmosphere
+imagery. Missing facts/images remain unavailable rather than invented.
 
-Saved detail preserves actual day/activity/Nearby/transfer order, original datetimes and
-offsets, unknown costs and public policy/transport statuses, including incomplete results
-and `UNKNOWN`/`CONFIRMED` transfers. Weather stores no attribution or source URL and
-does not refresh automatically. Graph state, raw provider payloads and private research
-diagnostics are not saved as Product history.
-
-Owner-scoped APIs will provide account/profile access, paginated history, complete detail,
-separate weather/Nearby/transfer lists, title-only rename and cascade deletion. Missing or
-other-user trip IDs return 404. Saved contents are immutable apart from title; replanning
-starts from the saved confirmed request and creates a new result without changing history.
-
-Acceptance covers backend Product APIs and migrations against a real isolated test
-PostgreSQL database, with external providers/models mocked. It includes authentication,
-ownership, domain constraints, HTTP/SSE save behavior, rollback/idempotency, faithful
-round trips, restart persistence, cascade deletion and preservation of `tripworld`.
-Frontend implementation, refactoring and tests are deferred. Migration/configuration
-commands will be documented when runnable entrypoints exist; no migration or feature
-test execution is implied by this accepted design.
+The confirmed session/task/storage mechanisms are specified in #198, not implemented by
+this documentation. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
+browser journeys through those APIs with external providers mocked, and the public migration
+entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
+Runnable migration/configuration instructions will be documented when implementation exists.
 
 ## Configuration, evidence and verification
 
@@ -196,4 +182,5 @@ Partial setup closes already-created resources; cancellation awaits owned cleanu
 requests must remain usable after another closes. Local cancellation cannot guarantee termination
 or billing cancellation of work already dispatched to external providers. Streaming provides
 no reconnect/resume or public multi-user service guarantee. Planned saved-trip history uses
-the separate Product persistence boundary described above.
+the proposed task/preview boundary described above; these request-lifetime Product
+semantics remain the implemented behavior until that coordinated migration.

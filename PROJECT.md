@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-19.
+Current source of truth. Updated 2026-10-21.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -26,8 +26,9 @@ Repository content is English; user-facing development discussion is Chinese.
 Use a modular monolith: React frontend; FastAPI API/application/backend services;
 shared LLM, evidence, RAG and orchestration components with version-specific
 entry points; PostgreSQL + pgvector for TripWorld retrieval.
-Accepted Product persistence will add `app` to the same PostgreSQL database; it is pending
-implementation. See the [Product persistence overview](docs/0007-application-operations.md#accepted-product-persistence-design).
+The accepted unified Product design will add `app` persistence and account-owned task
+coordination to the same PostgreSQL database; implementation is pending. See the
+[Product design overview](docs/0007-application-operations.md#product-experience-and-persistence-design).
 External provider payloads are normalized before entering application policies.
 
 | Version | Implemented mechanism | Independent entry point |
@@ -301,15 +302,21 @@ or guaranteed fresh-clone assets.
 
 ## 6. Next work and authorization boundary
 
-Product backend persistence is accepted and pending implementation under
-[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119), with children
-#120-#123. It covers seven `app` tables in the existing PostgreSQL database,
-JWT authentication with PostgreSQL `token_version`, profiles and owner-scoped storage
-of only final V3 Product results. The [Product design overview](docs/0007-application-operations.md#accepted-product-persistence-design)
-summarizes the boundary; the Issue owns detailed fields, constraints and acceptance.
-Current scope covers documentation synchronization and Issue documentation requirements.
-Code implementation, migration execution and frontend implementation/refactoring/testing
-remain deferred. Backend implementation starts with #120 when separately authorized.
+The Dayloom r7 page prototype is provisionally accepted. The unified frontend/backend
+specification [#198](https://github.com/rplalala/Dayloom/issues/198)
+coordinates that design with the earlier backend foundation. Its thirteen implementation
+slices reuse #120-#123; #119 retains the historical mapping.
+It specifies account-owned planning tasks, multiple drafts, recoverable generated/imported
+previews and explicit manual saving, with the original r7 UI and activity-linked Nearby.
+The [Product design overview](docs/0007-application-operations.md#product-experience-and-persistence-design)
+summarizes this accepted design; the Issue owns detailed requirements and confirmed test seams.
+
+The accepted design and thirteen-slice breakdown are published with native parent/blocking
+relationships under #198. Avatar upload is deferred and account images use initials.
+Implementation, migrations and feature acceptance remain pending; the first unblocked slice is
+[account registration and session return #120](https://github.com/rplalala/Dayloom/issues/120).
+Specification/ticket publication does not start implementation or authorize remote Git delivery.
+Independent V0-V3 and Developer/research behavior remain outside Product persistence.
 
 Evaluation extensions are developed independently:
 

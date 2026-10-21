@@ -19,6 +19,13 @@ belong in this directory. Task specifications and iteration state live in GitHub
 | [0006 Independent evaluation](0006-independent-evaluation.md) | Native quality, research populations and track boundaries |
 | [0007 Application and operations](0007-application-operations.md) | API/UI, assistance, resources and engineering verification |
 
+The accepted [Dayloom r7 unified Product specification #198](https://github.com/rplalala/Dayloom/issues/198)
+connects the provisionally accepted frontend prototype with accounts, drafts, tasks,
+previews and manual saving. Its unimplemented design is summarized in the
+[application overview](0007-application-operations.md#product-experience-and-persistence-design);
+thirteen implementation slices are published under #198, reusing #120-#123 with
+#119 retained as a historical mapping.
+
 ## Architecture decisions
 
 - [0001 Version isolation](adr/0001-version-isolation.md)

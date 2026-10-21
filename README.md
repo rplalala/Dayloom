@@ -1,9 +1,25 @@
-# Reliable Trip Plan Agent
+# Dayloom
 
-An LLM-based travel-planning Capstone project with four independently runnable versions: V0
+Dayloom is an LLM-based travel-planning Capstone project with four independently runnable versions: V0
 uses plain model generation, V1 adds external travel information, V2 adds TripWorld retrieval,
 and V3 adds validation, targeted repair and re-validation. [PROJECT.md](PROJECT.md) records
 the current engineering state and evidence boundaries.
+
+## Product design and prototype
+
+- [Try the online prototype](https://dingzh.cc/Dayloom/prototype/)
+- [GitHub Pages default address](https://rplalala.github.io/Dayloom/prototype/)
+- [Fixed r7 source and build instructions](https://github.com/rplalala/Dayloom/tree/b30eb3814513b12d7869ca8a5c59f0b7401d45d6/r7)
+- [Unified frontend/backend specification #198](https://github.com/rplalala/Dayloom/issues/198)
+
+The provisionally accepted r7 prototype defines the Product visual and interaction
+baseline: editable travel briefs, accounts, multiple drafts, recoverable planning tasks,
+itinerary previews, manual saving and activity-linked Nearby references. Its source and
+preview are maintained on the dedicated `prototype/dayloom` branch.
+
+Accounts, tasks and persistence in the prototype are browser-local simulations. The
+coordinated frontend/backend design is accepted in #198 and implementation remains pending;
+the implemented application is described below under [Current application](#current-application).
 
 ## Benchmark results
 
@@ -180,6 +196,6 @@ Keep the database dump outside Git.
 ## Documentation and evidence
 
 [docs/README.md](docs/README.md) indexes current design and dated development records.
-The [planning input UX specification](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/25) owns the assistance
+The [planning input UX specification](https://github.com/rplalala/Dayloom/issues/25) owns the assistance
 contract and limits. Local `logs/` and `artifacts/` contain development evidence, including
 potential provider/model data, and are not part of a source commit.
