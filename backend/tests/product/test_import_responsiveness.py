@@ -4,17 +4,29 @@ import json
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
-from uuid import uuid4
+from datetime import date
 
 import psycopg
 from pydantic import SecretStr
 
+from backend.app.product.task_store import TaskStore
+from backend.app.schemas.request import PlanningRequest
+from backend.tests.api.test_product_planning import make_product_payload
 from backend.tests.product.test_accounts import client, register  # noqa: F401
 from backend.tests.product.test_imports import source
 
 
 def test_import_row_lock_does_not_block_health_or_stop_api(client):  # noqa: F811
     account = register(client)
+    # Prepare a real pending task without launching providers; Stop still uses the
+    # actual public API, coordinator and PostgreSQL transition during the import wait.
+    task, _ = TaskStore().accept(
+        account["id"],
+        "waiting-task",
+        PlanningRequest.model_validate(make_product_payload()),
+        None,
+        date(2026, 9, 11),
+    )
     headers = {
         "Origin": "http://localhost:5120",
         "X-CSRF-Token": account["csrf_token"],
@@ -35,9 +47,9 @@ def test_import_row_lock_does_not_block_health_or_stop_api(client):  # noqa: F81
         try:
             deadline = time.monotonic() + 5
             while not observer.execute(
-                    "SELECT EXISTS (SELECT 1 FROM pg_stat_activity "
-                    "WHERE datname=current_database() AND wait_event_type='Lock' "
-                    "AND query LIKE 'SELECT id FROM app.users%')"
+                "SELECT EXISTS (SELECT 1 FROM pg_stat_activity "
+                "WHERE datname=current_database() AND wait_event_type='Lock' "
+                "AND query LIKE 'SELECT id FROM app.users%')"
             ).fetchone()[0]:
                 assert time.monotonic() < deadline, "Import never reached the controlled row lock"
                 time.sleep(0.02)
@@ -45,9 +57,9 @@ def test_import_row_lock_does_not_block_health_or_stop_api(client):  # noqa: F81
             health = workers.submit(client.get, "/health").result(timeout=2)
             assert health.status_code == 200 and health.json() == {"status": "ok"}
             stopped = workers.submit(
-                client.post, f"/api/planning/tasks/{uuid4()}/stop", headers=headers
+                client.post, f"/api/planning/tasks/{task['id']}/stop", headers=headers
             ).result(timeout=2)
-            assert stopped.status_code == 404
+            assert stopped.status_code == 200 and stopped.json()["state"] == "cancelled"
             assert not importing.done()
         finally:
             locker.rollback()

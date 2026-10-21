@@ -268,3 +268,52 @@ def test_historical_connection_conflicts_export_and_reimport_with_source_provena
         )
     finally:
         context.close()
+
+
+def test_imported_library_management_and_deleted_receipt_recovery(browser_app):  # noqa: F811
+    base, browser = browser_app.base_url, browser_app.browser
+    context = browser.new_context()
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.goto(base + "/import")
+        page.get_by_label("Itinerary JSON", exact=True).fill(
+            json.dumps({"request": {"traveler_count": None}, "itinerary": source()})
+        )
+        page.get_by_role("button", name="Preview import", exact=True).click()
+        expect(page.get_by_role("heading", name="Old journey", exact=True)).to_be_visible()
+        original_preview = page.url
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        page.get_by_role("link", name="Back to My trips", exact=True).first.click()
+        page.get_by_role("button", name="Manage Old journey", exact=True).click()
+        page.get_by_role("button", name="Rename Old journey", exact=True).click()
+        page.get_by_label("New trip title").fill("Imported archive")
+        page.get_by_role("button", name="Save title", exact=True).click()
+        page.get_by_role("link", name="View Imported archive", exact=True).click()
+        with page.expect_download() as download:
+            page.get_by_role("button", name="Export JSON", exact=True).click()
+        exported = json.loads(Path(download.value.path()).read_text())
+        assert exported["title"] == "Imported archive"
+        assert exported["request"]["known_fields"] == ["traveler_count"]
+        page.get_by_role("link", name="Back to My trips", exact=True).first.click()
+        page.get_by_role("button", name="Manage Imported archive", exact=True).click()
+        page.get_by_role("button", name="Delete Imported archive", exact=True).click()
+        page.get_by_role("button", name="Delete trip", exact=True).click()
+        expect(page.get_by_role("heading", name="Your next journey starts here.")).to_be_visible()
+        page.goto(base + "/import")
+        page.get_by_role("button", name="Check import status").click()
+        expect(page).to_have_url(original_preview)
+        expect(page.get_by_text("This saved itinerary was deleted.", exact=True)).to_be_visible()
+        page.goto(base + "/import")
+        page.get_by_role("button", name="Start new import", exact=True).click()
+        page.get_by_label("Itinerary JSON", exact=True).fill(json.dumps(exported))
+        page.get_by_role("button", name="Preview import", exact=True).click()
+        expect(page.get_by_role("heading", name="Imported archive", exact=True)).to_be_visible()
+        assert page.url != original_preview
+        assert page.request.get(base + "/api/library").json()["total"] == 0
+        page.screenshot(
+            path=str(Path(".scratch/import-browser/deleted-receipt-new-import.png")), full_page=True
+        )
+    finally:
+        context.close()

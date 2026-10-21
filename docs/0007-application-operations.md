@@ -466,8 +466,8 @@ Weather, costs, introductions, original request information and completion infor
 are optional. `request` contains only known original input; examples do not reconstruct
 it from an itinerary. Provenance (`example`, `generated`, `imported`) and trust
 (`source_fixture`, `generated_projection`, `unverified_import`) remain explicit.
-This contract is the rendering boundary for subsequent preview, save and import slices;
-those lifecycle operations are implemented separately.
+This contract renders examples, previews and saved/imported snapshots; lifecycle
+operations use their dedicated services.
 
 The fixture adapter allowlists public fields and excludes provider identity/evidence
 references. Example transfers retain supplied route metrics and source status as
@@ -502,7 +502,7 @@ Breakpoint changes preserve visible focus, and reduced motion disables the pulse
 smooth location. Details use a native modal dialog with keyboard focus containment and
 restoration. No favorites or saved-place collection is introduced.
 
-The remaining saved-trip/import mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
+The remaining Product mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
 browser journeys through those APIs with external providers mocked, and the public migration
 entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
 Runnable account/migration checks are in the [development guide](guides/development.md#product-account-setup-and-acceptance).

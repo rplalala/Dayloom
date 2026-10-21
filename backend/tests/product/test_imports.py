@@ -521,3 +521,70 @@ def test_conflicting_schedule_gaps_do_not_relax_transfer_time_validation(client,
     response = client.post("/api/imports", headers=headers, content=json.dumps(value))
     assert response.status_code == 422, response.text
     assert response.json()["detail"]["path"].startswith("$.transfers[0]")
+
+
+def test_deleted_import_receipt_survives_recreation_and_concurrent_replay_without_resurrection(
+    client,  # noqa: F811
+):  # noqa: F811
+    from concurrent.futures import ThreadPoolExecutor
+
+    from fastapi.testclient import TestClient
+
+    from backend.app.main import create_app
+
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "deleted-import",
+    }
+    content = json.dumps(source())
+    preview = client.post("/api/imports", headers=headers, content=content).json()
+    saved = client.post(f"/api/previews/{preview['id']}/save", headers=headers, json={}).json()
+    identity = saved["saved_trip_id"]
+    assert (
+        client.request(
+            "DELETE",
+            f"/api/trips/{identity}",
+            headers=headers,
+            json={"revision": 1, "confirmed": True},
+        ).status_code
+        == 204
+    )
+    receipt = client.get("/api/imports/deleted-import").json()
+    assert receipt["id"] == preview["id"] and receipt["saved_trip_id"] == identity
+    assert receipt["outcome"] == "saved_result_deleted" and receipt["snapshot"] is None
+    cookies = dict(client.cookies)
+
+    def replay(_):
+        with TestClient(create_app(), base_url="http://localhost:5120") as recreated:
+            recreated.cookies.update(cookies)
+            assert recreated.get("/api/imports/deleted-import").json() == receipt
+            result = recreated.post("/api/imports", headers=headers, content=content)
+            assert result.status_code == 200, result.text
+            return result.json()
+
+    with ThreadPoolExecutor(max_workers=3) as workers:
+        assert list(workers.map(replay, range(3))) == [receipt, receipt, receipt]
+    assert client.get(f"/api/trips/{identity}").status_code == 404
+    assert client.get("/api/previews").json() == []
+    assert client.get("/api/library").json()["total"] == 0
+    late_save = client.post(f"/api/previews/{preview['id']}/save", headers=headers, json={})
+    assert late_save.status_code == 409
+    assert late_save.json()["detail"]["decision"]["outcome"] == "saved_result_deleted"
+    assert (
+        client.post(
+            "/api/imports", headers=headers, content=json.dumps(source() | {"title": "Changed"})
+        ).status_code
+        == 409
+    )
+    headers["X-Import-Key"] = "explicit-new-import"
+    new_preview = client.post("/api/imports", headers=headers, content=content)
+    assert new_preview.status_code == 200, new_preview.text
+    assert new_preview.json()["id"] != preview["id"] and new_preview.json()["state"] == "pending"
+    new_saved = client.post(
+        f"/api/previews/{new_preview.json()['id']}/save", headers=headers, json={}
+    ).json()
+    assert new_saved["saved_trip_id"] != identity
+    assert client.get("/api/library").json()["total"] == 1
+    assert client.get("/api/imports/deleted-import").json() == receipt
