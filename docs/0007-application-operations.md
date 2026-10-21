@@ -3,16 +3,17 @@
 Status: Implemented application boundary, consolidated 2026-10-03.
 The unified Product design is being implemented in slices. Accounts, the r7 shell,
 authentication return, the editable travel brief and the Product migration entrypoint
-are implemented. The Product editor does not submit generation until the durable task
-slice connects explicit submission. Existing HTTP/stream API entrypoints remain available.
+and durable generation tasks with recoverable unsaved previews are implemented.
+Product HTTP/stream entrypoints submit and observe that same account task lifecycle.
 
 ## Product and Developer surfaces
 
 Product presents V3 through a version-agnostic API and an allowlisted user contract.
 Developer mode selects V0-V3 independently and retains diagnostics needed for engineering.
 React owns form state, progress and rendering. FastAPI validates input, invokes application
-services and serializes outcomes. Long planning work uses the existing streaming boundary;
-stale responses must not overwrite an edited request. Cancellation and errors are explicit.
+services and serializes outcomes. An application-owned coordinator runs Product work;
+observers read persisted snapshots. Developer retains request-owned streaming and cancellation.
+Stale responses must not overwrite an edited request.
 
 Inputs share destination text, currency selection, ISO dates and optional preferences.
 Server date policy owns admissibility; browser display must not change dates through
@@ -43,8 +44,11 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
-| `POST /api/planning` | Shared `PlanningRequest`; V3 Product response discriminated by `status` | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
-| `POST /api/planning/stream` | Same input and terminal result, delivered through request-lifetime SSE | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
+| `POST /api/planning` | Shared `PlanningRequest` plus `Idempotency-Key`; 202 durable task snapshot | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
+| `POST /api/planning/stream` | Same submission identity; observe durable task revisions and final public detail with task/preview IDs | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
+| `POST /api/planning/tasks` | `{operation_key, request, editor_snapshot?}`; 202 immutable task snapshot or 409 active/key conflict | [Task lifecycle](#durable-planning-tasks-and-previews) |
+| `GET /api/planning/tasks`, `/recent`, `/active`, `/{id}` | Owner-only bounded recent/active reads, operation-key lookup and canonical snapshots | [Task API](../backend/app/product/tasks.py) |
+| `GET /api/previews`, `/{id}` | Paged pending summaries and owner-only full public detail/decision receipt | [Task lifecycle](#durable-planning-tasks-and-previews) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
 | `POST /api/dev/planning` | `{version, request, reference_date?}`; version is `v0` through `v3`, output is full `PlanningResult` | [Developer router](../backend/app/api/developer/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/dev/planning/stream` | Same version-selected input/result through an independent SSE request | [Developer router](../backend/app/api/developer/planning.py) |
@@ -59,14 +63,12 @@ the complete schema into UI or operational prose. Product does not accept engine
 or a research reference-date override. Developer's optional reference date supports explicit
 engineering fixtures and does not authorize historical live evidence acquisition.
 
-Product outcomes are `completed`, `needs_clarification`, `safety_blocked` and
-`provider_blocked`. Clarification carries requirements/issues; safety/provider blocks
-carry application-authored user actions without raw provider details or sensitive quotes.
-`completed` means a result was produced; inspect its separate policy completion rather
-than interpreting the HTTP outcome as globally feasible or fully validated.
-Developer returns research metadata and reports clarification as HTTP 422. Invalid request/
-date validation is 422; public planning/boundary failures are 502 and timeouts are 504.
-Product's typed clarification/block outcomes remain distinct from those HTTP failures.
+Product task outcomes distinguish `completed`, `needs_clarification`, `safety_blocked`,
+`provider_blocked`, `failed` and `cancelled`. Typed clarification/block/failure actions
+retain the immutable submitted input without raw provider diagnostics or sensitive quotes.
+A completed preview retains its separate policy completion and uncertainty; persistence
+does not imply global feasibility. Invalid submission/date/currency fields fail with 422
+before external work. Developer retains its research responses and HTTP failure policy.
 
 The [frontend Product API](../frontend/src/features/planning/api.ts) and
 [Developer API](../frontend/src/features/developer-planning/api.ts) bind these wire contracts;
@@ -91,7 +93,8 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-Status: Accounts, shell and brief editor implemented; remaining lifecycle slices pending.
+Status: Accounts, profiles, shell, drafts, brief editor, durable tasks and previews implemented;
+saving/import/copy lifecycle slices remain pending.
 Dayloom r7's visual/interaction baseline is provisionally accepted. The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
 frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
@@ -152,6 +155,55 @@ starting another brief resets that initialization and reads the latest defaults 
 Profile updates never mutate an open editor, and planning services do not read profiles
 to overlay confirmed requests. Draft identity and revision share the account-scoped
 recovery boundary so expiry can quarantine them alongside their editor content.
+
+### Durable planning tasks and previews
+
+The authenticated explicit Generate action freezes the confirmed `PlanningRequest` and
+optional `editor_version=1` restoration snapshot by value. Profile/draft changes cannot
+alter task input. Product validates supported currency and current dates before providers,
+and retains the accepted calendar reference date across queued execution. Operation keys
+are owner-scoped and separate from `request_id`; the complete canonical request fingerprint
+includes literal preference text, normalized Decimal amount and omitted/null request ID.
+Same-key/same-request reads the original task; changed reuse returns 409. A PostgreSQL
+partial unique index enforces one pending/running/stopping task per owner across instances.
+A conflicting Generate returns `planning_task_active` with its existing task ID, while
+editing and saving another draft remains available.
+
+Acceptance commits a finite pending claim deadline before scheduling. The application
+supervisor holds worker/heartbeat references independently of HTTP/browser sessions. A
+short atomic claim grants a private execution ID, fencing generation and finite lease;
+renewal, progress, terminal outcome and preview publication require current unexpired
+authority after row locking. Public progress revisions are separate from private fencing.
+Public reads and periodic reconciliation fail expired pending/running/stopping work with
+`planning_interrupted`, retain its input and release the slot. They preserve live leases
+and completed records, and never restart providers. Database operations run off the async
+loop and never hold transactions across provider awaits. Shutdown cleans up owned workers;
+abrupt loss is recovered through persisted deadlines.
+
+Trusted final V3 presentation becomes one `product_detail_1` snapshot in
+`app.itinerary_previews`, atomically with the completed task reference. Uncertainty,
+canonical source names, final transfers and policy completion survive projection. The
+preview is separate from the saved library and survives app/browser recreation. Pending
+summaries use bounded `limit`/`offset` pages; item reads return the full snapshot. Later
+Save/Discard decisions use the same receipt row, with retained operation identity and
+saved-result tombstones. Task/preview foreign keys enforce same owner and source task;
+account deletion cascades both. No queue, event log or graph checkpoint is introduced.
+
+The global desktop/mobile entry and `/planning` rehydrate task state with one in-flight
+bounded poll, reconnect/focus reads and an observed completion notice. Completion neither
+redirects nor changes the current brief. `/previews/:id` reads immutable unsaved detail.
+An ambiguous submit response triggers only an operation lookup; its immutable intent
+and key stay account-scoped through expiry. Explicit logout/revocation clears it. A late
+response cannot overwrite another edited brief or submit it with an unresolved earlier
+operation identity. The HTTP adapter returns 202; SSE observes revision snapshots, then
+emits the same task/preview IDs with its allowlisted public detail. Disconnect detaches
+only the observer. Developer streaming and independent V0–V3 entrypoints are unchanged.
+
+The Product dependency factory adds English writing policy only to primary/Repair
+provider system prompts, preserving request/source text and proper names. It admits the
+final effective prompt under existing limits and records effective sizing separately.
+It adds no translation send or retry. Developer/direct V0–V3 keep their default factory;
+adapter tests verify policy placement, not universal live-model language compliance.
 
 ### Implemented visible brief editor
 
@@ -294,7 +346,7 @@ Breakpoint changes preserve visible focus, and reduced motion disables the pulse
 smooth location. Details use a native modal dialog with keyboard focus containment and
 restoration. No favorites or saved-place collection is introduced.
 
-The remaining task/storage mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
+The remaining saved-trip/import mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
 browser journeys through those APIs with external providers mocked, and the public migration
 entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
 Runnable account/migration checks are in the [development guide](guides/development.md#product-account-setup-and-acceptance).
@@ -325,39 +377,26 @@ trigger this call, and introductions cannot change validation or research output
 
 ## Streams, progress and cancellation
 
-[Stream delivery](../backend/app/api/streaming.py) sends `event: <type>` and JSON `data`
-frames. Types are `started`, `stage`, optional Developer `detail`, and terminal `result`,
-`error` or `cancelled`. Every observed event has request-local `run_id`, monotonically
-increasing `sequence`, `type` and `elapsed_ms`; Developer adds `version`. Stage messages
-carry stage/occurrence/status identifiers, parent linkage and public text; diagnostic details
-are Developer-only. [ProgressObserver](../backend/app/observability/progress.py) owns fields
-and bounded buffering, including an explicit `dropped_events` count when applicable.
-Heartbeat comments (`: keep-alive`) are sent after 15 seconds without an event.
+Product's task observation and cancellation authority are defined in the
+[durable task contract](#durable-planning-tasks-and-previews). Its SSE adapter emits
+persisted `task` revision snapshots and a completed `result` containing task/preview
+identity plus the public detail. Navigation, disconnect and logout detach observation;
+none is an explicit Stop action. The browser uses canonical reads for reconnect recovery,
+without resending generation automatically.
 
-A terminal `result` embeds the same typed response as ordinary HTTP. An `error` carries
-`http_status` and public `detail`; once streaming starts, that event does not change the
-already-sent HTTP status. Input/date errors can occur before stream creation. A disconnected
-client may not receive a terminal cancellation frame; server cleanup still cancels and
-awaits the producer. No stream event establishes that an already-dispatched external call
-was cancelled or unbilled.
+Developer retains [request-owned stream delivery](../backend/app/api/streaming.py):
+`started`, `stage`, optional `detail`, and terminal `result`, `error` or `cancelled`.
+Events carry request-local `run_id`, increasing `sequence`, `type`, `elapsed_ms` and
+`version`. Stage text is allowlisted; diagnostic detail is Developer-only.
+[ProgressObserver](../backend/app/observability/progress.py) bounds buffering and reports
+`dropped_events`. Heartbeat comments follow 15 seconds without an event. Terminal
+errors cannot change the already-sent HTTP status. Disconnect cancels and awaits that
+request's producer/owned transports; it does not guarantee external termination or billing.
 
-The request-lifetime Product API supports one stream; `/dev` launches four independent
-streams from a copied input snapshot.
-Forms lock during active work. Per-run/all-stop, same-snapshot reruns and unmount cancellation
-use controller/group identities to reject late superseded results. Editing an idle form clears
-the result group. Only terminal successful results render itineraries. Sequence duplicates,
-UTF-8/chunk boundaries, heartbeat comments and premature EOF are handled without automatic retry.
-Developer event history is bounded and reports losses; complete final JSON is retained separately.
-
-Progress is a monotonic workflow-position estimate driven by observed stages, not elapsed-time
-percentage or a remaining-time prediction. Skipped/unknown stages do not advance it; repeated
-Repair occupies a bounded region. Only success completes the bar; stop/error retains position.
-Stage completion is not proof of successful repair and overlapping durations are not summed.
-
-API request ownership includes the underlying HTTP transports, not just adapter wrappers.
-Partial setup closes already-created resources; cancellation awaits owned cleanup. Independent
-requests must remain usable after another closes. Local cancellation cannot guarantee termination
-or billing cancellation of work already dispatched to external providers. Streaming provides
-no reconnect/resume or public multi-user service guarantee. Planned saved-trip history uses
-the proposed task/preview boundary described above; these request-lifetime Product
-semantics remain the implemented behavior until that coordinated migration.
+`/dev` launches four independent streams from a copied input, locks the active form,
+and retains per-run/all-stop and same-snapshot reruns. Controller/group identities fence
+late results; idle edits clear the result group. Its event history is bounded and the
+complete final JSON is retained separately. The shared parser handles sequences,
+UTF-8/chunk framing, comments and premature EOF without automatic execution retry.
+Workflow position follows observed stages, rather than elapsed-time percentage or an
+arrival-time promise; stage completion is not proof that Repair succeeded.

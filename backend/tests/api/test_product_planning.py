@@ -15,21 +15,74 @@ from backend.tests.versions.v0.fakes import (
 )
 
 
-def post_product_planning(
-    service: PlanningService,
-    payload: dict[str, object],
-) -> tuple[int, dict[str, object]]:
-    async def send_request() -> tuple[int, dict[str, object]]:
-        app.dependency_overrides[get_planning_service] = lambda: service
-        try:
-            transport = ASGITransport(app=app)
-            async with AsyncClient(transport=transport, base_url="http://test") as client:
-                response = await client.post("/api/planning", json=payload)
-            return response.status_code, response.json()
-        finally:
-            app.dependency_overrides.pop(get_planning_service, None)
+def post_product_planning(service: PlanningService, payload: dict[str, object], *, stream=False):
+    """Real authenticated adapter, coordinator and isolated PG; providers supplied by caller."""
+    import os
+    from uuid import uuid4
 
-    return asyncio.run(send_request())
+    import pytest
+    from pydantic import SecretStr
+
+    from backend.app.main import create_app
+    from backend.app.product.database import migrate
+    from backend.tests.product.database_safety import require_test_database
+    from scripts.run_api import create_api_loop
+
+    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    if not dsn.get_secret_value():
+        pytest.skip("Product HTTP acceptance requires isolated PRODUCT_TEST_DATABASE_URL")
+    require_test_database(dsn)
+    migrate(dsn.get_secret_value())
+    from backend.app.product.settings import ProductSettings
+
+    origin = ProductSettings().origin
+
+    async def send_request():
+        application = create_app()
+        application.dependency_overrides[get_planning_service] = lambda: service
+        async with application.router.lifespan_context(application):
+            async with AsyncClient(
+                transport=ASGITransport(app=application), base_url=origin
+            ) as client:
+                registration = await client.post(
+                    "/api/auth/register",
+                    json={
+                        "email": f"{uuid4()}@example.com",
+                        "password": "secure test password",
+                        "display_name": "Planner",
+                    },
+                    headers={"Origin": origin},
+                )
+                assert registration.status_code == 201, registration.text
+                response = await client.post(
+                    "/api/planning" + ("/stream" if stream else ""),
+                    json=payload,
+                    headers={
+                        "Origin": origin,
+                        "X-CSRF-Token": registration.json()["csrf_token"],
+                        "Idempotency-Key": str(uuid4()),
+                    },
+                )
+                if stream:
+                    import json
+
+                    return response.status_code, [
+                        json.loads(line[6:])
+                        for line in response.text.splitlines()
+                        if line.startswith("data: ")
+                    ] if response.status_code == 200 else response.json()
+                if response.status_code != 202:
+                    return response.status_code, response.json()
+                coordinator = application.state.product_coordinator
+                await asyncio.gather(*coordinator.workers)
+                task = (await client.get(f"/api/planning/tasks/{response.json()['id']}")).json()
+                if task["preview_id"]:
+                    task["preview"] = (
+                        await client.get(f"/api/previews/{task['preview_id']}")
+                    ).json()
+                return response.status_code, task
+
+    return asyncio.run(send_request(), loop_factory=create_api_loop)
 
 
 def make_product_payload() -> dict[str, object]:
@@ -56,10 +109,10 @@ def test_product_planning_returns_completed_contract_without_version() -> None:
         make_product_payload(),
     )
 
-    assert status_code == 200
-    assert body["status"] == "completed"
-    assert body["requirements"]["destination"] == "Kyoto"
-    assert body["itinerary"]["destination"] == "Kyoto"
+    assert status_code == 202
+    assert body["state"] == "completed"
+    assert body["request"]["destination"] == "Kyoto"
+    assert body["preview"]["snapshot"]["destination"] == "Kyoto"
     assert "system_version" not in body
 
 
@@ -171,13 +224,10 @@ def test_product_planning_hides_provider_failure_details() -> None:
         make_product_payload(),
     )
 
-    assert status_code == 502
-    assert body == {
-        "detail": {
-            "code": "planning_failed",
-            "message": "The itinerary could not be generated. Please try again.",
-        }
-    }
+    assert status_code == 202
+    assert body["state"] == "failed"
+    assert body["outcome"]["code"] == "planning_failed"
+    assert body["preview_id"] is None
     assert "provider secret" not in str(body)
 
 

@@ -157,6 +157,7 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         page.get_by_label("Start date", exact=True).fill(window["allowedStart"])
         page.get_by_label("End date", exact=True).fill(window["allowedStart"])
         page.get_by_label("Travelers", exact=True).fill("2")
+        assert not generation  # Authentication and invalid fields never submit.
         page.get_by_label("Whole-trip budget", exact=True).fill("0")
         page.get_by_label("Currency", exact=True).select_option("CAD")
         page.get_by_label("Places or experiences to include").fill("An art museum")
@@ -272,14 +273,14 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         expect(page.get_by_role("alert")).to_contain_text("whole number of travelers")
         page.get_by_label("Travelers", exact=True).fill("2")
         page.get_by_role("button", name="Generate itinerary").click()
-        expect(page.get_by_role("status")).to_contain_text("Your brief is ready")
+        expect(page.get_by_text("Planning has started.", exact=False)).to_be_visible()
         page.reload()  # A new editor allowance avoids racing a just-sent recovered-city lookup.
         destination.fill("Unavailable city")
         expect(
             page.get_by_text("Suggestions are unavailable. You can enter a destination manually.")
         ).to_be_visible()
         expect(destination).to_have_value("Unavailable city")
-        assert not generation
+        assert len(generation) == 1 and generation[0].endswith("/api/planning/tasks")
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         pair = page.locator(".preference-pair > fieldset")
         first, second = pair.nth(0).bounding_box(), pair.nth(1).bounding_box()
@@ -312,6 +313,6 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         expect(page.get_by_role("button", name="Take it slowly Relaxed")).to_have_attribute(
             "aria-pressed", "false"
         )
-        assert not generation
+        assert len(generation) == 1  # Reload and same-account reauthentication never replay.
     finally:
         context.close()

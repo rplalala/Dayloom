@@ -36,7 +36,8 @@ Vite proxies `/api` and `/health` to `http://127.0.0.1:8000`.
 The [API launcher](../../scripts/run_api.py) selects the Windows event loop needed by
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
-Product routes are `/`, `/plan`, `/trips`, `/login` and `/account`; Developer is `/dev`.
+Product routes include `/`, `/plan`, `/trips`, `/login`, `/account`, `/planning`,
+`/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
 The Product r7 shell has its own shared brief surface. Developer retains independent
 V0-V3 and the existing structured form. Product generation HTTP endpoints require
 authentication; the durable generation UI is connected in its implementation slice.
@@ -51,6 +52,10 @@ are distinct settings. Never commit real credentials. Default local DB host/port
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
 The pinned vocabulary under `.cache/tokenizer` must also exist; the planner does not
 download it. `python -m tools.data.prepare_tokenizer --help` describes explicit preparation.
+
+For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
+`data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
+claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
 
 ## Product account setup and acceptance
 
@@ -142,6 +147,24 @@ Public example endpoints also run without Product account/provider configuration
 HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
 references, real day order and safe text rendering. The public fixtures are historical
 source claims, not live provider verification.
+
+### Durable task acceptance
+
+Product Generate uses `POST /api/planning/tasks` with an owner-scoped `operation_key`,
+confirmed `request` and optional editor snapshot. The legacy HTTP/SSE adapters require
+`Idempotency-Key` and share the same coordinator. Migrations now include tasks and
+previews; rerun the public migration command before starting the application. No new
+provider configuration or external queue is required. A process shutdown interrupts its
+owned work; after an abrupt crash, expired pending/lease records reconcile on access or
+periodically, retaining input without automatic execution restart.
+
+With the explicitly isolated test database and browser ports above configured, run
+`uv run pytest backend/tests/product/test_tasks.py backend/tests/product/test_task_browser.py`.
+The browser factory runs the actual application/V3 graph with controlled external model,
+place, route, weather, retrieval and introduction adapters. Its completion signals,
+logs and screenshots remain in that worktree's `.scratch/task-browser/`. These cases
+cover lost accepted responses, changing/saving another brief, SSE/browser detachment,
+logout, preview recovery and stale execution authority; they make no paid calls.
 
 ## Independent version execution
 

@@ -10,6 +10,7 @@ import { AuthPage } from "../features/product/AuthPage";
 import { LibraryPage } from "../features/product/LibraryPage";
 import { AccountPage } from "../features/product/AccountPage";
 import { ExamplePage } from "../features/product/detail/ExamplePage";
+import { PlanningTasksPage, PreviewPage } from "../features/product/tasks";
 
 export const routes: RouteObject[] = [
   {
@@ -21,6 +22,9 @@ export const routes: RouteObject[] = [
       { path: "trips", element: <LibraryPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "examples/:exampleId", element: <ExamplePage /> },
+      { path: "planning", element: <PlanningTasksPage /> },
+      { path: "planning/:taskId", element: <PlanningTasksPage /> },
+      { path: "previews/:previewId", element: <PreviewPage /> },
     ],
   },
   {

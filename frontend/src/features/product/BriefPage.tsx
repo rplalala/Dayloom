@@ -10,6 +10,9 @@ import { briefErrors, editPreferences, interestPrompts, pacePrompts, toggleInter
 import { useSession } from "./session";
 import { DraftControls } from "./DraftControls";
 import "./editor.css";
+import { taskRequest, TaskFailure, sameConfirmedRequest, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
+import { useTasks } from './taskContext';
+import { planningInput } from './editor';
 
 /** The single Product editor, shared by recovery and future drafts/submission. */
 export function BriefPage() {
@@ -23,7 +26,11 @@ export function BriefPage() {
   }, [draftId, status, briefOrigin, initializeNewBrief]);
   const [dateWindow, setDateWindow] = useState<TripDateWindow | null>(null);
   const [dateError, setDateError] = useState(false);
-  const [reviewed, setReviewed] = useState(false);
+  const [submitState, setSubmitState] = useState<{ owner?: string; busy?: boolean; message?: string; taskId?: string }>({});
+  const submission = submitState.owner === session.account?.id ? submitState : {};
+  const { tasks, refresh: refreshTasks } = useTasks();
+  const owner = useRef(session.account?.id);
+  useEffect(() => { owner.current = session.account?.id; }, [session.account?.id]);
   const [checked, setChecked] = useState(false);
   const [draftLoading, setDraftLoading] = useState(false);
   const notesInput = useRef<HTMLTextAreaElement>(null);
@@ -52,11 +59,57 @@ export function BriefPage() {
       textEdit.current = null;
     };
   }, [session.status]);
-  function update(next: Brief) { setReviewed(false); session.editBrief(next); }
+  function update(next: Brief) { session.editBrief(next); }
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
   const validBudget = brief.budget.trim() !== "" && Number.isFinite(Number(brief.budget)) && Number(brief.budget) >= 0 && isListedCurrency(brief.currency);
   const loginReturn = `/login?return=${encodeURIComponent(draftId ? `/plan?draft=${draftId}` : "/plan")}`;
+  async function generate() {
+    if (!session.actionId) session.setActionId(crypto.randomUUID());
+    if (!session.account) { if (!session.actionId) session.setActionId(crypto.randomUUID()); navigate('/login?return=/plan'); return; }
+    setChecked(true);
+    if (errors.length || !dateWindow || submission.busy) return;
+    const account = session.account;
+    const request = planningInput(brief, dateWindow);
+    let key = session.actionId;
+    setSubmitState({ owner: account.id, busy: true });
+    try {
+      if (key) {
+        const intended = readSubmissionIntent(account.id, key);
+        const existing = await taskRequest<PlanningTask | null>(`/api/planning/tasks?operation_key=${encodeURIComponent(key)}`);
+        if (owner.current !== account.id) return;
+        if (existing && sameConfirmedRequest(existing.request, request)) {
+          setSubmitState({ owner: account.id, message: 'Your submitted task is available. Open progress to continue.', taskId: existing.id });
+          void refreshTasks(); return;
+        }
+        if (!existing && intended && !sameConfirmedRequest(intended.request, request)) {
+          setSubmitState({ owner: account.id, message: 'An earlier submission is unresolved. Your new brief is retained. Check planning tasks before submitting another brief.' });
+          return;
+        }
+        if (existing) key = null;
+      }
+      key = key || crypto.randomUUID();
+      session.setActionId(key);
+      rememberSubmissionIntent(account.id, key, request, brief);
+      const task = await taskRequest<PlanningTask>('/api/planning/tasks', { csrf: account.csrf_token, body: { operation_key: key, request, editor_snapshot: brief } });
+      if (owner.current !== account.id) return;
+      setSubmitState({ owner: account.id, message: 'Planning has started. You can keep editing or save another brief.', taskId: task.id });
+      void refreshTasks();
+    } catch (error) {
+      if (owner.current !== account.id) return;
+      if (error instanceof TaskFailure) {
+        if (error.status === 401) void session.refresh();
+        setSubmitState({ owner: account.id, message: error.message, taskId: error.detail.task_id });
+      } else {
+        // Unknown write outcome: observe by identity; never automatically POST again.
+        try {
+          const recovered = key ? await taskRequest<PlanningTask | null>(`/api/planning/tasks?operation_key=${encodeURIComponent(key)}`) : null;
+          if (owner.current !== account.id) return;
+          setSubmitState({ owner: account.id, message: recovered ? 'Your task was accepted. Open progress to continue.' : 'The response was lost. Check planning tasks before explicitly trying again.', taskId: recovered?.id });
+        } catch { if (owner.current === account.id) setSubmitState({ owner: account.id, message: 'The response was lost. Check planning tasks when reconnected before explicitly trying again.' }); }
+      }
+    }
+  }
   if (session.status === "loading") return <div className="page container" role="status">Checking your session…</div>;
   if (session.status === "expired") return <div className="page container"><h1>Log in to continue your brief.</h1><p>Your unsaved input is kept private until you return to the same account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
   if (draftId && !session.account) return <div className="page container"><h1>Log in to open this draft.</h1><p>Planning drafts are private to their account.</p><Link to={loginReturn} className="btn btn-primary">Log in</Link></div>;
@@ -68,9 +121,7 @@ export function BriefPage() {
       <div className="flow-title"><span className="step-number">01</span><div><h2>Tell us how you like to travel</h2><p>A few essentials, and the things that make it your trip.</p></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
         event.preventDefault();
-        if (!session.actionId) session.setActionId(crypto.randomUUID());
-        if (!session.account) { navigate("/login?return=/plan"); return; }
-        setChecked(true); setReviewed(errors.length === 0);
+        void generate();
       }}>
         {session.defaultsApplied && <p className="subtle-help" role="status">Your travel defaults are shown below. Edit them for this trip.</p>}
         <fieldset className="form-fields" disabled={draftLoading}><legend className="visually-hidden">Travel brief</legend>
@@ -103,11 +154,11 @@ export function BriefPage() {
           }} disabled={false} onApply={value => update(editPreferences(brief, value))} />
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
-        <div className="form-bottom"><p>City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading} className="btn btn-primary btn-large">Generate itinerary →</button></div>
-        {reviewed && <p className="subtle-help" role="status">Your brief is ready. Review your details before you generate.</p>}
+        <div className="form-bottom"><p>City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large">{submission.busy ? 'Submitting…' : 'Generate itinerary →'}</button></div>
+        {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={`/planning/${submission.taskId}`}>Open task progress →</Link>}</p>}
       </form>
     </section>
-    <section className="flow-card"><div className="flow-title"><span className="step-number">02</span><div><h2>Planning progress</h2><p>Ready when you are.</p></div></div></section>
+    <section className="flow-card"><div className="flow-title"><span className="step-number">02</span><div><h2>Planning progress</h2><p>{tasks.find(taskActive)?.progress.message || 'Ready when you are.'}</p></div></div>{session.account && <Link to="/planning">Open planning tasks and recoverable previews →</Link>}</section>
     <section className="flow-card"><div className="flow-title"><span className="step-number">03</span><div><h2>Your itinerary</h2><p>Preview every day. Save it when it feels right.</p></div></div><div className="result-placeholder"><strong>A new journey is waiting.</strong><p>Fill in your travel brief. Your day-by-day itinerary will appear here.</p></div></section>
   </div>;
 }

@@ -63,6 +63,8 @@ function invalidate(owner: string | null) {
   if (!owner) return;
   try {
     localStorage.setItem(invalidationPrefix + owner, crypto.randomUUID());
+    const intent = JSON.parse(sessionStorage.getItem('dayloom.task.intent.v1') || 'null');
+    if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
   } catch {
     /* Keep this tab cleared. */
   }
@@ -183,6 +185,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }
   }, []);
   const clear = useCallback(() => {
+    try { sessionStorage.removeItem('dayloom.task.intent.v1'); } catch { /* Account content stays hidden in memory. */ }
     recovery.current = {
       owner: null,
       brief: { ...emptyBrief },

@@ -2,11 +2,12 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { SessionProvider, useSession } from "../features/product/session";
 import "../styles/dayloom.css";
+import { TaskProvider, TaskEntry } from "../features/product/tasks";
 
 export function ProductLayout() {
   return (
     <SessionProvider>
-      <ProductShell />
+      <TaskProvider><ProductShell /></TaskProvider>
     </SessionProvider>
   );
 }
@@ -32,6 +33,7 @@ function ProductShell() {
             <NavLink to="/trips">My trips</NavLink>
           </nav>
           <div className="nav-actions">
+            <TaskEntry />
             {account ? (
               <NavLink
                 to="/account"

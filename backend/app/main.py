@@ -1,5 +1,6 @@
 """FastAPI application entry point."""
 
+from contextlib import asynccontextmanager
 from typing import Literal
 
 from fastapi import FastAPI, Request
@@ -15,6 +16,7 @@ from backend.app.product.auth import router as account_router
 from backend.app.product.drafts import router as drafts_router
 from backend.app.product.examples import router as examples_router
 from backend.app.product.profiles import router as profile_router
+from backend.app.product.tasks import router as tasks_router
 
 
 class HealthResponse(BaseModel):
@@ -33,7 +35,18 @@ def get_health() -> HealthResponse:
 
 def create_app() -> FastAPI:
     """Recreate the HTTP application without requiring Product/provider configuration."""
+
+    @asynccontextmanager
+    async def lifespan(application):
+        try:
+            yield
+        finally:
+            coordinator = getattr(application.state, "product_coordinator", None)
+            if coordinator:
+                await coordinator.close()
+
     application = FastAPI(
+        lifespan=lifespan,
         title="Reliable Trip Plan Agent",
         description="Backend API for reliable itinerary generation.",
         version="0.1.0",
@@ -45,6 +58,7 @@ def create_app() -> FastAPI:
     application.include_router(examples_router)
     application.include_router(profile_router)
     application.include_router(drafts_router)
+    application.include_router(tasks_router)
 
     @application.exception_handler(RequestValidationError)
     async def safe_auth_validation(request: Request, exc: RequestValidationError):

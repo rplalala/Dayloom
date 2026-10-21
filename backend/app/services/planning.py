@@ -48,10 +48,17 @@ class PlanningService:
         self._date_provider = date_provider or SystemDateProvider()
         self._introductions = introductions or ProductIntroductions()
 
-    def validate(self, request: PlanningRequest) -> PlanningRequest:
-        return validate_planning_request(request, self._date_provider.today())
+    def validate(
+        self, request: PlanningRequest, *, reference_date: date | None = None
+    ) -> PlanningRequest:
+        return validate_planning_request(request, reference_date or self._date_provider.today())
 
-    async def plan(self, request: PlanningRequest) -> ProductPlanResult:
+    def reference_date(self) -> date:
+        return self._date_provider.today()
+
+    async def plan(
+        self, request: PlanningRequest, *, reference_date: date | None = None
+    ) -> ProductPlanResult:
         """Run V3, then decorate only the final Product presentation."""
         observer = current_progress()
         evidence = ProductEvidenceCollector(
@@ -61,7 +68,7 @@ class PlanningService:
             result = await self._runtime.run(
                 SystemVersion.V3,
                 request,
-                reference_date=self._date_provider.today(),
+                reference_date=reference_date or self._date_provider.today(),
                 tracer=evidence,
             )
         except ClarificationRequired as exc:

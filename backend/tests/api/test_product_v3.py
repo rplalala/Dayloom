@@ -66,12 +66,13 @@ def test_product_v3_completed_and_developer_does_not_generate_introductions(
         runtime, date_provider, introductions=ProductIntroductions(introductions)
     )
     status, body = post_product_planning(service, make_request().model_dump(mode="json"))
-    assert status == 200 and body["status"] == "completed"
+    assert status == 202 and body["state"] == "completed"
+    body = body["preview"]["snapshot"]
     assert len(calls) == 1
-    activities = [a for d in body["itinerary"]["days"] for a in d["activities"]]
+    activities = [a for d in body["days"] for a in d["activities"]]
     assert any(a["introduction"] for a in activities) != introduction_failure
-    assert all("weather" in d for d in body["itinerary"]["days"])
-    assert any(d["weather"]["status"] == "available" for d in body["itinerary"]["days"])
+    assert all("weather" in d for d in body["days"])
+    assert any(d["weather"] is not None for d in body["days"])
     assert all(r.closes == 1 for r in retrievals)
     forbidden = {
         "system_version",

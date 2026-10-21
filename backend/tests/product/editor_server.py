@@ -49,6 +49,32 @@ def create_editor_app():
     polish = PreferencePolishingService(EditorPolisher)
     application.dependency_overrides[get_destination_service] = lambda: destination
     application.dependency_overrides[get_polishing_service] = lambda: polish
+    # Later generation-enabled editors must still never reach paid providers here.
+    from contextlib import asynccontextmanager
+
+    from backend.app.api.dependencies import get_date_provider, get_planning_service
+    from backend.app.services.planner_runtime import PlannerDependencies, RequestPlannerRuntime
+    from backend.app.services.planning import PlanningService
+    from backend.app.versions.v3 import runner
+    from backend.tests.versions.v1.fakes import FakeRoutesProvider, FakeWeatherProvider
+    from backend.tests.versions.v2.test_v2_runner import Places
+    from backend.tests.versions.v3.test_wiring import OwnedRetrieval
+
+    class UnconfiguredBrowserModel:
+        async def generate_structured(self, **kwargs):
+            raise RuntimeError("The editor-only browser fixture has no generation response")
+
+    @asynccontextmanager
+    async def dependencies(*args):
+        yield PlannerDependencies(
+            UnconfiguredBrowserModel(), Places(), FakeWeatherProvider(), FakeRoutesProvider()
+        )
+
+    runner.RuntimeRetrieval = lambda config: OwnedRetrieval()
+    planning = PlanningService(
+        RequestPlannerRuntime(dependency_factory=dependencies), get_date_provider()
+    )
+    application.dependency_overrides[get_planning_service] = lambda: planning
     return application
 
 

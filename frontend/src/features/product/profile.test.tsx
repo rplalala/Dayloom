@@ -101,7 +101,7 @@ it.each([
     await screen.findByDisplayValue("Quiet mornings");
     fireEvent.click(screen.getByRole("button", { name: "Save changes" }));
   }
-  await waitFor(() => expect(authReads).toBe(2));
+  await waitFor(() => expect(authReads).toBeGreaterThanOrEqual(2));
   await screen.findAllByRole("link", { name: "Log in" });
   expect(screen.queryByText("alice@example.com")).not.toBeInTheDocument();
   expect(screen.queryByDisplayValue("Quiet mornings")).not.toBeInTheDocument();

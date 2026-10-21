@@ -165,8 +165,17 @@ def test_empty_preferences_still_skip_model():
 
 @pytest.mark.parametrize("version", [0, 1, 2, 3])
 @pytest.mark.parametrize(
-    "outcome", ["rewrite", "clarify", "safety", "contract", "timeout", "cancel",
-                "provider_incomplete", "provider_rejection"]
+    "outcome",
+    [
+        "rewrite",
+        "clarify",
+        "safety",
+        "contract",
+        "timeout",
+        "cancel",
+        "provider_incomplete",
+        "provider_rejection",
+    ],
 )
 def test_actual_runners_stop_before_any_travel_work(version, outcome, monkeypatch):
     from backend.app.versions.v0.runner import run_v0
@@ -222,6 +231,7 @@ def test_actual_runners_stop_before_any_travel_work(version, outcome, monkeypatc
         async def generate_structured(self, **kwargs):
             if outcome in ("provider_incomplete", "provider_rejection"):
                 from backend.tests.llm.azure_foundry.test_requirement_boundary import interpret
+
                 self.calls.append(kwargs)
                 return await interpret(
                     "ordinary refusal text",
@@ -283,9 +293,11 @@ def test_actual_product_api_separates_user_safety_and_system_errors(outcome):
         value = draft(issue(source_refs=[{"quote": "fabricated", "occurrence": 0}]))
     elif outcome == "provider":
         value = RequirementBoundaryError(
-            "requirement_provider_failed", category="provider_request_rejected",
+            "requirement_provider_failed",
+            category="provider_request_rejected",
             provider_diagnostics={
-                "provider_request_id": "PRIVATE", "provider_error_message": "SECRET",
+                "provider_request_id": "PRIVATE",
+                "provider_error_message": "SECRET",
             },
         )
     elif outcome == "timeout":
@@ -295,14 +307,16 @@ def test_actual_product_api_separates_user_safety_and_system_errors(outcome):
     status, body = post_product_planning(make_planning_service(client), payload)
     assert len(client.calls) == 1
     if outcome in ("contract", "timeout", "provider"):
-        assert status == 502 and body["detail"]["code"] == "planning_failed"
+        assert status == 202 and body["state"] == "failed"
+        assert body["outcome"]["code"] == "planning_failed"
         assert "PRIVATE" not in str(body) and "SECRET" not in str(body)
     elif outcome == "safety":
-        assert status == 200 and body["status"] == "safety_blocked"
-        assert NY not in str(body) and "unreasonable" not in str(body)
+        assert status == 202 and body["state"] == "safety_blocked"
+        assert NY not in str(body["outcome"]) and "unreasonable" not in str(body["outcome"])
     else:
-        assert body["issues"]["issues"][0]["current_value"] == "Paris"
-        assert body["issues"]["issues"][0]["source_refs"][0]["quote"] == NY
+        assert body["state"] == "needs_clarification"
+        assert body["outcome"]["issues"]["issues"][0]["current_value"] == "Paris"
+        assert body["outcome"]["issues"]["issues"][0]["source_refs"][0]["quote"] == NY
 
 
 def test_developer_api_contract_failure_is_502_not_input_422():
@@ -374,5 +388,7 @@ def test_unrelated_issue_cannot_consume_a_structured_conflict_link():
     from pydantic import ValidationError
 
     with pytest.raises(ValidationError, match="Only structured issues"):
-        draft(issue("semantic_ambiguity", operational_conflict_index=0),
-              disposition="CLARIFICATION_REQUIRED")
+        draft(
+            issue("semantic_ambiguity", operational_conflict_index=0),
+            disposition="CLARIFICATION_REQUIRED",
+        )
