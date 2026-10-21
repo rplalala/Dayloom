@@ -619,3 +619,52 @@ def test_structured_export_origin_retains_only_public_source_metadata(client):  
     assert (
         "PRIVATE-SOURCE-MARKER" not in response.text and "provider_diagnostics" not in response.text
     )
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("max_wind_speed_kph", -1),
+        ("precipitation_probability_percent", -1),
+        ("precipitation_probability_percent", 101),
+    ],
+)
+def test_public_import_rejects_weather_outside_persisted_measurement_domains(client, field, value):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "weather-domain",
+    }
+    artifact = source()
+    artifact["days"][0]["weather"] = {field: value}
+    response = client.post("/api/imports", headers=headers, content=json.dumps(artifact))
+    assert response.status_code == 422, response.text
+    assert response.json()["detail"]["path"] == "$.days[0].weather." + field
+
+
+def test_valid_weather_domain_boundaries_survive_import_and_save(client):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "weather-boundaries",
+    }
+    artifact = source()
+    artifact["days"][0]["weather"] = {
+        "max_wind_speed_kph": 0,
+        "precipitation_probability_percent": 100,
+        "temperature_min_c": -10,
+    }
+    artifact["days"][1]["weather"] = {"precipitation_probability_percent": 0}
+    response = client.post("/api/imports", headers=headers, content=json.dumps(artifact))
+    assert response.status_code == 200, response.text
+    saved = client.post(f"/api/previews/{response.json()['id']}/save", headers=headers, json={})
+    assert saved.status_code == 200, saved.text
+    detail = client.get(f"/api/trips/{saved.json()['saved_trip_id']}").json()
+    assert detail["days"][0]["weather"]["max_wind_speed_kph"] == 0
+    assert detail["days"][0]["weather"]["temperature_min_c"] == -10
+    assert [day["weather"]["precipitation_probability_percent"] for day in detail["days"]] == [
+        100,
+        0,
+    ]

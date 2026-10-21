@@ -248,7 +248,14 @@ def normalize_import(content: str) -> ProductDetail:
             )
             for key, value in weather.items():
                 if key != "summary" and value is not None:
-                    finite_measurement(value, dp + ".weather." + key)
+                    finite_measurement(
+                        value,
+                        dp + ".weather." + key,
+                        nonnegative=key
+                        in {"max_wind_speed_kph", "precipitation_probability_percent"},
+                    )
+                    if key == "precipitation_probability_percent" and value > 100:
+                        fail(dp + ".weather." + key, "Expected a probability between 0 and 100")
         days.append({"date": day_date, "activities": activities, "weather": weather})
     start = calendar(
         source["start_date"] if source.get("start_date") is not None else min(dates),
