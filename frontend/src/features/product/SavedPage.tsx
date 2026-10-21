@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSession } from './session';
 import { taskRequest, TaskFailure } from './taskClient';
 import { TripDetail } from './detail/TripDetail';
 import type { ProductDetail } from './detail/types';
+import { replanBrief } from './replan';
 
 export function SavedPage() {
   const { tripId } = useParams();
-  const { account, refresh } = useSession();
+  const navigate = useNavigate();
+  const { account, refresh, replaceBrief } = useSession();
   const [result, setResult] = useState<{ owner?: string; id?: string; detail?: ProductDetail; error?: string }>({});
   useEffect(() => {
     if (!account) return;
@@ -25,5 +27,9 @@ export function SavedPage() {
   if (!account) return <div className="container page"><h1>Log in to view your saved itinerary.</h1><Link to={`/login?return=${encodeURIComponent(`/trips/${tripId}`)}`}>Log in</Link></div>;
   if (result.owner !== account.id || result.id !== tripId) return <p className="container page" role="status">Loading itinerary…</p>;
   if (!result.detail) return <div className="container page"><h1>{result.error}</h1><Link to="/trips">Back to My trips</Link></div>;
-  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={result.detail.id} detail={result.detail} mediaEndpoint={`/api/trips/${result.detail.id}/media`} /></>;
+  const detail = result.detail;
+  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} mediaEndpoint={`/api/trips/${detail.id}/media`} onReplan={() => {
+    replaceBrief(replanBrief(detail.request), 'replan');
+    navigate('/plan');
+  }} /></>;
 }

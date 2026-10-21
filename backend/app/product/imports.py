@@ -6,7 +6,7 @@ import json
 import math
 import re
 from datetime import date
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Request, Response
@@ -217,7 +217,7 @@ def normalize_import(content: str) -> ProductDetail:
             parse_float=Decimal,
             parse_constant=lambda value: fail("$", "Numbers must be finite"),
         )
-    except (ValueError, RecursionError) as error:
+    except (ValueError, RecursionError, InvalidOperation) as error:
         if isinstance(error, ImportError):
             raise
         fail("$", "Invalid JSON")

@@ -126,6 +126,23 @@ The real browser edits defaults, checks initials and the absence of avatar uploa
 then verifies visible new-brief defaults while existing/reloaded editor content remains
 unchanged. Profile screenshots belong to `.scratch/profile-browser`.
 
+The combined profile/draft/task/replan acceptance is runnable with the same isolated
+database and browser settings:
+
+```powershell
+uv run pytest backend/tests/product/test_replan_browser.py -q
+```
+
+It uses the real task coordinator, PlanningService, V3, retrieval lifecycle, API and
+PostgreSQL, replacing only external adapters with controlled responses. The journey
+updates persisted defaults while a task runs, reopens an existing draft, replans both
+complete generated and partial historical imported sources, fills unknown values and
+saves new previews independently. It checks current generation validation, owner isolation,
+zero writes on form opening, unchanged source requests and latest defaults on a genuinely
+new brief. Screenshots belong to `.scratch/replan-browser`; task signals and server logs
+remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-saved-itineraries)
+defines which original facts may seed the form.
+
 The editor journey uses the same isolated database and strict subprocess environment,
 with a test-only application factory replacing the external GeoDB HTTP transport and
 polishing model. Production routes/services, authentication, date policy, bounded
