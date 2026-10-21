@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSession } from "./session";
+import { CuratedPhoto } from './detail/MediaPhoto';
 
 export function AuthPage() {
   const session = useSession();
@@ -18,11 +19,7 @@ export function AuthPage() {
           WORRY LESS.
         </span>
         <div className="auth-scene-img">
-          <img
-            className="cover-img"
-            src="/dayloom/sydney.svg"
-            alt="Illustrated Sydney Harbour"
-          />
+          <CuratedPhoto image="sydney" label="Sydney Harbour" fallback="/dayloom/sydney.svg" />
         </div>
       </div>
       <div className="auth-card">

@@ -45,6 +45,8 @@ def geodb(request):
 
 def create_editor_app():
     application = create_app()
+    from backend.tests.product.media_fakes import replace_media
+    replace_media(application)
     destination = DestinationSuggestionService(GeoDBClient(transport=httpx.MockTransport(geodb)))
     polish = PreferencePolishingService(EditorPolisher)
     application.dependency_overrides[get_destination_service] = lambda: destination

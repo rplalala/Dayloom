@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../../features/product/session";
 import { ExampleCards } from "../../features/product/detail/ExampleCards";
+import { CuratedPhoto } from '../../features/product/detail/MediaPhoto';
 
 export function HomePage() {
   const { account } = useSession();
@@ -33,11 +34,7 @@ export function HomePage() {
           </div>
           <div className="hero-visual">
             <div className="hero-image">
-              <img
-                className="hero-photo"
-                src="/dayloom/hero.svg"
-                alt="Illustrated mountain landscape"
-              />
+              <CuratedPhoto label="Mountain landscape" />
             </div>
             <div className="floating-stamp">
               Your next chapter<span>YOUR NEXT DESTINATION</span>

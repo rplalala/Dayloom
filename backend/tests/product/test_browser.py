@@ -100,7 +100,8 @@ def browser_app():
         with patch.dict(os.environ, env, clear=True):
             playwright = sync_playwright().start()
         try:
-            browser = playwright.chromium.launch(env=env)
+            from backend.tests.product.browser_harness import IsolatedBrowser
+            browser = IsolatedBrowser(playwright.chromium.launch(env=env))
             try:
                 yield BrowserApplication(base, browser)
             finally:

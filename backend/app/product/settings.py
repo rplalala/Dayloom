@@ -7,7 +7,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class ProductSettings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="PRODUCT_", env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_prefix="PRODUCT_", env_file=".env", extra="ignore", hide_input_in_errors=True
+    )
 
     database_url: SecretStr
     jwt_secret: SecretStr

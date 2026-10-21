@@ -80,8 +80,33 @@ def create_task_app():
         with (CONTROL / "executions").open("a") as output:
             output.write("one\n")
         yield PlannerDependencies(
-            GatedModel(behavior="empty"), Places(), FakeWeatherProvider(), FakeRoutesProvider()
+            GatedModel(behavior="empty"),
+            BrowserPlaces(),
+            FakeWeatherProvider(),
+            FakeRoutesProvider(),
         )
+
+    class BrowserPlaces(Places):
+        async def search_nearby(self, request):
+            if not (CONTROL / "media-nearby").exists():
+                return await super().search_nearby(request)
+            from backend.app.integrations.models import PlaceCandidateDTO, PlaceSearchResponse
+
+            return PlaceSearchResponse(
+                candidates=[
+                    PlaceCandidateDTO(
+                        place_id="controlled-nearby",
+                        display_name="Controlled nearby park",
+                        location=request.center,
+                        primary_type="park",
+                        types=["park"],
+                        provider_rank=0,
+                        formatted_address="A nearby Sydney park",
+                    )
+                ],
+                actual_result_count=1,
+                retrieved_at="2026-09-11T00:00:00Z",
+            )
 
     class Introductions:
         async def generate(self, places):

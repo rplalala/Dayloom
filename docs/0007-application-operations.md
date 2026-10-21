@@ -491,8 +491,8 @@ feasibility (`UNKNOWN` or absent). Evidence availability/type is shown separatel
 timing feasibility. Example/import claims cannot acquire these trusted outcomes by
 supplying a status field; their displayed source claims remain explicitly unverified.
 Missing costs stay unknown, including when no total can be established. A zero amount
-or zero weather metric is a known value. Place slots use labelled illustrations while
-verified media integration is pending. Map queries are URL-encoded; weather source links
+or zero weather metric is a known value. Place slots use verified media when authorized,
+with labelled illustration fallbacks. Map queries are URL-encoded; weather source links
 admit only HTTP(S), and source text is rendered as text.
 
 Detail preserves the desktop two-column layout. Nearby references remain a flat ordered
@@ -517,6 +517,54 @@ The remaining Product mechanisms are specified in #198. Confirmed acceptance use
 browser journeys through those APIs with external providers mocked, and the public migration
 entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
 Runnable account/migration checks are in the [development guide](guides/development.md#product-account-setup-and-acceptance).
+
+### Verified place media and curated atmosphere
+
+Product media is a display boundary outside independent planner/evaluator serialization.
+The application binds a scheduled activity only when its final `source_place_id` belongs
+to Google-sourced `result.v3.final_places`. Removed candidates, free windows, displayed
+names and early evidence cannot grant authority. Nearby uses the final reference and its
+strict discovery ledger: exact place ID, adopted anchor activity/source ID and date must
+agree. Imports reject private binding declarations; imported Google claims and bundled
+examples do not establish a verified place photo identity.
+
+Application-private slots (`activity:{activity_id}` and `nearby:{ordered_position}`)
+map to stable Google place IDs in `media_bindings` JSONB on previews and saved trips.
+Migration 006 adds columns without another domain table. Save carries the map into the
+trip transaction. Public detail, JSON/text export and research results omit the map;
+no expiring photo resource name, CDN URL, author metadata or image bytes are persisted.
+
+`GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
+after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
+receipts delegate to the surviving owned trip, while discarded/deleted outcomes return
+no images. Each request admits 200–1280px dimensions, at most 12 ordered slots, three
+parallel resolutions and a 12-second batch deadline. Each Google slot performs at most
+one fresh `photos` Details request and one media metadata request, with a 3-second HTTP
+timeout and 256 KiB response limit. Redirects and arbitrary fetch destinations are
+rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
+automatic retry is introduced. Refresh place photos explicitly resolves fresh metadata
+without replanning or refreshing itinerary facts.
+
+Google photographs display associated Google Maps attribution, supplied author names
+and safe profile/source links in the same image container. Compact cards use the
+permitted text attribution with `translate="no"`, an unwrapped 12px normal-weight sans
+serif label and the specified gray on a light background. Unavailable metadata, absent
+identity/keys and expired/failed image loads show an illustration labelled as such.
+Preview access and Save remain independent of media success. Provider behavior follows
+the [Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)
+and [Places attribution policies](https://developers.google.com/maps/documentation/places/web-service/policies).
+
+Public `/api/media/curated/{sydney|nature}` uses two fixed officially identified Unsplash
+photo pages, resolving current API image/photographer metadata at display time. The
+Sydney harbour image is destination imagery; mountain imagery is explicitly general
+atmosphere. Neither supplies attraction/business-photo authority. Returned hotlink
+tracking parameters survive bounded image resizing, and photographer/source links carry
+application referral parameters. There is no image search, image selection/download,
+avatar storage or photo archive. Missing access/media uses stable local illustrations.
+This adapter follows the [Unsplash API documentation](https://unsplash.com/documentation)
+and [API guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines).
+Optional server keys and controlled acceptance are documented in the
+[development guide](guides/development.md#product-media-setup-and-acceptance).
 
 ## Configuration, evidence and verification
 

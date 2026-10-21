@@ -305,8 +305,8 @@ class TaskStore:
                 return False
             connection.execute(
                 "INSERT INTO app.itinerary_previews(id,owner_id,source_task_id,"
-                "source_kind,operation_key,fingerprint,snapshot,original_request) "
-                "VALUES (%s,%s,%s,'generated_v3',%s,%s,%s,%s)",
+                "source_kind,operation_key,fingerprint,snapshot,original_request,media_bindings) "
+                "VALUES (%s,%s,%s,'generated_v3',%s,%s,%s,%s,%s)",
                 (
                     detail.id,
                     claim["owner_id"],
@@ -315,6 +315,7 @@ class TaskStore:
                     claim["fingerprint"],
                     Jsonb(detail.model_dump(mode="json")),
                     Jsonb(claim["request"]),
+                    Jsonb(detail._media_bindings),
                 ),
             )
             connection.execute(

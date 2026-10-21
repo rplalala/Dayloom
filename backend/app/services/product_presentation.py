@@ -21,6 +21,7 @@ def present_product(result, evidence, introductions=None):
     days = []
     activities = {a.activity_id: (d.date, a) for d in final.days for a in d.activities}
     nearby = {}
+    nearby_identities = {}
     ledger = getattr(result, "nearby_ledger", {})
     for reference in final.reference_recommendations:
         raw = ledger.get(reference.source_place_id)
@@ -51,6 +52,9 @@ def present_product(result, evidence, introductions=None):
                 if entry.source_ref.startswith("google_places_nearby:")
                 else None,
             )
+        )
+        nearby_identities.setdefault(entry.anchor.activity_id, []).append(
+            entry.place.place_id if entry.source_ref.startswith("google_places_nearby:") else None
         )
     weather = evidence.weather
     if weather and weather.destination != result.requirements.destination:
@@ -163,7 +167,7 @@ def present_product(result, evidence, introductions=None):
                 else None,
             )
         )
-    return ProductPlanResult(
+    projected = ProductPlanResult(
         preference_coverage=tuple(
             dict(
                 preference=row["preference"],
@@ -196,6 +200,25 @@ def present_product(result, evidence, introductions=None):
         ),
         minimum_daily_coverage=public_minimum_coverage(result.generation_diagnostics),
     )
+    # Only the adopted V3 context is authority; early evidence and names are not.
+    final_places = getattr(getattr(result, "v3", None), "final_places", ())
+    verified = {
+        p.place_id
+        for p in final_places
+        if p.source_ref == f"google_places:{p.place_id}" and p.availability != "unavailable"
+    }
+    bindings = {}
+    nearby_position = 0
+    for day in final.days:
+        for activity in day.activities:
+            if activity.time_use != "free_window" and activity.source_place_id in verified:
+                bindings[f"activity:{activity.activity_id}"] = activity.source_place_id
+            for place_id in nearby_identities.get(activity.activity_id, []):
+                if place_id and activity.time_use != "free_window":
+                    bindings[f"nearby:{nearby_position}"] = place_id
+                nearby_position += 1
+    projected._media_bindings = bindings
+    return projected
 
 
 def public_clarification(issues):

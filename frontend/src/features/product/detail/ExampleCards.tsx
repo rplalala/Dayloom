@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { requestJson } from "../../../shared/api/http";
 import type { ExampleCard } from "./types";
+import { CuratedPhoto } from './MediaPhoto';
 
 export function ExampleCards() {
   const [cards, setCards] = useState<ExampleCard[] | null>(null);
@@ -27,13 +28,12 @@ export function ExampleCards() {
     <div className="trip-grid">
       {cards.map((card, i) => (
         <article className="trip-card" key={card.id}>
-          <Link
+          <div
             className={`trip-card-photo dayloom-example example-${i}`}
-            to={`/examples/${card.id}`}
-            aria-label={`Read ${card.title}`}
           >
-            <span className="example-art-label">Landscape illustration</span>
-          </Link>
+            <CuratedPhoto image={card.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${card.destination} destination atmosphere`} />
+            <Link className="media-cover-link" to={`/examples/${card.id}`} aria-label={`Read ${card.title}`} />
+          </div>
           <div className="trip-card-body">
             <span className="eyebrow">
               EXAMPLE · {card.destination.split(",")[0].toUpperCase()}

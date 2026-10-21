@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSession } from "./session";
 import { DraftFailure, draftRequest, type LibraryCard, type LibraryPageResult } from "./drafts";
 import "./library.css";
+import { CuratedPhoto } from './detail/MediaPhoto';
 
 export function LibraryCollection() {
   const session = useSession();
@@ -70,7 +71,8 @@ export function LibraryCollection() {
     {page && page.total === 0 && <section className="flow-card result-placeholder"><h2>{search ? "No matching journeys." : "Your next journey starts here."}</h2><p>{search ? "Try another title or destination." : "No trips yet. Start with an idea and make it yours."}</p></section>}
     {page && <div className="trip-grid">{page.items.map(card => <article className="trip-card" key={`${card.kind}:${card.id}`}>
       <div className="library-card-cover">
-        <Link className="draft-card-cover" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`} aria-label={`${card.kind === "draft" ? "Continue" : "View"} ${card.title}`}>{card.kind === "draft" ? "✎" : "◇"}</Link>
+        <CuratedPhoto image={card.destination?.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={card.destination ? `${card.destination} destination atmosphere` : 'Landscape atmosphere'} />
+        <Link className="draft-card-cover library-media-link" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`} aria-label={`${card.kind === "draft" ? "Continue" : "View"} ${card.title}`}>{card.kind === "draft" ? "✎" : ""}</Link>
         <button type="button" className="card-menu-trigger" aria-label={`Manage ${card.title}`} aria-haspopup="dialog" aria-controls="library-management-dialog" aria-expanded={Boolean(action && action.card.id === card.id && action.card.kind === card.kind)} disabled={busy} onClick={() => { setError(""); setAction({ kind: "menu", card }); }}><span aria-hidden="true">•••</span></button>
       </div>
       <div className="trip-card-body"><span className="eyebrow">{card.kind === "draft" ? "PLANNING DRAFT" : "SAVED ITINERARY"}</span><h2>{card.title}</h2><p>{card.destination || "Destination to decide"}</p><p>{card.start_date || "Dates to decide"}{card.end_date && ` – ${card.end_date}`}</p><Link className="text-link" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`}>{card.kind === "draft" ? "Continue planning →" : "View details →"}</Link>

@@ -72,7 +72,8 @@ class SavedStore:
                     self._write(connection, row, saved_id, detail)
                 row = connection.execute(
                     "UPDATE app.itinerary_previews SET state=%s,saved_trip_id=%s,"
-                    "snapshot=NULL,original_request=NULL,decided_at=clock_timestamp() "
+                    "snapshot=NULL,original_request=NULL,media_bindings='{}',"
+                    "decided_at=clock_timestamp() "
                     "WHERE id=%s RETURNING *",
                     ("saved" if action == "save" else "discarded", saved_id, preview_id),
                 ).fetchone()
@@ -110,6 +111,7 @@ class SavedStore:
                 source_preview_id=preview["id"],
                 source_kind=preview["source_kind"],
                 source_id=preview["source_id"],
+                media_bindings=Jsonb(preview.get("media_bindings", {})),
                 generated_at=preview["created_at"]
                 if preview["source_kind"] == "generated_v3"
                 else None,

@@ -46,7 +46,7 @@ def generated_detail(result, request):
         }
         for transfer in itinerary["transfers"]
     ]
-    return ProductDetail(
+    detail = ProductDetail(
         id=str(uuid4()),
         title=f"{itinerary['destination']} journey",
         provenance="generated",
@@ -65,3 +65,5 @@ def generated_detail(result, request):
             "minimum_daily_coverage": result.minimum_daily_coverage,
         },
     )
+    detail._media_bindings = dict(result._media_bindings)
+    return detail
