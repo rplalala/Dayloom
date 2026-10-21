@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../../features/product/session";
+import { ExampleCards } from "../../features/product/detail/ExampleCards";
 
 export function HomePage() {
   const { account } = useSession();
@@ -129,6 +130,10 @@ export function HomePage() {
               </Link>
             ))}
           </div>
+        </section>
+        <section className="section">
+          <div className="section-heading"><div><span className="eyebrow">A LITTLE INSPIRATION</span><h2>See how a journey comes together.</h2></div><p>Historical examples, with room for your own discoveries.</p></div>
+          <ExampleCards />
         </section>
         <section className="section last-cta">
           <div>

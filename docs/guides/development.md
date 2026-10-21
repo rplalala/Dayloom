@@ -93,10 +93,13 @@ $env:PRODUCT_TEST_WEB_PORT = "5120"
 uv run python -m playwright install chromium
 uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
 uv run pytest backend/tests/product/test_editor_browser.py --basetemp=.scratch/pytest-editor
+uv run pytest backend/tests/product/test_example_browser.py --basetemp=.scratch/pytest-examples
 ```
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
-accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`.
+accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`
+and `.scratch/detail-browser`. Example acceptance covers real public APIs, guest/account
+access, exact activity-linked Nearby, keyboard navigation and desktop/800px/390px layouts.
 Acceptance subprocesses inherit only required OS/tool paths and explicit test settings.
 The public browser fixture excludes environment/configuration, and sensitive setup
 values use redacted diagnostic representations, including fixture failures.
@@ -116,6 +119,12 @@ above; this journey does not download it or call a paid model. Screenshots and l
 are written to `.scratch/editor-browser` at 390px, 800px and desktop, with distinct
 browser time zones. It exercises editable requirements, exact-span ownership,
 polish preview/Apply/Dismiss/Undo and delayed revisions, recovery and validation.
+
+Public example endpoints also run without Product account/provider configuration.
+`uv run pytest backend/tests/api/test_product_examples.py` checks their allowlisted
+HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
+references, real day order and safe text rendering. The public fixtures are historical
+source claims, not live provider verification.
 
 ## Independent version execution
 

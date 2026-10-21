@@ -1,0 +1,91 @@
+import type {
+  Money,
+  MinimumDailyCoverage,
+  PreferenceCoverage,
+} from "../../planning/types";
+
+export type DetailNearby = {
+  place_name: string;
+  anchor_activity_id?: string | null;
+  associated_day?: string | null;
+  reason?: string | null;
+  area?: string | null;
+  uncertainty?: string | null;
+  attribution?: string | null;
+};
+export type DetailActivity = {
+  activity_id: string;
+  title: string;
+  time_use: "scheduled" | "free_window";
+  place_name?: string | null;
+  location?: string | null;
+  category?: string | null;
+  start_time: string;
+  end_time: string;
+  estimated_cost?: Money | null;
+  notes?: string | null;
+  introduction?: string | null;
+};
+export type DetailDay = {
+  date: string;
+  activities: DetailActivity[];
+  weather?: {
+    summary?: string | null;
+    temperature_min_c?: number | null;
+    temperature_max_c?: number | null;
+    precipitation_probability_percent?: number | null;
+    max_wind_speed_kph?: number | null;
+    attribution?: string | null;
+    source_url?: string | null;
+  } | null;
+};
+export type DetailTransfer = {
+  from_activity_id: string;
+  to_activity_id: string;
+  mode?: string | null;
+  departure_time?: string | null;
+  arrival_time?: string | null;
+  preceding_end_time?: string | null;
+  following_start_time?: string | null;
+  provider_duration_seconds?: number | null;
+  distance_meters?: number | null;
+  reserve_seconds?: number | null;
+  estimate_kind: "provider" | "derived" | "unverified";
+  status: "confirmed" | "unknown" | "source_claim";
+  validation_state?: "PASS" | "CONFIRMED" | "UNKNOWN" | null;
+  source_status?: string | null;
+  unknowns: string[];
+  attribution?: string | null;
+};
+export type ProductDetail = {
+  schema_version: "product_detail_1";
+  id: string;
+  title: string;
+  destination: string;
+  start_date?: string | null;
+  end_date?: string | null;
+  description?: string | null;
+  provenance: "example" | "generated" | "imported";
+  trust: "source_fixture" | "generated_projection" | "unverified_import";
+  request: {
+    destination?: string | null;
+    start_date?: string | null;
+    end_date?: string | null;
+    traveler_count?: number | null;
+    budget?: Money | null;
+    additional_preferences?: string | null;
+  } | null;
+  days: DetailDay[];
+  transfers: DetailTransfer[];
+  nearby: DetailNearby[];
+  completion?: {
+    policy_completion: "complete" | "incomplete" | "unassessed";
+    policy_reasons: string[];
+    preference_coverage: PreferenceCoverage[];
+    minimum_daily_coverage: MinimumDailyCoverage[];
+  } | null;
+};
+export type ExampleCard = Pick<
+  ProductDetail,
+  "id" | "title" | "destination" | "start_date" | "end_date" | "description"
+> & { day_count: number };

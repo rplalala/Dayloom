@@ -1,0 +1,316 @@
+/* Product detail additions over the complete r7 shell stylesheet. */
+.dayloom .detail-body {
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+.dayloom .detail-example-hero {
+  background:
+    linear-gradient(90deg, rgba(12, 36, 41, 0.92), rgba(12, 42, 53, 0.35)),
+    url("/dayloom/hero.svg") center 50% / cover;
+}
+.dayloom .detail-art-credit {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  font-size: 10px;
+}
+.dayloom .detail-anchor-nav a {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 15px;
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.dayloom .detail-illustration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #73937e;
+  background: linear-gradient(140deg, #e9eee6, #dbe9e1);
+  font-size: 38px;
+}
+.dayloom .detail-illustration small {
+  font-size: 8px;
+  font-weight: 400;
+}
+.dayloom .nearby-body strong,
+.dayloom .detail-source-anchor {
+  overflow-wrap: anywhere;
+}
+.dayloom .weather-item {
+  display: flex;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  padding: 14px 0;
+  font-size: 11px;
+}
+.dayloom .detail-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(600px, calc(100% - 30px));
+  max-height: 85dvh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 30px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-strong);
+}
+.dayloom .detail-dialog::backdrop {
+  background: rgba(12, 36, 41, 0.5);
+}
+.dayloom .detail-dialog p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.dayloom .day-events[hidden] {
+  display: none;
+}
+.dayloom .activity-content:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.dayloom .activity-actions {
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 9px;
+}
+.dayloom .nearby-pill {
+  border-radius: 999px;
+  background: var(--accent-faint);
+  padding: 5px 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dayloom .nearby-inline {
+  display: none;
+}
+.dayloom .nearby-day {
+  margin-top: 21px;
+}
+.dayloom .nearby-day > h3 {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin: 0 0 11px;
+}
+.dayloom .nearby-day > h3 span {
+  color: var(--muted);
+  font-weight: 550;
+}
+.dayloom .nearby-group {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px 11px;
+  margin-top: 10px;
+  scroll-margin-top: 100px;
+  background: var(--paper);
+}
+.dayloom .nearby-group-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+.dayloom .nearby-anchor-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+  color: var(--ink);
+  border-radius: 5px;
+}
+.dayloom .nearby-anchor-link > span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.dayloom .nearby-anchor-link strong {
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.dayloom .nearby-anchor-link small {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.dayloom .nearby-anchor-link:hover strong {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dayloom .nearby-group-toggle {
+  border: 0;
+  background: var(--accent-faint);
+  color: var(--accent);
+  padding: 5px 8px;
+  border-radius: 6px;
+  flex: none;
+}
+.dayloom .nearby-group-items {
+  margin: 14px 0 0 7px;
+  padding-left: 12px;
+  border-left: 1px solid #c1dbd1;
+  background: linear-gradient(90deg, var(--accent-faint), transparent);
+  border-radius: 0 6px 6px 0;
+}
+.dayloom .nearby-group-items[hidden],
+.dayloom .nearby-inline-items[hidden] {
+  display: none;
+}
+.dayloom .nearby-group .nearby-item {
+  border-top: 0;
+  padding: 6px 0;
+}
+.dayloom .nearby-group .nearby-item + .nearby-item {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 13px;
+}
+.dayloom .nearby-group .nearby-photo {
+  width: 58px;
+  height: 67px;
+  flex: none;
+  border-radius: 8px;
+}
+.dayloom .nearby-group .nearby-body > strong {
+  font-size: 11px;
+}
+.dayloom .nearby-other {
+  margin-top: 23px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.dayloom .nearby-other h3 {
+  font-size: 13px;
+  margin: 0 0 15px;
+}
+.dayloom .activity-content {
+  scroll-margin-top: 100px;
+}
+.dayloom .nearby-linked-selected {
+  animation: detail-nearby-pulse 2.6s ease-out;
+}
+@keyframes detail-nearby-pulse {
+  0%,
+  55% {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.12);
+    background: #edf6f1;
+  }
+  100% {
+    border-color: var(--line);
+    box-shadow: none;
+  }
+}
+.dayloom .nearby-anchor-link:focus-visible,
+.dayloom .nearby-pill:focus-visible,
+.dayloom .nearby-group-toggle:focus-visible,
+.dayloom .nearby-inline-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .dayloom .detail-desktop-nearby,
+  .dayloom .nearby-sidebar-groups {
+    display: none;
+  }
+  .dayloom .nearby-panel:not(:has(.nearby-other)) {
+    display: none;
+  }
+  .dayloom .nearby-panel .nearby-other {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .dayloom .activity-content {
+    flex-wrap: wrap;
+  }
+  .dayloom .activity-content > .activity-details {
+    flex: 1;
+    min-width: 120px;
+  }
+  .dayloom .nearby-inline {
+    display: block;
+    flex-basis: 100%;
+    min-width: 0;
+    border-top: 1px solid var(--line);
+    margin-top: 2px;
+    padding-top: 9px;
+    scroll-margin-top: 90px;
+  }
+  .dayloom .nearby-inline-trigger {
+    border: 0;
+    padding: 3px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .dayloom .nearby-inline-trigger > span {
+    margin-left: auto;
+  }
+  .dayloom .nearby-inline-items {
+    margin-top: 10px;
+    border-left: 1px solid #c1dbd1;
+    padding-left: 10px;
+    background: linear-gradient(90deg, var(--accent-faint), transparent);
+  }
+  .dayloom .nearby-inline-note {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0 0 8px;
+  }
+  .dayloom .nearby-inline .nearby-item {
+    padding: 3px 0;
+    border: 0;
+    gap: 8px;
+  }
+  .dayloom .nearby-inline .nearby-item + .nearby-item {
+    margin-top: 12px;
+  }
+  .dayloom .nearby-inline .nearby-photo {
+    width: 48px;
+    height: 58px;
+    border-radius: 6px;
+    flex: none;
+  }
+  .dayloom .nearby-inline .nearby-body > strong {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dayloom .nearby-linked-selected {
+    animation: none;
+    border-color: var(--accent);
+    background: #edf6f1;
+  }
+  .dayloom .detail-page *,
+  .dayloom .detail-page *::before,
+  .dayloom .detail-page *::after {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}

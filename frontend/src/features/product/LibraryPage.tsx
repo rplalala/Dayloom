@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSession } from "./session";
+import { ExampleCards } from "./detail/ExampleCards";
 
 export function LibraryPage() {
   const { account, status } = useSession();
@@ -43,27 +44,7 @@ export function LibraryPage() {
           <div className="hint-strip">
             These are examples. Log in to keep your own travel collection.
           </div>
-          <div className="trip-grid">
-            {[
-              "Sydney, by the water",
-              "A slower side of Sydney",
-              "Art, gardens and city stories",
-            ].map((title, i) => (
-              <article className="trip-card" key={title}>
-                <div
-                  className={`trip-card-photo dayloom-example example-${i}`}
-                />
-                <div className="trip-card-body">
-                  <span className="eyebrow">EXAMPLE · SYDNEY</span>
-                  <h2>{title}</h2>
-                  <p>Ideas for a thoughtful city escape.</p>
-                  <Link className="text-link" to="/plan">
-                    Plan your own →
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ExampleCards />
         </>
       )}
     </div>

@@ -9,6 +9,7 @@ import { BriefPage } from "../features/product/BriefPage";
 import { AuthPage } from "../features/product/AuthPage";
 import { LibraryPage } from "../features/product/LibraryPage";
 import { AccountPage } from "../features/product/AccountPage";
+import { ExamplePage } from "../features/product/detail/ExamplePage";
 
 export const routes: RouteObject[] = [
   {
@@ -19,6 +20,7 @@ export const routes: RouteObject[] = [
       { path: "login", element: <AuthPage /> },
       { path: "trips", element: <LibraryPage /> },
       { path: "account", element: <AccountPage /> },
+      { path: "examples/:exampleId", element: <ExamplePage /> },
     ],
   },
   {
