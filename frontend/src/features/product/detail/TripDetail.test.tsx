@@ -1,9 +1,20 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { TripDetail } from "./TripDetail";
 import type { ProductDetail } from "./types";
+
+// JSDOM does not implement the browser's native modal-opening method.
+const nativeShowModal = HTMLDialogElement.prototype.showModal;
+beforeAll(() => {
+  HTMLDialogElement.prototype.showModal = function () {
+    this.open = true;
+  };
+});
+afterAll(() => {
+  HTMLDialogElement.prototype.showModal = nativeShowModal;
+});
 
 const detail: ProductDetail = {
   schema_version: "product_detail_1",
@@ -72,6 +83,139 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it.each([
+    [
+      "generated",
+      "generated_projection",
+      "confirmed",
+      "CONFIRMED",
+      null,
+      "Timing conflict remains",
+    ],
+    [
+      "generated",
+      "generated_projection",
+      "unknown",
+      "CONFIRMED",
+      null,
+      "Timing conflict remains",
+    ],
+    [
+      "generated",
+      "generated_projection",
+      "confirmed",
+      "UNKNOWN",
+      null,
+      "Transfer feasibility unverified",
+    ],
+    [
+      "generated",
+      "generated_projection",
+      "confirmed",
+      "PASS",
+      null,
+      "Fits supplied timing",
+    ],
+    [
+      "generated",
+      "generated_projection",
+      "confirmed",
+      null,
+      null,
+      "Transfer feasibility unverified",
+    ],
+    [
+      "example",
+      "source_fixture",
+      "source_claim",
+      "PASS",
+      "PASS",
+      "Unverified source claim (PASS)",
+    ],
+    [
+      "imported",
+      "unverified_import",
+      "confirmed",
+      "PASS",
+      "PASS",
+      "Unverified source claim (PASS)",
+    ],
+    [
+      "generated",
+      "generated_projection",
+      "source_claim",
+      "CONFIRMED",
+      "CONFIRMED",
+      "Unverified source claim (CONFIRMED)",
+    ],
+  ] as const)(
+    "preserves transfer feasibility separately from evidence for %s/%s/%s/%s",
+    async (
+      provenance,
+      trust,
+      status,
+      validation_state,
+      source_status,
+      label,
+    ) => {
+      const user = userEvent.setup();
+      render(
+        <MemoryRouter>
+          <TripDetail
+            detail={{
+              ...detail,
+              provenance,
+              trust,
+              transfers: [
+                {
+                  from_activity_id: "later",
+                  to_activity_id: "first",
+                  mode: "WALK",
+                  provider_duration_seconds: 1800,
+                  status,
+                  validation_state,
+                  source_status,
+                  estimate_kind: "provider",
+                  unknowns: [],
+                },
+              ],
+            }}
+          />
+        </MemoryRouter>,
+      );
+      const connector = screen.getByRole("button", {
+        name: `WALK · 30 min · ${label} →`,
+      });
+      expect(connector).toBeVisible();
+      expect(
+        screen.getByRole("button", { name: /The Rocks → The Rocks WALK/ }),
+      ).toHaveTextContent(label);
+      await user.click(connector);
+      const dialog = screen.getByRole("dialog");
+      expect(within(dialog).getByText(label, { exact: false })).toBeVisible();
+      if (label.startsWith("Unverified")) {
+        expect(
+          within(dialog).getByText(
+            /Source claims are not a fresh route or timing check/,
+          ),
+        ).toBeVisible();
+        expect(
+          within(dialog).queryByText(/Fits supplied timing/),
+        ).not.toBeInTheDocument();
+        expect(
+          within(dialog).getByText(
+            /this evidence has not been independently checked/,
+          ),
+        ).toBeVisible();
+      } else {
+        expect(
+          within(dialog).getByText(
+            /Route evidence: provider estimate in the supplied generated snapshot/,
+          ),
+        ).toBeVisible();
+      }
+    },
+  );
   it("shows supplied zero costs and weather metrics while rejecting unsafe source links", () => {
     const supplied: ProductDetail = {
       ...detail,

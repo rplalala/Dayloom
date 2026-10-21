@@ -33,6 +33,11 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         page.keyboard.press("Escape")
         expect(page.get_by_role("dialog")).to_have_count(0)
         expect(page.get_by_role("button", name="Details →", exact=True).first).to_be_focused()
+        page.get_by_role("button", name="WALK · 25 min · Unverified source claim (PASS) →").click()
+        expect(page.get_by_role("dialog")).to_contain_text(
+            "Source claims are not a fresh route or timing check."
+        )
+        page.keyboard.press("Escape")
         page.goto(browser_app.base_url + "/examples/kyoto-design")
         expect(
             page.get_by_role("heading", name="Kyoto · Gardens and quiet streets")

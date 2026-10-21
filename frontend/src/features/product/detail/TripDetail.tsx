@@ -36,6 +36,42 @@ const safeSource = (value?: string | null) => {
   }
 };
 
+const trustedTransfer = (detail: ProductDetail, transfer: DetailTransfer) =>
+  detail.provenance === "generated" &&
+  detail.trust === "generated_projection" &&
+  transfer.status !== "source_claim";
+
+function transferFeasibility(detail: ProductDetail, transfer: DetailTransfer) {
+  if (!trustedTransfer(detail, transfer)) {
+    const claim = transfer.source_status ?? transfer.validation_state;
+    return {
+      label: `Unverified source claim${claim ? ` (${claim})` : ""}`,
+      message: "Source claims are not a fresh route or timing check.",
+      className: "has-unknown",
+    };
+  }
+  if (transfer.validation_state === "CONFIRMED")
+    return {
+      label: "Timing conflict remains",
+      message:
+        "The adopted transfer has a confirmed timing conflict between the supplied activities.",
+      className: "has-conflict",
+    };
+  if (transfer.validation_state === "PASS")
+    return {
+      label: "Fits supplied timing",
+      message:
+        "The adopted transfer fits the supplied activity timing. This is a snapshot, not a live route update.",
+      className: "",
+    };
+  return {
+    label: "Transfer feasibility unverified",
+    message:
+      "Available information does not establish whether the transfer fits the supplied activity timing.",
+    className: "has-unknown",
+  };
+}
+
 function InformationDialog({
   information,
   close,
@@ -271,11 +307,10 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
           : `${transfer.distance_meters} m`,
         `Departure: ${transfer.departure_time || transfer.preceding_end_time || "not supplied"}. Arrival: ${transfer.arrival_time || "not supplied"}. Next activity: ${transfer.following_start_time || "not supplied"}.`,
         `Buffer: ${transfer.reserve_seconds == null ? "not supplied" : `${transfer.reserve_seconds} seconds`}. Estimate: ${transfer.estimate_kind}.`,
-        transfer.status === "source_claim"
-          ? `Historical source claim: ${transfer.source_status || "not supplied"}; not a fresh route check.`
-          : transfer.status === "confirmed"
-            ? "Confirmed in the supplied generated snapshot; not a live route update."
-            : "Route details remain unknown.",
+        `${transferFeasibility(detail, transfer).label}. ${transferFeasibility(detail, transfer).message}`,
+        trustedTransfer(detail, transfer)
+          ? `Route evidence: ${transfer.estimate_kind} estimate in the supplied generated snapshot. ${transfer.status === "unknown" ? "Evidence availability remains to confirm." : "Evidence availability does not independently establish timing feasibility."}`
+          : `The source describes the estimate as ${transfer.estimate_kind}; this evidence has not been independently checked.`,
         ...transfer.unknowns,
         transfer.attribution || "",
       ].filter(Boolean),
@@ -614,18 +649,14 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
                                     onClick={() => transferInfo(t)}
                                   >
                                     <span className="transfer-line" />
-                                    <span className="transfer-copy">
+                                    <span
+                                      className={`transfer-copy ${transferFeasibility(detail, t).className}`}
+                                    >
                                       {t.mode || "Transport"} ·{" "}
                                       {t.provider_duration_seconds == null
                                         ? "Duration unavailable"
                                         : `${Math.ceil(t.provider_duration_seconds / 60)} min`}{" "}
-                                      ·{" "}
-                                      {t.status === "source_claim"
-                                        ? "Historical source claim"
-                                        : t.status === "confirmed"
-                                          ? "Snapshot estimate"
-                                          : "To confirm"}{" "}
-                                      →
+                                      · {transferFeasibility(detail, t).label} →
                                     </span>
                                   </button>
                                 ))}
@@ -681,10 +712,7 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
                       </strong>
                       <small>
                         {t.mode || "Mode unknown"} ·{" "}
-                        {t.status === "source_claim"
-                          ? "Historical source claim"
-                          : t.status}{" "}
-                        · Details
+                        {transferFeasibility(detail, t).label} · Details
                       </small>
                     </span>
                   </button>

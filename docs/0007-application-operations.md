@@ -180,6 +180,11 @@ references. Example transfers retain supplied route metrics and source status as
 `source_claim`/`source_status`, with an unverified estimate kind. They are not a fresh
 route check. Trusted generated transfers can retain their final
 `validation_state` (`PASS`, `CONFIRMED`, `UNKNOWN`) and provider/derived estimate kind.
+For trusted generated snapshots, the connector, connections list and Details distinguish
+fitting supplied timing (`PASS`), a confirmed timing conflict (`CONFIRMED`) and unverified
+feasibility (`UNKNOWN` or absent). Evidence availability/type is shown separately from
+timing feasibility. Example/import claims cannot acquire these trusted outcomes by
+supplying a status field; their displayed source claims remain explicitly unverified.
 Missing costs stay unknown, including when no total can be established. A zero amount
 or zero weather metric is a known value. Place slots use labelled illustrations while
 verified media integration is pending. Map queries are URL-encoded; weather source links
