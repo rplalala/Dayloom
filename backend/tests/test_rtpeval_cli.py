@@ -11,6 +11,26 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 pytest_plugins = ("backend.tests.evaluation.test_intake",)
+CLI_ENVIRONMENT_KEYS = (
+    "PATH",
+    "PATHEXT",
+    "SYSTEMROOT",
+    "WINDIR",
+    "COMSPEC",
+    "SYSTEMDRIVE",
+    "LOCALAPPDATA",
+    "APPDATA",
+    "USERPROFILE",
+    "HOME",
+    "HOMEDRIVE",
+    "HOMEPATH",
+    "PROGRAMFILES",
+    "PROGRAMFILES(X86)",
+    "PROGRAMDATA",
+    "TEMP",
+    "TMP",
+    "TMPDIR",
+)
 
 GUARD = """import atexit
 import importlib.abc
@@ -139,7 +159,7 @@ def installed_cli(tmp_path):
         bootstrap="",
     ):
         env = {
-            **os.environ,
+            **{key: os.environ[key] for key in CLI_ENVIRONMENT_KEYS if key in os.environ},
             "PYTHONPATH": str(guard),
             "PYTHONUTF8": "1",
             "RTPEVAL_TEST_EVENTS": str(events),
