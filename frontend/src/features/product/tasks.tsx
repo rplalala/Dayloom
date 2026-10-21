@@ -53,7 +53,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   }, [owner, refresh]);
   const tasks = snapshot.owner === owner && owner ? snapshot.tasks : [];
   return <TaskContext.Provider value={{ tasks, error: snapshot.owner === owner ? snapshot.error : '', refresh }}>
-    {notice && notice.owner === owner && owner && <div className="dayloom"><div className="task-completion-notice" role="status"><span>Your itinerary preview is ready.</span><Link to={`/previews/${notice.task.preview_id}`}>View preview</Link><button type="button" aria-label="Dismiss completion notice" onClick={() => setNotice(null)}>×</button></div></div>}
+    {notice && notice.owner === owner && owner && <div className="dayloom task-notice-layer"><div className="task-completion-notice" role="status"><span>Your itinerary preview is ready.</span><Link to={`/previews/${notice.task.preview_id}`}>View preview</Link><button type="button" aria-label="Dismiss completion notice" onClick={() => setNotice(null)}>×</button></div></div>}
     {children}
   </TaskContext.Provider>;
 }

@@ -1,3 +1,4 @@
+.dayloom.task-notice-layer { min-height:0 }
 .dayloom .task-entry { display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line,#e4ebe8);border-radius:99px;font-size:12px;color:#156e61;white-space:nowrap }
 .dayloom .task-entry.is-running { background:#e9f5f1;border-color:#9ac9b9 }
 .dayloom .task-completion-notice { position:fixed;bottom:24px;right:24px;z-index:60;display:flex;align-items:center;gap:15px;padding:18px 22px;max-width:calc(100% - 32px);background:#fff;border:1px solid #9ac9b9;border-radius:18px;box-shadow:0 12px 35px #16272320;font-size:14px }
