@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { draftRequest, DraftFailure, type Draft } from "./drafts";
 import { restoreBrief } from "./editor";
 import { useSession } from "./session";
@@ -8,6 +8,10 @@ import "./library.css";
 export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => void }) {
   const session = useSession();
   const navigate = useNavigate();
+  const location = useLocation();
+  const navigation = useRef(location.key);
+  navigation.current = location.key;
+  const mounted = useRef(true);
   const [params, setParams] = useSearchParams();
   const id = params.get("draft") || session.draftRef?.id || null;
   const title = session.draftTitle;
@@ -18,6 +22,12 @@ export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => 
   const current = useRef(session);
   current.current = session;
   const owner = session.account?.id;
+
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; };
+  }, []);
+  useEffect(() => { setBusy(false); }, [location.key]);
 
   useEffect(() => {
     if (!owner || session.status !== "authenticated") { onLoading(false); return; }
@@ -31,7 +41,7 @@ export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => 
         if (controller.signal.aborted || current.current.account?.id !== owner) return;
         current.current.replaceBrief(restoreBrief(draft.editor), "draft");
         current.current.setDraftRef({ id: draft.id, title: draft.title, revision: draft.revision });
-        current.current.setDraftTitle(draft.title); setError(""); setConflict(false); onLoading(false);
+        current.current.setDraftTitle(draft.title); setError(""); setConflict(false); setSaved(null); onLoading(false);
       }).catch(failure => {
         if (controller.signal.aborted) return;
         setError(failure instanceof Error ? failure.message : "Draft unavailable.");
@@ -48,24 +58,28 @@ export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => 
     // Even an untouched blank brief becomes explicit editor work at Save.
     session.editBrief(session.brief);
     const ownerAtStart = session.account.id;
+    const csrfAtStart = session.account.csrf_token;
+    const navigationAtStart = location.key;
+    const stillCurrent = () => mounted.current && navigation.current === navigationAtStart &&
+      current.current.account?.id === ownerAtStart && current.current.account.csrf_token === csrfAtStart;
     const existing = !asNew && session.draftRef?.id === id ? session.draftRef : null;
     setBusy(true);
     try {
       const draft = await draftRequest<Draft>(existing ? `/api/drafts/${existing.id}` : "/api/drafts", existing ? "PUT" : "POST", session.account.csrf_token,
         { title, editor: session.brief, ...(existing && { revision: existing.revision }) });
-      if (current.current.account?.id !== ownerAtStart || current.current.account.csrf_token !== session.account.csrf_token) return;
+      if (!stillCurrent()) return;
       // Saving never replaces the editor: typing during a request remains local.
       current.current.setDraftRef({ id: draft.id, title: draft.title, revision: draft.revision });
       setParams({ draft: draft.id }, { replace: true });
       setConflict(false); setSaved({ editor: JSON.stringify(session.brief), title });
     } catch (failure) {
-      if (current.current.account?.id !== ownerAtStart || current.current.account.csrf_token !== session.account.csrf_token) return;
+      if (!stillCurrent()) return;
       setError(failure instanceof Error ? failure.message : "Unable to save draft.");
       if (failure instanceof DraftFailure) {
         setConflict(failure.status === 409);
         if (failure.status === 401) await session.refresh();
       }
-    } finally { setBusy(false); }
+    } finally { if (stillCurrent()) setBusy(false); }
   }
 
   return <section className="draft-toolbar" aria-label="Planning draft">

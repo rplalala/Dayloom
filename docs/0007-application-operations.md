@@ -201,7 +201,8 @@ same account-scoped recovery record as its brief. Saving again updates that iden
 Save as new allocates another. A 409 leaves local work intact and offers explicit reload
 or Save as new. Reload confirms replacement of local edits. Expiry quarantines this
 record; same-account login restores it without replaying a write. Logout and account
-switching clear it. Typing during a pending save is retained locally.
+switching clear it. Typing during a pending save is retained locally. Responses from
+an earlier editor navigation cannot attach its identity or errors to a newly opened brief.
 
 `GET /api/library` is the single server-side collection boundary. Draft cards expose
 `kind=draft`, source/draft identity, minimal destination/date fields and created/updated

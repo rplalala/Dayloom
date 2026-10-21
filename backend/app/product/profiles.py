@@ -1,46 +1,13 @@
 """Authenticated owner defaults; planning requests never consult this boundary."""
 
-from typing import Literal
-
 from fastapi import APIRouter, Response
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from backend.app.product.auth import CurrentUser, display_initials
 from backend.app.product.database import connect
+from backend.app.product.preferences import Currency, Interest, Pace, Transport
 
 router = APIRouter(prefix="/api/profile", tags=["profile"])
-Interest = Literal[
-    "City walks",
-    "History & culture",
-    "Art & museums",
-    "Nature",
-    "Local food",
-    "Photography",
-    "Family experiences",
-    "Free exploration",
-]
-Currency = Literal[
-    "AUD",
-    "USD",
-    "EUR",
-    "GBP",
-    "CNY",
-    "JPY",
-    "CAD",
-    "NZD",
-    "SGD",
-    "HKD",
-    "CHF",
-    "KRW",
-    "INR",
-    "THB",
-    "MYR",
-    "IDR",
-    "VND",
-    "PHP",
-    "AED",
-    "ZAR",
-]
 
 
 class ProfileUpdate(BaseModel):
@@ -48,8 +15,8 @@ class ProfileUpdate(BaseModel):
     display_name: str = Field(min_length=1, max_length=80)
     currency: Currency
     interests: list[Interest] = Field(max_length=64)
-    pace: Literal["relaxed", "balanced", "rich"] | None
-    transport: list[Literal["walk", "transit", "drive"]] = Field(max_length=64)
+    pace: Pace | None
+    transport: list[Transport] = Field(max_length=64)
     notes: str = Field(max_length=24000)
 
     @field_validator("display_name")

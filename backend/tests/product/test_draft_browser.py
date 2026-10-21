@@ -2,7 +2,7 @@
 
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
 import jwt
@@ -10,6 +10,7 @@ from playwright.sync_api import expect
 
 from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
 from backend.tests.product.test_browser import login, register_browser
+from backend.tests.product.test_drafts import editor
 from backend.tests.product.test_editor_browser import editor_app  # noqa: F401
 
 
@@ -46,6 +47,17 @@ def test_multiple_drafts_conflict_copy_delete_and_browser_recreation(editor_app)
         other.get_by_role("button", name="Save as new draft").click()
         expect(other.get_by_text("Draft saved.", exact=True)).to_be_visible()
         assert other.url != saved_url
+        new_url = other.url
+        new_id = parse_qs(urlsplit(new_url).query)["draft"][0]
+        created = other.request.get(base + f"/api/drafts/{new_id}").json()
+        assert created["revision"] == 1
+        assert created["editor"]["destination"] == "Keep my local work"
+        expect(other.get_by_label("Destination")).to_have_value("Keep my local work")
+        expect(other.get_by_label("Draft title")).to_have_value("Local independent idea")
+        other.get_by_role("button", name="Save draft", exact=True).click()
+        expect(other.get_by_text("Draft saved.", exact=True)).to_be_visible()
+        assert other.url == new_url
+        assert other.request.get(base + f"/api/drafts/{new_id}").json()["revision"] == 2
         reload_tab = context.new_page()
         reload_tab.goto(saved_url)
         expect(reload_tab.get_by_label("Destination")).to_have_value("Server revision")
@@ -200,5 +212,71 @@ def test_private_draft_link_returns_through_login_to_its_server_snapshot(editor_
         login(page, email)
         expect(page.get_by_label("Destination")).to_have_value("Private destination")
         assert page.url == target
+    finally:
+        context.close()
+
+
+def test_late_persisted_save_cannot_rebind_another_open_draft(editor_app):  # noqa: F811
+    context = editor_app.browser.new_context()
+    held = {}
+    try:
+        page = context.new_page()
+        base = editor_app.base_url
+        register_browser(page, base)
+        account = page.request.get(base + "/api/auth/current").json()
+        headers = {"Origin": base, "X-CSRF-Token": account["csrf_token"]}
+        drafts = []
+        for title in ["Draft A", "Draft B"]:
+            response = page.request.post(
+                base + "/api/drafts",
+                headers=headers,
+                data={"title": title, "editor": editor(destination=title)},
+            )
+            assert response.status == 201
+            drafts.append(response.json())
+        first, second = drafts
+        page.goto(base + f"/plan?draft={first['id']}")
+        expect(page.get_by_label("Destination")).to_have_value("Draft A")
+
+        def barrier(route):
+            if route.request.method != "PUT":
+                route.continue_()
+                return
+            # The real API has committed. Hold delivery, not persistence or coordination.
+            held["response"] = route.fetch()
+            held["route"] = route
+            page.evaluate("window.__draftSaveCommitted = true")
+
+        page.route(base + f"/api/drafts/{first['id']}", barrier)
+        page.get_by_label("Destination").fill("Accepted A edit")
+        page.get_by_role("button", name="Save draft", exact=True).click()
+        page.wait_for_function("window.__draftSaveCommitted === true")
+        assert held["response"].status == 200
+        assert page.request.get(base + f"/api/drafts/{first['id']}").json()["revision"] == 2
+        # Real SPA navigation unmounts A's controls, retaining the account provider.
+        page.get_by_role("link", name="My trips", exact=True).first.click()
+        page.get_by_role("link", name="Continue Draft B", exact=True).click()
+        expect(page.get_by_label("Destination")).to_have_value("Draft B")
+        second_url = page.url
+        page.get_by_label("Destination").fill("New B local edit")
+        with page.expect_response(
+            lambda response: response.url.endswith(first["id"]) and response.request.method == "PUT"
+        ) as delivered:
+            held["route"].fulfill(response=held["response"])
+        delivered.value.finished()
+        # Drain the original fetch promise before observing route and recovery.
+        page.evaluate(
+            "() => new Promise(resolve => requestAnimationFrame("
+            "() => requestAnimationFrame(resolve)))"
+        )
+        assert page.url == second_url
+        expect(page.get_by_label("Destination")).to_have_value("New B local edit")
+        expect(page.get_by_label("Draft title")).to_have_value("Draft B")
+        page.get_by_role("button", name="Save draft", exact=True).click()
+        expect(page.get_by_text("Draft saved.", exact=True)).to_be_visible()
+        saved_a = page.request.get(base + f"/api/drafts/{first['id']}").json()
+        saved_b = page.request.get(base + f"/api/drafts/{second['id']}").json()
+        assert saved_a["revision"] == 2 and saved_a["editor"]["destination"] == "Accepted A edit"
+        assert saved_b["revision"] == 2 and saved_b["editor"]["destination"] == "New B local edit"
     finally:
         context.close()

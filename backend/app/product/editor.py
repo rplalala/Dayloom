@@ -12,19 +12,10 @@ from pydantic import (
     model_validator,
 )
 
+from backend.app.product.preferences import Currency, Interest, Pace, Transport
+
 Text = Annotated[str, StringConstraints(strict=True, max_length=24000)]
 ShortText = Annotated[str, StringConstraints(strict=True, max_length=500)]
-Interest = Literal[
-    "City walks",
-    "History & culture",
-    "Art & museums",
-    "Nature",
-    "Local food",
-    "Photography",
-    "Family experiences",
-    "Free exploration",
-]
-Transport = Literal["walk", "transit", "drive"]
 INTEREST_PROMPTS = {
     "City walks": "Enjoy neighborhood walks, local architecture and everyday city life.",
     "History & culture": "Explore historic districts, cultural landmarks and museums.",
@@ -65,12 +56,12 @@ class EditorSnapshot(BaseModel):
     end_date: ShortText
     travelers: ShortText
     budget: ShortText
-    currency: ShortText
+    currency: Currency
     required: Text
     exclusions: Text
     preferences: Text
     interests: list[Interest] = Field(max_length=8)
-    pace: Literal["relaxed", "balanced", "rich"] | None
+    pace: Pace | None
     transport: list[Transport] = Field(max_length=3)
     bindings: list[Binding] = Field(max_length=10)
 
@@ -88,29 +79,6 @@ class EditorSnapshot(BaseModel):
                 "\x00" in value or any(0xD800 <= ord(c) <= 0xDFFF for c in value)
             ):
                 raise ValueError("Text must contain valid Unicode without null characters")
-        if self.currency not in {
-            "AUD",
-            "USD",
-            "EUR",
-            "GBP",
-            "CNY",
-            "JPY",
-            "CAD",
-            "NZD",
-            "SGD",
-            "HKD",
-            "CHF",
-            "KRW",
-            "INR",
-            "THB",
-            "MYR",
-            "IDR",
-            "VND",
-            "PHP",
-            "AED",
-            "ZAR",
-        }:
-            raise ValueError("Unsupported currency")
         if len(set(self.interests)) != len(self.interests) or len(set(self.transport)) != len(
             self.transport
         ):
