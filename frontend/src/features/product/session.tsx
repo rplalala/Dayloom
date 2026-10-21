@@ -7,6 +7,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { createBrief, restoreBrief, type Brief } from "./editor";
+export type { Brief } from "./editor";
 
 export type Account = {
   id: string;
@@ -15,24 +17,7 @@ export type Account = {
   initials: string;
   csrf_token: string;
 };
-export type Brief = {
-  destination: string;
-  start_date: string;
-  end_date: string;
-  travelers: string;
-  budget: string;
-  currency: string;
-  preferences: string;
-};
-export const emptyBrief: Brief = {
-  destination: "",
-  start_date: "",
-  end_date: "",
-  travelers: "",
-  budget: "",
-  currency: "AUD",
-  preferences: "",
-};
+export const emptyBrief: Brief = createBrief();
 type Recovery = {
   owner: string | null;
   brief: Brief;
@@ -138,7 +123,7 @@ function readRecovery(): Recovery {
       saved &&
       typeof saved === "object" &&
       saved.brief &&
-      Object.keys(emptyBrief).every(
+      ["destination", "start_date", "end_date", "travelers", "budget", "currency", "preferences"].every(
         (k) => typeof saved.brief[k] === "string",
       ) &&
       (saved.owner === null || typeof saved.owner === "string") &&
@@ -147,7 +132,7 @@ function readRecovery(): Recovery {
       if (saved.owner && (saved.generation || "") !== generation(saved.owner)) {
         return { owner: null, brief: { ...emptyBrief }, actionId: null };
       }
-      return saved;
+      return { ...saved, brief: restoreBrief(saved.brief) };
     }
   } catch {
     /* An unavailable storage area must not prevent planning. */

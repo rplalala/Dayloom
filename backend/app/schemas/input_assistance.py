@@ -1,15 +1,25 @@
 """Strict request and model contracts for optional preference polishing."""
 
 from datetime import date
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StringConstraints,
+    field_validator,
+    model_validator,
+)
 
 from backend.app.schemas.request import Money
 
 
 class _StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+
+ExactText = Annotated[str, StringConstraints(strip_whitespace=False)]
 
 
 class PolishContext(_StrictModel):
@@ -21,20 +31,27 @@ class PolishContext(_StrictModel):
 
 
 class PolishRequest(_StrictModel):
-    original_text: str = Field(min_length=1, max_length=4000)
+    original_text: ExactText = Field(min_length=1, max_length=4000)
     context: PolishContext = Field(default_factory=PolishContext)
     client_revision: str = Field(min_length=1, max_length=100)
+
+    @field_validator("original_text")
+    @classmethod
+    def nonblank_original(cls, value):
+        if not value.strip():
+            raise ValueError("Preference text must not be blank")
+        return value
 
 
 class PolishDraft(_StrictModel):
     status: Literal["suggested", "unchanged", "needs_input"]
-    suggested_text: str | None = Field(default=None, max_length=4000)
+    suggested_text: ExactText | None = Field(default=None, max_length=4000)
     explanation: str = Field(min_length=1, max_length=500)
     questions: list[str] = Field(default_factory=list, max_length=3)
 
     @model_validator(mode="after")
     def only_suggestions_replace_text(self):
-        if self.status == "suggested" and not self.suggested_text:
+        if self.status == "suggested" and not (self.suggested_text or "").strip():
             raise ValueError("A suggested rewrite requires text")
         if self.status != "suggested" and self.suggested_text is not None:
             raise ValueError("Only suggestions may include replacement text")
@@ -47,8 +64,8 @@ class PolishDraft(_StrictModel):
 
 class PolishResponse(_StrictModel):
     status: Literal["suggested", "unchanged", "needs_input"]
-    original_text: str
-    suggested_text: str | None
+    original_text: ExactText
+    suggested_text: ExactText | None
     explanation: str
     questions: list[str]
     client_revision: str

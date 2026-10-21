@@ -225,7 +225,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         "request",
         lambda request: (
             generation.append(request.url)
-            if urlsplit(request.url).path.startswith("/api/planning")
+            if request.method == "POST" and urlsplit(request.url).path.startswith("/api/planning")
             else None
         ),
     )

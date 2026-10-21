@@ -60,3 +60,24 @@ it("returns a guest brief through registration without generating", async () => 
   );
   expect(calls).not.toContain("/api/planning");
 });
+
+it("keeps soft controls visible and detaches an edited sentence without deleting it", async () => {
+  vi.stubGlobal("fetch", vi.fn(async (url: string) => new Response(JSON.stringify(
+    url === "/api/planning/date-window" ? { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 } : { detail: { code: "login_required" } }
+  ), { status: url === "/api/auth/current" ? 401 : 200 })));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  const nature = await screen.findByRole("button", { name: "Nature" });
+  fireEvent.click(nature);
+  expect(nature).toHaveAttribute("aria-pressed", "true");
+  const notes = screen.getByLabelText("Additional preferences");
+  fireEvent.change(notes, { target: { value: "Enjoy quiet parks, waterfronts and gentle outdoor experiences." } });
+  expect(nature).toHaveAttribute("aria-pressed", "false");
+  fireEvent.click(screen.getByRole("button", { name: /Balanced/ }));
+  fireEvent.click(screen.getByRole("button", { name: /Relaxed/ }));
+  expect((notes as HTMLTextAreaElement).value).toContain("Enjoy quiet parks");
+  fireEvent.click(screen.getByRole("button", { name: "Walking" }));
+  fireEvent.click(screen.getByRole("button", { name: "Public transit" }));
+  expect((notes as HTMLTextAreaElement).value).toContain("Prefer walking and public transit where practical.");
+  expect(screen.getByLabelText("Places or experiences to include")).toBeVisible();
+  expect(screen.getByLabelText("Places or experiences to avoid")).toBeVisible();
+});

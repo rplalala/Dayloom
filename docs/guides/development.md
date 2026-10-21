@@ -92,6 +92,7 @@ $env:PRODUCT_TEST_API_PORT = "8120"
 $env:PRODUCT_TEST_WEB_PORT = "5120"
 uv run python -m playwright install chromium
 uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
+uv run pytest backend/tests/product/test_editor_browser.py --basetemp=.scratch/pytest-editor
 ```
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
@@ -105,6 +106,16 @@ Existing Playwright Chromium installations can be reused. No model, map, weather
 image-provider call is needed for these account journeys. The migration acceptance
 includes rerun/integrity checks and a seeded TripWorld sentinel preservation check;
 account acceptance includes deliberate profile-insert failure and rollback.
+
+The editor journey uses the same isolated database and strict subprocess environment,
+with a test-only application factory replacing the external GeoDB HTTP transport and
+polishing model. Production routes/services, authentication, date policy, bounded
+assistance admission and PostgreSQL remain real. Its API process uses the supported
+Windows Selector loop. Prepare the pinned offline tokenizer vocabulary as described
+above; this journey does not download it or call a paid model. Screenshots and logs
+are written to `.scratch/editor-browser` at 390px, 800px and desktop, with distinct
+browser time zones. It exercises editable requirements, exact-span ownership,
+polish preview/Apply/Dismiss/Undo and delayed revisions, recovery and validation.
 
 ## Independent version execution
 

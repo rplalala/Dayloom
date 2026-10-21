@@ -2,8 +2,9 @@
 
 Status: Implemented application boundary, consolidated 2026-10-03.
 The unified Product design is being implemented in slices. Accounts, the r7 shell,
-authentication return and the Product migration entrypoint are implemented. Planning
-still uses the existing HTTP/stream boundary until the durable task slice replaces it.
+authentication return, the editable travel brief and the Product migration entrypoint
+are implemented. The Product editor does not submit generation until the durable task
+slice connects explicit submission. Existing HTTP/stream API entrypoints remain available.
 
 ## Product and Developer surfaces
 
@@ -26,6 +27,8 @@ planner identity evidence. Preference polishing is an explicit, bounded single-c
 with preview, Apply/Dismiss and Undo. It neither auto-submits nor bypasses the unchanged
 planning input gate. A schema-valid suggestion is not proof of semantic equivalence or
 better gate acceptance. Old two-call polishing designs are historical.
+The original and suggested text retain literal whitespace so client revision matching
+and exact editor span ownership remain valid. Whitespace-only input is rejected.
 
 Source task and acceptance: [planning input UX #25](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/25).
 
@@ -85,8 +88,8 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-Status: Accounts and shell implemented; remaining lifecycle slices pending. Dayloom r7's visual/interaction baseline is
-provisionally accepted. The unified specification
+Status: Accounts, shell and brief editor implemented; remaining lifecycle slices pending.
+Dayloom r7's visual/interaction baseline is provisionally accepted. The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
 frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
 seams. Thirteen implementation slices are published under #198, reusing #120-#123;
@@ -113,7 +116,7 @@ Logout increments `token_version`, invalidating previously issued tokens across 
 Product planning POST endpoints require the same authentication; date-window and
 input-assistance reads remain guest-accessible. Developer authentication is unchanged.
 
-The Product React shell exposes home, a shared minimal brief, login/register, guest
+The Product React shell exposes home, a shared brief editor, login/register, guest
 example cards, an authenticated empty library and an initials-only account page.
 Authentication restores a guest brief and return intent without generating. Editor
 recovery and a pending action identity stay in tab-local session storage, never in the
@@ -128,6 +131,35 @@ after an ambiguous network response; the failure is shown to the user.
 Focus and periodic session checks detect remote revocation; network failure hides
 account content while preserving quarantined recovery. Server-side drafts, profile
 editing, curated example detail and durable generation are implemented by later slices.
+
+### Implemented visible brief editor
+
+`BriefPage` is the sole Product editor. It retains editable destination, ISO date-only
+strings, traveler count, whole-trip budget/currency, required/avoided experiences and
+free text. Date controls use the public server window and shared calendar arithmetic;
+validation covers real dates, ordering, inclusive duration, positive integer travelers,
+finite nonnegative budget and supported currency. Incomplete input remains editable
+and recoverable. The composition boundary adds visible required/avoided wording to
+`additional_preferences` and otherwise retains the existing `PlanningRequest` contract.
+The server remains authoritative for its token ceiling and current generation window.
+
+Interests, nullable pace (`relaxed`, `balanced`, `rich`) and transport priorities
+(`walk`, `transit`, `drive`) add visible English sentences. Transport is a soft preference,
+never an allowlist. `editor_version=1` snapshots retain selections and exact span
+bindings in tab-local recovery. Only untouched inserted text is owned: outside edits
+shift offsets, inside edits detach the affected control, and deselection removes only
+its still-owned sentence. Native edit ranges disambiguate repeated text; ambiguous
+whole-text replacements relinquish possible ownership rather than guessing. Manually
+written identical sentences remain unowned. Restoration accepts only exact valid
+versioned bindings and does not search for or reclaim matching text.
+
+The existing bounded assistance APIs supply destination suggestions with manual entry
+and user-reviewed polish. Text/context revisions fence late responses; Apply and Undo
+reconcile ownership without reclaiming detached wording. Dismiss, polish and login
+return never generate an itinerary. Server-side drafts and task submission remain
+separate lifecycle slices; editing adds no persistence table.
+
+### Accepted application lifecycle
 
 Product remains V3 over an allowlisted presentation, using the existing PostgreSQL
 instance/database with `app` alongside `tripworld`. The accepted application lifecycle is
@@ -207,7 +239,8 @@ client may not receive a terminal cancellation frame; server cleanup still cance
 awaits the producer. No stream event establishes that an already-dispatched external call
 was cancelled or unbilled.
 
-Product uses one stream; `/dev` launches four independent streams from a copied input snapshot.
+The request-lifetime Product API supports one stream; `/dev` launches four independent
+streams from a copied input snapshot.
 Forms lock during active work. Per-run/all-stop, same-snapshot reruns and unmount cancellation
 use controller/group identities to reject late superseded results. Editing an idle form clears
 the result group. Only terminal successful results render itineraries. Sequence duplicates,

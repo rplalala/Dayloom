@@ -78,6 +78,19 @@ def test_suggested_text_is_presented_after_one_call_without_changing_context():
     assert '"destination": "London"' in fake.calls[0][2]
 
 
+def test_polish_preserves_exact_user_text_for_revision_and_span_ownership():
+    original = "  Enjoy quiet parks.\n"
+    candidate = "  Enjoy peaceful parks.\n"
+    fake = FakePolisher({
+        "status": "suggested", "suggested_text": candidate,
+        "explanation": "Clarified wording.", "questions": [],
+    })
+    result = asyncio.run(request(PreferencePolishingService(lambda: fake), payload(original)))
+    assert result.status_code == 200
+    assert result.json()["original_text"] == original
+    assert result.json()["suggested_text"] == candidate
+
+
 def test_changed_number_is_presented_for_user_decision():
     fake = FakePolisher(
         {
