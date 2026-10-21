@@ -26,6 +26,9 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
   const [busy, setBusy] = useState(false);
   const [locked, setLocked] = useState(false);
   const mounted = useRef(true);
+  const editRevision = useRef(0);
+  const currentSession = useRef({ accountId, csrf });
+  currentSession.current = { accountId, csrf };
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const currentGeneration = accountId ? submissionGeneration(accountId) : '';
   function remember(next: Intent) {
@@ -33,16 +36,25 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
     try { sessionStorage.setItem(storageKey, JSON.stringify(next)); } catch { /* The form still works without storage. */ }
   }
   function edit(content: string) {
+    editRevision.current += 1;
     if (!mounted.current || (accountId && submissionGeneration(accountId) !== currentGeneration)) return;
     if (new Blob([content]).size > maximum) { setError('JSON must be at most 5 MiB.'); return; }
     setError(''); remember({ owner: accountId, generation: currentGeneration, content, key: null, uncertain: false });
   }
+  function readFile(file: File | undefined) {
+    const revision = ++editRevision.current;
+    const valid = () => mounted.current && revision === editRevision.current && currentSession.current.accountId === accountId && currentSession.current.csrf === csrf && (!accountId || submissionGeneration(accountId) === currentGeneration);
+    if (!file) return;
+    if (file.size > maximum) { setError('JSON must be at most 5 MiB.'); return; }
+    void file.text().then(content => { if (valid()) edit(content); }, () => { if (valid()) setError('Could not read this file.'); });
+  }
   async function perform(check = false) {
     if (!accountId || !csrf || busy) return;
+    editRevision.current += 1;
     const key = intent.key || crypto.randomUUID();
     const next = { ...intent, owner: accountId, generation: currentGeneration, key, uncertain: true };
     remember(next); setBusy(true); setError('');
-    const valid = () => mounted.current && submissionGeneration(accountId) === currentGeneration;
+    const valid = () => mounted.current && currentSession.current.accountId === accountId && currentSession.current.csrf === csrf && submissionGeneration(accountId) === currentGeneration;
     try {
       const response = await fetch(check ? `/api/imports/${encodeURIComponent(key)}` : '/api/imports', { credentials: 'same-origin', cache: 'no-store', method: check ? 'GET' : 'POST', headers: check ? {} : { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf, 'X-Import-Key': key }, ...(check ? {} : { body: intent.content }) });
       const body = await response.json();
@@ -57,11 +69,11 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
   }
   if (expired || locked) return <div className="container page"><h1>Your import is private.</h1><p>Log in to the same account to recover your input and check its status.</p><Link to="/login?return=/import">Log in</Link></div>;
   return <div className="container page"><div className="page-heading"><span className="eyebrow">KEEP A PAST JOURNEY</span><h1>Import itinerary</h1><p>Paste or choose historical itinerary JSON, up to 5 MiB. Review the separate preview before saving.</p></div>
-    <div className="content-card"><label htmlFor="import-file">Choose JSON file</label><input id="import-file" type="file" accept=".json,application/json" disabled={busy || intent.uncertain} onChange={event => { const file = event.target.files?.[0]; if (!file) return; if (file.size > maximum) { setError('JSON must be at most 5 MiB.'); return; } void file.text().then(edit, () => setError('Could not read this file.')); }} />
+    <div className="content-card"><label htmlFor="import-file">Choose JSON file</label><input id="import-file" type="file" accept=".json,application/json" disabled={busy || intent.uncertain} onChange={event => readFile(event.target.files?.[0])} />
       <label htmlFor="import-json">Itinerary JSON</label><textarea id="import-json" rows={16} value={intent.content} disabled={busy || intent.uncertain} onChange={event => edit(event.target.value)} style={{ width: '100%' }} />
       {error && <p role="alert">{error}</p>}
       {!accountId ? <Link className="btn btn-primary" to="/login?return=/import">Log in to preview</Link> : intent.uncertain ? <button className="btn btn-primary" disabled={busy} onClick={() => void perform(true)}>Check import status</button> : <button className="btn btn-primary" disabled={busy || !intent.content.trim()} onClick={() => void perform()}>{intent.key ? 'Retry import with same key' : 'Preview import'}</button>}
       <Link className="btn btn-light" to="/trips">My trips</Link>
-      {intent.key && <button className="btn btn-light" disabled={busy} onClick={() => { remember({ owner: accountId, generation: currentGeneration, content: '', key: null, uncertain: false }); setError(''); }}>Start new import</button>}
+      {intent.key && <button className="btn btn-light" disabled={busy} onClick={() => { editRevision.current += 1; remember({ owner: accountId, generation: currentGeneration, content: '', key: null, uncertain: false }); setError(''); }}>Start new import</button>}
     </div></div>;
 }

@@ -162,3 +162,55 @@ def test_expired_import_hides_input_before_refresh_and_recovers_same_key(browser
         assert keys[0] == keys[1]
     finally:
         context.close()
+
+
+def test_deferred_file_cannot_erase_a_later_accepted_import_identity(browser_app):  # noqa: F811
+    base, browser = browser_app.base_url, browser_app.browser
+    context = browser.new_context()
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.add_init_script("""(() => {
+            const original = File.prototype.text;
+            File.prototype.text = function () {
+                if (this.name === 'deferred-a.json') {
+                    return new Promise(resolve => { window.finishImportFile = resolve; });
+                }
+                return original.call(this);
+            };
+        })();""")
+        page.goto(base + "/import")
+        page.get_by_label("Choose JSON file").set_input_files(
+            {"name": "deferred-a.json", "mimeType": "application/json", "buffer": b"{}"}
+        )
+        page.wait_for_function('typeof window.finishImportFile === "function"')
+        pasted = source() | {"title": "Pasted journey B"}
+        content = json.dumps(pasted)
+        page.get_by_label("Itinerary JSON", exact=True).fill(content)
+        posts = []
+
+        def lose_response(route):
+            posts.append(route.request.headers["x-import-key"])
+            route.fetch()
+            route.abort("failed")
+
+        page.route("**/api/imports", lose_response)
+        page.get_by_role("button", name="Preview import", exact=True).click()
+        expect(page.get_by_role("button", name="Check import status")).to_be_visible()
+        expect(page.get_by_role("button", name="Check import status")).to_be_enabled()
+        assert len(posts) == 1
+        page.evaluate(
+            "(content) => window.finishImportFile(content)",
+            json.dumps(source() | {"title": "Late file A"}),
+        )
+        retained = page.evaluate("JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1'))")
+        assert retained["content"] == content
+        assert retained["key"] == posts[0] and retained["uncertain"] is True
+        page.get_by_role("button", name="Check import status").click()
+        expect(page.get_by_role("heading", name="Pasted journey B", exact=True)).to_be_visible()
+        assert len(posts) == 1
+        page.screenshot(
+            path=str(Path(".scratch/import-browser/deferred-file-recovery.png")), full_page=True
+        )
+    finally:
+        context.close()
