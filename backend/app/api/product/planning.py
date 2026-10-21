@@ -20,6 +20,7 @@ from backend.app.policies.trip_dates import (
     TripDatePolicyError,
     create_trip_date_window,
 )
+from backend.app.product.auth import current_user
 from backend.app.schemas.requirement_boundary import RequirementBoundaryError
 from backend.app.services.planning import (
     PlanningFailedError,
@@ -31,7 +32,7 @@ from backend.app.services.product_presentation import public_clarification
 router = APIRouter(prefix="/api", tags=["product-planning"])
 
 
-@router.post("/planning/stream")
+@router.post("/planning/stream", dependencies=[Depends(current_user)])
 async def stream_planning_result(
     body: ProductPlanningRequest,
     planning_service: Annotated[PlanningService, Depends(get_planning_service)],
@@ -44,7 +45,9 @@ async def stream_planning_result(
     return planning_stream(lambda: create_planning_result(body, planning_service))
 
 
-@router.post("/planning", response_model=ProductPlanningResponse)
+@router.post(
+    "/planning", response_model=ProductPlanningResponse, dependencies=[Depends(current_user)]
+)
 async def create_planning_result(
     body: ProductPlanningRequest,
     planning_service: Annotated[PlanningService, Depends(get_planning_service)],

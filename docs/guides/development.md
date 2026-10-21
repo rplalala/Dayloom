@@ -36,8 +36,10 @@ Vite proxies `/api` and `/health` to `http://127.0.0.1:8000`.
 The [API launcher](../../scripts/run_api.py) selects the Windows event loop needed by
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
-Product routes are `/` and `/plan`; Developer is `/dev`.
-Product runs V3 and Developer exposes independent V0-V3 from the shared structured form.
+Product routes are `/`, `/plan`, `/trips`, `/login` and `/account`; Developer is `/dev`.
+The Product r7 shell has its own shared brief surface. Developer retains independent
+V0-V3 and the existing structured form. Product generation HTTP endpoints require
+authentication; the durable generation UI is connected in its implementation slice.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
 Foundry endpoint/deployment/key and `GOOGLE_MAPS_API_KEY` serve planning;
@@ -49,6 +51,52 @@ are distinct settings. Never commit real credentials. Default local DB host/port
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
 The pinned vocabulary under `.cache/tokenizer` must also exist; the planner does not
 download it. `python -m tools.data.prepare_tokenizer --help` describes explicit preparation.
+
+## Product account setup and acceptance
+
+Use the existing PostgreSQL database for application runtime, with a role permitted
+to create the separate `app` schema. Product migration/account settings are optional
+for the independent V0-V3 and research commands. Keep these keys in ignored `.env`
+or the process environment:
+
+| Key | Meaning |
+| --- | --- |
+| `PRODUCT_DATABASE_URL` | PostgreSQL connection URL for Product persistence |
+| `PRODUCT_JWT_SECRET` | Independently generated signing secret, at least 32 characters |
+| `PRODUCT_ORIGIN` | Exact public HTTPS origin, or the explicitly allowed loopback development origin |
+| `PRODUCT_ALLOW_INSECURE_LOOPBACK` | Default false; set true only for HTTP development on localhost/127.0.0.1/::1 |
+| `PRODUCT_SESSION_SECONDS` | Default 3600; accepted range 1–86400 |
+| `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
+
+Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
+`uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
+retains SHA-256 integrity and never rebuilds the TripWorld corpus. Start the API using
+the normal launcher. For local browser development, configure
+`PRODUCT_ORIGIN=http://localhost:5173` and the explicit loopback exception; open that
+same origin in the browser. Production uses same-origin HTTPS routing.
+
+Acceptance requires a separate disposable database whose name includes `test`.
+Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated
+PostgreSQL instance, choose unused ports and set its URL in
+`PRODUCT_TEST_DATABASE_URL`. From the worktree root:
+
+```powershell
+uv run pytest backend/tests/product/test_accounts.py --basetemp=.scratch/pytest-product
+$env:PRODUCT_BROWSER_TESTS = "1"
+$env:PRODUCT_TEST_API_PORT = "8120"
+$env:PRODUCT_TEST_WEB_PORT = "5120"
+uv run python -m playwright install chromium
+uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
+```
+
+The browser fixture starts/stops its own API and Vite processes, exercises real
+accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`.
+Set `TEMP` and `TMP` to a worktree-local `.scratch/tmp` directory when sandboxed
+Windows temporary storage is unavailable; a local `UV_CACHE_DIR` can be set similarly.
+Existing Playwright Chromium installations can be reused. No model, map, weather or
+image-provider call is needed for these account journeys. The migration acceptance
+includes rerun/integrity checks and a seeded TripWorld sentinel preservation check;
+account acceptance includes deliberate profile-insert failure and rollback.
 
 ## Independent version execution
 

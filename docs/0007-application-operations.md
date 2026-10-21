@@ -1,8 +1,9 @@
 # Application interfaces and engineering operation
 
 Status: Implemented application boundary, consolidated 2026-10-03.
-The unified Product design below is accepted and unimplemented; the HTTP map and
-streaming section describe existing endpoints and request-lifetime execution.
+The unified Product design is being implemented in slices. Accounts, the r7 shell,
+authentication return and the Product migration entrypoint are implemented. Planning
+still uses the existing HTTP/stream boundary until the durable task slice replaces it.
 
 ## Product and Developer surfaces
 
@@ -32,6 +33,10 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 
 | Endpoint | Input and result | Source of truth |
 | --- | --- | --- |
+| `POST /api/auth/register` | Normalized email, password and display name; atomic account/profile and browser session | [Account boundary](../backend/app/product/auth.py) |
+| `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
+| `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
+| `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/planning` | Shared `PlanningRequest`; V3 Product response discriminated by `status` | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same input and terminal result, delivered through request-lifetime SSE | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
@@ -70,8 +75,9 @@ weather or route facts remain honestly represented. Secrets belong in local envi
 configuration, not committed documents, logs or client bundles. Provider URLs and requests
 are constrained by their adapters; user prose is not arbitrary outbound-fetch authority.
 
-PostgreSQL/pgvector currently supports retrieval. Accounts and saved itineraries are pending
-under the [unified Product design](#product-experience-and-persistence-design).
+PostgreSQL/pgvector supports retrieval; Product accounts use the separate `app` schema
+in the same database. Saved itineraries remain pending under the
+[unified Product design](#product-experience-and-persistence-design).
 Per-process development limits are not account-wide billing enforcement or distributed
 abuse controls; this design does not establish a public deployment guarantee.
 
@@ -79,12 +85,45 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-Status: Accepted design; not implemented. Dayloom r7's visual/interaction baseline is
+Status: Accounts and shell implemented; remaining lifecycle slices pending. Dayloom r7's visual/interaction baseline is
 provisionally accepted. The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
 frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
 seams. Thirteen implementation slices are published under #198, reusing #120-#123;
-#119 is the historical design/mapping entry. Implementation remains pending.
+#119 is the historical design/mapping entry.
+
+### Implemented account and browser session boundary
+
+`app.users` stores UUID identity, a unique trimmed/lowercase email, an Argon2 password
+hash and `token_version`. Exactly one initials-only `app.user_profiles` row is created
+in the registration transaction. A failed profile insert rolls back the account.
+No image field or avatar upload endpoint is present. `app.schema_migrations` records
+the SHA-256 of each applied Product migration under an advisory transaction lock;
+matching reruns skip and changed applied migrations fail atomically. TripWorld
+migrations and tables are not altered by the Product entrypoint.
+
+Browser access uses a one-hour signed JWT in `dayloom_session`, with HttpOnly,
+SameSite=Lax and Secure under HTTPS. An explicit insecure-cookie exception is limited
+to loopback development origins. Register/login require the configured exact origin.
+Cookie-authenticated writes also require the session-bound `X-CSRF-Token` returned by
+login/current; bearer clients use the same user-existence and revocation checks.
+Conflicting cookie/bearer credentials are rejected. Missing, expired, malformed and
+revoked sessions return 401; account validation never echoes submitted passwords.
+Logout increments `token_version`, invalidating previously issued tokens across clients.
+Product planning POST endpoints require the same authentication; date-window and
+input-assistance reads remain guest-accessible. Developer authentication is unchanged.
+
+The Product React shell exposes home, a shared minimal brief, login/register, guest
+example cards, an authenticated empty library and an initials-only account page.
+Authentication restores a guest brief and return intent without generating. Editor
+recovery and a pending action identity stay in tab-local session storage, never in the
+JWT or shared local storage. Expiry hides account/editor content and quarantines it
+under its previous account. Successful same-account login restores it without a write;
+different-account login, explicit logout and confirmed revocation erase it. Shared
+storage notifications contain only account-change/logout notices and clear other tabs.
+Focus and periodic session checks detect remote revocation; network failure hides
+account content while preserving quarantined recovery. Server-side drafts, profile
+editing, curated example detail and durable generation are implemented by later slices.
 
 Product remains V3 over an allowlisted presentation, using the existing PostgreSQL
 instance/database with `app` alongside `tripworld`. The accepted application lifecycle is
@@ -117,11 +156,10 @@ favorites or saved-place collection is introduced. Google Places Photos require 
 identity binding and safe media presentation; Unsplash supplies destination/atmosphere
 imagery. Missing facts/images remain unavailable rather than invented.
 
-The confirmed session/task/storage mechanisms are specified in #198, not implemented by
-this documentation. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
+The remaining task/storage mechanisms are specified in #198. Confirmed acceptance uses Product APIs with real isolated PostgreSQL,
 browser journeys through those APIs with external providers mocked, and the public migration
 entrypoint. Only touched V0-V3/Developer boundaries receive offline compatibility checks.
-Runnable migration/configuration instructions will be documented when implementation exists.
+Runnable account/migration checks are in the [development guide](guides/development.md#product-account-setup-and-acceptance).
 
 ## Configuration, evidence and verification
 

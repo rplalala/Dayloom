@@ -5,14 +5,20 @@ import { ProductLayout } from "../layouts/ProductLayout";
 import { DeveloperPlannerPage } from "../routes/developer/DeveloperPlannerPage";
 import { NotFoundPage } from "../routes/NotFoundPage";
 import { HomePage } from "../routes/product/HomePage";
-import { PlanTripPage } from "../routes/product/PlanTripPage";
+import { BriefPage } from "../features/product/BriefPage";
+import { AuthPage } from "../features/product/AuthPage";
+import { LibraryPage } from "../features/product/LibraryPage";
+import { AccountPage } from "../features/product/AccountPage";
 
 export const routes: RouteObject[] = [
   {
     element: <ProductLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "plan", element: <PlanTripPage /> },
+      { path: "plan", element: <BriefPage /> },
+      { path: "login", element: <AuthPage /> },
+      { path: "trips", element: <LibraryPage /> },
+      { path: "account", element: <AccountPage /> },
     ],
   },
   {

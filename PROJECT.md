@@ -26,8 +26,9 @@ Repository content is English; user-facing development discussion is Chinese.
 Use a modular monolith: React frontend; FastAPI API/application/backend services;
 shared LLM, evidence, RAG and orchestration components with version-specific
 entry points; PostgreSQL + pgvector for TripWorld retrieval.
-The accepted unified Product design will add `app` persistence and account-owned task
-coordination to the same PostgreSQL database; implementation is pending. See the
+The unified Product implementation has introduced `app` account/profile persistence,
+checksum-protected migrations and the r7 authentication shell. Account-owned tasks,
+drafts, previews and saved trips remain pending under the same database boundary. See the
 [Product design overview](docs/0007-application-operations.md#product-experience-and-persistence-design).
 External provider payloads are normalized before entering application policies.
 

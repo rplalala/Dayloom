@@ -2,12 +2,16 @@
 
 from typing import Literal
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exception_handlers import request_validation_exception_handler
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 
 from backend.app.api.developer.planning import router as developer_planning_router
 from backend.app.api.input_assistance import router as input_assistance_router
 from backend.app.api.product.planning import router as product_planning_router
+from backend.app.product.auth import router as account_router
 
 
 class HealthResponse(BaseModel):
@@ -18,19 +22,41 @@ class HealthResponse(BaseModel):
     status: Literal["ok"]
 
 
-app = FastAPI(
-    title="Reliable Trip Plan Agent",
-    description="Backend API for reliable itinerary generation.",
-    version="0.1.0",
-)
-
-app.include_router(product_planning_router)
-app.include_router(developer_planning_router)
-app.include_router(input_assistance_router)
-
-
-@app.get("/health", response_model=HealthResponse, tags=["system"])
 def get_health() -> HealthResponse:
     """Report whether the API process is responsive."""
 
     return HealthResponse(status="ok")
+
+
+def create_app() -> FastAPI:
+    """Recreate the HTTP application without requiring Product/provider configuration."""
+    application = FastAPI(
+        title="Reliable Trip Plan Agent",
+        description="Backend API for reliable itinerary generation.",
+        version="0.1.0",
+    )
+    application.include_router(product_planning_router)
+    application.include_router(developer_planning_router)
+    application.include_router(input_assistance_router)
+    application.include_router(account_router)
+
+    @application.exception_handler(RequestValidationError)
+    async def safe_auth_validation(request: Request, exc: RequestValidationError):
+        if request.url.path.startswith("/api/auth/"):
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "detail": [
+                        {"loc": error["loc"], "type": error["type"], "msg": "Invalid account field"}
+                        for error in exc.errors()
+                    ]
+                },
+                headers={"Cache-Control": "no-store"},
+            )
+        return await request_validation_exception_handler(request, exc)
+
+    application.get("/health", response_model=HealthResponse, tags=["system"])(get_health)
+    return application
+
+
+app = create_app()
