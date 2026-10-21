@@ -36,7 +36,7 @@ Vite proxies `/api` and `/health` to `http://127.0.0.1:8000`.
 The [API launcher](../../scripts/run_api.py) selects the Windows event loop needed by
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
-Product routes include `/`, `/plan`, `/trips`, `/login`, `/account`, `/planning`,
+Product routes include `/`, `/plan`, `/trips`, `/import`, `/login`, `/account`, `/planning`,
 `/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
 The Product r7 shell has its own shared brief surface. Developer retains independent
 V0-V3 and the existing structured form. Product generation HTTP endpoints require
@@ -180,8 +180,8 @@ they make no paid calls.
 Save explicitly creates an immutable saved trip; confirmed Discard removes pending
 content. Both use the preview's durable decision identity. Refreshing a decided preview
 recovers its receipt, and saved details read normalized rows without provider calls.
-The library includes saved cards beside drafts; saved title/delete/copy management and
-import remain separate slices. Weather attribution/source URLs are excluded from saved
+The library includes saved cards beside drafts; saved title/delete/copy management
+remains a separate slice. Weather attribution/source URLs are excluded from saved
 storage; all other supported public detail facts retain their supplied order and time text.
 
 With the same isolated database configured, run:
@@ -193,6 +193,26 @@ uv run pytest backend/tests/product/test_saved.py backend/tests/product/test_sav
 These cases run public migration fresh/rerun/checksum rejection, SQL constraints,
 atomic child-write rollback, concurrent decisions, repeated/lost-response recovery,
 owner isolation, deleted-result tombstones and actual browser Save/confirmed Discard.
+
+### Historical import/export acceptance
+
+Open `/import` to paste JSON or choose a file, then explicitly Preview and Save. Supported
+formats, trust, partial known requests, time precision and operation recovery are defined
+in the [import/export contract](../0007-application-operations.md#historical-json-import-and-export).
+The shared detail's JSON export can be reimported with a new operation key; text export
+and Copy summary use only the already loaded public detail. None runs generation or refresh.
+
+With the isolated database and browser ports configured above, run:
+
+```powershell
+uv run pytest backend/tests/product/test_imports.py backend/tests/product/test_import_browser.py
+```
+
+These checks use actual APIs/PostgreSQL for concurrent operation identity, account isolation,
+recreation, lost-response lookup, explicit retry, field errors and preview decisions. Browser
+acceptance covers historical differing-offset/nanosecond/empty-day/orphan content through
+paste, Save, JSON download and file reimport, plus selectable summary. Its screenshots live
+under `.scratch/import-browser`; its API/Vite lifecycle uses the shared isolated browser fixture.
 The browser includes a committed Save response delayed until another draft is open;
 the late response cannot navigate or replace that draft. Screenshots/logs remain in
 `.scratch/task-browser/`. The fresh migration case resets only the explicitly isolated

@@ -268,8 +268,7 @@ foreign key. Only an exact scheduled activity ID with a compatible supplied date
 orphans and free-window references remain unresolved without invented days or name guesses.
 Transfer endpoints must be distinct and belong to the same trip/day. Database constraints
 also enforce legal domains, nonblank IDs/titles, nonnegative positions/finite measurements
-and paired cost fields. Historical detail/save does not apply current generation windows;
-the separate import slice owns public import validation.
+and paired cost fields. Historical detail/save/import does not apply current generation windows.
 
 The preview page offers Save to My trips and a confirmed Discard dialog. An ambiguous
 write response triggers a decision GET, never an automatic write replay; failed recovery
@@ -278,6 +277,54 @@ prevent late responses from changing another brief or page. Saved results offer 
 controlled detail link. HTTP/SSE completed-task adapters read normalized saved detail when
 available and otherwise expose a safe `preview_decision`, including discarded/deleted
 receipts, so clearing a pending snapshot does not break completed observation.
+
+### Historical JSON import and export
+
+`/import` accepts pasted or uploaded UTF-8 JSON up to 5 MiB. `POST /api/imports`
+uses the authenticated cookie, Origin and CSRF token, with an operation key in the
+`X-Import-Key` header outside the artifact. `GET /api/imports/{operation_key}` returns
+the owner's original preview/decision receipt, including saved/discarded/deleted outcomes.
+Account-row serialization and the existing owner/kind/key unique constraint atomically
+create one imported preview. Replays compare a server-computed canonical fingerprint of
+validated content and known request metadata; object key order, JSON whitespace and
+monetary decimal scale are insignificant, while list order, IDs and ISO spelling remain
+significant. Conflicting content returns 409. Save/Discard use the shared decision service;
+minimal identity/fingerprint receipts survive content removal. An ambiguous response
+requires a status read before explicit same-key retry. A new key starts another import.
+
+Supported envelopes are bare itineraries, the unversioned r7 `itinerary` wrapper, and
+`schema_version: dayloom_export_1`. Explicit output versions `itinerary_1`, `itinerary_2`
+and `itinerary_3` share the bounded public day/activity field mapping; research `draft`,
+traces and arbitrary nested envelopes are not searched. Request aliases are `request`,
+`input` and `_prototype.input`, with `people`/`activity_budget`/`currency` mapped only
+when supplied. Missing/null request means no known original facts. A partial request
+contains `known_fields`, the sorted canonical field names explicitly supplied, including
+explicit nulls. A nonnull budget requires amount and currency together. Itinerary span,
+visits, profile defaults and requirements never reconstruct missing request facts.
+
+The validator requires 1–400 actual unique calendar days and unique nonblank activity
+IDs (missing IDs use deterministic source positions). It retains input order and empty
+days, deriving a missing outer span from actual dates without filling gaps. Supported ISO
+timestamps use `YYYY-MM-DDTHH:MM[:SS[.1–9 digits]][Z|±HH:MM]`; original strings survive
+Save/read/export. Integer nanosecond comparisons enforce positive actual duration and
+consistent endpoint awareness. Activity starts belong to their actual day. Actual transfer
+endpoints must exist, differ and share a day. Optional Nearby retains supplied orphan,
+conflicting or undated references separately; only absent nested anchor/date fields inherit
+the real parent. Known measurements/costs must be finite and valid; missing facts stay
+unknown. Errors identify the failing field, and invalid imports create no preview.
+
+Artifact ownership, operation identity and private media binding declarations are rejected.
+Allowlisted imported content is always `provenance=imported`, `trust=unverified_import`.
+Google/origin/PASS/completion claims remain unverified source claims; imported completion
+is unassessed and transfer claims cannot acquire trusted generated feasibility. No provider,
+generation, profile inference or media refresh occurs during import or export.
+
+Every shared detail offers versioned JSON, plain-text download and a copyable summary with
+a selectable-text dialog fallback. Exports retain supported public content and known request
+metadata, omit record authority/private diagnostics and distinguish unknown facts, free
+windows, connections, optional Nearby and source trust. Reimport always crosses the same
+unverified boundary. Guest input survives login; expired account input remains quarantined
+for same-account recovery. Logout/account invalidation clears its session-stored intent.
 
 ### Implemented visible brief editor
 
