@@ -13,6 +13,7 @@ from backend.app.api.developer.planning import router as developer_planning_rout
 from backend.app.api.input_assistance import router as input_assistance_router
 from backend.app.api.product.planning import router as product_planning_router
 from backend.app.product.auth import router as account_router
+from backend.app.product.copies import router as copies_router
 from backend.app.product.drafts import router as drafts_router
 from backend.app.product.examples import router as examples_router
 from backend.app.product.imports import router as imports_router
@@ -57,6 +58,7 @@ def create_app() -> FastAPI:
     application.include_router(developer_planning_router)
     application.include_router(input_assistance_router)
     application.include_router(account_router)
+    application.include_router(copies_router)
     application.include_router(examples_router)
     application.include_router(profile_router)
     application.include_router(drafts_router)

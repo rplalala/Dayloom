@@ -5,6 +5,7 @@ import { taskRequest, TaskFailure } from './taskClient';
 import { TripDetail } from './detail/TripDetail';
 import type { ProductDetail } from './detail/types';
 import { replanBrief } from './replan';
+import { CopyControls } from './CopyControls';
 
 export function SavedPage() {
   const { tripId } = useParams();
@@ -28,7 +29,7 @@ export function SavedPage() {
   if (result.owner !== account.id || result.id !== tripId) return <p className="container page" role="status">Loading itinerary…</p>;
   if (!result.detail) return <div className="container page"><h1>{result.error}</h1><Link to="/trips">Back to My trips</Link></div>;
   const detail = result.detail;
-  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} onReplan={() => {
+  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} actions={<CopyControls kind="copied" source={detail.id} />} onReplan={() => {
     replaceBrief(replanBrief(detail.request), 'replan');
     navigate('/plan');
   }} /></>;

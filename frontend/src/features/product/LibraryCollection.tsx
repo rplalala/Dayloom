@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSession } from "./session";
 import { DraftFailure, draftRequest, type LibraryCard, type LibraryPageResult } from "./drafts";
 import "./library.css";
+import { CopyControls } from './CopyControls';
 
 export function LibraryCollection() {
   const session = useSession();
@@ -15,7 +16,7 @@ export function LibraryCollection() {
   const [page, setPage] = useState<LibraryPageResult | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const [action, setAction] = useState<{ kind: "menu" | "rename" | "delete"; card: LibraryCard } | null>(null);
+  const [action, setAction] = useState<{ kind: "menu" | "rename" | "delete" | "copy"; card: LibraryCard } | null>(null);
   const [title, setTitle] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
   const owner = session.account!.id;
@@ -74,6 +75,7 @@ export function LibraryCollection() {
         <button type="button" className="card-menu-trigger" aria-label={`Manage ${card.title}`} aria-haspopup="dialog" aria-controls="library-management-dialog" aria-expanded={Boolean(action && action.card.id === card.id && action.card.kind === card.kind)} disabled={busy} onClick={() => { setError(""); setAction({ kind: "menu", card }); }}><span aria-hidden="true">•••</span></button>
       </div>
       <div className="trip-card-body"><span className="eyebrow">{card.kind === "draft" ? "PLANNING DRAFT" : "SAVED ITINERARY"}</span><h2>{card.title}</h2><p>{card.destination || "Destination to decide"}</p><p>{card.start_date || "Dates to decide"}{card.end_date && ` – ${card.end_date}`}</p><Link className="text-link" to={card.kind === "draft" ? `/plan?draft=${card.id}` : `/trips/${card.id}`}>{card.kind === "draft" ? "Continue planning →" : "View details →"}</Link>
+        {card.kind === "saved" && <button type="button" className="btn btn-quiet btn-tiny" onClick={() => setAction({ kind: "copy", card })}>Copy</button>}
       </div></article>)}</div>}
     {page && page.total > 12 && <nav className="library-pagination" aria-label="Collection pages"><button className="btn btn-light" disabled={offset === 0} onClick={() => setOffset(n => Math.max(0, n - 12))}>Previous</button><span>{offset + 1}–{Math.min(offset + 12, page.total)} of {page.total}</span><button className="btn btn-light" disabled={offset + 12 >= page.total} onClick={() => setOffset(n => n + 12)}>Next</button></nav>}
     <dialog id="library-management-dialog" ref={dialog} className="library-dialog" aria-labelledby="library-dialog-title" onCancel={event => { if (busy) event.preventDefault(); else setAction(null); }} onClick={event => {
@@ -82,17 +84,18 @@ export function LibraryCollection() {
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setAction(null);
     }}>
       {action && <>
-        <h2 id="library-dialog-title">{action.kind === "menu" ? `Manage your ${action.card.kind === "draft" ? "draft" : "trip"}` : action.kind === "rename" ? `Rename ${action.card.kind === "draft" ? "draft" : "trip"}` : `Delete ${action.card.kind === "draft" ? "draft" : "trip"}?`}</h2>
+        <h2 id="library-dialog-title">{action.kind === "copy" ? 'Keep an independent copy' : action.kind === "menu" ? `Manage your ${action.card.kind === "draft" ? "draft" : "trip"}` : action.kind === "rename" ? `Rename ${action.card.kind === "draft" ? "draft" : "trip"}` : `Delete ${action.card.kind === "draft" ? "draft" : "trip"}?`}</h2>
         {action.kind === "menu" ? <>
           <p className="library-managed-title">{action.card.title}</p>
           <div className="menu-stack">
             <button type="button" autoFocus className="menu-option" aria-label={`Rename ${action.card.title}`} disabled={busy} onClick={() => { setTitle(action.card.title); setError(""); setAction({ ...action, kind: "rename" }); }}>Rename</button>
             {action.card.kind === "draft" && <button type="button" className="menu-option" aria-label={`Copy ${action.card.title}`} disabled={busy} onClick={() => void mutate(action.card, "copy")}>Make a copy</button>}
+            {action.card.kind === "saved" && <button type="button" className="menu-option" aria-label={`Copy ${action.card.title}`} onClick={() => setAction({ ...action, kind: "copy" })}>Make a copy</button>}
             <button type="button" className="menu-option danger-text" aria-label={`Delete ${action.card.title}`} disabled={busy} onClick={() => { setError(""); setAction({ ...action, kind: "delete" }); }}>Delete</button>
           </div>
           {error && <div role="alert"><p>{error}</p><button type="button" className="btn btn-light" onClick={() => { setAction(null); setReload(n => n + 1); }}>Reload collection</button></div>}
           <div className="draft-actions"><button type="button" disabled={busy} className="btn btn-light" onClick={() => setAction(null)}>Close</button></div>
-        </> : <form onSubmit={event => { event.preventDefault(); void mutate(action.card, action.kind === "rename" ? "rename" : "delete"); }}>
+        </> : action.kind === "copy" ? <><p>{action.card.title}</p><CopyControls kind="copied" source={action.card.id} onCopied={() => { setOffset(0); setReload(n => n + 1); }} /><button type="button" className="btn btn-light" onClick={() => setAction(null)}>Close</button></> : <form onSubmit={event => { event.preventDefault(); void mutate(action.card, action.kind === "rename" ? "rename" : "delete"); }}>
           {action.kind === "rename" ? <label className="field"><span>{action.card.kind === "draft" ? "New draft title" : "New trip title"}</span><input autoFocus required maxLength={120} value={title} onChange={event => setTitle(event.target.value)} /></label> : <p>Delete “{action.card.title}”? This removes this {action.card.kind === "draft" ? "draft" : "trip"} permanently. Independent copies stay in your collection.</p>}
           {error && <div role="alert"><p>{error}</p><button type="button" className="btn btn-light" onClick={() => { setAction(null); setReload(n => n + 1); }}>Reload collection</button></div>}
           <div className="draft-actions"><button type="button" disabled={busy} className="btn btn-light" onClick={() => setAction(null)}>Cancel</button><button disabled={busy || (action.kind === "rename" && !title.trim())} className={action.kind === "delete" ? "btn btn-danger" : "btn btn-primary"}>{action.kind === "rename" ? "Save title" : `Delete ${action.card.kind === "draft" ? "draft" : "trip"}`}</button></div>

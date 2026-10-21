@@ -2,8 +2,9 @@
 
 Status: Implemented application boundary, consolidated 2026-10-03.
 The unified Product design is being implemented in slices. Accounts, the r7 shell,
-authentication return, the editable travel brief and the Product migration entrypoint
-and durable generation tasks with recoverable unsaved previews are implemented.
+authentication return, editable travel brief, migration entrypoint, durable generation
+tasks, recoverable previews, normalized saved trips, historical import/export and
+independent whole-trip copies are implemented.
 Product HTTP/stream entrypoints submit and observe that same account task lifecycle.
 
 ## Product and Developer surfaces
@@ -46,6 +47,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
 | `GET`, `PATCH`, `DELETE /api/trips/{id}` | Immutable owner detail, revision-checked title-only update and confirmed cascade deletion | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
 | `GET /api/trips/{id}/weather`, `/nearby`, `/transfers` | Owner-only ordered read views over the saved snapshot | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
+| `POST /api/copies`, `GET /api/copies/{source_kind}/{operation_key}` | Explicit owner copy/Keep and durable operation receipt lookup | [Independent copies](#independent-trip-copies-and-kept-examples) |
 | `POST /api/planning` | Shared `PlanningRequest` plus `Idempotency-Key`; 202 durable task snapshot | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same submission identity; observe durable task revisions and final public detail with task/preview IDs | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `POST /api/planning/tasks` | `{operation_key, request, editor_snapshot?}`; 202 immutable task snapshot or 409 active/key conflict | [Task lifecycle](#durable-planning-tasks-and-previews) |
@@ -88,8 +90,8 @@ configuration, not committed documents, logs or client bundles. Provider URLs an
 are constrained by their adapters; user prose is not arbitrary outbound-fetch authority.
 
 PostgreSQL/pgvector supports retrieval; Product accounts use the separate `app` schema
-in the same database. Saved itineraries remain pending under the
-[unified Product design](#product-experience-and-persistence-design).
+in the same database. Normalized saved snapshots and their durable operation receipts
+follow the [unified Product design](#product-experience-and-persistence-design).
 Per-process development limits are not account-wide billing enforcement or distributed
 abuse controls; this design does not establish a public deployment guarantee.
 
@@ -97,8 +99,8 @@ abuse controls; this design does not establish a public deployment guarantee.
 
 ## Product experience and persistence design
 
-Status: Accounts, profiles, shell, drafts, brief editor, durable tasks and previews implemented;
-saving/import/copy lifecycle slices remain pending.
+Status: Accounts, profiles, shell, drafts, brief editor, durable tasks/previews, saved-trip
+management, historical import/export, replanning and independent copies implemented.
 Dayloom r7's visual/interaction baseline is provisionally accepted. The unified specification
 [#198](https://github.com/rplalala/Dayloom/issues/198) owns the detailed
 frontend/backend requirements, confirmed integration choices and user-confirmed acceptance
@@ -295,6 +297,41 @@ controlled detail link. HTTP/SSE completed-task adapters read normalized saved d
 available and otherwise expose a safe `preview_decision`, including discarded/deleted
 receipts, so clearing a pending snapshot does not break completed observation.
 
+### Independent trip copies and kept examples
+
+Saved details and library cards offer explicit whole-trip Copy; public example details
+offer Keep a copy. `POST /api/copies` accepts only `source_kind` (`copied` or `example`),
+`source_id` (canonical saved UUID or bundled example slug) and `operation_key`. The
+authenticated cookie, exact Origin and CSRF token are required. The operation creates
+an independent normalized trip and an already-saved preview receipt in one transaction,
+without a planning task or pending preview. It copies the current title with ` (copy)`
+and preserves public content, partial/null original requests, ordering and historical
+time spelling under the saved-detail contract. Current generation date windows do not
+apply. It performs no generation, validation refresh or provider request.
+
+The receipt is unique per owner, source kind and operation key. A server-computed intent
+fingerprint binds the canonical source identity, independently of later title/content
+changes. Same-owner serialization resolves simultaneous requests to one result. Receipt
+lookup precedes source lookup, so the same operation still recovers its original saved ID
+after source or result deletion; `saved_result_deleted` prevents resurrection. A conflicting
+source under an existing key returns 409. A genuinely new key can copy only a still-existing
+owner source. Source locking keeps its header and immutable child lists coherent with
+rename/delete, and a child-write failure rolls back both the new trip and receipt.
+
+Immediate lineage is retained as server-owned source kind/ID on the receipt and trip.
+Underlying `provenance` and `trust` remain unchanged: a copy of an import stays unverified,
+and a copy of a historical example stays a source fixture. Copies of copies remain separate
+identities; title changes and deletion never cascade between source and copied trips.
+
+`GET /api/copies/{source_kind}/{operation_key}` recovers the owner's minimal decision
+receipt without fetching providers. After an ambiguous response, the browser offers this
+read before an explicit same-key retry; it never automatically repeats a write. Tab-local
+action identity is quarantined on expiry, restored only for the same account and cleared
+on logout/account invalidation. Mounted component, account, CSRF and invalidation fences
+exclude late replies after navigation or account changes. Guest Keep preserves the brief
+and returns after login to the allowlisted example review surface; another explicit click
+is required. Authenticated My trips retains its real saved/draft collection and empty state.
+
 ### Historical JSON import and export
 
 `/import` accepts pasted or uploaded UTF-8 JSON up to 5 MiB. `POST /api/imports`
@@ -448,7 +485,8 @@ snapshot. `limit` is 1–50
 requests pages of 12; missing fields use neutral placeholders. Saved cards join this
 server-side union with `kind=saved` and server-owned source; equal UUIDs in different
 tables remain distinct. The browser routes saved cards to immutable detail and offers
-rename and confirmed deletion for both kinds, while draft Copy remains independent.
+rename, independent Copy and confirmed deletion for both kinds. Saved Copy follows the
+[saved snapshot operation contract](#independent-trip-copies-and-kept-examples).
 Revision conflicts offer an explicit collection reload. A mutation 401 immediately hides
 cards and the management dialog while canonical session recovery runs; login never
 replays the mutation. Previews stay outside the library.

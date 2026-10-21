@@ -198,7 +198,7 @@ Save explicitly creates an immutable saved trip; confirmed Discard removes pendi
 content. Both use the preview's durable decision identity. Refreshing a decided preview
 recovers its receipt, and saved details read normalized rows without provider calls.
 The library includes saved cards beside drafts with title-only rename and confirmed
-deletion. Whole-trip copying remains a separate slice. Weather attribution/source
+deletion. Whole-trip Copy and Keep example use the independent-copy contract below. Weather attribution/source
 URLs are excluded from saved storage; all other supported public detail facts retain
 their supplied order and time text.
 
@@ -215,6 +215,29 @@ The browser includes a committed Save response delayed until another draft is op
 the late response cannot navigate or replace that draft. Screenshots/logs remain in
 `.scratch/task-browser/`. The fresh migration case resets only the explicitly isolated
 test database's `app` schema and verifies a separate `tripworld` marker survives.
+
+### Independent Copy and Keep example acceptance
+
+The detail hero and saved library cards expose explicit whole-trip copying. Public example
+details offer Keep a copy, returning guests through login to the same example without an
+automatic write. Copy is distinct from the shared detail's Copy summary export action.
+The [copy contract](../0007-application-operations.md#independent-trip-copies-and-kept-examples)
+defines operation identity, source ownership, independent snapshots and deleted-result receipts.
+
+With the isolated database and browser ports configured above, run:
+
+```powershell
+uv run pytest backend/tests/product/test_copies.py backend/tests/product/test_copy_browser.py -q
+```
+
+These cases exercise real API/PostgreSQL transactions and Chromium journeys for historical
+import/example content, simultaneous same-key copies, conflicting intents, deleted source
+and result replay, child-write rollback, owner/CSRF isolation, lost responses and explicit
+retry. Browser checks include guest brief preservation, same-account expiry recovery,
+logout clearing, navigation fences and dialog keyboard/layout behavior at 390px, 800px
+and desktop widths. Screenshots belong to `.scratch/copy-browser`; API/Vite logs use
+`.scratch/browser`. External display media must use the browser fixture's controlled
+replacements; the copy mutation itself makes no provider calls.
 
 ### Historical import/export acceptance
 

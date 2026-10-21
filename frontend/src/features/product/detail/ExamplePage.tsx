@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { HttpError, requestJson } from "../../../shared/api/http";
 import { TripDetail } from "./TripDetail";
 import type { ProductDetail } from "./types";
+import { CopyControls } from '../CopyControls';
 
 export function ExamplePage() {
   const { exampleId } = useParams();
@@ -43,5 +44,5 @@ export function ExamplePage() {
         <Link to="/trips">Browse examples →</Link>
       </div>
     );
-  return <TripDetail key={result.detail.id} detail={result.detail} />;
+  return <TripDetail key={result.detail.id} detail={result.detail} actions={<CopyControls kind="example" source={result.detail.id} />} />;
 }

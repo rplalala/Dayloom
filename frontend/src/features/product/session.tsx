@@ -67,6 +67,8 @@ function invalidate(owner: string | null) {
     if (intent?.owner === owner) sessionStorage.removeItem('dayloom.task.intent.v1');
     const importIntent = JSON.parse(sessionStorage.getItem('dayloom.import.intent.v1') || 'null');
     if (importIntent?.owner === owner) sessionStorage.removeItem('dayloom.import.intent.v1');
+    const copyIntent = JSON.parse(sessionStorage.getItem('dayloom.copy.intent.v1') || 'null');
+    if (copyIntent?.owner === owner) sessionStorage.removeItem('dayloom.copy.intent.v1');
   } catch {
     /* Keep this tab cleared. */
   }
@@ -188,6 +190,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, []);
   const clear = useCallback(() => {
     try { sessionStorage.removeItem('dayloom.task.intent.v1'); } catch { /* Account content stays hidden in memory. */ }
+    try { sessionStorage.removeItem('dayloom.copy.intent.v1'); } catch { /* Invalidation also fences recovery. */ }
     recovery.current = {
       owner: null,
       brief: { ...emptyBrief },

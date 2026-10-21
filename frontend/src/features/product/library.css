@@ -18,3 +18,8 @@
 .dayloom .library-dialog::backdrop { background: #172d2866; }
 @media(max-width:800px) { .dayloom .draft-toolbar { padding: 16px; } }
 @media(max-width:560px) { .dayloom .library-tools { flex-direction: column; align-items: stretch; } .dayloom .library-tools .search-box { max-width: none; width: 100%; } .dayloom .library-tools .sort-box { justify-content: space-between; } }
+.copy-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; max-width: 100%; }
+.copy-controls p { overflow-wrap: anywhere; }
+.copy-controls + .btn { margin-top: .7rem; }
+.copy-controls [role="status"] { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
+.detail-hero-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
