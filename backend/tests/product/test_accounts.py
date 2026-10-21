@@ -225,7 +225,10 @@ def test_public_migration_rerun_checksum_and_tripworld_preservation(client, tmp_
             ]
             == "untouched"
         )
-        assert connection.execute("SELECT count(*) FROM app.schema_migrations").fetchone()[0] == 1
+        assert [
+            row[0]
+            for row in connection.execute("SELECT name FROM app.schema_migrations ORDER BY name")
+        ] == sorted(path.name for path in source.parent.glob("*.sql"))
 
 
 def test_validation_errors_do_not_echo_passwords(client):

@@ -40,6 +40,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/auth/login` | Email/password; generic credential failure or browser session | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/auth/current` | Validated account, initials and session-bound CSRF token | [Account boundary](../backend/app/product/auth.py) |
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
+| `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `POST /api/planning` | Shared `PlanningRequest`; V3 Product response discriminated by `status` | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same input and terminal result, delivered through request-lifetime SSE | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
@@ -129,8 +130,26 @@ while Product is unmounted and after later login notices. Logout fences refresh 
 it settles and blocks implicit session adoption until a new explicit login, including
 after an ambiguous network response; the failure is shown to the user.
 Focus and periodic session checks detect remote revocation; network failure hides
-account content while preserving quarantined recovery. Server-side drafts, profile
-editing and durable generation are implemented by later slices.
+account content while preserving quarantined recovery. Server-side drafts and durable
+generation are implemented by later slices.
+
+### Profile defaults and new-brief initialization
+
+The owner-only profile API and `/account` form maintain display name, supported currency,
+deduplicated interests, nullable pace, deduplicated soft transport priorities and literal
+additional preference text. Initials derive from the display name; email is read-only.
+The profile migration adds database domain and uniqueness checks. Account deletion
+cascades to the profile at the database boundary, without exposing an account-deletion UI.
+
+Defaults are read once when a genuinely new brief is opened and appear as editable
+currency, choices and preference sentences. Explicit origin and initialization metadata
+distinguish unopened session state from edited, restored, draft and replan content,
+including an intentionally cleared or restored blank brief. A stale defaults response
+cannot overwrite an intervening edit, accepted draft or account change. Explicitly
+starting another brief resets that initialization and reads the latest defaults once.
+Profile updates never mutate an open editor, and planning services do not read profiles
+to overlay confirmed requests. Draft identity and revision share the account-scoped
+recovery boundary so expiry can quarantine them alongside their editor content.
 
 ### Implemented visible brief editor
 

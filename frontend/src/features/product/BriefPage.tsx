@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getTripDateWindow } from "../planning/api";
 import { DestinationCombobox } from "../planning/components/DestinationCombobox";
 import { PreferencePolisher } from "../planning/components/PreferencePolisher";
@@ -14,6 +14,12 @@ import "./editor.css";
 export function BriefPage() {
   const session = useSession();
   const navigate = useNavigate();
+  const location = useLocation();
+  const draftId = new URLSearchParams(location.search).get("draft");
+  const { initializeNewBrief, briefOrigin, status } = session;
+  useEffect(() => {
+    if (!draftId && (status === "authenticated" || status === "guest") && briefOrigin === "new") void initializeNewBrief();
+  }, [draftId, status, briefOrigin, initializeNewBrief]);
   const [dateWindow, setDateWindow] = useState<TripDateWindow | null>(null);
   const [dateError, setDateError] = useState(false);
   const [reviewed, setReviewed] = useState(false);
@@ -61,6 +67,7 @@ export function BriefPage() {
         if (!session.account) { navigate("/login?return=/plan"); return; }
         setChecked(true); setReviewed(errors.length === 0);
       }}>
+        {session.defaultsApplied && <p className="subtle-help" role="status">Your travel defaults are shown below. Edit them for this trip.</p>}
         <fieldset className="form-fields"><legend className="visually-hidden">Travel brief</legend>
           <div className="brief-essentials">
             <DestinationCombobox value={brief.destination} onChange={value => change("destination", value)} disabled={false} />

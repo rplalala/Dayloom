@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { createBrief, restoreBrief, type Brief } from "./editor";
+import { briefFromProfile } from "./profile";
 export type { Brief } from "./editor";
 
 export type Account = {
@@ -23,7 +24,13 @@ type Recovery = {
   brief: Brief;
   actionId: string | null;
   generation?: string;
+  origin?: BriefOrigin;
+  defaultsAttempted?: boolean;
+  started?: boolean;
+  draftRef?: DraftRef | null;
 };
+export type BriefOrigin = "new" | "edited" | "restored" | "draft" | "replan";
+export type DraftRef = { id: string; title: string; revision: number };
 const key = "dayloom.editor.v1";
 const noticeKey = "dayloom.account.notice";
 const activeKey = "dayloom.account.active";
@@ -104,6 +111,13 @@ type Session = {
   account: Account | null;
   status: "loading" | "guest" | "authenticated" | "expired";
   brief: Brief;
+  briefOrigin: BriefOrigin;
+  defaultsApplied: boolean;
+  initializeNewBrief: () => Promise<void>;
+  newBrief: () => void;
+  replaceBrief: (brief: Brief, origin: "draft" | "replan" | "restored") => void;
+  draftRef: DraftRef | null;
+  setDraftRef: (value: DraftRef | null) => void;
   actionId: string | null;
   editBrief: (brief: Brief) => void;
   setActionId: (id: string | null) => void;
@@ -130,14 +144,16 @@ function readRecovery(): Recovery {
       (saved.actionId === null || typeof saved.actionId === "string")
     ) {
       if (saved.owner && (saved.generation || "") !== generation(saved.owner)) {
-        return { owner: null, brief: { ...emptyBrief }, actionId: null };
+        return { owner: null, brief: { ...emptyBrief }, actionId: null, origin: "new", started: false };
       }
-      return { ...saved, brief: restoreBrief(saved.brief) };
+      const unopened = saved.origin === "new" && saved.started === false && !saved.defaultsAttempted;
+      const draftRef = saved.draftRef && typeof saved.draftRef.id === "string" && typeof saved.draftRef.title === "string" && Number.isSafeInteger(saved.draftRef.revision) && saved.draftRef.revision > 0 ? saved.draftRef as DraftRef : null;
+      return { ...saved, brief: restoreBrief(saved.brief), origin: unopened ? "new" : "restored", defaultsAttempted: unopened ? false : true, draftRef };
     }
   } catch {
     /* An unavailable storage area must not prevent planning. */
   }
-  return { owner: null, brief: { ...emptyBrief }, actionId: null };
+  return { owner: null, brief: { ...emptyBrief }, actionId: null, origin: "new", started: false };
 }
 
 export function SessionProvider({ children }: { children: ReactNode }) {
@@ -147,6 +163,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<Session["status"]>("loading");
   const [brief, setBrief] = useState<Brief>({ ...emptyBrief });
   const [actionId, setAction] = useState<string | null>(null);
+  const [briefOrigin, setBriefOrigin] = useState<BriefOrigin>(recovery.current.origin || "new");
+  const [defaultsApplied, setDefaultsApplied] = useState(false);
+  const [draftRef, setDraft] = useState<DraftRef | null>(null);
+  const briefRevision = useRef(0);
   const epoch = useRef(0);
   const loggingOut = useRef(false);
 
@@ -162,11 +182,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       owner: null,
       brief: { ...emptyBrief },
       actionId: null,
+      origin: "new",
+      started: false,
     };
     accountRef.current = null;
     setAccount(null);
     setBrief({ ...emptyBrief });
     setAction(null);
+    briefRevision.current++;
+    setBriefOrigin("new");
+    setDefaultsApplied(false);
+    setDraft(null);
     setStatus("guest");
     persist();
   }, [persist]);
@@ -179,11 +205,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           (recovery.current.generation || "") !==
             generation(recovery.current.owner))
       ) {
+        briefRevision.current++;
+        setDefaultsApplied(false);
         recovery.current = {
           owner: next.id,
           brief: { ...emptyBrief },
           actionId: null,
           generation: generation(next.id),
+          origin: "new",
+          started: false,
         };
       } else {
         recovery.current.owner = next.id;
@@ -194,6 +224,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setStatus("authenticated");
       setBrief({ ...recovery.current.brief });
       setAction(recovery.current.actionId);
+      setBriefOrigin(recovery.current.origin || "new");
+      setDraft(recovery.current.draftRef || null);
       persist();
     },
     [persist],
@@ -243,6 +275,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setStatus("expired");
         setBrief({ ...emptyBrief });
         setAction(null);
+        setDraft(null);
       } else {
         setStatus("guest");
         setBrief({ ...recovery.current.brief });
@@ -259,6 +292,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
             : { ...recovery.current.brief },
         );
         setAction(recovery.current.owner ? null : recovery.current.actionId);
+        setDraft(null);
         setStatus(recovery.current.owner ? "expired" : "guest");
       }
     }
@@ -366,7 +400,75 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   function editBrief(next: Brief) {
     if (status === "loading" || status === "expired") return;
     recovery.current.brief = next;
+    recovery.current.origin = "edited";
+    briefRevision.current++;
+    setBriefOrigin("edited");
     setBrief(next);
+    persist();
+  }
+  const initializeNewBrief = useCallback(async () => {
+    const owner = accountRef.current?.id;
+    if (recovery.current.origin !== "new" || recovery.current.defaultsAttempted || recovery.current.draftRef) return;
+    recovery.current.started = true;
+    persist();
+    if (!owner) return;
+    recovery.current.defaultsAttempted = true;
+    const revision = briefRevision.current;
+    persist();
+    try {
+      const response = await fetch("/api/profile", { credentials: "same-origin", cache: "no-store" });
+      if (!response.ok) {
+        if (response.status === 401) await refresh();
+        return;
+      }
+      const profile = await response.json();
+      if (accountRef.current?.id !== owner || revision !== briefRevision.current || recovery.current.origin !== "new" || loggingOut.current || sessionBlocked()) return;
+      const next = briefFromProfile(profile);
+      recovery.current.brief = next;
+      setBrief(next);
+      setDefaultsApplied(true);
+      persist();
+    } catch { /* Defaults are optional; the visible empty editor remains usable. */ }
+  }, [persist, refresh]);
+  function newBrief() {
+    if (status === "loading" || status === "expired") return;
+    briefRevision.current++;
+    recovery.current = { owner: accountRef.current?.id || null, brief: createBrief(), actionId: null, origin: "new", started: true, generation: accountRef.current ? generation(accountRef.current.id) : undefined };
+    setBrief(recovery.current.brief);
+    setAction(null);
+    setBriefOrigin("new");
+    setDefaultsApplied(false);
+    setDraft(null);
+    persist();
+    void initializeNewBrief();
+  }
+  function setDraftRef(next: DraftRef | null) {
+    if (status === "loading" || status === "expired") return;
+    recovery.current.draftRef = next;
+    if (next) {
+      briefRevision.current++;
+      recovery.current.origin = "draft";
+      recovery.current.defaultsAttempted = true;
+      setBriefOrigin("draft");
+    }
+    setDraft(next);
+    persist();
+  }
+  function replaceBrief(next: Brief, origin: "draft" | "replan" | "restored") {
+    if (status === "loading" || status === "expired") return;
+    briefRevision.current++;
+    recovery.current.brief = restoreBrief(next);
+    recovery.current.origin = origin;
+    recovery.current.defaultsAttempted = true;
+    recovery.current.actionId = null;
+    if (origin !== "draft") {
+      recovery.current.draftRef = null;
+      setDraft(null);
+    }
+    setBrief(recovery.current.brief);
+    setBriefOrigin(origin);
+    setDefaultsApplied(false);
+    setAction(null);
     persist();
   }
   function setActionId(next: string | null) {
@@ -381,6 +483,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         account,
         status,
         brief,
+        briefOrigin,
+        defaultsApplied,
+        initializeNewBrief,
+        newBrief,
+        replaceBrief,
+        draftRef,
+        setDraftRef,
         actionId,
         editBrief,
         setActionId,

@@ -48,14 +48,18 @@ class Registration(Credentials):
         return value.strip()
 
 
-def public_account(row: dict) -> dict:
-    words = row["display_name"].split()
+def display_initials(display_name: str) -> str:
+    words = display_name.split()
     initials = "".join(word[0] for word in (words[:1] + words[-1:] if len(words) > 1 else words))
+    return initials.upper()
+
+
+def public_account(row: dict) -> dict:
     return {
         "id": str(row["id"]),
         "email": row["email"],
         "display_name": row["display_name"],
-        "initials": initials.upper(),
+        "initials": display_initials(row["display_name"]),
     }
 
 

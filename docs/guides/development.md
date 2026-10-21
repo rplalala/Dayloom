@@ -87,6 +87,7 @@ From the worktree root:
 
 ```powershell
 uv run pytest backend/tests/product/test_accounts.py --basetemp=.scratch/pytest-product
+uv run pytest backend/tests/product/test_profiles.py --basetemp=.scratch/pytest-profile
 $env:PRODUCT_BROWSER_TESTS = "1"
 $env:PRODUCT_TEST_API_PORT = "8120"
 $env:PRODUCT_TEST_WEB_PORT = "5120"
@@ -94,6 +95,7 @@ uv run python -m playwright install chromium
 uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
 uv run pytest backend/tests/product/test_editor_browser.py --basetemp=.scratch/pytest-editor
 uv run pytest backend/tests/product/test_example_browser.py --basetemp=.scratch/pytest-examples
+uv run pytest backend/tests/product/test_profile_browser.py --basetemp=.scratch/pytest-profile-browser
 ```
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
@@ -109,6 +111,11 @@ Existing Playwright Chromium installations can be reused. No model, map, weather
 image-provider call is needed for these account journeys. The migration acceptance
 includes rerun/integrity checks and a seeded TripWorld sentinel preservation check;
 account acceptance includes deliberate profile-insert failure and rollback.
+Profile acceptance checks supported domains, deduplication, owner isolation, literal
+notes, database constraints/cascade and persistence after application recreation.
+The real browser edits defaults, checks initials and the absence of avatar upload,
+then verifies visible new-brief defaults while existing/reloaded editor content remains
+unchanged. Profile screenshots belong to `.scratch/profile-browser`.
 
 The editor journey uses the same isolated database and strict subprocess environment,
 with a test-only application factory replacing the external GeoDB HTTP transport and
