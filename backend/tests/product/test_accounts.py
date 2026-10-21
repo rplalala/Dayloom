@@ -11,22 +11,29 @@ import jwt
 import psycopg
 import pytest
 from fastapi.testclient import TestClient
+from pydantic import SecretStr
 
+from backend.tests.product.browser_harness import isolated_environment
 from backend.tests.product.database_safety import require_test_database
 
 
 @pytest.fixture
 def client(monkeypatch):
-    dsn = os.environ.get("PRODUCT_TEST_DATABASE_URL")
-    if not dsn:
+    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    if not dsn.get_secret_value():
         pytest.skip("Set PRODUCT_TEST_DATABASE_URL to an isolated test database")
     require_test_database(dsn)
-    monkeypatch.setenv("PRODUCT_DATABASE_URL", dsn)
+    monkeypatch.setenv("PRODUCT_DATABASE_URL", dsn.get_secret_value())
     monkeypatch.setenv("PRODUCT_JWT_SECRET", "test-signing-key-with-at-least-32-characters")
     monkeypatch.setenv("PRODUCT_ALLOW_INSECURE_LOOPBACK", "true")
     monkeypatch.setenv("PRODUCT_ORIGIN", "http://localhost:5120")
-    subprocess.run([sys.executable, "scripts/migrate_product.py"], check=True)
-    with psycopg.connect(dsn) as connection:
+    migration_environment = isolated_environment(
+        dsn, "8120", "5120", Path(".scratch/account-migration-tmp").resolve()
+    )
+    subprocess.run(
+        [sys.executable, "scripts/migrate_product.py"], check=True, env=migration_environment
+    )
+    with psycopg.connect(dsn.get_secret_value()) as connection:
         connection.execute("TRUNCATE app.users CASCADE")
     from backend.app.main import app
 

@@ -10,6 +10,7 @@ import sys
 import time
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from unittest.mock import patch
 from urllib.parse import urlsplit
 from uuid import uuid4
 
@@ -17,7 +18,13 @@ import httpx
 import jwt
 import pytest
 from playwright.sync_api import expect, sync_playwright
+from pydantic import SecretStr
 
+from backend.tests.product.browser_harness import (
+    BROWSER_TEST_SIGNING_KEY,
+    BrowserApplication,
+    isolated_environment,
+)
 from backend.tests.product.database_safety import require_test_database
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -26,22 +33,15 @@ SCRATCH = ROOT / ".scratch" / "browser"
 
 @pytest.fixture(scope="module")
 def browser_app():
-    dsn = os.environ.get("PRODUCT_TEST_DATABASE_URL", "")
-    if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or not dsn:
+    dsn = SecretStr(os.environ.get("PRODUCT_TEST_DATABASE_URL", ""))
+    if os.environ.get("PRODUCT_BROWSER_TESTS") != "1" or not dsn.get_secret_value():
         pytest.skip("Enable browser acceptance with an explicitly isolated Product test database")
     require_test_database(dsn)
     SCRATCH.mkdir(parents=True, exist_ok=True)
     api_port = os.environ.get("PRODUCT_TEST_API_PORT", "8120")
     web_port = os.environ.get("PRODUCT_TEST_WEB_PORT", "5120")
     base = f"http://localhost:{web_port}"
-    env = {
-        **os.environ,
-        "PRODUCT_DATABASE_URL": dsn,
-        "PRODUCT_JWT_SECRET": "browser-test-key-with-at-least-32-characters",
-        "PRODUCT_ALLOW_INSECURE_LOOPBACK": "true",
-        "PRODUCT_ORIGIN": base,
-        "PRODUCT_API_PROXY": f"http://127.0.0.1:{api_port}",
-    }
+    env = isolated_environment(dsn, api_port, web_port, SCRATCH / "tmp")
     subprocess.run([sys.executable, "scripts/migrate_product.py"], cwd=ROOT, env=env, check=True)
     processes = []
     outputs = []
@@ -96,10 +96,17 @@ def browser_app():
                 if time.monotonic() > deadline:
                     raise AssertionError(f"Local acceptance server did not start: {endpoint}")
                 time.sleep(0.1)
-        with sync_playwright() as playwright:
-            browser = playwright.chromium.launch()
-            yield base, browser, env
-            browser.close()
+        # The driver starts under the same allowlist; browser launch receives it explicitly.
+        with patch.dict(os.environ, env, clear=True):
+            playwright = sync_playwright().start()
+        try:
+            browser = playwright.chromium.launch(env=env)
+            try:
+                yield BrowserApplication(base, browser)
+            finally:
+                browser.close()
+        finally:
+            playwright.stop()
     finally:
         for process in processes:
             process.terminate()
@@ -129,7 +136,7 @@ def register_browser(page, base):
 
 
 def test_logout_invalidation_survives_product_unmount_and_later_login(browser_app):
-    base, browser, _ = browser_app
+    base, browser = browser_app.base_url, browser_app.browser
     context = browser.new_context()
     try:
         first = context.new_page()
@@ -161,7 +168,7 @@ def test_logout_invalidation_survives_product_unmount_and_later_login(browser_ap
 
 @pytest.mark.parametrize("lost_response", [False, True])
 def test_logout_fences_current_response_and_focus_until_completion(browser_app, lost_response):
-    base, browser, _ = browser_app
+    base, browser = browser_app.base_url, browser_app.browser
     context = browser.new_context()
     try:
         page = context.new_page()
@@ -210,7 +217,7 @@ def test_logout_fences_current_response_and_focus_until_completion(browser_app, 
 
 
 def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_app):
-    base, browser, env = browser_app
+    base, browser = browser_app.base_url, browser_app.browser
     context = browser.new_context(viewport={"width": 1440, "height": 1000})
     page = context.new_page()
     generation = []
@@ -258,7 +265,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         assert cookie["httpOnly"] is True
         claims = jwt.decode(cookie["value"], options={"verify_signature": False})
         claims["exp"] = datetime.now(UTC) - timedelta(seconds=1)
-        cookie["value"] = jwt.encode(claims, env["PRODUCT_JWT_SECRET"], algorithm="HS256")
+        cookie["value"] = jwt.encode(claims, BROWSER_TEST_SIGNING_KEY, algorithm="HS256")
         context.add_cookies([cookie])
         page.evaluate("window.dispatchEvent(new Event('focus'))")
         expect(page.get_by_role("heading", name="Log in to continue your brief.")).to_be_visible()
@@ -289,7 +296,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         bob_cookie = next(c for c in context.cookies() if c["name"] == "dayloom_session")
         bob_claims = jwt.decode(bob_cookie["value"], options={"verify_signature": False})
         bob_claims["exp"] = datetime.now(UTC) - timedelta(seconds=1)
-        bob_cookie["value"] = jwt.encode(bob_claims, env["PRODUCT_JWT_SECRET"], algorithm="HS256")
+        bob_cookie["value"] = jwt.encode(bob_claims, BROWSER_TEST_SIGNING_KEY, algorithm="HS256")
         context.add_cookies([bob_cookie])
         page.evaluate("window.dispatchEvent(new Event('focus'))")
         expect(page.get_by_role("heading", name="Log in to continue your brief.")).to_be_visible()

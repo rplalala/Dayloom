@@ -96,6 +96,9 @@ uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-b
 
 The browser fixture starts/stops its own API and Vite processes, exercises real
 accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`.
+Acceptance subprocesses inherit only required OS/tool paths and explicit test settings.
+The public browser fixture excludes environment/configuration, and sensitive setup
+values use redacted diagnostic representations, including fixture failures.
 Set `TEMP` and `TMP` to a worktree-local `.scratch/tmp` directory when sandboxed
 Windows temporary storage is unavailable; a local `UV_CACHE_DIR` can be set similarly.
 Existing Playwright Chromium installations can be reused. No model, map, weather or
