@@ -390,9 +390,21 @@ def normalize_import(content: str) -> ProductDetail:
                 "minimum_daily_coverage",
             ):
                 if key in container:
-                    claims.append(
-                        key + ": " + json.dumps(container[key], ensure_ascii=False, default=str)
-                    )
+                    value = container[key]
+                    if key == "origin":
+                        if value is None:
+                            continue
+                        if isinstance(value, dict):
+                            value = {
+                                field: text(value[field], container_path + ".origin." + field)
+                                for field in ("provenance", "trust", "assertion")
+                                if value.get(field) is not None
+                            }
+                            if not value:
+                                continue
+                        else:
+                            text(value, container_path + ".origin")
+                    claims.append(key + ": " + json.dumps(value, ensure_ascii=False, default=str))
     try:
         return ProductDetail.model_validate(
             dict(

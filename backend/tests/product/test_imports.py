@@ -588,3 +588,34 @@ def test_deleted_import_receipt_survives_recreation_and_concurrent_replay_withou
     assert new_saved["saved_trip_id"] != identity
     assert client.get("/api/library").json()["total"] == 1
     assert client.get("/api/imports/deleted-import").json() == receipt
+
+
+def test_structured_export_origin_retains_only_public_source_metadata(client):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "public-origin",
+    }
+    origin = {
+        "provenance": "generated",
+        "trust": "generated_projection",
+        "assertion": "source_snapshot_only",
+    }
+    value = {
+        "schema_version": "dayloom_export_1",
+        "itinerary": source(),
+        "origin": origin | {"provider_diagnostics": {"api_key": "PRIVATE-SOURCE-MARKER"}},
+    }
+    response = client.post("/api/imports", headers=headers, content=json.dumps(value))
+    assert response.status_code == 200, response.text
+    claims = response.json()["snapshot"]["completion"]["source_claims"]
+    assert (
+        json.loads(
+            next(claim.removeprefix("origin: ") for claim in claims if claim.startswith("origin: "))
+        )
+        == origin
+    )
+    assert (
+        "PRIVATE-SOURCE-MARKER" not in response.text and "provider_diagnostics" not in response.text
+    )

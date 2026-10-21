@@ -349,9 +349,11 @@ a selectable-text dialog fallback. Exports retain supported public content and k
 metadata, omit record authority/private diagnostics and distinguish unknown facts, free
 windows, connections, optional Nearby and source trust. JSON `origin` explicitly records
 the source snapshot's provenance/trust with `assertion=source_snapshot_only`; reimport
-retains it as a source claim and always crosses the unverified boundary. Guest input survives
-login; expired account input remains quarantined
-for same-account recovery. Logout/account invalidation clears its session-stored intent.
+retains it as a source claim and always crosses the unverified boundary.
+The structured origin allowlist contains only `provenance`, `trust` and `assertion` strings;
+historical r7 string origins remain supported. Guest input survives
+login; expired account input remains quarantined for same-account recovery. Logout/account
+invalidation clears its session-stored intent.
 File completions are fenced by edit/submission revision, component lifetime and session:
 a late file read cannot overwrite a later paste or clear an accepted operation key.
 
