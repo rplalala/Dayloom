@@ -1,12 +1,12 @@
 import type { Brief } from './editor';
-import type { ProductPlanningInput } from '../planning/types';
+import type { NeedsClarificationResponse, ProductPlanningInput } from '../planning/types';
 import type { ProductDetail } from './detail/types';
 
 export type PlanningTask = {
   id: string; state: 'pending' | 'running' | 'stopping' | 'completed' | 'needs_clarification' | 'safety_blocked' | 'provider_blocked' | 'failed' | 'cancelled';
   revision: number; progress: { stage: string; message: string; status?: string };
   request: ProductPlanningInput; editor_snapshot: Brief | null; preview_id: string | null;
-  outcome: { code: string; message: string; action: string; issues?: unknown } | null;
+  outcome: { code: string; message: string; action: string; issues?: NeedsClarificationResponse['issues'] } | null;
   created_at: string; updated_at: string;
 };
 export type Preview = { id: string; source_task_id: string | null; state: 'pending' | 'saved' | 'discarded'; snapshot: ProductDetail | null; title?: string; destination?: string; saved_trip_id: string | null; created_at: string };

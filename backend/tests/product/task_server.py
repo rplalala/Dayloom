@@ -43,6 +43,36 @@ def create_task_app():
             async with asyncio.timeout(120):
                 while not (CONTROL / "model-release").exists():
                     await asyncio.sleep(0.025)
+            outcome = (
+                (CONTROL / "model-outcome").read_text()
+                if (CONTROL / "model-outcome").exists()
+                else ""
+            )
+            if outcome:
+                from backend.app.schemas.requirement_boundary import RequirementBoundaryError
+                from backend.tests.services.test_preference_input_gate import draft, issue
+
+                source = "<b>Keep a private travel preference.</b>"
+                if outcome == "needs_clarification":
+                    return draft(issue(text=source))
+                if outcome == "safety_blocked":
+                    return draft(
+                        issue("safety_self_harm", text=source, related_field=None),
+                        disposition="VALID",
+                        safety="SAFETY_BLOCK",
+                    )
+                if outcome == "provider_blocked":
+                    raise RequirementBoundaryError(
+                        "PRIVATE provider failure",
+                        category="provider_request_rejected",
+                        provider_diagnostics={
+                            "provider_error_code": "content_filter",
+                            "private": source,
+                        },
+                    )
+                if outcome == "interrupted":
+                    raise asyncio.CancelledError()
+                raise RuntimeError("PRIVATE external failure")
             return await super().generate_structured(**kwargs)
 
     @asynccontextmanager

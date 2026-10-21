@@ -15,6 +15,11 @@ INTERRUPTED = {
     "message": "Planning was interrupted. Your submitted brief is retained.",
     "action": "Review your brief and explicitly generate again.",
 }
+CANCELLED = {
+    "code": "planning_cancelled",
+    "message": "Planning stopped. Your submitted brief is retained.",
+    "action": "Review your brief and explicitly generate again when you are ready.",
+}
 PUBLIC = (
     "id",
     "state",
@@ -189,6 +194,66 @@ class TaskStore:
                     task_id,
                 ),
             ).fetchone()
+
+    def stop(self, owner, task_id):
+        with connect(self.settings) as connection:
+            row = connection.execute(
+                "SELECT * FROM app.planning_tasks WHERE owner_id=%s AND id=%s FOR UPDATE",
+                (owner, task_id),
+            ).fetchone()
+            if not row:
+                return None
+            recovered = self._recover(connection, row)
+            if not recovered and row["state"] in {"pending", "running"}:
+                pending = row["state"] == "pending"
+                connection.execute(
+                    "UPDATE app.planning_tasks SET state=%s,outcome=%s,progress=%s,"
+                    "fence=fence+%s,revision=revision+1,updated_at=%s WHERE id=%s",
+                    (
+                        "cancelled" if pending else "stopping",
+                        Jsonb(CANCELLED) if pending else None,
+                        Jsonb(
+                            {
+                                "stage": "cancelled" if pending else "stopping",
+                                "message": "Planning stopped" if pending else "Stopping planning…",
+                            }
+                        ),
+                        1 if pending else 0,
+                        self.now(connection),
+                        task_id,
+                    ),
+                )
+            return public_task(
+                connection.execute(
+                    "SELECT * FROM app.planning_tasks WHERE id=%s", (task_id,)
+                ).fetchone()
+            )
+
+    def acknowledge_stop(self, claim):
+        """Only the live execution owner can acknowledge its completed transport cleanup."""
+        with connect(self.settings) as connection:
+            row = connection.execute(
+                "SELECT * FROM app.planning_tasks WHERE id=%s FOR UPDATE", (claim["id"],)
+            ).fetchone()
+            if not (
+                row
+                and row["state"] == "stopping"
+                and row["execution_id"] == claim["execution_id"]
+                and row["fence"] == claim["fence"]
+                and row["lease_deadline"] > self.now(connection)
+            ):
+                return False
+            connection.execute(
+                "UPDATE app.planning_tasks SET state='cancelled',outcome=%s,progress=%s,"
+                "fence=fence+1,revision=revision+1,updated_at=%s WHERE id=%s",
+                (
+                    Jsonb(CANCELLED),
+                    Jsonb({"stage": "cancelled", "message": "Planning stopped"}),
+                    self.now(connection),
+                    claim["id"],
+                ),
+            )
+            return True
 
     def _authorized(self, connection, claim):
         row = connection.execute(

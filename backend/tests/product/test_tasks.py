@@ -226,6 +226,12 @@ def test_real_v3_runs_once_while_other_brief_changes_and_preview_is_durable(
                 preview_id = finished["preview_id"]
                 preview = (await http.get(f"/api/previews/{preview_id}")).json()
                 assert preview["state"] == "pending"
+                for _ in range(2):
+                    late_stop = await http.post(
+                        f"/api/planning/tasks/{task_id}/stop", headers=headers
+                    )
+                    assert late_stop.json() == finished
+                    assert (await http.get(f"/api/previews/{preview_id}")).json() == preview
                 assert preview["snapshot"]["trust"] == "generated_projection"
                 replay = await http.post(
                     "/api/planning",

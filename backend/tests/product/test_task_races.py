@@ -189,3 +189,98 @@ def test_canonical_api_distinguishes_exact_amounts_without_expanding_exponents(
         assert external.calls == []
     finally:
         client.app.dependency_overrides.clear()
+
+
+@pytest.mark.parametrize("winner", ["stop", "completion"])
+def test_stop_and_completion_serialize_and_stale_execution_cannot_replace_winner(client, winner):  # noqa: F811
+    account = register(client)
+    headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
+    dsn = SecretStr(os.environ["PRODUCT_DATABASE_URL"])
+    instant = [datetime(2026, 9, 11, tzinfo=UTC)]
+    stop_store = named_store(dsn, "stop-race", lambda: instant[0])
+    worker = named_store(dsn, "completion-race", lambda: instant[0])
+    coordinator = TaskCoordinator(stop_store, schedule=lambda work: None)
+    client.app.dependency_overrides[get_coordinator] = lambda: coordinator
+    external = FakeStructuredLLMClient([])
+    client.app.dependency_overrides[get_planning_service] = lambda: make_planning_service(external)
+    try:
+        task = client.post(
+            "/api/planning/tasks",
+            json={"operation_key": "stop-completion-race", "request": make_product_payload()},
+            headers=headers,
+        ).json()
+        claim = worker.claim(task["id"])
+        detail = ProductDetail(
+            id=str(uuid4()),
+            title="Race survivor",
+            destination="Sydney",
+            provenance="generated",
+            trust="generated_projection",
+        )
+        table = "planning_tasks" if winner == "stop" else "itinerary_previews"
+        event = "UPDATE" if winner == "stop" else "INSERT"
+        condition = "NEW.state='stopping'" if winner == "stop" else "true"
+        with psycopg.connect(dsn.get_secret_value()) as connection:
+            connection.execute(
+                "CREATE FUNCTION app.gate_stop_race() RETURNS trigger "
+                "LANGUAGE plpgsql AS $$ BEGIN IF "
+                + condition
+                + " THEN PERFORM pg_advisory_xact_lock(203661); END IF; RETURN NEW; END; $$"
+            )
+            connection.execute(
+                "CREATE TRIGGER gate_stop_race BEFORE "
+                + event
+                + " ON app."
+                + table
+                + " FOR EACH ROW EXECUTE FUNCTION app.gate_stop_race()"
+            )
+        try:
+            with (
+                psycopg.connect(dsn.get_secret_value(), autocommit=True) as gate,
+                ThreadPoolExecutor(2) as pool,
+            ):
+                gate.execute("SELECT pg_advisory_lock(203661)")
+
+                def stop():
+                    return client.post(f"/api/planning/tasks/{task['id']}/stop", headers=headers)
+
+                def complete():
+                    return worker.complete(claim, detail)
+
+                try:
+                    first = pool.submit(stop if winner == "stop" else complete)
+                    wait_for_lock(dsn, "stop-race" if winner == "stop" else "completion-race")
+                    second = pool.submit(complete if winner == "stop" else stop)
+                    wait_for_lock(dsn, "completion-race" if winner == "stop" else "stop-race")
+                finally:
+                    gate.execute("SELECT pg_advisory_unlock_all()")
+                first_reply, second_reply = first.result(timeout=8), second.result(timeout=8)
+                reply = first_reply if winner == "stop" else second_reply
+                assert reply.status_code == 200
+                assert (second_reply if winner == "stop" else first_reply) is (
+                    winner == "completion"
+                )
+        finally:
+            with psycopg.connect(dsn.get_secret_value()) as connection:
+                connection.execute("DROP TRIGGER gate_stop_race ON app." + table)
+                connection.execute("DROP FUNCTION app.gate_stop_race()")
+        url = f"/api/planning/tasks/{task['id']}"
+        if winner == "stop":
+            assert worker.acknowledge_stop(claim)
+            assert not worker.acknowledge_stop(claim)
+            assert client.get(url).json()["state"] == "cancelled"
+            assert client.get("/api/previews").json() == []
+        else:
+            retained = client.get(f"/api/previews/{detail.id}").json()
+            assert reply.json()["state"] == "completed" and reply.json()["preview_id"] == detail.id
+            assert not worker.acknowledge_stop(claim)
+            assert client.get(f"/api/previews/{detail.id}").json() == retained
+        finished = client.get(url).json()
+        assert client.post(url + "/stop", headers=headers).json() == finished
+        assert not worker.complete(claim, detail)
+        assert not worker.finish(claim, "failed", {"code": "stale"})
+        assert not worker.renew(claim)
+        assert client.get(url).json() == finished
+        assert external.calls == []
+    finally:
+        client.app.dependency_overrides.clear()
