@@ -131,8 +131,8 @@ function NearbyRows({
   positionOf: (item: DetailNearby) => number;
 }) {
   return items.map((item, i) => (
-    <div className="nearby-item" key={i}>
-      <PlacePhoto className="nearby-photo" slot={`nearby:${positionOf(item)}`} label={item.place_name} />
+    <div className="nearby-item nearby-media-item" key={i}>
+      <PlacePhoto className="nearby-media" slot={`nearby:${positionOf(item)}`} label={item.place_name}>
       <div className="nearby-body">
         <strong>{item.place_name}</strong>
         {other && (
@@ -161,6 +161,7 @@ function NearbyRows({
           </button>
         </div>
       </div>
+      </PlacePhoto>
     </div>
   ));
 }

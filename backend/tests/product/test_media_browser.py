@@ -41,7 +41,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         expect(page.get_by_role("dialog")).to_be_visible()
         page.keyboard.press("Escape")
         expect(page.locator(".nearby-sidebar-groups .nearby-photo img").first).to_be_visible()
-        expect(page.locator(".nearby-sidebar-groups .nearby-photo").first).to_contain_text(
+        expect(page.locator(".nearby-sidebar-groups .nearby-media").first).to_contain_text(
             "Google Maps"
         )
         assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
@@ -53,7 +53,8 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         assert len(metadata["items"]) <= 12
         assert page.request.get(base + f"/api/previews/{preview_id}/media?width=1281").status == 422
         assert "media_bindings" not in page.request.get(base + f"/api/previews/{preview_id}").text()
-        page.screenshot(path=str(scratch / "verified-desktop.png"), full_page=True)
+        page.evaluate("scrollTo(0, 0)")
+        page.screenshot(path=str(scratch / "corrected-flow-desktop.png"), full_page=True)
         # Only the external image transport fails; Product metadata/persistence remain real.
         page.route(
             "https://lh3.googleusercontent.com/**",
@@ -86,7 +87,8 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
                 disclosure.click()
             expect(page.locator(".nearby-inline .nearby-photo img").first).to_be_visible()
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
-            page.screenshot(path=str(scratch / f"verified-{width}.png"), full_page=True)
+            page.evaluate("scrollTo(0, 0)")
+            page.screenshot(path=str(scratch / f"corrected-flow-{width}.png"), full_page=True)
         # Arbitrary imported provider IDs never acquire a Google image.
         payload = source()
         payload["days"][0]["activities"][0]["source_place_id"] = "poi-0-0"
@@ -115,6 +117,133 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
             assert other.request.get(base + f"/api/previews/{preview_id}/media").status == 404
         finally:
             another.close()
+    finally:
+        (signals / "media-nearby").unlink(missing_ok=True)
+        context.close()
+
+
+def test_nearby_photo_attribution_stays_readable_inside_responsive_rows(task_app):  # noqa: F811
+    base, browser = task_app.base_url, task_app.browser
+    context = browser.new_context(viewport={"width": 1440, "height": 1000})
+    context.route(
+        "https://lh3.googleusercontent.com/**",
+        lambda route: route.fulfill(
+            status=200,
+            content_type="image/svg+xml",
+            body='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">'
+            '<rect width="120" height="90" fill="#b8d8d0"/>'
+            '<circle cx="90" cy="22" r="11" fill="#f8dd8c"/>'
+            '<path d="M0 75L35 30L69 69L91 46L120 80V90H0Z" fill="#427a66"/>'
+            '<text x="6" y="84" font-size="7" fill="white">CONTROLLED MEDIA</text></svg>',
+        ),
+    )
+    scratch = Path(".scratch/media-browser")
+    scratch.mkdir(parents=True, exist_ok=True)
+    signals = Path(".scratch/task-browser/signals")
+    for signal in signals.iterdir():
+        if signal.is_file():
+            signal.unlink()
+    failures, measurements = [], []
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.goto(base + "/plan")
+        for label, value in (
+            ("Destination", "Sydney"),
+            ("Start date", "2026-09-12"),
+            ("End date", "2026-09-13"),
+            ("Travelers", "2"),
+            ("Whole-trip budget", "1800"),
+        ):
+            page.get_by_label(label, exact=True).fill(value)
+        (signals / "model-release").touch()
+        (signals / "media-nearby").touch()
+        page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        page.get_by_role("link", name="Open task progress").click()
+        page.get_by_role("link", name="Open itinerary preview").click(timeout=30000)
+        preview_id = page.url.rsplit("/", 1)[-1]
+        metadata = page.request.get(base + f"/api/previews/{preview_id}/media").json()
+        assert metadata["items"]["nearby:0"]["kind"] == "verified_place"
+        for width in (1440, 800, 390):
+            page.set_viewport_size({"width": width, "height": 1000})
+            if width <= 800:
+                disclosure = page.get_by_role("button", name="Show nearby for", exact=False).first
+                if disclosure.get_attribute("aria-expanded") == "false":
+                    disclosure.click()
+            region = ".nearby-inline" if width <= 800 else ".nearby-sidebar-groups"
+            row = page.locator(f"{region} .nearby-item").first
+            expect(
+                row.get_by_role("img", name="Controlled nearby park · place photograph")
+            ).to_be_visible()
+            expect(row.get_by_role("link", name="Controlled Photographer")).to_be_visible()
+            bounds = row.evaluate("""row => {
+                const box = el => {
+                    const r = el.getBoundingClientRect();
+                    return {left:r.left, right:r.right, top:r.top, bottom:r.bottom,
+                            width:r.width, height:r.height};
+                };
+                const inside = (child, parent) => child.left >= parent.left - 1 &&
+                    child.right <= parent.right + 1 && child.top >= parent.top - 1 &&
+                    child.bottom <= parent.bottom + 1;
+                const intersects = (a,b) => Math.min(a.right,b.right)-Math.max(a.left,b.left)>1 &&
+                    Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1;
+                const figure = row.querySelector('figure');
+                const caption = row.querySelector('figcaption');
+                const body = row.querySelector('.nearby-body');
+                const photo = row.querySelector('img');
+                const r = box(row), f = box(figure), c = box(caption), b = box(body);
+                const credits = [...caption.querySelectorAll('a,.media-provider')];
+                const clipped = credits.some(credit => {
+                    const bounds = box(credit);
+                    for (let parent = credit.parentElement; parent; parent = parent.parentElement) {
+                        const style = getComputedStyle(parent), limit = box(parent);
+                        if (['hidden','clip','auto','scroll'].includes(style.overflowY) &&
+                            (bounds.top < limit.top-1 || bounds.bottom > limit.bottom+1)) {
+                            return true;
+                        }
+                        if (['hidden','clip','auto','scroll'].includes(style.overflowX) &&
+                            (bounds.left < limit.left-1 || bounds.right > limit.right+1)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+                const image = box(photo);
+                return {row:r, figure:f, caption:c, body:b, image, checks:{
+                    figureInsideRow:inside(f,r), captionInsideFigure:inside(c,f),
+                    creditsInsideFigure:credits.every(credit=>inside(box(credit),f)),
+                    captionAvoidsDetails:!intersects(c,b),
+                    creditsAvoidDetails:credits.every(credit=>!intersects(box(credit),b)),
+                    photoBesideDetails:image.right <= b.left+1 && Math.abs(image.top-b.top)<2,
+                    creditsBelowPhotoAndDetails:c.top >= Math.max(image.bottom,b.bottom)-1,
+                    creditsNotClipped:!clipped,
+                    noCaptionOverflow:caption.scrollWidth <= caption.clientWidth+1,
+                }};
+            }""")
+            measurements.append({"width": width, **bounds})
+            issues = [key for key, passed in bounds["checks"].items() if not passed]
+            if issues:
+                failures.append({"width": width, "failed": issues})
+            details = row.get_by_role("button", name="Details →", exact=True)
+            details.focus()
+            page.keyboard.press("Enter")
+            expect(page.get_by_role("dialog")).to_contain_text("Controlled nearby park")
+            page.keyboard.press("Escape")
+            expect(details).to_be_focused()
+            author = row.get_by_role("link", name="Controlled Photographer")
+            author.focus()
+            page.keyboard.press("Tab")
+            expect(row.get_by_role("link", name="Photo source")).to_be_focused()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            page.evaluate("scrollTo(0, 0)")
+            phase = "attribution-red" if issues else "corrected"
+            page.screenshot(path=str(scratch / f"{phase}-{width}.png"), full_page=True)
+            row.screenshot(path=str(scratch / f"{phase}-row-{width}.png"))
+        phase = "red" if failures else "green"
+        (scratch / f"attribution-layout-{phase}.json").write_text(
+            json.dumps(measurements, indent=2), encoding="utf-8"
+        )
+        assert not failures, json.dumps(failures)
     finally:
         (signals / "media-nearby").unlink(missing_ok=True)
         context.close()

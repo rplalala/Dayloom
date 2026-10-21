@@ -567,7 +567,8 @@ automatic retry is introduced. Refresh place photos explicitly resolves fresh me
 without replanning or refreshing itinerary facts.
 
 Google photographs display associated Google Maps attribution, supplied author names
-and safe profile/source links in the same image container. Compact cards use the
+and safe profile/source links in the same image container. Nearby keeps its compact
+photo/detail row, with full-width credits below both inside the same figure. Compact cards use the
 permitted text attribution with `translate="no"`, an unwrapped 12px normal-weight sans
 serif label and the specified gray on a light background. Unavailable metadata, absent
 identity/keys and expired/failed image loads show an illustration labelled as such.

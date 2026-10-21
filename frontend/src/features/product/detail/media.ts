@@ -25,4 +25,3 @@ export function usePlaceMedia(endpoint?: string) {
   }, [endpoint, revision]);
   return { items: result.endpoint === endpoint ? result.items : {}, refresh: () => refresh(n => n + 1) };
 }
-

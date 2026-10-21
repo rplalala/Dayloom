@@ -192,6 +192,8 @@ PostgreSQL. External place/model/weather/route/retrieval/media transports and br
 images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
 Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
 forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
+Computed bounds, clipping and keyboard checks require Nearby credits to remain inside
+their row, below the photo/details, with accessible author/source links at all three widths.
 Provider/API checks also exercise redirects, foreign resources/URLs, bounded bodies and
 work, migration constraints/checksum integrity and missing media access. Logs/screenshots
 remain under the worktree's `.scratch/media-browser` and selected pytest basetemp.
