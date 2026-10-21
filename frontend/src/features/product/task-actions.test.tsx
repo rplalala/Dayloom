@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
@@ -25,10 +25,18 @@ function taskPage(tasks = [taskA]) {
   return { router, saves };
 }
 
+async function openRevisionDialog() {
+  const revise = await screen.findByRole('button', { name: 'Revise submitted brief' });
+  // Settle the asynchronously loaded card's initial effects before a user action.
+  await act(async () => {});
+  fireEvent.click(revise);
+  const dialog = await screen.findByRole('dialog', { name: 'Keep your current brief?' });
+  return within(dialog).findByRole('button', { name: 'Save current brief and revise' });
+}
+
 it.each(['success', 'failure'])('a deferred save-and-revise %s cannot change the next task navigation', async result => {
   const { router, saves } = taskPage();
-  fireEvent.click(await screen.findByRole('button', { name: 'Revise submitted brief' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Save current brief and revise' }));
+  fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(1));
   await act(async () => { await router.navigate('/planning'); });
   await act(async () => { saves[0](Response.json(result === 'success' ? { id: 'saved-b', revision: 1 } : { detail: 'Unavailable' }, { status: result === 'success' ? 201 : 500 })); });
@@ -40,12 +48,10 @@ it.each(['success', 'failure'])('a deferred save-and-revise %s cannot change the
 
 it('a previous save response cannot settle a newer revision operation on the retained task card', async () => {
   const { router, saves } = taskPage();
-  fireEvent.click(await screen.findByRole('button', { name: 'Revise submitted brief' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Save current brief and revise' }));
+  fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(1));
   await act(async () => { await router.navigate('/planning'); });
-  fireEvent.click(screen.getByRole('button', { name: 'Revise submitted brief' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Save current brief and revise' }));
+  fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(2));
   await act(async () => { saves[0](Response.json({ detail: 'Old failure' }, { status: 500 })); });
   expect(router.state.location.pathname).toBe('/planning');

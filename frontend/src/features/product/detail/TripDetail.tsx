@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type {
   DetailActivity,
@@ -167,7 +167,7 @@ function NearbyRows({
   ));
 }
 
-export function TripDetail({ detail }: { detail: ProductDetail }) {
+export function TripDetail({ detail, actions }: { detail: ProductDetail; actions?: ReactNode }) {
   const [filter, setFilter] = useState<string | null>(null);
   const [closedDays, setClosedDays] = useState<Set<string>>(() => new Set());
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
@@ -347,6 +347,7 @@ export function TripDetail({ detail }: { detail: ProductDetail }) {
             {detail.destination} · {detail.start_date || "Dates unavailable"}
             {detail.end_date ? ` — ${detail.end_date}` : ""}
           </p>
+          {actions && <div className="detail-hero-buttons">{actions}</div>}
           <span className="detail-art-credit">Landscape illustration</span>
         </div>
       </section>
