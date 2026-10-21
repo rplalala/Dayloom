@@ -152,8 +152,8 @@ def library(
 ):
     response.headers["Cache-Control"] = "no-store"
     ordering = {
-        "newest": "updated_at DESC, id ASC",
-        "oldest": "updated_at ASC, id ASC",
+        "newest": "created_at DESC, id ASC",
+        "oldest": "created_at ASC, id ASC",
         "name": "lower(title) ASC, id ASC",
     }[sort]
     # One server-side union gives both kinds the same bounded collection boundary.
@@ -168,6 +168,7 @@ def library(
     ) """
     condition = " WHERE strpos(lower(title),lower(%s))>0 OR strpos(lower(destination),lower(%s))>0"
     with connect() as connection:
+        connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
         args = (user["id"], user["id"], q, q)
         total = connection.execute(
             collection + "SELECT count(*) AS n FROM collection" + condition, args

@@ -44,6 +44,8 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
+| `GET`, `PATCH`, `DELETE /api/trips/{id}` | Immutable owner detail, revision-checked title-only update and confirmed cascade deletion | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
+| `GET /api/trips/{id}/weather`, `/nearby`, `/transfers` | Owner-only ordered read views over the saved snapshot | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
 | `POST /api/planning` | Shared `PlanningRequest` plus `Idempotency-Key`; 202 durable task snapshot | [Product router](../backend/app/api/product/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
 | `POST /api/planning/stream` | Same submission identity; observe durable task revisions and final public detail with task/preview IDs | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `POST /api/planning/tasks` | `{operation_key, request, editor_snapshot?}`; 202 immutable task snapshot or 409 active/key conflict | [Task lifecycle](#durable-planning-tasks-and-previews) |
@@ -243,8 +245,8 @@ The first committed decision wins; repeating it is idempotent, while an opposing
 decision returns 409 `preview_already_decided` with the safe existing decision. Decided
 receipts retain operation identity and the original saved ID, but clear pending content
 and redundant original request material. A deleted saved result returns 409 with
-`saved_result_deleted`; late Save cannot recreate it. Saved deletion management belongs
-to the subsequent library slice. Account deletion cascades owned domain content.
+`saved_result_deleted`; late Save cannot recreate it. Account deletion cascades owned
+domain content.
 
 Migration `005_saved_trips.sql` completes the ten-domain-table model with `trips`,
 `trip_weather`, `trip_activities`, `trip_nearby` and `trip_transfers`.
@@ -253,6 +255,21 @@ repeatable-read transaction. No second saved itinerary JSON is retained. The hea
 holds known original request/completion metadata, server-owned origin/trust and nullable
 generation completion time. All saved and preview boundaries return 404 for missing
 or other-owner records and use the existing session/CSRF/origin checks.
+
+`PATCH /api/trips/{id}` accepts only `title` and the current positive integer `revision`.
+Titles are trimmed, nonblank and at most 120 characters. The locked update increments
+revision and updates its metadata timestamp without changing the original request,
+provenance, itinerary or children. `DELETE /api/trips/{id}` requires a JSON body with
+`revision` and `confirmed=true`; it removes the trip and normalized children and returns
+204. Stale mutations return 409 `trip_revision_conflict` with the current revision.
+Independent saved identities survive deletion, and the source preview's minimal decision
+receipt remains available to reject late Save without recreating the trip.
+
+The weather, Nearby and transfer GET views each return `{trip_id, items}` from the same
+normalized detail reader. Weather items contain each actual day's date and nullable
+weather, including empty days. Nearby retains supplied anchors/dates and unresolved
+references; transfers retain their final directed endpoints and source/uncertainty states.
+These views preserve list order and make no provider requests or current-date checks.
 
 Explicit positions retain actual day, activity, Nearby and transfer list order, including
 empty days and nonchronological lists; the header span never creates missing days.
@@ -391,14 +408,18 @@ an earlier editor navigation cannot attach its identity or errors to a newly ope
 
 `GET /api/library` is the single server-side collection boundary. Draft cards expose
 `kind=draft`, source/draft identity, minimal destination/date fields and created/updated
-timestamps. Literal case-insensitive title/destination search, newest/oldest updated
-ordering and case-insensitive name ordering use UUID tie-breaks. `limit` is 1–50
+timestamps. Literal case-insensitive title/destination search, newest/oldest creation-time
+ordering and case-insensitive name ordering use ascending UUID and then kind tie-breaks.
+Renaming does not move creation-ordered cards. Count and page read one repeatable-read
+snapshot. `limit` is 1–50
 (default 24), `offset` is 0–10000, and search is at most 100 characters. The browser
 requests pages of 12; missing fields use neutral placeholders. Saved cards join this
-server-side union with `kind=saved` and server-owned source; a kind tie-break keeps
-cross-table UUID collisions distinct. The browser routes saved cards to immutable saved
-detail and preserves draft-only mutation controls. Complete saved management and mixed
-discovery acceptance remain the subsequent library slice. Previews stay outside the library.
+server-side union with `kind=saved` and server-owned source; equal UUIDs in different
+tables remain distinct. The browser routes saved cards to immutable detail and offers
+rename and confirmed deletion for both kinds, while draft Copy remains independent.
+Revision conflicts offer an explicit collection reload. A mutation 401 immediately hides
+cards and the management dialog while canonical session recovery runs; login never
+replays the mutation. Previews stay outside the library.
 
 ### Accepted application lifecycle
 

@@ -8,6 +8,11 @@ from backend.app.product.database import connect
 from backend.app.product.detail import ProductDetail
 
 
+class SavedRevisionConflict(Exception):
+    def __init__(self, revision):
+        self.revision = revision
+
+
 def insert(connection, table, values):
     """Column names are application constants; all content uses bound parameters."""
     connection.execute(
@@ -19,6 +24,37 @@ def insert(connection, table, values):
 class SavedStore:
     def __init__(self, settings=None):
         self.settings = settings
+
+    def rename(self, owner, trip_id, title, revision):
+        with connect(self.settings) as connection:
+            row = connection.execute(
+                "SELECT id,revision FROM app.trips WHERE owner_id=%s AND id=%s FOR UPDATE",
+                (owner, trip_id),
+            ).fetchone()
+            if row is None:
+                return None
+            if row["revision"] != revision:
+                raise SavedRevisionConflict(row["revision"])
+            row = connection.execute(
+                "UPDATE app.trips SET title=%s,revision=revision+1,updated_at=clock_timestamp() "
+                "WHERE id=%s RETURNING id,title,revision",
+                (title, trip_id),
+            ).fetchone()
+            return {**row, "id": str(row["id"])}
+
+    def delete(self, owner, trip_id, revision):
+        with connect(self.settings) as connection:
+            row = connection.execute(
+                "SELECT revision FROM app.trips WHERE owner_id=%s AND id=%s FOR UPDATE",
+                (owner, trip_id),
+            ).fetchone()
+            if row is None:
+                return False
+            if row["revision"] != revision:
+                raise SavedRevisionConflict(row["revision"])
+            # Child rows cascade; the decided preview retains its original saved ID.
+            connection.execute("DELETE FROM app.trips WHERE id=%s", (trip_id,))
+            return True
 
     def decision(self, owner, preview_id, action):
         with connect(self.settings) as connection:
