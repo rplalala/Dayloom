@@ -424,7 +424,8 @@ Every mutation uses the account CSRF/origin boundary. No draft operation generat
 an itinerary or consults profile defaults.
 
 Snapshot validation accepts blank or generation-invalid field strings, while enforcing
-`editor_version=1`, supported currency/interest/pace/transport values, unique controls,
+`editor_version=1`, supported currency/interest/pace/transport values (with an empty
+currency representing an unknown editor fact), unique controls,
 field and collection bounds and valid Unicode. Exact span ownership uses browser
 UTF-16 offsets. Stale, repeated or overlapping bindings are discarded and their controls
 detached without searching for matching text; user wording remains intact.

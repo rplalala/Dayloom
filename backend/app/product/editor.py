@@ -56,7 +56,7 @@ class EditorSnapshot(BaseModel):
     end_date: ShortText
     travelers: ShortText
     budget: ShortText
-    currency: Currency
+    currency: Currency | Literal[""]
     required: Text
     exclusions: Text
     preferences: Text

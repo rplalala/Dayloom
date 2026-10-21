@@ -131,6 +131,82 @@ def submit(page, base):
     return response.value.json()
 
 
+def test_unknown_replan_currency_survives_draft_save_and_reopen_without_defaults(task_app):
+    base, browser = task_app.base_url, task_app.browser
+    context = browser.new_context()
+    executions = SCRATCH / "signals/executions"
+    before = executions.read_text().splitlines() if executions.exists() else []
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        trip_id = save_import(page, base, {"destination": "Sydney"})
+        original = page.request.get(base + f"/api/trips/{trip_id}").json()
+        page.goto(base + f"/trips/{trip_id}")
+        page.get_by_role("button", name="Plan again", exact=True).click()
+        expect(page.get_by_label("Currency", exact=True)).to_have_value("")
+        page.get_by_label("Draft title", exact=True).fill("Unknown original budget currency")
+        with page.expect_response(
+            lambda response: (
+                response.url == base + "/api/drafts" and response.request.method == "POST"
+            )
+        ) as response:
+            page.get_by_role("button", name="Save draft", exact=True).click()
+        assert response.value.status == 201, response.value.json()
+        draft = response.value.json()
+        assert draft["editor"]["currency"] == ""
+        for field in ("travelers", "budget", "required", "preferences"):
+            assert draft["editor"][field] == ""
+        expect(page.get_by_text("Draft saved.", exact=True)).to_be_visible()
+        profile(page, base, "JPY", "Only a genuinely new brief may use these defaults")
+        reopened = browser.new_context(storage_state=context.storage_state())
+        try:
+            restored = reopened.new_page()
+            restored.goto(base + f"/plan?draft={draft['id']}")
+            expect(restored.get_by_label("Currency", exact=True)).to_have_value("")
+            expect(restored.get_by_label("Destination", exact=True)).to_have_value("Sydney")
+            expect(restored.get_by_label("Additional preferences")).to_have_value("")
+            restored.reload()
+            expect(restored.get_by_label("Currency", exact=True)).to_have_value("")
+            writes = []
+            restored.on(
+                "request",
+                lambda request: writes.append(request.url) if request.method == "POST" else None,
+            )
+            restored.get_by_role("button", name="Generate itinerary", exact=False).click()
+            expect(restored.get_by_role("alert")).to_contain_text("select a supported currency")
+            assert writes == []
+            rejected = restored.request.post(
+                base + "/api/planning/tasks",
+                headers=headers(restored, base),
+                data={
+                    "operation_key": str(uuid4()),
+                    "editor_snapshot": draft["editor"],
+                    "request": {
+                        "destination": "Sydney",
+                        "start_date": "2026-09-12",
+                        "end_date": "2026-09-13",
+                        "traveler_count": 2,
+                        "budget": {"amount": "1800", "currency": ""},
+                    },
+                },
+            )
+            assert rejected.status == 422
+            detail = rejected.json()["detail"]
+            locations = (
+                [item["loc"] for item in detail] if isinstance(detail, list) else [detail["loc"]]
+            )
+            assert ["body", "request", "budget", "currency"] in locations
+            assert restored.request.get(base + "/api/planning/tasks/recent").json() == []
+            assert restored.request.get(base + f"/api/drafts/{draft['id']}").json() == draft
+            assert restored.request.get(base + f"/api/trips/{trip_id}").json() == original
+        finally:
+            reopened.close()
+        after = executions.read_text().splitlines() if executions.exists() else []
+        assert after == before
+    finally:
+        context.close()
+
+
 def test_combined_defaults_drafts_immutable_tasks_saved_and_replan_with_new_generation(task_app):  # noqa: F811
     """All dependent features run together; only external providers are replaced."""
     from backend.tests.product.test_browser import login

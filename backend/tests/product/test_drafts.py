@@ -35,21 +35,26 @@ def editor(**changes):
     )
 
 
-def test_incomplete_draft_round_trip_and_application_recreation(client):  # noqa: F811
+@pytest.mark.parametrize("currency", ["AUD", ""])
+def test_incomplete_draft_round_trip_and_application_recreation(client, currency):  # noqa: F811
     account = register(client)
     headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
     draft = client.post(
-        "/api/drafts", headers=headers, json={"title": "First idea", "editor": editor()}
+        "/api/drafts",
+        headers=headers,
+        json={"title": "First idea", "editor": editor(currency=currency)},
     )
     assert draft.status_code == 201, draft.text
     data = draft.json()
-    assert data["revision"] == 1 and data["editor"] == editor()
+    assert data["revision"] == 1 and data["editor"] == editor(currency=currency)
     from backend.app.main import create_app
 
     with TestClient(create_app(), base_url="http://localhost:5120") as recreated:
         recreated.cookies.update(client.cookies)
         assert recreated.get(f"/api/drafts/{data['id']}").json() == data
-    changed = editor(destination="  Kyoto  ", travelers="not decided", start_date="later")
+    changed = editor(
+        currency=currency, destination="  Kyoto  ", travelers="not decided", start_date="later"
+    )
     updated = client.put(
         f"/api/drafts/{data['id']}",
         headers=headers,
