@@ -1,0 +1,83 @@
+{
+  "prototype": "Dayloom r7",
+  "accepted_on": "2026-10-21",
+  "html_sha256": "7b69c4bf0d93e56e2b3fc5bbd1914f2e9696d21fded8c877c4f4a326932e09aa",
+  "files": {
+    "r7/examples/nearby-linking.json": {
+      "bytes": 10092,
+      "sha256": "cdbc18cd12b619c70e0bc329c0aeebefa0beee37647a8ba04f7f6f11bcd03815"
+    },
+    "r7/examples/sydney-itinerary.json": {
+      "bytes": 8448,
+      "sha256": "4054eec79afeebffc0ffa58ceba5f32f2efba6054c6521911e387e5fafb823ab"
+    },
+    "r7/index.html": {
+      "bytes": 197370,
+      "sha256": "7b69c4bf0d93e56e2b3fc5bbd1914f2e9696d21fded8c877c4f4a326932e09aa"
+    },
+    "r7/README.md": {
+      "bytes": 7085,
+      "sha256": "403508418e6e5001d7aea760b2c13c8eff1c44680ac05a42126665fb6ca73016"
+    },
+    "r7/review/desktop-nearby.jpg": {
+      "bytes": 80160,
+      "sha256": "bcf6cb386e3d4ff1cefb18336118d1b19fdad0691a4c2cdfdc85ea3514f7f979"
+    },
+    "r7/review/mobile-nearby.jpg": {
+      "bytes": 29536,
+      "sha256": "344764c96ddeba571467927d37b0048eb1d40a0513aa5f60a08dfbec325b1c6f"
+    },
+    "r7/source/actions.js": {
+      "bytes": 25355,
+      "sha256": "4655a76ad4a17e0a9110d02eb6c200db7cdd6a0081c210ee46c829b41871d2d9"
+    },
+    "r7/source/build.py": {
+      "bytes": 1392,
+      "sha256": "fb914e0ef16a8a2a5495548a26b842504f42136b3369f28639926edfe226c84b"
+    },
+    "r7/source/data.js": {
+      "bytes": 24022,
+      "sha256": "cedb55f9037455fc92b6d1badbca4a939ecf8a30f80527c1536cfc892f8f5bc3"
+    },
+    "r7/source/details.js": {
+      "bytes": 24594,
+      "sha256": "ff9e0b966737fd9c3513ce2e88b791d7bd28569dd7b0d5f5c808038b986a9c4b"
+    },
+    "r7/source/icons.js": {
+      "bytes": 3114,
+      "sha256": "a28eecbd66023628025bc59307db8a7cfc5cad887eb4de2c69c1f4fe302ec225"
+    },
+    "r7/source/nearby.css": {
+      "bytes": 4287,
+      "sha256": "cea5c610830e504f0c58303f5ad1f15749a11d4e67ee1b68e5e34fa9c493bd2c"
+    },
+    "r7/source/nearby.js": {
+      "bytes": 6276,
+      "sha256": "64f2174bb201efbb20f40ecb0d877fc26ee38bea571da2ac171f0f82b0f99070"
+    },
+    "r7/source/original.css": {
+      "bytes": 41457,
+      "sha256": "5407b34cec795899a4fdc0bcf8492a4528e97ca1349014f5725bb0d7f96db93c"
+    },
+    "r7/source/pages.js": {
+      "bytes": 26886,
+      "sha256": "6829309f9dee886110149be818e3a403665010db618107348013cbc0a20fc491"
+    },
+    "r7/source/preferences.js": {
+      "bytes": 4651,
+      "sha256": "65d461e8022e281cdaff3a048e0c84368dc431ad14be4ea84c307ee7a0775ff5"
+    },
+    "r7/source/prototype.css": {
+      "bytes": 5222,
+      "sha256": "7acd868331c8e865d5440d6b5792805f0829accfc40aa92be4d8dc77d3d84c69"
+    },
+    "r7/source/refinements.css": {
+      "bytes": 14584,
+      "sha256": "286dbc227627194c9e587be3570443290849aa073e85d46465056b6216fe8456"
+    },
+    "r7/source/state.js": {
+      "bytes": 16204,
+      "sha256": "4f1bff84d12a7675624ca5c1d71e72d192079d51298d497482e1180f694663ab"
+    }
+  }
+}

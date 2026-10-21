@@ -1,0 +1,22 @@
+/* r7: explicit Nearby links within the existing Dayloom layout. */
+.activity-actions{flex-wrap:wrap;align-items:center;column-gap:14px;row-gap:9px}
+.nearby-pill{border-radius:999px;background:var(--accent-faint);padding:5px 9px;font-weight:700;white-space:nowrap}
+.nearby-pill:hover{background:#dceee7}.nearby-inline{display:none}
+.nearby-day{margin-top:21px}.nearby-day>h3{font-size:10px;letter-spacing:.1em;color:var(--accent);border-bottom:1px solid var(--line);padding:0 0 10px;margin:0 0 11px;font-weight:750}.nearby-day>h3 span{color:var(--muted);font-weight:550}
+.nearby-group{border:1px solid var(--line);border-radius:10px;padding:13px 11px;margin-top:10px;scroll-margin-top:100px;background:var(--paper)}
+.nearby-group-heading{display:flex;align-items:flex-start;gap:5px}.nearby-anchor-link{border:0;background:transparent;padding:0;display:flex;align-items:flex-start;gap:7px;min-width:0;flex:1;text-align:left;color:var(--ink);border-radius:5px}.nearby-anchor-link>.ico{color:var(--accent);flex:none;margin-top:2px}.nearby-anchor-link>span{display:flex;flex-direction:column;gap:6px;min-width:0}.nearby-anchor-link strong{font-size:12px;line-height:1.5;overflow-wrap:anywhere}.nearby-anchor-link small{font-size:10px;color:var(--muted);line-height:1.5}.nearby-anchor-link:hover strong{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.nearby-group-toggle{border:0;background:var(--accent-faint);color:var(--accent);padding:5px;border-radius:6px;display:grid;place-items:center;flex:none}.nearby-group-toggle.open>.ico{transform:rotate(180deg)}
+.nearby-group-items{margin:14px 0 0 7px;padding:0 0 0 12px;border-left:1px solid #c1dbd1;background:linear-gradient(90deg,var(--accent-faint),transparent);border-radius:0 6px 6px 0}.nearby-group-items[hidden],.nearby-inline-items[hidden]{display:none}
+.nearby-group .nearby-item{border-top:0;padding:6px 0}.nearby-group .nearby-item+.nearby-item{border-top:1px solid var(--line);margin-top:8px;padding-top:13px}.nearby-group .nearby-photo{width:58px;height:67px;flex:none;border-radius:8px}.nearby-group .nearby-body>strong{font-size:11px}.nearby-other{margin-top:23px;border-top:1px solid var(--line);padding-top:18px}.nearby-other h3{font-size:13px;margin:0 0 15px}.nearby-other .nearby-photo{width:65px;height:70px;flex:none;border-radius:8px}.nearby-empty{font-size:12px;color:var(--muted);line-height:1.7;padding:8px 0}
+.activity-content{scroll-margin-top:100px}.nearby-linked-selected{animation:nearby-link-pulse 2.6s ease-out}
+@keyframes nearby-link-pulse{0%,55%{border-color:var(--accent);box-shadow:0 0 0 2px rgba(var(--accent-rgb),.12);background:#edf6f1}100%{border-color:var(--line);box-shadow:none}}
+.nearby-anchor-link:focus-visible,.nearby-pill:focus-visible,.nearby-group-toggle:focus-visible,.nearby-inline-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:800px){
+ .activity-actions .nearby-pill,.nearby-sidebar-groups{display:none}.nearby-panel:not(.has-other){display:none}.nearby-panel.has-other .nearby-other{border:0;margin:0;padding:0}
+ .activity-content{flex-wrap:wrap}.activity-content>.activity-details{flex:1;min-width:120px}
+ .nearby-inline{display:block;flex-basis:100%;min-width:0;border-top:1px solid var(--line);margin-top:2px;padding-top:9px;scroll-margin-top:90px}
+ .nearby-inline-trigger{border:0;padding:3px 0;width:100%;display:flex;align-items:center;gap:6px;background:none;color:var(--accent);font-size:11px;font-weight:700;text-align:left}.nearby-inline-trigger>.ico:last-child{margin-left:auto}.nearby-inline-trigger.open>.ico:last-child{transform:rotate(180deg)}
+ .nearby-inline-items{margin-top:10px;border-left:1px solid #c1dbd1;padding-left:10px;background:linear-gradient(90deg,var(--accent-faint),transparent)}
+ .nearby-inline-note{font-size:10px;color:var(--muted);line-height:1.5;margin:0 0 8px}.nearby-inline .nearby-item{padding:3px 0;border:0;gap:8px}.nearby-inline .nearby-item+.nearby-item{margin-top:12px}.nearby-inline .nearby-photo{width:48px;height:58px;border-radius:6px;flex:none}.nearby-inline .nearby-body>strong{font-size:11px;overflow-wrap:anywhere}
+}
+@media(prefers-reduced-motion:reduce){.nearby-linked-selected{animation:none;border-color:var(--accent);background:#edf6f1}}

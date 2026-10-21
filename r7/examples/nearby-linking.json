@@ -1,0 +1,252 @@
+{
+  "id": "sydney-example",
+  "title": "Sydney · Nearby linking scenarios",
+  "destination": "Sydney, Australia",
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-15",
+  "days": [
+    {
+      "date": "2026-10-13",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-the-rocks",
+          "title": "Explore The Rocks",
+          "place_name": "The Rocks",
+          "source_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "location": "The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-13T12:00:00+11:00",
+          "end_time": "2026-10-13T13:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Operating hours are unknown. Rain is forecast.",
+          "display_name": "The Rocks",
+          "category": "Historic neighborhood",
+          "image_key": "sydney",
+          "time_use": "scheduled"
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day1-art-gallery",
+          "title": "Visit the Art Gallery of New South Wales",
+          "place_name": "Art Gallery of New South Wales",
+          "source_place_id": "ChIJPVqlfGyuEmsRHPcnCX1X1OE",
+          "location": "Art Gallery Rd, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-13T14:00:00+11:00",
+          "end_time": "2026-10-13T16:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours list 10:00–17:00; these are a weekly schedule baseline, not a guarantee against date-specific exceptions.",
+          "display_name": "Art Gallery of New South Wales",
+          "category": "Art & museums",
+          "image_key": "art",
+          "time_use": "scheduled"
+        }
+      ],
+      "weather_note": "Historical example: rain"
+    },
+    {
+      "date": "2026-10-14",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-qvb",
+          "title": "Explore the Queen Victoria Building",
+          "place_name": "Queen Victoria Building",
+          "source_place_id": "ChIJISz8NjyuEmsRFTQ9Iw7Ear8",
+          "location": "455 George St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-14T15:30:00+11:00",
+          "end_time": "2026-10-14T16:15:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours list 09:00–18:00; these are a weekly schedule baseline, not a guarantee against date-specific exceptions.",
+          "display_name": "Queen Victoria Building",
+          "category": "City architecture",
+          "image_key": "city",
+          "time_use": "scheduled"
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day2-tower-eye",
+          "title": "Visit Sydney Tower Eye",
+          "place_name": "Sydney Tower Eye",
+          "source_place_id": "ChIJy6BwuD-uEmsRyiRskH1UG-I",
+          "location": "Westfield Sydney, Level 5/108 Market St, Sydney NSW 2000, Australia",
+          "start_time": "2026-10-14T16:30:00+11:00",
+          "end_time": "2026-10-14T17:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours list 11:00–19:00; these are a weekly schedule baseline, not a guarantee against date-specific exceptions.",
+          "display_name": "Sydney Tower Eye",
+          "category": "City viewpoint",
+          "image_key": "city",
+          "time_use": "scheduled"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "activities": [
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-harbour-bridge",
+          "title": "See Sydney Harbour Bridge",
+          "place_name": "Sydney Harbour Bridge",
+          "source_place_id": "ChIJ49XqJV2uEmsRPsTAF7eOlGg",
+          "location": "Sydney Hbr Brg, Sydney NSW, Australia",
+          "start_time": "2026-10-15T11:30:00+11:00",
+          "end_time": "2026-10-15T12:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "Date-specific opening or access information is unknown. Drizzle is forecast.",
+          "display_name": "Sydney Harbour Bridge",
+          "category": "Harbour landmark",
+          "image_key": "sydney",
+          "time_use": "scheduled"
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-susannah-place",
+          "title": "Visit Susannah Place",
+          "place_name": "Susannah Place",
+          "source_place_id": "ChIJkeoK_UKuEmsRe-UTnQNgyK0",
+          "location": "58/64 Gloucester St, The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-15T14:00:00+11:00",
+          "end_time": "2026-10-15T15:30:00+11:00",
+          "estimated_cost": null,
+          "notes": "The supplied hours list 10:00–17:00; these are a weekly schedule baseline, not a guarantee against date-specific exceptions.",
+          "display_name": "Susannah Place",
+          "category": "City history",
+          "image_key": "art",
+          "time_use": "scheduled"
+        },
+        {
+          "activity_kind": "main_poi",
+          "activity_id": "day3-the-rocks-repeat",
+          "title": "Return to The Rocks",
+          "place_name": "The Rocks",
+          "source_place_id": "ChIJs49dtkKuEmsRYM0yFmh9AQU",
+          "location": "The Rocks NSW 2000, Australia",
+          "start_time": "2026-10-15T17:00:00+11:00",
+          "end_time": "2026-10-15T18:00:00+11:00",
+          "estimated_cost": null,
+          "notes": "Operating hours are unknown. Rain is forecast.",
+          "display_name": "The Rocks",
+          "category": "Historic neighborhood",
+          "image_key": "sydney",
+          "time_use": "scheduled"
+        }
+      ],
+      "weather_note": "Historical example: drizzle"
+    }
+  ],
+  "transfers": [
+    {
+      "from_activity_id": "day1-the-rocks",
+      "to_activity_id": "day1-art-gallery",
+      "mode": "WALK",
+      "departure_time": "2026-10-13T13:00:00+11:00",
+      "arrival_time": "2026-10-13T13:24:28+11:00",
+      "provider_duration_seconds": 1468.0,
+      "distance_meters": 1704,
+      "validation_state": "PASS",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ]
+    },
+    {
+      "from_activity_id": "day2-qvb",
+      "to_activity_id": "day2-tower-eye",
+      "mode": "WALK",
+      "departure_time": "2026-10-14T16:15:00+11:00",
+      "arrival_time": "2026-10-14T16:18:45+11:00",
+      "provider_duration_seconds": 225.0,
+      "distance_meters": 283,
+      "validation_state": "PASS",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ]
+    },
+    {
+      "from_activity_id": "day3-harbour-bridge",
+      "to_activity_id": "day3-susannah-place",
+      "mode": "WALK",
+      "departure_time": "2026-10-15T12:30:00+11:00",
+      "arrival_time": "2026-10-15T12:43:38+11:00",
+      "provider_duration_seconds": 818.0,
+      "distance_meters": 987,
+      "validation_state": "PASS",
+      "evidence_refs": [
+        "google_routes:compute_route_matrix"
+      ]
+    }
+  ],
+  "nearby": [
+    {
+      "place_name": "Munich Brauhaus Sydney",
+      "reason": "Restaurant near The Rocks (approximately 15 m straight-line).",
+      "associated_day": "2026-10-13",
+      "area": "33 Playfair St &, Argyle St, The Rocks NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "image_key": "city",
+      "source_place_id": "ChIJ2Zu4xEKuEmsRRIRO-_C-U9Y",
+      "anchor_activity_id": "day1-the-rocks"
+    },
+    {
+      "place_name": "The Gallery Café",
+      "reason": "Restaurant near Art Gallery of New South Wales (approximately 34 m straight-line).",
+      "associated_day": "2026-10-13",
+      "area": "Art Gallery Rd, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "image_key": "art",
+      "source_place_id": "ChIJASPIoDKvEmsRl1FwrxoNJjI",
+      "anchor_activity_id": "day1-art-gallery"
+    },
+    {
+      "place_name": "Koko Black - Lower Ground QVB",
+      "reason": "Restaurant near Queen Victoria Building (approximately 1 m straight-line).",
+      "associated_day": "2026-10-14",
+      "area": "Queen Victoria Building, Shop L-048, Sydney NSW 2000, Australia",
+      "uncertainty": "Availability, prices and accessibility are unverified; straight-line distance is not a walking route.",
+      "image_key": "art",
+      "source_place_id": "ChIJJ1OmMtyvEmsRBJMG0kB2lKo",
+      "anchor_activity_id": "day2-qvb"
+    },
+    {
+      "place_name": "A second harbour discovery",
+      "anchor_activity_id": "day1-the-rocks",
+      "associated_day": "2026-10-13",
+      "reason": "A second optional reference for the first visit.",
+      "image_key": "sydney"
+    },
+    {
+      "place_name": "An evening discovery",
+      "anchor_activity_id": "day3-the-rocks-repeat",
+      "associated_day": "2026-10-15",
+      "reason": "An optional reference for the later visit to the same place.",
+      "image_key": "sydney"
+    },
+    {
+      "place_name": "Unlinked harbour reference",
+      "associated_day": "2026-10-13",
+      "reason": "Near The Rocks. A name in prose must not create an activity link.",
+      "image_key": "city"
+    },
+    {
+      "place_name": "Reference with an unavailable anchor",
+      "anchor_activity_id": "missing-activity",
+      "associated_day": "2026-10-14",
+      "reason": "No matching scheduled activity is present.",
+      "image_key": "city"
+    }
+  ],
+  "status": "sample",
+  "created_at": "2026-10-13T18:00:00+11:00",
+  "description": "Unhurried days between historic neighborhoods, art and harbour landmarks.",
+  "interests": [
+    "City walks",
+    "Historic neighborhood",
+    "Art & museums"
+  ],
+  "pace": "Balanced",
+  "people": null,
+  "activity_budget": null,
+  "origin": "provided_sample",
+  "cover": "sydney",
+  "currency": "AUD"
+}
