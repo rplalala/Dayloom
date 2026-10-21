@@ -1,5 +1,6 @@
 """Bounded historical JSON import. Source facts never acquire server authority."""
 
+import asyncio
 import hashlib
 import json
 import math
@@ -499,8 +500,8 @@ async def import_preview(request: Request, user: CurrentUser, response: Response
             )
         chunks.append(chunk)
     try:
-        detail = normalize_import(b"".join(chunks).decode("utf-8-sig"))
-        return ImportStore().accept(user["id"], key, detail)
+        detail = await asyncio.to_thread(normalize_import, b"".join(chunks).decode("utf-8-sig"))
+        return await asyncio.to_thread(ImportStore().accept, user["id"], key, detail)
     except (ImportError, UnicodeDecodeError) as error:
         raise HTTPException(
             422,
