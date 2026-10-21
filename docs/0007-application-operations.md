@@ -393,6 +393,26 @@ reconcile ownership without reclaiming detached wording. Dismiss, polish and log
 return never generate an itinerary. Draft persistence stores the editor snapshot;
 task submission validates the separate confirmed planning request.
 
+### Replanning saved itineraries
+
+The authenticated saved-detail **Plan again** and **Plan another journey** actions open the editable brief
+and clears its prior draft and submission identity. Only the snapshot's original
+`request` seeds destination, dates, travelers, budget/currency and literal preference
+text. Imported `known_fields` limits that mapping; absent or explicit null values remain
+blank, including a visibly unselected currency. The complete generated request remains
+complete, while partial or absent imported requests are not filled from itinerary dates,
+activities, generated descriptions or profile defaults. Required/avoided controls and
+preference bindings start empty; an original composed preference remains literal text.
+
+Opening or reopening this brief sends no generation or provider-refresh request. Replan
+uses the same origin fence as drafts and restored editors, so a late new-brief initializer
+or subsequent profile update cannot overwrite it. The user can edit every field; explicit
+Generate applies the current date/budget/traveler validation and creates a new account-owned
+task. Completion yields a new recoverable preview, and explicit Save creates a new trip.
+The source saved snapshot, its known-request completeness and the submitted source task
+remain unchanged. Historical source dates remain readable and editable, but require
+correction to current generation dates before submission.
+
 ### Incomplete drafts and the collection boundary
 
 `app.planning_drafts` stores owner, nonblank title, versioned incomplete editor JSON,
