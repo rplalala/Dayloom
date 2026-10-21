@@ -6,10 +6,11 @@ own branches.
 
 ## r7
 
-- [Open the online prototype](https://dingzh.cc/Reliable-Trip-Plan-Agent/prototype/)
+- [Open the online prototype](https://dingzh.cc/Dayloom/prototype/)
+- [GitHub Pages default address](https://rplalala.github.io/Dayloom/prototype/)
 - [Read the prototype source and build instructions](r7/README.md)
 - [View desktop Nearby](r7/review/desktop-nearby.jpg) and [mobile Nearby](r7/review/mobile-nearby.jpg)
-- [Unified Product specification #198](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/198)
+- [Unified Product specification #198](https://github.com/rplalala/Dayloom/issues/198)
 - [Content hashes](r7-manifest.json)
 
 The r7 visual and interaction baseline was provisionally accepted on 21 October 2026.
