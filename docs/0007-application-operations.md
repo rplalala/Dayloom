@@ -48,6 +48,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/planning/stream` | Same submission identity; observe durable task revisions and final public detail with task/preview IDs | [Product router](../backend/app/api/product/planning.py), [stream delivery](../backend/app/api/streaming.py) |
 | `POST /api/planning/tasks` | `{operation_key, request, editor_snapshot?}`; 202 immutable task snapshot or 409 active/key conflict | [Task lifecycle](#durable-planning-tasks-and-previews) |
 | `GET /api/planning/tasks`, `/recent`, `/active`, `/{id}` | Owner-only bounded recent/active reads, operation-key lookup and canonical snapshots | [Task API](../backend/app/product/tasks.py) |
+| `POST /api/planning/tasks/{id}/stop` | Owner-only idempotent Stop; preserves completed tasks/previews, otherwise cancels pending work or requests running transport cleanup | [Task lifecycle](#durable-planning-tasks-and-previews) |
 | `GET /api/previews`, `/{id}` | Paged pending summaries and owner-only full public detail/decision receipt | [Task lifecycle](#durable-planning-tasks-and-previews) |
 | `GET /api/planning/date-window` | `allowedStart`, `allowedEnd`, `maxTripDays` from server date policy | [Product router](../backend/app/api/product/planning.py), [date policy](../backend/app/policies/trip_dates.py) |
 | `POST /api/dev/planning` | `{version, request, reference_date?}`; version is `v0` through `v3`, output is full `PlanningResult` | [Developer router](../backend/app/api/developer/planning.py), [HTTP schemas](../backend/app/api/schemas/planning.py) |
@@ -64,8 +65,9 @@ or a research reference-date override. Developer's optional reference date suppo
 engineering fixtures and does not authorize historical live evidence acquisition.
 
 Product task outcomes distinguish `completed`, `needs_clarification`, `safety_blocked`,
-`provider_blocked`, `failed` and `cancelled`. Typed clarification/block/failure actions
-retain the immutable submitted input without raw provider diagnostics or sensitive quotes.
+`provider_blocked`, `failed` and `cancelled`. Typed actions retain the immutable submitted
+input. Clarification may show the owner's sourced quote; safety/provider block messages
+exclude sensitive source text and raw provider diagnostics.
 A completed preview retains its separate policy completion and uncertainty; persistence
 does not imply global feasibility. Invalid submission/date/currency fields fail with 422
 before external work. Developer retains its research responses and HTTP failure policy.
@@ -180,6 +182,15 @@ and completed records, and never restart providers. Database operations run off 
 loop and never hold transactions across provider awaits. Shutdown cleans up owned workers;
 abrupt loss is recovered through persisted deadlines.
 
+Stop locks the same task row as completion. Pending Stop commits `cancelled` before a
+worker can claim, so no provider is entered. Running Stop commits `stopping` without
+renewing its finite lease. The execution owner's heartbeat observes rejected renewal,
+cancels its worker and awaits the existing runtime transport cleanup. Only that matching,
+unexpired execution/fence may acknowledge `cancelled`; abandoned stopping work still
+recovers as `failed/planning_interrupted`. Already committed completion, its preview and
+all terminal outcomes remain unchanged by late/repeated Stop. Stale publication is
+rejected. External work dispatched before cancellation may still finish or be billed.
+
 Trusted final V3 presentation becomes one `product_detail_1` snapshot in
 `app.itinerary_previews`, atomically with the completed task reference. Uncertainty,
 canonical source names, final transfers and policy completion survive projection. The
@@ -198,6 +209,15 @@ response cannot overwrite another edited brief or submit it with an unresolved e
 operation identity. The HTTP adapter returns 202; SSE observes revision snapshots, then
 emits the same task/preview IDs with its allowlisted public detail. Disconnect detaches
 only the observer. Developer streaming and independent V0–V3 entrypoints are unchanged.
+
+Clarification, safety/provider blocks, infrastructure failure, interruption and
+cancellation retain immutable submitted input. Outcome pages render public action text
+and allowlisted clarification quotes/fields without internal diagnostics. Explicit
+**Revise submitted brief** opens the saved editor snapshot, or known original request
+fields for older tasks, with no profile overlay. If a different brief is open, the
+traveler chooses to retain it, save it as a draft before replacement, or replace it.
+Viewing an outcome or stopping a task never changes that brief. Recovery clears the old
+submission identity; only a later explicit Generate creates another task with a new key.
 
 The Product dependency factory adds English writing policy only to primary/Repair
 provider system prompts, preserving request/source text and proper names. It admits the
