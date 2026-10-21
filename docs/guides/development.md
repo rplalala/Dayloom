@@ -152,8 +152,8 @@ source claims, not live provider verification.
 
 Product Generate uses `POST /api/planning/tasks` with an owner-scoped `operation_key`,
 confirmed `request` and optional editor snapshot. The legacy HTTP/SSE adapters require
-`Idempotency-Key` and share the same coordinator. Migrations now include tasks and
-previews; rerun the public migration command before starting the application. No new
+`Idempotency-Key` and share the same coordinator. Migrations include tasks, previews
+and normalized saved trips; rerun the public migration command before starting the application. No new
 provider configuration or external queue is required. A process shutdown interrupts its
 owned work; after an abrupt crash, expired pending/lease records reconcile on access or
 periodically, retaining input without automatic execution restart.
@@ -165,6 +165,29 @@ place, route, weather, retrieval and introduction adapters. Its completion signa
 logs and screenshots remain in that worktree's `.scratch/task-browser/`. These cases
 cover lost accepted responses, changing/saving another brief, SSE/browser detachment,
 logout, preview recovery and stale execution authority; they make no paid calls.
+
+### Preview Save and Discard acceptance
+
+Save explicitly creates an immutable saved trip; confirmed Discard removes pending
+content. Both use the preview's durable decision identity. Refreshing a decided preview
+recovers its receipt, and saved details read normalized rows without provider calls.
+The library includes saved cards beside drafts; saved title/delete/copy management and
+import remain separate slices. Weather attribution/source URLs are excluded from saved
+storage; all other supported public detail facts retain their supplied order and time text.
+
+With the same isolated database configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_saved.py backend/tests/product/test_saved_constraints.py backend/tests/product/test_task_browser.py
+```
+
+These cases run public migration fresh/rerun/checksum rejection, SQL constraints,
+atomic child-write rollback, concurrent decisions, repeated/lost-response recovery,
+owner isolation, deleted-result tombstones and actual browser Save/confirmed Discard.
+The browser includes a committed Save response delayed until another draft is open;
+the late response cannot navigate or replace that draft. Screenshots/logs remain in
+`.scratch/task-browser/`. The fresh migration case resets only the explicitly isolated
+test database's `app` schema and verifies a separate `tripworld` marker survives.
 
 ## Independent version execution
 

@@ -184,7 +184,7 @@ Trusted final V3 presentation becomes one `product_detail_1` snapshot in
 `app.itinerary_previews`, atomically with the completed task reference. Uncertainty,
 canonical source names, final transfers and policy completion survive projection. The
 preview is separate from the saved library and survives app/browser recreation. Pending
-summaries use bounded `limit`/`offset` pages; item reads return the full snapshot. Later
+summaries use bounded `limit`/`offset` pages; pending item reads return the full snapshot.
 Save/Discard decisions use the same receipt row, with retained operation identity and
 saved-result tombstones. Task/preview foreign keys enforce same owner and source task;
 account deletion cascades both. No queue, event log or graph checkpoint is introduced.
@@ -204,6 +204,56 @@ provider system prompts, preserving request/source text and proper names. It adm
 final effective prompt under existing limits and records effective sizing separately.
 It adds no translation send or retry. Developer/direct V0–V3 keep their default factory;
 adapter tests verify policy placement, not universal live-model language compliance.
+
+### Explicit preview decisions and normalized saved trips
+
+`POST /api/previews/{id}/save` accepts an empty body and serializes the owner's preview
+row with `FOR UPDATE`. A pending preview becomes one independent saved identity only
+when its header, actual days, activities, Nearby references, final transfers and saved
+receipt all commit together. A child-write failure rolls back the transaction, keeping
+the original pending preview. Save does not generate, refresh providers or read profile
+defaults. Repeated and concurrent Save requests return the same identity.
+
+`POST /api/previews/{id}/discard` requires `confirmed=true` and locks that same row.
+The first committed decision wins; repeating it is idempotent, while an opposing
+decision returns 409 `preview_already_decided` with the safe existing decision. Decided
+receipts retain operation identity and the original saved ID, but clear pending content
+and redundant original request material. A deleted saved result returns 409 with
+`saved_result_deleted`; late Save cannot recreate it. Saved deletion management belongs
+to the subsequent library slice. Account deletion cascades owned domain content.
+
+Migration `005_saved_trips.sql` completes the ten-domain-table model with `trips`,
+`trip_weather`, `trip_activities`, `trip_nearby` and `trip_transfers`.
+`GET /api/trips/{id}` reconstructs the public detail from normalized rows in one
+repeatable-read transaction. No second saved itinerary JSON is retained. The header
+holds known original request/completion metadata, server-owned origin/trust and nullable
+generation completion time. All saved and preview boundaries return 404 for missing
+or other-owner records and use the existing session/CSRF/origin checks.
+
+Explicit positions retain actual day, activity, Nearby and transfer list order, including
+empty days and nonchronological lists; the header span never creates missing days.
+Original ISO time strings retain their offsets and fraction spelling without timestamp
+round-tripping. Unknown facts/costs remain distinct from zero, free windows remain
+distinct from scheduled activities, and incomplete/unassessed policy, UNKNOWN and
+CONFIRMED conflict states remain visible. Weather facts and availability persist;
+weather attribution and source URLs are explicitly excluded from storage, so normalized
+saved reads expose those two fields as null. Nearby and transfer attribution is retained.
+
+Nearby stores supplied anchor ID/date independently from its nullable resolved composite
+foreign key. Only an exact scheduled activity ID with a compatible supplied date resolves;
+orphans and free-window references remain unresolved without invented days or name guesses.
+Transfer endpoints must be distinct and belong to the same trip/day. Database constraints
+also enforce legal domains, nonblank IDs/titles, nonnegative positions/finite measurements
+and paired cost fields. Historical detail/save does not apply current generation windows;
+the separate import slice owns public import validation.
+
+The preview page offers Save to My trips and a confirmed Discard dialog. An ambiguous
+write response triggers a decision GET, never an automatic write replay; failed recovery
+offers an explicit status check. Mounted preview, account, session and invalidation guards
+prevent late responses from changing another brief or page. Saved results offer a user
+controlled detail link. HTTP/SSE completed-task adapters read normalized saved detail when
+available and otherwise expose a safe `preview_decision`, including discarded/deleted
+receipts, so clearing a pending snapshot does not break completed observation.
 
 ### Implemented visible brief editor
 
@@ -261,9 +311,11 @@ an earlier editor navigation cannot attach its identity or errors to a newly ope
 timestamps. Literal case-insensitive title/destination search, newest/oldest updated
 ordering and case-insensitive name ordering use UUID tie-breaks. `limit` is 1–50
 (default 24), `offset` is 0–10000, and search is at most 100 characters. The browser
-requests pages of 12; missing draft fields use neutral placeholders. Saved cards join
-this boundary when saved-trip persistence is available, rather than combining separately
-paginated lists in the browser. Previews remain outside the library.
+requests pages of 12; missing fields use neutral placeholders. Saved cards join this
+server-side union with `kind=saved` and server-owned source; a kind tie-break keeps
+cross-table UUID collisions distinct. The browser routes saved cards to immutable saved
+detail and preserves draft-only mutation controls. Complete saved management and mixed
+discovery acceptance remain the subsequent library slice. Previews stay outside the library.
 
 ### Accepted application lifecycle
 
