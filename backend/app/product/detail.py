@@ -7,7 +7,7 @@ information stays absent; this representation never reconstructs a planning brie
 from datetime import date, datetime
 from typing import Annotated, Literal
 
-from pydantic import AfterValidator, BaseModel, ConfigDict, Field
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
 from backend.app.schemas.product import PreferenceCoverage
@@ -112,6 +112,7 @@ class DetailCompletion(DetailModel):
 
 
 class ProductDetail(DetailModel):
+    _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
     schema_version: Literal["product_detail_1"] = "product_detail_1"
     id: str
     title: str

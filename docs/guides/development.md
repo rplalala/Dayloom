@@ -72,6 +72,8 @@ or the process environment:
 | `PRODUCT_ALLOW_INSECURE_LOOPBACK` | Default false; set true only for HTTP development on localhost/127.0.0.1/::1 |
 | `PRODUCT_SESSION_SECONDS` | Default 3600; accepted range 1–86400 |
 | `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
+| `PRODUCT_GOOGLE_PLACES_MEDIA_KEY` | Optional server-only Places API key for verified Product photos; missing means illustration fallback |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash access key for the fixed curated atmosphere catalog; missing means illustration fallback |
 
 Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
 `uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
@@ -164,6 +166,43 @@ Public example endpoints also run without Product account/provider configuration
 HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
 references, real day order and safe text rendering. The public fixtures are historical
 source claims, not live provider verification.
+
+### Product media setup and acceptance
+
+Apply migrations before starting an updated API; migration 006 adds stable private
+place bindings to previews/trips. Media keys are optional and separate from research
+configuration. Keep them server-side. Without either key, the corresponding image
+remains an explicitly labelled illustration and all planning, import, preview and Save
+flows remain usable. See the [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
+for identity, provider, refresh and request bounds. Before a future public Google-enabled
+deployment, supply publicly accessible application Terms of Use and Privacy Policy
+incorporating the provider terms/privacy requirements; local substituted acceptance does
+not establish a deployment or live-provider acceptance.
+
+With the isolated Product test database and browser ports configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_media.py backend/tests/product/test_media_projection.py --basetemp=.scratch/pytest-media-api
+$env:PRODUCT_BROWSER_TESTS = "1"
+uv run pytest backend/tests/product/test_media_browser.py --basetemp=.scratch/pytest-media-browser
+```
+
+The media journey executes the real PlanningService/V3, coordinator, Product APIs and
+PostgreSQL. External place/model/weather/route/retrieval/media transports and browser
+images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
+Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
+forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
+Computed bounds, clipping and keyboard checks require Nearby credits to remain inside
+their row, below the photo/details, with accessible author/source links at all three widths.
+Provider/API checks also exercise redirects, foreign resources/URLs, bounded bodies and
+work, migration constraints/checksum integrity and missing media access. Logs/screenshots
+remain under the worktree's `.scratch/media-browser` and selected pytest basetemp.
+
+Every Product browser fixture uses the same test-only media transport override and
+installs external-request interception before context navigation. This includes older
+auth/editor/task/example/import suites: Chromium's network is independent of pytest's
+Python socket guard. These checks require neither a real media key nor any live image,
+Unsplash API or Google Photos request.
 
 ### Durable task acceptance
 

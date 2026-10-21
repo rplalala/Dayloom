@@ -3,7 +3,7 @@
 from datetime import date, datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 
 from backend.app.evidence.models import WeatherDayEvidence
 from backend.app.schemas.generation_diagnostics import MinimumDailyCoverage
@@ -87,6 +87,7 @@ class PreferenceCoverage(ProductModel):
 
 
 class ProductPlanResult(ProductModel):
+    _media_bindings: dict[str, str] = PrivateAttr(default_factory=dict)
     preference_coverage: tuple[PreferenceCoverage, ...] = ()
     policy_completion: Literal["complete", "incomplete", "unassessed"] = "unassessed"
     policy_reasons: tuple[str, ...] = ()

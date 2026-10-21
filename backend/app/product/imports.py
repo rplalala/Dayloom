@@ -120,6 +120,8 @@ AUTHORITY = {
     "saved_trip_id",
     "source_preview_id",
     "media_binding",
+    "media_bindings",
+    "_media_bindings",
     "photo_binding",
     "verified_binding",
     "signed_url",

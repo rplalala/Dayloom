@@ -8,6 +8,8 @@ import type {
 } from "./types";
 import "./detail.css";
 import { ExportControls } from './ExportControls';
+import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
+import { PlaceMedia, usePlaceMedia } from './media';
 
 type Group = {
   key: string;
@@ -121,19 +123,16 @@ function NearbyRows({
   items,
   other = false,
   show,
+  positionOf,
 }: {
   items: DetailNearby[];
   other?: boolean;
   show: (value: Information) => void;
+  positionOf: (item: DetailNearby) => number;
 }) {
   return items.map((item, i) => (
-    <div className="nearby-item" key={i}>
-      <div
-        className="nearby-photo detail-illustration"
-        aria-label="Illustration, not a place photograph"
-      >
-        ⌂
-      </div>
+    <div className="nearby-item nearby-media-item" key={i}>
+      <PlacePhoto className="nearby-media" slot={`nearby:${positionOf(item)}`} label={item.place_name}>
       <div className="nearby-body">
         <strong>{item.place_name}</strong>
         {other && (
@@ -153,7 +152,6 @@ function NearbyRows({
                   item.uncertainty ||
                     "Availability, prices and accessibility are unverified. This is not a scheduled visit.",
                   item.attribution || "",
-                  "Illustration shown; place photograph unavailable.",
                 ].filter(Boolean),
                 map: mapLink(item.place_name, item.area),
               })
@@ -163,11 +161,14 @@ function NearbyRows({
           </button>
         </div>
       </div>
+      </PlacePhoto>
     </div>
   ));
 }
 
-export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetail; onReplan?: () => void; actions?: ReactNode }) {
+export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode }) {
+  const media = usePlaceMedia(mediaEndpoint);
+  const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
   const [closedDays, setClosedDays] = useState<Set<string>>(() => new Set());
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
@@ -288,7 +289,6 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
         activity.time_use === "free_window"
           ? "Free time · no fixed place."
           : cost(activity.estimated_cost),
-        "Illustration shown; place photograph unavailable.",
       ].filter(Boolean),
       map:
         activity.time_use === "free_window"
@@ -331,8 +331,9 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
         ? "Imported content · not regenerated or rechecked"
         : "Generated itinerary · saved evidence snapshot";
   return (
-    <div className="detail-page">
+    <PlaceMedia.Provider value={media.items}><div className="detail-page">
       <section className="detail-hero detail-example-hero">
+        <CuratedPhoto image={detail.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${detail.destination} destination atmosphere`} className="detail-cover-media" />
         <div className="container detail-hero-inner">
           <Link to="/trips" className="detail-back">
             ← My trips
@@ -348,11 +349,11 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
             {detail.end_date ? ` — ${detail.end_date}` : ""}
           </p>
           {(onReplan || actions) && <div className="detail-hero-buttons">{onReplan && <button type="button" className="btn btn-primary" onClick={onReplan}>Plan again</button>}{actions}</div>}
-          <span className="detail-art-credit">Landscape illustration</span>
         </div>
       </section>
       <div className="container detail-body">
         <ExportControls detail={detail} />
+        {mediaEndpoint && <button className="btn btn-light btn-tiny media-refresh" onClick={media.refresh}>Refresh place photos</button>}
         <nav className="detail-anchor-nav" aria-label="Itinerary sections">
           {[
             ["overview", "Overview"],
@@ -536,14 +537,7 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
                                   aria-label={`${name(activity)} on ${day.date}`}
                                 >
                                   {!free && (
-                                    <button
-                                      className="activity-photo detail-illustration"
-                                      aria-label={`View ${name(activity)}`}
-                                      onClick={() => activityInfo(activity)}
-                                    >
-                                      <span aria-hidden="true">⌂</span>
-                                      <small>Illustration</small>
-                                    </button>
+                                    <PlacePhoto className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
                                   )}
                                   <div className="activity-details">
                                     <span className="activity-tag">
@@ -635,6 +629,7 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
                                         <NearbyRows
                                           items={group.items}
                                           show={setInformation}
+                                          positionOf={positionOf}
                                         />
                                       </div>
                                     </section>
@@ -845,6 +840,7 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
                                 <NearbyRows
                                   items={group.items}
                                   show={setInformation}
+                                  positionOf={positionOf}
                                 />
                               </div>
                             </section>
@@ -870,6 +866,7 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
                     items={visibleOther}
                     other
                     show={setInformation}
+                    positionOf={positionOf}
                   />
                 </section>
               )}
@@ -895,6 +892,6 @@ export function TripDetail({ detail, onReplan, actions }: { detail: ProductDetai
           close={() => setInformation(null)}
         />
       )}
-    </div>
+    </div></PlaceMedia.Provider>
   );
 }

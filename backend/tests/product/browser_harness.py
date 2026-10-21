@@ -1,8 +1,10 @@
 """Credential-safe process configuration and public browser fixture context."""
 
+import base64
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from playwright.sync_api import Browser
 from pydantic import SecretStr
@@ -40,6 +42,43 @@ class IsolatedEnvironment(dict[str, str]):
 class BrowserApplication:
     base_url: str
     browser: Browser = field(repr=False)
+
+
+class IsolatedBrowser:
+    """Install browser network isolation before any acceptance page can navigate.
+
+    Chromium is outside pytest's Python socket guard. All older browser contexts
+    inherit the same test-only image replacement and external-request denial.
+    """
+
+    def __init__(self, browser):
+        self.browser = browser
+
+    def new_context(self, **kwargs):
+        context = self.browser.new_context(**kwargs)
+
+        def intercept(route):
+            url = urlsplit(route.request.url)
+            if url.hostname in {"localhost", "127.0.0.1", "::1"}:
+                return route.continue_()
+            if (
+                url.hostname in {"images.unsplash.com", "lh3.googleusercontent.com"}
+                and route.request.resource_type == "image"
+            ):
+                return route.fulfill(
+                    status=200,
+                    content_type="image/png",
+                    body=base64.b64decode(
+                        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jvS8AAAAASUVORK5CYII="
+                    ),
+                )
+            return route.abort("blockedbyclient")
+
+        context.route("**/*", intercept)
+        return context
+
+    def close(self):
+        self.browser.close()
 
 
 def isolated_environment(
