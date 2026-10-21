@@ -266,10 +266,9 @@ def test_r7_saved_and_draft_management_is_a_keyboard_accessible_card_dialog(brow
             expect(dialog).to_contain_text(title)
             rename = page.get_by_role("button", name=f"Rename {title}", exact=True)
             expect(rename).to_be_focused()
-            if title == "A draft idea":
-                page.keyboard.press("Tab")
-                expect(page.get_by_role("button", name=f"Copy {title}", exact=True)).to_be_focused()
-                page.keyboard.press("Shift+Tab")
+            page.keyboard.press("Tab")
+            expect(page.get_by_role("button", name=f"Copy {title}", exact=True)).to_be_focused()
+            page.keyboard.press("Shift+Tab")
             page.keyboard.press("Enter")
             expect(
                 page.get_by_label(
@@ -281,8 +280,8 @@ def test_r7_saved_and_draft_management_is_a_keyboard_accessible_card_dialog(brow
             expect(trigger).to_be_focused()
             page.keyboard.press("Enter")
             page.keyboard.press("Tab")
-            if title == "A draft idea":
-                page.keyboard.press("Tab")
+            expect(page.get_by_role("button", name=f"Copy {title}", exact=True)).to_be_focused()
+            page.keyboard.press("Tab")
             expect(page.get_by_role("button", name=f"Delete {title}", exact=True)).to_be_focused()
             page.keyboard.press("Enter")
             expect(
