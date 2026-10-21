@@ -330,6 +330,7 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
         visible = page.get_by_role("region", name="Planning outcome").inner_text()
         assert "PRIVATE" not in visible and "Repair" not in visible
         snapshot = page.request.get(base + "/api/planning/tasks/" + original["id"]).json()
+        expect(page.get_by_text(snapshot["progress"]["message"], exact=True)).not_to_be_visible()
         assert snapshot["state"] == ("failed" if outcome == "interrupted" else outcome)
         assert snapshot["preview_id"] is None
         if outcome == "interrupted":

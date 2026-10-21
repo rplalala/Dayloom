@@ -218,6 +218,10 @@ fields for older tasks, with no profile overlay. If a different brief is open, t
 traveler chooses to retain it, save it as a draft before replacement, or replace it.
 Viewing an outcome or stopping a task never changes that brief. Recovery clears the old
 submission identity; only a later explicit Generate creates another task with a new key.
+Revision continuations belong to the initiating navigation, operation, session and
+editor/draft context; a late Save response may persist B but cannot restore A or change
+a newer page. Terminal cards show their safe outcome instead of announcing the retained
+last running stage as current progress.
 
 The Product dependency factory adds English writing policy only to primary/Repair
 provider system prompts, preserving request/source text and proper names. It admits the

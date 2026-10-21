@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { createBrief, restoreBrief } from './editor';
 import { draftRequest, DraftFailure } from './drafts';
 import { useSession } from './session';
@@ -19,6 +19,10 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
   const session = useSession();
   const { refresh } = useTasks();
   const navigate = useNavigate();
+  const location = useLocation();
+  const navigation = useRef(location.key);
+  navigation.current = location.key;
+  const operation = useRef(0);
   const current = useRef(session);
   current.current = session;
   const mounted = useRef(true);
@@ -27,6 +31,10 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
   const [confirm, setConfirm] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
+  useEffect(() => {
+    operation.current++;
+    setBusy(false); setError(''); setConfirm(false);
+  }, [location.key, task.id, session.account?.id, session.account?.csrf_token, session.status, session.brief, session.briefOrigin, session.draftRef, session.draftTitle, session.actionId]);
   useEffect(() => { if (confirm) dialog.current?.showModal(); else dialog.current?.close(); }, [confirm]);
 
   function revise() {
@@ -37,8 +45,12 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
   async function perform(kind: 'stop' | 'save') {
     const account = session.account;
     if (!account || busy) return;
-    const expectedBrief = JSON.stringify(session.brief);
-    const stillCurrent = () => mounted.current && current.current.account?.id === account.id && current.current.account.csrf_token === account.csrf_token;
+    const sequence = ++operation.current;
+    const navigationAtStart = location.key;
+    const stillCurrent = () => mounted.current && operation.current === sequence && navigation.current === navigationAtStart &&
+      current.current.status === 'authenticated' && current.current.account?.id === account.id && current.current.account.csrf_token === account.csrf_token &&
+      current.current.brief === session.brief && current.current.briefOrigin === session.briefOrigin && current.current.draftRef === session.draftRef &&
+      current.current.draftTitle === session.draftTitle && current.current.actionId === session.actionId;
     setBusy(true); setError('');
     try {
       if (kind === 'stop') {
@@ -49,7 +61,6 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
       } else {
         await draftRequest('/api/drafts', 'POST', account.csrf_token, { title: (session.draftTitle.trim() || `${session.brief.destination || 'Travel'} brief`).slice(0, 120), editor: session.brief });
         if (!stillCurrent()) return;
-        if (JSON.stringify(current.current.brief) !== expectedBrief) { setError('Your current brief changed while saving. Review it before replacing it.'); return; }
         revise();
       }
     } catch (failure) {
