@@ -155,6 +155,23 @@ def fields(source, model, exclude=()):
     }
 
 
+def finite_measurement(value, path, *, nonnegative=False):
+    """Public measurements must fit the detail/SQL floating-point boundary."""
+    if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
+        fail(path, "Expected a finite numeric measurement")
+    try:
+        representable = math.isfinite(float(value))
+    except (OverflowError, ValueError):
+        representable = False
+    if not representable or (nonnegative and value < 0):
+        fail(
+            path,
+            "Expected a representable finite nonnegative measurement"
+            if nonnegative
+            else "Expected a representable finite measurement",
+        )
+
+
 def normalize_import(content: str) -> ProductDetail:
     if len(content.encode("utf-8")) > MAX_BYTES:
         fail("$", "JSON must be at most 5 MiB")
@@ -229,16 +246,8 @@ def normalize_import(content: str) -> ProductDetail:
                 object_at(weather, dp + ".weather"), DetailWeather, ("attribution", "source_url")
             )
             for key, value in weather.items():
-                if (
-                    key != "summary"
-                    and value is not None
-                    and (
-                        isinstance(value, bool)
-                        or not isinstance(value, (int, float, Decimal))
-                        or not math.isfinite(value)
-                    )
-                ):
-                    fail(dp + ".weather." + key, "Expected a finite measurement")
+                if key != "summary" and value is not None:
+                    finite_measurement(value, dp + ".weather." + key)
         days.append({"date": day_date, "activities": activities, "weather": weather})
     start = calendar(
         source["start_date"] if source.get("start_date") is not None else min(dates),
@@ -277,13 +286,8 @@ def normalize_import(content: str) -> ProductDetail:
         )
         for key in ("provider_duration_seconds", "distance_meters", "reserve_seconds"):
             value = values.get(key)
-            if value is not None and (
-                isinstance(value, bool)
-                or not isinstance(value, (int, float, Decimal))
-                or not math.isfinite(value)
-                or value < 0
-            ):
-                fail(tp + "." + key, "Expected a finite nonnegative measurement")
+            if value is not None:
+                finite_measurement(value, tp + "." + key, nonnegative=True)
         for first, last in (
             ("departure_time", "arrival_time"),
             ("preceding_end_time", "following_start_time"),
@@ -355,26 +359,36 @@ def normalize_import(content: str) -> ProductDetail:
             known = {key: known[key] for key in original_known}
         request = {**known, "known_fields": sorted(known)}
     claims = []
-    for container in (raw, raw.get("completion", {}), source.get("completion", {})):
+    claim_containers = [("$", raw)]
+    for container_path, parent in (("$", raw), (path, source)):
+        if parent.get("completion") is not None:
+            claim_containers.append(
+                (
+                    container_path + ".completion",
+                    object_at(parent["completion"], container_path + ".completion"),
+                )
+            )
+    for container_path, container in claim_containers:
+        if "source_claims" in container:
+            supplied = list_at(container["source_claims"], container_path + ".source_claims")
+            for index, claim in enumerate(supplied):
+                if not isinstance(claim, str):
+                    fail(
+                        f"{container_path}.source_claims[{index}]", "Expected a source claim string"
+                    )
+            claims.extend(supplied)
         if isinstance(container, dict):
-            if container.get("source_claims"):
-                claims.extend(str(item) for item in container["source_claims"])
-                continue
             for key in (
                 "origin",
                 "policy_completion",
                 "policy_reasons",
                 "preference_coverage",
                 "minimum_daily_coverage",
-                "source_claims",
             ):
                 if key in container:
-                    if key == "source_claims" and isinstance(container[key], list):
-                        claims.extend(str(item) for item in container[key])
-                    else:
-                        claims.append(
-                            key + ": " + json.dumps(container[key], ensure_ascii=False, default=str)
-                        )
+                    claims.append(
+                        key + ": " + json.dumps(container[key], ensure_ascii=False, default=str)
+                    )
     try:
         return ProductDetail.model_validate(
             dict(

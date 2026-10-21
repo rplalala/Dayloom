@@ -377,3 +377,34 @@ def test_invalid_known_field_declarations_are_located_errors():
                 )
             )
         assert error.value.path == "$.request.known_fields"
+
+
+@pytest.mark.parametrize("claims", [True, 42, "complete", None, {}, {"claimed": "PASS"}, [42]])
+def test_public_import_rejects_malformed_source_claims_with_field_location(client, claims):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "invalid-claims",
+    }
+    value = source() | {"completion": {"source_claims": claims}}
+    response = client.post("/api/imports", headers=headers, content=json.dumps(value))
+    assert response.status_code == 422, response.text
+    assert response.json()["detail"]["path"].startswith("$.completion.source_claims")
+    assert client.get("/api/previews").json() == []
+
+
+@pytest.mark.parametrize("field", ["temperature_min_c", "max_wind_speed_kph"])
+def test_public_import_rejects_unrepresentable_weather_with_field_location(client, field):  # noqa: F811
+    account = register(client)
+    headers = {
+        "Origin": "http://localhost:5120",
+        "X-CSRF-Token": account["csrf_token"],
+        "X-Import-Key": "invalid-measurement",
+    }
+    value = source()
+    value["days"][0]["weather"] = {field: 10**1000}
+    response = client.post("/api/imports", headers=headers, content=json.dumps(value))
+    assert response.status_code == 422, response.text
+    assert response.json()["detail"]["path"] == f"$.days[0].weather.{field}"
+    assert client.get("/api/previews").json() == []
