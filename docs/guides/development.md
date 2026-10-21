@@ -180,9 +180,10 @@ they make no paid calls.
 Save explicitly creates an immutable saved trip; confirmed Discard removes pending
 content. Both use the preview's durable decision identity. Refreshing a decided preview
 recovers its receipt, and saved details read normalized rows without provider calls.
-The library includes saved cards beside drafts; saved title/delete/copy management and
-import remain separate slices. Weather attribution/source URLs are excluded from saved
-storage; all other supported public detail facts retain their supplied order and time text.
+The library includes saved cards beside drafts with title-only rename and confirmed
+deletion. Whole-trip copying and import remain separate slices. Weather attribution/source
+URLs are excluded from saved storage; all other supported public detail facts retain
+their supplied order and time text.
 
 With the same isolated database configured, run:
 
@@ -197,6 +198,28 @@ The browser includes a committed Save response delayed until another draft is op
 the late response cannot navigate or replace that draft. Screenshots/logs remain in
 `.scratch/task-browser/`. The fresh migration case resets only the explicitly isolated
 test database's `app` schema and verifies a separate `tripworld` marker survives.
+
+### Mixed library acceptance
+
+With the same isolated database and browser ports configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_library.py backend/tests/product/test_library_browser.py
+```
+
+These cases exercise mixed saved/draft creation-time and name ordering, exact UUID/kind
+tie boundaries, literal title/destination search, bounded pages, historical detail,
+revision conflicts, title/request immutability, confirmed deletion and retained
+deleted-result receipts. Owner-scoped weather/Nearby/transfer views read the saved
+snapshot without provider refresh. The actual browser covers cross-page navigation,
+empty/no-match states, search after rename, cancel/confirm deletion and late Save;
+desktop/800px/390px screenshots are written to `.scratch/library-browser/`.
+An expired-cookie case delays the real session check and verifies immediate content
+hiding after mutation 401, followed by same-account login without replaying the write.
+Run `test_saved_constraints.py` above for public fresh/rerun migration, composite foreign
+keys, normalized child cascades and database-level account cascades. See the
+[collection contract](../0007-application-operations.md#incomplete-drafts-and-the-collection-boundary)
+for sorting and bounds.
 
 ## Independent version execution
 
