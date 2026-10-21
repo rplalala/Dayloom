@@ -366,3 +366,192 @@ def test_browser_expired_lost_decision_hides_content_and_relogin_only_reads_rece
             assert page.url == saved_url and writes == ["one"]
     finally:
         context.close()
+
+
+def test_browser_stop_preserves_b_and_revise_requires_explicit_new_generation(task_app):
+    from backend.tests.product.test_browser import register_browser
+
+    base, browser = task_app.base_url, task_app.browser
+    signals = SCRATCH / "signals"
+    (signals / "model-release").unlink(missing_ok=True)
+    (signals / "retrieval-closed").unlink(missing_ok=True)
+    (signals / "model-entered").unlink(missing_ok=True)
+    before = (
+        (signals / "executions").read_text().splitlines()
+        if (signals / "executions").exists()
+        else []
+    )
+    context = browser.new_context(viewport={"width": 1440, "height": 1000})
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.goto(base + "/plan")
+        page.get_by_label("Destination", exact=True).fill("Sydney")
+        page.get_by_label("Start date", exact=True).fill("2026-09-12")
+        page.get_by_label("End date", exact=True).fill("2026-09-13")
+        page.get_by_label("Travelers", exact=True).fill("2")
+        page.get_by_label("Whole-trip budget", exact=True).fill("1800")
+        with page.expect_response(
+            lambda reply: (
+                reply.url.endswith("/api/planning/tasks") and reply.request.method == "POST"
+            )
+        ) as acceptance:
+            page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        original = acceptance.value.json()
+        deadline = time.monotonic() + 20
+        while not (signals / "model-entered").exists():
+            if time.monotonic() > deadline:
+                raise AssertionError("The external model did not reach its controlled entry gate")
+            time.sleep(0.025)
+        page.get_by_label("Destination", exact=True).fill("Kyoto")
+        page.get_by_label("Draft title", exact=True).fill("Preserve brief B")
+        page.goto(base + "/planning/" + original["id"])
+        expect(page.get_by_role("button", name="Stop planning", exact=True)).to_be_visible()
+        page.get_by_role("button", name="Stop planning", exact=True).click()
+        expect(
+            page.get_by_text("Planning stopped. Your submitted brief is retained.", exact=True)
+        ).to_be_visible(timeout=12000)
+        assert (signals / "retrieval-closed").exists()
+        assert (signals / "executions").read_text().splitlines() == before + ["one"]
+        page.goto(base + "/plan")
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
+        page.goto(base + "/planning/" + original["id"])
+        page.get_by_role("button", name="Revise submitted brief", exact=True).click()
+        dialog = page.get_by_role("dialog", name="Keep your current brief?")
+        expect(dialog).to_be_visible()
+        page.screenshot(path=str(SCRATCH / "revise-confirm-desktop.png"), full_page=True)
+        dialog.get_by_role("button", name="Keep current brief", exact=True).click()
+        expect(dialog).not_to_be_visible()
+        page.get_by_role("button", name="Revise submitted brief", exact=True).click()
+        dialog.get_by_role("button", name="Save current brief and revise", exact=True).click()
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Sydney")
+        assert page.url == base + "/plan"
+        assert (signals / "executions").read_text().splitlines() == before + ["one"]
+        library = page.request.get(base + "/api/library").json()
+        assert any(
+            card["title"] == "Preserve brief B" and card["destination"] == "Kyoto"
+            for card in library["items"]
+        )
+        snapshot = page.request.get(base + "/api/planning/tasks/" + original["id"]).json()
+        assert snapshot["state"] == "cancelled" and snapshot["request"] == original["request"]
+        (signals / "model-release").touch()
+        with page.expect_response(
+            lambda reply: (
+                reply.url.endswith("/api/planning/tasks") and reply.request.method == "POST"
+            )
+        ) as retry:
+            page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        retried = retry.value.json()
+        assert retried["id"] != original["id"]
+        page.goto(base + "/planning/" + retried["id"])
+        expect(page.get_by_role("link", name="Open itinerary preview")).to_be_visible(timeout=30000)
+        assert (signals / "executions").read_text().splitlines() == before + ["one", "one"]
+        page.set_viewport_size({"width": 390, "height": 844})
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.screenshot(path=str(SCRATCH / "stop-retry-390.png"), full_page=True)
+        page.get_by_role("link", name="Open itinerary preview").click()
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        expect(page.get_by_text("Saved to My trips.", exact=True)).to_be_visible()
+        page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+        assert (
+            page.request.get(base + "/api/planning/tasks/" + original["id"]).json()["state"]
+            == "cancelled"
+        )
+        assert (
+            page.request.get(base + "/api/planning/tasks/" + retried["id"]).json()["state"]
+            == "completed"
+        )
+        library = page.request.get(base + "/api/library").json()
+        assert {card["kind"] for card in library["items"]} == {"draft", "saved"}
+        assert (signals / "executions").read_text().splitlines() == before + ["one", "one"]
+        page.screenshot(path=str(SCRATCH / "stop-retry-save-390.png"), full_page=True)
+    finally:
+        (signals / "model-release").touch()
+        context.close()
+
+
+@pytest.mark.parametrize(
+    "outcome,heading",
+    [
+        ("needs_clarification", "A few details need your attention"),
+        ("safety_blocked", "Travel planning paused"),
+        ("provider_blocked", "Please revise your preferences"),
+        ("failed", "Planning could not finish"),
+        ("interrupted", "Planning was interrupted"),
+    ],
+)
+def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_resubmit(
+    task_app, outcome, heading
+):
+    from backend.tests.product.test_browser import register_browser
+
+    base, browser = task_app.base_url, task_app.browser
+    signals = SCRATCH / "signals"
+    (signals / "model-release").touch()
+    (signals / "model-outcome").write_text(outcome)
+    before = (
+        (signals / "executions").read_text().splitlines()
+        if (signals / "executions").exists()
+        else []
+    )
+    context = browser.new_context(viewport={"width": 390, "height": 844})
+    source = "<b>Keep a private travel preference.</b>"
+    try:
+        page = context.new_page()
+        register_browser(page, base)
+        page.goto(base + "/plan")
+        page.get_by_label("Destination", exact=True).fill("Sydney")
+        page.get_by_label("Start date", exact=True).fill("2026-09-12")
+        page.get_by_label("End date", exact=True).fill("2026-09-13")
+        page.get_by_label("Travelers", exact=True).fill("2")
+        page.get_by_label("Whole-trip budget", exact=True).fill("1800")
+        page.get_by_label("Additional preferences", exact=True).fill(source)
+        with page.expect_response(
+            lambda reply: (
+                reply.url.endswith("/api/planning/tasks") and reply.request.method == "POST"
+            )
+        ) as acceptance:
+            page.get_by_role("button", name="Generate itinerary", exact=False).click()
+        original = acceptance.value.json()
+        page.goto(base + "/planning/" + original["id"])
+        expect(page.get_by_role("heading", name=heading, exact=True)).to_be_visible(timeout=15000)
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.screenshot(path=str(SCRATCH / f"{outcome}-outcome-390.png"), full_page=True)
+        if outcome == "needs_clarification":
+            expect(page.locator("blockquote")).to_have_text(source)
+            assert page.locator("blockquote b").count() == 0
+        visible = page.get_by_role("region", name="Planning outcome").inner_text()
+        assert "PRIVATE" not in visible and "Repair" not in visible
+        snapshot = page.request.get(base + "/api/planning/tasks/" + original["id"]).json()
+        expect(page.get_by_text(snapshot["progress"]["message"], exact=True)).not_to_be_visible()
+        assert snapshot["state"] == ("failed" if outcome == "interrupted" else outcome)
+        assert snapshot["preview_id"] is None
+        if outcome == "interrupted":
+            assert snapshot["outcome"]["code"] == "planning_interrupted"
+        account = page.request.get(base + "/api/auth/current").json()
+        updated = page.request.put(
+            base + "/api/profile",
+            headers={"Origin": base, "X-CSRF-Token": account["csrf_token"]},
+            data={
+                "display_name": "Traveler",
+                "currency": "USD",
+                "interests": ["Nature"],
+                "pace": "rich",
+                "transport": ["drive"],
+                "notes": "Profile must not overlay recovered inputs.",
+            },
+        )
+        assert updated.status == 200
+        page.get_by_role("button", name="Revise submitted brief", exact=True).click()
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Sydney")
+        expect(
+            page.get_by_role("textbox", name="Additional preferences", exact=False)
+        ).to_have_value(source)
+        expect(page.get_by_label("Currency", exact=True)).to_have_value("AUD")
+        assert (signals / "executions").read_text().splitlines() == before + ["one"]
+        assert page.request.get(base + "/api/planning/tasks/" + original["id"]).json() == snapshot
+        page.screenshot(path=str(SCRATCH / f"{outcome}-390.png"), full_page=True)
+    finally:
+        (signals / "model-outcome").unlink(missing_ok=True)
+        context.close()

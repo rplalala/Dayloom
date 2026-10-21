@@ -6,3 +6,10 @@
 .dayloom .preview-recovery { margin:35px 0;padding:25px;border:1px solid #e4ebe8;border-radius:20px;background:#f1f6f3 }.dayloom .preview-recovery-card { display:flex;justify-content:space-between;gap:15px;padding:18px;margin-top:12px;background:#fff;border:1px solid #e4ebe8;border-radius:14px }.dayloom .preview-state { display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:25px;padding:20px;border:1px solid #9ac9b9;border-radius:16px;background:#e9f5f1 }
 @media(max-width:800px) { .dayloom .task-entry { padding:7px;font-size:11px }.dayloom .task-entry span:last-child { max-width:80px;overflow:hidden;text-overflow:ellipsis }.dayloom .task-completion-notice { right:16px;bottom:16px;flex-wrap:wrap }.dayloom .preview-recovery-card { flex-direction:column } }
 .dayloom .preview-decision-actions { display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100% }.dayloom .preview-decision-actions p { width:100%;margin:0 }
+.dayloom .task-actions { margin:18px 0 }
+.dayloom .task-actions p { max-width:68ch }
+.dayloom .task-outcome { margin:18px 0;padding:18px;border:1px solid var(--line,#e4ebe8);border-radius:16px;background:#f8faf8 }
+.dayloom .task-clarification { border-top:1px solid var(--line,#e4ebe8);margin-top:14px;padding-top:10px;overflow-wrap:anywhere }
+.dayloom .task-revise-dialog { width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;border:1px solid var(--line,#e4ebe8);border-radius:22px;padding:28px }
+.dayloom .task-revise-dialog::backdrop { background:#142c2660 }
+.dayloom .task-decision-actions { display:flex;flex-wrap:wrap;gap:10px;margin-top:20px }

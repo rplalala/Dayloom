@@ -158,13 +158,22 @@ provider configuration or external queue is required. A process shutdown interru
 owned work; after an abrupt crash, expired pending/lease records reconcile on access or
 periodically, retaining input without automatic execution restart.
 
+`POST /api/planning/tasks/{id}/stop` uses the current account cookie, Origin and CSRF
+token. Read the task after an ambiguous Stop response before explicitly trying again.
+Pending work can stop immediately; running work remains `stopping` until its executing
+application cleans up its connections, or its finite lease recovers as interrupted.
+Late Stop preserves completed previews. The outcome page offers explicit input revision
+and a preserve-or-replace choice for another open brief; opening inputs never generates.
+
 With the explicitly isolated test database and browser ports above configured, run
-`uv run pytest backend/tests/product/test_tasks.py backend/tests/product/test_task_browser.py`.
+`uv run pytest backend/tests/product/test_tasks.py backend/tests/product/test_task_stop.py backend/tests/product/test_task_races.py backend/tests/product/test_task_browser.py`.
 The browser factory runs the actual application/V3 graph with controlled external model,
 place, route, weather, retrieval and introduction adapters. Its completion signals,
 logs and screenshots remain in that worktree's `.scratch/task-browser/`. These cases
 cover lost accepted responses, changing/saving another brief, SSE/browser detachment,
-logout, preview recovery and stale execution authority; they make no paid calls.
+logout, preview recovery, deterministic Stop/completion lock races, cross-instance
+transport cleanup, typed outcomes, explicit revision/retry and stale execution authority;
+they make no paid calls.
 
 ### Preview Save and Discard acceptance
 

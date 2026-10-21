@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSession } from './session';
 import { TripDetail } from './detail/TripDetail';
 import './tasks.css';
+import { TaskActions, TaskOutcome } from './TaskActions';
 import { TaskContext, useTasks } from './taskContext';
 import { taskRequest, TaskFailure, taskActive, type PlanningTask, type Preview } from './taskClient';
 import { DecisionReceipt, PreviewDecisionControls } from './PreviewDecision';
@@ -67,7 +68,7 @@ export function TaskEntry() {
 }
 
 export function PlanningTasksPage() {
-  const { account, status } = useSession();
+  const { account, status, refresh: refreshSession } = useSession();
   const { tasks, error, refresh } = useTasks();
   const { taskId } = useParams();
   const [selected, setSelected] = useState<{ id?: string; owner?: string; task?: PlanningTask; error?: string }>({});
@@ -79,19 +80,19 @@ export function PlanningTasksPage() {
       try {
         const task = await taskRequest<PlanningTask>(`/api/planning/tasks/${encodeURIComponent(taskId || '')}`, { signal: controller.signal });
         if (!controller.signal.aborted) { setSelected({ id: taskId, owner: account!.id, task }); if (taskActive(task)) timer = setTimeout(read, 3000); }
-      } catch { if (!controller.signal.aborted) setSelected({ id: taskId, owner: account!.id, error: 'This planning task is unavailable.' }); }
+      } catch (failure) { if (!controller.signal.aborted) { setSelected({ id: taskId, owner: account!.id, error: 'This planning task is unavailable.' }); if (failure instanceof TaskFailure && failure.status === 401) void refreshSession(); } }
     }
     void read();
     return () => { controller.abort(); clearTimeout(timer); };
-  }, [account, taskId]);
+  }, [account, taskId, refreshSession]);
   if (!account) return <div className="container page"><h1>Your planning tasks are private.</h1><p>{status === 'loading' ? 'Checking your session…' : 'Log in to recover planning progress and previews.'}</p><Link to="/login?return=/planning">Log in</Link></div>;
   const shown = taskId ? selected.id === taskId && selected.owner === account.id && selected.task ? [selected.task] : [] : tasks;
   return <div className="container page task-page"><div className="page-heading"><span className="eyebrow">YOUR JOURNEY IN PROGRESS</span><h1>Planning tasks</h1><p>You can leave this page. Planning continues while you work on another brief.</p></div>
     {(error || selected.error) && <p role="alert">{error || selected.error}</p>}
-    <button className="btn btn-outline" onClick={() => void refresh()}>Refresh progress</button>
+    <button className="btn btn-light" onClick={() => void refresh()}>Refresh progress</button>
     {!shown.length && <p>{taskId ? 'Loading task…' : 'No recent planning tasks. Start with a travel brief.'}</p>}
-    {shown.map(task => <section key={task.id} className="flow-card task-progress"><span className="eyebrow">{task.state.replaceAll('_', ' ')}</span><h2>{task.request.destination}</h2><p role="status">{task.progress.message}</p>{taskActive(task) && <p>You can edit another brief and save it as a draft while you wait.</p>}{task.outcome && <><p>{task.outcome.message}</p><p>{task.outcome.action}</p></>}{task.preview_id && <Link className="btn btn-primary" to={`/previews/${task.preview_id}`}>Open itinerary preview →</Link>}<details><summary>Submitted brief</summary><p>{task.request.start_date} – {task.request.end_date} · {task.request.traveler_count} travelers</p><p>{task.request.budget.amount} {task.request.budget.currency}</p><p className="literal-preferences">{task.request.additional_preferences}</p></details></section>)}
-    <RecoverablePreviews /><Link to="/plan" className="btn btn-outline">Continue a brief</Link>
+    {shown.map(task => <section key={task.id} className="flow-card task-progress"><span className="eyebrow">{task.state.replaceAll('_', ' ')}</span><h2>{task.request.destination}</h2>{taskActive(task) && <p role="status">{task.progress.message}</p>}{taskActive(task) && <p>You can edit another brief and save it as a draft while you wait.</p>}<TaskOutcome task={task} /><TaskActions task={task} onUpdate={updated => setSelected({ id: taskId, owner: account.id, task: updated })} />{task.preview_id && <Link className="btn btn-primary" to={`/previews/${task.preview_id}`}>Open itinerary preview →</Link>}<details><summary>Submitted brief</summary><p>{task.request.start_date} – {task.request.end_date} · {task.request.traveler_count} travelers</p><p>{task.request.budget.amount} {task.request.budget.currency}</p><p className="literal-preferences">{task.request.additional_preferences}</p></details></section>)}
+    <RecoverablePreviews /><Link to="/plan" className="btn btn-light">Continue a brief</Link>
   </div>;
 }
 
@@ -119,7 +120,7 @@ export function RecoverablePreviews() {
     } catch { if (owner.current === expectedOwner) setResult(previous => ({ ...previous, error: 'Could not load older previews. Try again.' })); }
     finally { setLoadingMore(false); }
   }
-  return <section className="preview-recovery"><h2>Recoverable previews</h2><p>Unsaved itineraries stay here until you decide to keep or discard them.</p>{result.error && <p role="alert">{result.error}</p>}{!result.error && !result.previews.length && <p>No pending previews.</p>}{result.previews.map(preview => <Link key={preview.id} className="preview-recovery-card" to={`/previews/${preview.id}`}><strong>{preview.title || 'Itinerary preview'}</strong><span>Unsaved preview →</span></Link>)}{result.more && <button className="btn btn-outline" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</section>;
+  return <section className="preview-recovery"><h2>Recoverable previews</h2><p>Unsaved itineraries stay here until you decide to keep or discard them.</p>{result.error && <p role="alert">{result.error}</p>}{!result.error && !result.previews.length && <p>No pending previews.</p>}{result.previews.map(preview => <Link key={preview.id} className="preview-recovery-card" to={`/previews/${preview.id}`}><strong>{preview.title || 'Itinerary preview'}</strong><span>Unsaved preview →</span></Link>)}{result.more && <button className="btn btn-light" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</section>;
 }
 
 export function PreviewPage() {

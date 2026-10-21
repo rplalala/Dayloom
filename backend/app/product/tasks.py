@@ -101,6 +101,15 @@ async def read_task(task_id: UUID, user: CurrentUser, coordinator: Coordinator, 
     return task
 
 
+@router.post("/api/planning/tasks/{task_id}/stop")
+async def stop_task(task_id: UUID, user: CurrentUser, coordinator: Coordinator, response: Response):
+    response.headers["Cache-Control"] = "no-store"
+    task = await asyncio.to_thread(coordinator.store.stop, user["id"], task_id)
+    if not task:
+        raise HTTPException(404, {"code": "planning_task_not_found"})
+    return task
+
+
 @router.get("/api/previews")
 async def pending_previews(
     user: CurrentUser,

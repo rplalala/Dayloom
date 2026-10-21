@@ -78,7 +78,7 @@ class TaskCoordinator:
                 pass
             await asyncio.sleep(self.reconcile_seconds)
 
-    async def _heartbeat(self, claim, observer):
+    async def _heartbeat(self, claim, observer, worker):
         while True:
             await asyncio.sleep(self.heartbeat_seconds)
             # Coalesce bounded public observations; browsers each read durable snapshots.
@@ -93,6 +93,9 @@ class TaskCoordinator:
                     }
             try:
                 if not await asyncio.to_thread(self.store.renew, claim, progress):
+                    # Stop may arrive through another app instance. Lost durable authority
+                    # also stops this owner's transport; fencing alone only rejects writes.
+                    worker.cancel()
                     return
             except Exception:
                 # No renewal was granted. A later attempt still checks the existing deadline.
@@ -105,7 +108,9 @@ class TaskCoordinator:
             if claim is None:
                 return
             observer = ProgressObserver(developer=False)
-            heartbeat = asyncio.create_task(self._heartbeat(claim, observer))
+            heartbeat = asyncio.create_task(
+                self._heartbeat(claim, observer, asyncio.current_task())
+            )
             with progress_scope(observer):
                 result = await service.plan(
                     PlanningRequest.model_validate(claim["request"]),
@@ -130,6 +135,11 @@ class TaskCoordinator:
                 heartbeat.cancel()
                 with suppress(asyncio.CancelledError, Exception):
                     await heartbeat
+            if claim:
+                # service.plan unwinds its owned transport stack before this acknowledgement.
+                # This narrow transition cannot alter completion or another execution's fence.
+                with suppress(Exception):
+                    await asyncio.to_thread(self.store.acknowledge_stop, claim)
 
     async def close(self):
         self.closed = True
