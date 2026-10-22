@@ -1,6 +1,7 @@
-name: reliable-tripworld
+name: dayloom
 services:
   postgres:
+    container_name: postgres
     image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
     environment:
       POSTGRES_USER: ${TRIPWORLD_DB_USER:?Set TRIPWORLD_DB_USER}
@@ -18,3 +19,4 @@ services:
     shm_size: 256mb
 volumes:
   tripworld_pgdata:
+    name: ${TRIPWORLD_DB_VOLUME:-dayloom_pgdata}
