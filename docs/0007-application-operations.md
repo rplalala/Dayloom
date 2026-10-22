@@ -591,6 +591,13 @@ or zero weather metric is a known value. Place slots use verified media when aut
 with labelled illustration fallbacks. Map queries are URL-encoded; weather source links
 admit only HTTP(S), and source text is rendered as text.
 
+Daily weather starts collapsed on one line with its date, condition icon, estimated
+average temperature and rain probability. The estimate is the midpoint of the supplied
+daily low and high, marked `≈`; either missing bound leaves the average unknown.
+Rain probability remains a percentage, not rainfall in millimetres. Clicking the row
+or using the keyboard expands its condition, low/high temperatures, wind, attribution
+and source details. Zero remains a known value in both the summary and expanded view.
+
 Detail preserves the desktop two-column layout. Nearby references remain a flat ordered
 list with their exact supplied `anchor_activity_id` and optional `associated_day`.
 Resolution requires one scheduled activity with that exact ID and, when supplied, that
