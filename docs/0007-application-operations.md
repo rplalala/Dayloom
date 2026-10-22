@@ -218,6 +218,7 @@ redirect to Plan; there is no separate task-management page.
 Observation uses one in-flight request per observer, periodic GET polling while active,
 and focus/online refresh. Network recovery and login only read existing receipts; neither
 replays generation. Completion neither redirects nor changes the current brief. An
+outcome notification appears at the upper right below navigation and stays fixed while scrolling. An
 unviewed completed preview remains available as **Itinerary ready**, independently of
 dismissing its notification. Viewing the result in section 03 or its full detail acknowledges
 it per owner, task and revision. An **Unsaved previews** disclosure in section 03 lists
