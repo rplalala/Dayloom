@@ -611,12 +611,14 @@ route check. Trusted generated transfers can retain their final
 `validation_state` (`PASS`, `CONFIRMED`, `UNKNOWN`) and provider/derived estimate kind.
 For trusted generated snapshots, the connector, connections list and Details distinguish
 fitting supplied timing (`PASS`), a confirmed timing conflict (`CONFIRMED`) and unverified
-feasibility (`UNKNOWN` or absent). Evidence availability/type is shown separately from
-timing feasibility. Example/import claims cannot acquire these trusted outcomes by
-supplying a status field; their displayed source claims remain explicitly unverified.
+feasibility (`UNKNOWN` or absent) in plain language. Validation, evidence availability
+and estimate type remain in public detail data and versioned JSON rather than raw UI
+diagnostics. Example/import claims cannot acquire trusted outcomes by supplying a status
+field; their travel time is always presented as needing confirmation.
 Missing costs stay unknown, including when no total can be established. A zero amount
-or zero weather metric is a known value. Place slots use verified media when authorized,
-with labelled illustration fallbacks. Map queries are URL-encoded; weather source links
+or zero weather metric is a known value. Place lists use illustrations; photographs and
+credits belong in place dialogs under the [media contract](#verified-place-media-and-curated-atmosphere).
+Map queries are URL-encoded; weather source links
 admit only HTTP(S), and source text is rendered as text.
 
 Daily weather starts collapsed on one line with its date, condition icon, estimated
@@ -634,8 +636,9 @@ establish links. Counts include only resolved references. Date and activity grou
 expanded, with separate disclosure and locate controls. Explicit pointer/keyboard location
 expands the target day/group, focuses it and briefly highlights both surfaces; hover and
 scroll do not select. Day filters apply to both surfaces. Missing, mismatched or ambiguous
-anchors stay in Other nearby references with their supplied identifiers/dates; undated
-unresolved references survive every filter.
+anchors stay in Other nearby references; their exact identifiers/dates remain in source
+data, while the visible rows show place names and Details without internal anchor IDs.
+Undated unresolved references survive every filter.
 
 At widths up to and including 800px, resolved references use an initially collapsed
 disclosure inside the activity card below its actions, without a new timeline marker or
@@ -677,26 +680,36 @@ parallel resolutions and a 12-second batch deadline. Each Google slot performs a
 one fresh `photos` Details request and one media metadata request, with a 3-second HTTP
 timeout and 256 KiB response limit. Redirects and arbitrary fetch destinations are
 rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
-automatic retry is introduced. Refresh place photos explicitly resolves fresh metadata
-without replanning or refreshing itinerary facts.
+automatic retry is introduced. Product requests place metadata when a place detail
+dialog opens; illustrated lists do not request it. Refresh place photos in that dialog
+explicitly resolves fresh metadata without replanning or refreshing itinerary facts.
 
-Google photographs display associated Google Maps attribution, supplied author names
-and safe profile/source links in the same image container. Nearby keeps its compact
-photo/detail row, with full-width credits below both inside the same figure. Compact cards use the
-permitted text attribution with `translate="no"`, an unwrapped 12px normal-weight sans
-serif label and the specified gray on a light background. Unavailable metadata, absent
-identity/keys and expired/failed image loads show an illustration labelled as such.
-Preview access and Save remain independent of media success. Provider behavior follows
-the [Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)
+Activity and Nearby lists use labelled local illustrations, preserving the compact r7
+rows. Opening a place detail dialog displays the real photograph when available, with
+Google Maps attribution, supplied author names and safe profile/source links in the
+same image container. The Google Maps label uses `translate="no"`, an unwrapped 12px
+normal-weight sans serif label and gray text on a light background. Unavailable
+metadata, absent identity/keys and expired/failed image loads retain the labelled
+illustration. Preview access and Save remain independent of media success. Provider
+behavior follows the [Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)
 and [Places attribution policies](https://developers.google.com/maps/documentation/places/web-service/policies).
+
+Product detail omits internal completion reviews, policy reason codes, raw route
+claims and source anchor IDs. Route timing conflicts and uncertainty remain visible
+in plain language. The copyable/plain-text itinerary summary uses the same travel
+vocabulary without serialized internal objects; the versioned JSON export retains
+its existing compatibility contract. Developer/research data and entry points are
+unchanged.
 
 Public `/api/media/curated/{sydney|nature}` uses two fixed officially identified Unsplash
 photo pages, resolving current API image/photographer metadata at display time. The
 Sydney harbour image is destination imagery; mountain imagery is explicitly general
 atmosphere. Neither supplies attraction/business-photo authority. Returned hotlink
 tracking parameters survive bounded image resizing, and photographer/source links carry
-application referral parameters. There is no image search, image selection/download,
-avatar storage or photo archive. Missing access/media uses stable local illustrations.
+application referral parameters. Credits appear on image hover or keyboard focus;
+a small information control also opens them on touch devices, with explicit Close and
+Escape support. Credits remain operable above image navigation links and hero shading.
+There is no image search, image selection/download, avatar storage or photo archive. Missing access/media uses stable local illustrations.
 This adapter follows the [Unsplash API documentation](https://unsplash.com/documentation)
 and [API guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines).
 Optional server keys and controlled acceptance are documented in the

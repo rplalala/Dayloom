@@ -235,11 +235,15 @@ PostgreSQL. External place/model/weather/route/retrieval/media transports and br
 images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
 Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
 forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
-Computed bounds, clipping and keyboard checks require Nearby credits to remain inside
-their row, below the photo/details, with accessible author/source links at all three widths.
+Lists remain illustrated before and after opening a place. Google photographs and
+readable author/source credits appear together in place detail dialogs at all three
+widths. Unsplash checks cover hover, keyboard focus, Escape and touch disclosure,
+including collection image links and hero shading. Product overview and copyable
+summary checks exclude internal review fields while preserving route uncertainty.
 Provider/API checks also exercise redirects, foreign resources/URLs, bounded bodies and
 work, migration constraints/checksum integrity and missing media access. Logs/screenshots
-remain under the worktree's `.scratch/media-browser` and selected pytest basetemp.
+remain under the worktree's `.scratch/media-browser`, `.scratch/product-polish/browser`
+and selected pytest basetemp.
 
 Every Product browser fixture uses the same test-only media transport override and
 installs external-request interception before context navigation. This includes older
