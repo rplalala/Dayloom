@@ -254,8 +254,10 @@ PostgreSQL. External place/model/weather/route/retrieval/media transports and br
 images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
 Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
 forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
-Google photographs load directly in activity and Nearby lists, with compact visible
-provider/author credits and full source links in the place dialog at all three widths.
+Google photographs load directly in activity and Nearby lists without credit captions;
+provider/author credits and full source links remain in the place dialog at all three widths.
+The [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
+records the resulting Google attribution requirement mismatch.
 Failed/unauthorized photographs retain labelled illustration fallbacks. Unsplash checks
 cover hover, keyboard focus, Escape and touch disclosure,
 including collection image links and hero shading. Product overview and copyable

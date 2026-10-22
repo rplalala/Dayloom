@@ -686,15 +686,18 @@ opens, so authorized photographs appear directly in activity and Nearby lists. R
 place photos in a place dialog explicitly resolves fresh metadata without replanning
 or refreshing itinerary facts.
 
-List photographs retain a compact visible Google Maps and author attribution, with safe
-profile links. Full photo source links appear in the place detail dialog. The compact
-activity caption shares the card width instead of squeezing credits under its thumbnail;
-Nearby retains its image/detail row and a compact caption below. Both preserve the r7
-hierarchy. The Google Maps label uses `translate="no"`, an unwrapped 12px normal-weight
-sans serif label and gray text on a light background. Unavailable
-metadata, absent identity/keys and expired/failed image loads retain the labelled
-illustration. Preview access and Save remain independent of media success. Provider
-behavior follows the [Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)
+Activity and Nearby lists show photographs without provider or author captions. The
+place detail dialog contains Google Maps attribution, all supplied author names and
+safe profile/source links beside the photograph. The label uses `translate="no"`,
+an unwrapped 12px normal-weight sans serif label and gray text on a light background.
+Unavailable metadata, absent identity/keys and expired/failed image loads retain the
+labelled illustration. Preview access and Save remain independent of media success.
+Unsplash atmosphere-credit disclosure is unchanged.
+
+This list/detail split does not meet Google's documented requirement to include
+provided author attribution wherever the photograph is displayed. Keeping attribution
+only inside a dialog is not asserted to satisfy that requirement. See
+[Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)
 and [Places attribution policies](https://developers.google.com/maps/documentation/places/web-service/policies).
 
 Product detail omits internal completion reviews, policy reason codes, raw route
