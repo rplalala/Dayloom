@@ -235,7 +235,7 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest isolated engineering checkpoint (22 October 2026): the Dayloom Product
+Initial Product engineering checkpoint (22 October 2026): the Dayloom Product
 lifecycle passed 263 API/PostgreSQL/browser tests, including 62 actual Chromium
 cases with no Product skips. The frontend passed 174 tests in 27 files, build and
 lint; two Fast Refresh warnings remain. The initial full backend run at `74d1603`
@@ -310,11 +310,16 @@ Account images use initials; avatar upload remains deferred.
 
 [Application operations](docs/0007-application-operations.md#product-experience-and-persistence-design)
 owns the current contract. The [lifecycle acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md)
-records actual isolated database/browser verification, review corrections and limits.
-External adapters were substituted; fresh provider quality, public deployment and
-scale are unverified. Independent V0–V3, Developer and research commands retain their
-entrypoints and behavior. Local acceptance does not freeze a version or authorize
-remote Git delivery, live service runs or further research work.
+records isolated database/browser verification, review corrections and bounded live
+acceptance. The [complete local runtime](docs/guides/development.md#complete-local-product-runtime)
+serves the built frontend and normal API together using the daily database and real
+providers. One separately authorized Sydney one-day journey passed generation,
+preview, explicit Save and My trips reload on 22 October, with real model, map/route,
+weather, embedding and image HTTP success evidence. This does not establish general
+provider quality, full billing, public deployment or scale. Independent V0–V3,
+Developer and research commands retain their entrypoints and behavior. Additional
+live runs, remote Git delivery and research remain separately scoped; no version
+freeze follows from this acceptance.
 
 Evaluation extensions are developed independently:
 

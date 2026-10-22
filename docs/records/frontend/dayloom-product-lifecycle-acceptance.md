@@ -1,6 +1,8 @@
 # Dayloom Product lifecycle acceptance
 
-Validated in isolated PostgreSQL and Chromium with substituted external transports.
+Lifecycle validation uses isolated PostgreSQL and Chromium with controlled external
+adapters. A separately authorized one-use check also validates the complete local
+runtime against real providers; the two scopes remain distinct below.
 
 ## Event and scope
 
@@ -83,6 +85,54 @@ or crop. Author names continue to wrap. The same correction consolidates the dup
 mood mapping and native-dialog backdrop predicate while leaving close/busy policies local.
 
 ## Verification and evidence
+
+### Complete local runtime and bounded real-service acceptance
+
+On 22 October 2026, implementation `21ad0bc` and startup documentation `a93b547`
+added delivery of the built r7 frontend and normal API on one local origin. The
+normal provider factories replace the substituted walkthrough entrypoint; `.env`
+and `.env.tripworld` retain their existing values. The existing Unsplash key alias
+now works, with the dedicated Product
+key taking precedence. No frontend or independent planner policy changed.
+
+At frozen revision `a93b547ab239ab66a61ec759a84229e865f26d21`, 107 related
+API/Product/media/retrieval cases passed, as did the frontend production build and
+changed-file Ruff checks. Both independent review axes reported zero findings.
+The daily database applied migration 007 through the public entrypoint and reran
+with zero changes. Read-only readiness verified both tokenizer vocabularies and
+TripWorld corpus/embedding-space compatibility. A preliminary built-runtime browser
+check passed actual registration, durable draft/reload, My trips and Developer access
+at 1440, 800 and 390px while explicitly blocking provider-triggering requests.
+
+The user then authorized exactly one real-service journey: Sydney on 24 October 2026,
+one day, two travelers and AUD 1000, with no additional preferences. The allowance
+was twelve minutes, existing configured call/token limits, no new dollar hard cap and
+no second generation after failure. A one-use command checked frozen source/configuration
+hashes before execution. Existing `.env.example` and `GLOSSARY.md` edits stayed excluded.
+
+The real browser run passed in **80.88 seconds**, with exactly one generation POST,
+task completion, preview, explicit Save and My trips reload. Its generated snapshot
+contained two activities, one provider-confirmed Google Routes connection (812m,
+701 seconds, PASS), Open-Meteo weather for the day and complete minimum daily coverage.
+Five owned Google photo slots returned available metadata. Screenshots at all three
+widths showed real images/credits without horizontal overflow; no browser page error
+or external-browser denial was recorded. One curated HTTP-200 response body was not
+captured by the asynchronous observer; other curated metadata and the displayed hero
+image were available. This capture gap is not evidence of a provider failure or a
+complete per-response body ledger.
+
+Sanitized existing runtime HTTP metadata recorded successful responses from the model
+(4), Google Places (51), Google Routes (19), Open-Meteo (1), query embeddings (1) and
+Unsplash (5). These observations supplement the public projection but are not a complete
+SDK request, SQL execution, token-usage or billing ledger. No zero-cost claim or general
+retrieval/provider-quality conclusion follows. This single journey does not establish
+all destinations, dates, failure modes, concurrency or scale; it does not refresh the benchmark.
+
+Local evidence identifiers under `.scratch/product-final/` are
+`product-20261022-154812.{log,xml}`, `runtime-browser.json`, `live-freeze.json`,
+`live-execution.log`, `live-result.json`, `live-detail.json`, `live-http-metadata.json`
+and `live-preview-{1440,800,390}.png`. They identify retained local evidence, not
+published dependencies. No push, PR or deployment occurred.
 
 ### Initial lifecycle delivery
 
@@ -219,4 +269,9 @@ are `frontend-final.log`, `priority-{red,green}.log`, `review-{build,lint}.log`,
 
 Local evidence paths are historical identifiers, not published dependencies. The integration worktree's ignored `.scratch/final-backend-initial/` retains hash-verified original whole-run log/XML/result files. `.scratch/final-product*`, `final-frontend*`, `final-static*` and `final-delta-static*` identify the later root gates. `.scratch/coordination/` contains exact-head reviews, merger/public-migration receipts and Issue mutation readbacks; task `.scratch/handoff-*.md` files locate retained raw logs and screenshots. The correction tree's `correction-validation-summary.json` verifies that the short-path retest set equals the original 63 failed nodes. Earlier #203 full backend133/frontend150 results survive as original tool receipts, but their complete local raw logs were not retained. Later focused correction logs do not retroactively replace those missing raw logs.
 
-All acceptance databases and API/frontend ports are isolated per worktree. Product acceptance never uses the existing TripWorld runtime on port55432. External model, retrieval-provider, map, weather and image transports are substituted; Product persistence, coordination and V3 execution remain real. These are engineering acceptance results, without a provider-quality comparison, formal benchmark, research conclusion, version freeze or scale guarantee. No live service call, push, PR or deployment is established by these results.
+Automated lifecycle and controlled-browser acceptance use isolated disposable databases
+and ports, with external transports substituted. The separately authorized real-runtime
+journey above uses the normal daily database on port 55432 and real providers; it does
+not change the safety boundary for automated tests. These engineering results establish
+neither a provider-quality comparison, formal benchmark, research conclusion, version
+freeze nor scale guarantee. Remote Git delivery and deployment remain separate.
