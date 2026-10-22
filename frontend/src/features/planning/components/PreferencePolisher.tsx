@@ -91,7 +91,7 @@ export function PreferencePolisher({ text, context, onApply, disabled, product =
 
   const available = attempts < MAX_ATTEMPTS;
   if (product) return <div className="preference-assistance">
-    <div className="preference-tools"><p id="preference-sync-help">Your selections appear here. Edit any sentence to make it your own.</p><button className="btn btn-quiet btn-small" type="button" onClick={polish} disabled={disabled || busy || !text.trim() || text.length > 4000 || !available}>{buttonIcon}{busy ? "Polishing…" : "Polish preferences"}</button></div>
+    <div className="preference-tools"><button className="btn btn-quiet btn-small" type="button" onClick={polish} disabled={disabled || busy || !text.trim() || text.length > 4000 || !available}>{buttonIcon}{busy ? "Polishing…" : "Polish preferences"}</button></div>
     {attempts > 0 && <p className="subtle-help">{attempts}/{MAX_ATTEMPTS} attempts used</p>}
     {undo && text === undo.after && <div className="polish-applied"><span aria-hidden="true">✓</span><span>Suggestion applied.</span><button type="button" className="inline-action" onClick={undoRewrite} disabled={disabled}>Undo</button></div>}
     {text.length > 4000 && <p className="form-error">Polishing accepts at most 4,000 characters.</p>}
@@ -104,7 +104,7 @@ export function PreferencePolisher({ text, context, onApply, disabled, product =
 
   return <div className="preference-assistance">
     <div className={product ? "preference-tools" : "preference-assistance-actions"}>
-      {product && <p id="preference-sync-help">Your selections appear here. Edit any sentence to make it your own.</p>}
+
       <button className={product ? "btn btn-quiet btn-small" : "button button-secondary"} type="button" onClick={polish}
         disabled={disabled || busy || !text.trim() || text.length > 4000 || !available}>
         {buttonIcon}{busy ? "Polishing…" : "Polish preferences"}

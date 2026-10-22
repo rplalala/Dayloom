@@ -1,11 +1,14 @@
 import type { ReactNode } from "react";
 
-// Fixed r7 SVG vocabulary. Unknown names retain the prototype's info fallback.
+// Product line icons. Unknown names retain the prototype's info fallback.
 const icons: Record<string, ReactNode> = {
   "arrow": <><path d="M5 12h14m-6-6 6 6-6 6"/></>,
   "back": <><path d="M19 12H5m6 6-6-6 6-6"/></>,
   "pin": <><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></>,
   "calendar": <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></>,
+  "route": <><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6"/></>,
+  "museum": <><path d="m3 9 9-6 9 6M4 10h16M4 21h16M6 10v11m4-11v11m4-11v11m4-11v11"/></>,
+  "tree": <><path d="m12 3 6 7h-3l5 7H4l5-7H6l6-7ZM12 17v5"/></>,
   "clock": <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
   "walk": <><circle cx="13" cy="4" r="2"/><path d="m7 21 3-6m4-4 4 3m-3 7-3-5-2-4-3 2m4-7 3 2-2 5"/></>,
   "spark": <><path d="m12 2 2.1 6.1L20 10l-5.9 2.1L12 18l-2.1-5.9L4 10l5.9-1.9L12 2Z"/><path d="m19 18 .8 1.5L21.5 20l-1.7.5L19 22l-.8-1.5L16.5 20l1.7-.5L19 18Z"/></>,
