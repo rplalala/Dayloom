@@ -15,6 +15,20 @@
 .dayloom .source-details { margin-top:18px; color:var(--muted); font-size:10px; }
 .dayloom .source-details summary { cursor:pointer; }
 .dayloom .source-details p { font-size:11px; line-height:1.8; }
+.dayloom .weather-disclosure { display:block; }
+.dayloom .weather-line { display:grid; grid-template-columns:58px 22px minmax(0,1fr) auto 14px; align-items:center; gap:8px; cursor:pointer; list-style:none; font-size:12px; }
+.dayloom .weather-line::-webkit-details-marker { display:none; }
+.dayloom .weather-line:focus-visible { outline:2px solid var(--accent); outline-offset:4px; border-radius:4px; }
+.dayloom .weather-date, .dayloom .weather-rain { display:flex; align-items:center; gap:4px; white-space:nowrap; }
+.dayloom .weather-date { flex-wrap:nowrap; }
+.dayloom .weather-date small { color:var(--muted); font-size:9px; }
+.dayloom .weather-small-icon { display:flex; color:#6a8c9e; }
+.dayloom .weather-average { white-space:nowrap; }
+.dayloom .weather-rain { color:var(--muted); }
+.dayloom .weather-chevron { display:flex; color:var(--muted); transition:transform .2s; }
+.dayloom .weather-disclosure[open] .weather-chevron { transform:rotate(90deg); }
+.dayloom .weather-expanded { display:flex; flex-direction:column; gap:6px; padding:12px 0 2px; color:var(--muted); font-size:12px; overflow-wrap:anywhere; }
+.dayloom .weather-expanded strong { color:var(--ink); }
 @media(max-width:800px) {
   .dayloom .detail-desktop-nearby, .dayloom .nearby-sidebar-groups { display:none; }
   .dayloom .nearby-panel:not(:has(.nearby-other)) { display:none; }

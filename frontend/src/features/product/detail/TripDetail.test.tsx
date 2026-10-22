@@ -216,7 +216,30 @@ describe("Product detail", () => {
       }
     },
   );
-  it("shows supplied zero costs and weather metrics while rejecting unsafe source links", () => {
+  it("keeps weather compact until its daily summary is opened", async () => {
+    const user = userEvent.setup();
+    render(<MemoryRouter><TripDetail detail={{ ...detail, days: [{
+      ...detail.days[0], date: "2026-10-23", weather: {
+        summary: "Clear", temperature_min_c: 14, temperature_max_c: 22,
+        precipitation_probability_percent: 20, max_wind_speed_kph: 18,
+        attribution: "Weather fixture", source_url: "https://example.invalid/weather",
+      },
+    }] }} /></MemoryRouter>);
+    const summary = screen.getByLabelText("Weather details for Oct 23");
+    expect(within(summary).getByText("≈18°C")).toBeVisible();
+    expect(within(summary).getByText("20%")).toBeVisible();
+    expect(screen.getByText("Low 14°C")).not.toBeVisible();
+    expect(screen.getByText("Wind up to 18 km/h")).not.toBeVisible();
+    await user.click(summary);
+    expect(screen.getByText("Low 14°C")).toBeVisible();
+    expect(screen.getByText("High 22°C")).toBeVisible();
+    expect(screen.getByText("Wind up to 18 km/h")).toBeVisible();
+    expect(screen.getByText("Average estimated from the daily low and high.")).toBeVisible();
+    expect(screen.getByRole("link", { name: "Weather source 1 ↗" })).toHaveAttribute("href", "https://example.invalid/weather");
+    await user.click(summary);
+    expect(screen.getByText("Low 14°C")).not.toBeVisible();
+  });
+  it("shows supplied zero costs and weather metrics while rejecting unsafe source links", async () => {
     const supplied: ProductDetail = {
       ...detail,
       days: [
@@ -245,12 +268,28 @@ describe("Product detail", () => {
       </MemoryRouter>,
     );
     expect(screen.getByText("AUD 0")).toBeVisible();
+    const summary = screen.getByLabelText("Weather details for Oct 15");
+    expect(within(summary).getByText("≈0°C")).toBeVisible();
+    expect(within(summary).getByText("0%")).toBeVisible();
+    await userEvent.click(screen.getByLabelText("Weather details for Oct 15"));
     expect(screen.getByText("Low 0°C")).toBeVisible();
     expect(screen.getByText("Rain chance 0%")).toBeVisible();
     expect(screen.getByText("Wind up to 0 km/h")).toBeVisible();
     expect(
       screen.queryByRole("link", { name: /Weather source/ }),
     ).not.toBeInTheDocument();
+  });
+  it("does not invent an average or rain chance when a day's inputs are incomplete", async () => {
+    render(<MemoryRouter><TripDetail detail={{ ...detail, days: [{
+      ...detail.days[0], weather: { temperature_min_c: 14 },
+    }] }} /></MemoryRouter>);
+    const summary = screen.getByLabelText("Weather details for Oct 15");
+    expect(within(summary).getByText("Avg —")).toBeVisible();
+    expect(within(summary).getByText("—")).toBeVisible();
+    await userEvent.click(summary);
+    expect(screen.getByText("Low 14°C")).toBeVisible();
+    expect(screen.queryByText(/Average estimated/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Rain chance \d/)).not.toBeInTheDocument();
   });
   it("keeps actual day order, exact Nearby counts, unresolved source anchors and synchronized filters", async () => {
     const user = userEvent.setup();

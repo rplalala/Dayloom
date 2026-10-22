@@ -9,6 +9,7 @@ import type {
 } from "./types";
 import "./detail.css";
 import { Icon } from "../Icon";
+import { WeatherRow } from "./WeatherRow";
 import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
@@ -45,14 +46,7 @@ const modeName = (mode?: string | null) => ({ WALK: "Walking", TRANSIT: "Public 
 const modeIcon = (mode?: string | null) => ({ WALK: "walk", TRANSIT: "bus", DRIVE: "car" }[mode || ""] || "info");
 const mapLink = (place: string, area?: string | null) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place, area].filter(Boolean).join(", "))}`;
-const safeSource = (value?: string | null) => {
-  try {
-    const url = new URL(value || "");
-    return ["https:", "http:"].includes(url.protocol) ? url.href : undefined;
-  } catch {
-    return undefined;
-  }
-};
+
 
 const trustedTransfer = (detail: ProductDetail, transfer: DetailTransfer) =>
   detail.provenance === "generated" &&
@@ -754,44 +748,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
               {detail.days
                 .filter((d) => !filter || d.date === filter)
                 .map((day, i) => (
-                  <div className="weather-row" key={day.date}>
-                    <div className="weather-day"><strong>{monthDay(day.date)}</strong><span>{new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "UTC" }).format(new Date(`${day.date}T12:00:00Z`))}</span></div><div className="weather-glyph"><Icon name={/rain/i.test(day.weather?.summary || "") ? "rain" : /sun|clear/i.test(day.weather?.summary || "") ? "sun" : "cloud"} size={22} /></div>
-                    <div className="weather-summary">
-                      <strong>
-                        {day.weather?.summary || "Weather unavailable"}
-                      </strong>
-                      {day.weather?.temperature_min_c != null && (
-                        <small>Low {day.weather.temperature_min_c}°C</small>
-                      )}
-                      {day.weather?.temperature_max_c != null && (
-                        <small>High {day.weather.temperature_max_c}°C</small>
-                      )}
-                      {day.weather?.precipitation_probability_percent !=
-                        null && (
-                        <small>
-                          Rain chance{" "}
-                          {day.weather.precipitation_probability_percent}%
-                        </small>
-                      )}
-                      {day.weather?.max_wind_speed_kph != null && (
-                        <small>
-                          Wind up to {day.weather.max_wind_speed_kph} km/h
-                        </small>
-                      )}
-                      {day.weather?.attribution && (
-                        <small>{day.weather.attribution}</small>
-                      )}
-                      {safeSource(day.weather?.source_url) && (
-                        <a
-                          href={safeSource(day.weather?.source_url)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Weather source {i + 1} ↗
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                  <WeatherRow key={day.date} day={day} sourceNumber={i + 1} />
                 ))}
               <p className="footnote">
                 {detail.provenance === "example"
