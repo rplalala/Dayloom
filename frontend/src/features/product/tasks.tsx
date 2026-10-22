@@ -4,7 +4,7 @@ import { useSession } from './session';
 import { TripDetail } from './detail/TripDetail';
 import './tasks.css';
 import { TaskContext, useTasks } from './taskContext';
-import { planTaskLink, taskRequest, TaskFailure, taskActive, type PlanningTask, type Preview } from './taskClient';
+import { planTaskLink, taskRequest, TaskFailure, taskActive, taskNeedsAttention, type PlanningTask, type Preview } from './taskClient';
 import { DecisionReceipt, PreviewDecisionControls } from './PreviewDecision';
 import { Icon } from './Icon';
 import { replanBrief } from './replan';
@@ -30,8 +30,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       if (signal?.aborted || currentOwner.current !== owner) return;
       const tasks = Array.isArray(result) ? result : [];
       setSnapshot({ owner, tasks, error: '' });
+      setNotice(previous => previous?.owner === owner && taskNeedsAttention(previous.task) && previous.task.id !== tasks[0]?.id ? null : previous);
       for (const task of tasks) {
-        if (task.state !== 'completed') continue;
+        if (task.state !== 'completed' && !(task === tasks[0] && taskNeedsAttention(task))) continue;
         const key = `dayloom.task.observed.${owner}.${task.id}.${task.revision}`;
         let observed = seen.current.has(key);
         seen.current.add(key);
@@ -82,7 +83,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     setNotice(previous => previous?.owner === owner && previous.task.id === task.id ? null : previous);
   }, [owner]);
   return <TaskContext.Provider value={{ tasks, readyTask, error: snapshot.owner === owner ? snapshot.error : '', refresh, markViewed }}>
-    {notice && notice.owner === owner && owner && <div className="dayloom task-notice-layer"><div className="task-completion-notice" role="status"><span>Your itinerary preview is ready.</span><Link to={planTaskLink(notice.task.id, true)}>View preview</Link><button type="button" aria-label="Dismiss completion notice" onClick={() => setNotice(null)}>×</button></div></div>}
+    {notice && notice.owner === owner && owner && <div className="dayloom task-notice-layer"><div className="task-completion-notice" role="status"><span>{taskNeedsAttention(notice.task) ? 'Planning needs attention. Your travel brief is kept.' : 'Your itinerary preview is ready.'}</span><Link to={planTaskLink(notice.task.id, notice.task.state === 'completed')} onClick={() => setNotice(null)}>{taskNeedsAttention(notice.task) ? 'View details' : 'View preview'}</Link><button type="button" aria-label={taskNeedsAttention(notice.task) ? 'Dismiss planning notice' : 'Dismiss completion notice'} onClick={() => setNotice(null)}>×</button></div></div>}
     {children}
   </TaskContext.Provider>;
 }
@@ -93,9 +94,11 @@ export function TaskEntry() {
   const { tasks, readyTask } = useTasks();
   if (!account) return null;
   const active = tasks.find(taskActive);
-  if (!active && !readyTask) return null;
-  const task = active || readyTask!;
-  return <Link className={`task-entry ${active ? 'running' : ''}`} to={planTaskLink(task.id, !active)} aria-label={active ? 'Planning task running' : 'Itinerary ready'}><span className="task-dot" aria-hidden="true" /><span>{active ? `Planning ${active.request.destination}` : 'Itinerary ready'}</span></Link>;
+  const attention = tasks[0] && taskNeedsAttention(tasks[0]) ? tasks[0] : undefined;
+  const task = active || attention || readyTask;
+  if (!task) return null;
+  const label = active ? 'Planning task running' : attention ? 'Planning needs attention' : 'Itinerary ready';
+  return <Link className={`task-entry ${active ? 'running' : ''}`} to={planTaskLink(task.id, task.state === 'completed')} aria-label={label}><span className="task-dot" aria-hidden="true" />{attention && !active ? <><span className="task-label-full">{label}</span><span className="task-label-short">Needs attention</span></> : <span>{active ? `Planning ${active.request.destination}` : label}</span>}</Link>;
 }
 
 /** Old bookmarks resolve to the existing Plan sections, never a second task screen. */

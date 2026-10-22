@@ -7,6 +7,8 @@
 .dayloom .task-entry { max-width:220px;min-width:0 }
 .dayloom .task-entry span:last-child { overflow:hidden;text-overflow:ellipsis;white-space:nowrap }
 .dayloom .task-dot { flex-shrink:0 }
+.dayloom .task-label-short { display:none }
+@media(max-width:800px) { .dayloom .task-label-full { display:none }.dayloom .task-label-short { display:inline } }
 .dayloom .task-actions { display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0 }
 .dayloom #generation-progress,.dayloom #result,.dayloom #travel-brief { scroll-margin-top:100px }
 .dayloom .submitted-trip { color:var(--muted);font-size:12px;margin:20px 0 0;overflow-wrap:anywhere }

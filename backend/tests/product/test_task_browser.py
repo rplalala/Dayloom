@@ -509,7 +509,7 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
 
     base, browser = task_app.base_url, task_app.browser
     signals = SCRATCH / "signals"
-    (signals / "model-release").touch()
+    (signals / "model-release").unlink(missing_ok=True)
     (signals / "model-outcome").write_text(outcome)
     before = (
         (signals / "executions").read_text().splitlines()
@@ -535,8 +535,30 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
         ) as acceptance:
             page.get_by_role("button", name="Generate itinerary", exact=False).click()
         original = acceptance.value.json()
-        page.goto(base + "/planning/" + original["id"])
+        page.get_by_label("Destination", exact=True).fill("Kyoto")
+        page.goto(base + "/trips")
+        expect(page.get_by_role("link", name="Planning task running", exact=True)).to_be_visible()
+        (signals / "model-release").touch()
+        attention = page.get_by_role("link", name="Planning needs attention", exact=True)
+        expect(attention).to_be_visible(timeout=15000)
+        expect(
+            page.get_by_text("Planning needs attention. Your travel brief is kept.", exact=True)
+        ).to_be_visible()
+        assert page.url == base + "/trips"
+        assert (signals / "executions").read_text().splitlines() == before + ["one"]
+        if outcome == "failed":
+            for width in (1440, 800, 390):
+                page.set_viewport_size({"width": width, "height": 1000})
+                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+                page.screenshot(path=str(SCRATCH / f"failure-notice-{width}.png"), full_page=True)
+        page.get_by_role("button", name="Dismiss planning notice", exact=True).click()
+        page.reload()
+        expect(attention).to_be_visible()
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(0)
+        attention.click()
         expect(page.get_by_role("heading", name=heading, exact=True)).to_be_visible(timeout=15000)
+        assert page.url == base + "/plan?task=" + original["id"] + "#generation-progress"
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.screenshot(path=str(SCRATCH / f"{outcome}-outcome-390.png"), full_page=True)
         if outcome == "needs_clarification":
@@ -576,5 +598,6 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
         assert page.request.get(base + "/api/planning/tasks/" + original["id"]).json() == snapshot
         page.screenshot(path=str(SCRATCH / f"{outcome}-390.png"), full_page=True)
     finally:
+        (signals / "model-release").touch()
         (signals / "model-outcome").unlink(missing_ok=True)
         context.close()

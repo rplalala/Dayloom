@@ -11,6 +11,7 @@ export type PlanningTask = {
 };
 export type Preview = { id: string; source_task_id: string | null; state: 'pending' | 'saved' | 'discarded'; snapshot: ProductDetail | null; title?: string; destination?: string; saved_trip_id: string | null; created_at: string; outcome?: 'saved' | 'discarded' | 'saved_result_deleted' };
 export const taskActive = (task: PlanningTask) => ['pending', 'running', 'stopping'].includes(task.state);
+export const taskNeedsAttention = (task: PlanningTask) => ['failed', 'needs_clarification', 'safety_blocked', 'provider_blocked'].includes(task.state);
 
 export class TaskFailure extends Error {
   constructor(public status: number, public detail: { code?: string; task_id?: string; decision?: { id: string; state: 'saved' | 'discarded'; saved_trip_id: string | null; outcome: 'saved' | 'discarded' | 'saved_result_deleted' } }) {
