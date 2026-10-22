@@ -9,6 +9,41 @@ const account = { id: "alice", email: "alice@example.com", display_name: "Alice"
 const profile = { display_name: "Alice", initials: "A", currency: "JPY", interests: ["Nature"], pace: "relaxed", transport: ["walk", "transit"], notes: "Quiet mornings" };
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
+it.each(["sidebar", "form"])("keeps a failed %s logout visible after quarantining the profile", async control => {
+  let complete!: (response: Response) => void;
+  const pending = new Promise<Response>(resolve => { complete = resolve; });
+  let logoutWrites = 0;
+  vi.stubGlobal("fetch", vi.fn(async (url: string, options?: RequestInit) => {
+    if (url === "/api/auth/current") return Response.json(account);
+    if (url === "/api/auth/logout") { logoutWrites++; expect(options?.method).toBe("POST"); return pending; }
+    return Response.json(url === "/api/profile" ? profile : []);
+  }));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/account"] })} />);
+  await screen.findByLabelText("Display name");
+  const actions = screen.getAllByRole("button", { name: "Log out" });
+  fireEvent.click(control === "sidebar" ? actions[0] : actions[actions.length - 1]);
+  await waitFor(() => expect(screen.queryByLabelText("Display name")).not.toBeInTheDocument());
+  expect(screen.queryByText("alice@example.com")).not.toBeInTheDocument();
+  await act(async () => complete(Response.json({ detail: "Controlled logout failure" }, { status: 503 })));
+  expect(await screen.findByRole("alert")).toHaveTextContent("Could not end the server session.");
+  expect(logoutWrites).toBe(1);
+  expect(screen.queryByDisplayValue("Quiet mornings")).not.toBeInTheDocument();
+});
+
+it("previews the edited profile name and initials in the sidebar before an explicit save", async () => {
+  const writes: string[] = [];
+  vi.stubGlobal("fetch", vi.fn(async (url: string, options?: RequestInit) => {
+    if (options?.method && !["GET", "HEAD"].includes(options.method)) writes.push(options.method);
+    return Response.json(url === "/api/auth/current" ? account : url === "/api/profile" ? profile : { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 });
+  }));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/account"] })} />);
+  const displayName = await screen.findByLabelText("Display name");
+  fireEvent.change(displayName, { target: { value: "Ada Lovelace" } });
+  expect(screen.getByRole("heading", { level: 3, name: "Ada Lovelace" })).toBeVisible();
+  expect(screen.getByLabelText("Account initials: AL")).toBeVisible();
+  expect(writes).toEqual([]);
+});
+
 function setup(profileResponse: Promise<Response>) {
   vi.stubGlobal("fetch", vi.fn(async (url: string) => {
     if (url === "/api/auth/current") return new Response(JSON.stringify(account));

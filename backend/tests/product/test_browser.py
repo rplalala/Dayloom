@@ -152,7 +152,7 @@ def test_logout_invalidation_survives_product_unmount_and_later_login(browser_ap
         first.goto(base + "/dev")
         second = context.new_page()
         second.goto(base + "/account")
-        second.get_by_role("button", name="Log out", exact=True).click()
+        second.get_by_role("button", name="Log out", exact=True).last.click()
         expect(second.get_by_role("link", name="Log in", exact=True).last).to_be_visible()
         second.goto(base + "/login")
         login(second, email)
@@ -175,7 +175,7 @@ def test_logout_fences_current_response_and_focus_until_completion(browser_app, 
         page = context.new_page()
         register_browser(page, base)
         page.goto(base + "/account")
-        expect(page.get_by_role("button", name="Log out", exact=True)).to_be_visible()
+        expect(page.get_by_role("button", name="Log out", exact=True).last).to_be_visible()
         currents, logouts = [], []
 
         def hold_current(route):
@@ -192,7 +192,7 @@ def test_logout_fences_current_response_and_focus_until_completion(browser_app, 
 
         page.route("**/health?logout-barrier", barrier)
         with page.expect_request("**/api/auth/logout"):
-            page.get_by_role("button", name="Log out", exact=True).click()
+            page.get_by_role("button", name="Log out", exact=True).last.click()
         page.evaluate("""async () => {
             window.dispatchEvent(new Event('focus'));
             await fetch('/health?logout-barrier');
@@ -206,13 +206,13 @@ def test_logout_fences_current_response_and_focus_until_completion(browser_app, 
             expect(page.get_by_role("alert")).to_contain_text("Could not end the server session")
         else:
             logouts[0].fulfill(response=response)
-        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+        expect(page.get_by_role("button", name="Log out", exact=True).last).to_have_count(0)
         expect(page.get_by_text("Alice Smith", exact=True)).to_have_count(0)
         page.unroute("**/api/auth/current")
         page.evaluate("window.dispatchEvent(new Event('focus'))")
-        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+        expect(page.get_by_role("button", name="Log out", exact=True).last).to_have_count(0)
         page.reload()
-        expect(page.get_by_role("button", name="Log out", exact=True)).to_have_count(0)
+        expect(page.get_by_role("button", name="Log out", exact=True).last).to_have_count(0)
     finally:
         context.close()
 
@@ -237,7 +237,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         ).to_be_visible()
         page.screenshot(path=str(SCRATCH / "home-desktop.png"), full_page=True)
         page.goto(base + "/trips")
-        expect(page.get_by_role("link", name="View itinerary →")).to_have_count(3)
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(3)
         page.goto(base + "/plan")
         page.get_by_label("Destination", exact=True).fill("Kyoto")
         page.get_by_label("Additional preferences").fill("Private slow mornings")
@@ -255,7 +255,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         assert not generation
         page.goto(base + "/trips")
         expect(
-            page.get_by_text("No trips yet. Start with an idea and make it yours.")
+            page.get_by_role("heading", name="Your next chapter starts here.", exact=True)
         ).to_be_visible()
         expect(page.get_by_text("EXAMPLE · SYDNEY", exact=True)).to_have_count(0)
         page.goto(base + "/plan")
@@ -281,7 +281,7 @@ def test_guest_auth_expiry_restore_account_switch_and_cross_tab_logout(browser_a
         other.goto(base + "/plan")
         other.get_by_label("Additional preferences").fill("Second tab private input")
         page.goto(base + "/account")
-        page.get_by_role("button", name="Log out", exact=True).click()
+        page.get_by_role("button", name="Log out", exact=True).last.click()
         expect(other.get_by_label("Additional preferences")).to_have_value("")
         page.goto(base + "/plan")
         expect(page.get_by_label("Additional preferences")).to_have_value("")

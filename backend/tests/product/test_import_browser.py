@@ -1,6 +1,7 @@
 """Real browser/API/PostgreSQL import, recovery and reusable export journey."""
 
 import json
+import re
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
@@ -8,7 +9,7 @@ from uuid import uuid4
 import jwt
 from playwright.sync_api import expect
 
-from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY
+from backend.tests.product.browser_harness import BROWSER_TEST_SIGNING_KEY, open_json_export
 from backend.tests.product.test_browser import browser_app, login, register_browser  # noqa: F401
 from backend.tests.product.test_imports import conflicting_source, source
 
@@ -55,11 +56,12 @@ def test_browser_import_save_export_reimport_and_lost_response(browser_app):  # 
         page.screenshot(path=str(scratch / "imported-preview.png"), full_page=True)
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
+        page.get_by_text("Source and travel information", exact=True).click()
         expect(
             page.get_by_text("Imported content · not regenerated or rechecked", exact=False)
         ).to_be_visible()
         with page.expect_download() as download:
-            page.get_by_role("button", name="Export JSON", exact=True).click()
+            open_json_export(page)
         exported = json.loads(Path(download.value.path()).read_text())
         assert exported["request"]["known_fields"] == ["traveler_count"]
         assert exported["itinerary"]["days"][1]["activities"] == []
@@ -67,14 +69,26 @@ def test_browser_import_save_export_reimport_and_lost_response(browser_app):  # 
             ".123456789+11:00"
         )
         assert exported["itinerary"]["nearby"][0]["anchor_activity_id"] == "missing"
+        page.evaluate("""() => Object.defineProperty(navigator, 'clipboard', {
+            configurable: true, value: {writeText: async () => {
+                throw new Error('Controlled clipboard denial');
+            }}
+        })""")
         page.get_by_role("button", name="Copy summary", exact=True).click()
         expect(page.get_by_role("textbox", name="Itinerary summary", exact=True)).to_contain_text(
             "Optional Nearby"
         )
         page.get_by_role("button", name="Close", exact=True).click()
+        page.evaluate("""() => Object.defineProperty(navigator, 'clipboard', {
+            configurable: true, value: {writeText: async text => {window.copiedSummary = text;}}
+        })""")
+        page.get_by_role("button", name="Copy summary", exact=True).click()
+        expect(page.get_by_text("Itinerary summary copied.", exact=True)).to_be_visible()
+        expect(page.get_by_role("textbox", name="Itinerary summary", exact=True)).to_have_count(0)
+        assert "Optional Nearby" in page.evaluate("window.copiedSummary")
         page.goto(base + "/import")
         page.get_by_role("button", name="Start new import", exact=True).click()
-        page.get_by_label("Choose JSON file").set_input_files(
+        page.get_by_label("Choose itinerary JSON").set_input_files(
             {
                 "name": "export.json",
                 "mimeType": "application/json",
@@ -180,7 +194,7 @@ def test_deferred_file_cannot_erase_a_later_accepted_import_identity(browser_app
             };
         })();""")
         page.goto(base + "/import")
-        page.get_by_label("Choose JSON file").set_input_files(
+        page.get_by_label("Choose itinerary JSON").set_input_files(
             {"name": "deferred-a.json", "mimeType": "application/json", "buffer": b"{}"}
         )
         page.wait_for_function('typeof window.finishImportFile === "function"')
@@ -224,7 +238,9 @@ def test_historical_connection_conflicts_export_and_reimport_with_source_provena
         register_browser(page, base)
         for next_start in ("10:00", "09:59"):
             page.goto(base + "/import")
-            expect(page.get_by_role("heading", name="Import itinerary", exact=True)).to_be_visible()
+            expect(
+                page.get_by_role("heading", name="Bring an itinerary along.", exact=True)
+            ).to_be_visible()
             new_import = page.get_by_role("button", name="Start new import", exact=True)
             if new_import.is_visible():
                 new_import.click()
@@ -235,7 +251,7 @@ def test_historical_connection_conflicts_export_and_reimport_with_source_provena
             page.get_by_role("button", name="Save to My trips", exact=True).click()
             page.get_by_role("link", name="View saved itinerary", exact=True).click()
             with page.expect_download() as download:
-                page.get_by_role("button", name="Export JSON", exact=True).click()
+                open_json_export(page)
             exported = json.loads(Path(download.value.path()).read_text())
             assert exported["origin"] == {
                 "provenance": "imported",
@@ -251,6 +267,7 @@ def test_historical_connection_conflicts_export_and_reimport_with_source_provena
             page.get_by_role("button", name="Start new import", exact=True).click()
             page.get_by_label("Itinerary JSON", exact=True).fill(json.dumps(exported))
             page.get_by_role("button", name="Preview import", exact=True).click()
+            expect(page).to_have_url(re.compile(re.escape(base) + r"/previews/[^/?]+$"))
             expect(
                 page.get_by_role("heading", name="Historical connection conflict", exact=True)
             ).to_be_visible()
@@ -289,18 +306,18 @@ def test_imported_library_management_and_deleted_receipt_recovery(browser_app): 
         page.get_by_role("button", name="Manage Old journey", exact=True).click()
         page.get_by_role("button", name="Rename Old journey", exact=True).click()
         page.get_by_label("New trip title").fill("Imported archive")
-        page.get_by_role("button", name="Save title", exact=True).click()
+        page.get_by_role("button", name="Save name", exact=True).click()
         page.get_by_role("link", name="View Imported archive", exact=True).click()
         with page.expect_download() as download:
-            page.get_by_role("button", name="Export JSON", exact=True).click()
+            open_json_export(page)
         exported = json.loads(Path(download.value.path()).read_text())
         assert exported["title"] == "Imported archive"
         assert exported["request"]["known_fields"] == ["traveler_count"]
         page.get_by_role("link", name="Back to My trips", exact=True).first.click()
         page.get_by_role("button", name="Manage Imported archive", exact=True).click()
         page.get_by_role("button", name="Delete Imported archive", exact=True).click()
-        page.get_by_role("button", name="Delete trip", exact=True).click()
-        expect(page.get_by_role("heading", name="Your next journey starts here.")).to_be_visible()
+        page.get_by_role("button", name="Delete", exact=True).click()
+        expect(page.get_by_role("heading", name="Your next chapter starts here.")).to_be_visible()
         page.goto(base + "/import")
         page.get_by_role("button", name="Check import status").click()
         expect(page).to_have_url(original_preview)

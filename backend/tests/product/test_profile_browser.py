@@ -44,8 +44,8 @@ def test_profile_edit_persists_and_prefills_only_new_brief(editor_app):
         expect(page.get_by_role("status")).to_have_text("Your travel defaults have been saved.")
         expect(page.get_by_label("Account initials: AL")).to_be_visible()
         assert page.locator('input[type="file"]').count() == 0
-        assert page.get_by_role("button", name="Nature", exact=True).evaluate(
-            "node => parseFloat(getComputedStyle(node).borderRadius) >= 20"
+        expect(page.get_by_role("button", name="Nature", exact=True)).to_have_attribute(
+            "aria-pressed", "true"
         )
         assert page.get_by_text("Profile and travel defaults", exact=True).evaluate(
             "node => node.getBoundingClientRect().width <= 1"

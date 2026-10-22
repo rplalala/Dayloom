@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSession } from './session';
 import { submissionGeneration, type Preview } from './taskClient';
+import { LibraryPage } from './LibraryPage';
+import { Icon } from './Icon';
 
 const storageKey = 'dayloom.import.intent.v1';
 const maximum = 5 * 1024 * 1024;
@@ -21,6 +23,8 @@ export function ImportPage() {
 }
 function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string | null; csrf?: string; expired: boolean; refresh: () => Promise<void> }) {
   const navigate = useNavigate();
+  const modal = useRef<HTMLDialogElement>(null);
+  useEffect(() => { modal.current?.showModal(); }, []);
   const [intent, setIntent] = useState(() => restore(accountId));
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -68,12 +72,19 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
     finally { if (valid()) setBusy(false); }
   }
   if (expired || locked) return <div className="container page"><h1>Your import is private.</h1><p>Log in to the same account to recover your input and check its status.</p><Link to="/login?return=/import">Log in</Link></div>;
-  return <div className="container page"><div className="page-heading"><span className="eyebrow">KEEP A PAST JOURNEY</span><h1>Import itinerary</h1><p>Paste or choose historical itinerary JSON, up to 5 MiB. Review the separate preview before saving.</p></div>
-    <div className="content-card"><label htmlFor="import-file">Choose JSON file</label><input id="import-file" type="file" accept=".json,application/json" disabled={busy || intent.uncertain} onChange={event => readFile(event.target.files?.[0])} />
-      <label htmlFor="import-json">Itinerary JSON</label><textarea id="import-json" rows={16} value={intent.content} disabled={busy || intent.uncertain} onChange={event => edit(event.target.value)} style={{ width: '100%' }} />
-      {error && <p role="alert">{error}</p>}
-      {!accountId ? <Link className="btn btn-primary" to="/login?return=/import">Log in to preview</Link> : intent.uncertain ? <button className="btn btn-primary" disabled={busy} onClick={() => void perform(true)}>Check import status</button> : <button className="btn btn-primary" disabled={busy || !intent.content.trim()} onClick={() => void perform()}>{intent.key ? 'Retry import with same key' : 'Preview import'}</button>}
-      <Link className="btn btn-light" to="/trips">My trips</Link>
+  return <><LibraryPage /><dialog ref={modal} className="library-dialog import-dialog" aria-labelledby="import-title" onCancel={event => { if (busy) event.preventDefault(); else navigate("/trips", { state: { focusImport: true } }); }} onClick={event => {
+    if (busy || event.target !== event.currentTarget) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) navigate("/trips", { state: { focusImport: true } });
+  }}>
+    <button type="button" className="modal-close" aria-label="Close import" disabled={busy} onClick={() => navigate("/trips", { state: { focusImport: true } })}><Icon name="close" size={20} /></button>
+    <div className="modal-icon"><Icon name="download" size={23} /></div><h2 id="import-title">Bring an itinerary along.</h2><p>Choose a JSON file or paste its contents. Historical dates are welcome. You can review the preview before saving.</p>
+    <input aria-label="Choose itinerary JSON" id="import-file" className="input-file" type="file" accept=".json,application/json" disabled={busy || intent.uncertain} onChange={event => readFile(event.target.files?.[0])} />
+    <label className="field" htmlFor="import-json"><span>Itinerary JSON</span><textarea aria-label="Itinerary JSON" className="import-text" id="import-json" value={intent.content} disabled={busy || intent.uncertain} onChange={event => edit(event.target.value)} placeholder='{"destination":"…","days":[…]}' /></label>
+    <p className="small-muted">One itinerary, up to 5 MiB. Missing weather, photographs and costs are allowed.</p>
+    {error && <p className="form-error" role="alert">{error}</p>}
+    <div className="modal-actions"><Link className="btn btn-light" to="/trips" state={{ focusImport: true }} aria-disabled={busy || undefined} onClick={event => { if (busy) event.preventDefault(); }}>Cancel</Link>
+      {!accountId ? <Link className="btn btn-primary" to="/login?return=/import">Log in to preview</Link> : intent.uncertain ? <button className="btn btn-primary" disabled={busy} onClick={() => void perform(true)}>Check import status</button> : <button aria-label={intent.key ? "Retry import with same key" : "Preview import"} className="btn btn-primary" disabled={busy || !intent.content.trim()} onClick={() => void perform()}>{intent.key ? 'Retry import with same key' : 'Preview itinerary'} <Icon name="arrow" size={16} /></button>}
       {intent.key && <button className="btn btn-light" disabled={busy} onClick={() => { editRevision.current += 1; remember({ owner: accountId, generation: currentGeneration, content: '', key: null, uncertain: false }); setError(''); }}>Start new import</button>}
-    </div></div>;
+    </div></dialog></>;
 }

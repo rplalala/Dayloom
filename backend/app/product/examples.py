@@ -109,6 +109,9 @@ def list_examples() -> list[ExampleCard]:
     return [
         ExampleCard(
             id=d.id,
+            created_at=json.loads(
+                (FIXTURES / f"{d.id}.json").read_text(encoding="utf-8")
+            ).get("created_at"),
             illustration_key=d.illustration_key,
             stop_count=sum(a.time_use != "free_window" for day in d.days for a in day.activities),
             transfer_count=len(d.transfers),

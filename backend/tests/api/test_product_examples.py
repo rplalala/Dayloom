@@ -68,6 +68,8 @@ def test_curated_example_display_hints_preserve_r7_without_request_or_verificati
             assert detail["transfers"][0]["status"] == "source_claim"
             assert "source_place_id" not in json.dumps(detail)
             cards = (await client.get("/api/examples")).json()
+            assert cards[0]["created_at"] == "2026-10-13T18:00:00+11:00"
+            assert cards[1]["created_at"] == "2026-10-22T08:00:00Z"
             assert cards[0]["stop_count"] == 6
             assert cards[0]["transfer_count"] == 3
             assert cards[1]["illustration_key"] == "nature"

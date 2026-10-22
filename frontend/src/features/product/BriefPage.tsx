@@ -8,8 +8,11 @@ import { isValidISODate, latestEndDate, type TripDateWindow } from "../planning/
 import { currencies, isListedCurrency } from "../planning/currencies";
 import { briefErrors, editPreferences, interestPrompts, pacePrompts, toggleInterest, togglePace, toggleTransport, transportLabels, type Brief, type Interest, type Pace, type Transport, type TextReplacement } from "./editor";
 import { useSession } from "./session";
-import { DraftControls } from "./DraftControls";
+import { DraftControls, type DraftActionsHandle } from "./DraftControls";
 import "./editor.css";
+import { Icon } from "./Icon";
+import { PlanProgress, PlanResult, BusyPlanningDialog } from "./PlanOutput";
+import { RecoverablePreviews } from "./tasks";
 import { taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
@@ -18,15 +21,37 @@ import { planningInput } from './editor';
 export function BriefPage() {
   const session = useSession();
   const navigate = useNavigate();
+  const draftActions = useRef<DraftActionsHandle>(null);
   const location = useLocation();
   const draftId = new URLSearchParams(location.search).get("draft");
   const { initializeNewBrief, briefOrigin, status } = session;
+  const mood = (location.state as { mood?: string } | null)?.mood;
+  const moodChoices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
+  const hasMood = Boolean(mood && moodChoices[mood]);
+  const liveEditor = useRef({ session, location: location.key });
+  liveEditor.current = { session, location: location.key };
   useEffect(() => {
-    if (!draftId && (status === "authenticated" || status === "guest") && briefOrigin === "new") void initializeNewBrief();
-  }, [draftId, status, briefOrigin, initializeNewBrief]);
+    if (!hasMood && !draftId && (status === "authenticated" || status === "guest") && briefOrigin === "new") void initializeNewBrief();
+  }, [draftId, status, briefOrigin, initializeNewBrief, hasMood]);
+  const appliedMood = useRef<string | null>(null);
+  useEffect(() => {
+    if (!mood || !hasMood || appliedMood.current === location.key || draftId || (status !== "guest" && status !== "authenticated")) return;
+    appliedMood.current = location.key;
+    const key = location.key;
+    const owner = session.account?.id;
+    const choices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
+    void initializeNewBrief().then(() => {
+      const current = liveEditor.current;
+      if (current.location !== key || current.session.account?.id !== owner || !["guest", "authenticated"].includes(current.session.status)) return;
+      let next = current.session.brief;
+      for (const interest of choices[mood]) if (!next.interests.includes(interest)) next = toggleInterest(next, interest);
+      if (next.pace !== "relaxed") next = togglePace(next, "relaxed");
+      current.session.editBrief(next);
+    });
+  }, [mood, hasMood, location.key, draftId, status, session.account?.id, initializeNewBrief]);
   const [dateWindow, setDateWindow] = useState<TripDateWindow | null>(null);
   const [dateError, setDateError] = useState(false);
-  type SubmissionState = { owner?: string; csrf?: string; generation?: string; location?: string; editor?: Brief; busy?: boolean; message?: string; taskId?: string };
+  type SubmissionState = { owner?: string; csrf?: string; generation?: string; location?: string; editor?: Brief; busy?: boolean; message?: string; taskId?: string; activeConflict?: boolean };
   const [submitState, setSubmitState] = useState<SubmissionState>({});
   const generation = session.account ? submissionGeneration(session.account.id) : '';
   const submission = submitState.owner === session.account?.id && submitState.csrf === session.account?.csrf_token && submitState.generation === generation && submitState.editor === session.brief && submitState.location === location.key ? submitState : {};
@@ -69,6 +94,7 @@ export function BriefPage() {
   function update(next: Brief) { session.editBrief(next); }
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
+  const matchingTask = dateWindow && !errors.length ? tasks.find(task => task.request?.budget && sameConfirmedRequest(task.request, planningInput(brief, dateWindow))) : undefined;
   const validBudget = brief.budget.trim() !== "" && Number.isFinite(Number(brief.budget)) && Number(brief.budget) >= 0 && isListedCurrency(brief.currency);
   const loginReturn = `/login?return=${encodeURIComponent(draftId ? `/plan?draft=${draftId}` : "/plan")}`;
   async function generate() {
@@ -87,7 +113,7 @@ export function BriefPage() {
       const current = context.current;
       return mounted.current && attempt.current === sequence && current.owner === account.id && current.csrf === ownership.csrf && current.location === ownership.location && current.editor === brief && current.action === action && submissionGeneration(account.id) === ownership.generation;
     }
-    function show(value: Pick<SubmissionState, 'busy' | 'message' | 'taskId'>) {
+    function show(value: Pick<SubmissionState, 'busy' | 'message' | 'taskId' | 'activeConflict'>) {
       if (ownsAction()) setSubmitState({ ...ownership, ...value });
     }
     show({ busy: true });
@@ -120,7 +146,7 @@ export function BriefPage() {
       if (!ownsAction()) return;
       if (error instanceof TaskFailure) {
         if (error.status === 401) void session.refresh();
-        show({ message: error.message, taskId: error.detail.task_id });
+        show({ message: error.message, taskId: error.detail.task_id, activeConflict: error.status === 409 && error.detail.code === "planning_task_active" });
       } else {
         // Unknown write outcome: observe by identity; never automatically POST again.
         try {
@@ -137,8 +163,8 @@ export function BriefPage() {
 
   return <div className="page container plan-page brief-editor">
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>A city journey, made yours.</h1><p>Pick a destination. Bring your ideas. Make every day a little clearer.</p></div>
+    <RecoverablePreviews compact />
     <section className="flow-card form-card">
-      <DraftControls onLoading={setDraftLoading} />
       <div className="flow-title"><span className="step-number">01</span><div><h2>Tell us how you like to travel</h2><p>A few essentials, and the things that make it your trip.</p></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
         event.preventDefault();
@@ -146,27 +172,26 @@ export function BriefPage() {
       }}>
         {session.defaultsApplied && <p className="subtle-help" role="status">Your travel defaults are shown below. Edit them for this trip.</p>}
         <fieldset className="form-fields" disabled={draftLoading}><legend className="visually-hidden">Travel brief</legend>
-          <div className="brief-essentials">
-            <DestinationCombobox value={brief.destination} onChange={value => change("destination", value)} disabled={false} />
-            <TripDateInput label="Start date" value={brief.start_date} onChange={value => change("start_date", value)} min={dateWindow?.allowedStart} max={dateWindow?.allowedEnd} />
-            <TripDateInput label="End date" value={brief.end_date} onChange={value => change("end_date", value)} min={isValidISODate(brief.start_date) ? brief.start_date : dateWindow?.allowedStart} max={dateWindow ? latestEndDate(brief.start_date, dateWindow) : undefined} />
-            <label className="field"><span>Travelers</span><input type="number" min="1" step="1" required placeholder="2" value={brief.travelers} onChange={event => change("travelers", event.target.value)} /></label>
-            <div className="brief-budget"><label className="field"><span>Whole-trip budget</span><input type="number" min="0" step="0.01" required placeholder="1000" value={brief.budget} onChange={event => change("budget", event.target.value)} /></label><label className="field"><span>Currency</span><select aria-label="Currency" value={brief.currency} required onChange={event => change("currency", event.target.value)}><option value="">Select currency</option>{currencies.map(value => <option key={value.code} value={value.code}>{value.code}</option>)}</select></label></div>
+          <div className="form-grid form-grid-essentials">
+            <DestinationCombobox label={<span><Icon name="pin" size={16} /> Destination <b aria-hidden="true">*</b></span>} placeholder="Choose or enter a city" value={brief.destination} onChange={value => change("destination", value)} disabled={false} />
+            <TripDateInput labelContent={<span><Icon name="calendar" size={16} /> Start date <b aria-hidden="true">*</b></span>} label="Start date" value={brief.start_date} onChange={value => change("start_date", value)} min={dateWindow?.allowedStart} max={dateWindow?.allowedEnd} />
+            <TripDateInput labelContent={<span><Icon name="calendar" size={16} /> End date <b aria-hidden="true">*</b></span>} label="End date" value={brief.end_date} onChange={value => change("end_date", value)} min={isValidISODate(brief.start_date) ? brief.start_date : dateWindow?.allowedStart} max={dateWindow ? latestEndDate(brief.start_date, dateWindow) : undefined} />
+            <label className="field"><span><Icon name="users" size={16} /> Travelers <b aria-hidden="true">*</b></span><input aria-label="Travelers" type="number" min="1" step="1" required placeholder="2" value={brief.travelers} onChange={event => change("travelers", event.target.value)} /></label>
+            <label className="field"><span><Icon name="leaf" size={16} /> Whole-trip budget <b aria-hidden="true">*</b></span><span className="budget-input"><input aria-label="Whole-trip budget" type="number" min="0" step="0.01" required placeholder="1000" value={brief.budget} onChange={event => change("budget", event.target.value)} /><select aria-label="Currency" value={brief.currency} required onChange={event => change("currency", event.target.value)}><option value="">Select currency</option>{currencies.map(value => <option key={value.code} value={value.code}>{value.code}</option>)}</select></span></label>
           </div>
           <div className="field-help-row"><p className="subtle-help">{dateWindow ? `Plan ${dateWindow.allowedStart}–${dateWindow.allowedEnd}, up to ${dateWindow.maxTripDays} days.` : dateError ? "Date limits could not be loaded. Reload to try again." : "Loading date limits…"}</p><p className="subtle-help">Budget is the total for all travelers.</p></div>
-          <fieldset className="brief-choice-group"><legend>What are you drawn to?</legend><div className="interest-chips">{(Object.keys(interestPrompts) as Interest[]).map(value => <button key={value} type="button" className={`interest-chip ${brief.interests.includes(value) ? "selected" : ""}`} aria-pressed={brief.interests.includes(value)} onClick={() => update(toggleInterest(brief, value))}>{value}</button>)}</div></fieldset>
+          <fieldset className="field-group brief-choice-group"><legend className="label-row"><Icon name="spark" size={16} /> <strong>Experiences you love</strong><span>Choose a few</span></legend><div className="chips">{(Object.keys(interestPrompts) as Interest[]).map(value => <button key={value} type="button" className={`chip ${brief.interests.includes(value) ? "active" : ""}`} aria-pressed={brief.interests.includes(value)} onClick={() => update(toggleInterest(brief, value))}><Icon name={brief.interests.includes(value) ? "check" : "plus"} size={14} /> {value}</button>)}</div></fieldset>
           <div className="preference-pair">
-            <fieldset className="brief-choice-group"><legend>Travel pace</legend><div className="pace-row">{(Object.keys(pacePrompts) as Pace[]).map((value, index) => <button key={value} type="button" className={`pace-btn ${brief.pace === value ? "selected" : ""}`} aria-pressed={brief.pace === value} onClick={() => update(togglePace(brief, value))}><span>{["Take it slowly", "A little of both", "See a little more"][index]}</span><strong>{value[0].toUpperCase() + value.slice(1)}</strong></button>)}</div><p className="selection-help">Choose a rhythm for your days. Select again to clear.</p></fieldset>
-            <fieldset className="brief-choice-group"><legend>Transport preferences</legend><div className="pace-row">{(Object.keys(transportLabels) as Transport[]).map(value => <button key={value} type="button" className={`pace-btn ${brief.transport.includes(value) ? "selected" : ""}`} aria-pressed={brief.transport.includes(value)} onClick={() => update(toggleTransport(brief, value))}><strong>{transportLabels[value]}</strong></button>)}</div><p className="selection-help">Choose one or more. Leave empty for no preference.</p></fieldset>
+            <fieldset className="field-group brief-choice-group"><legend className="label-row"><Icon name="sliders" size={16} /> <strong>Travel pace</strong></legend><div className="pace-row">{(Object.keys(pacePrompts) as Pace[]).map((value, index) => <button key={value} type="button" aria-label={value[0].toUpperCase() + value.slice(1)} className={`pace-btn ${brief.pace === value ? "selected" : ""}`} aria-pressed={brief.pace === value} onClick={() => update(togglePace(brief, value))}><span>{["Take it slowly", "A little of both", "See a little more"][index]}</span><strong>{value[0].toUpperCase() + value.slice(1)}</strong></button>)}</div><p className="selection-help">Choose a rhythm for your days.</p></fieldset>
+            <fieldset className="field-group brief-choice-group transport-selection"><legend className="label-row"><Icon name="route" size={16} /> <strong>Transport preferences</strong></legend><div className="pace-row">{(Object.keys(transportLabels) as Transport[]).map(value => <button key={value} type="button" className={`pace-btn ${brief.transport.includes(value) ? "selected" : ""}`} aria-pressed={brief.transport.includes(value)} onClick={() => update(toggleTransport(brief, value))}><span><Icon name={value === "walk" ? "walk" : value === "transit" ? "bus" : "car"} size={17} /></span><strong>{transportLabels[value]}</strong></button>)}</div><p className="selection-help">Choose one or more. Leave empty for no preference.</p></fieldset>
           </div>
-          <div className="requirements-pair"><label className="field"><span>Places or experiences to include</span><input value={brief.required} onChange={event => change("required", event.target.value)} placeholder="An art museum, a waterfront walk…" /></label><label className="field"><span>Places or experiences to avoid</span><input value={brief.exclusions} onChange={event => change("exclusions", event.target.value)} placeholder="Large malls, very crowded places…" /></label></div>
-          <label className="field notes-wide"><span>Additional preferences</span><textarea ref={notesInput} rows={5} value={brief.preferences} onInput={event => {
+          <div className="requirements-pair"><label className="field"><span><Icon name="bookmark" size={16} /> Places or experiences to include <small aria-hidden="true">Optional</small></span><input aria-label="Places or experiences to include" value={brief.required} onChange={event => change("required", event.target.value)} placeholder="An art museum, a waterfront walk…" /></label><label className="field"><span><Icon name="close" size={16} /> Places or experiences to avoid <small aria-hidden="true">Optional</small></span><input aria-label="Places or experiences to avoid" value={brief.exclusions} onChange={event => change("exclusions", event.target.value)} placeholder="Large malls, very crowded places…" /></label></div>
+          <label className="field notes-wide"><span><Icon name="edit" size={16} /> Additional preferences <small aria-hidden="true">Optional</small></span><textarea aria-label="Additional preferences" id="plan-notes" ref={notesInput} rows={5} value={brief.preferences} onInput={event => {
             const replacement = textEdit.current?.before === brief.preferences ? textEdit.current : undefined;
             textEdit.current = null;
             update(editPreferences(brief, event.currentTarget.value, replacement));
           }} onBlur={() => { textEdit.current = null; }} aria-describedby="preference-sync-help" placeholder="Tell us about slow mornings, accessibility needs, or anything else that matters…" /></label>
-          <p className="subtle-help" id="preference-sync-help">Your selections appear here. Edit any sentence to make it your own.</p>
-          <PreferencePolisher text={brief.preferences} context={{
+          <PreferencePolisher product buttonIcon={<Icon name="spark" size={15} />} text={brief.preferences} context={{
             ...(brief.destination.trim() && { destination: brief.destination.trim() }),
             ...(isValidISODate(brief.start_date) && { start_date: brief.start_date }),
             ...(isValidISODate(brief.end_date) && { end_date: brief.end_date }),
@@ -175,11 +200,13 @@ export function BriefPage() {
           }} disabled={false} onApply={value => update(editPreferences(brief, value))} />
         </fieldset>
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
-        <div className="form-bottom"><p>City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large">{submission.busy ? 'Submitting…' : 'Generate itinerary →'}</button></div>
+        <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div>
+        <DraftControls actionsRef={draftActions} onLoading={setDraftLoading} />
         {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={`/planning/${submission.taskId}`}>Open task progress →</Link>}</p>}
       </form>
     </section>
-    <section className="flow-card"><div className="flow-title"><span className="step-number">02</span><div><h2>Planning progress</h2><p>{tasks.find(taskActive)?.progress.message || 'Ready when you are.'}</p></div></div>{session.account && <Link to="/planning">Open planning tasks and recoverable previews →</Link>}</section>
-    <section className="flow-card"><div className="flow-title"><span className="step-number">03</span><div><h2>Your itinerary</h2><p>Preview every day. Save it when it feels right.</p></div></div><div className="result-placeholder"><strong>A new journey is waiting.</strong><p>Fill in your travel brief. Your day-by-day itinerary will appear here.</p></div></section>
+    {submission.activeConflict && <BusyPlanningDialog taskId={submission.taskId} close={() => setSubmitState(previous => ({ ...previous, activeConflict: false }))} save={async () => { await draftActions.current?.save(); }} />}
+    <PlanProgress task={tasks.find(taskActive) || matchingTask} />
+    <PlanResult key={`${session.account?.id}:${session.account?.csrf_token}:${matchingTask?.id || "empty"}:${generation}`} task={matchingTask} />
   </div>;
 }

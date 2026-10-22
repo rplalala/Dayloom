@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type {
   DetailActivity,
@@ -7,6 +7,8 @@ import type {
   ProductDetail,
 } from "./types";
 import "./detail.css";
+import { Icon } from "../Icon";
+import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
 import { PlaceMedia, usePlaceMedia } from './media';
@@ -18,7 +20,17 @@ type Group = {
   activity: DetailActivity;
   items: DetailNearby[];
 };
-type Information = { title: string; body: string[]; map?: string };
+type Information = {
+  title: string;
+  icon: string;
+  introduction?: string;
+  photo?: { slot: string; label: string; fallback: string };
+  photoNote?: string;
+  notes: { heading: ReactNode; body: ReactNode; className?: string }[];
+  stats?: { duration: string; distance: string };
+  body?: string[];
+  map?: string;
+};
 const keyFor = (date: string, id: string) => JSON.stringify([date, id]);
 const domId = (kind: string, key: string) =>
   `detail-${kind}-${encodeURIComponent(key)}`;
@@ -28,6 +40,8 @@ const clock = (value?: string | null) =>
   value?.match(/T(\d{2}:\d{2})/)?.[1] || "Time unavailable";
 const cost = (money: DetailActivity["estimated_cost"]) =>
   money ? `${money.currency} ${money.amount}` : "Cost to confirm";
+const modeName = (mode?: string | null) => ({ WALK: "Walking", TRANSIT: "Public transit", DRIVE: "Driving" }[mode || ""] || "Transport to confirm");
+const modeIcon = (mode?: string | null) => ({ WALK: "walk", TRANSIT: "bus", DRIVE: "car" }[mode || ""] || "info");
 const mapLink = (place: string, area?: string | null) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place, area].filter(Boolean).join(", "))}`;
 const safeSource = (value?: string | null) => {
@@ -82,19 +96,41 @@ function InformationDialog({
   information: Information;
   close: () => void;
 }) {
+  const media = useContext(PlaceMedia);
   const ref = useRef<HTMLDialogElement>(null);
+  const dismiss = () => {
+    ref.current?.close();
+    close();
+  };
   useEffect(() => {
-    ref.current?.showModal();
+    const opener = document.activeElement;
+    const dialog = ref.current;
+    dialog?.showModal();
+    return () => {
+      if (dialog?.open) dialog.close();
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus();
+    };
   }, []);
   return (
     <dialog
-      className="detail-dialog"
+      className="modal-card detail-dialog"
       ref={ref}
-      onClose={close}
+      onCancel={event => { event.preventDefault(); dismiss(); }}
+      onClick={event => {
+        const box = event.currentTarget.getBoundingClientRect();
+        if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dismiss();
+      }}
       aria-labelledby="detail-dialog-title"
     >
+      <button type="button" className="modal-close" aria-label="Close dialog" onClick={dismiss}><Icon name="close" size={21} /></button>
+      <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
-      {information.body.map((text, i) => (
+      {information.photo && <div className="photo-large"><PlacePhoto className="dialog-place-photo" {...information.photo} /></div>}
+      {information.photoNote && information.photo && media[information.photo.slot]?.status !== "available" && <p className="photo-route-note">{information.photoNote}</p>}
+      {information.introduction && <p>{information.introduction}</p>}
+      {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
+      {information.notes.map((note, i) => <div className="detail-note" key={i}><strong className={note.className}>{note.heading}</strong><span>{note.body}</span></div>)}
+      {information.body?.map((text, i) => (
         <p key={i}>{text}</p>
       ))}
       <div className="modal-actions">
@@ -105,12 +141,12 @@ function InformationDialog({
             target="_blank"
             rel="noopener noreferrer"
           >
-            View on map ↗
+            View on map <Icon name="external" size={15} />
           </a>
         )}
         <button
           className="btn btn-primary"
-          onClick={() => ref.current?.close()}
+          onClick={dismiss}
         >
           Close
         </button>
@@ -130,9 +166,22 @@ function NearbyRows({
   show: (value: Information) => void;
   positionOf: (item: DetailNearby) => number;
 }) {
+  const informationFor = (item: DetailNearby): Information => ({
+    title: item.place_name,
+    icon: "pin",
+    photo: { slot: `nearby:${positionOf(item)}`, label: item.place_name, fallback: item.illustration_key ? `/dayloom/${item.illustration_key}.svg` : illustrationFor(item.place_name) },
+    photoNote: "Photo unavailable. Illustration shown.",
+    introduction: item.reason || "An optional place near a planned stop.",
+    notes: [
+      { heading: "Location", body: item.area || "Address unavailable." },
+      { heading: "Before you go", body: item.uncertainty || "Availability, prices and accessibility are unverified. This is not a scheduled visit." },
+    ],
+    body: item.attribution ? [item.attribution] : [],
+    map: mapLink(item.place_name, item.area),
+  });
   return items.map((item, i) => (
     <div className="nearby-item nearby-media-item" key={i}>
-      <PlacePhoto className="nearby-media" slot={`nearby:${positionOf(item)}`} label={item.place_name}>
+      <PlacePhoto className="nearby-media" slot={`nearby:${positionOf(item)}`} fallback={item.illustration_key ? `/dayloom/${item.illustration_key}.svg` : undefined} label={item.place_name} onOpen={() => show(informationFor(item))}>
       <div className="nearby-body">
         <strong>{item.place_name}</strong>
         {other && (
@@ -143,21 +192,12 @@ function NearbyRows({
         )}
         <div className="nearby-actions">
           <button
+            aria-label="Details →"
             onClick={() =>
-              show({
-                title: item.place_name,
-                body: [
-                  item.reason || "Optional nearby reference.",
-                  item.area || "Address unavailable.",
-                  item.uncertainty ||
-                    "Availability, prices and accessibility are unverified. This is not a scheduled visit.",
-                  item.attribution || "",
-                ].filter(Boolean),
-                map: mapLink(item.place_name, item.area),
-              })
+              show(informationFor(item))
             }
           >
-            Details →
+            Details <Icon name="chevron" size={13} />
           </button>
         </div>
       </div>
@@ -166,7 +206,7 @@ function NearbyRows({
   ));
 }
 
-export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode }) {
+export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
   const media = usePlaceMedia(mediaEndpoint);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
@@ -281,15 +321,16 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
   const activityInfo = (activity: DetailActivity) =>
     setInformation({
       title: name(activity),
-      body: [
-        activity.location || "Location unavailable.",
-        `${activity.start_time} — ${activity.end_time}`,
-        activity.introduction || "",
-        activity.notes || "No additional notes.",
-        activity.time_use === "free_window"
-          ? "Free time · no fixed place."
-          : cost(activity.estimated_cost),
-      ].filter(Boolean),
+      icon: "pin",
+      photo: activity.time_use === "free_window" ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
+      photoNote: "Photo unavailable. Illustration shown.",
+      introduction: [activity.place_name, activity.location || "Location unavailable."].filter(Boolean).join("\n"),
+      notes: [
+        { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
+        ...(activity.introduction ? [{ heading: "About this place", body: activity.introduction }] : []),
+        { heading: "Good to know", body: activity.notes || "No additional notes." },
+        ...(activity.time_use === "free_window" ? [] : [{ heading: "Estimated cost", body: activity.estimated_cost ? cost(activity.estimated_cost) : "Cost unavailable; not assumed to be free." }]),
+      ],
       map:
         activity.time_use === "free_window"
           ? undefined
@@ -297,18 +338,20 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
     });
   const transferInfo = (transfer: DetailTransfer) =>
     setInformation({
-      title: `${transfer.mode || "Transport"} connection`,
+      title: modeName(transfer.mode),
+      icon: modeIcon(transfer.mode),
+      introduction: [transfer.from_activity_id, transfer.to_activity_id].map(id => {
+        const activity = detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === id);
+        return activity ? name(activity) : id;
+      }).join(" → "),
+      stats: { duration: routeDuration(transfer.provider_duration_seconds), distance: routeDistance(transfer.distance_meters) },
+      notes: [
+        { heading: "Time between visits", body: `Previous activity ends ${clock(transfer.preceding_end_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.from_activity_id)?.end_time)}; next begins ${clock(transfer.following_start_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.to_activity_id)?.start_time)}.${transfer.reserve_seconds != null ? `\nAllow an additional ${routeDuration(transfer.reserve_seconds)} buffer.` : "\nBuffer not supplied."}` },
+        { heading: transferFeasibility(detail, transfer).label, body: transferFeasibility(detail, transfer).message, className: transferFeasibility(detail, transfer).className === "has-conflict" ? "state-conflict" : transferFeasibility(detail, transfer).className ? "state-unknown" : "state-ok" },
+      ],
       body: [
-        `${transfer.from_activity_id} → ${transfer.to_activity_id}`,
-        transfer.provider_duration_seconds == null
-          ? "Duration unavailable."
-          : `${Math.ceil(transfer.provider_duration_seconds / 60)} min estimated duration`,
-        transfer.distance_meters == null
-          ? "Distance unavailable."
-          : `${transfer.distance_meters} m`,
         `Departure: ${transfer.departure_time || transfer.preceding_end_time || "not supplied"}. Arrival: ${transfer.arrival_time || "not supplied"}. Next activity: ${transfer.following_start_time || "not supplied"}.`,
         `Buffer: ${transfer.reserve_seconds == null ? "not supplied" : `${transfer.reserve_seconds} seconds`}. Estimate: ${transfer.estimate_kind}.`,
-        `${transferFeasibility(detail, transfer).label}. ${transferFeasibility(detail, transfer).message}`,
         trustedTransfer(detail, transfer)
           ? `Route evidence: ${transfer.estimate_kind} estimate in the supplied generated snapshot. ${transfer.status === "unknown" ? "Evidence availability remains to confirm." : "Evidence availability does not independently establish timing feasibility."}`
           : `The source describes the estimate as ${transfer.estimate_kind}; this evidence has not been independently checked.`,
@@ -332,39 +375,19 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
         : "Generated itinerary · saved evidence snapshot";
   return (
     <PlaceMedia.Provider value={media.items}><div className="detail-page">
-      <section className="detail-hero detail-example-hero">
-        <CuratedPhoto image={detail.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${detail.destination} destination atmosphere`} className="detail-cover-media" />
+      <section className="detail-hero">
+        <div className="detail-cover"><CuratedPhoto image={detail.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${detail.destination} destination atmosphere`} fallback={detail.illustration_key ? `/dayloom/${detail.illustration_key}.svg` : undefined} className="detail-hero-image" /><div className="detail-cover-shade" /></div>
         <div className="container detail-hero-inner">
-          <Link to="/trips" className="detail-back">
-            ← My trips
-          </Link>
-          <span className="source-pill">
-            {detail.provenance === "example"
-              ? "CURATED EXAMPLE"
-              : detail.provenance.toUpperCase()}
-          </span>
+          <Link to={mode === "preview" ? "/plan?recover=1" : "/trips"} className="detail-back"><Icon name="back" size={17} />{mode === "preview" ? "Back to previews" : "Back to My trips"}</Link>
+          <span className="detail-eyebrow">YOUR JOURNEY, DAY BY DAY</span>
           <h1>{detail.title}</h1>
-          <p>
-            {detail.destination} · {detail.start_date || "Dates unavailable"}
-            {detail.end_date ? ` — ${detail.end_date}` : ""}
-          </p>
-          {(onReplan || actions) && <div className="detail-hero-buttons">{onReplan && <button type="button" className="btn btn-primary" onClick={onReplan}>Plan again</button>}{actions}</div>}
+          <div className="detail-meta"><span><Icon name="pin" size={17} />{detail.destination}</span><span><Icon name="calendar" size={17} />{dottedDate(detail.start_date)}{detail.end_date ? ` — ${dottedDate(detail.end_date)}` : ""}</span><span><Icon name="layers" size={17} />{detail.days.length} days / {activityCount} stops</span>{detail.request?.traveler_count && <span><Icon name="users" size={17} />{detail.request.traveler_count} travelers</span>}</div>
+          <div className="detail-hero-buttons">{onReplan && <button type="button" className="btn btn-primary" onClick={onReplan}><Icon name="spark" size={17} />Plan again</button>}<ExportControls detail={detail} />{actions}</div>
         </div>
       </section>
-      <div className="container detail-body">
-        <ExportControls detail={detail} />
-        {mediaEndpoint && <button className="btn btn-light btn-tiny media-refresh" onClick={media.refresh}>Refresh place photos</button>}
+      <div className="container detail-below">
         <nav className="detail-anchor-nav" aria-label="Itinerary sections">
-          {[
-            ["overview", "Overview"],
-            ["daily", "Daily itinerary"],
-            ["transport", "Connections"],
-            ["weather", "Weather"],
-          ].map(([id, label]) => (
-            <a href={`#${id}`} key={id}>
-              {label}
-            </a>
-          ))}
+          {[["overview", "layers", "Overview"], ["daily", "calendar", "Daily itinerary"], ["transport", "walk", "Connections"], ["weather", "sun", "Weather"]].map(([id, icon, label]) => <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ block: "start", behavior: window.matchMedia?.("(prefers-reduced-motion:reduce)").matches ? "instant" : "smooth" })}><Icon name={icon} size={17} />{label}</button>)}
           <button
             onClick={() => {
               const group = groups.find((g) => !filter || g.date === filter);
@@ -372,21 +395,18 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
               else document.getElementById("nearby-other")?.scrollIntoView();
             }}
           >
-            Nearby
+            <Icon name="pin" size={17} /> Nearby
           </button>
         </nav>
-        <p className="trip-notice">
-          {sourceLabel}. Confirm access, opening hours, prices and weather
-          before travel.
-        </p>
+
         <div className="detail-grid">
           <div className="detail-main">
             <section className="content-card overview-panel" id="overview">
               <div className="content-heading">
                 <span className="section-icon" aria-hidden="true">
-                  ▤
+                  <Icon name="layers" size={21} />
                 </span>
-                <h2>Trip overview</h2>
+                <h2>Trip overview</h2><span className="historical-pill"><Icon name="info" size={13} />{mode === "preview" ? "Unsaved preview" : detail.provenance === "example" ? "Example itinerary" : detail.provenance === "imported" ? "Imported itinerary" : mode === "saved" ? "Saved itinerary" : "Generated itinerary"}</span>
               </div>
               <p className="overview-lead">
                 {detail.description ||
@@ -394,15 +414,15 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
               </p>
               <div className="stat-grid">
                 <div>
-                  <strong>{detail.days.length}</strong>
+                  <strong>{String(detail.days.length).padStart(2, "0")}</strong>
                   <span>days</span>
                 </div>
                 <div>
-                  <strong>{activityCount}</strong>
+                  <strong>{String(activityCount).padStart(2, "0")}</strong>
                   <span>planned stops</span>
                 </div>
                 <div>
-                  <strong>{detail.transfers.length}</strong>
+                  <strong>{String(detail.transfers.length).padStart(2, "0")}</strong>
                   <span>connections</span>
                 </div>
                 <div>
@@ -416,6 +436,8 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                   </span>
                 </div>
               </div>
+              {Boolean(detail.display_tags?.length || detail.request?.additional_preferences) && <div className="request-overview">{(detail.display_tags?.length ? detail.display_tags : detail.request?.additional_preferences?.split(/\n+/).filter(Boolean) || []).map((text, index) => <span key={index}>{text}</span>)}</div>}
+              <details className="source-details"><summary>Source and travel information</summary><p>{sourceLabel}. Confirm access, opening hours, prices and weather before travel.</p>{mediaEndpoint && <button type="button" className="inline-action media-refresh" onClick={media.refresh}>Refresh place photos</button>}</details>
               {detail.completion && (
                 <details className="review-panel">
                   <summary>
@@ -445,7 +467,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
             <section className="content-card days-panel" id="daily">
               <div className="content-heading">
                 <span className="section-icon" aria-hidden="true">
-                  ▦
+                  <Icon name="calendar" size={21} />
                 </span>
                 <h2>Daily itinerary</h2>
                 <button
@@ -472,7 +494,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                     onClick={() => setFilter(day.date)}
                   >
                     Day {i + 1}
-                    <small>{day.date}</small>
+                    <small>{monthDay(day.date)}</small>
                   </button>
                 ))}
               </div>
@@ -480,7 +502,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
               {detail.days.map(
                 (day, i) =>
                   (!filter || day.date === filter) && (
-                    <article className="day-block" key={day.date}>
+                    <article className={`day-block ${closedDays.has(day.date) ? "" : "open"}`} key={day.date}>
                       <button
                         className="day-header"
                         aria-label={`Day ${i + 1} · ${day.date}`}
@@ -493,7 +515,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                         </span>
                         <span className="day-head-copy">
                           <strong>
-                            Day {i + 1} · {day.date}
+                            {monthDay(day.date)} · {weekday(day.date)} <span>DAY {String(i + 1).padStart(2, "0")}</span>
                           </strong>
                           <small>
                             {
@@ -505,7 +527,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                             {day.weather?.summary || "Weather unavailable"}
                           </small>
                         </span>
-                        <span aria-hidden="true">⌄</span>
+                        <Icon name="down" size={20} />
                       </button>
                       <div
                         id={`day-${i}`}
@@ -536,8 +558,9 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                   tabIndex={-1}
                                   aria-label={`${name(activity)} on ${day.date}`}
                                 >
+                                  {free && <span className="free-glyph"><Icon name="leaf" size={30} /></span>}
                                   {!free && (
-                                    <PlacePhoto className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
+                                    <PlacePhoto fallback={activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`)} className="activity-photo" slot={`activity:${activity.activity_id}`} label={name(activity)} onOpen={() => activityInfo(activity)} />
                                   )}
                                   <div className="activity-details">
                                     <span className="activity-tag">
@@ -548,7 +571,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                     </span>
                                     <h3>{name(activity)}</h3>
                                     {activity.location && !free && (
-                                      <p>{activity.location}</p>
+                                      <p><Icon name="pin" size={14} />{activity.location}</p>
                                     )}
                                     {activity.introduction && (
                                       <p className="activity-intro">
@@ -571,7 +594,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                         className="mini-link"
                                         onClick={() => activityInfo(activity)}
                                       >
-                                        Details →
+                                        Details <Icon name="chevron" size={14} />
                                       </button>
                                       {!free && (
                                         <a
@@ -583,7 +606,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                           target="_blank"
                                           rel="noopener noreferrer"
                                         >
-                                          Map ↗
+                                          Map <Icon name="external" size={14} />
                                         </a>
                                       )}
                                       {group && (
@@ -592,7 +615,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                           aria-label={`Show ${group.items.length} nearby places for ${name(activity)} on ${day.date}`}
                                           onClick={() => locate(group, "group")}
                                         >
-                                          Nearby · {group.items.length} →
+                                          <Icon name="pin" size={13} /> Nearby · {group.items.length} <Icon name="chevron" size={12} />
                                         </button>
                                       )}
                                     </div>
@@ -604,7 +627,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                       data-nearby-key={key}
                                     >
                                       <button
-                                        className="nearby-inline-trigger"
+                                        className={`nearby-inline-trigger ${inlineOpen.has(key) ? "open" : ""}`}
                                         aria-label={`Show nearby for ${name(activity)} on ${day.date}`}
                                         aria-expanded={inlineOpen.has(key)}
                                         aria-controls={domId(
@@ -615,8 +638,8 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                           toggle(setInlineOpen, key)
                                         }
                                       >
-                                        ⌖ Nearby · {group.items.length} places{" "}
-                                        <span aria-hidden="true">⌄</span>
+                                        <Icon name="pin" size={20} /> Nearby · {group.items.length} places{" "}
+                                        <Icon name="down" size={20} />
                                       </button>
                                       <div
                                         className="nearby-inline-items"
@@ -644,6 +667,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                 .map((t, j) => (
                                   <button
                                     className="transfer-connector"
+                                    aria-label={`${t.mode || "Transport"} · ${t.provider_duration_seconds == null ? "Duration unavailable" : `${Math.ceil(t.provider_duration_seconds / 60)} min`} · ${transferFeasibility(detail, t).label} →`}
                                     key={j}
                                     onClick={() => transferInfo(t)}
                                   >
@@ -651,11 +675,8 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                     <span
                                       className={`transfer-copy ${transferFeasibility(detail, t).className}`}
                                     >
-                                      {t.mode || "Transport"} ·{" "}
-                                      {t.provider_duration_seconds == null
-                                        ? "Duration unavailable"
-                                        : `${Math.ceil(t.provider_duration_seconds / 60)} min`}{" "}
-                                      · {transferFeasibility(detail, t).label} →
+                                      <span><Icon name={modeIcon(t.mode)} size={17} /> {modeName(t.mode)} · {routeDuration(t.provider_duration_seconds)} <small>· {routeDistance(t.distance_meters)}</small></span>
+                                      <span className={`state-label ${transferFeasibility(detail, t).className === "has-conflict" ? "state-conflict" : transferFeasibility(detail, t).className ? "state-unknown" : "state-ok"}`}><Icon name={transferFeasibility(detail, t).className === "has-conflict" ? "alert" : transferFeasibility(detail, t).className ? "info" : "check"} size={13} /> {transferFeasibility(detail, t).label}</span>
                                     </span>
                                   </button>
                                 ))}
@@ -669,7 +690,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
             </section>
             <section className="content-card transport-panel" id="transport">
               <div className="content-heading">
-                <h2>Between one place and the next</h2>
+                <span className="section-icon"><Icon name="walk" size={21} /></span><h2>Between one place and the next</h2><span className="small-muted">{detail.transfers.length} connections</span>
               </div>
               {!detail.transfers.length && (
                 <p className="aside-intro">
@@ -702,18 +723,18 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                         {detail.days
                           .flatMap((d) => d.activities)
                           .find((a) => a.activity_id === t.from_activity_id)
-                          ?.title || t.from_activity_id}{" "}
+                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.from_activity_id)?.title || t.from_activity_id}{" "}
                         →{" "}
                         {detail.days
                           .flatMap((d) => d.activities)
                           .find((a) => a.activity_id === t.to_activity_id)
-                          ?.title || t.to_activity_id}
+                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.to_activity_id)?.title || t.to_activity_id}
                       </strong>
                       <small>
                         {t.mode || "Mode unknown"} ·{" "}
-                        {transferFeasibility(detail, t).label} · Details
-                      </small>
-                    </span>
+                        {transferFeasibility(detail, t).label}
+                      </small><span className="transport-metrics"><Icon name={(t.mode || "").toLowerCase().includes("walk") ? "walk" : "route"} size={16} />{routeDuration(t.provider_duration_seconds)} · {routeDistance(t.distance_meters)}</span>
+                    </span><Icon name="chevron" size={17} />
                   </button>
                 ))}
               <p className="footnote">
@@ -724,16 +745,17 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
           <aside className="detail-sidebar">
             <section className="content-card weather-panel" id="weather">
               <div className="content-heading">
-                <span className="section-icon" aria-hidden="true">
-                  ☀
+                <span className="section-icon weather-icon" aria-hidden="true">
+                  <Icon name="sun" size={20} />
                 </span>
                 <h2>Weather at a glance</h2>
               </div>
+              <p className="aside-intro">A little context for each day.</p>
               {detail.days
                 .filter((d) => !filter || d.date === filter)
                 .map((day, i) => (
-                  <div className="weather-item" key={day.date}>
-                    <span className="weather-day">{day.date}</span>
+                  <div className="weather-row" key={day.date}>
+                    <div className="weather-day"><strong>{monthDay(day.date)}</strong><span>{new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "UTC" }).format(new Date(`${day.date}T12:00:00Z`))}</span></div><div className="weather-glyph"><Icon name={/rain/i.test(day.weather?.summary || "") ? "rain" : /sun|clear/i.test(day.weather?.summary || "") ? "sun" : "cloud"} size={22} /></div>
                     <div className="weather-summary">
                       <strong>
                         {day.weather?.summary || "Weather unavailable"}
@@ -777,11 +799,11 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                   : "Weather is a snapshot. Check current conditions before you go."}
               </p>
             </section>
-            <section className="content-card nearby-panel" id="nearby">
+            <section className={`content-card nearby-panel ${visibleOther.length ? "has-other" : ""}`} id="nearby">
               <div className="nearby-sidebar-groups">
                 <div className="content-heading">
-                  <span className="section-icon" aria-hidden="true">
-                    ⌖
+                  <span className="section-icon nearby-icon" aria-hidden="true">
+                    <Icon name="pin" size={20} />
                   </span>
                   <h2>Nearby · A little discovery</h2>
                 </div>
@@ -794,7 +816,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                     groups.some((g) => g.date === day.date) && (
                       <section className="nearby-day" key={day.date}>
                         <h3>
-                          DAY {i + 1} <span>· {day.date}</span>
+                          DAY {String(i + 1).padStart(2, "0")} <span>· {monthDay(day.date)}</span>
                         </h3>
                         {groups
                           .filter((g) => g.date === day.date)
@@ -812,6 +834,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                   aria-label={`Find ${name(group.activity)} in Day ${group.day} itinerary`}
                                   onClick={() => locate(group, "stop")}
                                 >
+                                  <Icon name="pin" size={15} />
                                   <span>
                                     <strong>{name(group.activity)}</strong>
                                     <small>
@@ -821,16 +844,14 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                                   </span>
                                 </button>
                                 <button
-                                  className="nearby-group-toggle"
+                                  className={`nearby-group-toggle ${collapsed.has(group.key) ? "" : "open"}`}
                                   aria-label={`${collapsed.has(group.key) ? "Expand" : "Collapse"} nearby for ${name(group.activity)} on ${group.date}`}
                                   aria-expanded={!collapsed.has(group.key)}
                                   aria-controls={domId("items", group.key)}
                                   onClick={() =>
                                     toggle(setCollapsed, group.key)
                                   }
-                                >
-                                  ⌄
-                                </button>
+                                ><Icon name="down" size={14} /></button>
                               </div>
                               <div
                                 className="nearby-group-items"
@@ -881,6 +902,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions }: { detai
                 <br />
                 Less time for the planning.
               </h3>
+              <p>Keep your own rhythm. Make room for the next discovery.</p>
               {onReplan ? <button type="button" className="text-link inline-action" onClick={onReplan}>Plan another journey →</button> : <Link to="/plan" className="text-link">Plan another journey →</Link>}
             </section>
           </aside>

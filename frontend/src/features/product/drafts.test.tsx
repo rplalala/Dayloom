@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { routes } from "../../app/router";
@@ -6,7 +6,33 @@ import { createBrief } from "./editor";
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.restoreAllMocks(); vi.unstubAllGlobals(); });
 
+it("reviews the current facts without introducing an editable draft title", async () => {
+  const writes: string[] = [];
+  sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief: { ...createBrief(), destination: "Kyoto", start_date: "2026-10-22", end_date: "2026-10-23", travelers: "2", budget: "0", currency: "JPY", required: "A museum", exclusions: "Large malls", preferences: "Quiet mornings." }, actionId: null, draftTitle: "" }));
+  vi.stubGlobal("fetch", vi.fn(async (url: string, options?: RequestInit) => {
+    if (options?.method && !["GET", "HEAD"].includes(options.method)) writes.push(options.method);
+    if (url === "/api/auth/current") return Response.json({ id: "alice", display_name: "Alice", initials: "A", csrf_token: "token" });
+    return Response.json({ allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 });
+  }));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  await waitFor(() => expect(screen.getByLabelText("Destination")).toHaveValue("Kyoto"));
+  fireEvent.click(screen.getByRole("button", { name: "Review travel brief" }));
+  const dialog = screen.getByRole("dialog", { name: "Your travel brief" });
+  expect(within(dialog).getByText(/2026\.10\.22 — 2026\.10\.23/)).toBeVisible();
+  expect(within(dialog).getByText("2 travelers · JPY 0")).toBeVisible();
+  expect(within(dialog).getByText(/Must include: A museum\./)).toHaveTextContent("Please avoid: Large malls.");
+  expect(within(dialog).queryByRole("textbox")).not.toBeInTheDocument();
+  expect(within(dialog).queryByText(/Recovered draft name:/)).not.toBeInTheDocument();
+  fireEvent.click(within(dialog).getByRole("button", { name: "Keep editing" }));
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Review travel brief" }));
+  expect(screen.queryByLabelText("Draft title")).not.toBeInTheDocument();
+  expect(writes).toEqual([]);
+});
+
 it("saves an incomplete brief, updates its identity, and preserves local edits on conflict", async () => {
+  // A legacy browser record can contain an unfinished title; Save preserves it.
+  sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief: createBrief(), actionId: null, draftTitle: "Kyoto idea" }));
   let revision = 1;
   const writes: { url: string; body: Record<string, unknown> }[] = [];
   const draft = { id: "e8a18ca5-30e0-4df1-8786-dc3b0f42a752", title: "Kyoto idea", revision, editor: createBrief() };
@@ -24,10 +50,15 @@ it("saves an incomplete brief, updates its identity, and preserves local edits o
   render(<RouterProvider router={router} />);
   const destination = await screen.findByLabelText("Destination");
   fireEvent.change(destination, { target: { value: "Kyoto" } });
-  fireEvent.change(screen.getByLabelText("Draft title"), { target: { value: "Kyoto idea" } });
+  expect(screen.queryByLabelText("Draft title")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByText("Review travel brief"));
+  expect(screen.getByText("Recovered draft name: Kyoto idea")).toBeVisible();
+  expect(screen.queryByLabelText("Draft title")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Keep editing" }));
   fireEvent.click(screen.getByRole("button", { name: "Save draft" }));
   await screen.findByText("Draft saved.");
   expect(writes[0].body.editor).toMatchObject({ destination: "Kyoto", start_date: "" });
+  expect(writes[0].body.title).toBe("Kyoto idea");
   expect(router.state.location.search).toContain("draft=");
   fireEvent.change(destination, { target: { value: "My local Kyoto" } });
   revision = 3;
@@ -41,7 +72,20 @@ it("saves an incomplete brief, updates its identity, and preserves local edits o
   expect(writes[2].body.editor).toMatchObject({ destination: "My local Kyoto" });
 });
 
+it("keeps an accepted draft name out of the normal travel brief summary", async () => {
+  const id = "e8a18ca5-30e0-4df1-8786-dc3b0f42a752";
+  sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief: { ...createBrief(), destination: "Kyoto" }, actionId: null, draftRef: { id, title: "Accepted name", revision: 2 }, draftTitle: "Accepted name" }));
+  vi.stubGlobal("fetch", vi.fn(async (url: string) => Response.json(url === "/api/auth/current" ? { id: "alice", csrf_token: "token" } : { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 })));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  await waitFor(() => expect(screen.getByLabelText("Destination")).toHaveValue("Kyoto"));
+  fireEvent.click(screen.getByRole("button", { name: "Review travel brief" }));
+  const dialog = screen.getByRole("dialog", { name: "Your travel brief" });
+  expect(within(dialog).queryByRole("textbox")).not.toBeInTheDocument();
+  expect(within(dialog).queryByText(/Recovered draft name:/)).not.toBeInTheDocument();
+});
+
 it("keeps typing during a pending save and identifies the unsaved newer input", async () => {
+  sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief: createBrief(), actionId: null, draftTitle: "Idea" }));
   let release!: (response: Response) => void;
   const pending = new Promise<Response>(resolve => { release = resolve; });
   vi.stubGlobal("fetch", vi.fn(async (url: string, options?: RequestInit) => {
@@ -52,7 +96,6 @@ it("keeps typing during a pending save and identifies the unsaved newer input", 
   render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
   const destination = await screen.findByLabelText("Destination");
   fireEvent.change(destination, { target: { value: "Submitted" } });
-  fireEvent.change(screen.getByLabelText("Draft title"), { target: { value: "Idea" } });
   fireEvent.click(screen.getByRole("button", { name: "Save draft" }));
   fireEvent.change(destination, { target: { value: "Still typing" } });
   release(Response.json({ id: "saved-id", title: "Idea", revision: 1 }));

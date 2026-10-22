@@ -2,12 +2,21 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSession } from "./session";
 import { CuratedPhoto } from './detail/MediaPhoto';
+import { Icon } from './Icon';
+
+type AuthMode = "login" | "register";
+type AuthFields = { display_name: string; email: string; password: string; confirm: string };
 
 export function AuthPage() {
   const session = useSession();
-  const [mode, setMode] = useState<"login" | "register">("login");
+  const [mode, setMode] = useState<AuthMode>("login");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [passwordVisibility, setPasswordVisibility] = useState<Record<AuthMode, boolean>>({ login: false, register: false });
+  const [fields, setFields] = useState<Record<AuthMode, AuthFields>>({ login: { display_name: "", email: "", password: "", confirm: "" }, register: { display_name: "", email: "", password: "", confirm: "" } });
+  const showPassword = passwordVisibility[mode];
+  const activeFields = fields[mode];
+  const changeField = (field: keyof AuthFields, value: string) => setFields(current => ({ ...current, [mode]: { ...current[mode], [field]: value } }));
   const navigate = useNavigate();
   const [params] = useSearchParams();
   return (
@@ -23,7 +32,7 @@ export function AuthPage() {
         </div>
       </div>
       <div className="auth-card">
-        <div className="auth-mark">✧ DAYLOOM</div>
+        <div className="auth-mark"><Icon name="spark" size={24} /> DAYLOOM</div>
         <div className="auth-tabs" role="tablist" aria-label="Account access">
           {(["login", "register"] as const).map((tab) => (
             <button
@@ -64,7 +73,7 @@ export function AuthPage() {
             </button>
           ))}
         </div>
-        <section
+        <div className="auth-panes"><section
           className="auth-pane"
           role="tabpanel"
           id="auth-panel"
@@ -124,19 +133,24 @@ export function AuthPage() {
           >
             {mode === "register" && (
               <label className="field">
-                <span>Display name</span>
+                <span><Icon name="user" size={16} /> Display name</span>
                 <input
                   name="display_name"
+                  value={activeFields.display_name}
+                  onChange={event => changeField("display_name", event.target.value)}
                   required
                   maxLength={80}
                   autoComplete="name"
+                  placeholder="What should we call you?"
                 />
               </label>
             )}
             <label className="field">
-              <span>Email address</span>
+              <span><Icon name="mail" size={16} /> Email address</span>
               <input
                 name="email"
+                value={activeFields.email}
+                onChange={event => changeField("email", event.target.value)}
                 type="email"
                 required
                 maxLength={254}
@@ -145,10 +159,12 @@ export function AuthPage() {
               />
             </label>
             <label className="field">
-              <span>Password</span>
-              <input
+              <span><Icon name="lock" size={16} /> Password</span>
+              <span className="auth-pass"><input
                 name="password"
-                type="password"
+                value={activeFields.password}
+                onChange={event => changeField("password", event.target.value)}
+                type={showPassword ? "text" : "password"}
                 required
                 minLength={10}
                 maxLength={128}
@@ -156,18 +172,21 @@ export function AuthPage() {
                   mode === "register" ? "new-password" : "current-password"
                 }
                 placeholder="At least 10 characters"
-              />
+              /><button type="button" aria-label="Show or hide password" aria-pressed={showPassword} onClick={() => setPasswordVisibility(current => ({ ...current, [mode]: !current[mode] }))}><Icon name="eye" size={17} /></button></span>
             </label>
             {mode === "register" && (
               <label className="field">
-                <span>Confirm password</span>
+                <span><Icon name="shield" size={16} /> Confirm password</span>
                 <input
                   name="confirm"
+                  value={activeFields.confirm}
+                  onChange={event => changeField("confirm", event.target.value)}
                   type="password"
                   required
                   minLength={10}
                   maxLength={128}
                   autoComplete="new-password"
+                  placeholder="Enter your password again"
                 />
               </label>
             )}
@@ -185,12 +204,13 @@ export function AuthPage() {
                 ? "Please wait…"
                 : mode === "login"
                   ? "Log in"
-                  : "Create account"}
+                  : "Create account"} <Icon name="arrow" size={18} />
             </button>
           </form>
-        </section>
+          <p className="auth-switch">{mode === "login" ? "New to Dayloom?" : "Already have an account?"} <button type="button" onClick={() => { setMode(mode === "login" ? "register" : "login"); setError(""); }}>{mode === "login" ? "Create an account" : "Log in"}</button></p>
+        </section></div>
         <div className="auth-privacy">
-          Your plans and preferences, together in one place.
+          <Icon name="shield" size={17} /> Your plans and preferences, together in one place.
         </div>
       </div>
     </div>

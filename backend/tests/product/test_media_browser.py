@@ -5,6 +5,7 @@ from pathlib import Path
 
 from playwright.sync_api import expect
 
+from backend.tests.product.browser_harness import open_json_export
 from backend.tests.product.test_browser import register_browser
 from backend.tests.product.test_imports import source
 from backend.tests.product.test_task_browser import task_app  # noqa: F401
@@ -33,7 +34,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
         page.get_by_role("link", name="Open task progress").click()
         page.get_by_role("link", name="Open itinerary preview").click(timeout=30000)
-        expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+        expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         expect(page.locator(".activity-photo img").first).to_be_visible()
         expect(page.locator(".activity-photo .media-provider").first).to_have_text("Google Maps")
         expect(page.get_by_role("link", name="Controlled Photographer").first).to_be_visible()
@@ -61,20 +62,21 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
             lambda route: route.fulfill(status=404, body="expired"),
         )
         page.reload()
-        expect(page.locator(".activity-photo").first).to_contain_text(
-            "Place photograph unavailable"
-        )
+        expect(page.locator(".activity-photo").first.get_by_label(
+            "Place photograph unavailable · illustration", exact=True
+        )).to_be_visible()
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
-        expect(page.locator(".activity-photo").first).to_contain_text(
-            "Place photograph unavailable"
-        )
+        expect(page.locator(".activity-photo").first.get_by_label(
+            "Place photograph unavailable · illustration", exact=True
+        )).to_be_visible()
         saved_url = page.url
         page.goto(base + "/trips")
-        expect(page.locator(".library-card-cover .media-photo img").first).to_be_visible()
-        expect(page.locator(".library-card-cover .media-photo").first).to_contain_text("Unsplash")
+        expect(page.locator(".trip-card-photo .media-photo img").first).to_be_visible()
+        expect(page.locator(".trip-card-photo .media-photo").first).to_contain_text("Unsplash")
         page.goto(saved_url)
         page.unroute("https://lh3.googleusercontent.com/**")
+        page.get_by_text("Source and travel information", exact=True).click()
         page.get_by_role("button", name="Refresh place photos", exact=True).click()
         expect(page.locator(".activity-photo img").first).to_be_visible()
         page.reload()
@@ -112,7 +114,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.reload()
         expect(page.locator(".activity-photo img").first).to_be_visible()
         with page.expect_download() as download:
-            page.get_by_role("button", name="Export JSON", exact=True).click()
+            open_json_export(page)
         exported = Path(download.value.path()).read_text(encoding="utf-8")
         assert "media_bindings" not in exported and "photos/" not in exported
         assert "googleusercontent" not in exported
@@ -132,10 +134,10 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.get_by_label("Itinerary JSON", exact=True).fill(json.dumps(payload))
         page.get_by_role("button", name="Preview import", exact=True).click()
         expect(page.get_by_role("heading", name="Old journey", exact=True)).to_be_visible()
-        expect(page.locator(".activity-photo img")).to_have_count(0)
-        expect(page.locator(".activity-photo").first).to_contain_text(
-            "Place photograph unavailable"
-        )
+        expect(page.locator('.activity-photo img[alt$="· place photograph"]')).to_have_count(0)
+        expect(page.locator(".activity-photo").first.get_by_label(
+            "Place photograph unavailable · illustration", exact=True
+        )).to_be_visible()
         imported_id = page.url.rsplit("/", 1)[-1]
         assert page.request.get(base + f"/api/previews/{imported_id}/media").json()["items"] == {}
         payload["media_bindings"] = {"activity:a": "poi-0-0"}

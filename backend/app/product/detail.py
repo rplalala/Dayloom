@@ -141,6 +141,7 @@ class ProductDetail(DetailModel):
 
 
 class ExampleCard(DetailModel):
+    created_at: ISOClock | None = Field(default=None, exclude_if=lambda value: value is None)
     illustration_key: IllustrationKey | None = Field(
         default=None, exclude_if=lambda value: value is None
     )

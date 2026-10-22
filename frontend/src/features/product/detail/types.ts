@@ -4,7 +4,9 @@ import type {
   PreferenceCoverage,
 } from "../../planning/types";
 
+export type IllustrationKey = "hero" | "sydney" | "art" | "city" | "nature";
 export type DetailNearby = {
+  illustration_key?: IllustrationKey | null;
   place_name: string;
   anchor_activity_id?: string | null;
   associated_day?: string | null;
@@ -14,6 +16,7 @@ export type DetailNearby = {
   attribution?: string | null;
 };
 export type DetailActivity = {
+  illustration_key?: IllustrationKey | null;
   activity_id: string;
   title: string;
   time_use: "scheduled" | "free_window";
@@ -58,6 +61,8 @@ export type DetailTransfer = {
   attribution?: string | null;
 };
 export type ProductDetail = {
+  illustration_key?: IllustrationKey | null;
+  display_tags?: string[];
   schema_version: "product_detail_1";
   id: string;
   title: string;
@@ -90,4 +95,4 @@ export type ProductDetail = {
 export type ExampleCard = Pick<
   ProductDetail,
   "id" | "title" | "destination" | "start_date" | "end_date" | "description"
-> & { day_count: number };
+> & { created_at?: string | null; day_count: number; stop_count?: number; transfer_count?: number; illustration_key?: IllustrationKey | null };

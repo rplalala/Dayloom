@@ -9,6 +9,8 @@ export function exportArtifact(detail: ProductDetail) {
       output_version: 'itinerary_3', destination: detail.destination,
       start_date: detail.start_date, end_date: detail.end_date,
       description: detail.description, days: detail.days,
+      ...(detail.illustration_key && { illustration_key: detail.illustration_key }),
+      ...(detail.display_tags?.length && { display_tags: detail.display_tags }),
       nearby: detail.nearby, transfers: detail.transfers,
     },
   };

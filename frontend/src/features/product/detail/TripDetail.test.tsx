@@ -264,9 +264,9 @@ describe("Product detail", () => {
         .getAllByRole("button", { name: /^Day \d ·/ })
         .map((b) => b.textContent),
     ).toEqual([
-      expect.stringContaining("2026-10-15"),
-      expect.stringContaining("2026-10-13"),
-      expect.stringContaining("2026-10-14"),
+      expect.stringContaining("Oct 15"),
+      expect.stringContaining("Oct 13"),
+      expect.stringContaining("Oct 14"),
     ]);
     expect(
       screen.getByRole("button", {

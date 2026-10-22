@@ -94,18 +94,6 @@ def test_library_copy_keyboard_lost_reply_recovery_and_independent_detail(browse
         page.goto(base + "/trips")
         expect(page.get_by_role("button", name="Copy", exact=True)).to_be_visible()
         assert page.get_by_role("tab", name="Examples", exact=True).count() == 0
-        page.get_by_role("button", name="Copy", exact=True).focus()
-        page.keyboard.press("Enter")
-        dialog = page.get_by_role("dialog", name="Keep an independent copy")
-        expect(dialog).to_be_visible()
-        page.keyboard.press("Escape")
-        expect(dialog).not_to_be_visible()
-        page.get_by_role(
-            "button", name="Manage Sydney · Three days by the harbour (copy)", exact=True
-        ).click()
-        page.get_by_role(
-            "button", name="Copy Sydney · Three days by the harbour (copy)", exact=True
-        ).click()
         posts = []
 
         def lose(route):
@@ -117,32 +105,38 @@ def test_library_copy_keyboard_lost_reply_recovery_and_independent_detail(browse
                 route.continue_()
 
         page.route("**/api/copies", lose)
-        dialog.get_by_role("button", name="Make a copy", exact=True).click()
-        expect(dialog.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
+        # The source card's keyboard action sends the copy directly, without a second modal.
+        page.get_by_role("button", name="Copy", exact=True).focus()
+        page.keyboard.press("Enter")
+        expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
+        assert page.get_by_role("dialog", name="Keep an independent copy").count() == 0
         page.reload()
-        page.get_by_role("button", name="Copy", exact=True).first.click()
-        # Choose the original by a stable source id if ordering changed after the commit.
-        page.keyboard.press("Escape")
         page.get_by_role(
             "button", name="Manage Sydney · Three days by the harbour (copy)", exact=True
         ).click()
-        page.get_by_role(
-            "button", name="Copy Sydney · Three days by the harbour (copy)", exact=True
-        ).click()
-        dialog.get_by_role("button", name="Check copy status", exact=True).click()
+        dialog = page.get_by_role("dialog", name="Manage your trip", exact=True)
+        expect(dialog).to_be_visible()
+        # The menu recovers the retained operation by GET; it cannot replay the POST.
+        expect(dialog.get_by_role("button", name="Close", exact=True)).to_be_focused()
+        page.keyboard.press("Tab")
+        page.keyboard.press("Tab")
+        expect(dialog.get_by_role("button", name="Check copy status", exact=True)).to_be_focused()
+        page.keyboard.press("Enter")
+        expect(dialog).not_to_be_visible()
         expect(
-            dialog.get_by_text("An independent copy was added to My trips.", exact=True)
+            page.get_by_text("An independent copy was added to My trips.", exact=True)
         ).to_be_visible()
         assert len(posts) == 1 and posts[0]["source_id"] == original
         expect(page.get_by_text("Loading your collection…", exact=True)).not_to_be_visible()
         page.screenshot(path=str(scratch / f"library-copy-{width}.png"), full_page=True)
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
-        dialog.get_by_role("link", name="View saved copy", exact=True).click()
+        page.get_by_role("link", name="View saved copy", exact=True).click()
         expect(
             page.get_by_role(
                 "heading", name="Sydney · Three days by the harbour (copy) (copy)", exact=True
             )
         ).to_be_visible()
+        page.get_by_text("Source and travel information", exact=True).click()
         expect(
             page.get_by_text(
                 "Historical example · source claims, not a fresh verification", exact=False
@@ -227,7 +221,7 @@ def test_copy_expiry_quarantine_same_owner_recovery_logout_and_other_owner_clear
         page.get_by_role("button", name="Check copy status", exact=True).click()
         expect(page.get_by_role("link", name="View saved copy", exact=True)).to_be_visible()
         page.goto(base + "/account")
-        page.get_by_role("button", name="Log out", exact=True).click()
+        page.get_by_role("button", name="Log out", exact=True).last.click()
         expect(page.get_by_role("link", name="Log in", exact=True).last).to_be_visible()
         assert page.evaluate("sessionStorage.getItem('dayloom.copy.intent.v1')") is None
         page.goto(base + "/login")
@@ -332,7 +326,7 @@ def test_other_tab_logout_removes_this_tabs_quarantined_copy_identity(browser_ap
         expect(page.get_by_role("button", name="Check copy status", exact=True)).to_be_visible()
         other = context.new_page()
         other.goto(base + "/account")
-        other.get_by_role("button", name="Log out", exact=True).click()
+        other.get_by_role("button", name="Log out", exact=True).last.click()
         expect(page.get_by_role("button", name="Keep a copy", exact=True)).to_be_visible()
         assert page.evaluate("sessionStorage.getItem('dayloom.copy.intent.v1')") is None
     finally:

@@ -868,7 +868,7 @@ requires-dist = [
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2,<4" },
     { name = "pwdlib", extras = ["argon2"], specifier = ">=0.3,<1" },
     { name = "pyarrow", specifier = ">=18,<24" },
-    { name = "pydantic", specifier = ">=2.11,<3.0" },
+    { name = "pydantic", specifier = ">=2.12,<3.0" },
     { name = "pydantic-settings", specifier = ">=2.10,<3.0" },
     { name = "pyjwt", specifier = ">=2.10,<3" },
     { name = "pyyaml", specifier = ">=6.0,<7.0" },

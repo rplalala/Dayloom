@@ -81,3 +81,22 @@ it("keeps soft controls visible and detaches an edited sentence without deleting
   expect(screen.getByLabelText("Places or experiences to include")).toBeVisible();
   expect(screen.getByLabelText("Places or experiences to avoid")).toBeVisible();
 });
+
+
+it("shows a matching completed itinerary inline and hides it as soon as the brief changes", async () => {
+  const brief = { editor_version: 1, destination: "Sydney", start_date: "2026-10-22", end_date: "2026-10-23", travelers: "2", budget: "1000", currency: "AUD", required: "", exclusions: "", preferences: "", interests: [], pace: null, transport: [], bindings: [] };
+  sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief, actionId: null }));
+  const request = { destination: "Sydney", start_date: "2026-10-22", end_date: "2026-10-23", traveler_count: 2, budget: { amount: "1000", currency: "AUD" }, additional_preferences: "" };
+  vi.stubGlobal("fetch", vi.fn(async (url: string) => Response.json(
+    url === "/api/auth/current" ? { id: "alice", display_name: "Alice", csrf_token: "token" }
+      : url === "/api/planning/date-window" ? { allowedStart: "2026-10-21", allowedEnd: "2026-11-03", maxTripDays: 10 }
+      : url === "/api/planning/tasks/recent?limit=10" ? [{ id: "accepted", state: "completed", revision: 2, request, progress: { stage: "completed", message: "Ready" }, preview_id: "preview-a" }]
+      : url === "/api/previews/preview-a" ? { id: "preview-a", state: "pending", saved_trip_id: null, snapshot: { schema_version: "product_detail_1", id: "preview-a", title: "A matching Sydney journey", destination: "Sydney", start_date: "2026-10-22", end_date: "2026-10-23", provenance: "generated", trust: "generated_projection", request, days: [{ date: "2026-10-22", activities: [] }, { date: "2026-10-23", activities: [] }], transfers: [], nearby: [] } }
+      : [])));
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ["/plan"] })} />);
+  expect(await screen.findByRole("heading", { name: "A matching Sydney journey" })).toBeVisible();
+  expect(screen.getByRole("link", { name: /View full itinerary/ })).toHaveAttribute("href", "/previews/preview-a");
+  fireEvent.change(screen.getByLabelText("Destination"), { target: { value: "Kyoto" } });
+  expect(screen.queryByRole("heading", { name: "A matching Sydney journey" })).not.toBeInTheDocument();
+  expect(screen.getByText("A new journey is waiting.")).toBeVisible();
+});

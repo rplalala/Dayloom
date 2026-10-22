@@ -1,11 +1,23 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useSession } from "./session";
 import { ExampleCards } from "./detail/ExampleCards";
 import { LibraryCollection } from "./LibraryCollection";
+import { Icon } from "./Icon";
 import { CopyRecoveryLink } from './CopyRecoveryPage';
 
 export function LibraryPage() {
   const { account, status } = useSession();
+  const location = useLocation();
+  const importLink = useRef<HTMLAnchorElement>(null);
+  const focusedReturn = useRef<string | null>(null);
+  useEffect(() => {
+    if (location.pathname !== "/trips" || !location.state?.focusImport || status === "loading" || focusedReturn.current === location.key) return;
+    focusedReturn.current = location.key;
+    // A route modal loses its original trigger. Restore only when the user has
+    // not already chosen another focus target while the session was loading.
+    if (document.activeElement === document.body) importLink.current?.focus();
+  }, [location.key, location.pathname, location.state, status]);
   if (status === "loading")
     return (
       <div className="page container" role="status">
@@ -23,27 +35,24 @@ export function LibraryPage() {
       </div>
     );
   return (
-    <div className="page container">
+    <div className="page container trips-page">
       <div className="page-heading">
-        <span className="eyebrow">YOUR TRAVEL COLLECTION</span>
+        <span className="eyebrow">YOUR TRAVEL LIBRARY</span>
         <h1>My trips</h1>
-        <Link to="/import" className="btn btn-light">Import itinerary</Link>
         <p>
           {account
-            ? "The journeys you keep, and the ideas still taking shape."
-            : "A little inspiration for your next city journey."}
+            ? "Keep the places you have been, and the journeys still to come."
+            : "A few journeys to explore before you write your own."}
         </p>
       </div>
       {account ? (
         <><CopyRecoveryLink /><LibraryCollection key={account.id} /></>
       ) : (
         <>
-          <div className="hint-strip">
-            These are examples. Log in to keep your own travel collection.
-          </div>
           <ExampleCards />
         </>
       )}
+      <div className="quiet-links library-import"><Link ref={importLink} to="/import" className="inline-action"><Icon name="download" size={14} />Import an itinerary</Link></div>
     </div>
   );
 }

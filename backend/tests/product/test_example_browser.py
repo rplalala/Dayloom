@@ -16,23 +16,29 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
     try:
         page = context.new_page()
         page.goto(browser_app.base_url + "/trips")
-        expect(page.get_by_role("link", name="View itinerary →")).to_have_count(3)
-        page.get_by_role("link", name="View itinerary →").first.click()
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(3)
+        page.get_by_role("link", name="Sydney · Three days by the harbour", exact=True).click()
         expect(
             page.get_by_role("heading", name="Sydney · Three days by the harbour")
         ).to_be_visible()
+        page.get_by_text("Source and travel information", exact=True).click()
         expect(
             page.get_by_text(
                 "Historical example · source claims, not a fresh verification.", exact=False
             )
         ).to_be_visible()
         assert page.request.get(browser_app.base_url + "/api/examples/sydney-example").status == 200
-        page.get_by_role("button", name="Details →", exact=True).first.click()
+        activity_details = page.locator(".activity-actions").get_by_role(
+            "button", name="Details", exact=True
+        ).first
+        activity_details.click()
         expect(page.get_by_role("dialog")).to_be_visible()
-        expect(page.get_by_role("dialog")).to_contain_text("Cost to confirm")
+        expect(page.get_by_role("dialog")).to_contain_text(
+            "Cost unavailable; not assumed to be free."
+        )
         page.keyboard.press("Escape")
         expect(page.get_by_role("dialog")).to_have_count(0)
-        expect(page.get_by_role("button", name="Details →", exact=True).first).to_be_focused()
+        expect(activity_details).to_be_focused()
         page.get_by_role("button", name="WALK · 25 min · Unverified source claim (PASS) →").click()
         expect(page.get_by_role("dialog")).to_contain_text(
             "Source claims are not a fresh route or timing check."
@@ -44,7 +50,7 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         ).to_be_visible()
         expect(page.get_by_text("Free time · no fixed place", exact=True).first).to_be_visible()
         register_browser(page, browser_app.base_url)
-        expect(page.get_by_role("link", name="View itinerary →")).to_have_count(0)
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(0)
         page.goto(browser_app.base_url + "/examples/sydney-example")
         expect(
             page.get_by_role("heading", name="Sydney · Three days by the harbour")

@@ -1,15 +1,42 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSession, type Account } from "./session";
 import { currencies } from "../planning/currencies";
 import { interestPrompts, pacePrompts, transportLabels, type Interest, type Pace, type Transport } from "./editor";
 import type { Profile } from "./profile";
+import { Icon } from "./Icon";
 import "./account.css";
-import "./editor.css";
+
+type AccountPreview = Pick<Profile, "display_name" | "initials">;
 
 export function AccountPage() {
   const { account, logout, status, refresh } = useSession();
-  const [error, setError] = useState("");
+  const [logoutError, setLogoutError] = useState<{ owner: string; session: string; message: string } | null>(null);
+  const error = logoutError && (!account || (account.id === logoutError.owner && account.csrf_token === logoutError.session)) ? logoutError.message : "";
+  const [preview, setPreview] = useState<{ owner: string; profile: AccountPreview } | null>(null);
+  const previewProfile = useCallback((profile: AccountPreview) => setPreview({ owner: account?.id || "", profile }), [account?.id]);
+  const accountNow = useRef(account);
+  accountNow.current = account;
+  const mounted = useRef(false);
+  const logoutAttempt = useRef(0);
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; };
+  }, []);
+  async function handleLogout() {
+    const owner = accountNow.current;
+    if (!owner) return;
+    const attempt = ++logoutAttempt.current;
+    setLogoutError(null);
+    try {
+      await logout();
+    } catch {
+      const current = accountNow.current;
+      if (mounted.current && logoutAttempt.current === attempt && (!current || (current.id === owner.id && current.csrf_token === owner.csrf_token))) {
+        setLogoutError({ owner: owner.id, session: owner.csrf_token, message: "Could not end the server session. Please try logging in again." });
+      }
+    }
+  }
   if (!account)
     return (
       <div className="page container">
@@ -20,6 +47,7 @@ export function AccountPage() {
         {error && <p role="alert">{error}</p>}
       </div>
     );
+  const visual = preview?.owner === account.id ? preview.profile : account;
   return (
     <div className="page container">
       <div className="page-heading">
@@ -28,28 +56,23 @@ export function AccountPage() {
         <p>The details that make every new journey feel familiar.</p>
       </div>
       <div className="account-layout"><aside className="content-card account-sidebar">
-        <span className="avatar">{account.initials}</span>
-        <h3>{account.display_name}</h3>
-        <p>{account.email}</p>
+        <span className="avatar large">{visual.initials}</span>
+        <h3>{visual.display_name}</h3>
+        <p className="small-muted">{account.email}</p>
+        <hr className="account-divider" />
         <Link to="/trips" className="text-link">My trips</Link><br /><br /><button
-          className="btn btn-light"
-          onClick={() => {
-            void logout().catch(() =>
-              setError(
-                "Could not end the server session. Please try logging in again.",
-              ),
-            );
-          }}
+          className="inline-action text-danger"
+          onClick={() => void handleLogout()}
         >
           Log out
         </button>
         {error && <p role="alert">{error}</p>}
-      </aside><ProfileForm key={account.id} account={account} refresh={refresh} logout={logout} /></div>
+      </aside><ProfileForm key={account.id} account={account} refresh={refresh} logout={handleLogout} onPreview={previewProfile} /></div>
     </div>
   );
 }
 
-function ProfileForm({ account, refresh, logout }: { account: Account; refresh: () => Promise<void>; logout: () => Promise<void> }) {
+function ProfileForm({ account, refresh, logout, onPreview }: { account: Account; refresh: () => Promise<void>; logout: () => Promise<void>; onPreview: (profile: AccountPreview) => void }) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [error, setError] = useState("");
   const [saved, setSaved] = useState(false);
@@ -63,18 +86,19 @@ function ProfileForm({ account, refresh, logout }: { account: Account; refresh: 
       if (response.status === 401) { await refresh(); return; }
       if (!response.ok) throw new Error("Profile unavailable");
       const value = await response.json();
-      if (active) setProfile(value);
+      if (active) { setProfile(value); onPreview(value); }
     }).catch(() => { if (active) setError("Your profile could not be loaded. Reload to try again."); });
     return () => { active = false; mounted.current = false; };
-  }, [refresh]);
+  }, [refresh, onPreview]);
   function update(next: Profile) {
     const words = next.display_name.trim().split(/\s+/).filter(Boolean);
     const initials = (words.length > 1 ? [words[0], words[words.length - 1]] : words).map(word => word[0]).join("").toUpperCase();
-    setProfile({ ...next, initials }); setSaved(false); setError("");
+    const value = { ...next, initials };
+    setProfile(value); onPreview(value); setSaved(false); setError("");
   }
   function toggle<T>(values: T[], value: T): T[] { return values.includes(value) ? values.filter(item => item !== value) : [...values, value]; }
   if (!profile) return <section className="content-card account-main"><p role={error ? "alert" : "status"}>{error || "Loading your profile…"}</p></section>;
-  return <section className="content-card account-main brief-editor"><form onSubmit={event => {
+  return <section className="content-card account-main"><form onSubmit={event => {
     event.preventDefault();
     if (saving) return;
     setSaving(true); setSaved(false); setError("");
@@ -85,24 +109,24 @@ function ProfileForm({ account, refresh, logout }: { account: Account; refresh: 
       if (!response.ok) throw new Error("Update rejected");
       const value = await response.json();
       if (!mounted.current) return;
-      setProfile(value); setSaved(true);
+      setProfile(value); onPreview(value); setSaved(true);
       await refresh();
     }).catch(() => { if (mounted.current) setError("Your changes could not be saved. Check your details and session, then try again."); }).finally(() => { if (mounted.current) setSaving(false); });
   }}>
     <h2>Profile</h2>
-    <div className="account-initials"><span className="avatar" aria-label={`Account initials: ${profile.initials}`}>{profile.initials}</span><p>Your initials are your account image.</p></div>
+    <div className="avatar-tools"><span className="avatar large" aria-label={`Account initials: ${profile.initials}`}>{profile.initials}</span><p className="small-muted">Your initials are your account image.</p></div>
     <fieldset disabled={saving} className="profile-fields"><legend className="visually-hidden">Profile and travel defaults</legend>
       <div className="form-grid"><label className="field"><span>Display name</span><input value={profile.display_name} required maxLength={80} onChange={event => update({ ...profile, display_name: event.target.value })} /></label><label className="field"><span>Email address</span><input value={account.email} readOnly type="email" /></label></div>
-      <section className="account-section"><h2>Travel defaults</h2><p className="subtle-help">A visible starting point for new travel briefs. Existing drafts and itineraries keep their own preferences.</p>
+      <section className="account-section"><h2>Travel defaults</h2><p className="small-muted">A visible starting point for new travel briefs. Existing drafts and itineraries keep their own preferences.</p>
         <label className="field profile-currency"><span>Default currency</span><select value={profile.currency} onChange={event => update({ ...profile, currency: event.target.value })}>{currencies.map(value => <option key={value.code}>{value.code}</option>)}</select></label>
-        <fieldset className="brief-choice-group"><legend>What are you drawn to?</legend><div className="interest-chips">{(Object.keys(interestPrompts) as Interest[]).map(value => <button key={value} type="button" className={`interest-chip ${profile.interests.includes(value) ? "selected" : ""}`} aria-pressed={profile.interests.includes(value)} onClick={() => update({ ...profile, interests: toggle(profile.interests, value) })}>{value}</button>)}</div></fieldset>
-        <div className="preference-pair"><fieldset className="brief-choice-group"><legend>Travel pace</legend><div className="pace-row">{(Object.keys(pacePrompts) as Pace[]).map(value => <button key={value} type="button" className={`pace-btn ${profile.pace === value ? "selected" : ""}`} aria-pressed={profile.pace === value} onClick={() => update({ ...profile, pace: profile.pace === value ? null : value })}>{value[0].toUpperCase() + value.slice(1)}</button>)}</div><p className="selection-help">Choose one, or select again to clear.</p></fieldset>
-        <fieldset className="brief-choice-group"><legend>Transport preferences</legend><div className="pace-row">{(Object.keys(transportLabels) as Transport[]).map(value => <button key={value} type="button" className={`pace-btn ${profile.transport.includes(value) ? "selected" : ""}`} aria-pressed={profile.transport.includes(value)} onClick={() => update({ ...profile, transport: toggle(profile.transport, value) })}>{transportLabels[value]}</button>)}</div><p className="selection-help">Soft priorities. Leave empty for no preference.</p></fieldset></div>
+        <fieldset className="field-group"><legend className="label-row"><Icon name="spark" size={16} /><strong>Experiences you love</strong><span>Choose a few</span></legend><div className="chips">{(Object.keys(interestPrompts) as Interest[]).map(value => <button key={value} type="button" className={`chip ${profile.interests.includes(value) ? "active" : ""}`} aria-pressed={profile.interests.includes(value)} onClick={() => update({ ...profile, interests: toggle(profile.interests, value) })}><Icon name={profile.interests.includes(value) ? "check" : "plus"} size={14} /> {value}</button>)}</div></fieldset>
+        <div className="preference-pair"><fieldset className="field-group"><legend className="label-row"><Icon name="sliders" size={16} /><strong>Travel pace</strong></legend><div className="pace-row">{(Object.keys(pacePrompts) as Pace[]).map((value, index) => <button key={value} type="button" className={`pace-btn ${profile.pace === value ? "selected" : ""}`} aria-label={value[0].toUpperCase() + value.slice(1)} aria-pressed={profile.pace === value} onClick={() => update({ ...profile, pace: profile.pace === value ? null : value })}><span>{["Take it slowly", "A little of both", "See a little more"][index]}</span><strong>{value[0].toUpperCase() + value.slice(1)}</strong></button>)}</div><p className="selection-help">Choose a rhythm for your days.</p></fieldset>
+        <fieldset className="field-group transport-selection"><legend className="label-row"><Icon name="route" size={16} /><strong>Transport preferences</strong></legend><div className="pace-row">{(Object.keys(transportLabels) as Transport[]).map((value, index) => <button key={value} type="button" className={`pace-btn ${profile.transport.includes(value) ? "selected" : ""}`} aria-pressed={profile.transport.includes(value)} onClick={() => update({ ...profile, transport: toggle(profile.transport, value) })}><span><Icon name={["walk", "bus", "car"][index]} size={17} /></span><strong>{transportLabels[value]}</strong></button>)}</div><p className="selection-help">Choose one or more. Leave empty for no preference.</p></fieldset></div>
         <label className="field"><span>Additional preferences</span><textarea rows={4} maxLength={24000} value={profile.notes} onChange={event => update({ ...profile, notes: event.target.value })} placeholder="The little things you always like to keep in mind…" /></label>
       </section>
-      <div className="profile-save-row"><span className="subtle-help">Changes apply to new travel briefs.</span><button type="submit" className="btn btn-primary">{saving ? "Saving…" : "Save changes"}</button></div>
+      <div className="profile-save-row"><span className="small-muted">Changes apply to new travel briefs.</span><button type="submit" className="btn btn-primary">{saving ? "Saving…" : "Save changes"} <Icon name="check" size={16} /></button></div>
     </fieldset>
     {saved && <p role="status">Your travel defaults have been saved.</p>}{error && <p role="alert">{error}</p>}
-    <button type="button" className="btn btn-quiet account-mobile-logout" onClick={() => void logout().catch(() => setError("Could not end the server session. Please try logging in again."))}>Log out</button>
+    <div className="quiet-links account-logout"><button type="button" className="inline-action text-danger" onClick={() => void logout()}>Log out</button></div>
   </form></section>;
 }

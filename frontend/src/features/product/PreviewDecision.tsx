@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { useSession } from './session';
+import { Icon } from './Icon';
 import { submissionGeneration, taskRequest, TaskFailure, type Preview } from './taskClient';
 
 export type PreviewDecision = { id: string; state: 'saved' | 'discarded'; saved_trip_id: string | null; outcome: 'saved' | 'discarded' | 'saved_result_deleted' };
@@ -14,7 +15,7 @@ export function DecisionReceipt({ decision }: { decision: Pick<Preview, 'state' 
 }
 
 /** A keyed, mounted preview owns its response; writes never navigate another page. */
-export function PreviewDecisionControls({ preview, onDecision }: { preview: Preview; onDecision: (preview: Preview) => void }) {
+export function PreviewDecisionControls({ preview, onDecision, showDiscard = true, saveClassName = "btn btn-primary", saveIcon = <Icon name="bookmark" size={16} />, saveLabel = "Save to My trips", discardLabel = "Discard preview" }: { preview: Preview; onDecision: (preview: Preview) => void; showDiscard?: boolean; saveClassName?: string; saveIcon?: ReactNode; saveLabel?: string; discardLabel?: string }) {
   const { account, refresh } = useSession();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -64,15 +65,20 @@ export function PreviewDecisionControls({ preview, onDecision }: { preview: Prev
   return <>
     <div className="preview-decision-actions">
       {needsCheck ? <button className="btn btn-light" disabled={busy} onClick={() => void perform()}>Check decision status</button> : <>
-        <button className="btn btn-primary" disabled={busy} onClick={() => void perform('save')}>{busy ? 'Saving decision…' : 'Save to My trips'}</button>
-        <button className="btn btn-light" disabled={busy} onClick={() => setConfirm(true)}>Discard preview</button>
+        <button className={saveClassName} disabled={busy} onClick={() => void perform('save')}>{saveIcon}{busy ? 'Saving decision…' : saveLabel}</button>
+        {showDiscard && <button className="btn btn-quiet" disabled={busy} onClick={() => setConfirm(true)}>{discardLabel}</button>}
       </>}
       {error && <p role="alert">{error}</p>}
     </div>
-    <dialog ref={dialog} className="library-dialog" aria-labelledby="discard-preview-title" onCancel={event => { if (busy) event.preventDefault(); else setConfirm(false); }}>
-      <h2 id="discard-preview-title">Discard this preview?</h2><p>This removes the unsaved itinerary permanently. Your submitted travel brief stays available in planning tasks.</p>
+    <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby="discard-preview-title" onCancel={event => { if (busy) event.preventDefault(); else setConfirm(false); }} onClick={event => {
+      if (busy || event.target !== event.currentTarget) return;
+      const bounds = event.currentTarget.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setConfirm(false);
+    }}>
+      <button type="button" className="modal-close" aria-label="Close" disabled={busy} onClick={() => setConfirm(false)}><Icon name="close" size={20} /></button><div className="modal-icon"><Icon name="close" size={23} /></div>
+      <h2 id="discard-preview-title">Discard this preview?</h2><p>This removes the unsaved preview. Your saved trips and drafts stay as they are.</p>
       {error && <p role="alert">{error}</p>}
-      <div className="draft-actions"><button className="btn btn-light" disabled={busy} onClick={() => setConfirm(false)}>Keep preview</button><button className="btn btn-primary" disabled={busy || needsCheck} onClick={() => void perform('discard')}>Confirm discard</button></div>
+      <div className="modal-actions"><button className="btn btn-light" disabled={busy} onClick={() => setConfirm(false)}>Keep preview</button><button aria-label="Confirm discard" className="btn btn-danger" disabled={busy || needsCheck} onClick={() => void perform('discard')}>Discard preview</button></div>
     </dialog>
   </>;
 }

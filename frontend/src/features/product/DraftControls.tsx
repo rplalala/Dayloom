@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { draftRequest, DraftFailure, type Draft } from "./drafts";
-import { restoreBrief } from "./editor";
+import { composedPreferences, restoreBrief } from "./editor";
 import { useSession } from "./session";
+import { Icon } from "./Icon";
+import { dottedDate } from "./detail/display";
 import "./library.css";
 
-export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => void }) {
+export type DraftActionsHandle = { save: () => Promise<void> };
+
+export function DraftControls({ onLoading, actionsRef }: { onLoading: (loading: boolean) => void; actionsRef?: Ref<DraftActionsHandle> }) {
   const session = useSession();
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,14 +18,29 @@ export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => 
   const mounted = useRef(true);
   const [params, setParams] = useSearchParams();
   const id = params.get("draft") || session.draftRef?.id || null;
-  const title = session.draftTitle;
+  const title = session.draftTitle || `${session.brief.destination.trim() || "A new travel idea"} · Planning draft`;
+  const acceptedTitle = session.draftRef?.title || `${session.brief.destination.trim() || "A new travel idea"} · Planning draft`;
+  const recoveredTitle = session.draftTitle && session.draftTitle !== acceptedTitle ? session.draftTitle : null;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [conflict, setConflict] = useState(false);
   const [saved, setSaved] = useState<{ editor: string; title: string } | null>(null);
+  const [review, setReview] = useState(false);
+  const reviewDialog = useRef<HTMLDialogElement>(null);
   const current = useRef(session);
   current.current = session;
   const owner = session.account?.id;
+  useImperativeHandle(actionsRef, () => ({ save: () => save(false) }));
+  useEffect(() => {
+    const dialog = reviewDialog.current;
+    if (!review || !dialog) return;
+    const opener = document.activeElement;
+    dialog.showModal();
+    return () => {
+      if (dialog.open) dialog.close();
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus();
+    };
+  }, [review]);
 
   useEffect(() => {
     mounted.current = true;
@@ -82,19 +101,31 @@ export function DraftControls({ onLoading }: { onLoading: (loading: boolean) => 
     } finally { if (stillCurrent()) setBusy(false); }
   }
 
-  return <section className="draft-toolbar" aria-label="Planning draft">
-    <label className="field"><span>Draft title</span><input value={title} maxLength={120} placeholder="A new travel idea" onChange={event => session.setDraftTitle(event.target.value)} /></label>
-    <div className="draft-actions"><button type="button" className="btn btn-outline" disabled={busy || (!!id && session.draftRef?.id !== id)} onClick={() => void save(false)}>Save draft</button>
-      {id && <button type="button" className="btn btn-outline" disabled={busy || session.draftRef?.id !== id} onClick={() => void save(true)}>Save as new draft</button>}
-      {conflict && <button type="button" className="btn btn-outline" disabled={busy} onClick={() => {
+  return <section className="draft-controls" aria-label="Planning draft">
+    <div className="quiet-links draft-actions">
+      <button type="button" className="inline-action" aria-label="Save draft" disabled={busy || (!!id && session.draftRef?.id !== id)} onClick={() => void save(false)}>{id ? "Update draft" : "Save travel brief"}</button>
+      {id && <button type="button" className="inline-action" aria-label="Save as new draft" disabled={busy || session.draftRef?.id !== id} onClick={() => void save(true)}>Save as a new draft</button>}
+      {conflict && <button type="button" className="inline-action" disabled={busy} onClick={() => {
         if (window.confirm("Reload the saved draft? This replaces your local edits.")) {
           if (id) setParams({ draft: id }, { replace: true });
           session.setDraftRef(null); setConflict(false);
         }
       }}>Reload saved draft</button>}
+      <button type="button" className="inline-action" onClick={() => setReview(true)}>Review travel brief</button>
     </div>
     {error && <p role="alert" className="form-error">{error}</p>}
-    {saved && <p role="status">{saved.editor === JSON.stringify(session.brief) && saved.title === title ? "Draft saved." : "You have unsaved changes."}</p>}
-    <p className="subtle-help">Keep an unfinished idea. Saving a draft does not generate an itinerary.</p>
+    {saved && <p className="subtle-help" role="status">{saved.editor === JSON.stringify(session.brief) && saved.title === title ? "Draft saved." : "You have unsaved changes."}</p>}
+    {review && <dialog className="modal-card library-dialog" ref={reviewDialog} aria-labelledby="travel-brief-title" onCancel={event => { event.preventDefault(); setReview(false); }} onClick={event => {
+      const box = event.currentTarget.getBoundingClientRect();
+      if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) setReview(false);
+    }}>
+      <button type="button" className="modal-close" aria-label="Close dialog" onClick={() => setReview(false)}><Icon name="close" size={21} /></button>
+      <div className="modal-icon"><Icon name="sliders" size={23} /></div>
+      <h2 id="travel-brief-title">Your travel brief</h2><p>Everything you have chosen, in one place.</p>
+      <div className="detail-note"><strong>Destination &amp; dates</strong><span>{session.brief.destination || "Not entered"}<br />{dottedDate(session.brief.start_date)} — {dottedDate(session.brief.end_date)}{recoveredTitle && <><br /><span>Recovered draft name: {recoveredTitle}</span></>}</span></div>
+      <div className="detail-note"><strong>Travelers &amp; whole-trip budget</strong><span>{session.brief.travelers || "Not entered"} travelers · {session.brief.budget ? `${session.brief.currency || "Currency not set"} ${session.brief.budget}` : "Budget not entered"}</span></div>
+      <div className="detail-note"><strong>Preferences &amp; requirements</strong><span style={{ whiteSpace: "pre-wrap" }}>{composedPreferences(session.brief) || "No additional preferences."}</span></div>
+      <div className="modal-actions"><button type="button" className="btn btn-primary" onClick={() => setReview(false)}>Keep editing</button></div>
+    </dialog>}
   </section>;
 }

@@ -167,8 +167,8 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         notes.fill("My own sentence.\n")
         nature = page.get_by_role("button", name="Nature", exact=True)
         nature.click()
-        relaxed = page.get_by_role("button", name="Take it slowly Relaxed")
-        balanced = page.get_by_role("button", name="A little of both Balanced")
+        relaxed = page.get_by_role("button", name="Relaxed", exact=True)
+        balanced = page.get_by_role("button", name="Balanced", exact=True)
         relaxed.click()
         balanced.click()
         expect(relaxed).to_have_attribute("aria-pressed", "false")
@@ -215,19 +215,19 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         balanced.click()
         original = notes.input_value()
         page.get_by_role("button", name="Polish preferences", exact=True).click()
-        expect(page.get_by_role("heading", name="Suggested rewrite")).to_be_visible()
+        expect(page.get_by_text("A clearer expression", exact=True)).to_be_visible()
         expect(notes).to_have_value(original)
-        page.get_by_role("button", name="Dismiss", exact=True).click()
+        page.get_by_role("button", name="Keep original", exact=True).click()
         expect(notes).to_have_value(original)
         page.get_by_role("button", name="Polish preferences", exact=True).click()
-        page.get_by_role("button", name="Apply rewrite", exact=True).click()
+        page.get_by_role("button", name="Apply suggestion", exact=True).click()
         expect(notes).to_have_value(
             original.replace("quiet parks", "peaceful parks").replace(
                 "time to rest", "unhurried breaks"
             )
         )
         expect(balanced).to_have_attribute("aria-pressed", "false")
-        page.get_by_role("button", name="Undo rewrite", exact=True).click()
+        page.get_by_role("button", name="Undo", exact=True).click()
         expect(notes).to_have_value(original)
         expect(balanced).to_have_attribute("aria-pressed", "false")
         # Delay the actual bounded API response; a later edit must fence its preview.
@@ -245,14 +245,14 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         response = delayed[0].fetch()
         notes.fill(original + "\nNewer text wins.")
         delayed[0].fulfill(response=response)
-        expect(page.get_by_role("button", name="Apply rewrite", exact=True)).to_have_count(0)
+        expect(page.get_by_role("button", name="Apply suggestion", exact=True)).to_have_count(0)
         expect(notes).to_have_value(original + "\nNewer text wins.")
         expect(page.get_by_role("button", name="Polish preferences", exact=True)).to_be_disabled()
         page.unroute("**/api/input-assistance/preferences/polish")
         # Tab recovery retains all fields/metadata and performs no generation.
         relaxed.click()
         page.reload()
-        expect(page.get_by_role("button", name="Take it slowly Relaxed")).to_have_attribute(
+        expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "true"
         )
         expect(page.get_by_label("Places or experiences to include")).to_have_value("An art museum")
@@ -297,21 +297,21 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         page.evaluate("window.dispatchEvent(new Event('focus'))")
         expect(page.get_by_role("heading", name="Log in to continue your brief.")).to_be_visible()
         expect(page.get_by_label("Places or experiences to include")).to_have_count(0)
-        expect(page.get_by_role("button", name="Take it slowly Relaxed")).to_have_count(0)
+        expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_count(0)
         page.get_by_role("link", name="Log in", exact=True).last.click()
         page.get_by_label("Email address").fill(email)
         page.get_by_label("Password", exact=True).fill("a secure password")
         page.get_by_role("button", name="Log in", exact=True).click()
         expect(page.get_by_label("Places or experiences to include")).to_have_value("An art museum")
-        expect(page.get_by_role("button", name="Take it slowly Relaxed")).to_have_attribute(
+        expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "true"
         )
         page.goto(editor_app.base_url + "/account")
-        page.get_by_role("button", name="Log out", exact=True).click()
+        page.get_by_role("button", name="Log out", exact=True).last.click()
         page.goto(editor_app.base_url + "/plan")
         expect(page.get_by_label("Places or experiences to include")).to_have_value("")
         expect(page.get_by_label("Additional preferences")).to_have_value("")
-        expect(page.get_by_role("button", name="Take it slowly Relaxed")).to_have_attribute(
+        expect(page.get_by_role("button", name="Relaxed", exact=True)).to_have_attribute(
             "aria-pressed", "false"
         )
         assert len(generation) == 1  # Reload and same-account reauthentication never replay.

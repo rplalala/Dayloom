@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from playwright.sync_api import Browser
+from playwright.sync_api import Browser, expect
 from pydantic import SecretStr
 
 BROWSER_TEST_SIGNING_KEY = "browser-test-key-with-at-least-32-characters"
@@ -36,6 +36,41 @@ class IsolatedEnvironment(dict[str, str]):
         return "<isolated browser environment; credential values hidden>"
 
     __str__ = __repr__
+
+
+def seed_legacy_draft_title(page, value):
+    """Seed a pre-r7 local recovery record; current naming uses Library Rename.
+
+    This is an explicit legacy-data precondition, not a production editing hook.
+    The real provider restores it after reload and real Save must preserve it.
+    """
+    page.get_by_role("button", name="Review travel brief", exact=True).wait_for()
+    page.evaluate("""value => {
+        const key = 'dayloom.editor.v1';
+        const record = JSON.parse(sessionStorage.getItem(key));
+        if (!record || !record.brief) throw new Error('Missing legacy recovery precondition');
+        sessionStorage.setItem(key, JSON.stringify({...record, draftTitle:value}));
+    }""", value)
+    page.reload()
+    page.get_by_role("button", name="Review travel brief", exact=True).wait_for()
+
+
+def expect_recovered_draft_name(page, value):
+    """Observe historical local names without inventing a naming control in r7."""
+    page.get_by_role("button", name="Review travel brief", exact=True).click()
+    dialog = page.get_by_role("dialog", name="Your travel brief", exact=True)
+    expect(dialog.get_by_role("textbox")).to_have_count(0)
+    if value:
+        expect(dialog.get_by_text("Recovered draft name: " + value, exact=True)).to_be_visible()
+    else:
+        expect(dialog.get_by_text("Recovered draft name:", exact=False)).to_have_count(0)
+    page.get_by_role("button", name="Keep editing", exact=True).click()
+
+
+def open_json_export(page):
+    """Open the r7 export choice before selecting the lossless JSON artifact."""
+    page.get_by_role("button", name="Export itinerary", exact=True).click()
+    page.get_by_role("button", name="Export JSON", exact=True).click()
 
 
 @dataclass(frozen=True)
@@ -94,6 +129,7 @@ def isolated_environment(
             "TEMP": str(temporary_directory),
             "TMP": str(temporary_directory),
             "TMPDIR": str(temporary_directory),
+            "CHROME_LOG_FILE": str(temporary_directory / "chromium.log"),
             "PYTHONUTF8": "1",
             "PYTHONUNBUFFERED": "1",
             "PRODUCT_DATABASE_URL": database_url.get_secret_value(),

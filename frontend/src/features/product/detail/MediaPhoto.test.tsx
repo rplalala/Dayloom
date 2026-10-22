@@ -8,7 +8,7 @@ describe('credited media display', () => {
     expect(screen.getByRole('link', { name: 'Travel Photographer' })).toHaveAttribute('href', 'https://www.google.com/maps/contrib/123');
     fireEvent.error(screen.getByRole('img', { name: 'Verified park · place photograph' }));
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
-    expect(screen.getByText('Place photograph unavailable · illustration')).toBeVisible();
+    expect(screen.getByLabelText('Place photograph unavailable · illustration')).toBeVisible();
   });
   it('keeps the activity thumbnail details action separate from credit links', () => {
     const open = vi.fn();

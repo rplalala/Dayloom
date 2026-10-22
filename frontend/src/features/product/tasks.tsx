@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useSession } from './session';
 import { TripDetail } from './detail/TripDetail';
 import './tasks.css';
-import { TaskActions, TaskOutcome } from './TaskActions';
 import { TaskContext, useTasks } from './taskContext';
 import { taskRequest, TaskFailure, taskActive, type PlanningTask, type Preview } from './taskClient';
 import { DecisionReceipt, PreviewDecisionControls } from './PreviewDecision';
+import { PlanProgress } from './PlanOutput';
+import { Icon } from './Icon';
+import { replanBrief } from './replan';
 
 export function TaskProvider({ children }: { children: ReactNode }) {
   const { account, refresh: refreshSession } = useSession();
@@ -64,7 +66,8 @@ export function TaskEntry() {
   const { tasks } = useTasks();
   if (!account) return null;
   const active = tasks.find(taskActive);
-  return <Link className={`task-entry ${active ? 'is-running' : ''}`} to="/planning" aria-label={active ? 'Planning task running' : 'Planning tasks'}><span aria-hidden="true">◷</span><span>{active ? 'Planning…' : 'Planning tasks'}</span></Link>;
+  if (!active) return null;
+  return <Link className={`task-entry ${active ? 'is-running' : ''}`} to="/planning" aria-label={active ? 'Planning task running' : 'Planning tasks'}><span className="task-dot" aria-hidden="true" /><span>Planning your trip</span></Link>;
 }
 
 export function PlanningTasksPage() {
@@ -91,12 +94,12 @@ export function PlanningTasksPage() {
     {(error || selected.error) && <p role="alert">{error || selected.error}</p>}
     <button className="btn btn-light" onClick={() => void refresh()}>Refresh progress</button>
     {!shown.length && <p>{taskId ? 'Loading task…' : 'No recent planning tasks. Start with a travel brief.'}</p>}
-    {shown.map(task => <section key={task.id} className="flow-card task-progress"><span className="eyebrow">{task.state.replaceAll('_', ' ')}</span><h2>{task.request.destination}</h2>{taskActive(task) && <p role="status">{task.progress.message}</p>}{taskActive(task) && <p>You can edit another brief and save it as a draft while you wait.</p>}<TaskOutcome task={task} /><TaskActions task={task} onUpdate={updated => setSelected({ id: taskId, owner: account.id, task: updated })} />{task.preview_id && <Link className="btn btn-primary" to={`/previews/${task.preview_id}`}>Open itinerary preview →</Link>}<details><summary>Submitted brief</summary><p>{task.request.start_date} – {task.request.end_date} · {task.request.traveler_count} travelers</p><p>{task.request.budget.amount} {task.request.budget.currency}</p><p className="literal-preferences">{task.request.additional_preferences}</p></details></section>)}
+    {shown.map(task => <div key={task.id} className="task-progress"><h2>{task.request.destination}</h2><PlanProgress task={task} />{task.preview_id && <Link className="btn btn-primary" to={`/previews/${task.preview_id}`}>Open itinerary preview <Icon name="arrow" size={17} /></Link>}<details className="review-panel"><summary>Submitted brief</summary><p>{task.request.start_date} – {task.request.end_date} · {task.request.traveler_count} travelers</p><p>{task.request.budget.amount} {task.request.budget.currency}</p><p className="literal-preferences">{task.request.additional_preferences}</p></details></div>)}
     <RecoverablePreviews /><Link to="/plan" className="btn btn-light">Continue a brief</Link>
   </div>;
 }
 
-export function RecoverablePreviews() {
+export function RecoverablePreviews({ compact = false }: { compact?: boolean }) {
   const { account, refresh: refreshSession } = useSession();
   const [result, setResult] = useState<{ owner?: string; previews: Preview[]; error?: string; more?: boolean }>({ previews: [] });
   const [loadingMore, setLoadingMore] = useState(false);
@@ -120,12 +123,16 @@ export function RecoverablePreviews() {
     } catch { if (owner.current === expectedOwner) setResult(previous => ({ ...previous, error: 'Could not load older previews. Try again.' })); }
     finally { setLoadingMore(false); }
   }
-  return <section className="preview-recovery"><h2>Recoverable previews</h2><p>Unsaved itineraries stay here until you decide to keep or discard them.</p>{result.error && <p role="alert">{result.error}</p>}{!result.error && !result.previews.length && <p>No pending previews.</p>}{result.previews.map(preview => <Link key={preview.id} className="preview-recovery-card" to={`/previews/${preview.id}`}><strong>{preview.title || 'Itinerary preview'}</strong><span>Unsaved preview →</span></Link>)}{result.more && <button className="btn btn-light" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</section>;
+  const rows = <>{result.error && <p role="alert">{result.error}</p>}{!result.error && !result.previews.length && <p>No pending previews.</p>}{result.previews.map(preview => <div key={preview.id} className="recovery-row"><div><strong>{preview.title || 'Itinerary preview'}</strong><small>{preview.destination || "A journey to return to"} · Unsaved preview</small></div><div className="recovery-actions"><Link className="btn btn-light btn-small" to={`/previews/${preview.id}`}>View preview</Link>{compact && <PreviewDecisionControls saveLabel="Save" discardLabel="Discard" key={`${account.id}:${account.csrf_token}:${preview.id}`} preview={preview} onDecision={decision => setResult(previous => previous.owner === account.id ? { ...previous, previews: previous.previews.filter(item => item.id !== decision.id) } : previous)} />}</div></div>)}{result.more && <button className="btn btn-light" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</>;
+  if (compact) return result.previews.length || result.error ? <details className="recovery-panel"><summary><Icon name="layers" size={17} />Unsaved previews <span className="count-badge">{result.previews.length}</span></summary><p className="small-muted">Pick up where you left off. These are kept until you save or discard them.</p>{rows}</details> : null;
+  return <section className="recovery-panel"><h2>Recoverable previews</h2><p className="small-muted">Unsaved itineraries stay here until you decide to keep or discard them.</p>{rows}</section>;
+
 }
 
 export function PreviewPage() {
   const { previewId } = useParams();
-  const { account, refresh } = useSession();
+  const { account, refresh, replaceBrief } = useSession();
+  const navigate = useNavigate();
   const [result, setResult] = useState<{ id?: string; owner?: string; preview?: Preview; error?: string }>({});
   useEffect(() => {
     if (!account) return;
@@ -137,5 +144,5 @@ export function PreviewPage() {
   if (result.owner !== account.id || result.id !== previewId) return <p className="container page" role="status">Loading preview…</p>;
   if (result.preview && result.preview.state !== 'pending') return <DecisionReceipt decision={result.preview} />;
   if (result.error || !result.preview?.snapshot) return <div className="container page"><h1>{result.error || 'This preview is unavailable.'}</h1><Link to="/planning">Return to planning tasks</Link></div>;
-  return <><div className="container preview-state"><strong>Unsaved itinerary preview</strong><span>This journey is separate from My trips.</span><Link to="/planning">All recoverable previews →</Link><PreviewDecisionControls key={`${account.id}:${account.csrf_token}:${previewId}`} preview={result.preview} onDecision={preview => setResult({ id: previewId, owner: account.id, preview })} /></div><TripDetail detail={result.preview.snapshot} mediaEndpoint={`/api/previews/${previewId}/media`} /></>;
+  return <TripDetail mode="preview" detail={result.preview.snapshot} mediaEndpoint={`/api/previews/${previewId}/media`} onReplan={() => { replaceBrief(replanBrief(result.preview!.snapshot!.request), "replan"); navigate("/plan"); }} actions={<PreviewDecisionControls saveClassName="btn btn-glass" key={`${account.id}:${account.csrf_token}:${previewId}`} preview={result.preview} onDecision={preview => setResult({ id: previewId, owner: account.id, preview })} />} />;
 }

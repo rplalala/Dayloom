@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { getDestinationSuggestions, type DestinationSuggestion } from "../api";
 
 interface DestinationComboboxProps {
@@ -6,9 +6,11 @@ interface DestinationComboboxProps {
   onChange: (value: string) => void;
   onSelect?: () => void;
   disabled: boolean;
+  label?: ReactNode;
+  placeholder?: string;
 }
 
-export function DestinationCombobox({ value, onChange, onSelect, disabled }: DestinationComboboxProps) {
+export function DestinationCombobox({ value, onChange, onSelect, disabled, label = "Destination", placeholder = "Beijing" }: DestinationComboboxProps) {
   const [choices, setChoices] = useState<DestinationSuggestion[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [notice, setNotice] = useState("");
@@ -61,10 +63,10 @@ export function DestinationCombobox({ value, onChange, onSelect, disabled }: Des
   }
 
   return <div className="destination-control field-wide">
-    <label>Destination
-      <input type="text" role="combobox" aria-autocomplete="list" aria-controls={listId}
+    <label>{label}
+      <input aria-label="Destination" type="text" role="combobox" aria-autocomplete="list" aria-controls={listId}
         aria-expanded={choices.length > 0} aria-activedescendant={activeIndex >= 0 ? `${listId}-${activeIndex}` : undefined}
-        value={value} required disabled={disabled} placeholder="Beijing"
+        value={value} required disabled={disabled} placeholder={placeholder}
         onChange={event => {
           selectedLabel.current = null;
           setChoices([]);

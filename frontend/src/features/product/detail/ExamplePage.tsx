@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { HttpError, requestJson } from "../../../shared/api/http";
 import { TripDetail } from "./TripDetail";
 import type { ProductDetail } from "./types";
 import { CopyControls } from '../CopyControls';
+import { useSession } from '../session';
+import { replanBrief } from '../replan';
 
 export function ExamplePage() {
+  const navigate = useNavigate();
+  const { replaceBrief } = useSession();
   const { exampleId } = useParams();
   const [result, setResult] = useState<{
     id?: string;
@@ -44,5 +48,5 @@ export function ExamplePage() {
         <Link to="/trips">Browse examples →</Link>
       </div>
     );
-  return <TripDetail key={result.detail.id} detail={result.detail} actions={<CopyControls kind="example" source={result.detail.id} title={result.detail.title} />} />;
+  return <TripDetail key={result.detail.id} detail={result.detail} onReplan={() => { replaceBrief(replanBrief(result.detail!.request), "replan"); navigate("/plan"); }} actions={<CopyControls buttonClassName="btn btn-glass" kind="example" source={result.detail.id} title={result.detail.title} />} />;
 }

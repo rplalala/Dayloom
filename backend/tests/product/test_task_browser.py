@@ -15,6 +15,7 @@ from pydantic import SecretStr
 from backend.tests.product.browser_harness import (
     BrowserApplication,
     isolated_environment,
+    seed_legacy_draft_title,
 )
 from backend.tests.product.database_safety import require_test_database
 
@@ -133,7 +134,6 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         with page.expect_request(lambda request: "operation_key=" in request.url):
             page.get_by_role("button", name="Generate itinerary", exact=False).click()
         page.get_by_label("Destination", exact=True).fill("Kyoto")
-        page.get_by_label("Draft title", exact=True).fill("Brief B while A runs")
         page.get_by_role("button", name="Save draft", exact=True).click()
         expect(page.get_by_text("Draft saved.", exact=False)).to_be_visible()
         assert held_recovery
@@ -155,12 +155,14 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         page.goto(base + task_url)
         expect(page.get_by_role("heading", name="Sydney", exact=True)).to_be_visible()
         page.reload()
-        expect(page.get_by_text("You can edit another brief", exact=False)).to_be_visible()
+        expect(
+            page.get_by_text("Planning continues while you work on another brief.", exact=False)
+        ).to_be_visible()
         page.screenshot(path=str(SCRATCH / "running-desktop.png"), full_page=True)
         page.close()
         page = context.new_page()
         page.goto(base + "/account")
-        page.get_by_role("button", name="Log out", exact=True).click()
+        page.get_by_role("button", name="Log out", exact=True).last.click()
         page.goto(base + "/planning")
         expect(page.get_by_role("heading", name="Your planning tasks are private.")).to_be_visible()
         (signals / "model-release").touch()
@@ -171,26 +173,26 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         assert (signals / "executions").read_text().splitlines() == ["one"]
         assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
         page.get_by_role("link", name="Open itinerary preview").click()
-        expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+        expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         preview_url = page.url
         page.reload()
-        expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+        expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         page.screenshot(path=str(SCRATCH / "preview-desktop.png"), full_page=True)
         page.set_viewport_size({"width": 800, "height": 1000})
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.screenshot(path=str(SCRATCH / "preview-800.png"), full_page=True)
         page.set_viewport_size({"width": 390, "height": 844})
-        expect(page.get_by_role("link", name="Planning tasks", exact=True)).to_be_visible()
+        expect(page.get_by_role("link", name="Back to previews", exact=True)).to_be_visible()
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.screenshot(path=str(SCRATCH / "preview-390.png"), full_page=True)
         page.goto(base + "/trips")
-        expect(page.get_by_text("Brief B while A runs", exact=True)).to_be_visible()
+        expect(page.get_by_text("Kyoto · Planning draft", exact=True)).to_be_visible()
         assert page.get_by_text("Sydney journey", exact=True).count() == 0
         # The task still exposes its submitted A, independently of B and browser recovery.
         snapshot = page.request.get(base + f"/api/planning/tasks/{task_id}").json()
         assert snapshot["state"] == "completed" and snapshot["request"]["destination"] == "Sydney"
         page.goto(preview_url)
-        expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+        expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         saved_responses = []
 
         def hold_committed_save(route):
@@ -199,9 +201,10 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         page.route("**/api/previews/*/save", hold_committed_save)
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         expect(page.get_by_role("button", name="Saving decision…", exact=True)).to_be_visible()
-        page.get_by_role("link", name="All recoverable previews →", exact=True).click()
+        page.get_by_role("link", name="Back to previews", exact=True).click()
         page.get_by_role("link", name="My trips", exact=True).click()
-        page.get_by_role("link", name="Continue planning →", exact=True).click()
+        page.get_by_role("link", name="View Kyoto · Planning draft", exact=True).click()
+        page.get_by_role("link", name="Continue planning", exact=True).click()
         expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
         assert saved_responses and saved_responses[0][1].status == 200
         saved_responses[0][0].fulfill(response=saved_responses[0][1])
@@ -222,8 +225,11 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         page.reload()
         expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
         page.goto(base + "/trips")
-        expect(page.get_by_text("Brief B while A runs", exact=True)).to_be_visible()
-        page.get_by_role("link", name="View details →", exact=True).click()
+        expect(page.get_by_text("Kyoto · Planning draft", exact=True)).to_be_visible()
+        saved_card = page.get_by_role("article").filter(
+            has=page.get_by_role("heading", name="Sydney journey", exact=True)
+        )
+        saved_card.get_by_role("link", name="View details", exact=True).click()
         assert page.url == saved_url
         assert (signals / "executions").read_text().splitlines() == ["one"]
     finally:
@@ -267,7 +273,7 @@ def test_browser_recovers_a_lost_decision_response_without_replaying_write(task_
             expect(page.get_by_role("dialog")).to_be_visible()
             assert writes == []
             page.get_by_role("button", name="Keep preview", exact=True).click()
-            expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+            expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
             page.get_by_role("button", name="Discard preview", exact=True).click()
             page.get_by_role("button", name="Confirm discard", exact=True).click()
         else:
@@ -405,7 +411,7 @@ def test_browser_stop_preserves_b_and_revise_requires_explicit_new_generation(ta
                 raise AssertionError("The external model did not reach its controlled entry gate")
             time.sleep(0.025)
         page.get_by_label("Destination", exact=True).fill("Kyoto")
-        page.get_by_label("Draft title", exact=True).fill("Preserve brief B")
+        seed_legacy_draft_title(page, "Preserve brief B")
         page.goto(base + "/planning/" + original["id"])
         expect(page.get_by_role("button", name="Stop planning", exact=True)).to_be_visible()
         page.get_by_role("button", name="Stop planning", exact=True).click()

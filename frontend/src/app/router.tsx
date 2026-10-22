@@ -12,6 +12,7 @@ import { AccountPage } from "../features/product/AccountPage";
 import { ExamplePage } from "../features/product/detail/ExamplePage";
 import { PlanningTasksPage, PreviewPage } from "../features/product/tasks";
 import { SavedPage } from "../features/product/SavedPage";
+import { DraftDetailPage } from "../features/product/DraftDetailPage";
 import { ImportPage } from '../features/product/ImportPage';
 import { CopyRecoveryPage } from '../features/product/CopyRecoveryPage';
 
@@ -26,6 +27,7 @@ export const routes: RouteObject[] = [
       { path: "import", element: <ImportPage /> },
       { path: "copy-recovery", element: <CopyRecoveryPage /> },
       { path: "trips/:tripId", element: <SavedPage /> },
+      { path: "drafts/:draftId", element: <DraftDetailPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "examples/:exampleId", element: <ExamplePage /> },
       { path: "planning", element: <PlanningTasksPage /> },

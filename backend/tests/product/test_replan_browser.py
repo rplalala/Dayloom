@@ -9,6 +9,10 @@ from uuid import uuid4
 import pytest
 from playwright.sync_api import expect
 
+from backend.tests.product.browser_harness import (
+    expect_recovered_draft_name,
+    seed_legacy_draft_title,
+)
 from backend.tests.product.test_browser import register_browser
 from backend.tests.product.test_imports import source
 from backend.tests.product.test_task_browser import SCRATCH, task_app  # noqa: F401
@@ -113,7 +117,7 @@ def fill_generation_fields(page):
 def open_completed_preview_and_save(page, base, task_id):
     page.goto(base + f"/planning/{task_id}")
     page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
-    expect(page.get_by_text("Unsaved itinerary preview", exact=True)).to_be_visible()
+    expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
     page.get_by_role("button", name="Save to My trips", exact=True).click()
     page.get_by_role("link", name="View saved itinerary", exact=True).click()
     expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
@@ -144,7 +148,7 @@ def test_unknown_replan_currency_survives_draft_save_and_reopen_without_defaults
         page.goto(base + f"/trips/{trip_id}")
         page.get_by_role("button", name="Plan again", exact=True).click()
         expect(page.get_by_label("Currency", exact=True)).to_have_value("")
-        page.get_by_label("Draft title", exact=True).fill("Unknown original budget currency")
+        seed_legacy_draft_title(page, "Unknown original budget currency")
         with page.expect_response(
             lambda response: (
                 response.url == base + "/api/drafts" and response.request.method == "POST"
@@ -225,7 +229,7 @@ def test_combined_defaults_drafts_immutable_tasks_saved_and_replan_with_new_gene
             re.compile("Original profile wording")
         )
         fill_generation_fields(page)
-        page.get_by_label("Draft title", exact=True).fill("Original request draft")
+        seed_legacy_draft_title(page, "Original request draft")
         page.get_by_role("button", name="Save draft", exact=True).click()
         expect(page.get_by_text("Draft saved.", exact=True)).to_be_visible()
         draft_url = page.url
@@ -269,7 +273,7 @@ def test_combined_defaults_drafts_immutable_tasks_saved_and_replan_with_new_gene
         expect(page.get_by_label("Whole-trip budget", exact=True)).to_have_value("1800")
         expect(page.get_by_label("Places or experiences to include", exact=True)).to_have_value("")
         expect(page.get_by_label("Additional preferences")).to_have_value("")
-        expect(page.get_by_label("Draft title", exact=True)).to_have_value("")
+        expect_recovered_draft_name(page, "")
         assert writes == [] and len((signals / "executions").read_text().splitlines()) == before
         profile(page, base, "EUR", "Never overlay replan")
         page.goto(base + "/account")

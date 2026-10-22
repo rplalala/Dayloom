@@ -160,7 +160,7 @@ export function briefErrors(brief: Brief, window: TripDateWindow | null): string
   return errors;
 }
 
-function composedPreferences(brief: Brief): string {
+export function composedPreferences(brief: Brief): string {
   return [brief.required.trim() ? `Must include: ${brief.required.trim()}.` : "", brief.exclusions.trim() ? `Please avoid: ${brief.exclusions.trim()}.` : "", brief.preferences].filter(Boolean).join("\n");
 }
 

@@ -1,8 +1,9 @@
-.dayloom .account-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px;align-items:start}
-.dayloom .account-sidebar{padding:24px;overflow-wrap:anywhere}.dayloom .account-sidebar h3{margin:14px 0 4px}
-.dayloom .account-main{padding:32px;min-width:0}.dayloom .account-main h2{font-size:22px}.dayloom .account-main .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.dayloom .profile-fields{border:0;padding:0;margin:0;min-width:0}.dayloom .account-section{border-top:1px solid var(--line);margin-top:25px;padding-top:25px}.dayloom .account-section h2{font-size:18px}
-.dayloom .account-initials{display:flex;gap:18px;align-items:center;margin:20px 0}.dayloom .account-initials .avatar{width:64px;height:64px;font-size:22px}.dayloom .account-initials p{margin:0;color:var(--muted)}
-.dayloom .profile-currency{max-width:240px;margin-bottom:22px}.dayloom .profile-save-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:22px;margin-top:25px;border-top:1px solid var(--line)}.dayloom .account-mobile-logout{display:none}
-@media(max-width:900px){.dayloom .account-layout{grid-template-columns:minmax(0,1fr)}.dayloom .account-sidebar{display:none}.dayloom .account-mobile-logout{display:inline-flex;margin-top:20px}}
-@media(max-width:560px){.dayloom .account-main{padding:23px 16px}.dayloom .account-main .form-grid{grid-template-columns:1fr}.dayloom .profile-save-row{align-items:flex-start;flex-direction:column}.dayloom .profile-save-row .btn{width:100%}}
+/* Account runtime states supplement the fixed r7 presentation. */
+.dayloom .account-sidebar { overflow-wrap: anywhere; }
+.dayloom .account-main { min-width: 0; }
+.dayloom .account-main > form > h2 { font-size: 22px; }
+.dayloom .account-divider { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+.dayloom .profile-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.dayloom .account-main .field-group { border: 0; padding: 0; min-width: 0; }
+.dayloom .profile-currency { max-width: 240px; }
+.dayloom .account-logout { margin-top: 20px; }

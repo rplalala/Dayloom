@@ -27,10 +27,10 @@ export function SavedPage() {
   }, [account, tripId, refresh]);
   if (!account) return <div className="container page"><h1>Log in to view your saved itinerary.</h1><Link to={`/login?return=${encodeURIComponent(`/trips/${tripId}`)}`}>Log in</Link></div>;
   if (result.owner !== account.id || result.id !== tripId) return <p className="container page" role="status">Loading itinerary…</p>;
-  if (!result.detail) return <div className="container page"><h1>{result.error}</h1><CopyControls kind="copied" source={tripId || ''} statusOnly /><Link to="/trips">Back to My trips</Link></div>;
+  if (!result.detail) return <div className="container page"><h1>{result.error}</h1><CopyControls buttonClassName="btn btn-glass" kind="copied" source={tripId || ''} statusOnly /><Link to="/trips">Back to My trips</Link></div>;
   const detail = result.detail;
-  return <><div className="container preview-state"><strong>Saved itinerary</strong><Link to="/trips">Back to My trips</Link></div><TripDetail key={detail.id} detail={detail} mediaEndpoint={`/api/trips/${detail.id}/media`} actions={<CopyControls kind="copied" source={detail.id} title={detail.title} />} onReplan={() => {
+  return <TripDetail mode="saved" key={detail.id} detail={detail} mediaEndpoint={`/api/trips/${detail.id}/media`} actions={<CopyControls buttonClassName="btn btn-glass" kind="copied" source={detail.id} title={detail.title} />} onReplan={() => {
     replaceBrief(replanBrief(detail.request), 'replan');
     navigate('/plan');
-  }} /></>;
+  }} />;
 }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../../features/product/session";
-import { ExampleCards } from "../../features/product/detail/ExampleCards";
 import { CuratedPhoto } from '../../features/product/detail/MediaPhoto';
+import { Icon } from '../../features/product/Icon';
 
 export function HomePage() {
   const { account } = useSession();
@@ -10,7 +10,7 @@ export function HomePage() {
       <section className="home-hero minimal-hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="hero-kicker">A BETTER WAY TO WANDER</p>
+            <span className="hero-kicker">A BETTER WAY TO WANDER</span>
             <h1>
               So much to discover.
               <br />
@@ -22,25 +22,26 @@ export function HomePage() {
             </p>
             <div className="hero-actions">
               <Link className="btn btn-primary btn-large" to="/plan">
-                Start planning →
+                Start planning <Icon name="arrow" size={19} />
               </Link>
-              <Link className="btn btn-light btn-large" to="/trips">
-                {account ? "Explore your trips →" : "View examples →"}
+              <Link className="btn btn-light btn-large" to={account ? "/trips" : "/examples/sydney-example"}>
+                {account ? "Explore your trips" : "View an example"} <Icon name="chevron" size={17} />
               </Link>
             </div>
             <p className="hero-disclaimer">
-              Thoughtful city experiences, with time for what matters.
+              <Icon name="leaf" size={14} /> Thoughtful city experiences, with time for what matters.
             </p>
           </div>
           <div className="hero-visual">
             <div className="hero-image">
               <CuratedPhoto label="Mountain landscape" />
+              <div className="hero-img-mask" />
             </div>
             <div className="floating-stamp">
-              Your next chapter<span>YOUR NEXT DESTINATION</span>
+              <Icon name="pin" size={16} /> Your next chapter<span>YOUR NEXT DESTINATION</span>
             </div>
             <div className="hero-floating-card">
-              <span className="floating-top">✧ YOUR JOURNEY, YOUR WAY</span>
+              <span className="floating-top"><Icon name="spark" size={17} /> YOUR JOURNEY, YOUR WAY</span>
               <strong>A little structure. A little spontaneity.</strong>
               <span>Daily places · Easy connections · Nearby discoveries</span>
               <div className="tiny-progress">
@@ -56,23 +57,23 @@ export function HomePage() {
         <div className="intro-rail">
           {[
             [
-              "◷",
+              "calendar",
               "Built around your time",
               "Your dates, daily activities and room to explore.",
             ],
             [
-              "⌁",
+              "route",
               "The details, together",
               "Weather and travel estimates beside your plans.",
             ],
             [
-              "ⓘ",
+              "info",
               "Clarity where it counts",
               "See which details still need confirmation.",
             ],
           ].map(([icon, title, text]) => (
             <div key={title}>
-              <span aria-hidden="true">{icon}</span>
+              <Icon name={icon} size={23} />
               <div>
                 <strong>{title}</strong>
                 <p>{text}</p>
@@ -112,25 +113,19 @@ export function HomePage() {
                 "Slow down and discover the city one neighborhood at a time.",
               ],
             ].map(([kind, number, title, text]) => (
-              <Link to="/plan" className="mood-card" key={kind}>
+              <Link to="/plan" state={{ mood: kind }} className="mood-card" key={kind}>
                 <div className={`mood-art ${kind}`}>
                   <span className="art-no">{number}</span>
-                  <span aria-hidden="true">
-                    {kind === "art" ? "▥" : kind === "nature" ? "♧" : "⌂"}
-                  </span>
+                  <Icon name={kind === "art" ? "museum" : kind === "nature" ? "tree" : "walk"} size={52} />
                 </div>
                 <div className="mood-body">
                   <h3>{title}</h3>
                   <p>{text}</p>
-                  <span className="text-link">Begin here →</span>
+                  <span className="text-link">Begin here <Icon name="arrow" size={14} /></span>
                 </div>
               </Link>
             ))}
           </div>
-        </section>
-        <section className="section">
-          <div className="section-heading"><div><span className="eyebrow">A LITTLE INSPIRATION</span><h2>See how a journey comes together.</h2></div><p>Historical examples, with room for your own discoveries.</p></div>
-          <ExampleCards />
         </section>
         <section className="section last-cta">
           <div>
@@ -138,7 +133,7 @@ export function HomePage() {
             <h2>Your next journey starts with an idea.</h2>
           </div>
           <Link to="/plan" className="btn btn-primary btn-large">
-            Plan my trip →
+            Plan my trip <Icon name="arrow" size={16} />
           </Link>
         </section>
       </div>
