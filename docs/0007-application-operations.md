@@ -686,6 +686,11 @@ opens, so authorized photographs appear directly in activity and Nearby lists. R
 place photos in a place dialog explicitly resolves fresh metadata without replanning
 or refreshing itinerary facts.
 
+Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
+tablet, including long introductions. At widths up to 560px they use a full-width
+16:9 crop above the text. Nearby thumbnails remain square across sidebar and inline
+rows. Both use cover cropping, consistent rounded corners and restrained spacing.
+
 Activity and Nearby lists show photographs without provider or author captions. The
 place detail dialog contains Google Maps attribution, all supplied author names and
 safe profile/source links beside the photograph. The label uses `translate="no"`,
