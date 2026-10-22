@@ -6,8 +6,8 @@ import { illustrationFor } from './display';
 import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
 
-export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, children, link, compactCredit = false }: {
-  compactCredit?: boolean; link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
+export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, children, link, creditInDetails = false }: {
+  creditInDetails?: boolean; link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
 }) {
   const [failed, setFailed] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
@@ -19,15 +19,15 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   };
   useEffect(() => setFailed(false), [media]);
   const available = media?.status === 'available' && media.image_url && !failed;
-  const placeCredit = Boolean(available && !atmosphere);
+  const placeCredit = Boolean(available && !atmosphere && !creditInDetails);
   const visual = available ? <img src={media.image_url} alt={atmosphere ? media.alt || label : `${label} · place photograph`} onError={() => setFailed(true)} referrerPolicy="no-referrer" /> : atmosphere ? <img src={fallback} alt={`${label} · illustration`} /> : <div className="media-placeholder" aria-label="Illustration, not a place photograph"><img src={fallback} alt="" aria-hidden="true" /></div>;
   const credit = available ? <>
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
-    {!compactCredit && media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
+    {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
   </> : 'Illustration';
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
-  return <figure className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? `has-place-credit${compactCredit ? " compact-place-credit" : ""}` : ""} ${className}`}
+  return <figure className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
     onPointerEnter={event => { if (atmosphere && event.pointerType !== "touch") setCreditsOpen(true); }}
     onPointerLeave={event => { if (!event.currentTarget.contains(document.activeElement)) setCreditsOpen(false); }}
     onFocus={() => setCreditsOpen(true)}
@@ -37,14 +37,14 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
     {available && atmosphere ? <figcaption className="atmosphere-credit">
       <button type="button" className="photo-credit-toggle" ref={creditToggle} aria-label="Photo credits" aria-expanded={creditsOpen} aria-controls={creditsId} onClick={() => setCreditsOpen(true)}><Icon name="info" size={15} /></button>
       <span id={creditsId} className="photo-credit-content" hidden={!creditsOpen}>{credit}<button type="button" className="photo-credit-close" aria-label="Hide photo credits" onClick={closeCredits}><Icon name="close" size={12} /></button></span>
-    </figcaption> : <figcaption className={children && !available ? "visually-hidden" : undefined} aria-label={!available && !atmosphere ? "Illustration" : undefined}>{credit}</figcaption>}
+    </figcaption> : available && creditInDetails ? null : <figcaption className={children && !available ? "visually-hidden" : undefined} aria-label={!available && !atmosphere ? "Illustration" : undefined}>{credit}</figcaption>}
 
   </figure>;
 }
 
 export function PlacePhoto({ slot, label, className, onOpen, children, fallback, fullCredit = false }: { fullCredit?: boolean; slot: string; label: string; className?: string; onOpen?: () => void; children?: ReactNode; fallback?: string }) {
   const media = useContext(PlaceMedia);
-  return <MediaPhoto fallback={fallback || illustrationFor(label)} compactCredit={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}>{children}</MediaPhoto>;
+  return <MediaPhoto fallback={fallback || illustrationFor(label)} creditInDetails={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}>{children}</MediaPhoto>;
 }
 
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {

@@ -20,7 +20,8 @@ it("shows photographs in the itinerary before opening details and keeps full sou
   const detail: ProductDetail = { schema_version: "product_detail_1", id: "offline", title: "A city day", destination: "Sydney", provenance: "generated", trust: "generated_projection", request: null, days: [{ date: "2026-10-22", activities: [{ activity_id: "museum", title: "City museum", time_use: "scheduled", start_time: "2026-10-22T10:00:00+11:00", end_time: "2026-10-22T11:00:00+11:00" }] }], transfers: [], nearby: [] };
   render(<MemoryRouter><TripDetail detail={detail} mediaEndpoint={endpoint} /></MemoryRouter>);
   expect(await screen.findByRole("img", { name: "City museum · place photograph" })).toBeVisible();
-  expect(screen.getByRole("link", { name: "Museum Photographer" })).toBeVisible();
+  expect(screen.queryByRole("link", { name: "Museum Photographer" })).not.toBeInTheDocument();
+  expect(screen.queryByText("Google Maps")).not.toBeInTheDocument();
   expect(screen.queryByRole("link", { name: "Photo source" })).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "View City museum" }));
   const dialog = screen.getByRole("dialog");
