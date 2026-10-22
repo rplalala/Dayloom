@@ -222,8 +222,10 @@ outcome notification appears at the upper right below navigation and stays fixed
 unviewed completed preview remains available as **Itinerary ready**, independently of
 dismissing its notification. Viewing the result in section 03 or its full detail acknowledges
 it per owner, task and revision. An **Unsaved previews** disclosure in section 03 lists
-paged pending results and selects them within Plan. Save/Discard remain explicit, and
-the disclosure refreshes after the current decision. `/previews/:id` retains the full
+paged pending results other than the currently selected preview and selects them within
+Plan. Its badge counts the loaded alternatives; the entry and count are hidden when
+there are none. Pagination retains the unfiltered server offset. Save/Discard remain
+explicit, and the disclosure refreshes after the current decision. `/previews/:id` retains the full
 itinerary view and read-only recovery of decision receipts. Login return targets preserve
 the exact UUID task/preview selection and allowlisted Plan section.
 
