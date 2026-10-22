@@ -168,6 +168,10 @@ Daily weather is shown compactly alongside the itinerary.
 
 ## Local development
 
+For the built frontend and real API on one local origin, use the
+[complete Product runtime](docs/guides/development.md#complete-local-product-runtime).
+The commands below retain the separate API/Vite workflow for source development.
+
 Use Python 3.12, the repository's virtual environment, and private local credentials based on
 `.env.example`. On Windows, start FastAPI with the project's event-loop-compatible launcher:
 

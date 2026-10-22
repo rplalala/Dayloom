@@ -57,6 +57,43 @@ For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
 `data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
 claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
 
+## Complete local Product runtime
+
+The built Product runs the React frontend and normal FastAPI application on one
+origin. It uses the configured real model, Google Places/Routes, Open-Meteo,
+TripWorld retrieval and media adapters. It does not load a test application factory,
+provider substitutes or the offline walkthrough's external-link interception.
+
+Prepare the ignored environment files and Product settings described below, then run:
+
+```powershell
+uv sync --locked --group retrieval
+npm --prefix frontend ci
+npm --prefix frontend run build
+uv run python scripts/migrate_product.py
+uv run python scripts/run_product.py --check
+uv run python scripts/run_product.py
+```
+
+The default address is `http://localhost:5173`; set `PRODUCT_ORIGIN` to that exact
+origin and enable the explicit HTTP loopback exception. `--port` must match the
+configured origin's port. The launcher loads `.env` and `.env.tripworld` from the
+repository root without overriding existing process values. It serves `frontend/dist`,
+including direct navigation/reload of Product and Developer routes; missing APIs and
+assets retain their HTTP errors. Rebuild the frontend after changing its source.
+
+`--check` validates configuration, both local tokenizer vocabularies, Product database
+access and TripWorld manifest/embedding-space compatibility. It reads local databases
+without model, query-embedding, map, weather or image requests. Passing it establishes
+local readiness, not live credential validity, provider availability or generation quality.
+Generating, polishing, destination suggestions and media viewing use real services when
+invoked; execute provider acceptance only within its separately authorized limits.
+
+Use the existing daily database for this runtime. Disposable automated-test databases
+and the substituted human-walkthrough database remain separate; accounts and drafts do
+not move between them automatically. The normal API-only/Vite development commands
+above remain available, and independent V0–V3 entrypoints are unchanged.
+
 ## Product account setup and acceptance
 
 Use the existing PostgreSQL database for application runtime, with a role permitted
@@ -73,7 +110,7 @@ or the process environment:
 | `PRODUCT_SESSION_SECONDS` | Default 3600; accepted range 1–86400 |
 | `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
 | `PRODUCT_GOOGLE_PLACES_MEDIA_KEY` | Optional server-only Places API key for verified Product photos; missing means illustration fallback |
-| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash access key for the fixed curated atmosphere catalog; missing means illustration fallback |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash key for the curated atmosphere catalog; takes precedence over the existing `UNSPLASH_API_KEY` alias; missing both means illustration fallback |
 
 Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
 `uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
