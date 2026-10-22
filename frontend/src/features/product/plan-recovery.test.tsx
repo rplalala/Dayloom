@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
@@ -102,5 +102,19 @@ it('recovers an older task at its legacy address inside Plan without restoring i
   expect(await screen.findByRole('button', { name: 'Stop planning' })).toBeEnabled();
   expect(within(document.getElementById('generation-progress')!).getByText('Sydney · Oct 23–24, 2026')).toBeVisible();
   expect(screen.queryByText('Open planning tasks and recoverable previews →')).not.toBeInTheDocument();
+  expect(writes).toEqual([]);
+});
+
+it('acknowledges an older preview independently of the other task still running', async () => {
+  const running = { ...task, id: 'task-b', request: { ...request, destination: 'Kyoto' } };
+  const recent = [running, { ...task, state: 'completed' as const, preview_id: 'preview-a' }];
+  const { router, writes } = setup('/plan?preview=preview-a#result', recent);
+  await screen.findByRole('heading', { name: 'A Sydney afternoon' });
+  expect(screen.getByRole('link', { name: 'Planning task running' })).toHaveTextContent('Planning Kyoto');
+  await act(async () => { await router.navigate('/'); });
+  recent[0] = { ...running, state: 'cancelled' };
+  fireEvent.focus(window);
+  await waitFor(() => expect(screen.queryByRole('link', { name: 'Planning task running' })).not.toBeInTheDocument());
+  expect(screen.queryByRole('link', { name: 'Itinerary ready' })).not.toBeInTheDocument();
   expect(writes).toEqual([]);
 });

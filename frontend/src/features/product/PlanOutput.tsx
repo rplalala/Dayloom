@@ -69,7 +69,7 @@ export function PlanProgress({ task, error, loading, check, onGenerateAgain, sub
 /** The parent keys this view to the authenticated owner and an exact confirmed brief. */
 export function PlanResult({ task, previewId }: { task?: PlanningTask; previewId?: string }) {
   const location = useLocation();
-  const { markViewed } = useTasks();
+  const { tasks, markViewed } = useTasks();
   const { account, refresh } = useSession();
   const [result, setResult] = useState<{ id: string; preview?: Preview; error?: string } | null>(null);
   const [examples, setExamples] = useState(false);
@@ -108,17 +108,18 @@ export function PlanResult({ task, previewId }: { task?: PlanningTask; previewId
   }, [id, tripId, account, refresh, savedRetry]);
   const savedDetail = saved && saved.previewId === id && saved.tripId === tripId ? saved.detail : undefined;
   const detail = preview?.state === "pending" ? preview.snapshot : savedDetail;
+  const sourceTask = tasks.find(candidate => candidate.preview_id === id) || (task?.preview_id === id ? task : undefined);
   useEffect(() => {
-    if (!task || preview?.source_task_id !== task.id || !preview) return;
-    if (location.hash === '#result') { markViewed(task); return; }
+    if (!sourceTask || !preview) return;
+    if (location.hash === '#result') { markViewed(sourceTask); return; }
     const node = document.getElementById('result');
     if (!node || typeof IntersectionObserver === 'undefined') return;
     const observer = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) { markViewed(task); observer.disconnect(); }
+      if (entries.some(entry => entry.isIntersecting)) { markViewed(sourceTask); observer.disconnect(); }
     });
     observer.observe(node);
     return () => observer.disconnect();
-  }, [task, preview, markViewed, location.hash]);
+  }, [sourceTask, preview, markViewed, location.hash]);
   return <section className="flow-card result-section" id="result"><div className="flow-title"><span className="step-number">03</span><div><h2>Your itinerary</h2><p>Preview every day. Save it when it feels right.</p></div></div>
     <UnsavedPreviews refreshKey={`${id}:${preview?.state}`} />
     {preview && (preview.state === "discarded" || preview.outcome === "saved_result_deleted") ? <DecisionReceipt decision={preview} /> : detail && preview ? <div className="result-ready">
