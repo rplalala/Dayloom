@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSession } from './session';
@@ -73,9 +74,7 @@ function ImportEditor({ accountId, csrf, expired, refresh }: { accountId: string
   }
   if (expired || locked) return <div className="container page"><h1>Your import is private.</h1><p>Log in to the same account to recover your input and check its status.</p><Link to="/login?return=/import">Log in</Link></div>;
   return <><LibraryPage /><dialog ref={modal} className="library-dialog import-dialog" aria-labelledby="import-title" onCancel={event => { if (busy) event.preventDefault(); else navigate("/trips", { state: { focusImport: true } }); }} onClick={event => {
-    if (busy || event.target !== event.currentTarget) return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) navigate("/trips", { state: { focusImport: true } });
+    if (!busy && isDialogBackdropClick(event)) navigate("/trips", { state: { focusImport: true } });
   }}>
     <button type="button" className="modal-close" aria-label="Close import" disabled={busy} onClick={() => navigate("/trips", { state: { focusImport: true } })}><Icon name="close" size={20} /></button>
     <div className="modal-icon"><Icon name="download" size={23} /></div><h2 id="import-title">Bring an itinerary along.</h2><p>Choose a JSON file or paste its contents. Historical dates are welcome. You can review the preview before saving.</p>

@@ -204,6 +204,26 @@ def test_nearby_photo_attribution_stays_readable_inside_responsive_rows(task_app
         assert metadata["items"]["nearby:0"]["kind"] == "verified_place"
         for width in (1440, 800, 390):
             page.set_viewport_size({"width": width, "height": 1000})
+            provider = page.locator(".activity-photo .media-provider").first
+            expect(provider).to_be_visible()
+            credit = provider.evaluate("""node => {
+                const range = document.createRange(); range.selectNodeContents(node);
+                const label = node.getBoundingClientRect();
+                const caption = node.parentElement.getBoundingClientRect();
+                return {font:getComputedStyle(node).fontSize,
+                    whitespace:getComputedStyle(node).whiteSpace,
+                    lines:range.getClientRects().length, left:label.left, right:label.right,
+                    captionLeft:caption.left, captionRight:caption.right};
+            }""")
+            assert (
+                credit["font"] == "12px"
+                and credit["whitespace"] == "nowrap"
+                and credit["lines"] == 1
+            )
+            assert (
+                credit["left"] >= credit["captionLeft"]
+                and credit["right"] <= credit["captionRight"]
+            )
             if width <= 800:
                 disclosure = page.get_by_role("button", name="Show nearby for", exact=False).first
                 if disclosure.get_attribute("aria-expanded") == "false":

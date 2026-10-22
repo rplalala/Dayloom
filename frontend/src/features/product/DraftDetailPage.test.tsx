@@ -12,6 +12,29 @@ const local = { ...editor, destination: "Kyoto", preferences: "My unfinished pri
 const restore = () => sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: account.id, brief: local, actionId: "private-operation", origin: "restored", draftTitle: "Private unsaved name" }));
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
+it("returns to private draft details after logging in without restoring or saving the brief", async () => {
+  let authenticated = false;
+  const writes: string[] = [];
+  vi.stubGlobal("fetch", vi.fn(async (url: string, options?: RequestInit) => {
+    if (options?.method === "POST") writes.push(url);
+    if (url === "/api/auth/login") { authenticated = true; return Response.json(account); }
+    if (url === "/api/auth/current") return Response.json(authenticated ? account : { detail: { code: "login_required" } }, { status: authenticated ? 200 : 401 });
+    if (url === `/api/drafts/${id}`) return Response.json(draft);
+    if (url.startsWith("/api/library")) return Response.json({ items: [], total: 0 });
+    return Response.json([]);
+  }));
+  const router = createMemoryRouter(routes, { initialEntries: [`/drafts/${id}`] });
+  render(<RouterProvider router={router} />);
+  await screen.findByRole("heading", { name: "Your draft is private." });
+  fireEvent.click(screen.getAllByRole("link", { name: "Log in" }).find(link => link.getAttribute("href")?.includes("return="))!);
+  fireEvent.change(await screen.findByLabelText("Email address"), { target: { value: "alice@example.com" } });
+  fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "valid-password" } });
+  fireEvent.click(screen.getByRole("button", { name: "Log in" }));
+  await waitFor(() => expect(router.state.location.pathname).toBe(`/drafts/${id}`));
+  expect(await screen.findByRole("heading", { name: draft.title })).toBeVisible();
+  expect(writes).toEqual(["/api/auth/login"]);
+});
+
 it("opens source draft details read-only, then restores only after explicit Continue planning", async () => {
   restore();
   const writes: string[] = [];

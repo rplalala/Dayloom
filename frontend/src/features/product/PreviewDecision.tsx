@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { useSession } from './session';
@@ -71,9 +72,7 @@ export function PreviewDecisionControls({ preview, onDecision, showDiscard = tru
       {error && <p role="alert">{error}</p>}
     </div>
     <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby="discard-preview-title" onCancel={event => { if (busy) event.preventDefault(); else setConfirm(false); }} onClick={event => {
-      if (busy || event.target !== event.currentTarget) return;
-      const bounds = event.currentTarget.getBoundingClientRect();
-      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setConfirm(false);
+      if (!busy && isDialogBackdropClick(event)) setConfirm(false);
     }}>
       <button type="button" className="modal-close" aria-label="Close" disabled={busy} onClick={() => setConfirm(false)}><Icon name="close" size={20} /></button><div className="modal-icon"><Icon name="close" size={23} /></div>
       <h2 id="discard-preview-title">Discard this preview?</h2><p>This removes the unsaved preview. Your saved trips and drafts stay as they are.</p>

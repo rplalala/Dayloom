@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { draftRequest, DraftFailure, type Draft } from "./drafts";
@@ -116,8 +117,7 @@ export function DraftControls({ onLoading, actionsRef }: { onLoading: (loading: 
     {error && <p role="alert" className="form-error">{error}</p>}
     {saved && <p className="subtle-help" role="status">{saved.editor === JSON.stringify(session.brief) && saved.title === title ? "Draft saved." : "You have unsaved changes."}</p>}
     {review && <dialog className="modal-card library-dialog" ref={reviewDialog} aria-labelledby="travel-brief-title" onCancel={event => { event.preventDefault(); setReview(false); }} onClick={event => {
-      const box = event.currentTarget.getBoundingClientRect();
-      if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) setReview(false);
+      if (isDialogBackdropClick(event)) setReview(false);
     }}>
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={() => setReview(false)}><Icon name="close" size={21} /></button>
       <div className="modal-icon"><Icon name="sliders" size={23} /></div>

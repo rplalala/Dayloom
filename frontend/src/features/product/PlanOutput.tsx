@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "./Icon";
@@ -26,9 +27,7 @@ function ExampleChooser({ close }: { close: () => void }) {
     return () => controller.abort();
   }, [retry]);
   return <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby="examples-title" onCancel={close} onClick={event => {
-    if (event.target !== event.currentTarget) return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) close();
+    if (isDialogBackdropClick(event)) close();
   }}><button type="button" className="modal-close" aria-label="Close" onClick={close}><Icon name="close" size={20} /></button><div className="modal-icon"><Icon name="globe" size={23} /></div><h2 id="examples-title">A little inspiration.</h2><p>Explore the same timeline across different destinations and lengths of stay.</p>
     {error ? <p role="alert">Examples are unavailable. <button type="button" className="inline-action" onClick={() => setRetry(value => value + 1)}>Try again</button></p> : cards ? <div className="menu-stack">{cards.map(card => <button className="menu-option" type="button" key={card.id} onClick={() => navigate(`/examples/${encodeURIComponent(card.id)}`)}><Icon name="pin" size={18} />{card.title}</button>)}</div> : <p role="status">Loading examples…</p>}
   </dialog>;
@@ -40,9 +39,7 @@ export function BusyPlanningDialog({ taskId, close, save }: { taskId?: string; c
   const [busy, setBusy] = useState(false);
   useEffect(() => { mounted.current = true; dialog.current?.showModal(); return () => { mounted.current = false; }; }, []);
   return <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby="planning-busy-title" onCancel={event => { if (busy) event.preventDefault(); else close(); }} onClick={event => {
-    if (busy || event.target !== event.currentTarget) return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) close();
+    if (!busy && isDialogBackdropClick(event)) close();
   }}><button type="button" className="modal-close" aria-label="Close" disabled={busy} onClick={close}><Icon name="close" size={20} /></button><div className="modal-icon"><Icon name="clock" size={23} /></div><h2 id="planning-busy-title">One journey at a time.</h2><p>A trip is already being planned. You can save these ideas as a draft while you wait.</p><div className="modal-actions"><button type="button" className="btn btn-light" disabled={busy} onClick={() => { setBusy(true); void save().finally(() => { if (mounted.current) { setBusy(false); close(); } }); }}>Save travel brief</button><Link className="btn btn-primary" to={taskId ? `/planning/${taskId}` : "/planning"}>View progress</Link></div></dialog>;
 }
 

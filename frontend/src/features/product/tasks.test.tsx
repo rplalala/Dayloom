@@ -1,9 +1,48 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, expect, it, vi } from 'vitest';
 import { routes } from '../../app/router';
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
+
+it('keeps a completed itinerary entry until its preview is viewed, across navigation and refresh', async () => {
+  let completed = false;
+  let owner = 'alice';
+  const writes: string[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, options?: RequestInit) => {
+    if (options?.method && options.method !== 'GET') writes.push(url);
+    if (url === '/api/auth/current') return Response.json({ id: owner, display_name: 'Alice', initials: 'A', csrf_token: 'csrf' });
+    if (url === '/api/planning/tasks/recent?limit=10') return Response.json([{ id: 'one', state: completed ? 'completed' : 'running', revision: completed ? 4 : 3, request: { destination: 'Sydney' }, progress: { message: 'Preparing itinerary' }, preview_id: completed ? 'preview-one' : null }]);
+    if (url === '/api/previews/preview-one') return Response.json({ id: 'preview-one', state: 'discarded' });
+    if (url === '/api/planning/date-window') return Response.json({ allowedStart: '2026-10-21', allowedEnd: '2026-11-03', maxTripDays: 10 });
+    if (url.startsWith('/api/library')) return Response.json({ items: [], total: 0 });
+    return Response.json([]);
+  }));
+  const router = createMemoryRouter(routes, { initialEntries: ['/trips'] });
+  const view = render(<RouterProvider router={router} />);
+  expect(await screen.findByRole('link', { name: 'Planning task running' })).toHaveTextContent('Planning your trip');
+  completed = true;
+  fireEvent.focus(window);
+  const ready = await screen.findByRole('link', { name: 'Itinerary ready' });
+  expect(ready).toHaveAttribute('href', '/previews/preview-one');
+  fireEvent.click(screen.getByRole('button', { name: 'Dismiss completion notice' }));
+  await act(async () => { await router.navigate('/plan'); });
+  expect(screen.getByRole('link', { name: 'Itinerary ready' })).toBeVisible();
+  fireEvent.click(screen.getByRole('link', { name: 'Itinerary ready' }));
+  await waitFor(() => expect(router.state.location.pathname).toBe('/previews/preview-one'));
+  await waitFor(() => expect(screen.queryByRole('link', { name: 'Itinerary ready' })).not.toBeInTheDocument());
+  await act(async () => { await router.navigate('/trips'); });
+  fireEvent.focus(window);
+  expect(screen.queryByRole('link', { name: 'Itinerary ready' })).not.toBeInTheDocument();
+  view.unmount();
+  render(<RouterProvider router={createMemoryRouter(routes, { initialEntries: ['/trips'] })} />);
+  await screen.findByLabelText('Search trips');
+  expect(screen.queryByRole('link', { name: 'Itinerary ready' })).not.toBeInTheDocument();
+  owner = 'bob';
+  fireEvent(window, new StorageEvent('storage', { key: 'dayloom.account.notice', newValue: JSON.stringify({ type: 'account', id: owner }) }));
+  expect(await screen.findByRole('link', { name: 'Itinerary ready' })).toBeVisible();
+  expect(writes).toEqual([]);
+});
 
 it('observes completion without redirecting or replacing the editable brief', async () => {
   const task = { id: 'one', state: 'completed', revision: 4, request: { destination: 'Sydney' },

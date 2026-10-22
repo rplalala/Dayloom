@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createBrief, restoreBrief } from './editor';
@@ -79,9 +80,7 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
     }}>Revise submitted brief</button>}
     {error && !confirm && <p role="alert">{error}</p>}
     <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby={`revise-${task.id}`} onCancel={event => { if (busy) event.preventDefault(); else setConfirm(false); }} onClick={event => {
-      if (busy || event.target !== event.currentTarget) return;
-      const bounds = event.currentTarget.getBoundingClientRect();
-      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setConfirm(false);
+      if (!busy && isDialogBackdropClick(event)) setConfirm(false);
     }}>
       <button type="button" className="modal-close" aria-label="Close" disabled={busy} onClick={() => setConfirm(false)}><Icon name="close" size={20} /></button><div className="modal-icon"><Icon name="edit" size={23} /></div><h2 id={`revise-${task.id}`}>Keep your current brief?</h2><p>Opening this submitted brief replaces the editor. Save your current brief as a draft first, or choose to replace it.</p>
       <div className="modal-actions"><button type="button" className="btn btn-primary" disabled={busy} onClick={() => void perform('save')}>Save current brief and revise</button><button type="button" className="btn btn-light" disabled={busy} onClick={revise}>Replace current brief</button><button type="button" className="btn btn-quiet" disabled={busy} onClick={() => setConfirm(false)}>Keep current brief</button></div>

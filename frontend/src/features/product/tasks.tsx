@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSession } from './session';
 import { TripDetail } from './detail/TripDetail';
 import './tasks.css';
@@ -10,9 +10,13 @@ import { PlanProgress } from './PlanOutput';
 import { Icon } from './Icon';
 import { replanBrief } from './replan';
 
+const viewedKey = (owner: string, task: PlanningTask) => `dayloom.task.viewed.${owner}.${task.id}.${task.revision}`;
+
 export function TaskProvider({ children }: { children: ReactNode }) {
   const { account, refresh: refreshSession } = useSession();
   const owner = account?.id;
+  const { pathname } = useLocation();
+  const [viewed, setViewed] = useState<Set<string>>(() => new Set());
   const [snapshot, setSnapshot] = useState<{ owner?: string; tasks: PlanningTask[]; error: string }>({ tasks: [], error: '' });
   const [notice, setNotice] = useState<{ owner: string; task: PlanningTask } | null>(null);
   const currentOwner = useRef(owner);
@@ -54,7 +58,24 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     return () => { controller.abort(); clearTimeout(timer); window.removeEventListener('focus', reconnect); window.removeEventListener('online', reconnect); document.removeEventListener('visibilitychange', reconnect); };
   }, [owner, refresh]);
   const tasks = snapshot.owner === owner && owner ? snapshot.tasks : [];
-  return <TaskContext.Provider value={{ tasks, error: snapshot.owner === owner ? snapshot.error : '', refresh }}>
+  const readyTask = tasks.find(task => {
+    if (task.state !== 'completed' || !task.preview_id || !owner) return false;
+    const key = viewedKey(owner, task);
+    if (viewed.has(key)) return false;
+    try { return sessionStorage.getItem(key) !== 'yes'; } catch { return true; }
+  });
+  useEffect(() => {
+    if (!owner || snapshot.owner !== owner) return;
+    const opened = snapshot.tasks.filter(task => task.state === 'completed' && task.preview_id && pathname === `/previews/${task.preview_id}`);
+    if (!opened.length) return;
+    const keys = opened.map(task => viewedKey(owner, task));
+    setViewed(previous => keys.every(key => previous.has(key)) ? previous : new Set([...previous, ...keys]));
+    for (const key of keys) {
+      try { sessionStorage.setItem(key, 'yes'); } catch { /* Memory still records views within this mounted session. */ }
+    }
+    setNotice(previous => previous?.owner === owner && opened.some(task => task.id === previous.task.id) ? null : previous);
+  }, [owner, pathname, snapshot]);
+  return <TaskContext.Provider value={{ tasks, readyTask, error: snapshot.owner === owner ? snapshot.error : '', refresh }}>
     {notice && notice.owner === owner && owner && <div className="dayloom task-notice-layer"><div className="task-completion-notice" role="status"><span>Your itinerary preview is ready.</span><Link to={`/previews/${notice.task.preview_id}`}>View preview</Link><button type="button" aria-label="Dismiss completion notice" onClick={() => setNotice(null)}>×</button></div></div>}
     {children}
   </TaskContext.Provider>;
@@ -63,11 +84,11 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
 export function TaskEntry() {
   const { account } = useSession();
-  const { tasks } = useTasks();
+  const { tasks, readyTask } = useTasks();
   if (!account) return null;
   const active = tasks.find(taskActive);
-  if (!active) return null;
-  return <Link className={`task-entry ${active ? 'is-running' : ''}`} to="/planning" aria-label={active ? 'Planning task running' : 'Planning tasks'}><span className="task-dot" aria-hidden="true" /><span>Planning your trip</span></Link>;
+  if (!active && !readyTask) return null;
+  return <Link className={`task-entry ${active ? 'running' : ''}`} to={active ? '/planning' : `/previews/${readyTask!.preview_id}`} aria-label={active ? 'Planning task running' : 'Itinerary ready'}><span className="task-dot" aria-hidden="true" /><span>{active ? 'Planning your trip' : 'Itinerary ready'}</span></Link>;
 }
 
 export function PlanningTasksPage() {

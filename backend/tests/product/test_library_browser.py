@@ -253,8 +253,8 @@ def test_r7_saved_and_draft_management_is_a_keyboard_accessible_card_dialog(brow
         expect(page.get_by_text("Saved to My trips.", exact=True)).to_be_visible()
         page.get_by_role("link", name="My trips", exact=True).first.click()
         expect(page.locator(".trip-card")).to_have_count(2)
-        notice.get_by_role("button", name="Dismiss completion notice").click()
         expect(notice).to_have_count(0)
+        expect(page.get_by_role("link", name="Itinerary ready", exact=True)).to_have_count(0)
         assert page.get_by_role("banner").bounding_box()["y"] == 0
         for title in ("A saved journey", "A draft idea"):
             trigger = page.get_by_role("button", name=f"Manage {title}", exact=True)

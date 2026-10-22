@@ -23,7 +23,7 @@ def test_r7_draft_detail_reads_owner_snapshot_before_explicitly_continuing(edito
     context = browser.new_context()
     try:
         page = context.new_page()
-        register_browser(page, base)
+        email = register_browser(page, base)
         account = page.request.get(base + "/api/auth/current").json()
         headers = {"Origin": base, "X-CSRF-Token": account["csrf_token"]}
         accepted = page.request.post(
@@ -35,6 +35,24 @@ def test_r7_draft_detail_reads_owner_snapshot_before_explicitly_continuing(edito
         )
         assert accepted.status == 201
         draft = accepted.json()
+        returning = browser.new_context()
+        try:
+            private = returning.new_page()
+            private.goto(base + "/drafts/" + draft["id"])
+            expect(private.get_by_role("heading", name="Your draft is private.")).to_be_visible()
+            private.locator('a[href*="return=%2Fdrafts%2F"]').click()
+            writes_after_login = []
+            private.on("request", lambda request: writes_after_login.append(request.url)
+                       if request.method not in ("GET", "HEAD") else None)
+            login(private, email)
+            expect(private).to_have_url(base + "/drafts/" + draft["id"])
+            expect(
+                private.get_by_role("heading", name="A brief to inspect", exact=True)
+            ).to_be_visible()
+            assert writes_after_login == [base + "/api/auth/login"]
+            assert private.request.get(base + "/api/drafts/" + draft["id"]).json()["revision"] == 1
+        finally:
+            returning.close()
         page.goto(base + "/plan")
         page.get_by_label("Destination", exact=True).fill("Kyoto work to retain")
         writes = []

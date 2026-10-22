@@ -1,10 +1,32 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { createMemoryRouter, MemoryRouter, RouterProvider } from "react-router-dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { AuthPage } from "./AuthPage";
 import { SessionProvider } from "./session";
 
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
+
+it.each([
+  "https://example.invalid/drafts/f471a830-ad20-4830-a21c-108f312cafb2",
+  "//example.invalid/drafts/f471a830-ad20-4830-a21c-108f312cafb2",
+  "/drafts/not-a-uuid",
+  "/drafts/f471a830-ad20-4830-a21c-108f312cafb2?return=//example.invalid",
+  "/drafts/f471a830-ad20-4830-a21c-108f312cafb2/../account",
+])("rejects an unapproved login return target: %s", async target => {
+  vi.stubGlobal("fetch", vi.fn(async (url: string) => url === "/api/auth/login"
+    ? Response.json({ id: "alice", display_name: "Alice", csrf_token: "csrf" })
+    : Response.json({ detail: { code: "login_required" } }, { status: 401 })));
+  const router = createMemoryRouter([
+    { path: "/login", element: <SessionProvider><AuthPage /></SessionProvider> },
+    { path: "/trips", element: <h1>Trip library</h1> },
+  ], { initialEntries: [`/login?return=${encodeURIComponent(target)}`] });
+  render(<RouterProvider router={router} />);
+  fireEvent.change(await screen.findByLabelText("Email address"), { target: { value: "alice@example.com" } });
+  fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "valid-password" } });
+  fireEvent.click(screen.getByRole("button", { name: "Log in" }));
+  await waitFor(() => expect(router.state.location.pathname).toBe("/trips"));
+  expect(screen.getByRole("heading", { name: "Trip library" })).toBeVisible();
+});
 
 it("keeps login and registration fields and password visibility independent across tabs", async () => {
   const fetcher = vi.fn<typeof fetch>(async () => Response.json({ status: "unavailable" }));

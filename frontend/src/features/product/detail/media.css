@@ -4,7 +4,7 @@
 .dayloom .media-photo figcaption a { color:inherit; text-decoration:underline; }
 .dayloom .media-open { display:block; width:100%; height:100%; border:0; padding:0; background:transparent; cursor:pointer; }
 .dayloom .media-open:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
-.dayloom .media-provider { font-family:Arial,sans-serif; font-weight:400; font-style:normal; letter-spacing:normal; }
+.dayloom .media-provider { font-family:Arial,sans-serif; font-weight:400; font-style:normal; letter-spacing:normal; white-space:nowrap; }
 .dayloom .media-placeholder { width:100%; height:100%; display:grid; place-items:center; color:#73937e; background:#e9eee6; }
 .dayloom .nearby-item.nearby-media-item { display:block; }
 .dayloom .nearby-media { width:100%; }
@@ -39,4 +39,5 @@
 .dayloom .activity-photo.has-place-credit > .media-open { height:96px; overflow:hidden; border-radius:9px; }
 .dayloom .media-detail-row .nearby-body { min-width:0; }
 @media(max-width:800px) { .dayloom .activity-photo.has-place-credit > .media-open { height:82px; } }
+@media(min-width:561px) and (max-width:800px) { .dayloom .activity-photo.has-place-credit > figcaption { padding-inline:2px; } }
 @media(max-width:560px) { .dayloom .activity-photo.has-place-credit > .media-open { height:110px; } }

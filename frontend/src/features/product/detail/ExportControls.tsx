@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../../shared/dialog';
 import { useEffect, useRef, useState } from 'react';
 import type { ProductDetail } from './types';
 import { exportArtifact, summaryText } from './export';
@@ -56,8 +57,7 @@ export function ExportControls({ detail }: { detail: ProductDetail }) {
     <button type="button" className="btn btn-glass" onClick={() => setModal('export')}><Icon name="download" size={17} /> Export itinerary</button>
     <button type="button" className="btn btn-glass" onClick={() => void copy()}><Icon name="share" size={17} /> Copy summary</button>
     {modal && <dialog className="modal-card detail-dialog" ref={dialog} aria-labelledby={modal === 'export' ? 'export-title' : 'summary-title'} onCancel={event => { event.preventDefault(); setModal(null); }} onClick={event => {
-      const box = event.currentTarget.getBoundingClientRect();
-      if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) setModal(null);
+      if (isDialogBackdropClick(event)) setModal(null);
     }}>
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={() => setModal(null)}><Icon name="close" size={21} /></button>
       {modal === 'export' ? <>

@@ -17,6 +17,8 @@ import { taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, r
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
 
+const moodChoices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
+
 /** The single Product editor, shared by recovery and future drafts/submission. */
 export function BriefPage() {
   const session = useSession();
@@ -26,7 +28,6 @@ export function BriefPage() {
   const draftId = new URLSearchParams(location.search).get("draft");
   const { initializeNewBrief, briefOrigin, status } = session;
   const mood = (location.state as { mood?: string } | null)?.mood;
-  const moodChoices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
   const hasMood = Boolean(mood && moodChoices[mood]);
   const liveEditor = useRef({ session, location: location.key });
   liveEditor.current = { session, location: location.key };
@@ -39,12 +40,11 @@ export function BriefPage() {
     appliedMood.current = location.key;
     const key = location.key;
     const owner = session.account?.id;
-    const choices: Record<string, Interest[]> = { art: ["Art & museums", "History & culture"], nature: ["Nature", "Free exploration"], city: ["City walks", "History & culture"] };
     void initializeNewBrief().then(() => {
       const current = liveEditor.current;
       if (current.location !== key || current.session.account?.id !== owner || !["guest", "authenticated"].includes(current.session.status)) return;
       let next = current.session.brief;
-      for (const interest of choices[mood]) if (!next.interests.includes(interest)) next = toggleInterest(next, interest);
+      for (const interest of moodChoices[mood]) if (!next.interests.includes(interest)) next = toggleInterest(next, interest);
       if (next.pace !== "relaxed") next = togglePace(next, "relaxed");
       current.session.editBrief(next);
     });

@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../../shared/dialog';
 import { useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type {
@@ -117,8 +118,7 @@ function InformationDialog({
       ref={ref}
       onCancel={event => { event.preventDefault(); dismiss(); }}
       onClick={event => {
-        const box = event.currentTarget.getBoundingClientRect();
-        if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dismiss();
+        if (isDialogBackdropClick(event)) dismiss();
       }}
       aria-labelledby="detail-dialog-title"
     >

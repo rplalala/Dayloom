@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { isDialogBackdropClick } from '../shared/dialog';
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { SessionProvider, useSession } from "../features/product/session";
 import "../styles/dayloom.css";
@@ -15,6 +16,9 @@ export function ProductLayout() {
 
 function ProductShell() {
   const { account, logout } = useSession();
+  const { pathname } = useLocation();
+  const librarySelected = pathname === "/trips" || pathname === "/import" ||
+    ["/trips/", "/drafts/", "/examples/", "/previews/"].some(prefix => pathname.startsWith(prefix));
   const [mobile, setMobile] = useState(false);
   const [about, setAbout] = useState(false);
   const [navigationError, setNavigationError] = useState("");
@@ -44,7 +48,7 @@ function ProductShell() {
               Home
             </NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
-            <NavLink to="/trips" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>My trips</NavLink>
+            <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
           </nav>
           <div className="nav-actions">
             <TaskEntry />
@@ -84,7 +88,7 @@ function ProductShell() {
           >
             <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Home</NavLink>
             <NavLink to="/plan" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>Plan a trip</NavLink>
-            <NavLink to="/trips" className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>My trips</NavLink>
+            <Link to="/trips" className={`nav-link ${librarySelected ? "selected" : ""}`} aria-current={librarySelected ? "page" : undefined}>My trips</Link>
             <NavLink to={account ? "/account" : "/login"} className={({ isActive }) => `nav-link ${isActive ? "selected" : ""}`}>
               {account ? "Account settings" : "Log in"}
             </NavLink>
@@ -115,8 +119,7 @@ function ProductShell() {
         </div>
       </footer>
       {about && <dialog ref={aboutDialog} className="modal-card wide-modal about-dialog" aria-labelledby="about-dayloom-title" onCancel={() => setAbout(false)} onClick={event => {
-        const box = event.currentTarget.getBoundingClientRect();
-        if (event.target === event.currentTarget && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) setAbout(false);
+        if (isDialogBackdropClick(event)) setAbout(false);
       }}>
         <button type="button" className="modal-close" aria-label="Close About Dayloom" onClick={() => setAbout(false)}><Icon name="close" size={21} /></button>
         <div className="modal-icon"><Icon name="spark" size={23} /></div>

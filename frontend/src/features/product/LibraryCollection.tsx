@@ -1,3 +1,4 @@
+import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSession } from "./session";
@@ -122,9 +123,7 @@ export function LibraryCollection() {
     })}{!search && page.total > 0 && <Link className="new-trip-card" to="/plan" onClick={() => session.newBrief()}><span className="new-trip-icon"><Icon name="plus" size={32} /></span><strong>Another journey, waiting to be written.</strong><p>Choose a destination and begin a new travel brief.</p><span className="new-trip-arrow">Create a trip <Icon name="arrow" size={16} /></span></Link>}</div>}
     {page && (page.total > 0 || search) && <nav className="pagination" aria-label="Collection pages"><span>{page.total} items · Page {Math.floor(offset / 4) + 1} of {Math.max(1, Math.ceil(page.total / 4))}</span><div className="pagination-controls"><button className="page-btn" aria-label="Previous" disabled={offset === 0} onClick={() => setOffset(n => Math.max(0, n - 4))}><Icon name="back" size={17} /></button>{Array.from({ length: Math.max(1, Math.ceil(page.total / 4)) }, (_, index) => <button className={`page-btn ${offset === index * 4 ? "active" : ""}`} aria-label={`Page ${index + 1}`} aria-current={offset === index * 4 ? "page" : undefined} key={index} onClick={() => setOffset(index * 4)}>{index + 1}</button>)}<button className="page-btn" aria-label="Next" disabled={offset + 4 >= page.total} onClick={() => setOffset(n => n + 4)}><Icon name="arrow" size={17} /></button></div></nav>}
     <dialog id="library-management-dialog" ref={dialog} className="library-dialog" aria-labelledby="library-dialog-title" onCancel={event => { if (busy) event.preventDefault(); else setAction(null); }} onClick={event => {
-      if (busy || event.target !== event.currentTarget) return;
-      const bounds = event.currentTarget.getBoundingClientRect();
-      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setAction(null);
+      if (!busy && isDialogBackdropClick(event)) setAction(null);
     }}>
       {action && <>
         <button type="button" disabled={busy} className="modal-close" aria-label="Close" onClick={() => setAction(null)}><Icon name="close" size={20} /></button>

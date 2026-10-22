@@ -172,11 +172,26 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         expect(page.get_by_role("link", name="Open itinerary preview")).to_be_visible(timeout=30000)
         assert (signals / "executions").read_text().splitlines() == ["one"]
         assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
-        page.get_by_role("link", name="Open itinerary preview").click()
+        ready = page.get_by_role("link", name="Itinerary ready", exact=True)
+        expect(ready).to_be_visible()
+        for width in (1440, 800, 390):
+            page.set_viewport_size({"width": width, "height": 1000})
+            expect(ready).to_be_visible()
+            assert page.locator(".task-notice-layer").evaluate(
+                "node => node.getBoundingClientRect().height"
+            ) == 0
+            assert page.locator("header").evaluate("node => node.getBoundingClientRect().top") == 0
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        page.goto(base + "/trips")
+        expect(ready).to_be_visible()
+        ready.click()
+        expect(ready).to_have_count(0)
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         preview_url = page.url
         page.reload()
+        expect(ready).to_have_count(0)
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
+        page.set_viewport_size({"width": 1440, "height": 1000})
         page.screenshot(path=str(SCRATCH / "preview-desktop.png"), full_page=True)
         page.set_viewport_size({"width": 800, "height": 1000})
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")

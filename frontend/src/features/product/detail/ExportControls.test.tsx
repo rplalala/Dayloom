@@ -36,3 +36,16 @@ it("opens the export menu with native close controls and unchanged download acti
   fireEvent.click(within(dialog).getByRole("button", { name: "Close dialog" }));
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
+
+it("keeps content and dialog padding clicks open and dismisses only an outside backdrop click", () => {
+  render(<ExportControls detail={detail} />);
+  fireEvent.click(screen.getByRole("button", { name: "Export itinerary" }));
+  const dialog = screen.getByRole("dialog");
+  vi.spyOn(dialog, "getBoundingClientRect").mockReturnValue({ left: 100, right: 500, top: 100, bottom: 400 } as DOMRect);
+  fireEvent.click(within(dialog).getByRole("heading"), { clientX: 0, clientY: 0 });
+  expect(dialog).toBeVisible();
+  fireEvent.click(dialog, { clientX: 105, clientY: 105 });
+  expect(dialog).toBeVisible();
+  fireEvent.click(dialog, { clientX: 50, clientY: 50 });
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+});
