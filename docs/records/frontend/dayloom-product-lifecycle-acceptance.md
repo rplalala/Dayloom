@@ -196,6 +196,27 @@ captures, `product-20261022-123954.{log,xml}` and its exact failed-case follow-u
 `product-20261022-124335.{log,xml}`. The existing unrelated environment-example and
 glossary changes remained excluded.
 
+The failure-notification follow-up on 22 October uses review base `a069838`,
+implementation `5e4df65` and separate correction `07b5576`. Off-page failures previously
+lost their header entry and produced no notification. The follow-up retains recovery
+through dismissal, viewing and refresh while preserving a different edited brief.
+Spec review then reproduced an older completion toast replacing the latest failure
+on a later poll. A failing mixed-history regression established the problem, and the
+correction gives the current failure priority while retaining older previews. Both
+review axes found zero remaining issues after correction.
+
+The follow-up passed 246 frontend tests in 41 files, build/typecheck and lint with
+the existing advisories. Five actual API/PostgreSQL/Chromium cases passed for clarification,
+safety/provider blocks, ordinary failure and interruption. They exercised notification
+on My trips, refresh, entry navigation to the exact Plan task, retained editor B,
+explicit restoration and no repeat generation. The public migration entrypoint ran
+successfully. Separate read-only viewport checks at 320, 390, 800 and 1440px confirmed
+readable header labels without truncation or horizontal overflow; recorded external
+requests and writes were zero. Evidence identifiers under `.scratch/failure-notice/`
+are `frontend-final.log`, `priority-{red,green}.log`, `review-{build,lint}.log`,
+`product-20261022-130352.{log,xml}`, `visual.json` and `responsive-*.png`. The unchanged
+`.env.example` and `GLOSSARY.md` work remained excluded from commits.
+
 Local evidence paths are historical identifiers, not published dependencies. The integration worktree's ignored `.scratch/final-backend-initial/` retains hash-verified original whole-run log/XML/result files. `.scratch/final-product*`, `final-frontend*`, `final-static*` and `final-delta-static*` identify the later root gates. `.scratch/coordination/` contains exact-head reviews, merger/public-migration receipts and Issue mutation readbacks; task `.scratch/handoff-*.md` files locate retained raw logs and screenshots. The correction tree's `correction-validation-summary.json` verifies that the short-path retest set equals the original 63 failed nodes. Earlier #203 full backend133/frontend150 results survive as original tool receipts, but their complete local raw logs were not retained. Later focused correction logs do not retroactively replace those missing raw logs.
 
 All acceptance databases and API/frontend ports are isolated per worktree. Product acceptance never uses the existing TripWorld runtime on port55432. External model, retrieval-provider, map, weather and image transports are substituted; Product persistence, coordination and V3 execution remain real. These are engineering acceptance results, without a provider-quality comparison, formal benchmark, research conclusion, version freeze or scale guarantee. No live service call, push, PR or deployment is established by these results.

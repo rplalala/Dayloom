@@ -210,8 +210,8 @@ account deletion cascades both. No queue, event log or graph checkpoint is intro
 
 Plan retains the r7 three-section layout: 01 travel brief, 02 planning progress and
 03 itinerary preview. The global desktop/mobile task entry returns to section 02 while
-running, or section 03 when ready. It shows the submitted destination independently
-of the editable brief. `?task=<id>` selects an owner-only durable task; `?preview=<id>`
+running or needing attention, or section 03 when ready. It shows the submitted
+destination independently of the editable brief. `?task=<id>` selects an owner-only durable task; `?preview=<id>`
 selects an unsaved or decided result. Legacy `/planning` and `/planning/:id` bookmarks
 redirect to Plan; there is no separate task-management page.
 
@@ -225,6 +225,16 @@ paged pending results and selects them within Plan. Save/Discard remain explicit
 the disclosure refreshes after the current decision. `/previews/:id` retains the full
 itinerary view and read-only recovery of decision receipts. Login return targets preserve
 the exact UUID task/preview selection and allowlisted Plan section.
+
+The newest task's failure, interruption, clarification or safety/provider block produces
+a non-navigating **Planning needs attention** notification, including on My trips. Its
+**View details** action and header entry open that exact task in section 02 without
+replacing the editable brief. The narrow header label is **Needs attention**. Dismissing
+the notification, viewing the reason, editing or refreshing does not clear the entry;
+a newer accepted task supersedes it. Older unseen successes cannot replace the current
+failure notification, but their previews remain recoverable in section 03. Deliberate
+Stop is not announced as failure. Notifications are deduplicated within each tab by
+owner, task and revision independently of entry retention; neither observation nor recovery retries work.
 
 An ambiguous submit response triggers only an operation lookup; its immutable intent
 and key stay account-scoped through expiry. Explicit logout/revocation clears it. A late
