@@ -208,12 +208,24 @@ Save/Discard decisions use the same receipt row, with retained operation identit
 saved-result tombstones. Task/preview foreign keys enforce same owner and source task;
 account deletion cascades both. No queue, event log or graph checkpoint is introduced.
 
-The global desktop/mobile entry and `/planning` rehydrate task state with one in-flight
-bounded poll, reconnect/focus reads and an observed completion notice. Completion neither
-redirects nor changes the current brief. The entry prefers an active task; otherwise it
-keeps an unviewed completed preview available as Itinerary ready. Viewing that preview
-is acknowledged per owner, task and revision, independently of dismissing its notification.
-`/previews/:id` reads immutable unsaved detail.
+Plan retains the r7 three-section layout: 01 travel brief, 02 planning progress and
+03 itinerary preview. The global desktop/mobile task entry returns to section 02 while
+running, or section 03 when ready. It shows the submitted destination independently
+of the editable brief. `?task=<id>` selects an owner-only durable task; `?preview=<id>`
+selects an unsaved or decided result. Legacy `/planning` and `/planning/:id` bookmarks
+redirect to Plan; there is no separate task-management page.
+
+Observation uses one in-flight request per observer, periodic GET polling while active,
+and focus/online refresh. Network recovery and login only read existing receipts; neither
+replays generation. Completion neither redirects nor changes the current brief. An
+unviewed completed preview remains available as **Itinerary ready**, independently of
+dismissing its notification. Viewing the result in section 03 or its full detail acknowledges
+it per owner, task and revision. An **Unsaved previews** disclosure in section 03 lists
+paged pending results and selects them within Plan. Save/Discard remain explicit, and
+the disclosure refreshes after the current decision. `/previews/:id` retains the full
+itinerary view and read-only recovery of decision receipts. Login return targets preserve
+the exact UUID task/preview selection and allowlisted Plan section.
+
 An ambiguous submit response triggers only an operation lookup; its immutable intent
 and key stay account-scoped through expiry. Explicit logout/revocation clears it. A late
 response cannot overwrite another edited brief or submit it with an unresolved earlier
@@ -222,13 +234,16 @@ emits the same task/preview IDs with its allowlisted public detail. Disconnect d
 only the observer. Developer streaming and independent V0–V3 entrypoints are unchanged.
 
 Clarification, safety/provider blocks, infrastructure failure, interruption and
-cancellation retain immutable submitted input. Outcome pages render public action text
+cancellation retain immutable submitted input. Section 02 renders public action text
 and allowlisted clarification quotes/fields without internal diagnostics. Explicit
 **Revise submitted brief** opens the saved editor snapshot, or known original request
 fields for older tasks, with no profile overlay. If a different brief is open, the
 traveler chooses to retain it, save it as a draft before replacement, or replace it.
 Viewing an outcome or stopping a task never changes that brief. Recovery clears the old
-submission identity; only a later explicit Generate creates another task with a new key.
+submission identity. When the valid editor still matches the submitted request, **Generate again**
+creates a fresh task only after an explicit click. A different editor requires the existing
+restore/keep/save confirmation first. Stop is terminal cancellation, not checkpoint pause;
+network reconnection resumes observation of the existing task, not its execution.
 Revision continuations belong to the initiating navigation, operation, session and
 editor/draft context; a late Save response may persist B but cannot restore A or change
 a newer page. Terminal cards show their safe outcome instead of announcing the retained

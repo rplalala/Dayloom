@@ -171,6 +171,31 @@ Diagnostic `before` captures were taken while CSS isolation had already begun;
 they do not establish an exact fixed-base render. Intermediate captures labelled
 `final` are not substituted for the later `accepted-v2` page captures.
 
+The later Plan consolidation on 22 October uses review base `e7a97e0`, implementation
+`337e7d7` and separate correction `980b738`. Progress, Stop and recovery now occupy the
+existing r7 Plan sections and header entry; the separate task page is removed. The
+immutable submitted trip remains separate from a different edited brief. Spec review
+caught an acknowledgement incorrectly following the active task when another preview
+was viewed. A failing route-level regression reproduced it; the correction acknowledges
+the displayed preview's source task. Standards and Spec rechecks each found zero
+remaining issues.
+
+That consolidation passed 238 frontend tests in 40 files, production build/typecheck
+and lint with the existing two Fast Refresh warnings and bundle-size advisory. The
+three affected API/PostgreSQL/browser modules ran 18 cases: 17 passed initially; one
+asserted resource cleanup immediately after releasing a controlled model. Waiting for
+completion corrected its timing, and that exact case passed its follow-up. This is not
+a single all-green whole-module rerun. The public migration entrypoint applied zero
+changes. A separate real manual-API/PostgreSQL journey exercised two explicit generations,
+one-active-task conflict, Stop, saving brief B before restoring A, completion and older
+preview selection within Plan, explicit Save and persisted reload. Captures at 1440,
+800 and 390px showed no horizontal overflow; external requests and browser page errors
+were both zero. Main-worktree evidence is retained in `.scratch/plan-integration/`:
+`frontend-final.log`, `review-{red,green,build,lint}.log`, `browser.json`, the responsive
+captures, `product-20261022-123954.{log,xml}` and its exact failed-case follow-up
+`product-20261022-124335.{log,xml}`. The existing unrelated environment-example and
+glossary changes remained excluded.
+
 Local evidence paths are historical identifiers, not published dependencies. The integration worktree's ignored `.scratch/final-backend-initial/` retains hash-verified original whole-run log/XML/result files. `.scratch/final-product*`, `final-frontend*`, `final-static*` and `final-delta-static*` identify the later root gates. `.scratch/coordination/` contains exact-head reviews, merger/public-migration receipts and Issue mutation readbacks; task `.scratch/handoff-*.md` files locate retained raw logs and screenshots. The correction tree's `correction-validation-summary.json` verifies that the short-path retest set equals the original 63 failed nodes. Earlier #203 full backend133/frontend150 results survive as original tool receipts, but their complete local raw logs were not retained. Later focused correction logs do not retroactively replace those missing raw logs.
 
 All acceptance databases and API/frontend ports are isolated per worktree. Product acceptance never uses the existing TripWorld runtime on port55432. External model, retrieval-provider, map, weather and image transports are substituted; Product persistence, coordination and V3 execution remain real. These are engineering acceptance results, without a provider-quality comparison, formal benchmark, research conclusion, version freeze or scale guarantee. No live service call, push, PR or deployment is established by these results.
