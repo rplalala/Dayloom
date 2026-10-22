@@ -58,13 +58,39 @@ Core review identified three recovery defects: a single storage slot discarded u
 
 The first five-failure recovery browser invocation reached two product failures; three other cases stopped in seeding at `KeyError: csrf_token`. It is not evidence that all five product assertions ran. After setup and behavior corrections, all 15 Copy browser cases passed, including actual source/result deletion, cross-source recovery and same-account relogin without extra POST. Following the accepted media merge, final bounded checks passed 104 API/public-migration/constraint/compatibility tests, 17 Copy/media browser cases and 28 affected frontend tests. Private bindings survived Copy/copy-of-copy and source deletion while staying absent from receipts, imports and downloaded JSON. These bounded stage checks preceded the integrated regression below.
 
+### r7 fidelity correction
+
+User inspection on 2026-10-22 rejected the delivered presentation as substantially different from r7. The initial lifecycle gate established functional behavior, not complete visual fidelity. Correction began at `8f7095705fb4decd9a5f2cd956d5016868efccbf`, after the Dayloom browser title and actual-clock calendar correction. The pinned r7 HTML SHA-256 is `7b69c4bf0d93e56e2b3fc5bbd1914f2e9696d21fded8c877c4f4a326932e09aa`.
+
+The implementation had omitted `prototype.css` and `nearby.css`, retained competing component styles, and admitted legacy global styles into Product. The correction restores all four original layers in order, with Product selector and keyframe scoping, and excludes Product from legacy styles without redesigning Developer. Home, Plan, Library, Detail, Auth and Account now use the source hierarchy, icons, illustrations, controls and responsive rules. Native dialogs restore the source menu structure, close controls, Escape/backdrop behavior and focus restoration. Draft cards open a read-only detail page before an explicit Continue planning; reading a draft cannot replace the active brief. Normal naming stays in Library Rename. Review contains the source facts, with a read-only notice only for a different recovered historical name.
+
+Preserving real behavior required more than replacing styles. Browser acceptance exposed a logout error lost when the profile form unmounted, and a missing explicit media refresh action. The former now belongs to the account page with session/attempt fences; the latter is available inside the existing source-information disclosure. Export success shows the source toast, while clipboard failure alone exposes the selectable summary. Auth panes retain independent values and visibility, and Account previews edited initials without saving.
+
+The first broad correction diagnostic failed 105 of 263 cases. It exposed both obsolete UI expectations and actual storage compatibility defects: newly projected display hints were incorrectly sent to SQL columns, and neutral optional fields changed historical import fingerprints. Commit `e1bc6e8` persists allowlisted hints separately through migration 007, omits absent hints from serialization and preserves original receipt fingerprints. The focused actual-PostgreSQL compatibility set then passed 83 tests. Later browser diagnostics also failed while obsolete selectors and the logout/media defects were being corrected; those invocations are not all-green evidence.
+
+Display hints cannot create request facts, verified place identity or media authority. The public migration entrypoint applied 007 once and reran zero on the retained manual database. The Pydantic minimum is 2.12 because the DTOs use `exclude_if`; all 73 locked package versions remain unchanged. Actual dates, the fourteen-date window, ten-day trip limit and approved initials-only avatar release remain in force. Prototype simulation notices are replaced by truthful Product wording.
+
+Independent review identified a missing completed-but-unviewed task entry, omission
+of the new draft detail route from the authentication return allowlist, and a lost
+no-wrap rule for Google Maps attribution. Paired-page inspection also found that
+detail/import route aliases lost the source My trips navigation selection. The
+correction separates viewing a result
+from observing/dismissing its notification and retains the strict UUID return boundary.
+An offline Chromium negative case measured the provider label on two lines at 800px;
+restoring no-wrap alone still overflowed its caption by 3.375px. Narrow runtime caption
+padding then kept the full 12px label inside its figure without changing photo dimensions
+or crop. Author names continue to wrap. The same correction consolidates the duplicated
+mood mapping and native-dialog backdrop predicate while leaving close/busy policies local.
+
 ## Verification and evidence
 
-The production-code checkpoint is `74d1603b946dc393e46e5121b2986e31724a7d4c`.
+### Initial lifecycle delivery
+
+The initial production-code checkpoint is `74d1603b946dc393e46e5121b2986e31724a7d4c`.
 The final test-only corrections are `2fcff169c265dfbbac8587a4d5218676dba7a4fd`
 (library keyboard navigation) and `e2c19925c97253705f8c2d43e0dd63bfe5c6886a`
 (installed CLI environment admission). No application, frontend, launcher, tool or
-dependency-lock content changed after the production checkpoint. The Product gate
+dependency-lock content changed between that checkpoint and the initial delivery. The Product gate
 ran on a clean `2fcff169` tree. CLI tests ran with only the two test-file edits later
 committed as `e2c19925`; the handoff verifies their normalized bytes match that commit.
 
@@ -75,7 +101,7 @@ committed as `e2c19925`; the handoff verifies their normalized bytes match that 
 | All 27 installed-CLI fixture consumer files | First invocation: 878 passed, 63 failed, six skipped in 1,313.19 seconds. The overlong scratch basetemp affected native raw-response and downstream suite evidence. |
 | Exact CLI failure-node follow-up | The same 63 failed node IDs all passed with only a shorter worktree-local basetemp, zero skips, in 341.50 seconds. The two runs establish 941 distinct passed CLI cases, not one all-green 947-case invocation. |
 | Previously paused population `schema_ref` case | Passed in the complete remapped whole-host environment in the original 947-case invocation, 0.390 seconds; its earlier JUnit time was 8,153.345 seconds with a 60-second subprocess timeout. |
-| Complete frontend | 174 tests in 27 files passed at `74d1603`; build/typecheck and lint passed. Two Fast Refresh warnings introduced with the account shell remain. Frontend source did not change afterward. |
+| Complete frontend | 174 tests in 27 files passed at `74d1603`; build/typecheck and lint passed. Two Fast Refresh warnings introduced with the account shell remained. Frontend source did not change again before initial delivery. |
 | Final static boundary | All 80 changed Python files passed Ruff at `e2c19925`; full-base diff checks passed. V0–V3, API and installed RTPEval help checks passed without Product configuration at the unchanged production checkpoint. |
 | Public migration entrypoint | Fresh six-file application, zero-change rerun and checksum rejection were exercised in the media slice. Final integration at `e2c19925` applied zero and reran zero, verifying all six checksums, ten domain tables and the unchanged TripWorld sentinel after each run. |
 
@@ -91,6 +117,59 @@ from the fixed base through `74d1603`, with zero remaining findings on each axis
 The separately committed library and CLI test corrections also received both review
 axes with zero findings. Final documentation delta review and local delivery completion
 are recorded with the originating Issue; this runtime evidence does not infer them.
+
+### r7 correction validation
+
+The correction implementation is `e1bc6e8` followed by `3a04a18`; independent review
+and paired-page corrections are separately committed as `0d7a9fc`. The broad
+gate ran with `3a04a18`'s application/frontend bytes and the browser selector before
+its final test-only correction. That gate passed 291 of 292 cases in 720.53 seconds.
+Its sole failure was an unscoped View details locator matching both the saved trip
+and the newly restored draft detail link. Scoping it to the saved-trip card changed
+no application behavior; the exact failed case then passed in 26.60 seconds.
+Together these establish 292 distinct passed cases, including 63 actual Chromium
+cases across eleven browser modules and 24 Product HTTP/API cases. The separate
+four browser-harness security cases are not counted as Chromium journeys. No
+single all-green 292-case invocation or new whole-backend run is claimed.
+
+The affected Task, Draft, Media, Library and Import browser follow-up then passed
+28 of 29 cases in 285.48 seconds. Its only failure was a previous test expecting
+to dismiss the notification after it had already opened the preview. The reviewed
+view-acknowledgement behavior had correctly cleared it. The assertion now verifies
+that both notification and ready entry stay absent after returning to Library;
+the same case's original keyboard/menu/geometry assertions remain. This exact case
+passed in 36.51 seconds after the test-only correction. Narrow navigation-class/ARIA
+changes made after the 29-case gate were independently checked in 21 offline browser assertions
+across three widths and seven routes, with no writes. Backend-test formatting changes
+passed Ruff and did not change expressions or assertions.
+
+| Actual check | Result and interpretation |
+| --- | --- |
+| Complete frontend | 207 tests in 37 files passed before formal review; the final corrected source passed 225 in 38 files. Typecheck/build passed. Lint reported zero errors and the two existing session Fast Refresh warnings. The final 512.27 kB minified JavaScript bundle triggers Vite's 500 kB advisory; its threshold was not raised. |
+| Fixed CSS comparison | All four layers' selectors, declarations, media rules and keyframes match the pinned source after the documented scoping adaptations. Original local SVG illustration bytes remain unchanged. |
+| Responsive page comparison | Thirty reference/current captures at 1440, 800 and 390px show no horizontal overflow. Home, initial Plan and Login match every collected rectangle, font/color metric and total height at all three widths. Library and itinerary detail retain real record counts and honest source text, so their total heights are not asserted equal to different fixture content. |
+| Matched draft and dialogs | Draft detail's seven measured sections match source rectangles at all three widths. Offline matched-state browser checks cover activity/Nearby/route dialog geometry and source photo sizing; Auth, profile preview, Review, clipboard outcomes and About close/focus behavior also pass at every width. Mock-response comparison is distinct from the actual API/PostgreSQL journeys above. |
+| Manual date persistence | Actual API/PostgreSQL/browser acceptance generated 23–24 October and 3–4 November journeys, then saved and reloaded each. The observed window was 22 October–4 November 2026 with a ten-day trip maximum; no external browser request or page error was recorded. |
+| Public migration and static checks | The manual database applied migration 007 once and reran zero through `scripts/migrate_product.py`. Product regression includes fresh migration/checksum and legacy import receipt tests. Changed Python files passed Ruff; staged diff checks and the offline 73-package lock check passed. |
+
+Independent rechecks at `0d7a9fc` closed all three Standards findings (one contract
+violation and two duplication heuristics) and all three Spec findings. Each axis
+reported zero remaining findings; the Spec delta identified no scope expansion.
+
+The correction evidence is retained under the main worktree's ignored
+`.scratch/r7-fidelity/`: `product-20261022-105539.{log,xml,json}` is the broad
+non-green run, and `product-20261022-110805.{log,xml,json}` is its exact failed-node
+follow-up. `draft-final-frontend.log`, `draft-detail-build.log`,
+`draft-final-lint.log`, `accepted-v2/`, `css-layer-equality.json`,
+`draft-detail-captures/`, `final-shell-browser.json`, `dialog-comparison/`,
+`calendar-verification.json` and `manual-migration.log` identify the other checks.
+`product-20261022-112030.{log,xml,json}` and
+`product-20261022-112659.{log,xml,json}` identify the affected browser gate and
+exact Library follow-up. `review-fixes/` retains the failing and passing behavioral
+and geometry checks, final frontend/build/lint outputs and navigation/dialog proof.
+Diagnostic `before` captures were taken while CSS isolation had already begun;
+they do not establish an exact fixed-base render. Intermediate captures labelled
+`final` are not substituted for the later `accepted-v2` page captures.
 
 Local evidence paths are historical identifiers, not published dependencies. The integration worktree's ignored `.scratch/final-backend-initial/` retains hash-verified original whole-run log/XML/result files. `.scratch/final-product*`, `final-frontend*`, `final-static*` and `final-delta-static*` identify the later root gates. `.scratch/coordination/` contains exact-head reviews, merger/public-migration receipts and Issue mutation readbacks; task `.scratch/handoff-*.md` files locate retained raw logs and screenshots. The correction tree's `correction-validation-summary.json` verifies that the short-path retest set equals the original 63 failed nodes. Earlier #203 full backend133/frontend150 results survive as original tool receipts, but their complete local raw logs were not retained. Later focused correction logs do not retroactively replace those missing raw logs.
 

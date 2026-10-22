@@ -210,7 +210,10 @@ account deletion cascades both. No queue, event log or graph checkpoint is intro
 
 The global desktop/mobile entry and `/planning` rehydrate task state with one in-flight
 bounded poll, reconnect/focus reads and an observed completion notice. Completion neither
-redirects nor changes the current brief. `/previews/:id` reads immutable unsaved detail.
+redirects nor changes the current brief. The entry prefers an active task; otherwise it
+keeps an unviewed completed preview available as Itinerary ready. Viewing that preview
+is acknowledged per owner, task and revision, independently of dismissing its notification.
+`/previews/:id` reads immutable unsaved detail.
 An ambiguous submit response triggers only an operation lookup; its immutable intent
 and key stay account-scoped through expiry. Explicit logout/revocation clears it. A late
 response cannot overwrite another edited brief or submit it with an unresolved earlier
@@ -486,7 +489,7 @@ field and collection bounds and valid Unicode. Exact span ownership uses browser
 UTF-16 offsets. Stale, repeated or overlapping bindings are discarded and their controls
 detached without searching for matching text; user wording remains intact.
 
-The editor retains draft identity, last accepted revision and unsaved title within the
+The editor retains draft identity, last accepted revision and a recovered local title within the
 same account-scoped recovery record as its brief. Saving again updates that identity;
 Save as new allocates another. A 409 leaves local work intact and offers explicit reload
 or Save as new. Reload confirms replacement of local edits. Expiry quarantines this
@@ -501,9 +504,19 @@ ordering and case-insensitive name ordering use ascending UUID and then kind tie
 Renaming does not move creation-ordered cards. Count and page read one repeatable-read
 snapshot. `limit` is 1–50
 (default 24), `offset` is 0–10000, and search is at most 100 characters. The browser
-requests pages of 12; missing fields use neutral placeholders. Saved cards join this
+requests pages of four; missing fields use neutral placeholders. Saved cards join this
 server-side union with `kind=saved` and server-owned source; equal UUIDs in different
-tables remain distinct. The browser routes saved cards to immutable detail and offers
+tables remain distinct. Both card kinds open View details. `/drafts/{draft_id}` reads
+the owned editor snapshot without changing the current brief, creating an itinerary or
+writing anything. Authentication retains that private detail destination. Continue
+planning explicitly opens the existing `/plan?draft=...`
+editor and its revision-aware recovery. Draft detail preserves unknown/invalid input
+as unconfirmed facts; it never fabricates a generated/imported provenance or request.
+Naming uses Library Rename; the brief-review modal summarizes recorded inputs without
+an editable title. A differing historical local name remains visible as read-only
+recovery context and is preserved by Save.
+
+The browser routes saved cards to immutable detail and offers
 rename, independent Copy and confirmed deletion for both kinds. Saved Copy follows the
 [saved snapshot operation contract](#independent-trip-copies-and-kept-examples).
 Revision conflicts offer an explicit collection reload. A mutation 401 immediately hides
@@ -523,6 +536,14 @@ ownership, recovery and mutation rules. Profile initialization belongs to the
 [new-brief contract](#profile-defaults-and-new-brief-initialization); historical
 detail and source trust belong to the following shared presentation contract.
 
+The fixed r7 pages own Product layout, typography, colors, icons, controls and
+responsive behavior. Its `original.css`, `refinements.css`, `prototype.css` and
+`nearby.css` layers retain their order under the Product scope; legacy Developer
+styles stay outside that scope. Real authentication, progress, decisions and source
+claims replace the prototype's browser simulations without changing that layout.
+My trips remains selected in desktop and mobile navigation while reading trip, draft,
+example or preview details, or importing an itinerary.
+
 ### Public examples and reusable detail
 
 `GET /api/examples` exposes three curated cards; `GET /api/examples/{example_id}`
@@ -530,8 +551,10 @@ returns their detail. The allowlist contains `sydney-example`, `kyoto-design`,
 `melbourne-design` and the additional `nearby-linking` interaction example. The bundled
 fixtures come from the fixed r7 source at commit
 `b30eb3814513b12d7869ca8a5c59f0b7401d45d6`. They require neither an account nor
-provider/database configuration, and create no example table. Home and the guest
-library link to `/examples/{example_id}`; signed-in users can also read those routes.
+provider/database configuration, and create no example table. The guest library
+links to `/examples/{example_id}`; signed-in users can also read those routes.
+Cards expose fixed-source creation timestamps for the original newest/oldest ordering;
+the public collection's allowlisted API order does not change.
 
 `backend/app/product/detail.py:ProductDetail` owns the `product_detail_1` contract,
 mirrored by `frontend/src/features/product/detail/types.ts` and rendered by
@@ -544,6 +567,14 @@ it from an itinerary. Provenance (`example`, `generated`, `imported`) and trust
 (`source_fixture`, `generated_projection`, `unverified_import`) remain explicit.
 This contract renders examples, previews and saved/imported snapshots; lifecycle
 operations use their dedicated services.
+
+Optional `illustration_key` values select the five bundled r7 illustrations;
+`display_tags` retain supplied presentation labels without becoming request facts.
+Activity and Nearby hints use the same illustration allowlist. Saved snapshots keep
+these hints separately in `app.trips.display_metadata`, including independent copies
+after source deletion. Empty hints are omitted from serialization so legacy import
+fingerprints and operation receipts remain recoverable. These hints never confer a
+verified place identity or provider photo authority.
 
 The fixture adapter allowlists public fields and excludes provider identity/evidence
 references. Example transfers retain supplied route metrics and source status as
