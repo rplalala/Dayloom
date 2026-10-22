@@ -46,3 +46,18 @@
 .dayloom .photo-credit-content a { height:auto; }
 .dayloom .detail-hero-inner { pointer-events:none; }
 .dayloom .detail-hero-inner a, .dayloom .detail-hero-inner button { pointer-events:auto; }
+
+/* Thumbnail credits share the activity card width instead of widening the image. */
+.dayloom .activity-photo.compact-place-credit { display:contents; }
+.dayloom .activity-photo.compact-place-credit > .media-open { width:98px; height:96px; flex:none; overflow:hidden; border-radius:9px; }
+.dayloom .compact-place-credit > figcaption { padding:4px 0 0; background:transparent; }
+.dayloom .activity-photo.compact-place-credit > figcaption { order:1; flex-basis:100%; }
+.dayloom .activity-content:has(> .compact-place-credit) { flex-wrap:wrap; }
+.dayloom .activity-content:has(> .compact-place-credit) > .nearby-inline { order:2; }
+@media(max-width:800px) {
+  .dayloom .activity-photo.compact-place-credit > .media-open { width:76px; height:82px; }
+}
+@media(max-width:560px) {
+  .dayloom .activity-photo.compact-place-credit > .media-open { width:100%; height:110px; }
+  .dayloom .activity-photo.compact-place-credit > figcaption { margin:4px 0 9px; }
+}

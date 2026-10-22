@@ -6,8 +6,8 @@ import { illustrationFor } from './display';
 import { Icon } from '../Icon';
 import { Link } from 'react-router-dom';
 
-export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, children, link }: {
-  link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
+export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosphere ? '/dayloom/hero.svg' : '/dayloom/nature.svg', className = '', onOpen, children, link, compactCredit = false }: {
+  compactCredit?: boolean; link?: { to: string; label: string }; media?: DisplayMedia; label: string; atmosphere?: boolean; fallback?: string; className?: string; onOpen?: () => void; children?: ReactNode;
 }) {
   const [failed, setFailed] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
@@ -24,10 +24,10 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   const credit = available ? <>
     <span className="media-provider" translate="no">{media.provider}</span>
     {media.authors?.map((author, i) => <span key={i}> · {author.url ? <a href={author.url} target="_blank" rel="noopener noreferrer">{author.name}</a> : author.name}</span>)}
-    {media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
+    {!compactCredit && media.source_url && <> · <a href={media.source_url} target="_blank" rel="noopener noreferrer">Photo source</a></>}
   </> : 'Illustration';
   const picture = onOpen ? <button type="button" className="media-open" aria-label={`View ${label}`} onClick={onOpen}>{visual}</button> : link ? <Link className="media-image-link" to={link.to} aria-label={link.label}>{visual}</Link> : visual;
-  return <figure className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? "has-place-credit" : ""} ${className}`}
+  return <figure className={`media-photo ${atmosphere ? "atmosphere-photo" : "place-photo"} ${placeCredit ? `has-place-credit${compactCredit ? " compact-place-credit" : ""}` : ""} ${className}`}
     onPointerEnter={event => { if (atmosphere && event.pointerType !== "touch") setCreditsOpen(true); }}
     onPointerLeave={event => { if (!event.currentTarget.contains(document.activeElement)) setCreditsOpen(false); }}
     onFocus={() => setCreditsOpen(true)}
@@ -42,9 +42,9 @@ export function MediaPhoto({ media, label, atmosphere = false, fallback = atmosp
   </figure>;
 }
 
-export function PlacePhoto({ slot, label, className, onOpen, children, fallback, photograph = false }: { photograph?: boolean; slot: string; label: string; className?: string; onOpen?: () => void; children?: ReactNode; fallback?: string }) {
+export function PlacePhoto({ slot, label, className, onOpen, children, fallback, fullCredit = false }: { fullCredit?: boolean; slot: string; label: string; className?: string; onOpen?: () => void; children?: ReactNode; fallback?: string }) {
   const media = useContext(PlaceMedia);
-  return <MediaPhoto fallback={fallback || illustrationFor(label)} media={photograph ? media[slot] : undefined} label={label} className={className} onOpen={onOpen}>{children}</MediaPhoto>;
+  return <MediaPhoto fallback={fallback || illustrationFor(label)} compactCredit={!fullCredit} media={media[slot]} label={label} className={className} onOpen={onOpen}>{children}</MediaPhoto>;
 }
 
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {

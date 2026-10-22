@@ -35,12 +35,12 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.get_by_role("link", name="View full itinerary").click(timeout=30000)
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         expect(page.locator(".activity-photo img").first).to_be_visible()
-        expect(page.locator(".activity-photo .media-provider")).to_have_count(0)
+        expect(page.locator(".activity-photo .media-provider").first).to_have_text("Google Maps")
         page.get_by_role("button", name="View Place poi-0-1", exact=True).click()
         expect(page.get_by_role("dialog").get_by_role("link", name="Controlled Photographer")).to_be_visible()
         page.keyboard.press("Escape")
         expect(page.locator(".nearby-sidebar-groups .nearby-photo img").first).to_be_visible()
-        expect(page.locator(".nearby-sidebar-groups .media-provider")).to_have_count(0)
+        expect(page.locator(".nearby-sidebar-groups .media-provider").first).to_have_text("Google Maps")
         assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
         preview_id = page.url.rsplit("/", 1)[-1]
         metadata = page.request.get(base + f"/api/previews/{preview_id}/media").json()
@@ -161,10 +161,16 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         context.close()
 
 
-def test_illustrated_lists_detail_credits_and_atmosphere_controls_across_viewports(task_app):  # noqa: F811
+def test_direct_photographs_compact_credits_and_full_detail_sources_across_viewports(task_app):  # noqa: F811
     base, browser = task_app.base_url, task_app.browser
     context = browser.new_context(viewport={"width": 1440, "height": 1000})
-    scratch = Path(".scratch/product-polish/browser")
+    context.route("https://lh3.googleusercontent.com/**", lambda route: route.fulfill(
+        status=200, content_type="image/svg+xml",
+        body='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">'
+             '<rect width="120" height="90" fill="#b8d8d0"/>'
+             '<circle cx="90" cy="22" r="11" fill="#f8dd8c"/>'
+             '<path d="M0 75L35 30L69 69L91 46L120 80V90H0Z" fill="#427a66"/></svg>'))
+    scratch = Path(".scratch/direct-media-dayloom/browser")
     scratch.mkdir(parents=True, exist_ok=True)
     signals = Path(".scratch/task-browser/signals")
     for signal in signals.iterdir():
@@ -185,16 +191,27 @@ def test_illustrated_lists_detail_credits_and_atmosphere_controls_across_viewpor
         for width in (1440, 800, 390):
             page.set_viewport_size({"width": width, "height": 1000})
             expect(page.get_by_text("Planning review", exact=False)).to_have_count(0)
-            expect(page.locator(".activity-photo .media-provider")).to_have_count(0)
-            assert page.locator(".activity-photo img").first.get_attribute("src").startswith("/dayloom/")
+            expect(page.locator(".activity-photo .media-provider").first).to_have_text("Google Maps")
+            expect(page.locator('.activity-photo img[alt$="· place photograph"]').first).to_be_visible()
+            card = page.locator(".activity-content").first
+            activity_credit = card.locator(".activity-photo > figcaption")
+            expect(activity_credit.get_by_role("link", name="Controlled Photographer")).to_be_visible()
+            expect(activity_credit.get_by_role("link", name="Photo source")).to_have_count(0)
+            assert activity_credit.evaluate("el => el.scrollWidth <= el.clientWidth")
+            if width > 560:
+                assert card.locator(":scope > .activity-details").evaluate("el => el.getBoundingClientRect().width >= 120")
+                assert activity_credit.evaluate("el => { const parent=el.closest('.activity-content'); const image=parent.querySelector('.media-open').getBoundingClientRect(); const text=parent.querySelector('.activity-details').getBoundingClientRect(); return el.getBoundingClientRect().top>=Math.max(image.bottom,text.bottom)-1; }")
+            assert activity_credit.evaluate("el => { const a=el.getBoundingClientRect(); const b=el.closest('.activity-content').getBoundingClientRect(); return a.left>=b.left && a.right<=b.right && a.bottom<=b.bottom; }")
             if width <= 800:
                 disclosure = page.get_by_role("button", name="Show nearby for", exact=False).first
                 if disclosure.get_attribute("aria-expanded") == "false":
                     disclosure.click()
             region = ".nearby-inline" if width <= 800 else ".nearby-sidebar-groups"
             row = page.locator(f"{region} .nearby-item").first
-            expect(row.get_by_role("link", name="Controlled Photographer")).to_have_count(0)
-            assert row.locator("img").first.get_attribute("src").startswith("/dayloom/")
+            expect(row.get_by_role("link", name="Controlled Photographer")).to_be_visible()
+            expect(row.get_by_role("link", name="Photo source")).to_have_count(0)
+            expect(row.get_by_role("img", name="Controlled nearby park · place photograph")).to_be_visible()
+            assert row.locator("figcaption").evaluate("el => el.scrollWidth <= el.clientWidth")
             details = row.get_by_role("button", name="Details →", exact=True)
             details.focus()
             page.keyboard.press("Enter")
@@ -212,7 +229,8 @@ def test_illustrated_lists_detail_credits_and_atmosphere_controls_across_viewpor
             page.screenshot(path=str(scratch / f"place-detail-{width}.png"))
             page.keyboard.press("Escape")
             expect(details).to_be_focused()
-            expect(row.get_by_role("link", name="Controlled Photographer")).to_have_count(0)
+            expect(row.get_by_role("link", name="Controlled Photographer")).to_be_visible()
+            expect(row.get_by_role("link", name="Photo source")).to_have_count(0)
             page.evaluate("scrollTo(0, 0)")
             figure = page.locator(".detail-cover .atmosphere-photo")
             caption = figure.locator(".photo-credit-content")
@@ -228,7 +246,7 @@ def test_illustrated_lists_detail_credits_and_atmosphere_controls_across_viewpor
             figure.get_by_role("button", name="Hide photo credits", exact=True).click()
             expect(caption).not_to_be_visible()
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
-            page.screenshot(path=str(scratch / f"illustrated-lists-{width}.png"), full_page=True)
+            page.screenshot(path=str(scratch / f"direct-photos-{width}.png"), full_page=True)
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.goto(base + "/trips")
         card = page.locator(".trip-card-photo").first

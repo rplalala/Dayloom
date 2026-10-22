@@ -83,7 +83,7 @@ function InformationDialog({
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={dismiss}><Icon name="close" size={21} /></button>
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
-      {information.photo && <div className="photo-large"><PlacePhoto photograph className="dialog-place-photo" {...information.photo} /></div>}
+      {information.photo && <div className="photo-large"><PlacePhoto fullCredit className="dialog-place-photo" {...information.photo} /></div>}
       {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={refreshPhotos}>Refresh place photos</button>}
       {information.introduction && <p>{information.introduction}</p>}
       {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
@@ -167,7 +167,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
     destination: "stop" | "group";
   } | null>(null);
   const [information, setInformation] = useState<Information | null>(null);
-  const media = usePlaceMedia(information?.photo ? mediaEndpoint : undefined);
+  const media = usePlaceMedia(mediaEndpoint);
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities
