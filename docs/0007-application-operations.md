@@ -616,8 +616,9 @@ and estimate type remain in public detail data and versioned JSON rather than ra
 diagnostics. Example/import claims cannot acquire trusted outcomes by supplying a status
 field; their travel time is always presented as needing confirmation.
 Missing costs stay unknown, including when no total can be established. A zero amount
-or zero weather metric is a known value. Place lists use illustrations; photographs and
-credits belong in place dialogs under the [media contract](#verified-place-media-and-curated-atmosphere).
+or zero weather metric is a known value. Place lists display authorized photographs
+under the [media contract](#verified-place-media-and-curated-atmosphere), with illustration
+fallbacks and full source details in place dialogs.
 Map queries are URL-encoded; weather source links
 admit only HTTP(S), and source text is rendered as text.
 
@@ -680,15 +681,17 @@ parallel resolutions and a 12-second batch deadline. Each Google slot performs a
 one fresh `photos` Details request and one media metadata request, with a 3-second HTTP
 timeout and 256 KiB response limit. Redirects and arbitrary fetch destinations are
 rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
-automatic retry is introduced. Product requests place metadata when a place detail
-dialog opens; illustrated lists do not request it. Refresh place photos in that dialog
-explicitly resolves fresh metadata without replanning or refreshing itinerary facts.
+automatic retry is introduced. Product requests place metadata when an owned itinerary
+opens, so authorized photographs appear directly in activity and Nearby lists. Refresh
+place photos in a place dialog explicitly resolves fresh metadata without replanning
+or refreshing itinerary facts.
 
-Activity and Nearby lists use labelled local illustrations, preserving the compact r7
-rows. Opening a place detail dialog displays the real photograph when available, with
-Google Maps attribution, supplied author names and safe profile/source links in the
-same image container. The Google Maps label uses `translate="no"`, an unwrapped 12px
-normal-weight sans serif label and gray text on a light background. Unavailable
+List photographs retain a compact visible Google Maps and author attribution, with safe
+profile links. Full photo source links appear in the place detail dialog. The compact
+activity caption shares the card width instead of squeezing credits under its thumbnail;
+Nearby retains its image/detail row and a compact caption below. Both preserve the r7
+hierarchy. The Google Maps label uses `translate="no"`, an unwrapped 12px normal-weight
+sans serif label and gray text on a light background. Unavailable
 metadata, absent identity/keys and expired/failed image loads retain the labelled
 illustration. Preview access and Save remain independent of media success. Provider
 behavior follows the [Place Photos](https://developers.google.com/maps/documentation/places/web-service/place-photos)

@@ -1,6 +1,6 @@
 # Development guide
 
-Current entry points, reconciled 2026-10-22. [PROJECT.md](../../PROJECT.md) owns status
+Current entry points, reconciled 2026-10-23. [PROJECT.md](../../PROJECT.md) owns status
 and authorization; [architecture](../0001-system-architecture.md) and
 [application contracts](../0007-application-operations.md) explain the code and APIs.
 Commands below are references, not evidence of execution or approval for a live run.
@@ -56,6 +56,25 @@ download it. `python -m tools.data.prepare_tokenizer --help` describes explicit 
 For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
 `data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
 claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
+
+## Local PostgreSQL naming and storage
+
+`compose.tripworld.yaml` uses the Docker Compose project `dayloom` and container
+`postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
+
+```powershell
+docker compose --env-file .env.tripworld -f compose.tripworld.yaml up -d postgres
+```
+
+Fresh installations use the named volume `dayloom_pgdata`. Existing installations
+must set `TRIPWORLD_DB_VOLUME` in ignored `.env.tripworld` to their actual current
+volume before starting under the new project name. The existing local installation
+retains `reliable-tripworld_tripworld_pgdata`; the legacy storage name does not affect
+the displayed project/container names. Changing only the project name without this
+volume selection would create an empty database. Stop the old container before starting
+the replacement, verify database identity and retained records, then remove only the
+replaced container. Do not remove the data volume or re-ingest/re-embed the corpus.
+Database credentials, host port and independent V0–V3 connections stay unchanged.
 
 ## Complete local Product runtime
 
@@ -235,15 +254,15 @@ PostgreSQL. External place/model/weather/route/retrieval/media transports and br
 images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
 Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
 forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
-Lists remain illustrated before and after opening a place. Google photographs and
-readable author/source credits appear together in place detail dialogs at all three
-widths. Unsplash checks cover hover, keyboard focus, Escape and touch disclosure,
+Google photographs load directly in activity and Nearby lists, with compact visible
+provider/author credits and full source links in the place dialog at all three widths.
+Failed/unauthorized photographs retain labelled illustration fallbacks. Unsplash checks
+cover hover, keyboard focus, Escape and touch disclosure,
 including collection image links and hero shading. Product overview and copyable
 summary checks exclude internal review fields while preserving route uncertainty.
 Provider/API checks also exercise redirects, foreign resources/URLs, bounded bodies and
 work, migration constraints/checksum integrity and missing media access. Logs/screenshots
-remain under the worktree's `.scratch/media-browser`, `.scratch/product-polish/browser`
-and selected pytest basetemp.
+remain under the worktree's `.scratch/` and selected pytest basetemp.
 
 Every Product browser fixture uses the same test-only media transport override and
 installs external-request interception before context navigation. This includes older
