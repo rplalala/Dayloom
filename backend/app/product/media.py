@@ -8,7 +8,7 @@ from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
-from pydantic import SecretStr
+from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.product.auth import CurrentUser
@@ -25,7 +25,10 @@ CURATED = {
 class MediaSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="PRODUCT_", env_file=".env", extra="ignore")
     google_places_media_key: SecretStr = SecretStr("")
-    unsplash_access_key: SecretStr = SecretStr("")
+    unsplash_access_key: SecretStr = Field(
+        default=SecretStr(""),
+        validation_alias=AliasChoices("PRODUCT_UNSPLASH_ACCESS_KEY", "UNSPLASH_API_KEY"),
+    )
 
 
 def safe_url(value, host, *, subdomains=False):
