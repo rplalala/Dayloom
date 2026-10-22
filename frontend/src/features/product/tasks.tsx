@@ -109,7 +109,7 @@ export function LegacyPlanningRedirect() {
   return <Navigate replace to={taskId ? planTaskLink(taskId) : '/plan#generation-progress'} />;
 }
 
-export function UnsavedPreviews({ refreshKey }: { refreshKey?: string }) {
+export function UnsavedPreviews({ refreshKey, currentPreviewId }: { refreshKey?: string; currentPreviewId?: string | null }) {
   const { account, refresh: refreshSession } = useSession();
   const [result, setResult] = useState<{ owner?: string; previews: Preview[]; error?: string; more?: boolean }>({ previews: [] });
   const [loadingMore, setLoadingMore] = useState(false);
@@ -133,8 +133,9 @@ export function UnsavedPreviews({ refreshKey }: { refreshKey?: string }) {
     } catch { if (owner.current === expectedOwner) setResult(previous => ({ ...previous, error: 'Could not load older previews. Try again.' })); }
     finally { setLoadingMore(false); }
   }
-  const rows = <>{result.error && <p role="alert">{result.error}</p>}{!result.error && !result.previews.length && <p>No pending previews.</p>}{result.previews.map(preview => <div key={preview.id} className="recovery-row"><div><strong>{preview.title || 'Itinerary preview'}</strong><small>{preview.destination || "A journey to return to"} · Unsaved preview</small></div><div className="recovery-actions"><Link className="btn btn-light btn-small" to={`/plan?preview=${encodeURIComponent(preview.id)}#result`} onClick={event => { const disclosure = event.currentTarget.closest("details"); if (disclosure) disclosure.open = false; }}>View preview</Link></div></div>)}{result.more && <button className="btn btn-light" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</>;
-  return result.previews.length || result.error ? <details className="plan-preview-recovery"><summary><Icon name="layers" size={17} />Unsaved previews <span className="count-badge">{result.previews.length}</span></summary>{rows}</details> : null;
+  const otherPreviews = result.previews.filter(preview => preview.id !== currentPreviewId);
+  const rows = <>{result.error && <p role="alert">{result.error}</p>}{otherPreviews.map(preview => <div key={preview.id} className="recovery-row"><div><strong>{preview.title || 'Itinerary preview'}</strong><small>{preview.destination || "A journey to return to"} · Unsaved preview</small></div><div className="recovery-actions"><Link className="btn btn-light btn-small" to={`/plan?preview=${encodeURIComponent(preview.id)}#result`} onClick={event => { const disclosure = event.currentTarget.closest("details"); if (disclosure) disclosure.open = false; }}>View preview</Link></div></div>)}{result.more && <button className="btn btn-light" disabled={loadingMore} onClick={() => void loadMore()}>Load older previews</button>}</>;
+  return otherPreviews.length ? <details className="plan-preview-recovery"><summary><Icon name="layers" size={17} />Unsaved previews <span className="count-badge">{otherPreviews.length}</span></summary>{rows}</details> : result.error ? <p role="alert">{result.error}</p> : null;
 
 }
 

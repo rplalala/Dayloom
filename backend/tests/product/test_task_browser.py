@@ -601,3 +601,97 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
         (signals / "model-release").touch()
         (signals / "model-outcome").unlink(missing_ok=True)
         context.close()
+
+
+def test_browser_recovers_only_other_previews_and_removes_decided_results(task_app):
+    from backend.tests.product.test_browser import register_browser
+
+    base, browser = task_app.base_url, task_app.browser
+    (SCRATCH / "signals/model-release").touch()
+    context = browser.new_context(viewport={"width": 1440, "height": 1000})
+    try:
+        page = context.new_page()
+        errors, submissions = [], []
+        page.on("pageerror", lambda error: errors.append(str(error)))
+        page.on(
+            "request",
+            lambda request: submissions.append(request.url)
+            if request.method == "POST" and request.url.endswith("/api/planning/tasks") else None,
+        )
+        register_browser(page, base)
+        page.goto(base + "/plan")
+        for label, value in [
+            ("Destination", "Sydney"),
+            ("Start date", "2026-09-12"),
+            ("End date", "2026-09-13"),
+            ("Travelers", "2"),
+            ("Whole-trip budget", "1800"),
+        ]:
+            page.get_by_label(label, exact=True).fill(value)
+        preview_ids = []
+        for budget in ("1800", "1900"):
+            page.get_by_label("Whole-trip budget", exact=True).fill(budget)
+            with page.expect_response(lambda reply: reply.status == 202
+                                      and reply.url.endswith("/api/planning/tasks")) as accepted:
+                page.get_by_role("button", name="Generate itinerary", exact=False).click()
+            task_id = accepted.value.json()["id"]
+            page.goto(base + "/trips")
+            page.get_by_role("link", name="Itinerary ready", exact=True).click(timeout=30000)
+            result = page.locator("#result")
+            expect(
+                result.get_by_role("link", name="View full itinerary", exact=False)
+            ).to_be_visible()
+            preview_ids.append(
+                page.request.get(base + "/api/planning/tasks/" + task_id).json()["preview_id"]
+            )
+            if len(preview_ids) == 1:
+                expect(result.locator("summary")).to_have_count(0)
+                page.reload()
+                expect(
+                    result.get_by_role("button", name="Save to My trips", exact=True)
+                ).to_be_visible()
+                expect(result.locator("summary")).to_have_count(0)
+
+        first, second = preview_ids
+        result = page.locator("#result")
+        for width in (1440, 800, 390):
+            page.set_viewport_size({"width": width, "height": 1000})
+            expect(result.locator("summary")).to_have_text("Unsaved previews 1")
+            result.locator("summary").click()
+            rows = result.locator(".recovery-row")
+            expect(rows).to_have_count(1)
+            expect(rows.get_by_role("link", name="View preview", exact=True)).to_have_attribute(
+                "href", "/plan?preview=" + first + "#result"
+            )
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            result.screenshot(path=str(SCRATCH / f"other-previews-{width}.png"))
+            result.locator("summary").click()
+        result.locator("summary").click()
+        result.get_by_role("link", name="View preview", exact=True).click()
+        expect(page).to_have_url(base + "/plan?preview=" + first + "#result")
+        page.reload()
+        expect(result.locator("summary")).to_have_text("Unsaved previews 1")
+        result.locator("summary").click()
+        expect(result.get_by_role("link", name="View preview", exact=True)).to_have_attribute(
+            "href", "/plan?preview=" + second + "#result"
+        )
+        result.get_by_role("button", name="Save to My trips", exact=True).click()
+        expect(result.get_by_text("Saved to My trips", exact=True)).to_be_visible()
+        assert page.request.get(base + "/api/previews/" + first).json()["state"] == "saved"
+        result.get_by_role("link", name="View preview", exact=True).click()
+        expect(page).to_have_url(base + "/plan?preview=" + second + "#result")
+        expect(result.get_by_role("button", name="Discard preview", exact=True)).to_be_visible()
+        expect(result.locator("summary")).to_have_count(0)
+        result.get_by_role("button", name="Discard preview", exact=True).click()
+        page.get_by_role("button", name="Confirm discard", exact=True).click()
+        expect(result.get_by_text("Preview discarded.", exact=True)).to_be_visible()
+        page.reload()
+        expect(result.get_by_text("Preview discarded.", exact=True)).to_be_visible()
+        expect(result.locator("summary")).to_have_count(0)
+        assert page.request.get(base + "/api/previews?limit=20").json() == []
+        assert page.request.get(base + "/api/previews/" + second).json()["state"] == "discarded"
+        page.goto(base + "/trips")
+        expect(page.get_by_role("heading", name="Sydney journey", exact=True)).to_be_visible()
+        assert len(submissions) == 2 and not errors
+    finally:
+        context.close()

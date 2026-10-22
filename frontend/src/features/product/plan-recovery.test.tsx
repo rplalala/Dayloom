@@ -11,7 +11,10 @@ const task: PlanningTask = { id: 'task-a', state: 'running', revision: 1, reques
 const detail = { schema_version: 'product_detail_1', id: 'preview-a', title: 'A Sydney afternoon', destination: 'Sydney', start_date: brief.start_date, end_date: brief.end_date, request, days: [], transfers: [], nearby: [] };
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
-function setup(path = '/', recent = [task], selected = task) {
+const currentPreview = { id: 'preview-a', state: 'pending', title: detail.title, destination: 'Sydney' };
+const olderPreview = { id: 'older-preview', state: 'pending', title: 'An earlier journey', destination: 'Kyoto' };
+
+function setup(path = '/', recent = [task], selected = task, pending = [currentPreview, olderPreview]) {
   sessionStorage.setItem('dayloom.editor.v1', JSON.stringify({ owner: 'alice', brief, actionId: null, origin: 'restored' }));
   const writes: string[] = [];
   const submissions: { operation_key: string }[] = [];
@@ -26,7 +29,11 @@ function setup(path = '/', recent = [task], selected = task) {
     if (url === '/api/planning/tasks' && options?.method === 'POST') { submissions.push(JSON.parse(String(options.body))); return Response.json({ ...task, id: 'new-task' }); }
     if (url === '/api/planning/tasks/new-task') return Response.json({ ...task, id: 'new-task' });
     if (url === '/api/previews/preview-a') return Response.json({ id: 'preview-a', source_task_id: 'task-a', state: 'pending', snapshot: detail });
-    if (url === '/api/previews?limit=20') return Response.json([{ id: 'older-preview', state: 'pending', title: 'An earlier journey', destination: 'Kyoto' }]);
+    if (url === '/api/previews/older-preview') return Response.json({ ...olderPreview, source_task_id: 'older-task', snapshot: { ...detail, id: olderPreview.id, title: olderPreview.title } });
+    if (url.startsWith('/api/previews?limit=20')) {
+      const offset = Number(new URL(url, 'http://localhost').searchParams.get('offset') || 0);
+      return Response.json(pending.slice(offset, offset + 20));
+    }
     if (url === '/api/planning/date-window') return Response.json({ allowedStart: '2026-10-22', allowedEnd: '2026-11-04', maxTripDays: 10 });
     return Response.json([]);
   }));
@@ -92,6 +99,62 @@ it('opens completion in section 03 with explicit decisions and older previews, k
   expect(screen.getByLabelText('Destination')).toHaveValue('Kyoto');
   await waitFor(() => expect(screen.queryByRole('link', { name: 'Itinerary ready' })).not.toBeInTheDocument());
   expect(writes).toEqual([]);
+});
+
+it('shows the current result without a recovery entry when it is the only unsaved preview', async () => {
+  const completed = { ...task, state: 'completed' as const, preview_id: 'preview-a' };
+  const { writes } = setup('/plan?preview=preview-a#result', [completed], completed, [currentPreview]);
+  await screen.findByRole('heading', { name: detail.title });
+  const result = within(document.getElementById('result')!);
+  expect(await result.findByRole('heading', { name: detail.title })).toBeVisible();
+  await waitFor(() => expect(fetch).toHaveBeenCalledWith('/api/previews?limit=20', expect.anything()));
+  expect(result.queryByText('Unsaved previews')).not.toBeInTheDocument();
+  expect(result.queryByRole('link', { name: 'View preview' })).not.toBeInTheDocument();
+  expect(result.getByRole('button', { name: 'Save to My trips' })).toBeEnabled();
+  expect(result.getByRole('button', { name: 'Discard preview' })).toBeEnabled();
+  expect(writes).toEqual([]);
+});
+
+it('counts only other previews and swaps the recoverable row when choosing one', async () => {
+  const completed = { ...task, state: 'completed' as const, preview_id: 'preview-a' };
+  const { router, writes } = setup('/plan?preview=preview-a#result', [completed], completed);
+  await screen.findByRole('heading', { name: detail.title });
+  const result = within(document.getElementById('result')!);
+  const entry = await result.findByText('Unsaved previews');
+  expect(entry).toHaveTextContent('Unsaved previews 1');
+  fireEvent.click(entry);
+  expect(result.getByText(olderPreview.title)).toBeVisible();
+  expect(result.getAllByRole('link', { name: 'View preview' })).toHaveLength(1);
+  fireEvent.click(result.getByRole('link', { name: 'View preview' }));
+  await screen.findByRole('heading', { name: olderPreview.title });
+  expect(router.state.location.search).toBe('?preview=older-preview');
+  const nextResult = within(document.getElementById('result')!);
+  const nextEntry = await nextResult.findByText('Unsaved previews');
+  expect(nextEntry).toHaveTextContent('Unsaved previews 1');
+  fireEvent.click(nextEntry);
+  expect(nextResult.getByText(detail.title)).toBeVisible();
+  expect(nextResult.getAllByRole('link', { name: 'View preview' })).toHaveLength(1);
+  expect(screen.getByLabelText('Destination')).toHaveValue('Kyoto');
+  expect(writes).toEqual([]);
+});
+
+it('keeps older previews reachable across pages after excluding the current result', async () => {
+  const completed = { ...task, state: 'completed' as const, preview_id: 'preview-a' };
+  const pending = [currentPreview, ...Array.from({ length: 20 }, (_, index) => ({
+    ...olderPreview, id: `older-${index}`, title: `Earlier journey ${index + 1}`,
+  }))];
+  setup('/plan?preview=preview-a#result', [completed], completed, pending);
+  await screen.findByRole('heading', { name: detail.title });
+  const result = within(document.getElementById('result')!);
+  const entry = await result.findByText('Unsaved previews');
+  expect(entry).toHaveTextContent('Unsaved previews 19');
+  fireEvent.click(entry);
+  expect(result.getAllByRole('link', { name: 'View preview' })).toHaveLength(19);
+  fireEvent.click(result.getByRole('button', { name: 'Load older previews' }));
+  expect(await result.findByText('Earlier journey 20')).toBeVisible();
+  expect(result.getByText('Unsaved previews')).toHaveTextContent('Unsaved previews 20');
+  expect(result.getAllByRole('link', { name: 'View preview' })).toHaveLength(20);
+  expect(result.queryByRole('button', { name: 'Load older previews' })).not.toBeInTheDocument();
 });
 
 it('recovers an older task at its legacy address inside Plan without restoring its brief', async () => {
