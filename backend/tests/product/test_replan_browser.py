@@ -116,7 +116,7 @@ def fill_generation_fields(page):
 
 def open_completed_preview_and_save(page, base, task_id):
     page.goto(base + f"/planning/{task_id}")
-    page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
+    page.get_by_role("link", name="View full itinerary", exact=False).click(timeout=30000)
     expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
     page.get_by_role("button", name="Save to My trips", exact=True).click()
     page.get_by_role("link", name="View saved itinerary", exact=True).click()

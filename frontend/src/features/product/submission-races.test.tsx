@@ -53,7 +53,7 @@ it.each(['draft navigation', 'logout and same-account login'])('an old lookup ca
     fireEvent.change(screen.getByLabelText('Whole-trip budget'), { target: { value: next.budget } });
   }
   fireEvent.click(screen.getByRole('button', { name: /Generate itinerary/ }));
-  await screen.findByRole('link', { name: /Open task progress/ });
+  await waitFor(() => expect(router.state.location.search).toBe('?task=task-1'));
   expect(submissions).toHaveLength(1);
   const newKey = submissions[0].operation_key;
   await act(async () => { release!(Response.json(null)); });

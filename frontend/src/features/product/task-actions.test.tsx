@@ -26,7 +26,7 @@ function taskPage(tasks = [taskA]) {
 }
 
 async function openRevisionDialog() {
-  const revise = await screen.findByRole('button', { name: 'Revise submitted brief' });
+  const revise = await screen.findByRole('button', { name: 'Revise submitted brief' }, { timeout: 5000 });
   // Settle the asynchronously loaded card's initial effects before a user action.
   await act(async () => {});
   fireEvent.click(revise);
@@ -38,9 +38,9 @@ it.each(['success', 'failure'])('a deferred save-and-revise %s cannot change the
   const { router, saves } = taskPage();
   fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(1));
-  await act(async () => { await router.navigate('/planning'); });
+  await act(async () => { await router.navigate('/plan?task=task-a#generation-progress'); });
   await act(async () => { saves[0](Response.json(result === 'success' ? { id: 'saved-b', revision: 1 } : { detail: 'Unavailable' }, { status: result === 'success' ? 201 : 500 })); });
-  expect(router.state.location.pathname).toBe('/planning');
+  expect(router.state.location.pathname).toBe('/plan');
   expect(JSON.parse(sessionStorage.getItem('dayloom.editor.v1')!).brief.destination).toBe('Kyoto');
   expect(screen.queryByRole('dialog', { name: 'Keep your current brief?' })).not.toBeInTheDocument();
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
@@ -50,11 +50,11 @@ it('a previous save response cannot settle a newer revision operation on the ret
   const { router, saves } = taskPage();
   fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(1));
-  await act(async () => { await router.navigate('/planning'); });
+  await act(async () => { await router.navigate('/plan?task=task-a#generation-progress'); });
   fireEvent.click(await openRevisionDialog());
   await waitFor(() => expect(saves).toHaveLength(2));
   await act(async () => { saves[0](Response.json({ detail: 'Old failure' }, { status: 500 })); });
-  expect(router.state.location.pathname).toBe('/planning');
+  expect(router.state.location.pathname).toBe('/plan');
   expect(screen.getByRole('button', { name: 'Save current brief and revise' })).toBeDisabled();
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   await act(async () => { saves[1](Response.json({ id: 'saved-b', revision: 1 }, { status: 201 })); });

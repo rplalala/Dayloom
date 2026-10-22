@@ -18,6 +18,7 @@ function open(path: string) {
     { path: '/trips/:tripId', element: <SavedPage /> },
     { path: '/previews/:previewId', element: <PreviewPage /> },
     { path: '/login', element: <AuthPage /> },
+    { path: '/plan', element: <p>Plan recovery</p> },
     { path: '/trips', element: <p>Collection fallback</p> },
   ], { initialEntries: [path] });
   render(<SessionProvider><RouterProvider router={router} /></SessionProvider>);
@@ -46,12 +47,28 @@ it.each([
   `/trips/${id}?next=https://example.com`,
   '/trips/------------------------------------',
   `/trips/${id}/../account`,
+  `/plan?task=${id}&next=https://example.com`,
+  `/plan?preview=${id}#unknown`,
 ])('rejects unsafe or malformed saved return target %s', async target => {
   vi.stubGlobal('fetch', vi.fn(async (url: string) => url === '/api/auth/login' ? Response.json(account) : expired()));
   const router = open(`/login?return=${encodeURIComponent(target)}`);
   await login();
   await screen.findByText('Collection fallback');
   expect(router.state.location.pathname).toBe('/trips');
+});
+
+it.each(['task', 'preview'])('retains the exact Plan %s receipt and section after login without generating', async kind => {
+  const writes: string[] = [];
+  vi.stubGlobal('fetch', vi.fn(async (url: string, options?: RequestInit) => {
+    if (options?.method === 'POST') writes.push(url);
+    return url === '/api/auth/login' ? Response.json(account) : expired();
+  }));
+  const target = `/plan?${kind}=${id}#${kind === 'task' ? 'generation-progress' : 'result'}`;
+  const router = open(`/login?return=${encodeURIComponent(target)}`);
+  await login();
+  await screen.findByText('Plan recovery');
+  expect(router.state.location.pathname + router.state.location.search + router.state.location.hash).toBe(target);
+  expect(writes).toEqual(['/api/auth/login']);
 });
 
 it.each(['save', 'discard'])('quarantines an expired %s reconciliation and recovers the same owner by reads only', async action => {

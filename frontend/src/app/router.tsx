@@ -10,7 +10,7 @@ import { AuthPage } from "../features/product/AuthPage";
 import { LibraryPage } from "../features/product/LibraryPage";
 import { AccountPage } from "../features/product/AccountPage";
 import { ExamplePage } from "../features/product/detail/ExamplePage";
-import { PlanningTasksPage, PreviewPage } from "../features/product/tasks";
+import { LegacyPlanningRedirect, PreviewPage } from "../features/product/tasks";
 import { SavedPage } from "../features/product/SavedPage";
 import { DraftDetailPage } from "../features/product/DraftDetailPage";
 import { ImportPage } from '../features/product/ImportPage';
@@ -30,8 +30,8 @@ export const routes: RouteObject[] = [
       { path: "drafts/:draftId", element: <DraftDetailPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "examples/:exampleId", element: <ExamplePage /> },
-      { path: "planning", element: <PlanningTasksPage /> },
-      { path: "planning/:taskId", element: <PlanningTasksPage /> },
+      { path: "planning", element: <LegacyPlanningRedirect /> },
+      { path: "planning/:taskId", element: <LegacyPlanningRedirect /> },
       { path: "previews/:previewId", element: <PreviewPage /> },
     ],
   },

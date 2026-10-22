@@ -32,8 +32,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         (signals / "model-release").touch()
         (signals / "media-nearby").touch()
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
-        page.get_by_role("link", name="Open task progress").click()
-        page.get_by_role("link", name="Open itinerary preview").click(timeout=30000)
+        page.get_by_role("link", name="View full itinerary").click(timeout=30000)
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         expect(page.locator(".activity-photo img").first).to_be_visible()
         expect(page.locator(".activity-photo .media-provider").first).to_have_text("Google Maps")
@@ -197,8 +196,7 @@ def test_nearby_photo_attribution_stays_readable_inside_responsive_rows(task_app
         (signals / "model-release").touch()
         (signals / "media-nearby").touch()
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
-        page.get_by_role("link", name="Open task progress").click()
-        page.get_by_role("link", name="Open itinerary preview").click(timeout=30000)
+        page.get_by_role("link", name="View full itinerary").click(timeout=30000)
         preview_id = page.url.rsplit("/", 1)[-1]
         metadata = page.request.get(base + f"/api/previews/{preview_id}/media").json()
         assert metadata["items"]["nearby:0"]["kind"] == "verified_place"

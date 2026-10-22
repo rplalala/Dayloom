@@ -56,3 +56,8 @@ export function readSubmissionIntent(owner: string, key: string): SubmissionInte
 export function rememberSubmissionIntent(owner: string, key: string, request: ProductPlanningInput, editor: Brief) {
   try { sessionStorage.setItem('dayloom.task.intent.v1', JSON.stringify({ owner, generation: submissionGeneration(owner), key, request, editor })); } catch { /* The server still enforces operation identity. */ }
 }
+
+/** A receipt link selects work without changing the travel brief. */
+export function planTaskLink(id: string, result = false) {
+  return `/plan?task=${encodeURIComponent(id)}#${result ? 'result' : 'generation-progress'}`;
+}

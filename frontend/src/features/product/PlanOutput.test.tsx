@@ -80,7 +80,7 @@ it("offers explicit draft save after an active-task conflict without replaying g
   fireEvent.click(screen.getByRole("button", { name: "Generate itinerary" }));
   const modal = await screen.findByRole("dialog", { name: "One journey at a time." });
   expect(writes).toEqual(["/api/planning/tasks"]);
-  expect(within(modal).getByRole("link", { name: "View progress" })).toHaveAttribute("href", "/planning/already-running");
+  expect(within(modal).getByRole("link", { name: "View progress" })).toHaveAttribute("href", "/plan?task=already-running#generation-progress");
   fireEvent.click(within(modal).getByRole("button", { name: "Save travel brief" }));
   await waitFor(() => expect(screen.queryByRole("dialog", { name: "One journey at a time." })).not.toBeInTheDocument());
   expect(writes).toEqual(["/api/planning/tasks", "/api/drafts"]);

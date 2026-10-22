@@ -1,6 +1,6 @@
 import { isDialogBackdropClick } from '../../shared/dialog';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createBrief, restoreBrief } from './editor';
 import { draftRequest, DraftFailure } from './drafts';
 import { useSession } from './session';
@@ -17,7 +17,7 @@ function submittedBrief(task: PlanningTask) {
     currency: task.request.budget.currency, preferences: task.request.additional_preferences || '' };
 }
 
-export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: (task: PlanningTask) => void }) {
+export function TaskActions({ task, onUpdate, onGenerateAgain, submitting }: { task: PlanningTask; onUpdate: (task: PlanningTask) => void; onGenerateAgain?: () => void; submitting?: boolean }) {
   const session = useSession();
   const { refresh } = useTasks();
   const navigate = useNavigate();
@@ -72,12 +72,12 @@ export function TaskActions({ task, onUpdate }: { task: PlanningTask; onUpdate: 
     } finally { if (stillCurrent()) setBusy(false); }
   }
   return <div className="task-actions">
-    {taskActive(task) ? <><p>Stopping closes this task's connections. External work already sent may still finish or be billed.</p><button type="button" className="btn btn-quiet" disabled={busy || task.state === 'stopping'} onClick={() => void perform('stop')}>{task.state === 'stopping' ? 'Stopping planning…' : 'Stop planning'}</button></> : task.state !== 'completed' && <button type="button" className="btn btn-light" onClick={() => {
+    {taskActive(task) ? <><button type="button" className="btn btn-quiet" disabled={busy || task.state === 'stopping'} onClick={() => void perform('stop')}>{task.state === 'stopping' ? 'Stopping planning…' : 'Stop planning'}</button></> : task.state !== 'completed' && <><Link className="btn btn-quiet" to="/plan#travel-brief">Keep editing</Link>{onGenerateAgain ? <button type="button" className="btn btn-primary" disabled={submitting} onClick={onGenerateAgain}>Generate again</button> : <button type="button" className="btn btn-light" onClick={() => {
       const restored = submittedBrief(task);
       const blank = createBrief();
       if (JSON.stringify(session.brief) !== JSON.stringify(blank) && JSON.stringify(session.brief) !== JSON.stringify(restored)) setConfirm(true);
       else revise();
-    }}>Revise submitted brief</button>}
+    }}>Revise submitted brief</button>}</>}
     {error && !confirm && <p role="alert">{error}</p>}
     <dialog ref={dialog} className="library-dialog modal-card" aria-labelledby={`revise-${task.id}`} onCancel={event => { if (busy) event.preventDefault(); else setConfirm(false); }} onClick={event => {
       if (!busy && isDialogBackdropClick(event)) setConfirm(false);
@@ -94,6 +94,5 @@ export function TaskOutcome({ task }: { task: PlanningTask }) {
   const title = task.state === 'needs_clarification' ? 'A few details need your attention' : task.state === 'safety_blocked' ? 'Travel planning paused' : task.state === 'provider_blocked' ? 'Please revise your preferences' : task.state === 'cancelled' ? 'Planning stopped' : task.outcome.code === 'planning_interrupted' ? 'Planning was interrupted' : 'Planning could not finish';
   return <section className="task-outcome" aria-label="Planning outcome"><h3>{title}</h3><p>{task.outcome.message}</p><p>{task.outcome.action}</p>
     {task.state === 'needs_clarification' && task.outcome.issues?.issues?.map((issue, index) => <div key={index} className="task-clarification">{issue.source_refs.map((source, sourceIndex) => <blockquote key={sourceIndex}>{source.quote}</blockquote>)}{issue.quote_status === 'unavailable' && <p>Original quote unavailable.</p>}{issue.related_field && <p>Current {issue.related_field}: {String(issue.current_value ?? '')}</p>}<p>{issue.reason}</p><p>{issue.action}</p></div>)}
-    <p>Revising opens editable inputs. Planning starts only when you choose Generate itinerary again.</p>
   </section>;
 }

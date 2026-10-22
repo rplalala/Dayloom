@@ -153,10 +153,10 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         expect(page.get_by_text("Planning is already running.", exact=False)).to_be_visible()
         assert (signals / "executions").read_text().splitlines() == ["one"]
         page.goto(base + task_url)
-        expect(page.get_by_role("heading", name="Sydney", exact=True)).to_be_visible()
+        expect(page.get_by_label("Destination", exact=True)).to_have_value("Kyoto")
         page.reload()
         expect(
-            page.get_by_text("Planning continues while you work on another brief.", exact=False)
+            page.get_by_role("heading", name="Planning progress", exact=True)
         ).to_be_visible()
         page.screenshot(path=str(SCRATCH / "running-desktop.png"), full_page=True)
         page.close()
@@ -164,16 +164,16 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         page.goto(base + "/account")
         page.get_by_role("button", name="Log out", exact=True).last.click()
         page.goto(base + "/planning")
-        expect(page.get_by_role("heading", name="Your planning tasks are private.")).to_be_visible()
-        (signals / "model-release").touch()
+        expect(page.get_by_role("button", name="Stop planning", exact=True)).to_have_count(0)
         page.goto(base + "/login?return=/planning")
         login(page, email)
-        expect(page.get_by_role("heading", name="Planning tasks", exact=True)).to_be_visible()
-        expect(page.get_by_role("link", name="Open itinerary preview")).to_be_visible(timeout=30000)
+        expect(page.get_by_role("heading", name="Planning progress", exact=True)).to_be_visible()
+        page.goto(base + "/trips")
+        (signals / "model-release").touch()
         assert (signals / "executions").read_text().splitlines() == ["one"]
-        assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
         ready = page.get_by_role("link", name="Itinerary ready", exact=True)
-        expect(ready).to_be_visible()
+        expect(ready).to_be_visible(timeout=30000)
+        assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
         for width in (1440, 800, 390):
             page.set_viewport_size({"width": width, "height": 1000})
             expect(ready).to_be_visible()
@@ -186,6 +186,7 @@ def test_browser_leaves_running_task_edits_b_and_recovers_after_logout(task_app)
         expect(ready).to_be_visible()
         ready.click()
         expect(ready).to_have_count(0)
+        page.get_by_role("link", name="View full itinerary", exact=False).click()
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         preview_url = page.url
         page.reload()
@@ -271,8 +272,7 @@ def test_browser_recovers_a_lost_decision_response_without_replaying_write(task_
         ]:
             page.get_by_label(label, exact=True).fill(value)
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
-        page.get_by_role("link", name="Open task progress", exact=False).click()
-        page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
+        page.get_by_role("link", name="View full itinerary", exact=False).click(timeout=30000)
         preview_url = page.url
         writes = []
 
@@ -300,7 +300,7 @@ def test_browser_recovers_a_lost_decision_response_without_replaying_write(task_
         page.reload()
         expect(page.get_by_text(expected, exact=True)).to_be_visible()
         page.goto(base + "/planning")
-        expect(page.get_by_text("No pending previews.", exact=True)).to_be_visible()
+        expect(page.locator(".plan-preview-recovery")).to_have_count(0)
     finally:
         context.close()
 
@@ -340,8 +340,7 @@ def test_browser_expired_lost_decision_hides_content_and_relogin_only_reads_rece
         ]:
             page.get_by_label(label, exact=True).fill(value)
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
-        page.get_by_role("link", name="Open task progress", exact=False).click()
-        page.get_by_role("link", name="Open itinerary preview", exact=False).click(timeout=30000)
+        page.get_by_role("link", name="View full itinerary", exact=False).click(timeout=30000)
         preview_url = page.url
         expect(page.get_by_role("heading", name="Sydney journey", exact=True)).to_be_visible()
         writes, expired_reads = [], []
@@ -466,12 +465,12 @@ def test_browser_stop_preserves_b_and_revise_requires_explicit_new_generation(ta
         retried = retry.value.json()
         assert retried["id"] != original["id"]
         page.goto(base + "/planning/" + retried["id"])
-        expect(page.get_by_role("link", name="Open itinerary preview")).to_be_visible(timeout=30000)
+        expect(page.get_by_role("link", name="View full itinerary")).to_be_visible(timeout=30000)
         assert (signals / "executions").read_text().splitlines() == before + ["one", "one"]
         page.set_viewport_size({"width": 390, "height": 844})
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.screenshot(path=str(SCRATCH / "stop-retry-390.png"), full_page=True)
-        page.get_by_role("link", name="Open itinerary preview").click()
+        page.get_by_role("link", name="View full itinerary").click()
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         expect(page.get_by_text("Saved to My trips.", exact=True)).to_be_visible()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
@@ -565,7 +564,9 @@ def test_browser_typed_outcome_reopens_exact_input_without_profile_overlay_or_re
             },
         )
         assert updated.status == 200
+        page.get_by_label("Destination", exact=True).fill("Kyoto")
         page.get_by_role("button", name="Revise submitted brief", exact=True).click()
+        page.get_by_role("button", name="Replace current brief", exact=True).click()
         expect(page.get_by_label("Destination", exact=True)).to_have_value("Sydney")
         expect(
             page.get_by_role("textbox", name="Additional preferences", exact=False)

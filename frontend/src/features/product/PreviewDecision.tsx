@@ -11,7 +11,7 @@ export function DecisionReceipt({ decision }: { decision: Pick<Preview, 'state' 
   return <div className="container preview-state" role="status">
     <strong>{decision.outcome === 'saved_result_deleted' ? 'This saved itinerary was deleted.' : decision.state === 'saved' ? 'Saved to My trips.' : 'Preview discarded.'}</strong>
     {decision.state === 'saved' && decision.saved_trip_id && decision.outcome !== 'saved_result_deleted' && <Link className="btn btn-primary" to={`/trips/${decision.saved_trip_id}`}>View saved itinerary</Link>}
-    <Link to="/planning">Return to planning tasks</Link>
+    <Link to="/plan#result">Return to Plan</Link>
   </div>;
 }
 

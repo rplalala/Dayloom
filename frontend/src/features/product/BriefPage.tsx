@@ -12,8 +12,8 @@ import { DraftControls, type DraftActionsHandle } from "./DraftControls";
 import "./editor.css";
 import { Icon } from "./Icon";
 import { PlanProgress, PlanResult, BusyPlanningDialog } from "./PlanOutput";
-import { RecoverablePreviews } from "./tasks";
-import { taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
+import { usePlanTask } from "./usePlanTask";
+import { planTaskLink, taskRequest, TaskFailure, sameConfirmedRequest, submissionGeneration, readSubmissionIntent, rememberSubmissionIntent, taskActive, type PlanningTask } from './taskClient';
 import { useTasks } from './taskContext';
 import { planningInput } from './editor';
 
@@ -95,12 +95,18 @@ export function BriefPage() {
   function change(field: "destination" | "start_date" | "end_date" | "travelers" | "budget" | "currency" | "required" | "exclusions", value: string) { update({ ...brief, [field]: value }); }
   const errors = briefErrors(brief, dateWindow);
   const matchingTask = dateWindow && !errors.length ? tasks.find(task => task.request?.budget && sameConfirmedRequest(task.request, planningInput(brief, dateWindow))) : undefined;
+  const selectedTaskId = submission.taskId || new URLSearchParams(location.search).get("task");
+  const observed = usePlanTask(selectedTaskId, tasks.find(taskActive) || matchingTask || tasks[0]);
+  useEffect(() => {
+    if (!location.hash || session.status !== 'authenticated') return;
+    document.getElementById(location.hash.slice(1))?.scrollIntoView?.({ block: 'start' });
+  }, [location.key, location.hash, session.status]);
   const validBudget = brief.budget.trim() !== "" && Number.isFinite(Number(brief.budget)) && Number(brief.budget) >= 0 && isListedCurrency(brief.currency);
-  const loginReturn = `/login?return=${encodeURIComponent(draftId ? `/plan?draft=${draftId}` : "/plan")}`;
-  async function generate() {
-    const initialKey = session.actionId || crypto.randomUUID();
-    if (!session.actionId) { session.setActionId(initialKey); context.current.action = initialKey; }
-    if (!session.account) { navigate('/login?return=/plan'); return; }
+  const loginReturn = `/login?return=${encodeURIComponent(`/plan${location.search}${location.hash}`)}`;
+  async function generate(restart = false) {
+    const initialKey = (restart ? null : session.actionId) || crypto.randomUUID();
+    if (restart || !session.actionId) { session.setActionId(initialKey); context.current.action = initialKey; }
+    if (!session.account) { navigate(loginReturn); return; }
     setChecked(true);
     if (errors.length || !dateWindow || submission.busy) return;
     const account = session.account;
@@ -108,7 +114,7 @@ export function BriefPage() {
     const sequence = ++attempt.current;
     const ownership = { owner: account.id, csrf: account.csrf_token, generation: submissionGeneration(account.id), location: location.key, editor: brief };
     let action = initialKey;
-    let key: string | null = session.actionId;
+    let key: string | null = restart ? null : session.actionId;
     function ownsAction() {
       const current = context.current;
       return mounted.current && attempt.current === sequence && current.owner === account.id && current.csrf === ownership.csrf && current.location === ownership.location && current.editor === brief && current.action === action && submissionGeneration(account.id) === ownership.generation;
@@ -127,7 +133,7 @@ export function BriefPage() {
           void refreshTasks(); return;
         }
         if (!existing && intended && !sameConfirmedRequest(intended.request, request)) {
-          show({ message: 'An earlier submission is unresolved. Your new brief is retained. Check planning tasks before submitting another brief.' });
+          show({ message: 'An earlier submission is unresolved. Your new brief is retained. Check planning progress before submitting another brief.' });
           return;
         }
         if (existing) key = null;
@@ -142,6 +148,7 @@ export function BriefPage() {
       if (!ownsAction()) return;
       show({ message: 'Planning has started. You can keep editing or save another brief.', taskId: task.id });
       void refreshTasks();
+      navigate(planTaskLink(task.id));
     } catch (error) {
       if (!ownsAction()) return;
       if (error instanceof TaskFailure) {
@@ -152,8 +159,8 @@ export function BriefPage() {
         try {
           const recovered = key ? await taskRequest<PlanningTask | null>(`/api/planning/tasks?operation_key=${encodeURIComponent(key)}`) : null;
           if (!ownsAction()) return;
-          show({ message: recovered ? 'Your task was accepted. Open progress to continue.' : 'The response was lost. Check planning tasks before explicitly trying again.', taskId: recovered?.id });
-        } catch { show({ message: 'The response was lost. Check planning tasks when reconnected before explicitly trying again.' }); }
+          show({ message: recovered ? 'Your task was accepted. Open progress to continue.' : 'The response was lost. Check planning progress before explicitly trying again.', taskId: recovered?.id });
+        } catch { show({ message: 'The response was lost. Check planning progress when reconnected before explicitly trying again.' }); }
       }
     }
   }
@@ -163,8 +170,7 @@ export function BriefPage() {
 
   return <div className="page container plan-page brief-editor">
     <div className="page-heading"><span className="eyebrow">YOUR JOURNEY, YOUR WAY</span><h1>A city journey, made yours.</h1><p>Pick a destination. Bring your ideas. Make every day a little clearer.</p></div>
-    <RecoverablePreviews compact />
-    <section className="flow-card form-card">
+    <section className="flow-card form-card" id="travel-brief">
       <div className="flow-title"><span className="step-number">01</span><div><h2>Tell us how you like to travel</h2><p>A few essentials, and the things that make it your trip.</p></div><span className="count-badge">About 1 minute</span></div>
       <form noValidate onSubmit={event => {
         event.preventDefault();
@@ -202,11 +208,11 @@ export function BriefPage() {
         {checked && errors.length > 0 && <div className="form-error" role="alert"><ul>{errors.map(error => <li key={error}>{error}</li>)}</ul></div>}
         <div className="form-bottom"><p><Icon name="shield" size={16} /> City sights and experiences. Accommodation, tickets and travel to your destination are not included.</p><button type="submit" disabled={draftLoading || submission.busy} className="btn btn-primary btn-large"><Icon name="spark" size={18} /> {submission.busy ? 'Submitting…' : 'Generate itinerary'} <Icon name="arrow" size={17} /></button></div>
         <DraftControls actionsRef={draftActions} onLoading={setDraftLoading} />
-        {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={`/planning/${submission.taskId}`}>Open task progress →</Link>}</p>}
+        {submission.message && <p className="subtle-help" role="status">{submission.message} {submission.taskId && <Link to={planTaskLink(submission.taskId)}>Open task progress →</Link>}</p>}
       </form>
     </section>
     {submission.activeConflict && <BusyPlanningDialog taskId={submission.taskId} close={() => setSubmitState(previous => ({ ...previous, activeConflict: false }))} save={async () => { await draftActions.current?.save(); }} />}
-    <PlanProgress task={tasks.find(taskActive) || matchingTask} />
-    <PlanResult key={`${session.account?.id}:${session.account?.csrf_token}:${matchingTask?.id || "empty"}:${generation}`} task={matchingTask} />
+    <PlanProgress task={observed.task} error={observed.error} loading={observed.loading} check={observed.check} onUpdate={observed.update} loginHref={!session.account && selectedTaskId ? loginReturn : undefined} submitting={submission.busy} onGenerateAgain={observed.task && dateWindow && !errors.length && sameConfirmedRequest(observed.task.request, planningInput(brief, dateWindow)) ? () => void generate(true) : undefined} />
+    <PlanResult key={`${session.account?.id}:${session.account?.csrf_token}:${observed.task?.id || "empty"}:${new URLSearchParams(location.search).get("preview") || ""}:${generation}`} task={observed.task} previewId={new URLSearchParams(location.search).get("preview") || undefined} />
   </div>;
 }

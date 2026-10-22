@@ -83,7 +83,7 @@ it("keeps soft controls visible and detaches an edited sentence without deleting
 });
 
 
-it("shows a matching completed itinerary inline and hides it as soon as the brief changes", async () => {
+it("keeps the submitted itinerary separate while the traveler edits another brief", async () => {
   const brief = { editor_version: 1, destination: "Sydney", start_date: "2026-10-22", end_date: "2026-10-23", travelers: "2", budget: "1000", currency: "AUD", required: "", exclusions: "", preferences: "", interests: [], pace: null, transport: [], bindings: [] };
   sessionStorage.setItem("dayloom.editor.v1", JSON.stringify({ owner: "alice", brief, actionId: null }));
   const request = { destination: "Sydney", start_date: "2026-10-22", end_date: "2026-10-23", traveler_count: 2, budget: { amount: "1000", currency: "AUD" }, additional_preferences: "" };
@@ -97,6 +97,6 @@ it("shows a matching completed itinerary inline and hides it as soon as the brie
   expect(await screen.findByRole("heading", { name: "A matching Sydney journey" })).toBeVisible();
   expect(screen.getByRole("link", { name: /View full itinerary/ })).toHaveAttribute("href", "/previews/preview-a");
   fireEvent.change(screen.getByLabelText("Destination"), { target: { value: "Kyoto" } });
-  expect(screen.queryByRole("heading", { name: "A matching Sydney journey" })).not.toBeInTheDocument();
-  expect(screen.getByText("A new journey is waiting.")).toBeVisible();
+  expect(screen.getByRole("heading", { name: "A matching Sydney journey" })).toBeVisible();
+  expect(screen.getByLabelText("Destination")).toHaveValue("Kyoto");
 });
