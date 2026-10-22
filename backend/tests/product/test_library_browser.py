@@ -49,7 +49,7 @@ def test_browser_manages_saved_snapshot_with_mixed_pagination_and_empty_states(b
         expected = page.request.get(base + "/api/library?limit=50").json()["items"]
         page.reload()
         expect(page.locator(".trip-card")).to_have_count(4)
-        first_page = page.locator(".library-card-link").evaluate_all(
+        first_page = page.locator(".media-image-link").evaluate_all(
             "nodes => nodes.map(node => node.getAttribute('href'))"
         )
         # Cover links are actual owner-specific destinations, not client-merged lists.
@@ -69,7 +69,7 @@ def test_browser_manages_saved_snapshot_with_mixed_pagination_and_empty_states(b
             page.get_by_role("button", name="Next", exact=True).click()
             expect(page.locator(".trip-card")).to_have_count(len(expected[offset : offset + 4]))
             visited.extend(
-                page.locator(".library-card-link").evaluate_all(
+                page.locator(".media-image-link").evaluate_all(
                     "nodes => nodes.map(node => node.getAttribute('href'))"
                 )
             )
@@ -93,8 +93,8 @@ def test_browser_manages_saved_snapshot_with_mixed_pagination_and_empty_states(b
         page.get_by_role("link", name="View Harbour memories", exact=True).click()
         expect(page.get_by_role("heading", name="Harbour memories", exact=True)).to_be_visible()
         expect(page.get_by_text("Free time · no fixed place", exact=True)).to_be_visible()
-        page.get_by_text("Planning review · incomplete", exact=True).click()
-        expect(page.get_by_text("Unresolved opening hours", exact=False)).to_be_visible()
+        expect(page.get_by_text("Planning review", exact=False)).to_have_count(0)
+        expect(page.get_by_text("Unresolved opening hours", exact=False)).to_have_count(0)
         for view in ("weather", "nearby", "transfers"):
             assert page.request.get(saved_url + "/" + view).status == 200
         page.get_by_role("link", name="Back to My trips", exact=True).first.click()
@@ -250,7 +250,7 @@ def test_r7_saved_and_draft_management_is_a_keyboard_accessible_card_dialog(brow
         page.screenshot(path=str(scratch / "r7-completion-notice-800.png"), full_page=True)
         notice.get_by_role("link", name="View preview", exact=True).focus()
         page.keyboard.press("Enter")
-        expect(page.get_by_text("Saved to My trips.", exact=True)).to_be_visible()
+        expect(page.get_by_text("Saved to My trips", exact=True)).to_be_visible()
         page.get_by_role("link", name="My trips", exact=True).first.click()
         expect(page.locator(".trip-card")).to_have_count(2)
         expect(notice).to_have_count(0)

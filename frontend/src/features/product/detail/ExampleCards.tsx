@@ -40,8 +40,8 @@ export function ExampleCards() {
           <div
             className={`trip-card-photo dayloom-example example-${i}`}
           >
-            <CuratedPhoto image={card.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
-            <span className="trip-status">Example itinerary</span><Link className="media-cover-link" to={`/examples/${card.id}`} aria-label={`Read ${card.title}`} />
+            <CuratedPhoto link={{ to: `/examples/${card.id}`, label: `Read ${card.title}` }} image={card.destination.toLowerCase().startsWith('sydney') ? 'sydney' : 'nature'} label={`${card.destination} destination atmosphere`} fallback={card.illustration_key ? `/dayloom/${card.illustration_key}.svg` : undefined} />
+            <span className="trip-status">Example itinerary</span>
           </div>
           <div className="trip-card-body">
             <div className="trip-card-kicker">TRIP ITINERARY</div><h3><Link to={`/examples/${card.id}`}>{card.title}</Link></h3>

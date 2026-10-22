@@ -15,8 +15,8 @@
 .dayloom .hero-image figcaption { right:14px; bottom:13px; font-size:9px; }
 .dayloom .detail-hero-image { height:100%; }
 .dayloom .detail-hero-image > figcaption { bottom:10px; right:12px; }
-.dayloom .detail-cover-shade { }
-.dayloom .media-cover-link { position:absolute; inset:0; }
+.dayloom .detail-cover-shade, .dayloom .hero-img-mask { pointer-events:none; }
+.dayloom .media-image-link { display:block; width:100%; height:100%; }
 .dayloom .activity-photo.media-photo { padding:0; position:relative; }
 .dayloom .activity-photo.media-photo figcaption { font-size:7px; right:3px; bottom:3px; padding:2px 3px; }
 .dayloom .media-refresh { margin:0 0 16px; }
@@ -35,9 +35,14 @@
   font-weight:400; font-style:normal; letter-spacing:normal; overflow-wrap:anywhere;
 }
 .dayloom .has-place-credit .media-provider { font-family:Arial,sans-serif; font-size:12px; color:#5e5e5e; }
-.dayloom .activity-photo.has-place-credit { height:auto; overflow:visible; align-self:flex-start; }
-.dayloom .activity-photo.has-place-credit > .media-open { height:96px; overflow:hidden; border-radius:9px; }
 .dayloom .media-detail-row .nearby-body { min-width:0; }
-@media(max-width:800px) { .dayloom .activity-photo.has-place-credit > .media-open { height:82px; } }
-@media(min-width:561px) and (max-width:800px) { .dayloom .activity-photo.has-place-credit > figcaption { padding-inline:2px; } }
-@media(max-width:560px) { .dayloom .activity-photo.has-place-credit > .media-open { height:110px; } }
+
+/* Credits stay above card links and hero shading without changing the r7 layout. */
+.dayloom .media-photo .atmosphere-credit { z-index:4; background:none; padding:0; backdrop-filter:none; max-width:calc(100% - 24px); display:flex; align-items:flex-end; gap:6px; pointer-events:auto; }
+.dayloom .photo-credit-toggle, .dayloom .photo-credit-close { display:inline-grid; place-items:center; flex:none; border:0; color:#fff; background:rgba(22,47,38,.75); border-radius:50%; cursor:pointer; padding:0; width:26px; height:26px; }
+.dayloom .photo-credit-close { width:22px; height:22px; margin-left:6px; background:none; vertical-align:middle; }
+.dayloom .photo-credit-toggle:focus-visible, .dayloom .photo-credit-close:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.dayloom .photo-credit-content { background:rgba(22,47,38,.92); padding:6px 9px; border-radius:7px; font-size:11px; line-height:1.6; overflow-wrap:anywhere; }
+.dayloom .photo-credit-content a { height:auto; }
+.dayloom .detail-hero-inner { pointer-events:none; }
+.dayloom .detail-hero-inner a, .dayloom .detail-hero-inner button { pointer-events:auto; }

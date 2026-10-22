@@ -1,4 +1,5 @@
 import type { ProductDetail } from './types';
+import { routeDuration, routeDistance, transferFeasibility } from './display';
 
 export function exportArtifact(detail: ProductDetail) {
   return {
@@ -17,23 +18,35 @@ export function exportArtifact(detail: ProductDetail) {
 }
 
 export function summaryText(detail: ProductDetail) {
+  const request = detail.request;
   const lines = [detail.title, detail.destination,
-    detail.trust === 'unverified_import' ? 'Imported content · unverified' : detail.trust === 'source_fixture' ? 'Historical example · source claims' : 'Generated itinerary · evidence snapshot',
-    `Original request: ${detail.request ? JSON.stringify(detail.request) : 'unknown'}`,
-    'Missing weather, costs and access facts remain unknown. Confirm before travel.',
+    detail.provenance === 'imported' ? 'Imported itinerary · details to confirm' : detail.provenance === 'example' ? 'Example itinerary' : 'Generated itinerary',
+    request ? [request.start_date, request.end_date, request.traveler_count != null ? `${request.traveler_count} travelers` : null, request.budget ? `Budget ${request.budget.currency} ${request.budget.amount}` : null, request.additional_preferences].filter(Boolean).join(' · ') : 'Original request: unknown',
+    'Confirm opening hours, prices and weather before you travel.',
   ];
   for (const day of detail.days) {
-    lines.push('', day.date, `Weather: ${day.weather ? JSON.stringify(day.weather) : 'unknown'}`);
+    lines.push('', day.date);
+    const weather = day.weather;
+    if (weather) lines.push(['Weather', weather.summary,
+      weather.temperature_min_c != null ? `Low ${weather.temperature_min_c}°C` : null,
+      weather.temperature_max_c != null ? `High ${weather.temperature_max_c}°C` : null,
+      weather.precipitation_probability_percent != null ? `Rain chance ${weather.precipitation_probability_percent}%` : null,
+      weather.max_wind_speed_kph != null ? `Wind up to ${weather.max_wind_speed_kph} km/h` : null,
+      weather.attribution, weather.source_url,
+    ].filter(Boolean).join(' · '));
     if (!day.activities.length) lines.push('No scheduled activities');
     for (const activity of day.activities) {
-      lines.push(`${activity.time_use === 'free_window' ? 'Free window' : 'Scheduled'}: ${activity.title} · ${activity.start_time} — ${activity.end_time}`, `Cost: ${activity.estimated_cost ? `${activity.estimated_cost.amount} ${activity.estimated_cost.currency}` : 'unknown'}`);
-      for (const value of [activity.place_name, activity.location, activity.notes, activity.introduction]) if (value) lines.push(value);
+      lines.push(`${activity.time_use === 'free_window' ? 'Free time' : 'Planned visit'}: ${activity.place_name || activity.title} · ${activity.start_time} — ${activity.end_time}`, `Cost: ${activity.estimated_cost ? `${activity.estimated_cost.currency} ${activity.estimated_cost.amount}` : 'to confirm'}`);
+      for (const value of [activity.location, activity.notes, activity.introduction]) if (value) lines.push(value);
     }
   }
+  const activityName = (id: string) => {
+    const activity = detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === id);
+    return activity ? activity.place_name || activity.title : 'Planned stop';
+  };
   lines.push('', 'Connections');
-  for (const transfer of detail.transfers) lines.push(`${transfer.from_activity_id} → ${transfer.to_activity_id}: ${JSON.stringify(transfer)}`);
+  for (const transfer of detail.transfers) lines.push(`${activityName(transfer.from_activity_id)} → ${activityName(transfer.to_activity_id)} · ${routeDuration(transfer.provider_duration_seconds)} · ${routeDistance(transfer.distance_meters)} · ${transferFeasibility(detail, transfer).label}`, ...(transfer.attribution ? [transfer.attribution] : []));
   lines.push('', 'Optional Nearby · not scheduled');
-  for (const nearby of detail.nearby) lines.push(JSON.stringify(nearby));
-  if (detail.completion) lines.push('', `Review (${detail.trust === 'unverified_import' ? 'unverified source claims' : 'snapshot'}): ${JSON.stringify(detail.completion)}`);
+  for (const nearby of detail.nearby) lines.push([nearby.place_name, nearby.area, nearby.reason, nearby.uncertainty, nearby.attribution].filter(Boolean).join(' · '));
   return lines.join('\n');
 }

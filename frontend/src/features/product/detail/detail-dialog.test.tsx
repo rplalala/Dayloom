@@ -26,11 +26,11 @@ it("opens the same activity photograph and labeled visit details without implyin
 
 it("preserves zero route measurements and unverified claims in structured connection details", async () => {
   render(<MemoryRouter><TripDetail detail={detail} /></MemoryRouter>);
-  await userEvent.click(screen.getByRole("button", { name: "WALK · 0 min · Unverified source claim (PASS) →" }));
+  await userEvent.click(screen.getByRole("button", { name: "WALK · 0 min · Travel time to confirm →" }));
   const dialog = screen.getByRole("dialog");
   expect(dialog.querySelector(".route-big-stats")).toBeVisible();
   expect(within(dialog).getByText("0 min")).toBeVisible();
   expect(within(dialog).getByText("0 m")).toBeVisible();
-  expect(within(dialog).getByText(/Source claims are not a fresh route or timing check/)).toBeVisible();
-  expect(within(dialog).getByText("Opening hours were not checked.")).toBeVisible();
+  expect(within(dialog).getByText(/Travel time for this itinerary has not been checked/)).toBeVisible();
+  expect(within(dialog).getByText(/Check current routes before you travel/)).toBeVisible();
 });

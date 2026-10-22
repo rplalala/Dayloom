@@ -35,15 +35,12 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.get_by_role("link", name="View full itinerary").click(timeout=30000)
         expect(page.get_by_text("Unsaved preview", exact=True)).to_be_visible()
         expect(page.locator(".activity-photo img").first).to_be_visible()
-        expect(page.locator(".activity-photo .media-provider").first).to_have_text("Google Maps")
-        expect(page.get_by_role("link", name="Controlled Photographer").first).to_be_visible()
+        expect(page.locator(".activity-photo .media-provider")).to_have_count(0)
         page.get_by_role("button", name="View Place poi-0-1", exact=True).click()
-        expect(page.get_by_role("dialog")).to_be_visible()
+        expect(page.get_by_role("dialog").get_by_role("link", name="Controlled Photographer")).to_be_visible()
         page.keyboard.press("Escape")
         expect(page.locator(".nearby-sidebar-groups .nearby-photo img").first).to_be_visible()
-        expect(page.locator(".nearby-sidebar-groups .nearby-media").first).to_contain_text(
-            "Google Maps"
-        )
+        expect(page.locator(".nearby-sidebar-groups .media-provider")).to_have_count(0)
         assert (signals / "retrieval-entered").exists() and (signals / "retrieval-closed").exists()
         preview_id = page.url.rsplit("/", 1)[-1]
         metadata = page.request.get(base + f"/api/previews/{preview_id}/media").json()
@@ -62,12 +59,12 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         )
         page.reload()
         expect(page.locator(".activity-photo").first.get_by_label(
-            "Place photograph unavailable · illustration", exact=True
+            "Illustration", exact=True
         )).to_be_visible()
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
         expect(page.locator(".activity-photo").first.get_by_label(
-            "Place photograph unavailable · illustration", exact=True
+            "Illustration", exact=True
         )).to_be_visible()
         saved_url = page.url
         page.goto(base + "/trips")
@@ -75,11 +72,14 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         expect(page.locator(".trip-card-photo .media-photo").first).to_contain_text("Unsplash")
         page.goto(saved_url)
         page.unroute("https://lh3.googleusercontent.com/**")
-        page.get_by_text("Source and travel information", exact=True).click()
+        page.get_by_role("button", name="View Place poi-0-1", exact=True).click()
         page.get_by_role("button", name="Refresh place photos", exact=True).click()
+        expect(page.get_by_role("dialog").get_by_role("link", name="Controlled Photographer")).to_be_visible()
+        page.keyboard.press("Escape")
         expect(page.locator(".activity-photo img").first).to_be_visible()
         page.reload()
         expect(page.locator(".activity-photo img").first).to_be_visible()
+        page.locator(".detail-cover").get_by_role("button", name="Photo credits", exact=True).click()
         expect(page.get_by_role("link", name="Dan Freeman").first).to_be_visible()
         # Copy reuses persisted server bindings; only subsequent display requests resolve photos.
         original_id = saved_url.rsplit("/", 1)[-1]
@@ -97,7 +97,9 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         page.get_by_role("button", name="Make a copy", exact=True).click()
         page.get_by_role("link", name="View saved copy", exact=True).click()
         expect(page.locator(".activity-photo img").first).to_be_visible()
-        expect(page.get_by_role("link", name="Controlled Photographer").first).to_be_visible()
+        page.get_by_role("button", name="View Place poi-0-1", exact=True).click()
+        expect(page.get_by_role("dialog").get_by_role("link", name="Controlled Photographer")).to_be_visible()
+        page.keyboard.press("Escape")
         assert len(copy_posts) == 1 and generation_posts == []
         saved_url = page.url
         assert saved_url.rsplit("/", 1)[-1] != original_id
@@ -135,7 +137,7 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         expect(page.get_by_role("heading", name="Old journey", exact=True)).to_be_visible()
         expect(page.locator('.activity-photo img[alt$="· place photograph"]')).to_have_count(0)
         expect(page.locator(".activity-photo").first.get_by_label(
-            "Place photograph unavailable · illustration", exact=True
+            "Illustration", exact=True
         )).to_be_visible()
         imported_id = page.url.rsplit("/", 1)[-1]
         assert page.request.get(base + f"/api/previews/{imported_id}/media").json()["items"] == {}
@@ -159,147 +161,103 @@ def test_verified_photo_credit_expiration_refresh_save_and_forged_import(task_ap
         context.close()
 
 
-def test_nearby_photo_attribution_stays_readable_inside_responsive_rows(task_app):  # noqa: F811
+def test_illustrated_lists_detail_credits_and_atmosphere_controls_across_viewports(task_app):  # noqa: F811
     base, browser = task_app.base_url, task_app.browser
     context = browser.new_context(viewport={"width": 1440, "height": 1000})
-    context.route(
-        "https://lh3.googleusercontent.com/**",
-        lambda route: route.fulfill(
-            status=200,
-            content_type="image/svg+xml",
-            body='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90">'
-            '<rect width="120" height="90" fill="#b8d8d0"/>'
-            '<circle cx="90" cy="22" r="11" fill="#f8dd8c"/>'
-            '<path d="M0 75L35 30L69 69L91 46L120 80V90H0Z" fill="#427a66"/>'
-            '<text x="6" y="84" font-size="7" fill="white">CONTROLLED MEDIA</text></svg>',
-        ),
-    )
-    scratch = Path(".scratch/media-browser")
+    scratch = Path(".scratch/product-polish/browser")
     scratch.mkdir(parents=True, exist_ok=True)
     signals = Path(".scratch/task-browser/signals")
     for signal in signals.iterdir():
         if signal.is_file():
             signal.unlink()
-    failures, measurements = [], []
     try:
         page = context.new_page()
         register_browser(page, base)
         page.goto(base + "/plan")
-        for label, value in (
-            ("Destination", "Sydney"),
-            ("Start date", "2026-09-12"),
-            ("End date", "2026-09-13"),
-            ("Travelers", "2"),
-            ("Whole-trip budget", "1800"),
-        ):
+        for label, value in (("Destination", "Sydney"), ("Start date", "2026-09-12"),
+                             ("End date", "2026-09-13"), ("Travelers", "2"),
+                             ("Whole-trip budget", "1800")):
             page.get_by_label(label, exact=True).fill(value)
         (signals / "model-release").touch()
         (signals / "media-nearby").touch()
         page.get_by_role("button", name="Generate itinerary", exact=False).click()
         page.get_by_role("link", name="View full itinerary").click(timeout=30000)
-        preview_id = page.url.rsplit("/", 1)[-1]
-        metadata = page.request.get(base + f"/api/previews/{preview_id}/media").json()
-        assert metadata["items"]["nearby:0"]["kind"] == "verified_place"
         for width in (1440, 800, 390):
             page.set_viewport_size({"width": width, "height": 1000})
-            provider = page.locator(".activity-photo .media-provider").first
-            expect(provider).to_be_visible()
-            credit = provider.evaluate("""node => {
-                const range = document.createRange(); range.selectNodeContents(node);
-                const label = node.getBoundingClientRect();
-                const caption = node.parentElement.getBoundingClientRect();
-                return {font:getComputedStyle(node).fontSize,
-                    whitespace:getComputedStyle(node).whiteSpace,
-                    lines:range.getClientRects().length, left:label.left, right:label.right,
-                    captionLeft:caption.left, captionRight:caption.right};
-            }""")
-            assert (
-                credit["font"] == "12px"
-                and credit["whitespace"] == "nowrap"
-                and credit["lines"] == 1
-            )
-            assert (
-                credit["left"] >= credit["captionLeft"]
-                and credit["right"] <= credit["captionRight"]
-            )
+            expect(page.get_by_text("Planning review", exact=False)).to_have_count(0)
+            expect(page.locator(".activity-photo .media-provider")).to_have_count(0)
+            assert page.locator(".activity-photo img").first.get_attribute("src").startswith("/dayloom/")
             if width <= 800:
                 disclosure = page.get_by_role("button", name="Show nearby for", exact=False).first
                 if disclosure.get_attribute("aria-expanded") == "false":
                     disclosure.click()
             region = ".nearby-inline" if width <= 800 else ".nearby-sidebar-groups"
             row = page.locator(f"{region} .nearby-item").first
-            expect(
-                row.get_by_role("img", name="Controlled nearby park · place photograph")
-            ).to_be_visible()
-            expect(row.get_by_role("link", name="Controlled Photographer")).to_be_visible()
-            bounds = row.evaluate("""row => {
-                const box = el => {
-                    const r = el.getBoundingClientRect();
-                    return {left:r.left, right:r.right, top:r.top, bottom:r.bottom,
-                            width:r.width, height:r.height};
-                };
-                const inside = (child, parent) => child.left >= parent.left - 1 &&
-                    child.right <= parent.right + 1 && child.top >= parent.top - 1 &&
-                    child.bottom <= parent.bottom + 1;
-                const intersects = (a,b) => Math.min(a.right,b.right)-Math.max(a.left,b.left)>1 &&
-                    Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1;
-                const figure = row.querySelector('figure');
-                const caption = row.querySelector('figcaption');
-                const body = row.querySelector('.nearby-body');
-                const photo = row.querySelector('img');
-                const r = box(row), f = box(figure), c = box(caption), b = box(body);
-                const credits = [...caption.querySelectorAll('a,.media-provider')];
-                const clipped = credits.some(credit => {
-                    const bounds = box(credit);
-                    for (let parent = credit.parentElement; parent; parent = parent.parentElement) {
-                        const style = getComputedStyle(parent), limit = box(parent);
-                        if (['hidden','clip','auto','scroll'].includes(style.overflowY) &&
-                            (bounds.top < limit.top-1 || bounds.bottom > limit.bottom+1)) {
-                            return true;
-                        }
-                        if (['hidden','clip','auto','scroll'].includes(style.overflowX) &&
-                            (bounds.left < limit.left-1 || bounds.right > limit.right+1)) {
-                            return true;
-                        }
-                    }
-                    return false;
-                });
-                const image = box(photo);
-                return {row:r, figure:f, caption:c, body:b, image, checks:{
-                    figureInsideRow:inside(f,r), captionInsideFigure:inside(c,f),
-                    creditsInsideFigure:credits.every(credit=>inside(box(credit),f)),
-                    captionAvoidsDetails:!intersects(c,b),
-                    creditsAvoidDetails:credits.every(credit=>!intersects(box(credit),b)),
-                    photoBesideDetails:image.right <= b.left+1 && Math.abs(image.top-b.top)<2,
-                    creditsBelowPhotoAndDetails:c.top >= Math.max(image.bottom,b.bottom)-1,
-                    creditsNotClipped:!clipped,
-                    noCaptionOverflow:caption.scrollWidth <= caption.clientWidth+1,
-                }};
-            }""")
-            measurements.append({"width": width, **bounds})
-            issues = [key for key, passed in bounds["checks"].items() if not passed]
-            if issues:
-                failures.append({"width": width, "failed": issues})
+            expect(row.get_by_role("link", name="Controlled Photographer")).to_have_count(0)
+            assert row.locator("img").first.get_attribute("src").startswith("/dayloom/")
             details = row.get_by_role("button", name="Details →", exact=True)
             details.focus()
             page.keyboard.press("Enter")
-            expect(page.get_by_role("dialog")).to_contain_text("Controlled nearby park")
-            page.keyboard.press("Escape")
-            expect(details).to_be_focused()
-            author = row.get_by_role("link", name="Controlled Photographer")
+            dialog = page.get_by_role("dialog")
+            expect(dialog.get_by_role("img", name="Controlled nearby park · place photograph")).to_be_visible()
+            author = dialog.get_by_role("link", name="Controlled Photographer")
+            expect(author).to_be_visible()
+            credit = dialog.locator("figcaption")
+            assert credit.evaluate("el => el.scrollWidth <= el.clientWidth")
+            provider = credit.locator(".media-provider")
+            assert provider.evaluate("el => getComputedStyle(el).fontSize") == "12px"
             author.focus()
             page.keyboard.press("Tab")
-            expect(row.get_by_role("link", name="Photo source")).to_be_focused()
-            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            expect(dialog.get_by_role("link", name="Photo source")).to_be_focused()
+            page.screenshot(path=str(scratch / f"place-detail-{width}.png"))
+            page.keyboard.press("Escape")
+            expect(details).to_be_focused()
+            expect(row.get_by_role("link", name="Controlled Photographer")).to_have_count(0)
             page.evaluate("scrollTo(0, 0)")
-            phase = "attribution-red" if issues else "corrected"
-            page.screenshot(path=str(scratch / f"{phase}-{width}.png"), full_page=True)
-            row.screenshot(path=str(scratch / f"{phase}-row-{width}.png"))
-        phase = "red" if failures else "green"
-        (scratch / f"attribution-layout-{phase}.json").write_text(
-            json.dumps(measurements, indent=2), encoding="utf-8"
-        )
-        assert not failures, json.dumps(failures)
+            figure = page.locator(".detail-cover .atmosphere-photo")
+            caption = figure.locator(".photo-credit-content")
+            page.mouse.move(0, 0)
+            expect(caption).not_to_be_visible()
+            figure.get_by_role("button", name="Photo credits", exact=True).focus()
+            expect(caption.get_by_role("link", name="Dan Freeman")).to_be_visible()
+            page.keyboard.press("Escape")
+            expect(caption).not_to_be_visible()
+            figure.get_by_role("button", name="Photo credits", exact=True).click()
+            expect(caption).to_be_visible()
+            assert caption.evaluate("el => el.getBoundingClientRect().left >= 0 && el.getBoundingClientRect().right <= innerWidth")
+            figure.get_by_role("button", name="Hide photo credits", exact=True).click()
+            expect(caption).not_to_be_visible()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            page.screenshot(path=str(scratch / f"illustrated-lists-{width}.png"), full_page=True)
+        page.get_by_role("button", name="Save to My trips", exact=True).click()
+        page.goto(base + "/trips")
+        card = page.locator(".trip-card-photo").first
+        caption = card.locator(".photo-credit-content")
+        page.mouse.move(0, 0)
+        expect(caption).not_to_be_visible()
+        card.locator(".media-image-link").hover()
+        expect(caption.get_by_role("link", name="Dan Freeman")).to_be_visible()
+        page.mouse.move(0, 0)
+        expect(caption).not_to_be_visible()
+        card.get_by_role("button", name="Photo credits", exact=True).click()
+        expect(caption.get_by_role("link", name="Photo source")).to_be_visible()
+        card.get_by_role("button", name="Hide photo credits", exact=True).click()
+        card.locator(".media-image-link").click()
+        expect(page.get_by_text("Saved itinerary", exact=True)).to_be_visible()
+        mobile = browser.new_context(storage_state=context.storage_state(), has_touch=True,
+                                     is_mobile=True, viewport={"width": 390, "height": 844})
+        try:
+            touch_page = mobile.new_page()
+            touch_page.goto(page.url)
+            photo = touch_page.locator(".detail-cover .atmosphere-photo")
+            credits = photo.locator(".photo-credit-content")
+            expect(credits).not_to_be_visible()
+            photo.get_by_role("button", name="Photo credits", exact=True).tap()
+            expect(credits.get_by_role("link", name="Dan Freeman")).to_be_visible()
+            photo.get_by_role("button", name="Hide photo credits", exact=True).tap()
+            expect(credits).not_to_be_visible()
+        finally:
+            mobile.close()
     finally:
         (signals / "media-nearby").unlink(missing_ok=True)
         context.close()

@@ -1,3 +1,5 @@
+import type { ProductDetail, DetailTransfer } from "./types";
+
 /** Locale-stable date labels; ISO values remain the operation and activity keys. */
 export function monthDay(value: string): string {
   const date = new Date(`${value.slice(0, 10)}T12:00:00Z`);
@@ -19,4 +21,39 @@ export function illustrationFor(value: string): string {
   if (/gallery|museum|art|historic house/i.test(value)) return "/dayloom/art.svg";
   if (/city|architecture|tower|building|street|neighborhood|cafe|café|market/i.test(value)) return "/dayloom/city.svg";
   return "/dayloom/nature.svg";
+}
+
+const trustedTransfer = (detail: ProductDetail, transfer: DetailTransfer) =>
+  detail.provenance === "generated" &&
+  detail.trust === "generated_projection" &&
+  transfer.status !== "source_claim";
+
+export function transferFeasibility(detail: ProductDetail, transfer: DetailTransfer) {
+  if (!trustedTransfer(detail, transfer)) {
+    return {
+      label: "Travel time to confirm",
+      message: "Travel time for this itinerary has not been checked.",
+      className: "has-unknown",
+    };
+  }
+  if (transfer.validation_state === "CONFIRMED")
+    return {
+      label: "Timing conflict remains",
+      message:
+        "There may not be enough time to get between these stops.",
+      className: "has-conflict",
+    };
+  if (transfer.validation_state === "PASS")
+    return {
+      label: "Fits your schedule",
+      message:
+        "The estimated travel time fits between these stops.",
+      className: "",
+    };
+  return {
+    label: "Travel time to confirm",
+    message:
+      "Check the travel time between these stops before you go.",
+    className: "has-unknown",
+  };
 }

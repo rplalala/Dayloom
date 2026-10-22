@@ -136,10 +136,10 @@ def test_library_copy_keyboard_lost_reply_recovery_and_independent_detail(browse
                 "heading", name="Sydney · Three days by the harbour (copy) (copy)", exact=True
             )
         ).to_be_visible()
-        page.get_by_text("Source and travel information", exact=True).click()
+        page.get_by_text("Before you go", exact=True).click()
         expect(
             page.get_by_text(
-                "Historical example · source claims, not a fresh verification", exact=False
+                "This is a sample itinerary.", exact=False
             )
         ).to_be_visible()
         page.screenshot(path=str(scratch / f"saved-copy-{width}.png"), full_page=True)

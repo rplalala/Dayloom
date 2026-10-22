@@ -56,9 +56,9 @@ def test_browser_import_save_export_reimport_and_lost_response(browser_app):  # 
         page.screenshot(path=str(scratch / "imported-preview.png"), full_page=True)
         page.get_by_role("button", name="Save to My trips", exact=True).click()
         page.get_by_role("link", name="View saved itinerary", exact=True).click()
-        page.get_by_text("Source and travel information", exact=True).click()
+        page.get_by_text("Before you go", exact=True).click()
         expect(
-            page.get_by_text("Imported content · not regenerated or rechecked", exact=False)
+            page.get_by_text("This imported itinerary has not been checked.", exact=False)
         ).to_be_visible()
         with page.expect_download() as download:
             open_json_export(page)

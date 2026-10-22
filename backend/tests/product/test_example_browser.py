@@ -21,10 +21,10 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         expect(
             page.get_by_role("heading", name="Sydney · Three days by the harbour")
         ).to_be_visible()
-        page.get_by_text("Source and travel information", exact=True).click()
+        page.get_by_text("Before you go", exact=True).click()
         expect(
             page.get_by_text(
-                "Historical example · source claims, not a fresh verification.", exact=False
+                "This is a sample itinerary.", exact=False
             )
         ).to_be_visible()
         assert page.request.get(browser_app.base_url + "/api/examples/sydney-example").status == 200
@@ -39,9 +39,9 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         page.keyboard.press("Escape")
         expect(page.get_by_role("dialog")).to_have_count(0)
         expect(activity_details).to_be_focused()
-        page.get_by_role("button", name="WALK · 25 min · Unverified source claim (PASS) →").click()
+        page.get_by_role("button", name="WALK · 25 min · Travel time to confirm →").click()
         expect(page.get_by_role("dialog")).to_contain_text(
-            "Source claims are not a fresh route or timing check."
+            "Travel time for this itinerary has not been checked."
         )
         page.keyboard.press("Escape")
         page.goto(browser_app.base_url + "/examples/kyoto-design")
@@ -103,7 +103,7 @@ def test_nearby_explicit_bidirectional_keyboard_navigation_and_responsive_hierar
         page.evaluate("window.scrollTo(0, 900)")
         expect(page.locator(".nearby-linked-selected")).to_have_count(0)
         other = page.get_by_role("region", name="Other nearby references")
-        expect(other).to_contain_text("Anchor: missing-activity · Date: 2026-10-14")
+        expect(other).not_to_contain_text("Anchor:")
         page.get_by_role("button", name="Filter Day 3 · 2026-10-15").click()
         expect(first).to_have_count(0)
         expect(later).to_be_visible()

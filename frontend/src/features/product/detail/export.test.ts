@@ -14,7 +14,7 @@ describe('faithful shared exports', () => {
   });
   it('distinguishes unknown facts, empty days, optional references and provenance', () => {
     const summary = summaryText(detail);
-    expect(summary).toContain('Imported content · unverified');
+    expect(summary).toContain('Imported itinerary · details to confirm');
     expect(summary).toContain('No scheduled activities');
     expect(summary).toContain('Optional Nearby · not scheduled');
     expect(summary).toContain('Original request: unknown');

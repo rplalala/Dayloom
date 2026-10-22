@@ -83,6 +83,18 @@ const detail: ProductDetail = {
 };
 
 describe("Product detail", () => {
+  it("keeps internal planning diagnostics out of the travel experience", () => {
+    render(<MemoryRouter><TripDetail detail={{ ...detail, completion: {
+      policy_completion: "incomplete", policy_reasons: ["internal_policy_reason"],
+      source_claims: ["internal_source_claim"], preference_coverage: [],
+      minimum_daily_coverage: [{ date: "2026-10-15", countable_primary_activities: 1,
+        status: "satisfied", reason: "countable_primary_present_not_feasibility" }],
+    } }} /></MemoryRouter>);
+    expect(screen.queryByText(/Planning review/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/internal_policy_reason|internal_source_claim|countable_primary_present_not_feasibility/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Anchor:|saved evidence snapshot|source claims/)).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Daily itinerary" })).toBeVisible();
+  });
   it.each([
     [
       "generated",
@@ -106,7 +118,7 @@ describe("Product detail", () => {
       "confirmed",
       "UNKNOWN",
       null,
-      "Transfer feasibility unverified",
+      "Travel time to confirm",
     ],
     [
       "generated",
@@ -114,7 +126,7 @@ describe("Product detail", () => {
       "confirmed",
       "PASS",
       null,
-      "Fits supplied timing",
+      "Fits your schedule",
     ],
     [
       "generated",
@@ -122,7 +134,7 @@ describe("Product detail", () => {
       "confirmed",
       null,
       null,
-      "Transfer feasibility unverified",
+      "Travel time to confirm",
     ],
     [
       "example",
@@ -130,7 +142,7 @@ describe("Product detail", () => {
       "source_claim",
       "PASS",
       "PASS",
-      "Unverified source claim (PASS)",
+      "Travel time to confirm",
     ],
     [
       "imported",
@@ -138,7 +150,7 @@ describe("Product detail", () => {
       "confirmed",
       "PASS",
       "PASS",
-      "Unverified source claim (PASS)",
+      "Travel time to confirm",
     ],
     [
       "generated",
@@ -146,7 +158,7 @@ describe("Product detail", () => {
       "source_claim",
       "CONFIRMED",
       "CONFIRMED",
-      "Unverified source claim (CONFIRMED)",
+      "Travel time to confirm",
     ],
   ] as const)(
     "preserves transfer feasibility separately from evidence for %s/%s/%s/%s",
@@ -188,32 +200,13 @@ describe("Product detail", () => {
       });
       expect(connector).toBeVisible();
       expect(
-        screen.getByRole("button", { name: /The Rocks → The Rocks WALK/ }),
+        screen.getByRole("button", { name: /The Rocks → The Rocks Walking/ }),
       ).toHaveTextContent(label);
       await user.click(connector);
       const dialog = screen.getByRole("dialog");
       expect(within(dialog).getByText(label, { exact: false })).toBeVisible();
-      if (label.startsWith("Unverified")) {
-        expect(
-          within(dialog).getByText(
-            /Source claims are not a fresh route or timing check/,
-          ),
-        ).toBeVisible();
-        expect(
-          within(dialog).queryByText(/Fits supplied timing/),
-        ).not.toBeInTheDocument();
-        expect(
-          within(dialog).getByText(
-            /this evidence has not been independently checked/,
-          ),
-        ).toBeVisible();
-      } else {
-        expect(
-          within(dialog).getByText(
-            /Route evidence: provider estimate in the supplied generated snapshot/,
-          ),
-        ).toBeVisible();
-      }
+      expect(within(dialog).queryByText(/Route evidence|source claim|generated snapshot|Estimate:|Buffer:|PASS|CONFIRMED/)).not.toBeInTheDocument();
+      expect(within(dialog).getByText(/check current routes before you travel/i)).toBeVisible();
     },
   );
   it("keeps weather compact until its daily summary is opened", async () => {
@@ -323,8 +316,8 @@ describe("Product detail", () => {
       name: "Other nearby references",
     });
     expect(
-      within(other).getByText("Anchor: first · Date: 2026-10-15"),
-    ).toBeVisible();
+      within(other).queryByText(/Anchor:/),
+    ).not.toBeInTheDocument();
     expect(
       within(other).getByText("<img src=x onerror=alert(1)>"),
     ).toBeVisible();

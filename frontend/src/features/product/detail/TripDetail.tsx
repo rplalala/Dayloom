@@ -1,5 +1,5 @@
 import { isDialogBackdropClick } from '../../../shared/dialog';
-import { useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type {
   DetailActivity,
@@ -10,7 +10,7 @@ import type {
 import "./detail.css";
 import { Icon } from "../Icon";
 import { WeatherRow } from "./WeatherRow";
-import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor } from "./display";
+import { monthDay, weekday, dottedDate, routeDuration, routeDistance, illustrationFor, transferFeasibility } from "./display";
 import { ExportControls } from './ExportControls';
 import { CuratedPhoto, PlacePhoto } from './MediaPhoto';
 import { PlaceMedia, usePlaceMedia } from './media';
@@ -27,7 +27,6 @@ type Information = {
   icon: string;
   introduction?: string;
   photo?: { slot: string; label: string; fallback: string };
-  photoNote?: string;
   notes: { heading: ReactNode; body: ReactNode; className?: string }[];
   stats?: { duration: string; distance: string };
   body?: string[];
@@ -48,50 +47,15 @@ const mapLink = (place: string, area?: string | null) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place, area].filter(Boolean).join(", "))}`;
 
 
-const trustedTransfer = (detail: ProductDetail, transfer: DetailTransfer) =>
-  detail.provenance === "generated" &&
-  detail.trust === "generated_projection" &&
-  transfer.status !== "source_claim";
-
-function transferFeasibility(detail: ProductDetail, transfer: DetailTransfer) {
-  if (!trustedTransfer(detail, transfer)) {
-    const claim = transfer.source_status ?? transfer.validation_state;
-    return {
-      label: `Unverified source claim${claim ? ` (${claim})` : ""}`,
-      message: "Source claims are not a fresh route or timing check.",
-      className: "has-unknown",
-    };
-  }
-  if (transfer.validation_state === "CONFIRMED")
-    return {
-      label: "Timing conflict remains",
-      message:
-        "The adopted transfer has a confirmed timing conflict between the supplied activities.",
-      className: "has-conflict",
-    };
-  if (transfer.validation_state === "PASS")
-    return {
-      label: "Fits supplied timing",
-      message:
-        "The adopted transfer fits the supplied activity timing. This is a snapshot, not a live route update.",
-      className: "",
-    };
-  return {
-    label: "Transfer feasibility unverified",
-    message:
-      "Available information does not establish whether the transfer fits the supplied activity timing.",
-    className: "has-unknown",
-  };
-}
-
 function InformationDialog({
   information,
   close,
+  refreshPhotos,
 }: {
   information: Information;
   close: () => void;
+  refreshPhotos?: () => void;
 }) {
-  const media = useContext(PlaceMedia);
   const ref = useRef<HTMLDialogElement>(null);
   const dismiss = () => {
     ref.current?.close();
@@ -119,8 +83,8 @@ function InformationDialog({
       <button type="button" className="modal-close" aria-label="Close dialog" onClick={dismiss}><Icon name="close" size={21} /></button>
       <div className="modal-icon"><Icon name={information.icon} size={23} /></div>
       <h2 id="detail-dialog-title">{information.title}</h2>
-      {information.photo && <div className="photo-large"><PlacePhoto className="dialog-place-photo" {...information.photo} /></div>}
-      {information.photoNote && information.photo && media[information.photo.slot]?.status !== "available" && <p className="photo-route-note">{information.photoNote}</p>}
+      {information.photo && <div className="photo-large"><PlacePhoto photograph className="dialog-place-photo" {...information.photo} /></div>}
+      {information.photo && refreshPhotos && <button type="button" className="inline-action media-refresh" onClick={refreshPhotos}>Refresh place photos</button>}
       {information.introduction && <p>{information.introduction}</p>}
       {information.stats && <div className="route-big-stats"><div><strong>{information.stats.duration}</strong><span>Estimated duration</span></div><div><strong>{information.stats.distance}</strong><span>Route distance</span></div></div>}
       {information.notes.map((note, i) => <div className="detail-note" key={i}><strong className={note.className}>{note.heading}</strong><span>{note.body}</span></div>)}
@@ -151,12 +115,10 @@ function InformationDialog({
 
 function NearbyRows({
   items,
-  other = false,
   show,
   positionOf,
 }: {
   items: DetailNearby[];
-  other?: boolean;
   show: (value: Information) => void;
   positionOf: (item: DetailNearby) => number;
 }) {
@@ -164,7 +126,6 @@ function NearbyRows({
     title: item.place_name,
     icon: "pin",
     photo: { slot: `nearby:${positionOf(item)}`, label: item.place_name, fallback: item.illustration_key ? `/dayloom/${item.illustration_key}.svg` : illustrationFor(item.place_name) },
-    photoNote: "Photo unavailable. Illustration shown.",
     introduction: item.reason || "An optional place near a planned stop.",
     notes: [
       { heading: "Location", body: item.area || "Address unavailable." },
@@ -178,12 +139,6 @@ function NearbyRows({
       <PlacePhoto className="nearby-media" slot={`nearby:${positionOf(item)}`} fallback={item.illustration_key ? `/dayloom/${item.illustration_key}.svg` : undefined} label={item.place_name} onOpen={() => show(informationFor(item))}>
       <div className="nearby-body">
         <strong>{item.place_name}</strong>
-        {other && (
-          <p className="detail-source-anchor">
-            Anchor: {item.anchor_activity_id ?? "not supplied"} · Date:{" "}
-            {item.associated_day ?? "not supplied"}
-          </p>
-        )}
         <div className="nearby-actions">
           <button
             aria-label="Details →"
@@ -201,7 +156,6 @@ function NearbyRows({
 }
 
 export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: { detail: ProductDetail; mediaEndpoint?: string; onReplan?: () => void; actions?: ReactNode; mode?: "preview" | "saved" }) {
-  const media = usePlaceMedia(mediaEndpoint);
   const positionOf = (item: DetailNearby) => detail.nearby.indexOf(item);
   const [filter, setFilter] = useState<string | null>(null);
   const [closedDays, setClosedDays] = useState<Set<string>>(() => new Set());
@@ -213,6 +167,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
     destination: "stop" | "group";
   } | null>(null);
   const [information, setInformation] = useState<Information | null>(null);
+  const media = usePlaceMedia(information?.photo ? mediaEndpoint : undefined);
   const { groups, other } = useMemo(() => {
     const candidates: Group[] = detail.days.flatMap((day, i) =>
       day.activities
@@ -317,7 +272,6 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
       title: name(activity),
       icon: "pin",
       photo: activity.time_use === "free_window" ? undefined : { slot: `activity:${activity.activity_id}`, label: name(activity), fallback: activity.illustration_key ? `/dayloom/${activity.illustration_key}.svg` : illustrationFor(`${name(activity)} ${activity.category || ""}`) },
-      photoNote: "Photo unavailable. Illustration shown.",
       introduction: [activity.place_name, activity.location || "Location unavailable."].filter(Boolean).join("\n"),
       notes: [
         { heading: <><Icon name="clock" size={17} />{activity.time_use === "free_window" ? "Free time" : "Planned visit"}</>, body: `${dottedDate(activity.start_time)} · ${clock(activity.start_time)}–${clock(activity.end_time)}` },
@@ -336,22 +290,14 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
       icon: modeIcon(transfer.mode),
       introduction: [transfer.from_activity_id, transfer.to_activity_id].map(id => {
         const activity = detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === id);
-        return activity ? name(activity) : id;
+        return activity ? name(activity) : "Planned stop";
       }).join(" → "),
       stats: { duration: routeDuration(transfer.provider_duration_seconds), distance: routeDistance(transfer.distance_meters) },
       notes: [
-        { heading: "Time between visits", body: `Previous activity ends ${clock(transfer.preceding_end_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.from_activity_id)?.end_time)}; next begins ${clock(transfer.following_start_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.to_activity_id)?.start_time)}.${transfer.reserve_seconds != null ? `\nAllow an additional ${routeDuration(transfer.reserve_seconds)} buffer.` : "\nBuffer not supplied."}` },
+        { heading: "Time between visits", body: `Previous activity ends ${clock(transfer.preceding_end_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.from_activity_id)?.end_time)}; next begins ${clock(transfer.following_start_time || detail.days.flatMap(day => day.activities).find(activity => activity.activity_id === transfer.to_activity_id)?.start_time)}.${transfer.reserve_seconds != null ? `\nAllow an additional ${routeDuration(transfer.reserve_seconds)} buffer.` : "\nAllow time for delays."}` },
         { heading: transferFeasibility(detail, transfer).label, body: transferFeasibility(detail, transfer).message, className: transferFeasibility(detail, transfer).className === "has-conflict" ? "state-conflict" : transferFeasibility(detail, transfer).className ? "state-unknown" : "state-ok" },
       ],
-      body: [
-        `Departure: ${transfer.departure_time || transfer.preceding_end_time || "not supplied"}. Arrival: ${transfer.arrival_time || "not supplied"}. Next activity: ${transfer.following_start_time || "not supplied"}.`,
-        `Buffer: ${transfer.reserve_seconds == null ? "not supplied" : `${transfer.reserve_seconds} seconds`}. Estimate: ${transfer.estimate_kind}.`,
-        trustedTransfer(detail, transfer)
-          ? `Route evidence: ${transfer.estimate_kind} estimate in the supplied generated snapshot. ${transfer.status === "unknown" ? "Evidence availability remains to confirm." : "Evidence availability does not independently establish timing feasibility."}`
-          : `The source describes the estimate as ${transfer.estimate_kind}; this evidence has not been independently checked.`,
-        ...transfer.unknowns,
-        transfer.attribution || "",
-      ].filter(Boolean),
+      body: ["Travel times are estimates. Check current routes before you travel.", transfer.attribution || ""].filter(Boolean),
     });
   const visibleOther = other.filter(
     (n) => !filter || !n.associated_day || n.associated_day === filter,
@@ -361,12 +307,6 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
       total + d.activities.filter((a) => a.time_use !== "free_window").length,
     0,
   );
-  const sourceLabel =
-    detail.trust === "source_fixture"
-      ? "Historical example · source claims, not a fresh verification"
-      : detail.trust === "unverified_import"
-        ? "Imported content · not regenerated or rechecked"
-        : "Generated itinerary · saved evidence snapshot";
   return (
     <PlaceMedia.Provider value={media.items}><div className="detail-page">
       <section className="detail-hero">
@@ -431,32 +371,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
                 </div>
               </div>
               {Boolean(detail.display_tags?.length || detail.request?.additional_preferences) && <div className="request-overview">{(detail.display_tags?.length ? detail.display_tags : detail.request?.additional_preferences?.split(/\n+/).filter(Boolean) || []).map((text, index) => <span key={index}>{text}</span>)}</div>}
-              <details className="source-details"><summary>Source and travel information</summary><p>{sourceLabel}. Confirm access, opening hours, prices and weather before travel.</p>{mediaEndpoint && <button type="button" className="inline-action media-refresh" onClick={media.refresh}>Refresh place photos</button>}</details>
-              {detail.completion && (
-                <details className="review-panel">
-                  <summary>
-                    Planning review · {detail.completion.policy_completion}
-                  </summary>
-                  {detail.completion.policy_reasons.map((reason, i) => (
-                    <p key={i}>{reason}</p>
-                  ))}
-                  {detail.completion.source_claims?.map((claim, i) => <p key={`source-${i}`}>Unverified source claim: {claim}</p>)}
-                  {detail.completion.preference_coverage.map((coverage, i) => (
-                    <p key={i}>
-                      {coverage.preference}: {coverage.scheduled}/
-                      {coverage.target} · {coverage.status}
-                    </p>
-                  ))}
-                  {detail.completion.minimum_daily_coverage.map(
-                    (coverage, i) => (
-                      <p key={i}>
-                        {coverage.date}: {coverage.countable_primary_activities}{" "}
-                        planned stops · {coverage.status}. {coverage.reason}
-                      </p>
-                    ),
-                  )}
-                </details>
-              )}
+              <details className="source-details"><summary>Before you go</summary><p>{detail.provenance === "imported" ? "This imported itinerary has not been checked. " : detail.provenance === "example" ? "This is a sample itinerary. " : ""}Confirm access, opening hours, prices and weather before travel.</p></details>
             </section>
             <section className="content-card days-panel" id="daily">
               <div className="content-heading">
@@ -717,15 +632,15 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
                         {detail.days
                           .flatMap((d) => d.activities)
                           .find((a) => a.activity_id === t.from_activity_id)
-                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.from_activity_id)?.title || t.from_activity_id}{" "}
+                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.from_activity_id)?.title || "Planned stop"}{" "}
                         →{" "}
                         {detail.days
                           .flatMap((d) => d.activities)
                           .find((a) => a.activity_id === t.to_activity_id)
-                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.to_activity_id)?.title || t.to_activity_id}
+                          ?.place_name || detail.days.flatMap(d => d.activities).find(a => a.activity_id === t.to_activity_id)?.title || "Planned stop"}
                       </strong>
                       <small>
-                        {t.mode || "Mode unknown"} ·{" "}
+                        {modeName(t.mode)} ·{" "}
                         {transferFeasibility(detail, t).label}
                       </small><span className="transport-metrics"><Icon name={(t.mode || "").toLowerCase().includes("walk") ? "walk" : "route"} size={16} />{routeDuration(t.provider_duration_seconds)} · {routeDistance(t.distance_meters)}</span>
                     </span><Icon name="chevron" size={17} />
@@ -842,7 +757,6 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
                   </p>
                   <NearbyRows
                     items={visibleOther}
-                    other
                     show={setInformation}
                     positionOf={positionOf}
                   />
@@ -869,6 +783,7 @@ export function TripDetail({ detail, mediaEndpoint, onReplan, actions, mode }: {
         <InformationDialog
           information={information}
           close={() => setInformation(null)}
+          refreshPhotos={mediaEndpoint ? media.refresh : undefined}
         />
       )}
     </div></PlaceMedia.Provider>
