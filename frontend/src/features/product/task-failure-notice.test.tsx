@@ -11,11 +11,11 @@ const original: PlanningTask = { id: 'failed-task', state: 'running', revision: 
   editor_snapshot: { ...brief, destination: 'Sydney' }, preview_id: null, progress: { stage: 'generation', message: 'Planning your days.' }, outcome: null, created_at: '', updated_at: '' };
 afterEach(() => { sessionStorage.clear(); localStorage.clear(); vi.unstubAllGlobals(); });
 
-function setup() {
+function setup(pastTasks: PlanningTask[] = []) {
   sessionStorage.setItem('dayloom.editor.v1', JSON.stringify({ owner: 'alice', brief, actionId: null, origin: 'restored' }));
   let task = original;
   let loggedOut = false;
-  const history: PlanningTask[] = [];
+  const history: PlanningTask[] = [...pastTasks];
   const writes: string[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, options?: RequestInit) => {
     if (options?.method === 'POST') writes.push(url);
@@ -118,5 +118,19 @@ it('hides the failure notice and task entry immediately on logout', async () => 
   logout();
   await waitFor(() => expect(screen.queryByRole('link', { name: 'Planning needs attention' })).not.toBeInTheDocument());
   expect(screen.queryByRole('link', { name: 'View details' })).not.toBeInTheDocument();
+  expect(writes).toEqual([]);
+});
+
+it('does not replace the current failure notice with an older unseen success on later polls', async () => {
+  const old = { ...original, id: 'old-one', state: 'completed' as const, preview_id: 'old-preview-one' };
+  const { finish, writes } = setup([old, { ...old, id: 'old-two', preview_id: 'old-preview-two' }]);
+  await screen.findByRole('link', { name: 'Planning task running' });
+  await screen.findByRole('link', { name: 'View preview' });
+  await act(async () => { finish(); });
+  await screen.findByRole('link', { name: 'View details' });
+  await act(async () => { fireEvent.focus(window); });
+  expect(screen.getByRole('link', { name: 'View details' })).toBeVisible();
+  expect(screen.queryByRole('link', { name: 'View preview' })).not.toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'Planning needs attention' })).toBeVisible();
   expect(writes).toEqual([]);
 });

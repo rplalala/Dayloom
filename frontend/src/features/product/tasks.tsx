@@ -31,7 +31,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       const tasks = Array.isArray(result) ? result : [];
       setSnapshot({ owner, tasks, error: '' });
       setNotice(previous => previous?.owner === owner && taskNeedsAttention(previous.task) && previous.task.id !== tasks[0]?.id ? null : previous);
-      for (const task of tasks) {
+      // Keep the current failure coherent with its header entry; older successes stay recoverable.
+      const candidates = tasks[0] && taskNeedsAttention(tasks[0]) ? [tasks[0]] : tasks;
+      for (const task of candidates) {
         if (task.state !== 'completed' && !(task === tasks[0] && taskNeedsAttention(task))) continue;
         const key = `dayloom.task.observed.${owner}.${task.id}.${task.revision}`;
         let observed = seen.current.has(key);
