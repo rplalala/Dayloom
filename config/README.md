@@ -1,8 +1,12 @@
 # Runtime configuration reference
 
-`config/runtime.yaml` is the single non-secret runtime policy source. This document explains
+`config/runtime.yaml` is the single non-secret planner runtime policy source. This document explains
 its current values; it is not another default file. The tables enumerate every YAML leaf.
 English names identify application policies, not measured optimal settings or user demands.
+
+Product deployment settings live separately in the root `product.yaml`, beside
+`compose.yaml`. See [Product setup](../docs/guides/development.md#product-account-setup-and-acceptance)
+for their keys, environment overrides and credential boundary.
 
 ## Loading, versions and overrides
 

@@ -59,22 +59,24 @@ claiming retrieval acceptance. A degraded retrieval fallback is not that accepta
 
 ## Local PostgreSQL naming and storage
 
-`compose.tripworld.yaml` uses the Docker Compose project `dayloom` and container
+The root `compose.yaml` uses the Docker Compose project `dayloom` and container
 `postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
 
 ```powershell
-docker compose --env-file .env.tripworld -f compose.tripworld.yaml up -d postgres
+docker compose --env-file .env.tripworld up -d postgres
 ```
 
-Fresh installations use the named volume `dayloom_pgdata`. Existing installations
-must set `TRIPWORLD_DB_VOLUME` in ignored `.env.tripworld` to their actual current
-volume before starting under the new project name. The existing local installation
-retains `reliable-tripworld_tripworld_pgdata`; the legacy storage name does not affect
-the displayed project/container names. Changing only the project name without this
-volume selection would create an empty database. Stop the old container before starting
-the replacement, verify database identity and retained records, then remove only the
-replaced container. Do not remove the data volume or re-ingest/re-embed the corpus.
-Database credentials, host port and independent V0–V3 connections stay unchanged.
+The Compose volume alias is `dayloom_pgdata`; fresh installations use that physical
+volume name too. Existing installations must set `TRIPWORLD_DB_VOLUME` in ignored
+`.env.tripworld` to their actual current volume. The existing local installation
+retains `reliable-tripworld_tripworld_pgdata`; this storage identifier does not affect
+the displayed project/container names. Selecting another volume would expose an empty
+database. Do not remove the existing volume or re-ingest/re-embed the corpus.
+
+The SQL database remains `tripworld`. Compose/project/container naming does not rename
+an initialized database. The `TRIPWORLD_DB_*` connection settings retain their retrieval
+domain meaning; database credentials, host port and independent V0–V3 connections stay
+unchanged.
 
 ## Complete local Product runtime
 
@@ -94,10 +96,10 @@ uv run python scripts/run_product.py --check
 uv run python scripts/run_product.py
 ```
 
-The default address is `http://localhost:5173`; set `PRODUCT_ORIGIN` to that exact
-origin and enable the explicit HTTP loopback exception. `--port` must match the
-configured origin's port. The launcher loads `.env` and `.env.tripworld` from the
-repository root without overriding existing process values. It serves `frontend/dist`,
+The root `product.yaml` configures `http://localhost:5173` and explicitly allows
+local HTTP. `--port` must match the configured origin's port. The launcher loads
+`.env` and `.env.tripworld` from the repository root without overriding existing
+process values. It serves `frontend/dist`,
 including direct navigation/reload of Product and Developer routes; missing APIs and
 assets retain their HTTP errors. Rebuild the frontend after changing its source.
 
@@ -117,16 +119,34 @@ above remain available, and independent V0–V3 entrypoints are unchanged.
 
 Use the existing PostgreSQL database for application runtime, with a role permitted
 to create the separate `app` schema. Product migration/account settings are optional
-for the independent V0-V3 and research commands. Keep these keys in ignored `.env`
-or the process environment:
+for the independent V0-V3 and research commands.
+
+The root [product.yaml](../../product.yaml), beside [compose.yaml](../../compose.yaml),
+owns non-secret Product deployment settings. It is separate from planner policies in
+`config/runtime.yaml` and is not included in their snapshots or hashes.
+
+| YAML key | Environment override | Meaning |
+| --- | --- | --- |
+| `origin` | `PRODUCT_ORIGIN` | Exact public HTTPS origin; the supplied local setting is `http://localhost:5173` |
+| `allow_insecure_loopback` | `PRODUCT_ALLOW_INSECURE_LOOPBACK` | Supplied local setting is true; only localhost/127.0.0.1/::1 may use HTTP |
+| `session_seconds` | `PRODUCT_SESSION_SECONDS` | Supplied setting is 3600; accepted range 1–86400 |
+
+Explicit settings arguments take precedence over process environment, then `.env`,
+secret-file settings, YAML and model defaults. Product resolves its YAML and default
+`.env` relative to the repository, independently of the working directory. Unknown
+YAML keys, credential fields, duplicate keys and invalid values are rejected without
+echoing their values. Keep deployment-specific overrides in the environment; remove
+redundant non-secret `.env` entries when adopting YAML. Restart the application after
+changing deployment settings. For HTTPS deployment, set the public origin and disable
+the local HTTP exception.
+
+Keep credentials and process-specific tooling settings in ignored `.env` or the
+process environment:
 
 | Key | Meaning |
 | --- | --- |
 | `PRODUCT_DATABASE_URL` | PostgreSQL connection URL for Product persistence |
 | `PRODUCT_JWT_SECRET` | Independently generated signing secret, at least 32 characters |
-| `PRODUCT_ORIGIN` | Exact public HTTPS origin, or the explicitly allowed loopback development origin |
-| `PRODUCT_ALLOW_INSECURE_LOOPBACK` | Default false; set true only for HTTP development on localhost/127.0.0.1/::1 |
-| `PRODUCT_SESSION_SECONDS` | Default 3600; accepted range 1–86400 |
 | `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
 | `PRODUCT_GOOGLE_PLACES_MEDIA_KEY` | Optional server-only Places API key for verified Product photos; missing means illustration fallback |
 | `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash key for the curated atmosphere catalog; takes precedence over the existing `UNSPLASH_API_KEY` alias; missing both means illustration fallback |
@@ -134,9 +154,10 @@ or the process environment:
 Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
 `uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
 retains SHA-256 integrity and never rebuilds the TripWorld corpus. Start the API using
-the normal launcher. For local browser development, configure
-`PRODUCT_ORIGIN=http://localhost:5173` and the explicit loopback exception; open that
-same origin in the browser. Production uses same-origin HTTPS routing.
+the normal launcher. Open the exact origin configured in `product.yaml` or its
+environment override. The migration command needs only the database URL and resolves
+the default `.env` from the repository; it does not require a signing key or initialize
+planner/provider settings. Production uses same-origin HTTPS routing.
 
 Acceptance requires a separate disposable database whose name includes `test`.
 Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated
