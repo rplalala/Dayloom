@@ -8,6 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from .cost_report import amount, estimate, money, validate_prices
+from .daily_density import density_rules
 from .intake import _artifact, _read, load_batch
 from .records import canonical_digest
 from .snapshot import (
@@ -398,6 +399,7 @@ def prepare(
         "options": options,
         "prices": prices,
         "context": context,
+        "density_rules": density_rules(context["density_reviews"]),
         "identity_plan": identity_plan,
         "evidence_plan": evidence_plan,
         "route_preparation": route_preparation,

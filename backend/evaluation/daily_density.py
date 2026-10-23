@@ -2,7 +2,7 @@
 
 from fractions import Fraction
 
-from backend.pace_policy import PENALTIES, daily_penalty
+from backend.pace_policy import PENALTIES, PENALTY_PROFILES, PROFILE_ID, daily_penalty
 
 from ._schedule_preparation import _days, _sources
 from .preparation import _review_provenance
@@ -10,7 +10,7 @@ from .quality_aggregation import _fraction
 from .records import require, text
 
 RULES = {
-    "profile_id": "rtpeval_daily_density_2",
+    "profile_id": PROFILE_ID,
     "penalties_by_count_0_to_5": PENALTIES,
     "count_6_or_more": 100,
     "explicit_count": "matching reviewed exact count exempts defaults; mismatch deducts 100",
@@ -19,6 +19,19 @@ RULES = {
     "overall": "max(0, five-dimensional auxiliary score minus mean daily penalty)",
     "unknown": "no guessed count or pace; bounds retained; unresolved deduction is unavailable",
 }
+
+
+def density_rules(reviews=None):
+    """Select numeric rules separately from the reviewed request semantics."""
+    profile = (
+        reviews.get("rules_profile_id", PROFILE_ID) if isinstance(reviews, dict) else PROFILE_ID
+    )
+    require(
+        isinstance(profile, str) and profile in PENALTY_PROFILES,
+        "density_reviews/rules_profile_id",
+        "Unsupported daily density rules profile",
+    )
+    return {**RULES, "profile_id": profile, "penalties_by_count_0_to_5": PENALTY_PROFILES[profile]}
 
 
 def _policy(value, group, pointer):
@@ -45,6 +58,7 @@ def _policy(value, group, pointer):
 
 def prepare_density_policies(intake, reviews=None):
     """Validate independent request policies; never use planner interpretations."""
+    profile_id = density_rules(reviews)["profile_id"]
     groups = {group["group_id"]: group for group in intake["inventory"]}
     policies = {}
     if reviews is not None:
@@ -119,15 +133,18 @@ def prepare_density_policies(intake, reviews=None):
                 "days": {},
                 "review": None,
             }
-    return policies
+    return {gid: {**policy, "rules_profile_id": profile_id} for gid, policy in policies.items()}
 
 
-def _penalty(count, policy):
-    return daily_penalty(count, policy["profile"], policy["exact_count"])
+def _penalty(count, policy, rules_profile_id):
+    return daily_penalty(
+        count, policy["profile"], policy["exact_count"], rules_profile_id=rules_profile_id
+    )
 
 
 def score_daily_density(group, density, policy):
     """Score a requested-date population, retaining nonmonotonic uncertainty bounds."""
+    rules_profile_id = density_rules(policy)["profile_id"]
     dates = _days(group["input"])
     require(
         isinstance(density, list)
@@ -161,7 +178,10 @@ def score_daily_density(group, density, policy):
                 )
                 reason = "explicit_count_match" if bounds == (0, 0) else "explicit_count_mismatch"
             else:
-                candidates = [_penalty(n, adopted) for n in range(min(lower, 6), min(upper, 6) + 1)]
+                candidates = [
+                    _penalty(n, adopted, rules_profile_id)
+                    for n in range(min(lower, 6), min(upper, 6) + 1)
+                ]
                 bounds = min(candidates), max(candidates)
                 reason = "default_pace_penalty"
         penalty = bounds[0] if bounds[0] == bounds[1] else None
@@ -186,7 +206,7 @@ def score_daily_density(group, density, policy):
         else None
     )
     return {
-        "rules_profile_id": RULES["profile_id"],
+        "rules_profile_id": rules_profile_id,
         "requested_day_count": len(rows),
         "days": rows,
         "review": policy["review"],

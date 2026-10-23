@@ -550,8 +550,25 @@ class V3PostPrimary:
         final = final.model_copy(update={"route_diagnostics": route_diagnostics})
         from backend.app.versions.v3.soft_pace import pace_summary
 
+        soft_pace = pace_summary(
+            original_report,
+            final_report,
+            contract=final_context.contract,
+            review_enabled=self.quantity_review,
+            changed=repair is not None and repair.selected_round_index is not None,
+        )
+        completion = soft_pace["completion"]
+        if repair and completion:
+            repair = repair.model_copy(
+                update={
+                    "soft_pace": soft_pace,
+                    "status": "ACCEPTED_PARTIAL"
+                    if repair.status == "ACCEPTED_COMPLETE" and completion["status"] != "complete"
+                    else repair.status,
+                }
+            )
         outcome = V3Outcome(
-            soft_pace=pace_summary(original_report, final_report),
+            soft_pace=soft_pace,
             review_policy={
                 "quantity": self.quantity_review,
                 "soft_pace": self.quantity_review,

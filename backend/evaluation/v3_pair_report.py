@@ -8,7 +8,12 @@ from pathlib import Path
 
 from ._v3_continuity import build_continuity
 from .daily_density import RULES as DENSITY_RULES
-from .daily_density import apply_density_penalty, prepare_density_policies, score_daily_density
+from .daily_density import (
+    apply_density_penalty,
+    density_rules,
+    prepare_density_policies,
+    score_daily_density,
+)
 from .intake import _read
 from .opening import score_opening
 from .preparation import identity_ready
@@ -249,6 +254,8 @@ def build_v3_pair_report(
     }
     status = "needs_material_correction"
     try:
+        profile = {**RULES, "daily_density": density_rules(_value(density_reviews))}
+        base.update(rules_profile=profile, rules_profile_hash=canonical_digest(profile))
         require(isinstance(generated_at, str), "generated_at", "Offset-aware timestamp required")
         require(
             datetime.fromisoformat(generated_at).utcoffset() is not None,
@@ -266,7 +273,7 @@ def build_v3_pair_report(
                 "V3-only paired access material required",
             )
             profile = {
-                **RULES,
+                **base["rules_profile"],
                 "opening_pass_basis": "api_hours_or_llm_access_reasonableness_2",
                 "identical_contexts": "one_judgment_with_bound_stage_sources",
             }

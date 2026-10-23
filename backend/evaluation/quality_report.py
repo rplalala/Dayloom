@@ -6,7 +6,12 @@ from fractions import Fraction
 from pathlib import Path
 
 from .daily_density import RULES as DENSITY_RULES
-from .daily_density import apply_density_penalty, prepare_density_policies, score_daily_density
+from .daily_density import (
+    apply_density_penalty,
+    density_rules,
+    prepare_density_policies,
+    score_daily_density,
+)
 from .intake import VERSIONS, _read
 from .opening import score_opening
 from .preparation import identity_ready
@@ -95,6 +100,8 @@ def build_quality_report(
             rules_profile_hash=canonical_digest(profile),
         )
     try:
+        profile = {**base["rules_profile"], "daily_density": density_rules(_value(density_reviews))}
+        base.update(rules_profile=profile, rules_profile_hash=canonical_digest(profile))
         require(isinstance(generated_at, str), "generated_at", "Offset-aware timestamp required")
         stamp = datetime.fromisoformat(generated_at)
         require(stamp.utcoffset() is not None, "generated_at", "Offset-aware timestamp required")

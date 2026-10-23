@@ -20,6 +20,7 @@ from backend.app.versions.v3.models import (
     ValidationPolicy,
     ValidationReport,
 )
+from backend.pace_policy import PROFILE_ID as PACE_PROFILE_ID
 
 
 def validate_draft(
@@ -550,7 +551,7 @@ def validate_draft(
             dates=(row["date"],),
             activity_ids=row["activity_ids"],
             magnitude=penalty,
-            evidence_refs=("policy:rtpeval_daily_density_2",),
+            evidence_refs=(f"policy:{PACE_PROFILE_ID}",),
             adopted_evidence={
                 "count": row["count"],
                 "zero_counts": row["zero_counts"],

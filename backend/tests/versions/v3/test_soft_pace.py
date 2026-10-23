@@ -18,14 +18,14 @@ from backend.tests.versions.v3.test_validation import DAY, WINDOW, activity, con
 
 
 def pace_contract(profile="relaxed", exact_count=None):
-    data = contract(preferences="relaxed").model_dump()
+    data = contract(preferences=profile).model_dump()
     data["visit_requirements"] = ()
     data["daily_pace"] = [
         {
             "date": None,
             "profile": profile,
             "exact_count": exact_count,
-            "source_refs": [{"quote": "relaxed", "start": 0, "end": 7, "occurrence": 0}],
+            "source_refs": [{"quote": profile, "start": 0, "end": len(profile), "occurrence": 0}],
         }
     ]
     return InterpretedTripRequirements.model_validate(data)

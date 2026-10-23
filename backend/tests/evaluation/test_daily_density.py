@@ -89,7 +89,7 @@ def test_ordinary_sparse_and_busy_days_reduce_the_score_in_requested_order():
     [
         ("ordinary", [100, 40, 0, 10, 50, 80, 100, 100]),
         ("relaxed", [100, 20, 0, 40, 70, 90, 100, 100]),
-        ("rich", [100, 60, 0, 0, 30, 70, 100, 100]),
+        ("rich", [100, 60, 10, 0, 30, 70, 100, 100]),
     ],
 )
 def test_all_pace_windows_and_out_of_window_counts(profile, expected):
@@ -187,6 +187,25 @@ def test_missing_pace_review_is_unknown_unless_request_has_no_preferences():
     group["input"].pop("additional_preferences")
     ordinary = score_daily_density(group, density, prepare_density_policies(intake)["g"])
     assert ordinary["mean_penalty_0_100"] == 40
+
+
+def test_rich_two_and_three_days_have_five_point_mean_and_uncertain_count_stays_unavailable():
+    intake, group, reviews, density = scenario("rich", counts=(2, 3))
+    group["input"]["end_date"] = "2026-10-08"
+    policy = prepare_density_policies(intake, reviews)["g"]
+    result = score_daily_density(group, density, policy)
+    assert result["exact_mean_penalty"] == {"numerator": 5, "denominator": 1}
+    density[0]["possible_primary_count"] = 1
+    uncertain = score_daily_density(group, density, policy)
+    assert uncertain["days"][0]["penalty_bounds"] == {"lower": 0, "upper": 10}
+    assert uncertain["mean_penalty_0_100"] is None
+
+
+def test_unknown_numeric_policy_is_not_silently_scored_with_current_rules():
+    intake, _, reviews, _ = scenario("rich")
+    reviews["rules_profile_id"] = "unrecognized"
+    with pytest.raises(MaterialError, match="Unsupported daily density rules profile"):
+        prepare_density_policies(intake, reviews)
 
 
 @pytest.mark.parametrize("fault", ["input", "batch", "duplicate", "date", "quote", "origin"])
