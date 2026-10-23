@@ -524,6 +524,10 @@ def validate_draft(
             "UNKNOWN",
             "per_leg_mode_and_departure_binding_not_supported",
             evidence_refs=route_refs,
+            adopted_evidence={
+                "has_transition_obligations": bool(itinerary.transfers)
+                or any(len(day.activities) > 1 for day in itinerary.days)
+            },
         )
     add("budget", "UNKNOWN", "verified_party_currency_cost_coverage_not_supported")
     daily_refs = {

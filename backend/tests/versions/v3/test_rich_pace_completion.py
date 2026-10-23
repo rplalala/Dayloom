@@ -153,7 +153,9 @@ def rich_model(
     return model
 
 
-def run_rich(counts=(3, 3), *, review=True, text="rich", runtime_config=None, **kwargs):
+def run_rich(
+    counts=(3, 3), *, review=True, text="rich", runtime_config=None, routes_provider=None, **kwargs
+):
     from backend.tests.request_fixtures import make_request
 
     model = rich_model(counts, **kwargs)
@@ -165,6 +167,7 @@ def run_rich(counts=(3, 3), *, review=True, text="rich", runtime_config=None, **
             quantity_review_enabled=review,
             system_deletions=True,
             runtime_config=runtime_config,
+            **({"routes_provider": routes_provider} if routes_provider is not None else {}),
         )
     )
     return result, model
@@ -237,6 +240,44 @@ def test_runner_sourced_full_day_rest_retains_zero_without_default_rich_success(
     result, _ = run_rich((0, 3), fields=fields, text="rich. Rest all day on 2026-09-12")
     day = result.v3.soft_pace["completion"]["days"][0]
     assert (day["count"], day["target_count"], day["state"]) == (0, 0, "source_overridden")
+
+
+def test_runner_all_rest_has_no_route_obligation_blocking_the_satisfied_exception():
+    fields = empty_preference_draft().model_dump()
+    fields["time_protections"] = [
+        {
+            "dates": ["2026-09-12", "2026-09-13"],
+            "full_day": True,
+            "start_time": None,
+            "end_time": None,
+            "status": "fixed",
+            "reason": None,
+            "source_refs": [{"quote": "Rest every day", "occurrence": 0}],
+        }
+    ]
+    result, model = run_rich((0, 0), fields=fields, text="rich. Rest every day")
+    completion = result.v3.soft_pace["completion"]
+    assert completion["status"] == "source_overridden"
+    assert all(
+        (day["count"], day["target_count"], day["state"]) == (0, 0, "source_overridden")
+        for day in completion["days"]
+    )
+    assert completion["blocking_findings"] == []
+    assert model.repair_calls == 0
+
+
+def test_runner_three_visits_with_actual_unverified_routes_remain_unavailable():
+    from backend.tests.versions.v1.fakes import FakeRoutesProvider
+
+    class UnavailableRoutes(FakeRoutesProvider):
+        async def compute_route_matrix(self, request):
+            raise RuntimeError("Fixture route evidence unavailable")
+
+    result, _ = run_rich(routes_provider=UnavailableRoutes())
+    completion = result.v3.soft_pace["completion"]
+    assert all(day["count"] == 3 for day in completion["days"])
+    assert completion["status"] == "unavailable"
+    assert "route" in completion["unverified_checks"]
 
 
 @pytest.mark.parametrize("limit", ["deadline", "rounds"])

@@ -59,6 +59,11 @@ def rich_completion(after, contract, *, review_enabled, changed):
         if f.status == "UNKNOWN"
         and f.check not in {"budget", "visitor_suitability"}
         and f.reason != "open_semantics_not_executable_predicates"
+        and not (
+            f.check == "route"
+            and f.reason == "per_leg_mode_and_departure_binding_not_supported"
+            and f.adopted_evidence.get("has_transition_obligations") is False
+        )
     ]
     failures = [f for f in after.findings if f.status == "CONFIRMED"]
     states = {day["state"] for day in days}
