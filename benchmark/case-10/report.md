@@ -1,5 +1,8 @@
 # Case 10 London offline acceptance review
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 **Automatically accepted by the researcher on 2026-10-17, Australia/Sydney, with the disclosed limitations. Delivery and closure are tracked in [Issue #159](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/159).** The selected request covers London, 22–25 October 2026, one traveler and GBP 1,300 for the whole trip. Its hard place obligation is exactly two British Museum visits on different dates. Historic neighbourhoods, parks and art remain soft interests for the rest of the itinerary.
 
 The [original request](../inputs/case-10.json), [reviewed requirements](requirements/reviewed.json), [interest inventory](interests/reviewed.json), [four daily itineraries](itinerary.md) and [material index](material-index.json) identify the exact selection. Generation revision 2 uses source `cc779bb2ece7b312ab3d985cebdd5d6b64b209c3`; the current Primary and process reports use evaluator source `6320785d5e8679cdaf588f334888c1e181a5b31b`.

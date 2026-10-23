@@ -88,10 +88,11 @@ does not refresh accepted datasets.
 
 ## Other responsibilities
 
-- [Final benchmark report](../benchmark/report.md): completed comparison of the
-  12 accepted cases, with final ranking **V3 > V2 > V1 > V0**, separate evaluation
-  results, reasons for differences and selected-run cost/time trade-offs. The
-  V1/V0 distinction is weak; the report states the historical policy boundaries.
+- [Benchmark report](../benchmark/report.md): Rich-policy automatic replacement,
+  pending researcher acceptance, with order **V3 > V2 > V1 > V0**, exact twelve-case
+  totals, same-run Pair summaries and selected-generation resources. Case-04 has
+  three visits per day but retains unavailable Planner coverage completion;
+  existing blinded answers remain bound to the original reviewed itinerary.
 - [Blinded-review report](../benchmark/blinded-results/report.md): completed human
   and GPT-6.1 sol xhigh assessments, dimension and task-level rankings, agreement
   and differences. The accepted English/Chinese questionnaires and separate answer

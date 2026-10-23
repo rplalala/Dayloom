@@ -1,0 +1,1798 @@
+{
+  "schema_version": "benchmark_density_only_derivation_1",
+  "case_id": "case-05",
+  "status": "offline_verified_pending_researcher_acceptance",
+  "source": {
+    "public_path": "benchmark/case-05/evaluation/primary/report.json",
+    "file_sha256": "a62656ff410fdf51e27fef7e468c2109f70473f966e7d68f65ddf1d2e518c558"
+  },
+  "source_group_semantic_sha256": "0b55a3fa7dad84a3d1aced8535af43e86d68593764f98426da3e32f7be9e8490",
+  "factual_rules_profile_id": "rtpeval_declared_population_1",
+  "density_rules_profile_id": "rtpeval_daily_density_3",
+  "method": "Native density scorer and exact overall aggregation on preserved accepted daily populations and independently reviewed pace. Factual components and case-specific masks are unchanged; this is a derived report, not a new acquisition receipt.",
+  "live_sends": 0,
+  "groups": [
+    {
+      "all_totals_available": true,
+      "diagnostics": [],
+      "dimension_weights": {
+        "grounding": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "non_overlap": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "opening": {
+          "denominator": 4,
+          "numerator": 1
+        },
+        "routes": {
+          "denominator": 4,
+          "numerator": 1
+        }
+      },
+      "group_id": "case-05",
+      "included_dimensions": [
+        "grounding",
+        "non_overlap",
+        "opening",
+        "routes"
+      ],
+      "total_included_dimensions": 4,
+      "versions": {
+        "v0": {
+          "run_id": "case-05-completion-v0-a1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 10,
+                "UNKNOWN": 0
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 10
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 15,
+                "UNKNOWN": 0
+              },
+              "denominator": 15,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 15,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 15,
+                  "numerator": 15
+                },
+                "verified_fraction": {
+                  "denominator": 15,
+                  "numerator": 15
+                }
+              },
+              "known_unit_count": 15,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 10,
+                  "numerator": 9
+                },
+                "reason": null,
+                "score_0_100": 90.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 1
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 1
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.1,
+                "verification_coverage": 0.9,
+                "verified_fraction": 0.9
+              },
+              "state": "UNKNOWN",
+              "verified_score_0_100": 90.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 40,
+              "numerator": 39
+            },
+            "reason": null,
+            "score_0_100": 97.5,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-29",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-30",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The source explicitly prefers a relaxed pace and time to explore in depth rather than many sightseeing stops each day. This supports the relaxed density profile without a numeric count or a date-specific override.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-18T02:03:12Z",
+              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 97.5,
+            "exact_fraction": {
+              "numerator": 39,
+              "denominator": 40
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "d5112640271fb0299d5e5d333c6c5b4ce6a2f8ed37feb244a05cef7e0fb24d31"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "bc9e00a4c593b32e1f1a1b9b90c73909b8794394b7dcf104dec0992d844326f9",
+              "identity_references": "767043884d4f3afe772593cc9ae5633449317d1e43bfd97f09dc9c05de0d8442",
+              "identity_report": "c1d5b84fdedf3921934a2b326206aab47784eb779d61e72688abd268a24b5e10",
+              "identity_review": null,
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "occupancy_review": null,
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "d5112640271fb0299d5e5d333c6c5b4ce6a2f8ed37feb244a05cef7e0fb24d31",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "055753da1832ce82b598b4bc1519014495bd3a9a1234527a0aa60d6a69292de9"
+            },
+            "routes": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "d5112640271fb0299d5e5d333c6c5b4ce6a2f8ed37feb244a05cef7e0fb24d31"
+            }
+          }
+        },
+        "v1": {
+          "run_id": "case-05-completion-v1-a1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 7,
+                "UNKNOWN": 0
+              },
+              "denominator": 7,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "verified_fraction": {
+                  "denominator": 7,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 7,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 9,
+                "UNKNOWN": 0
+              },
+              "denominator": 9,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 9,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 9,
+                  "numerator": 9
+                },
+                "verified_fraction": {
+                  "denominator": 9,
+                  "numerator": 9
+                }
+              },
+              "known_unit_count": 9,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 7,
+                "UNKNOWN": 0
+              },
+              "denominator": 7,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 7,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 7,
+                  "numerator": 7
+                },
+                "verified_fraction": {
+                  "denominator": 7,
+                  "numerator": 7
+                }
+              },
+              "known_unit_count": 7,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 2,
+                "UNKNOWN": 0
+              },
+              "denominator": 2,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 2,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 2,
+                  "numerator": 2
+                },
+                "verified_fraction": {
+                  "denominator": 2,
+                  "numerator": 2
+                }
+              },
+              "known_unit_count": 2,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-29",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-30",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The source explicitly prefers a relaxed pace and time to explore in depth rather than many sightseeing stops each day. This supports the relaxed density profile without a numeric count or a date-specific override.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-18T02:03:12Z",
+              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 12.0,
+            "exact_mean_penalty": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 12.0,
+              "upper": 12.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 88.0,
+            "exact_fraction": {
+              "numerator": 22,
+              "denominator": 25
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "58f0f19a2b1b79b04cbddea6350e61aefbb76f4cbe96773229d741ccc3f35f26"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "bc9e00a4c593b32e1f1a1b9b90c73909b8794394b7dcf104dec0992d844326f9",
+              "identity_references": "767043884d4f3afe772593cc9ae5633449317d1e43bfd97f09dc9c05de0d8442",
+              "identity_report": "c1d5b84fdedf3921934a2b326206aab47784eb779d61e72688abd268a24b5e10",
+              "identity_review": null,
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "occupancy_review": null,
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "58f0f19a2b1b79b04cbddea6350e61aefbb76f4cbe96773229d741ccc3f35f26",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "055753da1832ce82b598b4bc1519014495bd3a9a1234527a0aa60d6a69292de9"
+            },
+            "routes": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "58f0f19a2b1b79b04cbddea6350e61aefbb76f4cbe96773229d741ccc3f35f26"
+            }
+          }
+        },
+        "v2": {
+          "run_id": "case-05-completion-v2-a1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 8,
+                "UNKNOWN": 0
+              },
+              "denominator": 8,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 8,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 8,
+                  "numerator": 8
+                },
+                "verified_fraction": {
+                  "denominator": 8,
+                  "numerator": 8
+                }
+              },
+              "known_unit_count": 8,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 6,
+                "UNKNOWN": 0
+              },
+              "denominator": 6,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 6,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 6,
+                  "numerator": 6
+                },
+                "verified_fraction": {
+                  "denominator": 6,
+                  "numerator": 6
+                }
+              },
+              "known_unit_count": 6,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 1,
+                "UNKNOWN": 0
+              },
+              "denominator": 1,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 1,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "verified_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                }
+              },
+              "known_unit_count": 1,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-29",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-30",
+                "known_primary_count": 1,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 1,
+                  "upper": 1
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 20,
+                "penalty_bounds": {
+                  "lower": 20,
+                  "upper": 20
+                },
+                "state": "FAIL",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The source explicitly prefers a relaxed pace and time to explore in depth rather than many sightseeing stops each day. This supports the relaxed density profile without a numeric count or a date-specific override.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-18T02:03:12Z",
+              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 16.0,
+            "exact_mean_penalty": {
+              "numerator": 16,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 16.0,
+              "upper": 16.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 84.0,
+            "exact_fraction": {
+              "numerator": 21,
+              "denominator": 25
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "bc9e00a4c593b32e1f1a1b9b90c73909b8794394b7dcf104dec0992d844326f9",
+              "identity_references": "767043884d4f3afe772593cc9ae5633449317d1e43bfd97f09dc9c05de0d8442",
+              "identity_report": "c1d5b84fdedf3921934a2b326206aab47784eb779d61e72688abd268a24b5e10",
+              "identity_review": null,
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "occupancy_review": null,
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "055753da1832ce82b598b4bc1519014495bd3a9a1234527a0aa60d6a69292de9"
+            },
+            "routes": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "f76436f62b42867dc9133b43fabdccbf1c6a71ef723322dfc51933a99482d69d"
+            }
+          }
+        },
+        "v3": {
+          "run_id": "case-05-current-path-v3-c1",
+          "projection": "final",
+          "dimensions": {
+            "grounding": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 10,
+                "UNKNOWN": 0
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 10
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "non_overlap": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 16,
+                "UNKNOWN": 0
+              },
+              "denominator": 16,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 16,
+                  "numerator": 16
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 16,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 16,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 16,
+                  "numerator": 16
+                },
+                "verified_fraction": {
+                  "denominator": 16,
+                  "numerator": 16
+                }
+              },
+              "known_unit_count": 16,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "opening": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 10,
+                "UNKNOWN": 0
+              },
+              "denominator": 10,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 10,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 10,
+                  "numerator": 10
+                },
+                "verified_fraction": {
+                  "denominator": 10,
+                  "numerator": 10
+                }
+              },
+              "known_unit_count": 10,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            },
+            "requirements": {
+              "conditional_compliance": null,
+              "contribution": {
+                "exact_fraction": null,
+                "reason": "excluded_common_no_checks",
+                "score_0_100": null
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 0,
+                "UNKNOWN": 0
+              },
+              "denominator": 0,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": null,
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "known_unit_count": 0,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": null,
+                "unknown_rate": null,
+                "verification_coverage": null,
+                "verified_fraction": null
+              },
+              "state": "N/A",
+              "verified_score_0_100": null
+            },
+            "routes": {
+              "conditional_compliance": 1.0,
+              "contribution": {
+                "exact_fraction": {
+                  "denominator": 1,
+                  "numerator": 1
+                },
+                "reason": null,
+                "score_0_100": 100.0
+              },
+              "counts": {
+                "FAIL": 0,
+                "PASS": 5,
+                "UNKNOWN": 0
+              },
+              "denominator": 5,
+              "denominator_unresolved": false,
+              "exact_fractions": {
+                "conditional_compliance": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "confirmed_violation_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "unknown_rate": {
+                  "denominator": 5,
+                  "numerator": 0
+                },
+                "verification_coverage": {
+                  "denominator": 5,
+                  "numerator": 5
+                },
+                "verified_fraction": {
+                  "denominator": 5,
+                  "numerator": 5
+                }
+              },
+              "known_unit_count": 5,
+              "not_applicable_count": 0,
+              "rates": {
+                "confirmed_violation_rate": 0.0,
+                "unknown_rate": 0.0,
+                "verification_coverage": 1.0,
+                "verified_fraction": 1.0
+              },
+              "state": "PASS",
+              "verified_score_0_100": 100.0
+            }
+          },
+          "auxiliary_total": {
+            "exact_fraction": {
+              "denominator": 1,
+              "numerator": 1
+            },
+            "reason": null,
+            "score_0_100": 100.0,
+            "total_included_dimensions": 4,
+            "unavailable_dimensions": []
+          },
+          "daily_density": {
+            "rules_profile_id": "rtpeval_daily_density_3",
+            "requested_day_count": 5,
+            "days": [
+              {
+                "date": "2026-10-26",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-27",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-28",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-29",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              },
+              {
+                "date": "2026-10-30",
+                "known_primary_count": 2,
+                "possible_primary_count": 0,
+                "count_bounds": {
+                  "lower": 2,
+                  "upper": 2
+                },
+                "policy": {
+                  "exact_count": null,
+                  "profile": "relaxed",
+                  "source_refs": [
+                    {
+                      "field_path": "additional_preferences",
+                      "occurrence": 0,
+                      "quote": "I prefer a relaxed pace and would like time to explore places in depth rather than fit many sightseeing stops into each day."
+                    }
+                  ]
+                },
+                "penalty_0_100": 0,
+                "penalty_bounds": {
+                  "lower": 0,
+                  "upper": 0
+                },
+                "state": "PASS",
+                "reason": "default_pace_penalty"
+              }
+            ],
+            "review": {
+              "rationale": "The source explicitly prefers a relaxed pace and time to explore in depth rather than many sightseeing stops each day. This supports the relaxed density profile without a numeric count or a date-specific override.",
+              "review_origin": "agent",
+              "reviewed_at": "2026-10-18T02:03:12Z",
+              "reviewer_ref": "/root/revalidation_semantic_reviewer"
+            },
+            "mean_penalty_0_100": 0.0,
+            "exact_mean_penalty": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "mean_penalty_bounds": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "overall_total": {
+            "score_0_100": 100.0,
+            "exact_fraction": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "reason": null
+          },
+          "component_source_hashes": {
+            "opening": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be"
+            },
+            "requirement_schedule": {
+              "identity_audit": null,
+              "identity_evidence": "bc9e00a4c593b32e1f1a1b9b90c73909b8794394b7dcf104dec0992d844326f9",
+              "identity_references": "767043884d4f3afe772593cc9ae5633449317d1e43bfd97f09dc9c05de0d8442",
+              "identity_report": "c1d5b84fdedf3921934a2b326206aab47784eb779d61e72688abd268a24b5e10",
+              "identity_review": null,
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "occupancy_review": null,
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be",
+              "rules": "acbe4be8fe50ec4ec2b524443c1cc6ba3305d1a3a001b43b0aabd8690ce27c43",
+              "schedule_context": "055753da1832ce82b598b4bc1519014495bd3a9a1234527a0aa60d6a69292de9"
+            },
+            "routes": {
+              "input": "5925991208b41bbc90d493b08373a822a99b738321e366610ca5cd4a6ec4f939",
+              "requirement_spec": "0a28ca0e97c46d26d5653080208c89cce67cf3e87dcccd72315d7b82c1170a61",
+              "result": "6217cddf4b1dd49f723bf40ed902ce02fd22cf30b8abd407cfea325cefdb87be"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "full_derivation_semantic_sha256": "18d23d5a89680cf374415d4789beb5f777de17da254d53a92cd2dbdb144ffd95",
+  "content_sha256": "aac961f65ed836d12f1e8e3741d0bf600036352c1fb5805e852863f48afd9fde"
+}

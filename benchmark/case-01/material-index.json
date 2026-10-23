@@ -493,7 +493,7 @@
   "reader_documents": [
     {
       "path": "report.md",
-      "sha256": "6353791d68ad4c9095f4d7847cfe7dacfb3e0ab32c061140b0f5eb8726f5a478",
+      "sha256": "c21282eeb4d138aaedfe7c072a118ac08522d0350bccc0010f571c252ad07058",
       "bytes": 15065,
       "original_source": {
         "logical_path": "git:87ecd35bb38b2d93164af4ce1a1a9de927621124:benchmark/case-01/report.md",
@@ -667,5 +667,18 @@
       "google_calls": 0,
       "rescoring": false
     }
+  },
+  "density_policy_derivations": {
+    "rules_profile_id": "rtpeval_daily_density_3",
+    "status": "pending_researcher_acceptance",
+    "final": {
+      "path": "evaluation/density-final.json",
+      "sha256": "675b22612885958faff85bd27a5e647fb5953203fd903035f2bfca2a081521f8"
+    },
+    "pair": {
+      "path": "evaluation/density-pair.json",
+      "sha256": "84b8595769848b1e500d2000bb86a7d2dab7ba744784e0628d34ec5d7fe732db"
+    },
+    "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }
 }

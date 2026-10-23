@@ -1,5 +1,8 @@
 # Case-03: Tokyo evaluation report
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 The selected case-03 results cover Tokyo, Japan, **15–18 October 2026**, two adults and a JPY 160,000 whole-trip budget. The [original request](../inputs/case-03.json) asks for a balanced first visit combining well-known sights, traditional culture and modern urban neighbourhoods at a moderate pace. The batch is `case-03-batch`, revision `1`; original generation and primary evaluation used source `f49503a3359ddb6ed64c79465fc010143a5b141c`.
 
 The final primary scores are **71.3961 / 97.5 / 92.5 / 100** for V0–V3. Each version and the primary evaluator used one actual attempt with zero retries. These are descriptive observations from one request and independent generations; they do not establish a causal or version-wide ranking.

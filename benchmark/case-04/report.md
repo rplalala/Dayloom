@@ -1,10 +1,15 @@
-# Case-04: current material
+# Case-04: Singapore automatic selection
 
 ## Current selection
 
-Singapore, 2026-10-24 to 2026-10-25. The [original request](../inputs/case-04.json) is the single canonical input. The [selection](selection.json) preserves exact run/result/input hashes and generation revisions. Four-final scores and every dependent process view refer to that selection.
+Singapore, 24–25 October 2026, two adults, SGD 800, walking and public transport.
+The [original request](../inputs/case-04.json) and reviewed requirements are unchanged.
+The [selection](selection.json) binds V0/V1 to source `62f04cd`, V2 to `986ff39`,
+and the new V3 invocation `case-04-rich3-v3-a1` to `a391c2c`.
+Primary and the same-run Pair use `rtpeval_daily_density_3`.
 
-Current reader data directly replaces the preceding publication; superseded datasets are not maintained alongside it. Immutable private originals and Git history retain earlier acceptance evidence. The researcher explicitly accepted this refreshed selection and its disclosed limitations on 18 October 2026 (Australia/Sydney). This is automatic case acceptance, not blinded human assessment or a formal version-ranking experiment.
+This replacement is **pending researcher acceptance**. It is published for complete
+inspection; prior acceptance remains bound to the earlier selected artifacts.
 
 ## Materials
 
@@ -25,14 +30,15 @@ Current reader data directly replaces the preceding publication; superseded data
 
 ## Results
 
-| Version | Final / 100 | Auxiliary / 100 | Mean density deduction |
-| --- | ---: | ---: | ---: |
-| V0 | 66.6667 | 96.6667 | 30 |
-| V1 | 65 | 100 | 35 |
-| V2 | 85 | 100 | 15 |
-| V3 | 100 | 100 | 0 |
+| Version | Final / 100 | Auxiliary / 100 | Mean density deduction | Daily primary visits |
+| --- | ---: | ---: | ---: | --- |
+| V0 | 66.6667 | 96.6667 | 30 | 4 / 4 |
+| V1 | 60.0000 | 100.0000 | 40 | 5 / 2 |
+| V2 | 85.0000 | 100.0000 | 15 | 4 / 3 |
+| V3 | 100.0000 | 100.0000 | 0 | 3 / 3 |
 
-Common dimensions retain their native PASS/FAIL/UNKNOWN populations and exact fractions; the final score applies the separate daily-density deduction.
+The final score is the five-dimensional auxiliary score minus the equal-date mean
+density deduction, floored at zero. The native reports retain exact fractions.
 
 | Version | Dimension | PASS | FAIL | UNKNOWN |
 | --- | --- | ---: | ---: | ---: |
@@ -57,38 +63,72 @@ Common dimensions retain their native PASS/FAIL/UNKNOWN populations and exact fr
 | V3 | requirements | 1 | 0 | 0 |
 | V3 | routes | 4 | 0 | 0 |
 
-V0 has one independent route FAIL; its submitted travel gap is insufficient for the acquired directed route. V1/V2 deductions reflect the reviewed rich pace rather than failed common dimensions.
+V0 has one route FAIL: Botanic Gardens to National Gallery requires 2,612 seconds
+against a 2,100-second submitted gap; the 512-second deficit exceeds the 300-second
+tolerance. All other common checks pass. Primary has no unresolved independent
+checks or acquisition failures. No missing-hours model assessment was needed.
 
 ## Process and Repair
 
-V1/V2 candidate analysis preserves captured discovery, admission, enrichment, supply, scheduled IDs, source partitions and omissions. Scheduled sets are checked against the current Primary canonical identities. Partial discovery and unresolved provenance stay partial; Nearby-only suggestions are not scheduled visits.
+The [independent same-run Pair](evaluation/v3-pair/report.json) scores the new V3
+draft **50 → 100**. Its auxiliary score stays 100; the density deduction falls
+from 50 to zero. Counts are **5/4 → 3/3**, with three actual deletions and no
+additions or replacements. These are the two stages of one V3 run.
 
-Source-bound relevance records: {'unknown': 202, 'relevant': 65}. UNKNOWN is an actual evidence limitation, not a negative label or a Planner judgment. No corpus-coverage study was added.
+| Attempt | Operation | Decision |
+| --- | --- | --- |
+| 1 | Delete Saturday Botanic Gardens | Adopted |
+| 2 | Delete Saturday Buddha Tooth Relic Temple | Adopted |
+| 3 | Delete Sunday Gardens by the Bay | Rejected: sourced experience goal satisfaction decreased |
+| 4 | Delete Sunday Singapore Skyline View | Adopted |
 
-Independent same-run V3 draft/final-primary: **85 → 100**. These are paired stages, not independently generated V2/V3 finals. Actual visit changes, correspondence and continuity remain in the paired report; complete adopted/rejected/skipped Repair records are retained without reconstructing absent proposals.
+All four proposals are deterministic `system_delete`; Repair made no model calls.
+Both retained dates meet the three-visit target. The overall Repair result remains
+`ACCEPTED_PARTIAL`, with stop reason `authorized_targets_complete`, target state
+`reached` and completion **`unavailable`**. The first-day coverage check is UNKNOWN
+because `same_day_remaining_hours_unsupported`. Planner suitability, budget and
+semantic findings also remain visible in [validation](analysis/repair/validation.json).
+Independent Primary/Pairs passing their own checks does not certify these separate
+Planner return conditions. This run is not counted as fully successful Rich Repair.
 
-Fresh paired acquisition uses the common paired access policy. The eligible missing-hours packet is empty, so no additional assessment model call occurs.
+V1/V2 [candidate opportunities](analysis/poi-process/opportunities.json) and
+[relevance](analysis/poi-process/relevance.json) retain the captured donor results.
+Their joins were rebuilt against the new Primary canonical identities through the
+native offline research path. The 267 existing relevance verdicts remain 65 relevant
+and 202 unknown; only selection bindings change. Author, dates, evidence and
+rationales are retained. Partial discovery and UNKNOWN relevance remain limitations.
 
 ## Resources and limitations
 
-The [shared accounting boundaries](../../docs/records/evaluation/accepted-case-compatibility.md#consumption-and-failure-handling) define reference estimates, uncertain charges and the separate batch allowances.
+| Authorized stage | Reference allowance, USD | Recorded reference cost, USD |
+| --- | ---: | ---: |
+| V3 generation | 10 | 2.12482589 |
+| Primary | 6 | 1.1608993 |
+| Pair | 4 | 1.205 |
+| Total | 20 | 4.49072519 |
 
-The cumulative ledger contains 13 retained invocation identities and 667 distinct observed charge/transport events. Its reference observed subtotal is USD 13.81224071; the complete reference total is unavailable, with 15 unpriced/conflicting events. Actual account billing is unavailable. Mocked test fixtures are excluded. Repeated archives/replays are not new consumption.
+Each stage ran once, with zero outer retries. Pair sent 61 Google requests
+(24 Details, 20 Search, 17 Routes), all HTTP 200, with no model calls.
+Its native offline replay and the source-bound Repair, opportunity, relevance,
+population and selected-tradeoff reports pass. Copies and replays incur no new calls.
 
-The all-attempt ledger retains earlier failed or abandoned invocations; the selected-cohort view does not estimate their first-attempt completion rate. Competing historical model-price snapshots remain explicit rather than being silently repriced.
+The [cumulative ledger](analysis/resources/all-attempt-resources.json) retains
+16 invocation identities and 890 distinct observed charge/transport events,
+including the replaced V3 and earlier failures. Its priced subtotal is
+USD 18.30296590; the complete total is unavailable because 15 historical events
+have conflicting prices. Transport-only observations have zero additional cost;
+their model charges are counted once. The selected-generation population contains
+exactly one V3 run. Actual account billing and external Codex assistance costs are
+unavailable; these are reference estimates, not invoices.
 
 ## Acceptance
 
-The researcher accepted the preceding automatic selection on 15 October 2026 (Australia/Sydney).
+The complete replacement, its three-per-day itinerary and disclosed incomplete
+Planner return checks await the researcher's decision under
+[#218](https://github.com/rplalala/Dayloom/issues/218). Publication and merge do not
+constitute acceptance. The actual decision must precede
+[#219](https://github.com/rplalala/Dayloom/issues/219) content synchronization.
+Existing blinded answers remain tied to the itinerary shown to each reviewer.
 
-The researcher explicitly confirmed this replacement scope on 18 October 2026 (Australia/Sydney), accepting the current canonical input, selected four finals, matched reports and disclosed FAIL/UNKNOWN/resource limits. Exact input/result/report hashes and the decision scope are bound in the [selection](selection.json) and [delivery Issue #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193). Earlier decisions remain attached to their original sources; human answers and blinded-review reports remain absent.
-
-## AI assistance
-
-Independent material review by `/root/refresh_standards_review` and `/root/refresh_spec_review` checks repository standards and the approved replacement scope. Subsequent reader corrections are agent validation, not human acceptance.
-
-Codex coordinated source selection, native offline reconstruction, reconciliation and English reader material on 18 October 2026. `/root/refresh_live_executor` used the required `gpt-6.1-sol / medium` execution role for exact prepared jobs, serially with zero automatic retries. Planner/evaluator model identities and usage remain in native captures, separate from external assistance. Source-only requirement authors/reviewers and interest authors retain their original identities/timestamps; unchanged semantic material is reused only where exact source hashes permit it.
-
-Independent relevance performer: `/root/relevance04_clean`. Its allowlist contained original request, reviewed requirements/interests and unranked venue identities, excluding itineraries, scores and Planner relevance. Original decisions and official-source summaries are retained; the coordinator only converted their format. Exact external model identifier: inherited configuration; exact model identifier unavailable. [Actual lookup limits and gaps](interests/relevance-assistance.json) are preserved; external tokens and billing are unavailable.
-
-An earlier relevance handoff accidentally exposed result-bearing case-status summaries and was excluded. Only the fresh clean-context role supplies selected new judgments. This is an agent independence correction, not human review.
+Earlier acceptance records and original receipts remain immutable in private
+evidence and Git history; the exact preceding publication is recorded in the index.

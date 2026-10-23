@@ -1,7 +1,9 @@
 # Benchmark workflow and case material
 
-The [final benchmark report](report.md) summarizes the V0-V3 ranking across the
-12 accepted cases, the reasons for their differences and quality/resource trade-offs.
+The [benchmark report](report.md) summarizes the V0-V3 automatic ranking, exact
+quality decomposition, same-run Pair results and selected-generation resources.
+The Rich-policy replacement under [#218](https://github.com/rplalala/Dayloom/issues/218)
+is pending researcher acceptance; existing blinded answers retain their original inputs.
 
 The active set contains 12 English travel-planning requests in four groups of three. Pending inputs remain
 working drafts; directory placement does not freeze the set. Each public case
@@ -134,7 +136,7 @@ retain the separately accepted questionnaires and answers.
 | 01 | 2026-10-14 | [Initial Sydney dataset](case-01/report.md#acceptance) |
 | 02 | 2026-10-14 | [London selection](case-02/report.md#acceptance-and-material) |
 | 03 | 2026-10-15 | [Tokyo selection](case-03/report.md#acceptance-status) |
-| 04 | 2026-10-15; refreshed selection accepted 2026-10-18 | [Singapore current selection](case-04/report.md#acceptance), 24–25 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
+| 04 | Rich-policy replacement pending acceptance; former selection accepted 2026-10-18 | [Singapore replacement](case-04/report.md#acceptance), 24–25 October; retained V0–V2, one new V3, fresh Primary/Pair and matching analyses; three visits per day with unavailable Planner coverage completion |
 | 05 | 2026-10-16; refreshed selection accepted 2026-10-18 | [Barcelona current selection](case-05/report.md#acceptance), 26–30 October; four current-system generations, fresh Primary/pair and complete dependent analyses; refreshed selection explicitly accepted with disclosed limitations |
 | 06 | 2026-10-15 | [Sydney family revision 5](case-06/report.md#acceptance-and-selected-material) |
 | 07 | 2026-10-16 | [Paris revision 3 / input revision 2, with partial discovery, relevance UNKNOWNs and unverified affordability](case-07/report.md#acceptance); [delivery PR #174](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/174) |

@@ -1,11 +1,15 @@
 {
   "schema_version": "case_pair_source_binding_1",
   "case_id": "case-04",
-  "v3_result_sha256": "263c61efd99e3437444060bd8ece84d7f0b19ae19835ca781ba9a1537636550b",
-  "run_id": "case-04-completion-v3-a1",
-  "scope": "Independent same-run V3 draft/final-primary, not a V2 generation.",
-  "policy": "Fresh independent paired acquisition; common missing-hours assessment inspected and skipped because no eligible visits.",
-  "paired_report_semantic_sha256": "64f191e491683dbabae0fac7138af2ac24e902c23b758e578fa407f92cfd3370",
-  "historical_verification": null,
-  "note": null
+  "v3_result_sha256": "f62441d14eb4b6f180dfd9bb2922ee03dea35531f08955752ebe20402c93394d",
+  "run_id": "case-04-rich3-v3-a1",
+  "scope": "Independent same-run V3 draft/final-primary; not an independent V2 generation.",
+  "policy": "Fresh Google acquisition with source-bound Primary common subjects, density policy 3, zero model sends and zero retries. All paired opening checks are API-supported PASS.",
+  "paired_report_semantic_sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
+  "preparation_sha256": "c15321a1f4a9957a67fca2f2ee8585908b71b056c8a1dc6209e6515f79206702",
+  "source": {
+    "logical_path": ".scratch/issue-218/pair-a1/execution/pair-report.json",
+    "sha256": "6e060878f190bd0b93b25ee7f0c7214cbb314d41016448e9ef5ccce4c33db953",
+    "json_pointer": ""
+  }
 }

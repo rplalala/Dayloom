@@ -1,57 +1,60 @@
 {
   "schema_version": "case_refresh_consumption_1",
   "case_id": "case-04",
-  "global_new_allowance_usd": "40",
-  "global_new_reference_subtotal_usd": "14.440100520",
+  "global_new_allowance_usd": "20",
+  "global_new_reference_subtotal_usd": "4.49072519",
   "automatic_retries": 0,
   "concurrency": 1,
   "actual_billing": null,
   "invocations": [
     {
-      "job_id": "case-04-completion-v2-a1",
-      "kind": "generation",
-      "status": "complete",
-      "started_at": "2026-10-18T04:40:20.724417+00:00",
-      "completed_at": "2026-10-18T04:42:57.306205+00:00",
-      "exit_code": 0,
-      "native_reference_usd": "2.156415785"
+      "stage": "v3",
+      "run_id": "case-04-rich3-v3-a1",
+      "budget_usd": "10",
+      "reference_usd": "2.12482589",
+      "cost_source": {
+        "logical_path": ".scratch/issue-217/captures/v3-a1/cost-report.json",
+        "sha256": "ae133109289185997fe5d7947412e9987a94f662a5587d960e1f302956f5c4bc",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/issue-217/captures/v3-a1/usage.json",
+        "sha256": "20b4b3dcd05f0716c1167e82fa00b67a1262a5303ab8028a3869511f346812e9",
+        "json_pointer": ""
+      }
     },
     {
-      "job_id": "case-04-completion-v3-a1",
-      "kind": "generation",
-      "status": "complete",
-      "started_at": "2026-10-18T04:43:15.517360+00:00",
-      "completed_at": "2026-10-18T04:45:13.788665+00:00",
-      "exit_code": 0,
-      "native_reference_usd": "1.711876985"
+      "stage": "primary",
+      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\issue-217\\primary-a1\\execution",
+      "budget_usd": "6",
+      "reference_usd": "1.1608993",
+      "cost_source": {
+        "logical_path": ".scratch/issue-217/primary-a1/execution/report.json",
+        "sha256": "67b0190cff0e104b34bc91c389ba63f9486541b0b7ce45e87276678957c73e5d",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/issue-217/primary-a1/execution/usage.json",
+        "sha256": "9087e8bd8a9c0abf98e471c2c9cb55a7f19f1436773d93458ea3cd668167df08",
+        "json_pointer": ""
+      }
     },
     {
-      "job_id": "case-04-pair-a1",
-      "kind": "pair",
-      "status": "complete",
-      "started_at": "2026-10-18T04:54:09.264677+00:00",
-      "completed_at": "2026-10-18T04:54:25.992533+00:00",
-      "exit_code": 0,
-      "native_reference_usd": "1.046"
-    },
-    {
-      "job_id": "case-04-pair-access-a1",
-      "kind": "pair-access",
-      "status": "complete",
-      "started_at": "2026-10-18T04:56:09.946340+00:00",
-      "completed_at": "2026-10-18T04:56:09.946340+00:00",
-      "exit_code": null,
-      "native_reference_usd": "0"
-    },
-    {
-      "job_id": "case-04-primary-a1",
-      "kind": "primary",
-      "status": "complete",
-      "started_at": "2026-10-18T04:51:00.926490+00:00",
-      "completed_at": "2026-10-18T04:51:25.693623+00:00",
-      "exit_code": 0,
-      "native_reference_usd": "1.08840905"
+      "stage": "pair",
+      "run_id": "D:\\Workspace\\Capstone\\Reliable-Trip-Plan-Agent\\.scratch\\issue-218\\pair-a1\\execution",
+      "budget_usd": "4",
+      "reference_usd": "1.205",
+      "cost_source": {
+        "logical_path": ".scratch/issue-218/pair-a1/execution/report.json",
+        "sha256": "b8661549366f60b42cd4a18941785d56d50ed21e041968a954ff27c97d1bd7db",
+        "json_pointer": ""
+      },
+      "usage_source": {
+        "logical_path": ".scratch/issue-218/pair-a1/execution/usage.json",
+        "sha256": "2acf985cac7bff15592659128a416e0dd1df94d3a3eeaf79b37813abaa618698",
+        "json_pointer": ""
+      }
     }
   ],
-  "note": "Zero-eligible assessment receipts are zero-dispatch records, not additional model invocations. Previous-batch consumption is outside this new allowance and remains in cumulative resources."
+  "note": "All three stages executed once. Pre-launch approval rejections incurred no sends. Historical consumption remains in the cumulative ledger; external Codex billing is unavailable."
 }

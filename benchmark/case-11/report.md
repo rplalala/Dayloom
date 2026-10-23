@@ -1,5 +1,8 @@
 # Case-11: current material
 
+Current density-policy results: [final](evaluation/density-final.json) and [same-run Pair](evaluation/density-pair.json). Both are offline derivations under `rtpeval_daily_density_3`; factual evidence, policies and numeric results are unchanged. The [twelve-case replacement](../report.md) awaits researcher acceptance.
+
+
 ## Current selection
 
 Paris, France, 2026-10-22 to 2026-10-25. The [original request](../inputs/case-11.json) is the single canonical input. The [selection](selection.json) preserves exact run/result/input hashes and generation revisions. Four-final scores and every dependent process view refer to that selection.
