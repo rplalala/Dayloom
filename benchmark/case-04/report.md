@@ -121,6 +121,42 @@ their model charges are counted once. The selected-generation population contain
 exactly one V3 run. Actual account billing and external Codex assistance costs are
 unavailable; these are reference estimates, not invoices.
 
+## AI assistance
+
+External Codex coordinator `/root` prepared the 23–24 October 2026 source bindings,
+qualified saved outputs, replayed reports, computed density/resource summaries and
+wrote the reader material from the original request, selected captures, evaluator
+evidence and retained histories. This influenced selection and presentation, not
+new relevance judgments. `/root/execute_217_v3`, `/root/execute_217_primary` and
+`/root/execute_218_pair` executed the approved prepared jobs using
+`gpt-6.1-sol / medium`, one invocation each with zero outer retries. These external
+roles are separate from the studied Planner/evaluator model calls recorded in usage.
+
+`/root/review_217_claims` reviewed only the original request and submitted claims;
+its output-specific role assessment entered Primary preparation. An earlier role
+exposed to Planner annotations was excluded, as documented in the
+[Primary record](../../docs/records/evaluation/2026-10-24-rich-primary.md).
+`/root/standards_review_218` and `/root/spec_review_218` reviewed the committed
+replacement against repository standards and #218. The coordinator validated exact
+source projections, native replays, arithmetic, indexes and published references;
+agent review is not researcher acceptance.
+
+Reused semantic author/reviewer identities and dates remain in the
+[requirements](requirements/reviewed.json) and [interest inventory](interests/inventory.json).
+The retained October 18 selection was coordinated by `/root`, executed by
+`/root/refresh_live_executor` using `gpt-6.1-sol / medium`, and inspected by
+`/root/refresh_standards_review` and `/root/refresh_spec_review`.
+Independent relevance performer `/root/relevance04_clean` received the source
+request, reviewed requirements/interests and unranked venue identities, excluding
+itineraries, scores and Planner relevance. A preceding handoff exposed case-status
+summaries and was excluded; only the clean-context judgments are selected.
+[Actual lookup limits and gaps](interests/relevance-assistance.json) remain available.
+
+The researcher authorized scope, data destinations and budgets; acceptance of this
+replacement remains pending. Exact external model identifiers outside the verified
+execution roles, complete transcripts, external token totals and billing are
+unavailable. Recorded source provenance is retained rather than inferred.
+
 ## Acceptance
 
 The complete replacement, its three-per-day itinerary and disclosed incomplete
