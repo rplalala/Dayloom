@@ -25,7 +25,7 @@ it.each([
   fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "valid-password" } });
   fireEvent.click(screen.getByRole("button", { name: "Log in" }));
   await waitFor(() => expect(router.state.location.pathname).toBe("/trips"));
-  expect(screen.getByRole("heading", { name: "Trip library" })).toBeVisible();
+  expect(await screen.findByRole("heading", { name: "Trip library" })).toBeVisible();
 });
 
 it("keeps login and registration fields and password visibility independent across tabs", async () => {
