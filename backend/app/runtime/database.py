@@ -37,11 +37,17 @@ class DatabaseSettings(BaseSettings):
                 raise ValueError("Invalid DAYLOOM_DB_URL") from None
             if not parameters.get("dbname"):
                 raise ValueError("DAYLOOM_DB_URL must specify a database name")
-            return parameters
-        return {
-            "host": self.host, "port": self.port, "dbname": self.name,
-            "user": self.user, "password": self.password.get_secret_value(),
-        }
+        else:
+            parameters = {
+                "host": self.host, "port": self.port, "dbname": self.name,
+                "user": self.user, "password": self.password.get_secret_value(),
+            }
+        # The retained vector extension may live in tripworld or public. Avoid
+        # depending on PostgreSQL's "$user" path after the login role is renamed.
+        parameters["options"] = (
+            parameters.get("options", "") + " -c search_path=tripworld,public"
+        ).strip()
+        return parameters
 
     @property
     def connection_string(self) -> SecretStr:

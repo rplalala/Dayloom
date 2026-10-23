@@ -141,6 +141,25 @@ def test_real_migrations_extension_and_checksum(db, tmp_path):
         migrate(db, tmp_path)
 
 
+@pytest.mark.parametrize("extension_schema", ["public", "tripworld"])
+def test_renamed_database_role_can_query_existing_vector_schema(db, extension_schema):
+    from psycopg import sql
+
+    # Existing installations may have installed vector in the former role's schema.
+    # PostgreSQL's default "$user" path no longer finds it after the role is renamed.
+    db.execute(sql.SQL("ALTER EXTENSION vector SET SCHEMA {}").format(
+        sql.Identifier(extension_schema)
+    ))
+    prepare_space(db)
+    db.commit()
+    with connection() as reader:
+        search = PostgresSearch(reader)
+        assert search.search(
+            np.array([1.0] + [0.0] * 1535, dtype=np.float32),
+            GeographicScope(latitude=0, longitude=0, radius_km=1),
+        ) == []
+
+
 def test_real_ingestion_idempotence_text_change_and_vector_invalidation(db, entity_artifact):
     first = ingest(db, entity_artifact)
     assert first["rows"] == 5 and first["changed"] == 5
