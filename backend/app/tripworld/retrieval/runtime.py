@@ -13,6 +13,7 @@ from pgvector.psycopg import register_vector_async
 from psycopg.rows import dict_row
 
 from backend.app.observability.usage import install_http_hooks, observe_sdk
+from backend.app.runtime.database import DatabaseSettings
 from backend.app.tripworld.database.policy import POLICY_VERSION
 from backend.app.tripworld.database.search import search_query
 from backend.app.tripworld.database.vectors import SPACE, SPACE_ID
@@ -78,21 +79,15 @@ class RuntimeRetrieval:
         if build.get("status") != "complete":
             raise ValueError("A completed corpus embedding build is required")
         self.artifact_hash = manifest["output_sha256"]
-        if not os.environ.get("TRIPWORLD_DB_PASSWORD"):
-            raise ValueError("TripWorld database credentials unavailable")
+        parameters = DatabaseSettings().connection_parameters()
+        parameters.update(
+            autocommit=True, row_factory=dict_row,
+            options=(parameters.get("options", "") + " -c default_transaction_read_only=on "
+                     f"-c statement_timeout={max(1, int(self.config.sql_timeout * 1000))}"),
+        )
         with measure(self.diagnostics, "connection"):
             async with asyncio.timeout(self.config.connect_timeout):
-                self.conn = await self.connect(
-                    host=os.environ.get("TRIPWORLD_DB_HOST", "127.0.0.1"),
-                    port=os.environ.get("TRIPWORLD_DB_PORT", "55432"),
-                    dbname=os.environ.get("TRIPWORLD_DB_NAME", "tripworld"),
-                    user=os.environ.get("TRIPWORLD_DB_USER", "tripworld"),
-                    password=os.environ["TRIPWORLD_DB_PASSWORD"],
-                    autocommit=True,
-                    row_factory=dict_row,
-                    options=f"-c default_transaction_read_only=on "
-                    f"-c statement_timeout={max(1, int(self.config.sql_timeout * 1000))}",
-                )
+                self.conn = await self.connect(**parameters)
         with measure(self.diagnostics, "compatibility"):
             async with asyncio.timeout(self.config.sql_timeout):
                 await register_vector_async(self.conn)

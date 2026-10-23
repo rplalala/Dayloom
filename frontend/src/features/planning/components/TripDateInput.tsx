@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { addCalendarDays, isValidISODate } from "../datePolicy";
 
 interface TripDateInputProps {
   label: string;
+  labelContent?: ReactNode;
   value: string;
   onChange: (value: string) => void;
   onSelect?: () => void;
@@ -33,12 +34,13 @@ function englishDate(value: string, options: Intl.DateTimeFormatOptions): string
     .format(new Date(`${value}T12:00:00Z`));
 }
 
-export function TripDateInput({ label, value, onChange, onSelect, min, max, disabled, describedBy }: TripDateInputProps) {
+export function TripDateInput({ label, value, onChange, onSelect, min, max, disabled, describedBy, labelContent }: TripDateInputProps) {
   const [open, setOpen] = useState(false);
   const [visibleMonth, setVisibleMonth] = useState("");
   const trigger = useRef<HTMLButtonElement>(null);
   const calendar = useRef<HTMLDivElement>(null);
-  const selected = isValidISODate(value) ? value : min || new Date().toISOString().slice(0, 10);
+  const savedDate = isValidISODate(value) ? value : min || new Date().toISOString().slice(0, 10);
+  const selected = min && savedDate < min ? min : max && savedDate > max ? max : savedDate;
   const month = visibleMonth || monthStart(selected);
 
   function close() {
@@ -65,8 +67,8 @@ export function TripDateInput({ label, value, onChange, onSelect, min, max, disa
   return <div className="trip-date-control" onKeyDown={event => {
     if (open && event.key === "Escape") { event.preventDefault(); close(); }
   }}>
-    <label>{label}
-      <input type="text" inputMode="numeric" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    <label>{labelContent || label}
+      <input aria-label={label} type="text" inputMode="numeric" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
         maxLength={10} value={value} onChange={event => onChange(event.target.value)}
         min={min} max={max} required disabled={disabled} aria-describedby={describedBy} />
     </label>

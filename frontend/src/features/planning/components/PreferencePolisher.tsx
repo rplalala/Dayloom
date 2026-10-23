@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import {
   postPreferencePolish,
@@ -11,11 +11,13 @@ interface PreferencePolisherProps {
   context: PreferencePolishContext;
   onApply: (text: string) => void;
   disabled: boolean;
+  product?: boolean;
+  buttonIcon?: ReactNode;
 }
 
 const MAX_ATTEMPTS = 3;
 
-export function PreferencePolisher({ text, context, onApply, disabled }: PreferencePolisherProps) {
+export function PreferencePolisher({ text, context, onApply, disabled, product = false, buttonIcon }: PreferencePolisherProps) {
   const [response, setResponse] = useState<PreferencePolishResponse | null>(null);
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -88,17 +90,30 @@ export function PreferencePolisher({ text, context, onApply, disabled }: Prefere
   }
 
   const available = attempts < MAX_ATTEMPTS;
+  if (product) return <div className="preference-assistance">
+    <div className="preference-tools"><button className="btn btn-quiet btn-small" type="button" onClick={polish} disabled={disabled || busy || !text.trim() || text.length > 4000 || !available}>{buttonIcon}{busy ? "Polishing…" : "Polish preferences"}</button></div>
+    {attempts > 0 && <p className="subtle-help">{attempts}/{MAX_ATTEMPTS} attempts used</p>}
+    {undo && text === undo.after && <div className="polish-applied"><span aria-hidden="true">✓</span><span>Suggestion applied.</span><button type="button" className="inline-action" onClick={undoRewrite} disabled={disabled}>Undo</button></div>}
+    {text.length > 4000 && <p className="form-error">Polishing accepts at most 4,000 characters.</p>}
+    {!available && <p className="subtle-help">The polish limit for this form has been reached.</p>}
+    {error && <p role="alert">Polishing is unavailable. Your preferences were not changed.</p>}
+    {response && <section className="polish-box" aria-live="polite"><div className="polish-heading"><span className="eyebrow">POLISH YOUR PREFERENCES</span><span className="small-muted">Review before applying</span></div>
+      {response.status === "suggested" && response.suggested_text ? <><div className="polish-compare"><div><strong>Your original</strong><p>{response.original_text}</p></div><div><strong>A clearer expression</strong><p>{response.suggested_text}</p></div></div><p className="polish-explanation">Check that this still says what you mean. Your original stays unchanged until you apply it.</p><div className="polish-actions"><button type="button" className="btn btn-primary btn-small" onClick={apply} disabled={disabled}>Apply suggestion</button><button type="button" className="btn btn-light btn-small" onClick={() => setResponse(null)}>Keep original</button></div></> : <><p className="polish-explanation">{response.explanation}</p>{response.questions.map(question => <p key={question}>{question}</p>)}<button type="button" className="btn btn-light btn-small" onClick={() => setResponse(null)}>Keep original</button></>}
+    </section>}
+  </div>;
+
   return <div className="preference-assistance">
-    <div className="preference-assistance-actions">
-      <button className="button button-secondary" type="button" onClick={polish}
+    <div className={product ? "preference-tools" : "preference-assistance-actions"}>
+
+      <button className={product ? "btn btn-quiet btn-small" : "button button-secondary"} type="button" onClick={polish}
         disabled={disabled || busy || !text.trim() || text.length > 4000 || !available}>
-        {busy ? "Polishing…" : "Polish preferences"}
+        {buttonIcon}{busy ? "Polishing…" : "Polish preferences"}
       </button>
       {undo && text === undo.after && <button className="button button-secondary" type="button"
         onClick={undoRewrite} disabled={disabled}>Undo rewrite</button>}
-      <small>{attempts}/{MAX_ATTEMPTS} attempts used</small>
+      {(!product || attempts > 0) && <small>{attempts}/{MAX_ATTEMPTS} attempts used</small>}
     </div>
-    <p className="field-help">Review any suggestion before applying it. Your original meaning and normal planning checks still matter.</p>
+    {!product && <p className="field-help">Review any suggestion before applying it. Your original meaning and normal planning checks still matter.</p>}
     {text.length > 4000 && <p className="field-error">Polishing accepts at most 4,000 characters.</p>}
     {!available && <p className="field-help">The polish limit for this form has been reached.</p>}
     {error && <p role="alert">Polishing is unavailable. Your preferences were not changed.</p>}

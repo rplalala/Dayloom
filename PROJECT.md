@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-19.
+Current source of truth. Updated 2026-10-23.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -25,9 +25,13 @@ Repository content is English; user-facing development discussion is Chinese.
 
 Use a modular monolith: React frontend; FastAPI API/application/backend services;
 shared LLM, evidence, RAG and orchestration components with version-specific
-entry points; PostgreSQL + pgvector for TripWorld retrieval.
-Accepted Product persistence will add `app` to the same PostgreSQL database; it is pending
-implementation. See the [Product persistence overview](docs/0007-application-operations.md#accepted-product-persistence-design).
+entry points; the shared `dayloom` PostgreSQL database with pgvector for TripWorld
+retrieval and the `dayloom` login role.
+Product uses the separate `app` schema in that database for accounts/profiles,
+incomplete drafts, durable account-owned tasks, recoverable previews and normalized
+saved trips. Checksum-protected migrations and owner-scoped operation receipts support
+explicit Save/Discard, historical import and recovery across application recreation. See the
+[Product design overview](docs/0007-application-operations.md#product-experience-and-persistence-design).
 External provider payloads are normalized before entering application policies.
 
 | Version | Implemented mechanism | Independent entry point |
@@ -44,6 +48,22 @@ provider boundaries, with exact restoration before existing domain/ownership che
 see the [identity transport contract](docs/0001-system-architecture.md#model-identity-references).
 Earlier milestone freezes retain their original scope; later changes are separately
 recorded and do not automatically re-freeze any version.
+
+The complete local Dayloom Product was accepted by the user on 23 October 2026 at
+`b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
+The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
+project runs `postgres` against the retained runtime volume. Git delivery is tracked by
+[PR #210](https://github.com/rplalala/Dayloom/pull/210) and
+[#208](https://github.com/rplalala/Dayloom/issues/208); hosting remains separate and
+pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
+
+One ignored root `.env` supplies credentials and machine-specific overrides. Root
+`product.yaml` supplies Product options, shared database connection fields and Foundry
+endpoint/deployment settings. `scripts/run_database.py` passes the same resolved
+connection settings to Compose. Planning policies
+remain in `config/runtime.yaml`. Planning and Product photos share `GOOGLE_MAPS_API_KEY`.
+See the [development guide](docs/guides/development.md#local-postgresql-naming-and-storage)
+for storage retention, overrides and isolated test settings.
 
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,
@@ -232,30 +252,26 @@ latest result. Commands and preparation: [evaluation package guide](backend/eval
 budgets are distinct. Dated execution allowances do not become runtime defaults.
 [Development guide](docs/guides/development.md) owns runnable commands.
 
-Latest offline checkpoint (18 October 2026): [bounded case-refresh delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
-completed the full offline backend suite with **4,619 passed and 16 skipped** on
-the reviewed `23e47eb` code state. Scoped routing-file Ruff and full-diff checks
-passed; independent Standards/Spec reviews have no remaining actionable finding.
-The first test attempt was blocked by default temporary-directory permissions;
-a fresh workspace-local basetemp/cache resolved the environment issue without
-changing system permissions or project configuration. Skipped environments remain
-unverified. That backend checkpoint included no additional paid run or blinded
-human assessment; the completed benchmark assessments are described in section 6.
+Initial Product engineering checkpoint (22 October 2026): the Dayloom Product
+lifecycle passed 263 API/PostgreSQL/browser tests, including 62 actual Chromium
+cases with no Product skips. The frontend passed 174 tests in 27 files, build and
+lint; two Fast Refresh warnings remain. The initial full backend run at `74d1603`
+recorded 4,907 passes, seven platform skips and four failures. Test-only corrections
+resolved the keyboard expectation and inherited CLI environment; the paused CLI
+case passed in the complete isolated environment. The affected CLI check passed
+941 distinct cases across its original invocation and a short-path follow-up,
+with six of the same platform skips. No single all-green full-backend invocation
+is claimed. Source and correction Standards/Spec reviews have no remaining finding.
+The [lifecycle record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md)
+owns exact revisions, the failure/correction sequence and evidence limits.
 
-The earlier case-12 integration checkpoint on the same date: merged delivery of accepted
-[case-12 r07](benchmark/case-12/report.md#main-worktree-integration) preserves the
-original shared Repair corrections and includes remote main `7408df9` (case-08
-closeout, PR #189). [PR #190](https://github.com/rplalala/Reliable-Trip-Plan-Agent/pull/190)
-merged as `8bedb15`; local main is synchronized, private migration is verified and
-Issues #163/#184 are completed. The initial
-full backend run completed with **4,608 passed,
-16 skipped and seven failures**. Three junction-fixture failures passed unchanged
-outside the sandbox. Four deadline-telemetry parity comparisons received a test-only
-normalization correction; both affected modules then passed **24 tests**. No failures
-remain unresolved; the later full delivery run above confirms the corrected code state. Ruff and formatting
-pass for all 38 changed Python files. Independent Standards and Spec integration
-reviews and correction rechecks report zero actionable findings. The skipped
-environments remain unverified; frontend code was unchanged and was not retested.
+Earlier engineering evidence includes the 18 October
+[bounded case-refresh delivery #193](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/193)
+at `23e47eb` (4,619 backend passes and 16 environment skips), and the
+[case-12 r07 integration](benchmark/case-12/report.md#main-worktree-integration).
+The latter records sandbox-dependent fixture failures and a test-only deadline
+telemetry normalization correction. Its original results and remote delivery state
+belong to that dated record; this Product checkpoint adds no benchmark assessment.
 
 The migrated case-12 archive passed all retained-byte/public-source checks and ten
 exact native report reconstructions with its original producer source, network and
@@ -301,15 +317,26 @@ or guaranteed fresh-clone assets.
 
 ## 6. Next work and authorization boundary
 
-Product backend persistence is accepted and pending implementation under
-[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119), with children
-#120-#123. It covers seven `app` tables in the existing PostgreSQL database,
-JWT authentication with PostgreSQL `token_version`, profiles and owner-scoped storage
-of only final V3 Product results. The [Product design overview](docs/0007-application-operations.md#accepted-product-persistence-design)
-summarizes the boundary; the Issue owns detailed fields, constraints and acceptance.
-Current scope covers documentation synchronization and Issue documentation requirements.
-Code implementation, migration execution and frontend implementation/refactoring/testing
-remain deferred. Backend implementation starts with #120 when separately authorized.
+The Dayloom Product lifecycle in [#198](https://github.com/rplalala/Dayloom/issues/198)
+is implemented across its thirteen native children: account-owned tasks, incomplete
+drafts, recoverable generated/imported previews, explicit manual saving, a mixed
+library, independent copies, known-input replanning and credited media with honest
+fallbacks. The fixed r7 design remains the visual reference; its standalone prototype
+still uses browser-local simulations. #119 retains the historical foundation mapping.
+Account images use initials; avatar upload remains deferred.
+
+[Application operations](docs/0007-application-operations.md#product-experience-and-persistence-design)
+owns the current contract. The [lifecycle acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md)
+records isolated database/browser verification, review corrections and bounded live
+acceptance. The [complete local runtime](docs/guides/development.md#complete-local-product-runtime)
+serves the built frontend and normal API together using the daily database and real
+providers. One separately authorized Sydney one-day journey passed generation,
+preview, explicit Save and My trips reload on 22 October, with real model, map/route,
+weather, embedding and image HTTP success evidence. This does not establish general
+provider quality, full billing, public deployment or scale. Independent V0–V3,
+Developer and research commands retain their entrypoints and behavior. Git delivery
+is tracked in PR #210 and #208. Additional live runs, public hosting and research
+require separate scope; no version freeze follows from acceptance.
 
 Evaluation extensions are developed independently:
 

@@ -6,6 +6,7 @@ import sys
 from datetime import date
 
 import pytest
+from pydantic_settings import SettingsConfigDict
 
 from backend.app.llm.azure_foundry import AzureFoundryStructuredLLMClient
 from backend.app.services.preference_interpretation import empty_preference_draft
@@ -47,6 +48,26 @@ def test_v0_settings_use_deployment_for_foundry(
     )
     assert settings.azure_openai_deployment == "configured-deployment"
     assert settings.azure_openai_api_key.get_secret_value() == "test-key"
+
+
+def test_independent_planner_loads_foundry_yaml_with_environment_override(monkeypatch, tmp_path):
+    monkeypatch.delenv("AZURE_OPENAI_ENDPOINT", raising=False)
+    monkeypatch.delenv("AZURE_OPENAI_DEPLOYMENT", raising=False)
+    path = tmp_path / "deployment.yaml"
+    path.write_text(
+        "foundry:\n  endpoint: https://yaml.invalid/openai/v1\n  deployment: yaml-model\n",
+        encoding="utf-8",
+    )
+
+    class Settings(V0Settings):
+        model_config = SettingsConfigDict(yaml_file=path)
+
+    settings = Settings(_env_file=None, azure_openai_api_key="synthetic-key")
+    assert settings.azure_openai_deployment == "yaml-model"
+    assert str(settings.azure_openai_endpoint) == "https://yaml.invalid/openai/v1"
+    monkeypatch.setenv("AZURE_OPENAI_DEPLOYMENT", "process-model")
+    overridden = Settings(_env_file=None, azure_openai_api_key="synthetic-key")
+    assert overridden.azure_openai_deployment == "process-model"
 
 
 def test_v0_foundry_client_uses_deployment_for_api_model(monkeypatch) -> None:

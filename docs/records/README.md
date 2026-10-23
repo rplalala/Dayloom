@@ -19,7 +19,7 @@ bounded by their recorded date and never grant another execution or freeze.
 | [Evaluation CLI usage](evaluation/2026-10-04-evaluation-usage.md) | Issue #49 synthetic subprocess workflows, report interpretation, material correction examples and offline acceptance |
 | [Seoul real chain pilot](evaluation/2026-10-04-seoul-live-pilot.md) | One authorized four-day live V0-V3 request, independent snapshots, applicable native reports, actual agent reviews and retained uncertainty |
 | [Daily density scoring](evaluation/2026-10-04-daily-density.md) | Final approved table (#52), explicit count precedence, offline Seoul evidence replay and implementation/review acceptance |
-| [Frontend](frontend/product-v3-acceptance.md) | [Original MVP milestone](frontend/frontend-milestone.md) and Product V3 acceptance/failure/retest evidence |
+| [Frontend](frontend/product-v3-acceptance.md) | [Original MVP milestone](frontend/frontend-milestone.md), Product V3 acceptance, and [Dayloom durable lifecycle acceptance](frontend/dayloom-product-lifecycle-acceptance.md) |
 | [Shared](v0-v3/poi-semantics-closeout.md) | Cross-version semantic, supply and transport observations |
 | [Model references](v0-v3/semantic-reference-correction.md#model-reference-audit-2026-10-05) | Earlier semantic reference correction and the later cross-chain short-ID audit, offline validation and preserved V0 pilot evidence |
 

@@ -1,0 +1,63 @@
+.dayloom .media-photo { margin:0; min-width:0; position:relative; }
+.dayloom .media-photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.dayloom .media-photo figcaption { position:absolute; right:7px; bottom:7px; z-index:2; background:rgba(22,47,38,.61); padding:3px 6px; color:white; font-size:8px; line-height:1.4; border-radius:4px; max-width:95%; backdrop-filter:blur(3px); white-space:normal; letter-spacing:.01em; }
+.dayloom .media-photo figcaption a { color:inherit; text-decoration:underline; }
+.dayloom .media-open { display:block; width:100%; height:100%; border:0; padding:0; background:transparent; cursor:pointer; }
+.dayloom .media-open:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.dayloom .media-provider { font-family:Arial,sans-serif; font-weight:400; font-style:normal; letter-spacing:normal; white-space:nowrap; }
+.dayloom .media-placeholder { width:100%; height:100%; display:grid; place-items:center; color:#73937e; background:#e9eee6; }
+.dayloom .nearby-item.nearby-media-item { display:block; }
+.dayloom .nearby-media { width:100%; }
+.dayloom .media-detail-row { display:flex; align-items:flex-start; gap:11px; }
+.dayloom .media-detail-row .nearby-photo { overflow:hidden; }
+.dayloom .nearby-media > figcaption { position:static; display:table; margin-top:5px; max-width:100%; font-size:7px; }
+.dayloom .hero-image .media-photo, .dayloom .auth-scene-img .media-photo, .dayloom .trip-card-photo .media-photo { width:100%; height:100%; }
+.dayloom .hero-image figcaption { right:14px; bottom:13px; font-size:9px; }
+.dayloom .detail-hero-image { height:100%; }
+.dayloom .detail-hero-image > figcaption { bottom:10px; right:12px; }
+.dayloom .detail-cover-shade, .dayloom .hero-img-mask { pointer-events:none; }
+.dayloom .media-image-link { display:block; width:100%; height:100%; }
+.dayloom .activity-photo.media-photo { padding:0; position:relative; }
+.dayloom .activity-photo.media-photo figcaption { font-size:7px; right:3px; bottom:3px; padding:2px 3px; }
+.dayloom .media-refresh { margin:0 0 16px; }
+@media(max-width:560px) { .dayloom .activity-photo.media-photo figcaption { font-size:8px; } }
+
+.dayloom .result-cover > .media-photo { width:100%; height:100%; }
+
+/* Verified place credits remain readable; atmosphere badges keep the r7 treatment. */
+.dayloom .hero-image .media-photo img { object-position:center 44%; }
+.dayloom .media-detail-row .nearby-photo { position:relative; }
+.dayloom .nearby-media > figcaption.visually-hidden { position:absolute; padding:0; margin:-1px; }
+.dayloom .media-photo.has-place-credit > figcaption {
+  position:static; display:block; max-width:100%; margin:0; padding:5px 8px;
+  background:#fff; color:#5e5e5e; border-radius:0; backdrop-filter:none;
+  font-family:Arial,sans-serif; font-size:12px; line-height:1.4;
+  font-weight:400; font-style:normal; letter-spacing:normal; overflow-wrap:anywhere;
+}
+.dayloom .has-place-credit .media-provider { font-family:Arial,sans-serif; font-size:12px; color:#5e5e5e; }
+.dayloom .media-detail-row .nearby-body { min-width:0; }
+
+/* Credits stay above card links and hero shading without changing the r7 layout. */
+.dayloom .media-photo .atmosphere-credit { z-index:4; background:none; padding:0; backdrop-filter:none; max-width:calc(100% - 24px); display:flex; align-items:flex-end; gap:6px; pointer-events:auto; }
+.dayloom .photo-credit-toggle, .dayloom .photo-credit-close { display:inline-grid; place-items:center; flex:none; border:0; color:#fff; background:rgba(22,47,38,.75); border-radius:50%; cursor:pointer; padding:0; width:26px; height:26px; }
+.dayloom .photo-credit-close { width:22px; height:22px; margin-left:6px; background:none; vertical-align:middle; }
+.dayloom .photo-credit-toggle:focus-visible, .dayloom .photo-credit-close:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.dayloom .photo-credit-content { background:rgba(22,47,38,.92); padding:6px 9px; border-radius:7px; font-size:11px; line-height:1.6; overflow-wrap:anywhere; }
+.dayloom .photo-credit-content a { height:auto; }
+.dayloom .detail-hero-inner { pointer-events:none; }
+.dayloom .detail-hero-inner a, .dayloom .detail-hero-inner button { pointer-events:auto; }
+
+/* Place photos share a stable crop and align with the content they introduce. */
+.dayloom .activity-content:has(> .activity-photo.media-photo) { align-items:flex-start; }
+.dayloom .activity-content > .activity-photo.media-photo { width:120px; height:90px; margin:0; border-radius:10px; background:var(--soft); }
+.dayloom .activity-content > .activity-photo.media-photo > .media-open { overflow:hidden; border-radius:inherit; }
+.dayloom .nearby-item .nearby-media .nearby-photo { width:64px; height:64px; border-radius:8px; }
+.dayloom .nearby-item .media-detail-row { gap:12px; }
+.dayloom .nearby-item .nearby-body { flex:1; min-width:0; }
+@media(max-width:800px) {
+  .dayloom .activity-content > .activity-photo.media-photo { width:96px; height:72px; }
+  .dayloom .nearby-item .nearby-media .nearby-photo { width:56px; height:56px; }
+}
+@media(max-width:560px) {
+  .dayloom .activity-content > .activity-photo.media-photo { width:100%; height:auto; aspect-ratio:16/9; margin-bottom:12px; }
+}

@@ -1,6 +1,6 @@
 # Issue tracker and local planning workflow
 
-GitHub Issues in `rplalala/Reliable-Trip-Plan-Agent` own live task state,
+GitHub Issues in `rplalala/Dayloom` own live task state,
 dependencies, assignments and discussion. [PROJECT.md](../../PROJECT.md) owns
 current project scope and authorization; tracked docs own detailed contracts and
 acceptance. See the [migration and legacy mapping](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/36#issuecomment-5956795623).

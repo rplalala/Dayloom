@@ -326,8 +326,8 @@ configuration between invocations: each recorded capture binds its original byte
 ```powershell
 uv run rtpeval generate --version v0 --input-json material/input.json --output-directory material/captures/v0 --group-id case-1 --run-id case-1-v0 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v0
 uv run rtpeval generate --version v1 --input-json material/input.json --runtime-config config/runtime.yaml --output-directory material/captures/v1 --group-id case-1 --run-id case-1-v1 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v1
-uv run rtpeval generate --version v2 --input-json material/input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory material/captures/v2 --group-id case-1 --run-id case-1-v2 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v2
-uv run rtpeval generate --version v3 --input-json material/input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory material/captures/v3 --group-id case-1 --run-id case-1-v3 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v3
+uv run rtpeval generate --version v2 --input-json material/input.json --runtime-config config/runtime.yaml --output-directory material/captures/v2 --group-id case-1 --run-id case-1-v2 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v2
+uv run rtpeval generate --version v3 --input-json material/input.json --runtime-config config/runtime.yaml --output-directory material/captures/v3 --group-id case-1 --run-id case-1-v3 --execute --register-batch material/selection.json --registration-directory artifacts/staging-v3
 ```
 
 These are four individually selected invocations, each needing its own applicable live
@@ -1234,9 +1234,10 @@ V0 material bundle. Preparation is offline; execution requires explicit user app
 the exact manifest digest and the [smoke execution handoff](../../docs/agents/smoke-tests.md).
 Existing historical authorization is used only to verify source material. It grants no
 new request authority. Preparation accepts `--endpoint` without loading credentials;
-otherwise it reads existing V0 settings. Execution requires `AZURE_OPENAI_ENDPOINT`,
-`AZURE_OPENAI_DEPLOYMENT` and `AZURE_OPENAI_API_KEY` through V0 settings; no credentials
-are written to preparation. The request itself selects `gpt-6-luna`.
+otherwise it reads existing V0 settings. Execution resolves the endpoint/deployment
+from root `product.yaml` or `AZURE_OPENAI_ENDPOINT`/`AZURE_OPENAI_DEPLOYMENT` overrides,
+with the private `AZURE_OPENAI_API_KEY` from the environment; no credentials are written
+to preparation. The request itself selects `gpt-6-luna`.
 
 ```powershell
 .venv/Scripts/python.exe -m tools.validation.identity_judgment_smoke prepare --material v0-identity-material.json --directory artifacts/new-identity-smoke --endpoint https://YOUR_RESOURCE.openai.azure.com/openai/v1/
@@ -1924,11 +1925,12 @@ output path for execution; a preparation directory cannot be reused.
 
 Only after separate live approval, add `--execute` for one selected version and use its
 actual selected run ID. Execution loads the repository `.env` by default; `--env-file`
-selects another base file. V2/V3 can additionally load the approved local RAG environment
-with `--rag-env-file .env.tripworld`. Existing process values take precedence over the
-RAG file, which takes precedence over the base file; preparation loads neither file.
-Query embedding requires `OPENAI_API_KEY` and the
-existing compatible TripWorld database. The command uses existing runtime budgets,
+selects another base file. The shared file supplies provider credentials and
+`DAYLOOM_DB_*`; query embedding uses its `OPENAI_API_KEY`. An explicit V2/V3
+`--rag-env-file PATH` remains available for a separately selected override file;
+normal local use needs only `.env`. Process values take precedence over an explicit
+RAG override, then the base file; preparation loads neither file. Retrieval requires
+the existing compatible TripWorld schema. The command uses existing runtime budgets,
 version-specific runners and dependency cleanup. `--execute` records operator intent;
 policy authorization and account invoice limits remain separate.
 
@@ -1972,7 +1974,7 @@ producer flow; this command performs no independent evaluator requests.
 Add `--capture-evidence` to prepare or capture selected-version generation evidence:
 
 ```powershell
-uv run rtpeval generate --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --rag-env-file .env.tripworld --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence --opportunity-capture artifacts/generation-v2-preparation/candidate-opportunities.json
+uv run rtpeval generate --version v2 --input-json original-input.json --runtime-config config/runtime.yaml --output-directory artifacts/generation-v2-preparation --group-id original-request --run-id v2-preparation --capture-evidence --opportunity-capture artifacts/generation-v2-preparation/candidate-opportunities.json
 ```
 
 This command remains offline and saves no candidate observations. After exact live approval,

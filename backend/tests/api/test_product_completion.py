@@ -1,14 +1,10 @@
 """Product JSON and SSE retain current V3 completion semantics through presentation."""
 
-import asyncio
 import json
 from datetime import date
 
 import pytest
-from httpx import ASGITransport, AsyncClient
 
-from backend.app.api.dependencies import get_planning_service
-from backend.app.main import app
 from backend.app.schemas.generation_diagnostics import GenerationDiagnostics
 from backend.app.schemas.planning import PlanningResult
 from backend.app.services.planning import PlanningService
@@ -67,29 +63,21 @@ def test_product_completion_survives_public_response(stream, completion):
         Runtime(), FixedDateProvider(date(2026, 9, 11)), introductions=Introductions()
     )
 
-    async def send():
-        app.dependency_overrides[get_planning_service] = lambda: service
-        try:
-            async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
-                return await c.post(
-                    "/api/planning" + ("/stream" if stream else ""), json=make_product_payload()
-                )
-        finally:
-            app.dependency_overrides.pop(get_planning_service, None)
+    from backend.tests.api.test_product_planning import post_product_planning
 
-    response = asyncio.run(send())
-    assert response.status_code == 200
+    status, payload = post_product_planning(service, make_product_payload(), stream=stream)
     if stream:
-        events = [
-            json.loads(line[6:]) for line in response.text.splitlines() if line.startswith("data: ")
-        ]
-        body = next(e["result"] for e in events if e["type"] == "result")
+        assert status == 200
+        event = next(e for e in payload if e.get("type") == "result")
+        assert event["task_id"] and event["preview_id"]
+        body = event["result"]
     else:
-        body = response.json()
+        assert status == 202 and payload["state"] == "completed"
+        body = payload["preview"]["snapshot"]
     assert calls == ["v3"]
-    assert body["status"] == "completed"  # Request succeeded even if obligations remain unmet.
-    assert body["policy_completion"] == completion
-    assert body["preference_coverage"] == [
+    completion_result = body["completion"]
+    assert completion_result["policy_completion"] == completion
+    assert completion_result["preference_coverage"] == [
         {
             "preference": "Museums",
             "target": 2,
@@ -100,6 +88,6 @@ def test_product_completion_survives_public_response(stream, completion):
             "basis": "model_semantic_judgment_not_operating_fact",
         }
     ]
-    assert body["policy_reasons"] == reasons
-    assert body["itinerary"]["days"]
-    assert "PRIVATE" not in response.text and "generation_diagnostics" not in body
+    assert completion_result["policy_reasons"] == reasons
+    assert body["days"]
+    assert "PRIVATE" not in json.dumps(payload) and "generation_diagnostics" not in body

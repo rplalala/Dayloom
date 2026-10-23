@@ -1,0 +1,23 @@
+name: dayloom
+services:
+  postgres:
+    container_name: postgres
+    image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
+    environment:
+      POSTGRES_USER: ${DAYLOOM_DB_USER:?Use scripts/run_database.py}
+      POSTGRES_PASSWORD: ${DAYLOOM_DB_PASSWORD:?Set DAYLOOM_DB_PASSWORD}
+      POSTGRES_DB: ${DAYLOOM_DB_NAME:?Use scripts/run_database.py}
+    ports:
+      - "127.0.0.1:${DAYLOOM_DB_PORT:?Use scripts/run_database.py}:5432"
+    volumes:
+      - dayloom_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    shm_size: 256mb
+volumes:
+  dayloom_pgdata:
+    external: true
+    name: ${DAYLOOM_DB_VOLUME:-dayloom_pgdata}

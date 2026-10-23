@@ -1,0 +1,219 @@
+import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSession } from "./session";
+import { CuratedPhoto } from './detail/MediaPhoto';
+import { Icon } from './Icon';
+
+type AuthMode = "login" | "register";
+type AuthFields = { display_name: string; email: string; password: string; confirm: string };
+
+export function AuthPage() {
+  const session = useSession();
+  const [mode, setMode] = useState<AuthMode>("login");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [passwordVisibility, setPasswordVisibility] = useState<Record<AuthMode, boolean>>({ login: false, register: false });
+  const [fields, setFields] = useState<Record<AuthMode, AuthFields>>({ login: { display_name: "", email: "", password: "", confirm: "" }, register: { display_name: "", email: "", password: "", confirm: "" } });
+  const showPassword = passwordVisibility[mode];
+  const activeFields = fields[mode];
+  const changeField = (field: keyof AuthFields, value: string) => setFields(current => ({ ...current, [mode]: { ...current[mode], [field]: value } }));
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  return (
+    <div className="auth-scene">
+      <div className="auth-ambient">
+        <span>
+          EXPLORE MORE,
+          <br />
+          WORRY LESS.
+        </span>
+        <div className="auth-scene-img">
+          <CuratedPhoto image="sydney" label="Sydney Harbour" fallback="/dayloom/sydney.svg" />
+        </div>
+      </div>
+      <div className="auth-card">
+        <div className="auth-mark"><Icon name="spark" size={24} /> DAYLOOM</div>
+        <div className="auth-tabs" role="tablist" aria-label="Account access">
+          {(["login", "register"] as const).map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              id={`auth-${tab}-tab`}
+              aria-controls="auth-panel"
+              tabIndex={mode === tab ? 0 : -1}
+              aria-selected={mode === tab}
+              className={mode === tab ? "active" : ""}
+              onClick={() => {
+                setMode(tab);
+                setError("");
+              }}
+              onKeyDown={(event) => {
+                if (
+                  !["ArrowLeft", "ArrowRight", "Home", "End"].includes(
+                    event.key,
+                  )
+                )
+                  return;
+                event.preventDefault();
+                const next =
+                  event.key === "Home"
+                    ? "login"
+                    : event.key === "End"
+                      ? "register"
+                      : mode === "login"
+                        ? "register"
+                        : "login";
+                setMode(next);
+                setError("");
+                document.getElementById(`auth-${next}-tab`)?.focus();
+              }}
+            >
+              {tab === "login" ? "Log in" : "Sign up"}
+            </button>
+          ))}
+        </div>
+        <div className="auth-panes"><section
+          className="auth-pane"
+          role="tabpanel"
+          id="auth-panel"
+          aria-labelledby={`auth-${mode}-tab`}
+        >
+          <h1>
+            {mode === "login"
+              ? "Welcome back."
+              : "Your next chapter starts here."}
+          </h1>
+          <p className="auth-intro">
+            {mode === "login"
+              ? "Pick up where your travel ideas left off."
+              : "Create an account for the journeys ahead."}
+          </p>
+          <form
+            onSubmit={async (event) => {
+              event.preventDefault();
+              const fields = new FormData(event.currentTarget);
+              if (
+                mode === "register" &&
+                fields.get("password") !== fields.get("confirm")
+              ) {
+                setError("Your passwords do not match.");
+                return;
+              }
+              setBusy(true);
+              setError("");
+              try {
+                const data: Record<string, string> = {
+                  email: String(fields.get("email")),
+                  password: String(fields.get("password")),
+                };
+                if (mode === "register")
+                  data.display_name = String(fields.get("display_name"));
+                await session.authenticate(mode, data);
+                const target = params.get("return");
+                const draftReturn = target && /^\/plan\?draft=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
+                const planReturn = target && /^\/plan(?:\?(?:task|preview)=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})?(?:#(?:generation-progress|result|travel-brief))?$/i.test(target);
+                const itemReturn = target && /^\/(?:trips|drafts|previews|planning)\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
+                const exampleReturn = target && ['/examples/sydney-example', '/examples/kyoto-design', '/examples/melbourne-design', '/examples/nearby-linking'].includes(target);
+                navigate(
+                  target && (["/plan", "/trips", "/import", "/copy-recovery", "/account", "/planning"].includes(target) || draftReturn || planReturn || itemReturn || exampleReturn)
+                    ? target
+                    : "/trips",
+                  { replace: true },
+                );
+              } catch (failure) {
+                setError(
+                  failure instanceof Error
+                    ? failure.message
+                    : "Unable to sign in. Try again.",
+                );
+              } finally {
+                setBusy(false);
+              }
+            }}
+          >
+            {mode === "register" && (
+              <label className="field">
+                <span><Icon name="user" size={16} /> Display name</span>
+                <input
+                  name="display_name"
+                  value={activeFields.display_name}
+                  onChange={event => changeField("display_name", event.target.value)}
+                  required
+                  maxLength={80}
+                  autoComplete="name"
+                  placeholder="What should we call you?"
+                />
+              </label>
+            )}
+            <label className="field">
+              <span><Icon name="mail" size={16} /> Email address</span>
+              <input
+                name="email"
+                value={activeFields.email}
+                onChange={event => changeField("email", event.target.value)}
+                type="email"
+                required
+                maxLength={254}
+                autoComplete="email"
+                placeholder="you@example.com"
+              />
+            </label>
+            <label className="field">
+              <span><Icon name="lock" size={16} /> Password</span>
+              <span className="auth-pass"><input
+                name="password"
+                value={activeFields.password}
+                onChange={event => changeField("password", event.target.value)}
+                type={showPassword ? "text" : "password"}
+                required
+                minLength={10}
+                maxLength={128}
+                autoComplete={
+                  mode === "register" ? "new-password" : "current-password"
+                }
+                placeholder="At least 10 characters"
+              /><button type="button" aria-label="Show or hide password" aria-pressed={showPassword} onClick={() => setPasswordVisibility(current => ({ ...current, [mode]: !current[mode] }))}><Icon name="eye" size={17} /></button></span>
+            </label>
+            {mode === "register" && (
+              <label className="field">
+                <span><Icon name="shield" size={16} /> Confirm password</span>
+                <input
+                  name="confirm"
+                  value={activeFields.confirm}
+                  onChange={event => changeField("confirm", event.target.value)}
+                  type="password"
+                  required
+                  minLength={10}
+                  maxLength={128}
+                  autoComplete="new-password"
+                  placeholder="Enter your password again"
+                />
+              </label>
+            )}
+            {error && (
+              <p role="alert" className="form-error">
+                {error}
+              </p>
+            )}
+            <button
+              className="btn btn-primary btn-large btn-full"
+              disabled={busy}
+              type="submit"
+            >
+              {busy
+                ? "Please wait…"
+                : mode === "login"
+                  ? "Log in"
+                  : "Create account"} <Icon name="arrow" size={18} />
+            </button>
+          </form>
+          <p className="auth-switch">{mode === "login" ? "New to Dayloom?" : "Already have an account?"} <button type="button" onClick={() => { setMode(mode === "login" ? "register" : "login"); setError(""); }}>{mode === "login" ? "Create an account" : "Log in"}</button></p>
+        </section></div>
+        <div className="auth-privacy">
+          <Icon name="shield" size={17} /> Your plans and preferences, together in one place.
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,9 +1,25 @@
-# Reliable Trip Plan Agent
+# Dayloom
 
-An LLM-based travel-planning Capstone project with four independently runnable versions: V0
+Dayloom is an LLM-based travel-planning Capstone project with four independently runnable versions: V0
 uses plain model generation, V1 adds external travel information, V2 adds TripWorld retrieval,
 and V3 adds validation, targeted repair and re-validation. [PROJECT.md](PROJECT.md) records
 the current engineering state and evidence boundaries.
+
+## Product design and prototype
+
+- [Try the online prototype](https://dingzh.cc/Dayloom/prototype/)
+- [GitHub Pages default address](https://rplalala.github.io/Dayloom/prototype/)
+- [Fixed r7 source and build instructions](https://github.com/rplalala/Dayloom/tree/b30eb3814513b12d7869ca8a5c59f0b7401d45d6/r7)
+- [Unified frontend/backend specification #198](https://github.com/rplalala/Dayloom/issues/198)
+
+The provisionally accepted r7 prototype defines the Product visual and interaction
+baseline: editable travel briefs, accounts, multiple drafts, recoverable planning tasks,
+itinerary previews, manual saving and activity-linked Nearby references. Its source and
+preview are maintained on the dedicated `prototype/dayloom` branch.
+
+Accounts, tasks and persistence in the prototype are browser-local simulations. The
+implemented application has a separate FastAPI/PostgreSQL lifecycle, described below
+under [Current application](#current-application).
 
 ## Benchmark results
 
@@ -117,10 +133,25 @@ Commands are operational references and grant no live-run authorization.
 
 ## Current application
 
-The Product page at `/plan` runs V3. The Developer page at `/dev` offers independent V0–V3
-runs from a shared input snapshot. Both forms require a destination, dates, traveler count
-and whole-trip budget, with optional preferences. The Product API can return the latest
-itinerary with an incomplete policy status; completion is shown separately from the itinerary.
+The Product page at `/plan` provides an editable V3 travel brief. Guests can prepare
+requirements and read examples; an account is required to submit a planning task,
+save drafts or manage private trips. Submitted tasks survive browser navigation and
+can be recovered or explicitly stopped. A completed task creates a preview; Save
+creates a trip, while Discard records the decision without saving it.
+
+My trips combines saved itineraries and incomplete planning drafts, with search,
+sorting, renaming and confirmed deletion. Historical JSON imports open a separate
+preview for review, saving and faithful text/JSON export. Detail shows completion,
+provenance and uncertainty separately from itinerary content, with activity-linked
+Nearby references. Copy and Keep example create independent saved snapshots;
+Replan starts another brief from known original inputs. Verified place photos
+and curated destination imagery retain separate attribution and fallback rules.
+[Application operations](docs/0007-application-operations.md) defines ownership,
+recovery and persistence behavior.
+
+The Developer page at `/dev` retains independent V0–V3 runs. Generation requires a
+destination, valid dates, traveler count and whole-trip budget/currency, with optional
+preferences; incomplete drafts and historical imports can retain unknown fields.
 
 Shared input assistance includes a selectable currency, locale-independent date input and
 GeoDB city suggestions. Selecting a suggestion fills the city/region/country label; manual
@@ -131,10 +162,15 @@ The optional **Polish preferences** action makes at most one model call. A schem
 is displayed beside the original for the user to Apply or Dismiss; an applied rewrite can be
 undone. The prompt asks the model to preserve meaning, but the application does not perform
 a second preservation review or suppress a rewrite based on local semantic comparisons.
-The normal planning Gate still runs when the user submits the form. Daily weather is shown
-compactly alongside the itinerary.
+The normal planning Gate still runs when the user submits the form. Profile defaults
+initialize a genuinely new brief; existing editor content retains its own requirements.
+Daily weather is shown compactly alongside the itinerary.
 
 ## Local development
+
+For the built frontend and real API on one local origin, use the
+[complete Product runtime](docs/guides/development.md#complete-local-product-runtime).
+The commands below retain the separate API/Vite workflow for source development.
 
 Use Python 3.12, the repository's virtual environment, and private local credentials based on
 `.env.example`. On Windows, start FastAPI with the project's event-loop-compatible launcher:
@@ -147,7 +183,7 @@ In a separate terminal, start the frontend:
 
 ```powershell
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -155,7 +191,9 @@ The backend health endpoint is `GET /health`; Vite proxies `/api` and `/health` 
 backend. The version entry points are `scripts/run_v0.py`, `scripts/run_v1.py`,
 `scripts/run_v2.py` and `scripts/run_v3.py`. V2/V3 retrieval requires an existing compatible
 PostgreSQL/pgvector database and its configured local environment. See the
-[development guide](docs/guides/development.md) for version-specific commands and dependencies.
+[Product setup](docs/guides/development.md#product-account-setup-and-acceptance) for
+account/session settings and the public Product migration command, and the
+[development guide](docs/guides/development.md) for version-specific dependencies.
 
 ## TripWorld database release
 
@@ -180,6 +218,6 @@ Keep the database dump outside Git.
 ## Documentation and evidence
 
 [docs/README.md](docs/README.md) indexes current design and dated development records.
-The [planning input UX specification](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/25) owns the assistance
+The [planning input UX specification](https://github.com/rplalala/Dayloom/issues/25) owns the assistance
 contract and limits. Local `logs/` and `artifacts/` contain development evidence, including
 potential provider/model data, and are not part of a source commit.

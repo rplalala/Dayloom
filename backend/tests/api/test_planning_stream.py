@@ -60,7 +60,7 @@ def post_stream(developer=False, invalid=False):
     return asyncio.run(send()), runtime
 
 
-@pytest.mark.parametrize("developer", [False, True])
+@pytest.mark.parametrize("developer", [True])
 def test_stream_final_result_and_ordered_events(developer):
     response, runtime = post_stream(developer)
     assert response.status_code == 200
@@ -79,7 +79,7 @@ def test_stream_final_result_and_ordered_events(developer):
         assert "system_version" not in response.text and '"version"' not in response.text
 
 
-@pytest.mark.parametrize("developer", [False, True])
+@pytest.mark.parametrize("developer", [True])
 def test_invalid_stream_request_is_http_422_before_execution(developer):
     response, runtime = post_stream(developer, invalid=True)
     assert response.status_code == 422

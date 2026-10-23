@@ -8,6 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
+import yaml
 
 spec = importlib.util.spec_from_file_location(
     "berlin_packet", Path(__file__).with_name("run_one.py")
@@ -21,9 +22,15 @@ def prepared(tmp_path, monkeypatch):
     output = tmp_path / "evidence"
     request = tmp_path / "request.json"
     packet.write_json(request, packet.EXPECTED_REQUEST)
+    runtime = tmp_path / "runtime-source.yaml"
+    policy = yaml.safe_load(packet.RUNTIME.read_text(encoding="utf-8"))
+    # The historical launcher retains its original five-send guard.
+    policy["v3_repair"]["max_model_calls"] = 5
+    runtime.write_text(yaml.safe_dump(policy), encoding="utf-8")
     for name, value in {
         "OUTPUT": output,
         "REQUEST": request,
+        "RUNTIME": runtime,
         "MANIFEST": output / "manifest.json",
         "COPIED_RUNTIME": output / "runtime.yaml",
         "local_dependencies": lambda: None,

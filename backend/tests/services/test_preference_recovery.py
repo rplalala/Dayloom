@@ -46,21 +46,24 @@ def test_provider_filter_user_action_is_evidence_scoped(code):
     status, body = post_product_planning(make_planning_service(client), payload)
     assert len(client.calls) == 1
     if code == "content_filter":
-        assert status == 200 and body["status"] == "provider_blocked"
-        assert "rewrite" in body["action"].lower()
-        assert "content filter" in body["message"]
+        assert status == 202 and body["state"] == "provider_blocked"
+        assert "rewrite" in body["outcome"]["action"].lower()
+        assert "content filter" in body["outcome"]["message"]
         assert "action" in error.as_dict()
     else:
-        assert status == 502
+        assert status == 202 and body["state"] == "failed"
         assert "action" not in error.as_dict()
     assert "PRIVATE" not in str(body) and "SAFETY_BLOCK" not in str(body)
 
 
-@pytest.mark.parametrize("text", [
-    "exclude flights and accommodation from our budget.",
-    "exclude accommodation from our budget.",
-    "exclude flights from our budget.",
-])
+@pytest.mark.parametrize(
+    "text",
+    [
+        "exclude flights and accommodation from our budget.",
+        "exclude accommodation from our budget.",
+        "exclude flights from our budget.",
+    ],
+)
 def test_budget_scope_survives_wire_and_does_not_change_amount(text):
     value = draft_for(text)
     parsed, _ = asyncio.run(interpret(value.model_dump(mode="json"), text=text, canonical=False))

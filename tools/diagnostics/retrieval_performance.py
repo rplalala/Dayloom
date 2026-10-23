@@ -9,7 +9,6 @@ import asyncio
 import hashlib
 import ipaddress
 import json
-import os
 from pathlib import Path
 from time import perf_counter
 
@@ -17,6 +16,7 @@ import numpy as np
 from dotenv import load_dotenv
 
 from backend.app.runtime.config_loader import load_runtime_config
+from backend.app.runtime.database import PROJECT_ROOT, DatabaseSettings
 from backend.app.tripworld.database.policy import POLICY_VERSION
 from backend.app.tripworld.database.search import search_query
 from backend.app.tripworld.retrieval.geography import GeographicScope
@@ -99,8 +99,8 @@ async def observe_waits(config, pid, samples):
 
 
 async def diagnose(args):
-    load_dotenv(".env.tripworld")
-    host = os.environ.get("TRIPWORLD_DB_HOST", "127.0.0.1")
+    load_dotenv(PROJECT_ROOT / ".env", override=False)
+    host = DatabaseSettings().connection_parameters().get("host", "127.0.0.1")
     if host != "localhost" and not ipaddress.ip_address(host).is_loopback:
         raise ValueError("Diagnostics require a loopback database")
     vector, metadata = saved_vector(args.vector)

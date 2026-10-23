@@ -1,12 +1,14 @@
 """Environment-only credentials and transactional, checksum-verified SQL migrations."""
 
 import hashlib
-import os
 from contextlib import contextmanager
 from pathlib import Path
 
 import psycopg
 from psycopg.rows import dict_row
+from pydantic import ValidationError
+
+from backend.app.runtime.database import DatabaseSettings
 
 
 class TripWorldDatabaseError(RuntimeError):
@@ -16,20 +18,13 @@ class TripWorldDatabaseError(RuntimeError):
 @contextmanager
 def connection():
     try:
-        password = os.environ.get("TRIPWORLD_DB_PASSWORD")
-        if not password:
-            raise TripWorldDatabaseError("Set TRIPWORLD_DB_PASSWORD in the environment")
-        with psycopg.connect(
-            host=os.environ.get("TRIPWORLD_DB_HOST", "127.0.0.1"),
-            port=os.environ.get("TRIPWORLD_DB_PORT", "55432"),
-            dbname=os.environ.get("TRIPWORLD_DB_NAME", "tripworld"),
-            user=os.environ.get("TRIPWORLD_DB_USER", "tripworld"),
-            password=password,
-            connect_timeout=10,
-            row_factory=dict_row,
-        ) as conn:
+        parameters = DatabaseSettings().connection_parameters()
+        parameters.update(connect_timeout=10, row_factory=dict_row)
+        with psycopg.connect(**parameters) as conn:
             conn.execute("SET statement_timeout = '15min'")
             yield conn
+    except ValidationError:
+        raise TripWorldDatabaseError("Invalid Dayloom database settings") from None
     except psycopg.Error as exc:
         raise TripWorldDatabaseError(
             f"TripWorld database operation failed ({type(exc).__name__}, SQLSTATE={exc.sqlstate})"

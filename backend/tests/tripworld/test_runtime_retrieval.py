@@ -67,7 +67,7 @@ def configured(tmp_path, monkeypatch, handler):
             **kwargs, http_client=httpx.AsyncClient(transport=httpx.MockTransport(handler))
         )
 
-    monkeypatch.setenv("TRIPWORLD_DB_PASSWORD", "fake-unit-password")
+    monkeypatch.setenv("DAYLOOM_DB_PASSWORD", "fake-unit-password")
     monkeypatch.setenv("OPENAI_API_KEY", "fake-unit-key")
     monkeypatch.setattr("backend.app.tripworld.retrieval.runtime.register_vector_async", register)
     runtime = RuntimeRetrieval(

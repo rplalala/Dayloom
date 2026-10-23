@@ -23,7 +23,10 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
-    parser.add_argument("--env-file", help="Optional local environment file; never committed")
+    parser.add_argument(
+        "--env-file", default=str(PROJECT_ROOT / ".env"),
+        help="Local environment file; defaults to the repository .env; never committed",
+    )
     args = parser.parse_args(argv)
     server = uvicorn.Server(uvicorn.Config(
         "backend.app.main:app", host=args.host, port=args.port, env_file=args.env_file,

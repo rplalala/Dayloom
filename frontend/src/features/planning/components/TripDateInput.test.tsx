@@ -48,6 +48,21 @@ it("disables dates outside the authoritative window", () => {
   expect(screen.getByRole("button", { name: "September 25, 2026" })).toBeDisabled();
 });
 
+it.each([
+  ["2026-09-12", "October 2026", "October 23, 2026", "2026-10-23"],
+  ["2027-01-01", "November 2026", "November 3, 2026", "2026-11-03"],
+])("opens an allowed month for an out-of-window saved date %s without rewriting it", (value, month, day, chosen) => {
+  const onChange = vi.fn();
+  render(<TripDateInput label="Start date" value={value} onChange={onChange}
+    min="2026-10-22" max="2026-11-04" />);
+  fireEvent.click(screen.getByRole("button", { name: "Choose Start date" }));
+  expect(screen.getByText(month)).toBeInTheDocument();
+  expect(screen.getByRole("textbox", { name: "Start date" })).toHaveValue(value);
+  expect(onChange).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: day }));
+  expect(onChange).toHaveBeenCalledWith(chosen);
+});
+
 it("aligns English weekday headings with real calendar weekdays", () => {
   render(<ControlledDate />);
   fireEvent.click(screen.getByRole("button", { name: "Choose Start date" }));

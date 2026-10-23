@@ -1,7 +1,8 @@
 # System architecture and version boundaries
 
-Status: Implemented architecture, consolidated 2026-10-03 against code and PROJECT.md.
-Product persistence is accepted but not implemented; its planned boundary is described below.
+Status: Implemented architecture, reviewed 2026-10-23 against code and PROJECT.md.
+The unified Product experience and persistence lifecycle are implemented and accepted
+locally; their current boundary is described below.
 This document defines the shared shape; [PROJECT.md](../PROJECT.md) owns current work
 status and authorization. Historical checkpoints are not current configuration.
 
@@ -10,9 +11,9 @@ status and authorization. Historical checkpoints are not current configuration.
 The system is a modular monolith: React owns interaction and rendering, FastAPI owns
 HTTP/application boundaries, and backend services own LLM calls, retrieval, external
 evidence, validation and repair. PostgreSQL with pgvector stores the TripWorld retrieval
-corpus. The accepted Product persistence extension will reuse this PostgreSQL instance
-and database, adding `app` alongside `tripworld`; it introduces no second runtime database
-or Redis. See the [pending Product design](0007-application-operations.md#accepted-product-persistence-design).
+corpus in `tripworld`. Product persistence and task coordination use `app` in the same
+`dayloom` database; they introduce no second runtime database or Redis. See the
+[Product lifecycle design](0007-application-operations.md#product-experience-and-persistence-design).
 Provider-specific payloads are normalized by integration adapters before domain
 policies consume them. LangGraph expresses version orchestration rather than embedding
 vendor HTTP calls throughout graph nodes.
@@ -151,13 +152,20 @@ Graph state is request-local working data: interpreted requirements, candidate s
 normalized evidence, generated itinerary and reference discovery. V3 extends it with the
 validation/repair outcome rather than replacing V0-V2 contracts. `PlanningResult` retains
 research diagnostics; the allowlisted Product DTO is a separate projection, not serialized
-graph state. PostgreSQL currently stores the retrieval corpus. The pending Product extension
-will persist user accounts, profiles and only the backend-selected final V3 Product projection
-after enrichment, through a shared ordinary HTTP/SSE completion seam. Graph state remains
-request-local; Developer/research results and V0-V2 outputs do not enter Product storage.
-Research entrypoints remain independently runnable without mandatory Product authentication
-or database settings. Detailed accepted requirements are in
-[#119](https://github.com/rplalala/Reliable-Trip-Plan-Agent/issues/119).
+graph state. PostgreSQL stores the retrieval corpus alongside Product
+accounts, profiles, editable drafts, task progress/outcomes, recoverable
+previews and manually saved snapshots. A Product coordinator owns execution independently
+of browser observation, while each engine invocation retains request-local graph working
+data. Generated previews accept only the final backend-selected V3 projection; imports
+enter through a separate validated, provenance-labelled boundary. An explicit Save commits
+the normalized trip snapshot without another engine call.
+
+Developer/research results and V0-V2 outputs do not enter Product storage. Research
+entrypoints remain independently runnable without Product authentication, signing
+credentials or the `app` schema. V2/V3 still require the shared database connection and
+compatible TripWorld corpus. The unified specification is
+[#198](https://github.com/rplalala/Dayloom/issues/198), with thirteen published implementation
+slices and native blocking relationships; #119 retains the historical backend-design mapping.
 
 For verification, start with the [runtime port tests](../backend/tests/services/test_planner_runtime.py),
 [dependency-boundary tests](../backend/tests/runtime/test_dependency_boundaries.py),

@@ -40,7 +40,7 @@ def source_hashes():
         files.update((ROOT / folder).rglob("*.py"))
     files.update((ROOT / "config").glob("*.yaml"))
     files.update(ROOT / name for name in ("pyproject.toml", "uv.lock"))
-    files.update(p for p in (ROOT / ".env", ROOT / ".env.tripworld") if p.is_file())
+    files.update(p for p in (ROOT / ".env",) if p.is_file())
     files.update(INPUTS / f"{case}.json" for case in CASES)
     return {
         p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
@@ -64,18 +64,17 @@ def local_dependencies():
     """Validate local configuration/artifacts only; never open a database or HTTP client."""
     from dotenv import load_dotenv
 
+    from backend.app.runtime.database import DatabaseSettings
     from backend.app.tripworld.retrieval.runtime import ROOT as rag_root
     from backend.app.versions.v1.config import V1Settings
 
-    if not (ROOT / ".env.tripworld").is_file():
+    if not (ROOT / ".env").is_file():
         raise FileNotFoundError("RAG environment missing")
-    load_dotenv(ROOT / ".env.tripworld", override=False)
+    load_dotenv(ROOT / ".env", override=False)
     V1Settings()
-    if not all(os.environ.get(key) for key in ("TRIPWORLD_DB_PASSWORD", "OPENAI_API_KEY")):
+    DatabaseSettings(_env_file=ROOT / ".env").connection_parameters()
+    if not os.environ.get("OPENAI_API_KEY"):
         raise ValueError("RAG local credentials incomplete")
-    port = int(os.environ.get("TRIPWORLD_DB_PORT", "55432"))
-    if not 1 <= port <= 65535:
-        raise ValueError("Invalid database port")
     if read(rag_root / "reports/phase5_embedding_run.json").get("status") != "complete":
         raise ValueError("Local corpus build incomplete")
     if not read(rag_root / "artifacts/retrieval_entities.parquet.manifest.json").get(
@@ -268,7 +267,7 @@ def child(case, reference):
     from backend.app.versions.v1.config import V1Settings
     from tools.validation.poi_semantics_acceptance import run_case
 
-    load_dotenv(ROOT / ".env.tripworld", override=False)
+    load_dotenv(ROOT / ".env", override=False)
     settings = V1Settings()
     secrets = (
         settings.azure_openai_api_key.get_secret_value(),
@@ -321,7 +320,7 @@ def child(case, reference):
 
 def execute(case):
     reference = preflight(case)
-    if not (ROOT / ".env.tripworld").is_file():
+    if not (ROOT / ".env").is_file():
         raise FileNotFoundError("RAG environment missing")
     write(OUTPUT / f"{case}.started.json", dict(reference_date=reference, attempt=1))
     try:

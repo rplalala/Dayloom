@@ -1,0 +1,28 @@
+/* Compatibility for the shared, accessible destination and calendar controls. */
+.dayloom .brief-editor .destination-control label, .dayloom .brief-editor .trip-date-control label { display:flex; flex-direction:column; gap:10px; min-width:0; }
+.dayloom .brief-editor .destination-control label > span, .dayloom .brief-editor .trip-date-control label > span { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; }
+.dayloom .brief-editor .destination-control label .ico, .dayloom .brief-editor .trip-date-control label .ico { color:var(--accent); }
+.dayloom .brief-editor label b { color:#db6468; }
+.dayloom .brief-editor .destination-control input, .dayloom .brief-editor .trip-date-control input { border:1px solid var(--line-2); background:var(--paper); border-radius:9px; color:var(--ink); outline:none; min-width:0; padding:13px; font-size:13px; width:100%; height:48px; }
+.dayloom .brief-editor .trip-date-control input { padding-right:36px; }
+.dayloom .brief-editor .destination-control input:focus, .dayloom .brief-editor .trip-date-control input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(var(--accent-rgb),.09); }
+.dayloom .brief-editor .destination-control { min-width:0; }
+.dayloom .brief-choice-group { border:0; padding:0; min-width:0; }
+.dayloom .brief-choice-group legend { padding:0; }
+.dayloom .brief-editor .preference-assistance { margin:0; }
+@media(max-width:800px) { .dayloom .brief-editor .form-grid-essentials .destination-control { grid-column:1/-1; } }
+.dayloom .brief-editor .destination-control, .dayloom .brief-editor .trip-date-control { position: relative; }
+.dayloom .brief-editor .date-trigger { position: absolute; right: 11px; top: 37px; width: 21px; height: 21px; overflow: hidden; border: 0; background: var(--paper); padding: 0; color: transparent; cursor: pointer; font-size: 0; }
+.dayloom .brief-editor .date-trigger::after { content: ""; display: block; width: 15px; height: 15px; border: 1.5px solid var(--muted); border-radius: 2px; box-shadow: inset 0 3px var(--paper), inset 0 4.5px var(--muted); }
+.dayloom .brief-editor .destination-options, .dayloom .brief-editor .date-calendar { z-index: 5; position: absolute; top: 100%; left: 0; min-width: 270px; max-width: min(320px, calc(100vw - 60px)); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 40px #16272320; padding: 12px; background: white; }
+.dayloom .brief-editor .destination-options button { display: block; text-align: left; width: 100%; border: 0; background: white; padding: 12px; cursor: pointer; }
+.dayloom .brief-editor .destination-options button[aria-selected=true] { background: #e9f5f1; }
+.dayloom .brief-editor .date-calendar-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dayloom .brief-editor .date-calendar-weekdays, .dayloom .brief-editor .date-calendar-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; margin-top: 10px; text-align: center; font-size: 12px; }
+.dayloom .brief-editor .date-calendar button { border: 0; border-radius: 6px; background: #f1f6f3; padding: 8px 4px; cursor: pointer; }
+.dayloom .brief-editor .date-calendar button:disabled { opacity: .35; cursor: default; }
+.dayloom .brief-editor .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+.dayloom .plan-recovery-link { margin-top:15px; }
+.dayloom .preference-tools { justify-content:flex-end; }
+.dayloom .result-actions .preview-decision-actions { width:auto; }

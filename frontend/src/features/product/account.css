@@ -1,0 +1,9 @@
+/* Account runtime states supplement the fixed r7 presentation. */
+.dayloom .account-sidebar { overflow-wrap: anywhere; }
+.dayloom .account-main { min-width: 0; }
+.dayloom .account-main > form > h2 { font-size: 22px; }
+.dayloom .account-divider { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+.dayloom .profile-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.dayloom .account-main .field-group { border: 0; padding: 0; min-width: 0; }
+.dayloom .profile-currency { max-width: 240px; }
+.dayloom .account-logout { margin-top: 20px; }

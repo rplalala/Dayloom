@@ -1,6 +1,6 @@
 # Development guide
 
-Current entry points, reconciled 2026-10-09. [PROJECT.md](../../PROJECT.md) owns status
+Current entry points, reconciled 2026-10-23. [PROJECT.md](../../PROJECT.md) owns status
 and authorization; [architecture](../0001-system-architecture.md) and
 [application contracts](../0007-application-operations.md) explain the code and APIs.
 Commands below are references, not evidence of execution or approval for a live run.
@@ -36,19 +36,439 @@ Vite proxies `/api` and `/health` to `http://127.0.0.1:8000`.
 The [API launcher](../../scripts/run_api.py) selects the Windows event loop needed by
 async PostgreSQL access. Use it for local Windows API development. `GET /health`
 checks the application process; it does not certify provider or corpus readiness.
-Product routes are `/` and `/plan`; Developer is `/dev`.
-Product runs V3 and Developer exposes independent V0-V3 from the shared structured form.
+Product routes include `/`, `/plan`, `/trips`, `/import`, `/login`, `/account`, `/planning`,
+`/planning/:taskId` and `/previews/:previewId`; Developer is `/dev`.
+The Product r7 shell has its own shared brief surface. Developer retains independent
+V0-V3 and the existing structured form. Product generation HTTP endpoints require
+authentication and submit the durable account-owned task lifecycle.
 
 Populate local `.env` from [the non-secret example](../../.env.example).
-Foundry endpoint/deployment/key and `GOOGLE_MAPS_API_KEY` serve planning;
-`.env.tripworld` or process environment supplies `OPENAI_API_KEY` and
-`TRIPWORLD_DB_HOST/PORT/NAME/USER/PASSWORD` for retrieval. Model and deployment names
+Root `product.yaml` supplies the Foundry endpoint/deployment and shared database
+connection fields. `.env` supplies private keys, including the shared planning/photo
+`GOOGLE_MAPS_API_KEY`, Foundry credentials, `OPENAI_API_KEY` for retrieval embeddings
+and `DAYLOOM_DB_PASSWORD`. Environment variables remain explicit overrides.
+Model and deployment names
 are distinct settings. Never commit real credentials. Default local DB host/port are
 127.0.0.1:55432. See [configuration](../../config/README.md) for exact current keys.
 
 V2/V3 require the compatible TripWorld database and artifact/embedding sidecars.
 The pinned vocabulary under `.cache/tokenizer` must also exist; the planner does not
 download it. `python -m tools.data.prepare_tokenizer --help` describes explicit preparation.
+
+For V2/V3 retrieval, also prepare the pinned embedding vocabulary under
+`data/tripworld/tokenizer_cache`; follow the TripWorld readiness instructions before
+claiming retrieval acceptance. A degraded retrieval fallback is not that acceptance.
+
+## Local PostgreSQL naming and storage
+
+The root `compose.yaml` uses the Docker Compose project `dayloom` and container
+`postgres`, exposed only on `127.0.0.1:55432` by default. Start it with:
+
+```powershell
+uv run python scripts/run_database.py up -d --wait postgres
+```
+
+The Compose volume alias is `dayloom_pgdata`. It is external storage, so Compose
+reuses it and does not delete it through `down --volumes`. Fresh installations create
+the default volume once with `docker volume create dayloom_pgdata` before starting
+PostgreSQL. Existing installations must set `DAYLOOM_DB_VOLUME` in ignored
+`.env` to their actual current volume. The existing local installation
+retains `reliable-tripworld_tripworld_pgdata`; this storage identifier does not affect
+the displayed project/container names. Selecting another volume would expose an empty
+database. Do not remove the existing volume or re-ingest/re-embed the corpus.
+
+The shared SQL database and login role are `dayloom`. The `app` schema stores Product
+accounts, drafts, tasks and trips; `tripworld` stores retrieval entities and embeddings.
+One PostgreSQL service hosts both schemas. Database connection values belong to the
+`database` section of `product.yaml`; normal `.env` files need only its private password
+and any machine-specific volume override. The local retained test database is
+`dayloom_test`; automated acceptance uses explicitly isolated databases instead.
+
+| Environment override | YAML source / meaning |
+| --- | --- |
+| `DAYLOOM_DB_HOST` | `product.yaml: database.host` |
+| `DAYLOOM_DB_PORT` | `product.yaml: database.port` |
+| `DAYLOOM_DB_NAME` | `product.yaml: database.name` |
+| `DAYLOOM_DB_USER` | `product.yaml: database.user` |
+| `DAYLOOM_DB_PASSWORD` | Required private password; used by Compose and application clients |
+| `DAYLOOM_DB_VOLUME` | `dayloom_pgdata` for new installs; retained physical volume for existing data |
+| `DAYLOOM_DB_URL` | Optional complete connection override for application/maintenance clients; takes precedence over split fields and must specify the database name |
+
+Product, retrieval, corpus tools and the database launcher use the same connection
+settings, including an explicit `tripworld,public` search path so retained pgvector types remain visible after
+a login-role rename. `scripts/run_database.py` resolves these settings and passes the
+result to `compose.yaml` in its subprocess environment. Compose does not parse
+`product.yaml` itself; use the launcher for lifecycle/configuration commands, such as
+`uv run python scripts/run_database.py config --quiet`. The template requires the
+resolved fields rather than maintaining independent defaults. Leave the URL unset
+for normal local use; a URL override for local Compose must explicitly supply a
+IPv4 loopback host (`127.0.0.1` or `localhost`), port, database, user and password.
+The local launcher rejects `::1` because this Compose template publishes only on
+IPv4. Application clients may still select separately hosted IPv6 databases. YAML
+never contains credentials.
+Changing Compose initialization variables does not rename an existing database or role.
+Migrate their names explicitly before restarting against retained storage; never select
+an empty volume as a naming workaround.
+
+The same YAML file has a `foundry` section with `endpoint` and `deployment` for all
+independent V0–V3 planners and Product. `AZURE_OPENAI_ENDPOINT` and
+`AZURE_OPENAI_DEPLOYMENT` remain environment overrides. `AZURE_OPENAI_API_KEY` stays
+private in `.env`. The unused `LLM_MODEL` key is removed; the configured deployment
+selects the actual model. The loader rejects unknown keys, duplicate mappings and
+credentials in both nested sections. Explicit settings arguments take precedence over
+process environment, then dotenv, then YAML and code fallbacks. Shared configuration
+does not initialize Product authentication, a database connection or a provider client.
+
+## Complete local Product runtime
+
+The built Product runs the React frontend and normal FastAPI application on one
+origin. It uses the configured real model, Google Places/Routes, Open-Meteo,
+TripWorld retrieval and media adapters. It does not load a test application factory,
+provider substitutes or the offline walkthrough's external-link interception.
+
+Prepare the ignored environment file and shared deployment settings described below, then run:
+
+```powershell
+uv sync --locked --group retrieval
+npm --prefix frontend ci
+npm --prefix frontend run build
+uv run python scripts/migrate_product.py
+uv run python scripts/run_product.py --check
+uv run python scripts/run_product.py
+```
+
+The root `product.yaml` configures `http://localhost:5173` and explicitly allows
+local HTTP. `--port` must match the configured origin's port. The launcher loads
+`.env` from the repository root without overriding existing
+process values. It serves `frontend/dist`,
+including direct navigation/reload of Product and Developer routes; missing APIs and
+assets retain their HTTP errors. Rebuild the frontend after changing its source.
+
+`--check` validates configuration, both local tokenizer vocabularies, Product database
+access and TripWorld manifest/embedding-space compatibility. It reads local databases
+without model, query-embedding, map, weather or image requests. Passing it establishes
+local readiness, not live credential validity, provider availability or generation quality.
+Generating, polishing, destination suggestions and media viewing use real services when
+invoked; execute provider acceptance only within its separately authorized limits.
+
+Use the existing daily database for this runtime. Disposable automated-test databases
+and the substituted human-walkthrough database remain separate; accounts and drafts do
+not move between them automatically. The normal API-only/Vite development commands
+above remain available, and independent V0–V3 entrypoints are unchanged.
+
+## Product account setup and acceptance
+
+Use the existing PostgreSQL database for application runtime, with a role permitted
+to create the separate `app` schema. Product migration/account settings are optional
+for the independent V0-V3 and research commands.
+
+The root [product.yaml](../../product.yaml), beside [compose.yaml](../../compose.yaml),
+owns the shared non-secret deployment settings. Its Product options are listed below;
+its database and Foundry sections are defined above. It is separate from planner policies in
+`config/runtime.yaml` and is not included in their snapshots or hashes.
+
+| YAML key | Environment override | Meaning |
+| --- | --- | --- |
+| `origin` | `PRODUCT_ORIGIN` | Exact public HTTPS origin; the supplied local setting is `http://localhost:5173` |
+| `allow_insecure_loopback` | `PRODUCT_ALLOW_INSECURE_LOOPBACK` | Supplied local setting is true; only localhost/127.0.0.1/::1 may use HTTP |
+| `session_seconds` | `PRODUCT_SESSION_SECONDS` | Supplied setting is 3600; accepted range 1–86400 |
+
+Explicit settings arguments take precedence over process environment, then `.env`,
+secret-file settings, YAML and model defaults. Product resolves its YAML and default
+`.env` relative to the repository, independently of the working directory. Unknown
+YAML keys, credential fields, duplicate keys and invalid values are rejected without
+echoing their values. Keep deployment-specific overrides in the environment; remove
+redundant non-secret `.env` entries when adopting YAML. Restart the application after
+changing deployment settings. For HTTPS deployment, set the public origin and disable
+the local HTTP exception.
+
+Keep credentials and process-specific tooling settings in ignored `.env` or the
+process environment:
+
+| Key | Meaning |
+| --- | --- |
+| `PRODUCT_JWT_SECRET` | Independently generated signing secret, at least 32 characters |
+| `PRODUCT_API_PROXY` | Vite process setting; defaults to `http://127.0.0.1:8000` |
+| `GOOGLE_MAPS_API_KEY` | Shared server-only key for planning and verified Product place photos; absent photo credentials mean illustration fallback |
+| `PRODUCT_UNSPLASH_ACCESS_KEY` | Optional server-only Unsplash key for the curated atmosphere catalog; takes precedence over the existing `UNSPLASH_API_KEY` alias; missing both means illustration fallback |
+
+Run `uv sync --locked` and `npm --prefix frontend ci`, then apply migrations with
+`uv run python scripts/migrate_product.py`. The entrypoint applies only Product SQL,
+retains SHA-256 integrity and never rebuilds the TripWorld corpus. Start the API using
+the normal launcher. Open the exact origin configured in `product.yaml` or its
+environment override. The migration command resolves the shared database settings
+from `product.yaml`, the repository `.env` and process environment; it needs no signing
+key or provider credentials. Production uses same-origin HTTPS routing.
+
+Acceptance requires a separate disposable database whose name includes `test`.
+Never point the acceptance URL at the runtime/retrieval database. Prepare an isolated
+PostgreSQL instance, choose unused ports and set its URL in
+`DAYLOOM_DB_TEST_URL`.
+
+Both URL and PostgreSQL conninfo forms require an explicitly supplied actual database
+name containing `test`; query options, usernames and environment defaults do not satisfy
+the safety check. Supplied unsafe values fail before migrations, connections or cleanup.
+The pytest host also needs complete isolated Product settings, even though browser
+children construct their own strict environment. Point both test URLs at the
+same disposable database and use a synthetic signing secret. From the worktree root:
+
+```powershell
+$env:DAYLOOM_DB_URL = $env:DAYLOOM_DB_TEST_URL
+$env:PRODUCT_JWT_SECRET = "isolated-tests-only-not-a-runtime-signing-secret"
+$env:PRODUCT_ORIGIN = "http://127.0.0.1:5120"
+$env:PRODUCT_ALLOW_INSECURE_LOOPBACK = "true"
+uv run pytest backend/tests/product/test_accounts.py --basetemp=.scratch/pytest-product
+uv run pytest backend/tests/product/test_profiles.py --basetemp=.scratch/pytest-profile
+$env:PRODUCT_BROWSER_TESTS = "1"
+$env:PRODUCT_TEST_API_PORT = "8120"
+$env:PRODUCT_TEST_WEB_PORT = "5120"
+uv run python -m playwright install chromium
+uv run pytest backend/tests/product/test_browser.py --basetemp=.scratch/pytest-browser
+uv run pytest backend/tests/product/test_editor_browser.py --basetemp=.scratch/pytest-editor
+uv run pytest backend/tests/product/test_example_browser.py --basetemp=.scratch/pytest-examples
+uv run pytest backend/tests/product/test_profile_browser.py --basetemp=.scratch/pytest-profile-browser
+uv run pytest backend/tests/product/test_drafts.py --basetemp=.scratch/pytest-drafts
+uv run pytest backend/tests/product/test_draft_browser.py --basetemp=.scratch/pytest-draft-browser
+```
+
+For real corpus-persistence contract tests, reuse the explicitly isolated test URL
+and set `DAYLOOM_DB_TESTS=1` before running `backend/tests/tripworld/test_database.py`.
+These tests replace only the isolated database's `tripworld` schema; their guard
+rejects runtime database URLs before opening a connection.
+
+The browser fixture starts/stops its own API and Vite processes, exercises real
+accounts through PostgreSQL, and writes logs/screenshots only under `.scratch/browser`
+and `.scratch/detail-browser`. Example acceptance covers real public APIs, guest/account
+access, exact activity-linked Nearby, keyboard navigation and desktop/800px/390px layouts.
+Acceptance subprocesses inherit only required OS/tool paths and explicit test settings.
+The public browser fixture excludes environment/configuration, and sensitive setup
+values use redacted diagnostic representations, including fixture failures.
+Set `TEMP` and `TMP` to a worktree-local `.scratch/tmp` directory when sandboxed
+Windows temporary storage is unavailable; a local `UV_CACHE_DIR` can be set similarly.
+Existing Playwright Chromium installations can be reused. No model, map, weather or
+image-provider call is needed for these account journeys. The migration acceptance
+includes rerun/integrity checks and a seeded TripWorld sentinel preservation check;
+account acceptance includes deliberate profile-insert failure and rollback.
+Profile acceptance checks supported domains, deduplication, owner isolation, literal
+notes, database constraints/cascade and persistence after application recreation.
+The real browser edits defaults, checks initials and the absence of avatar upload,
+then verifies visible new-brief defaults while existing/reloaded editor content remains
+unchanged. Profile screenshots belong to `.scratch/profile-browser`.
+
+The combined profile/draft/task/replan acceptance is runnable with the same isolated
+database and browser settings:
+
+```powershell
+uv run pytest backend/tests/product/test_replan_browser.py -q
+```
+
+It uses the real task coordinator, PlanningService, V3, retrieval lifecycle, API and
+PostgreSQL, replacing only external adapters with controlled responses. The journey
+updates persisted defaults while a task runs, reopens an existing draft, replans both
+complete generated and partial historical imported sources, fills unknown values and
+saves new previews independently. It checks current generation validation, owner isolation,
+zero writes on form opening, unchanged source requests and latest defaults on a genuinely
+new brief. Screenshots belong to `.scratch/replan-browser`; task signals and server logs
+remain under `.scratch/task-browser`. The [replan contract](../0007-application-operations.md#replanning-saved-itineraries)
+defines which original facts may seed the form.
+
+The editor journey uses the same isolated database and strict subprocess environment,
+with a test-only application factory replacing the external GeoDB HTTP transport and
+polishing model. Production routes/services, authentication, date policy, bounded
+assistance admission and PostgreSQL remain real. Its API process uses the supported
+Windows Selector loop. Prepare the pinned offline tokenizer vocabulary as described
+above; this journey does not download it or call a paid model. Screenshots and logs
+are written to `.scratch/editor-browser` at 390px, 800px and desktop, with distinct
+browser time zones. It exercises editable requirements, exact-span ownership,
+polish preview/Apply/Dismiss/Undo and delayed revisions, recovery and validation.
+
+Draft acceptance uses the same external-adapter substitutes and real account/API/database
+boundary. It covers incomplete round trips, recreated application/browser state,
+independent copies, owner isolation, simultaneous revision conflicts, stable server-side
+pages, database constraints/cascades, guest return and expiry recovery. Draft screenshots
+are written to `.scratch/draft-browser`. The [draft contract](../0007-application-operations.md#incomplete-drafts-and-the-collection-boundary)
+defines schema bounds and listing parameters. Apply the public migration entrypoint before
+starting the API; no additional configuration is required for drafts.
+
+Public example endpoints also run without Product account/provider configuration.
+`uv run pytest backend/tests/api/test_product_examples.py` checks their allowlisted
+HTTP contract offline; the focused frontend detail tests exercise unresolved/undated
+references, real day order and safe text rendering. The public fixtures are historical
+source claims, not live provider verification.
+
+### Product media setup and acceptance
+
+Apply migrations before starting an updated API; migration 006 adds stable private
+place bindings to previews/trips. Media keys are optional and separate from research
+configuration. Keep them server-side. Without either key, the corresponding image
+remains an explicitly labelled illustration and all planning, import, preview and Save
+flows remain usable. See the [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
+for identity, provider, refresh and request bounds. Before a future public Google-enabled
+deployment, supply publicly accessible application Terms of Use and Privacy Policy
+incorporating the provider terms/privacy requirements; local substituted acceptance does
+not establish a deployment or live-provider acceptance.
+
+With the isolated Product test database and browser ports configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_media.py backend/tests/product/test_media_projection.py --basetemp=.scratch/pytest-media-api
+$env:PRODUCT_BROWSER_TESTS = "1"
+uv run pytest backend/tests/product/test_media_browser.py --basetemp=.scratch/pytest-media-browser
+```
+
+The media journey executes the real PlanningService/V3, coordinator, Product APIs and
+PostgreSQL. External place/model/weather/route/retrieval/media transports and browser
+images use controlled replacements. It verifies final scheduled/Nearby photo bindings,
+Google Maps and photographer attribution, image expiration, refresh/Save/reload recovery,
+forged imports, dimension bounds, owner isolation and 390px/800px/desktop layout.
+Google photographs load directly in activity and Nearby lists without credit captions;
+provider/author credits and full source links remain in the place dialog at all three widths.
+The [media contract](../0007-application-operations.md#verified-place-media-and-curated-atmosphere)
+records the resulting Google attribution requirement mismatch.
+Failed/unauthorized photographs retain labelled illustration fallbacks. Unsplash checks
+cover hover, keyboard focus, Escape and touch disclosure,
+including collection image links and hero shading. Product overview and copyable
+summary checks exclude internal review fields while preserving route uncertainty.
+Provider/API checks also exercise redirects, foreign resources/URLs, bounded bodies and
+work, migration constraints/checksum integrity and missing media access. Logs/screenshots
+remain under the worktree's `.scratch/` and selected pytest basetemp.
+
+Every Product browser fixture uses the same test-only media transport override and
+installs external-request interception before context navigation. This includes older
+auth/editor/task/example/import suites: Chromium's network is independent of pytest's
+Python socket guard. These checks require neither a real media key nor any live image,
+Unsplash API or Google Photos request.
+
+### Durable task acceptance
+
+Product Generate uses `POST /api/planning/tasks` with an owner-scoped `operation_key`,
+confirmed `request` and optional editor snapshot. The legacy HTTP/SSE adapters require
+`Idempotency-Key` and share the same coordinator. Migrations include tasks, previews
+and normalized saved trips; rerun the public migration command before starting the application. No new
+provider configuration or external queue is required. A process shutdown interrupts its
+owned work; after an abrupt crash, expired pending/lease records reconcile on access or
+periodically, retaining input without automatic execution restart.
+
+`POST /api/planning/tasks/{id}/stop` uses the current account cookie, Origin and CSRF
+token. Read the task after an ambiguous Stop response before explicitly trying again.
+Pending work can stop immediately; running work remains `stopping` until its executing
+application cleans up its connections, or its finite lease recovers as interrupted.
+Late Stop preserves completed previews. The outcome page offers explicit input revision
+and a preserve-or-replace choice for another open brief; opening inputs never generates.
+
+With the explicitly isolated test database and browser ports above configured, run
+`uv run pytest backend/tests/product/test_tasks.py backend/tests/product/test_task_stop.py backend/tests/product/test_task_races.py backend/tests/product/test_task_browser.py`.
+The browser factory runs the actual application/V3 graph with controlled external model,
+place, route, weather, retrieval and introduction adapters. Its completion signals,
+logs and screenshots remain in that worktree's `.scratch/task-browser/`. These cases
+cover lost accepted responses, changing/saving another brief, SSE/browser detachment,
+logout, preview recovery, deterministic Stop/completion lock races, cross-instance
+transport cleanup, typed outcomes, explicit revision/retry and stale execution authority;
+they make no paid calls.
+
+### Preview Save and Discard acceptance
+
+Save explicitly creates an immutable saved trip; confirmed Discard removes pending
+content. Both use the preview's durable decision identity. Refreshing a decided preview
+recovers its receipt, and saved details read normalized rows without provider calls.
+The library includes saved cards beside drafts with title-only rename and confirmed
+deletion. Whole-trip Copy and Keep example use the independent-copy contract below. Weather attribution/source
+URLs are excluded from saved storage; all other supported public detail facts retain
+their supplied order and time text.
+
+With the same isolated database configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_saved.py backend/tests/product/test_saved_constraints.py backend/tests/product/test_task_browser.py
+```
+
+These cases run public migration fresh/rerun/checksum rejection, SQL constraints,
+atomic child-write rollback, concurrent decisions, repeated/lost-response recovery,
+owner isolation, deleted-result tombstones and actual browser Save/confirmed Discard.
+The browser includes a committed Save response delayed until another draft is open;
+the late response cannot navigate or replace that draft. Screenshots/logs remain in
+`.scratch/task-browser/`. The fresh migration case resets only the explicitly isolated
+test database's `app` schema and verifies a separate `tripworld` marker survives.
+
+### Independent Copy and Keep example acceptance
+
+The detail hero and saved library cards expose explicit whole-trip copying. Public example
+details offer Keep a copy, returning guests through login to the same example without an
+automatic write. Copy is distinct from the shared detail's Copy summary export action.
+The [copy contract](../0007-application-operations.md#independent-trip-copies-and-kept-examples)
+defines operation identity, source ownership, independent snapshots and deleted-result receipts.
+
+With the isolated database and browser ports configured above, run:
+
+```powershell
+uv run pytest backend/tests/product/test_copies.py backend/tests/product/test_operation_keys.py backend/tests/product/test_copy_browser.py -q
+uv run pytest backend/tests/product/test_copy_media.py backend/tests/product/test_saved_constraints.py -q
+```
+
+These cases exercise real API/PostgreSQL transactions and Chromium journeys for historical
+import/example content, simultaneous same-key copies, conflicting intents, deleted source
+and result replay, child-write rollback, owner/CSRF isolation, lost responses and explicit
+retry. Browser checks include guest brief preservation, same-account expiry recovery,
+logout clearing, navigation fences and dialog keyboard/layout behavior at 390px, 800px
+and desktop widths. Recovery covers separate A/B source identities and status-only checks
+after source/result deletion, through both the unavailable detail and My trips recovery
+entry. Key admission/query tests use real APIs/PostgreSQL for Copy/import punctuation,
+unchanged normal lookup paths and rejected controls across Copy/import/task interfaces.
+Media-copy acceptance carries an adopted server identity through actual projection,
+preview, Save and independent copies; only controlled HTTP display adapters are replaced.
+It checks empty decided-receipt bindings, unchanged public exports, source/result deletion,
+forged import/Copy rejection and stable IDs without persisted photo resource names or URLs.
+Screenshots belong to `.scratch/copy-browser`; API/Vite logs use
+`.scratch/browser`. External display media must use the browser fixture's controlled
+replacements; the copy mutation itself makes no provider calls.
+
+### Historical import/export acceptance
+
+Open `/import` to paste JSON or choose a file, then explicitly Preview and Save. Supported
+formats, trust, partial known requests, time precision and operation recovery are defined
+in the [import/export contract](../0007-application-operations.md#historical-json-import-and-export).
+The shared detail's JSON export can be reimported with a new operation key; text export
+and Copy summary use only the already loaded public detail. None runs generation or refresh.
+
+With the isolated database and browser ports configured above, run:
+
+```powershell
+uv run pytest backend/tests/product/test_imports.py backend/tests/product/test_import_responsiveness.py backend/tests/product/test_import_browser.py
+uv run pytest backend/tests/product/test_import_storage.py
+```
+
+These checks use actual APIs/PostgreSQL for concurrent operation identity, account isolation,
+recreation, lost-response lookup, explicit retry, field errors and preview decisions. An actual
+PostgreSQL lock wait checks concurrent health/Stop API responsiveness. Browser
+acceptance covers historical differing-offset/nanosecond/empty-day/orphan content through
+paste, Save, JSON download and file reimport, plus selectable summary, delayed-file/lost-response
+recovery and historical zero/overlap connection gaps with unverified source provenance. Its screenshots live
+under `.scratch/import-browser`; its API/Vite lifecycle uses the shared isolated browser fixture.
+Storage admission checks cover located NUL/surrogate errors, exact activity-cost numeric
+limits, insignificant scale/zero semantics and unchanged large original-request budgets.
+Boundary integer reads return SQL booleans, avoiding expanded amounts in HTTP/log output.
+
+### Mixed library acceptance
+
+With the same isolated database and browser ports configured, run:
+
+```powershell
+uv run pytest backend/tests/product/test_library.py backend/tests/product/test_library_browser.py
+```
+
+These cases exercise mixed saved/draft creation-time and name ordering, exact UUID/kind
+tie boundaries, literal title/destination search, bounded pages, historical detail,
+revision conflicts, title/request immutability, confirmed deletion and retained
+deleted-result receipts. Owner-scoped weather/Nearby/transfer views read the saved
+snapshot without provider refresh. The actual browser covers cross-page navigation,
+empty/no-match states, search after rename, cancel/confirm deletion and late Save;
+desktop/800px/390px screenshots are written to `.scratch/library-browser/`.
+An expired-cookie case delays the real session check and verifies immediate content
+hiding after mutation 401, followed by same-account login without replaying the write.
+Run `test_saved_constraints.py` above for public fresh/rerun migration, composite foreign
+keys, normalized child cascades and database-level account cascades. See the
+[collection contract](../0007-application-operations.md#incomplete-drafts-and-the-collection-boundary)
+for sorting and bounds.
 
 ## Independent version execution
 
@@ -77,8 +497,8 @@ override must not disguise stale dates in a live run.
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_v0.py --input-json request.json
 .\.venv\Scripts\python.exe scripts/run_v1.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
-.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600 --rag-env-file .env.tripworld
-.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600 --rag-env-file .env.tripworld
+.\.venv\Scripts\python.exe scripts/run_v2.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
+.\.venv\Scripts\python.exe scripts/run_v3.py --input-json request.json --runtime-config config/runtime.yaml --development-timeout-seconds 600
 ```
 
 V0 is tool-free and accepts neither runtime configuration nor development-timeout flags.

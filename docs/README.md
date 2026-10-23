@@ -17,7 +17,13 @@ belong in this directory. Task specifications and iteration state live in GitHub
 | [0004 Retrieval (V2/V3)](0004-retrieval-persistence%28v2v3%29.md) | Corpus, persistent exact search and compatibility |
 | [0005 Validation and repair (V3)](0005-validation-repair%28v3%29.md) | Permissions, components, re-validation and adoption |
 | [0006 Independent evaluation](0006-independent-evaluation.md) | Native quality, research populations and track boundaries |
-| [0007 Application and operations](0007-application-operations.md) | API/UI, assistance, resources and engineering verification |
+| [0007 Application and operations](0007-application-operations.md) | Product account/task/preview/trip lifecycle, API/UI and operational verification |
+
+The accepted [Dayloom r7 unified Product specification #198](https://github.com/rplalala/Dayloom/issues/198)
+connects the provisionally accepted frontend prototype with accounts, drafts, tasks,
+previews and manual saving. The [application contract](0007-application-operations.md#product-experience-and-persistence-design)
+owns implemented behavior and links its acceptance evidence. Native child Issues own
+the thirteen-slice implementation state; #119 retains the historical mapping.
 
 ## Architecture decisions
 

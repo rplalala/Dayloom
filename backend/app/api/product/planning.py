@@ -1,98 +1,109 @@
-"""Version-agnostic product planning endpoint."""
+"""Product HTTP/SSE adapters submit and observe durable account-owned tasks."""
 
+import asyncio
+import json
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Response
 
-from backend.app.api.dependencies import get_date_provider, get_planning_service
-from backend.app.api.schemas.planning import (
-    CompletedPlanningResponse,
-    NeedsClarificationResponse,
-    ProductPlanningRequest,
-    ProductPlanningResponse,
-    ProviderBlockedResponse,
-    SafetyBlockedResponse,
-)
-from backend.app.api.streaming import planning_stream
-from backend.app.policies.trip_dates import (
-    MAX_TRIP_DAYS,
-    DateProvider,
-    TripDatePolicyError,
-    create_trip_date_window,
-)
-from backend.app.schemas.requirement_boundary import RequirementBoundaryError
-from backend.app.services.planning import (
-    PlanningFailedError,
-    PlanningNeedsClarificationError,
-    PlanningService,
-)
-from backend.app.services.product_presentation import public_clarification
+from backend.app.api.dependencies import get_date_provider
+from backend.app.api.streaming import PlanningStreamingResponse
+from backend.app.policies.trip_dates import MAX_TRIP_DAYS, DateProvider, create_trip_date_window
+from backend.app.product.auth import CurrentUser
+from backend.app.product.task_store import ACTIVE
+from backend.app.product.tasks import Coordinator, Planner, TaskSubmission, submit_task
+from backend.app.schemas.request import PlanningRequest
 
 router = APIRouter(prefix="/api", tags=["product-planning"])
 
 
+def submission(body, operation_key):
+    if operation_key is None:
+        raise HTTPException(422, {"code": "operation_key_required"})
+    from pydantic import ValidationError
+
+    try:
+        return TaskSubmission(operation_key=operation_key, request=body)
+    except ValidationError as error:
+        raise HTTPException(422, {"code": "invalid_operation_key"}) from error
+
+
+@router.post("/planning", status_code=202)
+async def create_planning_result(
+    body: PlanningRequest,
+    user: CurrentUser,
+    coordinator: Coordinator,
+    planning_service: Planner,
+    response: Response,
+    operation_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
+):
+    response.headers["Cache-Control"] = "no-store"
+    task = await submit_task(submission(body, operation_key), user, coordinator, planning_service)
+    if task["state"] == "completed":
+        previews = await asyncio.to_thread(
+            coordinator.store.previews, user["id"], task["preview_id"]
+        )
+        return {
+            **task,
+            "task_id": task["id"],
+            "result": previews[0]["snapshot"] if previews else None,
+            "preview_decision": preview_decision(previews),
+        }
+    return task
+
+
+def preview_decision(previews):
+    if not previews or previews[0]["state"] == "pending":
+        return None
+    return {key: previews[0].get(key) for key in ("id", "state", "saved_trip_id", "outcome")}
+
+
+async def task_events(coordinator, owner, task_id, *, interval=1):
+    revision = None
+    while True:
+        task = await asyncio.to_thread(coordinator.store.read, owner, task_id)
+        if task is None:
+            return
+        if task["revision"] != revision:
+            revision = task["revision"]
+            yield f"event: task\ndata: {json.dumps(task, ensure_ascii=True)}\n\n"
+        if task["state"] not in ACTIVE:
+            if task["state"] == "completed":
+                previews = await asyncio.to_thread(
+                    coordinator.store.previews, owner, task["preview_id"]
+                )
+                payload = {
+                    "type": "result",
+                    "task_id": task["id"],
+                    "preview_id": task["preview_id"],
+                    "result": previews[0]["snapshot"] if previews else None,
+                    "preview_decision": preview_decision(previews),
+                }
+                yield f"event: result\ndata: {json.dumps(payload, ensure_ascii=True)}\n\n"
+            return
+        await asyncio.sleep(interval)
+
+
 @router.post("/planning/stream")
 async def stream_planning_result(
-    body: ProductPlanningRequest,
-    planning_service: Annotated[PlanningService, Depends(get_planning_service)],
+    body: PlanningRequest,
+    user: CurrentUser,
+    coordinator: Coordinator,
+    planning_service: Planner,
+    operation_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
 ):
-    """Reject date policy failures before opening the stream or invoking a planner."""
-    try:
-        planning_service.validate(body)
-    except TripDatePolicyError as exc:
-        raise HTTPException(status_code=422, detail=exc.as_detail()) from exc
-    return planning_stream(lambda: create_planning_result(body, planning_service))
-
-
-@router.post("/planning", response_model=ProductPlanningResponse)
-async def create_planning_result(
-    body: ProductPlanningRequest,
-    planning_service: Annotated[PlanningService, Depends(get_planning_service)],
-) -> ProductPlanningResponse:
-    """Generate a product itinerary through the active research planner."""
-
-    try:
-        result = await planning_service.plan(body)
-    except TimeoutError as exc:
-        raise HTTPException(status_code=504, detail={"code": "planning_timeout"}) from exc
-    except TripDatePolicyError as exc:
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            detail=exc.as_detail(),
-        ) from exc
-    except PlanningNeedsClarificationError as exc:
-        if exc.issues.get("safety_disposition") == "SAFETY_BLOCK":
-            from backend.app.policies.preference_input import MESSAGES
-
-            types = {i["issue_type"] for i in exc.issues["issues"]}
-            kind = "safety_self_harm" if "safety_self_harm" in types else "safety_serious_harm"
-            message, action = MESSAGES[kind]
-            return SafetyBlockedResponse(
-                requirements=exc.requirements, message=message, action=action
-            )
-        return NeedsClarificationResponse(
-            requirements=exc.requirements, issues=public_clarification(exc.issues)
-        )
-    except PlanningFailedError as exc:
-        cause = exc.__cause__
-        if isinstance(cause, RequirementBoundaryError) and cause.provider_content_filtered:
-            return ProviderBlockedResponse(**cause.public_provider_action())
-        raise HTTPException(
-            status_code=status.HTTP_502_BAD_GATEWAY,
-            detail={
-                "code": "planning_failed",
-                "message": "The itinerary could not be generated. Please try again.",
-            },
-        ) from exc
-
-    return CompletedPlanningResponse(**result.model_dump())
+    task = await submit_task(submission(body, operation_key), user, coordinator, planning_service)
+    return PlanningStreamingResponse(
+        task_events(coordinator, user["id"], task["id"]),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-store, no-transform", "X-Accel-Buffering": "no"},
+    )
 
 
 @router.get("/planning/date-window")
 async def get_planning_date_window(
     date_provider: Annotated[DateProvider, Depends(get_date_provider)],
-) -> dict[str, str | int]:
-    """Publish the same trusted calendar boundaries used by request validation."""
+):
     window = create_trip_date_window(date_provider.today())
     return {
         "allowedStart": window.allowed_start.isoformat(),
