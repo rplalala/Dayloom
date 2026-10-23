@@ -44,7 +44,7 @@ Source task and acceptance: [planning input UX #25](https://github.com/rplalala/
 | `POST /api/auth/logout` | Revoke every account token and clear the browser cookie | [Account boundary](../backend/app/product/auth.py) |
 | `GET /api/profile`, `PUT /api/profile` | Read or replace the authenticated owner's display name and travel defaults | [Profile boundary](../backend/app/product/profiles.py) |
 | `/api/drafts` and item/copy operations | Versioned incomplete editor snapshots and revision-checked owner mutations | [Draft collection](#incomplete-drafts-and-the-collection-boundary) |
-| `GET /api/examples`, `/{example_id}` | Public allowlisted cards and historical fixture detail | [Examples](#public-examples-and-reusable-detail) |
+| `GET /api/examples`, `/{example_id}`, `/{example_id}/media` | Two public historical itineraries and server-authorized photo metadata | [Examples](#public-examples-and-reusable-detail) |
 | `GET /api/library` | Bounded server-side card search, ordering and pages | [Collection boundary](#incomplete-drafts-and-the-collection-boundary) |
 | `GET`, `PATCH`, `DELETE /api/trips/{id}` | Immutable owner detail, revision-checked title-only update and confirmed cascade deletion | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
 | `GET /api/trips/{id}/weather`, `/nearby`, `/transfers` | Owner-only ordered read views over the saved snapshot | [Saved trips](#explicit-preview-decisions-and-normalized-saved-trips) |
@@ -208,8 +208,14 @@ Save/Discard decisions use the same receipt row, with retained operation identit
 saved-result tombstones. Task/preview foreign keys enforce same owner and source task;
 account deletion cascades both. No queue, event log or graph checkpoint is introduced.
 
-Plan retains the r7 three-section layout: 01 travel brief, 02 planning progress and
-03 itinerary preview. The global desktop/mobile task entry returns to section 02 while
+Plan uses three lifecycle sections: 01 travel brief, 02 planning progress and
+03 itinerary preview. A fresh brief shows the required fields and Generate action,
+with optional preferences in a native disclosure; existing optional values open it
+initially, and preference validation opens it to expose the error. Collapsing it
+does not clear its values. Progress mounts when a task, recovery/error state or an
+explicit progress anchor needs it. With no selected task/result, the preview area
+shows only available unsaved previews for an account or a compact guest example link.
+The global desktop/mobile task entry returns to section 02 while
 running or needing attention, or section 03 when ready. It shows the submitted
 destination independently of the editable brief. `?task=<id>` selects an owner-only durable task; `?preview=<id>`
 selects an unsaved or decided result. Legacy `/planning` and `/planning/:id` bookmarks
@@ -313,9 +319,11 @@ empty days and nonchronological lists; the header span never creates missing day
 Original ISO time strings retain their offsets and fraction spelling without timestamp
 round-tripping. Unknown facts/costs remain distinct from zero, free windows remain
 distinct from scheduled activities, and incomplete/unassessed policy, UNKNOWN and
-CONFIRMED conflict states remain visible. Weather facts and availability persist;
-weather attribution and source URLs are explicitly excluded from storage, so normalized
-saved reads expose those two fields as null. Nearby and transfer attribution is retained.
+CONFIRMED conflict states remain visible. Weather facts, availability, attribution and
+source URLs persist, as do Nearby and transfer attribution. Migration
+`008_weather_sources.sql` adds nullable weather source fields; older saved rows keep
+null where no source was stored. Saving or copying a current snapshot preserves its
+source credit without fetching providers or reconstructing missing historical data.
 
 Nearby stores supplied anchor ID/date independently from its nullable resolved composite
 foreign key. Only an exact scheduled activity ID with a compatible supplied date resolves;
@@ -564,23 +572,38 @@ ownership, recovery and mutation rules. Profile initialization belongs to the
 [new-brief contract](#profile-defaults-and-new-brief-initialization); historical
 detail and source trust belong to the following shared presentation contract.
 
-The fixed r7 pages own Product layout, typography, colors, icons, controls and
-responsive behavior. Its `original.css`, `refinements.css`, `prototype.css` and
+The fixed r7 pages remain the visual reference for Product layout, colors, icons and
+controls. Readability refinements raise essential text sizes and muted-text contrast,
+flatten nested activity frames on narrow screens and compact the initial planning form.
+The `original.css`, `refinements.css`, `prototype.css` and
 `nearby.css` layers retain their order under the Product scope; legacy Developer
 styles stay outside that scope. Real authentication, progress, decisions and source
-claims replace the prototype's browser simulations without changing that layout.
+claims replace the prototype's browser simulations within that visual language.
 My trips remains selected in desktop and mobile navigation while reading trip, draft,
 example or preview details, or importing an itinerary.
 
 ### Public examples and reusable detail
 
-`GET /api/examples` exposes three curated cards; `GET /api/examples/{example_id}`
-returns their detail. The allowlist contains `sydney-example`, `kyoto-design`,
-`melbourne-design` and the additional `nearby-linking` interaction example. The bundled
-fixtures come from the fixed r7 source at commit
-`b30eb3814513b12d7869ca8a5c59f0b7401d45d6`. They require neither an account nor
-provider/database configuration, and create no example table. The guest library
-links to `/examples/{example_id}`; signed-in users can also read those routes.
+`GET /api/examples` exposes exactly two curated cards: `sydney-example` and
+`london-example`. `GET /api/examples/{example_id}` returns the same shared detail
+presentation used by generated and saved trips. Each has three original travel days,
+six scheduled visits, three source-backed transfers, complete historical daily weather
+and three optional Nearby references. A visible historical-example note distinguishes
+the retained dates and evidence from a current forecast or route check.
+
+The bundled Product projections come from accepted V3 runs
+`case01-v3-repair140-followup-20261013T064153Z` and `case-02-r1-v3-a1`.
+Their server-only source metadata records input, final-result and matching-weather
+digests. Editorial titles/tags do not change original request facts or primary visits.
+London selects Jubilee Gardens instead of the photo-less Metaverse optional reference
+from the same run's acquired Nearby ledger, retaining the London Eye anchor and
+canonical identity. No generation or provider evidence refresh is part of curation.
+
+Public detail needs no account, provider key or database and creates no example table;
+photographs use the configured media providers. The guest library links to
+`/examples/{example_id}`; signed-in users can also read those routes. The former
+prototype cities and `nearby-linking` return 404; ambiguous-anchor scenarios remain
+test fixtures rather than public itineraries.
 Cards expose fixed-source creation timestamps for the original newest/oldest ordering;
 the public collection's allowlisted API order does not change.
 
@@ -604,17 +627,18 @@ after source deletion. Empty hints are omitted from serialization so legacy impo
 fingerprints and operation receipts remain recoverable. These hints never confer a
 verified place identity or provider photo authority.
 
-The fixture adapter allowlists public fields and excludes provider identity/evidence
-references. Example transfers retain supplied route metrics and source status as
-`source_claim`/`source_status`, with an unverified estimate kind. They are not a fresh
-route check. Trusted generated transfers can retain their final
+The fixture adapter validates the public Product schema and excludes private provider
+identity/evidence references. Curated examples retain the accepted final projection's
+route metrics, estimate type and validation outcome, with `example`/`source_fixture`
+provenance. Trusted generated transfers and server-curated examples can retain their final
 `validation_state` (`PASS`, `CONFIRMED`, `UNKNOWN`) and provider/derived estimate kind.
-For trusted generated snapshots, the connector, connections list and Details distinguish
+For these snapshots, the connector, connections list and Details distinguish
 fitting supplied timing (`PASS`), a confirmed timing conflict (`CONFIRMED`) and unverified
 feasibility (`UNKNOWN` or absent) in plain language. Validation, evidence availability
 and estimate type remain in public detail data and versioned JSON rather than raw UI
-diagnostics. Example/import claims cannot acquire trusted outcomes by supplying a status
-field; their travel time is always presented as needing confirmation.
+diagnostics. Legacy `source_claim` transfers and imported claims cannot acquire trusted
+outcomes by supplying a status field; their travel time needs confirmation. Reimporting
+an exported example remains unverified and cannot restore private photo authority.
 Missing costs stay unknown, including when no total can be established. A zero amount
 or zero weather metric is a known value. Place lists display authorized photographs
 under the [media contract](#verified-place-media-and-curated-atmosphere), with illustration
@@ -660,8 +684,10 @@ The application binds a scheduled activity only when its final `source_place_id`
 to Google-sourced `result.v3.final_places`. Removed candidates, free windows, displayed
 names and early evidence cannot grant authority. Nearby uses the final reference and its
 strict discovery ledger: exact place ID, adopted anchor activity/source ID and date must
-agree. Imports reject private binding declarations; imported Google claims and bundled
-examples do not establish a verified place photo identity.
+agree. Imports reject private binding declarations; imported Google claims cannot
+establish a verified place photo identity. The two server-curated examples carry
+bindings from the same final projection and acquired Nearby identity checks; a public
+caller cannot add a place ID or URL to that allowlist.
 
 Application-private slots (`activity:{activity_id}` and `nearby:{ordered_position}`)
 map to stable Google place IDs in `media_bindings` JSONB on previews and saved trips.
@@ -669,21 +695,24 @@ Migration 006 adds columns without another domain table. Save carries the map in
 trip transaction. Whole-trip Copy reads this server-owned map inside the same owner/source
 transaction and carries it into the independent trip through the normalized writer;
 directly decided Copy receipts keep an empty map. Imported claims and client Copy bodies
-cannot supply bindings. Copies resolve display metadata separately after persistence.
+cannot supply bindings. Keep a copy carries a curated example's private map into the
+same independent saved representation. Copies resolve display metadata separately after persistence.
 Public detail, JSON/text export and research results omit the map;
 no expiring photo resource name, CDN URL, author metadata or image bytes are persisted.
 
 `GET /api/previews/{id}/media` and `/api/trips/{id}/media` return display metadata only
 after the same owner check as detail; missing/other-owner IDs return 404. Saved-preview
 receipts delegate to the surviving owned trip, while discarded/deleted outcomes return
-no images. Each request admits 200–1280px dimensions, at most 12 ordered slots, three
-parallel resolutions and a 12-second batch deadline. Each Google slot performs at most
+no images. Public `GET /api/examples/{example_id}/media` resolves only the two bundled
+maps, with identical response and work bounds. Each request admits 200–1280px dimensions,
+at most 12 ordered slots, three parallel resolutions and a 12-second batch deadline.
+Each Google slot performs at most
 one fresh `photos` Details request and one media metadata request, with a 3-second HTTP
 timeout and 256 KiB response limit. Redirects and arbitrary fetch destinations are
 rejected. Responses use `Cache-Control: no-store`; no Google photo metadata cache or
 automatic retry is introduced. Product requests place metadata when an owned itinerary
-opens, so authorized photographs appear directly in activity and Nearby lists. Refresh
-place photos in a place dialog explicitly resolves fresh metadata without replanning
+or curated example opens, so authorized photographs appear directly in activity and
+Nearby lists. Refresh place photos in a place dialog explicitly resolves fresh metadata without replanning
 or refreshing itinerary facts.
 
 Activity thumbnails use a 4:3 crop and align with the text's top edge on desktop and
@@ -712,11 +741,13 @@ vocabulary without serialized internal objects; the versioned JSON export retain
 its existing compatibility contract. Developer/research data and entry points are
 unchanged.
 
-Public `/api/media/curated/{sydney|nature}` uses two fixed officially identified Unsplash
+Public `/api/media/curated/{sydney|london|nature}` uses two fixed officially identified Unsplash
 photo pages, resolving current API image/photographer metadata at display time. The
 Sydney harbour image is destination imagery; mountain imagery is explicitly general
-atmosphere. Neither supplies attraction/business-photo authority. Returned hotlink
-tracking parameters survive bounded image resizing, and photographer/source links carry
+atmosphere. London resolves the curated example's verified Tower Bridge binding through
+the existing Google photo adapter. Destination covers follow the itinerary's city;
+the atmosphere catalog itself grants no additional attraction/business-photo authority.
+Unsplash hotlink tracking parameters survive bounded image resizing, and its photographer/source links carry
 application referral parameters. Credits appear on image hover or keyboard focus;
 a small information control also opens them on touch devices, with explicit Close and
 Escape support. Credits remain operable above image navigation links and hero shading.

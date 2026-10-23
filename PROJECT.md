@@ -322,7 +322,12 @@ is implemented across its thirteen native children: account-owned tasks, incompl
 drafts, recoverable generated/imported previews, explicit manual saving, a mixed
 library, independent copies, known-input replanning and credited media with honest
 fallbacks. The fixed r7 design remains the visual reference; its standalone prototype
-still uses browser-local simulations. #119 retains the historical foundation mapping.
+still uses browser-local simulations. Product refinements in
+[#212](https://github.com/rplalala/Dayloom/issues/212),
+[#213](https://github.com/rplalala/Dayloom/issues/213) and
+[#214](https://github.com/rplalala/Dayloom/issues/214) provide two complete historical
+guest itineraries, clearer text/mobile cards and a compact initial planning page.
+#119 retains the historical foundation mapping.
 Account images use initials; avatar upload remains deferred.
 
 [Application operations](docs/0007-application-operations.md#product-experience-and-persistence-design)
