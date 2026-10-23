@@ -595,7 +595,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "d5d3b0ef84dfcaa61974f0012acc51dfa27dff7ec75fe892296c1baa59696bcd",
+      "sha256": "97c166b6af4463658a9a967bc76e2c8e3181fc3e96ccbca124dd3bc3f8a5d5ab",
       "bytes": 18796,
       "representation": "reader_document",
       "original_source": {
@@ -777,11 +777,11 @@
     "status": "pending_researcher_acceptance",
     "final": {
       "path": "evaluation/density-final.json",
-      "sha256": "0e8d1b9e1e66278ac1e11b4c0ba9ebd95b2e4b70a63e647640f395466e423d00"
+      "sha256": "8dea4603434f8b293917bb46d7bf2e2919a1d92d5c8f89477f2d2af9896109e3"
     },
     "pair": {
       "path": "evaluation/density-pair.json",
-      "sha256": "c9e52b6514f3ee13c114bfe7b19a7b65a0be3caae2b5cad57951f7fd3206fe09"
+      "sha256": "b95c5fe12034091c4422c404fe5747b8fa7019208ad5e4f069948ad14f4f57f0"
     },
     "scope": "New offline density reports; original factual sources, receipts and prior acceptance remain unchanged."
   }
