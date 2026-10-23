@@ -273,8 +273,15 @@ def test_complete_editor_journey(editor_app, width, time_zone):
         page.get_by_role("button", name="Generate itinerary").click()
         expect(page.get_by_role("alert")).to_contain_text("whole number of travelers")
         page.get_by_label("Travelers", exact=True).fill("2")
-        page.get_by_role("button", name="Generate itinerary").click()
-        expect(page.get_by_text("Planning has started.", exact=False)).to_be_visible()
+        with page.expect_response(
+            lambda response: response.request.method == "POST"
+            and urlsplit(response.url).path == "/api/planning/tasks"
+        ) as submission:
+            page.get_by_role("button", name="Generate itinerary").click()
+        assert submission.value.status == 202
+        # This editor-only model fails immediately. Its terminal notice may replace
+        # the transient start notice; the accepted task remains visible in Plan.
+        expect(page.get_by_role("heading", name="Planning progress", exact=True)).to_be_visible()
         page.reload()  # A new editor allowance avoids racing a just-sent recovered-city lookup.
         destination.fill("Unavailable city")
         expect(
