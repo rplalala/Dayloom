@@ -1,6 +1,6 @@
 # Capstone Project Context
 
-Current source of truth. Updated 2026-10-22.
+Current source of truth. Updated 2026-10-23.
 Detailed design, development and acceptance records are indexed in
 [docs/README.md](docs/README.md).
 
@@ -47,6 +47,12 @@ provider boundaries, with exact restoration before existing domain/ownership che
 see the [identity transport contract](docs/0001-system-architecture.md#model-identity-references).
 Earlier milestone freezes retain their original scope; later changes are separately
 recorded and do not automatically re-freeze any version.
+
+The complete local Dayloom Product was accepted by the user on 23 October 2026 at
+`b40fcfa55f919a570fbfcec10bde110ac7029a89`, after the final photo-layout corrections.
+The built frontend and normal API share `http://localhost:5173`; the `dayloom` Compose
+project runs `postgres` against the retained runtime volume. Remote code delivery and
+hosting remain pending. See the [local acceptance record](docs/records/frontend/dayloom-product-lifecycle-acceptance.md#final-local-product-acceptance).
 
 Product UI/API uses V3 and an allowlisted presentation contract. Developer mode
 exposes V0-V3 independently. Current input assistance includes destination suggestions,

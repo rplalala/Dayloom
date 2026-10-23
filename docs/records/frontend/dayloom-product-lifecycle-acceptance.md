@@ -6,7 +6,7 @@ runtime against real providers; the two scopes remain distinct below.
 
 ## Event and scope
 
-Engineering implementation and acceptance on 2026-10-21–22 (Australia/Sydney), originating in [Dayloom #198](https://github.com/rplalala/Dayloom/issues/198) and its thirteen native children. The fixed implementation/review base is `26dc1455ec23b931a3245aa6d03e996e5e06db03`; the visual and interaction reference is [r7 at b30eb381](https://github.com/rplalala/Dayloom/tree/b30eb3814513b12d7869ca8a5c59f0b7401d45d6/r7). Existing main-worktree changes to `.env.example` and `GLOSSARY.md` were excluded from task commits. The current contract belongs in [application operations](../../0007-application-operations.md), rather than this dated record.
+Engineering implementation and acceptance on 2026-10-21–23 (Australia/Sydney), originating in [Dayloom #198](https://github.com/rplalala/Dayloom/issues/198) and its thirteen native children. The fixed implementation/review base is `26dc1455ec23b931a3245aa6d03e996e5e06db03`; the visual and interaction reference is [r7 at b30eb381](https://github.com/rplalala/Dayloom/tree/b30eb3814513b12d7869ca8a5c59f0b7401d45d6/r7). Existing main-worktree changes to `.env.example` and `GLOSSARY.md` were excluded from task commits. The current contract belongs in [application operations](../../0007-application-operations.md), rather than this dated record.
 
 The event covers the durable account/profile, brief/draft, task, preview, manual Save/Discard, mixed library, import/export, copy/replan and media lifecycle. The browser-local prototype remains a simulation.
 
@@ -85,6 +85,35 @@ or crop. Author names continue to wrap. The same correction consolidates the dup
 mood mapping and native-dialog backdrop predicate while leaving close/busy policies local.
 
 ## Verification and evidence
+
+### Final local Product acceptance
+
+On 23 October 2026 (Australia/Sydney), the user explicitly accepted the complete local
+Product at `b40fcfa55f919a570fbfcec10bde110ac7029a89`. The confirmation follows the final
+photo-layout implementation `3a107dba85596b7822c1be14c85338a67454d9f4`: square Nearby
+thumbnails, top-aligned landscape activity photos and responsive mobile crops. Direct
+photographs and the selected Details-only attribution presentation remain governed by
+the [current media contract](../../0007-application-operations.md#verified-place-media-and-curated-atmosphere).
+
+Before that confirmation, the final layout checks passed 252 frontend tests, the
+production build, changed-test Ruff checks and both isolated PostgreSQL/Chromium media
+journeys. A long-description browser regression first reproduced the 58×67px Nearby
+thumbnail and an activity photo displaced 34.1875px below its text. The correction
+passed at 1440, 800 and 390px, with cover cropping, aligned content and no page overflow.
+Independent Standards and Spec reviews found no remaining issues. These are the
+actual focused follow-up results, not a new complete backend or real-service run.
+Local evidence identifiers are under `.scratch/photo-layout/`: `frontend.log`,
+`product-20261023-085547.{log,xml}`, the responsive `browser/layout-*.{json,png}` files,
+and the two review reports.
+
+The accepted runtime serves the built frontend and normal API at `http://localhost:5173`.
+Its Docker Compose project/container are `dayloom`/`postgres` on port 55432. Renaming
+retained the original physical volume, database identity, all sixteen table counts and
+Product content hashes; automated test databases are stopped. The existing `.env.example`
+and `GLOSSARY.md` edits remain uncommitted and excluded. A read-only post-acceptance
+HTTP check returned 200 and matched the current frontend build. The user's confirmation
+records local Product acceptance; remote code delivery, public hosting and version-level
+research freezes remain separate decisions.
 
 ### Complete local runtime and bounded real-service acceptance
 
