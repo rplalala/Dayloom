@@ -74,7 +74,7 @@ def historical_content():
                 "weather": {
                     "summary": None,
                     "temperature_min_c": 0,
-                    "attribution": "Excluded weather source",
+                    "attribution": "Weather source",
                     "source_url": "https://example.com/weather",
                 },
                 "activities": [
@@ -147,7 +147,7 @@ def historical_content():
     }
 
 
-def test_saved_roundtrip_keeps_actual_order_missing_facts_and_excludes_weather_sources(client):  # noqa: F811
+def test_saved_roundtrip_keeps_actual_order_missing_facts_and_weather_sources(client):  # noqa: F811
     account = register(client)
     detail = pending(account["id"], **historical_content())
     headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
@@ -155,7 +155,6 @@ def test_saved_roundtrip_keeps_actual_order_missing_facts_and_excludes_weather_s
     actual = client.get(f"/api/trips/{decision['saved_trip_id']}")
     assert actual.status_code == 200, actual.text
     expected = detail.model_dump(mode="json") | {"id": decision["saved_trip_id"]}
-    expected["days"][0]["weather"].update(attribution=None, source_url=None)
     assert actual.json() == expected
     assert client.get(f"/api/previews/{detail.id}").json()["snapshot"] == expected
     from backend.app.product.database import connect

@@ -48,7 +48,7 @@ export function PlacePhoto({ slot, label, className, onOpen, children, fallback,
 }
 
 export function CuratedPhoto({ image = 'nature', label, className, fallback, link }: {
-  link?: { to: string; label: string }; image?: 'sydney' | 'nature'; label: string; className?: string; fallback?: string;
+  link?: { to: string; label: string }; image?: 'sydney' | 'london' | 'nature'; label: string; className?: string; fallback?: string;
 }) {
   const [result, setResult] = useState<{ key: string; media: DisplayMedia } | null>(null);
   useEffect(() => {
@@ -58,5 +58,5 @@ export function CuratedPhoto({ image = 'nature', label, className, fallback, lin
       .catch(() => {});
     return () => controller.abort();
   }, [image]);
-  return <MediaPhoto atmosphere link={link} media={result?.key === image ? result.media : undefined} label={label} fallback={fallback || `/dayloom/${image}.svg`} className={className} />;
+  return <MediaPhoto atmosphere link={link} media={result?.key === image ? result.media : undefined} label={label} fallback={fallback || `/dayloom/${image === 'london' ? 'city' : image}.svg`} className={className} />;
 }

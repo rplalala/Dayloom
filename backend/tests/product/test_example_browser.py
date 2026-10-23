@@ -16,7 +16,7 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
     try:
         page = context.new_page()
         page.goto(browser_app.base_url + "/trips")
-        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(3)
+        expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(2)
         page.get_by_role("link", name="Sydney · Three days by the harbour", exact=True).click()
         expect(
             page.get_by_role("heading", name="Sydney · Three days by the harbour")
@@ -24,7 +24,7 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         page.get_by_text("Before you go", exact=True).click()
         expect(
             page.get_by_text(
-                "This is a sample itinerary.", exact=False
+                "This historical example keeps its original travel dates.", exact=False
             )
         ).to_be_visible()
         assert page.request.get(browser_app.base_url + "/api/examples/sydney-example").status == 200
@@ -34,21 +34,24 @@ def test_public_collection_detail_and_account_state_use_real_product_api(browser
         activity_details.click()
         expect(page.get_by_role("dialog")).to_be_visible()
         expect(page.get_by_role("dialog")).to_contain_text(
-            "Cost unavailable; not assumed to be free."
+            "Check admission and booking prices before you go."
         )
         page.keyboard.press("Escape")
         expect(page.get_by_role("dialog")).to_have_count(0)
         expect(activity_details).to_be_focused()
-        page.get_by_role("button", name="WALK · 25 min · Travel time to confirm →").click()
+        page.get_by_role("button", name="WALK · 25 min · Fits your schedule →").click()
         expect(page.get_by_role("dialog")).to_contain_text(
-            "Travel time for this itinerary has not been checked."
+            "The estimated travel time fits between these stops."
         )
         page.keyboard.press("Escape")
-        page.goto(browser_app.base_url + "/examples/kyoto-design")
+        page.goto(browser_app.base_url + "/examples/london-example")
         expect(
-            page.get_by_role("heading", name="Kyoto · Gardens and quiet streets")
+            page.get_by_role("heading", name="London · Landmarks along the Thames")
         ).to_be_visible()
-        expect(page.get_by_text("Free time · no fixed place", exact=True).first).to_be_visible()
+        expect(page.locator('.activity-photo img[alt$="place photograph"]')).to_have_count(6)
+        expect(page.get_by_text("Avg —", exact=True)).to_have_count(0)
+        page.get_by_label("Weather details for Oct 15").click()
+        expect(page.get_by_text("High 20.5°C", exact=True)).to_be_visible()
         register_browser(page, browser_app.base_url)
         expect(page.get_by_role("link", name="View details", exact=True)).to_have_count(0)
         page.goto(browser_app.base_url + "/examples/sydney-example")
@@ -68,6 +71,13 @@ def test_nearby_explicit_bidirectional_keyboard_navigation_and_responsive_hierar
     )
     try:
         page = context.new_page()
+        # Deliberate ambiguous/unlinked anchors are test-only, never a third public example.
+        from backend.app.product.imports import normalize_import
+
+        scenario = normalize_import(
+            Path("backend/tests/product/fixtures/nearby-linking.json").read_text(encoding="utf-8")
+        ).model_dump(mode="json")
+        page.route("**/api/examples/nearby-linking", lambda route: route.fulfill(json=scenario))
         page.goto(browser_app.base_url + "/examples/nearby-linking")
         expect(
             page.get_by_role("heading", name="Sydney · Nearby linking scenarios")

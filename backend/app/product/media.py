@@ -13,6 +13,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from backend.app.product.auth import CurrentUser
 from backend.app.product.database import connect
+from backend.app.product.examples import example_detail
 from backend.app.runtime.database import PROJECT_ROOT
 
 router = APIRouter(tags=["Product media"])
@@ -244,10 +245,9 @@ def owned_bindings(kind, resource_id, owner):
     return list((row["media_bindings"] if row else {}).items())[:MAX_PLACE_PHOTOS]
 
 
-async def resolve_owned(kind, resource_id, owner, providers, width, height, response):
+async def resolve_photos(bindings, providers, width, height, response):
     response.headers["Cache-Control"] = "no-store"
-    # Storage is synchronous; slow reads must not block the task/lease event loop.
-    bindings = await asyncio.to_thread(owned_bindings, kind, resource_id, owner)
+    bindings = list(bindings)[:MAX_PLACE_PHOTOS]
     semaphore = asyncio.Semaphore(3)
 
     async def resolve(slot, place):
@@ -262,6 +262,18 @@ async def resolve_owned(kind, resource_id, owner, providers, width, height, resp
     return {"items": items, "limit": MAX_PLACE_PHOTOS}
 
 
+@router.get("/api/examples/{example_id}/media")
+async def example_media(
+    example_id: str,
+    providers: Providers,
+    response: Response,
+    width: Dimension = 960,
+    height: Dimension = 640,
+):
+    detail = example_detail(example_id)
+    return await resolve_photos(detail._media_bindings.items(), providers, width, height, response)
+
+
 @router.get("/api/{kind}/{resource_id}/media")
 async def owned_media(
     kind: Literal["previews", "trips"],
@@ -272,15 +284,24 @@ async def owned_media(
     width: Dimension = 960,
     height: Dimension = 640,
 ):
-    return await resolve_owned(kind, resource_id, user["id"], providers, width, height, response)
+    # Storage is synchronous; slow reads must not block the task/lease event loop.
+    bindings = await asyncio.to_thread(owned_bindings, kind, resource_id, user["id"])
+    return await resolve_photos(bindings, providers, width, height, response)
 
 
 @router.get("/api/media/curated/{key}")
 async def curated_media(
-    key: Literal["sydney", "nature"],
+    key: Literal["sydney", "london", "nature"],
     providers: Providers,
     response: Response,
     width: Dimension = 960,
 ):
     response.headers["Cache-Control"] = "no-store"
+    if key == "london":
+        # This adopted landmark belongs to the allowlisted historical London example.
+        bindings = example_detail("london-example")._media_bindings
+        photo = await providers.google(
+            bindings["activity:london-20261015-tower-bridge"], width, 640
+        )
+        return {**photo, "alt": "Tower Bridge, London"}
     return await providers.curated(key, width)

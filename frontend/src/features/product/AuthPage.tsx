@@ -114,7 +114,7 @@ export function AuthPage() {
                 const draftReturn = target && /^\/plan\?draft=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
                 const planReturn = target && /^\/plan(?:\?(?:task|preview)=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})?(?:#(?:generation-progress|result|travel-brief))?$/i.test(target);
                 const itemReturn = target && /^\/(?:trips|drafts|previews|planning)\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(target);
-                const exampleReturn = target && ['/examples/sydney-example', '/examples/kyoto-design', '/examples/melbourne-design', '/examples/nearby-linking'].includes(target);
+                const exampleReturn = target && ['/examples/sydney-example', '/examples/london-example'].includes(target);
                 navigate(
                   target && (["/plan", "/trips", "/import", "/copy-recovery", "/account", "/planning"].includes(target) || draftReturn || planReturn || itemReturn || exampleReturn)
                     ? target

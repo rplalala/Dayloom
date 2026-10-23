@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 from uuid import UUID, uuid4
 
 import httpx
+import pytest
 from fastapi.testclient import TestClient
 
 from backend.app.main import create_app
@@ -12,6 +13,17 @@ from backend.app.product.database import connect
 from backend.tests.product.test_accounts import client, register  # noqa: F401
 from backend.tests.product.test_imports import conflicting_source, source
 from backend.tests.product.test_saved import historical_content, pending
+
+
+@pytest.fixture
+def example_photos():
+    from backend.app.main import app
+    from backend.tests.product.media_fakes import replace_media
+
+    previous = app.dependency_overrides.copy()
+    replace_media(app)
+    yield
+    app.dependency_overrides = previous
 
 
 def headers(account):
@@ -46,7 +58,9 @@ def copy(client, account, kind, source_id, key):  # noqa: F811
     )
 
 
-def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(client):  # noqa: F811
+def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(
+    client, example_photos  # noqa: F811
+):
     account = register(client)
     headers = {"Origin": "http://localhost:5120", "X-CSRF-Token": account["csrf_token"]}
     source = client.get("/api/examples/sydney-example").json()
@@ -69,7 +83,7 @@ def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(cli
     assert client.get("/api/copies/example/keep-once").json() == receipt
     assert client.get("/api/library").json()["total"] == 1
 
-    # Persisted children and independent descendants retain only the fixed display hints.
+    # Copied content and photos survive independent descendants and source deletion.
     assert detail["illustration_key"] == "sydney"
     assert detail["display_tags"] == [
         "City walks",
@@ -77,8 +91,9 @@ def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(cli
         "Art & museums",
         "Balanced pace",
     ]
-    assert detail["days"][0]["activities"][1]["illustration_key"] == "art"
-    assert detail["nearby"][0]["illustration_key"] == "city"
+    photos = client.get("/api/examples/sydney-example/media").json()
+    assert len(photos["items"]) == 9
+    assert client.get(f"/api/trips/{receipt['saved_trip_id']}/media").json() == photos
     descendant = copy(
         client, account, "copied", receipt["saved_trip_id"], "display-descendant"
     ).json()
@@ -92,15 +107,19 @@ def test_keep_example_commits_saved_snapshot_without_task_or_pending_preview(cli
         == 204
     )
     with TestClient(create_app(), base_url="http://localhost:5120") as recreated:
+        from backend.tests.product.media_fakes import replace_media
+
+        replace_media(recreated.app)
         recreated.cookies.update(client.cookies)
         restored = recreated.get(f"/api/trips/{descendant['saved_trip_id']}").json()
         assert restored == detail | {
             "id": descendant["saved_trip_id"],
             "title": detail["title"] + " (copy)",
         }
-        assert restored["request"] is None and restored["trust"] == "source_fixture"
+        assert restored["request"]["budget"] == {"currency": "AUD", "amount": "900"}
+        assert restored["trust"] == "source_fixture"
         assert (
-            recreated.get(f"/api/trips/{descendant['saved_trip_id']}/media").json()["items"] == {}
+            recreated.get(f"/api/trips/{descendant['saved_trip_id']}/media").json() == photos
         )
         assert (
             copy(

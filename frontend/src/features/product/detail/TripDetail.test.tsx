@@ -139,6 +139,14 @@ describe("Product detail", () => {
     [
       "example",
       "source_fixture",
+      "confirmed",
+      "PASS",
+      null,
+      "Fits your schedule",
+    ],
+    [
+      "example",
+      "source_fixture",
       "source_claim",
       "PASS",
       "PASS",

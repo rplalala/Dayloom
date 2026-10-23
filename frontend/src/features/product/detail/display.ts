@@ -15,6 +15,12 @@ export const dottedDate = (value?: string | null) => value ? value.slice(0, 10).
 export const routeDuration = (seconds?: number | null) => seconds == null ? "Time to confirm" : `${Math.ceil(seconds / 60)} min`;
 export const routeDistance = (meters?: number | null) => meters == null ? "Distance to confirm" : meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
 
+export function destinationCover(destination: string): 'sydney' | 'london' | 'nature' {
+  if (/^sydney\b/i.test(destination)) return 'sydney';
+  if (/^london\b/i.test(destination)) return 'london';
+  return 'nature';
+}
+
 /** Display themes never confer place verification or accept source-provided URLs. */
 export function illustrationFor(value: string): string {
   if (/harbour|harbor|sydney|the rocks|opera/i.test(value)) return "/dayloom/sydney.svg";
@@ -24,8 +30,8 @@ export function illustrationFor(value: string): string {
 }
 
 const trustedTransfer = (detail: ProductDetail, transfer: DetailTransfer) =>
-  detail.provenance === "generated" &&
-  detail.trust === "generated_projection" &&
+  ((detail.provenance === "generated" && detail.trust === "generated_projection") ||
+    (detail.provenance === "example" && detail.trust === "source_fixture")) &&
   transfer.status !== "source_claim";
 
 export function transferFeasibility(detail: ProductDetail, transfer: DetailTransfer) {
